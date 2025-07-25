@@ -66,22 +66,26 @@ export class ItemIdentifier {
 /**
  * A marketplace identifier. Specifies the marketplace from which prices are returned.
  * @member {String} marketplaceId
+ * @type
  */
 ItemIdentifier.prototype.marketplaceId = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type
  */
 ItemIdentifier.prototype.ASIN = undefined
 
 /**
  * The seller stock keeping unit (SKU) of the item.
  * @member {String} sellerSKU
+ * @type
  */
 ItemIdentifier.prototype.sellerSKU = undefined
 
 /**
  * @member {module:pricing_v0/model/ConditionType} itemCondition
+ * @type
  */
 ItemIdentifier.prototype.itemCondition = undefined

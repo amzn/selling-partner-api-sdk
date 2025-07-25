@@ -59,10 +59,12 @@ export class OpenInterval {
 
 /**
  * @member {module:orders_v0/model/OpenTimeInterval} startTime
+ * @type
  */
 OpenInterval.prototype.startTime = undefined
 
 /**
  * @member {module:orders_v0/model/OpenTimeInterval} endTime
+ * @type
  */
 OpenInterval.prototype.endTime = undefined

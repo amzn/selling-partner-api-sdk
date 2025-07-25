@@ -61,5 +61,6 @@ export class UpdateScheduleRequest {
 /**
  * List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
  * @member {Array.<module:services_v1/model/AvailabilityRecord>} schedules
+ * @type
  */
 UpdateScheduleRequest.prototype.schedules = undefined

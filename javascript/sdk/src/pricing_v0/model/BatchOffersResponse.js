@@ -64,15 +64,18 @@ export class BatchOffersResponse {
 
 /**
  * @member {module:pricing_v0/model/HttpResponseHeaders} headers
+ * @type
  */
 BatchOffersResponse.prototype.headers = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
+ * @type
  */
 BatchOffersResponse.prototype.status = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersResponse} body
+ * @type
  */
 BatchOffersResponse.prototype.body = undefined

@@ -64,10 +64,12 @@ export class AdditionalSellerInputs {
 /**
  * The name of the additional input field.
  * @member {String} additionalInputFieldName
+ * @type
  */
 AdditionalSellerInputs.prototype.additionalInputFieldName = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/AdditionalSellerInput} additionalSellerInput
+ * @type
  */
 AdditionalSellerInputs.prototype.additionalSellerInput = undefined

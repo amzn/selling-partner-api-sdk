@@ -70,49 +70,58 @@ export class AdditionalSellerInput {
 /**
  * The data type of the additional information.
  * @member {String} dataType
+ * @type
  */
 AdditionalSellerInput.prototype.dataType = undefined
 
 /**
  * The value when the data type is string.
  * @member {String} valueAsString
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsString = undefined
 
 /**
  * The value when the data type is boolean.
  * @member {Boolean} valueAsBoolean
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsBoolean = undefined
 
 /**
  * The value when the data type is integer.
  * @member {Number} valueAsInteger
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsInteger = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} valueAsTimestamp
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsTimestamp = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Address} valueAsAddress
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsAddress = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Weight} valueAsWeight
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsWeight = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Length} valueAsDimension
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsDimension = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CurrencyAmount} valueAsCurrency
+ * @type
  */
 AdditionalSellerInput.prototype.valueAsCurrency = undefined

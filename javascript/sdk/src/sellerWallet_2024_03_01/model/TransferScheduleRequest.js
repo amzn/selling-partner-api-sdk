@@ -84,42 +84,50 @@ export class TransferScheduleRequest {
 /**
  * The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.
  * @member {String} sourceAccountId
+ * @type
  */
 TransferScheduleRequest.prototype.sourceAccountId = undefined
 
 /**
  * The three-letter currency code of the source payment method country, in ISO 4217 format.
  * @member {String} sourceCurrencyCode
+ * @type
  */
 TransferScheduleRequest.prototype.sourceCurrencyCode = undefined
 
 /**
  * The unique identifier of the destination bank account where the money is deposited.
  * @member {String} destinationAccountId
+ * @type
  */
 TransferScheduleRequest.prototype.destinationAccountId = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails} destinationTransactionInstrument
+ * @type
  */
 TransferScheduleRequest.prototype.destinationTransactionInstrument = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionType} transactionType
+ * @type
  */
 TransferScheduleRequest.prototype.transactionType = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferScheduleInformation} transferScheduleInformation
+ * @type
  */
 TransferScheduleRequest.prototype.transferScheduleInformation = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/PaymentPreference} paymentPreference
+ * @type
  */
 TransferScheduleRequest.prototype.paymentPreference = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferScheduleStatus} transferScheduleStatus
+ * @type
  */
 TransferScheduleRequest.prototype.transferScheduleStatus = undefined

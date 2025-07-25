@@ -73,50 +73,59 @@ export class CompetitivePriceType {
 /**
  * The pricing model for each price that is returned.  Possible values:  * 1 - New Buy Box Price. * 2 - Used Buy Box Price.
  * @member {String} competitivePriceId
+ * @type
  */
 CompetitivePriceType.prototype.competitivePriceId = undefined
 
 /**
  * @member {module:pricing_v0/model/PriceType} price
+ * @type
  */
 CompetitivePriceType.prototype.price = undefined
 
 /**
  * Indicates the condition of the item whose pricing information is returned. Possible values are: New, Used, Collectible, Refurbished, or Club.
  * @member {String} condition
+ * @type
  */
 CompetitivePriceType.prototype.condition = undefined
 
 /**
  * Indicates the subcondition of the item whose pricing information is returned. Possible values are: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
  * @member {String} subcondition
+ * @type
  */
 CompetitivePriceType.prototype.subcondition = undefined
 
 /**
  * @member {module:pricing_v0/model/OfferCustomerType} offerType
+ * @type
  */
 CompetitivePriceType.prototype.offerType = undefined
 
 /**
  * Indicates at what quantity this price becomes active.
  * @member {Number} quantityTier
+ * @type
  */
 CompetitivePriceType.prototype.quantityTier = undefined
 
 /**
  * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
+ * @type
  */
 CompetitivePriceType.prototype.quantityDiscountType = undefined
 
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type
  */
 CompetitivePriceType.prototype.sellerId = undefined
 
 /**
  *  Indicates whether or not the pricing information is for an offer listing that belongs to the requester. The requester is the seller associated with the SellerId that was submitted with the request. Possible values are: true and false.
  * @member {Boolean} belongsToRequester
+ * @type
  */
 CompetitivePriceType.prototype.belongsToRequester = undefined

@@ -64,10 +64,12 @@ export class EngineOutput {
 /**
  * Engine power value in specified unit.
  * @member {Number} value
+ * @type
  */
 EngineOutput.prototype.value = undefined
 
 /**
  * @member {module:vehicles_v2024_11_01/model/EngineOutputUnit} unit
+ * @type
  */
 EngineOutput.prototype.unit = undefined

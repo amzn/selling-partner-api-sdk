@@ -63,11 +63,13 @@ export class GetMessagingActionsForOrderResponseLinks {
 
 /**
  * @member {module:messaging_v1/model/LinkObject} self
+ * @type
  */
 GetMessagingActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
  * @member {Array.<module:messaging_v1/model/LinkObject>} actions
+ * @type
  */
 GetMessagingActionsForOrderResponseLinks.prototype.actions = undefined

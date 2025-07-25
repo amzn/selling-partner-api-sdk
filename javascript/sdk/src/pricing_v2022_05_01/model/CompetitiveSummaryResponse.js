@@ -64,10 +64,12 @@ export class CompetitiveSummaryResponse {
 
 /**
  * @member {module:pricing_v2022_05_01/model/HttpStatusLine} status
+ * @type
  */
 CompetitiveSummaryResponse.prototype.status = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/CompetitiveSummaryResponseBody} body
+ * @type
  */
 CompetitiveSummaryResponse.prototype.body = undefined

@@ -90,92 +90,108 @@ export class InboundShipment {
 
 /**
  * @member {module:awd_v2024_05_09/model/CarrierCode} carrierCode
+ * @type
  */
 InboundShipment.prototype.carrierCode = undefined
 
 /**
  * Timestamp when the shipment was created. The date is returned in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
  * @member {Date} createdAt
+ * @type
  */
 InboundShipment.prototype.createdAt = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/Address} destinationAddress
+ * @type
  */
 InboundShipment.prototype.destinationAddress = undefined
 
 /**
  * Client-provided reference ID that can correlate this shipment to client resources. For example, to map this shipment to an internal bookkeeping order record.
  * @member {String} externalReferenceId
+ * @type
  */
 InboundShipment.prototype.externalReferenceId = undefined
 
 /**
  * The AWD inbound order ID that this inbound shipment belongs to.
  * @member {String} orderId
+ * @type
  */
 InboundShipment.prototype.orderId = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/Address} originAddress
+ * @type
  */
 InboundShipment.prototype.originAddress = undefined
 
 /**
  * Quantity received (at the receiving end) as part of this shipment.
  * @member {Array.<module:awd_v2024_05_09/model/InventoryQuantity>} receivedQuantity
+ * @type
  */
 InboundShipment.prototype.receivedQuantity = undefined
 
 /**
  * Timestamp when the shipment will be shipped.
  * @member {Date} shipBy
+ * @type
  */
 InboundShipment.prototype.shipBy = undefined
 
 /**
  * Packages that are part of this shipment.
  * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} shipmentContainerQuantities
+ * @type
  */
 InboundShipment.prototype.shipmentContainerQuantities = undefined
 
 /**
  * Unique shipment ID.
  * @member {String} shipmentId
+ * @type
  */
 InboundShipment.prototype.shipmentId = undefined
 
 /**
  * Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.
  * @member {Array.<module:awd_v2024_05_09/model/SkuQuantity>} shipmentSkuQuantities
+ * @type
  */
 InboundShipment.prototype.shipmentSkuQuantities = undefined
 
 /**
  * Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
  * @member {String} destinationRegion
+ * @type
  */
 InboundShipment.prototype.destinationRegion = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InboundShipmentStatus} shipmentStatus
+ * @type
  */
 InboundShipment.prototype.shipmentStatus = undefined
 
 /**
  * Carrier-unique tracking ID for this shipment.
  * @member {String} trackingId
+ * @type
  */
 InboundShipment.prototype.trackingId = undefined
 
 /**
  * Timestamp when the shipment was updated. The date is returned in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> format.
  * @member {Date} updatedAt
+ * @type
  */
 InboundShipment.prototype.updatedAt = undefined
 
 /**
  * An AWD-provided reference ID that you can use to interact with the warehouse. For example, a carrier appointment booking.
  * @member {String} warehouseReferenceId
+ * @type
  */
 InboundShipment.prototype.warehouseReferenceId = undefined

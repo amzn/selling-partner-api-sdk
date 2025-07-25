@@ -75,83 +75,97 @@ export class ShipmentEvent {
 /**
  * An Amazon-defined identifier for an order.
  * @member {String} amazonOrderId
+ * @type
  */
 ShipmentEvent.prototype.amazonOrderId = undefined
 
 /**
  * A seller-defined identifier for an order.
  * @member {String} sellerOrderId
+ * @type
  */
 ShipmentEvent.prototype.sellerOrderId = undefined
 
 /**
  * The name of the marketplace where the event occurred.
  * @member {String} marketplaceName
+ * @type
  */
 ShipmentEvent.prototype.marketplaceName = undefined
 
 /**
  * The name of the store where the event occurred.
  * @member {String} storeName
+ * @type
  */
 ShipmentEvent.prototype.storeName = undefined
 
 /**
  * A list of charge information on the seller's account.
  * @member {Array.<module:finances_v0/model/ChargeComponent>} orderChargeList
+ * @type
  */
 ShipmentEvent.prototype.orderChargeList = undefined
 
 /**
  * A list of charge information on the seller's account.
  * @member {Array.<module:finances_v0/model/ChargeComponent>} orderChargeAdjustmentList
+ * @type
  */
 ShipmentEvent.prototype.orderChargeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} shipmentFeeList
+ * @type
  */
 ShipmentEvent.prototype.shipmentFeeList = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} shipmentFeeAdjustmentList
+ * @type
  */
 ShipmentEvent.prototype.shipmentFeeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} orderFeeList
+ * @type
  */
 ShipmentEvent.prototype.orderFeeList = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} orderFeeAdjustmentList
+ * @type
  */
 ShipmentEvent.prototype.orderFeeAdjustmentList = undefined
 
 /**
  * A list of direct payment information.
  * @member {Array.<module:finances_v0/model/DirectPayment>} directPaymentList
+ * @type
  */
 ShipmentEvent.prototype.directPaymentList = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type
  */
 ShipmentEvent.prototype.postedDate = undefined
 
 /**
  * A list of shipment items.
  * @member {Array.<module:finances_v0/model/ShipmentItem>} shipmentItemList
+ * @type
  */
 ShipmentEvent.prototype.shipmentItemList = undefined
 
 /**
  * A list of shipment items.
  * @member {Array.<module:finances_v0/model/ShipmentItem>} shipmentItemAdjustmentList
+ * @type
  */
 ShipmentEvent.prototype.shipmentItemAdjustmentList = undefined

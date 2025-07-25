@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class BarcodeInstruction.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class BarcodeInstruction {

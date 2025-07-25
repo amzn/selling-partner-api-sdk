@@ -71,42 +71,50 @@ export class OrderItemStatus {
 /**
  * Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
  * @member {String} itemSequenceNumber
+ * @type
  */
 OrderItemStatus.prototype.itemSequenceNumber = undefined
 
 /**
  * Buyer's Standard Identification Number (ASIN) of an item.
  * @member {String} buyerProductIdentifier
+ * @type
  */
 OrderItemStatus.prototype.buyerProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item.
  * @member {String} vendorProductIdentifier
+ * @type
  */
 OrderItemStatus.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendororders_v1/model/Money} netCost
+ * @type
  */
 OrderItemStatus.prototype.netCost = undefined
 
 /**
  * @member {module:vendororders_v1/model/Money} listPrice
+ * @type
  */
 OrderItemStatus.prototype.listPrice = undefined
 
 /**
  * @member {module:vendororders_v1/model/OrderItemStatusOrderedQuantity} orderedQuantity
+ * @type
  */
 OrderItemStatus.prototype.orderedQuantity = undefined
 
 /**
  * @member {module:vendororders_v1/model/OrderItemStatusAcknowledgementStatus} acknowledgementStatus
+ * @type
  */
 OrderItemStatus.prototype.acknowledgementStatus = undefined
 
 /**
  * @member {module:vendororders_v1/model/OrderItemStatusReceivingStatus} receivingStatus
+ * @type
  */
 OrderItemStatus.prototype.receivingStatus = undefined

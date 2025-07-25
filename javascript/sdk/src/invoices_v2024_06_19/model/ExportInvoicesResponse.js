@@ -58,5 +58,6 @@ export class ExportInvoicesResponse {
 /**
  * The export identifier.
  * @member {String} exportId
+ * @type
  */
 ExportInvoicesResponse.prototype.exportId = undefined

@@ -60,5 +60,6 @@ export class ConfirmTransportationOptionsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type
  */
 ConfirmTransportationOptionsResponse.prototype.operationId = undefined

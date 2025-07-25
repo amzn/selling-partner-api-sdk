@@ -59,11 +59,13 @@ export class TimeWindow {
 /**
  * The start time of the time window.
  * @member {Date} start
+ * @type
  */
 TimeWindow.prototype.start = undefined
 
 /**
  * The end time of the time window.
  * @member {Date} end
+ * @type
  */
 TimeWindow.prototype.end = undefined

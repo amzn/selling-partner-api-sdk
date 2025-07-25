@@ -66,16 +66,19 @@ export class MarketplaceParticipation {
 
 /**
  * @member {module:sellers_v1/model/Marketplace} marketplace
+ * @type
  */
 MarketplaceParticipation.prototype.marketplace = undefined
 
 /**
  * @member {module:sellers_v1/model/Participation} participation
+ * @type
  */
 MarketplaceParticipation.prototype.participation = undefined
 
 /**
  * The name of the seller's store as displayed in the marketplace.
  * @member {String} storeName
+ * @type
  */
 MarketplaceParticipation.prototype.storeName = undefined

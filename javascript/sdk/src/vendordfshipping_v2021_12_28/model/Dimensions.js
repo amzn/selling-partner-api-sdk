@@ -69,18 +69,21 @@ export class Dimensions {
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.  <br>**Pattern** : `^-?(0|([1-9]\\\\d*))(\\\\.\\\\d+)?([eE][+-]?\\\\d+)?$`.
  * @member {String} length
+ * @type
  */
 Dimensions.prototype.length = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.  <br>**Pattern** : `^-?(0|([1-9]\\\\d*))(\\\\.\\\\d+)?([eE][+-]?\\\\d+)?$`.
  * @member {String} width
+ * @type
  */
 Dimensions.prototype.width = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.  <br>**Pattern** : `^-?(0|([1-9]\\\\d*))(\\\\.\\\\d+)?([eE][+-]?\\\\d+)?$`.
  * @member {String} height
+ * @type
  */
 Dimensions.prototype.height = undefined
 
@@ -107,5 +110,6 @@ Dimensions.UnitOfMeasureEnum = {
 /**
  * The unit of measure for dimensions.
  * @member {module:vendordfshipping_v2021_12_28/model/Dimensions.UnitOfMeasureEnum} unitOfMeasure
+ * @type
  */
 Dimensions.prototype.unitOfMeasure = undefined

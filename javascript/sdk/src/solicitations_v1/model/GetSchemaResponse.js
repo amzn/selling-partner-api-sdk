@@ -60,17 +60,20 @@ export class GetSchemaResponse {
 
 /**
  * @member {module:solicitations_v1/model/GetSchemaResponseLinks} links
+ * @type
  */
 GetSchemaResponse.prototype.links = undefined
 
 /**
  * A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.
  * @member {Object.<String, Object>} payload
+ * @type
  */
 GetSchemaResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:solicitations_v1/model/Error>} errors
+ * @type
  */
 GetSchemaResponse.prototype.errors = undefined

@@ -79,57 +79,67 @@ export class InvoiceItem {
 /**
  * Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
  * @member {String} itemSequenceNumber
+ * @type
  */
 InvoiceItem.prototype.itemSequenceNumber = undefined
 
 /**
  * Buyer's standard identification number (ASIN) of an item.
  * @member {String} buyerProductIdentifier
+ * @type
  */
 InvoiceItem.prototype.buyerProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item.
  * @member {String} vendorProductIdentifier
+ * @type
  */
 InvoiceItem.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendordfpayments_v1/model/ItemQuantity} invoicedQuantity
+ * @type
  */
 InvoiceItem.prototype.invoicedQuantity = undefined
 
 /**
  * @member {module:vendordfpayments_v1/model/Money} netCost
+ * @type
  */
 InvoiceItem.prototype.netCost = undefined
 
 /**
  * The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.
  * @member {String} purchaseOrderNumber
+ * @type
  */
 InvoiceItem.prototype.purchaseOrderNumber = undefined
 
 /**
  * The vendor's order number for this order.
  * @member {String} vendorOrderNumber
+ * @type
  */
 InvoiceItem.prototype.vendorOrderNumber = undefined
 
 /**
  * Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets.
  * @member {String} hsnCode
+ * @type
  */
 InvoiceItem.prototype.hsnCode = undefined
 
 /**
  * Individual tax details per line item.
  * @member {Array.<module:vendordfpayments_v1/model/TaxDetail>} taxDetails
+ * @type
  */
 InvoiceItem.prototype.taxDetails = undefined
 
 /**
  * Individual charge details per line item.
  * @member {Array.<module:vendordfpayments_v1/model/ChargeDetails>} chargeDetails
+ * @type
  */
 InvoiceItem.prototype.chargeDetails = undefined

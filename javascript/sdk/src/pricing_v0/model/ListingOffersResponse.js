@@ -70,36 +70,43 @@ export class ListingOffersResponse {
 
 /**
  * @member {module:pricing_v0/model/HttpResponseHeaders} headers
+ * @type
  */
 ListingOffersResponse.prototype.headers = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
+ * @type
  */
 ListingOffersResponse.prototype.status = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersResponse} body
+ * @type
  */
 ListingOffersResponse.prototype.body = undefined
 
 /**
  * @member {module:pricing_v0/model/ListingOffersRequestParams} request
+ * @type
  */
 ListingOffersResponse.prototype.request = undefined
 
 // Implement BatchOffersResponse interface:
 /**
  * @member {module:pricing_v0/model/HttpResponseHeaders} headers
+ * @type
  */
 BatchOffersResponse.prototype.headers = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
+ * @type
  */
 BatchOffersResponse.prototype.status = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersResponse} body
+ * @type
  */
 BatchOffersResponse.prototype.body = undefined

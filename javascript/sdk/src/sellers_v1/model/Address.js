@@ -67,35 +67,41 @@ export class Address {
 /**
  * Street address information.
  * @member {String} addressLine1
+ * @type
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional street address information.
  * @member {String} addressLine2
+ * @type
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * The country code in two-character ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The state or province code.
  * @member {String} stateOrProvinceCode
+ * @type
  */
 Address.prototype.stateOrProvinceCode = undefined
 
 /**
  * The city.
  * @member {String} city
+ * @type
  */
 Address.prototype.city = undefined
 
 /**
  * The postal code.
  * @member {String} postalCode
+ * @type
  */
 Address.prototype.postalCode = undefined

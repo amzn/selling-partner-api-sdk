@@ -63,11 +63,13 @@ export class CreateFeedDocumentResponse {
 /**
  * The identifier of the feed document.
  * @member {String} feedDocumentId
+ * @type
  */
 CreateFeedDocumentResponse.prototype.feedDocumentId = undefined
 
 /**
  * The presigned URL for uploading the feed contents. This URL expires after 5 minutes.
  * @member {String} url
+ * @type
  */
 CreateFeedDocumentResponse.prototype.url = undefined

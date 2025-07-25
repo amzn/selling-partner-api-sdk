@@ -70,33 +70,39 @@ export class CreateShipmentRequest {
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShipmentRequestDetails} shipmentRequestDetails
+ * @type
  */
 CreateShipmentRequest.prototype.shipmentRequestDetails = undefined
 
 /**
  * An Amazon-defined shipping service identifier.
  * @member {String} shippingServiceId
+ * @type
  */
 CreateShipmentRequest.prototype.shippingServiceId = undefined
 
 /**
  * Identifies a shipping service order made by a carrier.
  * @member {String} shippingServiceOfferId
+ * @type
  */
 CreateShipmentRequest.prototype.shippingServiceOfferId = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/HazmatType} hazmatType
+ * @type
  */
 CreateShipmentRequest.prototype.hazmatType = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/LabelFormatOptionRequest} labelFormatOption
+ * @type
  */
 CreateShipmentRequest.prototype.labelFormatOption = undefined
 
 /**
  * A list of additional seller input pairs required to purchase shipping.
  * @member {Array.<module:merchantfulfillment_v0/model/AdditionalSellerInputs>} shipmentLevelSellerInputsList
+ * @type
  */
 CreateShipmentRequest.prototype.shipmentLevelSellerInputsList = undefined

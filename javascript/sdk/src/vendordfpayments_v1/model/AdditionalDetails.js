@@ -84,17 +84,20 @@ AdditionalDetails.TypeEnum = {
 /**
  * The type of the additional information provided by the selling party.
  * @member {module:vendordfpayments_v1/model/AdditionalDetails.TypeEnum} type
+ * @type
  */
 AdditionalDetails.prototype.type = undefined
 
 /**
  * The detail of the additional information provided by the selling party.
  * @member {String} detail
+ * @type
  */
 AdditionalDetails.prototype.detail = undefined
 
 /**
  * The language code of the additional information detail.
  * @member {String} languageCode
+ * @type
  */
 AdditionalDetails.prototype.languageCode = undefined

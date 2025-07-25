@@ -59,11 +59,13 @@ export class NdrRequestData {
 /**
  * The date on which the Seller wants to reschedule shipment delivery, in ISO-8601 date/time format
  * @member {Date} rescheduleDate
+ * @type
  */
 NdrRequestData.prototype.rescheduleDate = undefined
 
 /**
  * Address notes to re-attempt delivery with.
  * @member {String} additionalAddressNotes
+ * @type
  */
 NdrRequestData.prototype.additionalAddressNotes = undefined

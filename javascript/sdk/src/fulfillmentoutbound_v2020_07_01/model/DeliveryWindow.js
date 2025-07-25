@@ -63,11 +63,13 @@ export class DeliveryWindow {
 /**
  * Date timestamp
  * @member {Date} startDate
+ * @type
  */
 DeliveryWindow.prototype.startDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} endDate
+ * @type
  */
 DeliveryWindow.prototype.endDate = undefined

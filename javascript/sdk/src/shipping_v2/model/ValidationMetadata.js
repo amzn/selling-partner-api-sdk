@@ -60,17 +60,20 @@ export class ValidationMetadata {
 /**
  * errorMessage for the error.
  * @member {String} errorMessage
+ * @type
  */
 ValidationMetadata.prototype.errorMessage = undefined
 
 /**
  * validationStrategy for the error.
  * @member {String} validationStrategy
+ * @type
  */
 ValidationMetadata.prototype.validationStrategy = undefined
 
 /**
  * Value.
  * @member {String} value
+ * @type
  */
 ValidationMetadata.prototype.value = undefined

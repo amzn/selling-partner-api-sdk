@@ -60,11 +60,13 @@ export class OrderListStatus {
 
 /**
  * @member {module:vendororders_v1/model/Pagination} pagination
+ * @type
  */
 OrderListStatus.prototype.pagination = undefined
 
 /**
  * Represents an order status within the OrderListStatus.
  * @member {Array.<module:vendororders_v1/model/OrderStatus>} ordersStatus
+ * @type
  */
 OrderListStatus.prototype.ordersStatus = undefined

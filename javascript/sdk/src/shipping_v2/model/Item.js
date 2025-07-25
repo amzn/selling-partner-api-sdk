@@ -76,66 +76,78 @@ export class Item {
 
 /**
  * @member {module:shipping_v2/model/Currency} itemValue
+ * @type
  */
 Item.prototype.itemValue = undefined
 
 /**
  * The product description of the item.
  * @member {String} description
+ * @type
  */
 Item.prototype.description = undefined
 
 /**
  * A unique identifier for an item provided by the client.
  * @member {String} itemIdentifier
+ * @type
  */
 Item.prototype.itemIdentifier = undefined
 
 /**
  * The number of units. This value is required.
  * @member {Number} quantity
+ * @type
  */
 Item.prototype.quantity = undefined
 
 /**
  * @member {module:shipping_v2/model/Weight} weight
+ * @type
  */
 Item.prototype.weight = undefined
 
 /**
  * @member {module:shipping_v2/model/LiquidVolume} liquidVolume
+ * @type
  */
 Item.prototype.liquidVolume = undefined
 
 /**
  * When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
  * @member {Boolean} isHazmat
+ * @type
  */
 Item.prototype.isHazmat = undefined
 
 /**
  * @member {module:shipping_v2/model/DangerousGoodsDetails} dangerousGoodsDetails
+ * @type
  */
 Item.prototype.dangerousGoodsDetails = undefined
 
 /**
  * The product type of the item.
  * @member {String} productType
+ * @type
  */
 Item.prototype.productType = undefined
 
 /**
  * @member {module:shipping_v2/model/InvoiceDetails} invoiceDetails
+ * @type
  */
 Item.prototype.invoiceDetails = undefined
 
 /**
  * A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon.
  * @member {Array.<String>} serialNumbers
+ * @type
  */
 Item.prototype.serialNumbers = undefined
 
 /**
  * @member {module:shipping_v2/model/DirectFulfillmentItemIdentifiers} directFulfillmentItemIdentifiers
+ * @type
  */
 Item.prototype.directFulfillmentItemIdentifiers = undefined

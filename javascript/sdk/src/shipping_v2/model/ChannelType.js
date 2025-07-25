@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ChannelType.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class ChannelType {

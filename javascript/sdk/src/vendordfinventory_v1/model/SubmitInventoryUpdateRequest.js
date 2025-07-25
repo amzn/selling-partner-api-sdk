@@ -58,5 +58,6 @@ export class SubmitInventoryUpdateRequest {
 
 /**
  * @member {module:vendordfinventory_v1/model/InventoryUpdate} inventory
+ * @type
  */
 SubmitInventoryUpdateRequest.prototype.inventory = undefined

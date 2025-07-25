@@ -60,5 +60,6 @@ export class ErrorList {
 
 /**
  * @member {Array.<module:producttypedefinitions_v2020_09_01/model/Error>} errors
+ * @type
  */
 ErrorList.prototype.errors = undefined

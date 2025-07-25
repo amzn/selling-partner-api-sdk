@@ -60,11 +60,13 @@ export class CreateReservationResponse {
 
 /**
  * @member {module:services_v1/model/CreateReservationRecord} payload
+ * @type
  */
 CreateReservationResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type
  */
 CreateReservationResponse.prototype.errors = undefined

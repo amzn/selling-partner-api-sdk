@@ -64,27 +64,32 @@ export class CollectionFormsHistoryRecord {
 /**
  * The carrier name for the offering.
  * @member {String} carrierName
+ * @type
  */
 CollectionFormsHistoryRecord.prototype.carrierName = undefined
 
 /**
  * Creation Time for this account.
  * @member {String} creationDate
+ * @type
  */
 CollectionFormsHistoryRecord.prototype.creationDate = undefined
 
 /**
  * @member {module:shipping_v2/model/GenerationStatus} generationStatus
+ * @type
  */
 CollectionFormsHistoryRecord.prototype.generationStatus = undefined
 
 /**
  * Collection Form Id for Reprint .
  * @member {String} collectionFormId
+ * @type
  */
 CollectionFormsHistoryRecord.prototype.collectionFormId = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFromAddress
+ * @type
  */
 CollectionFormsHistoryRecord.prototype.shipFromAddress = undefined

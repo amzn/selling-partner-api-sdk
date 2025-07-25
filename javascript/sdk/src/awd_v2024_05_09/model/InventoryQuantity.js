@@ -64,10 +64,12 @@ export class InventoryQuantity {
 /**
  * Quantity of the respective inventory.
  * @member {Number} quantity
+ * @type
  */
 InventoryQuantity.prototype.quantity = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InventoryUnitOfMeasurement} unitOfMeasurement
+ * @type
  */
 InventoryQuantity.prototype.unitOfMeasurement = undefined

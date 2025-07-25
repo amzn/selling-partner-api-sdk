@@ -65,27 +65,32 @@ export class GetCollectionFormHistoryRequest {
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
+ * @type
  */
 GetCollectionFormHistoryRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * max Number of Results for query .
  * @member {Number} maxResults
+ * @type
  */
 GetCollectionFormHistoryRequest.prototype.maxResults = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
+ * @type
  */
 GetCollectionFormHistoryRequest.prototype.carrierId = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFromAddress
+ * @type
  */
 GetCollectionFormHistoryRequest.prototype.shipFromAddress = undefined
 
 /**
  * @member {module:shipping_v2/model/DateRange} dateRange
+ * @type
  */
 GetCollectionFormHistoryRequest.prototype.dateRange = undefined

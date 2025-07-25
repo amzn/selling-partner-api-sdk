@@ -59,11 +59,13 @@ export class DateRange {
 /**
  * Start Date for query .
  * @member {String} startDate
+ * @type
  */
 DateRange.prototype.startDate = undefined
 
 /**
  * end date for query.
  * @member {String} endDate
+ * @type
  */
 DateRange.prototype.endDate = undefined

@@ -63,11 +63,13 @@ export class PackageWeight {
 
 /**
  * @member {module:awd_v2024_05_09/model/WeightUnitOfMeasurement} unitOfMeasurement
+ * @type
  */
 PackageWeight.prototype.unitOfMeasurement = undefined
 
 /**
  * The package weight value.
  * @member {Number} weight
+ * @type
  */
 PackageWeight.prototype.weight = undefined

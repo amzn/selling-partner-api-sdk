@@ -64,16 +64,19 @@ export class SkuQuantity {
 
 /**
  * @member {module:awd_v2024_05_09/model/InventoryQuantity} expectedQuantity
+ * @type
  */
 SkuQuantity.prototype.expectedQuantity = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InventoryQuantity} receivedQuantity
+ * @type
  */
 SkuQuantity.prototype.receivedQuantity = undefined
 
 /**
  * The merchant stock keeping unit
  * @member {String} sku
+ * @type
  */
 SkuQuantity.prototype.sku = undefined

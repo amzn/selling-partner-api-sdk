@@ -100,69 +100,81 @@ Container.ContainerTypeEnum = {
 /**
  * The type of container.
  * @member {module:vendordfshipping_v2021_12_28/model/Container.ContainerTypeEnum} containerType
+ * @type
  */
 Container.prototype.containerType = undefined
 
 /**
  * The container identifier.
  * @member {String} containerIdentifier
+ * @type
  */
 Container.prototype.containerIdentifier = undefined
 
 /**
  * The tracking number.
  * @member {String} trackingNumber
+ * @type
  */
 Container.prototype.trackingNumber = undefined
 
 /**
  * The manifest identifier.
  * @member {String} manifestId
+ * @type
  */
 Container.prototype.manifestId = undefined
 
 /**
  * The date of the manifest.
  * @member {String} manifestDate
+ * @type
  */
 Container.prototype.manifestDate = undefined
 
 /**
  * The shipment method. This property is required when calling the `submitShipmentConfirmations` operation, and optional otherwise.
  * @member {String} shipMethod
+ * @type
  */
 Container.prototype.shipMethod = undefined
 
 /**
  * SCAC code required for NA VOC vendors only.
  * @member {String} scacCode
+ * @type
  */
 Container.prototype.scacCode = undefined
 
 /**
  * Carrier required for EU VOC vendors only.
  * @member {String} carrier
+ * @type
  */
 Container.prototype.carrier = undefined
 
 /**
  * An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
  * @member {Number} containerSequenceNumber
+ * @type
  */
 Container.prototype.containerSequenceNumber = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Dimensions} dimensions
+ * @type
  */
 Container.prototype.dimensions = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Weight} weight
+ * @type
  */
 Container.prototype.weight = undefined
 
 /**
  * A list of packed items.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/PackedItem>} packedItems
+ * @type
  */
 Container.prototype.packedItems = undefined

@@ -62,17 +62,20 @@ export class FeaturedOfferExpectedPriceResponseBody {
 
 /**
  * @member {module:pricing_v2022_05_01/model/OfferIdentifier} offerIdentifier
+ * @type
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.offerIdentifier = undefined
 
 /**
  * A list of FOEP results for the requested offer.
  * @member {Array.<module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResult>} featuredOfferExpectedPriceResults
+ * @type
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.featuredOfferExpectedPriceResults = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
  * @member {Array.<module:pricing_v2022_05_01/model/Error>} errors
+ * @type
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.errors = undefined

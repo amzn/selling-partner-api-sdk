@@ -79,12 +79,14 @@ export class ServiceJob {
 /**
  * The date and time of the creation of the job in ISO 8601 format.
  * @member {Date} createTime
+ * @type
  */
 ServiceJob.prototype.createTime = undefined
 
 /**
  * Amazon identifier for the service job.
  * @member {String} serviceJobId
+ * @type
  */
 ServiceJob.prototype.serviceJobId = undefined
 
@@ -141,66 +143,78 @@ ServiceJob.ServiceJobStatusEnum = {
 /**
  * The status of the service job.
  * @member {module:services_v1/model/ServiceJob.ServiceJobStatusEnum} serviceJobStatus
+ * @type
  */
 ServiceJob.prototype.serviceJobStatus = undefined
 
 /**
  * @member {module:services_v1/model/ScopeOfWork} scopeOfWork
+ * @type
  */
 ServiceJob.prototype.scopeOfWork = undefined
 
 /**
  * @member {module:services_v1/model/Seller} seller
+ * @type
  */
 ServiceJob.prototype.seller = undefined
 
 /**
  * @member {module:services_v1/model/ServiceJobProvider} serviceJobProvider
+ * @type
  */
 ServiceJob.prototype.serviceJobProvider = undefined
 
 /**
  * A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
  * @member {Array.<module:services_v1/model/AppointmentTime>} preferredAppointmentTimes
+ * @type
  */
 ServiceJob.prototype.preferredAppointmentTimes = undefined
 
 /**
  * A list of appointments.
  * @member {Array.<module:services_v1/model/Appointment>} appointments
+ * @type
  */
 ServiceJob.prototype.appointments = undefined
 
 /**
  * The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
  * @member {String} serviceOrderId
+ * @type
  */
 ServiceJob.prototype.serviceOrderId = undefined
 
 /**
  * The marketplace identifier.
  * @member {String} marketplaceId
+ * @type
  */
 ServiceJob.prototype.marketplaceId = undefined
 
 /**
  * The Amazon-defined identifier for the region scope.
  * @member {String} storeId
+ * @type
  */
 ServiceJob.prototype.storeId = undefined
 
 /**
  * @member {module:services_v1/model/Buyer} buyer
+ * @type
  */
 ServiceJob.prototype.buyer = undefined
 
 /**
  * A list of items associated with the service job.
  * @member {Array.<module:services_v1/model/AssociatedItem>} associatedItems
+ * @type
  */
 ServiceJob.prototype.associatedItems = undefined
 
 /**
  * @member {module:services_v1/model/ServiceLocation} serviceLocation
+ * @type
  */
 ServiceJob.prototype.serviceLocation = undefined

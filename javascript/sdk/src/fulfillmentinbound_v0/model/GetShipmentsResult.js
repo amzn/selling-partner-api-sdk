@@ -60,11 +60,13 @@ export class GetShipmentsResult {
 /**
  * A list of inbound shipment information.
  * @member {Array.<module:fulfillmentinbound_v0/model/InboundShipmentInfo>} shipmentData
+ * @type
  */
 GetShipmentsResult.prototype.shipmentData = undefined
 
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type
  */
 GetShipmentsResult.prototype.nextToken = undefined

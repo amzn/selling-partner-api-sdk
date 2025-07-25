@@ -68,16 +68,19 @@ export class SupportedDocumentSpecification {
 
 /**
  * @member {module:shipping_v2/model/DocumentFormat} format
+ * @type
  */
 SupportedDocumentSpecification.prototype.format = undefined
 
 /**
  * @member {module:shipping_v2/model/DocumentSize} size
+ * @type
  */
 SupportedDocumentSpecification.prototype.size = undefined
 
 /**
  * A list of the format options for a label.
  * @member {Array.<module:shipping_v2/model/PrintOption>} printOptions
+ * @type
  */
 SupportedDocumentSpecification.prototype.printOptions = undefined

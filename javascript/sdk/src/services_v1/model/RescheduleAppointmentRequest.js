@@ -63,11 +63,13 @@ export class RescheduleAppointmentRequest {
 
 /**
  * @member {module:services_v1/model/AppointmentTimeInput} appointmentTime
+ * @type
  */
 RescheduleAppointmentRequest.prototype.appointmentTime = undefined
 
 /**
  * The appointment reschedule reason code.
  * @member {String} rescheduleReasonCode
+ * @type
  */
 RescheduleAppointmentRequest.prototype.rescheduleReasonCode = undefined

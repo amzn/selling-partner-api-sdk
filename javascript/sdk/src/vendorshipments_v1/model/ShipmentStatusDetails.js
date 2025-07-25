@@ -91,11 +91,13 @@ ShipmentStatusDetails.ShipmentStatusEnum = {
 /**
  * Current status of the shipment on whether it is picked up or scheduled.
  * @member {module:vendorshipments_v1/model/ShipmentStatusDetails.ShipmentStatusEnum} shipmentStatus
+ * @type
  */
 ShipmentStatusDetails.prototype.shipmentStatus = undefined
 
 /**
  * Date and time on last status update received for the shipment
  * @member {Date} shipmentStatusDate
+ * @type
  */
 ShipmentStatusDetails.prototype.shipmentStatusDate = undefined

@@ -67,38 +67,45 @@ export class PaymentMethodDetails {
 /**
  * The name of the account holder who is registered for the payment method.
  * @member {String} accountHolderName
+ * @type
  */
 PaymentMethodDetails.prototype.accountHolderName = undefined
 
 /**
  * The payment method identifier.
  * @member {String} paymentMethodId
+ * @type
  */
 PaymentMethodDetails.prototype.paymentMethodId = undefined
 
 /**
  * The last three or four digits of the payment method.
  * @member {String} tail
+ * @type
  */
 PaymentMethodDetails.prototype.tail = undefined
 
 /**
  * @member {module:transfers_v2024_06_01/model/ExpiryDate} expiryDate
+ * @type
  */
 PaymentMethodDetails.prototype.expiryDate = undefined
 
 /**
  * The two-letter country code in ISO 3166-1 alpha-2 format. For payment methods in the `card` category, the code is for the country where the card was issued. For payment methods in the `bank account` category, the code is for the country where the account is located.
  * @member {String} countryCode
+ * @type
  */
 PaymentMethodDetails.prototype.countryCode = undefined
 
 /**
  * @member {module:transfers_v2024_06_01/model/PaymentMethodType} paymentMethodType
+ * @type
  */
 PaymentMethodDetails.prototype.paymentMethodType = undefined
 
 /**
  * @member {module:transfers_v2024_06_01/model/AssignmentType} assignmentType
+ * @type
  */
 PaymentMethodDetails.prototype.assignmentType = undefined

@@ -59,5 +59,6 @@ export class AddInventoryRequest {
 /**
  * List of Inventory to be added
  * @member {Array.<module:fbainventory_v1/model/InventoryItem>} inventoryItems
+ * @type
  */
 AddInventoryRequest.prototype.inventoryItems = undefined

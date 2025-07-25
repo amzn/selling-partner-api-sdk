@@ -66,15 +66,18 @@ export class ContainerItem {
 /**
  * The reference number for the item. Please provide the itemSequenceNumber from the 'items' segment to refer to that item's details here.
  * @member {String} itemReference
+ * @type
  */
 ContainerItem.prototype.itemReference = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/ItemQuantity} shippedQuantity
+ * @type
  */
 ContainerItem.prototype.shippedQuantity = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/ItemDetails} itemDetails
+ * @type
  */
 ContainerItem.prototype.itemDetails = undefined

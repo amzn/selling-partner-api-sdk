@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class TransferScheduleStatus.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class TransferScheduleStatus {

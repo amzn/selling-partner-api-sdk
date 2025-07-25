@@ -62,11 +62,13 @@ export class ListInboundPlanPalletsResponse {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type
  */
 ListInboundPlanPalletsResponse.prototype.pagination = undefined
 
 /**
  * The pallets in an inbound plan.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Pallet>} pallets
+ * @type
  */
 ListInboundPlanPalletsResponse.prototype.pallets = undefined

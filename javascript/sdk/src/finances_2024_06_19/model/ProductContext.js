@@ -61,23 +61,27 @@ export class ProductContext {
 /**
  * Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
+ * @type
  */
 ProductContext.prototype.asin = undefined
 
 /**
  * Stock keeping unit (SKU) of the item.
  * @member {String} sku
+ * @type
  */
 ProductContext.prototype.sku = undefined
 
 /**
  * Quantity of the item shipped.
  * @member {Number} quantityShipped
+ * @type
  */
 ProductContext.prototype.quantityShipped = undefined
 
 /**
  * Fulfillment network of the item.
  * @member {String} fulfillmentNetwork
+ * @type
  */
 ProductContext.prototype.fulfillmentNetwork = undefined

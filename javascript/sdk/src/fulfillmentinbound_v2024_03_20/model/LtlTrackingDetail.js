@@ -59,11 +59,13 @@ export class LtlTrackingDetail {
 /**
  * The number of the carrier shipment acknowledgement document.
  * @member {String} billOfLadingNumber
+ * @type
  */
 LtlTrackingDetail.prototype.billOfLadingNumber = undefined
 
 /**
  * The number associated with the freight bill.
  * @member {Array.<String>} freightBillNumber
+ * @type
  */
 LtlTrackingDetail.prototype.freightBillNumber = undefined

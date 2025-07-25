@@ -62,10 +62,12 @@ export class ShipmentLabels {
 /**
  * The URL to download shipment labels. The URL is active for 600 seconds from generation.
  * @member {String} labelDownloadURL
+ * @type
  */
 ShipmentLabels.prototype.labelDownloadURL = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/LabelStatus} labelStatus
+ * @type
  */
 ShipmentLabels.prototype.labelStatus = undefined

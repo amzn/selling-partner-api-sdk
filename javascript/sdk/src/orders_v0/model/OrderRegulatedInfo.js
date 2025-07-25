@@ -71,21 +71,25 @@ export class OrderRegulatedInfo {
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type
  */
 OrderRegulatedInfo.prototype.amazonOrderId = undefined
 
 /**
  * @member {module:orders_v0/model/RegulatedInformation} regulatedInformation
+ * @type
  */
 OrderRegulatedInfo.prototype.regulatedInformation = undefined
 
 /**
  * When true, the order requires attaching a dosage information label when shipped.
  * @member {Boolean} requiresDosageLabel
+ * @type
  */
 OrderRegulatedInfo.prototype.requiresDosageLabel = undefined
 
 /**
  * @member {module:orders_v0/model/RegulatedOrderVerificationStatus} regulatedOrderVerificationStatus
+ * @type
  */
 OrderRegulatedInfo.prototype.regulatedOrderVerificationStatus = undefined

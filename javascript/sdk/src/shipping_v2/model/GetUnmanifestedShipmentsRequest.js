@@ -59,5 +59,6 @@ export class GetUnmanifestedShipmentsRequest {
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
+ * @type
  */
 GetUnmanifestedShipmentsRequest.prototype.clientReferenceDetails = undefined

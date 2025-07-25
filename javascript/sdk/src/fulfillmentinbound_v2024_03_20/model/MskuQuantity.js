@@ -63,11 +63,13 @@ export class MskuQuantity {
 /**
  * The merchant SKU, a merchant-supplied identifier for a specific SKU.
  * @member {String} msku
+ * @type
  */
 MskuQuantity.prototype.msku = undefined
 
 /**
  * A positive integer.
  * @member {Number} quantity
+ * @type
  */
 MskuQuantity.prototype.quantity = undefined

@@ -65,25 +65,30 @@ export class PickupChannel {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/Duration} inventoryHoldPeriod
+ * @type
  */
 PickupChannel.prototype.inventoryHoldPeriod = undefined
 
 /**
  * @member {Boolean} isSupported
+ * @type
  */
 PickupChannel.prototype.isSupported = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
+ * @type
  */
 PickupChannel.prototype.operationalConfiguration = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/InStorePickupConfiguration} inStorePickupConfiguration
+ * @type
  */
 PickupChannel.prototype.inStorePickupConfiguration = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/CurbsidePickupConfiguration} curbsidePickupConfiguration
+ * @type
  */
 PickupChannel.prototype.curbsidePickupConfiguration = undefined

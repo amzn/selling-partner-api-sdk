@@ -61,20 +61,24 @@ export class Dimensions {
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} height
+ * @type
  */
 Dimensions.prototype.height = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} length
+ * @type
  */
 Dimensions.prototype.length = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} weight
+ * @type
  */
 Dimensions.prototype.weight = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} width
+ * @type
  */
 Dimensions.prototype.width = undefined

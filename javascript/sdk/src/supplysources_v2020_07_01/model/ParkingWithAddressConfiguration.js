@@ -67,38 +67,45 @@ export class ParkingWithAddressConfiguration {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingCostType} parkingCostType
+ * @type
  */
 ParkingWithAddressConfiguration.prototype.parkingCostType = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType} parkingSpotIdentificationType
+ * @type
  */
 ParkingWithAddressConfiguration.prototype.parkingSpotIdentificationType = undefined
 
 /**
  * An unsigned integer that can be only positive or zero.
  * @member {Number} numberOfParkingSpots
+ * @type
  */
 ParkingWithAddressConfiguration.prototype.numberOfParkingSpots = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/Address} address
+ * @type
  */
 ParkingWithAddressConfiguration.prototype.address = undefined
 
 // Implement ParkingConfiguration interface:
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingCostType} parkingCostType
+ * @type
  */
 ParkingConfiguration.prototype.parkingCostType = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType} parkingSpotIdentificationType
+ * @type
  */
 ParkingConfiguration.prototype.parkingSpotIdentificationType = undefined
 
 /**
  * An unsigned integer that can be only positive or zero.
  * @member {Number} numberOfParkingSpots
+ * @type
  */
 ParkingConfiguration.prototype.numberOfParkingSpots = undefined

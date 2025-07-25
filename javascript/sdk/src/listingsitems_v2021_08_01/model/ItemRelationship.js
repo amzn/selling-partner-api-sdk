@@ -64,17 +64,20 @@ export class ItemRelationship {
 /**
  * Identifiers (SKUs) of the related items that are children of this listing item.
  * @member {Array.<String>} childSkus
+ * @type
  */
 ItemRelationship.prototype.childSkus = undefined
 
 /**
  * Identifiers (SKUs) of the related items that are parents of this listing item.
  * @member {Array.<String>} parentSkus
+ * @type
  */
 ItemRelationship.prototype.parentSkus = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/ItemVariationTheme} variationTheme
+ * @type
  */
 ItemRelationship.prototype.variationTheme = undefined
 
@@ -101,5 +104,6 @@ ItemRelationship.TypeEnum = {
 /**
  * The type of relationship.
  * @member {module:listingsitems_v2021_08_01/model/ItemRelationship.TypeEnum} type
+ * @type
  */
 ItemRelationship.prototype.type = undefined

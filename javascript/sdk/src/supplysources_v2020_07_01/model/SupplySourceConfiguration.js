@@ -59,11 +59,13 @@ export class SupplySourceConfiguration {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
+ * @type
  */
 SupplySourceConfiguration.prototype.operationalConfiguration = undefined
 
 /**
  * Please see RFC 6557, should be a canonical time zone ID as listed here: https://www.joda.org/joda-time/timezones.html.
  * @member {String} timezone
+ * @type
  */
 SupplySourceConfiguration.prototype.timezone = undefined

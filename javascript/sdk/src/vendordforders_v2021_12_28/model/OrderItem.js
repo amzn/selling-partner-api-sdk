@@ -80,58 +80,69 @@ export class OrderItem {
 /**
  * Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
  * @member {String} itemSequenceNumber
+ * @type
  */
 OrderItem.prototype.itemSequenceNumber = undefined
 
 /**
  * Buyer's standard identification number (ASIN) of an item.
  * @member {String} buyerProductIdentifier
+ * @type
  */
 OrderItem.prototype.buyerProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item.
  * @member {String} vendorProductIdentifier
+ * @type
  */
 OrderItem.prototype.vendorProductIdentifier = undefined
 
 /**
  * Title for the item.
  * @member {String} title
+ * @type
  */
 OrderItem.prototype.title = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ItemQuantity} orderedQuantity
+ * @type
  */
 OrderItem.prototype.orderedQuantity = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ScheduledDeliveryShipment} scheduledDeliveryShipment
+ * @type
  */
 OrderItem.prototype.scheduledDeliveryShipment = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/GiftDetails} giftDetails
+ * @type
  */
 OrderItem.prototype.giftDetails = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Money} netPrice
+ * @type
  */
 OrderItem.prototype.netPrice = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/TaxItemDetails} taxDetails
+ * @type
  */
 OrderItem.prototype.taxDetails = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Money} totalPrice
+ * @type
  */
 OrderItem.prototype.totalPrice = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/BuyerCustomizedInfoDetail} buyerCustomizedInfo
+ * @type
  */
 OrderItem.prototype.buyerCustomizedInfo = undefined

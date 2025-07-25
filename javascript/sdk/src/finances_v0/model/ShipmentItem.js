@@ -75,75 +75,88 @@ export class ShipmentItem {
 /**
  * The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.
  * @member {String} sellerSKU
+ * @type
  */
 ShipmentItem.prototype.sellerSKU = undefined
 
 /**
  * An Amazon-defined order item identifier.
  * @member {String} orderItemId
+ * @type
  */
 ShipmentItem.prototype.orderItemId = undefined
 
 /**
  * An Amazon-defined order adjustment identifier defined for refunds, guarantee claims, and chargeback events.
  * @member {String} orderAdjustmentItemId
+ * @type
  */
 ShipmentItem.prototype.orderAdjustmentItemId = undefined
 
 /**
  * The number of items shipped.
  * @member {Number} quantityShipped
+ * @type
  */
 ShipmentItem.prototype.quantityShipped = undefined
 
 /**
  * A list of charge information on the seller's account.
  * @member {Array.<module:finances_v0/model/ChargeComponent>} itemChargeList
+ * @type
  */
 ShipmentItem.prototype.itemChargeList = undefined
 
 /**
  * A list of charge information on the seller's account.
  * @member {Array.<module:finances_v0/model/ChargeComponent>} itemChargeAdjustmentList
+ * @type
  */
 ShipmentItem.prototype.itemChargeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} itemFeeList
+ * @type
  */
 ShipmentItem.prototype.itemFeeList = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} itemFeeAdjustmentList
+ * @type
  */
 ShipmentItem.prototype.itemFeeAdjustmentList = undefined
 
 /**
  * A list of information about taxes withheld.
  * @member {Array.<module:finances_v0/model/TaxWithheldComponent>} itemTaxWithheldList
+ * @type
  */
 ShipmentItem.prototype.itemTaxWithheldList = undefined
 
 /**
  * A list of promotions.
  * @member {Array.<module:finances_v0/model/Promotion>} promotionList
+ * @type
  */
 ShipmentItem.prototype.promotionList = undefined
 
 /**
  * A list of promotions.
  * @member {Array.<module:finances_v0/model/Promotion>} promotionAdjustmentList
+ * @type
  */
 ShipmentItem.prototype.promotionAdjustmentList = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} costOfPointsGranted
+ * @type
  */
 ShipmentItem.prototype.costOfPointsGranted = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} costOfPointsReturned
+ * @type
  */
 ShipmentItem.prototype.costOfPointsReturned = undefined

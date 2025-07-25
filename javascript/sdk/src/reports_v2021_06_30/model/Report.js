@@ -76,42 +76,49 @@ export class Report {
 /**
  * A list of marketplace identifiers for the report.
  * @member {Array.<String>} marketplaceIds
+ * @type
  */
 Report.prototype.marketplaceIds = undefined
 
 /**
  * The identifier for the report. This identifier is unique only in combination with a seller ID.
  * @member {String} reportId
+ * @type
  */
 Report.prototype.reportId = undefined
 
 /**
  * The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
  * @member {String} reportType
+ * @type
  */
 Report.prototype.reportType = undefined
 
 /**
  * The start of a date and time range used for selecting the data to report.
  * @member {Date} dataStartTime
+ * @type
  */
 Report.prototype.dataStartTime = undefined
 
 /**
  * The end of a date and time range used for selecting the data to report.
  * @member {Date} dataEndTime
+ * @type
  */
 Report.prototype.dataEndTime = undefined
 
 /**
  * The identifier of the report schedule that created this report (if any). This identifier is unique only in combination with a seller ID.
  * @member {String} reportScheduleId
+ * @type
  */
 Report.prototype.reportScheduleId = undefined
 
 /**
  * The date and time when the report was created.
  * @member {Date} createdTime
+ * @type
  */
 Report.prototype.createdTime = undefined
 
@@ -156,23 +163,27 @@ Report.ProcessingStatusEnum = {
 /**
  * The processing status of the report.
  * @member {module:reports_v2021_06_30/model/Report.ProcessingStatusEnum} processingStatus
+ * @type
  */
 Report.prototype.processingStatus = undefined
 
 /**
  * The date and time when the report processing started, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.
  * @member {Date} processingStartTime
+ * @type
  */
 Report.prototype.processingStartTime = undefined
 
 /**
  * The date and time when the report processing completed, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.
  * @member {Date} processingEndTime
+ * @type
  */
 Report.prototype.processingEndTime = undefined
 
 /**
  * The identifier for the report document. Pass this into the `getReportDocument` operation to get the information you will need to retrieve the report document's contents.
  * @member {String} reportDocumentId
+ * @type
  */
 Report.prototype.reportDocumentId = undefined

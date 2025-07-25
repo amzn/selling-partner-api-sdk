@@ -72,28 +72,33 @@ export class ContentDocument {
 /**
  * The A+ Content document name.
  * @member {String} name
+ * @type
  */
 ContentDocument.prototype.name = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentType} contentType
+ * @type
  */
 ContentDocument.prototype.contentType = undefined
 
 /**
  * The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time.
  * @member {String} contentSubType
+ * @type
  */
 ContentDocument.prototype.contentSubType = undefined
 
 /**
  * The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn't support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$
  * @member {String} locale
+ * @type
  */
 ContentDocument.prototype.locale = undefined
 
 /**
  * A list of A+ Content modules.
  * @member {Array.<module:apluscontent_v2020_11_01/model/ContentModule>} contentModuleList
+ * @type
  */
 ContentDocument.prototype.contentModuleList = undefined

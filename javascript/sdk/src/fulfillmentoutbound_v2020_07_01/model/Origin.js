@@ -60,5 +60,6 @@ export class Origin {
 /**
  * The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type
  */
 Origin.prototype.countryCode = undefined

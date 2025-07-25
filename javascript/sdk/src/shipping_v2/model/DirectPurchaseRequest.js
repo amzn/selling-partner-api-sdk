@@ -68,31 +68,37 @@ export class DirectPurchaseRequest {
 
 /**
  * @member {module:shipping_v2/model/Address} shipTo
+ * @type
  */
 DirectPurchaseRequest.prototype.shipTo = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFrom
+ * @type
  */
 DirectPurchaseRequest.prototype.shipFrom = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} returnTo
+ * @type
  */
 DirectPurchaseRequest.prototype.returnTo = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
  * @member {Array.<module:shipping_v2/model/Package>} packages
+ * @type
  */
 DirectPurchaseRequest.prototype.packages = undefined
 
 /**
  * @member {module:shipping_v2/model/ChannelDetails} channelDetails
+ * @type
  */
 DirectPurchaseRequest.prototype.channelDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/RequestedDocumentSpecification} labelSpecifications
+ * @type
  */
 DirectPurchaseRequest.prototype.labelSpecifications = undefined

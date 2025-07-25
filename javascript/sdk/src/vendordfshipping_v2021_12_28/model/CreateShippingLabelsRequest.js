@@ -65,16 +65,19 @@ export class CreateShippingLabelsRequest {
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type
  */
 CreateShippingLabelsRequest.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type
  */
 CreateShippingLabelsRequest.prototype.shipFromParty = undefined
 
 /**
  * A list of the packages in this shipment.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/Container>} containers
+ * @type
  */
 CreateShippingLabelsRequest.prototype.containers = undefined

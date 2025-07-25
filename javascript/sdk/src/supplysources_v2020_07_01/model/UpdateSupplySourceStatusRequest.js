@@ -58,5 +58,6 @@ export class UpdateSupplySourceStatusRequest {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceStatus} status
+ * @type
  */
 UpdateSupplySourceStatusRequest.prototype.status = undefined

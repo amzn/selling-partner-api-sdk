@@ -61,17 +61,20 @@ export class MarketplaceTaxInfo {
 /**
  * The legal name of the company.
  * @member {String} companyLegalName
+ * @type
  */
 MarketplaceTaxInfo.prototype.companyLegalName = undefined
 
 /**
  * The country or region imposing the tax.
  * @member {String} taxingRegion
+ * @type
  */
 MarketplaceTaxInfo.prototype.taxingRegion = undefined
 
 /**
  * The list of tax classifications.
  * @member {Array.<module:invoicing_v0/model/TaxClassification>} taxClassifications
+ * @type
  */
 MarketplaceTaxInfo.prototype.taxClassifications = undefined

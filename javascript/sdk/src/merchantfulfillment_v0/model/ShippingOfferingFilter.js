@@ -63,21 +63,25 @@ export class ShippingOfferingFilter {
 /**
  * When true, include a packing slip with the label.
  * @member {Boolean} includePackingSlipWithLabel
+ * @type
  */
 ShippingOfferingFilter.prototype.includePackingSlipWithLabel = undefined
 
 /**
  * When true, include complex shipping options.
  * @member {Boolean} includeComplexShippingOptions
+ * @type
  */
 ShippingOfferingFilter.prototype.includeComplexShippingOptions = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CarrierWillPickUpOption} carrierWillPickUp
+ * @type
  */
 ShippingOfferingFilter.prototype.carrierWillPickUp = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/DeliveryExperienceOption} deliveryExperience
+ * @type
  */
 ShippingOfferingFilter.prototype.deliveryExperience = undefined

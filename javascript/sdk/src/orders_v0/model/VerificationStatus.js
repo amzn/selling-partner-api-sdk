@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class VerificationStatus.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class VerificationStatus {

@@ -60,11 +60,13 @@ export class GetDeliveryOffersResponse {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersResult} payload
+ * @type
  */
 GetDeliveryOffersResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
+ * @type
  */
 GetDeliveryOffersResponse.prototype.errors = undefined

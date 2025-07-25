@@ -75,100 +75,117 @@ export class ListOfferMetricsResponseOffer {
 /**
  * The Amazon Standard Identification Number (ASIN).
  * @member {String} asin
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.asin = undefined
 
 /**
  * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} notDeliveredDueToOOS
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.notDeliveredDueToOOS = undefined
 
 /**
  * The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} totalSubscriptionsRevenue
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.totalSubscriptionsRevenue = undefined
 
 /**
  * The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} shippedSubscriptionUnits
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.shippedSubscriptionUnits = undefined
 
 /**
  * The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} activeSubscriptions
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.activeSubscriptions = undefined
 
 /**
  * The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} revenuePenetration
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.revenuePenetration = undefined
 
 /**
  * The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} lostRevenueDueToOOS
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.lostRevenueDueToOOS = undefined
 
 /**
  * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} couponsRevenuePenetration
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.couponsRevenuePenetration = undefined
 
 /**
  * The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
  * @member {Number} shareOfCouponSubscriptions
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.shareOfCouponSubscriptions = undefined
 
 /**
  * The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
  * @member {Number} next30DayTotalSubscriptionsRevenue
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.next30DayTotalSubscriptionsRevenue = undefined
 
 /**
  * The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
  * @member {Number} next60DayTotalSubscriptionsRevenue
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.next60DayTotalSubscriptionsRevenue = undefined
 
 /**
  * The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
  * @member {Number} next90DayTotalSubscriptionsRevenue
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.next90DayTotalSubscriptionsRevenue = undefined
 
 /**
  * The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
  * @member {Number} next30DayShippedSubscriptionUnits
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.next30DayShippedSubscriptionUnits = undefined
 
 /**
  * The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
  * @member {Number} next60DayShippedSubscriptionUnits
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.next60DayShippedSubscriptionUnits = undefined
 
 /**
  * The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
  * @member {Number} next90DayShippedSubscriptionUnits
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.next90DayShippedSubscriptionUnits = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/TimeInterval} timeInterval
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.timeInterval = undefined
 
 /**
  * The currency code in ISO 4217 format.
  * @member {String} currencyCode
+ * @type
  */
 ListOfferMetricsResponseOffer.prototype.currencyCode = undefined

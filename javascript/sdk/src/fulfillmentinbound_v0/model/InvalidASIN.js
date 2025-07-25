@@ -60,10 +60,12 @@ export class InvalidASIN {
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type
  */
 InvalidASIN.prototype.ASIN = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/ErrorReason} errorReason
+ * @type
  */
 InvalidASIN.prototype.errorReason = undefined

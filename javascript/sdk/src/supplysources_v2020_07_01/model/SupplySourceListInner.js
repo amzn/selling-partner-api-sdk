@@ -61,22 +61,26 @@ export class SupplySourceListInner {
 /**
  * The custom alias for this supply source
  * @member {String} alias
+ * @type
  */
 SupplySourceListInner.prototype.alias = undefined
 
 /**
  * An Amazon generated unique supply source ID.
  * @member {String} supplySourceId
+ * @type
  */
 SupplySourceListInner.prototype.supplySourceId = undefined
 
 /**
  * The seller-provided unique supply source code.
  * @member {String} supplySourceCode
+ * @type
  */
 SupplySourceListInner.prototype.supplySourceCode = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/Address} address
+ * @type
  */
 SupplySourceListInner.prototype.address = undefined

@@ -63,10 +63,12 @@ export class ImageDimensions {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} width
+ * @type
  */
 ImageDimensions.prototype.width = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} height
+ * @type
  */
 ImageDimensions.prototype.height = undefined

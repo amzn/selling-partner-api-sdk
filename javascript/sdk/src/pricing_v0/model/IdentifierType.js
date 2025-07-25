@@ -62,10 +62,12 @@ export class IdentifierType {
 
 /**
  * @member {module:pricing_v0/model/ASINIdentifier} marketplaceASIN
+ * @type
  */
 IdentifierType.prototype.marketplaceASIN = undefined
 
 /**
  * @member {module:pricing_v0/model/SellerSKUIdentifier} sKUIdentifier
+ * @type
  */
 IdentifierType.prototype.sKUIdentifier = undefined

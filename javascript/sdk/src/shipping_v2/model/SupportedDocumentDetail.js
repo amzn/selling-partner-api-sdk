@@ -63,11 +63,13 @@ export class SupportedDocumentDetail {
 
 /**
  * @member {module:shipping_v2/model/DocumentType} name
+ * @type
  */
 SupportedDocumentDetail.prototype.name = undefined
 
 /**
  * When true, the supported document type is required.
  * @member {Boolean} isMandatory
+ * @type
  */
 SupportedDocumentDetail.prototype.isMandatory = undefined

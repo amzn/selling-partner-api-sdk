@@ -62,15 +62,18 @@ export class DeliveryOffer {
 /**
  * Date timestamp
  * @member {Date} expiresAt
+ * @type
  */
 DeliveryOffer.prototype.expiresAt = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DateRange} dateRange
+ * @type
  */
 DeliveryOffer.prototype.dateRange = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPolicy} policy
+ * @type
  */
 DeliveryOffer.prototype.policy = undefined

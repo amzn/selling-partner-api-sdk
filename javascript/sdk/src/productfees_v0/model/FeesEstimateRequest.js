@@ -70,27 +70,32 @@ export class FeesEstimateRequest {
 /**
  * A marketplace identifier.
  * @member {String} marketplaceId
+ * @type
  */
 FeesEstimateRequest.prototype.marketplaceId = undefined
 
 /**
  * When true, the offer is fulfilled by Amazon.
  * @member {Boolean} isAmazonFulfilled
+ * @type
  */
 FeesEstimateRequest.prototype.isAmazonFulfilled = undefined
 
 /**
  * @member {module:productfees_v0/model/PriceToEstimateFees} priceToEstimateFees
+ * @type
  */
 FeesEstimateRequest.prototype.priceToEstimateFees = undefined
 
 /**
  * A unique identifier provided by the caller to track this request.
  * @member {String} identifier
+ * @type
  */
 FeesEstimateRequest.prototype.identifier = undefined
 
 /**
  * @member {module:productfees_v0/model/OptionalFulfillmentProgram} optionalFulfillmentProgram
+ * @type
  */
 FeesEstimateRequest.prototype.optionalFulfillmentProgram = undefined

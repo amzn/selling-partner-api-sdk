@@ -67,23 +67,27 @@ export class ItemClassificationSalesRank {
 /**
  * Identifier of the classification that is associated with the sales rank.
  * @member {String} classificationId
+ * @type
  */
 ItemClassificationSalesRank.prototype.classificationId = undefined
 
 /**
  * Name of the sales rank.
  * @member {String} title
+ * @type
  */
 ItemClassificationSalesRank.prototype.title = undefined
 
 /**
  * Corresponding Amazon retail website URL for the sales category.
  * @member {String} link
+ * @type
  */
 ItemClassificationSalesRank.prototype.link = undefined
 
 /**
  * Sales rank.
  * @member {Number} rank
+ * @type
  */
 ItemClassificationSalesRank.prototype.rank = undefined

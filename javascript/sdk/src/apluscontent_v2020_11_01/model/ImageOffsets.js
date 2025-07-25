@@ -63,10 +63,12 @@ export class ImageOffsets {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} x
+ * @type
  */
 ImageOffsets.prototype.x = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} y
+ * @type
  */
 ImageOffsets.prototype.y = undefined

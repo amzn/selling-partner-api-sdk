@@ -60,11 +60,13 @@ export class LinkableAccountType {
 
 /**
  * @member {module:shipping_v2/model/AccountType} accountType
+ * @type
  */
 LinkableAccountType.prototype.accountType = undefined
 
 /**
  * A list of CarrierAccountInput
  * @member {Array.<module:shipping_v2/model/CarrierAccountInput>} carrierAccountInputs
+ * @type
  */
 LinkableAccountType.prototype.carrierAccountInputs = undefined

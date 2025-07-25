@@ -67,33 +67,39 @@ export class SKUPrepInstructions {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSKU
+ * @type
  */
 SKUPrepInstructions.prototype.sellerSKU = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type
  */
 SKUPrepInstructions.prototype.ASIN = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/BarcodeInstruction} barcodeInstruction
+ * @type
  */
 SKUPrepInstructions.prototype.barcodeInstruction = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/PrepGuidance} prepGuidance
+ * @type
  */
 SKUPrepInstructions.prototype.prepGuidance = undefined
 
 /**
  * A list of preparation instructions to help with item sourcing decisions.
  * @member {Array.<module:fulfillmentinbound_v0/model/PrepInstruction>} prepInstructionList
+ * @type
  */
 SKUPrepInstructions.prototype.prepInstructionList = undefined
 
 /**
  * A list of preparation instructions and fees for Amazon to prep goods for shipment.
  * @member {Array.<module:fulfillmentinbound_v0/model/AmazonPrepFeesDetails>} amazonPrepFeesDetailsList
+ * @type
  */
 SKUPrepInstructions.prototype.amazonPrepFeesDetailsList = undefined

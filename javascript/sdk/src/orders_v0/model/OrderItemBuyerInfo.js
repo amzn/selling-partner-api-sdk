@@ -67,32 +67,38 @@ export class OrderItemBuyerInfo {
 /**
  * An Amazon-defined order item identifier.
  * @member {String} orderItemId
+ * @type
  */
 OrderItemBuyerInfo.prototype.orderItemId = undefined
 
 /**
  * @member {module:orders_v0/model/BuyerCustomizedInfoDetail} buyerCustomizedInfo
+ * @type
  */
 OrderItemBuyerInfo.prototype.buyerCustomizedInfo = undefined
 
 /**
  * @member {module:orders_v0/model/Money} giftWrapPrice
+ * @type
  */
 OrderItemBuyerInfo.prototype.giftWrapPrice = undefined
 
 /**
  * @member {module:orders_v0/model/Money} giftWrapTax
+ * @type
  */
 OrderItemBuyerInfo.prototype.giftWrapTax = undefined
 
 /**
  * A gift message provided by the buyer.  **Note**: This attribute is only available for MFN (fulfilled by seller) orders.
  * @member {String} giftMessageText
+ * @type
  */
 OrderItemBuyerInfo.prototype.giftMessageText = undefined
 
 /**
  * The gift wrap level specified by the buyer.
  * @member {String} giftWrapLevel
+ * @type
  */
 OrderItemBuyerInfo.prototype.giftWrapLevel = undefined

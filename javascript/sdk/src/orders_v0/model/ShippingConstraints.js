@@ -61,20 +61,24 @@ export class ShippingConstraints {
 
 /**
  * @member {module:orders_v0/model/ConstraintType} palletDelivery
+ * @type
  */
 ShippingConstraints.prototype.palletDelivery = undefined
 
 /**
  * @member {module:orders_v0/model/ConstraintType} signatureConfirmation
+ * @type
  */
 ShippingConstraints.prototype.signatureConfirmation = undefined
 
 /**
  * @member {module:orders_v0/model/ConstraintType} recipientIdentityVerification
+ * @type
  */
 ShippingConstraints.prototype.recipientIdentityVerification = undefined
 
 /**
  * @member {module:orders_v0/model/ConstraintType} recipientAgeVerification
+ * @type
  */
 ShippingConstraints.prototype.recipientAgeVerification = undefined

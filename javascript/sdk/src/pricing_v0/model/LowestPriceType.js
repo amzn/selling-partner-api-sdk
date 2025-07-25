@@ -76,47 +76,56 @@ export class LowestPriceType {
 /**
  * Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
  * @member {String} condition
+ * @type
  */
 LowestPriceType.prototype.condition = undefined
 
 /**
  * Indicates whether the item is fulfilled by Amazon or by the seller.
  * @member {String} fulfillmentChannel
+ * @type
  */
 LowestPriceType.prototype.fulfillmentChannel = undefined
 
 /**
  * @member {module:pricing_v0/model/OfferCustomerType} offerType
+ * @type
  */
 LowestPriceType.prototype.offerType = undefined
 
 /**
  * Indicates at what quantity this price becomes active.
  * @member {Number} quantityTier
+ * @type
  */
 LowestPriceType.prototype.quantityTier = undefined
 
 /**
  * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
+ * @type
  */
 LowestPriceType.prototype.quantityDiscountType = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} landedPrice
+ * @type
  */
 LowestPriceType.prototype.landedPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} listingPrice
+ * @type
  */
 LowestPriceType.prototype.listingPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} shipping
+ * @type
  */
 LowestPriceType.prototype.shipping = undefined
 
 /**
  * @member {module:pricing_v0/model/Points} points
+ * @type
  */
 LowestPriceType.prototype.points = undefined

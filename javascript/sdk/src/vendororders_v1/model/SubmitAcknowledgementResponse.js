@@ -60,11 +60,13 @@ export class SubmitAcknowledgementResponse {
 
 /**
  * @member {module:vendororders_v1/model/TransactionId} payload
+ * @type
  */
 SubmitAcknowledgementResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:vendororders_v1/model/Error>} errors
+ * @type
  */
 SubmitAcknowledgementResponse.prototype.errors = undefined

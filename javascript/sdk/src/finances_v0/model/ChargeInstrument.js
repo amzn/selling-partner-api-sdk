@@ -61,16 +61,19 @@ export class ChargeInstrument {
 /**
  * A short description of the charge instrument.
  * @member {String} description
+ * @type
  */
 ChargeInstrument.prototype.description = undefined
 
 /**
  * The account tail (trailing digits) of the charge instrument.
  * @member {String} tail
+ * @type
  */
 ChargeInstrument.prototype.tail = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} amount
+ * @type
  */
 ChargeInstrument.prototype.amount = undefined

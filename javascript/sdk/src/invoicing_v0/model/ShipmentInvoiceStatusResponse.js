@@ -58,5 +58,6 @@ export class ShipmentInvoiceStatusResponse {
 
 /**
  * @member {module:invoicing_v0/model/ShipmentInvoiceStatusInfo} shipments
+ * @type
  */
 ShipmentInvoiceStatusResponse.prototype.shipments = undefined

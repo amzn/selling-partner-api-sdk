@@ -58,5 +58,6 @@ export class ProcessingDirective {
 
 /**
  * @member {module:notifications_v1/model/EventFilter} eventFilter
+ * @type
  */
 ProcessingDirective.prototype.eventFilter = undefined

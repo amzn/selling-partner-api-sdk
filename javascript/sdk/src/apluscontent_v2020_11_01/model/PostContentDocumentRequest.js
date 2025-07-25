@@ -59,5 +59,6 @@ export class PostContentDocumentRequest {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentDocument} contentDocument
+ * @type
  */
 PostContentDocumentRequest.prototype.contentDocument = undefined

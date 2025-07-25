@@ -61,11 +61,13 @@ export class ItemContributorRole {
 /**
  * Display name of the role in the requested locale, such as `Author` or `Actor`.
  * @member {String} displayName
+ * @type
  */
 ItemContributorRole.prototype.displayName = undefined
 
 /**
  * Role value for the Amazon catalog item, such as `author` or `actor`.
  * @member {String} value
+ * @type
  */
 ItemContributorRole.prototype.value = undefined

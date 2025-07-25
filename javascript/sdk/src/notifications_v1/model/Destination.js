@@ -67,16 +67,19 @@ export class Destination {
 /**
  * The developer-defined name for this destination.
  * @member {String} name
+ * @type
  */
 Destination.prototype.name = undefined
 
 /**
  * The destination identifier generated when you created the destination.
  * @member {String} destinationId
+ * @type
  */
 Destination.prototype.destinationId = undefined
 
 /**
  * @member {module:notifications_v1/model/DestinationResource} resource
+ * @type
  */
 Destination.prototype.resource = undefined

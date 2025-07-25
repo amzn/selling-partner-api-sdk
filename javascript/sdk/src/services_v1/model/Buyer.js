@@ -61,23 +61,27 @@ export class Buyer {
 /**
  * The identifier of the buyer.
  * @member {String} buyerId
+ * @type
  */
 Buyer.prototype.buyerId = undefined
 
 /**
  * The name of the buyer.
  * @member {String} name
+ * @type
  */
 Buyer.prototype.name = undefined
 
 /**
  * The phone number of the buyer.
  * @member {String} phone
+ * @type
  */
 Buyer.prototype.phone = undefined
 
 /**
  * When true, the service is for an Amazon Prime buyer.
  * @member {Boolean} isPrimeMember
+ * @type
  */
 Buyer.prototype.isPrimeMember = undefined

@@ -69,62 +69,73 @@ export class FinancialEventGroup {
 /**
  * A unique identifier for the financial event group.
  * @member {String} financialEventGroupId
+ * @type
  */
 FinancialEventGroup.prototype.financialEventGroupId = undefined
 
 /**
  * The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * Open  * Closed
  * @member {String} processingStatus
+ * @type
  */
 FinancialEventGroup.prototype.processingStatus = undefined
 
 /**
  * The status of the fund transfer.
  * @member {String} fundTransferStatus
+ * @type
  */
 FinancialEventGroup.prototype.fundTransferStatus = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} originalTotal
+ * @type
  */
 FinancialEventGroup.prototype.originalTotal = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} convertedTotal
+ * @type
  */
 FinancialEventGroup.prototype.convertedTotal = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} fundTransferDate
+ * @type
  */
 FinancialEventGroup.prototype.fundTransferDate = undefined
 
 /**
  * The trace identifier used by sellers to look up transactions externally.
  * @member {String} traceId
+ * @type
  */
 FinancialEventGroup.prototype.traceId = undefined
 
 /**
  * The account tail of the payment instrument.
  * @member {String} accountTail
+ * @type
  */
 FinancialEventGroup.prototype.accountTail = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} beginningBalance
+ * @type
  */
 FinancialEventGroup.prototype.beginningBalance = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} financialEventGroupStart
+ * @type
  */
 FinancialEventGroup.prototype.financialEventGroupStart = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} financialEventGroupEnd
+ * @type
  */
 FinancialEventGroup.prototype.financialEventGroupEnd = undefined

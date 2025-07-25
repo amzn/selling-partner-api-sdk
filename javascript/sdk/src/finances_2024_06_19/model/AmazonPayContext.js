@@ -60,17 +60,20 @@ export class AmazonPayContext {
 /**
  * Store name related to transaction.
  * @member {String} storeName
+ * @type
  */
 AmazonPayContext.prototype.storeName = undefined
 
 /**
  * Order type of the transaction.
  * @member {String} orderType
+ * @type
  */
 AmazonPayContext.prototype.orderType = undefined
 
 /**
  * Channel details of related transaction.
  * @member {String} channel
+ * @type
  */
 AmazonPayContext.prototype.channel = undefined

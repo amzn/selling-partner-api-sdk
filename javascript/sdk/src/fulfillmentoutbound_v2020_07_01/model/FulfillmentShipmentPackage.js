@@ -69,33 +69,39 @@ export class FulfillmentShipmentPackage {
 /**
  * Identifies a package in a shipment.
  * @member {Number} packageNumber
+ * @type
  */
 FulfillmentShipmentPackage.prototype.packageNumber = undefined
 
 /**
  * Identifies the carrier who will deliver the shipment to the recipient.
  * @member {String} carrierCode
+ * @type
  */
 FulfillmentShipmentPackage.prototype.carrierCode = undefined
 
 /**
  * The tracking number, if provided, can be used to obtain tracking and delivery information.
  * @member {String} trackingNumber
+ * @type
  */
 FulfillmentShipmentPackage.prototype.trackingNumber = undefined
 
 /**
  * Date timestamp
  * @member {Date} estimatedArrivalDate
+ * @type
  */
 FulfillmentShipmentPackage.prototype.estimatedArrivalDate = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/LockerDetails} lockerDetails
+ * @type
  */
 FulfillmentShipmentPackage.prototype.lockerDetails = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryInformation} deliveryInformation
+ * @type
  */
 FulfillmentShipmentPackage.prototype.deliveryInformation = undefined

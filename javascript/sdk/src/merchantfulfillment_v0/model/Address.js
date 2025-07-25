@@ -82,65 +82,76 @@ export class Address {
 /**
  * The name of the addressee, or business name.
  * @member {String} name
+ * @type
  */
 Address.prototype.name = undefined
 
 /**
  * The street address information.
  * @member {String} addressLine1
+ * @type
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional street address information.
  * @member {String} addressLine2
+ * @type
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Additional street address information.
  * @member {String} addressLine3
+ * @type
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * The district or county.
  * @member {String} districtOrCounty
+ * @type
  */
 Address.prototype.districtOrCounty = undefined
 
 /**
  * The email address.
  * @member {String} email
+ * @type
  */
 Address.prototype.email = undefined
 
 /**
  * The city.
  * @member {String} city
+ * @type
  */
 Address.prototype.city = undefined
 
 /**
  * The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.
  * @member {String} stateOrProvinceCode
+ * @type
  */
 Address.prototype.stateOrProvinceCode = undefined
 
 /**
  * The zip code or postal code.
  * @member {String} postalCode
+ * @type
  */
 Address.prototype.postalCode = undefined
 
 /**
  * The two-letter country code in [ISO 3166-1 alpha-2](https://www.iban.com/country-codes) format.
  * @member {String} countryCode
+ * @type
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The phone number.
  * @member {String} phone
+ * @type
  */
 Address.prototype.phone = undefined

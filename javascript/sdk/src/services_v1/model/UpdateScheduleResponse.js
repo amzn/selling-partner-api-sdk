@@ -61,11 +61,13 @@ export class UpdateScheduleResponse {
 /**
  * Contains the `UpdateScheduleRecords` for which the error/warning has occurred.
  * @member {Array.<module:services_v1/model/UpdateScheduleRecord>} payload
+ * @type
  */
 UpdateScheduleResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type
  */
 UpdateScheduleResponse.prototype.errors = undefined

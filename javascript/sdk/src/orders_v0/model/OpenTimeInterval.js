@@ -59,11 +59,13 @@ export class OpenTimeInterval {
 /**
  * The hour when the business opens or closes.
  * @member {Number} hour
+ * @type
  */
 OpenTimeInterval.prototype.hour = undefined
 
 /**
  * The minute when the business opens or closes.
  * @member {Number} minute
+ * @type
  */
 OpenTimeInterval.prototype.minute = undefined

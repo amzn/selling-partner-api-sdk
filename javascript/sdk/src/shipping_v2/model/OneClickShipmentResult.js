@@ -80,31 +80,37 @@ export class OneClickShipmentResult {
 /**
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
+ * @type
  */
 OneClickShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
  * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetails
+ * @type
  */
 OneClickShipmentResult.prototype.packageDocumentDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/Promise} promise
+ * @type
  */
 OneClickShipmentResult.prototype.promise = undefined
 
 /**
  * @member {module:shipping_v2/model/Carrier} carrier
+ * @type
  */
 OneClickShipmentResult.prototype.carrier = undefined
 
 /**
  * @member {module:shipping_v2/model/Service} service
+ * @type
  */
 OneClickShipmentResult.prototype.service = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} totalCharge
+ * @type
  */
 OneClickShipmentResult.prototype.totalCharge = undefined

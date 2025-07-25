@@ -61,5 +61,6 @@ export class CompetitiveSummaryBatchRequest {
 /**
  * A batched list of `competitiveSummary` requests.
  * @member {Array.<module:pricing_v2022_05_01/model/CompetitiveSummaryRequest>} requests
+ * @type
  */
 CompetitiveSummaryBatchRequest.prototype.requests = undefined

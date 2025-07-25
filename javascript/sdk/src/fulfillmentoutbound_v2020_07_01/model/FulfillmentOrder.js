@@ -101,88 +101,104 @@ export class FulfillmentOrder {
 /**
  * The fulfillment order identifier submitted with the `createFulfillmentOrder` operation.
  * @member {String} sellerFulfillmentOrderId
+ * @type
  */
 FulfillmentOrder.prototype.sellerFulfillmentOrderId = undefined
 
 /**
  * The identifier for the marketplace the fulfillment order is placed against.
  * @member {String} marketplaceId
+ * @type
  */
 FulfillmentOrder.prototype.marketplaceId = undefined
 
 /**
  * A fulfillment order identifier submitted with the `createFulfillmentOrder` operation. Displays as the order identifier in recipient-facing materials such as the packing slip.
  * @member {String} displayableOrderId
+ * @type
  */
 FulfillmentOrder.prototype.displayableOrderId = undefined
 
 /**
  * Date timestamp
  * @member {Date} displayableOrderDate
+ * @type
  */
 FulfillmentOrder.prototype.displayableOrderDate = undefined
 
 /**
  * A text block submitted with the `createFulfillmentOrder` operation. Displays in recipient-facing materials such as the packing slip.
  * @member {String} displayableOrderComment
+ * @type
  */
 FulfillmentOrder.prototype.displayableOrderComment = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory} shippingSpeedCategory
+ * @type
  */
 FulfillmentOrder.prototype.shippingSpeedCategory = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow} deliveryWindow
+ * @type
  */
 FulfillmentOrder.prototype.deliveryWindow = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} destinationAddress
+ * @type
  */
 FulfillmentOrder.prototype.destinationAddress = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction} fulfillmentAction
+ * @type
  */
 FulfillmentOrder.prototype.fulfillmentAction = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy} fulfillmentPolicy
+ * @type
  */
 FulfillmentOrder.prototype.fulfillmentPolicy = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/CODSettings} codSettings
+ * @type
  */
 FulfillmentOrder.prototype.codSettings = undefined
 
 /**
  * Date timestamp
  * @member {Date} receivedDate
+ * @type
  */
 FulfillmentOrder.prototype.receivedDate = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderStatus} fulfillmentOrderStatus
+ * @type
  */
 FulfillmentOrder.prototype.fulfillmentOrderStatus = undefined
 
 /**
  * Date timestamp
  * @member {Date} statusUpdatedDate
+ * @type
  */
 FulfillmentOrder.prototype.statusUpdatedDate = undefined
 
 /**
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
  * @member {Array.<String>} notificationEmails
+ * @type
  */
 FulfillmentOrder.prototype.notificationEmails = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
+ * @type
  */
 FulfillmentOrder.prototype.featureConstraints = undefined

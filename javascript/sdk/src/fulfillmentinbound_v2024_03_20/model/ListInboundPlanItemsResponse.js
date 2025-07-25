@@ -63,10 +63,12 @@ export class ListInboundPlanItemsResponse {
 /**
  * The items in an inbound plan.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} items
+ * @type
  */
 ListInboundPlanItemsResponse.prototype.items = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type
  */
 ListInboundPlanItemsResponse.prototype.pagination = undefined

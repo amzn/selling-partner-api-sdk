@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DecoratorType.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class DecoratorType {

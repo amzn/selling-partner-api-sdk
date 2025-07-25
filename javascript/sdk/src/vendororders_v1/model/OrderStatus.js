@@ -78,6 +78,7 @@ export class OrderStatus {
 /**
  * The buyer's purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.
  * @member {String} purchaseOrderNumber
+ * @type
  */
 OrderStatus.prototype.purchaseOrderNumber = undefined
 
@@ -104,33 +105,39 @@ OrderStatus.PurchaseOrderStatusEnum = {
 /**
  * The status of the buyer's purchase order for this order.
  * @member {module:vendororders_v1/model/OrderStatus.PurchaseOrderStatusEnum} purchaseOrderStatus
+ * @type
  */
 OrderStatus.prototype.purchaseOrderStatus = undefined
 
 /**
  * The date the purchase order was placed. Must be in ISO-8601 date/time format.
  * @member {Date} purchaseOrderDate
+ * @type
  */
 OrderStatus.prototype.purchaseOrderDate = undefined
 
 /**
  * The date when the purchase order was last updated. Must be in ISO-8601 date/time format.
  * @member {Date} lastUpdatedDate
+ * @type
  */
 OrderStatus.prototype.lastUpdatedDate = undefined
 
 /**
  * @member {module:vendororders_v1/model/PartyIdentification} sellingParty
+ * @type
  */
 OrderStatus.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendororders_v1/model/PartyIdentification} shipToParty
+ * @type
  */
 OrderStatus.prototype.shipToParty = undefined
 
 /**
  * Detailed description of items order status.
  * @member {Array.<module:vendororders_v1/model/OrderItemStatus>} itemStatus
+ * @type
  */
 OrderStatus.prototype.itemStatus = undefined

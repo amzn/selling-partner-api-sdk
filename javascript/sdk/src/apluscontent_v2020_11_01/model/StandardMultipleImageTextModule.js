@@ -58,5 +58,6 @@ export class StandardMultipleImageTextModule {
 
 /**
  * @member {Array.<module:apluscontent_v2020_11_01/model/StandardImageTextCaptionBlock>} blocks
+ * @type
  */
 StandardMultipleImageTextModule.prototype.blocks = undefined

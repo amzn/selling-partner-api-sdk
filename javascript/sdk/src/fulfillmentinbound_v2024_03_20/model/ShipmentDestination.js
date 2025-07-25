@@ -62,17 +62,20 @@ export class ShipmentDestination {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Address} address
+ * @type
  */
 ShipmentDestination.prototype.address = undefined
 
 /**
  * The type of destination for this shipment. Possible values: `AMAZON_OPTIMIZED`, `AMAZON_WAREHOUSE`.
  * @member {String} destinationType
+ * @type
  */
 ShipmentDestination.prototype.destinationType = undefined
 
 /**
  * The warehouse that the shipment should be sent to. Empty if the destination type is `AMAZON_OPTIMIZED`.
  * @member {String} warehouseId
+ * @type
  */
 ShipmentDestination.prototype.warehouseId = undefined

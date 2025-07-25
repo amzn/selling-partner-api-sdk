@@ -60,10 +60,12 @@ export class SubmitAcknowledgementResponse {
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/TransactionId} payload
+ * @type
  */
 SubmitAcknowledgementResponse.prototype.payload = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ErrorList} errors
+ * @type
  */
 SubmitAcknowledgementResponse.prototype.errors = undefined

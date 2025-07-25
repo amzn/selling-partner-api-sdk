@@ -62,11 +62,13 @@ export class TextComponent {
 /**
  * The actual plain text.
  * @member {String} value
+ * @type
  */
 TextComponent.prototype.value = undefined
 
 /**
  * A set of content decorators.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Decorator>} decoratorSet
+ * @type
  */
 TextComponent.prototype.decoratorSet = undefined

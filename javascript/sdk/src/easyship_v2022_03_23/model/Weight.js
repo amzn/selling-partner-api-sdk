@@ -60,10 +60,12 @@ export class Weight {
 /**
  * The weight of the package.
  * @member {Number} value
+ * @type
  */
 Weight.prototype.value = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/UnitOfWeight} unit
+ * @type
  */
 Weight.prototype.unit = undefined

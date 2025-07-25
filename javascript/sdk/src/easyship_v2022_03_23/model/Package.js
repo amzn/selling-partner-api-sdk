@@ -81,47 +81,56 @@ export class Package {
 
 /**
  * @member {module:easyship_v2022_03_23/model/ScheduledPackageId} scheduledPackageId
+ * @type
  */
 Package.prototype.scheduledPackageId = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/Dimensions} packageDimensions
+ * @type
  */
 Package.prototype.packageDimensions = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/Weight} packageWeight
+ * @type
  */
 Package.prototype.packageWeight = undefined
 
 /**
  * A list of items contained in the package.
  * @member {Array.<module:easyship_v2022_03_23/model/Item>} packageItems
+ * @type
  */
 Package.prototype.packageItems = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/TimeSlot} packageTimeSlot
+ * @type
  */
 Package.prototype.packageTimeSlot = undefined
 
 /**
  * Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.
  * @member {String} packageIdentifier
+ * @type
  */
 Package.prototype.packageIdentifier = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/InvoiceData} invoice
+ * @type
  */
 Package.prototype.invoice = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/PackageStatus} packageStatus
+ * @type
  */
 Package.prototype.packageStatus = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/TrackingDetails} trackingDetails
+ * @type
  */
 Package.prototype.trackingDetails = undefined

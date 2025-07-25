@@ -59,11 +59,13 @@ export class TransactionIdentifier {
 /**
  * The transaction identifier name. Use the `getInvoicesAttributes` operation to check `transactionIdentifierName` options.
  * @member {String} name
+ * @type
  */
 TransactionIdentifier.prototype.name = undefined
 
 /**
  * The transaction identifier.
  * @member {String} id
+ * @type
  */
 TransactionIdentifier.prototype.id = undefined

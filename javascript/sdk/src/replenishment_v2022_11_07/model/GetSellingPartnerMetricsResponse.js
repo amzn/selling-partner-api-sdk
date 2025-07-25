@@ -59,5 +59,6 @@ export class GetSellingPartnerMetricsResponse {
 /**
  * A list of metrics data for the selling partner.
  * @member {Array.<module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsResponseMetric>} metrics
+ * @type
  */
 GetSellingPartnerMetricsResponse.prototype.metrics = undefined

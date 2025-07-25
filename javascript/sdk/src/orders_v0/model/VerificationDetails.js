@@ -58,5 +58,6 @@ export class VerificationDetails {
 
 /**
  * @member {module:orders_v0/model/PrescriptionDetail} prescriptionDetail
+ * @type
  */
 VerificationDetails.prototype.prescriptionDetail = undefined

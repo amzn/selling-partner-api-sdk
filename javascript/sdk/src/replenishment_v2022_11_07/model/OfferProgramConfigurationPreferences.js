@@ -58,5 +58,6 @@ export class OfferProgramConfigurationPreferences {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/AutoEnrollmentPreference} autoEnrollment
+ * @type
  */
 OfferProgramConfigurationPreferences.prototype.autoEnrollment = undefined

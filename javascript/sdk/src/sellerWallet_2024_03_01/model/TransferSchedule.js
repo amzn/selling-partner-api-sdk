@@ -83,41 +83,49 @@ export class TransferSchedule {
 /**
  * The unique identifier provided by Amazon to the scheduled transfer.
  * @member {String} transferScheduleId
+ * @type
  */
 TransferSchedule.prototype.transferScheduleId = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionType} transactionType
+ * @type
  */
 TransferSchedule.prototype.transactionType = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionSourceAccount
+ * @type
  */
 TransferSchedule.prototype.transactionSourceAccount = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionDestinationAccount
+ * @type
  */
 TransferSchedule.prototype.transactionDestinationAccount = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferScheduleStatus} transferScheduleStatus
+ * @type
  */
 TransferSchedule.prototype.transferScheduleStatus = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferScheduleInformation} transferScheduleInformation
+ * @type
  */
 TransferSchedule.prototype.transferScheduleInformation = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/PaymentPreference} paymentPreference
+ * @type
  */
 TransferSchedule.prototype.paymentPreference = undefined
 
 /**
  * A list of transfer schedule failures.
  * @member {Array.<module:sellerWallet_2024_03_01/model/TransferScheduleFailures>} transferScheduleFailures
+ * @type
  */
 TransferSchedule.prototype.transferScheduleFailures = undefined

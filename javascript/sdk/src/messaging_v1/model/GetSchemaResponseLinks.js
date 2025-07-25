@@ -60,5 +60,6 @@ export class GetSchemaResponseLinks {
 
 /**
  * @member {module:messaging_v1/model/LinkObject} self
+ * @type
  */
 GetSchemaResponseLinks.prototype.self = undefined

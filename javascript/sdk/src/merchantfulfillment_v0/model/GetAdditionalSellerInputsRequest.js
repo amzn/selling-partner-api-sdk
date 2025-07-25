@@ -67,16 +67,19 @@ export class GetAdditionalSellerInputsRequest {
 /**
  * An Amazon-defined shipping service identifier.
  * @member {String} shippingServiceId
+ * @type
  */
 GetAdditionalSellerInputsRequest.prototype.shippingServiceId = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Address} shipFromAddress
+ * @type
  */
 GetAdditionalSellerInputsRequest.prototype.shipFromAddress = undefined
 
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} orderId
+ * @type
  */
 GetAdditionalSellerInputsRequest.prototype.orderId = undefined

@@ -69,58 +69,68 @@ export class PayWithAmazonEvent {
 /**
  * An order identifier that is specified by the seller.
  * @member {String} sellerOrderId
+ * @type
  */
 PayWithAmazonEvent.prototype.sellerOrderId = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} transactionPostedDate
+ * @type
  */
 PayWithAmazonEvent.prototype.transactionPostedDate = undefined
 
 /**
  * The type of business object.
  * @member {String} businessObjectType
+ * @type
  */
 PayWithAmazonEvent.prototype.businessObjectType = undefined
 
 /**
  * The sales channel for the transaction.
  * @member {String} salesChannel
+ * @type
  */
 PayWithAmazonEvent.prototype.salesChannel = undefined
 
 /**
  * @member {module:finances_v0/model/ChargeComponent} charge
+ * @type
  */
 PayWithAmazonEvent.prototype.charge = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
+ * @type
  */
 PayWithAmazonEvent.prototype.feeList = undefined
 
 /**
  * The type of payment.  Possible values:  * Sales
  * @member {String} paymentAmountType
+ * @type
  */
 PayWithAmazonEvent.prototype.paymentAmountType = undefined
 
 /**
  * A short description of this payment event.
  * @member {String} amountDescription
+ * @type
  */
 PayWithAmazonEvent.prototype.amountDescription = undefined
 
 /**
  * The fulfillment channel.  Possible values:  * AFN - Amazon Fulfillment Network (Fulfillment by Amazon)  * MFN - Merchant Fulfillment Network (self-fulfilled)
  * @member {String} fulfillmentChannel
+ * @type
  */
 PayWithAmazonEvent.prototype.fulfillmentChannel = undefined
 
 /**
  * The store name where the event occurred.
  * @member {String} storeName
+ * @type
  */
 PayWithAmazonEvent.prototype.storeName = undefined

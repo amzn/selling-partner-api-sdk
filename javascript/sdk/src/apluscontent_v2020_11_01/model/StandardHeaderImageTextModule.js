@@ -60,10 +60,12 @@ export class StandardHeaderImageTextModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type
  */
 StandardHeaderImageTextModule.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block
+ * @type
  */
 StandardHeaderImageTextModule.prototype.block = undefined

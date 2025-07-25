@@ -62,16 +62,19 @@ export class GetInventorySummariesResponse {
 
 /**
  * @member {module:fbainventory_v1/model/GetInventorySummariesResult} payload
+ * @type
  */
 GetInventorySummariesResponse.prototype.payload = undefined
 
 /**
  * @member {module:fbainventory_v1/model/Pagination} pagination
+ * @type
  */
 GetInventorySummariesResponse.prototype.pagination = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fbainventory_v1/model/Error>} errors
+ * @type
  */
 GetInventorySummariesResponse.prototype.errors = undefined

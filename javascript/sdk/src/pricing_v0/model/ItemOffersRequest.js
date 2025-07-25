@@ -82,33 +82,39 @@ export class ItemOffersRequest {
 /**
  * The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`
  * @member {String} uri
+ * @type
  */
 ItemOffersRequest.prototype.uri = undefined
 
 /**
  * @member {module:pricing_v0/model/HttpMethod} method
+ * @type
  */
 ItemOffersRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
  * @member {Object.<String, String>} headers
+ * @type
  */
 ItemOffersRequest.prototype.headers = undefined
 
 /**
  * A marketplace identifier. Specifies the marketplace for which prices are returned.
  * @member {String} marketplaceId
+ * @type
  */
 ItemOffersRequest.prototype.marketplaceId = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemCondition} itemCondition
+ * @type
  */
 ItemOffersRequest.prototype.itemCondition = undefined
 
 /**
  * @member {module:pricing_v0/model/CustomerType} customerType
+ * @type
  */
 ItemOffersRequest.prototype.customerType = undefined
 
@@ -116,17 +122,20 @@ ItemOffersRequest.prototype.customerType = undefined
 /**
  * The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`
  * @member {String} uri
+ * @type
  */
 BatchRequest.prototype.uri = undefined
 
 /**
  * @member {module:pricing_v0/model/HttpMethod} method
+ * @type
  */
 BatchRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
  * @member {Object.<String, String>} headers
+ * @type
  */
 BatchRequest.prototype.headers = undefined
 
@@ -134,15 +143,18 @@ BatchRequest.prototype.headers = undefined
 /**
  * A marketplace identifier. Specifies the marketplace for which prices are returned.
  * @member {String} marketplaceId
+ * @type
  */
 BatchOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemCondition} itemCondition
+ * @type
  */
 BatchOffersRequestParams.prototype.itemCondition = undefined
 
 /**
  * @member {module:pricing_v0/model/CustomerType} customerType
+ * @type
  */
 BatchOffersRequestParams.prototype.customerType = undefined

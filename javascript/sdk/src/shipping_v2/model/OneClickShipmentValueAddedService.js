@@ -62,10 +62,12 @@ export class OneClickShipmentValueAddedService {
 /**
  * The identifier of the selected value-added service.
  * @member {String} id
+ * @type
  */
 OneClickShipmentValueAddedService.prototype.id = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} amount
+ * @type
  */
 OneClickShipmentValueAddedService.prototype.amount = undefined

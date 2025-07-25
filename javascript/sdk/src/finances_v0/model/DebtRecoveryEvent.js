@@ -65,27 +65,32 @@ export class DebtRecoveryEvent {
 /**
  * The debt recovery type.  Possible values:  * DebtPayment  * DebtPaymentFailure  * DebtAdjustment
  * @member {String} debtRecoveryType
+ * @type
  */
 DebtRecoveryEvent.prototype.debtRecoveryType = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} recoveryAmount
+ * @type
  */
 DebtRecoveryEvent.prototype.recoveryAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} overPaymentCredit
+ * @type
  */
 DebtRecoveryEvent.prototype.overPaymentCredit = undefined
 
 /**
  * A list of debt recovery item information.
  * @member {Array.<module:finances_v0/model/DebtRecoveryItem>} debtRecoveryItemList
+ * @type
  */
 DebtRecoveryEvent.prototype.debtRecoveryItemList = undefined
 
 /**
  * A list of payment instruments.
  * @member {Array.<module:finances_v0/model/ChargeInstrument>} chargeInstrumentList
+ * @type
  */
 DebtRecoveryEvent.prototype.chargeInstrumentList = undefined

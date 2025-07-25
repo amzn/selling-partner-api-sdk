@@ -62,16 +62,19 @@ export class GetSolicitationActionsForOrderResponse {
 
 /**
  * @member {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks} links
+ * @type
  */
 GetSolicitationActionsForOrderResponse.prototype.links = undefined
 
 /**
  * @member {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded} embedded
+ * @type
  */
 GetSolicitationActionsForOrderResponse.prototype.embedded = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:solicitations_v1/model/Error>} errors
+ * @type
  */
 GetSolicitationActionsForOrderResponse.prototype.errors = undefined

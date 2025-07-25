@@ -76,65 +76,76 @@ export class Address {
 /**
  * First line of the address text.
  * @member {String} addressLine1
+ * @type
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Optional second line of the address text.
  * @member {String} addressLine2
+ * @type
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Optional third line of the address text.
  * @member {String} addressLine3
+ * @type
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * Optional city where this address is located.
  * @member {String} city
+ * @type
  */
 Address.prototype.city = undefined
 
 /**
  * Two-digit, ISO 3166-1 alpha-2 formatted country code where this address is located.
  * @member {String} countryCode
+ * @type
  */
 Address.prototype.countryCode = undefined
 
 /**
  * Optional county where this address is located.
  * @member {String} county
+ * @type
  */
 Address.prototype.county = undefined
 
 /**
  * Optional district where this address is located.
  * @member {String} district
+ * @type
  */
 Address.prototype.district = undefined
 
 /**
  * Name of the person, business, or institution at this address.
  * @member {String} name
+ * @type
  */
 Address.prototype.name = undefined
 
 /**
  * Optional E.164-formatted phone number for an available contact at this address.
  * @member {String} phoneNumber
+ * @type
  */
 Address.prototype.phoneNumber = undefined
 
 /**
  * Optional postal code where this address is located.
  * @member {String} postalCode
+ * @type
  */
 Address.prototype.postalCode = undefined
 
 /**
  * State or region where this address is located. Note that this is contextual to the specified country code.
  * @member {String} stateOrRegion
+ * @type
  */
 Address.prototype.stateOrRegion = undefined

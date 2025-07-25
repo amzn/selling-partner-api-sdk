@@ -58,5 +58,6 @@ export class UnlinkCarrierAccountResponse {
 /**
  * Is Carrier unlinked from Merchant
  * @member {Boolean} isUnlinked
+ * @type
  */
 UnlinkCarrierAccountResponse.prototype.isUnlinked = undefined

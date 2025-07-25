@@ -61,11 +61,13 @@ export class LinkObject {
 /**
  * A URI for this object.
  * @member {String} href
+ * @type
  */
 LinkObject.prototype.href = undefined
 
 /**
  * An identifier for this object.
  * @member {String} name
+ * @type
  */
 LinkObject.prototype.name = undefined

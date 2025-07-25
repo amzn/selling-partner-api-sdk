@@ -59,5 +59,6 @@ export class SubmitShipments {
 /**
  * A list of one or more shipments with underlying details.
  * @member {Array.<module:vendorshipments_v1/model/Shipment>} shipments
+ * @type
  */
 SubmitShipments.prototype.shipments = undefined

@@ -59,5 +59,6 @@ export class GetItemOffersBatchResponse {
 /**
  * A list of `getItemOffers` batched responses.
  * @member {Array.<module:pricing_v0/model/ItemOffersResponse>} responses
+ * @type
  */
 GetItemOffersBatchResponse.prototype.responses = undefined

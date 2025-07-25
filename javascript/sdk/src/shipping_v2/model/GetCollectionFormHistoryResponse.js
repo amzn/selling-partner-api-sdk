@@ -60,11 +60,13 @@ export class GetCollectionFormHistoryResponse {
 /**
  * A list of CollectionFormsHistoryRecord
  * @member {Array.<module:shipping_v2/model/CollectionFormsHistoryRecord>} collectionFormsHistoryRecordList
+ * @type
  */
 GetCollectionFormHistoryResponse.prototype.collectionFormsHistoryRecordList = undefined
 
 /**
  * Last Refereshed Date of collection
  * @member {String} lastRefreshedDate
+ * @type
  */
 GetCollectionFormHistoryResponse.prototype.lastRefreshedDate = undefined

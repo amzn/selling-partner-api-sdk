@@ -64,17 +64,20 @@ export class DeleteTransferSchedule {
 /**
  * A success code that specifies that the delete operation was successful. For example, HTTP 200.
  * @member {String} code
+ * @type
  */
 DeleteTransferSchedule.prototype.code = undefined
 
 /**
  * A message that describes the success condition of the delete schedule transaction.
  * @member {String} message
+ * @type
  */
 DeleteTransferSchedule.prototype.message = undefined
 
 /**
  * Additional details that can help the caller understand the operation execution.
  * @member {String} details
+ * @type
  */
 DeleteTransferSchedule.prototype.details = undefined

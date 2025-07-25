@@ -59,11 +59,13 @@ export class ItemDeliveryPromise {
 /**
  * The date and time of the start of the promised delivery window in ISO 8601 format.
  * @member {Date} startTime
+ * @type
  */
 ItemDeliveryPromise.prototype.startTime = undefined
 
 /**
  * The date and time of the end of the promised delivery window in ISO 8601 format.
  * @member {Date} endTime
+ * @type
  */
 ItemDeliveryPromise.prototype.endTime = undefined

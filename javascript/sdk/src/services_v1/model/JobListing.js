@@ -62,23 +62,27 @@ export class JobListing {
 /**
  * Total result size of the query result.
  * @member {Number} totalResultSize
+ * @type
  */
 JobListing.prototype.totalResultSize = undefined
 
 /**
  * A generated string used to pass information to your next request. If `nextPageToken` is returned, pass the value of `nextPageToken` to the `pageToken` to get next results.
  * @member {String} nextPageToken
+ * @type
  */
 JobListing.prototype.nextPageToken = undefined
 
 /**
  * A generated string used to pass information to your next request. If `previousPageToken` is returned, pass the value of `previousPageToken` to the `pageToken` to get previous page results.
  * @member {String} previousPageToken
+ * @type
  */
 JobListing.prototype.previousPageToken = undefined
 
 /**
  * List of job details for the given input.
  * @member {Array.<module:services_v1/model/ServiceJob>} jobs
+ * @type
  */
 JobListing.prototype.jobs = undefined

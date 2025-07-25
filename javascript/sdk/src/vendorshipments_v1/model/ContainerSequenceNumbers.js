@@ -58,5 +58,6 @@ export class ContainerSequenceNumbers {
 /**
  * A list of containers shipped
  * @member {String} containerSequenceNumber
+ * @type
  */
 ContainerSequenceNumbers.prototype.containerSequenceNumber = undefined

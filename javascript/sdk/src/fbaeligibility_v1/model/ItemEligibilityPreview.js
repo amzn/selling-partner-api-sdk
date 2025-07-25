@@ -68,12 +68,14 @@ export class ItemEligibilityPreview {
 /**
  * The ASIN for which eligibility was determined.
  * @member {String} asin
+ * @type
  */
 ItemEligibilityPreview.prototype.asin = undefined
 
 /**
  * The marketplace for which eligibility was determined.
  * @member {String} marketplaceId
+ * @type
  */
 ItemEligibilityPreview.prototype.marketplaceId = undefined
 
@@ -100,12 +102,14 @@ ItemEligibilityPreview.ProgramEnum = {
 /**
  * The program for which eligibility was determined.
  * @member {module:fbaeligibility_v1/model/ItemEligibilityPreview.ProgramEnum} program
+ * @type
  */
 ItemEligibilityPreview.prototype.program = undefined
 
 /**
  * Indicates if the item is eligible for the program.
  * @member {Boolean} isEligibleForProgram
+ * @type
  */
 ItemEligibilityPreview.prototype.isEligibleForProgram = undefined
 
@@ -354,5 +358,6 @@ ItemEligibilityPreview.IneligibilityReasonListEnum = {
 /**
  * Potential Ineligibility Reason Codes.
  * @member {Array.<module:fbaeligibility_v1/model/ItemEligibilityPreview.IneligibilityReasonListEnum>} ineligibilityReasonList
+ * @type
  */
 ItemEligibilityPreview.prototype.ineligibilityReasonList = undefined

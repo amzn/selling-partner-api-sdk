@@ -82,47 +82,55 @@ export class PackingOption {
 /**
  * Discount for the offered option.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} discounts
+ * @type
  */
 PackingOption.prototype.discounts = undefined
 
 /**
  * The time at which this packing option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
  * @member {Date} expiration
+ * @type
  */
 PackingOption.prototype.expiration = undefined
 
 /**
  * Fee for the offered option.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} fees
+ * @type
  */
 PackingOption.prototype.fees = undefined
 
 /**
  * Packing group IDs.
  * @member {Array.<String>} packingGroups
+ * @type
  */
 PackingOption.prototype.packingGroups = undefined
 
 /**
  * Identifier of a packing option.
  * @member {String} packingOptionId
+ * @type
  */
 PackingOption.prototype.packingOptionId = undefined
 
 /**
  * The status of the packing option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.
  * @member {String} status
+ * @type
  */
 PackingOption.prototype.status = undefined
 
 /**
  * A list of possible configurations for this option.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingConfiguration>} supportedConfigurations
+ * @type
  */
 PackingOption.prototype.supportedConfigurations = undefined
 
 /**
  * **This field is deprecated**. Use the `shippingRequirements` property under `supportedConfigurations` instead. List of supported shipping modes.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ShippingConfiguration>} supportedShippingConfigurations
+ * @type
  */
 PackingOption.prototype.supportedShippingConfigurations = undefined

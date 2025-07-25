@@ -60,5 +60,6 @@ export class SetPackingInformationResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type
  */
 SetPackingInformationResponse.prototype.operationId = undefined

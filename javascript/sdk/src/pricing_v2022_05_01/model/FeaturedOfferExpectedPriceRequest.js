@@ -82,40 +82,47 @@ export class FeaturedOfferExpectedPriceRequest {
 /**
  * The URI associated with an individual request within a batch. For `FeaturedOfferExpectedPrice`, this is `/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice`.
  * @member {String} uri
+ * @type
  */
 FeaturedOfferExpectedPriceRequest.prototype.uri = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/HttpMethod} method
+ * @type
  */
 FeaturedOfferExpectedPriceRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
  * @member {Object.<String, Object>} body
+ * @type
  */
 FeaturedOfferExpectedPriceRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
  * @member {Object.<String, String>} headers
+ * @type
  */
 FeaturedOfferExpectedPriceRequest.prototype.headers = undefined
 
 /**
  * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type
  */
 FeaturedOfferExpectedPriceRequest.prototype.marketplaceId = undefined
 
 /**
  * The seller SKU of the item.
  * @member {String} sku
+ * @type
  */
 FeaturedOfferExpectedPriceRequest.prototype.sku = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Segment} segment
+ * @type
  */
 FeaturedOfferExpectedPriceRequest.prototype.segment = undefined
 
@@ -123,23 +130,27 @@ FeaturedOfferExpectedPriceRequest.prototype.segment = undefined
 /**
  * The URI associated with an individual request within a batch. For `FeaturedOfferExpectedPrice`, this is `/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice`.
  * @member {String} uri
+ * @type
  */
 BatchRequest.prototype.uri = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/HttpMethod} method
+ * @type
  */
 BatchRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
  * @member {Object.<String, Object>} body
+ * @type
  */
 BatchRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
  * @member {Object.<String, String>} headers
+ * @type
  */
 BatchRequest.prototype.headers = undefined
 
@@ -147,16 +158,19 @@ BatchRequest.prototype.headers = undefined
 /**
  * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.marketplaceId = undefined
 
 /**
  * The seller SKU of the item.
  * @member {String} sku
+ * @type
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.sku = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Segment} segment
+ * @type
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.segment = undefined

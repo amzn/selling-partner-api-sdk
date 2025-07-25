@@ -60,10 +60,12 @@ export class LabelCustomization {
 /**
  * Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support `CustomTextForLabel`.
  * @member {String} customTextForLabel
+ * @type
  */
 LabelCustomization.prototype.customTextForLabel = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/StandardIdForLabel} standardIdForLabel
+ * @type
  */
 LabelCustomization.prototype.standardIdForLabel = undefined

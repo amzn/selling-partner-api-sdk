@@ -44,7 +44,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class MessagingApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -100,7 +100,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmCustomizationDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateConfirmCustomizationDetailsResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   confirmCustomizationDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -147,7 +147,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmCustomizationDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateConfirmCustomizationDetailsResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   confirmCustomizationDetails (amazonOrderId, marketplaceIds, body) {
     return this.confirmCustomizationDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -161,7 +161,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateAmazonMotorsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateAmazonMotorsResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createAmazonMotorsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -208,7 +208,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateAmazonMotorsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateAmazonMotorsResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createAmazonMotors (amazonOrderId, marketplaceIds, body) {
     return this.createAmazonMotorsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -222,7 +222,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmDeliveryDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateConfirmDeliveryDetailsResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createConfirmDeliveryDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -269,7 +269,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmDeliveryDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateConfirmDeliveryDetailsResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createConfirmDeliveryDetails (amazonOrderId, marketplaceIds, body) {
     return this.createConfirmDeliveryDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -283,7 +283,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmOrderDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateConfirmOrderDetailsResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createConfirmOrderDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -330,7 +330,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmOrderDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateConfirmOrderDetailsResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createConfirmOrderDetails (amazonOrderId, marketplaceIds, body) {
     return this.createConfirmOrderDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -344,7 +344,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmServiceDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateConfirmServiceDetailsResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createConfirmServiceDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -391,7 +391,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateConfirmServiceDetailsRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateConfirmServiceDetailsResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createConfirmServiceDetails (amazonOrderId, marketplaceIds, body) {
     return this.createConfirmServiceDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -405,7 +405,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateDigitalAccessKeyRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateDigitalAccessKeyResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createDigitalAccessKeyWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -452,7 +452,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateDigitalAccessKeyRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateDigitalAccessKeyResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createDigitalAccessKey (amazonOrderId, marketplaceIds, body) {
     return this.createDigitalAccessKeyWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -466,7 +466,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateLegalDisclosureRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateLegalDisclosureResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createLegalDisclosureWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -513,7 +513,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateLegalDisclosureRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateLegalDisclosureResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createLegalDisclosure (amazonOrderId, marketplaceIds, body) {
     return this.createLegalDisclosureWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -526,7 +526,7 @@ export class MessagingApi {
      * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateNegativeFeedbackRemovalResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createNegativeFeedbackRemovalWithHttpInfo (amazonOrderId, marketplaceIds) {
     const postBody = null
@@ -567,7 +567,7 @@ export class MessagingApi {
      * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateNegativeFeedbackRemovalResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createNegativeFeedbackRemoval (amazonOrderId, marketplaceIds) {
     return this.createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds)
@@ -581,7 +581,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateUnexpectedProblemRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateUnexpectedProblemResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createUnexpectedProblemWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -628,7 +628,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateUnexpectedProblemRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateUnexpectedProblemResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createUnexpectedProblem (amazonOrderId, marketplaceIds, body) {
     return this.createUnexpectedProblemWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -642,7 +642,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateWarrantyRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/CreateWarrantyResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createWarrantyWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -689,7 +689,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/CreateWarrantyRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/CreateWarrantyResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   createWarranty (amazonOrderId, marketplaceIds, body) {
     return this.createWarrantyWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -702,7 +702,7 @@ export class MessagingApi {
      * Returns a response containing attributes related to an order. This includes buyer preferences.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/GetAttributesResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   getAttributesWithHttpInfo (amazonOrderId, marketplaceIds) {
     const postBody = null
@@ -743,7 +743,7 @@ export class MessagingApi {
      * Returns a response containing attributes related to an order. This includes buyer preferences.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/GetAttributesResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   getAttributes (amazonOrderId, marketplaceIds) {
     return this.getAttributesWithHttpInfo(amazonOrderId, marketplaceIds)
@@ -756,7 +756,7 @@ export class MessagingApi {
      * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/GetMessagingActionsForOrderResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   getMessagingActionsForOrderWithHttpInfo (amazonOrderId, marketplaceIds) {
     const postBody = null
@@ -797,7 +797,7 @@ export class MessagingApi {
      * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/GetMessagingActionsForOrderResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   getMessagingActionsForOrder (amazonOrderId, marketplaceIds) {
     return this.getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds)
@@ -811,7 +811,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/InvoiceRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:messaging_v1/model/InvoiceResponse} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   sendInvoiceWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -858,7 +858,7 @@ export class MessagingApi {
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
      * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
      * @param {module:messaging_v1/model/InvoiceRequest} body This contains the message body for a message.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:messaging_v1/model/InvoiceResponse}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   sendInvoice (amazonOrderId, marketplaceIds, body) {
     return this.sendInvoiceWithHttpInfo(amazonOrderId, marketplaceIds, body)

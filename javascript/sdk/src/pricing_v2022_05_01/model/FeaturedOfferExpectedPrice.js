@@ -62,10 +62,12 @@ export class FeaturedOfferExpectedPrice {
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
+ * @type
  */
 FeaturedOfferExpectedPrice.prototype.listingPrice = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Points} points
+ * @type
  */
 FeaturedOfferExpectedPrice.prototype.points = undefined

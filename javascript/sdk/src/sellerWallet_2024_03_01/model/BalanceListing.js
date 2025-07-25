@@ -59,5 +59,6 @@ export class BalanceListing {
 /**
  * A list of balances in the seller account.
  * @member {Array.<module:sellerWallet_2024_03_01/model/Balance>} balances
+ * @type
  */
 BalanceListing.prototype.balances = undefined

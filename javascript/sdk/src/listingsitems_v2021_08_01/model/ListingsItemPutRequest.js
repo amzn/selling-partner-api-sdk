@@ -64,6 +64,7 @@ export class ListingsItemPutRequest {
 /**
  * The Amazon product type of the listings item.
  * @member {String} productType
+ * @type
  */
 ListingsItemPutRequest.prototype.productType = undefined
 
@@ -96,11 +97,13 @@ ListingsItemPutRequest.RequirementsEnum = {
 /**
  * The name of the requirements set for the provided data.
  * @member {module:listingsitems_v2021_08_01/model/ListingsItemPutRequest.RequirementsEnum} requirements
+ * @type
  */
 ListingsItemPutRequest.prototype.requirements = undefined
 
 /**
  * A JSON object containing structured listings item attribute data keyed by attribute name.
  * @member {Object.<String, Object>} attributes
+ * @type
  */
 ListingsItemPutRequest.prototype.attributes = undefined

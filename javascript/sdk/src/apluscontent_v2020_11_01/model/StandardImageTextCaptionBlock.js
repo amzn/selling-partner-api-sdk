@@ -60,10 +60,12 @@ export class StandardImageTextCaptionBlock {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block
+ * @type
  */
 StandardImageTextCaptionBlock.prototype.block = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} caption
+ * @type
  */
 StandardImageTextCaptionBlock.prototype.caption = undefined

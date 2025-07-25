@@ -60,17 +60,20 @@ export class TimeOfDay {
 /**
  * Denotes hour of the day, used for defining opening or closing time of access points
  * @member {Number} hourOfDay
+ * @type
  */
 TimeOfDay.prototype.hourOfDay = undefined
 
 /**
  * Denotes minute of the hour, used for defining opening or closing time of access points
  * @member {Number} minuteOfHour
+ * @type
  */
 TimeOfDay.prototype.minuteOfHour = undefined
 
 /**
  * Denotes second of the minute, used for defining opening or closing time of access points
  * @member {Number} secondOfMinute
+ * @type
  */
 TimeOfDay.prototype.secondOfMinute = undefined

@@ -95,11 +95,13 @@ Weight.UnitEnum = {
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/Weight.UnitEnum} unit
+ * @type
  */
 Weight.prototype.unit = undefined
 
 /**
  * The measurement value.
  * @member {Number} value
+ * @type
  */
 Weight.prototype.value = undefined

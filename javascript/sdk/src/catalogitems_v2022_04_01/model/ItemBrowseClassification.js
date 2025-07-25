@@ -64,16 +64,19 @@ export class ItemBrowseClassification {
 /**
  * Display name for the classification.
  * @member {String} displayName
+ * @type
  */
 ItemBrowseClassification.prototype.displayName = undefined
 
 /**
  * Identifier of the classification.
  * @member {String} classificationId
+ * @type
  */
 ItemBrowseClassification.prototype.classificationId = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/ItemBrowseClassification} parent
+ * @type
  */
 ItemBrowseClassification.prototype.parent = undefined

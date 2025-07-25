@@ -73,50 +73,59 @@ export class CreateFulfillmentOrderItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.sellerSku = undefined
 
 /**
  * A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `SellerSKU`. For example, the seller might assign different `SellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `SellerSKU` but have different `GiftMessage` values.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantity
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.quantity = undefined
 
 /**
  * A message to the gift recipient, if applicable.
  * @member {String} giftMessage
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.giftMessage = undefined
 
 /**
  * Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip.
  * @member {String} displayableComment
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.displayableComment = undefined
 
 /**
  * Amazon's fulfillment network SKU of the item.
  * @member {String} fulfillmentNetworkSku
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.fulfillmentNetworkSku = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitDeclaredValue
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.perUnitDeclaredValue = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitPrice
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.perUnitPrice = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitTax
+ * @type
  */
 CreateFulfillmentOrderItem.prototype.perUnitTax = undefined

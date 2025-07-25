@@ -62,11 +62,13 @@ export class CreateRestrictedDataTokenRequest {
 /**
  * The application ID for the target application to which access is being delegated.
  * @member {String} targetApplication
+ * @type
  */
 CreateRestrictedDataTokenRequest.prototype.targetApplication = undefined
 
 /**
  * A list of restricted resources. Maximum: 50
  * @member {Array.<module:tokens_v2021_03_01/model/RestrictedResource>} restrictedResources
+ * @type
  */
 CreateRestrictedDataTokenRequest.prototype.restrictedResources = undefined

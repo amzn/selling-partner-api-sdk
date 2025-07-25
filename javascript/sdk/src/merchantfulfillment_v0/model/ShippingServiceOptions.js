@@ -69,26 +69,31 @@ export class ShippingServiceOptions {
 
 /**
  * @member {module:merchantfulfillment_v0/model/DeliveryExperienceType} deliveryExperience
+ * @type
  */
 ShippingServiceOptions.prototype.deliveryExperience = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CurrencyAmount} declaredValue
+ * @type
  */
 ShippingServiceOptions.prototype.declaredValue = undefined
 
 /**
  * When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
  * @member {Boolean} carrierWillPickUp
+ * @type
  */
 ShippingServiceOptions.prototype.carrierWillPickUp = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CarrierWillPickUpOption} carrierWillPickUpOption
+ * @type
  */
 ShippingServiceOptions.prototype.carrierWillPickUpOption = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/LabelFormat} labelFormat
+ * @type
  */
 ShippingServiceOptions.prototype.labelFormat = undefined

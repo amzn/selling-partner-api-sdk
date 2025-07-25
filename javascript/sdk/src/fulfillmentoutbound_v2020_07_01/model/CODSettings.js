@@ -65,25 +65,30 @@ export class CODSettings {
 /**
  * When true, this fulfillment order requires a COD (Cash On Delivery) payment.
  * @member {Boolean} isCodRequired
+ * @type
  */
 CODSettings.prototype.isCodRequired = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} codCharge
+ * @type
  */
 CODSettings.prototype.codCharge = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} codChargeTax
+ * @type
  */
 CODSettings.prototype.codChargeTax = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} shippingCharge
+ * @type
  */
 CODSettings.prototype.shippingCharge = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} shippingChargeTax
+ * @type
  */
 CODSettings.prototype.shippingChargeTax = undefined

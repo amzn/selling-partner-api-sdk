@@ -60,5 +60,6 @@ export class AggregationSettings {
 
 /**
  * @member {module:notifications_v1/model/AggregationTimePeriod} aggregationTimePeriod
+ * @type
  */
 AggregationSettings.prototype.aggregationTimePeriod = undefined

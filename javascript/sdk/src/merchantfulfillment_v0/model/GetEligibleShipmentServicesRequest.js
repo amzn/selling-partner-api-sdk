@@ -62,10 +62,12 @@ export class GetEligibleShipmentServicesRequest {
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShipmentRequestDetails} shipmentRequestDetails
+ * @type
  */
 GetEligibleShipmentServicesRequest.prototype.shipmentRequestDetails = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShippingOfferingFilter} shippingOfferingFilter
+ * @type
  */
 GetEligibleShipmentServicesRequest.prototype.shippingOfferingFilter = undefined

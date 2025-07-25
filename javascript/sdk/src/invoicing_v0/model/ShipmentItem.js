@@ -69,60 +69,71 @@ export class ShipmentItem {
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type
  */
 ShipmentItem.prototype.ASIN = undefined
 
 /**
  * The seller SKU of the item.
  * @member {String} sellerSKU
+ * @type
  */
 ShipmentItem.prototype.sellerSKU = undefined
 
 /**
  * The Amazon-defined identifier for the order item.
  * @member {String} orderItemId
+ * @type
  */
 ShipmentItem.prototype.orderItemId = undefined
 
 /**
  * The name of the item.
  * @member {String} title
+ * @type
  */
 ShipmentItem.prototype.title = undefined
 
 /**
  * The number of items ordered.
  * @member {Number} quantityOrdered
+ * @type
  */
 ShipmentItem.prototype.quantityOrdered = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} itemPrice
+ * @type
  */
 ShipmentItem.prototype.itemPrice = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} shippingPrice
+ * @type
  */
 ShipmentItem.prototype.shippingPrice = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} giftWrapPrice
+ * @type
  */
 ShipmentItem.prototype.giftWrapPrice = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} shippingDiscount
+ * @type
  */
 ShipmentItem.prototype.shippingDiscount = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} promotionDiscount
+ * @type
  */
 ShipmentItem.prototype.promotionDiscount = undefined
 
 /**
  * The list of serial numbers.
  * @member {Array.<String>} serialNumbers
+ * @type
  */
 ShipmentItem.prototype.serialNumbers = undefined

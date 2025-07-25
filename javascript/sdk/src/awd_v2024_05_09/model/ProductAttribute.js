@@ -59,11 +59,13 @@ export class ProductAttribute {
 /**
  * Product attribute name.
  * @member {String} name
+ * @type
  */
 ProductAttribute.prototype.name = undefined
 
 /**
  * Product attribute value.
  * @member {String} value
+ * @type
  */
 ProductAttribute.prototype.value = undefined

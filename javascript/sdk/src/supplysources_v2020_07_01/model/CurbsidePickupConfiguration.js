@@ -62,15 +62,18 @@ export class CurbsidePickupConfiguration {
 /**
  * When true, curbside pickup is supported by the supply source.
  * @member {Boolean} isSupported
+ * @type
  */
 CurbsidePickupConfiguration.prototype.isSupported = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
+ * @type
  */
 CurbsidePickupConfiguration.prototype.operationalConfiguration = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingWithAddressConfiguration} parkingWithAddressConfiguration
+ * @type
  */
 CurbsidePickupConfiguration.prototype.parkingWithAddressConfiguration = undefined

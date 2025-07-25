@@ -74,16 +74,19 @@ export class ShippingLabel {
 /**
  * This field will contain the Purchase Order Number for this order.
  * @member {String} purchaseOrderNumber
+ * @type
  */
 ShippingLabel.prototype.purchaseOrderNumber = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type
  */
 ShippingLabel.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type
  */
 ShippingLabel.prototype.shipFromParty = undefined
 
@@ -110,11 +113,13 @@ ShippingLabel.LabelFormatEnum = {
 /**
  * Format of the label.
  * @member {module:vendordfshipping_v2021_12_28/model/ShippingLabel.LabelFormatEnum} labelFormat
+ * @type
  */
 ShippingLabel.prototype.labelFormat = undefined
 
 /**
  * Provides the details of the packages in this shipment.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/LabelData>} labelData
+ * @type
  */
 ShippingLabel.prototype.labelData = undefined

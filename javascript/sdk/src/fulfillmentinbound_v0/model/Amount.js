@@ -63,11 +63,13 @@ export class Amount {
 
 /**
  * @member {module:fulfillmentinbound_v0/model/CurrencyCode} currencyCode
+ * @type
  */
 Amount.prototype.currencyCode = undefined
 
 /**
  * Number format that supports decimal.
  * @member {Number} value
+ * @type
  */
 Amount.prototype.value = undefined

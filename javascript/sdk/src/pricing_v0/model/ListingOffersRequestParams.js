@@ -73,22 +73,26 @@ export class ListingOffersRequestParams {
 /**
  * A marketplace identifier. Specifies the marketplace for which prices are returned.
  * @member {String} marketplaceId
+ * @type
  */
 ListingOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemCondition} itemCondition
+ * @type
  */
 ListingOffersRequestParams.prototype.itemCondition = undefined
 
 /**
  * @member {module:pricing_v0/model/CustomerType} customerType
+ * @type
  */
 ListingOffersRequestParams.prototype.customerType = undefined
 
 /**
  * The seller stock keeping unit (SKU) of the item. This is the same SKU passed as a path parameter.
  * @member {String} sellerSKU
+ * @type
  */
 ListingOffersRequestParams.prototype.sellerSKU = undefined
 
@@ -96,15 +100,18 @@ ListingOffersRequestParams.prototype.sellerSKU = undefined
 /**
  * A marketplace identifier. Specifies the marketplace for which prices are returned.
  * @member {String} marketplaceId
+ * @type
  */
 BatchOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemCondition} itemCondition
+ * @type
  */
 BatchOffersRequestParams.prototype.itemCondition = undefined
 
 /**
  * @member {module:pricing_v0/model/CustomerType} customerType
+ * @type
  */
 BatchOffersRequestParams.prototype.customerType = undefined

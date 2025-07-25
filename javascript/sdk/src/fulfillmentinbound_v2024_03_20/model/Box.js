@@ -75,61 +75,72 @@ export class Box {
 /**
  * The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.
  * @member {String} boxId
+ * @type
  */
 Box.prototype.boxId = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource} contentInformationSource
+ * @type
  */
 Box.prototype.contentInformationSource = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Region} destinationRegion
+ * @type
  */
 Box.prototype.destinationRegion = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
+ * @type
  */
 Box.prototype.dimensions = undefined
 
 /**
  * The external identifier for this container / box.
  * @member {String} externalContainerIdentifier
+ * @type
  */
 Box.prototype.externalContainerIdentifier = undefined
 
 /**
  * Type of the external identifier used. Can be: `AMAZON`, `SSCC`.
  * @member {String} externalContainerIdentifierType
+ * @type
  */
 Box.prototype.externalContainerIdentifierType = undefined
 
 /**
  * Items contained within the box.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} items
+ * @type
  */
 Box.prototype.items = undefined
 
 /**
  * Primary key to uniquely identify a Package (Box or Pallet).
  * @member {String} packageId
+ * @type
  */
 Box.prototype.packageId = undefined
 
 /**
  * The number of containers where all other properties like weight or dimensions are identical.
  * @member {Number} quantity
+ * @type
  */
 Box.prototype.quantity = undefined
 
 /**
  * Template name of the box.
  * @member {String} templateName
+ * @type
  */
 Box.prototype.templateName = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
+ * @type
  */
 Box.prototype.weight = undefined

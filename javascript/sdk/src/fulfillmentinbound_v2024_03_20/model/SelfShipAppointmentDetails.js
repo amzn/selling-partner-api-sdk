@@ -61,16 +61,19 @@ export class SelfShipAppointmentDetails {
 /**
  * Identifier for appointment.
  * @member {Number} appointmentId
+ * @type
  */
 SelfShipAppointmentDetails.prototype.appointmentId = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime} appointmentSlotTime
+ * @type
  */
 SelfShipAppointmentDetails.prototype.appointmentSlotTime = undefined
 
 /**
  * Status of the appointment.
  * @member {String} appointmentStatus
+ * @type
  */
 SelfShipAppointmentDetails.prototype.appointmentStatus = undefined

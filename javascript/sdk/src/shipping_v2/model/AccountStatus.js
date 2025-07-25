@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AccountStatus.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class AccountStatus {

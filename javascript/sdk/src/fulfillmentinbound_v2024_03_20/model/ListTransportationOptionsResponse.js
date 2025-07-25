@@ -62,11 +62,13 @@ export class ListTransportationOptionsResponse {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type
  */
 ListTransportationOptionsResponse.prototype.pagination = undefined
 
 /**
  * Transportation options generated for the placement option.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationOption>} transportationOptions
+ * @type
  */
 ListTransportationOptionsResponse.prototype.transportationOptions = undefined

@@ -78,47 +78,56 @@ export class BuyBoxPriceType {
 /**
  * Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
  * @member {String} condition
+ * @type
  */
 BuyBoxPriceType.prototype.condition = undefined
 
 /**
  * @member {module:pricing_v0/model/OfferCustomerType} offerType
+ * @type
  */
 BuyBoxPriceType.prototype.offerType = undefined
 
 /**
  * Indicates at what quantity this price becomes active.
  * @member {Number} quantityTier
+ * @type
  */
 BuyBoxPriceType.prototype.quantityTier = undefined
 
 /**
  * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
+ * @type
  */
 BuyBoxPriceType.prototype.quantityDiscountType = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} landedPrice
+ * @type
  */
 BuyBoxPriceType.prototype.landedPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} listingPrice
+ * @type
  */
 BuyBoxPriceType.prototype.listingPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} shipping
+ * @type
  */
 BuyBoxPriceType.prototype.shipping = undefined
 
 /**
  * @member {module:pricing_v0/model/Points} points
+ * @type
  */
 BuyBoxPriceType.prototype.points = undefined
 
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type
  */
 BuyBoxPriceType.prototype.sellerId = undefined

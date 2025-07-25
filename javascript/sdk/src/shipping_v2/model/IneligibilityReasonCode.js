@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class IneligibilityReasonCode.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class IneligibilityReasonCode {

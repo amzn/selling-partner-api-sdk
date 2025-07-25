@@ -58,5 +58,6 @@ export class SubmitFulfillmentOrderStatusUpdateRequest {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderStatus} fulfillmentOrderStatus
+ * @type
  */
 SubmitFulfillmentOrderStatusUpdateRequest.prototype.fulfillmentOrderStatus = undefined

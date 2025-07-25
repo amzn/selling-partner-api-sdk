@@ -67,23 +67,27 @@ export class GetEligibleShipmentServicesResult {
 /**
  * A list of shipping services offers.
  * @member {Array.<module:merchantfulfillment_v0/model/ShippingService>} shippingServiceList
+ * @type
  */
 GetEligibleShipmentServicesResult.prototype.shippingServiceList = undefined
 
 /**
  * List of services that are for some reason unavailable for this request
  * @member {Array.<module:merchantfulfillment_v0/model/RejectedShippingService>} rejectedShippingServiceList
+ * @type
  */
 GetEligibleShipmentServicesResult.prototype.rejectedShippingServiceList = undefined
 
 /**
  * A list of temporarily unavailable carriers.
  * @member {Array.<module:merchantfulfillment_v0/model/TemporarilyUnavailableCarrier>} temporarilyUnavailableCarrierList
+ * @type
  */
 GetEligibleShipmentServicesResult.prototype.temporarilyUnavailableCarrierList = undefined
 
 /**
  * List of carriers whose terms and conditions were not accepted by the seller.
  * @member {Array.<module:merchantfulfillment_v0/model/TermsAndConditionsNotAcceptedCarrier>} termsAndConditionsNotAcceptedCarrierList
+ * @type
  */
 GetEligibleShipmentServicesResult.prototype.termsAndConditionsNotAcceptedCarrierList = undefined

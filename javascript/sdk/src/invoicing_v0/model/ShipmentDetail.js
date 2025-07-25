@@ -75,80 +75,94 @@ export class ShipmentDetail {
 /**
  * The Amazon-defined identifier for the warehouse.
  * @member {String} warehouseId
+ * @type
  */
 ShipmentDetail.prototype.warehouseId = undefined
 
 /**
  * The Amazon-defined identifier for the order.
  * @member {String} amazonOrderId
+ * @type
  */
 ShipmentDetail.prototype.amazonOrderId = undefined
 
 /**
  * The Amazon-defined identifier for the shipment.
  * @member {String} amazonShipmentId
+ * @type
  */
 ShipmentDetail.prototype.amazonShipmentId = undefined
 
 /**
  * The date and time when the order was created.
  * @member {Date} purchaseDate
+ * @type
  */
 ShipmentDetail.prototype.purchaseDate = undefined
 
 /**
  * @member {module:invoicing_v0/model/Address} shippingAddress
+ * @type
  */
 ShipmentDetail.prototype.shippingAddress = undefined
 
 /**
  * The list of payment method details.
  * @member {Array.<String>} paymentMethodDetails
+ * @type
  */
 ShipmentDetail.prototype.paymentMethodDetails = undefined
 
 /**
  * The identifier for the marketplace where the order was placed.
  * @member {String} marketplaceId
+ * @type
  */
 ShipmentDetail.prototype.marketplaceId = undefined
 
 /**
  * The seller identifier.
  * @member {String} sellerId
+ * @type
  */
 ShipmentDetail.prototype.sellerId = undefined
 
 /**
  * The name of the buyer.
  * @member {String} buyerName
+ * @type
  */
 ShipmentDetail.prototype.buyerName = undefined
 
 /**
  * The county of the buyer.
  * @member {String} buyerCounty
+ * @type
  */
 ShipmentDetail.prototype.buyerCounty = undefined
 
 /**
  * @member {module:invoicing_v0/model/BuyerTaxInfo} buyerTaxInfo
+ * @type
  */
 ShipmentDetail.prototype.buyerTaxInfo = undefined
 
 /**
  * @member {module:invoicing_v0/model/MarketplaceTaxInfo} marketplaceTaxInfo
+ * @type
  */
 ShipmentDetail.prototype.marketplaceTaxInfo = undefined
 
 /**
  * The seller’s friendly name registered in the marketplace.
  * @member {String} sellerDisplayName
+ * @type
  */
 ShipmentDetail.prototype.sellerDisplayName = undefined
 
 /**
  * A list of shipment items.
  * @member {Array.<module:invoicing_v0/model/ShipmentItem>} shipmentItems
+ * @type
  */
 ShipmentDetail.prototype.shipmentItems = undefined

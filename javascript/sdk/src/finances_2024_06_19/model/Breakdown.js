@@ -61,16 +61,19 @@ export class Breakdown {
 /**
  * The type of charge.
  * @member {String} breakdownType
+ * @type
  */
 Breakdown.prototype.breakdownType = undefined
 
 /**
  * @member {module:finances_2024_06_19/model/Currency} breakdownAmount
+ * @type
  */
 Breakdown.prototype.breakdownAmount = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
  * @member {Array.<module:finances_2024_06_19/model/Breakdown>} breakdowns
+ * @type
  */
 Breakdown.prototype.breakdowns = undefined

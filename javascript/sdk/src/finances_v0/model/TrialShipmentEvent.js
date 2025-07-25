@@ -63,29 +63,34 @@ export class TrialShipmentEvent {
 /**
  * An Amazon-defined identifier for an order.
  * @member {String} amazonOrderId
+ * @type
  */
 TrialShipmentEvent.prototype.amazonOrderId = undefined
 
 /**
  * The identifier of the financial event group.
  * @member {String} financialEventGroupId
+ * @type
  */
 TrialShipmentEvent.prototype.financialEventGroupId = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type
  */
 TrialShipmentEvent.prototype.postedDate = undefined
 
 /**
  * The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.
  * @member {String} SKU
+ * @type
  */
 TrialShipmentEvent.prototype.SKU = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
+ * @type
  */
 TrialShipmentEvent.prototype.feeList = undefined

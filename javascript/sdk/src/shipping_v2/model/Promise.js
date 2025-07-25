@@ -59,10 +59,12 @@ export class Promise {
 
 /**
  * @member {module:shipping_v2/model/TimeWindow} deliveryWindow
+ * @type
  */
 Promise.prototype.deliveryWindow = undefined
 
 /**
  * @member {module:shipping_v2/model/TimeWindow} pickupWindow
+ * @type
  */
 Promise.prototype.pickupWindow = undefined

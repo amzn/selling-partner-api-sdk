@@ -59,11 +59,13 @@ export class HttpStatusLine {
 /**
  * The HTTP response status code.
  * @member {Number} statusCode
+ * @type
  */
 HttpStatusLine.prototype.statusCode = undefined
 
 /**
  * The HTTP response reason phrase.
  * @member {String} reasonPhrase
+ * @type
  */
 HttpStatusLine.prototype.reasonPhrase = undefined

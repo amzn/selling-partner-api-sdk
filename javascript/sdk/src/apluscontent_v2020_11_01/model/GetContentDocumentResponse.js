@@ -66,11 +66,13 @@ export class GetContentDocumentResponse {
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type
  */
 GetContentDocumentResponse.prototype.warnings = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentRecord} contentRecord
+ * @type
  */
 GetContentDocumentResponse.prototype.contentRecord = undefined
 
@@ -78,5 +80,6 @@ GetContentDocumentResponse.prototype.contentRecord = undefined
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type
  */
 AplusResponse.prototype.warnings = undefined

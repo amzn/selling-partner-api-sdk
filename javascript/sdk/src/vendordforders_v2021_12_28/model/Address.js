@@ -77,71 +77,83 @@ export class Address {
 /**
  * The name of the person, business or institution at that address. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} name
+ * @type
  */
 Address.prototype.name = undefined
 
 /**
  * The attention name of the person at that address. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} attention
+ * @type
  */
 Address.prototype.attention = undefined
 
 /**
  * First line of the address. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} addressLine1
+ * @type
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional address information, if required. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} addressLine2
+ * @type
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Additional address information, if required. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} addressLine3
+ * @type
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * The city where the person, business or institution is located. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} city
+ * @type
  */
 Address.prototype.city = undefined
 
 /**
  * The county where person, business or institution is located. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} county
+ * @type
  */
 Address.prototype.county = undefined
 
 /**
  * The district where person, business or institution is located. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} district
+ * @type
  */
 Address.prototype.district = undefined
 
 /**
  * The state or region where person, business or institution is located.
  * @member {String} stateOrRegion
+ * @type
  */
 Address.prototype.stateOrRegion = undefined
 
 /**
  * The postal code of that address. It conatins a series of letters or digits or both, sometimes including spaces or punctuation.
  * @member {String} postalCode
+ * @type
  */
 Address.prototype.postalCode = undefined
 
 /**
  * The two digit country code. In ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The phone number of the person, business or institution located at that address. For Amazon label only vendors, this field will have the value `xxxxx` within the object `shipToParty`.
  * @member {String} phone
+ * @type
  */
 Address.prototype.phone = undefined

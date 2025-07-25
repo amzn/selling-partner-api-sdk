@@ -60,10 +60,12 @@ export class Points {
 /**
  * The number of Amazon Points.
  * @member {Number} pointsNumber
+ * @type
  */
 Points.prototype.pointsNumber = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} pointsMonetaryValue
+ * @type
  */
 Points.prototype.pointsMonetaryValue = undefined

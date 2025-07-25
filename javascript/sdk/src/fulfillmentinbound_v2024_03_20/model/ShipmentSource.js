@@ -61,11 +61,13 @@ export class ShipmentSource {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Address} address
+ * @type
  */
 ShipmentSource.prototype.address = undefined
 
 /**
  * The type of source for this shipment. Possible values: `SELLER_FACILITY`.
  * @member {String} sourceType
+ * @type
  */
 ShipmentSource.prototype.sourceType = undefined

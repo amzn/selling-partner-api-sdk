@@ -62,15 +62,18 @@ export class UpdateSupplySourceRequest {
 /**
  * The custom alias for this supply source
  * @member {String} alias
+ * @type
  */
 UpdateSupplySourceRequest.prototype.alias = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceConfiguration} configuration
+ * @type
  */
 UpdateSupplySourceRequest.prototype.configuration = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceCapabilities} capabilities
+ * @type
  */
 UpdateSupplySourceRequest.prototype.capabilities = undefined

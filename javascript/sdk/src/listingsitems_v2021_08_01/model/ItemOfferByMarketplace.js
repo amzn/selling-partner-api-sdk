@@ -71,6 +71,7 @@ export class ItemOfferByMarketplace {
 /**
  * The Amazon marketplace identifier.
  * @member {String} marketplaceId
+ * @type
  */
 ItemOfferByMarketplace.prototype.marketplaceId = undefined
 
@@ -97,20 +98,24 @@ ItemOfferByMarketplace.OfferTypeEnum = {
 /**
  * Type of offer for the listings item.
  * @member {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace.OfferTypeEnum} offerType
+ * @type
  */
 ItemOfferByMarketplace.prototype.offerType = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Money} price
+ * @type
  */
 ItemOfferByMarketplace.prototype.price = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Points} points
+ * @type
  */
 ItemOfferByMarketplace.prototype.points = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Audience} audience
+ * @type
  */
 ItemOfferByMarketplace.prototype.audience = undefined

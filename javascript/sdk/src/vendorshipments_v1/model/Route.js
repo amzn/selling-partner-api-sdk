@@ -61,5 +61,6 @@ export class Route {
 /**
  * The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
  * @member {Array.<module:vendorshipments_v1/model/Stop>} stops
+ * @type
  */
 Route.prototype.stops = undefined

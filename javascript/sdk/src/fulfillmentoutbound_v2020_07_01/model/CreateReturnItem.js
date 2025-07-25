@@ -70,29 +70,34 @@ export class CreateReturnItem {
 /**
  * An identifier assigned by the seller to the return item.
  * @member {String} sellerReturnItemId
+ * @type
  */
 CreateReturnItem.prototype.sellerReturnItemId = undefined
 
 /**
  * The identifier assigned to the item by the seller when the fulfillment order was created.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type
  */
 CreateReturnItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * The identifier for the shipment that is associated with the return item.
  * @member {String} amazonShipmentId
+ * @type
  */
 CreateReturnItem.prototype.amazonShipmentId = undefined
 
 /**
  * The return reason code assigned to the return item by the seller.
  * @member {String} returnReasonCode
+ * @type
  */
 CreateReturnItem.prototype.returnReasonCode = undefined
 
 /**
  * An optional comment about the return item.
  * @member {String} returnComment
+ * @type
  */
 CreateReturnItem.prototype.returnComment = undefined

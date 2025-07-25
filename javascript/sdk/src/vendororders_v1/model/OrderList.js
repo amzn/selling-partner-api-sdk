@@ -60,11 +60,13 @@ export class OrderList {
 
 /**
  * @member {module:vendororders_v1/model/Pagination} pagination
+ * @type
  */
 OrderList.prototype.pagination = undefined
 
 /**
  * Represents an individual order within the OrderList.
  * @member {Array.<module:vendororders_v1/model/Order>} orders
+ * @type
  */
 OrderList.prototype.orders = undefined

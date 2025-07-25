@@ -64,22 +64,26 @@ export class ItemDetails {
 /**
  * The buyer selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted.
  * @member {String} buyerProductIdentifier
+ * @type
  */
 ItemDetails.prototype.buyerProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted.
  * @member {String} vendorProductIdentifier
+ * @type
  */
 ItemDetails.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendordfinventory_v1/model/ItemQuantity} availableQuantity
+ * @type
  */
 ItemDetails.prototype.availableQuantity = undefined
 
 /**
  * When true, the item is permanently unavailable.
  * @member {Boolean} isObsolete
+ * @type
  */
 ItemDetails.prototype.isObsolete = undefined

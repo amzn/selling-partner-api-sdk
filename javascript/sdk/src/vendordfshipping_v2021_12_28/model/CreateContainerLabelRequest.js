@@ -74,27 +74,32 @@ export class CreateContainerLabelRequest {
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type
  */
 CreateContainerLabelRequest.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type
  */
 CreateContainerLabelRequest.prototype.shipFromParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/CarrierId} carrierId
+ * @type
  */
 CreateContainerLabelRequest.prototype.carrierId = undefined
 
 /**
  * The unique, vendor-provided identifier for the container.
  * @member {String} vendorContainerId
+ * @type
  */
 CreateContainerLabelRequest.prototype.vendorContainerId = undefined
 
 /**
  * An array of package objects in a container.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/Package>} packages
+ * @type
  */
 CreateContainerLabelRequest.prototype.packages = undefined

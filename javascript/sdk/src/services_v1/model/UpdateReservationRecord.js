@@ -62,17 +62,20 @@ export class UpdateReservationRecord {
 
 /**
  * @member {module:services_v1/model/Reservation} reservation
+ * @type
  */
 UpdateReservationRecord.prototype.reservation = undefined
 
 /**
  * A list of warnings returned in the sucessful execution response of an API request.
  * @member {Array.<module:services_v1/model/Warning>} warnings
+ * @type
  */
 UpdateReservationRecord.prototype.warnings = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type
  */
 UpdateReservationRecord.prototype.errors = undefined

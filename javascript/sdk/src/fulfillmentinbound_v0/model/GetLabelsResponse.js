@@ -60,11 +60,13 @@ export class GetLabelsResponse {
 
 /**
  * @member {module:fulfillmentinbound_v0/model/LabelDownloadURL} payload
+ * @type
  */
 GetLabelsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentinbound_v0/model/Error>} errors
+ * @type
  */
 GetLabelsResponse.prototype.errors = undefined

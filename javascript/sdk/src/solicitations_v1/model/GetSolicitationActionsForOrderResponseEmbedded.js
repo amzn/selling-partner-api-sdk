@@ -59,5 +59,6 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
 
 /**
  * @member {Array.<module:solicitations_v1/model/GetSolicitationActionResponse>} actions
+ * @type
  */
 GetSolicitationActionsForOrderResponseEmbedded.prototype.actions = undefined

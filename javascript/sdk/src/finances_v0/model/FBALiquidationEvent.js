@@ -62,21 +62,25 @@ export class FBALiquidationEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type
  */
 FBALiquidationEvent.prototype.postedDate = undefined
 
 /**
  * The identifier for the original removal order.
  * @member {String} originalRemovalOrderId
+ * @type
  */
 FBALiquidationEvent.prototype.originalRemovalOrderId = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} liquidationProceedsAmount
+ * @type
  */
 FBALiquidationEvent.prototype.liquidationProceedsAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} liquidationFeeAmount
+ * @type
  */
 FBALiquidationEvent.prototype.liquidationFeeAmount = undefined

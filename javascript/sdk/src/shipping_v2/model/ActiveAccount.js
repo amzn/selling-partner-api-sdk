@@ -59,11 +59,13 @@ export class ActiveAccount {
 /**
  * Identifier for the seller's carrier account.
  * @member {String} accountId
+ * @type
  */
 ActiveAccount.prototype.accountId = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
+ * @type
  */
 ActiveAccount.prototype.carrierId = undefined

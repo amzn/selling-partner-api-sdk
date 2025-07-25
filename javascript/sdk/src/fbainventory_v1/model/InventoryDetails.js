@@ -67,38 +67,45 @@ export class InventoryDetails {
 /**
  * The item quantity that can be picked, packed, and shipped.
  * @member {Number} fulfillableQuantity
+ * @type
  */
 InventoryDetails.prototype.fulfillableQuantity = undefined
 
 /**
  * The number of units in an inbound shipment for which you have notified Amazon.
  * @member {Number} inboundWorkingQuantity
+ * @type
  */
 InventoryDetails.prototype.inboundWorkingQuantity = undefined
 
 /**
  * The number of units in an inbound shipment that you have notified Amazon about and have provided a tracking number.
  * @member {Number} inboundShippedQuantity
+ * @type
  */
 InventoryDetails.prototype.inboundShippedQuantity = undefined
 
 /**
  * The number of units that have not yet been received at an Amazon fulfillment center for processing, but are part of an inbound shipment with some units that have already been received and processed.
  * @member {Number} inboundReceivingQuantity
+ * @type
  */
 InventoryDetails.prototype.inboundReceivingQuantity = undefined
 
 /**
  * @member {module:fbainventory_v1/model/ReservedQuantity} reservedQuantity
+ * @type
  */
 InventoryDetails.prototype.reservedQuantity = undefined
 
 /**
  * @member {module:fbainventory_v1/model/ResearchingQuantity} researchingQuantity
+ * @type
  */
 InventoryDetails.prototype.researchingQuantity = undefined
 
 /**
  * @member {module:fbainventory_v1/model/UnfulfillableQuantity} unfulfillableQuantity
+ * @type
  */
 InventoryDetails.prototype.unfulfillableQuantity = undefined

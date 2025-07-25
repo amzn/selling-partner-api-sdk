@@ -67,46 +67,54 @@ export class CarrierAccountInput {
 /**
  * descriptionLocalizationKey value .
  * @member {String} descriptionLocalizationKey
+ * @type
  */
 CarrierAccountInput.prototype.descriptionLocalizationKey = undefined
 
 /**
  * name value .
  * @member {String} name
+ * @type
  */
 CarrierAccountInput.prototype.name = undefined
 
 /**
  * groupName value .
  * @member {String} groupName
+ * @type
  */
 CarrierAccountInput.prototype.groupName = undefined
 
 /**
  * @member {module:shipping_v2/model/InputType} inputType
+ * @type
  */
 CarrierAccountInput.prototype.inputType = undefined
 
 /**
  * mandatory or not  value .
  * @member {Boolean} isMandatory
+ * @type
  */
 CarrierAccountInput.prototype.isMandatory = undefined
 
 /**
  * is value is Confidential .
  * @member {Boolean} isConfidential
+ * @type
  */
 CarrierAccountInput.prototype.isConfidential = undefined
 
 /**
  * is value is hidden .
  * @member {Boolean} isHidden
+ * @type
  */
 CarrierAccountInput.prototype.isHidden = undefined
 
 /**
  * A list of ValidationMetadata
  * @member {Array.<module:shipping_v2/model/ValidationMetadata>} validationMetadata
+ * @type
  */
 CarrierAccountInput.prototype.validationMetadata = undefined

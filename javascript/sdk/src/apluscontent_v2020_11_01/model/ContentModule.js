@@ -90,80 +90,96 @@ export class ContentModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentModuleType} contentModuleType
+ * @type
  */
 ContentModule.prototype.contentModuleType = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule} standardCompanyLogo
+ * @type
  */
 ContentModule.prototype.standardCompanyLogo = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardComparisonTableModule} standardComparisonTable
+ * @type
  */
 ContentModule.prototype.standardComparisonTable = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardFourImageTextModule} standardFourImageText
+ * @type
  */
 ContentModule.prototype.standardFourImageText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule} standardFourImageTextQuadrant
+ * @type
  */
 ContentModule.prototype.standardFourImageTextQuadrant = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardHeaderImageTextModule} standardHeaderImageText
+ * @type
  */
 ContentModule.prototype.standardHeaderImageText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageSidebarModule} standardImageSidebar
+ * @type
  */
 ContentModule.prototype.standardImageSidebar = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule} standardImageTextOverlay
+ * @type
  */
 ContentModule.prototype.standardImageTextOverlay = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardMultipleImageTextModule} standardMultipleImageText
+ * @type
  */
 ContentModule.prototype.standardMultipleImageText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule} standardProductDescription
+ * @type
  */
 ContentModule.prototype.standardProductDescription = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardSingleImageHighlightsModule} standardSingleImageHighlights
+ * @type
  */
 ContentModule.prototype.standardSingleImageHighlights = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardSingleImageSpecsDetailModule} standardSingleImageSpecsDetail
+ * @type
  */
 ContentModule.prototype.standardSingleImageSpecsDetail = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule} standardSingleSideImage
+ * @type
  */
 ContentModule.prototype.standardSingleSideImage = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTechSpecsModule} standardTechSpecs
+ * @type
  */
 ContentModule.prototype.standardTechSpecs = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextModule} standardText
+ * @type
  */
 ContentModule.prototype.standardText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardThreeImageTextModule} standardThreeImageText
+ * @type
  */
 ContentModule.prototype.standardThreeImageText = undefined

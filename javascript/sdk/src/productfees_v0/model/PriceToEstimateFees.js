@@ -63,15 +63,18 @@ export class PriceToEstimateFees {
 
 /**
  * @member {module:productfees_v0/model/MoneyType} listingPrice
+ * @type
  */
 PriceToEstimateFees.prototype.listingPrice = undefined
 
 /**
  * @member {module:productfees_v0/model/MoneyType} shipping
+ * @type
  */
 PriceToEstimateFees.prototype.shipping = undefined
 
 /**
  * @member {module:productfees_v0/model/Points} points
+ * @type
  */
 PriceToEstimateFees.prototype.points = undefined

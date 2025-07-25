@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AutoEnrollmentPreference.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class AutoEnrollmentPreference {

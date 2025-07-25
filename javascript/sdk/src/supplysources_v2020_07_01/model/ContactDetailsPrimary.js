@@ -58,11 +58,13 @@ export class ContactDetailsPrimary {
 /**
  * The email address to which email messages are delivered.
  * @member {String} email
+ * @type
  */
 ContactDetailsPrimary.prototype.email = undefined
 
 /**
  * The phone number of the person, business or institution.
  * @member {String} phone
+ * @type
  */
 ContactDetailsPrimary.prototype.phone = undefined

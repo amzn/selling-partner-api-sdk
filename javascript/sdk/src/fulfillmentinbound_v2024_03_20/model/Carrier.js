@@ -59,11 +59,13 @@ export class Carrier {
 /**
  * The carrier code. For example, USPS or DHLEX.
  * @member {String} alphaCode
+ * @type
  */
 Carrier.prototype.alphaCode = undefined
 
 /**
  * The name of the carrier.
  * @member {String} name
+ * @type
  */
 Carrier.prototype.name = undefined

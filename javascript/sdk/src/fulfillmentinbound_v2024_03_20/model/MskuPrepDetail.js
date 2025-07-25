@@ -72,32 +72,38 @@ export class MskuPrepDetail {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/AllOwnersConstraint} allOwnersConstraint
+ * @type
  */
 MskuPrepDetail.prototype.allOwnersConstraint = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/OwnerConstraint} labelOwnerConstraint
+ * @type
  */
 MskuPrepDetail.prototype.labelOwnerConstraint = undefined
 
 /**
  * The merchant SKU, a merchant-supplied identifier for a specific SKU.
  * @member {String} msku
+ * @type
  */
 MskuPrepDetail.prototype.msku = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/PrepCategory} prepCategory
+ * @type
  */
 MskuPrepDetail.prototype.prepCategory = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/OwnerConstraint} prepOwnerConstraint
+ * @type
  */
 MskuPrepDetail.prototype.prepOwnerConstraint = undefined
 
 /**
  * A list of preparation types associated with a preparation category.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepType>} prepTypes
+ * @type
  */
 MskuPrepDetail.prototype.prepTypes = undefined

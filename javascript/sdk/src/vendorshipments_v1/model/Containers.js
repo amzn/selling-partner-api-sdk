@@ -96,56 +96,66 @@ Containers.ContainerTypeEnum = {
 /**
  * The type of container.
  * @member {module:vendorshipments_v1/model/Containers.ContainerTypeEnum} containerType
+ * @type
  */
 Containers.prototype.containerType = undefined
 
 /**
  * An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
  * @member {String} containerSequenceNumber
+ * @type
  */
 Containers.prototype.containerSequenceNumber = undefined
 
 /**
  * A list of carton identifiers.
  * @member {Array.<module:vendorshipments_v1/model/ContainerIdentification>} containerIdentifiers
+ * @type
  */
 Containers.prototype.containerIdentifiers = undefined
 
 /**
  * The tracking number used for identifying the shipment.
  * @member {String} trackingNumber
+ * @type
  */
 Containers.prototype.trackingNumber = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Dimensions} dimensions
+ * @type
  */
 Containers.prototype.dimensions = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Weight} weight
+ * @type
  */
 Containers.prototype.weight = undefined
 
 /**
  * Number of layers per pallet.
  * @member {Number} tier
+ * @type
  */
 Containers.prototype.tier = undefined
 
 /**
  * Number of cartons per layer on the pallet.
  * @member {Number} block
+ * @type
  */
 Containers.prototype.block = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/InnerContainersDetails} innerContainersDetails
+ * @type
  */
 Containers.prototype.innerContainersDetails = undefined
 
 /**
  * A list of packed items.
  * @member {Array.<module:vendorshipments_v1/model/PackedItems>} packedItems
+ * @type
  */
 Containers.prototype.packedItems = undefined

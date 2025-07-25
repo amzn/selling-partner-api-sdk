@@ -59,5 +59,6 @@ export class InvoiceRequest {
 /**
  * Attachments to include in the message to the buyer.
  * @member {Array.<module:messaging_v1/model/Attachment>} attachments
+ * @type
  */
 InvoiceRequest.prototype.attachments = undefined

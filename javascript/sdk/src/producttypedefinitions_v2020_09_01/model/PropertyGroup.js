@@ -60,17 +60,20 @@ export class PropertyGroup {
 /**
  * The display label of the property group.
  * @member {String} title
+ * @type
  */
 PropertyGroup.prototype.title = undefined
 
 /**
  * The description of the property group.
  * @member {String} description
+ * @type
  */
 PropertyGroup.prototype.description = undefined
 
 /**
  * The names of the schema properties for the property group.
  * @member {Array.<String>} propertyNames
+ * @type
  */
 PropertyGroup.prototype.propertyNames = undefined

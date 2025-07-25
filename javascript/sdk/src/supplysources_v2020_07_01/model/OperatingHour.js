@@ -59,11 +59,13 @@ export class OperatingHour {
 /**
  * The opening time, ISO 8601 formatted timestamp without date, HH:mm.
  * @member {String} startTime
+ * @type
  */
 OperatingHour.prototype.startTime = undefined
 
 /**
  * The closing time, ISO 8601 formatted timestamp without date, HH:mm.
  * @member {String} endTime
+ * @type
  */
 OperatingHour.prototype.endTime = undefined

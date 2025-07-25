@@ -88,61 +88,72 @@ export class BankAccount {
 /**
  * The unique identifier provided by Amazon to identify the account.
  * @member {String} accountId
+ * @type
  */
 BankAccount.prototype.accountId = undefined
 
 /**
  * The bank account holder's name (expected to be an Amazon customer).
  * @member {String} accountHolderName
+ * @type
  */
 BankAccount.prototype.accountHolderName = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat} bankAccountNumberFormat
+ * @type
  */
 BankAccount.prototype.bankAccountNumberFormat = undefined
 
 /**
  * The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
  * @member {String} bankName
+ * @type
  */
 BankAccount.prototype.bankName = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccountOwnershipType} bankAccountOwnershipType
+ * @type
  */
 BankAccount.prototype.bankAccountOwnershipType = undefined
 
 /**
  * Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
  * @member {String} routingNumber
+ * @type
  */
 BankAccount.prototype.routingNumber = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankNumberFormat} bankNumberFormat
+ * @type
  */
 BankAccount.prototype.bankNumberFormat = undefined
 
 /**
  * The two-digit country code in ISO 3166 format.
  * @member {String} accountCountryCode
+ * @type
  */
 BankAccount.prototype.accountCountryCode = undefined
 
 /**
  * Bank account currency code in ISO 4217 format.
  * @member {String} accountCurrency
+ * @type
  */
 BankAccount.prototype.accountCurrency = undefined
 
 /**
  * The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
  * @member {String} bankAccountNumberTail
+ * @type
  */
 BankAccount.prototype.bankAccountNumberTail = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccountHolderStatus} bankAccountHolderStatus
+ * @type
  */
 BankAccount.prototype.bankAccountHolderStatus = undefined

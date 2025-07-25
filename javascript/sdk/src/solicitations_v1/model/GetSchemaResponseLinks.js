@@ -59,5 +59,6 @@ export class GetSchemaResponseLinks {
 
 /**
  * @member {module:solicitations_v1/model/LinkObject} self
+ * @type
  */
 GetSchemaResponseLinks.prototype.self = undefined

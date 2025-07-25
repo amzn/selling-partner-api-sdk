@@ -60,10 +60,12 @@ export class ExceptionOperatingHours {
 
 /**
  * @member {module:shipping_v2/model/DateRange} dateRange
+ * @type
  */
 ExceptionOperatingHours.prototype.dateRange = undefined
 
 /**
  * @member {module:shipping_v2/model/OperatingHours} operatingHours
+ * @type
  */
 ExceptionOperatingHours.prototype.operatingHours = undefined

@@ -68,59 +68,69 @@ export class Invoice {
 /**
  * The date and time the invoice is issued. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} date
+ * @type
  */
 Invoice.prototype.date = undefined
 
 /**
  * If the invoice is in an error state, this attribute displays the error code.
  * @member {String} errorCode
+ * @type
  */
 Invoice.prototype.errorCode = undefined
 
 /**
  * The invoice identifier that is used by an external party. This is typically the government agency that authorized the invoice.
  * @member {String} externalInvoiceId
+ * @type
  */
 Invoice.prototype.externalInvoiceId = undefined
 
 /**
  * The response message from the government authority when there is an error during invoice issuance.
  * @member {String} govResponse
+ * @type
  */
 Invoice.prototype.govResponse = undefined
 
 /**
  * The invoice identifier.
  * @member {String} id
+ * @type
  */
 Invoice.prototype.id = undefined
 
 /**
  * The classification of the invoice type. This varies across marketplaces. Use the `getInvoicesAttributes` operation to check `invoiceType` options.
  * @member {String} invoiceType
+ * @type
  */
 Invoice.prototype.invoiceType = undefined
 
 /**
  * Use this identifier in conjunction with `externalInvoiceId` to identify invoices from the same seller.
  * @member {String} series
+ * @type
  */
 Invoice.prototype.series = undefined
 
 /**
  * The invoice status classification. Use the `getInvoicesAttributes` operation to check invoice status options.
  * @member {String} status
+ * @type
  */
 Invoice.prototype.status = undefined
 
 /**
  * List with identifiers for the transactions associated to the invoice.
  * @member {Array.<module:invoices_v2024_06_19/model/TransactionIdentifier>} transactionIds
+ * @type
  */
 Invoice.prototype.transactionIds = undefined
 
 /**
  * Classification of the transaction that originated this invoice. Use the `getInvoicesAttributes` operation to check `transactionType` options.
  * @member {String} transactionType
+ * @type
  */
 Invoice.prototype.transactionType = undefined

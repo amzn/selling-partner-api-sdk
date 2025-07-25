@@ -90,22 +90,26 @@ Stop.FunctionCodeEnum = {
 /**
  * Provide the function code.
  * @member {module:vendorshipments_v1/model/Stop.FunctionCodeEnum} functionCode
+ * @type
  */
 Stop.prototype.functionCode = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Location} locationIdentification
+ * @type
  */
 Stop.prototype.locationIdentification = undefined
 
 /**
  * Date and time of the arrival of the cargo.
  * @member {Date} arrivalTime
+ * @type
  */
 Stop.prototype.arrivalTime = undefined
 
 /**
  * Date and time of the departure of the cargo.
  * @member {Date} departureTime
+ * @type
  */
 Stop.prototype.departureTime = undefined

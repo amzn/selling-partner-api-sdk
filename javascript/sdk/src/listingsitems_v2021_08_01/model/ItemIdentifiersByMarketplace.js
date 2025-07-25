@@ -59,11 +59,13 @@ export class ItemIdentifiersByMarketplace {
 /**
  * A marketplace identifier. Identifies the Amazon marketplace for the listings item.
  * @member {String} marketplaceId
+ * @type
  */
 ItemIdentifiersByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Amazon Standard Identification Number (ASIN) of the listings item.
  * @member {String} asin
+ * @type
  */
 ItemIdentifiersByMarketplace.prototype.asin = undefined

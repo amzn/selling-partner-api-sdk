@@ -61,17 +61,20 @@ export class UnmanifestedCarrierInformation {
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
+ * @type
  */
 UnmanifestedCarrierInformation.prototype.carrierId = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} carrierName
+ * @type
  */
 UnmanifestedCarrierInformation.prototype.carrierName = undefined
 
 /**
  * A list of UnmanifestedShipmentLocation
  * @member {Array.<module:shipping_v2/model/UnmanifestedShipmentLocation>} unmanifestedShipmentLocationList
+ * @type
  */
 UnmanifestedCarrierInformation.prototype.unmanifestedShipmentLocationList = undefined

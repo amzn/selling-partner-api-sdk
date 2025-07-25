@@ -65,21 +65,25 @@ export class PalletInput {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
+ * @type
  */
 PalletInput.prototype.dimensions = undefined
 
 /**
  * The number of containers where all other properties like weight or dimensions are identical.
  * @member {Number} quantity
+ * @type
  */
 PalletInput.prototype.quantity = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Stackability} stackability
+ * @type
  */
 PalletInput.prototype.stackability = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
+ * @type
  */
 PalletInput.prototype.weight = undefined

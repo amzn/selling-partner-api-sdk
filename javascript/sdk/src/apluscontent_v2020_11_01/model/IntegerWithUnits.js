@@ -63,11 +63,13 @@ export class IntegerWithUnits {
 /**
  * The dimension value.
  * @member {Number} value
+ * @type
  */
 IntegerWithUnits.prototype.value = undefined
 
 /**
  * The unit of measurement.
  * @member {String} units
+ * @type
  */
 IntegerWithUnits.prototype.units = undefined

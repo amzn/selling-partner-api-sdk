@@ -69,12 +69,14 @@ export class RegulatedInformationField {
 /**
  * The unique identifier of the field.
  * @member {String} fieldId
+ * @type
  */
 RegulatedInformationField.prototype.fieldId = undefined
 
 /**
  * The name of the field.
  * @member {String} fieldLabel
+ * @type
  */
 RegulatedInformationField.prototype.fieldLabel = undefined
 
@@ -101,11 +103,13 @@ RegulatedInformationField.FieldTypeEnum = {
 /**
  * The type of field.
  * @member {module:orders_v0/model/RegulatedInformationField.FieldTypeEnum} fieldType
+ * @type
  */
 RegulatedInformationField.prototype.fieldType = undefined
 
 /**
  * The content of the field as collected in regulatory form. Note that `FileAttachment` type fields contain a URL where you can download the attachment.
  * @member {String} fieldValue
+ * @type
  */
 RegulatedInformationField.prototype.fieldValue = undefined

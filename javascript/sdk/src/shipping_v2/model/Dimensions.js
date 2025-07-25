@@ -69,18 +69,21 @@ export class Dimensions {
 /**
  * The length of the package.
  * @member {Number} length
+ * @type
  */
 Dimensions.prototype.length = undefined
 
 /**
  * The width of the package.
  * @member {Number} width
+ * @type
  */
 Dimensions.prototype.width = undefined
 
 /**
  * The height of the package.
  * @member {Number} height
+ * @type
  */
 Dimensions.prototype.height = undefined
 
@@ -107,5 +110,6 @@ Dimensions.UnitEnum = {
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/Dimensions.UnitEnum} unit
+ * @type
  */
 Dimensions.prototype.unit = undefined

@@ -58,5 +58,6 @@ export class MarketplaceFilter {
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
  * @member {Array.<String>} marketplaceIds
+ * @type
  */
 MarketplaceFilter.prototype.marketplaceIds = undefined

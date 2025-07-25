@@ -63,15 +63,18 @@ export class Price {
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
+ * @type
  */
 Price.prototype.listingPrice = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} shippingPrice
+ * @type
  */
 Price.prototype.shippingPrice = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Points} points
+ * @type
  */
 Price.prototype.points = undefined

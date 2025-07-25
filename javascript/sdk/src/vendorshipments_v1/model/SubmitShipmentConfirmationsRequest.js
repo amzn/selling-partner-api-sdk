@@ -59,5 +59,6 @@ export class SubmitShipmentConfirmationsRequest {
 /**
  * A list of one or more shipment confirmations.
  * @member {Array.<module:vendorshipments_v1/model/ShipmentConfirmation>} shipmentConfirmations
+ * @type
  */
 SubmitShipmentConfirmationsRequest.prototype.shipmentConfirmations = undefined

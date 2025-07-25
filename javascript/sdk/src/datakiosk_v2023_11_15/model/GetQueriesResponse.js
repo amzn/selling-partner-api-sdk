@@ -63,10 +63,12 @@ export class GetQueriesResponse {
 /**
  * A list of queries.
  * @member {Array.<module:datakiosk_v2023_11_15/model/Query>} queries
+ * @type
  */
 GetQueriesResponse.prototype.queries = undefined
 
 /**
  * @member {module:datakiosk_v2023_11_15/model/GetQueriesResponsePagination} pagination
+ * @type
  */
 GetQueriesResponse.prototype.pagination = undefined

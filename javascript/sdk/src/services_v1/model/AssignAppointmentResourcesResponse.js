@@ -60,11 +60,13 @@ export class AssignAppointmentResourcesResponse {
 
 /**
  * @member {module:services_v1/model/AssignAppointmentResourcesResponsePayload} payload
+ * @type
  */
 AssignAppointmentResourcesResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type
  */
 AssignAppointmentResourcesResponse.prototype.errors = undefined

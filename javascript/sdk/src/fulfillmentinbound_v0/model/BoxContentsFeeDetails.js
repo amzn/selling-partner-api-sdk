@@ -61,15 +61,18 @@ export class BoxContentsFeeDetails {
 /**
  * The item quantity.
  * @member {Number} totalUnits
+ * @type
  */
 BoxContentsFeeDetails.prototype.totalUnits = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/Amount} feePerUnit
+ * @type
  */
 BoxContentsFeeDetails.prototype.feePerUnit = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/Amount} totalFee
+ * @type
  */
 BoxContentsFeeDetails.prototype.totalFee = undefined

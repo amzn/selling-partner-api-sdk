@@ -63,28 +63,33 @@ export class BuyerInfo {
 /**
  * The anonymized email address of the buyer.
  * @member {String} buyerEmail
+ * @type
  */
 BuyerInfo.prototype.buyerEmail = undefined
 
 /**
  * The buyer name or the recipient name.
  * @member {String} buyerName
+ * @type
  */
 BuyerInfo.prototype.buyerName = undefined
 
 /**
  * The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace.
  * @member {String} buyerCounty
+ * @type
  */
 BuyerInfo.prototype.buyerCounty = undefined
 
 /**
  * @member {module:orders_v0/model/BuyerTaxInfo} buyerTaxInfo
+ * @type
  */
 BuyerInfo.prototype.buyerTaxInfo = undefined
 
 /**
  * The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout.
  * @member {String} purchaseOrderNumber
+ * @type
  */
 BuyerInfo.prototype.purchaseOrderNumber = undefined

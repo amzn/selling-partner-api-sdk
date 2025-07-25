@@ -64,17 +64,20 @@ export class CreateNotificationRequest {
 /**
  * The unique identifier of the notification template you used to onboard your application.
  * @member {String} templateId
+ * @type
  */
 CreateNotificationRequest.prototype.templateId = undefined
 
 /**
  * The dynamic parameters required by the notification templated specified by `templateId`.
  * @member {Object.<String, Object>} notificationParameters
+ * @type
  */
 CreateNotificationRequest.prototype.notificationParameters = undefined
 
 /**
  * An encrypted marketplace identifier for the posted notification.
  * @member {String} marketplaceId
+ * @type
  */
 CreateNotificationRequest.prototype.marketplaceId = undefined

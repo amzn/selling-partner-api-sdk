@@ -66,15 +66,18 @@ export class ListOffersRequest {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ListOffersRequestPagination} pagination
+ * @type
  */
 ListOffersRequest.prototype.pagination = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ListOffersRequestFilters} filters
+ * @type
  */
 ListOffersRequest.prototype.filters = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ListOffersRequestSort} sort
+ * @type
  */
 ListOffersRequest.prototype.sort = undefined

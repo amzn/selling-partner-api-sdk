@@ -60,5 +60,6 @@ export class CreateContainerLabelResponse {
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/ContainerLabel} containerLabel
+ * @type
  */
 CreateContainerLabelResponse.prototype.containerLabel = undefined

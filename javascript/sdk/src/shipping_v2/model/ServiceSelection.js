@@ -60,5 +60,6 @@ export class ServiceSelection {
 /**
  * A list of ServiceId.
  * @member {Array.<String>} serviceId
+ * @type
  */
 ServiceSelection.prototype.serviceId = undefined

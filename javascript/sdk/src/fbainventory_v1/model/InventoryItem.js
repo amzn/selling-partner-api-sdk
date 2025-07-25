@@ -66,17 +66,20 @@ export class InventoryItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type
  */
 InventoryItem.prototype.sellerSku = undefined
 
 /**
  * The marketplaceId.
  * @member {String} marketplaceId
+ * @type
  */
 InventoryItem.prototype.marketplaceId = undefined
 
 /**
  * The quantity of item to add.
  * @member {Number} quantity
+ * @type
  */
 InventoryItem.prototype.quantity = undefined

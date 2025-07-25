@@ -61,11 +61,13 @@ export class Constraint {
 /**
  * A regular expression.
  * @member {String} validationRegEx
+ * @type
  */
 Constraint.prototype.validationRegEx = undefined
 
 /**
  * A validation string.
  * @member {String} validationString
+ * @type
  */
 Constraint.prototype.validationString = undefined

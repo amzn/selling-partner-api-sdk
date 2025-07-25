@@ -61,5 +61,6 @@ export class CreateMarketplaceItemLabelsResponse {
 /**
  * Resources to download the requested document.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/DocumentDownload>} documentDownloads
+ * @type
  */
 CreateMarketplaceItemLabelsResponse.prototype.documentDownloads = undefined

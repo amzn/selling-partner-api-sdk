@@ -60,5 +60,6 @@ export class ConfirmDeliveryWindowOptionsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type
  */
 ConfirmDeliveryWindowOptionsResponse.prototype.operationId = undefined

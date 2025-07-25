@@ -110,11 +110,13 @@ BusinessHours.DayOfWeekEnum = {
 /**
  * Day of the week.
  * @member {module:orders_v0/model/BusinessHours.DayOfWeekEnum} dayOfWeek
+ * @type
  */
 BusinessHours.prototype.dayOfWeek = undefined
 
 /**
  * Time window during the day when the business is open.
  * @member {Array.<module:orders_v0/model/OpenInterval>} openIntervals
+ * @type
  */
 BusinessHours.prototype.openIntervals = undefined

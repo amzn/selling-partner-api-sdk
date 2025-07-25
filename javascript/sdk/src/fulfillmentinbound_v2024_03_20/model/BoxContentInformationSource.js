@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class BoxContentInformationSource.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class BoxContentInformationSource {

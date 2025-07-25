@@ -58,5 +58,6 @@ export class GetShipmentDocumentsResponse {
 
 /**
  * @member {module:shipping_v2/model/GetShipmentDocumentsResult} payload
+ * @type
  */
 GetShipmentDocumentsResponse.prototype.payload = undefined

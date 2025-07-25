@@ -63,6 +63,7 @@ export class Reason {
 /**
  * A message describing the reason for the restriction.
  * @member {String} message
+ * @type
  */
 Reason.prototype.message = undefined
 
@@ -95,11 +96,13 @@ Reason.ReasonCodeEnum = {
 /**
  * A code indicating why the listing is restricted.
  * @member {module:listingsrestrictions_v2021_08_01/model/Reason.ReasonCodeEnum} reasonCode
+ * @type
  */
 Reason.prototype.reasonCode = undefined
 
 /**
  * A list of path forward links that may allow Selling Partners to remove the restriction.
  * @member {Array.<module:listingsrestrictions_v2021_08_01/model/Link>} links
+ * @type
  */
 Reason.prototype.links = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class SupplySourceStatusReadOnly.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class SupplySourceStatusReadOnly {

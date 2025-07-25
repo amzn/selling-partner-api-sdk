@@ -64,10 +64,12 @@ export class AvailableCarrierWillPickUpOption {
 
 /**
  * @member {module:merchantfulfillment_v0/model/CarrierWillPickUpOption} carrierWillPickUpOption
+ * @type
  */
 AvailableCarrierWillPickUpOption.prototype.carrierWillPickUpOption = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CurrencyAmount} charge
+ * @type
  */
 AvailableCarrierWillPickUpOption.prototype.charge = undefined

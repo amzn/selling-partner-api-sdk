@@ -82,63 +82,74 @@ export class ReturnItem {
 /**
  * An identifier assigned by the seller to the return item.
  * @member {String} sellerReturnItemId
+ * @type
  */
 ReturnItem.prototype.sellerReturnItemId = undefined
 
 /**
  * The identifier assigned to the item by the seller when the fulfillment order was created.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type
  */
 ReturnItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * The identifier for the shipment that is associated with the return item.
  * @member {String} amazonShipmentId
+ * @type
  */
 ReturnItem.prototype.amazonShipmentId = undefined
 
 /**
  * The return reason code assigned to the return item by the seller.
  * @member {String} sellerReturnReasonCode
+ * @type
  */
 ReturnItem.prototype.sellerReturnReasonCode = undefined
 
 /**
  * An optional comment about the return item.
  * @member {String} returnComment
+ * @type
  */
 ReturnItem.prototype.returnComment = undefined
 
 /**
  * The return reason code that the Amazon fulfillment center assigned to the return item.
  * @member {String} amazonReturnReasonCode
+ * @type
  */
 ReturnItem.prototype.amazonReturnReasonCode = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentReturnItemStatus} status
+ * @type
  */
 ReturnItem.prototype.status = undefined
 
 /**
  * Date timestamp
  * @member {Date} statusChangedDate
+ * @type
  */
 ReturnItem.prototype.statusChangedDate = undefined
 
 /**
  * Identifies the return authorization used to return this item. Refer to `ReturnAuthorization`.
  * @member {String} returnAuthorizationId
+ * @type
  */
 ReturnItem.prototype.returnAuthorizationId = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/ReturnItemDisposition} returnReceivedCondition
+ * @type
  */
 ReturnItem.prototype.returnReceivedCondition = undefined
 
 /**
  * The identifier for the Amazon fulfillment center that processed the return item.
  * @member {String} fulfillmentCenterId
+ * @type
  */
 ReturnItem.prototype.fulfillmentCenterId = undefined

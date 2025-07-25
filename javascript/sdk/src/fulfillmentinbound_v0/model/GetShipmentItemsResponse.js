@@ -60,11 +60,13 @@ export class GetShipmentItemsResponse {
 
 /**
  * @member {module:fulfillmentinbound_v0/model/GetShipmentItemsResult} payload
+ * @type
  */
 GetShipmentItemsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentinbound_v0/model/Error>} errors
+ * @type
  */
 GetShipmentItemsResponse.prototype.errors = undefined

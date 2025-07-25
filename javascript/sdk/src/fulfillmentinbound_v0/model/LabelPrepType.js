@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class LabelPrepType.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class LabelPrepType {

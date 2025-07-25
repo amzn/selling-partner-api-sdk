@@ -67,21 +67,25 @@ export class Event {
 
 /**
  * @member {module:shipping_v2/model/EventCode} eventCode
+ * @type
  */
 Event.prototype.eventCode = undefined
 
 /**
  * @member {module:shipping_v2/model/Location} location
+ * @type
  */
 Event.prototype.location = undefined
 
 /**
  * The ISO 8601 formatted timestamp of the event.
  * @member {Date} eventTime
+ * @type
  */
 Event.prototype.eventTime = undefined
 
 /**
  * @member {module:shipping_v2/model/ShipmentType} shipmentType
+ * @type
  */
 Event.prototype.shipmentType = undefined

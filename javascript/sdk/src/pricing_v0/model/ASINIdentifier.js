@@ -63,11 +63,13 @@ export class ASINIdentifier {
 /**
  * A marketplace identifier.
  * @member {String} marketplaceId
+ * @type
  */
 ASINIdentifier.prototype.marketplaceId = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type
  */
 ASINIdentifier.prototype.ASIN = undefined

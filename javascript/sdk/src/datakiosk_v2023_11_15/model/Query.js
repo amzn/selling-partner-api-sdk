@@ -75,18 +75,21 @@ export class Query {
 /**
  * The query identifier. This identifier is unique only in combination with a selling partner account ID.
  * @member {String} queryId
+ * @type
  */
 Query.prototype.queryId = undefined
 
 /**
  * The submitted query.
  * @member {String} query
+ * @type
  */
 Query.prototype.query = undefined
 
 /**
  * The date and time when the query was created, in ISO 8601 date time format.
  * @member {Date} createdTime
+ * @type
  */
 Query.prototype.createdTime = undefined
 
@@ -131,34 +134,40 @@ Query.ProcessingStatusEnum = {
 /**
  * The processing status of the query.
  * @member {module:datakiosk_v2023_11_15/model/Query.ProcessingStatusEnum} processingStatus
+ * @type
  */
 Query.prototype.processingStatus = undefined
 
 /**
  * The date and time when the query processing started, in ISO 8601 date time format.
  * @member {Date} processingStartTime
+ * @type
  */
 Query.prototype.processingStartTime = undefined
 
 /**
  * The date and time when the query processing completed, in ISO 8601 date time format.
  * @member {Date} processingEndTime
+ * @type
  */
 Query.prototype.processingEndTime = undefined
 
 /**
  * The data document identifier. This identifier is only present when there is data available as a result of the query. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the `getDocument` operation to get the information required to retrieve the data document's contents.
  * @member {String} dataDocumentId
+ * @type
  */
 Query.prototype.dataDocumentId = undefined
 
 /**
  * The error document identifier. This identifier is only present when an error occurs during query processing. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the `getDocument` operation to get the information required to retrieve the error document's contents.
  * @member {String} errorDocumentId
+ * @type
  */
 Query.prototype.errorDocumentId = undefined
 
 /**
  * @member {module:datakiosk_v2023_11_15/model/QueryPagination} pagination
+ * @type
  */
 Query.prototype.pagination = undefined

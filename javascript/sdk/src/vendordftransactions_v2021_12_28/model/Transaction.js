@@ -65,6 +65,7 @@ export class Transaction {
 /**
  * The unique identifier sent in the 'transactionId' field in response to the post request of a specific transaction.
  * @member {String} transactionId
+ * @type
  */
 Transaction.prototype.transactionId = undefined
 
@@ -97,10 +98,12 @@ Transaction.StatusEnum = {
 /**
  * Current processing status of the transaction.
  * @member {module:vendordftransactions_v2021_12_28/model/Transaction.StatusEnum} status
+ * @type
  */
 Transaction.prototype.status = undefined
 
 /**
  * @member {module:vendordftransactions_v2021_12_28/model/ErrorList} errors
+ * @type
  */
 Transaction.prototype.errors = undefined

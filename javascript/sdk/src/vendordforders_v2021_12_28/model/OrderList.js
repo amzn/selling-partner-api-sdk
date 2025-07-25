@@ -60,11 +60,13 @@ export class OrderList {
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Pagination} pagination
+ * @type
  */
 OrderList.prototype.pagination = undefined
 
 /**
  * Represents a purchase order within the OrderList.
  * @member {Array.<module:vendordforders_v2021_12_28/model/Order>} orders
+ * @type
  */
 OrderList.prototype.orders = undefined

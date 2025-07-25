@@ -64,22 +64,26 @@ export class Price {
 /**
  * The status of the operation.
  * @member {String} status
+ * @type
  */
 Price.prototype.status = undefined
 
 /**
  * The seller stock keeping unit (SKU) of the item.
  * @member {String} sellerSKU
+ * @type
  */
 Price.prototype.sellerSKU = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type
  */
 Price.prototype.ASIN = undefined
 
 /**
  * @member {module:pricing_v0/model/Product} product
+ * @type
  */
 Price.prototype.product = undefined

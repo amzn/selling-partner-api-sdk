@@ -64,10 +64,12 @@ export class UpdateItemComplianceDetailsRequest {
 /**
  * The merchant SKU, a merchant-supplied identifier for a specific SKU.
  * @member {String} msku
+ * @type
  */
 UpdateItemComplianceDetailsRequest.prototype.msku = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/TaxDetails} taxDetails
+ * @type
  */
 UpdateItemComplianceDetailsRequest.prototype.taxDetails = undefined

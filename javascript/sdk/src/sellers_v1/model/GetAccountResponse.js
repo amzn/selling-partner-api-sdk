@@ -60,11 +60,13 @@ export class GetAccountResponse {
 
 /**
  * @member {module:sellers_v1/model/Account} payload
+ * @type
  */
 GetAccountResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:sellers_v1/model/Error>} errors
+ * @type
  */
 GetAccountResponse.prototype.errors = undefined

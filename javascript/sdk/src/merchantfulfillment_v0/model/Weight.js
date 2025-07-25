@@ -64,10 +64,12 @@ export class Weight {
 /**
  * The weight value.
  * @member {Number} value
+ * @type
  */
 Weight.prototype.value = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/UnitOfWeight} unit
+ * @type
  */
 Weight.prototype.unit = undefined

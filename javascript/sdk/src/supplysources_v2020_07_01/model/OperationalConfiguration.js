@@ -64,20 +64,24 @@ export class OperationalConfiguration {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ContactDetails} contactDetails
+ * @type
  */
 OperationalConfiguration.prototype.contactDetails = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ThroughputConfig} throughputConfig
+ * @type
  */
 OperationalConfiguration.prototype.throughputConfig = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OperatingHoursByDay} operatingHoursByDay
+ * @type
  */
 OperationalConfiguration.prototype.operatingHoursByDay = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/Duration} handlingTime
+ * @type
  */
 OperationalConfiguration.prototype.handlingTime = undefined

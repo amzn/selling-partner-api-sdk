@@ -58,5 +58,6 @@ export class FulfillmentInstruction {
 /**
  * The `sourceId` of the location from where you want the order fulfilled.
  * @member {String} fulfillmentSupplySourceId
+ * @type
  */
 FulfillmentInstruction.prototype.fulfillmentSupplySourceId = undefined

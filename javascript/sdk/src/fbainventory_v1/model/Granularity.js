@@ -59,11 +59,13 @@ export class Granularity {
 /**
  * The granularity type for the inventory aggregation level.
  * @member {String} granularityType
+ * @type
  */
 Granularity.prototype.granularityType = undefined
 
 /**
  * The granularity ID for the specified granularity type. When granularityType is Marketplace, specify the marketplaceId.
  * @member {String} granularityId
+ * @type
  */
 Granularity.prototype.granularityId = undefined

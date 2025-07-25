@@ -62,6 +62,7 @@ export class LabelData {
 /**
  * A sequential number assigned to each label within a shipment.
  * @member {Number} labelSequenceNumber
+ * @type
  */
 LabelData.prototype.labelSequenceNumber = undefined
 
@@ -82,23 +83,27 @@ LabelData.LabelFormatEnum = {
 /**
  * The format of the label.
  * @member {module:vendorshipments_v1/model/LabelData.LabelFormatEnum} labelFormat
+ * @type
  */
 LabelData.prototype.labelFormat = undefined
 
 /**
  * Unique identification of the carrier.
  * @member {String} carrierCode
+ * @type
  */
 LabelData.prototype.carrierCode = undefined
 
 /**
  * Tracking Id for the transportation.
  * @member {String} trackingId
+ * @type
  */
 LabelData.prototype.trackingId = undefined
 
 /**
  * The base-64 encoded string that represents the shipment label.
  * @member {String} label
+ * @type
  */
 LabelData.prototype.label = undefined

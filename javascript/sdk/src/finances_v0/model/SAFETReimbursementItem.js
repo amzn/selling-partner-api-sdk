@@ -61,17 +61,20 @@ export class SAFETReimbursementItem {
 /**
  * A list of charge information on the seller's account.
  * @member {Array.<module:finances_v0/model/ChargeComponent>} itemChargeList
+ * @type
  */
 SAFETReimbursementItem.prototype.itemChargeList = undefined
 
 /**
  * The description of the item as shown on the product detail page on the retail website.
  * @member {String} productDescription
+ * @type
  */
 SAFETReimbursementItem.prototype.productDescription = undefined
 
 /**
  * The number of units of the item being reimbursed.
  * @member {String} quantity
+ * @type
  */
 SAFETReimbursementItem.prototype.quantity = undefined

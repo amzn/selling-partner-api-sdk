@@ -63,11 +63,13 @@ export class OrderIneligibilityReason {
 /**
  * Code for the order ineligibility.
  * @member {String} code
+ * @type
  */
 OrderIneligibilityReason.prototype.code = undefined
 
 /**
  * Description detailing the ineligibility reason of the order.
  * @member {String} description
+ * @type
  */
 OrderIneligibilityReason.prototype.description = undefined

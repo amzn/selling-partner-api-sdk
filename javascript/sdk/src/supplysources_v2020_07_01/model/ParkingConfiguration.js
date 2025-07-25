@@ -61,16 +61,19 @@ export class ParkingConfiguration {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingCostType} parkingCostType
+ * @type
  */
 ParkingConfiguration.prototype.parkingCostType = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType} parkingSpotIdentificationType
+ * @type
  */
 ParkingConfiguration.prototype.parkingSpotIdentificationType = undefined
 
 /**
  * An unsigned integer that can be only positive or zero.
  * @member {Number} numberOfParkingSpots
+ * @type
  */
 ParkingConfiguration.prototype.numberOfParkingSpots = undefined

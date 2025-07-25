@@ -61,11 +61,13 @@ export class SellerFeedbackType {
 /**
  * The percentage of positive feedback for the seller in the past 365 days.
  * @member {Number} sellerPositiveFeedbackRating
+ * @type
  */
 SellerFeedbackType.prototype.sellerPositiveFeedbackRating = undefined
 
 /**
  * The number of ratings received about the seller.
  * @member {Number} feedbackCount
+ * @type
  */
 SellerFeedbackType.prototype.feedbackCount = undefined

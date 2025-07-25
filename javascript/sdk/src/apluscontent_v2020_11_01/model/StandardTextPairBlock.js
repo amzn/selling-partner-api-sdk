@@ -59,10 +59,12 @@ export class StandardTextPairBlock {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} label
+ * @type
  */
 StandardTextPairBlock.prototype.label = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} description
+ * @type
  */
 StandardTextPairBlock.prototype.description = undefined

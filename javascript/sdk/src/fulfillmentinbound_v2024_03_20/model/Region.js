@@ -60,17 +60,20 @@ export class Region {
 /**
  * ISO 3166 standard alpha-2 country code.
  * @member {String} countryCode
+ * @type
  */
 Region.prototype.countryCode = undefined
 
 /**
  * State.
  * @member {String} state
+ * @type
  */
 Region.prototype.state = undefined
 
 /**
  * An identifier for a warehouse, such as a FC, IXD, upstream storage.
  * @member {String} warehouseId
+ * @type
  */
 Region.prototype.warehouseId = undefined

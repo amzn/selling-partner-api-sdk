@@ -60,5 +60,6 @@ export class InitiatePayoutResponse {
 /**
  * The financial event group ID for a successfully initiated payout. You can use this ID to track payout information.
  * @member {String} payoutReferenceId
+ * @type
  */
 InitiatePayoutResponse.prototype.payoutReferenceId = undefined

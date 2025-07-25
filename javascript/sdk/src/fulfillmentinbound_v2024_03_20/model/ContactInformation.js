@@ -64,17 +64,20 @@ export class ContactInformation {
 /**
  * The email address.
  * @member {String} email
+ * @type
  */
 ContactInformation.prototype.email = undefined
 
 /**
  * The contact's name.
  * @member {String} name
+ * @type
  */
 ContactInformation.prototype.name = undefined
 
 /**
  * The phone number.
  * @member {String} phoneNumber
+ * @type
  */
 ContactInformation.prototype.phoneNumber = undefined

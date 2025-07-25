@@ -66,17 +66,20 @@ export class ItemImage {
 /**
  * The link, or URL, to the image.
  * @member {String} link
+ * @type
  */
 ItemImage.prototype.link = undefined
 
 /**
  * The height of the image in pixels.
  * @member {Number} height
+ * @type
  */
 ItemImage.prototype.height = undefined
 
 /**
  * The width of the image in pixels.
  * @member {Number} width
+ * @type
  */
 ItemImage.prototype.width = undefined

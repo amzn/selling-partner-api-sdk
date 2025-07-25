@@ -86,5 +86,6 @@ PrimeDetails.EligibilityEnum = {
 /**
  * Indicates whether the offer is an Amazon Prime offer.
  * @member {module:pricing_v2022_05_01/model/PrimeDetails.EligibilityEnum} eligibility
+ * @type
  */
 PrimeDetails.prototype.eligibility = undefined

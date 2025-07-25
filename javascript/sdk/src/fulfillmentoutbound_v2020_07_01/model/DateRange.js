@@ -63,11 +63,13 @@ export class DateRange {
 /**
  * Date timestamp
  * @member {Date} earliest
+ * @type
  */
 DateRange.prototype.earliest = undefined
 
 /**
  * Date timestamp
  * @member {Date} latest
+ * @type
  */
 DateRange.prototype.latest = undefined

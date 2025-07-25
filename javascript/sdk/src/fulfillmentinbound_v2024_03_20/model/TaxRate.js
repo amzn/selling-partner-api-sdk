@@ -60,17 +60,20 @@ export class TaxRate {
 /**
  * Rate of cess tax.
  * @member {Number} cessRate
+ * @type
  */
 TaxRate.prototype.cessRate = undefined
 
 /**
  * Rate of gst tax.
  * @member {Number} gstRate
+ * @type
  */
 TaxRate.prototype.gstRate = undefined
 
 /**
  * Type of tax. Possible values: `CGST`, `SGST`, `IGST`, `TOTAL_TAX`.
  * @member {String} taxType
+ * @type
  */
 TaxRate.prototype.taxType = undefined

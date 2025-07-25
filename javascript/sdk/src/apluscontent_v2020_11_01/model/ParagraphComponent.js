@@ -60,5 +60,6 @@ export class ParagraphComponent {
 
 /**
  * @member {Array.<module:apluscontent_v2020_11_01/model/TextComponent>} textList
+ * @type
  */
 ParagraphComponent.prototype.textList = undefined

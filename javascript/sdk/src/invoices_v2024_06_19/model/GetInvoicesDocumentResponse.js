@@ -58,5 +58,6 @@ export class GetInvoicesDocumentResponse {
 
 /**
  * @member {module:invoices_v2024_06_19/model/InvoicesDocument} invoicesDocument
+ * @type
  */
 GetInvoicesDocumentResponse.prototype.invoicesDocument = undefined

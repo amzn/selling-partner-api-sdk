@@ -64,12 +64,14 @@ export class PackingSlip {
 /**
  * Purchase order number of the shipment that the packing slip is for.
  * @member {String} purchaseOrderNumber
+ * @type
  */
 PackingSlip.prototype.purchaseOrderNumber = undefined
 
 /**
  * A Base64 string of the packing slip PDF.
  * @member {String} content
+ * @type
  */
 PackingSlip.prototype.content = undefined
 
@@ -90,5 +92,6 @@ PackingSlip.ContentTypeEnum = {
 /**
  * The format of the file such as PDF, JPEG etc.
  * @member {module:vendordfshipping_v2021_12_28/model/PackingSlip.ContentTypeEnum} contentType
+ * @type
  */
 PackingSlip.prototype.contentType = undefined

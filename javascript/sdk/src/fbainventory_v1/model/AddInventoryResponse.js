@@ -59,5 +59,6 @@ export class AddInventoryResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fbainventory_v1/model/Error>} errors
+ * @type
  */
 AddInventoryResponse.prototype.errors = undefined

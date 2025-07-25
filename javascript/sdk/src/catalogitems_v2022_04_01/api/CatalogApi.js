@@ -24,7 +24,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2022-04-01
 */
 export class CatalogApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -71,7 +71,7 @@ export class CatalogApi {
      * @param {Object} opts Optional parameters
      * @param {Array.<module:catalogitems_v2022_04_01/model/String>} opts.includedData A comma-delimited list of datasets to include in the response.
      * @param {String} opts.locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:catalogitems_v2022_04_01/model/Item} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   getCatalogItemWithHttpInfo (asin, marketplaceIds, opts) {
     opts = opts || {}
@@ -118,7 +118,7 @@ export class CatalogApi {
      * @param {Object} opts Optional parameters
      * @param {Array.<module:catalogitems_v2022_04_01/model/String>} opts.includedData A comma-delimited list of datasets to include in the response.
      * @param {String} opts.locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:catalogitems_v2022_04_01/model/Item}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   getCatalogItem (asin, marketplaceIds, opts) {
     return this.getCatalogItemWithHttpInfo(asin, marketplaceIds, opts)
@@ -142,7 +142,7 @@ export class CatalogApi {
      * @param {Number} opts.pageSize The number of results to include on each page. (default to 10)
      * @param {String} opts.pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
      * @param {String} opts.keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:catalogitems_v2022_04_01/model/ItemSearchResults} and HTTP response
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   searchCatalogItemsWithHttpInfo (marketplaceIds, opts) {
     opts = opts || {}
@@ -200,7 +200,7 @@ export class CatalogApi {
      * @param {Number} opts.pageSize The number of results to include on each page. (default to 10)
      * @param {String} opts.pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
      * @param {String} opts.keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:catalogitems_v2022_04_01/model/ItemSearchResults}
+     * @return {Promise>}{{^returnType}}Promise{{/returnType}}
      */
   searchCatalogItems (marketplaceIds, opts) {
     return this.searchCatalogItemsWithHttpInfo(marketplaceIds, opts)

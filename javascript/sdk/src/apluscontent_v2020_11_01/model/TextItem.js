@@ -64,10 +64,12 @@ export class TextItem {
 /**
  * The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.
  * @member {Number} position
+ * @type
  */
 TextItem.prototype.position = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} text
+ * @type
  */
 TextItem.prototype.text = undefined

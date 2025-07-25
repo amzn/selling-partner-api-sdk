@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AggregationTimePeriod.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class AggregationTimePeriod {

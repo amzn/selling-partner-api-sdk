@@ -64,20 +64,24 @@ export class FeesEstimateResult {
 /**
  * The status of the fee request. Possible values: Success, ClientError, ServiceError.
  * @member {String} status
+ * @type
  */
 FeesEstimateResult.prototype.status = undefined
 
 /**
  * @member {module:productfees_v0/model/FeesEstimateIdentifier} feesEstimateIdentifier
+ * @type
  */
 FeesEstimateResult.prototype.feesEstimateIdentifier = undefined
 
 /**
  * @member {module:productfees_v0/model/FeesEstimate} feesEstimate
+ * @type
  */
 FeesEstimateResult.prototype.feesEstimate = undefined
 
 /**
  * @member {module:productfees_v0/model/FeesEstimateError} error
+ * @type
  */
 FeesEstimateResult.prototype.error = undefined

@@ -63,10 +63,12 @@ export class ListDeliveryWindowOptionsResponse {
 /**
  * Delivery window options generated for the placement option.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/DeliveryWindowOption>} deliveryWindowOptions
+ * @type
  */
 ListDeliveryWindowOptionsResponse.prototype.deliveryWindowOptions = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type
  */
 ListDeliveryWindowOptionsResponse.prototype.pagination = undefined

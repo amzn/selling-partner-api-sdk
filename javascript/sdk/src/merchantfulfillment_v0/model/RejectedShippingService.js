@@ -70,29 +70,34 @@ export class RejectedShippingService {
 /**
  * The rejected shipping carrier name. For example, USPS.
  * @member {String} carrierName
+ * @type
  */
 RejectedShippingService.prototype.carrierName = undefined
 
 /**
  * The rejected shipping service localized name. For example, FedEx Standard Overnight.
  * @member {String} shippingServiceName
+ * @type
  */
 RejectedShippingService.prototype.shippingServiceName = undefined
 
 /**
  * An Amazon-defined shipping service identifier.
  * @member {String} shippingServiceId
+ * @type
  */
 RejectedShippingService.prototype.shippingServiceId = undefined
 
 /**
  * A reason code meant to be consumed programatically. For example, `CARRIER_CANNOT_SHIP_TO_POBOX`.
  * @member {String} rejectionReasonCode
+ * @type
  */
 RejectedShippingService.prototype.rejectionReasonCode = undefined
 
 /**
  * A localized human readable description of the rejected reason.
  * @member {String} rejectionReasonMessage
+ * @type
  */
 RejectedShippingService.prototype.rejectionReasonMessage = undefined

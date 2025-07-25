@@ -60,11 +60,13 @@ export class CancelShipmentResponse {
 
 /**
  * @member {module:merchantfulfillment_v0/model/Shipment} payload
+ * @type
  */
 CancelShipmentResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:merchantfulfillment_v0/model/Error>} errors
+ * @type
  */
 CancelShipmentResponse.prototype.errors = undefined

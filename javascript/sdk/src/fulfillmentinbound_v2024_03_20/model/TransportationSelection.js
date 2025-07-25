@@ -64,17 +64,20 @@ export class TransportationSelection {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/ContactInformation} contactInformation
+ * @type
  */
 TransportationSelection.prototype.contactInformation = undefined
 
 /**
  * Shipment ID that the transportation Option is for.
  * @member {String} shipmentId
+ * @type
  */
 TransportationSelection.prototype.shipmentId = undefined
 
 /**
  * Transportation option being selected for the provided shipment.
  * @member {String} transportationOptionId
+ * @type
  */
 TransportationSelection.prototype.transportationOptionId = undefined

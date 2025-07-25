@@ -58,5 +58,6 @@ export class DirectPurchaseResponse {
 
 /**
  * @member {module:shipping_v2/model/DirectPurchaseResult} payload
+ * @type
  */
 DirectPurchaseResponse.prototype.payload = undefined

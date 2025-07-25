@@ -79,11 +79,13 @@ export class Offer {
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type
  */
 Offer.prototype.sellerId = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Condition} condition
+ * @type
  */
 Offer.prototype.condition = undefined
 
@@ -176,31 +178,37 @@ Offer.SubConditionEnum = {
 /**
  * The item subcondition of the offer.
  * @member {module:pricing_v2022_05_01/model/Offer.SubConditionEnum} subCondition
+ * @type
  */
 Offer.prototype.subCondition = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/FulfillmentType} fulfillmentType
+ * @type
  */
 Offer.prototype.fulfillmentType = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
+ * @type
  */
 Offer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
  * @member {Array.<module:pricing_v2022_05_01/model/ShippingOption>} shippingOptions
+ * @type
  */
 Offer.prototype.shippingOptions = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Points} points
+ * @type
  */
 Offer.prototype.points = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/PrimeDetails} primeDetails
+ * @type
  */
 Offer.prototype.primeDetails = undefined

@@ -60,17 +60,20 @@ export class AppointmentSlot {
 /**
  * Time window start time in ISO 8601 format.
  * @member {Date} startTime
+ * @type
  */
 AppointmentSlot.prototype.startTime = undefined
 
 /**
  * Time window end time in ISO 8601 format.
  * @member {Date} endTime
+ * @type
  */
 AppointmentSlot.prototype.endTime = undefined
 
 /**
  * Number of resources for which a slot can be reserved.
  * @member {Number} capacity
+ * @type
  */
 AppointmentSlot.prototype.capacity = undefined

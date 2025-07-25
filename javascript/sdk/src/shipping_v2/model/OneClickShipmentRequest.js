@@ -89,69 +89,82 @@ export class OneClickShipmentRequest {
 
 /**
  * @member {module:shipping_v2/model/Address} shipTo
+ * @type
  */
 OneClickShipmentRequest.prototype.shipTo = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFrom
+ * @type
  */
 OneClickShipmentRequest.prototype.shipFrom = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} returnTo
+ * @type
  */
 OneClickShipmentRequest.prototype.returnTo = undefined
 
 /**
  * The ship date and time (the requested pickup). This defaults to the current date and time.
  * @member {Date} shipDate
+ * @type
  */
 OneClickShipmentRequest.prototype.shipDate = undefined
 
 /**
  * @member {module:shipping_v2/model/GoodsOwner} goodsOwner
+ * @type
  */
 OneClickShipmentRequest.prototype.goodsOwner = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
  * @member {Array.<module:shipping_v2/model/Package>} packages
+ * @type
  */
 OneClickShipmentRequest.prototype.packages = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
  * @member {Array.<module:shipping_v2/model/OneClickShipmentValueAddedService>} valueAddedServicesDetails
+ * @type
  */
 OneClickShipmentRequest.prototype.valueAddedServicesDetails = undefined
 
 /**
  * A list of tax detail information.
  * @member {Array.<module:shipping_v2/model/TaxDetail>} taxDetails
+ * @type
  */
 OneClickShipmentRequest.prototype.taxDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/ChannelDetails} channelDetails
+ * @type
  */
 OneClickShipmentRequest.prototype.channelDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/RequestedDocumentSpecification} labelSpecifications
+ * @type
  */
 OneClickShipmentRequest.prototype.labelSpecifications = undefined
 
 /**
  * @member {module:shipping_v2/model/ServiceSelection} serviceSelection
+ * @type
  */
 OneClickShipmentRequest.prototype.serviceSelection = undefined
 
 /**
  * @member {module:shipping_v2/model/ShipperInstruction} shipperInstruction
+ * @type
  */
 OneClickShipmentRequest.prototype.shipperInstruction = undefined
 
 /**
  * @member {module:shipping_v2/model/AccessPointDetails} destinationAccessPointDetails
+ * @type
  */
 OneClickShipmentRequest.prototype.destinationAccessPointDetails = undefined

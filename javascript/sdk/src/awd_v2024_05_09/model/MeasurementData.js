@@ -64,15 +64,18 @@ export class MeasurementData {
 
 /**
  * @member {module:awd_v2024_05_09/model/PackageDimensions} dimensions
+ * @type
  */
 MeasurementData.prototype.dimensions = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/PackageVolume} volume
+ * @type
  */
 MeasurementData.prototype.volume = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/PackageWeight} weight
+ * @type
  */
 MeasurementData.prototype.weight = undefined

@@ -60,5 +60,6 @@ export class SetPrepDetailsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type
  */
 SetPrepDetailsResponse.prototype.operationId = undefined

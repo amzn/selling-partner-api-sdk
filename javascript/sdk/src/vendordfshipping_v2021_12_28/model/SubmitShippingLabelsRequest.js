@@ -59,5 +59,6 @@ export class SubmitShippingLabelsRequest {
 /**
  * An array of shipping label requests to be processed.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShippingLabelRequest>} shippingLabelRequests
+ * @type
  */
 SubmitShippingLabelsRequest.prototype.shippingLabelRequests = undefined

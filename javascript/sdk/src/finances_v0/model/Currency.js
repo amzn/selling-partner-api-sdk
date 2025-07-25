@@ -59,11 +59,13 @@ export class Currency {
 /**
  * The three-digit currency code in ISO 4217 format.
  * @member {String} currencyCode
+ * @type
  */
 Currency.prototype.currencyCode = undefined
 
 /**
  * Fields with a schema type of BigDecimal are a signed decimal number (for example CurrencyAmount).
  * @member {Number} currencyAmount
+ * @type
  */
 Currency.prototype.currencyAmount = undefined

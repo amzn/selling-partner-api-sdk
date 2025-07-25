@@ -65,16 +65,19 @@ export class CreateSubscriptionRequest {
 /**
  * The version of the payload object to be used in the notification.
  * @member {String} payloadVersion
+ * @type
  */
 CreateSubscriptionRequest.prototype.payloadVersion = undefined
 
 /**
  * The identifier for the destination where notifications will be delivered.
  * @member {String} destinationId
+ * @type
  */
 CreateSubscriptionRequest.prototype.destinationId = undefined
 
 /**
  * @member {module:notifications_v1/model/ProcessingDirective} processingDirective
+ * @type
  */
 CreateSubscriptionRequest.prototype.processingDirective = undefined

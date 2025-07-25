@@ -60,17 +60,20 @@ export class CarrierAccountAttribute {
 /**
  * Attribute Name .
  * @member {String} attributeName
+ * @type
  */
 CarrierAccountAttribute.prototype.attributeName = undefined
 
 /**
  * Property Group.
  * @member {String} propertyGroup
+ * @type
  */
 CarrierAccountAttribute.prototype.propertyGroup = undefined
 
 /**
  * Value .
  * @member {String} value
+ * @type
  */
 CarrierAccountAttribute.prototype.value = undefined

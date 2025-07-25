@@ -66,17 +66,20 @@ export class ProductType {
 /**
  * The name of the Amazon product type.
  * @member {String} name
+ * @type
  */
 ProductType.prototype.name = undefined
 
 /**
  * The human-readable and localized description of the Amazon product type.
  * @member {String} displayName
+ * @type
  */
 ProductType.prototype.displayName = undefined
 
 /**
  * The Amazon marketplace identifiers for which the product type definition is available.
  * @member {Array.<String>} marketplaceIds
+ * @type
  */
 ProductType.prototype.marketplaceIds = undefined

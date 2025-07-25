@@ -74,50 +74,59 @@ export class Item {
 /**
  * An Amazon-defined identifier for an individual item in an order.
  * @member {String} orderItemId
+ * @type
  */
 Item.prototype.orderItemId = undefined
 
 /**
  * The number of items.
  * @member {Number} quantity
+ * @type
  */
 Item.prototype.quantity = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Weight} itemWeight
+ * @type
  */
 Item.prototype.itemWeight = undefined
 
 /**
  * The description of the item.
  * @member {String} itemDescription
+ * @type
  */
 Item.prototype.itemDescription = undefined
 
 /**
  * A list of transparency codes.
  * @member {Array.<String>} transparencyCodeList
+ * @type
  */
 Item.prototype.transparencyCodeList = undefined
 
 /**
  * A list of additional seller input pairs required to purchase shipping.
  * @member {Array.<module:merchantfulfillment_v0/model/AdditionalSellerInputs>} itemLevelSellerInputsList
+ * @type
  */
 Item.prototype.itemLevelSellerInputsList = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/LiquidVolume} liquidVolume
+ * @type
  */
 Item.prototype.liquidVolume = undefined
 
 /**
  * When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
  * @member {Boolean} isHazmat
+ * @type
  */
 Item.prototype.isHazmat = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/DangerousGoodsDetails} dangerousGoodsDetails
+ * @type
  */
 Item.prototype.dangerousGoodsDetails = undefined

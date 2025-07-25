@@ -60,10 +60,12 @@ export class ShipmentInvoiceStatusInfo {
 /**
  * The Amazon-defined shipment identifier.
  * @member {String} amazonShipmentId
+ * @type
  */
 ShipmentInvoiceStatusInfo.prototype.amazonShipmentId = undefined
 
 /**
  * @member {module:invoicing_v0/model/ShipmentInvoiceStatus} invoiceStatus
+ * @type
  */
 ShipmentInvoiceStatusInfo.prototype.invoiceStatus = undefined

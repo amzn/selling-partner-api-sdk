@@ -64,15 +64,18 @@ export class ChannelDetails {
 
 /**
  * @member {module:shipping_v2/model/ChannelType} channelType
+ * @type
  */
 ChannelDetails.prototype.channelType = undefined
 
 /**
  * @member {module:shipping_v2/model/AmazonOrderDetails} amazonOrderDetails
+ * @type
  */
 ChannelDetails.prototype.amazonOrderDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/AmazonShipmentDetails} amazonShipmentDetails
+ * @type
  */
 ChannelDetails.prototype.amazonShipmentDetails = undefined

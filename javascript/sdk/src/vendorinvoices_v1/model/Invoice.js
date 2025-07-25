@@ -110,83 +110,98 @@ Invoice.InvoiceTypeEnum = {
 /**
  * Identifies the type of invoice.
  * @member {module:vendorinvoices_v1/model/Invoice.InvoiceTypeEnum} invoiceType
+ * @type
  */
 Invoice.prototype.invoiceType = undefined
 
 /**
  * Unique number relating to the charges defined in this document. This will be invoice number if the document type is Invoice or CreditNote number if the document type is Credit Note. Failure to provide this reference will result in a rejection.
  * @member {String} id
+ * @type
  */
 Invoice.prototype.id = undefined
 
 /**
  * An additional unique reference number used for regulatory or other purposes.
  * @member {String} referenceNumber
+ * @type
  */
 Invoice.prototype.referenceNumber = undefined
 
 /**
  * Defines a date and time according to ISO8601.
  * @member {Date} date
+ * @type
  */
 Invoice.prototype.date = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/PartyIdentification} remitToParty
+ * @type
  */
 Invoice.prototype.remitToParty = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/PartyIdentification} shipToParty
+ * @type
  */
 Invoice.prototype.shipToParty = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/PartyIdentification} shipFromParty
+ * @type
  */
 Invoice.prototype.shipFromParty = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/PartyIdentification} billToParty
+ * @type
  */
 Invoice.prototype.billToParty = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/PaymentTerms} paymentTerms
+ * @type
  */
 Invoice.prototype.paymentTerms = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/Money} invoiceTotal
+ * @type
  */
 Invoice.prototype.invoiceTotal = undefined
 
 /**
  * Total tax amount details for all line items.
  * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
+ * @type
  */
 Invoice.prototype.taxDetails = undefined
 
 /**
  * Additional details provided by the selling party, for tax related or other purposes.
  * @member {Array.<module:vendorinvoices_v1/model/AdditionalDetails>} additionalDetails
+ * @type
  */
 Invoice.prototype.additionalDetails = undefined
 
 /**
  * Total charge amount details for all line items.
  * @member {Array.<module:vendorinvoices_v1/model/ChargeDetails>} chargeDetails
+ * @type
  */
 Invoice.prototype.chargeDetails = undefined
 
 /**
  * Total allowance amount details for all line items.
  * @member {Array.<module:vendorinvoices_v1/model/AllowanceDetails>} allowanceDetails
+ * @type
  */
 Invoice.prototype.allowanceDetails = undefined
 
 /**
  * The list of invoice items.
  * @member {Array.<module:vendorinvoices_v1/model/InvoiceItem>} items
+ * @type
  */
 Invoice.prototype.items = undefined

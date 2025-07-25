@@ -64,10 +64,12 @@ export class ListOffersRequestSort {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/SortOrder} order
+ * @type
  */
 ListOffersRequestSort.prototype.order = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ListOffersSortKey} key
+ * @type
  */
 ListOffersRequestSort.prototype.key = undefined

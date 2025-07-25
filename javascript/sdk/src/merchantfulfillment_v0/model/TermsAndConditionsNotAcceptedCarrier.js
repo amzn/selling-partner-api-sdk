@@ -60,5 +60,6 @@ export class TermsAndConditionsNotAcceptedCarrier {
 /**
  * The name of the carrier.
  * @member {String} carrierName
+ * @type
  */
 TermsAndConditionsNotAcceptedCarrier.prototype.carrierName = undefined

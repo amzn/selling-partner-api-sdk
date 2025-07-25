@@ -59,11 +59,13 @@ export class BuyerRequestedCancel {
 /**
  * Indicate whether the buyer has requested cancellation.  **Possible Values**: `true`, `false`.
  * @member {String} isBuyerRequestedCancel
+ * @type
  */
 BuyerRequestedCancel.prototype.isBuyerRequestedCancel = undefined
 
 /**
  * The reason that the buyer requested cancellation.
  * @member {String} buyerCancelReason
+ * @type
  */
 BuyerRequestedCancel.prototype.buyerCancelReason = undefined

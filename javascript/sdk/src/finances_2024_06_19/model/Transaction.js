@@ -75,69 +75,81 @@ export class Transaction {
 
 /**
  * @member {module:finances_2024_06_19/model/SellingPartnerMetadata} sellingPartnerMetadata
+ * @type
  */
 Transaction.prototype.sellingPartnerMetadata = undefined
 
 /**
  * Related business identifiers of the transaction.
  * @member {Array.<module:finances_2024_06_19/model/RelatedIdentifier>} relatedIdentifiers
+ * @type
  */
 Transaction.prototype.relatedIdentifiers = undefined
 
 /**
  * The type of transaction.  Possible values:  * Shipment
  * @member {String} transactionType
+ * @type
  */
 Transaction.prototype.transactionType = undefined
 
 /**
  * The unique identifier for the transaction.
  * @member {String} transactionId
+ * @type
  */
 Transaction.prototype.transactionId = undefined
 
 /**
  * The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.
  * @member {String} transactionStatus
+ * @type
  */
 Transaction.prototype.transactionStatus = undefined
 
 /**
  * Describes the reasons for the transaction.  Example: 'Order Payment','Refund Order'
  * @member {String} description
+ * @type
  */
 Transaction.prototype.description = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type
  */
 Transaction.prototype.postedDate = undefined
 
 /**
  * @member {module:finances_2024_06_19/model/Currency} totalAmount
+ * @type
  */
 Transaction.prototype.totalAmount = undefined
 
 /**
  * @member {module:finances_2024_06_19/model/MarketplaceDetails} marketplaceDetails
+ * @type
  */
 Transaction.prototype.marketplaceDetails = undefined
 
 /**
  * List of items in the transaction
  * @member {Array.<module:finances_2024_06_19/model/Item>} items
+ * @type
  */
 Transaction.prototype.items = undefined
 
 /**
  * List of additional Information about the item.
  * @member {Array.<module:finances_2024_06_19/model/Context>} contexts
+ * @type
  */
 Transaction.prototype.contexts = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
  * @member {Array.<module:finances_2024_06_19/model/Breakdown>} breakdowns
+ * @type
  */
 Transaction.prototype.breakdowns = undefined

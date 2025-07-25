@@ -59,11 +59,13 @@ export class GiftDetails {
 /**
  * Gift message to be printed in shipment.
  * @member {String} giftMessage
+ * @type
  */
 GiftDetails.prototype.giftMessage = undefined
 
 /**
  * Gift wrap identifier for the gift wrapping, if any.
  * @member {String} giftWrapId
+ * @type
  */
 GiftDetails.prototype.giftWrapId = undefined

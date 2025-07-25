@@ -65,41 +65,48 @@ export class OperatingHoursByDay {
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} monday
+ * @type
  */
 OperatingHoursByDay.prototype.monday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} tuesday
+ * @type
  */
 OperatingHoursByDay.prototype.tuesday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} wednesday
+ * @type
  */
 OperatingHoursByDay.prototype.wednesday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} thursday
+ * @type
  */
 OperatingHoursByDay.prototype.thursday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} friday
+ * @type
  */
 OperatingHoursByDay.prototype.friday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} saturday
+ * @type
  */
 OperatingHoursByDay.prototype.saturday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} sunday
+ * @type
  */
 OperatingHoursByDay.prototype.sunday = undefined

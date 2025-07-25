@@ -66,34 +66,40 @@ export class OrderBuyerInfo {
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type
  */
 OrderBuyerInfo.prototype.amazonOrderId = undefined
 
 /**
  * The anonymized email address of the buyer.
  * @member {String} buyerEmail
+ * @type
  */
 OrderBuyerInfo.prototype.buyerEmail = undefined
 
 /**
  * The buyer name or the recipient name.
  * @member {String} buyerName
+ * @type
  */
 OrderBuyerInfo.prototype.buyerName = undefined
 
 /**
  * The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace.
  * @member {String} buyerCounty
+ * @type
  */
 OrderBuyerInfo.prototype.buyerCounty = undefined
 
 /**
  * @member {module:orders_v0/model/BuyerTaxInfo} buyerTaxInfo
+ * @type
  */
 OrderBuyerInfo.prototype.buyerTaxInfo = undefined
 
 /**
  * The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout.
  * @member {String} purchaseOrderNumber
+ * @type
  */
 OrderBuyerInfo.prototype.purchaseOrderNumber = undefined

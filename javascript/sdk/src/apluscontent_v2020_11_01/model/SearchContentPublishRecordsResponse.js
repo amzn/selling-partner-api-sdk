@@ -67,18 +67,21 @@ export class SearchContentPublishRecordsResponse {
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type
  */
 SearchContentPublishRecordsResponse.prototype.warnings = undefined
 
 /**
  * A token that you use to fetch a specific page when there are multiple pages of results.
  * @member {String} nextPageToken
+ * @type
  */
 SearchContentPublishRecordsResponse.prototype.nextPageToken = undefined
 
 /**
  * A list of A+ Content publishing records.
  * @member {Array.<module:apluscontent_v2020_11_01/model/PublishRecord>} publishRecordList
+ * @type
  */
 SearchContentPublishRecordsResponse.prototype.publishRecordList = undefined
 
@@ -86,11 +89,13 @@ SearchContentPublishRecordsResponse.prototype.publishRecordList = undefined
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 
 /**
  * A token that you use to fetch a specific page when there are multiple pages of results.
  * @member {String} nextPageToken
+ * @type
  */
 AplusPaginatedResponse.prototype.nextPageToken = undefined

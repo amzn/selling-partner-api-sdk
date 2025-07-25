@@ -60,5 +60,6 @@ export class CreateReportScheduleResponse {
 /**
  * The identifier for the report schedule. This identifier is unique only in combination with a seller ID.
  * @member {String} reportScheduleId
+ * @type
  */
 CreateReportScheduleResponse.prototype.reportScheduleId = undefined

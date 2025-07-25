@@ -60,5 +60,6 @@ export class MessagingAction {
 /**
  * The name of the template.
  * @member {String} name
+ * @type
  */
 MessagingAction.prototype.name = undefined

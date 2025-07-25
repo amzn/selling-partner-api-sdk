@@ -81,44 +81,52 @@ export class GetOffersResult {
 /**
  * A marketplace identifier.
  * @member {String} marketplaceID
+ * @type
  */
 GetOffersResult.prototype.marketplaceID = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type
  */
 GetOffersResult.prototype.ASIN = undefined
 
 /**
  * The stock keeping unit (SKU) of the item.
  * @member {String} SKU
+ * @type
  */
 GetOffersResult.prototype.SKU = undefined
 
 /**
  * @member {module:pricing_v0/model/ConditionType} itemCondition
+ * @type
  */
 GetOffersResult.prototype.itemCondition = undefined
 
 /**
  * The status of the operation.
  * @member {String} status
+ * @type
  */
 GetOffersResult.prototype.status = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemIdentifier} identifier
+ * @type
  */
 GetOffersResult.prototype.identifier = undefined
 
 /**
  * @member {module:pricing_v0/model/Summary} summary
+ * @type
  */
 GetOffersResult.prototype.summary = undefined
 
 /**
  * A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
  * @member {Array.<module:pricing_v0/model/OfferDetail>} offers
+ * @type
  */
 GetOffersResult.prototype.offers = undefined

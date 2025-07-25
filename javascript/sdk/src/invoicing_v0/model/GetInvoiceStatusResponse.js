@@ -60,11 +60,13 @@ export class GetInvoiceStatusResponse {
 
 /**
  * @member {module:invoicing_v0/model/ShipmentInvoiceStatusResponse} payload
+ * @type
  */
 GetInvoiceStatusResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:invoicing_v0/model/Error>} errors
+ * @type
  */
 GetInvoiceStatusResponse.prototype.errors = undefined

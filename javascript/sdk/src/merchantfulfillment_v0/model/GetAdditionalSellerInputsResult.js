@@ -61,11 +61,13 @@ export class GetAdditionalSellerInputsResult {
 /**
  * A list of additional inputs.
  * @member {Array.<module:merchantfulfillment_v0/model/AdditionalInputs>} shipmentLevelFields
+ * @type
  */
 GetAdditionalSellerInputsResult.prototype.shipmentLevelFields = undefined
 
 /**
  * A list of item level fields.
  * @member {Array.<module:merchantfulfillment_v0/model/ItemLevelFields>} itemLevelFieldsList
+ * @type
  */
 GetAdditionalSellerInputsResult.prototype.itemLevelFieldsList = undefined

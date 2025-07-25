@@ -59,11 +59,13 @@ export class ChargeRefundTransaction {
 
 /**
  * @member {module:finances_v0/model/Currency} chargeAmount
+ * @type
  */
 ChargeRefundTransaction.prototype.chargeAmount = undefined
 
 /**
  * The type of charge.
  * @member {String} chargeType
+ * @type
  */
 ChargeRefundTransaction.prototype.chargeType = undefined

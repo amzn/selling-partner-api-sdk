@@ -58,5 +58,6 @@ export class PurchaseShipmentResponse {
 
 /**
  * @member {module:shipping_v2/model/PurchaseShipmentResult} payload
+ * @type
  */
 PurchaseShipmentResponse.prototype.payload = undefined

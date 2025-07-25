@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ListOfferMetricsSortKey.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class ListOfferMetricsSortKey {

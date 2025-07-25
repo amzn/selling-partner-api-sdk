@@ -63,17 +63,20 @@ export class StandardTechSpecsModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type
  */
 StandardTechSpecsModule.prototype.headline = undefined
 
 /**
  * The specification list.
  * @member {Array.<module:apluscontent_v2020_11_01/model/StandardTextPairBlock>} specificationList
+ * @type
  */
 StandardTechSpecsModule.prototype.specificationList = undefined
 
 /**
  * The number of tables you want present. Features are evenly divided between the tables.
  * @member {Number} tableCount
+ * @type
  */
 StandardTechSpecsModule.prototype.tableCount = undefined

@@ -60,5 +60,6 @@ export class CollectOnDelivery {
 
 /**
  * @member {module:shipping_v2/model/Currency} amount
+ * @type
  */
 CollectOnDelivery.prototype.amount = undefined

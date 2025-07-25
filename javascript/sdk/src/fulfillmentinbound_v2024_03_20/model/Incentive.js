@@ -70,22 +70,26 @@ export class Incentive {
 /**
  * Description of the incentive.
  * @member {String} description
+ * @type
  */
 Incentive.prototype.description = undefined
 
 /**
  * Target of the incentive. Possible values: 'Placement Services', 'Fulfillment Fee Discount'.
  * @member {String} target
+ * @type
  */
 Incentive.prototype.target = undefined
 
 /**
  * Type of incentive. Possible values: `FEE`, `DISCOUNT`.
  * @member {String} type
+ * @type
  */
 Incentive.prototype.type = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Currency} value
+ * @type
  */
 Incentive.prototype.value = undefined

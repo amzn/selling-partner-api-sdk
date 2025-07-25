@@ -74,56 +74,66 @@ export class Summary {
 /**
  * The number of unique offers contained in NumberOfOffers.
  * @member {Number} totalOfferCount
+ * @type
  */
 Summary.prototype.totalOfferCount = undefined
 
 /**
  * A list that contains the total number of offers information for given conditions and fulfillment channels.
  * @member {Array.<module:pricing_v0/model/OfferCountType>} numberOfOffers
+ * @type
  */
 Summary.prototype.numberOfOffers = undefined
 
 /**
  * A list of the lowest prices.
  * @member {Array.<module:pricing_v0/model/LowestPriceType>} lowestPrices
+ * @type
  */
 Summary.prototype.lowestPrices = undefined
 
 /**
  * A list of the Buy Box prices.
  * @member {Array.<module:pricing_v0/model/BuyBoxPriceType>} buyBoxPrices
+ * @type
  */
 Summary.prototype.buyBoxPrices = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} listPrice
+ * @type
  */
 Summary.prototype.listPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} competitivePriceThreshold
+ * @type
  */
 Summary.prototype.competitivePriceThreshold = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} suggestedLowerPricePlusShipping
+ * @type
  */
 Summary.prototype.suggestedLowerPricePlusShipping = undefined
 
 /**
  * A list of sales rank information for the item, by category.
  * @member {Array.<module:pricing_v0/model/SalesRankType>} salesRankings
+ * @type
  */
 Summary.prototype.salesRankings = undefined
 
 /**
  * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.
  * @member {Array.<module:pricing_v0/model/OfferCountType>} buyBoxEligibleOffers
+ * @type
  */
 Summary.prototype.buyBoxEligibleOffers = undefined
 
 /**
  * When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.
  * @member {Date} offersAvailableTime
+ * @type
  */
 Summary.prototype.offersAvailableTime = undefined

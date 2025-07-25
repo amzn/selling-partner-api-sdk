@@ -58,5 +58,6 @@ export class ShipperInstruction {
 /**
  * The delivery notes for the shipment
  * @member {String} deliveryNotes
+ * @type
  */
 ShipperInstruction.prototype.deliveryNotes = undefined

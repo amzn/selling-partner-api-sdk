@@ -68,22 +68,26 @@ export class ServiceDocumentUploadDestination {
 /**
  * The unique identifier to be used by APIs that reference the upload destination.
  * @member {String} uploadDestinationId
+ * @type
  */
 ServiceDocumentUploadDestination.prototype.uploadDestinationId = undefined
 
 /**
  * The URL to which to upload the file.
  * @member {String} url
+ * @type
  */
 ServiceDocumentUploadDestination.prototype.url = undefined
 
 /**
  * @member {module:services_v1/model/EncryptionDetails} encryptionDetails
+ * @type
  */
 ServiceDocumentUploadDestination.prototype.encryptionDetails = undefined
 
 /**
  * The headers to include in the upload request.
  * @member {Object} headers
+ * @type
  */
 ServiceDocumentUploadDestination.prototype.headers = undefined

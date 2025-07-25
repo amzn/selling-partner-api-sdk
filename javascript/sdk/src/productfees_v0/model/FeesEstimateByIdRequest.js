@@ -65,16 +65,19 @@ export class FeesEstimateByIdRequest {
 
 /**
  * @member {module:productfees_v0/model/FeesEstimateRequest} feesEstimateRequest
+ * @type
  */
 FeesEstimateByIdRequest.prototype.feesEstimateRequest = undefined
 
 /**
  * @member {module:productfees_v0/model/IdType} idType
+ * @type
  */
 FeesEstimateByIdRequest.prototype.idType = undefined
 
 /**
  * The item identifier.
  * @member {String} idValue
+ * @type
  */
 FeesEstimateByIdRequest.prototype.idValue = undefined

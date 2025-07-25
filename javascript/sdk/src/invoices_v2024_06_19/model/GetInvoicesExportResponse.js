@@ -58,5 +58,6 @@ export class GetInvoicesExportResponse {
 
 /**
  * @member {module:invoices_v2024_06_19/model/Export} _export
+ * @type
  */
 GetInvoicesExportResponse.prototype._export = undefined

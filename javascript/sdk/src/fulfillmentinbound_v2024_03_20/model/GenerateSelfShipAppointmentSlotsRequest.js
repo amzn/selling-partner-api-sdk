@@ -59,11 +59,13 @@ export class GenerateSelfShipAppointmentSlotsRequest {
 /**
  * The desired end date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
  * @member {Date} desiredEndDate
+ * @type
  */
 GenerateSelfShipAppointmentSlotsRequest.prototype.desiredEndDate = undefined
 
 /**
  * The desired start date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
  * @member {Date} desiredStartDate
+ * @type
  */
 GenerateSelfShipAppointmentSlotsRequest.prototype.desiredStartDate = undefined

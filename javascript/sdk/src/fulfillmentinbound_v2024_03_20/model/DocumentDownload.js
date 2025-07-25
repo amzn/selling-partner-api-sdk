@@ -64,17 +64,20 @@ export class DocumentDownload {
 /**
  * The type of download. Possible values: `URL`.
  * @member {String} downloadType
+ * @type
  */
 DocumentDownload.prototype.downloadType = undefined
 
 /**
  * The URI's expiration time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
  * @member {Date} expiration
+ * @type
  */
 DocumentDownload.prototype.expiration = undefined
 
 /**
  * Uniform resource identifier to identify where the document is located.
  * @member {String} uri
+ * @type
  */
 DocumentDownload.prototype.uri = undefined

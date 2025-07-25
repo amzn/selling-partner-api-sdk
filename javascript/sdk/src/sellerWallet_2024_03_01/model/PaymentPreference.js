@@ -63,11 +63,13 @@ export class PaymentPreference {
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/PaymentPreferencePaymentType} paymentPreferencePaymentType
+ * @type
  */
 PaymentPreference.prototype.paymentPreferencePaymentType = undefined
 
 /**
  * A decimal number, such as an amount or FX rate.
  * @member {Number} value
+ * @type
  */
 PaymentPreference.prototype.value = undefined

@@ -62,17 +62,20 @@ export class UpdateScheduleRecord {
 
 /**
  * @member {module:services_v1/model/AvailabilityRecord} availability
+ * @type
  */
 UpdateScheduleRecord.prototype.availability = undefined
 
 /**
  * A list of warnings returned in the sucessful execution response of an API request.
  * @member {Array.<module:services_v1/model/Warning>} warnings
+ * @type
  */
 UpdateScheduleRecord.prototype.warnings = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type
  */
 UpdateScheduleRecord.prototype.errors = undefined

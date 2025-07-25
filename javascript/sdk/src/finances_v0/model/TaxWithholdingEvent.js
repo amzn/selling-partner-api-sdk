@@ -63,20 +63,24 @@ export class TaxWithholdingEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type
  */
 TaxWithholdingEvent.prototype.postedDate = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} baseAmount
+ * @type
  */
 TaxWithholdingEvent.prototype.baseAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} withheldAmount
+ * @type
  */
 TaxWithholdingEvent.prototype.withheldAmount = undefined
 
 /**
  * @member {module:finances_v0/model/TaxWithholdingPeriod} taxWithholdingPeriod
+ * @type
  */
 TaxWithholdingEvent.prototype.taxWithholdingPeriod = undefined

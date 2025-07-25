@@ -60,11 +60,13 @@ export class PackingSlipList {
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Pagination} pagination
+ * @type
  */
 PackingSlipList.prototype.pagination = undefined
 
 /**
  * An array of packing slip objects.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/PackingSlip>} packingSlips
+ * @type
  */
 PackingSlipList.prototype.packingSlips = undefined

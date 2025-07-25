@@ -61,17 +61,20 @@ export class RangeSlotCapacity {
 /**
  * Resource Identifier.
  * @member {String} resourceId
+ * @type
  */
 RangeSlotCapacity.prototype.resourceId = undefined
 
 /**
  * Array of range capacities where each entry is for a specific capacity type.
  * @member {Array.<module:services_v1/model/RangeCapacity>} capacities
+ * @type
  */
 RangeSlotCapacity.prototype.capacities = undefined
 
 /**
  * Next page token, if there are more pages.
  * @member {String} nextPageToken
+ * @type
  */
 RangeSlotCapacity.prototype.nextPageToken = undefined

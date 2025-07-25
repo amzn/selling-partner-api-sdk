@@ -67,23 +67,27 @@ export class ItemDisplayGroupSalesRank {
 /**
  * Name of the website display group that is associated with the sales rank
  * @member {String} websiteDisplayGroup
+ * @type
  */
 ItemDisplayGroupSalesRank.prototype.websiteDisplayGroup = undefined
 
 /**
  * Name of the sales rank.
  * @member {String} title
+ * @type
  */
 ItemDisplayGroupSalesRank.prototype.title = undefined
 
 /**
  * Corresponding Amazon retail website URL for the sales rank.
  * @member {String} link
+ * @type
  */
 ItemDisplayGroupSalesRank.prototype.link = undefined
 
 /**
  * Sales rank.
  * @member {Number} rank
+ * @type
  */
 ItemDisplayGroupSalesRank.prototype.rank = undefined

@@ -60,5 +60,6 @@ export class ErrorList {
 
 /**
  * @member {Array.<module:listingsitems_v2021_08_01/model/Error>} errors
+ * @type
  */
 ErrorList.prototype.errors = undefined

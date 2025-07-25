@@ -74,33 +74,39 @@ export class ListOfferMetricsRequestFilters {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/AggregationFrequency} aggregationFrequency
+ * @type
  */
 ListOfferMetricsRequestFilters.prototype.aggregationFrequency = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/TimeInterval} timeInterval
+ * @type
  */
 ListOfferMetricsRequestFilters.prototype.timeInterval = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/TimePeriodType} timePeriodType
+ * @type
  */
 ListOfferMetricsRequestFilters.prototype.timePeriodType = undefined
 
 /**
  * The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
  * @member {String} marketplaceId
+ * @type
  */
 ListOfferMetricsRequestFilters.prototype.marketplaceId = undefined
 
 /**
  * A list of replenishment program types.
  * @member {Array.<module:replenishment_v2022_11_07/model/ProgramType>} programTypes
+ * @type
  */
 ListOfferMetricsRequestFilters.prototype.programTypes = undefined
 
 /**
  * A list of Amazon Standard Identification Numbers (ASINs).
  * @member {Array.<String>} asins
+ * @type
  */
 ListOfferMetricsRequestFilters.prototype.asins = undefined

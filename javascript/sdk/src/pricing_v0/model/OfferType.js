@@ -81,50 +81,59 @@ export class OfferType {
 
 /**
  * @member {module:pricing_v0/model/OfferCustomerType} offerType
+ * @type
  */
 OfferType.prototype.offerType = undefined
 
 /**
  * @member {module:pricing_v0/model/PriceType} buyingPrice
+ * @type
  */
 OfferType.prototype.buyingPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} regularPrice
+ * @type
  */
 OfferType.prototype.regularPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} businessPrice
+ * @type
  */
 OfferType.prototype.businessPrice = undefined
 
 /**
  * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
  * @member {Array.<module:pricing_v0/model/QuantityDiscountPriceType>} quantityDiscountPrices
+ * @type
  */
 OfferType.prototype.quantityDiscountPrices = undefined
 
 /**
  * The fulfillment channel for the offer listing. Possible values:  * Amazon - Fulfilled by Amazon. * Merchant - Fulfilled by the seller.
  * @member {String} fulfillmentChannel
+ * @type
  */
 OfferType.prototype.fulfillmentChannel = undefined
 
 /**
  * The item condition for the offer listing. Possible values: New, Used, Collectible, Refurbished, or Club.
  * @member {String} itemCondition
+ * @type
  */
 OfferType.prototype.itemCondition = undefined
 
 /**
  * The item subcondition for the offer listing. Possible values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
  * @member {String} itemSubCondition
+ * @type
  */
 OfferType.prototype.itemSubCondition = undefined
 
 /**
  * The seller stock keeping unit (SKU) of the item.
  * @member {String} sellerSKU
+ * @type
  */
 OfferType.prototype.sellerSKU = undefined

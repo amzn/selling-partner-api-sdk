@@ -63,11 +63,13 @@ export class Carrier {
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} id
+ * @type
  */
 Carrier.prototype.id = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} name
+ * @type
  */
 Carrier.prototype.name = undefined

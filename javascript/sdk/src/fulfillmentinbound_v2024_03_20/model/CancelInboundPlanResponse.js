@@ -60,5 +60,6 @@ export class CancelInboundPlanResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type
  */
 CancelInboundPlanResponse.prototype.operationId = undefined

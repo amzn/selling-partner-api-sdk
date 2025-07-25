@@ -60,11 +60,13 @@ export class InnerContainersDetails {
 /**
  * Total containers as part of the shipment
  * @member {Number} containerCount
+ * @type
  */
 InnerContainersDetails.prototype.containerCount = undefined
 
 /**
  * Container sequence numbers that are involved in this shipment.
  * @member {Array.<module:vendorshipments_v1/model/ContainerSequenceNumbers>} containerSequenceNumbers
+ * @type
  */
 InnerContainersDetails.prototype.containerSequenceNumbers = undefined

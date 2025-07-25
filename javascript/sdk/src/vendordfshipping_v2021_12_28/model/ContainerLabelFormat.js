@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ContainerLabelFormat.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class ContainerLabelFormat {

@@ -62,29 +62,34 @@ export class FixedSlot {
 /**
  * Start date time of slot in ISO 8601 format with precision of seconds.
  * @member {Date} startDateTime
+ * @type
  */
 FixedSlot.prototype.startDateTime = undefined
 
 /**
  * Scheduled capacity corresponding to the slot. This capacity represents the originally allocated capacity as per resource schedule.
  * @member {Number} scheduledCapacity
+ * @type
  */
 FixedSlot.prototype.scheduledCapacity = undefined
 
 /**
  * Available capacity corresponding to the slot. This capacity represents the capacity available for allocation to reservations.
  * @member {Number} availableCapacity
+ * @type
  */
 FixedSlot.prototype.availableCapacity = undefined
 
 /**
  * Encumbered capacity corresponding to the slot. This capacity represents the capacity allocated for Amazon Jobs/Appointments/Orders.
  * @member {Number} encumberedCapacity
+ * @type
  */
 FixedSlot.prototype.encumberedCapacity = undefined
 
 /**
  * Reserved capacity corresponding to the slot. This capacity represents the capacity made unavailable due to events like Breaks/Leaves/Lunch.
  * @member {Number} reservedCapacity
+ * @type
  */
 FixedSlot.prototype.reservedCapacity = undefined

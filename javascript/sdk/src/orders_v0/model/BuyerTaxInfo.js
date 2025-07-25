@@ -61,17 +61,20 @@ export class BuyerTaxInfo {
 /**
  * The legal name of the company.
  * @member {String} companyLegalName
+ * @type
  */
 BuyerTaxInfo.prototype.companyLegalName = undefined
 
 /**
  * The country or region imposing the tax.
  * @member {String} taxingRegion
+ * @type
  */
 BuyerTaxInfo.prototype.taxingRegion = undefined
 
 /**
  * A list of tax classifications that apply to the order.
  * @member {Array.<module:orders_v0/model/TaxClassification>} taxClassifications
+ * @type
  */
 BuyerTaxInfo.prototype.taxClassifications = undefined

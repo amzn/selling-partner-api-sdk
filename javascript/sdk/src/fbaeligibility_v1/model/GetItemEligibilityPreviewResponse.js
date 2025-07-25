@@ -60,11 +60,13 @@ export class GetItemEligibilityPreviewResponse {
 
 /**
  * @member {module:fbaeligibility_v1/model/ItemEligibilityPreview} payload
+ * @type
  */
 GetItemEligibilityPreviewResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fbaeligibility_v1/model/Error>} errors
+ * @type
  */
 GetItemEligibilityPreviewResponse.prototype.errors = undefined

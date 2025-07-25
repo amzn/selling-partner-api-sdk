@@ -70,22 +70,26 @@ export class Dimensions {
 /**
  * The height of a package.
  * @member {Number} height
+ * @type
  */
 Dimensions.prototype.height = undefined
 
 /**
  * The length of a package.
  * @member {Number} length
+ * @type
  */
 Dimensions.prototype.length = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/UnitOfMeasurement} unitOfMeasurement
+ * @type
  */
 Dimensions.prototype.unitOfMeasurement = undefined
 
 /**
  * The width of a package.
  * @member {Number} width
+ * @type
  */
 Dimensions.prototype.width = undefined

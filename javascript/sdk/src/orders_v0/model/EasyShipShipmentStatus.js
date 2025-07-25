@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class EasyShipShipmentStatus.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class EasyShipShipmentStatus {

@@ -60,5 +60,6 @@ export class ProductIdentifier {
 /**
  * The merchant SKU for the product.
  * @member {String} merchantSku
+ * @type
  */
 ProductIdentifier.prototype.merchantSku = undefined

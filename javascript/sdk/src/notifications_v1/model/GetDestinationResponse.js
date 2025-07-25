@@ -60,11 +60,13 @@ export class GetDestinationResponse {
 
 /**
  * @member {module:notifications_v1/model/Destination} payload
+ * @type
  */
 GetDestinationResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:notifications_v1/model/Error>} errors
+ * @type
  */
 GetDestinationResponse.prototype.errors = undefined

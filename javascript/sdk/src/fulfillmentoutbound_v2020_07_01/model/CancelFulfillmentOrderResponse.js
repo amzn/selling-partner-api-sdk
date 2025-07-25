@@ -59,5 +59,6 @@ export class CancelFulfillmentOrderResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
+ * @type
  */
 CancelFulfillmentOrderResponse.prototype.errors = undefined

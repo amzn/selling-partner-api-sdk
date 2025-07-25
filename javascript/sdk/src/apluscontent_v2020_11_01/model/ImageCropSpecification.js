@@ -62,10 +62,12 @@ export class ImageCropSpecification {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageDimensions} size
+ * @type
  */
 ImageCropSpecification.prototype.size = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageOffsets} offset
+ * @type
  */
 ImageCropSpecification.prototype.offset = undefined

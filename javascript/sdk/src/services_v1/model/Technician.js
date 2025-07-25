@@ -59,11 +59,13 @@ export class Technician {
 /**
  * The technician identifier.
  * @member {String} technicianId
+ * @type
  */
 Technician.prototype.technicianId = undefined
 
 /**
  * The name of the technician.
  * @member {String} name
+ * @type
  */
 Technician.prototype.name = undefined

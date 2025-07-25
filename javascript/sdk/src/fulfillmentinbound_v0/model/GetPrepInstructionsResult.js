@@ -65,23 +65,27 @@ export class GetPrepInstructionsResult {
 /**
  * A list of SKU labeling requirements and item preparation instructions.
  * @member {Array.<module:fulfillmentinbound_v0/model/SKUPrepInstructions>} sKUPrepInstructionsList
+ * @type
  */
 GetPrepInstructionsResult.prototype.sKUPrepInstructionsList = undefined
 
 /**
  * A list of invalid SKU values and the reason they are invalid.
  * @member {Array.<module:fulfillmentinbound_v0/model/InvalidSKU>} invalidSKUList
+ * @type
  */
 GetPrepInstructionsResult.prototype.invalidSKUList = undefined
 
 /**
  * A list of item preparation instructions.
  * @member {Array.<module:fulfillmentinbound_v0/model/ASINPrepInstructions>} aSINPrepInstructionsList
+ * @type
  */
 GetPrepInstructionsResult.prototype.aSINPrepInstructionsList = undefined
 
 /**
  * A list of invalid ASIN values and the reasons they are invalid.
  * @member {Array.<module:fulfillmentinbound_v0/model/InvalidASIN>} invalidASINList
+ * @type
  */
 GetPrepInstructionsResult.prototype.invalidASINList = undefined

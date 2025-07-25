@@ -60,10 +60,12 @@ export class ChargeComponent {
 /**
  * The type of charge.
  * @member {String} chargeType
+ * @type
  */
 ChargeComponent.prototype.chargeType = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} chargeAmount
+ * @type
  */
 ChargeComponent.prototype.chargeAmount = undefined

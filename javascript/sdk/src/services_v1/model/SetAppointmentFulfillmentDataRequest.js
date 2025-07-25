@@ -64,22 +64,26 @@ export class SetAppointmentFulfillmentDataRequest {
 
 /**
  * @member {module:services_v1/model/DateTimeRange} estimatedArrivalTime
+ * @type
  */
 SetAppointmentFulfillmentDataRequest.prototype.estimatedArrivalTime = undefined
 
 /**
  * @member {module:services_v1/model/FulfillmentTime} fulfillmentTime
+ * @type
  */
 SetAppointmentFulfillmentDataRequest.prototype.fulfillmentTime = undefined
 
 /**
  * List of resources that performs or performed job appointment fulfillment.
  * @member {Array.<module:services_v1/model/AppointmentResource>} appointmentResources
+ * @type
  */
 SetAppointmentFulfillmentDataRequest.prototype.appointmentResources = undefined
 
 /**
  * List of documents captured during service appointment fulfillment.
  * @member {Array.<module:services_v1/model/FulfillmentDocument>} fulfillmentDocuments
+ * @type
  */
 SetAppointmentFulfillmentDataRequest.prototype.fulfillmentDocuments = undefined

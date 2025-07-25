@@ -61,5 +61,6 @@ export class ConfirmTransportationOptionsRequest {
 /**
  * Information needed to confirm one of the available transportation options.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationSelection>} transportationSelections
+ * @type
  */
 ConfirmTransportationOptionsRequest.prototype.transportationSelections = undefined

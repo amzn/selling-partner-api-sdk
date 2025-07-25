@@ -70,49 +70,58 @@ export class SupplySource {
 /**
  * An Amazon generated unique supply source ID.
  * @member {String} supplySourceId
+ * @type
  */
 SupplySource.prototype.supplySourceId = undefined
 
 /**
  * The seller-provided unique supply source code.
  * @member {String} supplySourceCode
+ * @type
  */
 SupplySource.prototype.supplySourceCode = undefined
 
 /**
  * The custom alias for this supply source
  * @member {String} alias
+ * @type
  */
 SupplySource.prototype.alias = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceStatusReadOnly} status
+ * @type
  */
 SupplySource.prototype.status = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/Address} address
+ * @type
  */
 SupplySource.prototype.address = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceConfiguration} configuration
+ * @type
  */
 SupplySource.prototype.configuration = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceCapabilities} capabilities
+ * @type
  */
 SupplySource.prototype.capabilities = undefined
 
 /**
  * A date and time in the rfc3339 format.
  * @member {String} createdAt
+ * @type
  */
 SupplySource.prototype.createdAt = undefined
 
 /**
  * A date and time in the rfc3339 format.
  * @member {String} updatedAt
+ * @type
  */
 SupplySource.prototype.updatedAt = undefined

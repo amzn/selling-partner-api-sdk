@@ -62,17 +62,20 @@ export class Error {
 /**
  * An error code that identifies the type of error that occurred.
  * @member {String} code
+ * @type
  */
 Error.prototype.code = undefined
 
 /**
  * A message that describes the error condition in a human-readable form.
  * @member {String} message
+ * @type
  */
 Error.prototype.message = undefined
 
 /**
  * Additional information that can help the caller understand or fix the issue.
  * @member {String} details
+ * @type
  */
 Error.prototype.details = undefined

@@ -60,11 +60,13 @@ export class GetEligibleShipmentServicesResponse {
 
 /**
  * @member {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult} payload
+ * @type
  */
 GetEligibleShipmentServicesResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:merchantfulfillment_v0/model/Error>} errors
+ * @type
  */
 GetEligibleShipmentServicesResponse.prototype.errors = undefined

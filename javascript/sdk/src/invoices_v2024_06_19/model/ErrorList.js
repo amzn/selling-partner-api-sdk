@@ -61,5 +61,6 @@ export class ErrorList {
 /**
  * List of errors.
  * @member {Array.<module:invoices_v2024_06_19/model/Error>} errors
+ * @type
  */
 ErrorList.prototype.errors = undefined

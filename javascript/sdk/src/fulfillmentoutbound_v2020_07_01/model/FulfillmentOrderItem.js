@@ -82,80 +82,94 @@ export class FulfillmentOrderItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type
  */
 FulfillmentOrderItem.prototype.sellerSku = undefined
 
 /**
  * A fulfillment order item identifier submitted with a call to the `createFulfillmentOrder` operation.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type
  */
 FulfillmentOrderItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantity
+ * @type
  */
 FulfillmentOrderItem.prototype.quantity = undefined
 
 /**
  * A message to the gift recipient, if applicable.
  * @member {String} giftMessage
+ * @type
  */
 FulfillmentOrderItem.prototype.giftMessage = undefined
 
 /**
  * Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip.
  * @member {String} displayableComment
+ * @type
  */
 FulfillmentOrderItem.prototype.displayableComment = undefined
 
 /**
  * Amazon's fulfillment network SKU of the item.
  * @member {String} fulfillmentNetworkSku
+ * @type
  */
 FulfillmentOrderItem.prototype.fulfillmentNetworkSku = undefined
 
 /**
  * Indicates whether the item is sellable or unsellable.
  * @member {String} orderItemDisposition
+ * @type
  */
 FulfillmentOrderItem.prototype.orderItemDisposition = undefined
 
 /**
  * The item quantity.
  * @member {Number} cancelledQuantity
+ * @type
  */
 FulfillmentOrderItem.prototype.cancelledQuantity = undefined
 
 /**
  * The item quantity.
  * @member {Number} unfulfillableQuantity
+ * @type
  */
 FulfillmentOrderItem.prototype.unfulfillableQuantity = undefined
 
 /**
  * Date timestamp
  * @member {Date} estimatedShipDate
+ * @type
  */
 FulfillmentOrderItem.prototype.estimatedShipDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} estimatedArrivalDate
+ * @type
  */
 FulfillmentOrderItem.prototype.estimatedArrivalDate = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitPrice
+ * @type
  */
 FulfillmentOrderItem.prototype.perUnitPrice = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitTax
+ * @type
  */
 FulfillmentOrderItem.prototype.perUnitTax = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitDeclaredValue
+ * @type
  */
 FulfillmentOrderItem.prototype.perUnitDeclaredValue = undefined

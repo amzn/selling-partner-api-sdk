@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AdditionalLocationInfo.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class AdditionalLocationInfo {

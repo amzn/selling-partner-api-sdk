@@ -66,17 +66,20 @@ export class CreateInventoryItemRequest {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type
  */
 CreateInventoryItemRequest.prototype.sellerSku = undefined
 
 /**
  * The marketplaceId.
  * @member {String} marketplaceId
+ * @type
  */
 CreateInventoryItemRequest.prototype.marketplaceId = undefined
 
 /**
  * The name of the item.
  * @member {String} productName
+ * @type
  */
 CreateInventoryItemRequest.prototype.productName = undefined

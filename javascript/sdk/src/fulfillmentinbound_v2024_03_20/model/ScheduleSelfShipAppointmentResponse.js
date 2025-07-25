@@ -60,5 +60,6 @@ export class ScheduleSelfShipAppointmentResponse {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentDetails} selfShipAppointmentDetails
+ * @type
  */
 ScheduleSelfShipAppointmentResponse.prototype.selfShipAppointmentDetails = undefined

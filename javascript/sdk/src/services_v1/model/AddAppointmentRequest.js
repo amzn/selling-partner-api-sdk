@@ -60,5 +60,6 @@ export class AddAppointmentRequest {
 
 /**
  * @member {module:services_v1/model/AppointmentTimeInput} appointmentTime
+ * @type
  */
 AddAppointmentRequest.prototype.appointmentTime = undefined

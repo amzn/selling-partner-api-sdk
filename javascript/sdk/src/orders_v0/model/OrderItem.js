@@ -114,179 +114,211 @@ export class OrderItem {
 /**
  * The item's Amazon Standard Identification Number (ASIN).
  * @member {String} ASIN
+ * @type
  */
 OrderItem.prototype.ASIN = undefined
 
 /**
  * The item's seller stock keeping unit (SKU).
  * @member {String} sellerSKU
+ * @type
  */
 OrderItem.prototype.sellerSKU = undefined
 
 /**
  * An Amazon-defined order item identifier.
  * @member {String} orderItemId
+ * @type
  */
 OrderItem.prototype.orderItemId = undefined
 
 /**
  * A list of associated items that a customer has purchased with a product. For example, a tire installation service purchased with tires.
  * @member {Array.<module:orders_v0/model/AssociatedItem>} associatedItems
+ * @type
  */
 OrderItem.prototype.associatedItems = undefined
 
 /**
  * The item's name.
  * @member {String} title
+ * @type
  */
 OrderItem.prototype.title = undefined
 
 /**
  * The number of items in the order.
  * @member {Number} quantityOrdered
+ * @type
  */
 OrderItem.prototype.quantityOrdered = undefined
 
 /**
  * The number of items shipped.
  * @member {Number} quantityShipped
+ * @type
  */
 OrderItem.prototype.quantityShipped = undefined
 
 /**
  * @member {module:orders_v0/model/ProductInfoDetail} productInfo
+ * @type
  */
 OrderItem.prototype.productInfo = undefined
 
 /**
  * @member {module:orders_v0/model/PointsGrantedDetail} pointsGranted
+ * @type
  */
 OrderItem.prototype.pointsGranted = undefined
 
 /**
  * @member {module:orders_v0/model/Money} itemPrice
+ * @type
  */
 OrderItem.prototype.itemPrice = undefined
 
 /**
  * @member {module:orders_v0/model/Money} shippingPrice
+ * @type
  */
 OrderItem.prototype.shippingPrice = undefined
 
 /**
  * @member {module:orders_v0/model/Money} itemTax
+ * @type
  */
 OrderItem.prototype.itemTax = undefined
 
 /**
  * @member {module:orders_v0/model/Money} shippingTax
+ * @type
  */
 OrderItem.prototype.shippingTax = undefined
 
 /**
  * @member {module:orders_v0/model/Money} shippingDiscount
+ * @type
  */
 OrderItem.prototype.shippingDiscount = undefined
 
 /**
  * @member {module:orders_v0/model/Money} shippingDiscountTax
+ * @type
  */
 OrderItem.prototype.shippingDiscountTax = undefined
 
 /**
  * @member {module:orders_v0/model/Money} promotionDiscount
+ * @type
  */
 OrderItem.prototype.promotionDiscount = undefined
 
 /**
  * @member {module:orders_v0/model/Money} promotionDiscountTax
+ * @type
  */
 OrderItem.prototype.promotionDiscountTax = undefined
 
 /**
  * A list of promotion identifiers provided by the seller when the promotions were created.
  * @member {Array.<String>} promotionIds
+ * @type
  */
 OrderItem.prototype.promotionIds = undefined
 
 /**
  * @member {module:orders_v0/model/Money} cODFee
+ * @type
  */
 OrderItem.prototype.cODFee = undefined
 
 /**
  * @member {module:orders_v0/model/Money} cODFeeDiscount
+ * @type
  */
 OrderItem.prototype.cODFeeDiscount = undefined
 
 /**
  * Indicates whether the item is a gift.  **Possible values**: `true` and `false`.
  * @member {String} isGift
+ * @type
  */
 OrderItem.prototype.isGift = undefined
 
 /**
  * The condition of the item, as described by the seller.
  * @member {String} conditionNote
+ * @type
  */
 OrderItem.prototype.conditionNote = undefined
 
 /**
  * The condition of the item.  **Possible values**: `New`, `Used`, `Collectible`, `Refurbished`, `Preorder`, and `Club`.
  * @member {String} conditionId
+ * @type
  */
 OrderItem.prototype.conditionId = undefined
 
 /**
  * The subcondition of the item.  **Possible values**: `New`, `Mint`, `Very Good`, `Good`, `Acceptable`, `Poor`, `Club`, `OEM`, `Warranty`, `Refurbished Warranty`, `Refurbished`, `Open Box`, `Any`, and `Other`.
  * @member {String} conditionSubtypeId
+ * @type
  */
 OrderItem.prototype.conditionSubtypeId = undefined
 
 /**
  * The start date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
  * @member {String} scheduledDeliveryStartDate
+ * @type
  */
 OrderItem.prototype.scheduledDeliveryStartDate = undefined
 
 /**
  * The end date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
  * @member {String} scheduledDeliveryEndDate
+ * @type
  */
 OrderItem.prototype.scheduledDeliveryEndDate = undefined
 
 /**
  * Indicates that the selling price is a special price that is only available for Amazon Business orders. For more information about the Amazon Business Seller Program, refer to the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).   **Possible values**: `BusinessPrice`
  * @member {String} priceDesignation
+ * @type
  */
 OrderItem.prototype.priceDesignation = undefined
 
 /**
  * @member {module:orders_v0/model/TaxCollection} taxCollection
+ * @type
  */
 OrderItem.prototype.taxCollection = undefined
 
 /**
  * When true, the product type for this item has a serial number.   Only returned for Amazon Easy Ship orders.
  * @member {Boolean} serialNumberRequired
+ * @type
  */
 OrderItem.prototype.serialNumberRequired = undefined
 
 /**
  * When true, the ASIN is enrolled in Transparency. The Transparency serial number that you must submit is determined by:  **1D or 2D Barcode:** This has a **T** logo. Submit either the 29-character alpha-numeric identifier beginning with **AZ** or **ZA**, or the 38-character Serialized Global Trade Item Number (SGTIN). **2D Barcode SN:** Submit the 7- to 20-character serial number barcode, which likely has the prefix **SN**. The serial number is applied to the same side of the packaging as the GTIN (UPC/EAN/ISBN) barcode. **QR code SN:** Submit the URL that the QR code generates.
  * @member {Boolean} isTransparency
+ * @type
  */
 OrderItem.prototype.isTransparency = undefined
 
 /**
  * The IOSS number of the marketplace. Sellers shipping to the EU from outside the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.
  * @member {String} iossNumber
+ * @type
  */
 OrderItem.prototype.iossNumber = undefined
 
 /**
  * The store chain store identifier. Linked to a specific store in a store chain.
  * @member {String} storeChainStoreId
+ * @type
  */
 OrderItem.prototype.storeChainStoreId = undefined
 
@@ -313,41 +345,49 @@ OrderItem.DeemedResellerCategoryEnum = {
 /**
  * The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.
  * @member {module:orders_v0/model/OrderItem.DeemedResellerCategoryEnum} deemedResellerCategory
+ * @type
  */
 OrderItem.prototype.deemedResellerCategory = undefined
 
 /**
  * @member {module:orders_v0/model/ItemBuyerInfo} buyerInfo
+ * @type
  */
 OrderItem.prototype.buyerInfo = undefined
 
 /**
  * @member {module:orders_v0/model/BuyerRequestedCancel} buyerRequestedCancel
+ * @type
  */
 OrderItem.prototype.buyerRequestedCancel = undefined
 
 /**
  * A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.
  * @member {Array.<String>} serialNumbers
+ * @type
  */
 OrderItem.prototype.serialNumbers = undefined
 
 /**
  * @member {module:orders_v0/model/SubstitutionPreferences} substitutionPreferences
+ * @type
  */
 OrderItem.prototype.substitutionPreferences = undefined
 
 /**
  * @member {module:orders_v0/model/Measurement} measurement
+ * @type
  */
 OrderItem.prototype.measurement = undefined
 
 /**
  * @member {module:orders_v0/model/ShippingConstraints} shippingConstraints
+ * @type
  */
 OrderItem.prototype.shippingConstraints = undefined
 
 /**
  * @member {module:orders_v0/model/AmazonPrograms} amazonPrograms
+ * @type
  */
 OrderItem.prototype.amazonPrograms = undefined

@@ -60,5 +60,6 @@ export class GetMyFeesEstimatesErrorList {
 
 /**
  * @member {Array.<module:productfees_v0/model/Error>} errors
+ * @type
  */
 GetMyFeesEstimatesErrorList.prototype.errors = undefined

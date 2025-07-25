@@ -61,5 +61,6 @@ export class SetPackingInformationRequest {
 /**
  * List of packing information for the inbound plan.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput>} packageGroupings
+ * @type
  */
 SetPackingInformationRequest.prototype.packageGroupings = undefined

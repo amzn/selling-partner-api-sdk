@@ -79,85 +79,100 @@ export class PackageTrackingDetails {
 /**
  * The package identifier.
  * @member {Number} packageNumber
+ * @type
  */
 PackageTrackingDetails.prototype.packageNumber = undefined
 
 /**
  * The tracking number for the package.
  * @member {String} trackingNumber
+ * @type
  */
 PackageTrackingDetails.prototype.trackingNumber = undefined
 
 /**
  * Link on swiship.com that allows customers to track the package.
  * @member {String} customerTrackingLink
+ * @type
  */
 PackageTrackingDetails.prototype.customerTrackingLink = undefined
 
 /**
  * The name of the carrier.
  * @member {String} carrierCode
+ * @type
  */
 PackageTrackingDetails.prototype.carrierCode = undefined
 
 /**
  * The phone number of the carrier.
  * @member {String} carrierPhoneNumber
+ * @type
  */
 PackageTrackingDetails.prototype.carrierPhoneNumber = undefined
 
 /**
  * The URL of the carrier's website.
  * @member {String} carrierURL
+ * @type
  */
 PackageTrackingDetails.prototype.carrierURL = undefined
 
 /**
  * Date timestamp
  * @member {Date} shipDate
+ * @type
  */
 PackageTrackingDetails.prototype.shipDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} estimatedArrivalDate
+ * @type
  */
 PackageTrackingDetails.prototype.estimatedArrivalDate = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress} shipToAddress
+ * @type
  */
 PackageTrackingDetails.prototype.shipToAddress = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/CurrentStatus} currentStatus
+ * @type
  */
 PackageTrackingDetails.prototype.currentStatus = undefined
 
 /**
  * Description corresponding to the CurrentStatus value.
  * @member {String} currentStatusDescription
+ * @type
  */
 PackageTrackingDetails.prototype.currentStatusDescription = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DateRange} deliveryWindow
+ * @type
  */
 PackageTrackingDetails.prototype.deliveryWindow = undefined
 
 /**
  * The name of the person who signed for the package.
  * @member {String} signedForBy
+ * @type
  */
 PackageTrackingDetails.prototype.signedForBy = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/AdditionalLocationInfo} additionalLocationInfo
+ * @type
  */
 PackageTrackingDetails.prototype.additionalLocationInfo = undefined
 
 /**
  * An array of tracking event information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent>} trackingEvents
+ * @type
  */
 PackageTrackingDetails.prototype.trackingEvents = undefined

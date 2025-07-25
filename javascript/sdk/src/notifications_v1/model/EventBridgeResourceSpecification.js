@@ -63,11 +63,13 @@ export class EventBridgeResourceSpecification {
 /**
  * The AWS region in which you will be receiving the notifications.
  * @member {String} region
+ * @type
  */
 EventBridgeResourceSpecification.prototype.region = undefined
 
 /**
  * The identifier for the AWS account that is responsible for charges related to receiving notifications.
  * @member {String} accountId
+ * @type
  */
 EventBridgeResourceSpecification.prototype.accountId = undefined

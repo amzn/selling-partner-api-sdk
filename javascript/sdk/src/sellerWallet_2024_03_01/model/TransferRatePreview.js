@@ -71,21 +71,25 @@ export class TransferRatePreview {
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/Currency} baseAmount
+ * @type
  */
 TransferRatePreview.prototype.baseAmount = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/FxRateDetails} fxRateDetails
+ * @type
  */
 TransferRatePreview.prototype.fxRateDetails = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/Currency} transferAmount
+ * @type
  */
 TransferRatePreview.prototype.transferAmount = undefined
 
 /**
  * A list of fees.
  * @member {Array.<module:sellerWallet_2024_03_01/model/Fee>} fees
+ * @type
  */
 TransferRatePreview.prototype.fees = undefined

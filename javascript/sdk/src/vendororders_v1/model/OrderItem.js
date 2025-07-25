@@ -72,38 +72,45 @@ export class OrderItem {
 /**
  * Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
  * @member {String} itemSequenceNumber
+ * @type
  */
 OrderItem.prototype.itemSequenceNumber = undefined
 
 /**
  * Amazon Standard Identification Number (ASIN) of an item.
  * @member {String} amazonProductIdentifier
+ * @type
  */
 OrderItem.prototype.amazonProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item.
  * @member {String} vendorProductIdentifier
+ * @type
  */
 OrderItem.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
+ * @type
  */
 OrderItem.prototype.orderedQuantity = undefined
 
 /**
  * When true, we will accept backorder confirmations for this item.
  * @member {Boolean} isBackOrderAllowed
+ * @type
  */
 OrderItem.prototype.isBackOrderAllowed = undefined
 
 /**
  * @member {module:vendororders_v1/model/Money} netCost
+ * @type
  */
 OrderItem.prototype.netCost = undefined
 
 /**
  * @member {module:vendororders_v1/model/Money} listPrice
+ * @type
  */
 OrderItem.prototype.listPrice = undefined

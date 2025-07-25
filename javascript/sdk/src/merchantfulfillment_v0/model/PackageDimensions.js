@@ -64,27 +64,32 @@ export class PackageDimensions {
 /**
  * A number that represents the given package dimension.
  * @member {Number} length
+ * @type
  */
 PackageDimensions.prototype.length = undefined
 
 /**
  * A number that represents the given package dimension.
  * @member {Number} width
+ * @type
  */
 PackageDimensions.prototype.width = undefined
 
 /**
  * A number that represents the given package dimension.
  * @member {Number} height
+ * @type
  */
 PackageDimensions.prototype.height = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/UnitOfLength} unit
+ * @type
  */
 PackageDimensions.prototype.unit = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/PredefinedPackageDimensions} predefinedPackageDimensions
+ * @type
  */
 PackageDimensions.prototype.predefinedPackageDimensions = undefined

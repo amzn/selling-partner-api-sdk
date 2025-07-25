@@ -67,16 +67,19 @@ export class WeightRange {
 /**
  * Maximum allowed weight.
  * @member {Number} maximum
+ * @type
  */
 WeightRange.prototype.maximum = undefined
 
 /**
  * Minimum allowed weight.
  * @member {Number} minimum
+ * @type
  */
 WeightRange.prototype.minimum = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight} unit
+ * @type
  */
 WeightRange.prototype.unit = undefined

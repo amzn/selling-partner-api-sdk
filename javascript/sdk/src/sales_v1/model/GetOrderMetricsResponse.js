@@ -61,11 +61,13 @@ export class GetOrderMetricsResponse {
 /**
  * A set of order metrics, each scoped to a particular time interval.
  * @member {Array.<module:sales_v1/model/OrderMetricsInterval>} payload
+ * @type
  */
 GetOrderMetricsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:sales_v1/model/Error>} errors
+ * @type
  */
 GetOrderMetricsResponse.prototype.errors = undefined

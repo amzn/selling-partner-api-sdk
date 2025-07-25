@@ -67,16 +67,19 @@ export class ValueAddedService {
 /**
  * The identifier for the value-added service.
  * @member {String} id
+ * @type
  */
 ValueAddedService.prototype.id = undefined
 
 /**
  * The name of the value-added service.
  * @member {String} name
+ * @type
  */
 ValueAddedService.prototype.name = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} cost
+ * @type
  */
 ValueAddedService.prototype.cost = undefined

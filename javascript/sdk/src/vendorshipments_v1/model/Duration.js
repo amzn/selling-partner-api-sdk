@@ -83,11 +83,13 @@ Duration.DurationUnitEnum = {
 /**
  * Unit for duration.
  * @member {module:vendorshipments_v1/model/Duration.DurationUnitEnum} durationUnit
+ * @type
  */
 Duration.prototype.durationUnit = undefined
 
 /**
  * Value for the duration in terms of the durationUnit.
  * @member {Number} durationValue
+ * @type
  */
 Duration.prototype.durationValue = undefined

@@ -62,10 +62,12 @@ export class ThroughputConfig {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ThroughputCap} throughputCap
+ * @type
  */
 ThroughputConfig.prototype.throughputCap = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ThroughputUnit} throughputUnit
+ * @type
  */
 ThroughputConfig.prototype.throughputUnit = undefined

@@ -60,10 +60,12 @@ export class StandardTextBlock {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type
  */
 StandardTextBlock.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ParagraphComponent} body
+ * @type
  */
 StandardTextBlock.prototype.body = undefined

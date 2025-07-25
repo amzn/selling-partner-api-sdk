@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ClaimReason.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class ClaimReason {

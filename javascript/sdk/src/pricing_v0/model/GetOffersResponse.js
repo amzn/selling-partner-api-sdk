@@ -60,11 +60,13 @@ export class GetOffersResponse {
 
 /**
  * @member {module:pricing_v0/model/GetOffersResult} payload
+ * @type
  */
 GetOffersResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:pricing_v0/model/Error>} errors
+ * @type
  */
 GetOffersResponse.prototype.errors = undefined

@@ -60,5 +60,6 @@ export class StandardProductDescriptionModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ParagraphComponent} body
+ * @type
  */
 StandardProductDescriptionModule.prototype.body = undefined

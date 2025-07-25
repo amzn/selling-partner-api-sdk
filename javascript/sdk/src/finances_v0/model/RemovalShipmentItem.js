@@ -66,43 +66,51 @@ export class RemovalShipmentItem {
 /**
  * An identifier for an item in a removal shipment.
  * @member {String} removalShipmentItemId
+ * @type
  */
 RemovalShipmentItem.prototype.removalShipmentItemId = undefined
 
 /**
  * The tax collection model applied to the item.  Possible values:  * MarketplaceFacilitator - Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller.  * Standard - Tax is paid to the seller and not remitted to the taxing authority by Amazon.
  * @member {String} taxCollectionModel
+ * @type
  */
 RemovalShipmentItem.prototype.taxCollectionModel = undefined
 
 /**
  * The Amazon fulfillment network SKU for the item.
  * @member {String} fulfillmentNetworkSKU
+ * @type
  */
 RemovalShipmentItem.prototype.fulfillmentNetworkSKU = undefined
 
 /**
  * The quantity of the item.
  * @member {Number} quantity
+ * @type
  */
 RemovalShipmentItem.prototype.quantity = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} revenue
+ * @type
  */
 RemovalShipmentItem.prototype.revenue = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} feeAmount
+ * @type
  */
 RemovalShipmentItem.prototype.feeAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxAmount
+ * @type
  */
 RemovalShipmentItem.prototype.taxAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxWithheld
+ * @type
  */
 RemovalShipmentItem.prototype.taxWithheld = undefined

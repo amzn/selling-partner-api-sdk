@@ -60,11 +60,13 @@ export class SubmitShipmentConfirmationsResponse {
 
 /**
  * @member {module:vendorshipments_v1/model/TransactionReference} payload
+ * @type
  */
 SubmitShipmentConfirmationsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:vendorshipments_v1/model/Error>} errors
+ * @type
  */
 SubmitShipmentConfirmationsResponse.prototype.errors = undefined

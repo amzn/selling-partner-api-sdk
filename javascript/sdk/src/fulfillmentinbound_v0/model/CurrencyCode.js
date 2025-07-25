@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class CurrencyCode.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class CurrencyCode {

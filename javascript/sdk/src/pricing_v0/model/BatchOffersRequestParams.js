@@ -66,15 +66,18 @@ export class BatchOffersRequestParams {
 /**
  * A marketplace identifier. Specifies the marketplace for which prices are returned.
  * @member {String} marketplaceId
+ * @type
  */
 BatchOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemCondition} itemCondition
+ * @type
  */
 BatchOffersRequestParams.prototype.itemCondition = undefined
 
 /**
  * @member {module:pricing_v0/model/CustomerType} customerType
+ * @type
  */
 BatchOffersRequestParams.prototype.customerType = undefined

@@ -104,81 +104,96 @@ export class Shipment {
 /**
  * An Amazon-defined shipment identifier.
  * @member {String} shipmentId
+ * @type
  */
 Shipment.prototype.shipmentId = undefined
 
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type
  */
 Shipment.prototype.amazonOrderId = undefined
 
 /**
  * A seller-defined order identifier.
  * @member {String} sellerOrderId
+ * @type
  */
 Shipment.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
  * @member {Array.<module:merchantfulfillment_v0/model/Item>} itemList
+ * @type
  */
 Shipment.prototype.itemList = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Address} shipFromAddress
+ * @type
  */
 Shipment.prototype.shipFromAddress = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Address} shipToAddress
+ * @type
  */
 Shipment.prototype.shipToAddress = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/PackageDimensions} packageDimensions
+ * @type
  */
 Shipment.prototype.packageDimensions = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Weight} weight
+ * @type
  */
 Shipment.prototype.weight = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CurrencyAmount} insurance
+ * @type
  */
 Shipment.prototype.insurance = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShippingService} shippingService
+ * @type
  */
 Shipment.prototype.shippingService = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Label} label
+ * @type
  */
 Shipment.prototype.label = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShipmentStatus} status
+ * @type
  */
 Shipment.prototype.status = undefined
 
 /**
  * The shipment tracking identifier provided by the carrier.
  * @member {String} trackingId
+ * @type
  */
 Shipment.prototype.trackingId = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} createdDate
+ * @type
  */
 Shipment.prototype.createdDate = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} lastUpdatedDate
+ * @type
  */
 Shipment.prototype.lastUpdatedDate = undefined

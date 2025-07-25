@@ -59,11 +59,13 @@ export class LockerDetails {
 /**
  * Indicates the locker number
  * @member {String} lockerNumber
+ * @type
  */
 LockerDetails.prototype.lockerNumber = undefined
 
 /**
  * Indicates the locker access code
  * @member {String} lockerAccessCode
+ * @type
  */
 LockerDetails.prototype.lockerAccessCode = undefined

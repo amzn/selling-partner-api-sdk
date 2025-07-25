@@ -81,41 +81,48 @@ export class ItemSummaryByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type
  */
 ItemSummaryByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * When `true`, the Amazon catalog item is intended for an adult audience or is sexual in nature.
  * @member {Boolean} adultProduct
+ * @type
  */
 ItemSummaryByMarketplace.prototype.adultProduct = undefined
 
 /**
  * When `true`, the Amazon catalog item is autographed.
  * @member {Boolean} autographed
+ * @type
  */
 ItemSummaryByMarketplace.prototype.autographed = undefined
 
 /**
  * Name of the brand that is associated with the Amazon catalog item.
  * @member {String} brand
+ * @type
  */
 ItemSummaryByMarketplace.prototype.brand = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/ItemBrowseClassification} browseClassification
+ * @type
  */
 ItemSummaryByMarketplace.prototype.browseClassification = undefined
 
 /**
  * The color that is associated with the Amazon catalog item.
  * @member {String} color
+ * @type
  */
 ItemSummaryByMarketplace.prototype.color = undefined
 
 /**
  * Individual contributors to the creation of the item, such as the authors or actors.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemContributor>} contributors
+ * @type
  */
 ItemSummaryByMarketplace.prototype.contributors = undefined
 
@@ -154,77 +161,90 @@ ItemSummaryByMarketplace.ItemClassificationEnum = {
 /**
  * Classification type that is associated with the Amazon catalog item.
  * @member {module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace.ItemClassificationEnum} itemClassification
+ * @type
  */
 ItemSummaryByMarketplace.prototype.itemClassification = undefined
 
 /**
  * The name that is associated with the Amazon catalog item.
  * @member {String} itemName
+ * @type
  */
 ItemSummaryByMarketplace.prototype.itemName = undefined
 
 /**
  * The name of the manufacturer that is associated with the Amazon catalog item.
  * @member {String} manufacturer
+ * @type
  */
 ItemSummaryByMarketplace.prototype.manufacturer = undefined
 
 /**
  * When true, the item is classified as memorabilia.
  * @member {Boolean} memorabilia
+ * @type
  */
 ItemSummaryByMarketplace.prototype.memorabilia = undefined
 
 /**
  * The model number that is associated with the Amazon catalog item.
  * @member {String} modelNumber
+ * @type
  */
 ItemSummaryByMarketplace.prototype.modelNumber = undefined
 
 /**
  * The quantity of the Amazon catalog item within one package.
  * @member {Number} packageQuantity
+ * @type
  */
 ItemSummaryByMarketplace.prototype.packageQuantity = undefined
 
 /**
  * The part number that is associated with the Amazon catalog item.
  * @member {String} partNumber
+ * @type
  */
 ItemSummaryByMarketplace.prototype.partNumber = undefined
 
 /**
  * The earliest date on which the Amazon catalog item can be shipped to customers.
  * @member {Date} releaseDate
+ * @type
  */
 ItemSummaryByMarketplace.prototype.releaseDate = undefined
 
 /**
  * The name of the size of the Amazon catalog item.
  * @member {String} size
+ * @type
  */
 ItemSummaryByMarketplace.prototype.size = undefined
 
 /**
  * The name of the style that is associated with the Amazon catalog item.
  * @member {String} style
+ * @type
  */
 ItemSummaryByMarketplace.prototype.style = undefined
 
 /**
  * When true, the Amazon catalog item is eligible for trade-in.
  * @member {Boolean} tradeInEligible
+ * @type
  */
 ItemSummaryByMarketplace.prototype.tradeInEligible = undefined
 
 /**
  * The identifier of the website display group that is associated with the Amazon catalog item.
  * @member {String} websiteDisplayGroup
+ * @type
  */
 ItemSummaryByMarketplace.prototype.websiteDisplayGroup = undefined
 
 /**
  * The display name of the website display group that is associated with the Amazon catalog item.
  * @member {String} websiteDisplayGroupName
+ * @type
  */
 ItemSummaryByMarketplace.prototype.websiteDisplayGroupName = undefined

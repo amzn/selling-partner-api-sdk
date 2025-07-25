@@ -61,5 +61,6 @@ export class Packages {
 /**
  * A list of packages.
  * @member {Array.<module:easyship_v2022_03_23/model/Package>} packages
+ * @type
  */
 Packages.prototype.packages = undefined

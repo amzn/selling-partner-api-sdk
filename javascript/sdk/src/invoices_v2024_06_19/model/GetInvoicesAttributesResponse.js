@@ -58,5 +58,6 @@ export class GetInvoicesAttributesResponse {
 
 /**
  * @member {module:invoices_v2024_06_19/model/InvoicesAttributes} invoicesAttributes
+ * @type
  */
 GetInvoicesAttributesResponse.prototype.invoicesAttributes = undefined

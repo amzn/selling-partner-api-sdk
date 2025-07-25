@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class PaymentMethodType.
-* @enum {}
+* @enum String
 * @readonly
 */
 export class PaymentMethodType {

@@ -63,11 +63,13 @@ export class ProductTypeList {
 
 /**
  * @member {Array.<module:producttypedefinitions_v2020_09_01/model/ProductType>} productTypes
+ * @type
  */
 ProductTypeList.prototype.productTypes = undefined
 
 /**
  * Amazon product type version identifier.
  * @member {String} productTypeVersion
+ * @type
  */
 ProductTypeList.prototype.productTypeVersion = undefined

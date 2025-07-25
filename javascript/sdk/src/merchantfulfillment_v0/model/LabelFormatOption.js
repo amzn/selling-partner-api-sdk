@@ -60,10 +60,12 @@ export class LabelFormatOption {
 /**
  * When true, include a packing slip with the label.
  * @member {Boolean} includePackingSlipWithLabel
+ * @type
  */
 LabelFormatOption.prototype.includePackingSlipWithLabel = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/LabelFormat} labelFormat
+ * @type
  */
 LabelFormatOption.prototype.labelFormat = undefined

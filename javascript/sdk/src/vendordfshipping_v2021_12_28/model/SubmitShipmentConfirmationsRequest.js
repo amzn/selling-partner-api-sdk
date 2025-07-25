@@ -59,5 +59,6 @@ export class SubmitShipmentConfirmationsRequest {
 /**
  * Array of `ShipmentConfirmation` objects. Each `ShipmentConfirmation` object represents the confirmation details for a specific shipment.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShipmentConfirmation>} shipmentConfirmations
+ * @type
  */
 SubmitShipmentConfirmationsRequest.prototype.shipmentConfirmations = undefined

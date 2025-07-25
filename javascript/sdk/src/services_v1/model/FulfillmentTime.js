@@ -59,11 +59,13 @@ export class FulfillmentTime {
 /**
  * The date, time in UTC of the fulfillment start time in ISO 8601 format.
  * @member {Date} startTime
+ * @type
  */
 FulfillmentTime.prototype.startTime = undefined
 
 /**
  * The date, time in UTC of the fulfillment end time in ISO 8601 format.
  * @member {Date} endTime
+ * @type
  */
 FulfillmentTime.prototype.endTime = undefined

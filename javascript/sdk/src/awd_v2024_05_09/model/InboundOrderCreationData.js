@@ -68,21 +68,25 @@ export class InboundOrderCreationData {
 /**
  * Reference ID that can be used to correlate the order with partner resources.
  * @member {String} externalReferenceId
+ * @type
  */
 InboundOrderCreationData.prototype.externalReferenceId = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/Address} originAddress
+ * @type
  */
 InboundOrderCreationData.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
  * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packagesToInbound
+ * @type
  */
 InboundOrderCreationData.prototype.packagesToInbound = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InboundPreferences} preferences
+ * @type
  */
 InboundOrderCreationData.prototype.preferences = undefined

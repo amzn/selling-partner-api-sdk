@@ -70,34 +70,40 @@ export class InboundShipmentSummary {
 /**
  * Timestamp when the shipment was created.
  * @member {Date} createdAt
+ * @type
  */
 InboundShipmentSummary.prototype.createdAt = undefined
 
 /**
  * Optional client-provided reference ID that can be used to correlate this shipment with client resources. For example, to map this shipment to an internal bookkeeping order record.
  * @member {String} externalReferenceId
+ * @type
  */
 InboundShipmentSummary.prototype.externalReferenceId = undefined
 
 /**
  * The AWD inbound order ID that this inbound shipment belongs to.
  * @member {String} orderId
+ * @type
  */
 InboundShipmentSummary.prototype.orderId = undefined
 
 /**
  * A unique shipment ID.
  * @member {String} shipmentId
+ * @type
  */
 InboundShipmentSummary.prototype.shipmentId = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InboundShipmentStatus} shipmentStatus
+ * @type
  */
 InboundShipmentSummary.prototype.shipmentStatus = undefined
 
 /**
  * Timestamp when the shipment was updated.
  * @member {Date} updatedAt
+ * @type
  */
 InboundShipmentSummary.prototype.updatedAt = undefined

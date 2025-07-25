@@ -64,22 +64,26 @@ export class ItemDetails {
 /**
  * The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.
  * @member {String} purchaseOrderNumber
+ * @type
  */
 ItemDetails.prototype.purchaseOrderNumber = undefined
 
 /**
  * The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.
  * @member {String} lotNumber
+ * @type
  */
 ItemDetails.prototype.lotNumber = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Expiry} expiry
+ * @type
  */
 ItemDetails.prototype.expiry = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Money} maximumRetailPrice
+ * @type
  */
 ItemDetails.prototype.maximumRetailPrice = undefined
 
@@ -118,5 +122,6 @@ ItemDetails.HandlingCodeEnum = {
 /**
  * Identification of the instructions on how specified item/carton/pallet should be handled.
  * @member {module:vendorshipments_v1/model/ItemDetails.HandlingCodeEnum} handlingCode
+ * @type
  */
 ItemDetails.prototype.handlingCode = undefined

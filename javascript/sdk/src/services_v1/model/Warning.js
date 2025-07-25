@@ -64,17 +64,20 @@ export class Warning {
 /**
  * An warning code that identifies the type of warning that occurred.
  * @member {String} code
+ * @type
  */
 Warning.prototype.code = undefined
 
 /**
  * A message that describes the warning condition in a human-readable form.
  * @member {String} message
+ * @type
  */
 Warning.prototype.message = undefined
 
 /**
  * Additional details that can help the caller understand or address the warning.
  * @member {String} details
+ * @type
  */
 Warning.prototype.details = undefined
