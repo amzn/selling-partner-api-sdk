@@ -131,6 +131,7 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
  * {{{description}}}{{/description}}
  * @member {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{name}}{{#defaultValue}}
  * @default {{{defaultValue}}}{{/defaultValue}}
+ * @type {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=>
  */
     {{/emitJSDoc}}
 {{classname}}.prototype.{{name}} = {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}undefined{{/defaultValue}};
@@ -146,6 +147,7 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
  * {{{description}}}{{/description}}
  * @member {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{name}}{{#defaultValue}}
  * @default {{{defaultValue}}}{{/defaultValue}}
+ * @type {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=>
  */
       {{/emitJSDoc}}
 {{classname}}.prototype.{{name}} = {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}undefined{{/defaultValue}};
