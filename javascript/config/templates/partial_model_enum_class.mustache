@@ -1,6 +1,6 @@
 {{#emitJSDoc}}/**
 * Enum class {{classname}}.
-* @enum {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=>
+* @enum {{=< >=}}{<dataType>}<={{ }}=>
 * @readonly
 */{{/emitJSDoc}}
 export class {{classname}} {
@@ -16,7 +16,7 @@ export class {{classname}} {
     {{#emitJSDoc}}/**
     * Returns a <code>{{classname}}</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {{=< >=}}{module:<#invokerPackage><invokerPackage>/</invokerPackage><#modelPackage><modelPackage>/</modelPackage><classname>}<={{ }}=> The enum <code>{{classname}}</code> value.
+    * @return {{=< >=}}{<classname>}<={{ }}=> The enum <code>{{classname}}</code> value.
     */{{/emitJSDoc}}
     static constructFromObject(object) {
         return object;

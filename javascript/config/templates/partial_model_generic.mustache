@@ -14,7 +14,7 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
    * @class{{#useInheritance}}{{#parent}}
    * @extends {{#parentModel}}module:{{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}{{#modelPackage}}{{modelPackage}}/{{/modelPackage}}{{classname}}{{/parentModel}}{{^parentModel}}{{#vendorExtensions.x-isArray}}Array{{/vendorExtensions.x-isArray}}{{#vendorExtensions.x-isMap}}Object{{/vendorExtensions.x-isMap}}{{/parentModel}}{{/parent}}{{#interfaces}}
    * @implements module:{{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}{{#modelPackage}}{{modelPackage}}/{{/modelPackage}}{{.}}{{/interfaces}}{{/useInheritance}}{{#vendorExtensions.x-all-required}}
-   * @param {{name}} {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{#description}}{{{description}}}{{/description}}{{/vendorExtensions.x-all-required}}
+   * @param {{name}} {{=< >=}}{<dataType>}<={{ }}=> {{#description}}{{{description}}}{{/description}}{{/vendorExtensions.x-all-required}}
    */
 {{/emitJSDoc}}
   constructor({{#vendorExtensions.x-all-required}}{{name}}{{^-last}}, {{/-last}}{{/vendorExtensions.x-all-required}}) {
@@ -45,8 +45,8 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
    * Constructs a <code>{{classname}}</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {{=< >=}}{module:<#invokerPackage><invokerPackage>/</invokerPackage><#modelPackage><modelPackage>/</modelPackage><classname>}<={{ }}=> obj Optional instance to populate.
-   * @return {{=< >=}}{module:<#invokerPackage><invokerPackage>/</invokerPackage><#modelPackage><modelPackage>/</modelPackage><classname>}<={{ }}=> The populated <code>{{classname}}</code> instance.
+   * @param {{=< >=}}{<classname>}<={{ }}=> obj Optional instance to populate.
+   * @return {{=< >=}}{<classname>}<={{ }}=> The populated <code>{{classname}}</code> instance.
    */
 {{/emitJSDoc}}
   static constructFromObject(data, obj) {
@@ -91,7 +91,7 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
    * Returns {{{description}}}{{/description}}{{#minimum}}
    * minimum: {{minimum}}{{/minimum}}{{#maximum}}
    * maximum: {{maximum}}{{/maximum}}
-   * @return {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=>
+   * @return {{=< >=}}{<dataType>}<={{ }}=>
    */
     {{/emitJSDoc}}
   {{getter}}() {
@@ -101,7 +101,7 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
     {{#emitJSDoc}}
   /**{{#description}}
    * Sets {{{description}}}{{/description}}
-   * @param {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{name}}{{#description}} {{{description}}}{{/description}}
+   * @param {{=< >=}}{<dataType>}<={{ }}=> {{name}}{{#description}} {{{description}}}{{/description}}
    */
     {{/emitJSDoc}}
   {{setter}}({{name}}) {
@@ -129,9 +129,9 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
     {{#emitJSDoc}}
 /**{{#description}}
  * {{{description}}}{{/description}}
- * @member {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{name}}{{#defaultValue}}
+ * @member {{=< >=}}{<dataType>}<={{ }}=> {{name}}{{#defaultValue}}
  * @default {{{defaultValue}}}{{/defaultValue}}
- * @type {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=>
+ * @type {{=< >=}}{<dataType>}<={{ }}=>
  */
     {{/emitJSDoc}}
 {{classname}}.prototype.{{name}} = {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}undefined{{/defaultValue}};
@@ -145,9 +145,9 @@ export class {{classname}} {{#parentModel}}extends {{classname}} {{/parentModel}
       {{#emitJSDoc}}
 /**{{#description}}
  * {{{description}}}{{/description}}
- * @member {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=> {{name}}{{#defaultValue}}
+ * @member {{=< >=}}{<dataType>}<={{ }}=> {{name}}{{#defaultValue}}
  * @default {{{defaultValue}}}{{/defaultValue}}
- * @type {{=< >=}}{<&vendorExtensions.x-jsdoc-type>}<={{ }}=>
+ * @type {{=< >=}}{<dataType>}<={{ }}=>
  */
       {{/emitJSDoc}}
 {{classname}}.prototype.{{name}} = {{#defaultValue}}{{{defaultValue}}}{{/defaultValue}}{{^defaultValue}}undefined{{/defaultValue}};
