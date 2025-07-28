@@ -26,7 +26,7 @@ export class PriceType {
    * Schema for item&#39;s price information, including listing price, shipping price, and Amazon points.
    * @alias module:pricing_v0/model/PriceType
    * @class
-   * @param listingPrice {module:pricing_v0/model/MoneyType}
+   * @param listingPrice {MoneyType}
    */
   constructor (listingPrice) {
     this.listingPrice = listingPrice
@@ -36,8 +36,8 @@ export class PriceType {
    * Constructs a <code>PriceType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/PriceType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/PriceType} The populated <code>PriceType</code> instance.
+   * @param {PriceType} obj Optional instance to populate.
+   * @return {PriceType} The populated <code>PriceType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,25 +63,25 @@ export class PriceType {
 }
 
 /**
- * @member {module:pricing_v0/model/MoneyType} landedPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} landedPrice
+ * @type {MoneyType}
  */
 PriceType.prototype.landedPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} listingPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 PriceType.prototype.listingPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} shipping
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} shipping
+ * @type {MoneyType}
  */
 PriceType.prototype.shipping = undefined
 
 /**
- * @member {module:pricing_v0/model/Points} points
- * @type {module:pricing_v0/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 PriceType.prototype.points = undefined

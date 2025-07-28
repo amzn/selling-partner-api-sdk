@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DocumentFormat.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class DocumentFormat {
@@ -40,7 +40,7 @@ export class DocumentFormat {
   /**
     * Returns a <code>DocumentFormat</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/DocumentFormat} The enum <code>DocumentFormat</code> value.
+    * @return {DocumentFormat} The enum <code>DocumentFormat</code> value.
     */
   static constructFromObject (object) {
     return object

@@ -27,9 +27,9 @@ export class RegulatedOrderVerificationStatus {
    * The verification status of the order, along with associated approval or rejection metadata.
    * @alias module:orders_v0/model/RegulatedOrderVerificationStatus
    * @class
-   * @param status {module:orders_v0/model/VerificationStatus}
+   * @param status {VerificationStatus}
    * @param requiresMerchantAction {Boolean} When true, the regulated information provided in the order requires a review by the merchant.
-   * @param validRejectionReasons {Array.<module:orders_v0/model/RejectionReason>} A list of valid rejection reasons that may be used to reject the order's regulated information.
+   * @param validRejectionReasons {[RejectionReason]} A list of valid rejection reasons that may be used to reject the order's regulated information.
    */
   constructor (status, requiresMerchantAction, validRejectionReasons) {
     this.status = status
@@ -41,8 +41,8 @@ export class RegulatedOrderVerificationStatus {
    * Constructs a <code>RegulatedOrderVerificationStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/RegulatedOrderVerificationStatus} obj Optional instance to populate.
-   * @return {module:orders_v0/model/RegulatedOrderVerificationStatus} The populated <code>RegulatedOrderVerificationStatus</code> instance.
+   * @param {RegulatedOrderVerificationStatus} obj Optional instance to populate.
+   * @return {RegulatedOrderVerificationStatus} The populated <code>RegulatedOrderVerificationStatus</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,8 +71,8 @@ export class RegulatedOrderVerificationStatus {
 }
 
 /**
- * @member {module:orders_v0/model/VerificationStatus} status
- * @type {module:orders_v0/model/VerificationStatus}
+ * @member {VerificationStatus} status
+ * @type {VerificationStatus}
  */
 RegulatedOrderVerificationStatus.prototype.status = undefined
 
@@ -85,14 +85,14 @@ RegulatedOrderVerificationStatus.prototype.requiresMerchantAction = undefined
 
 /**
  * A list of valid rejection reasons that may be used to reject the order's regulated information.
- * @member {Array.<module:orders_v0/model/RejectionReason>} validRejectionReasons
- * @type {Array.<module:orders_v0/model/RejectionReason>}
+ * @member {[RejectionReason]} validRejectionReasons
+ * @type {[RejectionReason]}
  */
 RegulatedOrderVerificationStatus.prototype.validRejectionReasons = undefined
 
 /**
- * @member {module:orders_v0/model/RejectionReason} rejectionReason
- * @type {module:orders_v0/model/RejectionReason}
+ * @member {RejectionReason} rejectionReason
+ * @type {RejectionReason}
  */
 RegulatedOrderVerificationStatus.prototype.rejectionReason = undefined
 
@@ -112,7 +112,7 @@ RegulatedOrderVerificationStatus.prototype.externalReviewerId = undefined
 
 /**
  * A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
- * @member {Array.<module:orders_v0/model/ValidVerificationDetail>} validVerificationDetails
- * @type {Array.<module:orders_v0/model/ValidVerificationDetail>}
+ * @member {[ValidVerificationDetail]} validVerificationDetails
+ * @type {[ValidVerificationDetail]}
  */
 RegulatedOrderVerificationStatus.prototype.validVerificationDetails = undefined

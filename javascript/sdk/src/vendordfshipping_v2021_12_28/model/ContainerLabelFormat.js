@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ContainerLabelFormat.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ContainerLabelFormat {
@@ -34,7 +34,7 @@ export class ContainerLabelFormat {
   /**
     * Returns a <code>ContainerLabelFormat</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:vendordfshipping_v2021_12_28/model/ContainerLabelFormat} The enum <code>ContainerLabelFormat</code> value.
+    * @return {ContainerLabelFormat} The enum <code>ContainerLabelFormat</code> value.
     */
   static constructFromObject (object) {
     return object

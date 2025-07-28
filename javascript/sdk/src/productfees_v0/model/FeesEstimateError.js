@@ -27,7 +27,7 @@ export class FeesEstimateError {
    * @param type {String} An error type, identifying either the receiver or the sender as the originator of the error.
    * @param code {String} An error code that identifies the type of error that occurred.
    * @param message {String} A message that describes the error condition.
-   * @param detail {Array.<Object>} Additional information that can help the caller understand or fix the issue.
+   * @param detail {[Object]} Additional information that can help the caller understand or fix the issue.
    */
   constructor (type, code, message, detail) {
     this.type = type
@@ -40,8 +40,8 @@ export class FeesEstimateError {
    * Constructs a <code>FeesEstimateError</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/FeesEstimateError} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/FeesEstimateError} The populated <code>FeesEstimateError</code> instance.
+   * @param {FeesEstimateError} obj Optional instance to populate.
+   * @return {FeesEstimateError} The populated <code>FeesEstimateError</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,7 +89,7 @@ FeesEstimateError.prototype.message = undefined
 
 /**
  * Additional information that can help the caller understand or fix the issue.
- * @member {Array.<Object>} detail
- * @type {Array.<Object>}
+ * @member {[Object]} detail
+ * @type {[Object]}
  */
 FeesEstimateError.prototype.detail = undefined

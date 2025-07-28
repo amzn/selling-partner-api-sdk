@@ -33,8 +33,8 @@ export class Segment {
    * Constructs a <code>Segment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/Segment} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/Segment} The populated <code>Segment</code> instance.
+   * @param {Segment} obj Optional instance to populate.
+   * @return {Segment} The populated <code>Segment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class Segment {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/SegmentDetails} segmentDetails
- * @type {module:pricing_v2022_05_01/model/SegmentDetails}
+ * @member {SegmentDetails} segmentDetails
+ * @type {SegmentDetails}
  */
 Segment.prototype.segmentDetails = undefined

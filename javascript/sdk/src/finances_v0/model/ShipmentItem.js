@@ -37,8 +37,8 @@ export class ShipmentItem {
    * Constructs a <code>ShipmentItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ShipmentItem} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ShipmentItem} The populated <code>ShipmentItem</code> instance.
+   * @param {ShipmentItem} obj Optional instance to populate.
+   * @return {ShipmentItem} The populated <code>ShipmentItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -102,61 +102,61 @@ ShipmentItem.prototype.quantityShipped = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {Array.<module:finances_v0/model/ChargeComponent>} itemChargeList
- * @type {Array.<module:finances_v0/model/ChargeComponent>}
+ * @member {[ChargeComponent]} itemChargeList
+ * @type {[ChargeComponent]}
  */
 ShipmentItem.prototype.itemChargeList = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {Array.<module:finances_v0/model/ChargeComponent>} itemChargeAdjustmentList
- * @type {Array.<module:finances_v0/model/ChargeComponent>}
+ * @member {[ChargeComponent]} itemChargeAdjustmentList
+ * @type {[ChargeComponent]}
  */
 ShipmentItem.prototype.itemChargeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} itemFeeList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} itemFeeList
+ * @type {[FeeComponent]}
  */
 ShipmentItem.prototype.itemFeeList = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} itemFeeAdjustmentList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} itemFeeAdjustmentList
+ * @type {[FeeComponent]}
  */
 ShipmentItem.prototype.itemFeeAdjustmentList = undefined
 
 /**
  * A list of information about taxes withheld.
- * @member {Array.<module:finances_v0/model/TaxWithheldComponent>} itemTaxWithheldList
- * @type {Array.<module:finances_v0/model/TaxWithheldComponent>}
+ * @member {[TaxWithheldComponent]} itemTaxWithheldList
+ * @type {[TaxWithheldComponent]}
  */
 ShipmentItem.prototype.itemTaxWithheldList = undefined
 
 /**
  * A list of promotions.
- * @member {Array.<module:finances_v0/model/Promotion>} promotionList
- * @type {Array.<module:finances_v0/model/Promotion>}
+ * @member {[Promotion]} promotionList
+ * @type {[Promotion]}
  */
 ShipmentItem.prototype.promotionList = undefined
 
 /**
  * A list of promotions.
- * @member {Array.<module:finances_v0/model/Promotion>} promotionAdjustmentList
- * @type {Array.<module:finances_v0/model/Promotion>}
+ * @member {[Promotion]} promotionAdjustmentList
+ * @type {[Promotion]}
  */
 ShipmentItem.prototype.promotionAdjustmentList = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} costOfPointsGranted
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} costOfPointsGranted
+ * @type {Currency}
  */
 ShipmentItem.prototype.costOfPointsGranted = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} costOfPointsReturned
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} costOfPointsReturned
+ * @type {Currency}
  */
 ShipmentItem.prototype.costOfPointsReturned = undefined

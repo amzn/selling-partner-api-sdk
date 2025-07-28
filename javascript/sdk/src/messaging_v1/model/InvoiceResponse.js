@@ -33,8 +33,8 @@ export class InvoiceResponse {
    * Constructs a <code>InvoiceResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/InvoiceResponse} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/InvoiceResponse} The populated <code>InvoiceResponse</code> instance.
+   * @param {InvoiceResponse} obj Optional instance to populate.
+   * @return {InvoiceResponse} The populated <code>InvoiceResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class InvoiceResponse {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:messaging_v1/model/Error>} errors
- * @type {Array.<module:messaging_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 InvoiceResponse.prototype.errors = undefined

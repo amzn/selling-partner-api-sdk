@@ -26,8 +26,8 @@ export class AvailableCarrierWillPickUpOption {
    * Indicates whether the carrier will pick up the package, and what fee is charged, if any.
    * @alias module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption
    * @class
-   * @param carrierWillPickUpOption {module:merchantfulfillment_v0/model/CarrierWillPickUpOption}
-   * @param charge {module:merchantfulfillment_v0/model/CurrencyAmount}
+   * @param carrierWillPickUpOption {CarrierWillPickUpOption}
+   * @param charge {CurrencyAmount}
    */
   constructor (carrierWillPickUpOption, charge) {
     this.carrierWillPickUpOption = carrierWillPickUpOption
@@ -38,8 +38,8 @@ export class AvailableCarrierWillPickUpOption {
    * Constructs a <code>AvailableCarrierWillPickUpOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption} The populated <code>AvailableCarrierWillPickUpOption</code> instance.
+   * @param {AvailableCarrierWillPickUpOption} obj Optional instance to populate.
+   * @return {AvailableCarrierWillPickUpOption} The populated <code>AvailableCarrierWillPickUpOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class AvailableCarrierWillPickUpOption {
 }
 
 /**
- * @member {module:merchantfulfillment_v0/model/CarrierWillPickUpOption} carrierWillPickUpOption
- * @type {module:merchantfulfillment_v0/model/CarrierWillPickUpOption}
+ * @member {CarrierWillPickUpOption} carrierWillPickUpOption
+ * @type {CarrierWillPickUpOption}
  */
 AvailableCarrierWillPickUpOption.prototype.carrierWillPickUpOption = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CurrencyAmount} charge
- * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
+ * @member {CurrencyAmount} charge
+ * @type {CurrencyAmount}
  */
 AvailableCarrierWillPickUpOption.prototype.charge = undefined

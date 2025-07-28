@@ -36,8 +36,8 @@ export class ContentRecord {
    * Constructs a <code>ContentRecord</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ContentRecord} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ContentRecord} The populated <code>ContentRecord</code> instance.
+   * @param {ContentRecord} obj Optional instance to populate.
+   * @return {ContentRecord} The populated <code>ContentRecord</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,13 +69,13 @@ export class ContentRecord {
 ContentRecord.prototype.contentReferenceKey = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ContentMetadata} contentMetadata
- * @type {module:apluscontent_v2020_11_01/model/ContentMetadata}
+ * @member {ContentMetadata} contentMetadata
+ * @type {ContentMetadata}
  */
 ContentRecord.prototype.contentMetadata = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ContentDocument} contentDocument
- * @type {module:apluscontent_v2020_11_01/model/ContentDocument}
+ * @member {ContentDocument} contentDocument
+ * @type {ContentDocument}
  */
 ContentRecord.prototype.contentDocument = undefined

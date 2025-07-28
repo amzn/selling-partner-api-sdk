@@ -40,8 +40,8 @@ export class CompetitiveSummaryResponseBody {
    * Constructs a <code>CompetitiveSummaryResponseBody</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/CompetitiveSummaryResponseBody} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/CompetitiveSummaryResponseBody} The populated <code>CompetitiveSummaryResponseBody</code> instance.
+   * @param {CompetitiveSummaryResponseBody} obj Optional instance to populate.
+   * @return {CompetitiveSummaryResponseBody} The populated <code>CompetitiveSummaryResponseBody</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -84,28 +84,28 @@ CompetitiveSummaryResponseBody.prototype.marketplaceId = undefined
 
 /**
  * A list of featured buying options for the specified ASIN `marketplaceId` combination.
- * @member {Array.<module:pricing_v2022_05_01/model/FeaturedBuyingOption>} featuredBuyingOptions
- * @type {Array.<module:pricing_v2022_05_01/model/FeaturedBuyingOption>}
+ * @member {[FeaturedBuyingOption]} featuredBuyingOptions
+ * @type {[FeaturedBuyingOption]}
  */
 CompetitiveSummaryResponseBody.prototype.featuredBuyingOptions = undefined
 
 /**
  * A list of lowest priced offers for the specified ASIN `marketplaceId` combination.
- * @member {Array.<module:pricing_v2022_05_01/model/LowestPricedOffer>} lowestPricedOffers
- * @type {Array.<module:pricing_v2022_05_01/model/LowestPricedOffer>}
+ * @member {[LowestPricedOffer]} lowestPricedOffers
+ * @type {[LowestPricedOffer]}
  */
 CompetitiveSummaryResponseBody.prototype.lowestPricedOffers = undefined
 
 /**
  * A list of reference prices for the specified ASIN `marketplaceId` combination.
- * @member {Array.<module:pricing_v2022_05_01/model/ReferencePrice>} referencePrices
- * @type {Array.<module:pricing_v2022_05_01/model/ReferencePrice>}
+ * @member {[ReferencePrice]} referencePrices
+ * @type {[ReferencePrice]}
  */
 CompetitiveSummaryResponseBody.prototype.referencePrices = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
- * @member {Array.<module:pricing_v2022_05_01/model/Error>} errors
- * @type {Array.<module:pricing_v2022_05_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 CompetitiveSummaryResponseBody.prototype.errors = undefined

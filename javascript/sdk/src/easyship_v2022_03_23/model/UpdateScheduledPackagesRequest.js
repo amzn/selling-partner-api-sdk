@@ -26,7 +26,7 @@ export class UpdateScheduledPackagesRequest {
    * @alias module:easyship_v2022_03_23/model/UpdateScheduledPackagesRequest
    * @class
    * @param marketplaceId {String} A string of up to 255 characters.
-   * @param updatePackageDetailsList {Array.<module:easyship_v2022_03_23/model/UpdatePackageDetails>} A list of package update details.
+   * @param updatePackageDetailsList {[UpdatePackageDetails]} A list of package update details.
    */
   constructor (marketplaceId, updatePackageDetailsList) {
     this.marketplaceId = marketplaceId
@@ -37,8 +37,8 @@ export class UpdateScheduledPackagesRequest {
    * Constructs a <code>UpdateScheduledPackagesRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/UpdateScheduledPackagesRequest} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/UpdateScheduledPackagesRequest} The populated <code>UpdateScheduledPackagesRequest</code> instance.
+   * @param {UpdateScheduledPackagesRequest} obj Optional instance to populate.
+   * @return {UpdateScheduledPackagesRequest} The populated <code>UpdateScheduledPackagesRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ UpdateScheduledPackagesRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of package update details.
- * @member {Array.<module:easyship_v2022_03_23/model/UpdatePackageDetails>} updatePackageDetailsList
- * @type {Array.<module:easyship_v2022_03_23/model/UpdatePackageDetails>}
+ * @member {[UpdatePackageDetails]} updatePackageDetailsList
+ * @type {[UpdatePackageDetails]}
  */
 UpdateScheduledPackagesRequest.prototype.updatePackageDetailsList = undefined

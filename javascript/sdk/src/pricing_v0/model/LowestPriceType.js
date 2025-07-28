@@ -30,7 +30,7 @@ export class LowestPriceType {
    * @class
    * @param condition {String} Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
    * @param fulfillmentChannel {String} Indicates whether the item is fulfilled by Amazon or by the seller.
-   * @param listingPrice {module:pricing_v0/model/MoneyType}
+   * @param listingPrice {MoneyType}
    */
   constructor (condition, fulfillmentChannel, listingPrice) {
     this.condition = condition
@@ -42,8 +42,8 @@ export class LowestPriceType {
    * Constructs a <code>LowestPriceType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/LowestPriceType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/LowestPriceType} The populated <code>LowestPriceType</code> instance.
+   * @param {LowestPriceType} obj Optional instance to populate.
+   * @return {LowestPriceType} The populated <code>LowestPriceType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,8 +88,8 @@ LowestPriceType.prototype.condition = undefined
 LowestPriceType.prototype.fulfillmentChannel = undefined
 
 /**
- * @member {module:pricing_v0/model/OfferCustomerType} offerType
- * @type {module:pricing_v0/model/OfferCustomerType}
+ * @member {OfferCustomerType} offerType
+ * @type {OfferCustomerType}
  */
 LowestPriceType.prototype.offerType = undefined
 
@@ -101,31 +101,31 @@ LowestPriceType.prototype.offerType = undefined
 LowestPriceType.prototype.quantityTier = undefined
 
 /**
- * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
- * @type {module:pricing_v0/model/QuantityDiscountType}
+ * @member {QuantityDiscountType} quantityDiscountType
+ * @type {QuantityDiscountType}
  */
 LowestPriceType.prototype.quantityDiscountType = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} landedPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} landedPrice
+ * @type {MoneyType}
  */
 LowestPriceType.prototype.landedPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} listingPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 LowestPriceType.prototype.listingPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} shipping
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} shipping
+ * @type {MoneyType}
  */
 LowestPriceType.prototype.shipping = undefined
 
 /**
- * @member {module:pricing_v0/model/Points} points
- * @type {module:pricing_v0/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 LowestPriceType.prototype.points = undefined

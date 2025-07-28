@@ -33,8 +33,8 @@ export class ReturnLocation {
    * Constructs a <code>ReturnLocation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/ReturnLocation} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/ReturnLocation} The populated <code>ReturnLocation</code> instance.
+   * @param {ReturnLocation} obj Optional instance to populate.
+   * @return {ReturnLocation} The populated <code>ReturnLocation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class ReturnLocation {
 ReturnLocation.prototype.supplySourceId = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/AddressWithContact} addressWithContact
- * @type {module:supplysources_v2020_07_01/model/AddressWithContact}
+ * @member {AddressWithContact} addressWithContact
+ * @type {AddressWithContact}
  */
 ReturnLocation.prototype.addressWithContact = undefined

@@ -37,8 +37,8 @@ export class CreateSubscriptionRequest {
    * Constructs a <code>CreateSubscriptionRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/CreateSubscriptionRequest} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/CreateSubscriptionRequest} The populated <code>CreateSubscriptionRequest</code> instance.
+   * @param {CreateSubscriptionRequest} obj Optional instance to populate.
+   * @return {CreateSubscriptionRequest} The populated <code>CreateSubscriptionRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,7 +77,7 @@ CreateSubscriptionRequest.prototype.payloadVersion = undefined
 CreateSubscriptionRequest.prototype.destinationId = undefined
 
 /**
- * @member {module:notifications_v1/model/ProcessingDirective} processingDirective
- * @type {module:notifications_v1/model/ProcessingDirective}
+ * @member {ProcessingDirective} processingDirective
+ * @type {ProcessingDirective}
  */
 CreateSubscriptionRequest.prototype.processingDirective = undefined

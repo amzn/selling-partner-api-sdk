@@ -33,8 +33,8 @@ export class RemovalShipmentItemAdjustment {
    * Constructs a <code>RemovalShipmentItemAdjustment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/RemovalShipmentItemAdjustment} obj Optional instance to populate.
-   * @return {module:finances_v0/model/RemovalShipmentItemAdjustment} The populated <code>RemovalShipmentItemAdjustment</code> instance.
+   * @param {RemovalShipmentItemAdjustment} obj Optional instance to populate.
+   * @return {RemovalShipmentItemAdjustment} The populated <code>RemovalShipmentItemAdjustment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,19 +91,19 @@ RemovalShipmentItemAdjustment.prototype.fulfillmentNetworkSKU = undefined
 RemovalShipmentItemAdjustment.prototype.adjustedQuantity = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} revenueAdjustment
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} revenueAdjustment
+ * @type {Currency}
  */
 RemovalShipmentItemAdjustment.prototype.revenueAdjustment = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxAmountAdjustment
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxAmountAdjustment
+ * @type {Currency}
  */
 RemovalShipmentItemAdjustment.prototype.taxAmountAdjustment = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxWithheldAdjustment
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxWithheldAdjustment
+ * @type {Currency}
  */
 RemovalShipmentItemAdjustment.prototype.taxWithheldAdjustment = undefined

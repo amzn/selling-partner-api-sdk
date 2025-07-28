@@ -29,8 +29,8 @@ export class OrderMetricsInterval {
    * @param unitCount {Number} The number of units in orders based on the specified filters.
    * @param orderItemCount {Number} The number of order items based on the specified filters.
    * @param orderCount {Number} The number of orders based on the specified filters.
-   * @param averageUnitPrice {module:sales_v1/model/Money}
-   * @param totalSales {module:sales_v1/model/Money}
+   * @param averageUnitPrice {Money}
+   * @param totalSales {Money}
    */
   constructor (interval, unitCount, orderItemCount, orderCount, averageUnitPrice, totalSales) {
     this.interval = interval
@@ -45,8 +45,8 @@ export class OrderMetricsInterval {
    * Constructs a <code>OrderMetricsInterval</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sales_v1/model/OrderMetricsInterval} obj Optional instance to populate.
-   * @return {module:sales_v1/model/OrderMetricsInterval} The populated <code>OrderMetricsInterval</code> instance.
+   * @param {OrderMetricsInterval} obj Optional instance to populate.
+   * @return {OrderMetricsInterval} The populated <code>OrderMetricsInterval</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -102,13 +102,13 @@ OrderMetricsInterval.prototype.orderItemCount = undefined
 OrderMetricsInterval.prototype.orderCount = undefined
 
 /**
- * @member {module:sales_v1/model/Money} averageUnitPrice
- * @type {module:sales_v1/model/Money}
+ * @member {Money} averageUnitPrice
+ * @type {Money}
  */
 OrderMetricsInterval.prototype.averageUnitPrice = undefined
 
 /**
- * @member {module:sales_v1/model/Money} totalSales
- * @type {module:sales_v1/model/Money}
+ * @member {Money} totalSales
+ * @type {Money}
  */
 OrderMetricsInterval.prototype.totalSales = undefined

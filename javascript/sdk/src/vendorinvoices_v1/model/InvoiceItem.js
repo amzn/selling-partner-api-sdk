@@ -32,8 +32,8 @@ export class InvoiceItem {
    * @alias module:vendorinvoices_v1/model/InvoiceItem
    * @class
    * @param itemSequenceNumber {Number} Unique number related to this line item.
-   * @param invoicedQuantity {module:vendorinvoices_v1/model/ItemQuantity}
-   * @param netCost {module:vendorinvoices_v1/model/Money}
+   * @param invoicedQuantity {ItemQuantity}
+   * @param netCost {Money}
    */
   constructor (itemSequenceNumber, invoicedQuantity, netCost) {
     this.itemSequenceNumber = itemSequenceNumber
@@ -45,8 +45,8 @@ export class InvoiceItem {
    * Constructs a <code>InvoiceItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/InvoiceItem} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/InvoiceItem} The populated <code>InvoiceItem</code> instance.
+   * @param {InvoiceItem} obj Optional instance to populate.
+   * @return {InvoiceItem} The populated <code>InvoiceItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -101,20 +101,20 @@ InvoiceItem.prototype.amazonProductIdentifier = undefined
 InvoiceItem.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/ItemQuantity} invoicedQuantity
- * @type {module:vendorinvoices_v1/model/ItemQuantity}
+ * @member {ItemQuantity} invoicedQuantity
+ * @type {ItemQuantity}
  */
 InvoiceItem.prototype.invoicedQuantity = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/Money} netCost
- * @type {module:vendorinvoices_v1/model/Money}
+ * @member {Money} netCost
+ * @type {Money}
  */
 InvoiceItem.prototype.netCost = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/NetCostUnitOfMeasure} netCostUnitOfMeasure
- * @type {module:vendorinvoices_v1/model/NetCostUnitOfMeasure}
+ * @member {NetCostUnitOfMeasure} netCostUnitOfMeasure
+ * @type {NetCostUnitOfMeasure}
  */
 InvoiceItem.prototype.netCostUnitOfMeasure = undefined
 
@@ -133,28 +133,28 @@ InvoiceItem.prototype.purchaseOrderNumber = undefined
 InvoiceItem.prototype.hsnCode = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/CreditNoteDetails} creditNoteDetails
- * @type {module:vendorinvoices_v1/model/CreditNoteDetails}
+ * @member {CreditNoteDetails} creditNoteDetails
+ * @type {CreditNoteDetails}
  */
 InvoiceItem.prototype.creditNoteDetails = undefined
 
 /**
  * Individual tax details per line item.
- * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
- * @type {Array.<module:vendorinvoices_v1/model/TaxDetails>}
+ * @member {[TaxDetails]} taxDetails
+ * @type {[TaxDetails]}
  */
 InvoiceItem.prototype.taxDetails = undefined
 
 /**
  * Individual charge details per line item.
- * @member {Array.<module:vendorinvoices_v1/model/ChargeDetails>} chargeDetails
- * @type {Array.<module:vendorinvoices_v1/model/ChargeDetails>}
+ * @member {[ChargeDetails]} chargeDetails
+ * @type {[ChargeDetails]}
  */
 InvoiceItem.prototype.chargeDetails = undefined
 
 /**
  * Individual allowance details per line item.
- * @member {Array.<module:vendorinvoices_v1/model/AllowanceDetails>} allowanceDetails
- * @type {Array.<module:vendorinvoices_v1/model/AllowanceDetails>}
+ * @member {[AllowanceDetails]} allowanceDetails
+ * @type {[AllowanceDetails]}
  */
 InvoiceItem.prototype.allowanceDetails = undefined

@@ -33,8 +33,8 @@ export class VendorDetails {
    * Constructs a <code>VendorDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/VendorDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/VendorDetails} The populated <code>VendorDetails</code> instance.
+   * @param {VendorDetails} obj Optional instance to populate.
+   * @return {VendorDetails} The populated <code>VendorDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,8 +58,8 @@ export class VendorDetails {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} sellingParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 VendorDetails.prototype.sellingParty = undefined
 

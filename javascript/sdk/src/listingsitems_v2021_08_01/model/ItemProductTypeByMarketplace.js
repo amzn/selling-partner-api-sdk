@@ -36,8 +36,8 @@ export class ItemProductTypeByMarketplace {
    * Constructs a <code>ItemProductTypeByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ItemProductTypeByMarketplace} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ItemProductTypeByMarketplace} The populated <code>ItemProductTypeByMarketplace</code> instance.
+   * @param {ItemProductTypeByMarketplace} obj Optional instance to populate.
+   * @return {ItemProductTypeByMarketplace} The populated <code>ItemProductTypeByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

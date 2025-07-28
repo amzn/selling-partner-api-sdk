@@ -33,8 +33,8 @@ export class GetItemOffersBatchRequest {
    * Constructs a <code>GetItemOffersBatchRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/GetItemOffersBatchRequest} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/GetItemOffersBatchRequest} The populated <code>GetItemOffersBatchRequest</code> instance.
+   * @param {GetItemOffersBatchRequest} obj Optional instance to populate.
+   * @return {GetItemOffersBatchRequest} The populated <code>GetItemOffersBatchRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GetItemOffersBatchRequest {
 
 /**
  * A list of `getListingOffers` batched requests to run.
- * @member {Array.<module:pricing_v0/model/ItemOffersRequest>} requests
- * @type {Array.<module:pricing_v0/model/ItemOffersRequest>}
+ * @member {[ItemOffersRequest]} requests
+ * @type {[ItemOffersRequest]}
  */
 GetItemOffersBatchRequest.prototype.requests = undefined

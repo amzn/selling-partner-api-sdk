@@ -34,8 +34,8 @@ export class StandardComparisonTableModule {
    * Constructs a <code>StandardComparisonTableModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardComparisonTableModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardComparisonTableModule} The populated <code>StandardComparisonTableModule</code> instance.
+   * @param {StandardComparisonTableModule} obj Optional instance to populate.
+   * @return {StandardComparisonTableModule} The populated <code>StandardComparisonTableModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class StandardComparisonTableModule {
 }
 
 /**
- * @member {Array.<module:apluscontent_v2020_11_01/model/StandardComparisonProductBlock>} productColumns
- * @type {Array.<module:apluscontent_v2020_11_01/model/StandardComparisonProductBlock>}
+ * @member {[StandardComparisonProductBlock]} productColumns
+ * @type {[StandardComparisonProductBlock]}
  */
 StandardComparisonTableModule.prototype.productColumns = undefined
 
 /**
- * @member {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>} metricRowLabels
- * @type {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>}
+ * @member {[PlainTextItem]} metricRowLabels
+ * @type {[PlainTextItem]}
  */
 StandardComparisonTableModule.prototype.metricRowLabels = undefined

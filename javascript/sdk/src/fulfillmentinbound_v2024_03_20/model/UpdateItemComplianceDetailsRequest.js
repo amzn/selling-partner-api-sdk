@@ -26,7 +26,7 @@ export class UpdateItemComplianceDetailsRequest {
    * @alias module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsRequest
    * @class
    * @param msku {String} The merchant SKU, a merchant-supplied identifier for a specific SKU.
-   * @param taxDetails {module:fulfillmentinbound_v2024_03_20/model/TaxDetails}
+   * @param taxDetails {TaxDetails}
    */
   constructor (msku, taxDetails) {
     this.msku = msku
@@ -37,8 +37,8 @@ export class UpdateItemComplianceDetailsRequest {
    * Constructs a <code>UpdateItemComplianceDetailsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsRequest} The populated <code>UpdateItemComplianceDetailsRequest</code> instance.
+   * @param {UpdateItemComplianceDetailsRequest} obj Optional instance to populate.
+   * @return {UpdateItemComplianceDetailsRequest} The populated <code>UpdateItemComplianceDetailsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class UpdateItemComplianceDetailsRequest {
 UpdateItemComplianceDetailsRequest.prototype.msku = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/TaxDetails} taxDetails
- * @type {module:fulfillmentinbound_v2024_03_20/model/TaxDetails}
+ * @member {TaxDetails} taxDetails
+ * @type {TaxDetails}
  */
 UpdateItemComplianceDetailsRequest.prototype.taxDetails = undefined

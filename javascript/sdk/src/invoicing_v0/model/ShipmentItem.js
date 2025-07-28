@@ -33,8 +33,8 @@ export class ShipmentItem {
    * Constructs a <code>ShipmentItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoicing_v0/model/ShipmentItem} obj Optional instance to populate.
-   * @return {module:invoicing_v0/model/ShipmentItem} The populated <code>ShipmentItem</code> instance.
+   * @param {ShipmentItem} obj Optional instance to populate.
+   * @return {ShipmentItem} The populated <code>ShipmentItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -102,38 +102,38 @@ ShipmentItem.prototype.title = undefined
 ShipmentItem.prototype.quantityOrdered = undefined
 
 /**
- * @member {module:invoicing_v0/model/Money} itemPrice
- * @type {module:invoicing_v0/model/Money}
+ * @member {Money} itemPrice
+ * @type {Money}
  */
 ShipmentItem.prototype.itemPrice = undefined
 
 /**
- * @member {module:invoicing_v0/model/Money} shippingPrice
- * @type {module:invoicing_v0/model/Money}
+ * @member {Money} shippingPrice
+ * @type {Money}
  */
 ShipmentItem.prototype.shippingPrice = undefined
 
 /**
- * @member {module:invoicing_v0/model/Money} giftWrapPrice
- * @type {module:invoicing_v0/model/Money}
+ * @member {Money} giftWrapPrice
+ * @type {Money}
  */
 ShipmentItem.prototype.giftWrapPrice = undefined
 
 /**
- * @member {module:invoicing_v0/model/Money} shippingDiscount
- * @type {module:invoicing_v0/model/Money}
+ * @member {Money} shippingDiscount
+ * @type {Money}
  */
 ShipmentItem.prototype.shippingDiscount = undefined
 
 /**
- * @member {module:invoicing_v0/model/Money} promotionDiscount
- * @type {module:invoicing_v0/model/Money}
+ * @member {Money} promotionDiscount
+ * @type {Money}
  */
 ShipmentItem.prototype.promotionDiscount = undefined
 
 /**
  * The list of serial numbers.
- * @member {Array.<String>} serialNumbers
- * @type {Array.<String>}
+ * @member {[String]} serialNumbers
+ * @type {[String]}
  */
 ShipmentItem.prototype.serialNumbers = undefined

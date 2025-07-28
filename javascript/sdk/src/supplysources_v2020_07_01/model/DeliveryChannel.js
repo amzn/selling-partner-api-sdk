@@ -33,8 +33,8 @@ export class DeliveryChannel {
    * Constructs a <code>DeliveryChannel</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/DeliveryChannel} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/DeliveryChannel} The populated <code>DeliveryChannel</code> instance.
+   * @param {DeliveryChannel} obj Optional instance to populate.
+   * @return {DeliveryChannel} The populated <code>DeliveryChannel</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,7 +64,7 @@ export class DeliveryChannel {
 DeliveryChannel.prototype.isSupported = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
- * @type {module:supplysources_v2020_07_01/model/OperationalConfiguration}
+ * @member {OperationalConfiguration} operationalConfiguration
+ * @type {OperationalConfiguration}
  */
 DeliveryChannel.prototype.operationalConfiguration = undefined

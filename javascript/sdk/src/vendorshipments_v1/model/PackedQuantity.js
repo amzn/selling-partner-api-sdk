@@ -25,7 +25,7 @@ export class PackedQuantity {
    * @alias module:vendorshipments_v1/model/PackedQuantity
    * @class
    * @param amount {Number} Amount of units shipped for a specific item at a shipment level. If the item is present only in certain cartons or pallets within the shipment, please provide this at the appropriate carton or pallet level.
-   * @param unitOfMeasure {module:vendorshipments_v1/model/PackedQuantity.UnitOfMeasureEnum} Unit of measure for the shipped quantity.
+   * @param unitOfMeasure {String} Unit of measure for the shipped quantity.
    */
   constructor (amount, unitOfMeasure) {
     this.amount = amount
@@ -36,8 +36,8 @@ export class PackedQuantity {
    * Constructs a <code>PackedQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/PackedQuantity} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/PackedQuantity} The populated <code>PackedQuantity</code> instance.
+   * @param {PackedQuantity} obj Optional instance to populate.
+   * @return {PackedQuantity} The populated <code>PackedQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,8 +90,8 @@ PackedQuantity.UnitOfMeasureEnum = {
 
 /**
  * Unit of measure for the shipped quantity.
- * @member {module:vendorshipments_v1/model/PackedQuantity.UnitOfMeasureEnum} unitOfMeasure
- * @type {module:vendorshipments_v1/model/PackedQuantity.UnitOfMeasureEnum}
+ * @member {String} unitOfMeasure
+ * @type {String}
  */
 PackedQuantity.prototype.unitOfMeasure = undefined
 

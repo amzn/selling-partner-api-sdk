@@ -25,7 +25,7 @@ export class TaxDetail {
    * Indicates the tax specifications associated with the shipment for customs compliance purposes in certain regions.
    * @alias module:shipping_v2/model/TaxDetail
    * @class
-   * @param taxType {module:shipping_v2/model/TaxType}
+   * @param taxType {TaxType}
    * @param taxRegistrationNumber {String} The shipper's tax registration number associated with the shipment for customs compliance purposes in certain regions.
    */
   constructor (taxType, taxRegistrationNumber) {
@@ -37,8 +37,8 @@ export class TaxDetail {
    * Constructs a <code>TaxDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/TaxDetail} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/TaxDetail} The populated <code>TaxDetail</code> instance.
+   * @param {TaxDetail} obj Optional instance to populate.
+   * @return {TaxDetail} The populated <code>TaxDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class TaxDetail {
 }
 
 /**
- * @member {module:shipping_v2/model/TaxType} taxType
- * @type {module:shipping_v2/model/TaxType}
+ * @member {TaxType} taxType
+ * @type {TaxType}
  */
 TaxDetail.prototype.taxType = undefined
 

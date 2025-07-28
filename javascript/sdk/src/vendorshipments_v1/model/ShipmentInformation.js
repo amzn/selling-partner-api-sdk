@@ -34,8 +34,8 @@ export class ShipmentInformation {
    * Constructs a <code>ShipmentInformation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ShipmentInformation} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ShipmentInformation} The populated <code>ShipmentInformation</code> instance.
+   * @param {ShipmentInformation} obj Optional instance to populate.
+   * @return {ShipmentInformation} The populated <code>ShipmentInformation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,8 +65,8 @@ export class ShipmentInformation {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/VendorDetails} vendorDetails
- * @type {module:vendorshipments_v1/model/VendorDetails}
+ * @member {VendorDetails} vendorDetails
+ * @type {VendorDetails}
  */
 ShipmentInformation.prototype.vendorDetails = undefined
 
@@ -78,14 +78,14 @@ ShipmentInformation.prototype.vendorDetails = undefined
 ShipmentInformation.prototype.buyerReferenceNumber = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} shipToParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipToParty
+ * @type {PartyIdentification}
  */
 ShipmentInformation.prototype.shipToParty = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} shipFromParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 ShipmentInformation.prototype.shipFromParty = undefined
 
@@ -132,7 +132,7 @@ ShipmentInformation.ShipModeEnum = {
 
 /**
  * Type of shipment whether it is Small Parcel
- * @member {module:vendorshipments_v1/model/ShipmentInformation.ShipModeEnum} shipMode
- * @type {module:vendorshipments_v1/model/ShipmentInformation.ShipModeEnum}
+ * @member {String} shipMode
+ * @type {String}
  */
 ShipmentInformation.prototype.shipMode = undefined

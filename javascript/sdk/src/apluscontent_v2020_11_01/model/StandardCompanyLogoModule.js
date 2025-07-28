@@ -25,7 +25,7 @@ export class StandardCompanyLogoModule {
    * The standard company logo image.
    * @alias module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule
    * @class
-   * @param companyLogo {module:apluscontent_v2020_11_01/model/ImageComponent}
+   * @param companyLogo {ImageComponent}
    */
   constructor (companyLogo) {
     this.companyLogo = companyLogo
@@ -35,8 +35,8 @@ export class StandardCompanyLogoModule {
    * Constructs a <code>StandardCompanyLogoModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule} The populated <code>StandardCompanyLogoModule</code> instance.
+   * @param {StandardCompanyLogoModule} obj Optional instance to populate.
+   * @return {StandardCompanyLogoModule} The populated <code>StandardCompanyLogoModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class StandardCompanyLogoModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageComponent} companyLogo
- * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
+ * @member {ImageComponent} companyLogo
+ * @type {ImageComponent}
  */
 StandardCompanyLogoModule.prototype.companyLogo = undefined

@@ -28,7 +28,7 @@ export class PurchaseShipmentRequest {
    * @class
    * @param requestToken {String} A unique token generated to identify a getRates operation.
    * @param rateId {String} An identifier for the rate (shipment offering) provided by a shipping service provider.
-   * @param requestedDocumentSpecification {module:shipping_v2/model/RequestedDocumentSpecification}
+   * @param requestedDocumentSpecification {RequestedDocumentSpecification}
    */
   constructor (requestToken, rateId, requestedDocumentSpecification) {
     this.requestToken = requestToken
@@ -40,8 +40,8 @@ export class PurchaseShipmentRequest {
    * Constructs a <code>PurchaseShipmentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/PurchaseShipmentRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/PurchaseShipmentRequest} The populated <code>PurchaseShipmentRequest</code> instance.
+   * @param {PurchaseShipmentRequest} obj Optional instance to populate.
+   * @return {PurchaseShipmentRequest} The populated <code>PurchaseShipmentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,21 +82,21 @@ PurchaseShipmentRequest.prototype.requestToken = undefined
 PurchaseShipmentRequest.prototype.rateId = undefined
 
 /**
- * @member {module:shipping_v2/model/RequestedDocumentSpecification} requestedDocumentSpecification
- * @type {module:shipping_v2/model/RequestedDocumentSpecification}
+ * @member {RequestedDocumentSpecification} requestedDocumentSpecification
+ * @type {RequestedDocumentSpecification}
  */
 PurchaseShipmentRequest.prototype.requestedDocumentSpecification = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
- * @member {Array.<module:shipping_v2/model/RequestedValueAddedService>} requestedValueAddedServices
- * @type {Array.<module:shipping_v2/model/RequestedValueAddedService>}
+ * @member {[RequestedValueAddedService]} requestedValueAddedServices
+ * @type {[RequestedValueAddedService]}
  */
 PurchaseShipmentRequest.prototype.requestedValueAddedServices = undefined
 
 /**
  * The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation.
- * @member {Object.<String, Object>} additionalInputs
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} additionalInputs
+ * @type {{String: Object}}
  */
 PurchaseShipmentRequest.prototype.additionalInputs = undefined

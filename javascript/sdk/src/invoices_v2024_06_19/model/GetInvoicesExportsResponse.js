@@ -33,8 +33,8 @@ export class GetInvoicesExportsResponse {
    * Constructs a <code>GetInvoicesExportsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoices_v2024_06_19/model/GetInvoicesExportsResponse} obj Optional instance to populate.
-   * @return {module:invoices_v2024_06_19/model/GetInvoicesExportsResponse} The populated <code>GetInvoicesExportsResponse</code> instance.
+   * @param {GetInvoicesExportsResponse} obj Optional instance to populate.
+   * @return {GetInvoicesExportsResponse} The populated <code>GetInvoicesExportsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,8 +59,8 @@ export class GetInvoicesExportsResponse {
 
 /**
  * A list of exports.
- * @member {Array.<module:invoices_v2024_06_19/model/Export>} exports
- * @type {Array.<module:invoices_v2024_06_19/model/Export>}
+ * @member {[Export]} exports
+ * @type {[Export]}
  */
 GetInvoicesExportsResponse.prototype.exports = undefined
 

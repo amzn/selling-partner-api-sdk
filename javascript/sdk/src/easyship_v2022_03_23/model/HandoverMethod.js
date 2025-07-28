@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class HandoverMethod.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class HandoverMethod {
@@ -34,7 +34,7 @@ export class HandoverMethod {
   /**
     * Returns a <code>HandoverMethod</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:easyship_v2022_03_23/model/HandoverMethod} The enum <code>HandoverMethod</code> value.
+    * @return {HandoverMethod} The enum <code>HandoverMethod</code> value.
     */
   static constructFromObject (object) {
     return object

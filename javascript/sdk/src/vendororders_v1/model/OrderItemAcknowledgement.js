@@ -25,8 +25,8 @@ export class OrderItemAcknowledgement {
    * Represents the acknowledgement details for an individual order item, including the acknowledgement code, acknowledged quantity, scheduled ship and delivery dates, and rejection reason (if applicable).
    * @alias module:vendororders_v1/model/OrderItemAcknowledgement
    * @class
-   * @param acknowledgementCode {module:vendororders_v1/model/OrderItemAcknowledgement.AcknowledgementCodeEnum} This indicates the acknowledgement code.
-   * @param acknowledgedQuantity {module:vendororders_v1/model/ItemQuantity}
+   * @param acknowledgementCode {String} This indicates the acknowledgement code.
+   * @param acknowledgedQuantity {ItemQuantity}
    */
   constructor (acknowledgementCode, acknowledgedQuantity) {
     this.acknowledgementCode = acknowledgementCode
@@ -37,8 +37,8 @@ export class OrderItemAcknowledgement {
    * Constructs a <code>OrderItemAcknowledgement</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderItemAcknowledgement} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderItemAcknowledgement} The populated <code>OrderItemAcknowledgement</code> instance.
+   * @param {OrderItemAcknowledgement} obj Optional instance to populate.
+   * @return {OrderItemAcknowledgement} The populated <code>OrderItemAcknowledgement</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -92,14 +92,14 @@ OrderItemAcknowledgement.AcknowledgementCodeEnum = {
 
 /**
  * This indicates the acknowledgement code.
- * @member {module:vendororders_v1/model/OrderItemAcknowledgement.AcknowledgementCodeEnum} acknowledgementCode
- * @type {module:vendororders_v1/model/OrderItemAcknowledgement.AcknowledgementCodeEnum}
+ * @member {String} acknowledgementCode
+ * @type {String}
  */
 OrderItemAcknowledgement.prototype.acknowledgementCode = undefined
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} acknowledgedQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} acknowledgedQuantity
+ * @type {ItemQuantity}
  */
 OrderItemAcknowledgement.prototype.acknowledgedQuantity = undefined
 
@@ -145,7 +145,7 @@ OrderItemAcknowledgement.RejectionReasonEnum = {
 
 /**
  * Indicates the reason for rejection.
- * @member {module:vendororders_v1/model/OrderItemAcknowledgement.RejectionReasonEnum} rejectionReason
- * @type {module:vendororders_v1/model/OrderItemAcknowledgement.RejectionReasonEnum}
+ * @member {String} rejectionReason
+ * @type {String}
  */
 OrderItemAcknowledgement.prototype.rejectionReason = undefined

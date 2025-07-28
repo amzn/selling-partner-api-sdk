@@ -27,7 +27,7 @@ export class ItemSearchResults {
    * @alias module:listingsitems_v2021_08_01/model/ItemSearchResults
    * @class
    * @param numberOfResults {Number} The total number of selling partner listings items found for the search criteria (only results up to the page count limit is returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.
-   * @param items {Array.<module:listingsitems_v2021_08_01/model/Item>} A list of listings items.
+   * @param items {[Item]} A list of listings items.
    */
   constructor (numberOfResults, items) {
     this.numberOfResults = numberOfResults
@@ -38,8 +38,8 @@ export class ItemSearchResults {
    * Constructs a <code>ItemSearchResults</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ItemSearchResults} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ItemSearchResults} The populated <code>ItemSearchResults</code> instance.
+   * @param {ItemSearchResults} obj Optional instance to populate.
+   * @return {ItemSearchResults} The populated <code>ItemSearchResults</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,14 +71,14 @@ export class ItemSearchResults {
 ItemSearchResults.prototype.numberOfResults = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/Pagination} pagination
- * @type {module:listingsitems_v2021_08_01/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ItemSearchResults.prototype.pagination = undefined
 
 /**
  * A list of listings items.
- * @member {Array.<module:listingsitems_v2021_08_01/model/Item>} items
- * @type {Array.<module:listingsitems_v2021_08_01/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 ItemSearchResults.prototype.items = undefined

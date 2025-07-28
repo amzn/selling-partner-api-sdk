@@ -33,8 +33,8 @@ export class SubmitAcknowledgementRequest {
    * Constructs a <code>SubmitAcknowledgementRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/SubmitAcknowledgementRequest} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/SubmitAcknowledgementRequest} The populated <code>SubmitAcknowledgementRequest</code> instance.
+   * @param {SubmitAcknowledgementRequest} obj Optional instance to populate.
+   * @return {SubmitAcknowledgementRequest} The populated <code>SubmitAcknowledgementRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class SubmitAcknowledgementRequest {
 
 /**
  * An array of order acknowledgements to be submitted.
- * @member {Array.<module:vendororders_v1/model/OrderAcknowledgement>} acknowledgements
- * @type {Array.<module:vendororders_v1/model/OrderAcknowledgement>}
+ * @member {[OrderAcknowledgement]} acknowledgements
+ * @type {[OrderAcknowledgement]}
  */
 SubmitAcknowledgementRequest.prototype.acknowledgements = undefined

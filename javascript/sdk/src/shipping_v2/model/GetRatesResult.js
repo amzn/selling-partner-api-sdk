@@ -27,7 +27,7 @@ export class GetRatesResult {
    * @alias module:shipping_v2/model/GetRatesResult
    * @class
    * @param requestToken {String} A unique token generated to identify a getRates operation.
-   * @param rates {Array.<module:shipping_v2/model/Rate>} A list of eligible shipping service offerings.
+   * @param rates {[Rate]} A list of eligible shipping service offerings.
    */
   constructor (requestToken, rates) {
     this.requestToken = requestToken
@@ -38,8 +38,8 @@ export class GetRatesResult {
    * Constructs a <code>GetRatesResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetRatesResult} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetRatesResult} The populated <code>GetRatesResult</code> instance.
+   * @param {GetRatesResult} obj Optional instance to populate.
+   * @return {GetRatesResult} The populated <code>GetRatesResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,14 +72,14 @@ GetRatesResult.prototype.requestToken = undefined
 
 /**
  * A list of eligible shipping service offerings.
- * @member {Array.<module:shipping_v2/model/Rate>} rates
- * @type {Array.<module:shipping_v2/model/Rate>}
+ * @member {[Rate]} rates
+ * @type {[Rate]}
  */
 GetRatesResult.prototype.rates = undefined
 
 /**
  * A list of ineligible shipping service offerings.
- * @member {Array.<module:shipping_v2/model/IneligibleRate>} ineligibleRates
- * @type {Array.<module:shipping_v2/model/IneligibleRate>}
+ * @member {[IneligibleRate]} ineligibleRates
+ * @type {[IneligibleRate]}
  */
 GetRatesResult.prototype.ineligibleRates = undefined

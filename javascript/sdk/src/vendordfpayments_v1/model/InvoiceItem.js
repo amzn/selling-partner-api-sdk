@@ -29,8 +29,8 @@ export class InvoiceItem {
    * @alias module:vendordfpayments_v1/model/InvoiceItem
    * @class
    * @param itemSequenceNumber {String} Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
-   * @param invoicedQuantity {module:vendordfpayments_v1/model/ItemQuantity}
-   * @param netCost {module:vendordfpayments_v1/model/Money}
+   * @param invoicedQuantity {ItemQuantity}
+   * @param netCost {Money}
    * @param purchaseOrderNumber {String} The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.
    */
   constructor (itemSequenceNumber, invoicedQuantity, netCost, purchaseOrderNumber) {
@@ -44,8 +44,8 @@ export class InvoiceItem {
    * Constructs a <code>InvoiceItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfpayments_v1/model/InvoiceItem} obj Optional instance to populate.
-   * @return {module:vendordfpayments_v1/model/InvoiceItem} The populated <code>InvoiceItem</code> instance.
+   * @param {InvoiceItem} obj Optional instance to populate.
+   * @return {InvoiceItem} The populated <code>InvoiceItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -98,14 +98,14 @@ InvoiceItem.prototype.buyerProductIdentifier = undefined
 InvoiceItem.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/ItemQuantity} invoicedQuantity
- * @type {module:vendordfpayments_v1/model/ItemQuantity}
+ * @member {ItemQuantity} invoicedQuantity
+ * @type {ItemQuantity}
  */
 InvoiceItem.prototype.invoicedQuantity = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/Money} netCost
- * @type {module:vendordfpayments_v1/model/Money}
+ * @member {Money} netCost
+ * @type {Money}
  */
 InvoiceItem.prototype.netCost = undefined
 
@@ -132,14 +132,14 @@ InvoiceItem.prototype.hsnCode = undefined
 
 /**
  * Individual tax details per line item.
- * @member {Array.<module:vendordfpayments_v1/model/TaxDetail>} taxDetails
- * @type {Array.<module:vendordfpayments_v1/model/TaxDetail>}
+ * @member {[TaxDetail]} taxDetails
+ * @type {[TaxDetail]}
  */
 InvoiceItem.prototype.taxDetails = undefined
 
 /**
  * Individual charge details per line item.
- * @member {Array.<module:vendordfpayments_v1/model/ChargeDetails>} chargeDetails
- * @type {Array.<module:vendordfpayments_v1/model/ChargeDetails>}
+ * @member {[ChargeDetails]} chargeDetails
+ * @type {[ChargeDetails]}
  */
 InvoiceItem.prototype.chargeDetails = undefined

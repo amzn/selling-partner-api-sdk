@@ -30,12 +30,12 @@ export class InboundShipment {
    * Represents an AWD inbound shipment.
    * @alias module:awd_v2024_05_09/model/InboundShipment
    * @class
-   * @param destinationAddress {module:awd_v2024_05_09/model/Address}
+   * @param destinationAddress {Address}
    * @param orderId {String} The AWD inbound order ID that this inbound shipment belongs to.
-   * @param originAddress {module:awd_v2024_05_09/model/Address}
-   * @param shipmentContainerQuantities {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} Packages that are part of this shipment.
+   * @param originAddress {Address}
+   * @param shipmentContainerQuantities {[DistributionPackageQuantity]} Packages that are part of this shipment.
    * @param shipmentId {String} Unique shipment ID.
-   * @param shipmentStatus {module:awd_v2024_05_09/model/InboundShipmentStatus}
+   * @param shipmentStatus {InboundShipmentStatus}
    */
   constructor (destinationAddress, orderId, originAddress, shipmentContainerQuantities, shipmentId, shipmentStatus) {
     this.destinationAddress = destinationAddress
@@ -50,8 +50,8 @@ export class InboundShipment {
    * Constructs a <code>InboundShipment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InboundShipment} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InboundShipment} The populated <code>InboundShipment</code> instance.
+   * @param {InboundShipment} obj Optional instance to populate.
+   * @return {InboundShipment} The populated <code>InboundShipment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,8 +89,8 @@ export class InboundShipment {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/CarrierCode} carrierCode
- * @type {module:awd_v2024_05_09/model/CarrierCode}
+ * @member {CarrierCode} carrierCode
+ * @type {CarrierCode}
  */
 InboundShipment.prototype.carrierCode = undefined
 
@@ -102,8 +102,8 @@ InboundShipment.prototype.carrierCode = undefined
 InboundShipment.prototype.createdAt = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/Address} destinationAddress
- * @type {module:awd_v2024_05_09/model/Address}
+ * @member {Address} destinationAddress
+ * @type {Address}
  */
 InboundShipment.prototype.destinationAddress = undefined
 
@@ -122,15 +122,15 @@ InboundShipment.prototype.externalReferenceId = undefined
 InboundShipment.prototype.orderId = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/Address} originAddress
- * @type {module:awd_v2024_05_09/model/Address}
+ * @member {Address} originAddress
+ * @type {Address}
  */
 InboundShipment.prototype.originAddress = undefined
 
 /**
  * Quantity received (at the receiving end) as part of this shipment.
- * @member {Array.<module:awd_v2024_05_09/model/InventoryQuantity>} receivedQuantity
- * @type {Array.<module:awd_v2024_05_09/model/InventoryQuantity>}
+ * @member {[InventoryQuantity]} receivedQuantity
+ * @type {[InventoryQuantity]}
  */
 InboundShipment.prototype.receivedQuantity = undefined
 
@@ -143,8 +143,8 @@ InboundShipment.prototype.shipBy = undefined
 
 /**
  * Packages that are part of this shipment.
- * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} shipmentContainerQuantities
- * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
+ * @member {[DistributionPackageQuantity]} shipmentContainerQuantities
+ * @type {[DistributionPackageQuantity]}
  */
 InboundShipment.prototype.shipmentContainerQuantities = undefined
 
@@ -157,8 +157,8 @@ InboundShipment.prototype.shipmentId = undefined
 
 /**
  * Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.
- * @member {Array.<module:awd_v2024_05_09/model/SkuQuantity>} shipmentSkuQuantities
- * @type {Array.<module:awd_v2024_05_09/model/SkuQuantity>}
+ * @member {[SkuQuantity]} shipmentSkuQuantities
+ * @type {[SkuQuantity]}
  */
 InboundShipment.prototype.shipmentSkuQuantities = undefined
 
@@ -170,8 +170,8 @@ InboundShipment.prototype.shipmentSkuQuantities = undefined
 InboundShipment.prototype.destinationRegion = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InboundShipmentStatus} shipmentStatus
- * @type {module:awd_v2024_05_09/model/InboundShipmentStatus}
+ * @member {InboundShipmentStatus} shipmentStatus
+ * @type {InboundShipmentStatus}
  */
 InboundShipment.prototype.shipmentStatus = undefined
 

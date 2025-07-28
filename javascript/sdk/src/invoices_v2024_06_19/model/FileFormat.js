@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class FileFormat.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class FileFormat {
@@ -28,7 +28,7 @@ export class FileFormat {
   /**
     * Returns a <code>FileFormat</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:invoices_v2024_06_19/model/FileFormat} The enum <code>FileFormat</code> value.
+    * @return {FileFormat} The enum <code>FileFormat</code> value.
     */
   static constructFromObject (object) {
     return object

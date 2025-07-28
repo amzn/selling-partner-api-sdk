@@ -25,7 +25,7 @@ export class IneligibilityReason {
    * The reason why a shipping service offering is ineligible.
    * @alias module:shipping_v2/model/IneligibilityReason
    * @class
-   * @param code {module:shipping_v2/model/IneligibilityReasonCode}
+   * @param code {IneligibilityReasonCode}
    * @param message {String} The ineligibility reason.
    */
   constructor (code, message) {
@@ -37,8 +37,8 @@ export class IneligibilityReason {
    * Constructs a <code>IneligibilityReason</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/IneligibilityReason} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/IneligibilityReason} The populated <code>IneligibilityReason</code> instance.
+   * @param {IneligibilityReason} obj Optional instance to populate.
+   * @return {IneligibilityReason} The populated <code>IneligibilityReason</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class IneligibilityReason {
 }
 
 /**
- * @member {module:shipping_v2/model/IneligibilityReasonCode} code
- * @type {module:shipping_v2/model/IneligibilityReasonCode}
+ * @member {IneligibilityReasonCode} code
+ * @type {IneligibilityReasonCode}
  */
 IneligibilityReason.prototype.code = undefined
 

@@ -36,8 +36,8 @@ export class OutboundCapability {
    * Constructs a <code>OutboundCapability</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/OutboundCapability} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/OutboundCapability} The populated <code>OutboundCapability</code> instance.
+   * @param {OutboundCapability} obj Optional instance to populate.
+   * @return {OutboundCapability} The populated <code>OutboundCapability</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,25 +70,25 @@ export class OutboundCapability {
 OutboundCapability.prototype.isSupported = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
- * @type {module:supplysources_v2020_07_01/model/OperationalConfiguration}
+ * @member {OperationalConfiguration} operationalConfiguration
+ * @type {OperationalConfiguration}
  */
 OutboundCapability.prototype.operationalConfiguration = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ReturnLocation} returnLocation
- * @type {module:supplysources_v2020_07_01/model/ReturnLocation}
+ * @member {ReturnLocation} returnLocation
+ * @type {ReturnLocation}
  */
 OutboundCapability.prototype.returnLocation = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/DeliveryChannel} deliveryChannel
- * @type {module:supplysources_v2020_07_01/model/DeliveryChannel}
+ * @member {DeliveryChannel} deliveryChannel
+ * @type {DeliveryChannel}
  */
 OutboundCapability.prototype.deliveryChannel = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/PickupChannel} pickupChannel
- * @type {module:supplysources_v2020_07_01/model/PickupChannel}
+ * @member {PickupChannel} pickupChannel
+ * @type {PickupChannel}
  */
 OutboundCapability.prototype.pickupChannel = undefined

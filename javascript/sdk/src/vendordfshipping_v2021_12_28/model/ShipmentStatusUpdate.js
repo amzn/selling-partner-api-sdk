@@ -27,9 +27,9 @@ export class ShipmentStatusUpdate {
    * @alias module:vendordfshipping_v2021_12_28/model/ShipmentStatusUpdate
    * @class
    * @param purchaseOrderNumber {String} Purchase order number of the shipment for which to update the shipment status.
-   * @param sellingParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param shipFromParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param statusUpdateDetails {module:vendordfshipping_v2021_12_28/model/StatusUpdateDetails}
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param statusUpdateDetails {StatusUpdateDetails}
    */
   constructor (purchaseOrderNumber, sellingParty, shipFromParty, statusUpdateDetails) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -42,8 +42,8 @@ export class ShipmentStatusUpdate {
    * Constructs a <code>ShipmentStatusUpdate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ShipmentStatusUpdate} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ShipmentStatusUpdate} The populated <code>ShipmentStatusUpdate</code> instance.
+   * @param {ShipmentStatusUpdate} obj Optional instance to populate.
+   * @return {ShipmentStatusUpdate} The populated <code>ShipmentStatusUpdate</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,19 +76,19 @@ export class ShipmentStatusUpdate {
 ShipmentStatusUpdate.prototype.purchaseOrderNumber = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 ShipmentStatusUpdate.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 ShipmentStatusUpdate.prototype.shipFromParty = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/StatusUpdateDetails} statusUpdateDetails
- * @type {module:vendordfshipping_v2021_12_28/model/StatusUpdateDetails}
+ * @member {StatusUpdateDetails} statusUpdateDetails
+ * @type {StatusUpdateDetails}
  */
 ShipmentStatusUpdate.prototype.statusUpdateDetails = undefined

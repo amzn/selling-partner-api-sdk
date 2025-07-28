@@ -28,8 +28,8 @@ export class FulfillmentShipment {
    * @class
    * @param amazonShipmentId {String} A shipment identifier assigned by Amazon.
    * @param fulfillmentCenterId {String} An identifier for the fulfillment center that the shipment will be sent from.
-   * @param fulfillmentShipmentStatus {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment.FulfillmentShipmentStatusEnum} The current status of the shipment.
-   * @param fulfillmentShipmentItem {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentItem>} An array of fulfillment shipment item information.
+   * @param fulfillmentShipmentStatus {String} The current status of the shipment.
+   * @param fulfillmentShipmentItem {[FulfillmentShipmentItem]} An array of fulfillment shipment item information.
    */
   constructor (amazonShipmentId, fulfillmentCenterId, fulfillmentShipmentStatus, fulfillmentShipmentItem) {
     this.amazonShipmentId = amazonShipmentId
@@ -42,8 +42,8 @@ export class FulfillmentShipment {
    * Constructs a <code>FulfillmentShipment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment} The populated <code>FulfillmentShipment</code> instance.
+   * @param {FulfillmentShipment} obj Optional instance to populate.
+   * @return {FulfillmentShipment} The populated <code>FulfillmentShipment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -120,8 +120,8 @@ FulfillmentShipment.FulfillmentShipmentStatusEnum = {
 
 /**
  * The current status of the shipment.
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment.FulfillmentShipmentStatusEnum} fulfillmentShipmentStatus
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment.FulfillmentShipmentStatusEnum}
+ * @member {String} fulfillmentShipmentStatus
+ * @type {String}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentStatus = undefined
 
@@ -141,21 +141,21 @@ FulfillmentShipment.prototype.estimatedArrivalDate = undefined
 
 /**
  * Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren't available.
- * @member {Array.<String>} shippingNotes
- * @type {Array.<String>}
+ * @member {[String]} shippingNotes
+ * @type {[String]}
  */
 FulfillmentShipment.prototype.shippingNotes = undefined
 
 /**
  * An array of fulfillment shipment item information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentItem>} fulfillmentShipmentItem
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentItem>}
+ * @member {[FulfillmentShipmentItem]} fulfillmentShipmentItem
+ * @type {[FulfillmentShipmentItem]}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentItem = undefined
 
 /**
  * An array of fulfillment shipment package information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentPackage>} fulfillmentShipmentPackage
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentPackage>}
+ * @member {[FulfillmentShipmentPackage]} fulfillmentShipmentPackage
+ * @type {[FulfillmentShipmentPackage]}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentPackage = undefined

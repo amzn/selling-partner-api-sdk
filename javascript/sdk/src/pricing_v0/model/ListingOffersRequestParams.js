@@ -29,7 +29,7 @@ export class ListingOffersRequestParams {
    * @class
    * @implements module:pricing_v0/model/BatchOffersRequestParams
    * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which prices are returned.
-   * @param itemCondition {module:pricing_v0/model/ItemCondition}
+   * @param itemCondition {ItemCondition}
    * @param sellerSKU {String} The seller stock keeping unit (SKU) of the item. This is the same SKU passed as a path parameter.
    */
   constructor (marketplaceId, itemCondition, sellerSKU) {
@@ -43,8 +43,8 @@ export class ListingOffersRequestParams {
    * Constructs a <code>ListingOffersRequestParams</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/ListingOffersRequestParams} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/ListingOffersRequestParams} The populated <code>ListingOffersRequestParams</code> instance.
+   * @param {ListingOffersRequestParams} obj Optional instance to populate.
+   * @return {ListingOffersRequestParams} The populated <code>ListingOffersRequestParams</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -78,14 +78,14 @@ export class ListingOffersRequestParams {
 ListingOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
- * @member {module:pricing_v0/model/ItemCondition} itemCondition
- * @type {module:pricing_v0/model/ItemCondition}
+ * @member {ItemCondition} itemCondition
+ * @type {ItemCondition}
  */
 ListingOffersRequestParams.prototype.itemCondition = undefined
 
 /**
- * @member {module:pricing_v0/model/CustomerType} customerType
- * @type {module:pricing_v0/model/CustomerType}
+ * @member {CustomerType} customerType
+ * @type {CustomerType}
  */
 ListingOffersRequestParams.prototype.customerType = undefined
 
@@ -105,13 +105,13 @@ ListingOffersRequestParams.prototype.sellerSKU = undefined
 BatchOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
- * @member {module:pricing_v0/model/ItemCondition} itemCondition
- * @type {module:pricing_v0/model/ItemCondition}
+ * @member {ItemCondition} itemCondition
+ * @type {ItemCondition}
  */
 BatchOffersRequestParams.prototype.itemCondition = undefined
 
 /**
- * @member {module:pricing_v0/model/CustomerType} customerType
- * @type {module:pricing_v0/model/CustomerType}
+ * @member {CustomerType} customerType
+ * @type {CustomerType}
  */
 BatchOffersRequestParams.prototype.customerType = undefined

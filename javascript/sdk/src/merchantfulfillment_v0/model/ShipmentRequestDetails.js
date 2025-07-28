@@ -31,11 +31,11 @@ export class ShipmentRequestDetails {
    * @alias module:merchantfulfillment_v0/model/ShipmentRequestDetails
    * @class
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
-   * @param itemList {Array.<module:merchantfulfillment_v0/model/Item>} The list of items you want to include in a shipment.
-   * @param shipFromAddress {module:merchantfulfillment_v0/model/Address}
-   * @param packageDimensions {module:merchantfulfillment_v0/model/PackageDimensions}
-   * @param weight {module:merchantfulfillment_v0/model/Weight}
-   * @param shippingServiceOptions {module:merchantfulfillment_v0/model/ShippingServiceOptions}
+   * @param itemList {[Item]} The list of items you want to include in a shipment.
+   * @param shipFromAddress {Address}
+   * @param packageDimensions {PackageDimensions}
+   * @param weight {Weight}
+   * @param shippingServiceOptions {ShippingServiceOptions}
    */
   constructor (amazonOrderId, itemList, shipFromAddress, packageDimensions, weight, shippingServiceOptions) {
     this.amazonOrderId = amazonOrderId
@@ -50,8 +50,8 @@ export class ShipmentRequestDetails {
    * Constructs a <code>ShipmentRequestDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/ShipmentRequestDetails} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/ShipmentRequestDetails} The populated <code>ShipmentRequestDetails</code> instance.
+   * @param {ShipmentRequestDetails} obj Optional instance to populate.
+   * @return {ShipmentRequestDetails} The populated <code>ShipmentRequestDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -98,26 +98,26 @@ ShipmentRequestDetails.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
- * @member {Array.<module:merchantfulfillment_v0/model/Item>} itemList
- * @type {Array.<module:merchantfulfillment_v0/model/Item>}
+ * @member {[Item]} itemList
+ * @type {[Item]}
  */
 ShipmentRequestDetails.prototype.itemList = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Address} shipFromAddress
- * @type {module:merchantfulfillment_v0/model/Address}
+ * @member {Address} shipFromAddress
+ * @type {Address}
  */
 ShipmentRequestDetails.prototype.shipFromAddress = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/PackageDimensions} packageDimensions
- * @type {module:merchantfulfillment_v0/model/PackageDimensions}
+ * @member {PackageDimensions} packageDimensions
+ * @type {PackageDimensions}
  */
 ShipmentRequestDetails.prototype.packageDimensions = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Weight} weight
- * @type {module:merchantfulfillment_v0/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 ShipmentRequestDetails.prototype.weight = undefined
 
@@ -136,13 +136,13 @@ ShipmentRequestDetails.prototype.mustArriveByDate = undefined
 ShipmentRequestDetails.prototype.shipDate = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/ShippingServiceOptions} shippingServiceOptions
- * @type {module:merchantfulfillment_v0/model/ShippingServiceOptions}
+ * @member {ShippingServiceOptions} shippingServiceOptions
+ * @type {ShippingServiceOptions}
  */
 ShipmentRequestDetails.prototype.shippingServiceOptions = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/LabelCustomization} labelCustomization
- * @type {module:merchantfulfillment_v0/model/LabelCustomization}
+ * @member {LabelCustomization} labelCustomization
+ * @type {LabelCustomization}
  */
 ShipmentRequestDetails.prototype.labelCustomization = undefined

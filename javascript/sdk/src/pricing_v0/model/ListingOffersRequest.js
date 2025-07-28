@@ -32,9 +32,9 @@ export class ListingOffersRequest {
    * @implements module:pricing_v0/model/BatchRequest
    * @implements module:pricing_v0/model/BatchOffersRequestParams
    * @param uri {String} The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`
-   * @param method {module:pricing_v0/model/HttpMethod}
+   * @param method {HttpMethod}
    * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which prices are returned.
-   * @param itemCondition {module:pricing_v0/model/ItemCondition}
+   * @param itemCondition {ItemCondition}
    */
   constructor (uri, method, marketplaceId, itemCondition) {
     BatchRequest.call(this, uri, method)
@@ -49,8 +49,8 @@ export class ListingOffersRequest {
    * Constructs a <code>ListingOffersRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/ListingOffersRequest} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/ListingOffersRequest} The populated <code>ListingOffersRequest</code> instance.
+   * @param {ListingOffersRequest} obj Optional instance to populate.
+   * @return {ListingOffersRequest} The populated <code>ListingOffersRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -87,15 +87,15 @@ export class ListingOffersRequest {
 ListingOffersRequest.prototype.uri = undefined
 
 /**
- * @member {module:pricing_v0/model/HttpMethod} method
- * @type {module:pricing_v0/model/HttpMethod}
+ * @member {HttpMethod} method
+ * @type {HttpMethod}
  */
 ListingOffersRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
- * @member {Object.<String, String>} headers
- * @type {Object.<String, String>}
+ * @member {{String: String}} headers
+ * @type {{String: String}}
  */
 ListingOffersRequest.prototype.headers = undefined
 
@@ -107,14 +107,14 @@ ListingOffersRequest.prototype.headers = undefined
 ListingOffersRequest.prototype.marketplaceId = undefined
 
 /**
- * @member {module:pricing_v0/model/ItemCondition} itemCondition
- * @type {module:pricing_v0/model/ItemCondition}
+ * @member {ItemCondition} itemCondition
+ * @type {ItemCondition}
  */
 ListingOffersRequest.prototype.itemCondition = undefined
 
 /**
- * @member {module:pricing_v0/model/CustomerType} customerType
- * @type {module:pricing_v0/model/CustomerType}
+ * @member {CustomerType} customerType
+ * @type {CustomerType}
  */
 ListingOffersRequest.prototype.customerType = undefined
 
@@ -127,15 +127,15 @@ ListingOffersRequest.prototype.customerType = undefined
 BatchRequest.prototype.uri = undefined
 
 /**
- * @member {module:pricing_v0/model/HttpMethod} method
- * @type {module:pricing_v0/model/HttpMethod}
+ * @member {HttpMethod} method
+ * @type {HttpMethod}
  */
 BatchRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
- * @member {Object.<String, String>} headers
- * @type {Object.<String, String>}
+ * @member {{String: String}} headers
+ * @type {{String: String}}
  */
 BatchRequest.prototype.headers = undefined
 
@@ -148,13 +148,13 @@ BatchRequest.prototype.headers = undefined
 BatchOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
- * @member {module:pricing_v0/model/ItemCondition} itemCondition
- * @type {module:pricing_v0/model/ItemCondition}
+ * @member {ItemCondition} itemCondition
+ * @type {ItemCondition}
  */
 BatchOffersRequestParams.prototype.itemCondition = undefined
 
 /**
- * @member {module:pricing_v0/model/CustomerType} customerType
- * @type {module:pricing_v0/model/CustomerType}
+ * @member {CustomerType} customerType
+ * @type {CustomerType}
  */
 BatchOffersRequestParams.prototype.customerType = undefined

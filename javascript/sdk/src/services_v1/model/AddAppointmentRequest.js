@@ -25,7 +25,7 @@ export class AddAppointmentRequest {
    * Input for add appointment operation.
    * @alias module:services_v1/model/AddAppointmentRequest
    * @class
-   * @param appointmentTime {module:services_v1/model/AppointmentTimeInput}
+   * @param appointmentTime {AppointmentTimeInput}
    */
   constructor (appointmentTime) {
     this.appointmentTime = appointmentTime
@@ -35,8 +35,8 @@ export class AddAppointmentRequest {
    * Constructs a <code>AddAppointmentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AddAppointmentRequest} obj Optional instance to populate.
-   * @return {module:services_v1/model/AddAppointmentRequest} The populated <code>AddAppointmentRequest</code> instance.
+   * @param {AddAppointmentRequest} obj Optional instance to populate.
+   * @return {AddAppointmentRequest} The populated <code>AddAppointmentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class AddAppointmentRequest {
 }
 
 /**
- * @member {module:services_v1/model/AppointmentTimeInput} appointmentTime
- * @type {module:services_v1/model/AppointmentTimeInput}
+ * @member {AppointmentTimeInput} appointmentTime
+ * @type {AppointmentTimeInput}
  */
 AddAppointmentRequest.prototype.appointmentTime = undefined

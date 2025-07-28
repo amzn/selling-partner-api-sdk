@@ -32,8 +32,8 @@ export class LabelData {
    * Constructs a <code>LabelData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/LabelData} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/LabelData} The populated <code>LabelData</code> instance.
+   * @param {LabelData} obj Optional instance to populate.
+   * @return {LabelData} The populated <code>LabelData</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,8 +82,8 @@ LabelData.LabelFormatEnum = {
 
 /**
  * The format of the label.
- * @member {module:vendorshipments_v1/model/LabelData.LabelFormatEnum} labelFormat
- * @type {module:vendorshipments_v1/model/LabelData.LabelFormatEnum}
+ * @member {String} labelFormat
+ * @type {String}
  */
 LabelData.prototype.labelFormat = undefined
 

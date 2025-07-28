@@ -39,8 +39,8 @@ export class PackageTrackingDetails {
    * Constructs a <code>PackageTrackingDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/PackageTrackingDetails} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/PackageTrackingDetails} The populated <code>PackageTrackingDetails</code> instance.
+   * @param {PackageTrackingDetails} obj Optional instance to populate.
+   * @return {PackageTrackingDetails} The populated <code>PackageTrackingDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -133,14 +133,14 @@ PackageTrackingDetails.prototype.shipDate = undefined
 PackageTrackingDetails.prototype.estimatedArrivalDate = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress} shipToAddress
- * @type {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress}
+ * @member {TrackingAddress} shipToAddress
+ * @type {TrackingAddress}
  */
 PackageTrackingDetails.prototype.shipToAddress = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/CurrentStatus} currentStatus
- * @type {module:fulfillmentoutbound_v2020_07_01/model/CurrentStatus}
+ * @member {CurrentStatus} currentStatus
+ * @type {CurrentStatus}
  */
 PackageTrackingDetails.prototype.currentStatus = undefined
 
@@ -152,8 +152,8 @@ PackageTrackingDetails.prototype.currentStatus = undefined
 PackageTrackingDetails.prototype.currentStatusDescription = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DateRange} deliveryWindow
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DateRange}
+ * @member {DateRange} deliveryWindow
+ * @type {DateRange}
  */
 PackageTrackingDetails.prototype.deliveryWindow = undefined
 
@@ -165,14 +165,14 @@ PackageTrackingDetails.prototype.deliveryWindow = undefined
 PackageTrackingDetails.prototype.signedForBy = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/AdditionalLocationInfo} additionalLocationInfo
- * @type {module:fulfillmentoutbound_v2020_07_01/model/AdditionalLocationInfo}
+ * @member {AdditionalLocationInfo} additionalLocationInfo
+ * @type {AdditionalLocationInfo}
  */
 PackageTrackingDetails.prototype.additionalLocationInfo = undefined
 
 /**
  * An array of tracking event information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent>} trackingEvents
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent>}
+ * @member {[TrackingEvent]} trackingEvents
+ * @type {[TrackingEvent]}
  */
 PackageTrackingDetails.prototype.trackingEvents = undefined

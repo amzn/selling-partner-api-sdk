@@ -34,8 +34,8 @@ export class StandardImageCaptionBlock {
    * Constructs a <code>StandardImageCaptionBlock</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardImageCaptionBlock} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardImageCaptionBlock} The populated <code>StandardImageCaptionBlock</code> instance.
+   * @param {StandardImageCaptionBlock} obj Optional instance to populate.
+   * @return {StandardImageCaptionBlock} The populated <code>StandardImageCaptionBlock</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class StandardImageCaptionBlock {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
- * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
+ * @member {ImageComponent} image
+ * @type {ImageComponent}
  */
 StandardImageCaptionBlock.prototype.image = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} caption
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} caption
+ * @type {TextComponent}
  */
 StandardImageCaptionBlock.prototype.caption = undefined

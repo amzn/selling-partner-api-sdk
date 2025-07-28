@@ -34,8 +34,8 @@ export class StandardHeaderTextListBlock {
    * Constructs a <code>StandardHeaderTextListBlock</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock} The populated <code>StandardHeaderTextListBlock</code> instance.
+   * @param {StandardHeaderTextListBlock} obj Optional instance to populate.
+   * @return {StandardHeaderTextListBlock} The populated <code>StandardHeaderTextListBlock</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class StandardHeaderTextListBlock {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardHeaderTextListBlock.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextListBlock} block
- * @type {module:apluscontent_v2020_11_01/model/StandardTextListBlock}
+ * @member {StandardTextListBlock} block
+ * @type {StandardTextListBlock}
  */
 StandardHeaderTextListBlock.prototype.block = undefined

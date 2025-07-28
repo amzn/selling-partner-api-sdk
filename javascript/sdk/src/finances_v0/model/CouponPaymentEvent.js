@@ -35,8 +35,8 @@ export class CouponPaymentEvent {
    * Constructs a <code>CouponPaymentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/CouponPaymentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/CouponPaymentEvent} The populated <code>CouponPaymentEvent</code> instance.
+   * @param {CouponPaymentEvent} obj Optional instance to populate.
+   * @return {CouponPaymentEvent} The populated <code>CouponPaymentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -101,19 +101,19 @@ CouponPaymentEvent.prototype.clipOrRedemptionCount = undefined
 CouponPaymentEvent.prototype.paymentEventId = undefined
 
 /**
- * @member {module:finances_v0/model/FeeComponent} feeComponent
- * @type {module:finances_v0/model/FeeComponent}
+ * @member {FeeComponent} feeComponent
+ * @type {FeeComponent}
  */
 CouponPaymentEvent.prototype.feeComponent = undefined
 
 /**
- * @member {module:finances_v0/model/ChargeComponent} chargeComponent
- * @type {module:finances_v0/model/ChargeComponent}
+ * @member {ChargeComponent} chargeComponent
+ * @type {ChargeComponent}
  */
 CouponPaymentEvent.prototype.chargeComponent = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} totalAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} totalAmount
+ * @type {Currency}
  */
 CouponPaymentEvent.prototype.totalAmount = undefined

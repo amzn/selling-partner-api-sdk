@@ -34,8 +34,8 @@ export class GetShipmentsResponse {
    * Constructs a <code>GetShipmentsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/GetShipmentsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/GetShipmentsResponse} The populated <code>GetShipmentsResponse</code> instance.
+   * @param {GetShipmentsResponse} obj Optional instance to populate.
+   * @return {GetShipmentsResponse} The populated <code>GetShipmentsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetShipmentsResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v0/model/GetShipmentsResult} payload
- * @type {module:fulfillmentinbound_v0/model/GetShipmentsResult}
+ * @member {GetShipmentsResult} payload
+ * @type {GetShipmentsResult}
  */
 GetShipmentsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fulfillmentinbound_v0/model/Error>} errors
- * @type {Array.<module:fulfillmentinbound_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetShipmentsResponse.prototype.errors = undefined

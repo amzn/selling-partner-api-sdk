@@ -27,7 +27,7 @@ export class TransactionAccount {
    * @class
    * @param bankAccountHolderName {String} The account holder's name.
    * @param bankName {String} The name of the bank.
-   * @param bankAccountNumberFormat {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat}
+   * @param bankAccountNumberFormat {BankAccountNumberFormat}
    * @param bankAccountCurrency {String} The currency code in ISO 4217 format.
    */
   constructor (bankAccountHolderName, bankName, bankAccountNumberFormat, bankAccountCurrency) {
@@ -41,8 +41,8 @@ export class TransactionAccount {
    * Constructs a <code>TransactionAccount</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransactionAccount} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransactionAccount} The populated <code>TransactionAccount</code> instance.
+   * @param {TransactionAccount} obj Optional instance to populate.
+   * @return {TransactionAccount} The populated <code>TransactionAccount</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -92,8 +92,8 @@ TransactionAccount.prototype.bankAccountHolderName = undefined
 TransactionAccount.prototype.bankName = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat} bankAccountNumberFormat
- * @type {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat}
+ * @member {BankAccountNumberFormat} bankAccountNumberFormat
+ * @type {BankAccountNumberFormat}
  */
 TransactionAccount.prototype.bankAccountNumberFormat = undefined
 

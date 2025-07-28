@@ -25,8 +25,8 @@ export class GetMessagingActionsForOrderResponseLinks {
    * The links response that is associated with the specified &#x60;amazonOrderId&#x60;.
    * @alias module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks
    * @class
-   * @param self {module:messaging_v1/model/LinkObject}
-   * @param actions {Array.<module:messaging_v1/model/LinkObject>} Eligible actions for the specified amazonOrderId.
+   * @param self {LinkObject}
+   * @param actions {[LinkObject]} Eligible actions for the specified amazonOrderId.
    */
   constructor (self, actions) {
     this.self = self
@@ -37,8 +37,8 @@ export class GetMessagingActionsForOrderResponseLinks {
    * Constructs a <code>GetMessagingActionsForOrderResponseLinks</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks} The populated <code>GetMessagingActionsForOrderResponseLinks</code> instance.
+   * @param {GetMessagingActionsForOrderResponseLinks} obj Optional instance to populate.
+   * @return {GetMessagingActionsForOrderResponseLinks} The populated <code>GetMessagingActionsForOrderResponseLinks</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,14 +62,14 @@ export class GetMessagingActionsForOrderResponseLinks {
 }
 
 /**
- * @member {module:messaging_v1/model/LinkObject} self
- * @type {module:messaging_v1/model/LinkObject}
+ * @member {LinkObject} self
+ * @type {LinkObject}
  */
 GetMessagingActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
- * @member {Array.<module:messaging_v1/model/LinkObject>} actions
- * @type {Array.<module:messaging_v1/model/LinkObject>}
+ * @member {[LinkObject]} actions
+ * @type {[LinkObject]}
  */
 GetMessagingActionsForOrderResponseLinks.prototype.actions = undefined

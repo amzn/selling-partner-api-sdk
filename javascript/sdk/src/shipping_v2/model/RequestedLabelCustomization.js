@@ -33,8 +33,8 @@ export class RequestedLabelCustomization {
    * Constructs a <code>RequestedLabelCustomization</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/RequestedLabelCustomization} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/RequestedLabelCustomization} The populated <code>RequestedLabelCustomization</code> instance.
+   * @param {RequestedLabelCustomization} obj Optional instance to populate.
+   * @return {RequestedLabelCustomization} The populated <code>RequestedLabelCustomization</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class RequestedLabelCustomization {
 
 /**
  * Specify the type of attributes to be added on a label.
- * @member {Array.<module:shipping_v2/model/LabelAttribute>} requestAttributes
- * @type {Array.<module:shipping_v2/model/LabelAttribute>}
+ * @member {[LabelAttribute]} requestAttributes
+ * @type {[LabelAttribute]}
  */
 RequestedLabelCustomization.prototype.requestAttributes = undefined

@@ -33,8 +33,8 @@ export class GetSupplySourcesResponse {
    * Constructs a <code>GetSupplySourcesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/GetSupplySourcesResponse} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/GetSupplySourcesResponse} The populated <code>GetSupplySourcesResponse</code> instance.
+   * @param {GetSupplySourcesResponse} obj Optional instance to populate.
+   * @return {GetSupplySourcesResponse} The populated <code>GetSupplySourcesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,8 +59,8 @@ export class GetSupplySourcesResponse {
 
 /**
  * The list of `SupplySource`s.
- * @member {Array.<module:supplysources_v2020_07_01/model/SupplySourceListInner>} supplySources
- * @type {Array.<module:supplysources_v2020_07_01/model/SupplySourceListInner>}
+ * @member {[SupplySourceListInner]} supplySources
+ * @type {[SupplySourceListInner]}
  */
 GetSupplySourcesResponse.prototype.supplySources = undefined
 

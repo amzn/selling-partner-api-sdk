@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class InventoryUnitOfMeasurement.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class InventoryUnitOfMeasurement {
@@ -40,7 +40,7 @@ export class InventoryUnitOfMeasurement {
   /**
     * Returns a <code>InventoryUnitOfMeasurement</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/InventoryUnitOfMeasurement} The enum <code>InventoryUnitOfMeasurement</code> value.
+    * @return {InventoryUnitOfMeasurement} The enum <code>InventoryUnitOfMeasurement</code> value.
     */
   static constructFromObject (object) {
     return object

@@ -26,7 +26,7 @@ export class BatchRequest {
    * @alias module:pricing_v0/model/BatchRequest
    * @class
    * @param uri {String} The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`
-   * @param method {module:pricing_v0/model/HttpMethod}
+   * @param method {HttpMethod}
    */
   constructor (uri, method) {
     this.uri = uri
@@ -37,8 +37,8 @@ export class BatchRequest {
    * Constructs a <code>BatchRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/BatchRequest} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/BatchRequest} The populated <code>BatchRequest</code> instance.
+   * @param {BatchRequest} obj Optional instance to populate.
+   * @return {BatchRequest} The populated <code>BatchRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,14 +70,14 @@ export class BatchRequest {
 BatchRequest.prototype.uri = undefined
 
 /**
- * @member {module:pricing_v0/model/HttpMethod} method
- * @type {module:pricing_v0/model/HttpMethod}
+ * @member {HttpMethod} method
+ * @type {HttpMethod}
  */
 BatchRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
- * @member {Object.<String, String>} headers
- * @type {Object.<String, String>}
+ * @member {{String: String}} headers
+ * @type {{String: String}}
  */
 BatchRequest.prototype.headers = undefined

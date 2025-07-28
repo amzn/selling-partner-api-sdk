@@ -33,8 +33,8 @@ export class FeeComponent {
    * Constructs a <code>FeeComponent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/FeeComponent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/FeeComponent} The populated <code>FeeComponent</code> instance.
+   * @param {FeeComponent} obj Optional instance to populate.
+   * @return {FeeComponent} The populated <code>FeeComponent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class FeeComponent {
 FeeComponent.prototype.feeType = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} feeAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} feeAmount
+ * @type {Currency}
  */
 FeeComponent.prototype.feeAmount = undefined

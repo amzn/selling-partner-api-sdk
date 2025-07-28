@@ -33,8 +33,8 @@ export class ListAllFulfillmentOrdersResult {
    * Constructs a <code>ListAllFulfillmentOrdersResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/ListAllFulfillmentOrdersResult} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/ListAllFulfillmentOrdersResult} The populated <code>ListAllFulfillmentOrdersResult</code> instance.
+   * @param {ListAllFulfillmentOrdersResult} obj Optional instance to populate.
+   * @return {ListAllFulfillmentOrdersResult} The populated <code>ListAllFulfillmentOrdersResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,7 +66,7 @@ ListAllFulfillmentOrdersResult.prototype.nextToken = undefined
 
 /**
  * An array of fulfillment order information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder>} fulfillmentOrders
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder>}
+ * @member {[FulfillmentOrder]} fulfillmentOrders
+ * @type {[FulfillmentOrder]}
  */
 ListAllFulfillmentOrdersResult.prototype.fulfillmentOrders = undefined

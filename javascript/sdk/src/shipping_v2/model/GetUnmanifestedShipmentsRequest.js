@@ -33,8 +33,8 @@ export class GetUnmanifestedShipmentsRequest {
    * Constructs a <code>GetUnmanifestedShipmentsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetUnmanifestedShipmentsRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetUnmanifestedShipmentsRequest} The populated <code>GetUnmanifestedShipmentsRequest</code> instance.
+   * @param {GetUnmanifestedShipmentsRequest} obj Optional instance to populate.
+   * @return {GetUnmanifestedShipmentsRequest} The populated <code>GetUnmanifestedShipmentsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GetUnmanifestedShipmentsRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
- * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
+ * @member {[ClientReferenceDetail]} clientReferenceDetails
+ * @type {[ClientReferenceDetail]}
  */
 GetUnmanifestedShipmentsRequest.prototype.clientReferenceDetails = undefined

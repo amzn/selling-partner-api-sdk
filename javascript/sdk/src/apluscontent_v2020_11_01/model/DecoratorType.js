@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DecoratorType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class DecoratorType {
@@ -70,7 +70,7 @@ export class DecoratorType {
   /**
     * Returns a <code>DecoratorType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:apluscontent_v2020_11_01/model/DecoratorType} The enum <code>DecoratorType</code> value.
+    * @return {DecoratorType} The enum <code>DecoratorType</code> value.
     */
   static constructFromObject (object) {
     return object

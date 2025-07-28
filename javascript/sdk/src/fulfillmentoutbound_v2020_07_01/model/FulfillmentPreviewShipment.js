@@ -25,7 +25,7 @@ export class FulfillmentPreviewShipment {
    * Delivery and item information for a shipment in a fulfillment order preview.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewShipment
    * @class
-   * @param fulfillmentPreviewItems {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem>} An array of fulfillment preview item information.
+   * @param fulfillmentPreviewItems {[FulfillmentPreviewItem]} An array of fulfillment preview item information.
    */
   constructor (fulfillmentPreviewItems) {
     this.fulfillmentPreviewItems = fulfillmentPreviewItems
@@ -35,8 +35,8 @@ export class FulfillmentPreviewShipment {
    * Constructs a <code>FulfillmentPreviewShipment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewShipment} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewShipment} The populated <code>FulfillmentPreviewShipment</code> instance.
+   * @param {FulfillmentPreviewShipment} obj Optional instance to populate.
+   * @return {FulfillmentPreviewShipment} The populated <code>FulfillmentPreviewShipment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -93,14 +93,14 @@ FulfillmentPreviewShipment.prototype.latestArrivalDate = undefined
 
 /**
  * Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.
- * @member {Array.<String>} shippingNotes
- * @type {Array.<String>}
+ * @member {[String]} shippingNotes
+ * @type {[String]}
  */
 FulfillmentPreviewShipment.prototype.shippingNotes = undefined
 
 /**
  * An array of fulfillment preview item information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem>} fulfillmentPreviewItems
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem>}
+ * @member {[FulfillmentPreviewItem]} fulfillmentPreviewItems
+ * @type {[FulfillmentPreviewItem]}
  */
 FulfillmentPreviewShipment.prototype.fulfillmentPreviewItems = undefined

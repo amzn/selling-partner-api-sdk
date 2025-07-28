@@ -29,7 +29,7 @@ export class OrderDetails {
    * @class
    * @param purchaseOrderDate {Date} The date the purchase order was placed. Must be in ISO-8601 date/time format.
    * @param purchaseOrderStateChangedDate {Date} The date when current purchase order state was changed. Current purchase order state is available in the field 'purchaseOrderState'. Must be in ISO-8601 date/time format.
-   * @param items {Array.<module:vendororders_v1/model/OrderItem>} A list of items in this purchase order.
+   * @param items {[OrderItem]} A list of items in this purchase order.
    */
   constructor (purchaseOrderDate, purchaseOrderStateChangedDate, items) {
     this.purchaseOrderDate = purchaseOrderDate
@@ -41,8 +41,8 @@ export class OrderDetails {
    * Constructs a <code>OrderDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderDetails} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderDetails} The populated <code>OrderDetails</code> instance.
+   * @param {OrderDetails} obj Optional instance to populate.
+   * @return {OrderDetails} The populated <code>OrderDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -132,14 +132,14 @@ OrderDetails.PurchaseOrderTypeEnum = {
 
 /**
  * Type of purchase order.
- * @member {module:vendororders_v1/model/OrderDetails.PurchaseOrderTypeEnum} purchaseOrderType
- * @type {module:vendororders_v1/model/OrderDetails.PurchaseOrderTypeEnum}
+ * @member {String} purchaseOrderType
+ * @type {String}
  */
 OrderDetails.prototype.purchaseOrderType = undefined
 
 /**
- * @member {module:vendororders_v1/model/ImportDetails} importDetails
- * @type {module:vendororders_v1/model/ImportDetails}
+ * @member {ImportDetails} importDetails
+ * @type {ImportDetails}
  */
 OrderDetails.prototype.importDetails = undefined
 
@@ -184,32 +184,32 @@ OrderDetails.PaymentMethodEnum = {
 
 /**
  * Payment method used.
- * @member {module:vendororders_v1/model/OrderDetails.PaymentMethodEnum} paymentMethod
- * @type {module:vendororders_v1/model/OrderDetails.PaymentMethodEnum}
+ * @member {String} paymentMethod
+ * @type {String}
  */
 OrderDetails.prototype.paymentMethod = undefined
 
 /**
- * @member {module:vendororders_v1/model/PartyIdentification} buyingParty
- * @type {module:vendororders_v1/model/PartyIdentification}
+ * @member {PartyIdentification} buyingParty
+ * @type {PartyIdentification}
  */
 OrderDetails.prototype.buyingParty = undefined
 
 /**
- * @member {module:vendororders_v1/model/PartyIdentification} sellingParty
- * @type {module:vendororders_v1/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 OrderDetails.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendororders_v1/model/PartyIdentification} shipToParty
- * @type {module:vendororders_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipToParty
+ * @type {PartyIdentification}
  */
 OrderDetails.prototype.shipToParty = undefined
 
 /**
- * @member {module:vendororders_v1/model/PartyIdentification} billToParty
- * @type {module:vendororders_v1/model/PartyIdentification}
+ * @member {PartyIdentification} billToParty
+ * @type {PartyIdentification}
  */
 OrderDetails.prototype.billToParty = undefined
 
@@ -229,7 +229,7 @@ OrderDetails.prototype.deliveryWindow = undefined
 
 /**
  * A list of items in this purchase order.
- * @member {Array.<module:vendororders_v1/model/OrderItem>} items
- * @type {Array.<module:vendororders_v1/model/OrderItem>}
+ * @member {[OrderItem]} items
+ * @type {[OrderItem]}
  */
 OrderDetails.prototype.items = undefined

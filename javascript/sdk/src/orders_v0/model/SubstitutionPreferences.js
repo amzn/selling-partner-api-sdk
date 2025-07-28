@@ -25,7 +25,7 @@ export class SubstitutionPreferences {
    * Substitution preferences for an order item.
    * @alias module:orders_v0/model/SubstitutionPreferences
    * @class
-   * @param substitutionType {module:orders_v0/model/SubstitutionPreferences.SubstitutionTypeEnum} The type of substitution that these preferences represent.
+   * @param substitutionType {String} The type of substitution that these preferences represent.
    */
   constructor (substitutionType) {
     this.substitutionType = substitutionType
@@ -35,8 +35,8 @@ export class SubstitutionPreferences {
    * Constructs a <code>SubstitutionPreferences</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/SubstitutionPreferences} obj Optional instance to populate.
-   * @return {module:orders_v0/model/SubstitutionPreferences} The populated <code>SubstitutionPreferences</code> instance.
+   * @param {SubstitutionPreferences} obj Optional instance to populate.
+   * @return {SubstitutionPreferences} The populated <code>SubstitutionPreferences</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -87,14 +87,14 @@ SubstitutionPreferences.SubstitutionTypeEnum = {
 
 /**
  * The type of substitution that these preferences represent.
- * @member {module:orders_v0/model/SubstitutionPreferences.SubstitutionTypeEnum} substitutionType
- * @type {module:orders_v0/model/SubstitutionPreferences.SubstitutionTypeEnum}
+ * @member {String} substitutionType
+ * @type {String}
  */
 SubstitutionPreferences.prototype.substitutionType = undefined
 
 /**
  * A collection of substitution options.
- * @member {Array.<module:orders_v0/model/SubstitutionOption>} substitutionOptions
- * @type {Array.<module:orders_v0/model/SubstitutionOption>}
+ * @member {[SubstitutionOption]} substitutionOptions
+ * @type {[SubstitutionOption]}
  */
 SubstitutionPreferences.prototype.substitutionOptions = undefined

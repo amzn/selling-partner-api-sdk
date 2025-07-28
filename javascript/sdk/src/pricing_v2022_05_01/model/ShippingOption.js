@@ -25,8 +25,8 @@ export class ShippingOption {
    * The shipping option available for the offer.
    * @alias module:pricing_v2022_05_01/model/ShippingOption
    * @class
-   * @param shippingOptionType {module:pricing_v2022_05_01/model/ShippingOption.ShippingOptionTypeEnum} The type of shipping option.
-   * @param price {module:pricing_v2022_05_01/model/MoneyType}
+   * @param shippingOptionType {String} The type of shipping option.
+   * @param price {MoneyType}
    */
   constructor (shippingOptionType, price) {
     this.shippingOptionType = shippingOptionType
@@ -37,8 +37,8 @@ export class ShippingOption {
    * Constructs a <code>ShippingOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/ShippingOption} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/ShippingOption} The populated <code>ShippingOption</code> instance.
+   * @param {ShippingOption} obj Optional instance to populate.
+   * @return {ShippingOption} The populated <code>ShippingOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,13 +77,13 @@ ShippingOption.ShippingOptionTypeEnum = {
 
 /**
  * The type of shipping option.
- * @member {module:pricing_v2022_05_01/model/ShippingOption.ShippingOptionTypeEnum} shippingOptionType
- * @type {module:pricing_v2022_05_01/model/ShippingOption.ShippingOptionTypeEnum}
+ * @member {String} shippingOptionType
+ * @type {String}
  */
 ShippingOption.prototype.shippingOptionType = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/MoneyType} price
- * @type {module:pricing_v2022_05_01/model/MoneyType}
+ * @member {MoneyType} price
+ * @type {MoneyType}
  */
 ShippingOption.prototype.price = undefined

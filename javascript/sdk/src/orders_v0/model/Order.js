@@ -37,7 +37,7 @@ export class Order {
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
    * @param purchaseDate {String} The date when the order was created.
    * @param lastUpdateDate {String} The date when the order was last updated.  __Note__: `LastUpdateDate` is returned with an incorrect date for orders that were last updated before 2009-04-01.
-   * @param orderStatus {module:orders_v0/model/Order.OrderStatusEnum} The current order status.
+   * @param orderStatus {String} The current order status.
    */
   constructor (amazonOrderId, purchaseDate, lastUpdateDate, orderStatus) {
     this.amazonOrderId = amazonOrderId
@@ -50,8 +50,8 @@ export class Order {
    * Constructs a <code>Order</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/Order} obj Optional instance to populate.
-   * @return {module:orders_v0/model/Order} The populated <code>Order</code> instance.
+   * @param {Order} obj Optional instance to populate.
+   * @return {Order} The populated <code>Order</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -205,8 +205,8 @@ Order.OrderStatusEnum = {
 
 /**
  * The current order status.
- * @member {module:orders_v0/model/Order.OrderStatusEnum} orderStatus
- * @type {module:orders_v0/model/Order.OrderStatusEnum}
+ * @member {String} orderStatus
+ * @type {String}
  */
 Order.prototype.orderStatus = undefined
 
@@ -232,8 +232,8 @@ Order.FulfillmentChannelEnum = {
 
 /**
  * Whether the order was fulfilled by Amazon (`AFN`) or by the seller (`MFN`).
- * @member {module:orders_v0/model/Order.FulfillmentChannelEnum} fulfillmentChannel
- * @type {module:orders_v0/model/Order.FulfillmentChannelEnum}
+ * @member {String} fulfillmentChannel
+ * @type {String}
  */
 Order.prototype.fulfillmentChannel = undefined
 
@@ -259,8 +259,8 @@ Order.prototype.orderChannel = undefined
 Order.prototype.shipServiceLevel = undefined
 
 /**
- * @member {module:orders_v0/model/Money} orderTotal
- * @type {module:orders_v0/model/Money}
+ * @member {Money} orderTotal
+ * @type {Money}
  */
 Order.prototype.orderTotal = undefined
 
@@ -280,8 +280,8 @@ Order.prototype.numberOfItemsUnshipped = undefined
 
 /**
  * A list of payment execution detail items.
- * @member {Array.<module:orders_v0/model/PaymentExecutionDetailItem>} paymentExecutionDetail
- * @type {Array.<module:orders_v0/model/PaymentExecutionDetailItem>}
+ * @member {[PaymentExecutionDetailItem]} paymentExecutionDetail
+ * @type {[PaymentExecutionDetailItem]}
  */
 Order.prototype.paymentExecutionDetail = undefined
 
@@ -313,15 +313,15 @@ Order.PaymentMethodEnum = {
 
 /**
  * The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the specific COD payment information provided by the `PaymentExecutionDetailItem` object, we recommend using the `PaymentMethodDetails` property to get payment method information.
- * @member {module:orders_v0/model/Order.PaymentMethodEnum} paymentMethod
- * @type {module:orders_v0/model/Order.PaymentMethodEnum}
+ * @member {String} paymentMethod
+ * @type {String}
  */
 Order.prototype.paymentMethod = undefined
 
 /**
  * A list of payment method detail items.
- * @member {Array.<String>} paymentMethodDetails
- * @type {Array.<String>}
+ * @member {[String]} paymentMethodDetails
+ * @type {[String]}
  */
 Order.prototype.paymentMethodDetails = undefined
 
@@ -340,8 +340,8 @@ Order.prototype.marketplaceId = undefined
 Order.prototype.shipmentServiceLevelCategory = undefined
 
 /**
- * @member {module:orders_v0/model/EasyShipShipmentStatus} easyShipShipmentStatus
- * @type {module:orders_v0/model/EasyShipShipmentStatus}
+ * @member {EasyShipShipmentStatus} easyShipShipmentStatus
+ * @type {EasyShipShipmentStatus}
  */
 Order.prototype.easyShipShipmentStatus = undefined
 
@@ -392,8 +392,8 @@ Order.OrderTypeEnum = {
 
 /**
  * The order's type.
- * @member {module:orders_v0/model/Order.OrderTypeEnum} orderType
- * @type {module:orders_v0/model/Order.OrderTypeEnum}
+ * @member {String} orderType
+ * @type {String}
  */
 Order.prototype.orderType = undefined
 
@@ -496,8 +496,8 @@ Order.prototype.isSoldByAB = undefined
 Order.prototype.isIBA = undefined
 
 /**
- * @member {module:orders_v0/model/Address} defaultShipFromLocationAddress
- * @type {module:orders_v0/model/Address}
+ * @member {Address} defaultShipFromLocationAddress
+ * @type {Address}
  */
 Order.prototype.defaultShipFromLocationAddress = undefined
 
@@ -523,20 +523,20 @@ Order.BuyerInvoicePreferenceEnum = {
 
 /**
  * The buyer's invoicing preference. Sellers can use this data to issue electronic invoices for orders in Turkey.  **Note**: This attribute is only available in the Turkey marketplace.
- * @member {module:orders_v0/model/Order.BuyerInvoicePreferenceEnum} buyerInvoicePreference
- * @type {module:orders_v0/model/Order.BuyerInvoicePreferenceEnum}
+ * @member {String} buyerInvoicePreference
+ * @type {String}
  */
 Order.prototype.buyerInvoicePreference = undefined
 
 /**
- * @member {module:orders_v0/model/BuyerTaxInformation} buyerTaxInformation
- * @type {module:orders_v0/model/BuyerTaxInformation}
+ * @member {BuyerTaxInformation} buyerTaxInformation
+ * @type {BuyerTaxInformation}
  */
 Order.prototype.buyerTaxInformation = undefined
 
 /**
- * @member {module:orders_v0/model/FulfillmentInstruction} fulfillmentInstruction
- * @type {module:orders_v0/model/FulfillmentInstruction}
+ * @member {FulfillmentInstruction} fulfillmentInstruction
+ * @type {FulfillmentInstruction}
  */
 Order.prototype.fulfillmentInstruction = undefined
 
@@ -555,8 +555,8 @@ Order.prototype.isISPU = undefined
 Order.prototype.isAccessPointOrder = undefined
 
 /**
- * @member {module:orders_v0/model/MarketplaceTaxInfo} marketplaceTaxInfo
- * @type {module:orders_v0/model/MarketplaceTaxInfo}
+ * @member {MarketplaceTaxInfo} marketplaceTaxInfo
+ * @type {MarketplaceTaxInfo}
  */
 Order.prototype.marketplaceTaxInfo = undefined
 
@@ -568,20 +568,20 @@ Order.prototype.marketplaceTaxInfo = undefined
 Order.prototype.sellerDisplayName = undefined
 
 /**
- * @member {module:orders_v0/model/Address} shippingAddress
- * @type {module:orders_v0/model/Address}
+ * @member {Address} shippingAddress
+ * @type {Address}
  */
 Order.prototype.shippingAddress = undefined
 
 /**
- * @member {module:orders_v0/model/BuyerInfo} buyerInfo
- * @type {module:orders_v0/model/BuyerInfo}
+ * @member {BuyerInfo} buyerInfo
+ * @type {BuyerInfo}
  */
 Order.prototype.buyerInfo = undefined
 
 /**
- * @member {module:orders_v0/model/AutomatedShippingSettings} automatedShippingSettings
- * @type {module:orders_v0/model/AutomatedShippingSettings}
+ * @member {AutomatedShippingSettings} automatedShippingSettings
+ * @type {AutomatedShippingSettings}
  */
 Order.prototype.automatedShippingSettings = undefined
 
@@ -593,7 +593,7 @@ Order.prototype.automatedShippingSettings = undefined
 Order.prototype.hasRegulatedItems = undefined
 
 /**
- * @member {module:orders_v0/model/ElectronicInvoiceStatus} electronicInvoiceStatus
- * @type {module:orders_v0/model/ElectronicInvoiceStatus}
+ * @member {ElectronicInvoiceStatus} electronicInvoiceStatus
+ * @type {ElectronicInvoiceStatus}
  */
 Order.prototype.electronicInvoiceStatus = undefined

@@ -40,8 +40,8 @@ export class Item {
    * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/Item} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/Item} The populated <code>Item</code> instance.
+   * @param {Item} obj Optional instance to populate.
+   * @return {Item} The populated <code>Item</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,8 +86,8 @@ Item.prototype.orderItemId = undefined
 Item.prototype.quantity = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Weight} itemWeight
- * @type {module:merchantfulfillment_v0/model/Weight}
+ * @member {Weight} itemWeight
+ * @type {Weight}
  */
 Item.prototype.itemWeight = undefined
 
@@ -100,21 +100,21 @@ Item.prototype.itemDescription = undefined
 
 /**
  * A list of transparency codes.
- * @member {Array.<String>} transparencyCodeList
- * @type {Array.<String>}
+ * @member {[String]} transparencyCodeList
+ * @type {[String]}
  */
 Item.prototype.transparencyCodeList = undefined
 
 /**
  * A list of additional seller input pairs required to purchase shipping.
- * @member {Array.<module:merchantfulfillment_v0/model/AdditionalSellerInputs>} itemLevelSellerInputsList
- * @type {Array.<module:merchantfulfillment_v0/model/AdditionalSellerInputs>}
+ * @member {[AdditionalSellerInputs]} itemLevelSellerInputsList
+ * @type {[AdditionalSellerInputs]}
  */
 Item.prototype.itemLevelSellerInputsList = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/LiquidVolume} liquidVolume
- * @type {module:merchantfulfillment_v0/model/LiquidVolume}
+ * @member {LiquidVolume} liquidVolume
+ * @type {LiquidVolume}
  */
 Item.prototype.liquidVolume = undefined
 
@@ -126,7 +126,7 @@ Item.prototype.liquidVolume = undefined
 Item.prototype.isHazmat = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/DangerousGoodsDetails} dangerousGoodsDetails
- * @type {module:merchantfulfillment_v0/model/DangerousGoodsDetails}
+ * @member {DangerousGoodsDetails} dangerousGoodsDetails
+ * @type {DangerousGoodsDetails}
  */
 Item.prototype.dangerousGoodsDetails = undefined

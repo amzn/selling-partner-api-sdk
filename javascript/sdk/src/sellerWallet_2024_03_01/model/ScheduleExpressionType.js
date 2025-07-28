@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ScheduleExpressionType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ScheduleExpressionType {
@@ -34,7 +34,7 @@ export class ScheduleExpressionType {
   /**
     * Returns a <code>ScheduleExpressionType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/ScheduleExpressionType} The enum <code>ScheduleExpressionType</code> value.
+    * @return {ScheduleExpressionType} The enum <code>ScheduleExpressionType</code> value.
     */
   static constructFromObject (object) {
     return object

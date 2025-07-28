@@ -25,7 +25,7 @@ export class Route {
    * This is used only for direct import shipment confirmations.
    * @alias module:vendorshipments_v1/model/Route
    * @class
-   * @param stops {Array.<module:vendorshipments_v1/model/Stop>} The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
+   * @param stops {[Stop]} The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
    */
   constructor (stops) {
     this.stops = stops
@@ -35,8 +35,8 @@ export class Route {
    * Constructs a <code>Route</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Route} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Route} The populated <code>Route</code> instance.
+   * @param {Route} obj Optional instance to populate.
+   * @return {Route} The populated <code>Route</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class Route {
 
 /**
  * The port or location involved in transporting the cargo, as specified in transportation contracts or operational plans.
- * @member {Array.<module:vendorshipments_v1/model/Stop>} stops
- * @type {Array.<module:vendorshipments_v1/model/Stop>}
+ * @member {[Stop]} stops
+ * @type {[Stop]}
  */
 Route.prototype.stops = undefined

@@ -32,8 +32,8 @@ export class MarketplaceFilter {
    * Constructs a <code>MarketplaceFilter</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/MarketplaceFilter} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/MarketplaceFilter} The populated <code>MarketplaceFilter</code> instance.
+   * @param {MarketplaceFilter} obj Optional instance to populate.
+   * @return {MarketplaceFilter} The populated <code>MarketplaceFilter</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class MarketplaceFilter {
 
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 MarketplaceFilter.prototype.marketplaceIds = undefined

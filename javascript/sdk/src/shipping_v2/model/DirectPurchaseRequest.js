@@ -28,7 +28,7 @@ export class DirectPurchaseRequest {
    * The request schema for the directPurchaseShipment operation. When the channel type is Amazon, the shipTo address is not required and will be ignored.
    * @alias module:shipping_v2/model/DirectPurchaseRequest
    * @class
-   * @param channelDetails {module:shipping_v2/model/ChannelDetails}
+   * @param channelDetails {ChannelDetails}
    */
   constructor (channelDetails) {
     this.channelDetails = channelDetails
@@ -38,8 +38,8 @@ export class DirectPurchaseRequest {
    * Constructs a <code>DirectPurchaseRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/DirectPurchaseRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/DirectPurchaseRequest} The populated <code>DirectPurchaseRequest</code> instance.
+   * @param {DirectPurchaseRequest} obj Optional instance to populate.
+   * @return {DirectPurchaseRequest} The populated <code>DirectPurchaseRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,38 +67,38 @@ export class DirectPurchaseRequest {
 }
 
 /**
- * @member {module:shipping_v2/model/Address} shipTo
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipTo
+ * @type {Address}
  */
 DirectPurchaseRequest.prototype.shipTo = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} shipFrom
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipFrom
+ * @type {Address}
  */
 DirectPurchaseRequest.prototype.shipFrom = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} returnTo
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} returnTo
+ * @type {Address}
  */
 DirectPurchaseRequest.prototype.returnTo = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
- * @member {Array.<module:shipping_v2/model/Package>} packages
- * @type {Array.<module:shipping_v2/model/Package>}
+ * @member {[Package]} packages
+ * @type {[Package]}
  */
 DirectPurchaseRequest.prototype.packages = undefined
 
 /**
- * @member {module:shipping_v2/model/ChannelDetails} channelDetails
- * @type {module:shipping_v2/model/ChannelDetails}
+ * @member {ChannelDetails} channelDetails
+ * @type {ChannelDetails}
  */
 DirectPurchaseRequest.prototype.channelDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/RequestedDocumentSpecification} labelSpecifications
- * @type {module:shipping_v2/model/RequestedDocumentSpecification}
+ * @member {RequestedDocumentSpecification} labelSpecifications
+ * @type {RequestedDocumentSpecification}
  */
 DirectPurchaseRequest.prototype.labelSpecifications = undefined

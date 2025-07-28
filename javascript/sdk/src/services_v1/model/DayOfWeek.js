@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DayOfWeek.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class DayOfWeek {
@@ -64,7 +64,7 @@ export class DayOfWeek {
   /**
     * Returns a <code>DayOfWeek</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:services_v1/model/DayOfWeek} The enum <code>DayOfWeek</code> value.
+    * @return {DayOfWeek} The enum <code>DayOfWeek</code> value.
     */
   static constructFromObject (object) {
     return object

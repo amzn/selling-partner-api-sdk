@@ -25,7 +25,7 @@ export class TransactionInstrumentDetails {
    * Details of the destination bank account in the transaction request.
    * @alias module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails
    * @class
-   * @param bankAccount {module:sellerWallet_2024_03_01/model/BankAccount}
+   * @param bankAccount {BankAccount}
    * @param bankAccountNumber {String} The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.
    */
   constructor (bankAccount, bankAccountNumber) {
@@ -37,8 +37,8 @@ export class TransactionInstrumentDetails {
    * Constructs a <code>TransactionInstrumentDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails} The populated <code>TransactionInstrumentDetails</code> instance.
+   * @param {TransactionInstrumentDetails} obj Optional instance to populate.
+   * @return {TransactionInstrumentDetails} The populated <code>TransactionInstrumentDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class TransactionInstrumentDetails {
 }
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/BankAccount} bankAccount
- * @type {module:sellerWallet_2024_03_01/model/BankAccount}
+ * @member {BankAccount} bankAccount
+ * @type {BankAccount}
  */
 TransactionInstrumentDetails.prototype.bankAccount = undefined
 

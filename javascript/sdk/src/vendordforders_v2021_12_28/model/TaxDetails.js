@@ -25,7 +25,7 @@ export class TaxDetails {
    * The tax details for the order. _Note:_ Amazon calculates tax on the list price (Amazon retail price).
    * @alias module:vendordforders_v2021_12_28/model/TaxDetails
    * @class
-   * @param taxAmount {module:vendordforders_v2021_12_28/model/Money}
+   * @param taxAmount {Money}
    */
   constructor (taxAmount) {
     this.taxAmount = taxAmount
@@ -35,8 +35,8 @@ export class TaxDetails {
    * Constructs a <code>TaxDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/TaxDetails} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/TaxDetails} The populated <code>TaxDetails</code> instance.
+   * @param {TaxDetails} obj Optional instance to populate.
+   * @return {TaxDetails} The populated <code>TaxDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,14 +69,14 @@ export class TaxDetails {
 TaxDetails.prototype.taxRate = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/Money} taxAmount
- * @type {module:vendordforders_v2021_12_28/model/Money}
+ * @member {Money} taxAmount
+ * @type {Money}
  */
 TaxDetails.prototype.taxAmount = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/Money} taxableAmount
- * @type {module:vendordforders_v2021_12_28/model/Money}
+ * @member {Money} taxableAmount
+ * @type {Money}
  */
 TaxDetails.prototype.taxableAmount = undefined
 
@@ -132,7 +132,7 @@ TaxDetails.TypeEnum = {
 
 /**
  * Tax type.
- * @member {module:vendordforders_v2021_12_28/model/TaxDetails.TypeEnum} type
- * @type {module:vendordforders_v2021_12_28/model/TaxDetails.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 TaxDetails.prototype.type = undefined

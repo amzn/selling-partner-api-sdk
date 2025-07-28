@@ -26,7 +26,7 @@ export class Weight {
    * @alias module:merchantfulfillment_v0/model/Weight
    * @class
    * @param value {Number} The weight value.
-   * @param unit {module:merchantfulfillment_v0/model/UnitOfWeight}
+   * @param unit {UnitOfWeight}
    */
   constructor (value, unit) {
     this.value = value
@@ -37,8 +37,8 @@ export class Weight {
    * Constructs a <code>Weight</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/Weight} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/Weight} The populated <code>Weight</code> instance.
+   * @param {Weight} obj Optional instance to populate.
+   * @return {Weight} The populated <code>Weight</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class Weight {
 Weight.prototype.value = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/UnitOfWeight} unit
- * @type {module:merchantfulfillment_v0/model/UnitOfWeight}
+ * @member {UnitOfWeight} unit
+ * @type {UnitOfWeight}
  */
 Weight.prototype.unit = undefined

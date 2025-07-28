@@ -36,8 +36,8 @@ export class CurrencyAmount {
    * Constructs a <code>CurrencyAmount</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/CurrencyAmount} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/CurrencyAmount} The populated <code>CurrencyAmount</code> instance.
+   * @param {CurrencyAmount} obj Optional instance to populate.
+   * @return {CurrencyAmount} The populated <code>CurrencyAmount</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -37,8 +37,8 @@ export class TransportationSelection {
    * Constructs a <code>TransportationSelection</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/TransportationSelection} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/TransportationSelection} The populated <code>TransportationSelection</code> instance.
+   * @param {TransportationSelection} obj Optional instance to populate.
+   * @return {TransportationSelection} The populated <code>TransportationSelection</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class TransportationSelection {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/ContactInformation} contactInformation
- * @type {module:fulfillmentinbound_v2024_03_20/model/ContactInformation}
+ * @member {ContactInformation} contactInformation
+ * @type {ContactInformation}
  */
 TransportationSelection.prototype.contactInformation = undefined
 

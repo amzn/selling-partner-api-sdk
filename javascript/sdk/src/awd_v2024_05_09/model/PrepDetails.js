@@ -36,8 +36,8 @@ export class PrepDetails {
    * Constructs a <code>PrepDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/PrepDetails} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/PrepDetails} The populated <code>PrepDetails</code> instance.
+   * @param {PrepDetails} obj Optional instance to populate.
+   * @return {PrepDetails} The populated <code>PrepDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,26 +63,26 @@ export class PrepDetails {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/LabelOwner} labelOwner
- * @type {module:awd_v2024_05_09/model/LabelOwner}
+ * @member {LabelOwner} labelOwner
+ * @type {LabelOwner}
  */
 PrepDetails.prototype.labelOwner = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/PrepCategory} prepCategory
- * @type {module:awd_v2024_05_09/model/PrepCategory}
+ * @member {PrepCategory} prepCategory
+ * @type {PrepCategory}
  */
 PrepDetails.prototype.prepCategory = undefined
 
 /**
  * Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the `prepCategory`, and if you attempt to pass a value for this field, the system will ignore it.
- * @member {Array.<module:awd_v2024_05_09/model/PrepInstruction>} prepInstructions
- * @type {Array.<module:awd_v2024_05_09/model/PrepInstruction>}
+ * @member {[PrepInstruction]} prepInstructions
+ * @type {[PrepInstruction]}
  */
 PrepDetails.prototype.prepInstructions = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/PrepOwner} prepOwner
- * @type {module:awd_v2024_05_09/model/PrepOwner}
+ * @member {PrepOwner} prepOwner
+ * @type {PrepOwner}
  */
 PrepDetails.prototype.prepOwner = undefined

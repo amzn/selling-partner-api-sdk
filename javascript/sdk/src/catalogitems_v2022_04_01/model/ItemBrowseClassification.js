@@ -36,8 +36,8 @@ export class ItemBrowseClassification {
    * Constructs a <code>ItemBrowseClassification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemBrowseClassification} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemBrowseClassification} The populated <code>ItemBrowseClassification</code> instance.
+   * @param {ItemBrowseClassification} obj Optional instance to populate.
+   * @return {ItemBrowseClassification} The populated <code>ItemBrowseClassification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,7 +76,7 @@ ItemBrowseClassification.prototype.displayName = undefined
 ItemBrowseClassification.prototype.classificationId = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/ItemBrowseClassification} parent
- * @type {module:catalogitems_v2022_04_01/model/ItemBrowseClassification}
+ * @member {ItemBrowseClassification} parent
+ * @type {ItemBrowseClassification}
  */
 ItemBrowseClassification.prototype.parent = undefined

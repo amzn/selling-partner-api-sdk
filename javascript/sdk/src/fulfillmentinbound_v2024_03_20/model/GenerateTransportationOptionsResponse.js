@@ -34,8 +34,8 @@ export class GenerateTransportationOptionsResponse {
    * Constructs a <code>GenerateTransportationOptionsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsResponse} The populated <code>GenerateTransportationOptionsResponse</code> instance.
+   * @param {GenerateTransportationOptionsResponse} obj Optional instance to populate.
+   * @return {GenerateTransportationOptionsResponse} The populated <code>GenerateTransportationOptionsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

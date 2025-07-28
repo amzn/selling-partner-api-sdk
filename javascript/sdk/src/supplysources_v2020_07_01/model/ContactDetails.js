@@ -33,8 +33,8 @@ export class ContactDetails {
    * Constructs a <code>ContactDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/ContactDetails} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/ContactDetails} The populated <code>ContactDetails</code> instance.
+   * @param {ContactDetails} obj Optional instance to populate.
+   * @return {ContactDetails} The populated <code>ContactDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class ContactDetails {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ContactDetailsPrimary} primary
- * @type {module:supplysources_v2020_07_01/model/ContactDetailsPrimary}
+ * @member {ContactDetailsPrimary} primary
+ * @type {ContactDetailsPrimary}
  */
 ContactDetails.prototype.primary = undefined

@@ -29,7 +29,7 @@ export class Item {
    * @param fnsku {String} A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
    * @param labelOwner {String} Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.
    * @param msku {String} The merchant SKU, a merchant-supplied identifier of a specific SKU.
-   * @param prepInstructions {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepInstruction>} Special preparations that are required for an item.
+   * @param prepInstructions {[PrepInstruction]} Special preparations that are required for an item.
    * @param quantity {Number} The number of the specified MSKU.
    */
   constructor (asin, fnsku, labelOwner, msku, prepInstructions, quantity) {
@@ -45,8 +45,8 @@ export class Item {
    * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Item} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Item} The populated <code>Item</code> instance.
+   * @param {Item} obj Optional instance to populate.
+   * @return {Item} The populated <code>Item</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -119,8 +119,8 @@ Item.prototype.msku = undefined
 
 /**
  * Special preparations that are required for an item.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepInstruction>} prepInstructions
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepInstruction>}
+ * @member {[PrepInstruction]} prepInstructions
+ * @type {[PrepInstruction]}
  */
 Item.prototype.prepInstructions = undefined
 

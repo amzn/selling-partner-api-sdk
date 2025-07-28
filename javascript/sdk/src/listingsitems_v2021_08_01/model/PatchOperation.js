@@ -24,7 +24,7 @@ export class PatchOperation {
    * Individual JSON Patch operation for an HTTP PATCH request.
    * @alias module:listingsitems_v2021_08_01/model/PatchOperation
    * @class
-   * @param op {module:listingsitems_v2021_08_01/model/PatchOperation.OpEnum} Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.
+   * @param op {String} Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.
    * @param path {String} JSON Pointer path of the element to patch. Refer to [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.
    */
   constructor (op, path) {
@@ -36,8 +36,8 @@ export class PatchOperation {
    * Constructs a <code>PatchOperation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/PatchOperation} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/PatchOperation} The populated <code>PatchOperation</code> instance.
+   * @param {PatchOperation} obj Optional instance to populate.
+   * @return {PatchOperation} The populated <code>PatchOperation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -95,8 +95,8 @@ PatchOperation.OpEnum = {
 
 /**
  * Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.
- * @member {module:listingsitems_v2021_08_01/model/PatchOperation.OpEnum} op
- * @type {module:listingsitems_v2021_08_01/model/PatchOperation.OpEnum}
+ * @member {String} op
+ * @type {String}
  */
 PatchOperation.prototype.op = undefined
 
@@ -109,7 +109,7 @@ PatchOperation.prototype.path = undefined
 
 /**
  * JSON value to `add`, `replace`, `merge` or `delete`.
- * @member {Array.<Object.<String, Object>>} value
- * @type {Array.<Object.<String, Object>>}
+ * @member {[{String: Object}]} value
+ * @type {[{String: Object}]}
  */
 PatchOperation.prototype.value = undefined

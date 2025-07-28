@@ -25,7 +25,7 @@ export class ConfirmShipmentRequest {
    * The request schema for an shipment confirmation.
    * @alias module:orders_v0/model/ConfirmShipmentRequest
    * @class
-   * @param packageDetail {module:orders_v0/model/PackageDetail}
+   * @param packageDetail {PackageDetail}
    * @param marketplaceId {String} The unobfuscated marketplace identifier.
    */
   constructor (packageDetail, marketplaceId) {
@@ -37,8 +37,8 @@ export class ConfirmShipmentRequest {
    * Constructs a <code>ConfirmShipmentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/ConfirmShipmentRequest} obj Optional instance to populate.
-   * @return {module:orders_v0/model/ConfirmShipmentRequest} The populated <code>ConfirmShipmentRequest</code> instance.
+   * @param {ConfirmShipmentRequest} obj Optional instance to populate.
+   * @return {ConfirmShipmentRequest} The populated <code>ConfirmShipmentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class ConfirmShipmentRequest {
 }
 
 /**
- * @member {module:orders_v0/model/PackageDetail} packageDetail
- * @type {module:orders_v0/model/PackageDetail}
+ * @member {PackageDetail} packageDetail
+ * @type {PackageDetail}
  */
 ConfirmShipmentRequest.prototype.packageDetail = undefined
 
@@ -84,8 +84,8 @@ ConfirmShipmentRequest.CodCollectionMethodEnum = {
 
 /**
  * The COD collection method (only supported in the JP marketplace).
- * @member {module:orders_v0/model/ConfirmShipmentRequest.CodCollectionMethodEnum} codCollectionMethod
- * @type {module:orders_v0/model/ConfirmShipmentRequest.CodCollectionMethodEnum}
+ * @member {String} codCollectionMethod
+ * @type {String}
  */
 ConfirmShipmentRequest.prototype.codCollectionMethod = undefined
 

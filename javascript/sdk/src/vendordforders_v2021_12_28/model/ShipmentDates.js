@@ -34,8 +34,8 @@ export class ShipmentDates {
    * Constructs a <code>ShipmentDates</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/ShipmentDates} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/ShipmentDates} The populated <code>ShipmentDates</code> instance.
+   * @param {ShipmentDates} obj Optional instance to populate.
+   * @return {ShipmentDates} The populated <code>ShipmentDates</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

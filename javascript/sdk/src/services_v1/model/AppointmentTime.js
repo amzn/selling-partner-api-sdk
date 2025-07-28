@@ -36,8 +36,8 @@ export class AppointmentTime {
    * Constructs a <code>AppointmentTime</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AppointmentTime} obj Optional instance to populate.
-   * @return {module:services_v1/model/AppointmentTime} The populated <code>AppointmentTime</code> instance.
+   * @param {AppointmentTime} obj Optional instance to populate.
+   * @return {AppointmentTime} The populated <code>AppointmentTime</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

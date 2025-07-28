@@ -33,8 +33,8 @@ export class GetListingOffersBatchResponse {
    * Constructs a <code>GetListingOffersBatchResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/GetListingOffersBatchResponse} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/GetListingOffersBatchResponse} The populated <code>GetListingOffersBatchResponse</code> instance.
+   * @param {GetListingOffersBatchResponse} obj Optional instance to populate.
+   * @return {GetListingOffersBatchResponse} The populated <code>GetListingOffersBatchResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GetListingOffersBatchResponse {
 
 /**
  * A list of `getListingOffers` batched responses.
- * @member {Array.<module:pricing_v0/model/ListingOffersResponse>} responses
- * @type {Array.<module:pricing_v0/model/ListingOffersResponse>}
+ * @member {[ListingOffersResponse]} responses
+ * @type {[ListingOffersResponse]}
  */
 GetListingOffersBatchResponse.prototype.responses = undefined

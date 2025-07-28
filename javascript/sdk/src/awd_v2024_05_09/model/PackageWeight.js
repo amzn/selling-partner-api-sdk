@@ -25,7 +25,7 @@ export class PackageWeight {
    * Represents the weight of the package with a unit of measurement.
    * @alias module:awd_v2024_05_09/model/PackageWeight
    * @class
-   * @param unitOfMeasurement {module:awd_v2024_05_09/model/WeightUnitOfMeasurement}
+   * @param unitOfMeasurement {WeightUnitOfMeasurement}
    * @param weight {Number} The package weight value.
    */
   constructor (unitOfMeasurement, weight) {
@@ -37,8 +37,8 @@ export class PackageWeight {
    * Constructs a <code>PackageWeight</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/PackageWeight} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/PackageWeight} The populated <code>PackageWeight</code> instance.
+   * @param {PackageWeight} obj Optional instance to populate.
+   * @return {PackageWeight} The populated <code>PackageWeight</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class PackageWeight {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/WeightUnitOfMeasurement} unitOfMeasurement
- * @type {module:awd_v2024_05_09/model/WeightUnitOfMeasurement}
+ * @member {WeightUnitOfMeasurement} unitOfMeasurement
+ * @type {WeightUnitOfMeasurement}
  */
 PackageWeight.prototype.unitOfMeasurement = undefined
 

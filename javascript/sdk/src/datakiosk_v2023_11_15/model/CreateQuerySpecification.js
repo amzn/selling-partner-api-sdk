@@ -34,8 +34,8 @@ export class CreateQuerySpecification {
    * Constructs a <code>CreateQuerySpecification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:datakiosk_v2023_11_15/model/CreateQuerySpecification} obj Optional instance to populate.
-   * @return {module:datakiosk_v2023_11_15/model/CreateQuerySpecification} The populated <code>CreateQuerySpecification</code> instance.
+   * @param {CreateQuerySpecification} obj Optional instance to populate.
+   * @return {CreateQuerySpecification} The populated <code>CreateQuerySpecification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

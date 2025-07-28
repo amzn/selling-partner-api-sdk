@@ -37,8 +37,8 @@ export class FeaturedOfferExpectedPriceRequestParams {
    * Constructs a <code>FeaturedOfferExpectedPriceRequestParams</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams} The populated <code>FeaturedOfferExpectedPriceRequestParams</code> instance.
+   * @param {FeaturedOfferExpectedPriceRequestParams} obj Optional instance to populate.
+   * @return {FeaturedOfferExpectedPriceRequestParams} The populated <code>FeaturedOfferExpectedPriceRequestParams</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,7 +77,7 @@ FeaturedOfferExpectedPriceRequestParams.prototype.marketplaceId = undefined
 FeaturedOfferExpectedPriceRequestParams.prototype.sku = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Segment} segment
- * @type {module:pricing_v2022_05_01/model/Segment}
+ * @member {Segment} segment
+ * @type {Segment}
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.segment = undefined

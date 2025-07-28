@@ -35,8 +35,8 @@ export class ItemVendorDetailsByMarketplace {
    * Constructs a <code>ItemVendorDetailsByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace} The populated <code>ItemVendorDetailsByMarketplace</code> instance.
+   * @param {ItemVendorDetailsByMarketplace} obj Optional instance to populate.
+   * @return {ItemVendorDetailsByMarketplace} The populated <code>ItemVendorDetailsByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -94,8 +94,8 @@ ItemVendorDetailsByMarketplace.prototype.manufacturerCode = undefined
 ItemVendorDetailsByMarketplace.prototype.manufacturerCodeParent = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory} productCategory
- * @type {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory}
+ * @member {ItemVendorDetailsCategory} productCategory
+ * @type {ItemVendorDetailsCategory}
  */
 ItemVendorDetailsByMarketplace.prototype.productCategory = undefined
 
@@ -107,8 +107,8 @@ ItemVendorDetailsByMarketplace.prototype.productCategory = undefined
 ItemVendorDetailsByMarketplace.prototype.productGroup = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory} productSubcategory
- * @type {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory}
+ * @member {ItemVendorDetailsCategory} productSubcategory
+ * @type {ItemVendorDetailsCategory}
  */
 ItemVendorDetailsByMarketplace.prototype.productSubcategory = undefined
 
@@ -182,7 +182,7 @@ ItemVendorDetailsByMarketplace.ReplenishmentCategoryEnum = {
 
 /**
  * The replenishment category that is associated with an Amazon catalog item.
- * @member {module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace.ReplenishmentCategoryEnum} replenishmentCategory
- * @type {module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace.ReplenishmentCategoryEnum}
+ * @member {String} replenishmentCategory
+ * @type {String}
  */
 ItemVendorDetailsByMarketplace.prototype.replenishmentCategory = undefined

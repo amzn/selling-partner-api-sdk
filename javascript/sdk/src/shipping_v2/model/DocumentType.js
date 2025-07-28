@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DocumentType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class DocumentType {
@@ -46,7 +46,7 @@ export class DocumentType {
   /**
     * Returns a <code>DocumentType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/DocumentType} The enum <code>DocumentType</code> value.
+    * @return {DocumentType} The enum <code>DocumentType</code> value.
     */
   static constructFromObject (object) {
     return object

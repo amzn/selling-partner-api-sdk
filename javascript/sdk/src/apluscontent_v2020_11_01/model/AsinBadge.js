@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AsinBadge.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class AsinBadge {
@@ -46,7 +46,7 @@ export class AsinBadge {
   /**
     * Returns a <code>AsinBadge</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:apluscontent_v2020_11_01/model/AsinBadge} The enum <code>AsinBadge</code> value.
+    * @return {AsinBadge} The enum <code>AsinBadge</code> value.
     */
   static constructFromObject (object) {
     return object

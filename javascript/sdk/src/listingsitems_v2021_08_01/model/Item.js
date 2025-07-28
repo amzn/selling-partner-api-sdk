@@ -41,8 +41,8 @@ export class Item {
    * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/Item} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/Item} The populated <code>Item</code> instance.
+   * @param {Item} obj Optional instance to populate.
+   * @return {Item} The populated <code>Item</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -81,56 +81,56 @@ Item.prototype.sku = undefined
 
 /**
  * Summary details of a listings item.
- * @member {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace>} summaries
- * @type {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace>}
+ * @member {[ItemSummaryByMarketplace]} summaries
+ * @type {[ItemSummaryByMarketplace]}
  */
 Item.prototype.summaries = undefined
 
 /**
  * A JSON object containing structured listings item attribute data keyed by attribute name.
- * @member {Object.<String, Object>} attributes
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} attributes
+ * @type {{String: Object}}
  */
 Item.prototype.attributes = undefined
 
 /**
  * The issues associated with the listings item.
- * @member {Array.<module:listingsitems_v2021_08_01/model/Issue>} issues
- * @type {Array.<module:listingsitems_v2021_08_01/model/Issue>}
+ * @member {[Issue]} issues
+ * @type {[Issue]}
  */
 Item.prototype.issues = undefined
 
 /**
  * Offer details for the listings item.
- * @member {Array.<module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace>} offers
- * @type {Array.<module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace>}
+ * @member {[ItemOfferByMarketplace]} offers
+ * @type {[ItemOfferByMarketplace]}
  */
 Item.prototype.offers = undefined
 
 /**
  * The fulfillment availability for the listings item.
- * @member {Array.<module:listingsitems_v2021_08_01/model/FulfillmentAvailability>} fulfillmentAvailability
- * @type {Array.<module:listingsitems_v2021_08_01/model/FulfillmentAvailability>}
+ * @member {[FulfillmentAvailability]} fulfillmentAvailability
+ * @type {[FulfillmentAvailability]}
  */
 Item.prototype.fulfillmentAvailability = undefined
 
 /**
  * The vendor procurement information for the listings item.
- * @member {Array.<module:listingsitems_v2021_08_01/model/ItemProcurement>} procurement
- * @type {Array.<module:listingsitems_v2021_08_01/model/ItemProcurement>}
+ * @member {[ItemProcurement]} procurement
+ * @type {[ItemProcurement]}
  */
 Item.prototype.procurement = undefined
 
 /**
  * Relationships for a listing item, by marketplace (for example, variations).
- * @member {Array.<module:listingsitems_v2021_08_01/model/ItemRelationshipsByMarketplace>} relationships
- * @type {Array.<module:listingsitems_v2021_08_01/model/ItemRelationshipsByMarketplace>}
+ * @member {[ItemRelationshipsByMarketplace]} relationships
+ * @type {[ItemRelationshipsByMarketplace]}
  */
 Item.prototype.relationships = undefined
 
 /**
  * Product types for a listing item, by marketplace.
- * @member {Array.<module:listingsitems_v2021_08_01/model/ItemProductTypeByMarketplace>} productTypes
- * @type {Array.<module:listingsitems_v2021_08_01/model/ItemProductTypeByMarketplace>}
+ * @member {[ItemProductTypeByMarketplace]} productTypes
+ * @type {[ItemProductTypeByMarketplace]}
  */
 Item.prototype.productTypes = undefined

@@ -25,8 +25,8 @@ export class ImageOffsets {
    * The top left corner of the cropped image, specified in the original image&#39;s coordinate space.
    * @alias module:apluscontent_v2020_11_01/model/ImageOffsets
    * @class
-   * @param x {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
-   * @param y {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
+   * @param x {IntegerWithUnits}
+   * @param y {IntegerWithUnits}
    */
   constructor (x, y) {
     this.x = x
@@ -37,8 +37,8 @@ export class ImageOffsets {
    * Constructs a <code>ImageOffsets</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ImageOffsets} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ImageOffsets} The populated <code>ImageOffsets</code> instance.
+   * @param {ImageOffsets} obj Optional instance to populate.
+   * @return {ImageOffsets} The populated <code>ImageOffsets</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ImageOffsets {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} x
- * @type {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
+ * @member {IntegerWithUnits} x
+ * @type {IntegerWithUnits}
  */
 ImageOffsets.prototype.x = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} y
- * @type {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
+ * @member {IntegerWithUnits} y
+ * @type {IntegerWithUnits}
  */
 ImageOffsets.prototype.y = undefined

@@ -36,8 +36,8 @@ export class GetMessagingActionResponse {
    * Constructs a <code>GetMessagingActionResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/GetMessagingActionResponse} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/GetMessagingActionResponse} The populated <code>GetMessagingActionResponse</code> instance.
+   * @param {GetMessagingActionResponse} obj Optional instance to populate.
+   * @return {GetMessagingActionResponse} The populated <code>GetMessagingActionResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,26 +63,26 @@ export class GetMessagingActionResponse {
 }
 
 /**
- * @member {module:messaging_v1/model/GetMessagingActionResponseLinks} links
- * @type {module:messaging_v1/model/GetMessagingActionResponseLinks}
+ * @member {GetMessagingActionResponseLinks} links
+ * @type {GetMessagingActionResponseLinks}
  */
 GetMessagingActionResponse.prototype.links = undefined
 
 /**
- * @member {module:messaging_v1/model/GetMessagingActionResponseEmbedded} embedded
- * @type {module:messaging_v1/model/GetMessagingActionResponseEmbedded}
+ * @member {GetMessagingActionResponseEmbedded} embedded
+ * @type {GetMessagingActionResponseEmbedded}
  */
 GetMessagingActionResponse.prototype.embedded = undefined
 
 /**
- * @member {module:messaging_v1/model/MessagingAction} payload
- * @type {module:messaging_v1/model/MessagingAction}
+ * @member {MessagingAction} payload
+ * @type {MessagingAction}
  */
 GetMessagingActionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:messaging_v1/model/Error>} errors
- * @type {Array.<module:messaging_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetMessagingActionResponse.prototype.errors = undefined

@@ -36,8 +36,8 @@ export class StandardComparisonProductBlock {
    * Constructs a <code>StandardComparisonProductBlock</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardComparisonProductBlock} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardComparisonProductBlock} The populated <code>StandardComparisonProductBlock</code> instance.
+   * @param {StandardComparisonProductBlock} obj Optional instance to populate.
+   * @return {StandardComparisonProductBlock} The populated <code>StandardComparisonProductBlock</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,8 +72,8 @@ export class StandardComparisonProductBlock {
 StandardComparisonProductBlock.prototype.position = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
- * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
+ * @member {ImageComponent} image
+ * @type {ImageComponent}
  */
 StandardComparisonProductBlock.prototype.image = undefined
 
@@ -100,7 +100,7 @@ StandardComparisonProductBlock.prototype.highlight = undefined
 
 /**
  * Comparison metrics for the product.
- * @member {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>} metrics
- * @type {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>}
+ * @member {[PlainTextItem]} metrics
+ * @type {[PlainTextItem]}
  */
 StandardComparisonProductBlock.prototype.metrics = undefined

@@ -26,8 +26,8 @@ export class ListOffersRequestSort {
    * Use these parameters to sort the response.
    * @alias module:replenishment_v2022_11_07/model/ListOffersRequestSort
    * @class
-   * @param order {module:replenishment_v2022_11_07/model/SortOrder}
-   * @param key {module:replenishment_v2022_11_07/model/ListOffersSortKey}
+   * @param order {SortOrder}
+   * @param key {ListOffersSortKey}
    */
   constructor (order, key) {
     this.order = order
@@ -38,8 +38,8 @@ export class ListOffersRequestSort {
    * Constructs a <code>ListOffersRequestSort</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOffersRequestSort} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOffersRequestSort} The populated <code>ListOffersRequestSort</code> instance.
+   * @param {ListOffersRequestSort} obj Optional instance to populate.
+   * @return {ListOffersRequestSort} The populated <code>ListOffersRequestSort</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class ListOffersRequestSort {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/SortOrder} order
- * @type {module:replenishment_v2022_11_07/model/SortOrder}
+ * @member {SortOrder} order
+ * @type {SortOrder}
  */
 ListOffersRequestSort.prototype.order = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ListOffersSortKey} key
- * @type {module:replenishment_v2022_11_07/model/ListOffersSortKey}
+ * @member {ListOffersSortKey} key
+ * @type {ListOffersSortKey}
  */
 ListOffersRequestSort.prototype.key = undefined

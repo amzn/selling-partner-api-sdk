@@ -26,7 +26,7 @@ export class Order {
    * @alias module:vendororders_v1/model/Order
    * @class
    * @param purchaseOrderNumber {String} The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.
-   * @param purchaseOrderState {module:vendororders_v1/model/Order.PurchaseOrderStateEnum} This field will contain the current state of the purchase order.
+   * @param purchaseOrderState {String} This field will contain the current state of the purchase order.
    */
   constructor (purchaseOrderNumber, purchaseOrderState) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -37,8 +37,8 @@ export class Order {
    * Constructs a <code>Order</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/Order} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/Order} The populated <code>Order</code> instance.
+   * @param {Order} obj Optional instance to populate.
+   * @return {Order} The populated <code>Order</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -97,13 +97,13 @@ Order.PurchaseOrderStateEnum = {
 
 /**
  * This field will contain the current state of the purchase order.
- * @member {module:vendororders_v1/model/Order.PurchaseOrderStateEnum} purchaseOrderState
- * @type {module:vendororders_v1/model/Order.PurchaseOrderStateEnum}
+ * @member {String} purchaseOrderState
+ * @type {String}
  */
 Order.prototype.purchaseOrderState = undefined
 
 /**
- * @member {module:vendororders_v1/model/OrderDetails} orderDetails
- * @type {module:vendororders_v1/model/OrderDetails}
+ * @member {OrderDetails} orderDetails
+ * @type {OrderDetails}
  */
 Order.prototype.orderDetails = undefined

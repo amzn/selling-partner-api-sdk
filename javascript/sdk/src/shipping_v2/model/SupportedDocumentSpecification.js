@@ -27,9 +27,9 @@ export class SupportedDocumentSpecification {
    * Document specification that is supported for a service offering.
    * @alias module:shipping_v2/model/SupportedDocumentSpecification
    * @class
-   * @param format {module:shipping_v2/model/DocumentFormat}
-   * @param size {module:shipping_v2/model/DocumentSize}
-   * @param printOptions {Array.<module:shipping_v2/model/PrintOption>} A list of the format options for a label.
+   * @param format {DocumentFormat}
+   * @param size {DocumentSize}
+   * @param printOptions {[PrintOption]} A list of the format options for a label.
    */
   constructor (format, size, printOptions) {
     this.format = format
@@ -41,8 +41,8 @@ export class SupportedDocumentSpecification {
    * Constructs a <code>SupportedDocumentSpecification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/SupportedDocumentSpecification} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/SupportedDocumentSpecification} The populated <code>SupportedDocumentSpecification</code> instance.
+   * @param {SupportedDocumentSpecification} obj Optional instance to populate.
+   * @return {SupportedDocumentSpecification} The populated <code>SupportedDocumentSpecification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,20 +67,20 @@ export class SupportedDocumentSpecification {
 }
 
 /**
- * @member {module:shipping_v2/model/DocumentFormat} format
- * @type {module:shipping_v2/model/DocumentFormat}
+ * @member {DocumentFormat} format
+ * @type {DocumentFormat}
  */
 SupportedDocumentSpecification.prototype.format = undefined
 
 /**
- * @member {module:shipping_v2/model/DocumentSize} size
- * @type {module:shipping_v2/model/DocumentSize}
+ * @member {DocumentSize} size
+ * @type {DocumentSize}
  */
 SupportedDocumentSpecification.prototype.size = undefined
 
 /**
  * A list of the format options for a label.
- * @member {Array.<module:shipping_v2/model/PrintOption>} printOptions
- * @type {Array.<module:shipping_v2/model/PrintOption>}
+ * @member {[PrintOption]} printOptions
+ * @type {[PrintOption]}
  */
 SupportedDocumentSpecification.prototype.printOptions = undefined

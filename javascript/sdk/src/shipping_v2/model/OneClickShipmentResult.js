@@ -30,11 +30,11 @@ export class OneClickShipmentResult {
    * @alias module:shipping_v2/model/OneClickShipmentResult
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
-   * @param packageDocumentDetails {Array.<module:shipping_v2/model/PackageDocumentDetail>} A list of post-purchase details about a package that will be shipped using a shipping service.
-   * @param promise {module:shipping_v2/model/Promise}
-   * @param carrier {module:shipping_v2/model/Carrier}
-   * @param service {module:shipping_v2/model/Service}
-   * @param totalCharge {module:shipping_v2/model/Currency}
+   * @param packageDocumentDetails {[PackageDocumentDetail]} A list of post-purchase details about a package that will be shipped using a shipping service.
+   * @param promise {Promise}
+   * @param carrier {Carrier}
+   * @param service {Service}
+   * @param totalCharge {Currency}
    */
   constructor (shipmentId, packageDocumentDetails, promise, carrier, service, totalCharge) {
     this.shipmentId = shipmentId
@@ -49,8 +49,8 @@ export class OneClickShipmentResult {
    * Constructs a <code>OneClickShipmentResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/OneClickShipmentResult} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/OneClickShipmentResult} The populated <code>OneClickShipmentResult</code> instance.
+   * @param {OneClickShipmentResult} obj Optional instance to populate.
+   * @return {OneClickShipmentResult} The populated <code>OneClickShipmentResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,31 +86,31 @@ OneClickShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
- * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetails
- * @type {Array.<module:shipping_v2/model/PackageDocumentDetail>}
+ * @member {[PackageDocumentDetail]} packageDocumentDetails
+ * @type {[PackageDocumentDetail]}
  */
 OneClickShipmentResult.prototype.packageDocumentDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/Promise} promise
- * @type {module:shipping_v2/model/Promise}
+ * @member {Promise} promise
+ * @type {Promise}
  */
 OneClickShipmentResult.prototype.promise = undefined
 
 /**
- * @member {module:shipping_v2/model/Carrier} carrier
- * @type {module:shipping_v2/model/Carrier}
+ * @member {Carrier} carrier
+ * @type {Carrier}
  */
 OneClickShipmentResult.prototype.carrier = undefined
 
 /**
- * @member {module:shipping_v2/model/Service} service
- * @type {module:shipping_v2/model/Service}
+ * @member {Service} service
+ * @type {Service}
  */
 OneClickShipmentResult.prototype.service = undefined
 
 /**
- * @member {module:shipping_v2/model/Currency} totalCharge
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} totalCharge
+ * @type {Currency}
  */
 OneClickShipmentResult.prototype.totalCharge = undefined

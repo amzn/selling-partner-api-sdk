@@ -33,8 +33,8 @@ export class OffersApi {
     * Constructs a new OffersApi.
     * @alias module:replenishment_v2022_11_07/api/OffersApi
     * @class
-    * @param {module:replenishment_v2022_11_07/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:replenishment_v2022_11_07/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -69,8 +69,8 @@ export class OffersApi {
   /**
      * Returns aggregated replenishment program metrics for a selling partner&#39;s offers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {module:replenishment_v2022_11_07/model/ListOfferMetricsRequest} opts.body The request body for the &#x60;listOfferMetrics&#x60; operation.
-     * @return {Promise<module:replenishment_v2022_11_07/model/ListOfferMetricsResponse>}
+     * @param {ListOfferMetricsRequest} opts.body The request body for the &#x60;listOfferMetrics&#x60; operation.
+     * @return {Promise<ListOfferMetricsResponse>}
      */
   listOfferMetricsWithHttpInfo (opts) {
     opts = opts || {}
@@ -99,8 +99,8 @@ export class OffersApi {
   /**
      * Returns aggregated replenishment program metrics for a selling partner&#39;s offers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {module:replenishment_v2022_11_07/model/ListOfferMetricsRequest} opts.body The request body for the &#x60;listOfferMetrics&#x60; operation.
-     * @return {Promise<module:replenishment_v2022_11_07/model/ListOfferMetricsResponse>}
+     * @param {ListOfferMetricsRequest} opts.body The request body for the &#x60;listOfferMetrics&#x60; operation.
+     * @return {Promise<ListOfferMetricsResponse>}
      */
   listOfferMetrics (opts) {
     return this.listOfferMetricsWithHttpInfo(opts)
@@ -112,8 +112,8 @@ export class OffersApi {
   /**
      * Returns the details of a selling partner&#39;s replenishment program offers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {module:replenishment_v2022_11_07/model/ListOffersRequest} opts.body The request body for the &#x60;listOffers&#x60; operation.
-     * @return {Promise<module:replenishment_v2022_11_07/model/ListOffersResponse>}
+     * @param {ListOffersRequest} opts.body The request body for the &#x60;listOffers&#x60; operation.
+     * @return {Promise<ListOffersResponse>}
      */
   listOffersWithHttpInfo (opts) {
     opts = opts || {}
@@ -142,8 +142,8 @@ export class OffersApi {
   /**
      * Returns the details of a selling partner&#39;s replenishment program offers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {module:replenishment_v2022_11_07/model/ListOffersRequest} opts.body The request body for the &#x60;listOffers&#x60; operation.
-     * @return {Promise<module:replenishment_v2022_11_07/model/ListOffersResponse>}
+     * @param {ListOffersRequest} opts.body The request body for the &#x60;listOffers&#x60; operation.
+     * @return {Promise<ListOffersResponse>}
      */
   listOffers (opts) {
     return this.listOffersWithHttpInfo(opts)

@@ -37,8 +37,8 @@ export class StandardImageSidebarModule {
    * Constructs a <code>StandardImageSidebarModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardImageSidebarModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardImageSidebarModule} The populated <code>StandardImageSidebarModule</code> instance.
+   * @param {StandardImageSidebarModule} obj Optional instance to populate.
+   * @return {StandardImageSidebarModule} The populated <code>StandardImageSidebarModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,37 +66,37 @@ export class StandardImageSidebarModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardImageSidebarModule.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageCaptionBlock} imageCaptionBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardImageCaptionBlock}
+ * @member {StandardImageCaptionBlock} imageCaptionBlock
+ * @type {StandardImageCaptionBlock}
  */
 StandardImageSidebarModule.prototype.imageCaptionBlock = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} descriptionTextBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
+ * @member {StandardTextBlock} descriptionTextBlock
+ * @type {StandardTextBlock}
  */
 StandardImageSidebarModule.prototype.descriptionTextBlock = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextListBlock} descriptionListBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardTextListBlock}
+ * @member {StandardTextListBlock} descriptionListBlock
+ * @type {StandardTextListBlock}
  */
 StandardImageSidebarModule.prototype.descriptionListBlock = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} sidebarImageTextBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} sidebarImageTextBlock
+ * @type {StandardImageTextBlock}
  */
 StandardImageSidebarModule.prototype.sidebarImageTextBlock = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextListBlock} sidebarListBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardTextListBlock}
+ * @member {StandardTextListBlock} sidebarListBlock
+ * @type {StandardTextListBlock}
  */
 StandardImageSidebarModule.prototype.sidebarListBlock = undefined

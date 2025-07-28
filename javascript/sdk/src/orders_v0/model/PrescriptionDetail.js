@@ -46,8 +46,8 @@ export class PrescriptionDetail {
    * Constructs a <code>PrescriptionDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/PrescriptionDetail} obj Optional instance to populate.
-   * @return {module:orders_v0/model/PrescriptionDetail} The populated <code>PrescriptionDetail</code> instance.
+   * @param {PrescriptionDetail} obj Optional instance to populate.
+   * @return {PrescriptionDetail} The populated <code>PrescriptionDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

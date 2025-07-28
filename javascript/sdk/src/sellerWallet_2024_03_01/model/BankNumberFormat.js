@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class BankNumberFormat.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class BankNumberFormat {
@@ -34,7 +34,7 @@ export class BankNumberFormat {
   /**
     * Returns a <code>BankNumberFormat</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/BankNumberFormat} The enum <code>BankNumberFormat</code> value.
+    * @return {BankNumberFormat} The enum <code>BankNumberFormat</code> value.
     */
   static constructFromObject (object) {
     return object

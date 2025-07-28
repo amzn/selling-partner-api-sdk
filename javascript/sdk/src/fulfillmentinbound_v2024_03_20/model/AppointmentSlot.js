@@ -26,7 +26,7 @@ export class AppointmentSlot {
    * @alias module:fulfillmentinbound_v2024_03_20/model/AppointmentSlot
    * @class
    * @param slotId {String} An identifier to a self-ship appointment slot.
-   * @param slotTime {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime}
+   * @param slotTime {AppointmentSlotTime}
    */
   constructor (slotId, slotTime) {
     this.slotId = slotId
@@ -37,8 +37,8 @@ export class AppointmentSlot {
    * Constructs a <code>AppointmentSlot</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlot} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlot} The populated <code>AppointmentSlot</code> instance.
+   * @param {AppointmentSlot} obj Optional instance to populate.
+   * @return {AppointmentSlot} The populated <code>AppointmentSlot</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class AppointmentSlot {
 AppointmentSlot.prototype.slotId = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime} slotTime
- * @type {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime}
+ * @member {AppointmentSlotTime} slotTime
+ * @type {AppointmentSlotTime}
  */
 AppointmentSlot.prototype.slotTime = undefined

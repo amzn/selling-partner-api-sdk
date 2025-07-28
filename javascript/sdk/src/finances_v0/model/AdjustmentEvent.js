@@ -34,8 +34,8 @@ export class AdjustmentEvent {
    * Constructs a <code>AdjustmentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/AdjustmentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/AdjustmentEvent} The populated <code>AdjustmentEvent</code> instance.
+   * @param {AdjustmentEvent} obj Optional instance to populate.
+   * @return {AdjustmentEvent} The populated <code>AdjustmentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,14 +83,14 @@ AdjustmentEvent.prototype.postedDate = undefined
 AdjustmentEvent.prototype.storeName = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} adjustmentAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} adjustmentAmount
+ * @type {Currency}
  */
 AdjustmentEvent.prototype.adjustmentAmount = undefined
 
 /**
  * A list of information about items in an adjustment to the seller's account.
- * @member {Array.<module:finances_v0/model/AdjustmentItem>} adjustmentItemList
- * @type {Array.<module:finances_v0/model/AdjustmentItem>}
+ * @member {[AdjustmentItem]} adjustmentItemList
+ * @type {[AdjustmentItem]}
  */
 AdjustmentEvent.prototype.adjustmentItemList = undefined

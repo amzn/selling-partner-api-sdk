@@ -34,8 +34,8 @@ export class ScheduledPackageId {
    * Constructs a <code>ScheduledPackageId</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/ScheduledPackageId} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/ScheduledPackageId} The populated <code>ScheduledPackageId</code> instance.
+   * @param {ScheduledPackageId} obj Optional instance to populate.
+   * @return {ScheduledPackageId} The populated <code>ScheduledPackageId</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

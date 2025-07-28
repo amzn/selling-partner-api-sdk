@@ -36,8 +36,8 @@ export class FeedDocument {
    * Constructs a <code>FeedDocument</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:feeds_v2021_06_30/model/FeedDocument} obj Optional instance to populate.
-   * @return {module:feeds_v2021_06_30/model/FeedDocument} The populated <code>FeedDocument</code> instance.
+   * @param {FeedDocument} obj Optional instance to populate.
+   * @return {FeedDocument} The populated <code>FeedDocument</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,7 +91,7 @@ FeedDocument.CompressionAlgorithmEnum = {
 
 /**
  * If the feed document contents have been compressed, the compression algorithm used is returned in this property and you must decompress the feed when you download. Otherwise, you can download the feed directly. Refer to [Step 7. Download the feed processing report](doc:feeds-api-v2021-06-30-use-case-guide#step-7-download-the-feed-processing-report) in the use case guide, where sample code is provided.
- * @member {module:feeds_v2021_06_30/model/FeedDocument.CompressionAlgorithmEnum} compressionAlgorithm
- * @type {module:feeds_v2021_06_30/model/FeedDocument.CompressionAlgorithmEnum}
+ * @member {String} compressionAlgorithm
+ * @type {String}
  */
 FeedDocument.prototype.compressionAlgorithm = undefined

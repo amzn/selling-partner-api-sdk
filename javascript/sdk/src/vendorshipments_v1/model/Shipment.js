@@ -33,11 +33,11 @@ export class Shipment {
    * @alias module:vendorshipments_v1/model/Shipment
    * @class
    * @param vendorShipmentIdentifier {String} Unique Transportation ID created by Vendor (Should not be used over the last 365 days).
-   * @param transactionType {module:vendorshipments_v1/model/Shipment.TransactionTypeEnum} Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.
+   * @param transactionType {String} Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.
    * @param transactionDate {Date} Date on which the transportation request was submitted.
-   * @param sellingParty {module:vendorshipments_v1/model/PartyIdentification}
-   * @param shipFromParty {module:vendorshipments_v1/model/PartyIdentification}
-   * @param shipToParty {module:vendorshipments_v1/model/PartyIdentification}
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param shipToParty {PartyIdentification}
    */
   constructor (vendorShipmentIdentifier, transactionType, transactionDate, sellingParty, shipFromParty, shipToParty) {
     this.vendorShipmentIdentifier = vendorShipmentIdentifier
@@ -52,8 +52,8 @@ export class Shipment {
    * Constructs a <code>Shipment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Shipment} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Shipment} The populated <code>Shipment</code> instance.
+   * @param {Shipment} obj Optional instance to populate.
+   * @return {Shipment} The populated <code>Shipment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -123,8 +123,8 @@ Shipment.TransactionTypeEnum = {
 
 /**
  * Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.
- * @member {module:vendorshipments_v1/model/Shipment.TransactionTypeEnum} transactionType
- * @type {module:vendorshipments_v1/model/Shipment.TransactionTypeEnum}
+ * @member {String} transactionType
+ * @type {String}
  */
 Shipment.prototype.transactionType = undefined
 
@@ -176,8 +176,8 @@ Shipment.CurrentShipmentStatusEnum = {
 
 /**
  * Indicates the current shipment status.
- * @member {module:vendorshipments_v1/model/Shipment.CurrentShipmentStatusEnum} currentShipmentStatus
- * @type {module:vendorshipments_v1/model/Shipment.CurrentShipmentStatusEnum}
+ * @member {String} currentShipmentStatus
+ * @type {String}
  */
 Shipment.prototype.currentShipmentStatus = undefined
 
@@ -190,8 +190,8 @@ Shipment.prototype.currentshipmentStatusDate = undefined
 
 /**
  * Indicates the list of current shipment status details and when the last update was received from carrier this is available on shipment Details response.
- * @member {Array.<module:vendorshipments_v1/model/ShipmentStatusDetails>} shipmentStatusDetails
- * @type {Array.<module:vendorshipments_v1/model/ShipmentStatusDetails>}
+ * @member {[ShipmentStatusDetails]} shipmentStatusDetails
+ * @type {[ShipmentStatusDetails]}
  */
 Shipment.prototype.shipmentStatusDetails = undefined
 
@@ -238,63 +238,63 @@ Shipment.ShipmentFreightTermEnum = {
 
 /**
  * Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.
- * @member {module:vendorshipments_v1/model/Shipment.ShipmentFreightTermEnum} shipmentFreightTerm
- * @type {module:vendorshipments_v1/model/Shipment.ShipmentFreightTermEnum}
+ * @member {String} shipmentFreightTerm
+ * @type {String}
  */
 Shipment.prototype.shipmentFreightTerm = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} sellingParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 Shipment.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} shipFromParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 Shipment.prototype.shipFromParty = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} shipToParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipToParty
+ * @type {PartyIdentification}
  */
 Shipment.prototype.shipToParty = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/TransportShipmentMeasurements} shipmentMeasurements
- * @type {module:vendorshipments_v1/model/TransportShipmentMeasurements}
+ * @member {TransportShipmentMeasurements} shipmentMeasurements
+ * @type {TransportShipmentMeasurements}
  */
 Shipment.prototype.shipmentMeasurements = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/CollectFreightPickupDetails} collectFreightPickupDetails
- * @type {module:vendorshipments_v1/model/CollectFreightPickupDetails}
+ * @member {CollectFreightPickupDetails} collectFreightPickupDetails
+ * @type {CollectFreightPickupDetails}
  */
 Shipment.prototype.collectFreightPickupDetails = undefined
 
 /**
  * Indicates the purchase orders involved for the transportation request. This group is an array create 1 for each PO and list their corresponding items. This information is used for deciding the route,truck allocation and storage efficiently. This is a mandatory information for Buyer performing transportation from vendor warehouse (WePay/Collect)
- * @member {Array.<module:vendorshipments_v1/model/PurchaseOrders>} purchaseOrders
- * @type {Array.<module:vendorshipments_v1/model/PurchaseOrders>}
+ * @member {[PurchaseOrders]} purchaseOrders
+ * @type {[PurchaseOrders]}
  */
 Shipment.prototype.purchaseOrders = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ImportDetails} importDetails
- * @type {module:vendorshipments_v1/model/ImportDetails}
+ * @member {ImportDetails} importDetails
+ * @type {ImportDetails}
  */
 Shipment.prototype.importDetails = undefined
 
 /**
  * A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
- * @member {Array.<module:vendorshipments_v1/model/Containers>} containers
- * @type {Array.<module:vendorshipments_v1/model/Containers>}
+ * @member {[Containers]} containers
+ * @type {[Containers]}
  */
 Shipment.prototype.containers = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/TransportationDetails} transportationDetails
- * @type {module:vendorshipments_v1/model/TransportationDetails}
+ * @member {TransportationDetails} transportationDetails
+ * @type {TransportationDetails}
  */
 Shipment.prototype.transportationDetails = undefined

@@ -33,8 +33,8 @@ export class PrepInstruction {
    * Constructs a <code>PrepInstruction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/PrepInstruction} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/PrepInstruction} The populated <code>PrepInstruction</code> instance.
+   * @param {PrepInstruction} obj Optional instance to populate.
+   * @return {PrepInstruction} The populated <code>PrepInstruction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,8 +59,8 @@ export class PrepInstruction {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Currency} fee
- * @type {module:fulfillmentinbound_v2024_03_20/model/Currency}
+ * @member {Currency} fee
+ * @type {Currency}
  */
 PrepInstruction.prototype.fee = undefined
 

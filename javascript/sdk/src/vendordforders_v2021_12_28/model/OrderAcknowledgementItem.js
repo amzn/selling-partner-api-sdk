@@ -30,10 +30,10 @@ export class OrderAcknowledgementItem {
    * @param purchaseOrderNumber {String} The purchase order number for this order. Formatting Notes: alpha-numeric code.
    * @param vendorOrderNumber {String} The vendor's order number for this order.
    * @param acknowledgementDate {Date} The date and time when the order is acknowledged, in ISO-8601 date/time format. For example: 2018-07-16T23:00:00Z / 2018-07-16T23:00:00-05:00 / 2018-07-16T23:00:00-08:00.
-   * @param acknowledgementStatus {module:vendordforders_v2021_12_28/model/AcknowledgementStatus}
-   * @param sellingParty {module:vendordforders_v2021_12_28/model/PartyIdentification}
-   * @param shipFromParty {module:vendordforders_v2021_12_28/model/PartyIdentification}
-   * @param itemAcknowledgements {Array.<module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement>} Item details including acknowledged quantity.
+   * @param acknowledgementStatus {AcknowledgementStatus}
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param itemAcknowledgements {[OrderItemAcknowledgement]} Item details including acknowledged quantity.
    */
   constructor (purchaseOrderNumber, vendorOrderNumber, acknowledgementDate, acknowledgementStatus, sellingParty, shipFromParty, itemAcknowledgements) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -49,8 +49,8 @@ export class OrderAcknowledgementItem {
    * Constructs a <code>OrderAcknowledgementItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/OrderAcknowledgementItem} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/OrderAcknowledgementItem} The populated <code>OrderAcknowledgementItem</code> instance.
+   * @param {OrderAcknowledgementItem} obj Optional instance to populate.
+   * @return {OrderAcknowledgementItem} The populated <code>OrderAcknowledgementItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -100,26 +100,26 @@ OrderAcknowledgementItem.prototype.vendorOrderNumber = undefined
 OrderAcknowledgementItem.prototype.acknowledgementDate = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/AcknowledgementStatus} acknowledgementStatus
- * @type {module:vendordforders_v2021_12_28/model/AcknowledgementStatus}
+ * @member {AcknowledgementStatus} acknowledgementStatus
+ * @type {AcknowledgementStatus}
  */
 OrderAcknowledgementItem.prototype.acknowledgementStatus = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} sellingParty
- * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 OrderAcknowledgementItem.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} shipFromParty
- * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 OrderAcknowledgementItem.prototype.shipFromParty = undefined
 
 /**
  * Item details including acknowledged quantity.
- * @member {Array.<module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement>} itemAcknowledgements
- * @type {Array.<module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement>}
+ * @member {[OrderItemAcknowledgement]} itemAcknowledgements
+ * @type {[OrderItemAcknowledgement]}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

@@ -33,8 +33,8 @@ export class GetShipmentDocumentsResponse {
    * Constructs a <code>GetShipmentDocumentsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetShipmentDocumentsResponse} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetShipmentDocumentsResponse} The populated <code>GetShipmentDocumentsResponse</code> instance.
+   * @param {GetShipmentDocumentsResponse} obj Optional instance to populate.
+   * @return {GetShipmentDocumentsResponse} The populated <code>GetShipmentDocumentsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class GetShipmentDocumentsResponse {
 }
 
 /**
- * @member {module:shipping_v2/model/GetShipmentDocumentsResult} payload
- * @type {module:shipping_v2/model/GetShipmentDocumentsResult}
+ * @member {GetShipmentDocumentsResult} payload
+ * @type {GetShipmentDocumentsResult}
  */
 GetShipmentDocumentsResponse.prototype.payload = undefined

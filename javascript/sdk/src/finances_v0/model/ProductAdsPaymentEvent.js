@@ -33,8 +33,8 @@ export class ProductAdsPaymentEvent {
    * Constructs a <code>ProductAdsPaymentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ProductAdsPaymentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ProductAdsPaymentEvent} The populated <code>ProductAdsPaymentEvent</code> instance.
+   * @param {ProductAdsPaymentEvent} obj Optional instance to populate.
+   * @return {ProductAdsPaymentEvent} The populated <code>ProductAdsPaymentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,19 +83,19 @@ ProductAdsPaymentEvent.prototype.transactionType = undefined
 ProductAdsPaymentEvent.prototype.invoiceId = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} baseValue
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} baseValue
+ * @type {Currency}
  */
 ProductAdsPaymentEvent.prototype.baseValue = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxValue
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxValue
+ * @type {Currency}
  */
 ProductAdsPaymentEvent.prototype.taxValue = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} transactionValue
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} transactionValue
+ * @type {Currency}
  */
 ProductAdsPaymentEvent.prototype.transactionValue = undefined

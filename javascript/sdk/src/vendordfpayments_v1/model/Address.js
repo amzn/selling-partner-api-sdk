@@ -44,8 +44,8 @@ export class Address {
    * Constructs a <code>Address</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfpayments_v1/model/Address} obj Optional instance to populate.
-   * @return {module:vendordfpayments_v1/model/Address} The populated <code>Address</code> instance.
+   * @param {Address} obj Optional instance to populate.
+   * @return {Address} The populated <code>Address</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

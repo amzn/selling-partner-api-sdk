@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class QuantityDiscountType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class QuantityDiscountType {
@@ -28,7 +28,7 @@ export class QuantityDiscountType {
   /**
     * Returns a <code>QuantityDiscountType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:pricing_v0/model/QuantityDiscountType} The enum <code>QuantityDiscountType</code> value.
+    * @return {QuantityDiscountType} The enum <code>QuantityDiscountType</code> value.
     */
   static constructFromObject (object) {
     return object

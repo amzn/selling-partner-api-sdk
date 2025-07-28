@@ -33,8 +33,8 @@ export class TDSReimbursementEvent {
    * Constructs a <code>TDSReimbursementEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/TDSReimbursementEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/TDSReimbursementEvent} The populated <code>TDSReimbursementEvent</code> instance.
+   * @param {TDSReimbursementEvent} obj Optional instance to populate.
+   * @return {TDSReimbursementEvent} The populated <code>TDSReimbursementEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,7 +73,7 @@ TDSReimbursementEvent.prototype.postedDate = undefined
 TDSReimbursementEvent.prototype.tDSOrderId = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} reimbursedAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} reimbursedAmount
+ * @type {Currency}
  */
 TDSReimbursementEvent.prototype.reimbursedAmount = undefined

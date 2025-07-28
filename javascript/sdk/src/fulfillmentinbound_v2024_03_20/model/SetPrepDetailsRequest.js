@@ -26,7 +26,7 @@ export class SetPrepDetailsRequest {
    * @alias module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsRequest
    * @class
    * @param marketplaceId {String} The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param mskuPrepDetails {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetailInput>} A list of MSKUs and related prep details.
+   * @param mskuPrepDetails {[MskuPrepDetailInput]} A list of MSKUs and related prep details.
    */
   constructor (marketplaceId, mskuPrepDetails) {
     this.marketplaceId = marketplaceId
@@ -37,8 +37,8 @@ export class SetPrepDetailsRequest {
    * Constructs a <code>SetPrepDetailsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsRequest} The populated <code>SetPrepDetailsRequest</code> instance.
+   * @param {SetPrepDetailsRequest} obj Optional instance to populate.
+   * @return {SetPrepDetailsRequest} The populated <code>SetPrepDetailsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ SetPrepDetailsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of MSKUs and related prep details.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetailInput>} mskuPrepDetails
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetailInput>}
+ * @member {[MskuPrepDetailInput]} mskuPrepDetails
+ * @type {[MskuPrepDetailInput]}
  */
 SetPrepDetailsRequest.prototype.mskuPrepDetails = undefined

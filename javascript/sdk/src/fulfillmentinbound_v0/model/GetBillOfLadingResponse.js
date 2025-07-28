@@ -34,8 +34,8 @@ export class GetBillOfLadingResponse {
    * Constructs a <code>GetBillOfLadingResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/GetBillOfLadingResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/GetBillOfLadingResponse} The populated <code>GetBillOfLadingResponse</code> instance.
+   * @param {GetBillOfLadingResponse} obj Optional instance to populate.
+   * @return {GetBillOfLadingResponse} The populated <code>GetBillOfLadingResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetBillOfLadingResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v0/model/BillOfLadingDownloadURL} payload
- * @type {module:fulfillmentinbound_v0/model/BillOfLadingDownloadURL}
+ * @member {BillOfLadingDownloadURL} payload
+ * @type {BillOfLadingDownloadURL}
  */
 GetBillOfLadingResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fulfillmentinbound_v0/model/Error>} errors
- * @type {Array.<module:fulfillmentinbound_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetBillOfLadingResponse.prototype.errors = undefined

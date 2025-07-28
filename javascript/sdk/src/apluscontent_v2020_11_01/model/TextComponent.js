@@ -35,8 +35,8 @@ export class TextComponent {
    * Constructs a <code>TextComponent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/TextComponent} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/TextComponent} The populated <code>TextComponent</code> instance.
+   * @param {TextComponent} obj Optional instance to populate.
+   * @return {TextComponent} The populated <code>TextComponent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,7 +68,7 @@ TextComponent.prototype.value = undefined
 
 /**
  * A set of content decorators.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Decorator>} decoratorSet
- * @type {Array.<module:apluscontent_v2020_11_01/model/Decorator>}
+ * @member {[Decorator]} decoratorSet
+ * @type {[Decorator]}
  */
 TextComponent.prototype.decoratorSet = undefined

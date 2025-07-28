@@ -36,8 +36,8 @@ export class CreateSupplySourceResponse {
    * Constructs a <code>CreateSupplySourceResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/CreateSupplySourceResponse} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/CreateSupplySourceResponse} The populated <code>CreateSupplySourceResponse</code> instance.
+   * @param {CreateSupplySourceResponse} obj Optional instance to populate.
+   * @return {CreateSupplySourceResponse} The populated <code>CreateSupplySourceResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

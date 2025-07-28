@@ -32,8 +32,8 @@ export class ShipmentSchedule {
    * Constructs a <code>ShipmentSchedule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ShipmentSchedule} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ShipmentSchedule} The populated <code>ShipmentSchedule</code> instance.
+   * @param {ShipmentSchedule} obj Optional instance to populate.
+   * @return {ShipmentSchedule} The populated <code>ShipmentSchedule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -25,7 +25,7 @@ export class SchemaLinkLink {
    * @alias module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink
    * @class
    * @param resource {String} URI resource for the link.
-   * @param verb {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink.VerbEnum} HTTP method for the link operation.
+   * @param verb {String} HTTP method for the link operation.
    */
   constructor (resource, verb) {
     this.resource = resource
@@ -36,8 +36,8 @@ export class SchemaLinkLink {
    * Constructs a <code>SchemaLinkLink</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink} obj Optional instance to populate.
-   * @return {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink} The populated <code>SchemaLinkLink</code> instance.
+   * @param {SchemaLinkLink} obj Optional instance to populate.
+   * @return {SchemaLinkLink} The populated <code>SchemaLinkLink</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,7 +83,7 @@ SchemaLinkLink.VerbEnum = {
 
 /**
  * HTTP method for the link operation.
- * @member {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink.VerbEnum} verb
- * @type {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink.VerbEnum}
+ * @member {String} verb
+ * @type {String}
  */
 SchemaLinkLink.prototype.verb = undefined

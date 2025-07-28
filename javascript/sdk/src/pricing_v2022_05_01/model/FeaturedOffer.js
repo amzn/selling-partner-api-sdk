@@ -27,7 +27,7 @@ export class FeaturedOffer {
    * Schema for &#x60;currentFeaturedOffer&#x60; or &#x60;competingFeaturedOffer&#x60;.
    * @alias module:pricing_v2022_05_01/model/FeaturedOffer
    * @class
-   * @param offerIdentifier {module:pricing_v2022_05_01/model/OfferIdentifier}
+   * @param offerIdentifier {OfferIdentifier}
    */
   constructor (offerIdentifier) {
     this.offerIdentifier = offerIdentifier
@@ -37,8 +37,8 @@ export class FeaturedOffer {
    * Constructs a <code>FeaturedOffer</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOffer} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOffer} The populated <code>FeaturedOffer</code> instance.
+   * @param {FeaturedOffer} obj Optional instance to populate.
+   * @return {FeaturedOffer} The populated <code>FeaturedOffer</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,19 +63,19 @@ export class FeaturedOffer {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/OfferIdentifier} offerIdentifier
- * @type {module:pricing_v2022_05_01/model/OfferIdentifier}
+ * @member {OfferIdentifier} offerIdentifier
+ * @type {OfferIdentifier}
  */
 FeaturedOffer.prototype.offerIdentifier = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Condition} condition
- * @type {module:pricing_v2022_05_01/model/Condition}
+ * @member {Condition} condition
+ * @type {Condition}
  */
 FeaturedOffer.prototype.condition = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Price} price
- * @type {module:pricing_v2022_05_01/model/Price}
+ * @member {Price} price
+ * @type {Price}
  */
 FeaturedOffer.prototype.price = undefined

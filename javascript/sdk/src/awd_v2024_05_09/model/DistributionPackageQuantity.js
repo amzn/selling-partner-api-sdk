@@ -26,7 +26,7 @@ export class DistributionPackageQuantity {
    * @alias module:awd_v2024_05_09/model/DistributionPackageQuantity
    * @class
    * @param count {Number} Number of cases or pallets with the same package configuration.
-   * @param distributionPackage {module:awd_v2024_05_09/model/DistributionPackage}
+   * @param distributionPackage {DistributionPackage}
    */
   constructor (count, distributionPackage) {
     this.count = count
@@ -37,8 +37,8 @@ export class DistributionPackageQuantity {
    * Constructs a <code>DistributionPackageQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/DistributionPackageQuantity} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/DistributionPackageQuantity} The populated <code>DistributionPackageQuantity</code> instance.
+   * @param {DistributionPackageQuantity} obj Optional instance to populate.
+   * @return {DistributionPackageQuantity} The populated <code>DistributionPackageQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class DistributionPackageQuantity {
 DistributionPackageQuantity.prototype.count = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/DistributionPackage} distributionPackage
- * @type {module:awd_v2024_05_09/model/DistributionPackage}
+ * @member {DistributionPackage} distributionPackage
+ * @type {DistributionPackage}
  */
 DistributionPackageQuantity.prototype.distributionPackage = undefined

@@ -26,8 +26,8 @@ export class CompetitiveSummaryResponse {
    * The response for the individual &#x60;competitiveSummary&#x60; request in the batch operation.
    * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryResponse
    * @class
-   * @param status {module:pricing_v2022_05_01/model/HttpStatusLine}
-   * @param body {module:pricing_v2022_05_01/model/CompetitiveSummaryResponseBody}
+   * @param status {HttpStatusLine}
+   * @param body {CompetitiveSummaryResponseBody}
    */
   constructor (status, body) {
     this.status = status
@@ -38,8 +38,8 @@ export class CompetitiveSummaryResponse {
    * Constructs a <code>CompetitiveSummaryResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/CompetitiveSummaryResponse} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/CompetitiveSummaryResponse} The populated <code>CompetitiveSummaryResponse</code> instance.
+   * @param {CompetitiveSummaryResponse} obj Optional instance to populate.
+   * @return {CompetitiveSummaryResponse} The populated <code>CompetitiveSummaryResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class CompetitiveSummaryResponse {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/HttpStatusLine} status
- * @type {module:pricing_v2022_05_01/model/HttpStatusLine}
+ * @member {HttpStatusLine} status
+ * @type {HttpStatusLine}
  */
 CompetitiveSummaryResponse.prototype.status = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/CompetitiveSummaryResponseBody} body
- * @type {module:pricing_v2022_05_01/model/CompetitiveSummaryResponseBody}
+ * @member {CompetitiveSummaryResponseBody} body
+ * @type {CompetitiveSummaryResponseBody}
  */
 CompetitiveSummaryResponse.prototype.body = undefined

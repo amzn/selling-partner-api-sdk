@@ -33,8 +33,8 @@ export class InnerContainersDetails {
    * Constructs a <code>InnerContainersDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/InnerContainersDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/InnerContainersDetails} The populated <code>InnerContainersDetails</code> instance.
+   * @param {InnerContainersDetails} obj Optional instance to populate.
+   * @return {InnerContainersDetails} The populated <code>InnerContainersDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,7 +66,7 @@ InnerContainersDetails.prototype.containerCount = undefined
 
 /**
  * Container sequence numbers that are involved in this shipment.
- * @member {Array.<module:vendorshipments_v1/model/ContainerSequenceNumbers>} containerSequenceNumbers
- * @type {Array.<module:vendorshipments_v1/model/ContainerSequenceNumbers>}
+ * @member {[ContainerSequenceNumbers]} containerSequenceNumbers
+ * @type {[ContainerSequenceNumbers]}
  */
 InnerContainersDetails.prototype.containerSequenceNumbers = undefined

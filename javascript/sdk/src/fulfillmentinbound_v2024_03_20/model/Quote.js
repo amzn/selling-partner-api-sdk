@@ -25,7 +25,7 @@ export class Quote {
    * The estimated shipping cost associated with the transportation option.
    * @alias module:fulfillmentinbound_v2024_03_20/model/Quote
    * @class
-   * @param cost {module:fulfillmentinbound_v2024_03_20/model/Currency}
+   * @param cost {Currency}
    */
   constructor (cost) {
     this.cost = cost
@@ -35,8 +35,8 @@ export class Quote {
    * Constructs a <code>Quote</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Quote} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Quote} The populated <code>Quote</code> instance.
+   * @param {Quote} obj Optional instance to populate.
+   * @return {Quote} The populated <code>Quote</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,8 +61,8 @@ export class Quote {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Currency} cost
- * @type {module:fulfillmentinbound_v2024_03_20/model/Currency}
+ * @member {Currency} cost
+ * @type {Currency}
  */
 Quote.prototype.cost = undefined
 

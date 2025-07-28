@@ -29,8 +29,8 @@ export class Containers {
    * A list of the items in this transportation and their associated inner container details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
    * @alias module:vendorshipments_v1/model/Containers
    * @class
-   * @param containerType {module:vendorshipments_v1/model/Containers.ContainerTypeEnum} The type of container.
-   * @param containerIdentifiers {Array.<module:vendorshipments_v1/model/ContainerIdentification>} A list of carton identifiers.
+   * @param containerType {String} The type of container.
+   * @param containerIdentifiers {[ContainerIdentification]} A list of carton identifiers.
    */
   constructor (containerType, containerIdentifiers) {
     this.containerType = containerType
@@ -41,8 +41,8 @@ export class Containers {
    * Constructs a <code>Containers</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Containers} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Containers} The populated <code>Containers</code> instance.
+   * @param {Containers} obj Optional instance to populate.
+   * @return {Containers} The populated <code>Containers</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -95,8 +95,8 @@ Containers.ContainerTypeEnum = {
 
 /**
  * The type of container.
- * @member {module:vendorshipments_v1/model/Containers.ContainerTypeEnum} containerType
- * @type {module:vendorshipments_v1/model/Containers.ContainerTypeEnum}
+ * @member {String} containerType
+ * @type {String}
  */
 Containers.prototype.containerType = undefined
 
@@ -109,8 +109,8 @@ Containers.prototype.containerSequenceNumber = undefined
 
 /**
  * A list of carton identifiers.
- * @member {Array.<module:vendorshipments_v1/model/ContainerIdentification>} containerIdentifiers
- * @type {Array.<module:vendorshipments_v1/model/ContainerIdentification>}
+ * @member {[ContainerIdentification]} containerIdentifiers
+ * @type {[ContainerIdentification]}
  */
 Containers.prototype.containerIdentifiers = undefined
 
@@ -122,14 +122,14 @@ Containers.prototype.containerIdentifiers = undefined
 Containers.prototype.trackingNumber = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Dimensions} dimensions
- * @type {module:vendorshipments_v1/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 Containers.prototype.dimensions = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Weight} weight
- * @type {module:vendorshipments_v1/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Containers.prototype.weight = undefined
 
@@ -148,14 +148,14 @@ Containers.prototype.tier = undefined
 Containers.prototype.block = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/InnerContainersDetails} innerContainersDetails
- * @type {module:vendorshipments_v1/model/InnerContainersDetails}
+ * @member {InnerContainersDetails} innerContainersDetails
+ * @type {InnerContainersDetails}
  */
 Containers.prototype.innerContainersDetails = undefined
 
 /**
  * A list of packed items.
- * @member {Array.<module:vendorshipments_v1/model/PackedItems>} packedItems
- * @type {Array.<module:vendorshipments_v1/model/PackedItems>}
+ * @member {[PackedItems]} packedItems
+ * @type {[PackedItems]}
  */
 Containers.prototype.packedItems = undefined

@@ -35,8 +35,8 @@ export class GetMessagingActionsForOrderResponse {
    * Constructs a <code>GetMessagingActionsForOrderResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/GetMessagingActionsForOrderResponse} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/GetMessagingActionsForOrderResponse} The populated <code>GetMessagingActionsForOrderResponse</code> instance.
+   * @param {GetMessagingActionsForOrderResponse} obj Optional instance to populate.
+   * @return {GetMessagingActionsForOrderResponse} The populated <code>GetMessagingActionsForOrderResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,20 +61,20 @@ export class GetMessagingActionsForOrderResponse {
 }
 
 /**
- * @member {module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks} links
- * @type {module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks}
+ * @member {GetMessagingActionsForOrderResponseLinks} links
+ * @type {GetMessagingActionsForOrderResponseLinks}
  */
 GetMessagingActionsForOrderResponse.prototype.links = undefined
 
 /**
- * @member {module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded} embedded
- * @type {module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded}
+ * @member {GetMessagingActionsForOrderResponseEmbedded} embedded
+ * @type {GetMessagingActionsForOrderResponseEmbedded}
  */
 GetMessagingActionsForOrderResponse.prototype.embedded = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:messaging_v1/model/Error>} errors
- * @type {Array.<module:messaging_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetMessagingActionsForOrderResponse.prototype.errors = undefined

@@ -32,10 +32,10 @@ export class Shipment {
    * Contains information pertaining to a shipment in an inbound plan.
    * @alias module:fulfillmentinbound_v2024_03_20/model/Shipment
    * @class
-   * @param destination {module:fulfillmentinbound_v2024_03_20/model/ShipmentDestination}
+   * @param destination {ShipmentDestination}
    * @param placementOptionId {String} The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
    * @param shipmentId {String} Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-   * @param source {module:fulfillmentinbound_v2024_03_20/model/ShipmentSource}
+   * @param source {ShipmentSource}
    */
   constructor (destination, placementOptionId, shipmentId, source) {
     this.destination = destination
@@ -48,8 +48,8 @@ export class Shipment {
    * Constructs a <code>Shipment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Shipment} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Shipment} The populated <code>Shipment</code> instance.
+   * @param {Shipment} obj Optional instance to populate.
+   * @return {Shipment} The populated <code>Shipment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -93,26 +93,26 @@ export class Shipment {
 Shipment.prototype.amazonReferenceId = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/ContactInformation} contactInformation
- * @type {module:fulfillmentinbound_v2024_03_20/model/ContactInformation}
+ * @member {ContactInformation} contactInformation
+ * @type {ContactInformation}
  */
 Shipment.prototype.contactInformation = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Dates} dates
- * @type {module:fulfillmentinbound_v2024_03_20/model/Dates}
+ * @member {Dates} dates
+ * @type {Dates}
  */
 Shipment.prototype.dates = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/ShipmentDestination} destination
- * @type {module:fulfillmentinbound_v2024_03_20/model/ShipmentDestination}
+ * @member {ShipmentDestination} destination
+ * @type {ShipmentDestination}
  */
 Shipment.prototype.destination = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/FreightInformation} freightInformation
- * @type {module:fulfillmentinbound_v2024_03_20/model/FreightInformation}
+ * @member {FreightInformation} freightInformation
+ * @type {FreightInformation}
  */
 Shipment.prototype.freightInformation = undefined
 
@@ -131,8 +131,8 @@ Shipment.prototype.name = undefined
 Shipment.prototype.placementOptionId = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/SelectedDeliveryWindow} selectedDeliveryWindow
- * @type {module:fulfillmentinbound_v2024_03_20/model/SelectedDeliveryWindow}
+ * @member {SelectedDeliveryWindow} selectedDeliveryWindow
+ * @type {SelectedDeliveryWindow}
  */
 Shipment.prototype.selectedDeliveryWindow = undefined
 
@@ -145,8 +145,8 @@ Shipment.prototype.selectedTransportationOptionId = undefined
 
 /**
  * List of self ship appointment details.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentDetails>} selfShipAppointmentDetails
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentDetails>}
+ * @member {[SelfShipAppointmentDetails]} selfShipAppointmentDetails
+ * @type {[SelfShipAppointmentDetails]}
  */
 Shipment.prototype.selfShipAppointmentDetails = undefined
 
@@ -165,8 +165,8 @@ Shipment.prototype.shipmentConfirmationId = undefined
 Shipment.prototype.shipmentId = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/ShipmentSource} source
- * @type {module:fulfillmentinbound_v2024_03_20/model/ShipmentSource}
+ * @member {ShipmentSource} source
+ * @type {ShipmentSource}
  */
 Shipment.prototype.source = undefined
 
@@ -178,7 +178,7 @@ Shipment.prototype.source = undefined
 Shipment.prototype.status = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/TrackingDetails} trackingDetails
- * @type {module:fulfillmentinbound_v2024_03_20/model/TrackingDetails}
+ * @member {TrackingDetails} trackingDetails
+ * @type {TrackingDetails}
  */
 Shipment.prototype.trackingDetails = undefined

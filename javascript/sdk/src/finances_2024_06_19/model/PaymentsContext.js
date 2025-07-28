@@ -32,8 +32,8 @@ export class PaymentsContext {
    * Constructs a <code>PaymentsContext</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/PaymentsContext} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/PaymentsContext} The populated <code>PaymentsContext</code> instance.
+   * @param {PaymentsContext} obj Optional instance to populate.
+   * @return {PaymentsContext} The populated <code>PaymentsContext</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

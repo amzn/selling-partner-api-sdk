@@ -25,7 +25,7 @@ export class PaymentPreference {
    * The type of payment preference in which the transfer is being scheduled.
    * @alias module:sellerWallet_2024_03_01/model/PaymentPreference
    * @class
-   * @param paymentPreferencePaymentType {module:sellerWallet_2024_03_01/model/PaymentPreferencePaymentType}
+   * @param paymentPreferencePaymentType {PaymentPreferencePaymentType}
    * @param value {Number} A decimal number, such as an amount or FX rate.
    */
   constructor (paymentPreferencePaymentType, value) {
@@ -37,8 +37,8 @@ export class PaymentPreference {
    * Constructs a <code>PaymentPreference</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/PaymentPreference} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/PaymentPreference} The populated <code>PaymentPreference</code> instance.
+   * @param {PaymentPreference} obj Optional instance to populate.
+   * @return {PaymentPreference} The populated <code>PaymentPreference</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class PaymentPreference {
 }
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/PaymentPreferencePaymentType} paymentPreferencePaymentType
- * @type {module:sellerWallet_2024_03_01/model/PaymentPreferencePaymentType}
+ * @member {PaymentPreferencePaymentType} paymentPreferencePaymentType
+ * @type {PaymentPreferencePaymentType}
  */
 PaymentPreference.prototype.paymentPreferencePaymentType = undefined
 

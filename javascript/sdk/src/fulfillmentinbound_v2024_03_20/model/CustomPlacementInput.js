@@ -25,7 +25,7 @@ export class CustomPlacementInput {
    * Provide units going to the warehouse.
    * @alias module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput
    * @class
-   * @param items {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} Items included while creating Inbound Plan.
+   * @param items {[ItemInput]} Items included while creating Inbound Plan.
    * @param warehouseId {String} Warehouse Id.
    */
   constructor (items, warehouseId) {
@@ -37,8 +37,8 @@ export class CustomPlacementInput {
    * Constructs a <code>CustomPlacementInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput} The populated <code>CustomPlacementInput</code> instance.
+   * @param {CustomPlacementInput} obj Optional instance to populate.
+   * @return {CustomPlacementInput} The populated <code>CustomPlacementInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class CustomPlacementInput {
 
 /**
  * Items included while creating Inbound Plan.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
+ * @member {[ItemInput]} items
+ * @type {[ItemInput]}
  */
 CustomPlacementInput.prototype.items = undefined
 

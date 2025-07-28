@@ -33,8 +33,8 @@ export class Dimensions {
    * Constructs a <code>Dimensions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/Dimensions} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/Dimensions} The populated <code>Dimensions</code> instance.
+   * @param {Dimensions} obj Optional instance to populate.
+   * @return {Dimensions} The populated <code>Dimensions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,25 +60,25 @@ export class Dimensions {
 }
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Dimension} height
- * @type {module:catalogitems_v2022_04_01/model/Dimension}
+ * @member {Dimension} height
+ * @type {Dimension}
  */
 Dimensions.prototype.height = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Dimension} length
- * @type {module:catalogitems_v2022_04_01/model/Dimension}
+ * @member {Dimension} length
+ * @type {Dimension}
  */
 Dimensions.prototype.length = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Dimension} weight
- * @type {module:catalogitems_v2022_04_01/model/Dimension}
+ * @member {Dimension} weight
+ * @type {Dimension}
  */
 Dimensions.prototype.weight = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Dimension} width
- * @type {module:catalogitems_v2022_04_01/model/Dimension}
+ * @member {Dimension} width
+ * @type {Dimension}
  */
 Dimensions.prototype.width = undefined

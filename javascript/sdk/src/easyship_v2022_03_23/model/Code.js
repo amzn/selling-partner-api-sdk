@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class Code.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class Code {
@@ -88,7 +88,7 @@ export class Code {
   /**
     * Returns a <code>Code</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:easyship_v2022_03_23/model/Code} The enum <code>Code</code> value.
+    * @return {Code} The enum <code>Code</code> value.
     */
   static constructFromObject (object) {
     return object

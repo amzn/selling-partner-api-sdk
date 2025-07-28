@@ -27,7 +27,7 @@ export class LinkCarrierAccountRequest {
    * @alias module:shipping_v2/model/LinkCarrierAccountRequest
    * @class
    * @param carrierAccountType {String} CarrierAccountType  associated with account.
-   * @param carrierAccountAttributes {Array.<module:shipping_v2/model/CarrierAccountAttribute>} A list of all attributes required by the carrier in order to successfully link the merchant's account
+   * @param carrierAccountAttributes {[CarrierAccountAttribute]} A list of all attributes required by the carrier in order to successfully link the merchant's account
    */
   constructor (carrierAccountType, carrierAccountAttributes) {
     this.carrierAccountType = carrierAccountType
@@ -38,8 +38,8 @@ export class LinkCarrierAccountRequest {
    * Constructs a <code>LinkCarrierAccountRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/LinkCarrierAccountRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/LinkCarrierAccountRequest} The populated <code>LinkCarrierAccountRequest</code> instance.
+   * @param {LinkCarrierAccountRequest} obj Optional instance to populate.
+   * @return {LinkCarrierAccountRequest} The populated <code>LinkCarrierAccountRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,8 +66,8 @@ export class LinkCarrierAccountRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
- * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
+ * @member {[ClientReferenceDetail]} clientReferenceDetails
+ * @type {[ClientReferenceDetail]}
  */
 LinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined
 
@@ -80,14 +80,14 @@ LinkCarrierAccountRequest.prototype.carrierAccountType = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
- * @member {Array.<module:shipping_v2/model/CarrierAccountAttribute>} carrierAccountAttributes
- * @type {Array.<module:shipping_v2/model/CarrierAccountAttribute>}
+ * @member {[CarrierAccountAttribute]} carrierAccountAttributes
+ * @type {[CarrierAccountAttribute]}
  */
 LinkCarrierAccountRequest.prototype.carrierAccountAttributes = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
- * @member {Array.<module:shipping_v2/model/CarrierAccountAttribute>} encryptedCarrierAccountAttributes
- * @type {Array.<module:shipping_v2/model/CarrierAccountAttribute>}
+ * @member {[CarrierAccountAttribute]} encryptedCarrierAccountAttributes
+ * @type {[CarrierAccountAttribute]}
  */
 LinkCarrierAccountRequest.prototype.encryptedCarrierAccountAttributes = undefined

@@ -39,8 +39,8 @@ export class Box {
    * Constructs a <code>Box</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Box} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Box} The populated <code>Box</code> instance.
+   * @param {Box} obj Optional instance to populate.
+   * @return {Box} The populated <code>Box</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -80,20 +80,20 @@ export class Box {
 Box.prototype.boxId = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource} contentInformationSource
- * @type {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource}
+ * @member {BoxContentInformationSource} contentInformationSource
+ * @type {BoxContentInformationSource}
  */
 Box.prototype.contentInformationSource = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Region} destinationRegion
- * @type {module:fulfillmentinbound_v2024_03_20/model/Region}
+ * @member {Region} destinationRegion
+ * @type {Region}
  */
 Box.prototype.destinationRegion = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
- * @type {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 Box.prototype.dimensions = undefined
 
@@ -113,8 +113,8 @@ Box.prototype.externalContainerIdentifierType = undefined
 
 /**
  * Items contained within the box.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 Box.prototype.items = undefined
 
@@ -140,7 +140,7 @@ Box.prototype.quantity = undefined
 Box.prototype.templateName = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
- * @type {module:fulfillmentinbound_v2024_03_20/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Box.prototype.weight = undefined

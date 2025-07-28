@@ -29,9 +29,9 @@ export class SellerInputDefinition {
    * @class
    * @param isRequired {Boolean} When true, the additional input field is required.
    * @param dataType {String} The data type of the additional input field.
-   * @param constraints {Array.<module:merchantfulfillment_v0/model/Constraint>} List of constraints.
+   * @param constraints {[Constraint]} List of constraints.
    * @param inputDisplayText {String} The display text for the additional input field.
-   * @param storedValue {module:merchantfulfillment_v0/model/AdditionalSellerInput}
+   * @param storedValue {AdditionalSellerInput}
    */
   constructor (isRequired, dataType, constraints, inputDisplayText, storedValue) {
     this.isRequired = isRequired
@@ -45,8 +45,8 @@ export class SellerInputDefinition {
    * Constructs a <code>SellerInputDefinition</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/SellerInputDefinition} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/SellerInputDefinition} The populated <code>SellerInputDefinition</code> instance.
+   * @param {SellerInputDefinition} obj Optional instance to populate.
+   * @return {SellerInputDefinition} The populated <code>SellerInputDefinition</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,8 +90,8 @@ SellerInputDefinition.prototype.dataType = undefined
 
 /**
  * List of constraints.
- * @member {Array.<module:merchantfulfillment_v0/model/Constraint>} constraints
- * @type {Array.<module:merchantfulfillment_v0/model/Constraint>}
+ * @member {[Constraint]} constraints
+ * @type {[Constraint]}
  */
 SellerInputDefinition.prototype.constraints = undefined
 
@@ -103,20 +103,20 @@ SellerInputDefinition.prototype.constraints = undefined
 SellerInputDefinition.prototype.inputDisplayText = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/InputTargetType} inputTarget
- * @type {module:merchantfulfillment_v0/model/InputTargetType}
+ * @member {InputTargetType} inputTarget
+ * @type {InputTargetType}
  */
 SellerInputDefinition.prototype.inputTarget = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/AdditionalSellerInput} storedValue
- * @type {module:merchantfulfillment_v0/model/AdditionalSellerInput}
+ * @member {AdditionalSellerInput} storedValue
+ * @type {AdditionalSellerInput}
  */
 SellerInputDefinition.prototype.storedValue = undefined
 
 /**
  * The set of fixed values in an additional seller input.
- * @member {Array.<String>} restrictedSetValues
- * @type {Array.<String>}
+ * @member {[String]} restrictedSetValues
+ * @type {[String]}
  */
 SellerInputDefinition.prototype.restrictedSetValues = undefined

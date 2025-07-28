@@ -32,8 +32,8 @@ export class ItemQuantity {
    * Constructs a <code>ItemQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/ItemQuantity} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/ItemQuantity} The populated <code>ItemQuantity</code> instance.
+   * @param {ItemQuantity} obj Optional instance to populate.
+   * @return {ItemQuantity} The populated <code>ItemQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,8 +86,8 @@ ItemQuantity.UnitOfMeasureEnum = {
 
 /**
  * Unit of measure for the acknowledged quantity.
- * @member {module:vendororders_v1/model/ItemQuantity.UnitOfMeasureEnum} unitOfMeasure
- * @type {module:vendororders_v1/model/ItemQuantity.UnitOfMeasureEnum}
+ * @member {String} unitOfMeasure
+ * @type {String}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined
 

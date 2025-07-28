@@ -34,8 +34,8 @@ export class SAFETReimbursementEvent {
    * Constructs a <code>SAFETReimbursementEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/SAFETReimbursementEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/SAFETReimbursementEvent} The populated <code>SAFETReimbursementEvent</code> instance.
+   * @param {SAFETReimbursementEvent} obj Optional instance to populate.
+   * @return {SAFETReimbursementEvent} The populated <code>SAFETReimbursementEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ SAFETReimbursementEvent.prototype.postedDate = undefined
 SAFETReimbursementEvent.prototype.sAFETClaimId = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} reimbursedAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} reimbursedAmount
+ * @type {Currency}
  */
 SAFETReimbursementEvent.prototype.reimbursedAmount = undefined
 
@@ -90,7 +90,7 @@ SAFETReimbursementEvent.prototype.reasonCode = undefined
 
 /**
  * A list of SAFETReimbursementItems.
- * @member {Array.<module:finances_v0/model/SAFETReimbursementItem>} sAFETReimbursementItemList
- * @type {Array.<module:finances_v0/model/SAFETReimbursementItem>}
+ * @member {[SAFETReimbursementItem]} sAFETReimbursementItemList
+ * @type {[SAFETReimbursementItem]}
  */
 SAFETReimbursementEvent.prototype.sAFETReimbursementItemList = undefined

@@ -24,7 +24,7 @@ export class ShippingRequirements {
    * The possible shipping modes for the packing option for a given shipping solution or program. Available solutions are Amazon-Partnered Carrier and Use Your Own Carrier. Available modes are ground small parcel, freight less-than-truckload (LTL), freight full-truckload (FTL) palletized, freight FTL non-palletized, ocean less-than-container-load (LCL), ocean full-container load (FCL), air small parcel, and air small parcel express.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ShippingRequirements
    * @class
-   * @param modes {Array.<String>} Available shipment modes for this shipping program.
+   * @param modes {[String]} Available shipment modes for this shipping program.
    * @param solution {String} Shipping program for the option. Can be: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
    */
   constructor (modes, solution) {
@@ -36,8 +36,8 @@ export class ShippingRequirements {
    * Constructs a <code>ShippingRequirements</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ShippingRequirements} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ShippingRequirements} The populated <code>ShippingRequirements</code> instance.
+   * @param {ShippingRequirements} obj Optional instance to populate.
+   * @return {ShippingRequirements} The populated <code>ShippingRequirements</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class ShippingRequirements {
 
 /**
  * Available shipment modes for this shipping program.
- * @member {Array.<String>} modes
- * @type {Array.<String>}
+ * @member {[String]} modes
+ * @type {[String]}
  */
 ShippingRequirements.prototype.modes = undefined
 

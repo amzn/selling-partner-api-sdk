@@ -27,7 +27,7 @@ export class GetShipmentDocumentsResult {
    * @alias module:shipping_v2/model/GetShipmentDocumentsResult
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
-   * @param packageDocumentDetail {module:shipping_v2/model/PackageDocumentDetail}
+   * @param packageDocumentDetail {PackageDocumentDetail}
    */
   constructor (shipmentId, packageDocumentDetail) {
     this.shipmentId = shipmentId
@@ -38,8 +38,8 @@ export class GetShipmentDocumentsResult {
    * Constructs a <code>GetShipmentDocumentsResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetShipmentDocumentsResult} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetShipmentDocumentsResult} The populated <code>GetShipmentDocumentsResult</code> instance.
+   * @param {GetShipmentDocumentsResult} obj Optional instance to populate.
+   * @return {GetShipmentDocumentsResult} The populated <code>GetShipmentDocumentsResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,13 +71,13 @@ export class GetShipmentDocumentsResult {
 GetShipmentDocumentsResult.prototype.shipmentId = undefined
 
 /**
- * @member {module:shipping_v2/model/PackageDocumentDetail} packageDocumentDetail
- * @type {module:shipping_v2/model/PackageDocumentDetail}
+ * @member {PackageDocumentDetail} packageDocumentDetail
+ * @type {PackageDocumentDetail}
  */
 GetShipmentDocumentsResult.prototype.packageDocumentDetail = undefined
 
 /**
- * @member {module:shipping_v2/model/Benefits} benefits
- * @type {module:shipping_v2/model/Benefits}
+ * @member {Benefits} benefits
+ * @type {Benefits}
  */
 GetShipmentDocumentsResult.prototype.benefits = undefined

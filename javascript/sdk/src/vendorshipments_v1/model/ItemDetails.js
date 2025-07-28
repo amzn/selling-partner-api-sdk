@@ -34,8 +34,8 @@ export class ItemDetails {
    * Constructs a <code>ItemDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ItemDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ItemDetails} The populated <code>ItemDetails</code> instance.
+   * @param {ItemDetails} obj Optional instance to populate.
+   * @return {ItemDetails} The populated <code>ItemDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,14 +76,14 @@ ItemDetails.prototype.purchaseOrderNumber = undefined
 ItemDetails.prototype.lotNumber = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Expiry} expiry
- * @type {module:vendorshipments_v1/model/Expiry}
+ * @member {Expiry} expiry
+ * @type {Expiry}
  */
 ItemDetails.prototype.expiry = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Money} maximumRetailPrice
- * @type {module:vendorshipments_v1/model/Money}
+ * @member {Money} maximumRetailPrice
+ * @type {Money}
  */
 ItemDetails.prototype.maximumRetailPrice = undefined
 
@@ -121,7 +121,7 @@ ItemDetails.HandlingCodeEnum = {
 
 /**
  * Identification of the instructions on how specified item/carton/pallet should be handled.
- * @member {module:vendorshipments_v1/model/ItemDetails.HandlingCodeEnum} handlingCode
- * @type {module:vendorshipments_v1/model/ItemDetails.HandlingCodeEnum}
+ * @member {String} handlingCode
+ * @type {String}
  */
 ItemDetails.prototype.handlingCode = undefined

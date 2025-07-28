@@ -36,8 +36,8 @@ export class PickupChannel {
    * Constructs a <code>PickupChannel</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/PickupChannel} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/PickupChannel} The populated <code>PickupChannel</code> instance.
+   * @param {PickupChannel} obj Optional instance to populate.
+   * @return {PickupChannel} The populated <code>PickupChannel</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,8 +64,8 @@ export class PickupChannel {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/Duration} inventoryHoldPeriod
- * @type {module:supplysources_v2020_07_01/model/Duration}
+ * @member {Duration} inventoryHoldPeriod
+ * @type {Duration}
  */
 PickupChannel.prototype.inventoryHoldPeriod = undefined
 
@@ -76,19 +76,19 @@ PickupChannel.prototype.inventoryHoldPeriod = undefined
 PickupChannel.prototype.isSupported = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
- * @type {module:supplysources_v2020_07_01/model/OperationalConfiguration}
+ * @member {OperationalConfiguration} operationalConfiguration
+ * @type {OperationalConfiguration}
  */
 PickupChannel.prototype.operationalConfiguration = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/InStorePickupConfiguration} inStorePickupConfiguration
- * @type {module:supplysources_v2020_07_01/model/InStorePickupConfiguration}
+ * @member {InStorePickupConfiguration} inStorePickupConfiguration
+ * @type {InStorePickupConfiguration}
  */
 PickupChannel.prototype.inStorePickupConfiguration = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/CurbsidePickupConfiguration} curbsidePickupConfiguration
- * @type {module:supplysources_v2020_07_01/model/CurbsidePickupConfiguration}
+ * @member {CurbsidePickupConfiguration} curbsidePickupConfiguration
+ * @type {CurbsidePickupConfiguration}
  */
 PickupChannel.prototype.curbsidePickupConfiguration = undefined

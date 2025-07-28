@@ -32,8 +32,8 @@ export class ShipsFromType {
    * Constructs a <code>ShipsFromType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/ShipsFromType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/ShipsFromType} The populated <code>ShipsFromType</code> instance.
+   * @param {ShipsFromType} obj Optional instance to populate.
+   * @return {ShipsFromType} The populated <code>ShipsFromType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -27,7 +27,7 @@ export class Event {
    * A tracking event.
    * @alias module:shipping_v2/model/Event
    * @class
-   * @param eventCode {module:shipping_v2/model/EventCode}
+   * @param eventCode {EventCode}
    * @param eventTime {Date} The ISO 8601 formatted timestamp of the event.
    */
   constructor (eventCode, eventTime) {
@@ -39,8 +39,8 @@ export class Event {
    * Constructs a <code>Event</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/Event} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/Event} The populated <code>Event</code> instance.
+   * @param {Event} obj Optional instance to populate.
+   * @return {Event} The populated <code>Event</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,14 +66,14 @@ export class Event {
 }
 
 /**
- * @member {module:shipping_v2/model/EventCode} eventCode
- * @type {module:shipping_v2/model/EventCode}
+ * @member {EventCode} eventCode
+ * @type {EventCode}
  */
 Event.prototype.eventCode = undefined
 
 /**
- * @member {module:shipping_v2/model/Location} location
- * @type {module:shipping_v2/model/Location}
+ * @member {Location} location
+ * @type {Location}
  */
 Event.prototype.location = undefined
 
@@ -85,7 +85,7 @@ Event.prototype.location = undefined
 Event.prototype.eventTime = undefined
 
 /**
- * @member {module:shipping_v2/model/ShipmentType} shipmentType
- * @type {module:shipping_v2/model/ShipmentType}
+ * @member {ShipmentType} shipmentType
+ * @type {ShipmentType}
  */
 Event.prototype.shipmentType = undefined

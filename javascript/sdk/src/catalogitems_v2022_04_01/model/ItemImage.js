@@ -24,7 +24,7 @@ export class ItemImage {
    * Image for an item in the Amazon catalog.
    * @alias module:catalogitems_v2022_04_01/model/ItemImage
    * @class
-   * @param variant {module:catalogitems_v2022_04_01/model/ItemImage.VariantEnum} Variant of the image, such as `MAIN` or `PT01`.
+   * @param variant {String} Variant of the image, such as `MAIN` or `PT01`.
    * @param link {String} URL for the image.
    * @param height {Number} Height of the image in pixels.
    * @param width {Number} Width of the image in pixels.
@@ -40,8 +40,8 @@ export class ItemImage {
    * Constructs a <code>ItemImage</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemImage} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemImage} The populated <code>ItemImage</code> instance.
+   * @param {ItemImage} obj Optional instance to populate.
+   * @return {ItemImage} The populated <code>ItemImage</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -136,8 +136,8 @@ ItemImage.VariantEnum = {
 
 /**
  * Variant of the image, such as `MAIN` or `PT01`.
- * @member {module:catalogitems_v2022_04_01/model/ItemImage.VariantEnum} variant
- * @type {module:catalogitems_v2022_04_01/model/ItemImage.VariantEnum}
+ * @member {String} variant
+ * @type {String}
  */
 ItemImage.prototype.variant = undefined
 

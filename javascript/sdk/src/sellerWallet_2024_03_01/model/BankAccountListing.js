@@ -25,7 +25,7 @@ export class BankAccountListing {
    * A list of bank accounts.
    * @alias module:sellerWallet_2024_03_01/model/BankAccountListing
    * @class
-   * @param accounts {Array.<module:sellerWallet_2024_03_01/model/BankAccount>} A list of bank accounts.
+   * @param accounts {[BankAccount]} A list of bank accounts.
    */
   constructor (accounts) {
     this.accounts = accounts
@@ -35,8 +35,8 @@ export class BankAccountListing {
    * Constructs a <code>BankAccountListing</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/BankAccountListing} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/BankAccountListing} The populated <code>BankAccountListing</code> instance.
+   * @param {BankAccountListing} obj Optional instance to populate.
+   * @return {BankAccountListing} The populated <code>BankAccountListing</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class BankAccountListing {
 
 /**
  * A list of bank accounts.
- * @member {Array.<module:sellerWallet_2024_03_01/model/BankAccount>} accounts
- * @type {Array.<module:sellerWallet_2024_03_01/model/BankAccount>}
+ * @member {[BankAccount]} accounts
+ * @type {[BankAccount]}
  */
 BankAccountListing.prototype.accounts = undefined

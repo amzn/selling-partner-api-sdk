@@ -35,8 +35,8 @@ export class ShipmentSource {
    * Constructs a <code>ShipmentSource</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ShipmentSource} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ShipmentSource} The populated <code>ShipmentSource</code> instance.
+   * @param {ShipmentSource} obj Optional instance to populate.
+   * @return {ShipmentSource} The populated <code>ShipmentSource</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,8 +60,8 @@ export class ShipmentSource {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Address} address
- * @type {module:fulfillmentinbound_v2024_03_20/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 ShipmentSource.prototype.address = undefined
 

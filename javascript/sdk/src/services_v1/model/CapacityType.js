@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class CapacityType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class CapacityType {
@@ -46,7 +46,7 @@ export class CapacityType {
   /**
     * Returns a <code>CapacityType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:services_v1/model/CapacityType} The enum <code>CapacityType</code> value.
+    * @return {CapacityType} The enum <code>CapacityType</code> value.
     */
   static constructFromObject (object) {
     return object

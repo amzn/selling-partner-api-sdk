@@ -33,8 +33,8 @@ export class InStorePickupConfiguration {
    * Constructs a <code>InStorePickupConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/InStorePickupConfiguration} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/InStorePickupConfiguration} The populated <code>InStorePickupConfiguration</code> instance.
+   * @param {InStorePickupConfiguration} obj Optional instance to populate.
+   * @return {InStorePickupConfiguration} The populated <code>InStorePickupConfiguration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class InStorePickupConfiguration {
 InStorePickupConfiguration.prototype.isSupported = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ParkingConfiguration} parkingConfiguration
- * @type {module:supplysources_v2020_07_01/model/ParkingConfiguration}
+ * @member {ParkingConfiguration} parkingConfiguration
+ * @type {ParkingConfiguration}
  */
 InStorePickupConfiguration.prototype.parkingConfiguration = undefined

@@ -34,8 +34,8 @@ export class PreferredDeliveryTime {
    * Constructs a <code>PreferredDeliveryTime</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/PreferredDeliveryTime} obj Optional instance to populate.
-   * @return {module:orders_v0/model/PreferredDeliveryTime} The populated <code>PreferredDeliveryTime</code> instance.
+   * @param {PreferredDeliveryTime} obj Optional instance to populate.
+   * @return {PreferredDeliveryTime} The populated <code>PreferredDeliveryTime</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,14 +60,14 @@ export class PreferredDeliveryTime {
 
 /**
  * Business hours when the business is open for deliveries.
- * @member {Array.<module:orders_v0/model/BusinessHours>} businessHours
- * @type {Array.<module:orders_v0/model/BusinessHours>}
+ * @member {[BusinessHours]} businessHours
+ * @type {[BusinessHours]}
  */
 PreferredDeliveryTime.prototype.businessHours = undefined
 
 /**
  * Dates when the business is closed during the next 30 days.
- * @member {Array.<module:orders_v0/model/ExceptionDates>} exceptionDates
- * @type {Array.<module:orders_v0/model/ExceptionDates>}
+ * @member {[ExceptionDates]} exceptionDates
+ * @type {[ExceptionDates]}
  */
 PreferredDeliveryTime.prototype.exceptionDates = undefined

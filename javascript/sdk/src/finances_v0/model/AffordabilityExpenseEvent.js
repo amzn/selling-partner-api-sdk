@@ -25,9 +25,9 @@ export class AffordabilityExpenseEvent {
    * An expense related to an affordability promotion.
    * @alias module:finances_v0/model/AffordabilityExpenseEvent
    * @class
-   * @param taxTypeCGST {module:finances_v0/model/Currency}
-   * @param taxTypeSGST {module:finances_v0/model/Currency}
-   * @param taxTypeIGST {module:finances_v0/model/Currency}
+   * @param taxTypeCGST {Currency}
+   * @param taxTypeSGST {Currency}
+   * @param taxTypeIGST {Currency}
    */
   constructor (taxTypeCGST, taxTypeSGST, taxTypeIGST) {
     this.taxTypeCGST = taxTypeCGST
@@ -39,8 +39,8 @@ export class AffordabilityExpenseEvent {
    * Constructs a <code>AffordabilityExpenseEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/AffordabilityExpenseEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/AffordabilityExpenseEvent} The populated <code>AffordabilityExpenseEvent</code> instance.
+   * @param {AffordabilityExpenseEvent} obj Optional instance to populate.
+   * @return {AffordabilityExpenseEvent} The populated <code>AffordabilityExpenseEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -99,31 +99,31 @@ AffordabilityExpenseEvent.prototype.marketplaceId = undefined
 AffordabilityExpenseEvent.prototype.transactionType = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} baseExpense
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} baseExpense
+ * @type {Currency}
  */
 AffordabilityExpenseEvent.prototype.baseExpense = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxTypeCGST
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxTypeCGST
+ * @type {Currency}
  */
 AffordabilityExpenseEvent.prototype.taxTypeCGST = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxTypeSGST
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxTypeSGST
+ * @type {Currency}
  */
 AffordabilityExpenseEvent.prototype.taxTypeSGST = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxTypeIGST
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxTypeIGST
+ * @type {Currency}
  */
 AffordabilityExpenseEvent.prototype.taxTypeIGST = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} totalExpense
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} totalExpense
+ * @type {Currency}
  */
 AffordabilityExpenseEvent.prototype.totalExpense = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class OwnerConstraint.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class OwnerConstraint {
@@ -40,7 +40,7 @@ export class OwnerConstraint {
   /**
     * Returns a <code>OwnerConstraint</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v2024_03_20/model/OwnerConstraint} The enum <code>OwnerConstraint</code> value.
+    * @return {OwnerConstraint} The enum <code>OwnerConstraint</code> value.
     */
   static constructFromObject (object) {
     return object

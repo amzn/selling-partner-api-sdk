@@ -39,8 +39,8 @@ export class AvailableValueAddedServiceGroup {
    * Constructs a <code>AvailableValueAddedServiceGroup</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/AvailableValueAddedServiceGroup} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/AvailableValueAddedServiceGroup} The populated <code>AvailableValueAddedServiceGroup</code> instance.
+   * @param {AvailableValueAddedServiceGroup} obj Optional instance to populate.
+   * @return {AvailableValueAddedServiceGroup} The populated <code>AvailableValueAddedServiceGroup</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,7 +88,7 @@ AvailableValueAddedServiceGroup.prototype.isRequired = undefined
 
 /**
  * A list of optional value-added services available for purchase with a shipping service offering.
- * @member {Array.<module:shipping_v2/model/ValueAddedService>} valueAddedServices
- * @type {Array.<module:shipping_v2/model/ValueAddedService>}
+ * @member {[ValueAddedService]} valueAddedServices
+ * @type {[ValueAddedService]}
  */
 AvailableValueAddedServiceGroup.prototype.valueAddedServices = undefined

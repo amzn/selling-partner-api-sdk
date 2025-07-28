@@ -38,9 +38,9 @@ export class CreateFulfillmentOrderRequest {
    * @param displayableOrderId {String} A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of `DisplayableOrderId` should match the order identifier that the seller provides to the recipient. The seller can use the `SellerFulfillmentOrderId` for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.  The value must be an alpha-numeric or ISO 8859-1 compliant string from one to 40 characters in length. Cannot contain two spaces in a row. Leading and trailing white space is removed.
    * @param displayableOrderDate {Date} Date timestamp
    * @param displayableOrderComment {String} Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.
-   * @param shippingSpeedCategory {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
-   * @param destinationAddress {module:fulfillmentoutbound_v2020_07_01/model/Address}
-   * @param items {Array.<module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderItem>} An array of item information for creating a fulfillment order.
+   * @param shippingSpeedCategory {ShippingSpeedCategory}
+   * @param destinationAddress {Address}
+   * @param items {[CreateFulfillmentOrderItem]} An array of item information for creating a fulfillment order.
    */
   constructor (sellerFulfillmentOrderId, displayableOrderId, displayableOrderDate, displayableOrderComment, shippingSpeedCategory, destinationAddress, items) {
     this.sellerFulfillmentOrderId = sellerFulfillmentOrderId
@@ -56,8 +56,8 @@ export class CreateFulfillmentOrderRequest {
    * Constructs a <code>CreateFulfillmentOrderRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderRequest} The populated <code>CreateFulfillmentOrderRequest</code> instance.
+   * @param {CreateFulfillmentOrderRequest} obj Optional instance to populate.
+   * @return {CreateFulfillmentOrderRequest} The populated <code>CreateFulfillmentOrderRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -131,44 +131,44 @@ CreateFulfillmentOrderRequest.prototype.displayableOrderDate = undefined
 CreateFulfillmentOrderRequest.prototype.displayableOrderComment = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory} shippingSpeedCategory
- * @type {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
+ * @member {ShippingSpeedCategory} shippingSpeedCategory
+ * @type {ShippingSpeedCategory}
  */
 CreateFulfillmentOrderRequest.prototype.shippingSpeedCategory = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow} deliveryWindow
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow}
+ * @member {DeliveryWindow} deliveryWindow
+ * @type {DeliveryWindow}
  */
 CreateFulfillmentOrderRequest.prototype.deliveryWindow = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} destinationAddress
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Address}
+ * @member {Address} destinationAddress
+ * @type {Address}
  */
 CreateFulfillmentOrderRequest.prototype.destinationAddress = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPreferences} deliveryPreferences
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPreferences}
+ * @member {DeliveryPreferences} deliveryPreferences
+ * @type {DeliveryPreferences}
  */
 CreateFulfillmentOrderRequest.prototype.deliveryPreferences = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction} fulfillmentAction
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction}
+ * @member {FulfillmentAction} fulfillmentAction
+ * @type {FulfillmentAction}
  */
 CreateFulfillmentOrderRequest.prototype.fulfillmentAction = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy} fulfillmentPolicy
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy}
+ * @member {FulfillmentPolicy} fulfillmentPolicy
+ * @type {FulfillmentPolicy}
  */
 CreateFulfillmentOrderRequest.prototype.fulfillmentPolicy = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/CODSettings} codSettings
- * @type {module:fulfillmentoutbound_v2020_07_01/model/CODSettings}
+ * @member {CODSettings} codSettings
+ * @type {CODSettings}
  */
 CreateFulfillmentOrderRequest.prototype.codSettings = undefined
 
@@ -181,28 +181,28 @@ CreateFulfillmentOrderRequest.prototype.shipFromCountryCode = undefined
 
 /**
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
- * @member {Array.<String>} notificationEmails
- * @type {Array.<String>}
+ * @member {[String]} notificationEmails
+ * @type {[String]}
  */
 CreateFulfillmentOrderRequest.prototype.notificationEmails = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>}
+ * @member {[FeatureSettings]} featureConstraints
+ * @type {[FeatureSettings]}
  */
 CreateFulfillmentOrderRequest.prototype.featureConstraints = undefined
 
 /**
  * An array of item information for creating a fulfillment order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderItem>} items
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderItem>}
+ * @member {[CreateFulfillmentOrderItem]} items
+ * @type {[CreateFulfillmentOrderItem]}
  */
 CreateFulfillmentOrderRequest.prototype.items = undefined
 
 /**
  * An array of various payment attributes related to this fulfillment order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/PaymentInformation>} paymentInformation
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/PaymentInformation>}
+ * @member {[PaymentInformation]} paymentInformation
+ * @type {[PaymentInformation]}
  */
 CreateFulfillmentOrderRequest.prototype.paymentInformation = undefined

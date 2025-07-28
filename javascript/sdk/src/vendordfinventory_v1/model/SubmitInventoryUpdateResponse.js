@@ -34,8 +34,8 @@ export class SubmitInventoryUpdateResponse {
    * Constructs a <code>SubmitInventoryUpdateResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfinventory_v1/model/SubmitInventoryUpdateResponse} obj Optional instance to populate.
-   * @return {module:vendordfinventory_v1/model/SubmitInventoryUpdateResponse} The populated <code>SubmitInventoryUpdateResponse</code> instance.
+   * @param {SubmitInventoryUpdateResponse} obj Optional instance to populate.
+   * @return {SubmitInventoryUpdateResponse} The populated <code>SubmitInventoryUpdateResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class SubmitInventoryUpdateResponse {
 }
 
 /**
- * @member {module:vendordfinventory_v1/model/TransactionReference} payload
- * @type {module:vendordfinventory_v1/model/TransactionReference}
+ * @member {TransactionReference} payload
+ * @type {TransactionReference}
  */
 SubmitInventoryUpdateResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:vendordfinventory_v1/model/Error>} errors
- * @type {Array.<module:vendordfinventory_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 SubmitInventoryUpdateResponse.prototype.errors = undefined

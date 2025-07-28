@@ -33,8 +33,8 @@ export class CreateConfirmCustomizationDetailsResponse {
    * Constructs a <code>CreateConfirmCustomizationDetailsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/CreateConfirmCustomizationDetailsResponse} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/CreateConfirmCustomizationDetailsResponse} The populated <code>CreateConfirmCustomizationDetailsResponse</code> instance.
+   * @param {CreateConfirmCustomizationDetailsResponse} obj Optional instance to populate.
+   * @return {CreateConfirmCustomizationDetailsResponse} The populated <code>CreateConfirmCustomizationDetailsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class CreateConfirmCustomizationDetailsResponse {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:messaging_v1/model/Error>} errors
- * @type {Array.<module:messaging_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 CreateConfirmCustomizationDetailsResponse.prototype.errors = undefined

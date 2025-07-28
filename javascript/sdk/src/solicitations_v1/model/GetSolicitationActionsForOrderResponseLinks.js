@@ -24,8 +24,8 @@ export class GetSolicitationActionsForOrderResponseLinks {
    * Constructs a new <code>GetSolicitationActionsForOrderResponseLinks</code>.
    * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks
    * @class
-   * @param self {module:solicitations_v1/model/LinkObject}
-   * @param actions {Array.<module:solicitations_v1/model/LinkObject>} Eligible actions for the specified amazonOrderId.
+   * @param self {LinkObject}
+   * @param actions {[LinkObject]} Eligible actions for the specified amazonOrderId.
    */
   constructor (self, actions) {
     this.self = self
@@ -36,8 +36,8 @@ export class GetSolicitationActionsForOrderResponseLinks {
    * Constructs a <code>GetSolicitationActionsForOrderResponseLinks</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks} obj Optional instance to populate.
-   * @return {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks} The populated <code>GetSolicitationActionsForOrderResponseLinks</code> instance.
+   * @param {GetSolicitationActionsForOrderResponseLinks} obj Optional instance to populate.
+   * @return {GetSolicitationActionsForOrderResponseLinks} The populated <code>GetSolicitationActionsForOrderResponseLinks</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,14 +61,14 @@ export class GetSolicitationActionsForOrderResponseLinks {
 }
 
 /**
- * @member {module:solicitations_v1/model/LinkObject} self
- * @type {module:solicitations_v1/model/LinkObject}
+ * @member {LinkObject} self
+ * @type {LinkObject}
  */
 GetSolicitationActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
- * @member {Array.<module:solicitations_v1/model/LinkObject>} actions
- * @type {Array.<module:solicitations_v1/model/LinkObject>}
+ * @member {[LinkObject]} actions
+ * @type {[LinkObject]}
  */
 GetSolicitationActionsForOrderResponseLinks.prototype.actions = undefined

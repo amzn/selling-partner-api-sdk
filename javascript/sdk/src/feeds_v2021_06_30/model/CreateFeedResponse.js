@@ -34,8 +34,8 @@ export class CreateFeedResponse {
    * Constructs a <code>CreateFeedResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:feeds_v2021_06_30/model/CreateFeedResponse} obj Optional instance to populate.
-   * @return {module:feeds_v2021_06_30/model/CreateFeedResponse} The populated <code>CreateFeedResponse</code> instance.
+   * @param {CreateFeedResponse} obj Optional instance to populate.
+   * @return {CreateFeedResponse} The populated <code>CreateFeedResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

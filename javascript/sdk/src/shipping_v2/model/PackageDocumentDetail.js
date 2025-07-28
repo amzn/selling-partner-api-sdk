@@ -26,7 +26,7 @@ export class PackageDocumentDetail {
    * @alias module:shipping_v2/model/PackageDocumentDetail
    * @class
    * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
-   * @param packageDocuments {Array.<module:shipping_v2/model/PackageDocument>} A list of documents related to a package.
+   * @param packageDocuments {[PackageDocument]} A list of documents related to a package.
    */
   constructor (packageClientReferenceId, packageDocuments) {
     this.packageClientReferenceId = packageClientReferenceId
@@ -37,8 +37,8 @@ export class PackageDocumentDetail {
    * Constructs a <code>PackageDocumentDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/PackageDocumentDetail} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/PackageDocumentDetail} The populated <code>PackageDocumentDetail</code> instance.
+   * @param {PackageDocumentDetail} obj Optional instance to populate.
+   * @return {PackageDocumentDetail} The populated <code>PackageDocumentDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,8 +71,8 @@ PackageDocumentDetail.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of documents related to a package.
- * @member {Array.<module:shipping_v2/model/PackageDocument>} packageDocuments
- * @type {Array.<module:shipping_v2/model/PackageDocument>}
+ * @member {[PackageDocument]} packageDocuments
+ * @type {[PackageDocument]}
  */
 PackageDocumentDetail.prototype.packageDocuments = undefined
 

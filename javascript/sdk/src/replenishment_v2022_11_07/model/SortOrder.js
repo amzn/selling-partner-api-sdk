@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class SortOrder.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class SortOrder {
@@ -34,7 +34,7 @@ export class SortOrder {
   /**
     * Returns a <code>SortOrder</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:replenishment_v2022_11_07/model/SortOrder} The enum <code>SortOrder</code> value.
+    * @return {SortOrder} The enum <code>SortOrder</code> value.
     */
   static constructFromObject (object) {
     return object

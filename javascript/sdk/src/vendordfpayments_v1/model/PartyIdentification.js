@@ -36,8 +36,8 @@ export class PartyIdentification {
    * Constructs a <code>PartyIdentification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfpayments_v1/model/PartyIdentification} obj Optional instance to populate.
-   * @return {module:vendordfpayments_v1/model/PartyIdentification} The populated <code>PartyIdentification</code> instance.
+   * @param {PartyIdentification} obj Optional instance to populate.
+   * @return {PartyIdentification} The populated <code>PartyIdentification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,14 +69,14 @@ export class PartyIdentification {
 PartyIdentification.prototype.partyId = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/Address} address
- * @type {module:vendordfpayments_v1/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 PartyIdentification.prototype.address = undefined
 
 /**
  * Tax registration details of the entity.
- * @member {Array.<module:vendordfpayments_v1/model/TaxRegistrationDetail>} taxRegistrationDetails
- * @type {Array.<module:vendordfpayments_v1/model/TaxRegistrationDetail>}
+ * @member {[TaxRegistrationDetail]} taxRegistrationDetails
+ * @type {[TaxRegistrationDetail]}
  */
 PartyIdentification.prototype.taxRegistrationDetails = undefined

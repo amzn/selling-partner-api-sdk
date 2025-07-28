@@ -25,7 +25,7 @@ export class GetAccessPointsResult {
    * The payload for the GetAccessPoints API.
    * @alias module:shipping_v2/model/GetAccessPointsResult
    * @class
-   * @param accessPointsMap {Object.<String, Array.<module:shipping_v2/model/AccessPoint>>} Map of type of access point to list of access points
+   * @param accessPointsMap {{String: Array}} Map of type of access point to list of access points
    */
   constructor (accessPointsMap) {
     this.accessPointsMap = accessPointsMap
@@ -35,8 +35,8 @@ export class GetAccessPointsResult {
    * Constructs a <code>GetAccessPointsResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetAccessPointsResult} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetAccessPointsResult} The populated <code>GetAccessPointsResult</code> instance.
+   * @param {GetAccessPointsResult} obj Optional instance to populate.
+   * @return {GetAccessPointsResult} The populated <code>GetAccessPointsResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class GetAccessPointsResult {
 
 /**
  * Map of type of access point to list of access points
- * @member {Object.<String, Array.<module:shipping_v2/model/AccessPoint>>} accessPointsMap
- * @type {Object.<String, Array.<module:shipping_v2/model/AccessPoint>>}
+ * @member {{String: Array}} accessPointsMap
+ * @type {{String: Array}}
  */
 GetAccessPointsResult.prototype.accessPointsMap = undefined

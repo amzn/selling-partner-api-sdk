@@ -33,8 +33,8 @@ export class Promotion {
    * Constructs a <code>Promotion</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/Promotion} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/Promotion} The populated <code>Promotion</code> instance.
+   * @param {Promotion} obj Optional instance to populate.
+   * @return {Promotion} The populated <code>Promotion</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,25 +60,25 @@ export class Promotion {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/DiscountFunding} sellingPartnerFundedBaseDiscount
- * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
+ * @member {DiscountFunding} sellingPartnerFundedBaseDiscount
+ * @type {DiscountFunding}
  */
 Promotion.prototype.sellingPartnerFundedBaseDiscount = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/DiscountFunding} sellingPartnerFundedTieredDiscount
- * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
+ * @member {DiscountFunding} sellingPartnerFundedTieredDiscount
+ * @type {DiscountFunding}
  */
 Promotion.prototype.sellingPartnerFundedTieredDiscount = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/DiscountFunding} amazonFundedBaseDiscount
- * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
+ * @member {DiscountFunding} amazonFundedBaseDiscount
+ * @type {DiscountFunding}
  */
 Promotion.prototype.amazonFundedBaseDiscount = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/DiscountFunding} amazonFundedTieredDiscount
- * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
+ * @member {DiscountFunding} amazonFundedTieredDiscount
+ * @type {DiscountFunding}
  */
 Promotion.prototype.amazonFundedTieredDiscount = undefined

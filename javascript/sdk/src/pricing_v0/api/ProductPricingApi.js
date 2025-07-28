@@ -35,8 +35,8 @@ export class ProductPricingApi {
     * Constructs a new ProductPricingApi.
     * @alias module:pricing_v0/api/ProductPricingApi
     * @class
-    * @param {module:pricing_v0/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:pricing_v0/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -75,12 +75,12 @@ export class ProductPricingApi {
   /**
      * Returns competitive pricing information for a seller&#39;s offer listings based on seller SKU or ASIN.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
+     * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
-     * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
-     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
+     * @param {[String]} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {[String]} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String} opts.customerType Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
+     * @return {Promise<GetPricingResponse>}
      */
   getCompetitivePricingWithHttpInfo (marketplaceId, itemType, opts) {
     opts = opts || {}
@@ -124,12 +124,12 @@ export class ProductPricingApi {
   /**
      * Returns competitive pricing information for a seller&#39;s offer listings based on seller SKU or ASIN.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
+     * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
-     * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
-     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
+     * @param {[String]} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {[String]} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String} opts.customerType Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
+     * @return {Promise<GetPricingResponse>}
      */
   getCompetitivePricing (marketplaceId, itemType, opts) {
     return this.getCompetitivePricingWithHttpInfo(marketplaceId, itemType, opts)
@@ -141,11 +141,11 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a single item based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemCondition Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+     * @param {String} itemCondition Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {Object} opts Optional parameters
-     * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
+     * @param {String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
+     * @return {Promise<GetOffersResponse>}
      */
   getItemOffersWithHttpInfo (marketplaceId, itemCondition, asin, opts) {
     opts = opts || {}
@@ -193,11 +193,11 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a single item based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemCondition Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+     * @param {String} itemCondition Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {Object} opts Optional parameters
-     * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
+     * @param {String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
+     * @return {Promise<GetOffersResponse>}
      */
   getItemOffers (marketplaceId, itemCondition, asin, opts) {
     return this.getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, opts)
@@ -208,8 +208,8 @@ export class ProductPricingApi {
 
   /**
      * Returns the lowest priced offers for a batch of items based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:pricing_v0/model/GetItemOffersBatchRequest} getItemOffersBatchRequestBody The request associated with the &#x60;getItemOffersBatch&#x60; API call.
-     * @return {Promise<module:pricing_v0/model/GetItemOffersBatchResponse>}
+     * @param {GetItemOffersBatchRequest} getItemOffersBatchRequestBody The request associated with the &#x60;getItemOffersBatch&#x60; API call.
+     * @return {Promise<GetItemOffersBatchResponse>}
      */
   getItemOffersBatchWithHttpInfo (getItemOffersBatchRequestBody) {
     const postBody = getItemOffersBatchRequestBody
@@ -241,8 +241,8 @@ export class ProductPricingApi {
 
   /**
      * Returns the lowest priced offers for a batch of items based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:pricing_v0/model/GetItemOffersBatchRequest} getItemOffersBatchRequestBody The request associated with the &#x60;getItemOffersBatch&#x60; API call.
-     * @return {Promise<module:pricing_v0/model/GetItemOffersBatchResponse>}
+     * @param {GetItemOffersBatchRequest} getItemOffersBatchRequestBody The request associated with the &#x60;getItemOffersBatch&#x60; API call.
+     * @return {Promise<GetItemOffersBatchResponse>}
      */
   getItemOffersBatch (getItemOffersBatchRequestBody) {
     return this.getItemOffersBatchWithHttpInfo(getItemOffersBatchRequestBody)
@@ -254,11 +254,11 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a single SKU listing.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+     * @param {String} itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {String} sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.
      * @param {Object} opts Optional parameters
-     * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
+     * @param {String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
+     * @return {Promise<GetOffersResponse>}
      */
   getListingOffersWithHttpInfo (marketplaceId, itemCondition, sellerSKU, opts) {
     opts = opts || {}
@@ -306,11 +306,11 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a single SKU listing.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+     * @param {String} itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {String} sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.
      * @param {Object} opts Optional parameters
-     * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
+     * @param {String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
+     * @return {Promise<GetOffersResponse>}
      */
   getListingOffers (marketplaceId, itemCondition, sellerSKU, opts) {
     return this.getListingOffersWithHttpInfo(marketplaceId, itemCondition, sellerSKU, opts)
@@ -321,8 +321,8 @@ export class ProductPricingApi {
 
   /**
      * Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:pricing_v0/model/GetListingOffersBatchRequest} getListingOffersBatchRequestBody The request associated with the &#x60;getListingOffersBatch&#x60; API call.
-     * @return {Promise<module:pricing_v0/model/GetListingOffersBatchResponse>}
+     * @param {GetListingOffersBatchRequest} getListingOffersBatchRequestBody The request associated with the &#x60;getListingOffersBatch&#x60; API call.
+     * @return {Promise<GetListingOffersBatchResponse>}
      */
   getListingOffersBatchWithHttpInfo (getListingOffersBatchRequestBody) {
     const postBody = getListingOffersBatchRequestBody
@@ -354,8 +354,8 @@ export class ProductPricingApi {
 
   /**
      * Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:pricing_v0/model/GetListingOffersBatchRequest} getListingOffersBatchRequestBody The request associated with the &#x60;getListingOffersBatch&#x60; API call.
-     * @return {Promise<module:pricing_v0/model/GetListingOffersBatchResponse>}
+     * @param {GetListingOffersBatchRequest} getListingOffersBatchRequestBody The request associated with the &#x60;getListingOffersBatch&#x60; API call.
+     * @return {Promise<GetListingOffersBatchResponse>}
      */
   getListingOffersBatch (getListingOffersBatchRequestBody) {
     return this.getListingOffersBatchWithHttpInfo(getListingOffersBatchRequestBody)
@@ -367,13 +367,13 @@ export class ProductPricingApi {
   /**
      * Returns pricing information for a seller&#39;s offer listings based on seller SKU or ASIN.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
+     * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
-     * @param {module:pricing_v0/model/String} opts.itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-     * @param {module:pricing_v0/model/String} opts.offerType Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
-     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
+     * @param {[String]} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {[String]} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String} opts.itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+     * @param {String} opts.offerType Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
+     * @return {Promise<GetPricingResponse>}
      */
   getPricingWithHttpInfo (marketplaceId, itemType, opts) {
     opts = opts || {}
@@ -418,13 +418,13 @@ export class ProductPricingApi {
   /**
      * Returns pricing information for a seller&#39;s offer listings based on seller SKU or ASIN.  **Note:** The parameters associated with this operation may contain special characters that require URL encoding to call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which prices are returned.
-     * @param {module:pricing_v0/model/String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
+     * @param {String} itemType Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
      * @param {Object} opts Optional parameters
-     * @param {Array.<String>} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
-     * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
-     * @param {module:pricing_v0/model/String} opts.itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-     * @param {module:pricing_v0/model/String} opts.offerType Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
-     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
+     * @param {[String]} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
+     * @param {[String]} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
+     * @param {String} opts.itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
+     * @param {String} opts.offerType Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
+     * @return {Promise<GetPricingResponse>}
      */
   getPricing (marketplaceId, itemType, opts) {
     return this.getPricingWithHttpInfo(marketplaceId, itemType, opts)

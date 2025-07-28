@@ -34,8 +34,8 @@ export class ShippingOfferingFilter {
    * Constructs a <code>ShippingOfferingFilter</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/ShippingOfferingFilter} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/ShippingOfferingFilter} The populated <code>ShippingOfferingFilter</code> instance.
+   * @param {ShippingOfferingFilter} obj Optional instance to populate.
+   * @return {ShippingOfferingFilter} The populated <code>ShippingOfferingFilter</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -75,13 +75,13 @@ ShippingOfferingFilter.prototype.includePackingSlipWithLabel = undefined
 ShippingOfferingFilter.prototype.includeComplexShippingOptions = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CarrierWillPickUpOption} carrierWillPickUp
- * @type {module:merchantfulfillment_v0/model/CarrierWillPickUpOption}
+ * @member {CarrierWillPickUpOption} carrierWillPickUp
+ * @type {CarrierWillPickUpOption}
  */
 ShippingOfferingFilter.prototype.carrierWillPickUp = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/DeliveryExperienceOption} deliveryExperience
- * @type {module:merchantfulfillment_v0/model/DeliveryExperienceOption}
+ * @member {DeliveryExperienceOption} deliveryExperience
+ * @type {DeliveryExperienceOption}
  */
 ShippingOfferingFilter.prototype.deliveryExperience = undefined

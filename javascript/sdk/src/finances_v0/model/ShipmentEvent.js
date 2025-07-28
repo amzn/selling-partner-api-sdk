@@ -36,8 +36,8 @@ export class ShipmentEvent {
    * Constructs a <code>ShipmentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ShipmentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ShipmentEvent} The populated <code>ShipmentEvent</code> instance.
+   * @param {ShipmentEvent} obj Optional instance to populate.
+   * @return {ShipmentEvent} The populated <code>ShipmentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -102,50 +102,50 @@ ShipmentEvent.prototype.storeName = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {Array.<module:finances_v0/model/ChargeComponent>} orderChargeList
- * @type {Array.<module:finances_v0/model/ChargeComponent>}
+ * @member {[ChargeComponent]} orderChargeList
+ * @type {[ChargeComponent]}
  */
 ShipmentEvent.prototype.orderChargeList = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {Array.<module:finances_v0/model/ChargeComponent>} orderChargeAdjustmentList
- * @type {Array.<module:finances_v0/model/ChargeComponent>}
+ * @member {[ChargeComponent]} orderChargeAdjustmentList
+ * @type {[ChargeComponent]}
  */
 ShipmentEvent.prototype.orderChargeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} shipmentFeeList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} shipmentFeeList
+ * @type {[FeeComponent]}
  */
 ShipmentEvent.prototype.shipmentFeeList = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} shipmentFeeAdjustmentList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} shipmentFeeAdjustmentList
+ * @type {[FeeComponent]}
  */
 ShipmentEvent.prototype.shipmentFeeAdjustmentList = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} orderFeeList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} orderFeeList
+ * @type {[FeeComponent]}
  */
 ShipmentEvent.prototype.orderFeeList = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} orderFeeAdjustmentList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} orderFeeAdjustmentList
+ * @type {[FeeComponent]}
  */
 ShipmentEvent.prototype.orderFeeAdjustmentList = undefined
 
 /**
  * A list of direct payment information.
- * @member {Array.<module:finances_v0/model/DirectPayment>} directPaymentList
- * @type {Array.<module:finances_v0/model/DirectPayment>}
+ * @member {[DirectPayment]} directPaymentList
+ * @type {[DirectPayment]}
  */
 ShipmentEvent.prototype.directPaymentList = undefined
 
@@ -158,14 +158,14 @@ ShipmentEvent.prototype.postedDate = undefined
 
 /**
  * A list of shipment items.
- * @member {Array.<module:finances_v0/model/ShipmentItem>} shipmentItemList
- * @type {Array.<module:finances_v0/model/ShipmentItem>}
+ * @member {[ShipmentItem]} shipmentItemList
+ * @type {[ShipmentItem]}
  */
 ShipmentEvent.prototype.shipmentItemList = undefined
 
 /**
  * A list of shipment items.
- * @member {Array.<module:finances_v0/model/ShipmentItem>} shipmentItemAdjustmentList
- * @type {Array.<module:finances_v0/model/ShipmentItem>}
+ * @member {[ShipmentItem]} shipmentItemAdjustmentList
+ * @type {[ShipmentItem]}
  */
 ShipmentEvent.prototype.shipmentItemAdjustmentList = undefined

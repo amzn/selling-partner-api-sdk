@@ -31,8 +31,8 @@ export class OrderItem {
    * @alias module:vendordforders_v2021_12_28/model/OrderItem
    * @class
    * @param itemSequenceNumber {String} Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
-   * @param orderedQuantity {module:vendordforders_v2021_12_28/model/ItemQuantity}
-   * @param netPrice {module:vendordforders_v2021_12_28/model/Money}
+   * @param orderedQuantity {ItemQuantity}
+   * @param netPrice {Money}
    */
   constructor (itemSequenceNumber, orderedQuantity, netPrice) {
     this.itemSequenceNumber = itemSequenceNumber
@@ -44,8 +44,8 @@ export class OrderItem {
    * Constructs a <code>OrderItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/OrderItem} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/OrderItem} The populated <code>OrderItem</code> instance.
+   * @param {OrderItem} obj Optional instance to populate.
+   * @return {OrderItem} The populated <code>OrderItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -106,43 +106,43 @@ OrderItem.prototype.vendorProductIdentifier = undefined
 OrderItem.prototype.title = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/ItemQuantity} orderedQuantity
- * @type {module:vendordforders_v2021_12_28/model/ItemQuantity}
+ * @member {ItemQuantity} orderedQuantity
+ * @type {ItemQuantity}
  */
 OrderItem.prototype.orderedQuantity = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/ScheduledDeliveryShipment} scheduledDeliveryShipment
- * @type {module:vendordforders_v2021_12_28/model/ScheduledDeliveryShipment}
+ * @member {ScheduledDeliveryShipment} scheduledDeliveryShipment
+ * @type {ScheduledDeliveryShipment}
  */
 OrderItem.prototype.scheduledDeliveryShipment = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/GiftDetails} giftDetails
- * @type {module:vendordforders_v2021_12_28/model/GiftDetails}
+ * @member {GiftDetails} giftDetails
+ * @type {GiftDetails}
  */
 OrderItem.prototype.giftDetails = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/Money} netPrice
- * @type {module:vendordforders_v2021_12_28/model/Money}
+ * @member {Money} netPrice
+ * @type {Money}
  */
 OrderItem.prototype.netPrice = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/TaxItemDetails} taxDetails
- * @type {module:vendordforders_v2021_12_28/model/TaxItemDetails}
+ * @member {TaxItemDetails} taxDetails
+ * @type {TaxItemDetails}
  */
 OrderItem.prototype.taxDetails = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/Money} totalPrice
- * @type {module:vendordforders_v2021_12_28/model/Money}
+ * @member {Money} totalPrice
+ * @type {Money}
  */
 OrderItem.prototype.totalPrice = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/BuyerCustomizedInfoDetail} buyerCustomizedInfo
- * @type {module:vendordforders_v2021_12_28/model/BuyerCustomizedInfoDetail}
+ * @member {BuyerCustomizedInfoDetail} buyerCustomizedInfo
+ * @type {BuyerCustomizedInfoDetail}
  */
 OrderItem.prototype.buyerCustomizedInfo = undefined

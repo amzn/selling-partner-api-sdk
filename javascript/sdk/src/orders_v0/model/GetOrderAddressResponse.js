@@ -34,8 +34,8 @@ export class GetOrderAddressResponse {
    * Constructs a <code>GetOrderAddressResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/GetOrderAddressResponse} obj Optional instance to populate.
-   * @return {module:orders_v0/model/GetOrderAddressResponse} The populated <code>GetOrderAddressResponse</code> instance.
+   * @param {GetOrderAddressResponse} obj Optional instance to populate.
+   * @return {GetOrderAddressResponse} The populated <code>GetOrderAddressResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetOrderAddressResponse {
 }
 
 /**
- * @member {module:orders_v0/model/OrderAddress} payload
- * @type {module:orders_v0/model/OrderAddress}
+ * @member {OrderAddress} payload
+ * @type {OrderAddress}
  */
 GetOrderAddressResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:orders_v0/model/Error>} errors
- * @type {Array.<module:orders_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetOrderAddressResponse.prototype.errors = undefined

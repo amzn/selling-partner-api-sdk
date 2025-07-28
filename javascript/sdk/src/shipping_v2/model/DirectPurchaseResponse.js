@@ -33,8 +33,8 @@ export class DirectPurchaseResponse {
    * Constructs a <code>DirectPurchaseResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/DirectPurchaseResponse} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/DirectPurchaseResponse} The populated <code>DirectPurchaseResponse</code> instance.
+   * @param {DirectPurchaseResponse} obj Optional instance to populate.
+   * @return {DirectPurchaseResponse} The populated <code>DirectPurchaseResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class DirectPurchaseResponse {
 }
 
 /**
- * @member {module:shipping_v2/model/DirectPurchaseResult} payload
- * @type {module:shipping_v2/model/DirectPurchaseResult}
+ * @member {DirectPurchaseResult} payload
+ * @type {DirectPurchaseResult}
  */
 DirectPurchaseResponse.prototype.payload = undefined

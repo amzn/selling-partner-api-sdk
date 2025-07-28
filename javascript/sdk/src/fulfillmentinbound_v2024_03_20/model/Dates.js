@@ -33,8 +33,8 @@ export class Dates {
    * Constructs a <code>Dates</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Dates} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Dates} The populated <code>Dates</code> instance.
+   * @param {Dates} obj Optional instance to populate.
+   * @return {Dates} The populated <code>Dates</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class Dates {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Window} readyToShipWindow
- * @type {module:fulfillmentinbound_v2024_03_20/model/Window}
+ * @member {Window} readyToShipWindow
+ * @type {Window}
  */
 Dates.prototype.readyToShipWindow = undefined

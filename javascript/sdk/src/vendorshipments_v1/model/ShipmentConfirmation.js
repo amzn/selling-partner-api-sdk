@@ -32,12 +32,12 @@ export class ShipmentConfirmation {
    * @alias module:vendorshipments_v1/model/ShipmentConfirmation
    * @class
    * @param shipmentIdentifier {String} Unique shipment ID (not used over the last 365 days).
-   * @param shipmentConfirmationType {module:vendorshipments_v1/model/ShipmentConfirmation.ShipmentConfirmationTypeEnum} Indicates if this shipment confirmation is the initial confirmation, or intended to replace an already posted shipment confirmation. If replacing an existing shipment confirmation, be sure to provide the identical shipmentIdentifier and sellingParty information as in the previous confirmation.
+   * @param shipmentConfirmationType {String} Indicates if this shipment confirmation is the initial confirmation, or intended to replace an already posted shipment confirmation. If replacing an existing shipment confirmation, be sure to provide the identical shipmentIdentifier and sellingParty information as in the previous confirmation.
    * @param shipmentConfirmationDate {Date} Date on which the shipment confirmation was submitted.
-   * @param sellingParty {module:vendorshipments_v1/model/PartyIdentification}
-   * @param shipFromParty {module:vendorshipments_v1/model/PartyIdentification}
-   * @param shipToParty {module:vendorshipments_v1/model/PartyIdentification}
-   * @param shippedItems {Array.<module:vendorshipments_v1/model/Item>} A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param shipToParty {PartyIdentification}
+   * @param shippedItems {[Item]} A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
    */
   constructor (shipmentIdentifier, shipmentConfirmationType, shipmentConfirmationDate, sellingParty, shipFromParty, shipToParty, shippedItems) {
     this.shipmentIdentifier = shipmentIdentifier
@@ -53,8 +53,8 @@ export class ShipmentConfirmation {
    * Constructs a <code>ShipmentConfirmation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ShipmentConfirmation} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ShipmentConfirmation} The populated <code>ShipmentConfirmation</code> instance.
+   * @param {ShipmentConfirmation} obj Optional instance to populate.
+   * @return {ShipmentConfirmation} The populated <code>ShipmentConfirmation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -121,8 +121,8 @@ ShipmentConfirmation.ShipmentConfirmationTypeEnum = {
 
 /**
  * Indicates if this shipment confirmation is the initial confirmation, or intended to replace an already posted shipment confirmation. If replacing an existing shipment confirmation, be sure to provide the identical shipmentIdentifier and sellingParty information as in the previous confirmation.
- * @member {module:vendorshipments_v1/model/ShipmentConfirmation.ShipmentConfirmationTypeEnum} shipmentConfirmationType
- * @type {module:vendorshipments_v1/model/ShipmentConfirmation.ShipmentConfirmationTypeEnum}
+ * @member {String} shipmentConfirmationType
+ * @type {String}
  */
 ShipmentConfirmation.prototype.shipmentConfirmationType = undefined
 
@@ -154,8 +154,8 @@ ShipmentConfirmation.ShipmentTypeEnum = {
 
 /**
  * The type of shipment.
- * @member {module:vendorshipments_v1/model/ShipmentConfirmation.ShipmentTypeEnum} shipmentType
- * @type {module:vendorshipments_v1/model/ShipmentConfirmation.ShipmentTypeEnum}
+ * @member {String} shipmentType
+ * @type {String}
  */
 ShipmentConfirmation.prototype.shipmentType = undefined
 
@@ -211,14 +211,14 @@ ShipmentConfirmation.ShipmentStructureEnum = {
 
 /**
  * Shipment hierarchical structure.
- * @member {module:vendorshipments_v1/model/ShipmentConfirmation.ShipmentStructureEnum} shipmentStructure
- * @type {module:vendorshipments_v1/model/ShipmentConfirmation.ShipmentStructureEnum}
+ * @member {String} shipmentStructure
+ * @type {String}
  */
 ShipmentConfirmation.prototype.shipmentStructure = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/TransportationDetailsForShipmentConfirmation} transportationDetails
- * @type {module:vendorshipments_v1/model/TransportationDetailsForShipmentConfirmation}
+ * @member {TransportationDetailsForShipmentConfirmation} transportationDetails
+ * @type {TransportationDetailsForShipmentConfirmation}
  */
 ShipmentConfirmation.prototype.transportationDetails = undefined
 
@@ -251,52 +251,52 @@ ShipmentConfirmation.prototype.shippedDate = undefined
 ShipmentConfirmation.prototype.estimatedDeliveryDate = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} sellingParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 ShipmentConfirmation.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} shipFromParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 ShipmentConfirmation.prototype.shipFromParty = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PartyIdentification} shipToParty
- * @type {module:vendorshipments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipToParty
+ * @type {PartyIdentification}
  */
 ShipmentConfirmation.prototype.shipToParty = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ShipmentMeasurements} shipmentMeasurements
- * @type {module:vendorshipments_v1/model/ShipmentMeasurements}
+ * @member {ShipmentMeasurements} shipmentMeasurements
+ * @type {ShipmentMeasurements}
  */
 ShipmentConfirmation.prototype.shipmentMeasurements = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ImportDetails} importDetails
- * @type {module:vendorshipments_v1/model/ImportDetails}
+ * @member {ImportDetails} importDetails
+ * @type {ImportDetails}
  */
 ShipmentConfirmation.prototype.importDetails = undefined
 
 /**
  * A list of the items in this shipment and their associated details. If any of the item detail fields are common at a carton or a pallet level, provide them at the corresponding carton or pallet level.
- * @member {Array.<module:vendorshipments_v1/model/Item>} shippedItems
- * @type {Array.<module:vendorshipments_v1/model/Item>}
+ * @member {[Item]} shippedItems
+ * @type {[Item]}
  */
 ShipmentConfirmation.prototype.shippedItems = undefined
 
 /**
  * A list of the cartons in this shipment.
- * @member {Array.<module:vendorshipments_v1/model/Carton>} cartons
- * @type {Array.<module:vendorshipments_v1/model/Carton>}
+ * @member {[Carton]} cartons
+ * @type {[Carton]}
  */
 ShipmentConfirmation.prototype.cartons = undefined
 
 /**
  * A list of the pallets in this shipment.
- * @member {Array.<module:vendorshipments_v1/model/Pallet>} pallets
- * @type {Array.<module:vendorshipments_v1/model/Pallet>}
+ * @member {[Pallet]} pallets
+ * @type {[Pallet]}
  */
 ShipmentConfirmation.prototype.pallets = undefined

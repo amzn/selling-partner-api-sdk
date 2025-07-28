@@ -32,8 +32,8 @@ export class BusinessContext {
    * Constructs a <code>BusinessContext</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/BusinessContext} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/BusinessContext} The populated <code>BusinessContext</code> instance.
+   * @param {BusinessContext} obj Optional instance to populate.
+   * @return {BusinessContext} The populated <code>BusinessContext</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,7 +71,7 @@ BusinessContext.StoreNameEnum = {
 
 /**
  * The store name associated with the transaction.
- * @member {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum} storeName
- * @type {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum}
+ * @member {String} storeName
+ * @type {String}
  */
 BusinessContext.prototype.storeName = undefined

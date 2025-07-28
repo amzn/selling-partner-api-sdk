@@ -32,8 +32,8 @@ export class FeatureSku {
    * Constructs a <code>FeatureSku</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FeatureSku} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FeatureSku} The populated <code>FeatureSku</code> instance.
+   * @param {FeatureSku} obj Optional instance to populate.
+   * @return {FeatureSku} The populated <code>FeatureSku</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,7 +89,7 @@ FeatureSku.prototype.skuCount = undefined
 
 /**
  * Other seller SKUs that are shared across the same inventory.
- * @member {Array.<String>} overlappingSkus
- * @type {Array.<String>}
+ * @member {[String]} overlappingSkus
+ * @type {[String]}
  */
 FeatureSku.prototype.overlappingSkus = undefined

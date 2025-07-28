@@ -27,10 +27,10 @@ export class ShippingLabel {
    * @alias module:vendordfshipping_v2021_12_28/model/ShippingLabel
    * @class
    * @param purchaseOrderNumber {String} This field will contain the Purchase Order Number for this order.
-   * @param sellingParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param shipFromParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param labelFormat {module:vendordfshipping_v2021_12_28/model/ShippingLabel.LabelFormatEnum} Format of the label.
-   * @param labelData {Array.<module:vendordfshipping_v2021_12_28/model/LabelData>} Provides the details of the packages in this shipment.
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param labelFormat {String} Format of the label.
+   * @param labelData {[LabelData]} Provides the details of the packages in this shipment.
    */
   constructor (purchaseOrderNumber, sellingParty, shipFromParty, labelFormat, labelData) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -44,8 +44,8 @@ export class ShippingLabel {
    * Constructs a <code>ShippingLabel</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ShippingLabel} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ShippingLabel} The populated <code>ShippingLabel</code> instance.
+   * @param {ShippingLabel} obj Optional instance to populate.
+   * @return {ShippingLabel} The populated <code>ShippingLabel</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,14 +79,14 @@ export class ShippingLabel {
 ShippingLabel.prototype.purchaseOrderNumber = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 ShippingLabel.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 ShippingLabel.prototype.shipFromParty = undefined
 
@@ -112,14 +112,14 @@ ShippingLabel.LabelFormatEnum = {
 
 /**
  * Format of the label.
- * @member {module:vendordfshipping_v2021_12_28/model/ShippingLabel.LabelFormatEnum} labelFormat
- * @type {module:vendordfshipping_v2021_12_28/model/ShippingLabel.LabelFormatEnum}
+ * @member {String} labelFormat
+ * @type {String}
  */
 ShippingLabel.prototype.labelFormat = undefined
 
 /**
  * Provides the details of the packages in this shipment.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/LabelData>} labelData
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/LabelData>}
+ * @member {[LabelData]} labelData
+ * @type {[LabelData]}
  */
 ShippingLabel.prototype.labelData = undefined

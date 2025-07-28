@@ -39,8 +39,8 @@ export class Summary {
    * Constructs a <code>Summary</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/Summary} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/Summary} The populated <code>Summary</code> instance.
+   * @param {Summary} obj Optional instance to populate.
+   * @return {Summary} The populated <code>Summary</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -80,54 +80,54 @@ Summary.prototype.totalOfferCount = undefined
 
 /**
  * A list that contains the total number of offers information for given conditions and fulfillment channels.
- * @member {Array.<module:pricing_v0/model/OfferCountType>} numberOfOffers
- * @type {Array.<module:pricing_v0/model/OfferCountType>}
+ * @member {[OfferCountType]} numberOfOffers
+ * @type {[OfferCountType]}
  */
 Summary.prototype.numberOfOffers = undefined
 
 /**
  * A list of the lowest prices.
- * @member {Array.<module:pricing_v0/model/LowestPriceType>} lowestPrices
- * @type {Array.<module:pricing_v0/model/LowestPriceType>}
+ * @member {[LowestPriceType]} lowestPrices
+ * @type {[LowestPriceType]}
  */
 Summary.prototype.lowestPrices = undefined
 
 /**
  * A list of the Buy Box prices.
- * @member {Array.<module:pricing_v0/model/BuyBoxPriceType>} buyBoxPrices
- * @type {Array.<module:pricing_v0/model/BuyBoxPriceType>}
+ * @member {[BuyBoxPriceType]} buyBoxPrices
+ * @type {[BuyBoxPriceType]}
  */
 Summary.prototype.buyBoxPrices = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} listPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} listPrice
+ * @type {MoneyType}
  */
 Summary.prototype.listPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} competitivePriceThreshold
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} competitivePriceThreshold
+ * @type {MoneyType}
  */
 Summary.prototype.competitivePriceThreshold = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} suggestedLowerPricePlusShipping
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} suggestedLowerPricePlusShipping
+ * @type {MoneyType}
  */
 Summary.prototype.suggestedLowerPricePlusShipping = undefined
 
 /**
  * A list of sales rank information for the item, by category.
- * @member {Array.<module:pricing_v0/model/SalesRankType>} salesRankings
- * @type {Array.<module:pricing_v0/model/SalesRankType>}
+ * @member {[SalesRankType]} salesRankings
+ * @type {[SalesRankType]}
  */
 Summary.prototype.salesRankings = undefined
 
 /**
  * A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.
- * @member {Array.<module:pricing_v0/model/OfferCountType>} buyBoxEligibleOffers
- * @type {Array.<module:pricing_v0/model/OfferCountType>}
+ * @member {[OfferCountType]} buyBoxEligibleOffers
+ * @type {[OfferCountType]}
  */
 Summary.prototype.buyBoxEligibleOffers = undefined
 

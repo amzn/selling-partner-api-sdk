@@ -34,8 +34,8 @@ export class PayWithAmazonEvent {
    * Constructs a <code>PayWithAmazonEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/PayWithAmazonEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/PayWithAmazonEvent} The populated <code>PayWithAmazonEvent</code> instance.
+   * @param {PayWithAmazonEvent} obj Optional instance to populate.
+   * @return {PayWithAmazonEvent} The populated <code>PayWithAmazonEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -95,15 +95,15 @@ PayWithAmazonEvent.prototype.businessObjectType = undefined
 PayWithAmazonEvent.prototype.salesChannel = undefined
 
 /**
- * @member {module:finances_v0/model/ChargeComponent} charge
- * @type {module:finances_v0/model/ChargeComponent}
+ * @member {ChargeComponent} charge
+ * @type {ChargeComponent}
  */
 PayWithAmazonEvent.prototype.charge = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} feeList
+ * @type {[FeeComponent]}
  */
 PayWithAmazonEvent.prototype.feeList = undefined
 

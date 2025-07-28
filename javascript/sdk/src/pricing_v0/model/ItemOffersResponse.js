@@ -30,8 +30,8 @@ export class ItemOffersResponse {
    * @alias module:pricing_v0/model/ItemOffersResponse
    * @class
    * @implements module:pricing_v0/model/BatchOffersResponse
-   * @param body {module:pricing_v0/model/GetOffersResponse}
-   * @param request {module:pricing_v0/model/ItemOffersRequestParams}
+   * @param body {GetOffersResponse}
+   * @param request {ItemOffersRequestParams}
    */
   constructor (body, request) {
     BatchOffersResponse.call(this, body)
@@ -43,8 +43,8 @@ export class ItemOffersResponse {
    * Constructs a <code>ItemOffersResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/ItemOffersResponse} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/ItemOffersResponse} The populated <code>ItemOffersResponse</code> instance.
+   * @param {ItemOffersResponse} obj Optional instance to populate.
+   * @return {ItemOffersResponse} The populated <code>ItemOffersResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,44 +71,44 @@ export class ItemOffersResponse {
 }
 
 /**
- * @member {module:pricing_v0/model/HttpResponseHeaders} headers
- * @type {module:pricing_v0/model/HttpResponseHeaders}
+ * @member {HttpResponseHeaders} headers
+ * @type {HttpResponseHeaders}
  */
 ItemOffersResponse.prototype.headers = undefined
 
 /**
- * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
- * @type {module:pricing_v0/model/GetOffersHttpStatusLine}
+ * @member {GetOffersHttpStatusLine} status
+ * @type {GetOffersHttpStatusLine}
  */
 ItemOffersResponse.prototype.status = undefined
 
 /**
- * @member {module:pricing_v0/model/GetOffersResponse} body
- * @type {module:pricing_v0/model/GetOffersResponse}
+ * @member {GetOffersResponse} body
+ * @type {GetOffersResponse}
  */
 ItemOffersResponse.prototype.body = undefined
 
 /**
- * @member {module:pricing_v0/model/ItemOffersRequestParams} request
- * @type {module:pricing_v0/model/ItemOffersRequestParams}
+ * @member {ItemOffersRequestParams} request
+ * @type {ItemOffersRequestParams}
  */
 ItemOffersResponse.prototype.request = undefined
 
 // Implement BatchOffersResponse interface:
 /**
- * @member {module:pricing_v0/model/HttpResponseHeaders} headers
- * @type {module:pricing_v0/model/HttpResponseHeaders}
+ * @member {HttpResponseHeaders} headers
+ * @type {HttpResponseHeaders}
  */
 BatchOffersResponse.prototype.headers = undefined
 
 /**
- * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
- * @type {module:pricing_v0/model/GetOffersHttpStatusLine}
+ * @member {GetOffersHttpStatusLine} status
+ * @type {GetOffersHttpStatusLine}
  */
 BatchOffersResponse.prototype.status = undefined
 
 /**
- * @member {module:pricing_v0/model/GetOffersResponse} body
- * @type {module:pricing_v0/model/GetOffersResponse}
+ * @member {GetOffersResponse} body
+ * @type {GetOffersResponse}
  */
 BatchOffersResponse.prototype.body = undefined

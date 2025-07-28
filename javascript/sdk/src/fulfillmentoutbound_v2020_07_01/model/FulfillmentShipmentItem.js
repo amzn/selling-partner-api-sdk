@@ -38,8 +38,8 @@ export class FulfillmentShipmentItem {
    * Constructs a <code>FulfillmentShipmentItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentItem} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentItem} The populated <code>FulfillmentShipmentItem</code> instance.
+   * @param {FulfillmentShipmentItem} obj Optional instance to populate.
+   * @return {FulfillmentShipmentItem} The populated <code>FulfillmentShipmentItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -103,7 +103,7 @@ FulfillmentShipmentItem.prototype.serialNumber = undefined
 
 /**
  * String list
- * @member {Array.<String>} manufacturerLotCodes
- * @type {Array.<String>}
+ * @member {[String]} manufacturerLotCodes
+ * @type {[String]}
  */
 FulfillmentShipmentItem.prototype.manufacturerLotCodes = undefined

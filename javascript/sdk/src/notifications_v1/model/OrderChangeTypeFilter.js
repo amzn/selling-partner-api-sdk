@@ -33,8 +33,8 @@ export class OrderChangeTypeFilter {
    * Constructs a <code>OrderChangeTypeFilter</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/OrderChangeTypeFilter} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/OrderChangeTypeFilter} The populated <code>OrderChangeTypeFilter</code> instance.
+   * @param {OrderChangeTypeFilter} obj Optional instance to populate.
+   * @return {OrderChangeTypeFilter} The populated <code>OrderChangeTypeFilter</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class OrderChangeTypeFilter {
 
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
- * @member {Array.<module:notifications_v1/model/OrderChangeTypeEnum>} orderChangeTypes
- * @type {Array.<module:notifications_v1/model/OrderChangeTypeEnum>}
+ * @member {[OrderChangeTypeEnum]} orderChangeTypes
+ * @type {[OrderChangeTypeEnum]}
  */
 OrderChangeTypeFilter.prototype.orderChangeTypes = undefined

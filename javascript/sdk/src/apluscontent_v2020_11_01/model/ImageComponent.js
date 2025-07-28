@@ -26,7 +26,7 @@ export class ImageComponent {
    * @alias module:apluscontent_v2020_11_01/model/ImageComponent
    * @class
    * @param uploadDestinationId {String} This identifier is provided by the [Uploads API](https://developer-docs.amazon.com/sp-api/reference/welcome-to-api-references).
-   * @param imageCropSpecification {module:apluscontent_v2020_11_01/model/ImageCropSpecification}
+   * @param imageCropSpecification {ImageCropSpecification}
    * @param altText {String} The alternative text for the image.
    */
   constructor (uploadDestinationId, imageCropSpecification, altText) {
@@ -39,8 +39,8 @@ export class ImageComponent {
    * Constructs a <code>ImageComponent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ImageComponent} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ImageComponent} The populated <code>ImageComponent</code> instance.
+   * @param {ImageComponent} obj Optional instance to populate.
+   * @return {ImageComponent} The populated <code>ImageComponent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,8 +72,8 @@ export class ImageComponent {
 ImageComponent.prototype.uploadDestinationId = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageCropSpecification} imageCropSpecification
- * @type {module:apluscontent_v2020_11_01/model/ImageCropSpecification}
+ * @member {ImageCropSpecification} imageCropSpecification
+ * @type {ImageCropSpecification}
  */
 ImageComponent.prototype.imageCropSpecification = undefined
 

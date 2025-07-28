@@ -42,8 +42,8 @@ export class AccountHolderAddress {
    * Constructs a <code>AccountHolderAddress</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/AccountHolderAddress} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/AccountHolderAddress} The populated <code>AccountHolderAddress</code> instance.
+   * @param {AccountHolderAddress} obj Optional instance to populate.
+   * @return {AccountHolderAddress} The populated <code>AccountHolderAddress</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

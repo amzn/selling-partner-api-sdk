@@ -36,8 +36,8 @@ export class GetSolicitationActionResponse {
    * Constructs a <code>GetSolicitationActionResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:solicitations_v1/model/GetSolicitationActionResponse} obj Optional instance to populate.
-   * @return {module:solicitations_v1/model/GetSolicitationActionResponse} The populated <code>GetSolicitationActionResponse</code> instance.
+   * @param {GetSolicitationActionResponse} obj Optional instance to populate.
+   * @return {GetSolicitationActionResponse} The populated <code>GetSolicitationActionResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,26 +63,26 @@ export class GetSolicitationActionResponse {
 }
 
 /**
- * @member {module:solicitations_v1/model/GetSolicitationActionResponseLinks} links
- * @type {module:solicitations_v1/model/GetSolicitationActionResponseLinks}
+ * @member {GetSolicitationActionResponseLinks} links
+ * @type {GetSolicitationActionResponseLinks}
  */
 GetSolicitationActionResponse.prototype.links = undefined
 
 /**
- * @member {module:solicitations_v1/model/GetSolicitationActionResponseEmbedded} embedded
- * @type {module:solicitations_v1/model/GetSolicitationActionResponseEmbedded}
+ * @member {GetSolicitationActionResponseEmbedded} embedded
+ * @type {GetSolicitationActionResponseEmbedded}
  */
 GetSolicitationActionResponse.prototype.embedded = undefined
 
 /**
- * @member {module:solicitations_v1/model/SolicitationsAction} payload
- * @type {module:solicitations_v1/model/SolicitationsAction}
+ * @member {SolicitationsAction} payload
+ * @type {SolicitationsAction}
  */
 GetSolicitationActionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:solicitations_v1/model/Error>} errors
- * @type {Array.<module:solicitations_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetSolicitationActionResponse.prototype.errors = undefined

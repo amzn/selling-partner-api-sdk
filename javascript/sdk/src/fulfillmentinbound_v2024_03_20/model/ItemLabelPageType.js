@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ItemLabelPageType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ItemLabelPageType {
@@ -88,7 +88,7 @@ export class ItemLabelPageType {
   /**
     * Returns a <code>ItemLabelPageType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v2024_03_20/model/ItemLabelPageType} The enum <code>ItemLabelPageType</code> value.
+    * @return {ItemLabelPageType} The enum <code>ItemLabelPageType</code> value.
     */
   static constructFromObject (object) {
     return object

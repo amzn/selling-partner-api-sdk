@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class EventCode.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class EventCode {
@@ -106,7 +106,7 @@ export class EventCode {
   /**
     * Returns a <code>EventCode</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/EventCode} The enum <code>EventCode</code> value.
+    * @return {EventCode} The enum <code>EventCode</code> value.
     */
   static constructFromObject (object) {
     return object

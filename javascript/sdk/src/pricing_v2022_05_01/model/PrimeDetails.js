@@ -24,7 +24,7 @@ export class PrimeDetails {
    * Amazon Prime details.
    * @alias module:pricing_v2022_05_01/model/PrimeDetails
    * @class
-   * @param eligibility {module:pricing_v2022_05_01/model/PrimeDetails.EligibilityEnum} Indicates whether the offer is an Amazon Prime offer.
+   * @param eligibility {String} Indicates whether the offer is an Amazon Prime offer.
    */
   constructor (eligibility) {
     this.eligibility = eligibility
@@ -34,8 +34,8 @@ export class PrimeDetails {
    * Constructs a <code>PrimeDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/PrimeDetails} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/PrimeDetails} The populated <code>PrimeDetails</code> instance.
+   * @param {PrimeDetails} obj Optional instance to populate.
+   * @return {PrimeDetails} The populated <code>PrimeDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,7 +85,7 @@ PrimeDetails.EligibilityEnum = {
 
 /**
  * Indicates whether the offer is an Amazon Prime offer.
- * @member {module:pricing_v2022_05_01/model/PrimeDetails.EligibilityEnum} eligibility
- * @type {module:pricing_v2022_05_01/model/PrimeDetails.EligibilityEnum}
+ * @member {String} eligibility
+ * @type {String}
  */
 PrimeDetails.prototype.eligibility = undefined

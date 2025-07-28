@@ -24,7 +24,7 @@ export class EncryptionDetails {
    * Encryption details for required client-side encryption and decryption of document contents.
    * @alias module:services_v1/model/EncryptionDetails
    * @class
-   * @param standard {module:services_v1/model/EncryptionDetails.StandardEnum} The encryption standard required to encrypt or decrypt the document contents.
+   * @param standard {String} The encryption standard required to encrypt or decrypt the document contents.
    * @param initializationVector {String} The vector to encrypt or decrypt the document contents using Cipher Block Chaining (CBC).
    * @param key {String} The encryption key used to encrypt or decrypt the document contents.
    */
@@ -38,8 +38,8 @@ export class EncryptionDetails {
    * Constructs a <code>EncryptionDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/EncryptionDetails} obj Optional instance to populate.
-   * @return {module:services_v1/model/EncryptionDetails} The populated <code>EncryptionDetails</code> instance.
+   * @param {EncryptionDetails} obj Optional instance to populate.
+   * @return {EncryptionDetails} The populated <code>EncryptionDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,8 +79,8 @@ EncryptionDetails.StandardEnum = {
 
 /**
  * The encryption standard required to encrypt or decrypt the document contents.
- * @member {module:services_v1/model/EncryptionDetails.StandardEnum} standard
- * @type {module:services_v1/model/EncryptionDetails.StandardEnum}
+ * @member {String} standard
+ * @type {String}
  */
 EncryptionDetails.prototype.standard = undefined
 

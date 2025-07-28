@@ -26,7 +26,7 @@ export class ContentMetadataRecord {
    * @alias module:apluscontent_v2020_11_01/model/ContentMetadataRecord
    * @class
    * @param contentReferenceKey {String} A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
-   * @param contentMetadata {module:apluscontent_v2020_11_01/model/ContentMetadata}
+   * @param contentMetadata {ContentMetadata}
    */
   constructor (contentReferenceKey, contentMetadata) {
     this.contentReferenceKey = contentReferenceKey
@@ -37,8 +37,8 @@ export class ContentMetadataRecord {
    * Constructs a <code>ContentMetadataRecord</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ContentMetadataRecord} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ContentMetadataRecord} The populated <code>ContentMetadataRecord</code> instance.
+   * @param {ContentMetadataRecord} obj Optional instance to populate.
+   * @return {ContentMetadataRecord} The populated <code>ContentMetadataRecord</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class ContentMetadataRecord {
 ContentMetadataRecord.prototype.contentReferenceKey = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ContentMetadata} contentMetadata
- * @type {module:apluscontent_v2020_11_01/model/ContentMetadata}
+ * @member {ContentMetadata} contentMetadata
+ * @type {ContentMetadata}
  */
 ContentMetadataRecord.prototype.contentMetadata = undefined

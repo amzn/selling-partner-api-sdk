@@ -33,8 +33,8 @@ export class SAFETReimbursementItem {
    * Constructs a <code>SAFETReimbursementItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/SAFETReimbursementItem} obj Optional instance to populate.
-   * @return {module:finances_v0/model/SAFETReimbursementItem} The populated <code>SAFETReimbursementItem</code> instance.
+   * @param {SAFETReimbursementItem} obj Optional instance to populate.
+   * @return {SAFETReimbursementItem} The populated <code>SAFETReimbursementItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,8 +60,8 @@ export class SAFETReimbursementItem {
 
 /**
  * A list of charge information on the seller's account.
- * @member {Array.<module:finances_v0/model/ChargeComponent>} itemChargeList
- * @type {Array.<module:finances_v0/model/ChargeComponent>}
+ * @member {[ChargeComponent]} itemChargeList
+ * @type {[ChargeComponent]}
  */
 SAFETReimbursementItem.prototype.itemChargeList = undefined
 

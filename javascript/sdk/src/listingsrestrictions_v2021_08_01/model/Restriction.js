@@ -35,8 +35,8 @@ export class Restriction {
    * Constructs a <code>Restriction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsrestrictions_v2021_08_01/model/Restriction} obj Optional instance to populate.
-   * @return {module:listingsrestrictions_v2021_08_01/model/Restriction} The populated <code>Restriction</code> instance.
+   * @param {Restriction} obj Optional instance to populate.
+   * @return {Restriction} The populated <code>Restriction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -155,14 +155,14 @@ Restriction.ConditionTypeEnum = {
 
 /**
  * The condition that applies to the restriction.
- * @member {module:listingsrestrictions_v2021_08_01/model/Restriction.ConditionTypeEnum} conditionType
- * @type {module:listingsrestrictions_v2021_08_01/model/Restriction.ConditionTypeEnum}
+ * @member {String} conditionType
+ * @type {String}
  */
 Restriction.prototype.conditionType = undefined
 
 /**
  * A list of reasons for the restriction.
- * @member {Array.<module:listingsrestrictions_v2021_08_01/model/Reason>} reasons
- * @type {Array.<module:listingsrestrictions_v2021_08_01/model/Reason>}
+ * @member {[Reason]} reasons
+ * @type {[Reason]}
  */
 Restriction.prototype.reasons = undefined

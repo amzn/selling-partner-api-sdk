@@ -33,8 +33,8 @@ export class Points {
    * Constructs a <code>Points</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/Points} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/Points} The populated <code>Points</code> instance.
+   * @param {Points} obj Optional instance to populate.
+   * @return {Points} The populated <code>Points</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class Points {
 Points.prototype.pointsNumber = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} pointsMonetaryValue
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} pointsMonetaryValue
+ * @type {MoneyType}
  */
 Points.prototype.pointsMonetaryValue = undefined

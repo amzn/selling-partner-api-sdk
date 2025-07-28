@@ -25,7 +25,7 @@ export class CreateDestinationRequest {
    * The request schema for the &#x60;createDestination&#x60; operation.
    * @alias module:notifications_v1/model/CreateDestinationRequest
    * @class
-   * @param resourceSpecification {module:notifications_v1/model/DestinationResourceSpecification}
+   * @param resourceSpecification {DestinationResourceSpecification}
    * @param name {String} A developer-defined name to help identify this destination.
    */
   constructor (resourceSpecification, name) {
@@ -37,8 +37,8 @@ export class CreateDestinationRequest {
    * Constructs a <code>CreateDestinationRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/CreateDestinationRequest} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/CreateDestinationRequest} The populated <code>CreateDestinationRequest</code> instance.
+   * @param {CreateDestinationRequest} obj Optional instance to populate.
+   * @return {CreateDestinationRequest} The populated <code>CreateDestinationRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class CreateDestinationRequest {
 }
 
 /**
- * @member {module:notifications_v1/model/DestinationResourceSpecification} resourceSpecification
- * @type {module:notifications_v1/model/DestinationResourceSpecification}
+ * @member {DestinationResourceSpecification} resourceSpecification
+ * @type {DestinationResourceSpecification}
  */
 CreateDestinationRequest.prototype.resourceSpecification = undefined
 

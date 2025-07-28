@@ -35,8 +35,8 @@ export class FeaturedOfferExpectedPriceResponseBody {
    * Constructs a <code>FeaturedOfferExpectedPriceResponseBody</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResponseBody} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResponseBody} The populated <code>FeaturedOfferExpectedPriceResponseBody</code> instance.
+   * @param {FeaturedOfferExpectedPriceResponseBody} obj Optional instance to populate.
+   * @return {FeaturedOfferExpectedPriceResponseBody} The populated <code>FeaturedOfferExpectedPriceResponseBody</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,21 +61,21 @@ export class FeaturedOfferExpectedPriceResponseBody {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/OfferIdentifier} offerIdentifier
- * @type {module:pricing_v2022_05_01/model/OfferIdentifier}
+ * @member {OfferIdentifier} offerIdentifier
+ * @type {OfferIdentifier}
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.offerIdentifier = undefined
 
 /**
  * A list of FOEP results for the requested offer.
- * @member {Array.<module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResult>} featuredOfferExpectedPriceResults
- * @type {Array.<module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResult>}
+ * @member {[FeaturedOfferExpectedPriceResult]} featuredOfferExpectedPriceResults
+ * @type {[FeaturedOfferExpectedPriceResult]}
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.featuredOfferExpectedPriceResults = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
- * @member {Array.<module:pricing_v2022_05_01/model/Error>} errors
- * @type {Array.<module:pricing_v2022_05_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 FeaturedOfferExpectedPriceResponseBody.prototype.errors = undefined

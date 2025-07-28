@@ -26,7 +26,7 @@ export class TextItem {
    * @alias module:apluscontent_v2020_11_01/model/TextItem
    * @class
    * @param position {Number} The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.
-   * @param text {module:apluscontent_v2020_11_01/model/TextComponent}
+   * @param text {TextComponent}
    */
   constructor (position, text) {
     this.position = position
@@ -37,8 +37,8 @@ export class TextItem {
    * Constructs a <code>TextItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/TextItem} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/TextItem} The populated <code>TextItem</code> instance.
+   * @param {TextItem} obj Optional instance to populate.
+   * @return {TextItem} The populated <code>TextItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class TextItem {
 TextItem.prototype.position = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} text
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} text
+ * @type {TextComponent}
  */
 TextItem.prototype.text = undefined

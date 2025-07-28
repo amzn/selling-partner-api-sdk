@@ -33,8 +33,8 @@ export class SubmitShippingLabelsRequest {
    * Constructs a <code>SubmitShippingLabelsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/SubmitShippingLabelsRequest} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/SubmitShippingLabelsRequest} The populated <code>SubmitShippingLabelsRequest</code> instance.
+   * @param {SubmitShippingLabelsRequest} obj Optional instance to populate.
+   * @return {SubmitShippingLabelsRequest} The populated <code>SubmitShippingLabelsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class SubmitShippingLabelsRequest {
 
 /**
  * An array of shipping label requests to be processed.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShippingLabelRequest>} shippingLabelRequests
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/ShippingLabelRequest>}
+ * @member {[ShippingLabelRequest]} shippingLabelRequests
+ * @type {[ShippingLabelRequest]}
  */
 SubmitShippingLabelsRequest.prototype.shippingLabelRequests = undefined

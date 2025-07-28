@@ -33,8 +33,8 @@ export class SampleLocation {
    * Constructs a <code>SampleLocation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/SampleLocation} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/SampleLocation} The populated <code>SampleLocation</code> instance.
+   * @param {SampleLocation} obj Optional instance to populate.
+   * @return {SampleLocation} The populated <code>SampleLocation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class SampleLocation {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/PostalCode} postalCode
- * @type {module:pricing_v2022_05_01/model/PostalCode}
+ * @member {PostalCode} postalCode
+ * @type {PostalCode}
  */
 SampleLocation.prototype.postalCode = undefined

@@ -34,8 +34,8 @@ export class ListOfferMetricsResponse {
    * Constructs a <code>ListOfferMetricsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOfferMetricsResponse} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOfferMetricsResponse} The populated <code>ListOfferMetricsResponse</code> instance.
+   * @param {ListOfferMetricsResponse} obj Optional instance to populate.
+   * @return {ListOfferMetricsResponse} The populated <code>ListOfferMetricsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,13 +60,13 @@ export class ListOfferMetricsResponse {
 
 /**
  * A list of offers and associated metrics.
- * @member {Array.<module:replenishment_v2022_11_07/model/ListOfferMetricsResponseOffer>} offers
- * @type {Array.<module:replenishment_v2022_11_07/model/ListOfferMetricsResponseOffer>}
+ * @member {[ListOfferMetricsResponseOffer]} offers
+ * @type {[ListOfferMetricsResponseOffer]}
  */
 ListOfferMetricsResponse.prototype.offers = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/PaginationResponse} pagination
- * @type {module:replenishment_v2022_11_07/model/PaginationResponse}
+ * @member {PaginationResponse} pagination
+ * @type {PaginationResponse}
  */
 ListOfferMetricsResponse.prototype.pagination = undefined

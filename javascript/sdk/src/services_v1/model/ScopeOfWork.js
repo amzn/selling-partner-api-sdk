@@ -32,8 +32,8 @@ export class ScopeOfWork {
    * Constructs a <code>ScopeOfWork</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/ScopeOfWork} obj Optional instance to populate.
-   * @return {module:services_v1/model/ScopeOfWork} The populated <code>ScopeOfWork</code> instance.
+   * @param {ScopeOfWork} obj Optional instance to populate.
+   * @return {ScopeOfWork} The populated <code>ScopeOfWork</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -81,7 +81,7 @@ ScopeOfWork.prototype.quantity = undefined
 
 /**
  * A list of skills required to perform the job.
- * @member {Array.<String>} requiredSkills
- * @type {Array.<String>}
+ * @member {[String]} requiredSkills
+ * @type {[String]}
  */
 ScopeOfWork.prototype.requiredSkills = undefined

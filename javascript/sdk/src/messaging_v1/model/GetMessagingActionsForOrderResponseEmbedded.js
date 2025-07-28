@@ -25,7 +25,7 @@ export class GetMessagingActionsForOrderResponseEmbedded {
    * The messaging actions response that is associated with the specified &#x60;amazonOrderId&#x60;.
    * @alias module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded
    * @class
-   * @param actions {Array.<module:messaging_v1/model/GetMessagingActionResponse>}
+   * @param actions {[GetMessagingActionResponse]}
    */
   constructor (actions) {
     this.actions = actions
@@ -35,8 +35,8 @@ export class GetMessagingActionsForOrderResponseEmbedded {
    * Constructs a <code>GetMessagingActionsForOrderResponseEmbedded</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded} The populated <code>GetMessagingActionsForOrderResponseEmbedded</code> instance.
+   * @param {GetMessagingActionsForOrderResponseEmbedded} obj Optional instance to populate.
+   * @return {GetMessagingActionsForOrderResponseEmbedded} The populated <code>GetMessagingActionsForOrderResponseEmbedded</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class GetMessagingActionsForOrderResponseEmbedded {
 }
 
 /**
- * @member {Array.<module:messaging_v1/model/GetMessagingActionResponse>} actions
- * @type {Array.<module:messaging_v1/model/GetMessagingActionResponse>}
+ * @member {[GetMessagingActionResponse]} actions
+ * @type {[GetMessagingActionResponse]}
  */
 GetMessagingActionsForOrderResponseEmbedded.prototype.actions = undefined

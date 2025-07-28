@@ -33,8 +33,8 @@ export class SelfShipAppointmentDetails {
    * Constructs a <code>SelfShipAppointmentDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentDetails} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentDetails} The populated <code>SelfShipAppointmentDetails</code> instance.
+   * @param {SelfShipAppointmentDetails} obj Optional instance to populate.
+   * @return {SelfShipAppointmentDetails} The populated <code>SelfShipAppointmentDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,8 +66,8 @@ export class SelfShipAppointmentDetails {
 SelfShipAppointmentDetails.prototype.appointmentId = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime} appointmentSlotTime
- * @type {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime}
+ * @member {AppointmentSlotTime} appointmentSlotTime
+ * @type {AppointmentSlotTime}
  */
 SelfShipAppointmentDetails.prototype.appointmentSlotTime = undefined
 

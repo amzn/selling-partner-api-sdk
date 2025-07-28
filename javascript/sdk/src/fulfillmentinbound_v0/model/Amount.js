@@ -25,7 +25,7 @@ export class Amount {
    * The monetary value.
    * @alias module:fulfillmentinbound_v0/model/Amount
    * @class
-   * @param currencyCode {module:fulfillmentinbound_v0/model/CurrencyCode}
+   * @param currencyCode {CurrencyCode}
    * @param value {Number} Number format that supports decimal.
    */
   constructor (currencyCode, value) {
@@ -37,8 +37,8 @@ export class Amount {
    * Constructs a <code>Amount</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/Amount} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/Amount} The populated <code>Amount</code> instance.
+   * @param {Amount} obj Optional instance to populate.
+   * @return {Amount} The populated <code>Amount</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class Amount {
 }
 
 /**
- * @member {module:fulfillmentinbound_v0/model/CurrencyCode} currencyCode
- * @type {module:fulfillmentinbound_v0/model/CurrencyCode}
+ * @member {CurrencyCode} currencyCode
+ * @type {CurrencyCode}
  */
 Amount.prototype.currencyCode = undefined
 

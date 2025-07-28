@@ -33,8 +33,8 @@ export class OrderedQuantityDetails {
    * Constructs a <code>OrderedQuantityDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderedQuantityDetails} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderedQuantityDetails} The populated <code>OrderedQuantityDetails</code> instance.
+   * @param {OrderedQuantityDetails} obj Optional instance to populate.
+   * @return {OrderedQuantityDetails} The populated <code>OrderedQuantityDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,13 +66,13 @@ export class OrderedQuantityDetails {
 OrderedQuantityDetails.prototype.updatedDate = undefined
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} orderedQuantity
+ * @type {ItemQuantity}
  */
 OrderedQuantityDetails.prototype.orderedQuantity = undefined
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} cancelledQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} cancelledQuantity
+ * @type {ItemQuantity}
  */
 OrderedQuantityDetails.prototype.cancelledQuantity = undefined

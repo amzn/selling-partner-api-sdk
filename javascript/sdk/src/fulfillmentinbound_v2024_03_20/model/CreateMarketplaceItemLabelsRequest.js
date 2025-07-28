@@ -27,9 +27,9 @@ export class CreateMarketplaceItemLabelsRequest {
    * The &#x60;createMarketplaceItemLabels&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsRequest
    * @class
-   * @param labelType {module:fulfillmentinbound_v2024_03_20/model/LabelPrintType}
+   * @param labelType {LabelPrintType}
    * @param marketplaceId {String} The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param mskuQuantities {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuQuantity>} Represents the quantity of an MSKU to print item labels for.
+   * @param mskuQuantities {[MskuQuantity]} Represents the quantity of an MSKU to print item labels for.
    */
   constructor (labelType, marketplaceId, mskuQuantities) {
     this.labelType = labelType
@@ -41,8 +41,8 @@ export class CreateMarketplaceItemLabelsRequest {
    * Constructs a <code>CreateMarketplaceItemLabelsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsRequest} The populated <code>CreateMarketplaceItemLabelsRequest</code> instance.
+   * @param {CreateMarketplaceItemLabelsRequest} obj Optional instance to populate.
+   * @return {CreateMarketplaceItemLabelsRequest} The populated <code>CreateMarketplaceItemLabelsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -78,8 +78,8 @@ export class CreateMarketplaceItemLabelsRequest {
 CreateMarketplaceItemLabelsRequest.prototype.height = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/LabelPrintType} labelType
- * @type {module:fulfillmentinbound_v2024_03_20/model/LabelPrintType}
+ * @member {LabelPrintType} labelType
+ * @type {LabelPrintType}
  */
 CreateMarketplaceItemLabelsRequest.prototype.labelType = undefined
 
@@ -100,14 +100,14 @@ CreateMarketplaceItemLabelsRequest.prototype.marketplaceId = undefined
 
 /**
  * Represents the quantity of an MSKU to print item labels for.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuQuantity>} mskuQuantities
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuQuantity>}
+ * @member {[MskuQuantity]} mskuQuantities
+ * @type {[MskuQuantity]}
  */
 CreateMarketplaceItemLabelsRequest.prototype.mskuQuantities = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/ItemLabelPageType} pageType
- * @type {module:fulfillmentinbound_v2024_03_20/model/ItemLabelPageType}
+ * @member {ItemLabelPageType} pageType
+ * @type {ItemLabelPageType}
  */
 CreateMarketplaceItemLabelsRequest.prototype.pageType = undefined
 

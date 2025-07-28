@@ -33,8 +33,8 @@ export class ServicesCapability {
    * Constructs a <code>ServicesCapability</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/ServicesCapability} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/ServicesCapability} The populated <code>ServicesCapability</code> instance.
+   * @param {ServicesCapability} obj Optional instance to populate.
+   * @return {ServicesCapability} The populated <code>ServicesCapability</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class ServicesCapability {
 ServicesCapability.prototype.isSupported = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
- * @type {module:supplysources_v2020_07_01/model/OperationalConfiguration}
+ * @member {OperationalConfiguration} operationalConfiguration
+ * @type {OperationalConfiguration}
  */
 ServicesCapability.prototype.operationalConfiguration = undefined

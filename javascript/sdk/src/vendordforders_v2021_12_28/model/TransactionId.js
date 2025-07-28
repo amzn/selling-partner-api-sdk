@@ -32,8 +32,8 @@ export class TransactionId {
    * Constructs a <code>TransactionId</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/TransactionId} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/TransactionId} The populated <code>TransactionId</code> instance.
+   * @param {TransactionId} obj Optional instance to populate.
+   * @return {TransactionId} The populated <code>TransactionId</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

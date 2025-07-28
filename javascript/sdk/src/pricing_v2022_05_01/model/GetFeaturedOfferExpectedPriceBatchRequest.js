@@ -33,8 +33,8 @@ export class GetFeaturedOfferExpectedPriceBatchRequest {
    * Constructs a <code>GetFeaturedOfferExpectedPriceBatchRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/GetFeaturedOfferExpectedPriceBatchRequest} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/GetFeaturedOfferExpectedPriceBatchRequest} The populated <code>GetFeaturedOfferExpectedPriceBatchRequest</code> instance.
+   * @param {GetFeaturedOfferExpectedPriceBatchRequest} obj Optional instance to populate.
+   * @return {GetFeaturedOfferExpectedPriceBatchRequest} The populated <code>GetFeaturedOfferExpectedPriceBatchRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GetFeaturedOfferExpectedPriceBatchRequest {
 
 /**
  * A batched list of FOEP requests.
- * @member {Array.<module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequest>} requests
- * @type {Array.<module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequest>}
+ * @member {[FeaturedOfferExpectedPriceRequest]} requests
+ * @type {[FeaturedOfferExpectedPriceRequest]}
  */
 GetFeaturedOfferExpectedPriceBatchRequest.prototype.requests = undefined

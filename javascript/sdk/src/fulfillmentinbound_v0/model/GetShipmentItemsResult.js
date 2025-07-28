@@ -33,8 +33,8 @@ export class GetShipmentItemsResult {
    * Constructs a <code>GetShipmentItemsResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/GetShipmentItemsResult} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/GetShipmentItemsResult} The populated <code>GetShipmentItemsResult</code> instance.
+   * @param {GetShipmentItemsResult} obj Optional instance to populate.
+   * @return {GetShipmentItemsResult} The populated <code>GetShipmentItemsResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,8 +59,8 @@ export class GetShipmentItemsResult {
 
 /**
  * A list of inbound shipment item information.
- * @member {Array.<module:fulfillmentinbound_v0/model/InboundShipmentItem>} itemData
- * @type {Array.<module:fulfillmentinbound_v0/model/InboundShipmentItem>}
+ * @member {[InboundShipmentItem]} itemData
+ * @type {[InboundShipmentItem]}
  */
 GetShipmentItemsResult.prototype.itemData = undefined
 

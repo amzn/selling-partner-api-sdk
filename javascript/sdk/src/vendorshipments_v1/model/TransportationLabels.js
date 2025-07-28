@@ -34,8 +34,8 @@ export class TransportationLabels {
    * Constructs a <code>TransportationLabels</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/TransportationLabels} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/TransportationLabels} The populated <code>TransportationLabels</code> instance.
+   * @param {TransportationLabels} obj Optional instance to populate.
+   * @return {TransportationLabels} The populated <code>TransportationLabels</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class TransportationLabels {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/Pagination} pagination
- * @type {module:vendorshipments_v1/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 TransportationLabels.prototype.pagination = undefined
 
 /**
  * A list of one or more ShipmentLabels.
- * @member {Array.<module:vendorshipments_v1/model/TransportLabel>} transportLabels
- * @type {Array.<module:vendorshipments_v1/model/TransportLabel>}
+ * @member {[TransportLabel]} transportLabels
+ * @type {[TransportLabel]}
  */
 TransportationLabels.prototype.transportLabels = undefined

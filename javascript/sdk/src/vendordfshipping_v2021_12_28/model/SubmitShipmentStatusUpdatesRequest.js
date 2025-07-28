@@ -33,8 +33,8 @@ export class SubmitShipmentStatusUpdatesRequest {
    * Constructs a <code>SubmitShipmentStatusUpdatesRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/SubmitShipmentStatusUpdatesRequest} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/SubmitShipmentStatusUpdatesRequest} The populated <code>SubmitShipmentStatusUpdatesRequest</code> instance.
+   * @param {SubmitShipmentStatusUpdatesRequest} obj Optional instance to populate.
+   * @return {SubmitShipmentStatusUpdatesRequest} The populated <code>SubmitShipmentStatusUpdatesRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class SubmitShipmentStatusUpdatesRequest {
 
 /**
  * Contains a list of one or more `ShipmentStatusUpdate` objects. Each `ShipmentStatusUpdate` object represents an update to the status of a specific shipment.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShipmentStatusUpdate>} shipmentStatusUpdates
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/ShipmentStatusUpdate>}
+ * @member {[ShipmentStatusUpdate]} shipmentStatusUpdates
+ * @type {[ShipmentStatusUpdate]}
  */
 SubmitShipmentStatusUpdatesRequest.prototype.shipmentStatusUpdates = undefined

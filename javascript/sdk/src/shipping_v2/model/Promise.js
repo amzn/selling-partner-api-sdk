@@ -33,8 +33,8 @@ export class Promise {
    * Constructs a <code>Promise</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/Promise} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/Promise} The populated <code>Promise</code> instance.
+   * @param {Promise} obj Optional instance to populate.
+   * @return {Promise} The populated <code>Promise</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,13 +58,13 @@ export class Promise {
 }
 
 /**
- * @member {module:shipping_v2/model/TimeWindow} deliveryWindow
- * @type {module:shipping_v2/model/TimeWindow}
+ * @member {TimeWindow} deliveryWindow
+ * @type {TimeWindow}
  */
 Promise.prototype.deliveryWindow = undefined
 
 /**
- * @member {module:shipping_v2/model/TimeWindow} pickupWindow
- * @type {module:shipping_v2/model/TimeWindow}
+ * @member {TimeWindow} pickupWindow
+ * @type {TimeWindow}
  */
 Promise.prototype.pickupWindow = undefined

@@ -34,8 +34,8 @@ export class DistributionPackageContents {
    * Constructs a <code>DistributionPackageContents</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/DistributionPackageContents} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/DistributionPackageContents} The populated <code>DistributionPackageContents</code> instance.
+   * @param {DistributionPackageContents} obj Optional instance to populate.
+   * @return {DistributionPackageContents} The populated <code>DistributionPackageContents</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,14 +60,14 @@ export class DistributionPackageContents {
 
 /**
  * This is required only when `DistributionPackageType=PALLET`.
- * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packages
- * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
+ * @member {[DistributionPackageQuantity]} packages
+ * @type {[DistributionPackageQuantity]}
  */
 DistributionPackageContents.prototype.packages = undefined
 
 /**
  * This is required only when `DistributionPackageType=CASE`.
- * @member {Array.<module:awd_v2024_05_09/model/ProductQuantity>} products
- * @type {Array.<module:awd_v2024_05_09/model/ProductQuantity>}
+ * @member {[ProductQuantity]} products
+ * @type {[ProductQuantity]}
  */
 DistributionPackageContents.prototype.products = undefined

@@ -32,7 +32,7 @@ export class EventFilter {
    * @implements module:notifications_v1/model/AggregationFilter
    * @implements module:notifications_v1/model/MarketplaceFilter
    * @implements module:notifications_v1/model/OrderChangeTypeFilter
-   * @param eventFilterType {module:notifications_v1/model/EventFilter.EventFilterTypeEnum} An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
+   * @param eventFilterType {String} An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
    */
   constructor (eventFilterType) {
     AggregationFilter.call(this)
@@ -45,8 +45,8 @@ export class EventFilter {
    * Constructs a <code>EventFilter</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/EventFilter} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/EventFilter} The populated <code>EventFilter</code> instance.
+   * @param {EventFilter} obj Optional instance to populate.
+   * @return {EventFilter} The populated <code>EventFilter</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -75,22 +75,22 @@ export class EventFilter {
 }
 
 /**
- * @member {module:notifications_v1/model/AggregationSettings} aggregationSettings
- * @type {module:notifications_v1/model/AggregationSettings}
+ * @member {AggregationSettings} aggregationSettings
+ * @type {AggregationSettings}
  */
 EventFilter.prototype.aggregationSettings = undefined
 
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 EventFilter.prototype.marketplaceIds = undefined
 
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
- * @member {Array.<module:notifications_v1/model/OrderChangeTypeEnum>} orderChangeTypes
- * @type {Array.<module:notifications_v1/model/OrderChangeTypeEnum>}
+ * @member {[OrderChangeTypeEnum]} orderChangeTypes
+ * @type {[OrderChangeTypeEnum]}
  */
 EventFilter.prototype.orderChangeTypes = undefined
 
@@ -116,30 +116,30 @@ EventFilter.EventFilterTypeEnum = {
 
 /**
  * An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
- * @member {module:notifications_v1/model/EventFilter.EventFilterTypeEnum} eventFilterType
- * @type {module:notifications_v1/model/EventFilter.EventFilterTypeEnum}
+ * @member {String} eventFilterType
+ * @type {String}
  */
 EventFilter.prototype.eventFilterType = undefined
 
 // Implement AggregationFilter interface:
 /**
- * @member {module:notifications_v1/model/AggregationSettings} aggregationSettings
- * @type {module:notifications_v1/model/AggregationSettings}
+ * @member {AggregationSettings} aggregationSettings
+ * @type {AggregationSettings}
  */
 AggregationFilter.prototype.aggregationSettings = undefined
 
 // Implement MarketplaceFilter interface:
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 MarketplaceFilter.prototype.marketplaceIds = undefined
 
 // Implement OrderChangeTypeFilter interface:
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
- * @member {Array.<module:notifications_v1/model/OrderChangeTypeEnum>} orderChangeTypes
- * @type {Array.<module:notifications_v1/model/OrderChangeTypeEnum>}
+ * @member {[OrderChangeTypeEnum]} orderChangeTypes
+ * @type {[OrderChangeTypeEnum]}
  */
 OrderChangeTypeFilter.prototype.orderChangeTypes = undefined

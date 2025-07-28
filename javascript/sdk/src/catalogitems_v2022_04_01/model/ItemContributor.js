@@ -25,7 +25,7 @@ export class ItemContributor {
    * Individual contributor to the creation of an item, such as an author or actor.
    * @alias module:catalogitems_v2022_04_01/model/ItemContributor
    * @class
-   * @param role {module:catalogitems_v2022_04_01/model/ItemContributorRole}
+   * @param role {ItemContributorRole}
    * @param value {String} Name of the contributor, such as `Jane Austen`.
    */
   constructor (role, value) {
@@ -37,8 +37,8 @@ export class ItemContributor {
    * Constructs a <code>ItemContributor</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemContributor} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemContributor} The populated <code>ItemContributor</code> instance.
+   * @param {ItemContributor} obj Optional instance to populate.
+   * @return {ItemContributor} The populated <code>ItemContributor</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class ItemContributor {
 }
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/ItemContributorRole} role
- * @type {module:catalogitems_v2022_04_01/model/ItemContributorRole}
+ * @member {ItemContributorRole} role
+ * @type {ItemContributorRole}
  */
 ItemContributor.prototype.role = undefined
 

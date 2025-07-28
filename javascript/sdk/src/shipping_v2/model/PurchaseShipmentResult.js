@@ -28,8 +28,8 @@ export class PurchaseShipmentResult {
    * @alias module:shipping_v2/model/PurchaseShipmentResult
    * @class
    * @param shipmentId {String} The unique shipment identifier provided by a shipping service.
-   * @param packageDocumentDetails {Array.<module:shipping_v2/model/PackageDocumentDetail>} A list of post-purchase details about a package that will be shipped using a shipping service.
-   * @param promise {module:shipping_v2/model/Promise}
+   * @param packageDocumentDetails {[PackageDocumentDetail]} A list of post-purchase details about a package that will be shipped using a shipping service.
+   * @param promise {Promise}
    */
   constructor (shipmentId, packageDocumentDetails, promise) {
     this.shipmentId = shipmentId
@@ -41,8 +41,8 @@ export class PurchaseShipmentResult {
    * Constructs a <code>PurchaseShipmentResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/PurchaseShipmentResult} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/PurchaseShipmentResult} The populated <code>PurchaseShipmentResult</code> instance.
+   * @param {PurchaseShipmentResult} obj Optional instance to populate.
+   * @return {PurchaseShipmentResult} The populated <code>PurchaseShipmentResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,19 +76,19 @@ PurchaseShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
- * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetails
- * @type {Array.<module:shipping_v2/model/PackageDocumentDetail>}
+ * @member {[PackageDocumentDetail]} packageDocumentDetails
+ * @type {[PackageDocumentDetail]}
  */
 PurchaseShipmentResult.prototype.packageDocumentDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/Promise} promise
- * @type {module:shipping_v2/model/Promise}
+ * @member {Promise} promise
+ * @type {Promise}
  */
 PurchaseShipmentResult.prototype.promise = undefined
 
 /**
- * @member {module:shipping_v2/model/Benefits} benefits
- * @type {module:shipping_v2/model/Benefits}
+ * @member {Benefits} benefits
+ * @type {Benefits}
  */
 PurchaseShipmentResult.prototype.benefits = undefined

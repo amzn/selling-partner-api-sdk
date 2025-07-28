@@ -33,8 +33,8 @@ export class AcknowledgementStatusDetails {
    * Constructs a <code>AcknowledgementStatusDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/AcknowledgementStatusDetails} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/AcknowledgementStatusDetails} The populated <code>AcknowledgementStatusDetails</code> instance.
+   * @param {AcknowledgementStatusDetails} obj Optional instance to populate.
+   * @return {AcknowledgementStatusDetails} The populated <code>AcknowledgementStatusDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,13 +66,13 @@ export class AcknowledgementStatusDetails {
 AcknowledgementStatusDetails.prototype.acknowledgementDate = undefined
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} acceptedQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} acceptedQuantity
+ * @type {ItemQuantity}
  */
 AcknowledgementStatusDetails.prototype.acceptedQuantity = undefined
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} rejectedQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} rejectedQuantity
+ * @type {ItemQuantity}
  */
 AcknowledgementStatusDetails.prototype.rejectedQuantity = undefined

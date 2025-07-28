@@ -26,7 +26,7 @@ export class FileContents {
    * @alias module:merchantfulfillment_v0/model/FileContents
    * @class
    * @param contents {String} Data for printing labels encoded into a Base64, GZip-compressed string.
-   * @param fileType {module:merchantfulfillment_v0/model/FileType}
+   * @param fileType {FileType}
    * @param checksum {String} An MD5 hash to validate the PDF document data, in the form of a Base64 string.
    */
   constructor (contents, fileType, checksum) {
@@ -39,8 +39,8 @@ export class FileContents {
    * Constructs a <code>FileContents</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/FileContents} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/FileContents} The populated <code>FileContents</code> instance.
+   * @param {FileContents} obj Optional instance to populate.
+   * @return {FileContents} The populated <code>FileContents</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,8 +72,8 @@ export class FileContents {
 FileContents.prototype.contents = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/FileType} fileType
- * @type {module:merchantfulfillment_v0/model/FileType}
+ * @member {FileType} fileType
+ * @type {FileType}
  */
 FileContents.prototype.fileType = undefined
 

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class FulfillmentType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class FulfillmentType {
@@ -34,7 +34,7 @@ export class FulfillmentType {
   /**
     * Returns a <code>FulfillmentType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:pricing_v2022_05_01/model/FulfillmentType} The enum <code>FulfillmentType</code> value.
+    * @return {FulfillmentType} The enum <code>FulfillmentType</code> value.
     */
   static constructFromObject (object) {
     return object

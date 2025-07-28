@@ -25,7 +25,7 @@ export class GetSchemaResponseLinks {
    * The links response that is associated with the object.
    * @alias module:messaging_v1/model/GetSchemaResponseLinks
    * @class
-   * @param self {module:messaging_v1/model/LinkObject}
+   * @param self {LinkObject}
    */
   constructor (self) {
     this.self = self
@@ -35,8 +35,8 @@ export class GetSchemaResponseLinks {
    * Constructs a <code>GetSchemaResponseLinks</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/GetSchemaResponseLinks} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/GetSchemaResponseLinks} The populated <code>GetSchemaResponseLinks</code> instance.
+   * @param {GetSchemaResponseLinks} obj Optional instance to populate.
+   * @return {GetSchemaResponseLinks} The populated <code>GetSchemaResponseLinks</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class GetSchemaResponseLinks {
 }
 
 /**
- * @member {module:messaging_v1/model/LinkObject} self
- * @type {module:messaging_v1/model/LinkObject}
+ * @member {LinkObject} self
+ * @type {LinkObject}
  */
 GetSchemaResponseLinks.prototype.self = undefined

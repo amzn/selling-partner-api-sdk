@@ -33,8 +33,8 @@ export class BusinessHours {
    * Constructs a <code>BusinessHours</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/BusinessHours} obj Optional instance to populate.
-   * @return {module:orders_v0/model/BusinessHours} The populated <code>BusinessHours</code> instance.
+   * @param {BusinessHours} obj Optional instance to populate.
+   * @return {BusinessHours} The populated <code>BusinessHours</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -109,14 +109,14 @@ BusinessHours.DayOfWeekEnum = {
 
 /**
  * Day of the week.
- * @member {module:orders_v0/model/BusinessHours.DayOfWeekEnum} dayOfWeek
- * @type {module:orders_v0/model/BusinessHours.DayOfWeekEnum}
+ * @member {String} dayOfWeek
+ * @type {String}
  */
 BusinessHours.prototype.dayOfWeek = undefined
 
 /**
  * Time window during the day when the business is open.
- * @member {Array.<module:orders_v0/model/OpenInterval>} openIntervals
- * @type {Array.<module:orders_v0/model/OpenInterval>}
+ * @member {[OpenInterval]} openIntervals
+ * @type {[OpenInterval]}
  */
 BusinessHours.prototype.openIntervals = undefined

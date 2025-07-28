@@ -24,7 +24,7 @@ export class ItemVariationTheme {
    * A variation theme that indicates the combination of listing item attributes that define the variation family.
    * @alias module:listingsitems_v2021_08_01/model/ItemVariationTheme
    * @class
-   * @param attributes {Array.<String>} The names of the listing item attributes that are associated with the variation theme.
+   * @param attributes {[String]} The names of the listing item attributes that are associated with the variation theme.
    * @param theme {String} The variation theme that indicates the combination of listing item attributes that define the variation family.
    */
   constructor (attributes, theme) {
@@ -36,8 +36,8 @@ export class ItemVariationTheme {
    * Constructs a <code>ItemVariationTheme</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ItemVariationTheme} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ItemVariationTheme} The populated <code>ItemVariationTheme</code> instance.
+   * @param {ItemVariationTheme} obj Optional instance to populate.
+   * @return {ItemVariationTheme} The populated <code>ItemVariationTheme</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class ItemVariationTheme {
 
 /**
  * The names of the listing item attributes that are associated with the variation theme.
- * @member {Array.<String>} attributes
- * @type {Array.<String>}
+ * @member {[String]} attributes
+ * @type {[String]}
  */
 ItemVariationTheme.prototype.attributes = undefined
 

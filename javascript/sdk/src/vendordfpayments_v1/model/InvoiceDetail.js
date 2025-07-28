@@ -32,10 +32,10 @@ export class InvoiceDetail {
    * @class
    * @param invoiceNumber {String} The unique invoice number.
    * @param invoiceDate {Date} Invoice date.
-   * @param remitToParty {module:vendordfpayments_v1/model/PartyIdentification}
-   * @param shipFromParty {module:vendordfpayments_v1/model/PartyIdentification}
-   * @param invoiceTotal {module:vendordfpayments_v1/model/Money}
-   * @param items {Array.<module:vendordfpayments_v1/model/InvoiceItem>} Provides the details of the items in this invoice.
+   * @param remitToParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param invoiceTotal {Money}
+   * @param items {[InvoiceItem]} Provides the details of the items in this invoice.
    */
   constructor (invoiceNumber, invoiceDate, remitToParty, shipFromParty, invoiceTotal, items) {
     this.invoiceNumber = invoiceNumber
@@ -50,8 +50,8 @@ export class InvoiceDetail {
    * Constructs a <code>InvoiceDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfpayments_v1/model/InvoiceDetail} obj Optional instance to populate.
-   * @return {module:vendordfpayments_v1/model/InvoiceDetail} The populated <code>InvoiceDetail</code> instance.
+   * @param {InvoiceDetail} obj Optional instance to populate.
+   * @return {InvoiceDetail} The populated <code>InvoiceDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -107,20 +107,20 @@ InvoiceDetail.prototype.invoiceDate = undefined
 InvoiceDetail.prototype.referenceNumber = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/PartyIdentification} remitToParty
- * @type {module:vendordfpayments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} remitToParty
+ * @type {PartyIdentification}
  */
 InvoiceDetail.prototype.remitToParty = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/PartyIdentification} shipFromParty
- * @type {module:vendordfpayments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 InvoiceDetail.prototype.shipFromParty = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/PartyIdentification} billToParty
- * @type {module:vendordfpayments_v1/model/PartyIdentification}
+ * @member {PartyIdentification} billToParty
+ * @type {PartyIdentification}
  */
 InvoiceDetail.prototype.billToParty = undefined
 
@@ -139,35 +139,35 @@ InvoiceDetail.prototype.shipToCountryCode = undefined
 InvoiceDetail.prototype.paymentTermsCode = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/Money} invoiceTotal
- * @type {module:vendordfpayments_v1/model/Money}
+ * @member {Money} invoiceTotal
+ * @type {Money}
  */
 InvoiceDetail.prototype.invoiceTotal = undefined
 
 /**
  * Individual tax details per line item.
- * @member {Array.<module:vendordfpayments_v1/model/TaxDetail>} taxTotals
- * @type {Array.<module:vendordfpayments_v1/model/TaxDetail>}
+ * @member {[TaxDetail]} taxTotals
+ * @type {[TaxDetail]}
  */
 InvoiceDetail.prototype.taxTotals = undefined
 
 /**
  * Additional details provided by the selling party, for tax-related or other purposes.
- * @member {Array.<module:vendordfpayments_v1/model/AdditionalDetails>} additionalDetails
- * @type {Array.<module:vendordfpayments_v1/model/AdditionalDetails>}
+ * @member {[AdditionalDetails]} additionalDetails
+ * @type {[AdditionalDetails]}
  */
 InvoiceDetail.prototype.additionalDetails = undefined
 
 /**
  * Total charge amount details for all line items.
- * @member {Array.<module:vendordfpayments_v1/model/ChargeDetails>} chargeDetails
- * @type {Array.<module:vendordfpayments_v1/model/ChargeDetails>}
+ * @member {[ChargeDetails]} chargeDetails
+ * @type {[ChargeDetails]}
  */
 InvoiceDetail.prototype.chargeDetails = undefined
 
 /**
  * Provides the details of the items in this invoice.
- * @member {Array.<module:vendordfpayments_v1/model/InvoiceItem>} items
- * @type {Array.<module:vendordfpayments_v1/model/InvoiceItem>}
+ * @member {[InvoiceItem]} items
+ * @type {[InvoiceItem]}
  */
 InvoiceDetail.prototype.items = undefined

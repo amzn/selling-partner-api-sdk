@@ -28,8 +28,8 @@ export class ItemOfferByMarketplace {
    * @alias module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace
    * @class
    * @param marketplaceId {String} The Amazon marketplace identifier.
-   * @param offerType {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace.OfferTypeEnum} Type of offer for the listings item.
-   * @param price {module:listingsitems_v2021_08_01/model/Money}
+   * @param offerType {String} Type of offer for the listings item.
+   * @param price {Money}
    */
   constructor (marketplaceId, offerType, price) {
     this.marketplaceId = marketplaceId
@@ -41,8 +41,8 @@ export class ItemOfferByMarketplace {
    * Constructs a <code>ItemOfferByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace} The populated <code>ItemOfferByMarketplace</code> instance.
+   * @param {ItemOfferByMarketplace} obj Optional instance to populate.
+   * @return {ItemOfferByMarketplace} The populated <code>ItemOfferByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -97,25 +97,25 @@ ItemOfferByMarketplace.OfferTypeEnum = {
 
 /**
  * Type of offer for the listings item.
- * @member {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace.OfferTypeEnum} offerType
- * @type {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace.OfferTypeEnum}
+ * @member {String} offerType
+ * @type {String}
  */
 ItemOfferByMarketplace.prototype.offerType = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/Money} price
- * @type {module:listingsitems_v2021_08_01/model/Money}
+ * @member {Money} price
+ * @type {Money}
  */
 ItemOfferByMarketplace.prototype.price = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/Points} points
- * @type {module:listingsitems_v2021_08_01/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 ItemOfferByMarketplace.prototype.points = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/Audience} audience
- * @type {module:listingsitems_v2021_08_01/model/Audience}
+ * @member {Audience} audience
+ * @type {Audience}
  */
 ItemOfferByMarketplace.prototype.audience = undefined

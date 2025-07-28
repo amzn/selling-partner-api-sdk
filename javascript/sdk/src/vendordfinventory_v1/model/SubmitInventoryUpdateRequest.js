@@ -33,8 +33,8 @@ export class SubmitInventoryUpdateRequest {
    * Constructs a <code>SubmitInventoryUpdateRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfinventory_v1/model/SubmitInventoryUpdateRequest} obj Optional instance to populate.
-   * @return {module:vendordfinventory_v1/model/SubmitInventoryUpdateRequest} The populated <code>SubmitInventoryUpdateRequest</code> instance.
+   * @param {SubmitInventoryUpdateRequest} obj Optional instance to populate.
+   * @return {SubmitInventoryUpdateRequest} The populated <code>SubmitInventoryUpdateRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class SubmitInventoryUpdateRequest {
 }
 
 /**
- * @member {module:vendordfinventory_v1/model/InventoryUpdate} inventory
- * @type {module:vendordfinventory_v1/model/InventoryUpdate}
+ * @member {InventoryUpdate} inventory
+ * @type {InventoryUpdate}
  */
 SubmitInventoryUpdateRequest.prototype.inventory = undefined

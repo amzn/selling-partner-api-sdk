@@ -32,8 +32,8 @@ export class GiftDetails {
    * Constructs a <code>GiftDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/GiftDetails} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/GiftDetails} The populated <code>GiftDetails</code> instance.
+   * @param {GiftDetails} obj Optional instance to populate.
+   * @return {GiftDetails} The populated <code>GiftDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

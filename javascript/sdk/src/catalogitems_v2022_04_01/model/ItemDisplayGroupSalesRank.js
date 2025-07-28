@@ -38,8 +38,8 @@ export class ItemDisplayGroupSalesRank {
    * Constructs a <code>ItemDisplayGroupSalesRank</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemDisplayGroupSalesRank} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemDisplayGroupSalesRank} The populated <code>ItemDisplayGroupSalesRank</code> instance.
+   * @param {ItemDisplayGroupSalesRank} obj Optional instance to populate.
+   * @return {ItemDisplayGroupSalesRank} The populated <code>ItemDisplayGroupSalesRank</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

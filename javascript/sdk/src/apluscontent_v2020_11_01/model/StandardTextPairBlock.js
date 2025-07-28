@@ -33,8 +33,8 @@ export class StandardTextPairBlock {
    * Constructs a <code>StandardTextPairBlock</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardTextPairBlock} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardTextPairBlock} The populated <code>StandardTextPairBlock</code> instance.
+   * @param {StandardTextPairBlock} obj Optional instance to populate.
+   * @return {StandardTextPairBlock} The populated <code>StandardTextPairBlock</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,13 +58,13 @@ export class StandardTextPairBlock {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} label
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} label
+ * @type {TextComponent}
  */
 StandardTextPairBlock.prototype.label = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} description
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} description
+ * @type {TextComponent}
  */
 StandardTextPairBlock.prototype.description = undefined

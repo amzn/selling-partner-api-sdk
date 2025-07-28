@@ -29,11 +29,11 @@ export class Package {
    * A package to be shipped through a shipping service offering.
    * @alias module:shipping_v2/model/Package
    * @class
-   * @param dimensions {module:shipping_v2/model/Dimensions}
-   * @param weight {module:shipping_v2/model/Weight}
-   * @param insuredValue {module:shipping_v2/model/Currency}
+   * @param dimensions {Dimensions}
+   * @param weight {Weight}
+   * @param insuredValue {Currency}
    * @param packageClientReferenceId {String} A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
-   * @param items {Array.<module:shipping_v2/model/Item>} A list of items.
+   * @param items {[Item]} A list of items.
    */
   constructor (dimensions, weight, insuredValue, packageClientReferenceId, items) {
     this.dimensions = dimensions
@@ -47,8 +47,8 @@ export class Package {
    * Constructs a <code>Package</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/Package} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/Package} The populated <code>Package</code> instance.
+   * @param {Package} obj Optional instance to populate.
+   * @return {Package} The populated <code>Package</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -78,20 +78,20 @@ export class Package {
 }
 
 /**
- * @member {module:shipping_v2/model/Dimensions} dimensions
- * @type {module:shipping_v2/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 Package.prototype.dimensions = undefined
 
 /**
- * @member {module:shipping_v2/model/Weight} weight
- * @type {module:shipping_v2/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Package.prototype.weight = undefined
 
 /**
- * @member {module:shipping_v2/model/Currency} insuredValue
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} insuredValue
+ * @type {Currency}
  */
 Package.prototype.insuredValue = undefined
 
@@ -111,8 +111,8 @@ Package.prototype.sellerDisplayName = undefined
 
 /**
  * A list of charges based on the shipping service charges applied on a package.
- * @member {Array.<module:shipping_v2/model/ChargeComponent>} charges
- * @type {Array.<module:shipping_v2/model/ChargeComponent>}
+ * @member {[ChargeComponent]} charges
+ * @type {[ChargeComponent]}
  */
 Package.prototype.charges = undefined
 
@@ -125,7 +125,7 @@ Package.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of items.
- * @member {Array.<module:shipping_v2/model/Item>} items
- * @type {Array.<module:shipping_v2/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 Package.prototype.items = undefined

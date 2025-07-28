@@ -27,7 +27,7 @@ export class SearchContentPublishRecordsResponse {
    * @alias module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-   * @param publishRecordList {Array.<module:apluscontent_v2020_11_01/model/PublishRecord>} A list of A+ Content publishing records.
+   * @param publishRecordList {[PublishRecord]} A list of A+ Content publishing records.
    */
   constructor (publishRecordList) {
     AplusPaginatedResponse.call(this)
@@ -38,8 +38,8 @@ export class SearchContentPublishRecordsResponse {
    * Constructs a <code>SearchContentPublishRecordsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse} The populated <code>SearchContentPublishRecordsResponse</code> instance.
+   * @param {SearchContentPublishRecordsResponse} obj Optional instance to populate.
+   * @return {SearchContentPublishRecordsResponse} The populated <code>SearchContentPublishRecordsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,8 +66,8 @@ export class SearchContentPublishRecordsResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 SearchContentPublishRecordsResponse.prototype.warnings = undefined
 
@@ -80,16 +80,16 @@ SearchContentPublishRecordsResponse.prototype.nextPageToken = undefined
 
 /**
  * A list of A+ Content publishing records.
- * @member {Array.<module:apluscontent_v2020_11_01/model/PublishRecord>} publishRecordList
- * @type {Array.<module:apluscontent_v2020_11_01/model/PublishRecord>}
+ * @member {[PublishRecord]} publishRecordList
+ * @type {[PublishRecord]}
  */
 SearchContentPublishRecordsResponse.prototype.publishRecordList = undefined
 
 // Implement AplusPaginatedResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 

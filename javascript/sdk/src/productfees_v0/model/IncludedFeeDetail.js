@@ -26,8 +26,8 @@ export class IncludedFeeDetail {
    * @alias module:productfees_v0/model/IncludedFeeDetail
    * @class
    * @param feeType {String} The type of fee charged to a seller.
-   * @param feeAmount {module:productfees_v0/model/MoneyType}
-   * @param finalFee {module:productfees_v0/model/MoneyType}
+   * @param feeAmount {MoneyType}
+   * @param finalFee {MoneyType}
    */
   constructor (feeType, feeAmount, finalFee) {
     this.feeType = feeType
@@ -39,8 +39,8 @@ export class IncludedFeeDetail {
    * Constructs a <code>IncludedFeeDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/IncludedFeeDetail} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/IncludedFeeDetail} The populated <code>IncludedFeeDetail</code> instance.
+   * @param {IncludedFeeDetail} obj Optional instance to populate.
+   * @return {IncludedFeeDetail} The populated <code>IncludedFeeDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,25 +74,25 @@ export class IncludedFeeDetail {
 IncludedFeeDetail.prototype.feeType = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} feeAmount
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} feeAmount
+ * @type {MoneyType}
  */
 IncludedFeeDetail.prototype.feeAmount = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} feePromotion
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} feePromotion
+ * @type {MoneyType}
  */
 IncludedFeeDetail.prototype.feePromotion = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} taxAmount
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} taxAmount
+ * @type {MoneyType}
  */
 IncludedFeeDetail.prototype.taxAmount = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} finalFee
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} finalFee
+ * @type {MoneyType}
  */
 IncludedFeeDetail.prototype.finalFee = undefined

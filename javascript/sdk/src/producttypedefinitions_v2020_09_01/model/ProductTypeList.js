@@ -25,7 +25,7 @@ export class ProductTypeList {
    * A list of Amazon product types with definitions available.
    * @alias module:producttypedefinitions_v2020_09_01/model/ProductTypeList
    * @class
-   * @param productTypes {Array.<module:producttypedefinitions_v2020_09_01/model/ProductType>}
+   * @param productTypes {[ProductType]}
    * @param productTypeVersion {String} Amazon product type version identifier.
    */
   constructor (productTypes, productTypeVersion) {
@@ -37,8 +37,8 @@ export class ProductTypeList {
    * Constructs a <code>ProductTypeList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:producttypedefinitions_v2020_09_01/model/ProductTypeList} obj Optional instance to populate.
-   * @return {module:producttypedefinitions_v2020_09_01/model/ProductTypeList} The populated <code>ProductTypeList</code> instance.
+   * @param {ProductTypeList} obj Optional instance to populate.
+   * @return {ProductTypeList} The populated <code>ProductTypeList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class ProductTypeList {
 }
 
 /**
- * @member {Array.<module:producttypedefinitions_v2020_09_01/model/ProductType>} productTypes
- * @type {Array.<module:producttypedefinitions_v2020_09_01/model/ProductType>}
+ * @member {[ProductType]} productTypes
+ * @type {[ProductType]}
  */
 ProductTypeList.prototype.productTypes = undefined
 

@@ -33,8 +33,8 @@ export class OfferProgramConfigurationPromotions {
    * Constructs a <code>OfferProgramConfigurationPromotions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotions} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotions} The populated <code>OfferProgramConfigurationPromotions</code> instance.
+   * @param {OfferProgramConfigurationPromotions} obj Optional instance to populate.
+   * @return {OfferProgramConfigurationPromotions} The populated <code>OfferProgramConfigurationPromotions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,25 +60,25 @@ export class OfferProgramConfigurationPromotions {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} sellingPartnerFundedBaseDiscount
- * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
+ * @member {OfferProgramConfigurationPromotionsDiscountFunding} sellingPartnerFundedBaseDiscount
+ * @type {OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.sellingPartnerFundedBaseDiscount = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} sellingPartnerFundedTieredDiscount
- * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
+ * @member {OfferProgramConfigurationPromotionsDiscountFunding} sellingPartnerFundedTieredDiscount
+ * @type {OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.sellingPartnerFundedTieredDiscount = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} amazonFundedBaseDiscount
- * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
+ * @member {OfferProgramConfigurationPromotionsDiscountFunding} amazonFundedBaseDiscount
+ * @type {OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.amazonFundedBaseDiscount = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} amazonFundedTieredDiscount
- * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
+ * @member {OfferProgramConfigurationPromotionsDiscountFunding} amazonFundedTieredDiscount
+ * @type {OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.amazonFundedTieredDiscount = undefined

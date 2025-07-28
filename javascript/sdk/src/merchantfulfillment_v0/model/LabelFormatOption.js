@@ -33,8 +33,8 @@ export class LabelFormatOption {
    * Constructs a <code>LabelFormatOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/LabelFormatOption} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/LabelFormatOption} The populated <code>LabelFormatOption</code> instance.
+   * @param {LabelFormatOption} obj Optional instance to populate.
+   * @return {LabelFormatOption} The populated <code>LabelFormatOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class LabelFormatOption {
 LabelFormatOption.prototype.includePackingSlipWithLabel = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/LabelFormat} labelFormat
- * @type {module:merchantfulfillment_v0/model/LabelFormat}
+ * @member {LabelFormat} labelFormat
+ * @type {LabelFormat}
  */
 LabelFormatOption.prototype.labelFormat = undefined

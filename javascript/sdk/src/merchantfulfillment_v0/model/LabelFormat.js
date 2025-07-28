@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class LabelFormat.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class LabelFormat {
@@ -52,7 +52,7 @@ export class LabelFormat {
   /**
     * Returns a <code>LabelFormat</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/LabelFormat} The enum <code>LabelFormat</code> value.
+    * @return {LabelFormat} The enum <code>LabelFormat</code> value.
     */
   static constructFromObject (object) {
     return object

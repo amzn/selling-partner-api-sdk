@@ -32,8 +32,8 @@ export class ItemVariationTheme {
    * Constructs a <code>ItemVariationTheme</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemVariationTheme} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemVariationTheme} The populated <code>ItemVariationTheme</code> instance.
+   * @param {ItemVariationTheme} obj Optional instance to populate.
+   * @return {ItemVariationTheme} The populated <code>ItemVariationTheme</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,8 +58,8 @@ export class ItemVariationTheme {
 
 /**
  * Names of the Amazon catalog item attributes that are associated with the variation theme.
- * @member {Array.<String>} attributes
- * @type {Array.<String>}
+ * @member {[String]} attributes
+ * @type {[String]}
  */
 ItemVariationTheme.prototype.attributes = undefined
 

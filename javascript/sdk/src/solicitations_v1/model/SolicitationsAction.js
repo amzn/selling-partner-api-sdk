@@ -34,8 +34,8 @@ export class SolicitationsAction {
    * Constructs a <code>SolicitationsAction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:solicitations_v1/model/SolicitationsAction} obj Optional instance to populate.
-   * @return {module:solicitations_v1/model/SolicitationsAction} The populated <code>SolicitationsAction</code> instance.
+   * @param {SolicitationsAction} obj Optional instance to populate.
+   * @return {SolicitationsAction} The populated <code>SolicitationsAction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

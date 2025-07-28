@@ -26,7 +26,7 @@ export class ItemQuantity {
    * @alias module:vendorshipments_v1/model/ItemQuantity
    * @class
    * @param amount {Number} Amount of units shipped for a specific item at a shipment level. If the item is present only in certain cartons or pallets within the shipment, please provide this at the appropriate carton or pallet level.
-   * @param unitOfMeasure {module:vendorshipments_v1/model/ItemQuantity.UnitOfMeasureEnum} Unit of measure for the shipped quantity.
+   * @param unitOfMeasure {String} Unit of measure for the shipped quantity.
    */
   constructor (amount, unitOfMeasure) {
     this.amount = amount
@@ -37,8 +37,8 @@ export class ItemQuantity {
    * Constructs a <code>ItemQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ItemQuantity} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ItemQuantity} The populated <code>ItemQuantity</code> instance.
+   * @param {ItemQuantity} obj Optional instance to populate.
+   * @return {ItemQuantity} The populated <code>ItemQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -92,8 +92,8 @@ ItemQuantity.UnitOfMeasureEnum = {
 
 /**
  * Unit of measure for the shipped quantity.
- * @member {module:vendorshipments_v1/model/ItemQuantity.UnitOfMeasureEnum} unitOfMeasure
- * @type {module:vendorshipments_v1/model/ItemQuantity.UnitOfMeasureEnum}
+ * @member {String} unitOfMeasure
+ * @type {String}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined
 
@@ -105,7 +105,7 @@ ItemQuantity.prototype.unitOfMeasure = undefined
 ItemQuantity.prototype.unitSize = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/TotalWeight} totalWeight
- * @type {module:vendorshipments_v1/model/TotalWeight}
+ * @member {TotalWeight} totalWeight
+ * @type {TotalWeight}
  */
 ItemQuantity.prototype.totalWeight = undefined

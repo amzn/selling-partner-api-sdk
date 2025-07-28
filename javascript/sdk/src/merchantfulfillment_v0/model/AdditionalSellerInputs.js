@@ -26,7 +26,7 @@ export class AdditionalSellerInputs {
    * @alias module:merchantfulfillment_v0/model/AdditionalSellerInputs
    * @class
    * @param additionalInputFieldName {String} The name of the additional input field.
-   * @param additionalSellerInput {module:merchantfulfillment_v0/model/AdditionalSellerInput}
+   * @param additionalSellerInput {AdditionalSellerInput}
    */
   constructor (additionalInputFieldName, additionalSellerInput) {
     this.additionalInputFieldName = additionalInputFieldName
@@ -37,8 +37,8 @@ export class AdditionalSellerInputs {
    * Constructs a <code>AdditionalSellerInputs</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/AdditionalSellerInputs} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/AdditionalSellerInputs} The populated <code>AdditionalSellerInputs</code> instance.
+   * @param {AdditionalSellerInputs} obj Optional instance to populate.
+   * @return {AdditionalSellerInputs} The populated <code>AdditionalSellerInputs</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class AdditionalSellerInputs {
 AdditionalSellerInputs.prototype.additionalInputFieldName = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/AdditionalSellerInput} additionalSellerInput
- * @type {module:merchantfulfillment_v0/model/AdditionalSellerInput}
+ * @member {AdditionalSellerInput} additionalSellerInput
+ * @type {AdditionalSellerInput}
  */
 AdditionalSellerInputs.prototype.additionalSellerInput = undefined

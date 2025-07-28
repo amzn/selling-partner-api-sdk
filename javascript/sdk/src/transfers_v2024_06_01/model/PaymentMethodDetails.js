@@ -35,8 +35,8 @@ export class PaymentMethodDetails {
    * Constructs a <code>PaymentMethodDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:transfers_v2024_06_01/model/PaymentMethodDetails} obj Optional instance to populate.
-   * @return {module:transfers_v2024_06_01/model/PaymentMethodDetails} The populated <code>PaymentMethodDetails</code> instance.
+   * @param {PaymentMethodDetails} obj Optional instance to populate.
+   * @return {PaymentMethodDetails} The populated <code>PaymentMethodDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,8 +86,8 @@ PaymentMethodDetails.prototype.paymentMethodId = undefined
 PaymentMethodDetails.prototype.tail = undefined
 
 /**
- * @member {module:transfers_v2024_06_01/model/ExpiryDate} expiryDate
- * @type {module:transfers_v2024_06_01/model/ExpiryDate}
+ * @member {ExpiryDate} expiryDate
+ * @type {ExpiryDate}
  */
 PaymentMethodDetails.prototype.expiryDate = undefined
 
@@ -99,13 +99,13 @@ PaymentMethodDetails.prototype.expiryDate = undefined
 PaymentMethodDetails.prototype.countryCode = undefined
 
 /**
- * @member {module:transfers_v2024_06_01/model/PaymentMethodType} paymentMethodType
- * @type {module:transfers_v2024_06_01/model/PaymentMethodType}
+ * @member {PaymentMethodType} paymentMethodType
+ * @type {PaymentMethodType}
  */
 PaymentMethodDetails.prototype.paymentMethodType = undefined
 
 /**
- * @member {module:transfers_v2024_06_01/model/AssignmentType} assignmentType
- * @type {module:transfers_v2024_06_01/model/AssignmentType}
+ * @member {AssignmentType} assignmentType
+ * @type {AssignmentType}
  */
 PaymentMethodDetails.prototype.assignmentType = undefined

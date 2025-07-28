@@ -32,8 +32,8 @@ export class UnfulfillableQuantity {
    * Constructs a <code>UnfulfillableQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/UnfulfillableQuantity} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/UnfulfillableQuantity} The populated <code>UnfulfillableQuantity</code> instance.
+   * @param {UnfulfillableQuantity} obj Optional instance to populate.
+   * @return {UnfulfillableQuantity} The populated <code>UnfulfillableQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

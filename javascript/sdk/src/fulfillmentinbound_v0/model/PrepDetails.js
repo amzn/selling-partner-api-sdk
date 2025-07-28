@@ -26,8 +26,8 @@ export class PrepDetails {
    * Preparation instructions and who is responsible for the preparation.
    * @alias module:fulfillmentinbound_v0/model/PrepDetails
    * @class
-   * @param prepInstruction {module:fulfillmentinbound_v0/model/PrepInstruction}
-   * @param prepOwner {module:fulfillmentinbound_v0/model/PrepOwner}
+   * @param prepInstruction {PrepInstruction}
+   * @param prepOwner {PrepOwner}
    */
   constructor (prepInstruction, prepOwner) {
     this.prepInstruction = prepInstruction
@@ -38,8 +38,8 @@ export class PrepDetails {
    * Constructs a <code>PrepDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/PrepDetails} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/PrepDetails} The populated <code>PrepDetails</code> instance.
+   * @param {PrepDetails} obj Optional instance to populate.
+   * @return {PrepDetails} The populated <code>PrepDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class PrepDetails {
 }
 
 /**
- * @member {module:fulfillmentinbound_v0/model/PrepInstruction} prepInstruction
- * @type {module:fulfillmentinbound_v0/model/PrepInstruction}
+ * @member {PrepInstruction} prepInstruction
+ * @type {PrepInstruction}
  */
 PrepDetails.prototype.prepInstruction = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/PrepOwner} prepOwner
- * @type {module:fulfillmentinbound_v0/model/PrepOwner}
+ * @member {PrepOwner} prepOwner
+ * @type {PrepOwner}
  */
 PrepDetails.prototype.prepOwner = undefined

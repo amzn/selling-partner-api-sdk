@@ -40,8 +40,8 @@ export class ServiceJob {
    * Constructs a <code>ServiceJob</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/ServiceJob} obj Optional instance to populate.
-   * @return {module:services_v1/model/ServiceJob} The populated <code>ServiceJob</code> instance.
+   * @param {ServiceJob} obj Optional instance to populate.
+   * @return {ServiceJob} The populated <code>ServiceJob</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -142,40 +142,40 @@ ServiceJob.ServiceJobStatusEnum = {
 
 /**
  * The status of the service job.
- * @member {module:services_v1/model/ServiceJob.ServiceJobStatusEnum} serviceJobStatus
- * @type {module:services_v1/model/ServiceJob.ServiceJobStatusEnum}
+ * @member {String} serviceJobStatus
+ * @type {String}
  */
 ServiceJob.prototype.serviceJobStatus = undefined
 
 /**
- * @member {module:services_v1/model/ScopeOfWork} scopeOfWork
- * @type {module:services_v1/model/ScopeOfWork}
+ * @member {ScopeOfWork} scopeOfWork
+ * @type {ScopeOfWork}
  */
 ServiceJob.prototype.scopeOfWork = undefined
 
 /**
- * @member {module:services_v1/model/Seller} seller
- * @type {module:services_v1/model/Seller}
+ * @member {Seller} seller
+ * @type {Seller}
  */
 ServiceJob.prototype.seller = undefined
 
 /**
- * @member {module:services_v1/model/ServiceJobProvider} serviceJobProvider
- * @type {module:services_v1/model/ServiceJobProvider}
+ * @member {ServiceJobProvider} serviceJobProvider
+ * @type {ServiceJobProvider}
  */
 ServiceJob.prototype.serviceJobProvider = undefined
 
 /**
  * A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
- * @member {Array.<module:services_v1/model/AppointmentTime>} preferredAppointmentTimes
- * @type {Array.<module:services_v1/model/AppointmentTime>}
+ * @member {[AppointmentTime]} preferredAppointmentTimes
+ * @type {[AppointmentTime]}
  */
 ServiceJob.prototype.preferredAppointmentTimes = undefined
 
 /**
  * A list of appointments.
- * @member {Array.<module:services_v1/model/Appointment>} appointments
- * @type {Array.<module:services_v1/model/Appointment>}
+ * @member {[Appointment]} appointments
+ * @type {[Appointment]}
  */
 ServiceJob.prototype.appointments = undefined
 
@@ -201,20 +201,20 @@ ServiceJob.prototype.marketplaceId = undefined
 ServiceJob.prototype.storeId = undefined
 
 /**
- * @member {module:services_v1/model/Buyer} buyer
- * @type {module:services_v1/model/Buyer}
+ * @member {Buyer} buyer
+ * @type {Buyer}
  */
 ServiceJob.prototype.buyer = undefined
 
 /**
  * A list of items associated with the service job.
- * @member {Array.<module:services_v1/model/AssociatedItem>} associatedItems
- * @type {Array.<module:services_v1/model/AssociatedItem>}
+ * @member {[AssociatedItem]} associatedItems
+ * @type {[AssociatedItem]}
  */
 ServiceJob.prototype.associatedItems = undefined
 
 /**
- * @member {module:services_v1/model/ServiceLocation} serviceLocation
- * @type {module:services_v1/model/ServiceLocation}
+ * @member {ServiceLocation} serviceLocation
+ * @type {ServiceLocation}
  */
 ServiceJob.prototype.serviceLocation = undefined

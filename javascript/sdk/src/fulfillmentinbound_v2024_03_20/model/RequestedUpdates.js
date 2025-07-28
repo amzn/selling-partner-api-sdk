@@ -34,8 +34,8 @@ export class RequestedUpdates {
    * Constructs a <code>RequestedUpdates</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/RequestedUpdates} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/RequestedUpdates} The populated <code>RequestedUpdates</code> instance.
+   * @param {RequestedUpdates} obj Optional instance to populate.
+   * @return {RequestedUpdates} The populated <code>RequestedUpdates</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,14 +60,14 @@ export class RequestedUpdates {
 
 /**
  * A list of boxes that will be present in the shipment after the update.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput>} boxes
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput>}
+ * @member {[BoxUpdateInput]} boxes
+ * @type {[BoxUpdateInput]}
  */
 RequestedUpdates.prototype.boxes = undefined
 
 /**
  * A list of all items that will be present in the shipment after the update.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
+ * @member {[ItemInput]} items
+ * @type {[ItemInput]}
  */
 RequestedUpdates.prototype.items = undefined

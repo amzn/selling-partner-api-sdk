@@ -32,8 +32,8 @@ export class TaxClassification {
    * Constructs a <code>TaxClassification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoicing_v0/model/TaxClassification} obj Optional instance to populate.
-   * @return {module:invoicing_v0/model/TaxClassification} The populated <code>TaxClassification</code> instance.
+   * @param {TaxClassification} obj Optional instance to populate.
+   * @return {TaxClassification} The populated <code>TaxClassification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

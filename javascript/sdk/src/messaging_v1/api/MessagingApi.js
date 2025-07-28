@@ -51,8 +51,8 @@ export class MessagingApi {
     * Constructs a new MessagingApi.
     * @alias module:messaging_v1/api/MessagingApi
     * @class
-    * @param {module:messaging_v1/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:messaging_v1/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -98,9 +98,9 @@ export class MessagingApi {
   /**
      * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmCustomizationDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmCustomizationDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmCustomizationDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmCustomizationDetailsResponse>}
      */
   confirmCustomizationDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -145,9 +145,9 @@ export class MessagingApi {
   /**
      * Sends a message asking a buyer to provide or verify customization details such as name spelling, images, initials, etc.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmCustomizationDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmCustomizationDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmCustomizationDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmCustomizationDetailsResponse>}
      */
   confirmCustomizationDetails (amazonOrderId, marketplaceIds, body) {
     return this.confirmCustomizationDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -159,9 +159,9 @@ export class MessagingApi {
   /**
      * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateAmazonMotorsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateAmazonMotorsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateAmazonMotorsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateAmazonMotorsResponse>}
      */
   createAmazonMotorsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -206,9 +206,9 @@ export class MessagingApi {
   /**
      * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateAmazonMotorsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateAmazonMotorsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateAmazonMotorsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateAmazonMotorsResponse>}
      */
   createAmazonMotors (amazonOrderId, marketplaceIds, body) {
     return this.createAmazonMotorsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -220,9 +220,9 @@ export class MessagingApi {
   /**
      * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmDeliveryDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmDeliveryDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmDeliveryDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmDeliveryDetailsResponse>}
      */
   createConfirmDeliveryDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -267,9 +267,9 @@ export class MessagingApi {
   /**
      * Sends a message to a buyer to arrange a delivery or to confirm contact information for making a delivery.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmDeliveryDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmDeliveryDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmDeliveryDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmDeliveryDetailsResponse>}
      */
   createConfirmDeliveryDetails (amazonOrderId, marketplaceIds, body) {
     return this.createConfirmDeliveryDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -281,9 +281,9 @@ export class MessagingApi {
   /**
      * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmOrderDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmOrderDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmOrderDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmOrderDetailsResponse>}
      */
   createConfirmOrderDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -328,9 +328,9 @@ export class MessagingApi {
   /**
      * Sends a message to ask a buyer an order-related question prior to shipping their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmOrderDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmOrderDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmOrderDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmOrderDetailsResponse>}
      */
   createConfirmOrderDetails (amazonOrderId, marketplaceIds, body) {
     return this.createConfirmOrderDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -342,9 +342,9 @@ export class MessagingApi {
   /**
      * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmServiceDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmServiceDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmServiceDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmServiceDetailsResponse>}
      */
   createConfirmServiceDetailsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -389,9 +389,9 @@ export class MessagingApi {
   /**
      * Sends a message to contact a Home Service customer to arrange a service call or to gather information prior to a service call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateConfirmServiceDetailsRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateConfirmServiceDetailsResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateConfirmServiceDetailsRequest} body This contains the message body for a message.
+     * @return {Promise<CreateConfirmServiceDetailsResponse>}
      */
   createConfirmServiceDetails (amazonOrderId, marketplaceIds, body) {
     return this.createConfirmServiceDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -403,9 +403,9 @@ export class MessagingApi {
   /**
      * Sends a buyer a message to share a digital access key that is required to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateDigitalAccessKeyRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateDigitalAccessKeyResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateDigitalAccessKeyRequest} body This contains the message body for a message.
+     * @return {Promise<CreateDigitalAccessKeyResponse>}
      */
   createDigitalAccessKeyWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -450,9 +450,9 @@ export class MessagingApi {
   /**
      * Sends a buyer a message to share a digital access key that is required to utilize digital content in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateDigitalAccessKeyRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateDigitalAccessKeyResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateDigitalAccessKeyRequest} body This contains the message body for a message.
+     * @return {Promise<CreateDigitalAccessKeyResponse>}
      */
   createDigitalAccessKey (amazonOrderId, marketplaceIds, body) {
     return this.createDigitalAccessKeyWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -464,9 +464,9 @@ export class MessagingApi {
   /**
      * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateLegalDisclosureRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateLegalDisclosureResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateLegalDisclosureRequest} body This contains the message body for a message.
+     * @return {Promise<CreateLegalDisclosureResponse>}
      */
   createLegalDisclosureWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -511,9 +511,9 @@ export class MessagingApi {
   /**
      * Sends a critical message that contains documents that a seller is legally obligated to provide to the buyer. This message should only be used to deliver documents that are required by law.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateLegalDisclosureRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateLegalDisclosureResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateLegalDisclosureRequest} body This contains the message body for a message.
+     * @return {Promise<CreateLegalDisclosureResponse>}
      */
   createLegalDisclosure (amazonOrderId, marketplaceIds, body) {
     return this.createLegalDisclosureWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -525,8 +525,8 @@ export class MessagingApi {
   /**
      * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<module:messaging_v1/model/CreateNegativeFeedbackRemovalResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @return {Promise<CreateNegativeFeedbackRemovalResponse>}
      */
   createNegativeFeedbackRemovalWithHttpInfo (amazonOrderId, marketplaceIds) {
     const postBody = null
@@ -566,8 +566,8 @@ export class MessagingApi {
   /**
      * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<module:messaging_v1/model/CreateNegativeFeedbackRemovalResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @return {Promise<CreateNegativeFeedbackRemovalResponse>}
      */
   createNegativeFeedbackRemoval (amazonOrderId, marketplaceIds) {
     return this.createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds)
@@ -579,9 +579,9 @@ export class MessagingApi {
   /**
      * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateUnexpectedProblemRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateUnexpectedProblemResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateUnexpectedProblemRequest} body This contains the message body for a message.
+     * @return {Promise<CreateUnexpectedProblemResponse>}
      */
   createUnexpectedProblemWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -626,9 +626,9 @@ export class MessagingApi {
   /**
      * Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateUnexpectedProblemRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateUnexpectedProblemResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateUnexpectedProblemRequest} body This contains the message body for a message.
+     * @return {Promise<CreateUnexpectedProblemResponse>}
      */
   createUnexpectedProblem (amazonOrderId, marketplaceIds, body) {
     return this.createUnexpectedProblemWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -640,9 +640,9 @@ export class MessagingApi {
   /**
      * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateWarrantyRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateWarrantyResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateWarrantyRequest} body This contains the message body for a message.
+     * @return {Promise<CreateWarrantyResponse>}
      */
   createWarrantyWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -687,9 +687,9 @@ export class MessagingApi {
   /**
      * Sends a message to a buyer to provide details about warranty information on a purchase in their order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/CreateWarrantyRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/CreateWarrantyResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {CreateWarrantyRequest} body This contains the message body for a message.
+     * @return {Promise<CreateWarrantyResponse>}
      */
   createWarranty (amazonOrderId, marketplaceIds, body) {
     return this.createWarrantyWithHttpInfo(amazonOrderId, marketplaceIds, body)
@@ -701,8 +701,8 @@ export class MessagingApi {
   /**
      * Returns a response containing attributes related to an order. This includes buyer preferences.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<module:messaging_v1/model/GetAttributesResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @return {Promise<GetAttributesResponse>}
      */
   getAttributesWithHttpInfo (amazonOrderId, marketplaceIds) {
     const postBody = null
@@ -742,8 +742,8 @@ export class MessagingApi {
   /**
      * Returns a response containing attributes related to an order. This includes buyer preferences.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<module:messaging_v1/model/GetAttributesResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @return {Promise<GetAttributesResponse>}
      */
   getAttributes (amazonOrderId, marketplaceIds) {
     return this.getAttributesWithHttpInfo(amazonOrderId, marketplaceIds)
@@ -755,8 +755,8 @@ export class MessagingApi {
   /**
      * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<module:messaging_v1/model/GetMessagingActionsForOrderResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @return {Promise<GetMessagingActionsForOrderResponse>}
      */
   getMessagingActionsForOrderWithHttpInfo (amazonOrderId, marketplaceIds) {
     const postBody = null
@@ -796,8 +796,8 @@ export class MessagingApi {
   /**
      * Returns a list of message types that are available for an order that you specify. A message type is represented by an actions object, which contains a path and query parameter(s). You can use the path and parameter(s) to call an operation that sends a message.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} amazonOrderId An Amazon order identifier. This specifies the order for which you want a list of available message types.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<module:messaging_v1/model/GetMessagingActionsForOrderResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @return {Promise<GetMessagingActionsForOrderResponse>}
      */
   getMessagingActionsForOrder (amazonOrderId, marketplaceIds) {
     return this.getMessagingActionsForOrderWithHttpInfo(amazonOrderId, marketplaceIds)
@@ -809,9 +809,9 @@ export class MessagingApi {
   /**
      * Sends a message providing the buyer an invoice
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/InvoiceRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/InvoiceResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {InvoiceRequest} body This contains the message body for a message.
+     * @return {Promise<InvoiceResponse>}
      */
   sendInvoiceWithHttpInfo (amazonOrderId, marketplaceIds, body) {
     const postBody = body
@@ -856,9 +856,9 @@ export class MessagingApi {
   /**
      * Sends a message providing the buyer an invoice
      * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {Array.<String>} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {module:messaging_v1/model/InvoiceRequest} body This contains the message body for a message.
-     * @return {Promise<module:messaging_v1/model/InvoiceResponse>}
+     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
+     * @param {InvoiceRequest} body This contains the message body for a message.
+     * @return {Promise<InvoiceResponse>}
      */
   sendInvoice (amazonOrderId, marketplaceIds, body) {
     return this.sendInvoiceWithHttpInfo(amazonOrderId, marketplaceIds, body)

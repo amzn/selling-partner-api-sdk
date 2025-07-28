@@ -33,8 +33,8 @@ export class ListTransactionsResponse {
    * Constructs a <code>ListTransactionsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/ListTransactionsResponse} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/ListTransactionsResponse} The populated <code>ListTransactionsResponse</code> instance.
+   * @param {ListTransactionsResponse} obj Optional instance to populate.
+   * @return {ListTransactionsResponse} The populated <code>ListTransactionsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class ListTransactionsResponse {
 }
 
 /**
- * @member {module:finances_2024_06_19/model/TransactionsPayload} payload
- * @type {module:finances_2024_06_19/model/TransactionsPayload}
+ * @member {TransactionsPayload} payload
+ * @type {TransactionsPayload}
  */
 ListTransactionsResponse.prototype.payload = undefined

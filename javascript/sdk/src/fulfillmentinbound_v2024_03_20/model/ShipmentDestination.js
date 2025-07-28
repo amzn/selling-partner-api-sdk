@@ -35,8 +35,8 @@ export class ShipmentDestination {
    * Constructs a <code>ShipmentDestination</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ShipmentDestination} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ShipmentDestination} The populated <code>ShipmentDestination</code> instance.
+   * @param {ShipmentDestination} obj Optional instance to populate.
+   * @return {ShipmentDestination} The populated <code>ShipmentDestination</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,8 +61,8 @@ export class ShipmentDestination {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Address} address
- * @type {module:fulfillmentinbound_v2024_03_20/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 ShipmentDestination.prototype.address = undefined
 

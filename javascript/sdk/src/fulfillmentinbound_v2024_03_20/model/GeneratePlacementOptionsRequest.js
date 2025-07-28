@@ -33,8 +33,8 @@ export class GeneratePlacementOptionsRequest {
    * Constructs a <code>GeneratePlacementOptionsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsRequest} The populated <code>GeneratePlacementOptionsRequest</code> instance.
+   * @param {GeneratePlacementOptionsRequest} obj Optional instance to populate.
+   * @return {GeneratePlacementOptionsRequest} The populated <code>GeneratePlacementOptionsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GeneratePlacementOptionsRequest {
 
 /**
  * Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput>} customPlacement
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput>}
+ * @member {[CustomPlacementInput]} customPlacement
+ * @type {[CustomPlacementInput]}
  */
 GeneratePlacementOptionsRequest.prototype.customPlacement = undefined

@@ -38,8 +38,8 @@ export class FulfillmentShipmentPackage {
    * Constructs a <code>FulfillmentShipmentPackage</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentPackage} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentPackage} The populated <code>FulfillmentShipmentPackage</code> instance.
+   * @param {FulfillmentShipmentPackage} obj Optional instance to populate.
+   * @return {FulfillmentShipmentPackage} The populated <code>FulfillmentShipmentPackage</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -95,13 +95,13 @@ FulfillmentShipmentPackage.prototype.trackingNumber = undefined
 FulfillmentShipmentPackage.prototype.estimatedArrivalDate = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/LockerDetails} lockerDetails
- * @type {module:fulfillmentoutbound_v2020_07_01/model/LockerDetails}
+ * @member {LockerDetails} lockerDetails
+ * @type {LockerDetails}
  */
 FulfillmentShipmentPackage.prototype.lockerDetails = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryInformation} deliveryInformation
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DeliveryInformation}
+ * @member {DeliveryInformation} deliveryInformation
+ * @type {DeliveryInformation}
  */
 FulfillmentShipmentPackage.prototype.deliveryInformation = undefined

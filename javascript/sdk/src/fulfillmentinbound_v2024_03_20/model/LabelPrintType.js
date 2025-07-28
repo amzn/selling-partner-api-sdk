@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class LabelPrintType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class LabelPrintType {
@@ -34,7 +34,7 @@ export class LabelPrintType {
   /**
     * Returns a <code>LabelPrintType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v2024_03_20/model/LabelPrintType} The enum <code>LabelPrintType</code> value.
+    * @return {LabelPrintType} The enum <code>LabelPrintType</code> value.
     */
   static constructFromObject (object) {
     return object

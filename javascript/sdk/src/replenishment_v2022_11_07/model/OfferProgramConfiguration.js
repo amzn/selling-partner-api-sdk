@@ -35,8 +35,8 @@ export class OfferProgramConfiguration {
    * Constructs a <code>OfferProgramConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/OfferProgramConfiguration} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/OfferProgramConfiguration} The populated <code>OfferProgramConfiguration</code> instance.
+   * @param {OfferProgramConfiguration} obj Optional instance to populate.
+   * @return {OfferProgramConfiguration} The populated <code>OfferProgramConfiguration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,19 +61,19 @@ export class OfferProgramConfiguration {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPreferences} preferences
- * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPreferences}
+ * @member {OfferProgramConfigurationPreferences} preferences
+ * @type {OfferProgramConfigurationPreferences}
  */
 OfferProgramConfiguration.prototype.preferences = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotions} promotions
- * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotions}
+ * @member {OfferProgramConfigurationPromotions} promotions
+ * @type {OfferProgramConfigurationPromotions}
  */
 OfferProgramConfiguration.prototype.promotions = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/EnrollmentMethod} enrollmentMethod
- * @type {module:replenishment_v2022_11_07/model/EnrollmentMethod}
+ * @member {EnrollmentMethod} enrollmentMethod
+ * @type {EnrollmentMethod}
  */
 OfferProgramConfiguration.prototype.enrollmentMethod = undefined

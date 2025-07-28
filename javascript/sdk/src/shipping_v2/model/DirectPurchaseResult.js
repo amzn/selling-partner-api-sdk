@@ -35,8 +35,8 @@ export class DirectPurchaseResult {
    * Constructs a <code>DirectPurchaseResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/DirectPurchaseResult} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/DirectPurchaseResult} The populated <code>DirectPurchaseResult</code> instance.
+   * @param {DirectPurchaseResult} obj Optional instance to populate.
+   * @return {DirectPurchaseResult} The populated <code>DirectPurchaseResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,7 +68,7 @@ DirectPurchaseResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
- * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetailList
- * @type {Array.<module:shipping_v2/model/PackageDocumentDetail>}
+ * @member {[PackageDocumentDetail]} packageDocumentDetailList
+ * @type {[PackageDocumentDetail]}
  */
 DirectPurchaseResult.prototype.packageDocumentDetailList = undefined

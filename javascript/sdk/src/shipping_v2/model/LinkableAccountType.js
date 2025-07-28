@@ -34,8 +34,8 @@ export class LinkableAccountType {
    * Constructs a <code>LinkableAccountType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/LinkableAccountType} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/LinkableAccountType} The populated <code>LinkableAccountType</code> instance.
+   * @param {LinkableAccountType} obj Optional instance to populate.
+   * @return {LinkableAccountType} The populated <code>LinkableAccountType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class LinkableAccountType {
 }
 
 /**
- * @member {module:shipping_v2/model/AccountType} accountType
- * @type {module:shipping_v2/model/AccountType}
+ * @member {AccountType} accountType
+ * @type {AccountType}
  */
 LinkableAccountType.prototype.accountType = undefined
 
 /**
  * A list of CarrierAccountInput
- * @member {Array.<module:shipping_v2/model/CarrierAccountInput>} carrierAccountInputs
- * @type {Array.<module:shipping_v2/model/CarrierAccountInput>}
+ * @member {[CarrierAccountInput]} carrierAccountInputs
+ * @type {[CarrierAccountInput]}
  */
 LinkableAccountType.prototype.carrierAccountInputs = undefined

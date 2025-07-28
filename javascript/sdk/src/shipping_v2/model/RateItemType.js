@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class RateItemType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class RateItemType {
@@ -40,7 +40,7 @@ export class RateItemType {
   /**
     * Returns a <code>RateItemType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/RateItemType} The enum <code>RateItemType</code> value.
+    * @return {RateItemType} The enum <code>RateItemType</code> value.
     */
   static constructFromObject (object) {
     return object

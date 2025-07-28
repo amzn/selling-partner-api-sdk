@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ClaimReason.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ClaimReason {
@@ -52,7 +52,7 @@ export class ClaimReason {
   /**
     * Returns a <code>ClaimReason</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/ClaimReason} The enum <code>ClaimReason</code> value.
+    * @return {ClaimReason} The enum <code>ClaimReason</code> value.
     */
   static constructFromObject (object) {
     return object

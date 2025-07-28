@@ -34,8 +34,8 @@ export class CreateReportScheduleResponse {
    * Constructs a <code>CreateReportScheduleResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/CreateReportScheduleResponse} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/CreateReportScheduleResponse} The populated <code>CreateReportScheduleResponse</code> instance.
+   * @param {CreateReportScheduleResponse} obj Optional instance to populate.
+   * @return {CreateReportScheduleResponse} The populated <code>CreateReportScheduleResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

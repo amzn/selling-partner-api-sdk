@@ -26,8 +26,8 @@ export class IssueEnforcements {
    * This field provides information about the enforcement actions taken by Amazon that affect the publishing or status of a listing. It also includes details about any associated exemptions.
    * @alias module:listingsitems_v2021_08_01/model/IssueEnforcements
    * @class
-   * @param actions {Array.<module:listingsitems_v2021_08_01/model/IssueEnforcementAction>} List of enforcement actions taken by Amazon that affect the publishing or status of a listing.
-   * @param exemption {module:listingsitems_v2021_08_01/model/IssueExemption}
+   * @param actions {[IssueEnforcementAction]} List of enforcement actions taken by Amazon that affect the publishing or status of a listing.
+   * @param exemption {IssueExemption}
    */
   constructor (actions, exemption) {
     this.actions = actions
@@ -38,8 +38,8 @@ export class IssueEnforcements {
    * Constructs a <code>IssueEnforcements</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/IssueEnforcements} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/IssueEnforcements} The populated <code>IssueEnforcements</code> instance.
+   * @param {IssueEnforcements} obj Optional instance to populate.
+   * @return {IssueEnforcements} The populated <code>IssueEnforcements</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,13 +64,13 @@ export class IssueEnforcements {
 
 /**
  * List of enforcement actions taken by Amazon that affect the publishing or status of a listing.
- * @member {Array.<module:listingsitems_v2021_08_01/model/IssueEnforcementAction>} actions
- * @type {Array.<module:listingsitems_v2021_08_01/model/IssueEnforcementAction>}
+ * @member {[IssueEnforcementAction]} actions
+ * @type {[IssueEnforcementAction]}
  */
 IssueEnforcements.prototype.actions = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/IssueExemption} exemption
- * @type {module:listingsitems_v2021_08_01/model/IssueExemption}
+ * @member {IssueExemption} exemption
+ * @type {IssueExemption}
  */
 IssueEnforcements.prototype.exemption = undefined

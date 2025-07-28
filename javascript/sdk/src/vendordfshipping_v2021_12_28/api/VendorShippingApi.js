@@ -34,8 +34,8 @@ export class VendorShippingApi {
     * Constructs a new VendorShippingApi.
     * @alias module:vendordfshipping_v2021_12_28/api/VendorShippingApi
     * @class
-    * @param {module:vendordfshipping_v2021_12_28/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:vendordfshipping_v2021_12_28/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -73,7 +73,7 @@ export class VendorShippingApi {
      * getPackingSlip
      * Returns a packing slip based on the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/PackingSlip>}
+     * @return {Promise<PackingSlip>}
      */
   getPackingSlipWithHttpInfo (purchaseOrderNumber) {
     const postBody = null
@@ -108,7 +108,7 @@ export class VendorShippingApi {
      * getPackingSlip
      * Returns a packing slip based on the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} purchaseOrderNumber The &#x60;purchaseOrderNumber&#x60; for the packing slip that you want.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/PackingSlip>}
+     * @return {Promise<PackingSlip>}
      */
   getPackingSlip (purchaseOrderNumber) {
     return this.getPackingSlipWithHttpInfo(purchaseOrderNumber)
@@ -125,9 +125,9 @@ export class VendorShippingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
      * @param {Number} opts.limit The maximum number of records to return.
-     * @param {module:vendordfshipping_v2021_12_28/model/String} opts.sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
+     * @param {String} opts.sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
      * @param {String} opts.nextToken Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/PackingSlipList>}
+     * @return {Promise<PackingSlipList>}
      */
   getPackingSlipsWithHttpInfo (createdAfter, createdBefore, opts) {
     opts = opts || {}
@@ -177,9 +177,9 @@ export class VendorShippingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
      * @param {Number} opts.limit The maximum number of records to return.
-     * @param {module:vendordfshipping_v2021_12_28/model/String} opts.sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
+     * @param {String} opts.sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
      * @param {String} opts.nextToken Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/PackingSlipList>}
+     * @return {Promise<PackingSlipList>}
      */
   getPackingSlips (createdAfter, createdBefore, opts) {
     return this.getPackingSlipsWithHttpInfo(createdAfter, createdBefore, opts)
@@ -191,8 +191,8 @@ export class VendorShippingApi {
   /**
      * submitShipmentConfirmations
      * Submits one or more shipment confirmations for vendor orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
-     * @param {module:vendordfshipping_v2021_12_28/model/SubmitShipmentConfirmationsRequest} body Request body containing the shipment confirmations data.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/TransactionReference>}
+     * @param {SubmitShipmentConfirmationsRequest} body Request body containing the shipment confirmations data.
+     * @return {Promise<TransactionReference>}
      */
   submitShipmentConfirmationsWithHttpInfo (body) {
     const postBody = body
@@ -225,8 +225,8 @@ export class VendorShippingApi {
   /**
      * submitShipmentConfirmations
      * Submits one or more shipment confirmations for vendor orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
-     * @param {module:vendordfshipping_v2021_12_28/model/SubmitShipmentConfirmationsRequest} body Request body containing the shipment confirmations data.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/TransactionReference>}
+     * @param {SubmitShipmentConfirmationsRequest} body Request body containing the shipment confirmations data.
+     * @return {Promise<TransactionReference>}
      */
   submitShipmentConfirmations (body) {
     return this.submitShipmentConfirmationsWithHttpInfo(body)
@@ -238,8 +238,8 @@ export class VendorShippingApi {
   /**
      * submitShipmentStatusUpdates
      * This operation is only to be used by Vendor-Own-Carrier (VOC) vendors. Calling this API submits a shipment status update for the package that a vendor has shipped. It will provide the Amazon customer visibility on their order, when the package is outside of Amazon Network visibility.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
-     * @param {module:vendordfshipping_v2021_12_28/model/SubmitShipmentStatusUpdatesRequest} body Request body containing the shipment status update data.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/TransactionReference>}
+     * @param {SubmitShipmentStatusUpdatesRequest} body Request body containing the shipment status update data.
+     * @return {Promise<TransactionReference>}
      */
   submitShipmentStatusUpdatesWithHttpInfo (body) {
     const postBody = body
@@ -272,8 +272,8 @@ export class VendorShippingApi {
   /**
      * submitShipmentStatusUpdates
      * This operation is only to be used by Vendor-Own-Carrier (VOC) vendors. Calling this API submits a shipment status update for the package that a vendor has shipped. It will provide the Amazon customer visibility on their order, when the package is outside of Amazon Network visibility.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
-     * @param {module:vendordfshipping_v2021_12_28/model/SubmitShipmentStatusUpdatesRequest} body Request body containing the shipment status update data.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/TransactionReference>}
+     * @param {SubmitShipmentStatusUpdatesRequest} body Request body containing the shipment status update data.
+     * @return {Promise<TransactionReference>}
      */
   submitShipmentStatusUpdates (body) {
     return this.submitShipmentStatusUpdatesWithHttpInfo(body)

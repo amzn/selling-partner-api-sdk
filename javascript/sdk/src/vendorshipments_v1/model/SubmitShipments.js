@@ -33,8 +33,8 @@ export class SubmitShipments {
    * Constructs a <code>SubmitShipments</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/SubmitShipments} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/SubmitShipments} The populated <code>SubmitShipments</code> instance.
+   * @param {SubmitShipments} obj Optional instance to populate.
+   * @return {SubmitShipments} The populated <code>SubmitShipments</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class SubmitShipments {
 
 /**
  * A list of one or more shipments with underlying details.
- * @member {Array.<module:vendorshipments_v1/model/Shipment>} shipments
- * @type {Array.<module:vendorshipments_v1/model/Shipment>}
+ * @member {[Shipment]} shipments
+ * @type {[Shipment]}
  */
 SubmitShipments.prototype.shipments = undefined

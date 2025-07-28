@@ -34,8 +34,8 @@ export class TransportShipmentMeasurements {
    * Constructs a <code>TransportShipmentMeasurements</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/TransportShipmentMeasurements} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/TransportShipmentMeasurements} The populated <code>TransportShipmentMeasurements</code> instance.
+   * @param {TransportShipmentMeasurements} obj Optional instance to populate.
+   * @return {TransportShipmentMeasurements} The populated <code>TransportShipmentMeasurements</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,13 +83,13 @@ TransportShipmentMeasurements.prototype.totalPalletStackable = undefined
 TransportShipmentMeasurements.prototype.totalPalletNonStackable = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Weight} shipmentWeight
- * @type {module:vendorshipments_v1/model/Weight}
+ * @member {Weight} shipmentWeight
+ * @type {Weight}
  */
 TransportShipmentMeasurements.prototype.shipmentWeight = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Volume} shipmentVolume
- * @type {module:vendorshipments_v1/model/Volume}
+ * @member {Volume} shipmentVolume
+ * @type {Volume}
  */
 TransportShipmentMeasurements.prototype.shipmentVolume = undefined

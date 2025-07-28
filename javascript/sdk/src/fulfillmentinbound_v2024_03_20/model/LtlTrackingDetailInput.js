@@ -24,7 +24,7 @@ export class LtlTrackingDetailInput {
    * Contains input information to update Less-Than-Truckload (LTL) tracking information.
    * @alias module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetailInput
    * @class
-   * @param freightBillNumber {Array.<String>} Number associated with the freight bill.
+   * @param freightBillNumber {[String]} Number associated with the freight bill.
    */
   constructor (freightBillNumber) {
     this.freightBillNumber = freightBillNumber
@@ -34,8 +34,8 @@ export class LtlTrackingDetailInput {
    * Constructs a <code>LtlTrackingDetailInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetailInput} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetailInput} The populated <code>LtlTrackingDetailInput</code> instance.
+   * @param {LtlTrackingDetailInput} obj Optional instance to populate.
+   * @return {LtlTrackingDetailInput} The populated <code>LtlTrackingDetailInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,7 +67,7 @@ LtlTrackingDetailInput.prototype.billOfLadingNumber = undefined
 
 /**
  * Number associated with the freight bill.
- * @member {Array.<String>} freightBillNumber
- * @type {Array.<String>}
+ * @member {[String]} freightBillNumber
+ * @type {[String]}
  */
 LtlTrackingDetailInput.prototype.freightBillNumber = undefined

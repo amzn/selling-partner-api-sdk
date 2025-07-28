@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AggregationTimePeriod.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class AggregationTimePeriod {
@@ -34,7 +34,7 @@ export class AggregationTimePeriod {
   /**
     * Returns a <code>AggregationTimePeriod</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:notifications_v1/model/AggregationTimePeriod} The enum <code>AggregationTimePeriod</code> value.
+    * @return {AggregationTimePeriod} The enum <code>AggregationTimePeriod</code> value.
     */
   static constructFromObject (object) {
     return object

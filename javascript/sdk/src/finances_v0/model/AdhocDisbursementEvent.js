@@ -33,8 +33,8 @@ export class AdhocDisbursementEvent {
    * Constructs a <code>AdhocDisbursementEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/AdhocDisbursementEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/AdhocDisbursementEvent} The populated <code>AdhocDisbursementEvent</code> instance.
+   * @param {AdhocDisbursementEvent} obj Optional instance to populate.
+   * @return {AdhocDisbursementEvent} The populated <code>AdhocDisbursementEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -81,7 +81,7 @@ AdhocDisbursementEvent.prototype.postedDate = undefined
 AdhocDisbursementEvent.prototype.transactionId = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} transactionAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} transactionAmount
+ * @type {Currency}
  */
 AdhocDisbursementEvent.prototype.transactionAmount = undefined

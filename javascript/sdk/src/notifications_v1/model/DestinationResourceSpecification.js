@@ -34,8 +34,8 @@ export class DestinationResourceSpecification {
    * Constructs a <code>DestinationResourceSpecification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/DestinationResourceSpecification} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/DestinationResourceSpecification} The populated <code>DestinationResourceSpecification</code> instance.
+   * @param {DestinationResourceSpecification} obj Optional instance to populate.
+   * @return {DestinationResourceSpecification} The populated <code>DestinationResourceSpecification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class DestinationResourceSpecification {
 }
 
 /**
- * @member {module:notifications_v1/model/SqsResource} sqs
- * @type {module:notifications_v1/model/SqsResource}
+ * @member {SqsResource} sqs
+ * @type {SqsResource}
  */
 DestinationResourceSpecification.prototype.sqs = undefined
 
 /**
- * @member {module:notifications_v1/model/EventBridgeResourceSpecification} eventBridge
- * @type {module:notifications_v1/model/EventBridgeResourceSpecification}
+ * @member {EventBridgeResourceSpecification} eventBridge
+ * @type {EventBridgeResourceSpecification}
  */
 DestinationResourceSpecification.prototype.eventBridge = undefined

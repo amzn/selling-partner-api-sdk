@@ -25,7 +25,7 @@ export class Errors {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:pricing_v0/model/Errors
    * @class
-   * @param errors {Array.<module:pricing_v0/model/Error>} A list of error responses returned when a request is unsuccessful.
+   * @param errors {[Error]} A list of error responses returned when a request is unsuccessful.
    */
   constructor (errors) {
     this.errors = errors
@@ -35,8 +35,8 @@ export class Errors {
    * Constructs a <code>Errors</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/Errors} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/Errors} The populated <code>Errors</code> instance.
+   * @param {Errors} obj Optional instance to populate.
+   * @return {Errors} The populated <code>Errors</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class Errors {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:pricing_v0/model/Error>} errors
- * @type {Array.<module:pricing_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 Errors.prototype.errors = undefined

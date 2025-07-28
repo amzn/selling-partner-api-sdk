@@ -32,8 +32,8 @@ export class UploadDestination {
    * Constructs a <code>UploadDestination</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:uploads_v2020_11_01/model/UploadDestination} obj Optional instance to populate.
-   * @return {module:uploads_v2020_11_01/model/UploadDestination} The populated <code>UploadDestination</code> instance.
+   * @param {UploadDestination} obj Optional instance to populate.
+   * @return {UploadDestination} The populated <code>UploadDestination</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

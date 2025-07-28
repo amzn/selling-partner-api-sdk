@@ -35,8 +35,8 @@ export class TrackingDetails {
    * Constructs a <code>TrackingDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/TrackingDetails} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/TrackingDetails} The populated <code>TrackingDetails</code> instance.
+   * @param {TrackingDetails} obj Optional instance to populate.
+   * @return {TrackingDetails} The populated <code>TrackingDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,8 +60,8 @@ export class TrackingDetails {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/CarrierCode} carrierCode
- * @type {module:awd_v2024_05_09/model/CarrierCode}
+ * @member {CarrierCode} carrierCode
+ * @type {CarrierCode}
  */
 TrackingDetails.prototype.carrierCode = undefined
 

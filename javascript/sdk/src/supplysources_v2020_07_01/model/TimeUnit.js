@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class TimeUnit.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class TimeUnit {
@@ -40,7 +40,7 @@ export class TimeUnit {
   /**
     * Returns a <code>TimeUnit</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:supplysources_v2020_07_01/model/TimeUnit} The enum <code>TimeUnit</code> value.
+    * @return {TimeUnit} The enum <code>TimeUnit</code> value.
     */
   static constructFromObject (object) {
     return object

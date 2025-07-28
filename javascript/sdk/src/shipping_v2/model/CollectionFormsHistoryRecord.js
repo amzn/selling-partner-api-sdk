@@ -34,8 +34,8 @@ export class CollectionFormsHistoryRecord {
    * Constructs a <code>CollectionFormsHistoryRecord</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/CollectionFormsHistoryRecord} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/CollectionFormsHistoryRecord} The populated <code>CollectionFormsHistoryRecord</code> instance.
+   * @param {CollectionFormsHistoryRecord} obj Optional instance to populate.
+   * @return {CollectionFormsHistoryRecord} The populated <code>CollectionFormsHistoryRecord</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ CollectionFormsHistoryRecord.prototype.carrierName = undefined
 CollectionFormsHistoryRecord.prototype.creationDate = undefined
 
 /**
- * @member {module:shipping_v2/model/GenerationStatus} generationStatus
- * @type {module:shipping_v2/model/GenerationStatus}
+ * @member {GenerationStatus} generationStatus
+ * @type {GenerationStatus}
  */
 CollectionFormsHistoryRecord.prototype.generationStatus = undefined
 
@@ -89,7 +89,7 @@ CollectionFormsHistoryRecord.prototype.generationStatus = undefined
 CollectionFormsHistoryRecord.prototype.collectionFormId = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} shipFromAddress
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipFromAddress
+ * @type {Address}
  */
 CollectionFormsHistoryRecord.prototype.shipFromAddress = undefined

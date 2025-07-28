@@ -33,8 +33,8 @@ export class BoxContentsFeeDetails {
    * Constructs a <code>BoxContentsFeeDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/BoxContentsFeeDetails} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/BoxContentsFeeDetails} The populated <code>BoxContentsFeeDetails</code> instance.
+   * @param {BoxContentsFeeDetails} obj Optional instance to populate.
+   * @return {BoxContentsFeeDetails} The populated <code>BoxContentsFeeDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,13 +66,13 @@ export class BoxContentsFeeDetails {
 BoxContentsFeeDetails.prototype.totalUnits = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/Amount} feePerUnit
- * @type {module:fulfillmentinbound_v0/model/Amount}
+ * @member {Amount} feePerUnit
+ * @type {Amount}
  */
 BoxContentsFeeDetails.prototype.feePerUnit = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/Amount} totalFee
- * @type {module:fulfillmentinbound_v0/model/Amount}
+ * @member {Amount} totalFee
+ * @type {Amount}
  */
 BoxContentsFeeDetails.prototype.totalFee = undefined

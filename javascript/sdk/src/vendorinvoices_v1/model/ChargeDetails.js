@@ -26,8 +26,8 @@ export class ChargeDetails {
    * Monetary and tax details of the charge.
    * @alias module:vendorinvoices_v1/model/ChargeDetails
    * @class
-   * @param type {module:vendorinvoices_v1/model/ChargeDetails.TypeEnum} Type of the charge applied.
-   * @param chargeAmount {module:vendorinvoices_v1/model/Money}
+   * @param type {String} Type of the charge applied.
+   * @param chargeAmount {Money}
    */
   constructor (type, chargeAmount) {
     this.type = type
@@ -38,8 +38,8 @@ export class ChargeDetails {
    * Constructs a <code>ChargeDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/ChargeDetails} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/ChargeDetails} The populated <code>ChargeDetails</code> instance.
+   * @param {ChargeDetails} obj Optional instance to populate.
+   * @return {ChargeDetails} The populated <code>ChargeDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -140,8 +140,8 @@ ChargeDetails.TypeEnum = {
 
 /**
  * Type of the charge applied.
- * @member {module:vendorinvoices_v1/model/ChargeDetails.TypeEnum} type
- * @type {module:vendorinvoices_v1/model/ChargeDetails.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 ChargeDetails.prototype.type = undefined
 
@@ -153,14 +153,14 @@ ChargeDetails.prototype.type = undefined
 ChargeDetails.prototype.description = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/Money} chargeAmount
- * @type {module:vendorinvoices_v1/model/Money}
+ * @member {Money} chargeAmount
+ * @type {Money}
  */
 ChargeDetails.prototype.chargeAmount = undefined
 
 /**
  * Tax amount details applied on this charge.
- * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
- * @type {Array.<module:vendorinvoices_v1/model/TaxDetails>}
+ * @member {[TaxDetails]} taxDetails
+ * @type {[TaxDetails]}
  */
 ChargeDetails.prototype.taxDetails = undefined

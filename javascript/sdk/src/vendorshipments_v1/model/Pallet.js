@@ -29,7 +29,7 @@ export class Pallet {
    * Details of the Pallet/Tare being shipped.
    * @alias module:vendorshipments_v1/model/Pallet
    * @class
-   * @param palletIdentifiers {Array.<module:vendorshipments_v1/model/ContainerIdentification>} A list of pallet identifiers.
+   * @param palletIdentifiers {[ContainerIdentification]} A list of pallet identifiers.
    */
   constructor (palletIdentifiers) {
     this.palletIdentifiers = palletIdentifiers
@@ -39,8 +39,8 @@ export class Pallet {
    * Constructs a <code>Pallet</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Pallet} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Pallet} The populated <code>Pallet</code> instance.
+   * @param {Pallet} obj Optional instance to populate.
+   * @return {Pallet} The populated <code>Pallet</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,8 +70,8 @@ export class Pallet {
 
 /**
  * A list of pallet identifiers.
- * @member {Array.<module:vendorshipments_v1/model/ContainerIdentification>} palletIdentifiers
- * @type {Array.<module:vendorshipments_v1/model/ContainerIdentification>}
+ * @member {[ContainerIdentification]} palletIdentifiers
+ * @type {[ContainerIdentification]}
  */
 Pallet.prototype.palletIdentifiers = undefined
 
@@ -90,26 +90,26 @@ Pallet.prototype.tier = undefined
 Pallet.prototype.block = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Dimensions} dimensions
- * @type {module:vendorshipments_v1/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 Pallet.prototype.dimensions = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Weight} weight
- * @type {module:vendorshipments_v1/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Pallet.prototype.weight = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/CartonReferenceDetails} cartonReferenceDetails
- * @type {module:vendorshipments_v1/model/CartonReferenceDetails}
+ * @member {CartonReferenceDetails} cartonReferenceDetails
+ * @type {CartonReferenceDetails}
  */
 Pallet.prototype.cartonReferenceDetails = undefined
 
 /**
  * A list of container item details.
- * @member {Array.<module:vendorshipments_v1/model/ContainerItem>} items
- * @type {Array.<module:vendorshipments_v1/model/ContainerItem>}
+ * @member {[ContainerItem]} items
+ * @type {[ContainerItem]}
  */
 Pallet.prototype.items = undefined

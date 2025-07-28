@@ -36,8 +36,8 @@ export class TimeInterval {
    * Constructs a <code>TimeInterval</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/TimeInterval} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/TimeInterval} The populated <code>TimeInterval</code> instance.
+   * @param {TimeInterval} obj Optional instance to populate.
+   * @return {TimeInterval} The populated <code>TimeInterval</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

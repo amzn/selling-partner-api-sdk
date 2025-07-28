@@ -25,7 +25,7 @@ export class ItemRelationship {
    * Relationship details for an Amazon catalog item.
    * @alias module:catalogitems_v2022_04_01/model/ItemRelationship
    * @class
-   * @param type {module:catalogitems_v2022_04_01/model/ItemRelationship.TypeEnum} Type of relationship.
+   * @param type {String} Type of relationship.
    */
   constructor (type) {
     this.type = type
@@ -35,8 +35,8 @@ export class ItemRelationship {
    * Constructs a <code>ItemRelationship</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemRelationship} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemRelationship} The populated <code>ItemRelationship</code> instance.
+   * @param {ItemRelationship} obj Optional instance to populate.
+   * @return {ItemRelationship} The populated <code>ItemRelationship</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,21 +63,21 @@ export class ItemRelationship {
 
 /**
  * ASINs of the related items that are children of this item.
- * @member {Array.<String>} childAsins
- * @type {Array.<String>}
+ * @member {[String]} childAsins
+ * @type {[String]}
  */
 ItemRelationship.prototype.childAsins = undefined
 
 /**
  * ASINs of the related items that are parents of this item.
- * @member {Array.<String>} parentAsins
- * @type {Array.<String>}
+ * @member {[String]} parentAsins
+ * @type {[String]}
  */
 ItemRelationship.prototype.parentAsins = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/ItemVariationTheme} variationTheme
- * @type {module:catalogitems_v2022_04_01/model/ItemVariationTheme}
+ * @member {ItemVariationTheme} variationTheme
+ * @type {ItemVariationTheme}
  */
 ItemRelationship.prototype.variationTheme = undefined
 
@@ -103,7 +103,7 @@ ItemRelationship.TypeEnum = {
 
 /**
  * Type of relationship.
- * @member {module:catalogitems_v2022_04_01/model/ItemRelationship.TypeEnum} type
- * @type {module:catalogitems_v2022_04_01/model/ItemRelationship.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 ItemRelationship.prototype.type = undefined

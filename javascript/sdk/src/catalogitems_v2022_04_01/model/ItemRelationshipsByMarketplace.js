@@ -26,7 +26,7 @@ export class ItemRelationshipsByMarketplace {
    * @alias module:catalogitems_v2022_04_01/model/ItemRelationshipsByMarketplace
    * @class
    * @param marketplaceId {String} Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-   * @param relationships {Array.<module:catalogitems_v2022_04_01/model/ItemRelationship>} Relationships for the item.
+   * @param relationships {[ItemRelationship]} Relationships for the item.
    */
   constructor (marketplaceId, relationships) {
     this.marketplaceId = marketplaceId
@@ -37,8 +37,8 @@ export class ItemRelationshipsByMarketplace {
    * Constructs a <code>ItemRelationshipsByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemRelationshipsByMarketplace} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemRelationshipsByMarketplace} The populated <code>ItemRelationshipsByMarketplace</code> instance.
+   * @param {ItemRelationshipsByMarketplace} obj Optional instance to populate.
+   * @return {ItemRelationshipsByMarketplace} The populated <code>ItemRelationshipsByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ ItemRelationshipsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Relationships for the item.
- * @member {Array.<module:catalogitems_v2022_04_01/model/ItemRelationship>} relationships
- * @type {Array.<module:catalogitems_v2022_04_01/model/ItemRelationship>}
+ * @member {[ItemRelationship]} relationships
+ * @type {[ItemRelationship]}
  */
 ItemRelationshipsByMarketplace.prototype.relationships = undefined

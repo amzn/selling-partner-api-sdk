@@ -25,7 +25,7 @@ export class SkuQuantity {
    * Quantity details for a SKU as part of a shipment
    * @alias module:awd_v2024_05_09/model/SkuQuantity
    * @class
-   * @param expectedQuantity {module:awd_v2024_05_09/model/InventoryQuantity}
+   * @param expectedQuantity {InventoryQuantity}
    * @param sku {String} The merchant stock keeping unit
    */
   constructor (expectedQuantity, sku) {
@@ -37,8 +37,8 @@ export class SkuQuantity {
    * Constructs a <code>SkuQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/SkuQuantity} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/SkuQuantity} The populated <code>SkuQuantity</code> instance.
+   * @param {SkuQuantity} obj Optional instance to populate.
+   * @return {SkuQuantity} The populated <code>SkuQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,14 +63,14 @@ export class SkuQuantity {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/InventoryQuantity} expectedQuantity
- * @type {module:awd_v2024_05_09/model/InventoryQuantity}
+ * @member {InventoryQuantity} expectedQuantity
+ * @type {InventoryQuantity}
  */
 SkuQuantity.prototype.expectedQuantity = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InventoryQuantity} receivedQuantity
- * @type {module:awd_v2024_05_09/model/InventoryQuantity}
+ * @member {InventoryQuantity} receivedQuantity
+ * @type {InventoryQuantity}
  */
 SkuQuantity.prototype.receivedQuantity = undefined
 

@@ -26,7 +26,7 @@ export class GetSelfShipAppointmentSlotsResponse {
    * The &#x60;getSelfShipAppointmentSlots&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/GetSelfShipAppointmentSlotsResponse
    * @class
-   * @param selfShipAppointmentSlotsAvailability {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentSlotsAvailability}
+   * @param selfShipAppointmentSlotsAvailability {SelfShipAppointmentSlotsAvailability}
    */
   constructor (selfShipAppointmentSlotsAvailability) {
     this.selfShipAppointmentSlotsAvailability = selfShipAppointmentSlotsAvailability
@@ -36,8 +36,8 @@ export class GetSelfShipAppointmentSlotsResponse {
    * Constructs a <code>GetSelfShipAppointmentSlotsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/GetSelfShipAppointmentSlotsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/GetSelfShipAppointmentSlotsResponse} The populated <code>GetSelfShipAppointmentSlotsResponse</code> instance.
+   * @param {GetSelfShipAppointmentSlotsResponse} obj Optional instance to populate.
+   * @return {GetSelfShipAppointmentSlotsResponse} The populated <code>GetSelfShipAppointmentSlotsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class GetSelfShipAppointmentSlotsResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 GetSelfShipAppointmentSlotsResponse.prototype.pagination = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentSlotsAvailability} selfShipAppointmentSlotsAvailability
- * @type {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentSlotsAvailability}
+ * @member {SelfShipAppointmentSlotsAvailability} selfShipAppointmentSlotsAvailability
+ * @type {SelfShipAppointmentSlotsAvailability}
  */
 GetSelfShipAppointmentSlotsResponse.prototype.selfShipAppointmentSlotsAvailability = undefined

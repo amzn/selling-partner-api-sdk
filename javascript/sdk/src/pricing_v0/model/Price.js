@@ -35,8 +35,8 @@ export class Price {
    * Constructs a <code>Price</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/Price} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/Price} The populated <code>Price</code> instance.
+   * @param {Price} obj Optional instance to populate.
+   * @return {Price} The populated <code>Price</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,7 +83,7 @@ Price.prototype.sellerSKU = undefined
 Price.prototype.ASIN = undefined
 
 /**
- * @member {module:pricing_v0/model/Product} product
- * @type {module:pricing_v0/model/Product}
+ * @member {Product} product
+ * @type {Product}
  */
 Price.prototype.product = undefined

@@ -26,7 +26,7 @@ export class ListInboundPlanBoxesResponse {
    * The &#x60;listInboundPlanBoxes&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse
    * @class
-   * @param boxes {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>} A list of boxes in an inbound plan.
+   * @param boxes {[Box]} A list of boxes in an inbound plan.
    */
   constructor (boxes) {
     this.boxes = boxes
@@ -36,8 +36,8 @@ export class ListInboundPlanBoxesResponse {
    * Constructs a <code>ListInboundPlanBoxesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse} The populated <code>ListInboundPlanBoxesResponse</code> instance.
+   * @param {ListInboundPlanBoxesResponse} obj Optional instance to populate.
+   * @return {ListInboundPlanBoxesResponse} The populated <code>ListInboundPlanBoxesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ListInboundPlanBoxesResponse {
 
 /**
  * A list of boxes in an inbound plan.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>} boxes
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>}
+ * @member {[Box]} boxes
+ * @type {[Box]}
  */
 ListInboundPlanBoxesResponse.prototype.boxes = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListInboundPlanBoxesResponse.prototype.pagination = undefined

@@ -35,8 +35,8 @@ export class FeesEstimateIdentifier {
    * Constructs a <code>FeesEstimateIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/FeesEstimateIdentifier} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/FeesEstimateIdentifier} The populated <code>FeesEstimateIdentifier</code> instance.
+   * @param {FeesEstimateIdentifier} obj Optional instance to populate.
+   * @return {FeesEstimateIdentifier} The populated <code>FeesEstimateIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -80,8 +80,8 @@ FeesEstimateIdentifier.prototype.marketplaceId = undefined
 FeesEstimateIdentifier.prototype.sellerId = undefined
 
 /**
- * @member {module:productfees_v0/model/IdType} idType
- * @type {module:productfees_v0/model/IdType}
+ * @member {IdType} idType
+ * @type {IdType}
  */
 FeesEstimateIdentifier.prototype.idType = undefined
 
@@ -100,8 +100,8 @@ FeesEstimateIdentifier.prototype.idValue = undefined
 FeesEstimateIdentifier.prototype.isAmazonFulfilled = undefined
 
 /**
- * @member {module:productfees_v0/model/PriceToEstimateFees} priceToEstimateFees
- * @type {module:productfees_v0/model/PriceToEstimateFees}
+ * @member {PriceToEstimateFees} priceToEstimateFees
+ * @type {PriceToEstimateFees}
  */
 FeesEstimateIdentifier.prototype.priceToEstimateFees = undefined
 
@@ -113,7 +113,7 @@ FeesEstimateIdentifier.prototype.priceToEstimateFees = undefined
 FeesEstimateIdentifier.prototype.sellerInputIdentifier = undefined
 
 /**
- * @member {module:productfees_v0/model/OptionalFulfillmentProgram} optionalFulfillmentProgram
- * @type {module:productfees_v0/model/OptionalFulfillmentProgram}
+ * @member {OptionalFulfillmentProgram} optionalFulfillmentProgram
+ * @type {OptionalFulfillmentProgram}
  */
 FeesEstimateIdentifier.prototype.optionalFulfillmentProgram = undefined

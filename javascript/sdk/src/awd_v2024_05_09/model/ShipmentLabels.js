@@ -25,7 +25,7 @@ export class ShipmentLabels {
    * Shipment labels.
    * @alias module:awd_v2024_05_09/model/ShipmentLabels
    * @class
-   * @param labelStatus {module:awd_v2024_05_09/model/LabelStatus}
+   * @param labelStatus {LabelStatus}
    */
   constructor (labelStatus) {
     this.labelStatus = labelStatus
@@ -35,8 +35,8 @@ export class ShipmentLabels {
    * Constructs a <code>ShipmentLabels</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/ShipmentLabels} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/ShipmentLabels} The populated <code>ShipmentLabels</code> instance.
+   * @param {ShipmentLabels} obj Optional instance to populate.
+   * @return {ShipmentLabels} The populated <code>ShipmentLabels</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,7 +67,7 @@ export class ShipmentLabels {
 ShipmentLabels.prototype.labelDownloadURL = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/LabelStatus} labelStatus
- * @type {module:awd_v2024_05_09/model/LabelStatus}
+ * @member {LabelStatus} labelStatus
+ * @type {LabelStatus}
  */
 ShipmentLabels.prototype.labelStatus = undefined

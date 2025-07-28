@@ -34,8 +34,8 @@ export class ListOffersResponse {
    * Constructs a <code>ListOffersResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOffersResponse} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOffersResponse} The populated <code>ListOffersResponse</code> instance.
+   * @param {ListOffersResponse} obj Optional instance to populate.
+   * @return {ListOffersResponse} The populated <code>ListOffersResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,13 +60,13 @@ export class ListOffersResponse {
 
 /**
  * A list of offers.
- * @member {Array.<module:replenishment_v2022_11_07/model/ListOffersResponseOffer>} offers
- * @type {Array.<module:replenishment_v2022_11_07/model/ListOffersResponseOffer>}
+ * @member {[ListOffersResponseOffer]} offers
+ * @type {[ListOffersResponseOffer]}
  */
 ListOffersResponse.prototype.offers = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/PaginationResponse} pagination
- * @type {module:replenishment_v2022_11_07/model/PaginationResponse}
+ * @member {PaginationResponse} pagination
+ * @type {PaginationResponse}
  */
 ListOffersResponse.prototype.pagination = undefined

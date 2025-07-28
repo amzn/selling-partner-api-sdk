@@ -27,11 +27,11 @@ export class OrderStatus {
    * @alias module:vendororders_v1/model/OrderStatus
    * @class
    * @param purchaseOrderNumber {String} The buyer's purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.
-   * @param purchaseOrderStatus {module:vendororders_v1/model/OrderStatus.PurchaseOrderStatusEnum} The status of the buyer's purchase order for this order.
+   * @param purchaseOrderStatus {String} The status of the buyer's purchase order for this order.
    * @param purchaseOrderDate {Date} The date the purchase order was placed. Must be in ISO-8601 date/time format.
-   * @param sellingParty {module:vendororders_v1/model/PartyIdentification}
-   * @param shipToParty {module:vendororders_v1/model/PartyIdentification}
-   * @param itemStatus {Array.<module:vendororders_v1/model/OrderItemStatus>} Detailed description of items order status.
+   * @param sellingParty {PartyIdentification}
+   * @param shipToParty {PartyIdentification}
+   * @param itemStatus {[OrderItemStatus]} Detailed description of items order status.
    */
   constructor (purchaseOrderNumber, purchaseOrderStatus, purchaseOrderDate, sellingParty, shipToParty, itemStatus) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -46,8 +46,8 @@ export class OrderStatus {
    * Constructs a <code>OrderStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderStatus} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderStatus} The populated <code>OrderStatus</code> instance.
+   * @param {OrderStatus} obj Optional instance to populate.
+   * @return {OrderStatus} The populated <code>OrderStatus</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -104,8 +104,8 @@ OrderStatus.PurchaseOrderStatusEnum = {
 
 /**
  * The status of the buyer's purchase order for this order.
- * @member {module:vendororders_v1/model/OrderStatus.PurchaseOrderStatusEnum} purchaseOrderStatus
- * @type {module:vendororders_v1/model/OrderStatus.PurchaseOrderStatusEnum}
+ * @member {String} purchaseOrderStatus
+ * @type {String}
  */
 OrderStatus.prototype.purchaseOrderStatus = undefined
 
@@ -124,20 +124,20 @@ OrderStatus.prototype.purchaseOrderDate = undefined
 OrderStatus.prototype.lastUpdatedDate = undefined
 
 /**
- * @member {module:vendororders_v1/model/PartyIdentification} sellingParty
- * @type {module:vendororders_v1/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 OrderStatus.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendororders_v1/model/PartyIdentification} shipToParty
- * @type {module:vendororders_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipToParty
+ * @type {PartyIdentification}
  */
 OrderStatus.prototype.shipToParty = undefined
 
 /**
  * Detailed description of items order status.
- * @member {Array.<module:vendororders_v1/model/OrderItemStatus>} itemStatus
- * @type {Array.<module:vendororders_v1/model/OrderItemStatus>}
+ * @member {[OrderItemStatus]} itemStatus
+ * @type {[OrderItemStatus]}
  */
 OrderStatus.prototype.itemStatus = undefined

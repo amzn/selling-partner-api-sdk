@@ -27,10 +27,10 @@ export class Container {
    * A container used for shipping and packing items.
    * @alias module:vendordfshipping_v2021_12_28/model/Container
    * @class
-   * @param containerType {module:vendordfshipping_v2021_12_28/model/Container.ContainerTypeEnum} The type of container.
+   * @param containerType {String} The type of container.
    * @param containerIdentifier {String} The container identifier.
-   * @param weight {module:vendordfshipping_v2021_12_28/model/Weight}
-   * @param packedItems {Array.<module:vendordfshipping_v2021_12_28/model/PackedItem>} A list of packed items.
+   * @param weight {Weight}
+   * @param packedItems {[PackedItem]} A list of packed items.
    */
   constructor (containerType, containerIdentifier, weight, packedItems) {
     this.containerType = containerType
@@ -43,8 +43,8 @@ export class Container {
    * Constructs a <code>Container</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/Container} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/Container} The populated <code>Container</code> instance.
+   * @param {Container} obj Optional instance to populate.
+   * @return {Container} The populated <code>Container</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -99,8 +99,8 @@ Container.ContainerTypeEnum = {
 
 /**
  * The type of container.
- * @member {module:vendordfshipping_v2021_12_28/model/Container.ContainerTypeEnum} containerType
- * @type {module:vendordfshipping_v2021_12_28/model/Container.ContainerTypeEnum}
+ * @member {String} containerType
+ * @type {String}
  */
 Container.prototype.containerType = undefined
 
@@ -161,20 +161,20 @@ Container.prototype.carrier = undefined
 Container.prototype.containerSequenceNumber = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/Dimensions} dimensions
- * @type {module:vendordfshipping_v2021_12_28/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 Container.prototype.dimensions = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/Weight} weight
- * @type {module:vendordfshipping_v2021_12_28/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Container.prototype.weight = undefined
 
 /**
  * A list of packed items.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/PackedItem>} packedItems
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/PackedItem>}
+ * @member {[PackedItem]} packedItems
+ * @type {[PackedItem]}
  */
 Container.prototype.packedItems = undefined

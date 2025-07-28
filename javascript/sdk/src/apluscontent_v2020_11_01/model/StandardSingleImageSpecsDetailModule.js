@@ -36,8 +36,8 @@ export class StandardSingleImageSpecsDetailModule {
    * Constructs a <code>StandardSingleImageSpecsDetailModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardSingleImageSpecsDetailModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardSingleImageSpecsDetailModule} The populated <code>StandardSingleImageSpecsDetailModule</code> instance.
+   * @param {StandardSingleImageSpecsDetailModule} obj Optional instance to populate.
+   * @return {StandardSingleImageSpecsDetailModule} The populated <code>StandardSingleImageSpecsDetailModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,49 +67,49 @@ export class StandardSingleImageSpecsDetailModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
- * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
+ * @member {ImageComponent} image
+ * @type {ImageComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.image = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} descriptionHeadline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} descriptionHeadline
+ * @type {TextComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.descriptionHeadline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} descriptionBlock1
- * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
+ * @member {StandardTextBlock} descriptionBlock1
+ * @type {StandardTextBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.descriptionBlock1 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} descriptionBlock2
- * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
+ * @member {StandardTextBlock} descriptionBlock2
+ * @type {StandardTextBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.descriptionBlock2 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} specificationHeadline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} specificationHeadline
+ * @type {TextComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.specificationHeadline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock} specificationListBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock}
+ * @member {StandardHeaderTextListBlock} specificationListBlock
+ * @type {StandardHeaderTextListBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.specificationListBlock = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} specificationTextBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
+ * @member {StandardTextBlock} specificationTextBlock
+ * @type {StandardTextBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.specificationTextBlock = undefined

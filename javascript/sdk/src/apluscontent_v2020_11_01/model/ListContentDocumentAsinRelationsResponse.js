@@ -27,7 +27,7 @@ export class ListContentDocumentAsinRelationsResponse {
    * @alias module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-   * @param asinMetadataSet {Array.<module:apluscontent_v2020_11_01/model/AsinMetadata>} The set of ASIN metadata.
+   * @param asinMetadataSet {[AsinMetadata]} The set of ASIN metadata.
    */
   constructor (asinMetadataSet) {
     AplusPaginatedResponse.call(this)
@@ -38,8 +38,8 @@ export class ListContentDocumentAsinRelationsResponse {
    * Constructs a <code>ListContentDocumentAsinRelationsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse} The populated <code>ListContentDocumentAsinRelationsResponse</code> instance.
+   * @param {ListContentDocumentAsinRelationsResponse} obj Optional instance to populate.
+   * @return {ListContentDocumentAsinRelationsResponse} The populated <code>ListContentDocumentAsinRelationsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,8 +66,8 @@ export class ListContentDocumentAsinRelationsResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 ListContentDocumentAsinRelationsResponse.prototype.warnings = undefined
 
@@ -80,16 +80,16 @@ ListContentDocumentAsinRelationsResponse.prototype.nextPageToken = undefined
 
 /**
  * The set of ASIN metadata.
- * @member {Array.<module:apluscontent_v2020_11_01/model/AsinMetadata>} asinMetadataSet
- * @type {Array.<module:apluscontent_v2020_11_01/model/AsinMetadata>}
+ * @member {[AsinMetadata]} asinMetadataSet
+ * @type {[AsinMetadata]}
  */
 ListContentDocumentAsinRelationsResponse.prototype.asinMetadataSet = undefined
 
 // Implement AplusPaginatedResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 

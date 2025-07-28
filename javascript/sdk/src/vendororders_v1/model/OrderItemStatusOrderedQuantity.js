@@ -34,8 +34,8 @@ export class OrderItemStatusOrderedQuantity {
    * Constructs a <code>OrderItemStatusOrderedQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderItemStatusOrderedQuantity} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderItemStatusOrderedQuantity} The populated <code>OrderItemStatusOrderedQuantity</code> instance.
+   * @param {OrderItemStatusOrderedQuantity} obj Optional instance to populate.
+   * @return {OrderItemStatusOrderedQuantity} The populated <code>OrderItemStatusOrderedQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class OrderItemStatusOrderedQuantity {
 }
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} orderedQuantity
+ * @type {ItemQuantity}
  */
 OrderItemStatusOrderedQuantity.prototype.orderedQuantity = undefined
 
 /**
  * Details of item quantity ordered.
- * @member {Array.<module:vendororders_v1/model/OrderedQuantityDetails>} orderedQuantityDetails
- * @type {Array.<module:vendororders_v1/model/OrderedQuantityDetails>}
+ * @member {[OrderedQuantityDetails]} orderedQuantityDetails
+ * @type {[OrderedQuantityDetails]}
  */
 OrderItemStatusOrderedQuantity.prototype.orderedQuantityDetails = undefined

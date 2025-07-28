@@ -33,8 +33,8 @@ export class ChargeRefundTransaction {
    * Constructs a <code>ChargeRefundTransaction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ChargeRefundTransaction} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ChargeRefundTransaction} The populated <code>ChargeRefundTransaction</code> instance.
+   * @param {ChargeRefundTransaction} obj Optional instance to populate.
+   * @return {ChargeRefundTransaction} The populated <code>ChargeRefundTransaction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,8 +58,8 @@ export class ChargeRefundTransaction {
 }
 
 /**
- * @member {module:finances_v0/model/Currency} chargeAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} chargeAmount
+ * @type {Currency}
  */
 ChargeRefundTransaction.prototype.chargeAmount = undefined
 

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class BalanceType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class BalanceType {
@@ -46,7 +46,7 @@ export class BalanceType {
   /**
     * Returns a <code>BalanceType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/BalanceType} The enum <code>BalanceType</code> value.
+    * @return {BalanceType} The enum <code>BalanceType</code> value.
     */
   static constructFromObject (object) {
     return object

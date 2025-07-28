@@ -26,7 +26,7 @@ export class ListPackingGroupBoxesResponse {
    * The &#x60;listPackingGroupBoxes&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse
    * @class
-   * @param boxes {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>} Provides the information about the list of boxes in the packing group.
+   * @param boxes {[Box]} Provides the information about the list of boxes in the packing group.
    */
   constructor (boxes) {
     this.boxes = boxes
@@ -36,8 +36,8 @@ export class ListPackingGroupBoxesResponse {
    * Constructs a <code>ListPackingGroupBoxesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse} The populated <code>ListPackingGroupBoxesResponse</code> instance.
+   * @param {ListPackingGroupBoxesResponse} obj Optional instance to populate.
+   * @return {ListPackingGroupBoxesResponse} The populated <code>ListPackingGroupBoxesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ListPackingGroupBoxesResponse {
 
 /**
  * Provides the information about the list of boxes in the packing group.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>} boxes
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>}
+ * @member {[Box]} boxes
+ * @type {[Box]}
  */
 ListPackingGroupBoxesResponse.prototype.boxes = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListPackingGroupBoxesResponse.prototype.pagination = undefined

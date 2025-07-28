@@ -34,8 +34,8 @@ export class QueriesApi {
     * Constructs a new QueriesApi.
     * @alias module:datakiosk_v2023_11_15/api/QueriesApi
     * @class
-    * @param {module:datakiosk_v2023_11_15/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:datakiosk_v2023_11_15/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -118,8 +118,8 @@ export class QueriesApi {
 
   /**
      * Creates a Data Kiosk query request.  **Note:** The retention of a query varies based on the fields requested. Each field within a schema is annotated with a &#x60;@resultRetention&#x60; directive that defines how long a query containing that field will be retained. When a query contains multiple fields with different retentions, the shortest (minimum) retention is applied. The retention of a query&#39;s resulting documents always matches the retention of the query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:datakiosk_v2023_11_15/model/CreateQuerySpecification} body The body of the request.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/CreateQueryResponse>}
+     * @param {CreateQuerySpecification} body The body of the request.
+     * @return {Promise<CreateQueryResponse>}
      */
   createQueryWithHttpInfo (body) {
     const postBody = body
@@ -151,8 +151,8 @@ export class QueriesApi {
 
   /**
      * Creates a Data Kiosk query request.  **Note:** The retention of a query varies based on the fields requested. Each field within a schema is annotated with a &#x60;@resultRetention&#x60; directive that defines how long a query containing that field will be retained. When a query contains multiple fields with different retentions, the shortest (minimum) retention is applied. The retention of a query&#39;s resulting documents always matches the retention of the query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:datakiosk_v2023_11_15/model/CreateQuerySpecification} body The body of the request.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/CreateQueryResponse>}
+     * @param {CreateQuerySpecification} body The body of the request.
+     * @return {Promise<CreateQueryResponse>}
      */
   createQuery (body) {
     return this.createQueryWithHttpInfo(body)
@@ -164,7 +164,7 @@ export class QueriesApi {
   /**
      * Returns the information required for retrieving a Data Kiosk document&#39;s contents. See the &#x60;createQuery&#x60; operation for details about document retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} documentId The identifier for the Data Kiosk document.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/GetDocumentResponse>}
+     * @return {Promise<GetDocumentResponse>}
      */
   getDocumentWithHttpInfo (documentId) {
     const postBody = null
@@ -198,7 +198,7 @@ export class QueriesApi {
   /**
      * Returns the information required for retrieving a Data Kiosk document&#39;s contents. See the &#x60;createQuery&#x60; operation for details about document retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} documentId The identifier for the Data Kiosk document.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/GetDocumentResponse>}
+     * @return {Promise<GetDocumentResponse>}
      */
   getDocument (documentId) {
     return this.getDocumentWithHttpInfo(documentId)
@@ -210,12 +210,12 @@ export class QueriesApi {
   /**
      * Returns details for the Data Kiosk queries that match the specified filters. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:datakiosk_v2023_11_15/model/String>} opts.processingStatuses A list of processing statuses used to filter queries.
+     * @param {[String]} opts.processingStatuses A list of processing statuses used to filter queries.
      * @param {Number} opts.pageSize The maximum number of queries to return in a single call. (default to 10)
      * @param {Date} opts.createdSince The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.
      * @param {Date} opts.createdUntil The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request.
      * @param {String} opts.paginationToken A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/GetQueriesResponse>}
+     * @return {Promise<GetQueriesResponse>}
      */
   getQueriesWithHttpInfo (opts) {
     opts = opts || {}
@@ -249,12 +249,12 @@ export class QueriesApi {
   /**
      * Returns details for the Data Kiosk queries that match the specified filters. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:datakiosk_v2023_11_15/model/String>} opts.processingStatuses A list of processing statuses used to filter queries.
+     * @param {[String]} opts.processingStatuses A list of processing statuses used to filter queries.
      * @param {Number} opts.pageSize The maximum number of queries to return in a single call. (default to 10)
      * @param {Date} opts.createdSince The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.
      * @param {Date} opts.createdUntil The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request.
      * @param {String} opts.paginationToken A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/GetQueriesResponse>}
+     * @return {Promise<GetQueriesResponse>}
      */
   getQueries (opts) {
     return this.getQueriesWithHttpInfo(opts)
@@ -266,7 +266,7 @@ export class QueriesApi {
   /**
      * Returns query details for the query specified by the &#x60;queryId&#x60; parameter. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2.0 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} queryId The query identifier.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/Query>}
+     * @return {Promise<Query>}
      */
   getQueryWithHttpInfo (queryId) {
     const postBody = null
@@ -300,7 +300,7 @@ export class QueriesApi {
   /**
      * Returns query details for the query specified by the &#x60;queryId&#x60; parameter. See the &#x60;createQuery&#x60; operation for details about query retention.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2.0 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} queryId The query identifier.
-     * @return {Promise<module:datakiosk_v2023_11_15/model/Query>}
+     * @return {Promise<Query>}
      */
   getQuery (queryId) {
     return this.getQueryWithHttpInfo(queryId)

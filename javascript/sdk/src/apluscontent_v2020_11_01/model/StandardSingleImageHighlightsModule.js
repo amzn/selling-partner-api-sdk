@@ -36,8 +36,8 @@ export class StandardSingleImageHighlightsModule {
    * Constructs a <code>StandardSingleImageHighlightsModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardSingleImageHighlightsModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardSingleImageHighlightsModule} The populated <code>StandardSingleImageHighlightsModule</code> instance.
+   * @param {StandardSingleImageHighlightsModule} obj Optional instance to populate.
+   * @return {StandardSingleImageHighlightsModule} The populated <code>StandardSingleImageHighlightsModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,37 +65,37 @@ export class StandardSingleImageHighlightsModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
- * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
+ * @member {ImageComponent} image
+ * @type {ImageComponent}
  */
 StandardSingleImageHighlightsModule.prototype.image = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardSingleImageHighlightsModule.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} textBlock1
- * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
+ * @member {StandardTextBlock} textBlock1
+ * @type {StandardTextBlock}
  */
 StandardSingleImageHighlightsModule.prototype.textBlock1 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} textBlock2
- * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
+ * @member {StandardTextBlock} textBlock2
+ * @type {StandardTextBlock}
  */
 StandardSingleImageHighlightsModule.prototype.textBlock2 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} textBlock3
- * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
+ * @member {StandardTextBlock} textBlock3
+ * @type {StandardTextBlock}
  */
 StandardSingleImageHighlightsModule.prototype.textBlock3 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock} bulletedListBlock
- * @type {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock}
+ * @member {StandardHeaderTextListBlock} bulletedListBlock
+ * @type {StandardHeaderTextListBlock}
  */
 StandardSingleImageHighlightsModule.prototype.bulletedListBlock = undefined

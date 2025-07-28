@@ -34,8 +34,8 @@ export class AddressWithContact {
    * Constructs a <code>AddressWithContact</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/AddressWithContact} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/AddressWithContact} The populated <code>AddressWithContact</code> instance.
+   * @param {AddressWithContact} obj Optional instance to populate.
+   * @return {AddressWithContact} The populated <code>AddressWithContact</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class AddressWithContact {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ContactDetails} contactDetails
- * @type {module:supplysources_v2020_07_01/model/ContactDetails}
+ * @member {ContactDetails} contactDetails
+ * @type {ContactDetails}
  */
 AddressWithContact.prototype.contactDetails = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/Address} address
- * @type {module:supplysources_v2020_07_01/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 AddressWithContact.prototype.address = undefined

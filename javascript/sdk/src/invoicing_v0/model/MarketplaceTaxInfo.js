@@ -33,8 +33,8 @@ export class MarketplaceTaxInfo {
    * Constructs a <code>MarketplaceTaxInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoicing_v0/model/MarketplaceTaxInfo} obj Optional instance to populate.
-   * @return {module:invoicing_v0/model/MarketplaceTaxInfo} The populated <code>MarketplaceTaxInfo</code> instance.
+   * @param {MarketplaceTaxInfo} obj Optional instance to populate.
+   * @return {MarketplaceTaxInfo} The populated <code>MarketplaceTaxInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,7 +74,7 @@ MarketplaceTaxInfo.prototype.taxingRegion = undefined
 
 /**
  * The list of tax classifications.
- * @member {Array.<module:invoicing_v0/model/TaxClassification>} taxClassifications
- * @type {Array.<module:invoicing_v0/model/TaxClassification>}
+ * @member {[TaxClassification]} taxClassifications
+ * @type {[TaxClassification]}
  */
 MarketplaceTaxInfo.prototype.taxClassifications = undefined

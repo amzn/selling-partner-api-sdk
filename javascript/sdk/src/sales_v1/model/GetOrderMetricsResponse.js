@@ -34,8 +34,8 @@ export class GetOrderMetricsResponse {
    * Constructs a <code>GetOrderMetricsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sales_v1/model/GetOrderMetricsResponse} obj Optional instance to populate.
-   * @return {module:sales_v1/model/GetOrderMetricsResponse} The populated <code>GetOrderMetricsResponse</code> instance.
+   * @param {GetOrderMetricsResponse} obj Optional instance to populate.
+   * @return {GetOrderMetricsResponse} The populated <code>GetOrderMetricsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,14 +60,14 @@ export class GetOrderMetricsResponse {
 
 /**
  * A set of order metrics, each scoped to a particular time interval.
- * @member {Array.<module:sales_v1/model/OrderMetricsInterval>} payload
- * @type {Array.<module:sales_v1/model/OrderMetricsInterval>}
+ * @member {[OrderMetricsInterval]} payload
+ * @type {[OrderMetricsInterval]}
  */
 GetOrderMetricsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:sales_v1/model/Error>} errors
- * @type {Array.<module:sales_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetOrderMetricsResponse.prototype.errors = undefined

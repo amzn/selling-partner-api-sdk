@@ -34,8 +34,8 @@ export class SetPrepDetailsResponse {
    * Constructs a <code>SetPrepDetailsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsResponse} The populated <code>SetPrepDetailsResponse</code> instance.
+   * @param {SetPrepDetailsResponse} obj Optional instance to populate.
+   * @return {SetPrepDetailsResponse} The populated <code>SetPrepDetailsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

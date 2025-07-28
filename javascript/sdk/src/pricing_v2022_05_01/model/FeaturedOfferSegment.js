@@ -25,8 +25,8 @@ export class FeaturedOfferSegment {
    * Describes the segment in which the offer is featured.
    * @alias module:pricing_v2022_05_01/model/FeaturedOfferSegment
    * @class
-   * @param customerMembership {module:pricing_v2022_05_01/model/FeaturedOfferSegment.CustomerMembershipEnum} The customer membership type that makes up this segment
-   * @param segmentDetails {module:pricing_v2022_05_01/model/SegmentDetails}
+   * @param customerMembership {String} The customer membership type that makes up this segment
+   * @param segmentDetails {SegmentDetails}
    */
   constructor (customerMembership, segmentDetails) {
     this.customerMembership = customerMembership
@@ -37,8 +37,8 @@ export class FeaturedOfferSegment {
    * Constructs a <code>FeaturedOfferSegment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOfferSegment} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOfferSegment} The populated <code>FeaturedOfferSegment</code> instance.
+   * @param {FeaturedOfferSegment} obj Optional instance to populate.
+   * @return {FeaturedOfferSegment} The populated <code>FeaturedOfferSegment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,13 +89,13 @@ FeaturedOfferSegment.CustomerMembershipEnum = {
 
 /**
  * The customer membership type that makes up this segment
- * @member {module:pricing_v2022_05_01/model/FeaturedOfferSegment.CustomerMembershipEnum} customerMembership
- * @type {module:pricing_v2022_05_01/model/FeaturedOfferSegment.CustomerMembershipEnum}
+ * @member {String} customerMembership
+ * @type {String}
  */
 FeaturedOfferSegment.prototype.customerMembership = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/SegmentDetails} segmentDetails
- * @type {module:pricing_v2022_05_01/model/SegmentDetails}
+ * @member {SegmentDetails} segmentDetails
+ * @type {SegmentDetails}
  */
 FeaturedOfferSegment.prototype.segmentDetails = undefined

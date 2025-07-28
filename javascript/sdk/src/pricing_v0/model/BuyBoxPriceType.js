@@ -29,9 +29,9 @@ export class BuyBoxPriceType {
    * @alias module:pricing_v0/model/BuyBoxPriceType
    * @class
    * @param condition {String} Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
-   * @param landedPrice {module:pricing_v0/model/MoneyType}
-   * @param listingPrice {module:pricing_v0/model/MoneyType}
-   * @param shipping {module:pricing_v0/model/MoneyType}
+   * @param landedPrice {MoneyType}
+   * @param listingPrice {MoneyType}
+   * @param shipping {MoneyType}
    */
   constructor (condition, landedPrice, listingPrice, shipping) {
     this.condition = condition
@@ -44,8 +44,8 @@ export class BuyBoxPriceType {
    * Constructs a <code>BuyBoxPriceType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/BuyBoxPriceType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/BuyBoxPriceType} The populated <code>BuyBoxPriceType</code> instance.
+   * @param {BuyBoxPriceType} obj Optional instance to populate.
+   * @return {BuyBoxPriceType} The populated <code>BuyBoxPriceType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,8 +83,8 @@ export class BuyBoxPriceType {
 BuyBoxPriceType.prototype.condition = undefined
 
 /**
- * @member {module:pricing_v0/model/OfferCustomerType} offerType
- * @type {module:pricing_v0/model/OfferCustomerType}
+ * @member {OfferCustomerType} offerType
+ * @type {OfferCustomerType}
  */
 BuyBoxPriceType.prototype.offerType = undefined
 
@@ -96,32 +96,32 @@ BuyBoxPriceType.prototype.offerType = undefined
 BuyBoxPriceType.prototype.quantityTier = undefined
 
 /**
- * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
- * @type {module:pricing_v0/model/QuantityDiscountType}
+ * @member {QuantityDiscountType} quantityDiscountType
+ * @type {QuantityDiscountType}
  */
 BuyBoxPriceType.prototype.quantityDiscountType = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} landedPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} landedPrice
+ * @type {MoneyType}
  */
 BuyBoxPriceType.prototype.landedPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} listingPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 BuyBoxPriceType.prototype.listingPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} shipping
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} shipping
+ * @type {MoneyType}
  */
 BuyBoxPriceType.prototype.shipping = undefined
 
 /**
- * @member {module:pricing_v0/model/Points} points
- * @type {module:pricing_v0/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 BuyBoxPriceType.prototype.points = undefined
 

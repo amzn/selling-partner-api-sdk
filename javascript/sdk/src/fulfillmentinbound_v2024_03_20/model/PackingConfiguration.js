@@ -35,8 +35,8 @@ export class PackingConfiguration {
    * Constructs a <code>PackingConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/PackingConfiguration} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/PackingConfiguration} The populated <code>PackingConfiguration</code> instance.
+   * @param {PackingConfiguration} obj Optional instance to populate.
+   * @return {PackingConfiguration} The populated <code>PackingConfiguration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,20 +62,20 @@ export class PackingConfiguration {
 
 /**
  * The box content information sources that are allowed.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource>} boxPackingMethods
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource>}
+ * @member {[BoxContentInformationSource]} boxPackingMethods
+ * @type {[BoxContentInformationSource]}
  */
 PackingConfiguration.prototype.boxPackingMethods = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/BoxRequirements} boxRequirements
- * @type {module:fulfillmentinbound_v2024_03_20/model/BoxRequirements}
+ * @member {BoxRequirements} boxRequirements
+ * @type {BoxRequirements}
  */
 PackingConfiguration.prototype.boxRequirements = undefined
 
 /**
  * A list of supported shipping requirements for this packing configuration.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ShippingRequirements>} shippingRequirements
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ShippingRequirements>}
+ * @member {[ShippingRequirements]} shippingRequirements
+ * @type {[ShippingRequirements]}
  */
 PackingConfiguration.prototype.shippingRequirements = undefined

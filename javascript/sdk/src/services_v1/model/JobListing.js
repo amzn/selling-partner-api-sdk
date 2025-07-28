@@ -33,8 +33,8 @@ export class JobListing {
    * Constructs a <code>JobListing</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/JobListing} obj Optional instance to populate.
-   * @return {module:services_v1/model/JobListing} The populated <code>JobListing</code> instance.
+   * @param {JobListing} obj Optional instance to populate.
+   * @return {JobListing} The populated <code>JobListing</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,7 +82,7 @@ JobListing.prototype.previousPageToken = undefined
 
 /**
  * List of job details for the given input.
- * @member {Array.<module:services_v1/model/ServiceJob>} jobs
- * @type {Array.<module:services_v1/model/ServiceJob>}
+ * @member {[ServiceJob]} jobs
+ * @type {[ServiceJob]}
  */
 JobListing.prototype.jobs = undefined

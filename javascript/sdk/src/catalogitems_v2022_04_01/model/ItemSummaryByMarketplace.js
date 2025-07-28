@@ -36,8 +36,8 @@ export class ItemSummaryByMarketplace {
    * Constructs a <code>ItemSummaryByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace} The populated <code>ItemSummaryByMarketplace</code> instance.
+   * @param {ItemSummaryByMarketplace} obj Optional instance to populate.
+   * @return {ItemSummaryByMarketplace} The populated <code>ItemSummaryByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -107,8 +107,8 @@ ItemSummaryByMarketplace.prototype.autographed = undefined
 ItemSummaryByMarketplace.prototype.brand = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/ItemBrowseClassification} browseClassification
- * @type {module:catalogitems_v2022_04_01/model/ItemBrowseClassification}
+ * @member {ItemBrowseClassification} browseClassification
+ * @type {ItemBrowseClassification}
  */
 ItemSummaryByMarketplace.prototype.browseClassification = undefined
 
@@ -121,8 +121,8 @@ ItemSummaryByMarketplace.prototype.color = undefined
 
 /**
  * Individual contributors to the creation of the item, such as the authors or actors.
- * @member {Array.<module:catalogitems_v2022_04_01/model/ItemContributor>} contributors
- * @type {Array.<module:catalogitems_v2022_04_01/model/ItemContributor>}
+ * @member {[ItemContributor]} contributors
+ * @type {[ItemContributor]}
  */
 ItemSummaryByMarketplace.prototype.contributors = undefined
 
@@ -160,8 +160,8 @@ ItemSummaryByMarketplace.ItemClassificationEnum = {
 
 /**
  * Classification type that is associated with the Amazon catalog item.
- * @member {module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace.ItemClassificationEnum} itemClassification
- * @type {module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace.ItemClassificationEnum}
+ * @member {String} itemClassification
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.itemClassification = undefined
 

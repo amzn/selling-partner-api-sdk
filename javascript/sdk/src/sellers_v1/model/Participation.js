@@ -36,8 +36,8 @@ export class Participation {
    * Constructs a <code>Participation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellers_v1/model/Participation} obj Optional instance to populate.
-   * @return {module:sellers_v1/model/Participation} The populated <code>Participation</code> instance.
+   * @param {Participation} obj Optional instance to populate.
+   * @return {Participation} The populated <code>Participation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

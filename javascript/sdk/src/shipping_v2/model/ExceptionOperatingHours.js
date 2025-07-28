@@ -34,8 +34,8 @@ export class ExceptionOperatingHours {
    * Constructs a <code>ExceptionOperatingHours</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/ExceptionOperatingHours} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/ExceptionOperatingHours} The populated <code>ExceptionOperatingHours</code> instance.
+   * @param {ExceptionOperatingHours} obj Optional instance to populate.
+   * @return {ExceptionOperatingHours} The populated <code>ExceptionOperatingHours</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class ExceptionOperatingHours {
 }
 
 /**
- * @member {module:shipping_v2/model/DateRange} dateRange
- * @type {module:shipping_v2/model/DateRange}
+ * @member {DateRange} dateRange
+ * @type {DateRange}
  */
 ExceptionOperatingHours.prototype.dateRange = undefined
 
 /**
- * @member {module:shipping_v2/model/OperatingHours} operatingHours
- * @type {module:shipping_v2/model/OperatingHours}
+ * @member {OperatingHours} operatingHours
+ * @type {OperatingHours}
  */
 ExceptionOperatingHours.prototype.operatingHours = undefined

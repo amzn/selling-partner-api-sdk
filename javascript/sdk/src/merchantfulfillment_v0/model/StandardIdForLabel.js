@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class StandardIdForLabel.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class StandardIdForLabel {
@@ -28,7 +28,7 @@ export class StandardIdForLabel {
   /**
     * Returns a <code>StandardIdForLabel</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/StandardIdForLabel} The enum <code>StandardIdForLabel</code> value.
+    * @return {StandardIdForLabel} The enum <code>StandardIdForLabel</code> value.
     */
   static constructFromObject (object) {
     return object

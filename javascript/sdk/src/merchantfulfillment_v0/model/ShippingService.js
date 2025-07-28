@@ -35,8 +35,8 @@ export class ShippingService {
    * @param shippingServiceId {String} An Amazon-defined shipping service identifier.
    * @param shippingServiceOfferId {String} An Amazon-defined shipping service offer identifier.
    * @param shipDate {Date} Date-time formatted timestamp.
-   * @param rate {module:merchantfulfillment_v0/model/CurrencyAmount}
-   * @param shippingServiceOptions {module:merchantfulfillment_v0/model/ShippingServiceOptions}
+   * @param rate {CurrencyAmount}
+   * @param shippingServiceOptions {ShippingServiceOptions}
    * @param requiresAdditionalSellerInputs {Boolean} When true, additional seller inputs are required.
    */
   constructor (shippingServiceName, carrierName, shippingServiceId, shippingServiceOfferId, shipDate, rate, shippingServiceOptions, requiresAdditionalSellerInputs) {
@@ -54,8 +54,8 @@ export class ShippingService {
    * Constructs a <code>ShippingService</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/ShippingService} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/ShippingService} The populated <code>ShippingService</code> instance.
+   * @param {ShippingService} obj Optional instance to populate.
+   * @return {ShippingService} The populated <code>ShippingService</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -140,34 +140,34 @@ ShippingService.prototype.earliestEstimatedDeliveryDate = undefined
 ShippingService.prototype.latestEstimatedDeliveryDate = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CurrencyAmount} rate
- * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
+ * @member {CurrencyAmount} rate
+ * @type {CurrencyAmount}
  */
 ShippingService.prototype.rate = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/ShippingServiceOptions} shippingServiceOptions
- * @type {module:merchantfulfillment_v0/model/ShippingServiceOptions}
+ * @member {ShippingServiceOptions} shippingServiceOptions
+ * @type {ShippingServiceOptions}
  */
 ShippingService.prototype.shippingServiceOptions = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/AvailableShippingServiceOptions} availableShippingServiceOptions
- * @type {module:merchantfulfillment_v0/model/AvailableShippingServiceOptions}
+ * @member {AvailableShippingServiceOptions} availableShippingServiceOptions
+ * @type {AvailableShippingServiceOptions}
  */
 ShippingService.prototype.availableShippingServiceOptions = undefined
 
 /**
  * List of label formats.
- * @member {Array.<module:merchantfulfillment_v0/model/LabelFormat>} availableLabelFormats
- * @type {Array.<module:merchantfulfillment_v0/model/LabelFormat>}
+ * @member {[LabelFormat]} availableLabelFormats
+ * @type {[LabelFormat]}
  */
 ShippingService.prototype.availableLabelFormats = undefined
 
 /**
  * The available label formats.
- * @member {Array.<module:merchantfulfillment_v0/model/LabelFormatOption>} availableFormatOptionsForLabel
- * @type {Array.<module:merchantfulfillment_v0/model/LabelFormatOption>}
+ * @member {[LabelFormatOption]} availableFormatOptionsForLabel
+ * @type {[LabelFormatOption]}
  */
 ShippingService.prototype.availableFormatOptionsForLabel = undefined
 
@@ -179,7 +179,7 @@ ShippingService.prototype.availableFormatOptionsForLabel = undefined
 ShippingService.prototype.requiresAdditionalSellerInputs = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Benefits} benefits
- * @type {module:merchantfulfillment_v0/model/Benefits}
+ * @member {Benefits} benefits
+ * @type {Benefits}
  */
 ShippingService.prototype.benefits = undefined

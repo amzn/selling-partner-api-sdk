@@ -32,8 +32,8 @@ export class FulfillmentInstruction {
    * Constructs a <code>FulfillmentInstruction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/FulfillmentInstruction} obj Optional instance to populate.
-   * @return {module:orders_v0/model/FulfillmentInstruction} The populated <code>FulfillmentInstruction</code> instance.
+   * @param {FulfillmentInstruction} obj Optional instance to populate.
+   * @return {FulfillmentInstruction} The populated <code>FulfillmentInstruction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -25,7 +25,7 @@ export class StandardTextListBlock {
    * The A+ Content standard fixed-length list of text, usually presented as bullet points.
    * @alias module:apluscontent_v2020_11_01/model/StandardTextListBlock
    * @class
-   * @param textList {Array.<module:apluscontent_v2020_11_01/model/TextItem>}
+   * @param textList {[TextItem]}
    */
   constructor (textList) {
     this.textList = textList
@@ -35,8 +35,8 @@ export class StandardTextListBlock {
    * Constructs a <code>StandardTextListBlock</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardTextListBlock} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardTextListBlock} The populated <code>StandardTextListBlock</code> instance.
+   * @param {StandardTextListBlock} obj Optional instance to populate.
+   * @return {StandardTextListBlock} The populated <code>StandardTextListBlock</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class StandardTextListBlock {
 }
 
 /**
- * @member {Array.<module:apluscontent_v2020_11_01/model/TextItem>} textList
- * @type {Array.<module:apluscontent_v2020_11_01/model/TextItem>}
+ * @member {[TextItem]} textList
+ * @type {[TextItem]}
  */
 StandardTextListBlock.prototype.textList = undefined

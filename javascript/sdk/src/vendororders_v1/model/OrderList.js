@@ -34,8 +34,8 @@ export class OrderList {
    * Constructs a <code>OrderList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderList} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderList} The populated <code>OrderList</code> instance.
+   * @param {OrderList} obj Optional instance to populate.
+   * @return {OrderList} The populated <code>OrderList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class OrderList {
 }
 
 /**
- * @member {module:vendororders_v1/model/Pagination} pagination
- * @type {module:vendororders_v1/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 OrderList.prototype.pagination = undefined
 
 /**
  * Represents an individual order within the OrderList.
- * @member {Array.<module:vendororders_v1/model/Order>} orders
- * @type {Array.<module:vendororders_v1/model/Order>}
+ * @member {[Order]} orders
+ * @type {[Order]}
  */
 OrderList.prototype.orders = undefined

@@ -32,8 +32,8 @@ export class Pagination {
    * Constructs a <code>Pagination</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/Pagination} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/Pagination} The populated <code>Pagination</code> instance.
+   * @param {Pagination} obj Optional instance to populate.
+   * @return {Pagination} The populated <code>Pagination</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

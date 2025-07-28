@@ -36,8 +36,8 @@ export class FeaturedOfferExpectedPriceResult {
    * Constructs a <code>FeaturedOfferExpectedPriceResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResult} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResult} The populated <code>FeaturedOfferExpectedPriceResult</code> instance.
+   * @param {FeaturedOfferExpectedPriceResult} obj Optional instance to populate.
+   * @return {FeaturedOfferExpectedPriceResult} The populated <code>FeaturedOfferExpectedPriceResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class FeaturedOfferExpectedPriceResult {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPrice} featuredOfferExpectedPrice
- * @type {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPrice}
+ * @member {FeaturedOfferExpectedPrice} featuredOfferExpectedPrice
+ * @type {FeaturedOfferExpectedPrice}
  */
 FeaturedOfferExpectedPriceResult.prototype.featuredOfferExpectedPrice = undefined
 
@@ -76,13 +76,13 @@ FeaturedOfferExpectedPriceResult.prototype.featuredOfferExpectedPrice = undefine
 FeaturedOfferExpectedPriceResult.prototype.resultStatus = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/FeaturedOffer} competingFeaturedOffer
- * @type {module:pricing_v2022_05_01/model/FeaturedOffer}
+ * @member {FeaturedOffer} competingFeaturedOffer
+ * @type {FeaturedOffer}
  */
 FeaturedOfferExpectedPriceResult.prototype.competingFeaturedOffer = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/FeaturedOffer} currentFeaturedOffer
- * @type {module:pricing_v2022_05_01/model/FeaturedOffer}
+ * @member {FeaturedOffer} currentFeaturedOffer
+ * @type {FeaturedOffer}
  */
 FeaturedOfferExpectedPriceResult.prototype.currentFeaturedOffer = undefined

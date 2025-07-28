@@ -28,8 +28,8 @@ export class InboundOperationStatus {
    * @class
    * @param operation {String} The name of the operation in the asynchronous API call.
    * @param operationId {String} The operation ID returned by the asynchronous API call.
-   * @param operationProblems {Array.<module:fulfillmentinbound_v2024_03_20/model/OperationProblem>} The problems in the processing of the asynchronous operation.
-   * @param operationStatus {module:fulfillmentinbound_v2024_03_20/model/OperationStatus}
+   * @param operationProblems {[OperationProblem]} The problems in the processing of the asynchronous operation.
+   * @param operationStatus {OperationStatus}
    */
   constructor (operation, operationId, operationProblems, operationStatus) {
     this.operation = operation
@@ -42,8 +42,8 @@ export class InboundOperationStatus {
    * Constructs a <code>InboundOperationStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/InboundOperationStatus} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/InboundOperationStatus} The populated <code>InboundOperationStatus</code> instance.
+   * @param {InboundOperationStatus} obj Optional instance to populate.
+   * @return {InboundOperationStatus} The populated <code>InboundOperationStatus</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -84,13 +84,13 @@ InboundOperationStatus.prototype.operationId = undefined
 
 /**
  * The problems in the processing of the asynchronous operation.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/OperationProblem>} operationProblems
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/OperationProblem>}
+ * @member {[OperationProblem]} operationProblems
+ * @type {[OperationProblem]}
  */
 InboundOperationStatus.prototype.operationProblems = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/OperationStatus} operationStatus
- * @type {module:fulfillmentinbound_v2024_03_20/model/OperationStatus}
+ * @member {OperationStatus} operationStatus
+ * @type {OperationStatus}
  */
 InboundOperationStatus.prototype.operationStatus = undefined

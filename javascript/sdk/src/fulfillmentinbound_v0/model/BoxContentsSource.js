@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class BoxContentsSource.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class BoxContentsSource {
@@ -46,7 +46,7 @@ export class BoxContentsSource {
   /**
     * Returns a <code>BoxContentsSource</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v0/model/BoxContentsSource} The enum <code>BoxContentsSource</code> value.
+    * @return {BoxContentsSource} The enum <code>BoxContentsSource</code> value.
     */
   static constructFromObject (object) {
     return object

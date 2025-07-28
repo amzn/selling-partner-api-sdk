@@ -33,8 +33,8 @@ export class UnlinkCarrierAccountRequest {
    * Constructs a <code>UnlinkCarrierAccountRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/UnlinkCarrierAccountRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/UnlinkCarrierAccountRequest} The populated <code>UnlinkCarrierAccountRequest</code> instance.
+   * @param {UnlinkCarrierAccountRequest} obj Optional instance to populate.
+   * @return {UnlinkCarrierAccountRequest} The populated <code>UnlinkCarrierAccountRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,8 +59,8 @@ export class UnlinkCarrierAccountRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
- * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
+ * @member {[ClientReferenceDetail]} clientReferenceDetails
+ * @type {[ClientReferenceDetail]}
  */
 UnlinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined
 

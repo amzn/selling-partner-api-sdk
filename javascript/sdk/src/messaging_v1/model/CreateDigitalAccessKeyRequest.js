@@ -33,8 +33,8 @@ export class CreateDigitalAccessKeyRequest {
    * Constructs a <code>CreateDigitalAccessKeyRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/CreateDigitalAccessKeyRequest} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/CreateDigitalAccessKeyRequest} The populated <code>CreateDigitalAccessKeyRequest</code> instance.
+   * @param {CreateDigitalAccessKeyRequest} obj Optional instance to populate.
+   * @return {CreateDigitalAccessKeyRequest} The populated <code>CreateDigitalAccessKeyRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,7 +66,7 @@ CreateDigitalAccessKeyRequest.prototype.text = undefined
 
 /**
  * Attachments that you want to include in the message to the buyer.
- * @member {Array.<module:messaging_v1/model/Attachment>} attachments
- * @type {Array.<module:messaging_v1/model/Attachment>}
+ * @member {[Attachment]} attachments
+ * @type {[Attachment]}
  */
 CreateDigitalAccessKeyRequest.prototype.attachments = undefined

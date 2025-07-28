@@ -32,8 +32,8 @@ export class FulfillmentTime {
    * Constructs a <code>FulfillmentTime</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/FulfillmentTime} obj Optional instance to populate.
-   * @return {module:services_v1/model/FulfillmentTime} The populated <code>FulfillmentTime</code> instance.
+   * @param {FulfillmentTime} obj Optional instance to populate.
+   * @return {FulfillmentTime} The populated <code>FulfillmentTime</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

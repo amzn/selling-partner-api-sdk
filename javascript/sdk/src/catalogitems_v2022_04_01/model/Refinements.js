@@ -26,8 +26,8 @@ export class Refinements {
    * Optional fields that you can use to refine your search results.
    * @alias module:catalogitems_v2022_04_01/model/Refinements
    * @class
-   * @param brands {Array.<module:catalogitems_v2022_04_01/model/BrandRefinement>} A list of brands you can use to refine your search.
-   * @param classifications {Array.<module:catalogitems_v2022_04_01/model/ClassificationRefinement>} A list of classifications you can use to refine your search.
+   * @param brands {[BrandRefinement]} A list of brands you can use to refine your search.
+   * @param classifications {[ClassificationRefinement]} A list of classifications you can use to refine your search.
    */
   constructor (brands, classifications) {
     this.brands = brands
@@ -38,8 +38,8 @@ export class Refinements {
    * Constructs a <code>Refinements</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/Refinements} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/Refinements} The populated <code>Refinements</code> instance.
+   * @param {Refinements} obj Optional instance to populate.
+   * @return {Refinements} The populated <code>Refinements</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,14 +64,14 @@ export class Refinements {
 
 /**
  * A list of brands you can use to refine your search.
- * @member {Array.<module:catalogitems_v2022_04_01/model/BrandRefinement>} brands
- * @type {Array.<module:catalogitems_v2022_04_01/model/BrandRefinement>}
+ * @member {[BrandRefinement]} brands
+ * @type {[BrandRefinement]}
  */
 Refinements.prototype.brands = undefined
 
 /**
  * A list of classifications you can use to refine your search.
- * @member {Array.<module:catalogitems_v2022_04_01/model/ClassificationRefinement>} classifications
- * @type {Array.<module:catalogitems_v2022_04_01/model/ClassificationRefinement>}
+ * @member {[ClassificationRefinement]} classifications
+ * @type {[ClassificationRefinement]}
  */
 Refinements.prototype.classifications = undefined

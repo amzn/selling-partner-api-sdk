@@ -26,7 +26,7 @@ export class ListInboundPlanItemsResponse {
    * The &#x60;listInboundPlanItems&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse
    * @class
-   * @param items {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} The items in an inbound plan.
+   * @param items {[Item]} The items in an inbound plan.
    */
   constructor (items) {
     this.items = items
@@ -36,8 +36,8 @@ export class ListInboundPlanItemsResponse {
    * Constructs a <code>ListInboundPlanItemsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse} The populated <code>ListInboundPlanItemsResponse</code> instance.
+   * @param {ListInboundPlanItemsResponse} obj Optional instance to populate.
+   * @return {ListInboundPlanItemsResponse} The populated <code>ListInboundPlanItemsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ListInboundPlanItemsResponse {
 
 /**
  * The items in an inbound plan.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 ListInboundPlanItemsResponse.prototype.items = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListInboundPlanItemsResponse.prototype.pagination = undefined

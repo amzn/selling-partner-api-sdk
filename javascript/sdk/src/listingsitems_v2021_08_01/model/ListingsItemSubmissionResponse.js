@@ -27,7 +27,7 @@ export class ListingsItemSubmissionResponse {
    * @alias module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse
    * @class
    * @param sku {String} A selling partner provided identifier for an Amazon listing.
-   * @param status {module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse.StatusEnum} The status of the listings item submission.
+   * @param status {String} The status of the listings item submission.
    * @param submissionId {String} The unique identifier of the listings item submission.
    */
   constructor (sku, status, submissionId) {
@@ -40,8 +40,8 @@ export class ListingsItemSubmissionResponse {
    * Constructs a <code>ListingsItemSubmissionResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse} The populated <code>ListingsItemSubmissionResponse</code> instance.
+   * @param {ListingsItemSubmissionResponse} obj Optional instance to populate.
+   * @return {ListingsItemSubmissionResponse} The populated <code>ListingsItemSubmissionResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -102,8 +102,8 @@ ListingsItemSubmissionResponse.StatusEnum = {
 
 /**
  * The status of the listings item submission.
- * @member {module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse.StatusEnum} status
- * @type {module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse.StatusEnum}
+ * @member {String} status
+ * @type {String}
  */
 ListingsItemSubmissionResponse.prototype.status = undefined
 
@@ -116,14 +116,14 @@ ListingsItemSubmissionResponse.prototype.submissionId = undefined
 
 /**
  * Listings item issues related to the listings item submission.
- * @member {Array.<module:listingsitems_v2021_08_01/model/Issue>} issues
- * @type {Array.<module:listingsitems_v2021_08_01/model/Issue>}
+ * @member {[Issue]} issues
+ * @type {[Issue]}
  */
 ListingsItemSubmissionResponse.prototype.issues = undefined
 
 /**
  * Identity attributes associated with the item in the Amazon catalog, such as the ASIN.
- * @member {Array.<module:listingsitems_v2021_08_01/model/ItemIdentifiersByMarketplace>} identifiers
- * @type {Array.<module:listingsitems_v2021_08_01/model/ItemIdentifiersByMarketplace>}
+ * @member {[ItemIdentifiersByMarketplace]} identifiers
+ * @type {[ItemIdentifiersByMarketplace]}
  */
 ListingsItemSubmissionResponse.prototype.identifiers = undefined

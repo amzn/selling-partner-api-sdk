@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AutoEnrollmentPreference.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class AutoEnrollmentPreference {
@@ -34,7 +34,7 @@ export class AutoEnrollmentPreference {
   /**
     * Returns a <code>AutoEnrollmentPreference</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:replenishment_v2022_11_07/model/AutoEnrollmentPreference} The enum <code>AutoEnrollmentPreference</code> value.
+    * @return {AutoEnrollmentPreference} The enum <code>AutoEnrollmentPreference</code> value.
     */
   static constructFromObject (object) {
     return object

@@ -33,8 +33,8 @@ export class RemovalShipmentAdjustmentEvent {
    * Constructs a <code>RemovalShipmentAdjustmentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/RemovalShipmentAdjustmentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/RemovalShipmentAdjustmentEvent} The populated <code>RemovalShipmentAdjustmentEvent</code> instance.
+   * @param {RemovalShipmentAdjustmentEvent} obj Optional instance to populate.
+   * @return {RemovalShipmentAdjustmentEvent} The populated <code>RemovalShipmentAdjustmentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -98,7 +98,7 @@ RemovalShipmentAdjustmentEvent.prototype.transactionType = undefined
 
 /**
  * A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.
- * @member {Array.<module:finances_v0/model/RemovalShipmentItemAdjustment>} removalShipmentItemAdjustmentList
- * @type {Array.<module:finances_v0/model/RemovalShipmentItemAdjustment>}
+ * @member {[RemovalShipmentItemAdjustment]} removalShipmentItemAdjustmentList
+ * @type {[RemovalShipmentItemAdjustment]}
  */
 RemovalShipmentAdjustmentEvent.prototype.removalShipmentItemAdjustmentList = undefined

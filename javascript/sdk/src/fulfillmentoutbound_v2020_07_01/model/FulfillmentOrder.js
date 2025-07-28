@@ -37,10 +37,10 @@ export class FulfillmentOrder {
    * @param displayableOrderId {String} A fulfillment order identifier submitted with the `createFulfillmentOrder` operation. Displays as the order identifier in recipient-facing materials such as the packing slip.
    * @param displayableOrderDate {Date} Date timestamp
    * @param displayableOrderComment {String} A text block submitted with the `createFulfillmentOrder` operation. Displays in recipient-facing materials such as the packing slip.
-   * @param shippingSpeedCategory {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
-   * @param destinationAddress {module:fulfillmentoutbound_v2020_07_01/model/Address}
+   * @param shippingSpeedCategory {ShippingSpeedCategory}
+   * @param destinationAddress {Address}
    * @param receivedDate {Date} Date timestamp
-   * @param fulfillmentOrderStatus {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderStatus}
+   * @param fulfillmentOrderStatus {FulfillmentOrderStatus}
    * @param statusUpdatedDate {Date} Date timestamp
    */
   constructor (sellerFulfillmentOrderId, marketplaceId, displayableOrderId, displayableOrderDate, displayableOrderComment, shippingSpeedCategory, destinationAddress, receivedDate, fulfillmentOrderStatus, statusUpdatedDate) {
@@ -60,8 +60,8 @@ export class FulfillmentOrder {
    * Constructs a <code>FulfillmentOrder</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder} The populated <code>FulfillmentOrder</code> instance.
+   * @param {FulfillmentOrder} obj Optional instance to populate.
+   * @return {FulfillmentOrder} The populated <code>FulfillmentOrder</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -134,38 +134,38 @@ FulfillmentOrder.prototype.displayableOrderDate = undefined
 FulfillmentOrder.prototype.displayableOrderComment = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory} shippingSpeedCategory
- * @type {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
+ * @member {ShippingSpeedCategory} shippingSpeedCategory
+ * @type {ShippingSpeedCategory}
  */
 FulfillmentOrder.prototype.shippingSpeedCategory = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow} deliveryWindow
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow}
+ * @member {DeliveryWindow} deliveryWindow
+ * @type {DeliveryWindow}
  */
 FulfillmentOrder.prototype.deliveryWindow = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} destinationAddress
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Address}
+ * @member {Address} destinationAddress
+ * @type {Address}
  */
 FulfillmentOrder.prototype.destinationAddress = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction} fulfillmentAction
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction}
+ * @member {FulfillmentAction} fulfillmentAction
+ * @type {FulfillmentAction}
  */
 FulfillmentOrder.prototype.fulfillmentAction = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy} fulfillmentPolicy
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy}
+ * @member {FulfillmentPolicy} fulfillmentPolicy
+ * @type {FulfillmentPolicy}
  */
 FulfillmentOrder.prototype.fulfillmentPolicy = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/CODSettings} codSettings
- * @type {module:fulfillmentoutbound_v2020_07_01/model/CODSettings}
+ * @member {CODSettings} codSettings
+ * @type {CODSettings}
  */
 FulfillmentOrder.prototype.codSettings = undefined
 
@@ -177,8 +177,8 @@ FulfillmentOrder.prototype.codSettings = undefined
 FulfillmentOrder.prototype.receivedDate = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderStatus} fulfillmentOrderStatus
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderStatus}
+ * @member {FulfillmentOrderStatus} fulfillmentOrderStatus
+ * @type {FulfillmentOrderStatus}
  */
 FulfillmentOrder.prototype.fulfillmentOrderStatus = undefined
 
@@ -191,14 +191,14 @@ FulfillmentOrder.prototype.statusUpdatedDate = undefined
 
 /**
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
- * @member {Array.<String>} notificationEmails
- * @type {Array.<String>}
+ * @member {[String]} notificationEmails
+ * @type {[String]}
  */
 FulfillmentOrder.prototype.notificationEmails = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>}
+ * @member {[FeatureSettings]} featureConstraints
+ * @type {[FeatureSettings]}
  */
 FulfillmentOrder.prototype.featureConstraints = undefined

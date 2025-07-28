@@ -33,8 +33,8 @@ export class ItemDelivery {
    * Constructs a <code>ItemDelivery</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/ItemDelivery} obj Optional instance to populate.
-   * @return {module:services_v1/model/ItemDelivery} The populated <code>ItemDelivery</code> instance.
+   * @param {ItemDelivery} obj Optional instance to populate.
+   * @return {ItemDelivery} The populated <code>ItemDelivery</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class ItemDelivery {
 ItemDelivery.prototype.estimatedDeliveryDate = undefined
 
 /**
- * @member {module:services_v1/model/ItemDeliveryPromise} itemDeliveryPromise
- * @type {module:services_v1/model/ItemDeliveryPromise}
+ * @member {ItemDeliveryPromise} itemDeliveryPromise
+ * @type {ItemDeliveryPromise}
  */
 ItemDelivery.prototype.itemDeliveryPromise = undefined

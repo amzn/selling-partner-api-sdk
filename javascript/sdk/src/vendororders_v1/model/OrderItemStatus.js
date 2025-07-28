@@ -38,8 +38,8 @@ export class OrderItemStatus {
    * Constructs a <code>OrderItemStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderItemStatus} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderItemStatus} The populated <code>OrderItemStatus</code> instance.
+   * @param {OrderItemStatus} obj Optional instance to populate.
+   * @return {OrderItemStatus} The populated <code>OrderItemStatus</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,31 +90,31 @@ OrderItemStatus.prototype.buyerProductIdentifier = undefined
 OrderItemStatus.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendororders_v1/model/Money} netCost
- * @type {module:vendororders_v1/model/Money}
+ * @member {Money} netCost
+ * @type {Money}
  */
 OrderItemStatus.prototype.netCost = undefined
 
 /**
- * @member {module:vendororders_v1/model/Money} listPrice
- * @type {module:vendororders_v1/model/Money}
+ * @member {Money} listPrice
+ * @type {Money}
  */
 OrderItemStatus.prototype.listPrice = undefined
 
 /**
- * @member {module:vendororders_v1/model/OrderItemStatusOrderedQuantity} orderedQuantity
- * @type {module:vendororders_v1/model/OrderItemStatusOrderedQuantity}
+ * @member {OrderItemStatusOrderedQuantity} orderedQuantity
+ * @type {OrderItemStatusOrderedQuantity}
  */
 OrderItemStatus.prototype.orderedQuantity = undefined
 
 /**
- * @member {module:vendororders_v1/model/OrderItemStatusAcknowledgementStatus} acknowledgementStatus
- * @type {module:vendororders_v1/model/OrderItemStatusAcknowledgementStatus}
+ * @member {OrderItemStatusAcknowledgementStatus} acknowledgementStatus
+ * @type {OrderItemStatusAcknowledgementStatus}
  */
 OrderItemStatus.prototype.acknowledgementStatus = undefined
 
 /**
- * @member {module:vendororders_v1/model/OrderItemStatusReceivingStatus} receivingStatus
- * @type {module:vendororders_v1/model/OrderItemStatusReceivingStatus}
+ * @member {OrderItemStatusReceivingStatus} receivingStatus
+ * @type {OrderItemStatusReceivingStatus}
  */
 OrderItemStatus.prototype.receivingStatus = undefined

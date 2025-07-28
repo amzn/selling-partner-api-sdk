@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class InputType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class InputType {
@@ -34,7 +34,7 @@ export class InputType {
   /**
     * Returns a <code>InputType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/InputType} The enum <code>InputType</code> value.
+    * @return {InputType} The enum <code>InputType</code> value.
     */
   static constructFromObject (object) {
     return object

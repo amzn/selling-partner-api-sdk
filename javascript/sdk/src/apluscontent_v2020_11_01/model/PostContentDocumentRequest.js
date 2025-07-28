@@ -24,7 +24,7 @@ export class PostContentDocumentRequest {
    * Constructs a new <code>PostContentDocumentRequest</code>.
    * @alias module:apluscontent_v2020_11_01/model/PostContentDocumentRequest
    * @class
-   * @param contentDocument {module:apluscontent_v2020_11_01/model/ContentDocument}
+   * @param contentDocument {ContentDocument}
    */
   constructor (contentDocument) {
     this.contentDocument = contentDocument
@@ -34,8 +34,8 @@ export class PostContentDocumentRequest {
    * Constructs a <code>PostContentDocumentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} The populated <code>PostContentDocumentRequest</code> instance.
+   * @param {PostContentDocumentRequest} obj Optional instance to populate.
+   * @return {PostContentDocumentRequest} The populated <code>PostContentDocumentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class PostContentDocumentRequest {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ContentDocument} contentDocument
- * @type {module:apluscontent_v2020_11_01/model/ContentDocument}
+ * @member {ContentDocument} contentDocument
+ * @type {ContentDocument}
  */
 PostContentDocumentRequest.prototype.contentDocument = undefined

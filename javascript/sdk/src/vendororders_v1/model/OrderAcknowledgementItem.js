@@ -27,8 +27,8 @@ export class OrderAcknowledgementItem {
    * Details of the item being acknowledged.
    * @alias module:vendororders_v1/model/OrderAcknowledgementItem
    * @class
-   * @param orderedQuantity {module:vendororders_v1/model/ItemQuantity}
-   * @param itemAcknowledgements {Array.<module:vendororders_v1/model/OrderItemAcknowledgement>} This is used to indicate acknowledged quantity.
+   * @param orderedQuantity {ItemQuantity}
+   * @param itemAcknowledgements {[OrderItemAcknowledgement]} This is used to indicate acknowledged quantity.
    */
   constructor (orderedQuantity, itemAcknowledgements) {
     this.orderedQuantity = orderedQuantity
@@ -39,8 +39,8 @@ export class OrderAcknowledgementItem {
    * Constructs a <code>OrderAcknowledgementItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderAcknowledgementItem} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderAcknowledgementItem} The populated <code>OrderAcknowledgementItem</code> instance.
+   * @param {OrderAcknowledgementItem} obj Optional instance to populate.
+   * @return {OrderAcknowledgementItem} The populated <code>OrderAcknowledgementItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,20 +91,20 @@ OrderAcknowledgementItem.prototype.amazonProductIdentifier = undefined
 OrderAcknowledgementItem.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} orderedQuantity
+ * @type {ItemQuantity}
  */
 OrderAcknowledgementItem.prototype.orderedQuantity = undefined
 
 /**
- * @member {module:vendororders_v1/model/Money} netCost
- * @type {module:vendororders_v1/model/Money}
+ * @member {Money} netCost
+ * @type {Money}
  */
 OrderAcknowledgementItem.prototype.netCost = undefined
 
 /**
- * @member {module:vendororders_v1/model/Money} listPrice
- * @type {module:vendororders_v1/model/Money}
+ * @member {Money} listPrice
+ * @type {Money}
  */
 OrderAcknowledgementItem.prototype.listPrice = undefined
 
@@ -117,7 +117,7 @@ OrderAcknowledgementItem.prototype.discountMultiplier = undefined
 
 /**
  * This is used to indicate acknowledged quantity.
- * @member {Array.<module:vendororders_v1/model/OrderItemAcknowledgement>} itemAcknowledgements
- * @type {Array.<module:vendororders_v1/model/OrderItemAcknowledgement>}
+ * @member {[OrderItemAcknowledgement]} itemAcknowledgements
+ * @type {[OrderItemAcknowledgement]}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

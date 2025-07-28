@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class VolumeUnitOfMeasurement.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class VolumeUnitOfMeasurement {
@@ -40,7 +40,7 @@ export class VolumeUnitOfMeasurement {
   /**
     * Returns a <code>VolumeUnitOfMeasurement</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/VolumeUnitOfMeasurement} The enum <code>VolumeUnitOfMeasurement</code> value.
+    * @return {VolumeUnitOfMeasurement} The enum <code>VolumeUnitOfMeasurement</code> value.
     */
   static constructFromObject (object) {
     return object

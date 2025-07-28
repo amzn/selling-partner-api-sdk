@@ -25,7 +25,7 @@ export class CompetitiveSummaryBatchRequest {
    * The &#x60;competitiveSummary&#x60; batch request data.
    * @alias module:pricing_v2022_05_01/model/CompetitiveSummaryBatchRequest
    * @class
-   * @param requests {Array.<module:pricing_v2022_05_01/model/CompetitiveSummaryRequest>} A batched list of `competitiveSummary` requests.
+   * @param requests {[CompetitiveSummaryRequest]} A batched list of `competitiveSummary` requests.
    */
   constructor (requests) {
     this.requests = requests
@@ -35,8 +35,8 @@ export class CompetitiveSummaryBatchRequest {
    * Constructs a <code>CompetitiveSummaryBatchRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/CompetitiveSummaryBatchRequest} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/CompetitiveSummaryBatchRequest} The populated <code>CompetitiveSummaryBatchRequest</code> instance.
+   * @param {CompetitiveSummaryBatchRequest} obj Optional instance to populate.
+   * @return {CompetitiveSummaryBatchRequest} The populated <code>CompetitiveSummaryBatchRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class CompetitiveSummaryBatchRequest {
 
 /**
  * A batched list of `competitiveSummary` requests.
- * @member {Array.<module:pricing_v2022_05_01/model/CompetitiveSummaryRequest>} requests
- * @type {Array.<module:pricing_v2022_05_01/model/CompetitiveSummaryRequest>}
+ * @member {[CompetitiveSummaryRequest]} requests
+ * @type {[CompetitiveSummaryRequest]}
  */
 CompetitiveSummaryBatchRequest.prototype.requests = undefined

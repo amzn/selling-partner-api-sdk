@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class HazmatType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class HazmatType {
@@ -34,7 +34,7 @@ export class HazmatType {
   /**
     * Returns a <code>HazmatType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/HazmatType} The enum <code>HazmatType</code> value.
+    * @return {HazmatType} The enum <code>HazmatType</code> value.
     */
   static constructFromObject (object) {
     return object

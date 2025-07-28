@@ -33,8 +33,8 @@ export class GetCarrierAccountsRequest {
    * Constructs a <code>GetCarrierAccountsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetCarrierAccountsRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetCarrierAccountsRequest} The populated <code>GetCarrierAccountsRequest</code> instance.
+   * @param {GetCarrierAccountsRequest} obj Optional instance to populate.
+   * @return {GetCarrierAccountsRequest} The populated <code>GetCarrierAccountsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GetCarrierAccountsRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
- * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
+ * @member {[ClientReferenceDetail]} clientReferenceDetails
+ * @type {[ClientReferenceDetail]}
  */
 GetCarrierAccountsRequest.prototype.clientReferenceDetails = undefined

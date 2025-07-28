@@ -34,8 +34,8 @@ export class OrderListStatus {
    * Constructs a <code>OrderListStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderListStatus} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderListStatus} The populated <code>OrderListStatus</code> instance.
+   * @param {OrderListStatus} obj Optional instance to populate.
+   * @return {OrderListStatus} The populated <code>OrderListStatus</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class OrderListStatus {
 }
 
 /**
- * @member {module:vendororders_v1/model/Pagination} pagination
- * @type {module:vendororders_v1/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 OrderListStatus.prototype.pagination = undefined
 
 /**
  * Represents an order status within the OrderListStatus.
- * @member {Array.<module:vendororders_v1/model/OrderStatus>} ordersStatus
- * @type {Array.<module:vendororders_v1/model/OrderStatus>}
+ * @member {[OrderStatus]} ordersStatus
+ * @type {[OrderStatus]}
  */
 OrderListStatus.prototype.ordersStatus = undefined

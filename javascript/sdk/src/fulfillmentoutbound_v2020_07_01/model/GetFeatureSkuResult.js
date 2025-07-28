@@ -39,8 +39,8 @@ export class GetFeatureSkuResult {
    * Constructs a <code>GetFeatureSkuResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureSkuResult} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureSkuResult} The populated <code>GetFeatureSkuResult</code> instance.
+   * @param {GetFeatureSkuResult} obj Optional instance to populate.
+   * @return {GetFeatureSkuResult} The populated <code>GetFeatureSkuResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,13 +89,13 @@ GetFeatureSkuResult.prototype.isEligible = undefined
 
 /**
  * A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED` - The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE` - The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU` - There is an issue with the SKU provided.
- * @member {Array.<String>} ineligibleReasons
- * @type {Array.<String>}
+ * @member {[String]} ineligibleReasons
+ * @type {[String]}
  */
 GetFeatureSkuResult.prototype.ineligibleReasons = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FeatureSku} skuInfo
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FeatureSku}
+ * @member {FeatureSku} skuInfo
+ * @type {FeatureSku}
  */
 GetFeatureSkuResult.prototype.skuInfo = undefined

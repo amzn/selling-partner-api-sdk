@@ -39,8 +39,8 @@ export class GetFulfillmentPreviewItem {
    * Constructs a <code>GetFulfillmentPreviewItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewItem} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewItem} The populated <code>GetFulfillmentPreviewItem</code> instance.
+   * @param {GetFulfillmentPreviewItem} obj Optional instance to populate.
+   * @return {GetFulfillmentPreviewItem} The populated <code>GetFulfillmentPreviewItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -80,8 +80,8 @@ GetFulfillmentPreviewItem.prototype.sellerSku = undefined
 GetFulfillmentPreviewItem.prototype.quantity = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitDeclaredValue
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} perUnitDeclaredValue
+ * @type {Money}
  */
 GetFulfillmentPreviewItem.prototype.perUnitDeclaredValue = undefined
 

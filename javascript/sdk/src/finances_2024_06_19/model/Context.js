@@ -52,8 +52,8 @@ export class Context {
    * Constructs a <code>Context</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/Context} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/Context} The populated <code>Context</code> instance.
+   * @param {Context} obj Optional instance to populate.
+   * @return {Context} The populated <code>Context</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -112,8 +112,8 @@ Context.StoreNameEnum = {
 
 /**
  * The store name associated with the transaction.
- * @member {module:finances_2024_06_19/model/Context.StoreNameEnum} storeName
- * @type {module:finances_2024_06_19/model/Context.StoreNameEnum}
+ * @member {String} storeName
+ * @type {String}
  */
 Context.prototype.storeName = undefined
 
@@ -319,8 +319,8 @@ DeferredContext.prototype.maturityDate = undefined
 // Implement BusinessContext interface:
 /**
  * The store name associated with the transaction.
- * @member {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum} storeName
- * @type {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum}
+ * @member {String} storeName
+ * @type {String}
  */
 BusinessContext.prototype.storeName = undefined
 

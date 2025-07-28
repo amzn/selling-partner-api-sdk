@@ -25,7 +25,7 @@ export class Weight {
    * The weight of a package.
    * @alias module:fulfillmentinbound_v2024_03_20/model/Weight
    * @class
-   * @param unit {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight}
+   * @param unit {UnitOfWeight}
    * @param value {Number} Value of a weight.
    */
   constructor (unit, value) {
@@ -37,8 +37,8 @@ export class Weight {
    * Constructs a <code>Weight</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Weight} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Weight} The populated <code>Weight</code> instance.
+   * @param {Weight} obj Optional instance to populate.
+   * @return {Weight} The populated <code>Weight</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class Weight {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight} unit
- * @type {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight}
+ * @member {UnitOfWeight} unit
+ * @type {UnitOfWeight}
  */
 Weight.prototype.unit = undefined
 

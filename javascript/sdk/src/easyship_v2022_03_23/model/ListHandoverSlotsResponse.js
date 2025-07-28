@@ -26,7 +26,7 @@ export class ListHandoverSlotsResponse {
    * @alias module:easyship_v2022_03_23/model/ListHandoverSlotsResponse
    * @class
    * @param amazonOrderId {String} An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
-   * @param timeSlots {Array.<module:easyship_v2022_03_23/model/TimeSlot>} A list of time slots.
+   * @param timeSlots {[TimeSlot]} A list of time slots.
    */
   constructor (amazonOrderId, timeSlots) {
     this.amazonOrderId = amazonOrderId
@@ -37,8 +37,8 @@ export class ListHandoverSlotsResponse {
    * Constructs a <code>ListHandoverSlotsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/ListHandoverSlotsResponse} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/ListHandoverSlotsResponse} The populated <code>ListHandoverSlotsResponse</code> instance.
+   * @param {ListHandoverSlotsResponse} obj Optional instance to populate.
+   * @return {ListHandoverSlotsResponse} The populated <code>ListHandoverSlotsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ ListHandoverSlotsResponse.prototype.amazonOrderId = undefined
 
 /**
  * A list of time slots.
- * @member {Array.<module:easyship_v2022_03_23/model/TimeSlot>} timeSlots
- * @type {Array.<module:easyship_v2022_03_23/model/TimeSlot>}
+ * @member {[TimeSlot]} timeSlots
+ * @type {[TimeSlot]}
  */
 ListHandoverSlotsResponse.prototype.timeSlots = undefined

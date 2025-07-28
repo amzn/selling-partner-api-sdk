@@ -26,7 +26,7 @@ export class ContainerLabel {
    * @alias module:vendordfshipping_v2021_12_28/model/ContainerLabel
    * @class
    * @param content {String} The container label content encoded into a Base64 string.
-   * @param format {module:vendordfshipping_v2021_12_28/model/ContainerLabelFormat}
+   * @param format {ContainerLabelFormat}
    */
   constructor (content, format) {
     this.content = content
@@ -37,8 +37,8 @@ export class ContainerLabel {
    * Constructs a <code>ContainerLabel</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ContainerLabel} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ContainerLabel} The populated <code>ContainerLabel</code> instance.
+   * @param {ContainerLabel} obj Optional instance to populate.
+   * @return {ContainerLabel} The populated <code>ContainerLabel</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,7 +77,7 @@ ContainerLabel.prototype.containerTrackingNumber = undefined
 ContainerLabel.prototype.content = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/ContainerLabelFormat} format
- * @type {module:vendordfshipping_v2021_12_28/model/ContainerLabelFormat}
+ * @member {ContainerLabelFormat} format
+ * @type {ContainerLabelFormat}
  */
 ContainerLabel.prototype.format = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AdditionalLocationInfo.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class AdditionalLocationInfo {
@@ -178,7 +178,7 @@ export class AdditionalLocationInfo {
   /**
     * Returns a <code>AdditionalLocationInfo</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentoutbound_v2020_07_01/model/AdditionalLocationInfo} The enum <code>AdditionalLocationInfo</code> value.
+    * @return {AdditionalLocationInfo} The enum <code>AdditionalLocationInfo</code> value.
     */
   static constructFromObject (object) {
     return object

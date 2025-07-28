@@ -32,8 +32,8 @@ export class DeliveryMessage {
    * Constructs a <code>DeliveryMessage</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DeliveryMessage} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DeliveryMessage} The populated <code>DeliveryMessage</code> instance.
+   * @param {DeliveryMessage} obj Optional instance to populate.
+   * @return {DeliveryMessage} The populated <code>DeliveryMessage</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -25,8 +25,8 @@ export class MarketplaceParticipation {
    * Constructs a new <code>MarketplaceParticipation</code>.
    * @alias module:sellers_v1/model/MarketplaceParticipation
    * @class
-   * @param marketplace {module:sellers_v1/model/Marketplace}
-   * @param participation {module:sellers_v1/model/Participation}
+   * @param marketplace {Marketplace}
+   * @param participation {Participation}
    * @param storeName {String} The name of the seller's store as displayed in the marketplace.
    */
   constructor (marketplace, participation, storeName) {
@@ -39,8 +39,8 @@ export class MarketplaceParticipation {
    * Constructs a <code>MarketplaceParticipation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellers_v1/model/MarketplaceParticipation} obj Optional instance to populate.
-   * @return {module:sellers_v1/model/MarketplaceParticipation} The populated <code>MarketplaceParticipation</code> instance.
+   * @param {MarketplaceParticipation} obj Optional instance to populate.
+   * @return {MarketplaceParticipation} The populated <code>MarketplaceParticipation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,14 +65,14 @@ export class MarketplaceParticipation {
 }
 
 /**
- * @member {module:sellers_v1/model/Marketplace} marketplace
- * @type {module:sellers_v1/model/Marketplace}
+ * @member {Marketplace} marketplace
+ * @type {Marketplace}
  */
 MarketplaceParticipation.prototype.marketplace = undefined
 
 /**
- * @member {module:sellers_v1/model/Participation} participation
- * @type {module:sellers_v1/model/Participation}
+ * @member {Participation} participation
+ * @type {Participation}
  */
 MarketplaceParticipation.prototype.participation = undefined
 

@@ -26,8 +26,8 @@ export class AvailableShippingServiceOptions {
    * The available shipping service options.
    * @alias module:merchantfulfillment_v0/model/AvailableShippingServiceOptions
    * @class
-   * @param availableCarrierWillPickUpOptions {Array.<module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption>} List of available carrier pickup options.
-   * @param availableDeliveryExperienceOptions {Array.<module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption>} List of available delivery experience options.
+   * @param availableCarrierWillPickUpOptions {[AvailableCarrierWillPickUpOption]} List of available carrier pickup options.
+   * @param availableDeliveryExperienceOptions {[AvailableDeliveryExperienceOption]} List of available delivery experience options.
    */
   constructor (availableCarrierWillPickUpOptions, availableDeliveryExperienceOptions) {
     this.availableCarrierWillPickUpOptions = availableCarrierWillPickUpOptions
@@ -38,8 +38,8 @@ export class AvailableShippingServiceOptions {
    * Constructs a <code>AvailableShippingServiceOptions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/AvailableShippingServiceOptions} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/AvailableShippingServiceOptions} The populated <code>AvailableShippingServiceOptions</code> instance.
+   * @param {AvailableShippingServiceOptions} obj Optional instance to populate.
+   * @return {AvailableShippingServiceOptions} The populated <code>AvailableShippingServiceOptions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,14 +64,14 @@ export class AvailableShippingServiceOptions {
 
 /**
  * List of available carrier pickup options.
- * @member {Array.<module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption>} availableCarrierWillPickUpOptions
- * @type {Array.<module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption>}
+ * @member {[AvailableCarrierWillPickUpOption]} availableCarrierWillPickUpOptions
+ * @type {[AvailableCarrierWillPickUpOption]}
  */
 AvailableShippingServiceOptions.prototype.availableCarrierWillPickUpOptions = undefined
 
 /**
  * List of available delivery experience options.
- * @member {Array.<module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption>} availableDeliveryExperienceOptions
- * @type {Array.<module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption>}
+ * @member {[AvailableDeliveryExperienceOption]} availableDeliveryExperienceOptions
+ * @type {[AvailableDeliveryExperienceOption]}
  */
 AvailableShippingServiceOptions.prototype.availableDeliveryExperienceOptions = undefined

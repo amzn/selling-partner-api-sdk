@@ -25,7 +25,7 @@ export class ItemProcurement {
    * The vendor procurement information for the listings item.
    * @alias module:listingsitems_v2021_08_01/model/ItemProcurement
    * @class
-   * @param costPrice {module:listingsitems_v2021_08_01/model/Money}
+   * @param costPrice {Money}
    */
   constructor (costPrice) {
     this.costPrice = costPrice
@@ -35,8 +35,8 @@ export class ItemProcurement {
    * Constructs a <code>ItemProcurement</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ItemProcurement} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ItemProcurement} The populated <code>ItemProcurement</code> instance.
+   * @param {ItemProcurement} obj Optional instance to populate.
+   * @return {ItemProcurement} The populated <code>ItemProcurement</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class ItemProcurement {
 }
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/Money} costPrice
- * @type {module:listingsitems_v2021_08_01/model/Money}
+ * @member {Money} costPrice
+ * @type {Money}
  */
 ItemProcurement.prototype.costPrice = undefined

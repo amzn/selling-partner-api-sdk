@@ -32,8 +32,8 @@ export class ActiveAccount {
    * Constructs a <code>ActiveAccount</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/ActiveAccount} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/ActiveAccount} The populated <code>ActiveAccount</code> instance.
+   * @param {ActiveAccount} obj Optional instance to populate.
+   * @return {ActiveAccount} The populated <code>ActiveAccount</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -33,8 +33,8 @@ export class AssociatedItem {
    * Constructs a <code>AssociatedItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/AssociatedItem} obj Optional instance to populate.
-   * @return {module:orders_v0/model/AssociatedItem} The populated <code>AssociatedItem</code> instance.
+   * @param {AssociatedItem} obj Optional instance to populate.
+   * @return {AssociatedItem} The populated <code>AssociatedItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,7 +73,7 @@ AssociatedItem.prototype.orderId = undefined
 AssociatedItem.prototype.orderItemId = undefined
 
 /**
- * @member {module:orders_v0/model/AssociationType} associationType
- * @type {module:orders_v0/model/AssociationType}
+ * @member {AssociationType} associationType
+ * @type {AssociationType}
  */
 AssociatedItem.prototype.associationType = undefined

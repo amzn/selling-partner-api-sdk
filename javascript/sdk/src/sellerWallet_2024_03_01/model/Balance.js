@@ -41,8 +41,8 @@ export class Balance {
    * Constructs a <code>Balance</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/Balance} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/Balance} The populated <code>Balance</code> instance.
+   * @param {Balance} obj Optional instance to populate.
+   * @return {Balance} The populated <code>Balance</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ export class Balance {
 Balance.prototype.accountId = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/BalanceType} balanceType
- * @type {module:sellerWallet_2024_03_01/model/BalanceType}
+ * @member {BalanceType} balanceType
+ * @type {BalanceType}
  */
 Balance.prototype.balanceType = undefined
 

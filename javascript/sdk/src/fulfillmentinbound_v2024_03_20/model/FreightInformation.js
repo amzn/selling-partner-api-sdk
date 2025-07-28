@@ -33,8 +33,8 @@ export class FreightInformation {
    * Constructs a <code>FreightInformation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/FreightInformation} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/FreightInformation} The populated <code>FreightInformation</code> instance.
+   * @param {FreightInformation} obj Optional instance to populate.
+   * @return {FreightInformation} The populated <code>FreightInformation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,8 +58,8 @@ export class FreightInformation {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Currency} declaredValue
- * @type {module:fulfillmentinbound_v2024_03_20/model/Currency}
+ * @member {Currency} declaredValue
+ * @type {Currency}
  */
 FreightInformation.prototype.declaredValue = undefined
 

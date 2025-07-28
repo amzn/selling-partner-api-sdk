@@ -35,8 +35,8 @@ export class DebtRecoveryEvent {
    * Constructs a <code>DebtRecoveryEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/DebtRecoveryEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/DebtRecoveryEvent} The populated <code>DebtRecoveryEvent</code> instance.
+   * @param {DebtRecoveryEvent} obj Optional instance to populate.
+   * @return {DebtRecoveryEvent} The populated <code>DebtRecoveryEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,27 +70,27 @@ export class DebtRecoveryEvent {
 DebtRecoveryEvent.prototype.debtRecoveryType = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} recoveryAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} recoveryAmount
+ * @type {Currency}
  */
 DebtRecoveryEvent.prototype.recoveryAmount = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} overPaymentCredit
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} overPaymentCredit
+ * @type {Currency}
  */
 DebtRecoveryEvent.prototype.overPaymentCredit = undefined
 
 /**
  * A list of debt recovery item information.
- * @member {Array.<module:finances_v0/model/DebtRecoveryItem>} debtRecoveryItemList
- * @type {Array.<module:finances_v0/model/DebtRecoveryItem>}
+ * @member {[DebtRecoveryItem]} debtRecoveryItemList
+ * @type {[DebtRecoveryItem]}
  */
 DebtRecoveryEvent.prototype.debtRecoveryItemList = undefined
 
 /**
  * A list of payment instruments.
- * @member {Array.<module:finances_v0/model/ChargeInstrument>} chargeInstrumentList
- * @type {Array.<module:finances_v0/model/ChargeInstrument>}
+ * @member {[ChargeInstrument]} chargeInstrumentList
+ * @type {[ChargeInstrument]}
  */
 DebtRecoveryEvent.prototype.chargeInstrumentList = undefined

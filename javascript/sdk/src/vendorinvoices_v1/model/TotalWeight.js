@@ -24,7 +24,7 @@ export class TotalWeight {
    * The aggregate weight of this item being invoiced. This information will be available for items sold by weight.
    * @alias module:vendorinvoices_v1/model/TotalWeight
    * @class
-   * @param unitOfMeasure {module:vendorinvoices_v1/model/TotalWeight.UnitOfMeasureEnum} The unit of measure for items sold by weight.
+   * @param unitOfMeasure {String} The unit of measure for items sold by weight.
    * @param amount {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
    */
   constructor (unitOfMeasure, amount) {
@@ -36,8 +36,8 @@ export class TotalWeight {
    * Constructs a <code>TotalWeight</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/TotalWeight} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/TotalWeight} The populated <code>TotalWeight</code> instance.
+   * @param {TotalWeight} obj Optional instance to populate.
+   * @return {TotalWeight} The populated <code>TotalWeight</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -94,8 +94,8 @@ TotalWeight.UnitOfMeasureEnum = {
 
 /**
  * The unit of measure for items sold by weight.
- * @member {module:vendorinvoices_v1/model/TotalWeight.UnitOfMeasureEnum} unitOfMeasure
- * @type {module:vendorinvoices_v1/model/TotalWeight.UnitOfMeasureEnum}
+ * @member {String} unitOfMeasure
+ * @type {String}
  */
 TotalWeight.prototype.unitOfMeasure = undefined
 

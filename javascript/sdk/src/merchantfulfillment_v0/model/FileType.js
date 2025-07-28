@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class FileType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class FileType {
@@ -40,7 +40,7 @@ export class FileType {
   /**
     * Returns a <code>FileType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/FileType} The enum <code>FileType</code> value.
+    * @return {FileType} The enum <code>FileType</code> value.
     */
   static constructFromObject (object) {
     return object

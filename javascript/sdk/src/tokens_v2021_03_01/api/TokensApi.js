@@ -31,8 +31,8 @@ export class TokensApi {
     * Constructs a new TokensApi.
     * @alias module:tokens_v2021_03_01/api/TokensApi
     * @class
-    * @param {module:tokens_v2021_03_01/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:tokens_v2021_03_01/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -65,8 +65,8 @@ export class TokensApi {
 
   /**
      * Returns a Restricted Data Token (RDT) for one or more restricted resources that you specify. A restricted resource is the HTTP method and path from a restricted operation that returns Personally Identifiable Information (PII), plus a dataElements value that indicates the type of PII requested. See the Tokens API Use Case Guide for a list of restricted operations. Use the RDT returned here as the access token in subsequent calls to the corresponding restricted operations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:tokens_v2021_03_01/model/CreateRestrictedDataTokenRequest} body The restricted data token request details.
-     * @return {Promise<module:tokens_v2021_03_01/model/CreateRestrictedDataTokenResponse>}
+     * @param {CreateRestrictedDataTokenRequest} body The restricted data token request details.
+     * @return {Promise<CreateRestrictedDataTokenResponse>}
      */
   createRestrictedDataTokenWithHttpInfo (body) {
     const postBody = body
@@ -98,8 +98,8 @@ export class TokensApi {
 
   /**
      * Returns a Restricted Data Token (RDT) for one or more restricted resources that you specify. A restricted resource is the HTTP method and path from a restricted operation that returns Personally Identifiable Information (PII), plus a dataElements value that indicates the type of PII requested. See the Tokens API Use Case Guide for a list of restricted operations. Use the RDT returned here as the access token in subsequent calls to the corresponding restricted operations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:tokens_v2021_03_01/model/CreateRestrictedDataTokenRequest} body The restricted data token request details.
-     * @return {Promise<module:tokens_v2021_03_01/model/CreateRestrictedDataTokenResponse>}
+     * @param {CreateRestrictedDataTokenRequest} body The restricted data token request details.
+     * @return {Promise<CreateRestrictedDataTokenResponse>}
      */
   createRestrictedDataToken (body) {
     return this.createRestrictedDataTokenWithHttpInfo(body)

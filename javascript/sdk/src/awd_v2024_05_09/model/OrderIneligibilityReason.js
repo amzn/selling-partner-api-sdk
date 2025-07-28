@@ -36,8 +36,8 @@ export class OrderIneligibilityReason {
    * Constructs a <code>OrderIneligibilityReason</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/OrderIneligibilityReason} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/OrderIneligibilityReason} The populated <code>OrderIneligibilityReason</code> instance.
+   * @param {OrderIneligibilityReason} obj Optional instance to populate.
+   * @return {OrderIneligibilityReason} The populated <code>OrderIneligibilityReason</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

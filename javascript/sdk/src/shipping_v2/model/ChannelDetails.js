@@ -27,7 +27,7 @@ export class ChannelDetails {
    * Shipment source channel related information.
    * @alias module:shipping_v2/model/ChannelDetails
    * @class
-   * @param channelType {module:shipping_v2/model/ChannelType}
+   * @param channelType {ChannelType}
    */
   constructor (channelType) {
     this.channelType = channelType
@@ -37,8 +37,8 @@ export class ChannelDetails {
    * Constructs a <code>ChannelDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/ChannelDetails} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/ChannelDetails} The populated <code>ChannelDetails</code> instance.
+   * @param {ChannelDetails} obj Optional instance to populate.
+   * @return {ChannelDetails} The populated <code>ChannelDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,19 +63,19 @@ export class ChannelDetails {
 }
 
 /**
- * @member {module:shipping_v2/model/ChannelType} channelType
- * @type {module:shipping_v2/model/ChannelType}
+ * @member {ChannelType} channelType
+ * @type {ChannelType}
  */
 ChannelDetails.prototype.channelType = undefined
 
 /**
- * @member {module:shipping_v2/model/AmazonOrderDetails} amazonOrderDetails
- * @type {module:shipping_v2/model/AmazonOrderDetails}
+ * @member {AmazonOrderDetails} amazonOrderDetails
+ * @type {AmazonOrderDetails}
  */
 ChannelDetails.prototype.amazonOrderDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/AmazonShipmentDetails} amazonShipmentDetails
- * @type {module:shipping_v2/model/AmazonShipmentDetails}
+ * @member {AmazonShipmentDetails} amazonShipmentDetails
+ * @type {AmazonShipmentDetails}
  */
 ChannelDetails.prototype.amazonShipmentDetails = undefined

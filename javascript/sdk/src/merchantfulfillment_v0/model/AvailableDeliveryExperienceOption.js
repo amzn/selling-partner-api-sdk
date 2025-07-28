@@ -26,8 +26,8 @@ export class AvailableDeliveryExperienceOption {
    * The available delivery confirmation options, and the fee charged, if any.
    * @alias module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption
    * @class
-   * @param deliveryExperienceOption {module:merchantfulfillment_v0/model/DeliveryExperienceOption}
-   * @param charge {module:merchantfulfillment_v0/model/CurrencyAmount}
+   * @param deliveryExperienceOption {DeliveryExperienceOption}
+   * @param charge {CurrencyAmount}
    */
   constructor (deliveryExperienceOption, charge) {
     this.deliveryExperienceOption = deliveryExperienceOption
@@ -38,8 +38,8 @@ export class AvailableDeliveryExperienceOption {
    * Constructs a <code>AvailableDeliveryExperienceOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption} The populated <code>AvailableDeliveryExperienceOption</code> instance.
+   * @param {AvailableDeliveryExperienceOption} obj Optional instance to populate.
+   * @return {AvailableDeliveryExperienceOption} The populated <code>AvailableDeliveryExperienceOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class AvailableDeliveryExperienceOption {
 }
 
 /**
- * @member {module:merchantfulfillment_v0/model/DeliveryExperienceOption} deliveryExperienceOption
- * @type {module:merchantfulfillment_v0/model/DeliveryExperienceOption}
+ * @member {DeliveryExperienceOption} deliveryExperienceOption
+ * @type {DeliveryExperienceOption}
  */
 AvailableDeliveryExperienceOption.prototype.deliveryExperienceOption = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CurrencyAmount} charge
- * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
+ * @member {CurrencyAmount} charge
+ * @type {CurrencyAmount}
  */
 AvailableDeliveryExperienceOption.prototype.charge = undefined

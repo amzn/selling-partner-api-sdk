@@ -26,7 +26,7 @@ export class FeesEstimateByIdRequest {
    * A product, marketplace, and proposed price used to request estimated fees.
    * @alias module:productfees_v0/model/FeesEstimateByIdRequest
    * @class
-   * @param idType {module:productfees_v0/model/IdType}
+   * @param idType {IdType}
    * @param idValue {String} The item identifier.
    */
   constructor (idType, idValue) {
@@ -38,8 +38,8 @@ export class FeesEstimateByIdRequest {
    * Constructs a <code>FeesEstimateByIdRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/FeesEstimateByIdRequest} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/FeesEstimateByIdRequest} The populated <code>FeesEstimateByIdRequest</code> instance.
+   * @param {FeesEstimateByIdRequest} obj Optional instance to populate.
+   * @return {FeesEstimateByIdRequest} The populated <code>FeesEstimateByIdRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,14 +64,14 @@ export class FeesEstimateByIdRequest {
 }
 
 /**
- * @member {module:productfees_v0/model/FeesEstimateRequest} feesEstimateRequest
- * @type {module:productfees_v0/model/FeesEstimateRequest}
+ * @member {FeesEstimateRequest} feesEstimateRequest
+ * @type {FeesEstimateRequest}
  */
 FeesEstimateByIdRequest.prototype.feesEstimateRequest = undefined
 
 /**
- * @member {module:productfees_v0/model/IdType} idType
- * @type {module:productfees_v0/model/IdType}
+ * @member {IdType} idType
+ * @type {IdType}
  */
 FeesEstimateByIdRequest.prototype.idType = undefined
 

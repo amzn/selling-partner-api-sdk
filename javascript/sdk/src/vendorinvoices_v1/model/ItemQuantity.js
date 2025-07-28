@@ -26,7 +26,7 @@ export class ItemQuantity {
    * @alias module:vendorinvoices_v1/model/ItemQuantity
    * @class
    * @param amount {Number} Quantity of an item. This value should not be zero.
-   * @param unitOfMeasure {module:vendorinvoices_v1/model/ItemQuantity.UnitOfMeasureEnum} Unit of measure for the quantity.
+   * @param unitOfMeasure {String} Unit of measure for the quantity.
    */
   constructor (amount, unitOfMeasure) {
     this.amount = amount
@@ -37,8 +37,8 @@ export class ItemQuantity {
    * Constructs a <code>ItemQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/ItemQuantity} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/ItemQuantity} The populated <code>ItemQuantity</code> instance.
+   * @param {ItemQuantity} obj Optional instance to populate.
+   * @return {ItemQuantity} The populated <code>ItemQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -92,8 +92,8 @@ ItemQuantity.UnitOfMeasureEnum = {
 
 /**
  * Unit of measure for the quantity.
- * @member {module:vendorinvoices_v1/model/ItemQuantity.UnitOfMeasureEnum} unitOfMeasure
- * @type {module:vendorinvoices_v1/model/ItemQuantity.UnitOfMeasureEnum}
+ * @member {String} unitOfMeasure
+ * @type {String}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined
 
@@ -105,7 +105,7 @@ ItemQuantity.prototype.unitOfMeasure = undefined
 ItemQuantity.prototype.unitSize = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/TotalWeight} totalWeight
- * @type {module:vendorinvoices_v1/model/TotalWeight}
+ * @member {TotalWeight} totalWeight
+ * @type {TotalWeight}
  */
 ItemQuantity.prototype.totalWeight = undefined

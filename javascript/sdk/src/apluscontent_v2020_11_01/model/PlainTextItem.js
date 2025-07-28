@@ -36,8 +36,8 @@ export class PlainTextItem {
    * Constructs a <code>PlainTextItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/PlainTextItem} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/PlainTextItem} The populated <code>PlainTextItem</code> instance.
+   * @param {PlainTextItem} obj Optional instance to populate.
+   * @return {PlainTextItem} The populated <code>PlainTextItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

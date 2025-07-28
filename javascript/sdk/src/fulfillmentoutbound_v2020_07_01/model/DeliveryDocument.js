@@ -34,8 +34,8 @@ export class DeliveryDocument {
    * Constructs a <code>DeliveryDocument</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DeliveryDocument} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DeliveryDocument} The populated <code>DeliveryDocument</code> instance.
+   * @param {DeliveryDocument} obj Optional instance to populate.
+   * @return {DeliveryDocument} The populated <code>DeliveryDocument</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -25,7 +25,7 @@ export class CollectOnDelivery {
    * The amount to collect on delivery.
    * @alias module:shipping_v2/model/CollectOnDelivery
    * @class
-   * @param amount {module:shipping_v2/model/Currency}
+   * @param amount {Currency}
    */
   constructor (amount) {
     this.amount = amount
@@ -35,8 +35,8 @@ export class CollectOnDelivery {
    * Constructs a <code>CollectOnDelivery</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/CollectOnDelivery} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/CollectOnDelivery} The populated <code>CollectOnDelivery</code> instance.
+   * @param {CollectOnDelivery} obj Optional instance to populate.
+   * @return {CollectOnDelivery} The populated <code>CollectOnDelivery</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class CollectOnDelivery {
 }
 
 /**
- * @member {module:shipping_v2/model/Currency} amount
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} amount
+ * @type {Currency}
  */
 CollectOnDelivery.prototype.amount = undefined

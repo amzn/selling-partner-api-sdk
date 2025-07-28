@@ -26,7 +26,7 @@ export class ListShipmentContentUpdatePreviewsResponse {
    * The &#x60;ListShipmentContentUpdatePreviews&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse
    * @class
-   * @param contentUpdatePreviews {Array.<module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview>} A list of content update previews in a shipment.
+   * @param contentUpdatePreviews {[ContentUpdatePreview]} A list of content update previews in a shipment.
    */
   constructor (contentUpdatePreviews) {
     this.contentUpdatePreviews = contentUpdatePreviews
@@ -36,8 +36,8 @@ export class ListShipmentContentUpdatePreviewsResponse {
    * Constructs a <code>ListShipmentContentUpdatePreviewsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse} The populated <code>ListShipmentContentUpdatePreviewsResponse</code> instance.
+   * @param {ListShipmentContentUpdatePreviewsResponse} obj Optional instance to populate.
+   * @return {ListShipmentContentUpdatePreviewsResponse} The populated <code>ListShipmentContentUpdatePreviewsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ListShipmentContentUpdatePreviewsResponse {
 
 /**
  * A list of content update previews in a shipment.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview>} contentUpdatePreviews
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview>}
+ * @member {[ContentUpdatePreview]} contentUpdatePreviews
+ * @type {[ContentUpdatePreview]}
  */
 ListShipmentContentUpdatePreviewsResponse.prototype.contentUpdatePreviews = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListShipmentContentUpdatePreviewsResponse.prototype.pagination = undefined

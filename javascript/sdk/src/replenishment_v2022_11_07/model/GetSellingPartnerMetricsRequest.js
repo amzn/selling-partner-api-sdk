@@ -29,10 +29,10 @@ export class GetSellingPartnerMetricsRequest {
    * The request body for the &#x60;getSellingPartnerMetrics&#x60; operation.
    * @alias module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsRequest
    * @class
-   * @param timeInterval {module:replenishment_v2022_11_07/model/TimeInterval}
-   * @param timePeriodType {module:replenishment_v2022_11_07/model/TimePeriodType}
+   * @param timeInterval {TimeInterval}
+   * @param timePeriodType {TimePeriodType}
    * @param marketplaceId {String} The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
-   * @param programTypes {Array.<module:replenishment_v2022_11_07/model/ProgramType>} A list of replenishment program types.
+   * @param programTypes {[ProgramType]} A list of replenishment program types.
    */
   constructor (timeInterval, timePeriodType, marketplaceId, programTypes) {
     this.timeInterval = timeInterval
@@ -45,8 +45,8 @@ export class GetSellingPartnerMetricsRequest {
    * Constructs a <code>GetSellingPartnerMetricsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsRequest} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsRequest} The populated <code>GetSellingPartnerMetricsRequest</code> instance.
+   * @param {GetSellingPartnerMetricsRequest} obj Optional instance to populate.
+   * @return {GetSellingPartnerMetricsRequest} The populated <code>GetSellingPartnerMetricsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,27 +74,27 @@ export class GetSellingPartnerMetricsRequest {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/AggregationFrequency} aggregationFrequency
- * @type {module:replenishment_v2022_11_07/model/AggregationFrequency}
+ * @member {AggregationFrequency} aggregationFrequency
+ * @type {AggregationFrequency}
  */
 GetSellingPartnerMetricsRequest.prototype.aggregationFrequency = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/TimeInterval} timeInterval
- * @type {module:replenishment_v2022_11_07/model/TimeInterval}
+ * @member {TimeInterval} timeInterval
+ * @type {TimeInterval}
  */
 GetSellingPartnerMetricsRequest.prototype.timeInterval = undefined
 
 /**
  * The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
- * @member {Array.<module:replenishment_v2022_11_07/model/Metric>} metrics
- * @type {Array.<module:replenishment_v2022_11_07/model/Metric>}
+ * @member {[Metric]} metrics
+ * @type {[Metric]}
  */
 GetSellingPartnerMetricsRequest.prototype.metrics = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/TimePeriodType} timePeriodType
- * @type {module:replenishment_v2022_11_07/model/TimePeriodType}
+ * @member {TimePeriodType} timePeriodType
+ * @type {TimePeriodType}
  */
 GetSellingPartnerMetricsRequest.prototype.timePeriodType = undefined
 
@@ -107,7 +107,7 @@ GetSellingPartnerMetricsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of replenishment program types.
- * @member {Array.<module:replenishment_v2022_11_07/model/ProgramType>} programTypes
- * @type {Array.<module:replenishment_v2022_11_07/model/ProgramType>}
+ * @member {[ProgramType]} programTypes
+ * @type {[ProgramType]}
  */
 GetSellingPartnerMetricsRequest.prototype.programTypes = undefined

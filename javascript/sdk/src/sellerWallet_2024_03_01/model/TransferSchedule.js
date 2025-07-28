@@ -31,11 +31,11 @@ export class TransferSchedule {
    * @alias module:sellerWallet_2024_03_01/model/TransferSchedule
    * @class
    * @param transferScheduleId {String} The unique identifier provided by Amazon to the scheduled transfer.
-   * @param transactionType {module:sellerWallet_2024_03_01/model/TransactionType}
-   * @param transactionDestinationAccount {module:sellerWallet_2024_03_01/model/TransactionAccount}
-   * @param transferScheduleStatus {module:sellerWallet_2024_03_01/model/TransferScheduleStatus}
-   * @param transferScheduleInformation {module:sellerWallet_2024_03_01/model/TransferScheduleInformation}
-   * @param transferScheduleFailures {Array.<module:sellerWallet_2024_03_01/model/TransferScheduleFailures>} A list of transfer schedule failures.
+   * @param transactionType {TransactionType}
+   * @param transactionDestinationAccount {TransactionAccount}
+   * @param transferScheduleStatus {TransferScheduleStatus}
+   * @param transferScheduleInformation {TransferScheduleInformation}
+   * @param transferScheduleFailures {[TransferScheduleFailures]} A list of transfer schedule failures.
    */
   constructor (transferScheduleId, transactionType, transactionDestinationAccount, transferScheduleStatus, transferScheduleInformation, transferScheduleFailures) {
     this.transferScheduleId = transferScheduleId
@@ -50,8 +50,8 @@ export class TransferSchedule {
    * Constructs a <code>TransferSchedule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransferSchedule} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransferSchedule} The populated <code>TransferSchedule</code> instance.
+   * @param {TransferSchedule} obj Optional instance to populate.
+   * @return {TransferSchedule} The populated <code>TransferSchedule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,44 +88,44 @@ export class TransferSchedule {
 TransferSchedule.prototype.transferScheduleId = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionType} transactionType
- * @type {module:sellerWallet_2024_03_01/model/TransactionType}
+ * @member {TransactionType} transactionType
+ * @type {TransactionType}
  */
 TransferSchedule.prototype.transactionType = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionSourceAccount
- * @type {module:sellerWallet_2024_03_01/model/TransactionAccount}
+ * @member {TransactionAccount} transactionSourceAccount
+ * @type {TransactionAccount}
  */
 TransferSchedule.prototype.transactionSourceAccount = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionDestinationAccount
- * @type {module:sellerWallet_2024_03_01/model/TransactionAccount}
+ * @member {TransactionAccount} transactionDestinationAccount
+ * @type {TransactionAccount}
  */
 TransferSchedule.prototype.transactionDestinationAccount = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransferScheduleStatus} transferScheduleStatus
- * @type {module:sellerWallet_2024_03_01/model/TransferScheduleStatus}
+ * @member {TransferScheduleStatus} transferScheduleStatus
+ * @type {TransferScheduleStatus}
  */
 TransferSchedule.prototype.transferScheduleStatus = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransferScheduleInformation} transferScheduleInformation
- * @type {module:sellerWallet_2024_03_01/model/TransferScheduleInformation}
+ * @member {TransferScheduleInformation} transferScheduleInformation
+ * @type {TransferScheduleInformation}
  */
 TransferSchedule.prototype.transferScheduleInformation = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/PaymentPreference} paymentPreference
- * @type {module:sellerWallet_2024_03_01/model/PaymentPreference}
+ * @member {PaymentPreference} paymentPreference
+ * @type {PaymentPreference}
  */
 TransferSchedule.prototype.paymentPreference = undefined
 
 /**
  * A list of transfer schedule failures.
- * @member {Array.<module:sellerWallet_2024_03_01/model/TransferScheduleFailures>} transferScheduleFailures
- * @type {Array.<module:sellerWallet_2024_03_01/model/TransferScheduleFailures>}
+ * @member {[TransferScheduleFailures]} transferScheduleFailures
+ * @type {[TransferScheduleFailures]}
  */
 TransferSchedule.prototype.transferScheduleFailures = undefined

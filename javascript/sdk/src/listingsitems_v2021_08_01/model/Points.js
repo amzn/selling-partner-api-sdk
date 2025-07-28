@@ -34,8 +34,8 @@ export class Points {
    * Constructs a <code>Points</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/Points} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/Points} The populated <code>Points</code> instance.
+   * @param {Points} obj Optional instance to populate.
+   * @return {Points} The populated <code>Points</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

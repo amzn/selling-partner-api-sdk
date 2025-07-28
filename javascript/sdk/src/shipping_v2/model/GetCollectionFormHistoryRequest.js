@@ -35,8 +35,8 @@ export class GetCollectionFormHistoryRequest {
    * Constructs a <code>GetCollectionFormHistoryRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetCollectionFormHistoryRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetCollectionFormHistoryRequest} The populated <code>GetCollectionFormHistoryRequest</code> instance.
+   * @param {GetCollectionFormHistoryRequest} obj Optional instance to populate.
+   * @return {GetCollectionFormHistoryRequest} The populated <code>GetCollectionFormHistoryRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,8 +64,8 @@ export class GetCollectionFormHistoryRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
- * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
+ * @member {[ClientReferenceDetail]} clientReferenceDetails
+ * @type {[ClientReferenceDetail]}
  */
 GetCollectionFormHistoryRequest.prototype.clientReferenceDetails = undefined
 
@@ -84,13 +84,13 @@ GetCollectionFormHistoryRequest.prototype.maxResults = undefined
 GetCollectionFormHistoryRequest.prototype.carrierId = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} shipFromAddress
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipFromAddress
+ * @type {Address}
  */
 GetCollectionFormHistoryRequest.prototype.shipFromAddress = undefined
 
 /**
- * @member {module:shipping_v2/model/DateRange} dateRange
- * @type {module:shipping_v2/model/DateRange}
+ * @member {DateRange} dateRange
+ * @type {DateRange}
  */
 GetCollectionFormHistoryRequest.prototype.dateRange = undefined

@@ -36,8 +36,8 @@ export class SalesRankType {
    * Constructs a <code>SalesRankType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/SalesRankType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/SalesRankType} The populated <code>SalesRankType</code> instance.
+   * @param {SalesRankType} obj Optional instance to populate.
+   * @return {SalesRankType} The populated <code>SalesRankType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -25,7 +25,7 @@ export class PaymentExecutionDetailItem {
    * Information about a sub-payment method used to pay for a COD order.
    * @alias module:orders_v0/model/PaymentExecutionDetailItem
    * @class
-   * @param payment {module:orders_v0/model/Money}
+   * @param payment {Money}
    * @param paymentMethod {String} A sub-payment method for a COD order.  **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points * `Invoice`: Invoice
    */
   constructor (payment, paymentMethod) {
@@ -37,8 +37,8 @@ export class PaymentExecutionDetailItem {
    * Constructs a <code>PaymentExecutionDetailItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/PaymentExecutionDetailItem} obj Optional instance to populate.
-   * @return {module:orders_v0/model/PaymentExecutionDetailItem} The populated <code>PaymentExecutionDetailItem</code> instance.
+   * @param {PaymentExecutionDetailItem} obj Optional instance to populate.
+   * @return {PaymentExecutionDetailItem} The populated <code>PaymentExecutionDetailItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class PaymentExecutionDetailItem {
 }
 
 /**
- * @member {module:orders_v0/model/Money} payment
- * @type {module:orders_v0/model/Money}
+ * @member {Money} payment
+ * @type {Money}
  */
 PaymentExecutionDetailItem.prototype.payment = undefined
 

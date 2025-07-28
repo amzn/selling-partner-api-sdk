@@ -33,8 +33,8 @@ export class LinkCarrierAccountResponse {
    * Constructs a <code>LinkCarrierAccountResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/LinkCarrierAccountResponse} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/LinkCarrierAccountResponse} The populated <code>LinkCarrierAccountResponse</code> instance.
+   * @param {LinkCarrierAccountResponse} obj Optional instance to populate.
+   * @return {LinkCarrierAccountResponse} The populated <code>LinkCarrierAccountResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,8 +58,8 @@ export class LinkCarrierAccountResponse {
 }
 
 /**
- * @member {module:shipping_v2/model/AccountStatus} registrationStatus
- * @type {module:shipping_v2/model/AccountStatus}
+ * @member {AccountStatus} registrationStatus
+ * @type {AccountStatus}
  */
 LinkCarrierAccountResponse.prototype.registrationStatus = undefined
 

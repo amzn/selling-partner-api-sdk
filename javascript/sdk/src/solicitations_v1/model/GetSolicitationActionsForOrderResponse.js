@@ -35,8 +35,8 @@ export class GetSolicitationActionsForOrderResponse {
    * Constructs a <code>GetSolicitationActionsForOrderResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:solicitations_v1/model/GetSolicitationActionsForOrderResponse} obj Optional instance to populate.
-   * @return {module:solicitations_v1/model/GetSolicitationActionsForOrderResponse} The populated <code>GetSolicitationActionsForOrderResponse</code> instance.
+   * @param {GetSolicitationActionsForOrderResponse} obj Optional instance to populate.
+   * @return {GetSolicitationActionsForOrderResponse} The populated <code>GetSolicitationActionsForOrderResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,20 +61,20 @@ export class GetSolicitationActionsForOrderResponse {
 }
 
 /**
- * @member {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks} links
- * @type {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseLinks}
+ * @member {GetSolicitationActionsForOrderResponseLinks} links
+ * @type {GetSolicitationActionsForOrderResponseLinks}
  */
 GetSolicitationActionsForOrderResponse.prototype.links = undefined
 
 /**
- * @member {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded} embedded
- * @type {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded}
+ * @member {GetSolicitationActionsForOrderResponseEmbedded} embedded
+ * @type {GetSolicitationActionsForOrderResponseEmbedded}
  */
 GetSolicitationActionsForOrderResponse.prototype.embedded = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:solicitations_v1/model/Error>} errors
- * @type {Array.<module:solicitations_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetSolicitationActionsForOrderResponse.prototype.errors = undefined

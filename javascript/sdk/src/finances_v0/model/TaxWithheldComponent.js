@@ -33,8 +33,8 @@ export class TaxWithheldComponent {
    * Constructs a <code>TaxWithheldComponent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/TaxWithheldComponent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/TaxWithheldComponent} The populated <code>TaxWithheldComponent</code> instance.
+   * @param {TaxWithheldComponent} obj Optional instance to populate.
+   * @return {TaxWithheldComponent} The populated <code>TaxWithheldComponent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,7 +66,7 @@ TaxWithheldComponent.prototype.taxCollectionModel = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {Array.<module:finances_v0/model/ChargeComponent>} taxesWithheld
- * @type {Array.<module:finances_v0/model/ChargeComponent>}
+ * @member {[ChargeComponent]} taxesWithheld
+ * @type {[ChargeComponent]}
  */
 TaxWithheldComponent.prototype.taxesWithheld = undefined

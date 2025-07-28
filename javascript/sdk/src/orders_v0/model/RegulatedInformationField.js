@@ -26,7 +26,7 @@ export class RegulatedInformationField {
    * @class
    * @param fieldId {String} The unique identifier of the field.
    * @param fieldLabel {String} The name of the field.
-   * @param fieldType {module:orders_v0/model/RegulatedInformationField.FieldTypeEnum} The type of field.
+   * @param fieldType {String} The type of field.
    * @param fieldValue {String} The content of the field as collected in regulatory form. Note that `FileAttachment` type fields contain a URL where you can download the attachment.
    */
   constructor (fieldId, fieldLabel, fieldType, fieldValue) {
@@ -40,8 +40,8 @@ export class RegulatedInformationField {
    * Constructs a <code>RegulatedInformationField</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/RegulatedInformationField} obj Optional instance to populate.
-   * @return {module:orders_v0/model/RegulatedInformationField} The populated <code>RegulatedInformationField</code> instance.
+   * @param {RegulatedInformationField} obj Optional instance to populate.
+   * @return {RegulatedInformationField} The populated <code>RegulatedInformationField</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -102,8 +102,8 @@ RegulatedInformationField.FieldTypeEnum = {
 
 /**
  * The type of field.
- * @member {module:orders_v0/model/RegulatedInformationField.FieldTypeEnum} fieldType
- * @type {module:orders_v0/model/RegulatedInformationField.FieldTypeEnum}
+ * @member {String} fieldType
+ * @type {String}
  */
 RegulatedInformationField.prototype.fieldType = undefined
 

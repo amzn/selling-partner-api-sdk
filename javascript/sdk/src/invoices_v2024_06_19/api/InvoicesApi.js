@@ -37,8 +37,8 @@ export class InvoicesApi {
     * Constructs a new InvoicesApi.
     * @alias module:invoices_v2024_06_19/api/InvoicesApi
     * @class
-    * @param {module:invoices_v2024_06_19/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:invoices_v2024_06_19/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -77,8 +77,8 @@ export class InvoicesApi {
 
   /**
      * Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:invoices_v2024_06_19/model/ExportInvoicesRequest} body Information required to create the export request.
-     * @return {Promise<module:invoices_v2024_06_19/model/ExportInvoicesResponse>}
+     * @param {ExportInvoicesRequest} body Information required to create the export request.
+     * @return {Promise<ExportInvoicesResponse>}
      */
   createInvoicesExportWithHttpInfo (body) {
     const postBody = body
@@ -110,8 +110,8 @@ export class InvoicesApi {
 
   /**
      * Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:invoices_v2024_06_19/model/ExportInvoicesRequest} body Information required to create the export request.
-     * @return {Promise<module:invoices_v2024_06_19/model/ExportInvoicesResponse>}
+     * @param {ExportInvoicesRequest} body Information required to create the export request.
+     * @return {Promise<ExportInvoicesResponse>}
      */
   createInvoicesExport (body) {
     return this.createInvoicesExportWithHttpInfo(body)
@@ -124,7 +124,7 @@ export class InvoicesApi {
      * Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace from which you want the invoice.
      * @param {String} invoiceId The invoice identifier.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoiceResponse>}
+     * @return {Promise<GetInvoiceResponse>}
      */
   getInvoiceWithHttpInfo (marketplaceId, invoiceId) {
     const postBody = null
@@ -165,7 +165,7 @@ export class InvoicesApi {
      * Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace from which you want the invoice.
      * @param {String} invoiceId The invoice identifier.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoiceResponse>}
+     * @return {Promise<GetInvoiceResponse>}
      */
   getInvoice (marketplaceId, invoiceId) {
     return this.getInvoiceWithHttpInfo(marketplaceId, invoiceId)
@@ -186,12 +186,12 @@ export class InvoicesApi {
      * @param {Date} opts.dateStart The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
      * @param {String} opts.series Return invoices with the specified series number.
      * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {module:invoices_v2024_06_19/model/String} opts.sortOrder Sort the invoices in the response in ascending or descending order.
+     * @param {String} opts.sortOrder Sort the invoices in the response in ascending or descending order.
      * @param {String} opts.invoiceType The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
-     * @param {Array.<String>} opts.statuses A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
+     * @param {[String]} opts.statuses A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
      * @param {String} opts.externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice ID.
-     * @param {module:invoices_v2024_06_19/model/String} opts.sortBy The attribute by which you want to sort the invoices in the response.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesResponse>}
+     * @param {String} opts.sortBy The attribute by which you want to sort the invoices in the response.
+     * @return {Promise<GetInvoicesResponse>}
      */
   getInvoicesWithHttpInfo (marketplaceId, opts) {
     opts = opts || {}
@@ -248,12 +248,12 @@ export class InvoicesApi {
      * @param {Date} opts.dateStart The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
      * @param {String} opts.series Return invoices with the specified series number.
      * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {module:invoices_v2024_06_19/model/String} opts.sortOrder Sort the invoices in the response in ascending or descending order.
+     * @param {String} opts.sortOrder Sort the invoices in the response in ascending or descending order.
      * @param {String} opts.invoiceType The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
-     * @param {Array.<String>} opts.statuses A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
+     * @param {[String]} opts.statuses A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
      * @param {String} opts.externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice ID.
-     * @param {module:invoices_v2024_06_19/model/String} opts.sortBy The attribute by which you want to sort the invoices in the response.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesResponse>}
+     * @param {String} opts.sortBy The attribute by which you want to sort the invoices in the response.
+     * @return {Promise<GetInvoicesResponse>}
      */
   getInvoices (marketplaceId, opts) {
     return this.getInvoicesWithHttpInfo(marketplaceId, opts)
@@ -265,7 +265,7 @@ export class InvoicesApi {
   /**
      * Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace identifier.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesAttributesResponse>}
+     * @return {Promise<GetInvoicesAttributesResponse>}
      */
   getInvoicesAttributesWithHttpInfo (marketplaceId) {
     const postBody = null
@@ -299,7 +299,7 @@ export class InvoicesApi {
   /**
      * Returns marketplace-dependent schemas and their respective set of possible values.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace identifier.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesAttributesResponse>}
+     * @return {Promise<GetInvoicesAttributesResponse>}
      */
   getInvoicesAttributes (marketplaceId) {
     return this.getInvoicesAttributesWithHttpInfo(marketplaceId)
@@ -311,7 +311,7 @@ export class InvoicesApi {
   /**
      * Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} invoicesDocumentId The export document identifier.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesDocumentResponse>}
+     * @return {Promise<GetInvoicesDocumentResponse>}
      */
   getInvoicesDocumentWithHttpInfo (invoicesDocumentId) {
     const postBody = null
@@ -345,7 +345,7 @@ export class InvoicesApi {
   /**
      * Returns the invoice document&#39;s ID and URL. Use the URL to download the ZIP file, which contains the invoices from the corresponding &#x60;createInvoicesExport&#x60; request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} invoicesDocumentId The export document identifier.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesDocumentResponse>}
+     * @return {Promise<GetInvoicesDocumentResponse>}
      */
   getInvoicesDocument (invoicesDocumentId) {
     return this.getInvoicesDocumentWithHttpInfo(invoicesDocumentId)
@@ -357,7 +357,7 @@ export class InvoicesApi {
   /**
      * Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} exportId The unique identifier for the export.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesExportResponse>}
+     * @return {Promise<GetInvoicesExportResponse>}
      */
   getInvoicesExportWithHttpInfo (exportId) {
     const postBody = null
@@ -391,7 +391,7 @@ export class InvoicesApi {
   /**
      * Returns invoice export details (including the &#x60;exportDocumentId&#x60;, if available) for the export that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} exportId The unique identifier for the export.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesExportResponse>}
+     * @return {Promise<GetInvoicesExportResponse>}
      */
   getInvoicesExport (exportId) {
     return this.getInvoicesExportWithHttpInfo(exportId)
@@ -408,8 +408,8 @@ export class InvoicesApi {
      * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {Number} opts.pageSize The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
      * @param {Date} opts.dateEnd The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
-     * @param {module:invoices_v2024_06_19/model/String} opts.status Return exports matching the status specified.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesExportsResponse>}
+     * @param {String} opts.status Return exports matching the status specified.
+     * @return {Promise<GetInvoicesExportsResponse>}
      */
   getInvoicesExportsWithHttpInfo (marketplaceId, opts) {
     opts = opts || {}
@@ -454,8 +454,8 @@ export class InvoicesApi {
      * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {Number} opts.pageSize The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
      * @param {Date} opts.dateEnd The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
-     * @param {module:invoices_v2024_06_19/model/String} opts.status Return exports matching the status specified.
-     * @return {Promise<module:invoices_v2024_06_19/model/GetInvoicesExportsResponse>}
+     * @param {String} opts.status Return exports matching the status specified.
+     * @return {Promise<GetInvoicesExportsResponse>}
      */
   getInvoicesExports (marketplaceId, opts) {
     return this.getInvoicesExportsWithHttpInfo(marketplaceId, opts)

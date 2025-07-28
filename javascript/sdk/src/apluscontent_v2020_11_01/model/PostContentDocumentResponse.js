@@ -37,8 +37,8 @@ export class PostContentDocumentResponse {
    * Constructs a <code>PostContentDocumentResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentResponse} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/PostContentDocumentResponse} The populated <code>PostContentDocumentResponse</code> instance.
+   * @param {PostContentDocumentResponse} obj Optional instance to populate.
+   * @return {PostContentDocumentResponse} The populated <code>PostContentDocumentResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,8 +64,8 @@ export class PostContentDocumentResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 PostContentDocumentResponse.prototype.warnings = undefined
 
@@ -79,7 +79,7 @@ PostContentDocumentResponse.prototype.contentReferenceKey = undefined
 // Implement AplusResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 AplusResponse.prototype.warnings = undefined

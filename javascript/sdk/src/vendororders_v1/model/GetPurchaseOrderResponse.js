@@ -34,8 +34,8 @@ export class GetPurchaseOrderResponse {
    * Constructs a <code>GetPurchaseOrderResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/GetPurchaseOrderResponse} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/GetPurchaseOrderResponse} The populated <code>GetPurchaseOrderResponse</code> instance.
+   * @param {GetPurchaseOrderResponse} obj Optional instance to populate.
+   * @return {GetPurchaseOrderResponse} The populated <code>GetPurchaseOrderResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetPurchaseOrderResponse {
 }
 
 /**
- * @member {module:vendororders_v1/model/Order} payload
- * @type {module:vendororders_v1/model/Order}
+ * @member {Order} payload
+ * @type {Order}
  */
 GetPurchaseOrderResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:vendororders_v1/model/Error>} errors
- * @type {Array.<module:vendororders_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetPurchaseOrderResponse.prototype.errors = undefined

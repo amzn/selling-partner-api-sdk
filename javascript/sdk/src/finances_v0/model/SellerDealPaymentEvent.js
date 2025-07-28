@@ -33,8 +33,8 @@ export class SellerDealPaymentEvent {
    * Constructs a <code>SellerDealPaymentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/SellerDealPaymentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/SellerDealPaymentEvent} The populated <code>SellerDealPaymentEvent</code> instance.
+   * @param {SellerDealPaymentEvent} obj Optional instance to populate.
+   * @return {SellerDealPaymentEvent} The populated <code>SellerDealPaymentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -99,19 +99,19 @@ SellerDealPaymentEvent.prototype.eventType = undefined
 SellerDealPaymentEvent.prototype.feeType = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} feeAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} feeAmount
+ * @type {Currency}
  */
 SellerDealPaymentEvent.prototype.feeAmount = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxAmount
+ * @type {Currency}
  */
 SellerDealPaymentEvent.prototype.taxAmount = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} totalAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} totalAmount
+ * @type {Currency}
  */
 SellerDealPaymentEvent.prototype.totalAmount = undefined

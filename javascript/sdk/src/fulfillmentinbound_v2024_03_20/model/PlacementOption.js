@@ -25,10 +25,10 @@ export class PlacementOption {
    * Contains information pertaining to the placement of the contents of an inbound plan and the related costs.
    * @alias module:fulfillmentinbound_v2024_03_20/model/PlacementOption
    * @class
-   * @param discounts {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} Discount for the offered option.
-   * @param fees {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} The fee for the offered option.
+   * @param discounts {[Incentive]} Discount for the offered option.
+   * @param fees {[Incentive]} The fee for the offered option.
    * @param placementOptionId {String} The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
-   * @param shipmentIds {Array.<String>} Shipment ids.
+   * @param shipmentIds {[String]} Shipment ids.
    * @param status {String} The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.
    */
   constructor (discounts, fees, placementOptionId, shipmentIds, status) {
@@ -43,8 +43,8 @@ export class PlacementOption {
    * Constructs a <code>PlacementOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/PlacementOption} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/PlacementOption} The populated <code>PlacementOption</code> instance.
+   * @param {PlacementOption} obj Optional instance to populate.
+   * @return {PlacementOption} The populated <code>PlacementOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,8 +73,8 @@ export class PlacementOption {
 
 /**
  * Discount for the offered option.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} discounts
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>}
+ * @member {[Incentive]} discounts
+ * @type {[Incentive]}
  */
 PlacementOption.prototype.discounts = undefined
 
@@ -87,8 +87,8 @@ PlacementOption.prototype.expiration = undefined
 
 /**
  * The fee for the offered option.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} fees
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>}
+ * @member {[Incentive]} fees
+ * @type {[Incentive]}
  */
 PlacementOption.prototype.fees = undefined
 
@@ -101,8 +101,8 @@ PlacementOption.prototype.placementOptionId = undefined
 
 /**
  * Shipment ids.
- * @member {Array.<String>} shipmentIds
- * @type {Array.<String>}
+ * @member {[String]} shipmentIds
+ * @type {[String]}
  */
 PlacementOption.prototype.shipmentIds = undefined
 

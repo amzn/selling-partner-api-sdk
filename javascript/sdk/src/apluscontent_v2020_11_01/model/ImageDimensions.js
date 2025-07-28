@@ -25,8 +25,8 @@ export class ImageDimensions {
    * The dimensions that extend from the top left corner of the image (this applies to cropped and uncropped images). &#x60;ImageDimensions&#x60; units must be in pixels.
    * @alias module:apluscontent_v2020_11_01/model/ImageDimensions
    * @class
-   * @param width {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
-   * @param height {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
+   * @param width {IntegerWithUnits}
+   * @param height {IntegerWithUnits}
    */
   constructor (width, height) {
     this.width = width
@@ -37,8 +37,8 @@ export class ImageDimensions {
    * Constructs a <code>ImageDimensions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ImageDimensions} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ImageDimensions} The populated <code>ImageDimensions</code> instance.
+   * @param {ImageDimensions} obj Optional instance to populate.
+   * @return {ImageDimensions} The populated <code>ImageDimensions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ImageDimensions {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} width
- * @type {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
+ * @member {IntegerWithUnits} width
+ * @type {IntegerWithUnits}
  */
 ImageDimensions.prototype.width = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/IntegerWithUnits} height
- * @type {module:apluscontent_v2020_11_01/model/IntegerWithUnits}
+ * @member {IntegerWithUnits} height
+ * @type {IntegerWithUnits}
  */
 ImageDimensions.prototype.height = undefined

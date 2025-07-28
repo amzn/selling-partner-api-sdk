@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ReasonComment.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ReasonComment {
@@ -76,7 +76,7 @@ export class ReasonComment {
   /**
     * Returns a <code>ReasonComment</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v2024_03_20/model/ReasonComment} The enum <code>ReasonComment</code> value.
+    * @return {ReasonComment} The enum <code>ReasonComment</code> value.
     */
   static constructFromObject (object) {
     return object

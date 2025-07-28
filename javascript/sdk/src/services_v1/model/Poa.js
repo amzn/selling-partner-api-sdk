@@ -34,8 +34,8 @@ export class Poa {
    * Constructs a <code>Poa</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/Poa} obj Optional instance to populate.
-   * @return {module:services_v1/model/Poa} The populated <code>Poa</code> instance.
+   * @param {Poa} obj Optional instance to populate.
+   * @return {Poa} The populated <code>Poa</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,15 +62,15 @@ export class Poa {
 }
 
 /**
- * @member {module:services_v1/model/AppointmentTime} appointmentTime
- * @type {module:services_v1/model/AppointmentTime}
+ * @member {AppointmentTime} appointmentTime
+ * @type {AppointmentTime}
  */
 Poa.prototype.appointmentTime = undefined
 
 /**
  * A list of technicians.
- * @member {Array.<module:services_v1/model/Technician>} technicians
- * @type {Array.<module:services_v1/model/Technician>}
+ * @member {[Technician]} technicians
+ * @type {[Technician]}
  */
 Poa.prototype.technicians = undefined
 
@@ -122,7 +122,7 @@ Poa.PoaTypeEnum = {
 
 /**
  * The type of POA uploaded.
- * @member {module:services_v1/model/Poa.PoaTypeEnum} poaType
- * @type {module:services_v1/model/Poa.PoaTypeEnum}
+ * @member {String} poaType
+ * @type {String}
  */
 Poa.prototype.poaType = undefined

@@ -25,8 +25,8 @@ export class CreateReportScheduleSpecification {
    * @alias module:reports_v2021_06_30/model/CreateReportScheduleSpecification
    * @class
    * @param reportType {String} The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
-   * @param marketplaceIds {Array.<String>} A list of marketplace identifiers for the report schedule.
-   * @param period {module:reports_v2021_06_30/model/CreateReportScheduleSpecification.PeriodEnum} One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.
+   * @param marketplaceIds {[String]} A list of marketplace identifiers for the report schedule.
+   * @param period {String} One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.
    */
   constructor (reportType, marketplaceIds, period) {
     this.reportType = reportType
@@ -38,8 +38,8 @@ export class CreateReportScheduleSpecification {
    * Constructs a <code>CreateReportScheduleSpecification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/CreateReportScheduleSpecification} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/CreateReportScheduleSpecification} The populated <code>CreateReportScheduleSpecification</code> instance.
+   * @param {CreateReportScheduleSpecification} obj Optional instance to populate.
+   * @return {CreateReportScheduleSpecification} The populated <code>CreateReportScheduleSpecification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,15 +74,15 @@ CreateReportScheduleSpecification.prototype.reportType = undefined
 
 /**
  * A list of marketplace identifiers for the report schedule.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 CreateReportScheduleSpecification.prototype.marketplaceIds = undefined
 
 /**
  * Additional information passed to reports. This varies by report type.
- * @member {Object.<String, String>} reportOptions
- * @type {Object.<String, String>}
+ * @member {{String: String}} reportOptions
+ * @type {{String: String}}
  */
 CreateReportScheduleSpecification.prototype.reportOptions = undefined
 
@@ -204,8 +204,8 @@ CreateReportScheduleSpecification.PeriodEnum = {
 
 /**
  * One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.
- * @member {module:reports_v2021_06_30/model/CreateReportScheduleSpecification.PeriodEnum} period
- * @type {module:reports_v2021_06_30/model/CreateReportScheduleSpecification.PeriodEnum}
+ * @member {String} period
+ * @type {String}
  */
 CreateReportScheduleSpecification.prototype.period = undefined
 

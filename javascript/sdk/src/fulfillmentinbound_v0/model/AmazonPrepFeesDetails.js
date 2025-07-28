@@ -34,8 +34,8 @@ export class AmazonPrepFeesDetails {
    * Constructs a <code>AmazonPrepFeesDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/AmazonPrepFeesDetails} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/AmazonPrepFeesDetails} The populated <code>AmazonPrepFeesDetails</code> instance.
+   * @param {AmazonPrepFeesDetails} obj Optional instance to populate.
+   * @return {AmazonPrepFeesDetails} The populated <code>AmazonPrepFeesDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class AmazonPrepFeesDetails {
 }
 
 /**
- * @member {module:fulfillmentinbound_v0/model/PrepInstruction} prepInstruction
- * @type {module:fulfillmentinbound_v0/model/PrepInstruction}
+ * @member {PrepInstruction} prepInstruction
+ * @type {PrepInstruction}
  */
 AmazonPrepFeesDetails.prototype.prepInstruction = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/Amount} feePerUnit
- * @type {module:fulfillmentinbound_v0/model/Amount}
+ * @member {Amount} feePerUnit
+ * @type {Amount}
  */
 AmazonPrepFeesDetails.prototype.feePerUnit = undefined

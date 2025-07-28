@@ -26,7 +26,7 @@ export class ListShipmentItemsResponse {
    * The &#x60;listShipmentItems&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListShipmentItemsResponse
    * @class
-   * @param items {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} The items in a shipment.
+   * @param items {[Item]} The items in a shipment.
    */
   constructor (items) {
     this.items = items
@@ -36,8 +36,8 @@ export class ListShipmentItemsResponse {
    * Constructs a <code>ListShipmentItemsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListShipmentItemsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListShipmentItemsResponse} The populated <code>ListShipmentItemsResponse</code> instance.
+   * @param {ListShipmentItemsResponse} obj Optional instance to populate.
+   * @return {ListShipmentItemsResponse} The populated <code>ListShipmentItemsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ListShipmentItemsResponse {
 
 /**
  * The items in a shipment.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 ListShipmentItemsResponse.prototype.items = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListShipmentItemsResponse.prototype.pagination = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class PositionType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class PositionType {
@@ -34,7 +34,7 @@ export class PositionType {
   /**
     * Returns a <code>PositionType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:apluscontent_v2020_11_01/model/PositionType} The enum <code>PositionType</code> value.
+    * @return {PositionType} The enum <code>PositionType</code> value.
     */
   static constructFromObject (object) {
     return object

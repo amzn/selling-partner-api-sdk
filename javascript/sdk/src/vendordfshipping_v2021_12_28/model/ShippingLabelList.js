@@ -34,8 +34,8 @@ export class ShippingLabelList {
    * Constructs a <code>ShippingLabelList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ShippingLabelList} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ShippingLabelList} The populated <code>ShippingLabelList</code> instance.
+   * @param {ShippingLabelList} obj Optional instance to populate.
+   * @return {ShippingLabelList} The populated <code>ShippingLabelList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class ShippingLabelList {
 }
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/Pagination} pagination
- * @type {module:vendordfshipping_v2021_12_28/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ShippingLabelList.prototype.pagination = undefined
 
 /**
  * An array containing the details of the generated shipping labels.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShippingLabel>} shippingLabels
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/ShippingLabel>}
+ * @member {[ShippingLabel]} shippingLabels
+ * @type {[ShippingLabel]}
  */
 ShippingLabelList.prototype.shippingLabels = undefined

@@ -34,8 +34,8 @@ export class DeliveryOffer {
    * Constructs a <code>DeliveryOffer</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DeliveryOffer} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DeliveryOffer} The populated <code>DeliveryOffer</code> instance.
+   * @param {DeliveryOffer} obj Optional instance to populate.
+   * @return {DeliveryOffer} The populated <code>DeliveryOffer</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,13 +67,13 @@ export class DeliveryOffer {
 DeliveryOffer.prototype.expiresAt = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DateRange} dateRange
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DateRange}
+ * @member {DateRange} dateRange
+ * @type {DateRange}
  */
 DeliveryOffer.prototype.dateRange = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPolicy} policy
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPolicy}
+ * @member {DeliveryPolicy} policy
+ * @type {DeliveryPolicy}
  */
 DeliveryOffer.prototype.policy = undefined

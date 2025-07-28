@@ -37,8 +37,8 @@ export class InboundShipmentItem {
    * Constructs a <code>InboundShipmentItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/InboundShipmentItem} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/InboundShipmentItem} The populated <code>InboundShipmentItem</code> instance.
+   * @param {InboundShipmentItem} obj Optional instance to populate.
+   * @return {InboundShipmentItem} The populated <code>InboundShipmentItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -118,7 +118,7 @@ InboundShipmentItem.prototype.releaseDate = undefined
 
 /**
  * A list of preparation instructions and who is responsible for that preparation.
- * @member {Array.<module:fulfillmentinbound_v0/model/PrepDetails>} prepDetailsList
- * @type {Array.<module:fulfillmentinbound_v0/model/PrepDetails>}
+ * @member {[PrepDetails]} prepDetailsList
+ * @type {[PrepDetails]}
  */
 InboundShipmentItem.prototype.prepDetailsList = undefined

@@ -26,7 +26,7 @@ export class OrderItemAcknowledgement {
    * @alias module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement
    * @class
    * @param itemSequenceNumber {String} Line item sequence number for the item.
-   * @param acknowledgedQuantity {module:vendordforders_v2021_12_28/model/ItemQuantity}
+   * @param acknowledgedQuantity {ItemQuantity}
    */
   constructor (itemSequenceNumber, acknowledgedQuantity) {
     this.itemSequenceNumber = itemSequenceNumber
@@ -37,8 +37,8 @@ export class OrderItemAcknowledgement {
    * Constructs a <code>OrderItemAcknowledgement</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement} The populated <code>OrderItemAcknowledgement</code> instance.
+   * @param {OrderItemAcknowledgement} obj Optional instance to populate.
+   * @return {OrderItemAcknowledgement} The populated <code>OrderItemAcknowledgement</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,7 +85,7 @@ OrderItemAcknowledgement.prototype.buyerProductIdentifier = undefined
 OrderItemAcknowledgement.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/ItemQuantity} acknowledgedQuantity
- * @type {module:vendordforders_v2021_12_28/model/ItemQuantity}
+ * @member {ItemQuantity} acknowledgedQuantity
+ * @type {ItemQuantity}
  */
 OrderItemAcknowledgement.prototype.acknowledgedQuantity = undefined

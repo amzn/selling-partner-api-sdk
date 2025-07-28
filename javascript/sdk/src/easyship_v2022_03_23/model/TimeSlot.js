@@ -35,8 +35,8 @@ export class TimeSlot {
    * Constructs a <code>TimeSlot</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/TimeSlot} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/TimeSlot} The populated <code>TimeSlot</code> instance.
+   * @param {TimeSlot} obj Optional instance to populate.
+   * @return {TimeSlot} The populated <code>TimeSlot</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,7 +83,7 @@ TimeSlot.prototype.startTime = undefined
 TimeSlot.prototype.endTime = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/HandoverMethod} handoverMethod
- * @type {module:easyship_v2022_03_23/model/HandoverMethod}
+ * @member {HandoverMethod} handoverMethod
+ * @type {HandoverMethod}
  */
 TimeSlot.prototype.handoverMethod = undefined

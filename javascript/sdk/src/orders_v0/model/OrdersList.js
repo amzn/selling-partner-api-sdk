@@ -25,7 +25,7 @@ export class OrdersList {
    * A list of orders along with additional information to make subsequent API calls.
    * @alias module:orders_v0/model/OrdersList
    * @class
-   * @param orders {Array.<module:orders_v0/model/Order>} A list of orders.
+   * @param orders {[Order]} A list of orders.
    */
   constructor (orders) {
     this.orders = orders
@@ -35,8 +35,8 @@ export class OrdersList {
    * Constructs a <code>OrdersList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OrdersList} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OrdersList} The populated <code>OrdersList</code> instance.
+   * @param {OrdersList} obj Optional instance to populate.
+   * @return {OrdersList} The populated <code>OrdersList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class OrdersList {
 
 /**
  * A list of orders.
- * @member {Array.<module:orders_v0/model/Order>} orders
- * @type {Array.<module:orders_v0/model/Order>}
+ * @member {[Order]} orders
+ * @type {[Order]}
  */
 OrdersList.prototype.orders = undefined
 

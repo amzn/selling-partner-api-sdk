@@ -33,8 +33,8 @@ export class PackageItemDetails {
    * Constructs a <code>PackageItemDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/PackageItemDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/PackageItemDetails} The populated <code>PackageItemDetails</code> instance.
+   * @param {PackageItemDetails} obj Optional instance to populate.
+   * @return {PackageItemDetails} The populated <code>PackageItemDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,7 +73,7 @@ PackageItemDetails.prototype.purchaseOrderNumber = undefined
 PackageItemDetails.prototype.lotNumber = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Expiry} expiry
- * @type {module:vendorshipments_v1/model/Expiry}
+ * @member {Expiry} expiry
+ * @type {Expiry}
  */
 PackageItemDetails.prototype.expiry = undefined

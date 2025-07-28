@@ -32,8 +32,8 @@ export class TimeRangeContext {
    * Constructs a <code>TimeRangeContext</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/TimeRangeContext} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/TimeRangeContext} The populated <code>TimeRangeContext</code> instance.
+   * @param {TimeRangeContext} obj Optional instance to populate.
+   * @return {TimeRangeContext} The populated <code>TimeRangeContext</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

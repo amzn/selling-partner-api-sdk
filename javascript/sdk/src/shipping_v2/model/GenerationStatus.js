@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class GenerationStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class GenerationStatus {
@@ -34,7 +34,7 @@ export class GenerationStatus {
   /**
     * Returns a <code>GenerationStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/GenerationStatus} The enum <code>GenerationStatus</code> value.
+    * @return {GenerationStatus} The enum <code>GenerationStatus</code> value.
     */
   static constructFromObject (object) {
     return object

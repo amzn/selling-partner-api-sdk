@@ -25,8 +25,8 @@ export class Fee {
    * Fee type and cost.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/Fee
    * @class
-   * @param name {module:fulfillmentoutbound_v2020_07_01/model/Fee.NameEnum} The type of fee.
-   * @param amount {module:fulfillmentoutbound_v2020_07_01/model/Money}
+   * @param name {String} The type of fee.
+   * @param amount {Money}
    */
   constructor (name, amount) {
     this.name = name
@@ -37,8 +37,8 @@ export class Fee {
    * Constructs a <code>Fee</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/Fee} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/Fee} The populated <code>Fee</code> instance.
+   * @param {Fee} obj Optional instance to populate.
+   * @return {Fee} The populated <code>Fee</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -95,13 +95,13 @@ Fee.NameEnum = {
 
 /**
  * The type of fee.
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Fee.NameEnum} name
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Fee.NameEnum}
+ * @member {String} name
+ * @type {String}
  */
 Fee.prototype.name = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} amount
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} amount
+ * @type {Money}
  */
 Fee.prototype.amount = undefined

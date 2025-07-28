@@ -32,8 +32,8 @@ export class GetOffersHttpStatusLine {
    * Constructs a <code>GetOffersHttpStatusLine</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/GetOffersHttpStatusLine} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/GetOffersHttpStatusLine} The populated <code>GetOffersHttpStatusLine</code> instance.
+   * @param {GetOffersHttpStatusLine} obj Optional instance to populate.
+   * @return {GetOffersHttpStatusLine} The populated <code>GetOffersHttpStatusLine</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

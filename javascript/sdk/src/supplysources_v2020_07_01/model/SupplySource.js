@@ -36,8 +36,8 @@ export class SupplySource {
    * Constructs a <code>SupplySource</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/SupplySource} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/SupplySource} The populated <code>SupplySource</code> instance.
+   * @param {SupplySource} obj Optional instance to populate.
+   * @return {SupplySource} The populated <code>SupplySource</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,26 +89,26 @@ SupplySource.prototype.supplySourceCode = undefined
 SupplySource.prototype.alias = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/SupplySourceStatusReadOnly} status
- * @type {module:supplysources_v2020_07_01/model/SupplySourceStatusReadOnly}
+ * @member {SupplySourceStatusReadOnly} status
+ * @type {SupplySourceStatusReadOnly}
  */
 SupplySource.prototype.status = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/Address} address
- * @type {module:supplysources_v2020_07_01/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 SupplySource.prototype.address = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/SupplySourceConfiguration} configuration
- * @type {module:supplysources_v2020_07_01/model/SupplySourceConfiguration}
+ * @member {SupplySourceConfiguration} configuration
+ * @type {SupplySourceConfiguration}
  */
 SupplySource.prototype.configuration = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/SupplySourceCapabilities} capabilities
- * @type {module:supplysources_v2020_07_01/model/SupplySourceCapabilities}
+ * @member {SupplySourceCapabilities} capabilities
+ * @type {SupplySourceCapabilities}
  */
 SupplySource.prototype.capabilities = undefined
 

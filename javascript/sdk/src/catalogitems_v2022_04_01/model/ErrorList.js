@@ -25,7 +25,7 @@ export class ErrorList {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:catalogitems_v2022_04_01/model/ErrorList
    * @class
-   * @param errors {Array.<module:catalogitems_v2022_04_01/model/Error>}
+   * @param errors {[Error]}
    */
   constructor (errors) {
     this.errors = errors
@@ -35,8 +35,8 @@ export class ErrorList {
    * Constructs a <code>ErrorList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ErrorList} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ErrorList} The populated <code>ErrorList</code> instance.
+   * @param {ErrorList} obj Optional instance to populate.
+   * @return {ErrorList} The populated <code>ErrorList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class ErrorList {
 }
 
 /**
- * @member {Array.<module:catalogitems_v2022_04_01/model/Error>} errors
- * @type {Array.<module:catalogitems_v2022_04_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 ErrorList.prototype.errors = undefined

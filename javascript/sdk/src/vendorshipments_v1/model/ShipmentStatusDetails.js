@@ -32,8 +32,8 @@ export class ShipmentStatusDetails {
    * Constructs a <code>ShipmentStatusDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ShipmentStatusDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ShipmentStatusDetails} The populated <code>ShipmentStatusDetails</code> instance.
+   * @param {ShipmentStatusDetails} obj Optional instance to populate.
+   * @return {ShipmentStatusDetails} The populated <code>ShipmentStatusDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,8 +90,8 @@ ShipmentStatusDetails.ShipmentStatusEnum = {
 
 /**
  * Current status of the shipment on whether it is picked up or scheduled.
- * @member {module:vendorshipments_v1/model/ShipmentStatusDetails.ShipmentStatusEnum} shipmentStatus
- * @type {module:vendorshipments_v1/model/ShipmentStatusDetails.ShipmentStatusEnum}
+ * @member {String} shipmentStatus
+ * @type {String}
  */
 ShipmentStatusDetails.prototype.shipmentStatus = undefined
 

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class TimePeriodType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class TimePeriodType {
@@ -34,7 +34,7 @@ export class TimePeriodType {
   /**
     * Returns a <code>TimePeriodType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:replenishment_v2022_11_07/model/TimePeriodType} The enum <code>TimePeriodType</code> value.
+    * @return {TimePeriodType} The enum <code>TimePeriodType</code> value.
     */
   static constructFromObject (object) {
     return object

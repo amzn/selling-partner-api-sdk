@@ -26,7 +26,7 @@ export class StandardTextModule {
    * A standard headline and body text.
    * @alias module:apluscontent_v2020_11_01/model/StandardTextModule
    * @class
-   * @param body {module:apluscontent_v2020_11_01/model/ParagraphComponent}
+   * @param body {ParagraphComponent}
    */
   constructor (body) {
     this.body = body
@@ -36,8 +36,8 @@ export class StandardTextModule {
    * Constructs a <code>StandardTextModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardTextModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardTextModule} The populated <code>StandardTextModule</code> instance.
+   * @param {StandardTextModule} obj Optional instance to populate.
+   * @return {StandardTextModule} The populated <code>StandardTextModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class StandardTextModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardTextModule.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ParagraphComponent} body
- * @type {module:apluscontent_v2020_11_01/model/ParagraphComponent}
+ * @member {ParagraphComponent} body
+ * @type {ParagraphComponent}
  */
 StandardTextModule.prototype.body = undefined

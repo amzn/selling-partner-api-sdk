@@ -27,7 +27,7 @@ export class LabelDimensions {
    * @class
    * @param length {Number} A label dimension.
    * @param width {Number} A label dimension.
-   * @param unit {module:merchantfulfillment_v0/model/UnitOfLength}
+   * @param unit {UnitOfLength}
    */
   constructor (length, width, unit) {
     this.length = length
@@ -39,8 +39,8 @@ export class LabelDimensions {
    * Constructs a <code>LabelDimensions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/LabelDimensions} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/LabelDimensions} The populated <code>LabelDimensions</code> instance.
+   * @param {LabelDimensions} obj Optional instance to populate.
+   * @return {LabelDimensions} The populated <code>LabelDimensions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,7 +79,7 @@ LabelDimensions.prototype.length = undefined
 LabelDimensions.prototype.width = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/UnitOfLength} unit
- * @type {module:merchantfulfillment_v0/model/UnitOfLength}
+ * @member {UnitOfLength} unit
+ * @type {UnitOfLength}
  */
 LabelDimensions.prototype.unit = undefined

@@ -34,8 +34,8 @@ export class SqsResource {
    * Constructs a <code>SqsResource</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/SqsResource} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/SqsResource} The populated <code>SqsResource</code> instance.
+   * @param {SqsResource} obj Optional instance to populate.
+   * @return {SqsResource} The populated <code>SqsResource</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class PaymentMethodType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class PaymentMethodType {
@@ -40,7 +40,7 @@ export class PaymentMethodType {
   /**
     * Returns a <code>PaymentMethodType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:transfers_v2024_06_01/model/PaymentMethodType} The enum <code>PaymentMethodType</code> value.
+    * @return {PaymentMethodType} The enum <code>PaymentMethodType</code> value.
     */
   static constructFromObject (object) {
     return object

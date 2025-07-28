@@ -25,7 +25,7 @@ export class SupportedDocumentDetail {
    * The supported document types for a service offering.
    * @alias module:shipping_v2/model/SupportedDocumentDetail
    * @class
-   * @param name {module:shipping_v2/model/DocumentType}
+   * @param name {DocumentType}
    * @param isMandatory {Boolean} When true, the supported document type is required.
    */
   constructor (name, isMandatory) {
@@ -37,8 +37,8 @@ export class SupportedDocumentDetail {
    * Constructs a <code>SupportedDocumentDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/SupportedDocumentDetail} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/SupportedDocumentDetail} The populated <code>SupportedDocumentDetail</code> instance.
+   * @param {SupportedDocumentDetail} obj Optional instance to populate.
+   * @return {SupportedDocumentDetail} The populated <code>SupportedDocumentDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class SupportedDocumentDetail {
 }
 
 /**
- * @member {module:shipping_v2/model/DocumentType} name
- * @type {module:shipping_v2/model/DocumentType}
+ * @member {DocumentType} name
+ * @type {DocumentType}
  */
 SupportedDocumentDetail.prototype.name = undefined
 

@@ -27,8 +27,8 @@ export class QuantityDiscountPriceType {
    * @alias module:pricing_v0/model/QuantityDiscountPriceType
    * @class
    * @param quantityTier {Number} Indicates at what quantity this price becomes active.
-   * @param quantityDiscountType {module:pricing_v0/model/QuantityDiscountType}
-   * @param listingPrice {module:pricing_v0/model/MoneyType}
+   * @param quantityDiscountType {QuantityDiscountType}
+   * @param listingPrice {MoneyType}
    */
   constructor (quantityTier, quantityDiscountType, listingPrice) {
     this.quantityTier = quantityTier
@@ -40,8 +40,8 @@ export class QuantityDiscountPriceType {
    * Constructs a <code>QuantityDiscountPriceType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/QuantityDiscountPriceType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/QuantityDiscountPriceType} The populated <code>QuantityDiscountPriceType</code> instance.
+   * @param {QuantityDiscountPriceType} obj Optional instance to populate.
+   * @return {QuantityDiscountPriceType} The populated <code>QuantityDiscountPriceType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,13 +73,13 @@ export class QuantityDiscountPriceType {
 QuantityDiscountPriceType.prototype.quantityTier = undefined
 
 /**
- * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
- * @type {module:pricing_v0/model/QuantityDiscountType}
+ * @member {QuantityDiscountType} quantityDiscountType
+ * @type {QuantityDiscountType}
  */
 QuantityDiscountPriceType.prototype.quantityDiscountType = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} listingPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 QuantityDiscountPriceType.prototype.listingPrice = undefined

@@ -33,8 +33,8 @@ export class ConfirmShipmentErrorResponse {
    * Constructs a <code>ConfirmShipmentErrorResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/ConfirmShipmentErrorResponse} obj Optional instance to populate.
-   * @return {module:orders_v0/model/ConfirmShipmentErrorResponse} The populated <code>ConfirmShipmentErrorResponse</code> instance.
+   * @param {ConfirmShipmentErrorResponse} obj Optional instance to populate.
+   * @return {ConfirmShipmentErrorResponse} The populated <code>ConfirmShipmentErrorResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class ConfirmShipmentErrorResponse {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:orders_v0/model/Error>} errors
- * @type {Array.<module:orders_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 ConfirmShipmentErrorResponse.prototype.errors = undefined

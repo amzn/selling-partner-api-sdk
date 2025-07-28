@@ -33,8 +33,8 @@ export class AssociatedItem {
    * Constructs a <code>AssociatedItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AssociatedItem} obj Optional instance to populate.
-   * @return {module:services_v1/model/AssociatedItem} The populated <code>AssociatedItem</code> instance.
+   * @param {AssociatedItem} obj Optional instance to populate.
+   * @return {AssociatedItem} The populated <code>AssociatedItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -124,8 +124,8 @@ AssociatedItem.ItemStatusEnum = {
 
 /**
  * The status of the item.
- * @member {module:services_v1/model/AssociatedItem.ItemStatusEnum} itemStatus
- * @type {module:services_v1/model/AssociatedItem.ItemStatusEnum}
+ * @member {String} itemStatus
+ * @type {String}
  */
 AssociatedItem.prototype.itemStatus = undefined
 
@@ -137,7 +137,7 @@ AssociatedItem.prototype.itemStatus = undefined
 AssociatedItem.prototype.brandName = undefined
 
 /**
- * @member {module:services_v1/model/ItemDelivery} itemDelivery
- * @type {module:services_v1/model/ItemDelivery}
+ * @member {ItemDelivery} itemDelivery
+ * @type {ItemDelivery}
  */
 AssociatedItem.prototype.itemDelivery = undefined

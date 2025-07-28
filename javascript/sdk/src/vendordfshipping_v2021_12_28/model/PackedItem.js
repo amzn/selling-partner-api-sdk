@@ -26,7 +26,7 @@ export class PackedItem {
    * @alias module:vendordfshipping_v2021_12_28/model/PackedItem
    * @class
    * @param itemSequenceNumber {Number} The sequence number of the item. The number must be the same as the order number of the item.
-   * @param packedQuantity {module:vendordfshipping_v2021_12_28/model/ItemQuantity}
+   * @param packedQuantity {ItemQuantity}
    */
   constructor (itemSequenceNumber, packedQuantity) {
     this.itemSequenceNumber = itemSequenceNumber
@@ -37,8 +37,8 @@ export class PackedItem {
    * Constructs a <code>PackedItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/PackedItem} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/PackedItem} The populated <code>PackedItem</code> instance.
+   * @param {PackedItem} obj Optional instance to populate.
+   * @return {PackedItem} The populated <code>PackedItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -93,7 +93,7 @@ PackedItem.prototype.pieceNumber = undefined
 PackedItem.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/ItemQuantity} packedQuantity
- * @type {module:vendordfshipping_v2021_12_28/model/ItemQuantity}
+ * @member {ItemQuantity} packedQuantity
+ * @type {ItemQuantity}
  */
 PackedItem.prototype.packedQuantity = undefined

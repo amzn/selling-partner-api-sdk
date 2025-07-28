@@ -26,7 +26,7 @@ export class ReferencePrice {
    * @alias module:pricing_v2022_05_01/model/ReferencePrice
    * @class
    * @param name {String} Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
-   * @param price {module:pricing_v2022_05_01/model/MoneyType}
+   * @param price {MoneyType}
    */
   constructor (name, price) {
     this.name = name
@@ -37,8 +37,8 @@ export class ReferencePrice {
    * Constructs a <code>ReferencePrice</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/ReferencePrice} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/ReferencePrice} The populated <code>ReferencePrice</code> instance.
+   * @param {ReferencePrice} obj Optional instance to populate.
+   * @return {ReferencePrice} The populated <code>ReferencePrice</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class ReferencePrice {
 ReferencePrice.prototype.name = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/MoneyType} price
- * @type {module:pricing_v2022_05_01/model/MoneyType}
+ * @member {MoneyType} price
+ * @type {MoneyType}
  */
 ReferencePrice.prototype.price = undefined

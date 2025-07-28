@@ -30,8 +30,8 @@ export class DefaultApi {
     * Constructs a new DefaultApi.
     * @alias module:finances_2024_06_19/api/DefaultApi
     * @class
-    * @param {module:finances_2024_06_19/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:finances_2024_06_19/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -70,7 +70,7 @@ export class DefaultApi {
      * @param {String} opts.marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {String} opts.transactionStatus The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_2024_06_19/model/ListTransactionsResponse>}
+     * @return {Promise<ListTransactionsResponse>}
      */
   listTransactionsWithHttpInfo (postedAfter, opts) {
     opts = opts || {}
@@ -114,7 +114,7 @@ export class DefaultApi {
      * @param {String} opts.marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {String} opts.transactionStatus The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_2024_06_19/model/ListTransactionsResponse>}
+     * @return {Promise<ListTransactionsResponse>}
      */
   listTransactions (postedAfter, opts) {
     return this.listTransactionsWithHttpInfo(postedAfter, opts)

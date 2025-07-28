@@ -34,8 +34,8 @@ export class GetAdditionalSellerInputsResult {
    * Constructs a <code>GetAdditionalSellerInputsResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/GetAdditionalSellerInputsResult} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/GetAdditionalSellerInputsResult} The populated <code>GetAdditionalSellerInputsResult</code> instance.
+   * @param {GetAdditionalSellerInputsResult} obj Optional instance to populate.
+   * @return {GetAdditionalSellerInputsResult} The populated <code>GetAdditionalSellerInputsResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,14 +60,14 @@ export class GetAdditionalSellerInputsResult {
 
 /**
  * A list of additional inputs.
- * @member {Array.<module:merchantfulfillment_v0/model/AdditionalInputs>} shipmentLevelFields
- * @type {Array.<module:merchantfulfillment_v0/model/AdditionalInputs>}
+ * @member {[AdditionalInputs]} shipmentLevelFields
+ * @type {[AdditionalInputs]}
  */
 GetAdditionalSellerInputsResult.prototype.shipmentLevelFields = undefined
 
 /**
  * A list of item level fields.
- * @member {Array.<module:merchantfulfillment_v0/model/ItemLevelFields>} itemLevelFieldsList
- * @type {Array.<module:merchantfulfillment_v0/model/ItemLevelFields>}
+ * @member {[ItemLevelFields]} itemLevelFieldsList
+ * @type {[ItemLevelFields]}
  */
 GetAdditionalSellerInputsResult.prototype.itemLevelFieldsList = undefined

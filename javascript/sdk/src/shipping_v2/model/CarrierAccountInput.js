@@ -34,8 +34,8 @@ export class CarrierAccountInput {
    * Constructs a <code>CarrierAccountInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/CarrierAccountInput} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/CarrierAccountInput} The populated <code>CarrierAccountInput</code> instance.
+   * @param {CarrierAccountInput} obj Optional instance to populate.
+   * @return {CarrierAccountInput} The populated <code>CarrierAccountInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,8 +86,8 @@ CarrierAccountInput.prototype.name = undefined
 CarrierAccountInput.prototype.groupName = undefined
 
 /**
- * @member {module:shipping_v2/model/InputType} inputType
- * @type {module:shipping_v2/model/InputType}
+ * @member {InputType} inputType
+ * @type {InputType}
  */
 CarrierAccountInput.prototype.inputType = undefined
 
@@ -114,7 +114,7 @@ CarrierAccountInput.prototype.isHidden = undefined
 
 /**
  * A list of ValidationMetadata
- * @member {Array.<module:shipping_v2/model/ValidationMetadata>} validationMetadata
- * @type {Array.<module:shipping_v2/model/ValidationMetadata>}
+ * @member {[ValidationMetadata]} validationMetadata
+ * @type {[ValidationMetadata]}
  */
 CarrierAccountInput.prototype.validationMetadata = undefined

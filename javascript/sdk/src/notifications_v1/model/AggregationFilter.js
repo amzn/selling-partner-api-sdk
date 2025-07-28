@@ -33,8 +33,8 @@ export class AggregationFilter {
    * Constructs a <code>AggregationFilter</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/AggregationFilter} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/AggregationFilter} The populated <code>AggregationFilter</code> instance.
+   * @param {AggregationFilter} obj Optional instance to populate.
+   * @return {AggregationFilter} The populated <code>AggregationFilter</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class AggregationFilter {
 }
 
 /**
- * @member {module:notifications_v1/model/AggregationSettings} aggregationSettings
- * @type {module:notifications_v1/model/AggregationSettings}
+ * @member {AggregationSettings} aggregationSettings
+ * @type {AggregationSettings}
  */
 AggregationFilter.prototype.aggregationSettings = undefined

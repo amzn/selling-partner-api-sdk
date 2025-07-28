@@ -25,7 +25,7 @@ export class Link {
    * @alias module:listingsrestrictions_v2021_08_01/model/Link
    * @class
    * @param resource {String} The URI of the related resource.
-   * @param verb {module:listingsrestrictions_v2021_08_01/model/Link.VerbEnum} The HTTP verb used to interact with the related resource.
+   * @param verb {String} The HTTP verb used to interact with the related resource.
    */
   constructor (resource, verb) {
     this.resource = resource
@@ -36,8 +36,8 @@ export class Link {
    * Constructs a <code>Link</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsrestrictions_v2021_08_01/model/Link} obj Optional instance to populate.
-   * @return {module:listingsrestrictions_v2021_08_01/model/Link} The populated <code>Link</code> instance.
+   * @param {Link} obj Optional instance to populate.
+   * @return {Link} The populated <code>Link</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,8 +85,8 @@ Link.VerbEnum = {
 
 /**
  * The HTTP verb used to interact with the related resource.
- * @member {module:listingsrestrictions_v2021_08_01/model/Link.VerbEnum} verb
- * @type {module:listingsrestrictions_v2021_08_01/model/Link.VerbEnum}
+ * @member {String} verb
+ * @type {String}
  */
 Link.prototype.verb = undefined
 

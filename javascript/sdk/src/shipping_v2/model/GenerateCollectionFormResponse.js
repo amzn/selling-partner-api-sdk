@@ -33,8 +33,8 @@ export class GenerateCollectionFormResponse {
    * Constructs a <code>GenerateCollectionFormResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GenerateCollectionFormResponse} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GenerateCollectionFormResponse} The populated <code>GenerateCollectionFormResponse</code> instance.
+   * @param {GenerateCollectionFormResponse} obj Optional instance to populate.
+   * @return {GenerateCollectionFormResponse} The populated <code>GenerateCollectionFormResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class GenerateCollectionFormResponse {
 }
 
 /**
- * @member {module:shipping_v2/model/CollectionsFormDocument} collectionsFormDocument
- * @type {module:shipping_v2/model/CollectionsFormDocument}
+ * @member {CollectionsFormDocument} collectionsFormDocument
+ * @type {CollectionsFormDocument}
  */
 GenerateCollectionFormResponse.prototype.collectionsFormDocument = undefined

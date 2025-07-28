@@ -33,8 +33,8 @@ export class SubmitInvoiceRequest {
    * Constructs a <code>SubmitInvoiceRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfpayments_v1/model/SubmitInvoiceRequest} obj Optional instance to populate.
-   * @return {module:vendordfpayments_v1/model/SubmitInvoiceRequest} The populated <code>SubmitInvoiceRequest</code> instance.
+   * @param {SubmitInvoiceRequest} obj Optional instance to populate.
+   * @return {SubmitInvoiceRequest} The populated <code>SubmitInvoiceRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class SubmitInvoiceRequest {
 
 /**
  * An array of invoice details to be submitted.
- * @member {Array.<module:vendordfpayments_v1/model/InvoiceDetail>} invoices
- * @type {Array.<module:vendordfpayments_v1/model/InvoiceDetail>}
+ * @member {[InvoiceDetail]} invoices
+ * @type {[InvoiceDetail]}
  */
 SubmitInvoiceRequest.prototype.invoices = undefined

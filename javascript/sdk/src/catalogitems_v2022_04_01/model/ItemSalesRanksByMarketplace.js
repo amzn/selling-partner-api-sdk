@@ -36,8 +36,8 @@ export class ItemSalesRanksByMarketplace {
    * Constructs a <code>ItemSalesRanksByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemSalesRanksByMarketplace} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemSalesRanksByMarketplace} The populated <code>ItemSalesRanksByMarketplace</code> instance.
+   * @param {ItemSalesRanksByMarketplace} obj Optional instance to populate.
+   * @return {ItemSalesRanksByMarketplace} The populated <code>ItemSalesRanksByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,14 +70,14 @@ ItemSalesRanksByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by classification.
- * @member {Array.<module:catalogitems_v2022_04_01/model/ItemClassificationSalesRank>} classificationRanks
- * @type {Array.<module:catalogitems_v2022_04_01/model/ItemClassificationSalesRank>}
+ * @member {[ItemClassificationSalesRank]} classificationRanks
+ * @type {[ItemClassificationSalesRank]}
  */
 ItemSalesRanksByMarketplace.prototype.classificationRanks = undefined
 
 /**
  * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by website display group.
- * @member {Array.<module:catalogitems_v2022_04_01/model/ItemDisplayGroupSalesRank>} displayGroupRanks
- * @type {Array.<module:catalogitems_v2022_04_01/model/ItemDisplayGroupSalesRank>}
+ * @member {[ItemDisplayGroupSalesRank]} displayGroupRanks
+ * @type {[ItemDisplayGroupSalesRank]}
  */
 ItemSalesRanksByMarketplace.prototype.displayGroupRanks = undefined

@@ -27,7 +27,7 @@ export class SubmitNdrFeedbackRequest {
    * @alias module:shipping_v2/model/SubmitNdrFeedbackRequest
    * @class
    * @param trackingId {String} The carrier generated identifier for a package in a purchased shipment.
-   * @param ndrAction {module:shipping_v2/model/NdrAction}
+   * @param ndrAction {NdrAction}
    */
   constructor (trackingId, ndrAction) {
     this.trackingId = trackingId
@@ -38,8 +38,8 @@ export class SubmitNdrFeedbackRequest {
    * Constructs a <code>SubmitNdrFeedbackRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/SubmitNdrFeedbackRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/SubmitNdrFeedbackRequest} The populated <code>SubmitNdrFeedbackRequest</code> instance.
+   * @param {SubmitNdrFeedbackRequest} obj Optional instance to populate.
+   * @return {SubmitNdrFeedbackRequest} The populated <code>SubmitNdrFeedbackRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,13 +71,13 @@ export class SubmitNdrFeedbackRequest {
 SubmitNdrFeedbackRequest.prototype.trackingId = undefined
 
 /**
- * @member {module:shipping_v2/model/NdrAction} ndrAction
- * @type {module:shipping_v2/model/NdrAction}
+ * @member {NdrAction} ndrAction
+ * @type {NdrAction}
  */
 SubmitNdrFeedbackRequest.prototype.ndrAction = undefined
 
 /**
- * @member {module:shipping_v2/model/NdrRequestData} ndrRequestData
- * @type {module:shipping_v2/model/NdrRequestData}
+ * @member {NdrRequestData} ndrRequestData
+ * @type {NdrRequestData}
  */
 SubmitNdrFeedbackRequest.prototype.ndrRequestData = undefined

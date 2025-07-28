@@ -33,8 +33,8 @@ export class PurchaseOrderItemDetails {
    * Constructs a <code>PurchaseOrderItemDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/PurchaseOrderItemDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/PurchaseOrderItemDetails} The populated <code>PurchaseOrderItemDetails</code> instance.
+   * @param {PurchaseOrderItemDetails} obj Optional instance to populate.
+   * @return {PurchaseOrderItemDetails} The populated <code>PurchaseOrderItemDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class PurchaseOrderItemDetails {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/Money} maximumRetailPrice
- * @type {module:vendorshipments_v1/model/Money}
+ * @member {Money} maximumRetailPrice
+ * @type {Money}
  */
 PurchaseOrderItemDetails.prototype.maximumRetailPrice = undefined

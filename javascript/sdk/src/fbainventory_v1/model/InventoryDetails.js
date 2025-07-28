@@ -35,8 +35,8 @@ export class InventoryDetails {
    * Constructs a <code>InventoryDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/InventoryDetails} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/InventoryDetails} The populated <code>InventoryDetails</code> instance.
+   * @param {InventoryDetails} obj Optional instance to populate.
+   * @return {InventoryDetails} The populated <code>InventoryDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -93,19 +93,19 @@ InventoryDetails.prototype.inboundShippedQuantity = undefined
 InventoryDetails.prototype.inboundReceivingQuantity = undefined
 
 /**
- * @member {module:fbainventory_v1/model/ReservedQuantity} reservedQuantity
- * @type {module:fbainventory_v1/model/ReservedQuantity}
+ * @member {ReservedQuantity} reservedQuantity
+ * @type {ReservedQuantity}
  */
 InventoryDetails.prototype.reservedQuantity = undefined
 
 /**
- * @member {module:fbainventory_v1/model/ResearchingQuantity} researchingQuantity
- * @type {module:fbainventory_v1/model/ResearchingQuantity}
+ * @member {ResearchingQuantity} researchingQuantity
+ * @type {ResearchingQuantity}
  */
 InventoryDetails.prototype.researchingQuantity = undefined
 
 /**
- * @member {module:fbainventory_v1/model/UnfulfillableQuantity} unfulfillableQuantity
- * @type {module:fbainventory_v1/model/UnfulfillableQuantity}
+ * @member {UnfulfillableQuantity} unfulfillableQuantity
+ * @type {UnfulfillableQuantity}
  */
 InventoryDetails.prototype.unfulfillableQuantity = undefined

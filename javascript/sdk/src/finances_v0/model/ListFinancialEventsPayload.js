@@ -33,8 +33,8 @@ export class ListFinancialEventsPayload {
    * Constructs a <code>ListFinancialEventsPayload</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ListFinancialEventsPayload} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ListFinancialEventsPayload} The populated <code>ListFinancialEventsPayload</code> instance.
+   * @param {ListFinancialEventsPayload} obj Optional instance to populate.
+   * @return {ListFinancialEventsPayload} The populated <code>ListFinancialEventsPayload</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class ListFinancialEventsPayload {
 ListFinancialEventsPayload.prototype.nextToken = undefined
 
 /**
- * @member {module:finances_v0/model/FinancialEvents} financialEvents
- * @type {module:finances_v0/model/FinancialEvents}
+ * @member {FinancialEvents} financialEvents
+ * @type {FinancialEvents}
  */
 ListFinancialEventsPayload.prototype.financialEvents = undefined

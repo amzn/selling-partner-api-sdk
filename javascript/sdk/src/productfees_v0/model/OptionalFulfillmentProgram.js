@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class OptionalFulfillmentProgram.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class OptionalFulfillmentProgram {
@@ -40,7 +40,7 @@ export class OptionalFulfillmentProgram {
   /**
     * Returns a <code>OptionalFulfillmentProgram</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:productfees_v0/model/OptionalFulfillmentProgram} The enum <code>OptionalFulfillmentProgram</code> value.
+    * @return {OptionalFulfillmentProgram} The enum <code>OptionalFulfillmentProgram</code> value.
     */
   static constructFromObject (object) {
     return object

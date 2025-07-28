@@ -26,8 +26,8 @@ export class PackageDocument {
    * A document related to a package.
    * @alias module:shipping_v2/model/PackageDocument
    * @class
-   * @param type {module:shipping_v2/model/DocumentType}
-   * @param format {module:shipping_v2/model/DocumentFormat}
+   * @param type {DocumentType}
+   * @param format {DocumentFormat}
    * @param contents {String} A Base64 encoded string of the file contents.
    */
   constructor (type, format, contents) {
@@ -40,8 +40,8 @@ export class PackageDocument {
    * Constructs a <code>PackageDocument</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/PackageDocument} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/PackageDocument} The populated <code>PackageDocument</code> instance.
+   * @param {PackageDocument} obj Optional instance to populate.
+   * @return {PackageDocument} The populated <code>PackageDocument</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,14 +66,14 @@ export class PackageDocument {
 }
 
 /**
- * @member {module:shipping_v2/model/DocumentType} type
- * @type {module:shipping_v2/model/DocumentType}
+ * @member {DocumentType} type
+ * @type {DocumentType}
  */
 PackageDocument.prototype.type = undefined
 
 /**
- * @member {module:shipping_v2/model/DocumentFormat} format
- * @type {module:shipping_v2/model/DocumentFormat}
+ * @member {DocumentFormat} format
+ * @type {DocumentFormat}
  */
 PackageDocument.prototype.format = undefined
 

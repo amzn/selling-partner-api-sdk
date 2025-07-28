@@ -34,8 +34,8 @@ export class RetrochargeEvent {
    * Constructs a <code>RetrochargeEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/RetrochargeEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/RetrochargeEvent} The populated <code>RetrochargeEvent</code> instance.
+   * @param {RetrochargeEvent} obj Optional instance to populate.
+   * @return {RetrochargeEvent} The populated <code>RetrochargeEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,14 +85,14 @@ RetrochargeEvent.prototype.amazonOrderId = undefined
 RetrochargeEvent.prototype.postedDate = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} baseTax
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} baseTax
+ * @type {Currency}
  */
 RetrochargeEvent.prototype.baseTax = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} shippingTax
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} shippingTax
+ * @type {Currency}
  */
 RetrochargeEvent.prototype.shippingTax = undefined
 
@@ -105,7 +105,7 @@ RetrochargeEvent.prototype.marketplaceName = undefined
 
 /**
  * A list of information about taxes withheld.
- * @member {Array.<module:finances_v0/model/TaxWithheldComponent>} retrochargeTaxWithheldList
- * @type {Array.<module:finances_v0/model/TaxWithheldComponent>}
+ * @member {[TaxWithheldComponent]} retrochargeTaxWithheldList
+ * @type {[TaxWithheldComponent]}
  */
 RetrochargeEvent.prototype.retrochargeTaxWithheldList = undefined

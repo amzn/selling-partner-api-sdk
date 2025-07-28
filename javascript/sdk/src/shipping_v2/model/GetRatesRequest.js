@@ -34,9 +34,9 @@ export class GetRatesRequest {
    * The request schema for the getRates operation. When the channelType is Amazon, the shipTo address is not required and will be ignored.
    * @alias module:shipping_v2/model/GetRatesRequest
    * @class
-   * @param shipFrom {module:shipping_v2/model/Address}
-   * @param packages {Array.<module:shipping_v2/model/Package>} A list of packages to be shipped through a shipping service offering.
-   * @param channelDetails {module:shipping_v2/model/ChannelDetails}
+   * @param shipFrom {Address}
+   * @param packages {[Package]} A list of packages to be shipped through a shipping service offering.
+   * @param channelDetails {ChannelDetails}
    */
   constructor (shipFrom, packages, channelDetails) {
     this.shipFrom = shipFrom
@@ -48,8 +48,8 @@ export class GetRatesRequest {
    * Constructs a <code>GetRatesRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetRatesRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetRatesRequest} The populated <code>GetRatesRequest</code> instance.
+   * @param {GetRatesRequest} obj Optional instance to populate.
+   * @return {GetRatesRequest} The populated <code>GetRatesRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -84,20 +84,20 @@ export class GetRatesRequest {
 }
 
 /**
- * @member {module:shipping_v2/model/Address} shipTo
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipTo
+ * @type {Address}
  */
 GetRatesRequest.prototype.shipTo = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} shipFrom
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipFrom
+ * @type {Address}
  */
 GetRatesRequest.prototype.shipFrom = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} returnTo
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} returnTo
+ * @type {Address}
  */
 GetRatesRequest.prototype.returnTo = undefined
 
@@ -109,59 +109,59 @@ GetRatesRequest.prototype.returnTo = undefined
 GetRatesRequest.prototype.shipDate = undefined
 
 /**
- * @member {module:shipping_v2/model/ShipperInstruction} shipperInstruction
- * @type {module:shipping_v2/model/ShipperInstruction}
+ * @member {ShipperInstruction} shipperInstruction
+ * @type {ShipperInstruction}
  */
 GetRatesRequest.prototype.shipperInstruction = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
- * @member {Array.<module:shipping_v2/model/Package>} packages
- * @type {Array.<module:shipping_v2/model/Package>}
+ * @member {[Package]} packages
+ * @type {[Package]}
  */
 GetRatesRequest.prototype.packages = undefined
 
 /**
- * @member {module:shipping_v2/model/ValueAddedServiceDetails} valueAddedServices
- * @type {module:shipping_v2/model/ValueAddedServiceDetails}
+ * @member {ValueAddedServiceDetails} valueAddedServices
+ * @type {ValueAddedServiceDetails}
  */
 GetRatesRequest.prototype.valueAddedServices = undefined
 
 /**
  * A list of tax detail information.
- * @member {Array.<module:shipping_v2/model/TaxDetail>} taxDetails
- * @type {Array.<module:shipping_v2/model/TaxDetail>}
+ * @member {[TaxDetail]} taxDetails
+ * @type {[TaxDetail]}
  */
 GetRatesRequest.prototype.taxDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/ChannelDetails} channelDetails
- * @type {module:shipping_v2/model/ChannelDetails}
+ * @member {ChannelDetails} channelDetails
+ * @type {ChannelDetails}
  */
 GetRatesRequest.prototype.channelDetails = undefined
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
- * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
+ * @member {[ClientReferenceDetail]} clientReferenceDetails
+ * @type {[ClientReferenceDetail]}
  */
 GetRatesRequest.prototype.clientReferenceDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/ShipmentType} shipmentType
- * @type {module:shipping_v2/model/ShipmentType}
+ * @member {ShipmentType} shipmentType
+ * @type {ShipmentType}
  */
 GetRatesRequest.prototype.shipmentType = undefined
 
 /**
- * @member {module:shipping_v2/model/AccessPointDetails} destinationAccessPointDetails
- * @type {module:shipping_v2/model/AccessPointDetails}
+ * @member {AccessPointDetails} destinationAccessPointDetails
+ * @type {AccessPointDetails}
  */
 GetRatesRequest.prototype.destinationAccessPointDetails = undefined
 
 /**
  * A list of CarrierAccounts
- * @member {Array.<module:shipping_v2/model/CarrierAccount>} carrierAccounts
- * @type {Array.<module:shipping_v2/model/CarrierAccount>}
+ * @member {[CarrierAccount]} carrierAccounts
+ * @type {[CarrierAccount]}
  */
 GetRatesRequest.prototype.carrierAccounts = undefined

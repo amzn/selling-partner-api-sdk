@@ -33,8 +33,8 @@ export class GetMessagingActionResponseEmbedded {
    * Constructs a <code>GetMessagingActionResponseEmbedded</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/GetMessagingActionResponseEmbedded} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/GetMessagingActionResponseEmbedded} The populated <code>GetMessagingActionResponseEmbedded</code> instance.
+   * @param {GetMessagingActionResponseEmbedded} obj Optional instance to populate.
+   * @return {GetMessagingActionResponseEmbedded} The populated <code>GetMessagingActionResponseEmbedded</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class GetMessagingActionResponseEmbedded {
 }
 
 /**
- * @member {module:messaging_v1/model/GetSchemaResponse} schema
- * @type {module:messaging_v1/model/GetSchemaResponse}
+ * @member {GetSchemaResponse} schema
+ * @type {GetSchemaResponse}
  */
 GetMessagingActionResponseEmbedded.prototype.schema = undefined

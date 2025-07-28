@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class OtherDeliveryAttributes.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class OtherDeliveryAttributes {
@@ -40,7 +40,7 @@ export class OtherDeliveryAttributes {
   /**
     * Returns a <code>OtherDeliveryAttributes</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:orders_v0/model/OtherDeliveryAttributes} The enum <code>OtherDeliveryAttributes</code> value.
+    * @return {OtherDeliveryAttributes} The enum <code>OtherDeliveryAttributes</code> value.
     */
   static constructFromObject (object) {
     return object

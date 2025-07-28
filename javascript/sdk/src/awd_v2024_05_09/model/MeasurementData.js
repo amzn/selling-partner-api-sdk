@@ -27,7 +27,7 @@ export class MeasurementData {
    * Package weight and dimension.
    * @alias module:awd_v2024_05_09/model/MeasurementData
    * @class
-   * @param weight {module:awd_v2024_05_09/model/PackageWeight}
+   * @param weight {PackageWeight}
    */
   constructor (weight) {
     this.weight = weight
@@ -37,8 +37,8 @@ export class MeasurementData {
    * Constructs a <code>MeasurementData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/MeasurementData} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/MeasurementData} The populated <code>MeasurementData</code> instance.
+   * @param {MeasurementData} obj Optional instance to populate.
+   * @return {MeasurementData} The populated <code>MeasurementData</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,19 +63,19 @@ export class MeasurementData {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/PackageDimensions} dimensions
- * @type {module:awd_v2024_05_09/model/PackageDimensions}
+ * @member {PackageDimensions} dimensions
+ * @type {PackageDimensions}
  */
 MeasurementData.prototype.dimensions = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/PackageVolume} volume
- * @type {module:awd_v2024_05_09/model/PackageVolume}
+ * @member {PackageVolume} volume
+ * @type {PackageVolume}
  */
 MeasurementData.prototype.volume = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/PackageWeight} weight
- * @type {module:awd_v2024_05_09/model/PackageWeight}
+ * @member {PackageWeight} weight
+ * @type {PackageWeight}
  */
 MeasurementData.prototype.weight = undefined

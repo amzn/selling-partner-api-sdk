@@ -33,8 +33,8 @@ export class PurchaseShipmentResponse {
    * Constructs a <code>PurchaseShipmentResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/PurchaseShipmentResponse} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/PurchaseShipmentResponse} The populated <code>PurchaseShipmentResponse</code> instance.
+   * @param {PurchaseShipmentResponse} obj Optional instance to populate.
+   * @return {PurchaseShipmentResponse} The populated <code>PurchaseShipmentResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class PurchaseShipmentResponse {
 }
 
 /**
- * @member {module:shipping_v2/model/PurchaseShipmentResult} payload
- * @type {module:shipping_v2/model/PurchaseShipmentResult}
+ * @member {PurchaseShipmentResult} payload
+ * @type {PurchaseShipmentResult}
  */
 PurchaseShipmentResponse.prototype.payload = undefined

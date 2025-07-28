@@ -26,7 +26,7 @@ export class InventoryQuantity {
    * @alias module:awd_v2024_05_09/model/InventoryQuantity
    * @class
    * @param quantity {Number} Quantity of the respective inventory.
-   * @param unitOfMeasurement {module:awd_v2024_05_09/model/InventoryUnitOfMeasurement}
+   * @param unitOfMeasurement {InventoryUnitOfMeasurement}
    */
   constructor (quantity, unitOfMeasurement) {
     this.quantity = quantity
@@ -37,8 +37,8 @@ export class InventoryQuantity {
    * Constructs a <code>InventoryQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InventoryQuantity} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InventoryQuantity} The populated <code>InventoryQuantity</code> instance.
+   * @param {InventoryQuantity} obj Optional instance to populate.
+   * @return {InventoryQuantity} The populated <code>InventoryQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class InventoryQuantity {
 InventoryQuantity.prototype.quantity = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InventoryUnitOfMeasurement} unitOfMeasurement
- * @type {module:awd_v2024_05_09/model/InventoryUnitOfMeasurement}
+ * @member {InventoryUnitOfMeasurement} unitOfMeasurement
+ * @type {InventoryUnitOfMeasurement}
  */
 InventoryQuantity.prototype.unitOfMeasurement = undefined

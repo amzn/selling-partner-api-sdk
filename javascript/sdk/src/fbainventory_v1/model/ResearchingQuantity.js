@@ -33,8 +33,8 @@ export class ResearchingQuantity {
    * Constructs a <code>ResearchingQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/ResearchingQuantity} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/ResearchingQuantity} The populated <code>ResearchingQuantity</code> instance.
+   * @param {ResearchingQuantity} obj Optional instance to populate.
+   * @return {ResearchingQuantity} The populated <code>ResearchingQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,7 +66,7 @@ ResearchingQuantity.prototype.totalResearchingQuantity = undefined
 
 /**
  * A list of quantity details for items currently being researched.
- * @member {Array.<module:fbainventory_v1/model/ResearchingQuantityEntry>} researchingQuantityBreakdown
- * @type {Array.<module:fbainventory_v1/model/ResearchingQuantityEntry>}
+ * @member {[ResearchingQuantityEntry]} researchingQuantityBreakdown
+ * @type {[ResearchingQuantityEntry]}
  */
 ResearchingQuantity.prototype.researchingQuantityBreakdown = undefined

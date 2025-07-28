@@ -35,8 +35,8 @@ export class RateItem {
    * Constructs a <code>RateItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/RateItem} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/RateItem} The populated <code>RateItem</code> instance.
+   * @param {RateItem} obj Optional instance to populate.
+   * @return {RateItem} The populated <code>RateItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,20 +62,20 @@ export class RateItem {
 }
 
 /**
- * @member {module:shipping_v2/model/RateItemID} rateItemID
- * @type {module:shipping_v2/model/RateItemID}
+ * @member {RateItemID} rateItemID
+ * @type {RateItemID}
  */
 RateItem.prototype.rateItemID = undefined
 
 /**
- * @member {module:shipping_v2/model/RateItemType} rateItemType
- * @type {module:shipping_v2/model/RateItemType}
+ * @member {RateItemType} rateItemType
+ * @type {RateItemType}
  */
 RateItem.prototype.rateItemType = undefined
 
 /**
- * @member {module:shipping_v2/model/Currency} rateItemCharge
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} rateItemCharge
+ * @type {Currency}
  */
 RateItem.prototype.rateItemCharge = undefined
 

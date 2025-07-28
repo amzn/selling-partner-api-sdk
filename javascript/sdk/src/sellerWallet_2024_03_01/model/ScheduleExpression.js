@@ -26,7 +26,7 @@ export class ScheduleExpression {
    * The configuration of the schedule.
    * @alias module:sellerWallet_2024_03_01/model/ScheduleExpression
    * @class
-   * @param scheduleExpressionType {module:sellerWallet_2024_03_01/model/ScheduleExpressionType}
+   * @param scheduleExpressionType {ScheduleExpressionType}
    */
   constructor (scheduleExpressionType) {
     this.scheduleExpressionType = scheduleExpressionType
@@ -36,8 +36,8 @@ export class ScheduleExpression {
    * Constructs a <code>ScheduleExpression</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/ScheduleExpression} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/ScheduleExpression} The populated <code>ScheduleExpression</code> instance.
+   * @param {ScheduleExpression} obj Optional instance to populate.
+   * @return {ScheduleExpression} The populated <code>ScheduleExpression</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class ScheduleExpression {
 }
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/ScheduleExpressionType} scheduleExpressionType
- * @type {module:sellerWallet_2024_03_01/model/ScheduleExpressionType}
+ * @member {ScheduleExpressionType} scheduleExpressionType
+ * @type {ScheduleExpressionType}
  */
 ScheduleExpression.prototype.scheduleExpressionType = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/RecurringFrequency} recurringFrequency
- * @type {module:sellerWallet_2024_03_01/model/RecurringFrequency}
+ * @member {RecurringFrequency} recurringFrequency
+ * @type {RecurringFrequency}
  */
 ScheduleExpression.prototype.recurringFrequency = undefined

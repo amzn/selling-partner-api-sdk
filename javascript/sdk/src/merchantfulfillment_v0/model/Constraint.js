@@ -34,8 +34,8 @@ export class Constraint {
    * Constructs a <code>Constraint</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/Constraint} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/Constraint} The populated <code>Constraint</code> instance.
+   * @param {Constraint} obj Optional instance to populate.
+   * @return {Constraint} The populated <code>Constraint</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class BarcodeInstruction.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class BarcodeInstruction {
@@ -40,7 +40,7 @@ export class BarcodeInstruction {
   /**
     * Returns a <code>BarcodeInstruction</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v0/model/BarcodeInstruction} The enum <code>BarcodeInstruction</code> value.
+    * @return {BarcodeInstruction} The enum <code>BarcodeInstruction</code> value.
     */
   static constructFromObject (object) {
     return object

@@ -26,7 +26,7 @@ export class Transaction {
    * @alias module:vendordftransactions_v2021_12_28/model/Transaction
    * @class
    * @param transactionId {String} The unique identifier sent in the 'transactionId' field in response to the post request of a specific transaction.
-   * @param status {module:vendordftransactions_v2021_12_28/model/Transaction.StatusEnum} Current processing status of the transaction.
+   * @param status {String} Current processing status of the transaction.
    */
   constructor (transactionId, status) {
     this.transactionId = transactionId
@@ -37,8 +37,8 @@ export class Transaction {
    * Constructs a <code>Transaction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordftransactions_v2021_12_28/model/Transaction} obj Optional instance to populate.
-   * @return {module:vendordftransactions_v2021_12_28/model/Transaction} The populated <code>Transaction</code> instance.
+   * @param {Transaction} obj Optional instance to populate.
+   * @return {Transaction} The populated <code>Transaction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -97,13 +97,13 @@ Transaction.StatusEnum = {
 
 /**
  * Current processing status of the transaction.
- * @member {module:vendordftransactions_v2021_12_28/model/Transaction.StatusEnum} status
- * @type {module:vendordftransactions_v2021_12_28/model/Transaction.StatusEnum}
+ * @member {String} status
+ * @type {String}
  */
 Transaction.prototype.status = undefined
 
 /**
- * @member {module:vendordftransactions_v2021_12_28/model/ErrorList} errors
- * @type {module:vendordftransactions_v2021_12_28/model/ErrorList}
+ * @member {ErrorList} errors
+ * @type {ErrorList}
  */
 Transaction.prototype.errors = undefined

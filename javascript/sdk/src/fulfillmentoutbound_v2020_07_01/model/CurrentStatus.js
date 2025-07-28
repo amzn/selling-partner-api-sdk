@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class CurrentStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class CurrentStatus {
@@ -130,7 +130,7 @@ export class CurrentStatus {
   /**
     * Returns a <code>CurrentStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentoutbound_v2020_07_01/model/CurrentStatus} The enum <code>CurrentStatus</code> value.
+    * @return {CurrentStatus} The enum <code>CurrentStatus</code> value.
     */
   static constructFromObject (object) {
     return object

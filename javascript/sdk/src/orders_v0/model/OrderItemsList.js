@@ -25,7 +25,7 @@ export class OrderItemsList {
    * The order items list along with the order ID.
    * @alias module:orders_v0/model/OrderItemsList
    * @class
-   * @param orderItems {Array.<module:orders_v0/model/OrderItem>} A list of order items.
+   * @param orderItems {[OrderItem]} A list of order items.
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
    */
   constructor (orderItems, amazonOrderId) {
@@ -37,8 +37,8 @@ export class OrderItemsList {
    * Constructs a <code>OrderItemsList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OrderItemsList} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OrderItemsList} The populated <code>OrderItemsList</code> instance.
+   * @param {OrderItemsList} obj Optional instance to populate.
+   * @return {OrderItemsList} The populated <code>OrderItemsList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,8 +64,8 @@ export class OrderItemsList {
 
 /**
  * A list of order items.
- * @member {Array.<module:orders_v0/model/OrderItem>} orderItems
- * @type {Array.<module:orders_v0/model/OrderItem>}
+ * @member {[OrderItem]} orderItems
+ * @type {[OrderItem]}
  */
 OrderItemsList.prototype.orderItems = undefined
 

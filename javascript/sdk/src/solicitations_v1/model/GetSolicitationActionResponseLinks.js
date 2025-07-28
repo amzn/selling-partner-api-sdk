@@ -24,8 +24,8 @@ export class GetSolicitationActionResponseLinks {
    * Constructs a new <code>GetSolicitationActionResponseLinks</code>.
    * @alias module:solicitations_v1/model/GetSolicitationActionResponseLinks
    * @class
-   * @param self {module:solicitations_v1/model/LinkObject}
-   * @param schema {module:solicitations_v1/model/LinkObject}
+   * @param self {LinkObject}
+   * @param schema {LinkObject}
    */
   constructor (self, schema) {
     this.self = self
@@ -36,8 +36,8 @@ export class GetSolicitationActionResponseLinks {
    * Constructs a <code>GetSolicitationActionResponseLinks</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:solicitations_v1/model/GetSolicitationActionResponseLinks} obj Optional instance to populate.
-   * @return {module:solicitations_v1/model/GetSolicitationActionResponseLinks} The populated <code>GetSolicitationActionResponseLinks</code> instance.
+   * @param {GetSolicitationActionResponseLinks} obj Optional instance to populate.
+   * @return {GetSolicitationActionResponseLinks} The populated <code>GetSolicitationActionResponseLinks</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class GetSolicitationActionResponseLinks {
 }
 
 /**
- * @member {module:solicitations_v1/model/LinkObject} self
- * @type {module:solicitations_v1/model/LinkObject}
+ * @member {LinkObject} self
+ * @type {LinkObject}
  */
 GetSolicitationActionResponseLinks.prototype.self = undefined
 
 /**
- * @member {module:solicitations_v1/model/LinkObject} schema
- * @type {module:solicitations_v1/model/LinkObject}
+ * @member {LinkObject} schema
+ * @type {LinkObject}
  */
 GetSolicitationActionResponseLinks.prototype.schema = undefined
