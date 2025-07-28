@@ -58,5 +58,6 @@ export class ContactDetails {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ContactDetailsPrimary} primary
+ * @type {module:supplysources_v2020_07_01/model/ContactDetailsPrimary}
  */
 ContactDetails.prototype.primary = undefined

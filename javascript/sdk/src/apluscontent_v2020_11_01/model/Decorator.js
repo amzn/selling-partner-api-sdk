@@ -61,23 +61,27 @@ export class Decorator {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/DecoratorType} type
+ * @type {module:apluscontent_v2020_11_01/model/DecoratorType}
  */
 Decorator.prototype.type = undefined
 
 /**
  * The starting value of this decorator within the content string. Use zero (`0`) for the first value.
  * @member {Number} offset
+ * @type {Number}
  */
 Decorator.prototype.offset = undefined
 
 /**
  * The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters.
  * @member {Number} length
+ * @type {Number}
  */
 Decorator.prototype.length = undefined
 
 /**
  * The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths.
  * @member {Number} depth
+ * @type {Number}
  */
 Decorator.prototype.depth = undefined

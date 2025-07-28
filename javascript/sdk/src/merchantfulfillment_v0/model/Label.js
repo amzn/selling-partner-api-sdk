@@ -70,25 +70,30 @@ export class Label {
 /**
  * Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support `CustomTextForLabel`.
  * @member {String} customTextForLabel
+ * @type {String}
  */
 Label.prototype.customTextForLabel = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/LabelDimensions} dimensions
+ * @type {module:merchantfulfillment_v0/model/LabelDimensions}
  */
 Label.prototype.dimensions = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/FileContents} fileContents
+ * @type {module:merchantfulfillment_v0/model/FileContents}
  */
 Label.prototype.fileContents = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/LabelFormat} labelFormat
+ * @type {module:merchantfulfillment_v0/model/LabelFormat}
  */
 Label.prototype.labelFormat = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/StandardIdForLabel} standardIdForLabel
+ * @type {module:merchantfulfillment_v0/model/StandardIdForLabel}
  */
 Label.prototype.standardIdForLabel = undefined

@@ -78,10 +78,12 @@ ShippingOption.ShippingOptionTypeEnum = {
 /**
  * The type of shipping option.
  * @member {module:pricing_v2022_05_01/model/ShippingOption.ShippingOptionTypeEnum} shippingOptionType
+ * @type {module:pricing_v2022_05_01/model/ShippingOption.ShippingOptionTypeEnum}
  */
 ShippingOption.prototype.shippingOptionType = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} price
+ * @type {module:pricing_v2022_05_01/model/MoneyType}
  */
 ShippingOption.prototype.price = undefined

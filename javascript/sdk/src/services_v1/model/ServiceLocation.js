@@ -86,10 +86,12 @@ ServiceLocation.ServiceLocationTypeEnum = {
 /**
  * The location of the service job.
  * @member {module:services_v1/model/ServiceLocation.ServiceLocationTypeEnum} serviceLocationType
+ * @type {module:services_v1/model/ServiceLocation.ServiceLocationTypeEnum}
  */
 ServiceLocation.prototype.serviceLocationType = undefined
 
 /**
  * @member {module:services_v1/model/Address} address
+ * @type {module:services_v1/model/Address}
  */
 ServiceLocation.prototype.address = undefined

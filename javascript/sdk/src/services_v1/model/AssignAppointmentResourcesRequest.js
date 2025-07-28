@@ -61,5 +61,6 @@ export class AssignAppointmentResourcesRequest {
 /**
  * List of resources that performs or performed job appointment fulfillment.
  * @member {Array.<module:services_v1/model/AppointmentResource>} resources
+ * @type {Array.<module:services_v1/model/AppointmentResource>}
  */
 AssignAppointmentResourcesRequest.prototype.resources = undefined

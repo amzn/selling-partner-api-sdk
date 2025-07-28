@@ -64,15 +64,18 @@ export class ContentRecord {
 /**
  * A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
  * @member {String} contentReferenceKey
+ * @type {String}
  */
 ContentRecord.prototype.contentReferenceKey = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentMetadata} contentMetadata
+ * @type {module:apluscontent_v2020_11_01/model/ContentMetadata}
  */
 ContentRecord.prototype.contentMetadata = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentDocument} contentDocument
+ * @type {module:apluscontent_v2020_11_01/model/ContentDocument}
  */
 ContentRecord.prototype.contentDocument = undefined

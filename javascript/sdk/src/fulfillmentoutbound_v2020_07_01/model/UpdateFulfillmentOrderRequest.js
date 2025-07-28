@@ -75,67 +75,79 @@ export class UpdateFulfillmentOrderRequest {
 /**
  * The marketplace the fulfillment order is placed against.
  * @member {String} marketplaceId
+ * @type {String}
  */
 UpdateFulfillmentOrderRequest.prototype.marketplaceId = undefined
 
 /**
  * A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of `DisplayableOrderId` should match the order identifier that the seller provides to the recipient. The seller can use the `SellerFulfillmentOrderId` for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.
  * @member {String} displayableOrderId
+ * @type {String}
  */
 UpdateFulfillmentOrderRequest.prototype.displayableOrderId = undefined
 
 /**
  * Date timestamp
  * @member {Date} displayableOrderDate
+ * @type {Date}
  */
 UpdateFulfillmentOrderRequest.prototype.displayableOrderDate = undefined
 
 /**
  * Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.
  * @member {String} displayableOrderComment
+ * @type {String}
  */
 UpdateFulfillmentOrderRequest.prototype.displayableOrderComment = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory} shippingSpeedCategory
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
  */
 UpdateFulfillmentOrderRequest.prototype.shippingSpeedCategory = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} destinationAddress
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Address}
  */
 UpdateFulfillmentOrderRequest.prototype.destinationAddress = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction} fulfillmentAction
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction}
  */
 UpdateFulfillmentOrderRequest.prototype.fulfillmentAction = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy} fulfillmentPolicy
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy}
  */
 UpdateFulfillmentOrderRequest.prototype.fulfillmentPolicy = undefined
 
 /**
  * The two-character country code for the country from which the fulfillment order ships. Must be in ISO 3166-1 alpha-2 format.
  * @member {String} shipFromCountryCode
+ * @type {String}
  */
 UpdateFulfillmentOrderRequest.prototype.shipFromCountryCode = undefined
 
 /**
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
  * @member {Array.<String>} notificationEmails
+ * @type {Array.<String>}
  */
 UpdateFulfillmentOrderRequest.prototype.notificationEmails = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>}
  */
 UpdateFulfillmentOrderRequest.prototype.featureConstraints = undefined
 
 /**
  * An array of fulfillment order item information for updating a fulfillment order.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderItem>} items
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderItem>}
  */
 UpdateFulfillmentOrderRequest.prototype.items = undefined

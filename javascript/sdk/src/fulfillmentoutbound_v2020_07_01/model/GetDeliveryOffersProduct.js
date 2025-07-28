@@ -62,10 +62,12 @@ export class GetDeliveryOffersProduct {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/ProductIdentifier} productIdentifier
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/ProductIdentifier}
  */
 GetDeliveryOffersProduct.prototype.productIdentifier = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Amount} amount
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Amount}
  */
 GetDeliveryOffersProduct.prototype.amount = undefined

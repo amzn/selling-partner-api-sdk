@@ -59,11 +59,13 @@ export class ItemProductTypeByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemProductTypeByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Name of the product type that is associated with the Amazon catalog item.
  * @member {String} productType
+ * @type {String}
  */
 ItemProductTypeByMarketplace.prototype.productType = undefined

@@ -60,5 +60,6 @@ export class BoxRequirements {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/WeightRange} weight
+ * @type {module:fulfillmentinbound_v2024_03_20/model/WeightRange}
  */
 BoxRequirements.prototype.weight = undefined

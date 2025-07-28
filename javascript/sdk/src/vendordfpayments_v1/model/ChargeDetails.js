@@ -116,16 +116,19 @@ ChargeDetails.TypeEnum = {
 /**
  * Type of charge applied.
  * @member {module:vendordfpayments_v1/model/ChargeDetails.TypeEnum} type
+ * @type {module:vendordfpayments_v1/model/ChargeDetails.TypeEnum}
  */
 ChargeDetails.prototype.type = undefined
 
 /**
  * @member {module:vendordfpayments_v1/model/Money} chargeAmount
+ * @type {module:vendordfpayments_v1/model/Money}
  */
 ChargeDetails.prototype.chargeAmount = undefined
 
 /**
  * Individual tax details per line item.
  * @member {Array.<module:vendordfpayments_v1/model/TaxDetail>} taxDetails
+ * @type {Array.<module:vendordfpayments_v1/model/TaxDetail>}
  */
 ChargeDetails.prototype.taxDetails = undefined

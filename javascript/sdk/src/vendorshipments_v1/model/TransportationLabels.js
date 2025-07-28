@@ -60,11 +60,13 @@ export class TransportationLabels {
 
 /**
  * @member {module:vendorshipments_v1/model/Pagination} pagination
+ * @type {module:vendorshipments_v1/model/Pagination}
  */
 TransportationLabels.prototype.pagination = undefined
 
 /**
  * A list of one or more ShipmentLabels.
  * @member {Array.<module:vendorshipments_v1/model/TransportLabel>} transportLabels
+ * @type {Array.<module:vendorshipments_v1/model/TransportLabel>}
  */
 TransportationLabels.prototype.transportLabels = undefined

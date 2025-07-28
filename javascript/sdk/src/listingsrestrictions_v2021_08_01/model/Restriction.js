@@ -63,6 +63,7 @@ export class Restriction {
 /**
  * A marketplace identifier. Identifies the Amazon marketplace where the restriction is enforced.
  * @member {String} marketplaceId
+ * @type {String}
  */
 Restriction.prototype.marketplaceId = undefined
 
@@ -155,11 +156,13 @@ Restriction.ConditionTypeEnum = {
 /**
  * The condition that applies to the restriction.
  * @member {module:listingsrestrictions_v2021_08_01/model/Restriction.ConditionTypeEnum} conditionType
+ * @type {module:listingsrestrictions_v2021_08_01/model/Restriction.ConditionTypeEnum}
  */
 Restriction.prototype.conditionType = undefined
 
 /**
  * A list of reasons for the restriction.
  * @member {Array.<module:listingsrestrictions_v2021_08_01/model/Reason>} reasons
+ * @type {Array.<module:listingsrestrictions_v2021_08_01/model/Reason>}
  */
 Restriction.prototype.reasons = undefined

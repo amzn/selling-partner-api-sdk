@@ -61,23 +61,27 @@ export class BuyerTaxInformation {
 /**
  * Business buyer's company legal name.
  * @member {String} buyerLegalCompanyName
+ * @type {String}
  */
 BuyerTaxInformation.prototype.buyerLegalCompanyName = undefined
 
 /**
  * Business buyer's address.
  * @member {String} buyerBusinessAddress
+ * @type {String}
  */
 BuyerTaxInformation.prototype.buyerBusinessAddress = undefined
 
 /**
  * Business buyer's tax registration ID.
  * @member {String} buyerTaxRegistrationId
+ * @type {String}
  */
 BuyerTaxInformation.prototype.buyerTaxRegistrationId = undefined
 
 /**
  * Business buyer's tax office.
  * @member {String} buyerTaxOffice
+ * @type {String}
  */
 BuyerTaxInformation.prototype.buyerTaxOffice = undefined

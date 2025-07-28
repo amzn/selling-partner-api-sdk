@@ -63,11 +63,13 @@ export class CreateSupplySourceResponse {
 /**
  * An Amazon generated unique supply source ID.
  * @member {String} supplySourceId
+ * @type {String}
  */
 CreateSupplySourceResponse.prototype.supplySourceId = undefined
 
 /**
  * The seller-provided unique supply source code.
  * @member {String} supplySourceCode
+ * @type {String}
  */
 CreateSupplySourceResponse.prototype.supplySourceCode = undefined

@@ -60,5 +60,6 @@ export class ConfirmPackingOptionResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 ConfirmPackingOptionResponse.prototype.operationId = undefined

@@ -63,11 +63,13 @@ export class CarrierAppointment {
 /**
  * The end timestamp of the appointment in UTC.
  * @member {Date} endTime
+ * @type {Date}
  */
 CarrierAppointment.prototype.endTime = undefined
 
 /**
  * The start timestamp of the appointment in UTC.
  * @member {Date} startTime
+ * @type {Date}
  */
 CarrierAppointment.prototype.startTime = undefined

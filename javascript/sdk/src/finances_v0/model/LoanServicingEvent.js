@@ -59,11 +59,13 @@ export class LoanServicingEvent {
 
 /**
  * @member {module:finances_v0/model/Currency} loanAmount
+ * @type {module:finances_v0/model/Currency}
  */
 LoanServicingEvent.prototype.loanAmount = undefined
 
 /**
  * The type of event.  Possible values:  * LoanAdvance  * LoanPayment  * LoanRefund
  * @member {String} sourceBusinessEventType
+ * @type {String}
  */
 LoanServicingEvent.prototype.sourceBusinessEventType = undefined

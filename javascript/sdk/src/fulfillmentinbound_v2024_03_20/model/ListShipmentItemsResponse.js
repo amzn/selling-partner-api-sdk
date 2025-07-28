@@ -63,10 +63,12 @@ export class ListShipmentItemsResponse {
 /**
  * The items in a shipment.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} items
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>}
  */
 ListShipmentItemsResponse.prototype.items = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListShipmentItemsResponse.prototype.pagination = undefined

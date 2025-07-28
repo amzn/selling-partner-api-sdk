@@ -63,11 +63,13 @@ export class Currency {
 /**
  * The monetary value.
  * @member {Number} value
+ * @type {Number}
  */
 Currency.prototype.value = undefined
 
 /**
  * The ISO 4217 format 3-character currency code.
  * @member {String} unit
+ * @type {String}
  */
 Currency.prototype.unit = undefined

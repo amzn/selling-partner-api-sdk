@@ -75,33 +75,39 @@ export class GetSellingPartnerMetricsRequest {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/AggregationFrequency} aggregationFrequency
+ * @type {module:replenishment_v2022_11_07/model/AggregationFrequency}
  */
 GetSellingPartnerMetricsRequest.prototype.aggregationFrequency = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/TimeInterval} timeInterval
+ * @type {module:replenishment_v2022_11_07/model/TimeInterval}
  */
 GetSellingPartnerMetricsRequest.prototype.timeInterval = undefined
 
 /**
  * The list of metrics requested. If no metric value is provided, data for all of the metrics will be returned.
  * @member {Array.<module:replenishment_v2022_11_07/model/Metric>} metrics
+ * @type {Array.<module:replenishment_v2022_11_07/model/Metric>}
  */
 GetSellingPartnerMetricsRequest.prototype.metrics = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/TimePeriodType} timePeriodType
+ * @type {module:replenishment_v2022_11_07/model/TimePeriodType}
  */
 GetSellingPartnerMetricsRequest.prototype.timePeriodType = undefined
 
 /**
  * The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
  * @member {String} marketplaceId
+ * @type {String}
  */
 GetSellingPartnerMetricsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of replenishment program types.
  * @member {Array.<module:replenishment_v2022_11_07/model/ProgramType>} programTypes
+ * @type {Array.<module:replenishment_v2022_11_07/model/ProgramType>}
  */
 GetSellingPartnerMetricsRequest.prototype.programTypes = undefined

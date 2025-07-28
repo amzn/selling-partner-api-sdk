@@ -61,11 +61,13 @@ export class GetPricingResponse {
 /**
  * The payload for the `getPricing` and `getCompetitivePricing` operations.
  * @member {Array.<module:pricing_v0/model/Price>} payload
+ * @type {Array.<module:pricing_v0/model/Price>}
  */
 GetPricingResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:pricing_v0/model/Error>} errors
+ * @type {Array.<module:pricing_v0/model/Error>}
  */
 GetPricingResponse.prototype.errors = undefined

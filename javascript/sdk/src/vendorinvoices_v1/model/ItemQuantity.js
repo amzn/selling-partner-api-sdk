@@ -66,6 +66,7 @@ export class ItemQuantity {
 /**
  * Quantity of an item. This value should not be zero.
  * @member {Number} amount
+ * @type {Number}
  */
 ItemQuantity.prototype.amount = undefined
 
@@ -92,16 +93,19 @@ ItemQuantity.UnitOfMeasureEnum = {
 /**
  * Unit of measure for the quantity.
  * @member {module:vendorinvoices_v1/model/ItemQuantity.UnitOfMeasureEnum} unitOfMeasure
+ * @type {module:vendorinvoices_v1/model/ItemQuantity.UnitOfMeasureEnum}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined
 
 /**
  * The case size, if the unit of measure value is Cases.
  * @member {Number} unitSize
+ * @type {Number}
  */
 ItemQuantity.prototype.unitSize = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/TotalWeight} totalWeight
+ * @type {module:vendorinvoices_v1/model/TotalWeight}
  */
 ItemQuantity.prototype.totalWeight = undefined

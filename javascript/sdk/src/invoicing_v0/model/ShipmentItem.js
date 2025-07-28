@@ -69,60 +69,71 @@ export class ShipmentItem {
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type {String}
  */
 ShipmentItem.prototype.ASIN = undefined
 
 /**
  * The seller SKU of the item.
  * @member {String} sellerSKU
+ * @type {String}
  */
 ShipmentItem.prototype.sellerSKU = undefined
 
 /**
  * The Amazon-defined identifier for the order item.
  * @member {String} orderItemId
+ * @type {String}
  */
 ShipmentItem.prototype.orderItemId = undefined
 
 /**
  * The name of the item.
  * @member {String} title
+ * @type {String}
  */
 ShipmentItem.prototype.title = undefined
 
 /**
  * The number of items ordered.
  * @member {Number} quantityOrdered
+ * @type {Number}
  */
 ShipmentItem.prototype.quantityOrdered = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} itemPrice
+ * @type {module:invoicing_v0/model/Money}
  */
 ShipmentItem.prototype.itemPrice = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} shippingPrice
+ * @type {module:invoicing_v0/model/Money}
  */
 ShipmentItem.prototype.shippingPrice = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} giftWrapPrice
+ * @type {module:invoicing_v0/model/Money}
  */
 ShipmentItem.prototype.giftWrapPrice = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} shippingDiscount
+ * @type {module:invoicing_v0/model/Money}
  */
 ShipmentItem.prototype.shippingDiscount = undefined
 
 /**
  * @member {module:invoicing_v0/model/Money} promotionDiscount
+ * @type {module:invoicing_v0/model/Money}
  */
 ShipmentItem.prototype.promotionDiscount = undefined
 
 /**
  * The list of serial numbers.
  * @member {Array.<String>} serialNumbers
+ * @type {Array.<String>}
  */
 ShipmentItem.prototype.serialNumbers = undefined

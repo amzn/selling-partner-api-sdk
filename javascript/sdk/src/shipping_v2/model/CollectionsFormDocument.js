@@ -59,11 +59,13 @@ export class CollectionsFormDocument {
 /**
  * Base64 document Value of Collection.
  * @member {String} base64EncodedContent
+ * @type {String}
  */
 CollectionsFormDocument.prototype.base64EncodedContent = undefined
 
 /**
  * Collection Document format is PDF.
  * @member {String} documentFormat
+ * @type {String}
  */
 CollectionsFormDocument.prototype.documentFormat = undefined

@@ -61,20 +61,24 @@ export class OfferProgramConfigurationPromotions {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} sellingPartnerFundedBaseDiscount
+ * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.sellingPartnerFundedBaseDiscount = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} sellingPartnerFundedTieredDiscount
+ * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.sellingPartnerFundedTieredDiscount = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} amazonFundedBaseDiscount
+ * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.amazonFundedBaseDiscount = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding} amazonFundedTieredDiscount
+ * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotionsDiscountFunding}
  */
 OfferProgramConfigurationPromotions.prototype.amazonFundedTieredDiscount = undefined

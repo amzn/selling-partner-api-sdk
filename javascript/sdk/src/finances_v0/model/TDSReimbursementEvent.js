@@ -61,16 +61,19 @@ export class TDSReimbursementEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 TDSReimbursementEvent.prototype.postedDate = undefined
 
 /**
  * The Tax-Deducted-at-Source (TDS) identifier.
  * @member {String} tDSOrderId
+ * @type {String}
  */
 TDSReimbursementEvent.prototype.tDSOrderId = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} reimbursedAmount
+ * @type {module:finances_v0/model/Currency}
  */
 TDSReimbursementEvent.prototype.reimbursedAmount = undefined

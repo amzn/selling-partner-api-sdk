@@ -65,25 +65,30 @@ export class OutboundCapability {
 
 /**
  * @member {Boolean} isSupported
+ * @type {Boolean}
  */
 OutboundCapability.prototype.isSupported = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
+ * @type {module:supplysources_v2020_07_01/model/OperationalConfiguration}
  */
 OutboundCapability.prototype.operationalConfiguration = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ReturnLocation} returnLocation
+ * @type {module:supplysources_v2020_07_01/model/ReturnLocation}
  */
 OutboundCapability.prototype.returnLocation = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/DeliveryChannel} deliveryChannel
+ * @type {module:supplysources_v2020_07_01/model/DeliveryChannel}
  */
 OutboundCapability.prototype.deliveryChannel = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/PickupChannel} pickupChannel
+ * @type {module:supplysources_v2020_07_01/model/PickupChannel}
  */
 OutboundCapability.prototype.pickupChannel = undefined

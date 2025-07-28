@@ -67,16 +67,19 @@ export class InvalidReturnItem {
 /**
  * An identifier assigned by the seller to the return item.
  * @member {String} sellerReturnItemId
+ * @type {String}
  */
 InvalidReturnItem.prototype.sellerReturnItemId = undefined
 
 /**
  * The identifier assigned to the item by the seller when the fulfillment order was created.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type {String}
  */
 InvalidReturnItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReason} invalidItemReason
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReason}
  */
 InvalidReturnItem.prototype.invalidItemReason = undefined

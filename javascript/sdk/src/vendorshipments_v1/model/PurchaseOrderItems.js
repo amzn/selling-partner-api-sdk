@@ -68,27 +68,32 @@ export class PurchaseOrderItems {
 /**
  * Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.
  * @member {String} itemSequenceNumber
+ * @type {String}
  */
 PurchaseOrderItems.prototype.itemSequenceNumber = undefined
 
 /**
  * Amazon Standard Identification Number (ASIN) for a SKU
  * @member {String} buyerProductIdentifier
+ * @type {String}
  */
 PurchaseOrderItems.prototype.buyerProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item. Should be the same as was sent in the purchase order.
  * @member {String} vendorProductIdentifier
+ * @type {String}
  */
 PurchaseOrderItems.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/ItemQuantity} shippedQuantity
+ * @type {module:vendorshipments_v1/model/ItemQuantity}
  */
 PurchaseOrderItems.prototype.shippedQuantity = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Money} maximumRetailPrice
+ * @type {module:vendorshipments_v1/model/Money}
  */
 PurchaseOrderItems.prototype.maximumRetailPrice = undefined

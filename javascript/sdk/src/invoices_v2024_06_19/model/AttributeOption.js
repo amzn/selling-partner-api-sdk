@@ -59,11 +59,13 @@ export class AttributeOption {
 /**
  * The description of the attribute value.
  * @member {String} description
+ * @type {String}
  */
 AttributeOption.prototype.description = undefined
 
 /**
  * The possible values for the attribute option.
  * @member {String} value
+ * @type {String}
  */
 AttributeOption.prototype.value = undefined

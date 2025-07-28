@@ -62,11 +62,13 @@ export class GetReportsResponse {
 /**
  * A list of reports.
  * @member {Array.<module:reports_v2021_06_30/model/Report>} reports
+ * @type {Array.<module:reports_v2021_06_30/model/Report>}
  */
 GetReportsResponse.prototype.reports = undefined
 
 /**
  * Returned when the number of results exceeds `pageSize`. To get the next page of results, call `getReports` with this token as the only parameter.
  * @member {String} nextToken
+ * @type {String}
  */
 GetReportsResponse.prototype.nextToken = undefined

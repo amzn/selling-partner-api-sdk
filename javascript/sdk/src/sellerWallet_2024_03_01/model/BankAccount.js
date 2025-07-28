@@ -88,61 +88,72 @@ export class BankAccount {
 /**
  * The unique identifier provided by Amazon to identify the account.
  * @member {String} accountId
+ * @type {String}
  */
 BankAccount.prototype.accountId = undefined
 
 /**
  * The bank account holder's name (expected to be an Amazon customer).
  * @member {String} accountHolderName
+ * @type {String}
  */
 BankAccount.prototype.accountHolderName = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat} bankAccountNumberFormat
+ * @type {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat}
  */
 BankAccount.prototype.bankAccountNumberFormat = undefined
 
 /**
  * The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
  * @member {String} bankName
+ * @type {String}
  */
 BankAccount.prototype.bankName = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccountOwnershipType} bankAccountOwnershipType
+ * @type {module:sellerWallet_2024_03_01/model/BankAccountOwnershipType}
  */
 BankAccount.prototype.bankAccountOwnershipType = undefined
 
 /**
  * Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
  * @member {String} routingNumber
+ * @type {String}
  */
 BankAccount.prototype.routingNumber = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankNumberFormat} bankNumberFormat
+ * @type {module:sellerWallet_2024_03_01/model/BankNumberFormat}
  */
 BankAccount.prototype.bankNumberFormat = undefined
 
 /**
  * The two-digit country code in ISO 3166 format.
  * @member {String} accountCountryCode
+ * @type {String}
  */
 BankAccount.prototype.accountCountryCode = undefined
 
 /**
  * Bank account currency code in ISO 4217 format.
  * @member {String} accountCurrency
+ * @type {String}
  */
 BankAccount.prototype.accountCurrency = undefined
 
 /**
  * The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
  * @member {String} bankAccountNumberTail
+ * @type {String}
  */
 BankAccount.prototype.bankAccountNumberTail = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccountHolderStatus} bankAccountHolderStatus
+ * @type {module:sellerWallet_2024_03_01/model/BankAccountHolderStatus}
  */
 BankAccount.prototype.bankAccountHolderStatus = undefined

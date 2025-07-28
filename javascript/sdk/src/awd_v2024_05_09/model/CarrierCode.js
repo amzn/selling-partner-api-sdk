@@ -59,11 +59,13 @@ export class CarrierCode {
 
 /**
  * @member {module:awd_v2024_05_09/model/CarrierCodeType} carrierCodeType
+ * @type {module:awd_v2024_05_09/model/CarrierCodeType}
  */
 CarrierCode.prototype.carrierCodeType = undefined
 
 /**
  * Value of the carrier code.
  * @member {String} carrierCodeValue
+ * @type {String}
  */
 CarrierCode.prototype.carrierCodeValue = undefined

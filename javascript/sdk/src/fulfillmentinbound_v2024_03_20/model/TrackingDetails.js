@@ -60,10 +60,12 @@ export class TrackingDetails {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetail} ltlTrackingDetail
+ * @type {module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetail}
  */
 TrackingDetails.prototype.ltlTrackingDetail = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/SpdTrackingDetail} spdTrackingDetail
+ * @type {module:fulfillmentinbound_v2024_03_20/model/SpdTrackingDetail}
  */
 TrackingDetails.prototype.spdTrackingDetail = undefined

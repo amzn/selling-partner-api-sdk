@@ -59,11 +59,13 @@ export class MonthAndYear {
 /**
  * Year in YYYY format
  * @member {Number} year
+ * @type {Number}
  */
 MonthAndYear.prototype.year = undefined
 
 /**
  * Month in MM format
  * @member {Number} month
+ * @type {Number}
  */
 MonthAndYear.prototype.month = undefined

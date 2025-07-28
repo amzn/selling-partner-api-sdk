@@ -59,10 +59,12 @@ export class DeliveryChannel {
 
 /**
  * @member {Boolean} isSupported
+ * @type {Boolean}
  */
 DeliveryChannel.prototype.isSupported = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
+ * @type {module:supplysources_v2020_07_01/model/OperationalConfiguration}
  */
 DeliveryChannel.prototype.operationalConfiguration = undefined

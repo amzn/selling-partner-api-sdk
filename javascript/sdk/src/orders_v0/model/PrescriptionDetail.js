@@ -78,41 +78,48 @@ export class PrescriptionDetail {
 /**
  * The identifier for the prescription used to verify the regulated product.
  * @member {String} prescriptionId
+ * @type {String}
  */
 PrescriptionDetail.prototype.prescriptionId = undefined
 
 /**
  * The expiration date of the prescription used to verify the regulated product, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
  * @member {Date} expirationDate
+ * @type {Date}
  */
 PrescriptionDetail.prototype.expirationDate = undefined
 
 /**
  * The number of units in each fill as provided in the prescription.
  * @member {Number} writtenQuantity
+ * @type {Number}
  */
 PrescriptionDetail.prototype.writtenQuantity = undefined
 
 /**
  * The total number of refills written in the original prescription used to verify the regulated product. If a prescription originally had no refills, this value must be 0.
  * @member {Number} totalRefillsAuthorized
+ * @type {Number}
  */
 PrescriptionDetail.prototype.totalRefillsAuthorized = undefined
 
 /**
  * The number of refills remaining for the prescription used to verify the regulated product. If a prescription originally had 10 total refills, this value must be `10` for the first order, `9` for the second order, and `0` for the eleventh order. If a prescription originally had no refills, this value must be 0.
  * @member {Number} refillsRemaining
+ * @type {Number}
  */
 PrescriptionDetail.prototype.refillsRemaining = undefined
 
 /**
  * The identifier for the clinic which provided the prescription used to verify the regulated product.
  * @member {String} clinicId
+ * @type {String}
  */
 PrescriptionDetail.prototype.clinicId = undefined
 
 /**
  * The instructions for the prescription as provided by the approver of the regulated product.
  * @member {String} usageInstructions
+ * @type {String}
  */
 PrescriptionDetail.prototype.usageInstructions = undefined

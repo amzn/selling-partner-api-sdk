@@ -59,5 +59,6 @@ export class SolicitationsAction {
 
 /**
  * @member {String} name
+ * @type {String}
  */
 SolicitationsAction.prototype.name = undefined

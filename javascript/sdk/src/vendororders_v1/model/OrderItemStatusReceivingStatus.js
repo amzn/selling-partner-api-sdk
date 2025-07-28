@@ -87,16 +87,19 @@ OrderItemStatusReceivingStatus.ReceiveStatusEnum = {
 /**
  * Receive status of the line item.
  * @member {module:vendororders_v1/model/OrderItemStatusReceivingStatus.ReceiveStatusEnum} receiveStatus
+ * @type {module:vendororders_v1/model/OrderItemStatusReceivingStatus.ReceiveStatusEnum}
  */
 OrderItemStatusReceivingStatus.prototype.receiveStatus = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} receivedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderItemStatusReceivingStatus.prototype.receivedQuantity = undefined
 
 /**
  * The date when the most recent item was received at the buyer's warehouse. Must be in ISO-8601 date/time format.
  * @member {Date} lastReceiveDate
+ * @type {Date}
  */
 OrderItemStatusReceivingStatus.prototype.lastReceiveDate = undefined

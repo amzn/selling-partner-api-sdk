@@ -79,59 +79,69 @@ export class AddressInput {
 /**
  * Street address information.
  * @member {String} addressLine1
+ * @type {String}
  */
 AddressInput.prototype.addressLine1 = undefined
 
 /**
  * Additional street address information.
  * @member {String} addressLine2
+ * @type {String}
  */
 AddressInput.prototype.addressLine2 = undefined
 
 /**
  * The city.
  * @member {String} city
+ * @type {String}
  */
 AddressInput.prototype.city = undefined
 
 /**
  * The name of the business.
  * @member {String} companyName
+ * @type {String}
  */
 AddressInput.prototype.companyName = undefined
 
 /**
  * The country code in two-character ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 AddressInput.prototype.countryCode = undefined
 
 /**
  * The email address.
  * @member {String} email
+ * @type {String}
  */
 AddressInput.prototype.email = undefined
 
 /**
  * The name of the individual who is the primary contact.
  * @member {String} name
+ * @type {String}
  */
 AddressInput.prototype.name = undefined
 
 /**
  * The phone number.
  * @member {String} phoneNumber
+ * @type {String}
  */
 AddressInput.prototype.phoneNumber = undefined
 
 /**
  * The postal code.
  * @member {String} postalCode
+ * @type {String}
  */
 AddressInput.prototype.postalCode = undefined
 
 /**
  * The state or province code.
  * @member {String} stateOrProvinceCode
+ * @type {String}
  */
 AddressInput.prototype.stateOrProvinceCode = undefined

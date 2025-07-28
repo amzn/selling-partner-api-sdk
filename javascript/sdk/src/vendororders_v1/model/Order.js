@@ -65,6 +65,7 @@ export class Order {
 /**
  * The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 Order.prototype.purchaseOrderNumber = undefined
 
@@ -97,10 +98,12 @@ Order.PurchaseOrderStateEnum = {
 /**
  * This field will contain the current state of the purchase order.
  * @member {module:vendororders_v1/model/Order.PurchaseOrderStateEnum} purchaseOrderState
+ * @type {module:vendororders_v1/model/Order.PurchaseOrderStateEnum}
  */
 Order.prototype.purchaseOrderState = undefined
 
 /**
  * @member {module:vendororders_v1/model/OrderDetails} orderDetails
+ * @type {module:vendororders_v1/model/OrderDetails}
  */
 Order.prototype.orderDetails = undefined

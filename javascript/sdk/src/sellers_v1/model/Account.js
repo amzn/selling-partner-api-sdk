@@ -71,6 +71,7 @@ export class Account {
 /**
  * List of marketplace participations.
  * @member {Array.<module:sellers_v1/model/MarketplaceParticipation>} marketplaceParticipationList
+ * @type {Array.<module:sellers_v1/model/MarketplaceParticipation>}
  */
 Account.prototype.marketplaceParticipationList = undefined
 
@@ -133,6 +134,7 @@ Account.BusinessTypeEnum = {
 /**
  * The type of business registered for the seller account.
  * @member {module:sellers_v1/model/Account.BusinessTypeEnum} businessType
+ * @type {module:sellers_v1/model/Account.BusinessTypeEnum}
  */
 Account.prototype.businessType = undefined
 
@@ -159,15 +161,18 @@ Account.SellingPlanEnum = {
 /**
  * The selling plan details.
  * @member {module:sellers_v1/model/Account.SellingPlanEnum} sellingPlan
+ * @type {module:sellers_v1/model/Account.SellingPlanEnum}
  */
 Account.prototype.sellingPlan = undefined
 
 /**
  * @member {module:sellers_v1/model/Business} business
+ * @type {module:sellers_v1/model/Business}
  */
 Account.prototype.business = undefined
 
 /**
  * @member {module:sellers_v1/model/PrimaryContact} primaryContact
+ * @type {module:sellers_v1/model/PrimaryContact}
  */
 Account.prototype.primaryContact = undefined

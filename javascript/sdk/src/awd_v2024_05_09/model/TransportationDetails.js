@@ -61,5 +61,6 @@ export class TransportationDetails {
 /**
  * Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
  * @member {Array.<module:awd_v2024_05_09/model/TrackingDetails>} trackingDetails
+ * @type {Array.<module:awd_v2024_05_09/model/TrackingDetails>}
  */
 TransportationDetails.prototype.trackingDetails = undefined

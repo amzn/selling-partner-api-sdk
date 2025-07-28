@@ -58,5 +58,6 @@ export class SampleLocation {
 
 /**
  * @member {module:pricing_v2022_05_01/model/PostalCode} postalCode
+ * @type {module:pricing_v2022_05_01/model/PostalCode}
  */
 SampleLocation.prototype.postalCode = undefined

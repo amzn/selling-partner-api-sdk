@@ -60,5 +60,6 @@ export class UpdateShipmentSourceAddressRequest {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/AddressInput} address
+ * @type {module:fulfillmentinbound_v2024_03_20/model/AddressInput}
  */
 UpdateShipmentSourceAddressRequest.prototype.address = undefined

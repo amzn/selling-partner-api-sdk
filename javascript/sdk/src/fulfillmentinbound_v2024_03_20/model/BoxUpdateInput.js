@@ -74,33 +74,39 @@ export class BoxUpdateInput {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource} contentInformationSource
+ * @type {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource}
  */
 BoxUpdateInput.prototype.contentInformationSource = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
  */
 BoxUpdateInput.prototype.dimensions = undefined
 
 /**
  * The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
  */
 BoxUpdateInput.prototype.items = undefined
 
 /**
  * Primary key to uniquely identify a Box Package. PackageId must be provided if the intent is to update an existing box. Adding a new box will not require providing this value. Any existing PackageIds not provided will be treated as to-be-removed
  * @member {String} packageId
+ * @type {String}
  */
 BoxUpdateInput.prototype.packageId = undefined
 
 /**
  * The number of containers where all other properties like weight or dimensions are identical.
  * @member {Number} quantity
+ * @type {Number}
  */
 BoxUpdateInput.prototype.quantity = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Weight}
  */
 BoxUpdateInput.prototype.weight = undefined

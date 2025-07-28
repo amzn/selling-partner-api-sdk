@@ -60,5 +60,6 @@ export class GenerateSelfShipAppointmentSlotsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 GenerateSelfShipAppointmentSlotsResponse.prototype.operationId = undefined

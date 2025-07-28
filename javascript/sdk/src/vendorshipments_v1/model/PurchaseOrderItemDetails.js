@@ -58,5 +58,6 @@ export class PurchaseOrderItemDetails {
 
 /**
  * @member {module:vendorshipments_v1/model/Money} maximumRetailPrice
+ * @type {module:vendorshipments_v1/model/Money}
  */
 PurchaseOrderItemDetails.prototype.maximumRetailPrice = undefined

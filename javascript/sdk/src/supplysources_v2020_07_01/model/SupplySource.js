@@ -70,49 +70,58 @@ export class SupplySource {
 /**
  * An Amazon generated unique supply source ID.
  * @member {String} supplySourceId
+ * @type {String}
  */
 SupplySource.prototype.supplySourceId = undefined
 
 /**
  * The seller-provided unique supply source code.
  * @member {String} supplySourceCode
+ * @type {String}
  */
 SupplySource.prototype.supplySourceCode = undefined
 
 /**
  * The custom alias for this supply source
  * @member {String} alias
+ * @type {String}
  */
 SupplySource.prototype.alias = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceStatusReadOnly} status
+ * @type {module:supplysources_v2020_07_01/model/SupplySourceStatusReadOnly}
  */
 SupplySource.prototype.status = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/Address} address
+ * @type {module:supplysources_v2020_07_01/model/Address}
  */
 SupplySource.prototype.address = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceConfiguration} configuration
+ * @type {module:supplysources_v2020_07_01/model/SupplySourceConfiguration}
  */
 SupplySource.prototype.configuration = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/SupplySourceCapabilities} capabilities
+ * @type {module:supplysources_v2020_07_01/model/SupplySourceCapabilities}
  */
 SupplySource.prototype.capabilities = undefined
 
 /**
  * A date and time in the rfc3339 format.
  * @member {String} createdAt
+ * @type {String}
  */
 SupplySource.prototype.createdAt = undefined
 
 /**
  * A date and time in the rfc3339 format.
  * @member {String} updatedAt
+ * @type {String}
  */
 SupplySource.prototype.updatedAt = undefined

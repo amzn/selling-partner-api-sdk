@@ -58,5 +58,6 @@ export class ProductInfoDetail {
 /**
  * The total number of items that are included in the ASIN.
  * @member {String} numberOfItems
+ * @type {String}
  */
 ProductInfoDetail.prototype.numberOfItems = undefined

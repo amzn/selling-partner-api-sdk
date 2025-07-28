@@ -60,11 +60,13 @@ export class SubmitInvoiceResponse {
 
 /**
  * @member {module:vendordfpayments_v1/model/TransactionReference} payload
+ * @type {module:vendordfpayments_v1/model/TransactionReference}
  */
 SubmitInvoiceResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:vendordfpayments_v1/model/Error>} errors
+ * @type {Array.<module:vendordfpayments_v1/model/Error>}
  */
 SubmitInvoiceResponse.prototype.errors = undefined

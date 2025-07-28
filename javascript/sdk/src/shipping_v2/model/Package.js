@@ -79,45 +79,53 @@ export class Package {
 
 /**
  * @member {module:shipping_v2/model/Dimensions} dimensions
+ * @type {module:shipping_v2/model/Dimensions}
  */
 Package.prototype.dimensions = undefined
 
 /**
  * @member {module:shipping_v2/model/Weight} weight
+ * @type {module:shipping_v2/model/Weight}
  */
 Package.prototype.weight = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} insuredValue
+ * @type {module:shipping_v2/model/Currency}
  */
 Package.prototype.insuredValue = undefined
 
 /**
  * When true, the package contains hazardous materials. Defaults to false.
  * @member {Boolean} isHazmat
+ * @type {Boolean}
  */
 Package.prototype.isHazmat = undefined
 
 /**
  * The seller name displayed on the label.
  * @member {String} sellerDisplayName
+ * @type {String}
  */
 Package.prototype.sellerDisplayName = undefined
 
 /**
  * A list of charges based on the shipping service charges applied on a package.
  * @member {Array.<module:shipping_v2/model/ChargeComponent>} charges
+ * @type {Array.<module:shipping_v2/model/ChargeComponent>}
  */
 Package.prototype.charges = undefined
 
 /**
  * A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
  * @member {String} packageClientReferenceId
+ * @type {String}
  */
 Package.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of items.
  * @member {Array.<module:shipping_v2/model/Item>} items
+ * @type {Array.<module:shipping_v2/model/Item>}
  */
 Package.prototype.items = undefined

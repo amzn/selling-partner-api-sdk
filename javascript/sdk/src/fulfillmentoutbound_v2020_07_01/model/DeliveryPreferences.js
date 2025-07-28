@@ -60,10 +60,12 @@ export class DeliveryPreferences {
 /**
  * Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, 'Beware of dogs', etc.
  * @member {String} deliveryInstructions
+ * @type {String}
  */
 DeliveryPreferences.prototype.deliveryInstructions = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation} dropOffLocation
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation}
  */
 DeliveryPreferences.prototype.dropOffLocation = undefined

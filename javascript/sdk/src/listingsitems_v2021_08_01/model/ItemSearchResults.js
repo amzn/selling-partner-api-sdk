@@ -66,16 +66,19 @@ export class ItemSearchResults {
 /**
  * The total number of selling partner listings items found for the search criteria (only results up to the page count limit is returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.
  * @member {Number} numberOfResults
+ * @type {Number}
  */
 ItemSearchResults.prototype.numberOfResults = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Pagination} pagination
+ * @type {module:listingsitems_v2021_08_01/model/Pagination}
  */
 ItemSearchResults.prototype.pagination = undefined
 
 /**
  * A list of listings items.
  * @member {Array.<module:listingsitems_v2021_08_01/model/Item>} items
+ * @type {Array.<module:listingsitems_v2021_08_01/model/Item>}
  */
 ItemSearchResults.prototype.items = undefined

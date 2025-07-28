@@ -26,7 +26,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class VendorOrdersApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -71,7 +71,7 @@ export class VendorOrdersApi {
   /**
      * Returns a purchase order based on the &#x60;purchaseOrderNumber&#x60; value that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes: 8-character alpha-numeric code.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendororders_v1/model/GetPurchaseOrderResponse} and HTTP response
+     * @return {Promise<module:vendororders_v1/model/GetPurchaseOrderResponse>}
      */
   getPurchaseOrderWithHttpInfo (purchaseOrderNumber) {
     const postBody = null
@@ -105,7 +105,7 @@ export class VendorOrdersApi {
   /**
      * Returns a purchase order based on the &#x60;purchaseOrderNumber&#x60; value that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} purchaseOrderNumber The purchase order identifier for the order that you want. Formatting Notes: 8-character alpha-numeric code.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendororders_v1/model/GetPurchaseOrderResponse}
+     * @return {Promise<module:vendororders_v1/model/GetPurchaseOrderResponse>}
      */
   getPurchaseOrder (purchaseOrderNumber) {
     return this.getPurchaseOrderWithHttpInfo(purchaseOrderNumber)
@@ -129,7 +129,7 @@ export class VendorOrdersApi {
      * @param {Boolean} opts.isPOChanged When true, returns purchase orders which were modified after the order was placed. Vendors are required to pull the changed purchase order and fulfill the updated purchase order and not the original one. Default value is false.
      * @param {module:vendororders_v1/model/String} opts.purchaseOrderState Filters purchase orders based on the purchase order state.
      * @param {String} opts.orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should be same as &#39;sellingParty.partyId&#39; in the purchase order. If not included in the filter, all purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client application are returned.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendororders_v1/model/GetPurchaseOrdersResponse} and HTTP response
+     * @return {Promise<module:vendororders_v1/model/GetPurchaseOrdersResponse>}
      */
   getPurchaseOrdersWithHttpInfo (opts) {
     opts = opts || {}
@@ -182,7 +182,7 @@ export class VendorOrdersApi {
      * @param {Boolean} opts.isPOChanged When true, returns purchase orders which were modified after the order was placed. Vendors are required to pull the changed purchase order and fulfill the updated purchase order and not the original one. Default value is false.
      * @param {module:vendororders_v1/model/String} opts.purchaseOrderState Filters purchase orders based on the purchase order state.
      * @param {String} opts.orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should be same as &#39;sellingParty.partyId&#39; in the purchase order. If not included in the filter, all purchase orders for all of the vendor codes that exist in the vendor group used to authorize the API client application are returned.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendororders_v1/model/GetPurchaseOrdersResponse}
+     * @return {Promise<module:vendororders_v1/model/GetPurchaseOrdersResponse>}
      */
   getPurchaseOrders (opts) {
     return this.getPurchaseOrdersWithHttpInfo(opts)
@@ -207,7 +207,7 @@ export class VendorOrdersApi {
      * @param {module:vendororders_v1/model/String} opts.itemReceiveStatus Filters purchase orders based on the purchase order&#39;s item receive status. If the item receive status is not included in the filter, purchase orders for all receive statuses are included.
      * @param {String} opts.orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should be same as &#39;sellingParty.partyId&#39; in the purchase order. If not included in filter, all purchase orders for all the vendor codes that exist in the vendor group used to authorize API client application are returned.
      * @param {String} opts.shipToPartyId Filters purchase orders for a specific buyer&#39;s Fulfillment Center/warehouse by providing ship to location id here. This value should be same as &#39;shipToParty.partyId&#39; in the purchase order. If not included in filter, this will return purchase orders for all the buyer&#39;s warehouses used for vendor group purchase orders.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendororders_v1/model/GetPurchaseOrdersStatusResponse} and HTTP response
+     * @return {Promise<module:vendororders_v1/model/GetPurchaseOrdersStatusResponse>}
      */
   getPurchaseOrdersStatusWithHttpInfo (opts) {
     opts = opts || {}
@@ -262,7 +262,7 @@ export class VendorOrdersApi {
      * @param {module:vendororders_v1/model/String} opts.itemReceiveStatus Filters purchase orders based on the purchase order&#39;s item receive status. If the item receive status is not included in the filter, purchase orders for all receive statuses are included.
      * @param {String} opts.orderingVendorCode Filters purchase orders based on the specified ordering vendor code. This value should be same as &#39;sellingParty.partyId&#39; in the purchase order. If not included in filter, all purchase orders for all the vendor codes that exist in the vendor group used to authorize API client application are returned.
      * @param {String} opts.shipToPartyId Filters purchase orders for a specific buyer&#39;s Fulfillment Center/warehouse by providing ship to location id here. This value should be same as &#39;shipToParty.partyId&#39; in the purchase order. If not included in filter, this will return purchase orders for all the buyer&#39;s warehouses used for vendor group purchase orders.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendororders_v1/model/GetPurchaseOrdersStatusResponse}
+     * @return {Promise<module:vendororders_v1/model/GetPurchaseOrdersStatusResponse>}
      */
   getPurchaseOrdersStatus (opts) {
     return this.getPurchaseOrdersStatusWithHttpInfo(opts)
@@ -274,7 +274,7 @@ export class VendorOrdersApi {
   /**
      * Submits acknowledgements for one or more purchase orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendororders_v1/model/SubmitAcknowledgementRequest} body Submits acknowledgements for one or more purchase orders from a vendor.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendororders_v1/model/SubmitAcknowledgementResponse} and HTTP response
+     * @return {Promise<module:vendororders_v1/model/SubmitAcknowledgementResponse>}
      */
   submitAcknowledgementWithHttpInfo (body) {
     const postBody = body
@@ -307,7 +307,7 @@ export class VendorOrdersApi {
   /**
      * Submits acknowledgements for one or more purchase orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendororders_v1/model/SubmitAcknowledgementRequest} body Submits acknowledgements for one or more purchase orders from a vendor.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendororders_v1/model/SubmitAcknowledgementResponse}
+     * @return {Promise<module:vendororders_v1/model/SubmitAcknowledgementResponse>}
      */
   submitAcknowledgement (body) {
     return this.submitAcknowledgementWithHttpInfo(body)

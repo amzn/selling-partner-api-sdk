@@ -87,11 +87,13 @@ export class ProductTypeDefinition {
 
 /**
  * @member {module:producttypedefinitions_v2020_09_01/model/SchemaLink} metaSchema
+ * @type {module:producttypedefinitions_v2020_09_01/model/SchemaLink}
  */
 ProductTypeDefinition.prototype.metaSchema = undefined
 
 /**
  * @member {module:producttypedefinitions_v2020_09_01/model/SchemaLink} schema
+ * @type {module:producttypedefinitions_v2020_09_01/model/SchemaLink}
  */
 ProductTypeDefinition.prototype.schema = undefined
 
@@ -124,6 +126,7 @@ ProductTypeDefinition.RequirementsEnum = {
 /**
  * Name of the requirements set represented in this product type definition.
  * @member {module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition.RequirementsEnum} requirements
+ * @type {module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition.RequirementsEnum}
  */
 ProductTypeDefinition.prototype.requirements = undefined
 
@@ -150,40 +153,47 @@ ProductTypeDefinition.RequirementsEnforcedEnum = {
 /**
  * Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all of the required attributes being present (such as for partial updates).
  * @member {module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition.RequirementsEnforcedEnum} requirementsEnforced
+ * @type {module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition.RequirementsEnforcedEnum}
  */
 ProductTypeDefinition.prototype.requirementsEnforced = undefined
 
 /**
  * Mapping of property group names to property groups. Property groups represent logical groupings of schema properties that can be used for display or informational purposes.
  * @member {Object.<String, module:producttypedefinitions_v2020_09_01/model/PropertyGroup>} propertyGroups
+ * @type {Object.<String, module:producttypedefinitions_v2020_09_01/model/PropertyGroup>}
  */
 ProductTypeDefinition.prototype.propertyGroups = undefined
 
 /**
  * Locale of the display elements contained in the product type definition.
  * @member {String} locale
+ * @type {String}
  */
 ProductTypeDefinition.prototype.locale = undefined
 
 /**
  * Amazon marketplace identifiers for which the product type definition is applicable.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 ProductTypeDefinition.prototype.marketplaceIds = undefined
 
 /**
  * The name of the Amazon product type that this product type definition applies to.
  * @member {String} productType
+ * @type {String}
  */
 ProductTypeDefinition.prototype.productType = undefined
 
 /**
  * Human-readable and localized description of the Amazon product type.
  * @member {String} displayName
+ * @type {String}
  */
 ProductTypeDefinition.prototype.displayName = undefined
 
 /**
  * @member {module:producttypedefinitions_v2020_09_01/model/ProductTypeVersion} productTypeVersion
+ * @type {module:producttypedefinitions_v2020_09_01/model/ProductTypeVersion}
  */
 ProductTypeDefinition.prototype.productTypeVersion = undefined

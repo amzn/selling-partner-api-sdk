@@ -74,65 +74,76 @@ export class Address {
 /**
  * The name of the person, business or institution at that address.
  * @member {String} name
+ * @type {String}
  */
 Address.prototype.name = undefined
 
 /**
  * First line of the address.
  * @member {String} addressLine1
+ * @type {String}
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional street address information, if required.
  * @member {String} addressLine2
+ * @type {String}
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Additional street address information, if required.
  * @member {String} addressLine3
+ * @type {String}
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * The city where the person, business or institution is located.
  * @member {String} city
+ * @type {String}
  */
 Address.prototype.city = undefined
 
 /**
  * The county where person, business or institution is located.
  * @member {String} county
+ * @type {String}
  */
 Address.prototype.county = undefined
 
 /**
  * The district where person, business or institution is located.
  * @member {String} district
+ * @type {String}
  */
 Address.prototype.district = undefined
 
 /**
  * The state or region where person, business or institution is located.
  * @member {String} stateOrRegion
+ * @type {String}
  */
 Address.prototype.stateOrRegion = undefined
 
 /**
  * The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
  * @member {String} postalCode
+ * @type {String}
  */
 Address.prototype.postalCode = undefined
 
 /**
  * The two-letter country code in [ISO 3166-1 alpha-2](https://www.iban.com/country-codes) format.
  * @member {String} countryCode
+ * @type {String}
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The phone number of the person, business or institution located at that address.
  * @member {String} phone
+ * @type {String}
  */
 Address.prototype.phone = undefined

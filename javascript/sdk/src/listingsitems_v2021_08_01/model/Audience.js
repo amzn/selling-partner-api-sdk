@@ -59,11 +59,13 @@ export class Audience {
 /**
  * Name of the audience an offer is applicable to.   Common values:   * 'ALL' - Standard offer audience for buyers on Amazon retail websites.   * 'B2B' - Offer audience for Amazon Business website buyers.
  * @member {String} value
+ * @type {String}
  */
 Audience.prototype.value = undefined
 
 /**
  * Localized display name for the audience.
  * @member {String} displayName
+ * @type {String}
  */
 Audience.prototype.displayName = undefined

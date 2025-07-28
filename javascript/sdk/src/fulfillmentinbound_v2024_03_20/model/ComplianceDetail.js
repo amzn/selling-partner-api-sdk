@@ -62,22 +62,26 @@ export class ComplianceDetail {
 /**
  * The Amazon Standard Identification Number, which identifies the detail page identifier.
  * @member {String} asin
+ * @type {String}
  */
 ComplianceDetail.prototype.asin = undefined
 
 /**
  * The Fulfillment Network SKU, which identifies a real fulfillable item with catalog data and condition.
  * @member {String} fnsku
+ * @type {String}
  */
 ComplianceDetail.prototype.fnsku = undefined
 
 /**
  * The merchant SKU, a merchant-supplied identifier for a specific SKU.
  * @member {String} msku
+ * @type {String}
  */
 ComplianceDetail.prototype.msku = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/TaxDetails} taxDetails
+ * @type {module:fulfillmentinbound_v2024_03_20/model/TaxDetails}
  */
 ComplianceDetail.prototype.taxDetails = undefined

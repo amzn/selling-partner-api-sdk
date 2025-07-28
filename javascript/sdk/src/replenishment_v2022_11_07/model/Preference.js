@@ -59,5 +59,6 @@ export class Preference {
 /**
  * Filters the results to only include offers with the auto-enrollment preference specified.
  * @member {Array.<module:replenishment_v2022_11_07/model/AutoEnrollmentPreference>} autoEnrollment
+ * @type {Array.<module:replenishment_v2022_11_07/model/AutoEnrollmentPreference>}
  */
 Preference.prototype.autoEnrollment = undefined

@@ -69,35 +69,41 @@ export class ReportSchedule {
 /**
  * The identifier for the report schedule. This identifier is unique only in combination with a seller ID.
  * @member {String} reportScheduleId
+ * @type {String}
  */
 ReportSchedule.prototype.reportScheduleId = undefined
 
 /**
  * The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
  * @member {String} reportType
+ * @type {String}
  */
 ReportSchedule.prototype.reportType = undefined
 
 /**
  * A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 ReportSchedule.prototype.marketplaceIds = undefined
 
 /**
  * Additional information passed to reports. This varies by report type.
  * @member {Object.<String, String>} reportOptions
+ * @type {Object.<String, String>}
  */
 ReportSchedule.prototype.reportOptions = undefined
 
 /**
  * An <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> period value that indicates how often a report should be created.
  * @member {String} period
+ * @type {String}
  */
 ReportSchedule.prototype.period = undefined
 
 /**
  * The date and time when the schedule will create its next report, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.
  * @member {Date} nextReportCreationTime
+ * @type {Date}
  */
 ReportSchedule.prototype.nextReportCreationTime = undefined

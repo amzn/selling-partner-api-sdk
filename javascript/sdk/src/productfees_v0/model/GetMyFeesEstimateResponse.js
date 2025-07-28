@@ -59,11 +59,13 @@ export class GetMyFeesEstimateResponse {
 
 /**
  * @member {module:productfees_v0/model/GetMyFeesEstimateResult} payload
+ * @type {module:productfees_v0/model/GetMyFeesEstimateResult}
  */
 GetMyFeesEstimateResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:productfees_v0/model/Error>} errors
+ * @type {Array.<module:productfees_v0/model/Error>}
  */
 GetMyFeesEstimateResponse.prototype.errors = undefined

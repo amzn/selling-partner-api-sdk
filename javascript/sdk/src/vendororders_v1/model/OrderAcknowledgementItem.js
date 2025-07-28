@@ -72,44 +72,52 @@ export class OrderAcknowledgementItem {
 /**
  * Line item sequence number for the item.
  * @member {String} itemSequenceNumber
+ * @type {String}
  */
 OrderAcknowledgementItem.prototype.itemSequenceNumber = undefined
 
 /**
  * Amazon Standard Identification Number (ASIN) of an item.
  * @member {String} amazonProductIdentifier
+ * @type {String}
  */
 OrderAcknowledgementItem.prototype.amazonProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item. Should be the same as was sent in the purchase order.
  * @member {String} vendorProductIdentifier
+ * @type {String}
  */
 OrderAcknowledgementItem.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderAcknowledgementItem.prototype.orderedQuantity = undefined
 
 /**
  * @member {module:vendororders_v1/model/Money} netCost
+ * @type {module:vendororders_v1/model/Money}
  */
 OrderAcknowledgementItem.prototype.netCost = undefined
 
 /**
  * @member {module:vendororders_v1/model/Money} listPrice
+ * @type {module:vendororders_v1/model/Money}
  */
 OrderAcknowledgementItem.prototype.listPrice = undefined
 
 /**
  * The discount multiplier that should be applied to the price if a vendor sells books with a list price. This is a multiplier factor to arrive at a final discounted price. A multiplier of .90 would be the factor if a 10% discount is given.
  * @member {String} discountMultiplier
+ * @type {String}
  */
 OrderAcknowledgementItem.prototype.discountMultiplier = undefined
 
 /**
  * This is used to indicate acknowledged quantity.
  * @member {Array.<module:vendororders_v1/model/OrderItemAcknowledgement>} itemAcknowledgements
+ * @type {Array.<module:vendororders_v1/model/OrderItemAcknowledgement>}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

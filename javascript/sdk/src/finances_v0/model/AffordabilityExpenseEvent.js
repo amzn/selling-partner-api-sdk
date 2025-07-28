@@ -73,48 +73,57 @@ export class AffordabilityExpenseEvent {
 /**
  * An Amazon-defined identifier for an order.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 AffordabilityExpenseEvent.prototype.amazonOrderId = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 AffordabilityExpenseEvent.prototype.postedDate = undefined
 
 /**
  * An encrypted, Amazon-defined marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 AffordabilityExpenseEvent.prototype.marketplaceId = undefined
 
 /**
  * Indicates the type of transaction.   Possible values:  * Charge - For an affordability promotion expense.  * Refund - For an affordability promotion expense reversal.
  * @member {String} transactionType
+ * @type {String}
  */
 AffordabilityExpenseEvent.prototype.transactionType = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} baseExpense
+ * @type {module:finances_v0/model/Currency}
  */
 AffordabilityExpenseEvent.prototype.baseExpense = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxTypeCGST
+ * @type {module:finances_v0/model/Currency}
  */
 AffordabilityExpenseEvent.prototype.taxTypeCGST = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxTypeSGST
+ * @type {module:finances_v0/model/Currency}
  */
 AffordabilityExpenseEvent.prototype.taxTypeSGST = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxTypeIGST
+ * @type {module:finances_v0/model/Currency}
  */
 AffordabilityExpenseEvent.prototype.taxTypeIGST = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} totalExpense
+ * @type {module:finances_v0/model/Currency}
  */
 AffordabilityExpenseEvent.prototype.totalExpense = undefined

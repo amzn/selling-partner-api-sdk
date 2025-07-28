@@ -60,5 +60,6 @@ export class UpdateShipmentTrackingDetailsRequest {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/TrackingDetailsInput} trackingDetails
+ * @type {module:fulfillmentinbound_v2024_03_20/model/TrackingDetailsInput}
  */
 UpdateShipmentTrackingDetailsRequest.prototype.trackingDetails = undefined

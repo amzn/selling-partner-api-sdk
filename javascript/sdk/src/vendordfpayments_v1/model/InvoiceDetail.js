@@ -88,73 +88,86 @@ export class InvoiceDetail {
 /**
  * The unique invoice number.
  * @member {String} invoiceNumber
+ * @type {String}
  */
 InvoiceDetail.prototype.invoiceNumber = undefined
 
 /**
  * Invoice date.
  * @member {Date} invoiceDate
+ * @type {Date}
  */
 InvoiceDetail.prototype.invoiceDate = undefined
 
 /**
  * An additional unique reference number used for regulatory or other purposes.
  * @member {String} referenceNumber
+ * @type {String}
  */
 InvoiceDetail.prototype.referenceNumber = undefined
 
 /**
  * @member {module:vendordfpayments_v1/model/PartyIdentification} remitToParty
+ * @type {module:vendordfpayments_v1/model/PartyIdentification}
  */
 InvoiceDetail.prototype.remitToParty = undefined
 
 /**
  * @member {module:vendordfpayments_v1/model/PartyIdentification} shipFromParty
+ * @type {module:vendordfpayments_v1/model/PartyIdentification}
  */
 InvoiceDetail.prototype.shipFromParty = undefined
 
 /**
  * @member {module:vendordfpayments_v1/model/PartyIdentification} billToParty
+ * @type {module:vendordfpayments_v1/model/PartyIdentification}
  */
 InvoiceDetail.prototype.billToParty = undefined
 
 /**
  * Ship-to country code.
  * @member {String} shipToCountryCode
+ * @type {String}
  */
 InvoiceDetail.prototype.shipToCountryCode = undefined
 
 /**
  * The payment terms for the invoice.
  * @member {String} paymentTermsCode
+ * @type {String}
  */
 InvoiceDetail.prototype.paymentTermsCode = undefined
 
 /**
  * @member {module:vendordfpayments_v1/model/Money} invoiceTotal
+ * @type {module:vendordfpayments_v1/model/Money}
  */
 InvoiceDetail.prototype.invoiceTotal = undefined
 
 /**
  * Individual tax details per line item.
  * @member {Array.<module:vendordfpayments_v1/model/TaxDetail>} taxTotals
+ * @type {Array.<module:vendordfpayments_v1/model/TaxDetail>}
  */
 InvoiceDetail.prototype.taxTotals = undefined
 
 /**
  * Additional details provided by the selling party, for tax-related or other purposes.
  * @member {Array.<module:vendordfpayments_v1/model/AdditionalDetails>} additionalDetails
+ * @type {Array.<module:vendordfpayments_v1/model/AdditionalDetails>}
  */
 InvoiceDetail.prototype.additionalDetails = undefined
 
 /**
  * Total charge amount details for all line items.
  * @member {Array.<module:vendordfpayments_v1/model/ChargeDetails>} chargeDetails
+ * @type {Array.<module:vendordfpayments_v1/model/ChargeDetails>}
  */
 InvoiceDetail.prototype.chargeDetails = undefined
 
 /**
  * Provides the details of the items in this invoice.
  * @member {Array.<module:vendordfpayments_v1/model/InvoiceItem>} items
+ * @type {Array.<module:vendordfpayments_v1/model/InvoiceItem>}
  */
 InvoiceDetail.prototype.items = undefined

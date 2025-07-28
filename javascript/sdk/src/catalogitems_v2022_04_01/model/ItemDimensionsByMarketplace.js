@@ -63,15 +63,18 @@ export class ItemDimensionsByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemDimensionsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimensions} item
+ * @type {module:catalogitems_v2022_04_01/model/Dimensions}
  */
 ItemDimensionsByMarketplace.prototype.item = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimensions} _package
+ * @type {module:catalogitems_v2022_04_01/model/Dimensions}
  */
 ItemDimensionsByMarketplace.prototype._package = undefined

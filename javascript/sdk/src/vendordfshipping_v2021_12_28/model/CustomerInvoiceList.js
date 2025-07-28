@@ -60,11 +60,13 @@ export class CustomerInvoiceList {
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Pagination} pagination
+ * @type {module:vendordfshipping_v2021_12_28/model/Pagination}
  */
 CustomerInvoiceList.prototype.pagination = undefined
 
 /**
  * Represents a customer invoice within the `CustomerInvoiceList`.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/CustomerInvoice>} customerInvoices
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/CustomerInvoice>}
  */
 CustomerInvoiceList.prototype.customerInvoices = undefined

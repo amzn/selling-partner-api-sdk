@@ -68,27 +68,32 @@ export class Item {
 /**
  * Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.
  * @member {String} itemSequenceNumber
+ * @type {String}
  */
 Item.prototype.itemSequenceNumber = undefined
 
 /**
  * Buyer Standard Identification Number (ASIN) of an item.
  * @member {String} amazonProductIdentifier
+ * @type {String}
  */
 Item.prototype.amazonProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item. Should be the same as was sent in the purchase order.
  * @member {String} vendorProductIdentifier
+ * @type {String}
  */
 Item.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/ItemQuantity} shippedQuantity
+ * @type {module:vendorshipments_v1/model/ItemQuantity}
  */
 Item.prototype.shippedQuantity = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/ItemDetails} itemDetails
+ * @type {module:vendorshipments_v1/model/ItemDetails}
  */
 Item.prototype.itemDetails = undefined

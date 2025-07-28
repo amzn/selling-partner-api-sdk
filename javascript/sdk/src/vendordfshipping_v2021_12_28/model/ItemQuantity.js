@@ -63,11 +63,13 @@ export class ItemQuantity {
 /**
  * Quantity of units shipped for a specific item at a shipment level. If the item is present only in certain packages or pallets within the shipment, please provide this at the appropriate package or pallet level.
  * @member {Number} amount
+ * @type {Number}
  */
 ItemQuantity.prototype.amount = undefined
 
 /**
  * Unit of measure for the shipped quantity.
  * @member {String} unitOfMeasure
+ * @type {String}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined

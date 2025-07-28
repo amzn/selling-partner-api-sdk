@@ -62,17 +62,20 @@ export class CreateScheduledPackagesResponse {
 /**
  * A list of packages. Refer to the `Package` object.
  * @member {Array.<module:easyship_v2022_03_23/model/Package>} scheduledPackages
+ * @type {Array.<module:easyship_v2022_03_23/model/Package>}
  */
 CreateScheduledPackagesResponse.prototype.scheduledPackages = undefined
 
 /**
  * A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.
  * @member {Array.<module:easyship_v2022_03_23/model/RejectedOrder>} rejectedOrders
+ * @type {Array.<module:easyship_v2022_03_23/model/RejectedOrder>}
  */
 CreateScheduledPackagesResponse.prototype.rejectedOrders = undefined
 
 /**
  * A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.
  * @member {String} printableDocumentsUrl
+ * @type {String}
  */
 CreateScheduledPackagesResponse.prototype.printableDocumentsUrl = undefined

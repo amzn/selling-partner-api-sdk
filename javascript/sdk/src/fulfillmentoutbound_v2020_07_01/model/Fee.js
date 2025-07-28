@@ -96,10 +96,12 @@ Fee.NameEnum = {
 /**
  * The type of fee.
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Fee.NameEnum} name
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Fee.NameEnum}
  */
 Fee.prototype.name = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} amount
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
  */
 Fee.prototype.amount = undefined

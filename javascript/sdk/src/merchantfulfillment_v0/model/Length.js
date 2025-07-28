@@ -60,10 +60,12 @@ export class Length {
 /**
  * The value in units.
  * @member {Number} value
+ * @type {Number}
  */
 Length.prototype.value = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/UnitOfLength} unit
+ * @type {module:merchantfulfillment_v0/model/UnitOfLength}
  */
 Length.prototype.unit = undefined

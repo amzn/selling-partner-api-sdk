@@ -48,7 +48,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class ServiceApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -107,7 +107,7 @@ export class ServiceApi {
      * Adds an appointment to the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon defined service job identifier.
      * @param {module:services_v1/model/AddAppointmentRequest} body Add appointment operation input details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/SetAppointmentResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/SetAppointmentResponse>}
      */
   addAppointmentForServiceJobByServiceJobIdWithHttpInfo (serviceJobId, body) {
     const postBody = body
@@ -147,7 +147,7 @@ export class ServiceApi {
      * Adds an appointment to the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon defined service job identifier.
      * @param {module:services_v1/model/AddAppointmentRequest} body Add appointment operation input details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/SetAppointmentResponse}
+     * @return {Promise<module:services_v1/model/SetAppointmentResponse>}
      */
   addAppointmentForServiceJobByServiceJobId (serviceJobId, body) {
     return this.addAppointmentForServiceJobByServiceJobIdWithHttpInfo(serviceJobId, body)
@@ -161,7 +161,7 @@ export class ServiceApi {
      * @param {String} serviceJobId An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
      * @param {String} appointmentId An Amazon-defined identifier of active service job appointment.
      * @param {module:services_v1/model/AssignAppointmentResourcesRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/AssignAppointmentResourcesResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/AssignAppointmentResourcesResponse>}
      */
   assignAppointmentResourcesWithHttpInfo (serviceJobId, appointmentId, body) {
     const postBody = body
@@ -208,7 +208,7 @@ export class ServiceApi {
      * @param {String} serviceJobId An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
      * @param {String} appointmentId An Amazon-defined identifier of active service job appointment.
      * @param {module:services_v1/model/AssignAppointmentResourcesRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/AssignAppointmentResourcesResponse}
+     * @return {Promise<module:services_v1/model/AssignAppointmentResourcesResponse>}
      */
   assignAppointmentResources (serviceJobId, appointmentId, body) {
     return this.assignAppointmentResourcesWithHttpInfo(serviceJobId, appointmentId, body)
@@ -221,7 +221,7 @@ export class ServiceApi {
      * Cancel a reservation.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reservationId Reservation Identifier
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/CancelReservationResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/CancelReservationResponse>}
      */
   cancelReservationWithHttpInfo (reservationId, marketplaceIds) {
     const postBody = null
@@ -262,7 +262,7 @@ export class ServiceApi {
      * Cancel a reservation.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reservationId Reservation Identifier
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/CancelReservationResponse}
+     * @return {Promise<module:services_v1/model/CancelReservationResponse>}
      */
   cancelReservation (reservationId, marketplaceIds) {
     return this.cancelReservationWithHttpInfo(reservationId, marketplaceIds)
@@ -275,7 +275,7 @@ export class ServiceApi {
      * Cancels the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon defined service job identifier.
      * @param {String} cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/CancelServiceJobByServiceJobIdResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/CancelServiceJobByServiceJobIdResponse>}
      */
   cancelServiceJobByServiceJobIdWithHttpInfo (serviceJobId, cancellationReasonCode) {
     const postBody = null
@@ -316,7 +316,7 @@ export class ServiceApi {
      * Cancels the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon defined service job identifier.
      * @param {String} cancellationReasonCode A cancel reason code that specifies the reason for cancelling a service job.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/CancelServiceJobByServiceJobIdResponse}
+     * @return {Promise<module:services_v1/model/CancelServiceJobByServiceJobIdResponse>}
      */
   cancelServiceJobByServiceJobId (serviceJobId, cancellationReasonCode) {
     return this.cancelServiceJobByServiceJobIdWithHttpInfo(serviceJobId, cancellationReasonCode)
@@ -328,7 +328,7 @@ export class ServiceApi {
   /**
      * Completes the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon defined service job identifier.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/CompleteServiceJobByServiceJobIdResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/CompleteServiceJobByServiceJobIdResponse>}
      */
   completeServiceJobByServiceJobIdWithHttpInfo (serviceJobId) {
     const postBody = null
@@ -362,7 +362,7 @@ export class ServiceApi {
   /**
      * Completes the service job indicated by the service job identifier specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId An Amazon defined service job identifier.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/CompleteServiceJobByServiceJobIdResponse}
+     * @return {Promise<module:services_v1/model/CompleteServiceJobByServiceJobIdResponse>}
      */
   completeServiceJobByServiceJobId (serviceJobId) {
     return this.completeServiceJobByServiceJobIdWithHttpInfo(serviceJobId)
@@ -375,7 +375,7 @@ export class ServiceApi {
      * Create a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {module:services_v1/model/CreateReservationRequest} body Reservation details
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/CreateReservationResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/CreateReservationResponse>}
      */
   createReservationWithHttpInfo (marketplaceIds, body) {
     const postBody = body
@@ -415,7 +415,7 @@ export class ServiceApi {
      * Create a reservation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {module:services_v1/model/CreateReservationRequest} body Reservation details
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/CreateReservationResponse}
+     * @return {Promise<module:services_v1/model/CreateReservationResponse>}
      */
   createReservation (marketplaceIds, body) {
     return this.createReservationWithHttpInfo(marketplaceIds, body)
@@ -427,7 +427,7 @@ export class ServiceApi {
   /**
      * Creates an upload destination.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:services_v1/model/ServiceUploadDocument} body Upload document operation input details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/CreateServiceDocumentUploadDestination} and HTTP response
+     * @return {Promise<module:services_v1/model/CreateServiceDocumentUploadDestination>}
      */
   createServiceDocumentUploadDestinationWithHttpInfo (body) {
     const postBody = body
@@ -460,7 +460,7 @@ export class ServiceApi {
   /**
      * Creates an upload destination.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:services_v1/model/ServiceUploadDocument} body Upload document operation input details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/CreateServiceDocumentUploadDestination}
+     * @return {Promise<module:services_v1/model/CreateServiceDocumentUploadDestination>}
      */
   createServiceDocumentUploadDestination (body) {
     return this.createServiceDocumentUploadDestinationWithHttpInfo(body)
@@ -477,7 +477,7 @@ export class ServiceApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
      * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/GetAppointmentSlotsResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/GetAppointmentSlotsResponse>}
      */
   getAppointmentSlotsWithHttpInfo (asin, storeId, marketplaceIds, opts) {
     opts = opts || {}
@@ -531,7 +531,7 @@ export class ServiceApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
      * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/GetAppointmentSlotsResponse}
+     * @return {Promise<module:services_v1/model/GetAppointmentSlotsResponse>}
      */
   getAppointmentSlots (asin, storeId, marketplaceIds, opts) {
     return this.getAppointmentSlotsWithHttpInfo(asin, storeId, marketplaceIds, opts)
@@ -547,7 +547,7 @@ export class ServiceApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
      * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/GetAppointmentSlotsResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/GetAppointmentSlotsResponse>}
      */
   getAppointmmentSlotsByJobIdWithHttpInfo (serviceJobId, marketplaceIds, opts) {
     opts = opts || {}
@@ -594,7 +594,7 @@ export class ServiceApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
      * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/GetAppointmentSlotsResponse}
+     * @return {Promise<module:services_v1/model/GetAppointmentSlotsResponse>}
      */
   getAppointmmentSlotsByJobId (serviceJobId, marketplaceIds, opts) {
     return this.getAppointmmentSlotsByJobIdWithHttpInfo(serviceJobId, marketplaceIds, opts)
@@ -610,7 +610,7 @@ export class ServiceApi {
      * @param {module:services_v1/model/FixedSlotCapacityQuery} body Request body.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/FixedSlotCapacity} and HTTP response
+     * @return {Promise<module:services_v1/model/FixedSlotCapacity>}
      */
   getFixedSlotCapacityWithHttpInfo (resourceId, marketplaceIds, body, opts) {
     opts = opts || {}
@@ -661,7 +661,7 @@ export class ServiceApi {
      * @param {module:services_v1/model/FixedSlotCapacityQuery} body Request body.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/FixedSlotCapacity}
+     * @return {Promise<module:services_v1/model/FixedSlotCapacity>}
      */
   getFixedSlotCapacity (resourceId, marketplaceIds, body, opts) {
     return this.getFixedSlotCapacityWithHttpInfo(resourceId, marketplaceIds, body, opts)
@@ -677,7 +677,7 @@ export class ServiceApi {
      * @param {module:services_v1/model/RangeSlotCapacityQuery} body Request body.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/RangeSlotCapacity} and HTTP response
+     * @return {Promise<module:services_v1/model/RangeSlotCapacity>}
      */
   getRangeSlotCapacityWithHttpInfo (resourceId, marketplaceIds, body, opts) {
     opts = opts || {}
@@ -728,7 +728,7 @@ export class ServiceApi {
      * @param {module:services_v1/model/RangeSlotCapacityQuery} body Request body.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/RangeSlotCapacity}
+     * @return {Promise<module:services_v1/model/RangeSlotCapacity>}
      */
   getRangeSlotCapacity (resourceId, marketplaceIds, body, opts) {
     return this.getRangeSlotCapacityWithHttpInfo(resourceId, marketplaceIds, body, opts)
@@ -740,7 +740,7 @@ export class ServiceApi {
   /**
      * Gets details of service job indicated by the provided &#x60;serviceJobID&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId A service job identifier.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/GetServiceJobByServiceJobIdResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/GetServiceJobByServiceJobIdResponse>}
      */
   getServiceJobByServiceJobIdWithHttpInfo (serviceJobId) {
     const postBody = null
@@ -774,7 +774,7 @@ export class ServiceApi {
   /**
      * Gets details of service job indicated by the provided &#x60;serviceJobID&#x60;.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 20 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId A service job identifier.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/GetServiceJobByServiceJobIdResponse}
+     * @return {Promise<module:services_v1/model/GetServiceJobByServiceJobIdResponse>}
      */
   getServiceJobByServiceJobId (serviceJobId) {
     return this.getServiceJobByServiceJobIdWithHttpInfo(serviceJobId)
@@ -802,7 +802,7 @@ export class ServiceApi {
      * @param {Array.<String>} opts.asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
      * @param {Array.<String>} opts.requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
      * @param {Array.<String>} opts.storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/GetServiceJobsResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/GetServiceJobsResponse>}
      */
   getServiceJobsWithHttpInfo (marketplaceIds, opts) {
     opts = opts || {}
@@ -868,7 +868,7 @@ export class ServiceApi {
      * @param {Array.<String>} opts.asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
      * @param {Array.<String>} opts.requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
      * @param {Array.<String>} opts.storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/GetServiceJobsResponse}
+     * @return {Promise<module:services_v1/model/GetServiceJobsResponse>}
      */
   getServiceJobs (marketplaceIds, opts) {
     return this.getServiceJobsWithHttpInfo(marketplaceIds, opts)
@@ -882,7 +882,7 @@ export class ServiceApi {
      * @param {String} serviceJobId An Amazon defined service job identifier.
      * @param {String} appointmentId An existing appointment identifier for the Service Job.
      * @param {module:services_v1/model/RescheduleAppointmentRequest} body Reschedule appointment operation input details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/SetAppointmentResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/SetAppointmentResponse>}
      */
   rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo (serviceJobId, appointmentId, body) {
     const postBody = body
@@ -929,7 +929,7 @@ export class ServiceApi {
      * @param {String} serviceJobId An Amazon defined service job identifier.
      * @param {String} appointmentId An existing appointment identifier for the Service Job.
      * @param {module:services_v1/model/RescheduleAppointmentRequest} body Reschedule appointment operation input details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/SetAppointmentResponse}
+     * @return {Promise<module:services_v1/model/SetAppointmentResponse>}
      */
   rescheduleAppointmentForServiceJobByServiceJobId (serviceJobId, appointmentId, body) {
     return this.rescheduleAppointmentForServiceJobByServiceJobIdWithHttpInfo(serviceJobId, appointmentId, body)
@@ -943,7 +943,7 @@ export class ServiceApi {
      * @param {String} serviceJobId An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
      * @param {String} appointmentId An Amazon-defined identifier of active service job appointment.
      * @param {module:services_v1/model/SetAppointmentFulfillmentDataRequest} body Appointment fulfillment data collection details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link String} and HTTP response
+     * @return {Promise<String>}
      */
   setAppointmentFulfillmentDataWithHttpInfo (serviceJobId, appointmentId, body) {
     const postBody = body
@@ -990,7 +990,7 @@ export class ServiceApi {
      * @param {String} serviceJobId An Amazon-defined service job identifier. Get this value by calling the &#x60;getServiceJobs&#x60; operation of the Services API.
      * @param {String} appointmentId An Amazon-defined identifier of active service job appointment.
      * @param {module:services_v1/model/SetAppointmentFulfillmentDataRequest} body Appointment fulfillment data collection details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link String}
+     * @return {Promise<String>}
      */
   setAppointmentFulfillmentData (serviceJobId, appointmentId, body) {
     return this.setAppointmentFulfillmentDataWithHttpInfo(serviceJobId, appointmentId, body)
@@ -1004,7 +1004,7 @@ export class ServiceApi {
      * @param {String} reservationId Reservation Identifier
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {module:services_v1/model/UpdateReservationRequest} body Reservation details
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/UpdateReservationResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/UpdateReservationResponse>}
      */
   updateReservationWithHttpInfo (reservationId, marketplaceIds, body) {
     const postBody = body
@@ -1051,7 +1051,7 @@ export class ServiceApi {
      * @param {String} reservationId Reservation Identifier
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {module:services_v1/model/UpdateReservationRequest} body Reservation details
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/UpdateReservationResponse}
+     * @return {Promise<module:services_v1/model/UpdateReservationResponse>}
      */
   updateReservation (reservationId, marketplaceIds, body) {
     return this.updateReservationWithHttpInfo(reservationId, marketplaceIds, body)
@@ -1065,7 +1065,7 @@ export class ServiceApi {
      * @param {String} resourceId Resource (store) Identifier
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {module:services_v1/model/UpdateScheduleRequest} body Schedule details
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:services_v1/model/UpdateScheduleResponse} and HTTP response
+     * @return {Promise<module:services_v1/model/UpdateScheduleResponse>}
      */
   updateScheduleWithHttpInfo (resourceId, marketplaceIds, body) {
     const postBody = body
@@ -1112,7 +1112,7 @@ export class ServiceApi {
      * @param {String} resourceId Resource (store) Identifier
      * @param {Array.<String>} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {module:services_v1/model/UpdateScheduleRequest} body Schedule details
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:services_v1/model/UpdateScheduleResponse}
+     * @return {Promise<module:services_v1/model/UpdateScheduleResponse>}
      */
   updateSchedule (resourceId, marketplaceIds, body) {
     return this.updateScheduleWithHttpInfo(resourceId, marketplaceIds, body)

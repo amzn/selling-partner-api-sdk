@@ -63,11 +63,13 @@ export class PackageVolume {
 
 /**
  * @member {module:awd_v2024_05_09/model/VolumeUnitOfMeasurement} unitOfMeasurement
+ * @type {module:awd_v2024_05_09/model/VolumeUnitOfMeasurement}
  */
 PackageVolume.prototype.unitOfMeasurement = undefined
 
 /**
  * The package volume value.
  * @member {Number} volume
+ * @type {Number}
  */
 PackageVolume.prototype.volume = undefined

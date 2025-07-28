@@ -29,7 +29,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class MerchantFulfillmentApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -75,7 +75,7 @@ export class MerchantFulfillmentApi {
   /**
      * Cancel the shipment indicated by the specified shipment identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The Amazon-defined shipment identifier for the shipment to cancel.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:merchantfulfillment_v0/model/CancelShipmentResponse} and HTTP response
+     * @return {Promise<module:merchantfulfillment_v0/model/CancelShipmentResponse>}
      */
   cancelShipmentWithHttpInfo (shipmentId) {
     const postBody = null
@@ -109,7 +109,7 @@ export class MerchantFulfillmentApi {
   /**
      * Cancel the shipment indicated by the specified shipment identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The Amazon-defined shipment identifier for the shipment to cancel.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:merchantfulfillment_v0/model/CancelShipmentResponse}
+     * @return {Promise<module:merchantfulfillment_v0/model/CancelShipmentResponse>}
      */
   cancelShipment (shipmentId) {
     return this.cancelShipmentWithHttpInfo(shipmentId)
@@ -121,7 +121,7 @@ export class MerchantFulfillmentApi {
   /**
      * Create a shipment with the information provided.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:merchantfulfillment_v0/model/CreateShipmentRequest} body The request schema for the &#x60;CreateShipment&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:merchantfulfillment_v0/model/CreateShipmentResponse} and HTTP response
+     * @return {Promise<module:merchantfulfillment_v0/model/CreateShipmentResponse>}
      */
   createShipmentWithHttpInfo (body) {
     const postBody = body
@@ -154,7 +154,7 @@ export class MerchantFulfillmentApi {
   /**
      * Create a shipment with the information provided.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:merchantfulfillment_v0/model/CreateShipmentRequest} body The request schema for the &#x60;CreateShipment&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:merchantfulfillment_v0/model/CreateShipmentResponse}
+     * @return {Promise<module:merchantfulfillment_v0/model/CreateShipmentResponse>}
      */
   createShipment (body) {
     return this.createShipmentWithHttpInfo(body)
@@ -166,7 +166,7 @@ export class MerchantFulfillmentApi {
   /**
      * Gets a list of additional seller inputs required for a ship method. This is generally used for international shipping.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:merchantfulfillment_v0/model/GetAdditionalSellerInputsRequest} body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:merchantfulfillment_v0/model/GetAdditionalSellerInputsResponse} and HTTP response
+     * @return {Promise<module:merchantfulfillment_v0/model/GetAdditionalSellerInputsResponse>}
      */
   getAdditionalSellerInputsWithHttpInfo (body) {
     const postBody = body
@@ -199,7 +199,7 @@ export class MerchantFulfillmentApi {
   /**
      * Gets a list of additional seller inputs required for a ship method. This is generally used for international shipping.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:merchantfulfillment_v0/model/GetAdditionalSellerInputsRequest} body The request schema for the &#x60;GetAdditionalSellerInputs&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:merchantfulfillment_v0/model/GetAdditionalSellerInputsResponse}
+     * @return {Promise<module:merchantfulfillment_v0/model/GetAdditionalSellerInputsResponse>}
      */
   getAdditionalSellerInputs (body) {
     return this.getAdditionalSellerInputsWithHttpInfo(body)
@@ -211,7 +211,7 @@ export class MerchantFulfillmentApi {
   /**
      * Returns a list of shipping service offers that satisfy the specified shipment request details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 6 | 12 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesRequest} body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResponse} and HTTP response
+     * @return {Promise<module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResponse>}
      */
   getEligibleShipmentServicesWithHttpInfo (body) {
     const postBody = body
@@ -244,7 +244,7 @@ export class MerchantFulfillmentApi {
   /**
      * Returns a list of shipping service offers that satisfy the specified shipment request details.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 6 | 12 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesRequest} body The request schema for the &#x60;GetEligibleShipmentServices&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResponse}
+     * @return {Promise<module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResponse>}
      */
   getEligibleShipmentServices (body) {
     return this.getEligibleShipmentServicesWithHttpInfo(body)
@@ -256,7 +256,7 @@ export class MerchantFulfillmentApi {
   /**
      * Returns the shipment information for an existing shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The Amazon-defined shipment identifier for the shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:merchantfulfillment_v0/model/GetShipmentResponse} and HTTP response
+     * @return {Promise<module:merchantfulfillment_v0/model/GetShipmentResponse>}
      */
   getShipmentWithHttpInfo (shipmentId) {
     const postBody = null
@@ -290,7 +290,7 @@ export class MerchantFulfillmentApi {
   /**
      * Returns the shipment information for an existing shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that are applied to the requested operation when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the SP-API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The Amazon-defined shipment identifier for the shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:merchantfulfillment_v0/model/GetShipmentResponse}
+     * @return {Promise<module:merchantfulfillment_v0/model/GetShipmentResponse>}
      */
   getShipment (shipmentId) {
     return this.getShipmentWithHttpInfo(shipmentId)

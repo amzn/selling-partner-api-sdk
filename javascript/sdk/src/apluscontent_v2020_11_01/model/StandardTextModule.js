@@ -62,10 +62,12 @@ export class StandardTextModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardTextModule.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ParagraphComponent} body
+ * @type {module:apluscontent_v2020_11_01/model/ParagraphComponent}
  */
 StandardTextModule.prototype.body = undefined

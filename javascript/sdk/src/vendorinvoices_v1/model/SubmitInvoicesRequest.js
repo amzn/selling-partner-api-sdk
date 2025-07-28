@@ -59,5 +59,6 @@ export class SubmitInvoicesRequest {
 /**
  * An array of Invoice objects representing the invoices or credit notes to be submitted.
  * @member {Array.<module:vendorinvoices_v1/model/Invoice>} invoices
+ * @type {Array.<module:vendorinvoices_v1/model/Invoice>}
  */
 SubmitInvoicesRequest.prototype.invoices = undefined

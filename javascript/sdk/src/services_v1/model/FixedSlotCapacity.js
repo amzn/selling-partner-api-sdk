@@ -62,23 +62,27 @@ export class FixedSlotCapacity {
 /**
  * Resource Identifier.
  * @member {String} resourceId
+ * @type {String}
  */
 FixedSlotCapacity.prototype.resourceId = undefined
 
 /**
  * The duration of each slot which is returned. This value will be a multiple of 5 and fall in the following range: 5 <= `slotDuration` <= 360.
  * @member {Number} slotDuration
+ * @type {Number}
  */
 FixedSlotCapacity.prototype.slotDuration = undefined
 
 /**
  * Array of capacity slots in fixed slot format.
  * @member {Array.<module:services_v1/model/FixedSlot>} capacities
+ * @type {Array.<module:services_v1/model/FixedSlot>}
  */
 FixedSlotCapacity.prototype.capacities = undefined
 
 /**
  * Next page token, if there are more pages.
  * @member {String} nextPageToken
+ * @type {String}
  */
 FixedSlotCapacity.prototype.nextPageToken = undefined

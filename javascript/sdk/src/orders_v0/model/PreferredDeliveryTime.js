@@ -61,11 +61,13 @@ export class PreferredDeliveryTime {
 /**
  * Business hours when the business is open for deliveries.
  * @member {Array.<module:orders_v0/model/BusinessHours>} businessHours
+ * @type {Array.<module:orders_v0/model/BusinessHours>}
  */
 PreferredDeliveryTime.prototype.businessHours = undefined
 
 /**
  * Dates when the business is closed during the next 30 days.
  * @member {Array.<module:orders_v0/model/ExceptionDates>} exceptionDates
+ * @type {Array.<module:orders_v0/model/ExceptionDates>}
  */
 PreferredDeliveryTime.prototype.exceptionDates = undefined

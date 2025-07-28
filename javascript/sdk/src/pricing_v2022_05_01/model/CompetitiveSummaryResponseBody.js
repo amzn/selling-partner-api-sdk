@@ -71,35 +71,41 @@ export class CompetitiveSummaryResponseBody {
 /**
  * The ASIN of the item.
  * @member {String} asin
+ * @type {String}
  */
 CompetitiveSummaryResponseBody.prototype.asin = undefined
 
 /**
  * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 CompetitiveSummaryResponseBody.prototype.marketplaceId = undefined
 
 /**
  * A list of featured buying options for the specified ASIN `marketplaceId` combination.
  * @member {Array.<module:pricing_v2022_05_01/model/FeaturedBuyingOption>} featuredBuyingOptions
+ * @type {Array.<module:pricing_v2022_05_01/model/FeaturedBuyingOption>}
  */
 CompetitiveSummaryResponseBody.prototype.featuredBuyingOptions = undefined
 
 /**
  * A list of lowest priced offers for the specified ASIN `marketplaceId` combination.
  * @member {Array.<module:pricing_v2022_05_01/model/LowestPricedOffer>} lowestPricedOffers
+ * @type {Array.<module:pricing_v2022_05_01/model/LowestPricedOffer>}
  */
 CompetitiveSummaryResponseBody.prototype.lowestPricedOffers = undefined
 
 /**
  * A list of reference prices for the specified ASIN `marketplaceId` combination.
  * @member {Array.<module:pricing_v2022_05_01/model/ReferencePrice>} referencePrices
+ * @type {Array.<module:pricing_v2022_05_01/model/ReferencePrice>}
  */
 CompetitiveSummaryResponseBody.prototype.referencePrices = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
  * @member {Array.<module:pricing_v2022_05_01/model/Error>} errors
+ * @type {Array.<module:pricing_v2022_05_01/model/Error>}
  */
 CompetitiveSummaryResponseBody.prototype.errors = undefined

@@ -81,44 +81,52 @@ export class GetOffersResult {
 /**
  * A marketplace identifier.
  * @member {String} marketplaceID
+ * @type {String}
  */
 GetOffersResult.prototype.marketplaceID = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type {String}
  */
 GetOffersResult.prototype.ASIN = undefined
 
 /**
  * The stock keeping unit (SKU) of the item.
  * @member {String} SKU
+ * @type {String}
  */
 GetOffersResult.prototype.SKU = undefined
 
 /**
  * @member {module:pricing_v0/model/ConditionType} itemCondition
+ * @type {module:pricing_v0/model/ConditionType}
  */
 GetOffersResult.prototype.itemCondition = undefined
 
 /**
  * The status of the operation.
  * @member {String} status
+ * @type {String}
  */
 GetOffersResult.prototype.status = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemIdentifier} identifier
+ * @type {module:pricing_v0/model/ItemIdentifier}
  */
 GetOffersResult.prototype.identifier = undefined
 
 /**
  * @member {module:pricing_v0/model/Summary} summary
+ * @type {module:pricing_v0/model/Summary}
  */
 GetOffersResult.prototype.summary = undefined
 
 /**
  * A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
  * @member {Array.<module:pricing_v0/model/OfferDetail>} offers
+ * @type {Array.<module:pricing_v0/model/OfferDetail>}
  */
 GetOffersResult.prototype.offers = undefined

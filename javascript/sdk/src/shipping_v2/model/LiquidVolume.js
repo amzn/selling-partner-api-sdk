@@ -113,11 +113,13 @@ LiquidVolume.UnitEnum = {
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/LiquidVolume.UnitEnum} unit
+ * @type {module:shipping_v2/model/LiquidVolume.UnitEnum}
  */
 LiquidVolume.prototype.unit = undefined
 
 /**
  * The measurement value.
  * @member {Number} value
+ * @type {Number}
  */
 LiquidVolume.prototype.value = undefined

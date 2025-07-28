@@ -59,11 +59,13 @@ export class PrepInstruction {
 
 /**
  * @member {module:awd_v2024_05_09/model/PrepOwner} prepOwner
+ * @type {module:awd_v2024_05_09/model/PrepOwner}
  */
 PrepInstruction.prototype.prepOwner = undefined
 
 /**
  * The type of preparation to be done. For more information about preparing items, refer to [Prep guidance](https://sellercentral.amazon.com/help/hub/reference/external/GF4G7547KSLDX2KC) on Seller Central.
  * @member {String} prepType
+ * @type {String}
  */
 PrepInstruction.prototype.prepType = undefined

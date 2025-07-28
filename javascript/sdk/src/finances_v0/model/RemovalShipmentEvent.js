@@ -64,35 +64,41 @@ export class RemovalShipmentEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 RemovalShipmentEvent.prototype.postedDate = undefined
 
 /**
  * The merchant removal orderId.
  * @member {String} merchantOrderId
+ * @type {String}
  */
 RemovalShipmentEvent.prototype.merchantOrderId = undefined
 
 /**
  * The identifier for the removal shipment order.
  * @member {String} orderId
+ * @type {String}
  */
 RemovalShipmentEvent.prototype.orderId = undefined
 
 /**
  * The type of removal order.  Possible values:  * WHOLESALE_LIQUIDATION
  * @member {String} transactionType
+ * @type {String}
  */
 RemovalShipmentEvent.prototype.transactionType = undefined
 
 /**
  * The name of the store where the event occurred.
  * @member {String} storeName
+ * @type {String}
  */
 RemovalShipmentEvent.prototype.storeName = undefined
 
 /**
  * A list of information about removal shipment items.
  * @member {Array.<module:finances_v0/model/RemovalShipmentItem>} removalShipmentItemList
+ * @type {Array.<module:finances_v0/model/RemovalShipmentItem>}
  */
 RemovalShipmentEvent.prototype.removalShipmentItemList = undefined

@@ -58,5 +58,6 @@ export class Pagination {
 /**
  * When present, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 Pagination.prototype.nextToken = undefined

@@ -71,57 +71,67 @@ export class ExportInvoicesRequest {
 /**
  * The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the time of the request.
  * @member {Date} dateEnd
+ * @type {Date}
  */
 ExportInvoicesRequest.prototype.dateEnd = undefined
 
 /**
  * The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
  * @member {Date} dateStart
+ * @type {Date}
  */
 ExportInvoicesRequest.prototype.dateStart = undefined
 
 /**
  * The external ID of the invoices you want included in the response.
  * @member {String} externalInvoiceId
+ * @type {String}
  */
 ExportInvoicesRequest.prototype.externalInvoiceId = undefined
 
 /**
  * @member {module:invoices_v2024_06_19/model/FileFormat} fileFormat
+ * @type {module:invoices_v2024_06_19/model/FileFormat}
  */
 ExportInvoicesRequest.prototype.fileFormat = undefined
 
 /**
  * The marketplace-specific classification of the invoice type. Use the `getInvoicesAttributes` operation to check `invoiceType` options.
  * @member {String} invoiceType
+ * @type {String}
  */
 ExportInvoicesRequest.prototype.invoiceType = undefined
 
 /**
  * The ID of the marketplace from which you want the invoices.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ExportInvoicesRequest.prototype.marketplaceId = undefined
 
 /**
  * The series number of the invoices you want included in the response.
  * @member {String} series
+ * @type {String}
  */
 ExportInvoicesRequest.prototype.series = undefined
 
 /**
  * A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
  * @member {Array.<String>} statuses
+ * @type {Array.<String>}
  */
 ExportInvoicesRequest.prototype.statuses = undefined
 
 /**
  * @member {module:invoices_v2024_06_19/model/TransactionIdentifier} transactionIdentifier
+ * @type {module:invoices_v2024_06_19/model/TransactionIdentifier}
  */
 ExportInvoicesRequest.prototype.transactionIdentifier = undefined
 
 /**
  * The marketplace-specific classification of the transaction type for which the invoice was created. Use the `getInvoicesAttributes` operation to check `transactionType` options
  * @member {String} transactionType
+ * @type {String}
  */
 ExportInvoicesRequest.prototype.transactionType = undefined

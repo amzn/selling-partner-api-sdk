@@ -62,10 +62,12 @@ export class Order {
 /**
  * The purchase order number for this order. Formatting Notes: alpha-numeric code.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 Order.prototype.purchaseOrderNumber = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/OrderDetails} orderDetails
+ * @type {module:vendordforders_v2021_12_28/model/OrderDetails}
  */
 Order.prototype.orderDetails = undefined

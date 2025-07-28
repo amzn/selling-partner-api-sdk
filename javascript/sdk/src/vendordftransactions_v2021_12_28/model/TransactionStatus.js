@@ -58,5 +58,6 @@ export class TransactionStatus {
 
 /**
  * @member {module:vendordftransactions_v2021_12_28/model/Transaction} transactionStatus
+ * @type {module:vendordftransactions_v2021_12_28/model/Transaction}
  */
 TransactionStatus.prototype.transactionStatus = undefined

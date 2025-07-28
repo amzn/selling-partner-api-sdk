@@ -59,11 +59,13 @@ export class Pagination {
 /**
  * A token that can be used to fetch the next page.
  * @member {String} nextToken
+ * @type {String}
  */
 Pagination.prototype.nextToken = undefined
 
 /**
  * A token that can be used to fetch the previous page.
  * @member {String} previousToken
+ * @type {String}
  */
 Pagination.prototype.previousToken = undefined

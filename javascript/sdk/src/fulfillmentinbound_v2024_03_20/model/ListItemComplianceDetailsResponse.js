@@ -59,5 +59,6 @@ export class ListItemComplianceDetailsResponse {
 /**
  * List of compliance details.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ComplianceDetail>} complianceDetails
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ComplianceDetail>}
  */
 ListItemComplianceDetailsResponse.prototype.complianceDetails = undefined

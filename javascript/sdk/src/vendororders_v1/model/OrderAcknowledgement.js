@@ -71,22 +71,26 @@ export class OrderAcknowledgement {
 /**
  * The purchase order number. Formatting Notes: 8-character alpha-numeric code.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 OrderAcknowledgement.prototype.purchaseOrderNumber = undefined
 
 /**
  * @member {module:vendororders_v1/model/PartyIdentification} sellingParty
+ * @type {module:vendororders_v1/model/PartyIdentification}
  */
 OrderAcknowledgement.prototype.sellingParty = undefined
 
 /**
  * The date and time when the purchase order is acknowledged, in ISO-8601 date/time format.
  * @member {Date} acknowledgementDate
+ * @type {Date}
  */
 OrderAcknowledgement.prototype.acknowledgementDate = undefined
 
 /**
  * A list of the items being acknowledged with associated details.
  * @member {Array.<module:vendororders_v1/model/OrderAcknowledgementItem>} items
+ * @type {Array.<module:vendororders_v1/model/OrderAcknowledgementItem>}
  */
 OrderAcknowledgement.prototype.items = undefined

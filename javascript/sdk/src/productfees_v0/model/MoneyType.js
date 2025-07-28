@@ -58,11 +58,13 @@ export class MoneyType {
 /**
  * The currency code in ISO 4217 format.
  * @member {String} currencyCode
+ * @type {String}
  */
 MoneyType.prototype.currencyCode = undefined
 
 /**
  * The monetary value.
  * @member {Number} amount
+ * @type {Number}
  */
 MoneyType.prototype.amount = undefined

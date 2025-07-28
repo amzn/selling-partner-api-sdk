@@ -68,18 +68,21 @@ export class CreateReportScheduleSpecification {
 /**
  * The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
  * @member {String} reportType
+ * @type {String}
  */
 CreateReportScheduleSpecification.prototype.reportType = undefined
 
 /**
  * A list of marketplace identifiers for the report schedule.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 CreateReportScheduleSpecification.prototype.marketplaceIds = undefined
 
 /**
  * Additional information passed to reports. This varies by report type.
  * @member {Object.<String, String>} reportOptions
+ * @type {Object.<String, String>}
  */
 CreateReportScheduleSpecification.prototype.reportOptions = undefined
 
@@ -202,11 +205,13 @@ CreateReportScheduleSpecification.PeriodEnum = {
 /**
  * One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.
  * @member {module:reports_v2021_06_30/model/CreateReportScheduleSpecification.PeriodEnum} period
+ * @type {module:reports_v2021_06_30/model/CreateReportScheduleSpecification.PeriodEnum}
  */
 CreateReportScheduleSpecification.prototype.period = undefined
 
 /**
  * The date and time when the schedule will create its next report, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format.
  * @member {Date} nextReportCreationTime
+ * @type {Date}
  */
 CreateReportScheduleSpecification.prototype.nextReportCreationTime = undefined

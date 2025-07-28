@@ -64,16 +64,19 @@ export class PartyIdentification {
 /**
  * Assigned identification for the party.
  * @member {String} partyId
+ * @type {String}
  */
 PartyIdentification.prototype.partyId = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/Address} address
+ * @type {module:vendorinvoices_v1/model/Address}
  */
 PartyIdentification.prototype.address = undefined
 
 /**
  * Tax registration details of the party.
  * @member {Array.<module:vendorinvoices_v1/model/TaxRegistrationDetails>} taxRegistrationDetails
+ * @type {Array.<module:vendorinvoices_v1/model/TaxRegistrationDetails>}
  */
 PartyIdentification.prototype.taxRegistrationDetails = undefined

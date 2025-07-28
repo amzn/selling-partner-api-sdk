@@ -68,15 +68,18 @@ export class QuantityDiscountPriceType {
 /**
  * Indicates at what quantity this price becomes active.
  * @member {Number} quantityTier
+ * @type {Number}
  */
 QuantityDiscountPriceType.prototype.quantityTier = undefined
 
 /**
  * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
+ * @type {module:pricing_v0/model/QuantityDiscountType}
  */
 QuantityDiscountPriceType.prototype.quantityDiscountType = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} listingPrice
+ * @type {module:pricing_v0/model/MoneyType}
  */
 QuantityDiscountPriceType.prototype.listingPrice = undefined

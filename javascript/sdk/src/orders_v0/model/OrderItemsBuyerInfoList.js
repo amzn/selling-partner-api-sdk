@@ -65,17 +65,20 @@ export class OrderItemsBuyerInfoList {
 /**
  * A single order item's buyer information list.
  * @member {Array.<module:orders_v0/model/OrderItemBuyerInfo>} orderItems
+ * @type {Array.<module:orders_v0/model/OrderItemBuyerInfo>}
  */
 OrderItemsBuyerInfoList.prototype.orderItems = undefined
 
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 OrderItemsBuyerInfoList.prototype.nextToken = undefined
 
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 OrderItemsBuyerInfoList.prototype.amazonOrderId = undefined

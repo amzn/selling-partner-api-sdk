@@ -33,7 +33,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-11-01
 */
 export class AplusContentApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -85,7 +85,7 @@ export class AplusContentApi {
      * Creates a new A+ Content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} postContentDocumentRequest The content document request details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentResponse>}
      */
   createContentDocumentWithHttpInfo (marketplaceId, postContentDocumentRequest) {
     const postBody = postContentDocumentRequest
@@ -125,7 +125,7 @@ export class AplusContentApi {
      * Creates a new A+ Content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} postContentDocumentRequest The content document request details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentResponse>}
      */
   createContentDocument (marketplaceId, postContentDocumentRequest) {
     return this.createContentDocumentWithHttpInfo(marketplaceId, postContentDocumentRequest)
@@ -139,7 +139,7 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Array.<module:apluscontent_v2020_11_01/model/String>} includedDataSet The set of A+ Content data types to include in the response.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/GetContentDocumentResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/GetContentDocumentResponse>}
      */
   getContentDocumentWithHttpInfo (contentReferenceKey, marketplaceId, includedDataSet) {
     const postBody = null
@@ -187,7 +187,7 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Array.<module:apluscontent_v2020_11_01/model/String>} includedDataSet The set of A+ Content data types to include in the response.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/GetContentDocumentResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/GetContentDocumentResponse>}
      */
   getContentDocument (contentReferenceKey, marketplaceId, includedDataSet) {
     return this.getContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, includedDataSet)
@@ -204,7 +204,7 @@ export class AplusContentApi {
      * @param {Array.<module:apluscontent_v2020_11_01/model/String>} opts.includedDataSet The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
      * @param {Array.<String>} opts.asinSet The set of ASINs.
      * @param {String} opts.pageToken A token that you use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse>}
      */
   listContentDocumentAsinRelationsWithHttpInfo (contentReferenceKey, marketplaceId, opts) {
     opts = opts || {}
@@ -253,7 +253,7 @@ export class AplusContentApi {
      * @param {Array.<module:apluscontent_v2020_11_01/model/String>} opts.includedDataSet The set of A+ Content data types to include in the response. If you don&#39;t include this parameter, the operation returns the related ASINs without metadata.
      * @param {Array.<String>} opts.asinSet The set of ASINs.
      * @param {String} opts.pageToken A token that you use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/ListContentDocumentAsinRelationsResponse>}
      */
   listContentDocumentAsinRelations (contentReferenceKey, marketplaceId, opts) {
     return this.listContentDocumentAsinRelationsWithHttpInfo(contentReferenceKey, marketplaceId, opts)
@@ -266,7 +266,7 @@ export class AplusContentApi {
      * Submits an A+ Content document for review, approval, and publishing.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentApprovalSubmissionResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentApprovalSubmissionResponse>}
      */
   postContentDocumentApprovalSubmissionWithHttpInfo (contentReferenceKey, marketplaceId) {
     const postBody = null
@@ -307,7 +307,7 @@ export class AplusContentApi {
      * Submits an A+ Content document for review, approval, and publishing.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentApprovalSubmissionResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentApprovalSubmissionResponse>}
      */
   postContentDocumentApprovalSubmission (contentReferenceKey, marketplaceId) {
     return this.postContentDocumentApprovalSubmissionWithHttpInfo(contentReferenceKey, marketplaceId)
@@ -321,7 +321,7 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest} postContentDocumentAsinRelationsRequest The request details for the content document ASIN relations.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsResponse>}
      */
   postContentDocumentAsinRelationsWithHttpInfo (contentReferenceKey, marketplaceId, postContentDocumentAsinRelationsRequest) {
     const postBody = postContentDocumentAsinRelationsRequest
@@ -368,7 +368,7 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest} postContentDocumentAsinRelationsRequest The request details for the content document ASIN relations.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsResponse>}
      */
   postContentDocumentAsinRelations (contentReferenceKey, marketplaceId, postContentDocumentAsinRelationsRequest) {
     return this.postContentDocumentAsinRelationsWithHttpInfo(contentReferenceKey, marketplaceId, postContentDocumentAsinRelationsRequest)
@@ -381,7 +381,7 @@ export class AplusContentApi {
      * Submits a request to suspend visible A+ Content. This doesn&#39;t delete the content document or the ASIN relations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentSuspendSubmissionResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentSuspendSubmissionResponse>}
      */
   postContentDocumentSuspendSubmissionWithHttpInfo (contentReferenceKey, marketplaceId) {
     const postBody = null
@@ -422,7 +422,7 @@ export class AplusContentApi {
      * Submits a request to suspend visible A+ Content. This doesn&#39;t delete the content document or the ASIN relations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentSuspendSubmissionResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentSuspendSubmissionResponse>}
      */
   postContentDocumentSuspendSubmission (contentReferenceKey, marketplaceId) {
     return this.postContentDocumentSuspendSubmissionWithHttpInfo(contentReferenceKey, marketplaceId)
@@ -436,7 +436,7 @@ export class AplusContentApi {
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token that you use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse>}
      */
   searchContentDocumentsWithHttpInfo (marketplaceId, opts) {
     opts = opts || {}
@@ -474,7 +474,7 @@ export class AplusContentApi {
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token that you use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse>}
      */
   searchContentDocuments (marketplaceId, opts) {
     return this.searchContentDocumentsWithHttpInfo(marketplaceId, opts)
@@ -489,7 +489,7 @@ export class AplusContentApi {
      * @param {String} asin The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace.
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token that you use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse>}
      */
   searchContentPublishRecordsWithHttpInfo (marketplaceId, asin, opts) {
     opts = opts || {}
@@ -534,7 +534,7 @@ export class AplusContentApi {
      * @param {String} asin The Amazon Standard Identification Number (ASIN) is the unique identifier of a product within a marketplace.
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token that you use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/SearchContentPublishRecordsResponse>}
      */
   searchContentPublishRecords (marketplaceId, asin, opts) {
     return this.searchContentPublishRecordsWithHttpInfo(marketplaceId, asin, opts)
@@ -548,7 +548,7 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} postContentDocumentRequest The content document request details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentResponse>}
      */
   updateContentDocumentWithHttpInfo (contentReferenceKey, marketplaceId, postContentDocumentRequest) {
     const postBody = postContentDocumentRequest
@@ -595,7 +595,7 @@ export class AplusContentApi {
      * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
      * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} postContentDocumentRequest The content document request details.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/PostContentDocumentResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/PostContentDocumentResponse>}
      */
   updateContentDocument (contentReferenceKey, marketplaceId, postContentDocumentRequest) {
     return this.updateContentDocumentWithHttpInfo(contentReferenceKey, marketplaceId, postContentDocumentRequest)
@@ -610,7 +610,7 @@ export class AplusContentApi {
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} postContentDocumentRequest The content document request details.
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.asinSet The set of ASINs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:apluscontent_v2020_11_01/model/ValidateContentDocumentAsinRelationsResponse} and HTTP response
+     * @return {Promise<module:apluscontent_v2020_11_01/model/ValidateContentDocumentAsinRelationsResponse>}
      */
   validateContentDocumentAsinRelationsWithHttpInfo (marketplaceId, postContentDocumentRequest, opts) {
     opts = opts || {}
@@ -654,7 +654,7 @@ export class AplusContentApi {
      * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentRequest} postContentDocumentRequest The content document request details.
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.asinSet The set of ASINs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:apluscontent_v2020_11_01/model/ValidateContentDocumentAsinRelationsResponse}
+     * @return {Promise<module:apluscontent_v2020_11_01/model/ValidateContentDocumentAsinRelationsResponse>}
      */
   validateContentDocumentAsinRelations (marketplaceId, postContentDocumentRequest, opts) {
     return this.validateContentDocumentAsinRelationsWithHttpInfo(marketplaceId, postContentDocumentRequest, opts)

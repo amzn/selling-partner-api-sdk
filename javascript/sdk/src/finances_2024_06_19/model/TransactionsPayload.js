@@ -60,11 +60,13 @@ export class TransactionsPayload {
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 TransactionsPayload.prototype.nextToken = undefined
 
 /**
  * Contains transactions within a given time period.
  * @member {Array.<module:finances_2024_06_19/model/Transaction>} transactions
+ * @type {Array.<module:finances_2024_06_19/model/Transaction>}
  */
 TransactionsPayload.prototype.transactions = undefined

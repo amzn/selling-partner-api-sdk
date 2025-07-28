@@ -76,54 +76,64 @@ export class InboundShipmentInfo {
 /**
  * The shipment identifier submitted in the request.
  * @member {String} shipmentId
+ * @type {String}
  */
 InboundShipmentInfo.prototype.shipmentId = undefined
 
 /**
  * The name for the inbound shipment.
  * @member {String} shipmentName
+ * @type {String}
  */
 InboundShipmentInfo.prototype.shipmentName = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/Address} shipFromAddress
+ * @type {module:fulfillmentinbound_v0/model/Address}
  */
 InboundShipmentInfo.prototype.shipFromAddress = undefined
 
 /**
  * An Amazon fulfillment center identifier created by Amazon.
  * @member {String} destinationFulfillmentCenterId
+ * @type {String}
  */
 InboundShipmentInfo.prototype.destinationFulfillmentCenterId = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/ShipmentStatus} shipmentStatus
+ * @type {module:fulfillmentinbound_v0/model/ShipmentStatus}
  */
 InboundShipmentInfo.prototype.shipmentStatus = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/LabelPrepType} labelPrepType
+ * @type {module:fulfillmentinbound_v0/model/LabelPrepType}
  */
 InboundShipmentInfo.prototype.labelPrepType = undefined
 
 /**
  * Indicates whether or not an inbound shipment contains case-packed boxes. When AreCasesRequired = true for an inbound shipment, all items in the inbound shipment must be case packed.
  * @member {Boolean} areCasesRequired
+ * @type {Boolean}
  */
 InboundShipmentInfo.prototype.areCasesRequired = undefined
 
 /**
  * Type containing date in string format
  * @member {Date} confirmedNeedByDate
+ * @type {Date}
  */
 InboundShipmentInfo.prototype.confirmedNeedByDate = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/BoxContentsSource} boxContentsSource
+ * @type {module:fulfillmentinbound_v0/model/BoxContentsSource}
  */
 InboundShipmentInfo.prototype.boxContentsSource = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/BoxContentsFeeDetails} estimatedBoxContentsFee
+ * @type {module:fulfillmentinbound_v0/model/BoxContentsFeeDetails}
  */
 InboundShipmentInfo.prototype.estimatedBoxContentsFee = undefined

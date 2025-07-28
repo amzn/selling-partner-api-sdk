@@ -63,11 +63,13 @@ export class RejectionReason {
 /**
  * The unique identifier for the rejection reason.
  * @member {String} rejectionReasonId
+ * @type {String}
  */
 RejectionReason.prototype.rejectionReasonId = undefined
 
 /**
  * The description of this rejection reason.
  * @member {String} rejectionReasonDescription
+ * @type {String}
  */
 RejectionReason.prototype.rejectionReasonDescription = undefined

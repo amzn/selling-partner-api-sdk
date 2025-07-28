@@ -25,7 +25,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class AccountsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -70,7 +70,7 @@ export class AccountsApi {
      * Find particular Amazon Seller Wallet account by Amazon account identifier
      * Retrieve an Amazon Seller Wallet bank account by Amazon account identifier.
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/BankAccount} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/BankAccount>}
      */
   getAccountWithHttpInfo (accountId) {
     const postBody = null
@@ -105,7 +105,7 @@ export class AccountsApi {
      * Find particular Amazon Seller Wallet account by Amazon account identifier
      * Retrieve an Amazon Seller Wallet bank account by Amazon account identifier.
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/BankAccount}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/BankAccount>}
      */
   getAccount (accountId) {
     return this.getAccountWithHttpInfo(accountId)
@@ -118,7 +118,7 @@ export class AccountsApi {
      * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      * Retrieve the balance in a given Amazon Seller Wallet bank account.
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/BalanceListing} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/BalanceListing>}
      */
   listAccountBalancesWithHttpInfo (accountId) {
     const postBody = null
@@ -153,7 +153,7 @@ export class AccountsApi {
      * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
      * Retrieve the balance in a given Amazon Seller Wallet bank account.
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/BalanceListing}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/BalanceListing>}
      */
   listAccountBalances (accountId) {
     return this.listAccountBalancesWithHttpInfo(accountId)
@@ -166,7 +166,7 @@ export class AccountsApi {
      * Get all Amazon Seller Wallet accounts for the seller
      * Get all Seller Wallet accounts for a given seller.
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/BankAccountListing} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/BankAccountListing>}
      */
   listAccountsWithHttpInfo (marketplaceId) {
     const postBody = null
@@ -201,7 +201,7 @@ export class AccountsApi {
      * Get all Amazon Seller Wallet accounts for the seller
      * Get all Seller Wallet accounts for a given seller.
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/BankAccountListing}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/BankAccountListing>}
      */
   listAccounts (marketplaceId) {
     return this.listAccountsWithHttpInfo(marketplaceId)

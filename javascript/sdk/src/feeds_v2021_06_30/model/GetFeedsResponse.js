@@ -62,11 +62,13 @@ export class GetFeedsResponse {
 /**
  * A list of feeds.
  * @member {Array.<module:feeds_v2021_06_30/model/Feed>} feeds
+ * @type {Array.<module:feeds_v2021_06_30/model/Feed>}
  */
 GetFeedsResponse.prototype.feeds = undefined
 
 /**
  * Returned when the number of results exceeds pageSize. To get the next page of results, call the getFeeds operation with this token as the only parameter.
  * @member {String} nextToken
+ * @type {String}
  */
 GetFeedsResponse.prototype.nextToken = undefined

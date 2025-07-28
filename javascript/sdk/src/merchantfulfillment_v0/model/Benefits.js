@@ -60,11 +60,13 @@ export class Benefits {
 /**
  * A list of included benefits.
  * @member {Array.<String>} includedBenefits
+ * @type {Array.<String>}
  */
 Benefits.prototype.includedBenefits = undefined
 
 /**
  * A list of excluded benefits. Refer to the `ExcludeBenefit` object for further documentation.
  * @member {Array.<module:merchantfulfillment_v0/model/ExcludedBenefit>} excludedBenefits
+ * @type {Array.<module:merchantfulfillment_v0/model/ExcludedBenefit>}
  */
 Benefits.prototype.excludedBenefits = undefined

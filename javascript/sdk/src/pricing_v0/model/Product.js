@@ -68,34 +68,40 @@ export class Product {
 
 /**
  * @member {module:pricing_v0/model/IdentifierType} identifiers
+ * @type {module:pricing_v0/model/IdentifierType}
  */
 Product.prototype.identifiers = undefined
 
 /**
  * A list of product attributes if they are applicable to the product that is returned.
  * @member {Array.<Object>} attributeSets
+ * @type {Array.<Object>}
  */
 Product.prototype.attributeSets = undefined
 
 /**
  * A list that contains product variation information, if applicable.
  * @member {Array.<Object>} relationships
+ * @type {Array.<Object>}
  */
 Product.prototype.relationships = undefined
 
 /**
  * @member {module:pricing_v0/model/CompetitivePricingType} competitivePricing
+ * @type {module:pricing_v0/model/CompetitivePricingType}
  */
 Product.prototype.competitivePricing = undefined
 
 /**
  * A list of sales rank information for the item, by category.
  * @member {Array.<module:pricing_v0/model/SalesRankType>} salesRankings
+ * @type {Array.<module:pricing_v0/model/SalesRankType>}
  */
 Product.prototype.salesRankings = undefined
 
 /**
  * A list of offers.
  * @member {Array.<module:pricing_v0/model/OfferType>} offers
+ * @type {Array.<module:pricing_v0/model/OfferType>}
  */
 Product.prototype.offers = undefined

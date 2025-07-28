@@ -58,5 +58,6 @@ export class GenerateCollectionFormResponse {
 
 /**
  * @member {module:shipping_v2/model/CollectionsFormDocument} collectionsFormDocument
+ * @type {module:shipping_v2/model/CollectionsFormDocument}
  */
 GenerateCollectionFormResponse.prototype.collectionsFormDocument = undefined

@@ -63,11 +63,13 @@ export class Attachment {
 /**
  * The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.
  * @member {String} uploadDestinationId
+ * @type {String}
  */
 Attachment.prototype.uploadDestinationId = undefined
 
 /**
  * The name of the file, including the extension. This is the file name that will appear in the message. This does not need to match the file name of the file that you uploaded.
  * @member {String} fileName
+ * @type {String}
  */
 Attachment.prototype.fileName = undefined

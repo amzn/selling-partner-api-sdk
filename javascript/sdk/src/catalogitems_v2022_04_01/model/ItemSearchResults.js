@@ -72,21 +72,25 @@ export class ItemSearchResults {
 /**
  * For searches that are based on `identifiers`, `numberOfResults` is the total number of Amazon catalog items found. For searches that are based on `keywords`, `numberOfResults` is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.
  * @member {Number} numberOfResults
+ * @type {Number}
  */
 ItemSearchResults.prototype.numberOfResults = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Pagination} pagination
+ * @type {module:catalogitems_v2022_04_01/model/Pagination}
  */
 ItemSearchResults.prototype.pagination = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Refinements} refinements
+ * @type {module:catalogitems_v2022_04_01/model/Refinements}
  */
 ItemSearchResults.prototype.refinements = undefined
 
 /**
  * A list of items from the Amazon catalog.
  * @member {Array.<module:catalogitems_v2022_04_01/model/Item>} items
+ * @type {Array.<module:catalogitems_v2022_04_01/model/Item>}
  */
 ItemSearchResults.prototype.items = undefined

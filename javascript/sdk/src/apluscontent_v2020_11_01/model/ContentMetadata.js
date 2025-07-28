@@ -74,28 +74,33 @@ export class ContentMetadata {
 /**
  * The A+ Content document's name.
  * @member {String} name
+ * @type {String}
  */
 ContentMetadata.prototype.name = undefined
 
 /**
  * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ContentMetadata.prototype.marketplaceId = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentStatus} status
+ * @type {module:apluscontent_v2020_11_01/model/ContentStatus}
  */
 ContentMetadata.prototype.status = undefined
 
 /**
  * The set of content badges.
  * @member {Array.<module:apluscontent_v2020_11_01/model/ContentBadge>} badgeSet
+ * @type {Array.<module:apluscontent_v2020_11_01/model/ContentBadge>}
  */
 ContentMetadata.prototype.badgeSet = undefined
 
 /**
  * The approximate age of the A+ Content document and metadata.
  * @member {Date} updateTime
+ * @type {Date}
  */
 ContentMetadata.prototype.updateTime = undefined

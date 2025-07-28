@@ -73,29 +73,34 @@ export class IneligibleRate {
 /**
  * An identifier for the shipping service.
  * @member {String} serviceId
+ * @type {String}
  */
 IneligibleRate.prototype.serviceId = undefined
 
 /**
  * The name of the shipping service.
  * @member {String} serviceName
+ * @type {String}
  */
 IneligibleRate.prototype.serviceName = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} carrierName
+ * @type {String}
  */
 IneligibleRate.prototype.carrierName = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
+ * @type {String}
  */
 IneligibleRate.prototype.carrierId = undefined
 
 /**
  * A list of reasons why a shipping service offering is ineligible.
  * @member {Array.<module:shipping_v2/model/IneligibilityReason>} ineligibilityReasons
+ * @type {Array.<module:shipping_v2/model/IneligibilityReason>}
  */
 IneligibleRate.prototype.ineligibilityReasons = undefined

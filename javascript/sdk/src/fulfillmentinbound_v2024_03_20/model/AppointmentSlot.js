@@ -64,10 +64,12 @@ export class AppointmentSlot {
 /**
  * An identifier to a self-ship appointment slot.
  * @member {String} slotId
+ * @type {String}
  */
 AppointmentSlot.prototype.slotId = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime} slotTime
+ * @type {module:fulfillmentinbound_v2024_03_20/model/AppointmentSlotTime}
  */
 AppointmentSlot.prototype.slotTime = undefined

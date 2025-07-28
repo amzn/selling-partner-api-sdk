@@ -67,23 +67,27 @@ export class LinkCarrierAccountRequest {
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
+ * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
  */
 LinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * CarrierAccountType  associated with account.
  * @member {String} carrierAccountType
+ * @type {String}
  */
 LinkCarrierAccountRequest.prototype.carrierAccountType = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
  * @member {Array.<module:shipping_v2/model/CarrierAccountAttribute>} carrierAccountAttributes
+ * @type {Array.<module:shipping_v2/model/CarrierAccountAttribute>}
  */
 LinkCarrierAccountRequest.prototype.carrierAccountAttributes = undefined
 
 /**
  * A list of all attributes required by the carrier in order to successfully link the merchant's account
  * @member {Array.<module:shipping_v2/model/CarrierAccountAttribute>} encryptedCarrierAccountAttributes
+ * @type {Array.<module:shipping_v2/model/CarrierAccountAttribute>}
  */
 LinkCarrierAccountRequest.prototype.encryptedCarrierAccountAttributes = undefined

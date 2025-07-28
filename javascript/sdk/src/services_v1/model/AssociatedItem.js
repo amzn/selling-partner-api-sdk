@@ -65,24 +65,28 @@ export class AssociatedItem {
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
+ * @type {String}
  */
 AssociatedItem.prototype.asin = undefined
 
 /**
  * The title of the item.
  * @member {String} title
+ * @type {String}
  */
 AssociatedItem.prototype.title = undefined
 
 /**
  * The total number of items included in the order.
  * @member {Number} quantity
+ * @type {Number}
  */
 AssociatedItem.prototype.quantity = undefined
 
 /**
  * The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
  * @member {String} orderId
+ * @type {String}
  */
 AssociatedItem.prototype.orderId = undefined
 
@@ -121,16 +125,19 @@ AssociatedItem.ItemStatusEnum = {
 /**
  * The status of the item.
  * @member {module:services_v1/model/AssociatedItem.ItemStatusEnum} itemStatus
+ * @type {module:services_v1/model/AssociatedItem.ItemStatusEnum}
  */
 AssociatedItem.prototype.itemStatus = undefined
 
 /**
  * The brand name of the item.
  * @member {String} brandName
+ * @type {String}
  */
 AssociatedItem.prototype.brandName = undefined
 
 /**
  * @member {module:services_v1/model/ItemDelivery} itemDelivery
+ * @type {module:services_v1/model/ItemDelivery}
  */
 AssociatedItem.prototype.itemDelivery = undefined

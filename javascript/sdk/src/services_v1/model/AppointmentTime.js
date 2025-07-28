@@ -63,11 +63,13 @@ export class AppointmentTime {
 /**
  * The date and time of the start of the appointment window in ISO 8601 format.
  * @member {Date} startTime
+ * @type {Date}
  */
 AppointmentTime.prototype.startTime = undefined
 
 /**
  * The duration of the appointment window, in minutes.
  * @member {Number} durationInMinutes
+ * @type {Number}
  */
 AppointmentTime.prototype.durationInMinutes = undefined

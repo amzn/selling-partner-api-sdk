@@ -79,65 +79,76 @@ export class Item {
 /**
  * The unique identifier of an item in the Amazon catalog.
  * @member {String} asin
+ * @type {String}
  */
 Item.prototype.asin = undefined
 
 /**
- * A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/docs/product-type-definitions-api-v2020-09-01-reference).
+ * A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).
  * @member {Object.<String, Object>} attributes
+ * @type {Object.<String, Object>}
  */
 Item.prototype.attributes = undefined
 
 /**
  * An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by `marketplaceId`.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemBrowseClassificationsByMarketplace>} classifications
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemBrowseClassificationsByMarketplace>}
  */
 Item.prototype.classifications = undefined
 
 /**
  * An array of dimensions that are associated with the item in the Amazon catalog, grouped by `marketplaceId`.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemDimensionsByMarketplace>} dimensions
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemDimensionsByMarketplace>}
  */
 Item.prototype.dimensions = undefined
 
 /**
  * Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemIdentifiersByMarketplace>} identifiers
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemIdentifiersByMarketplace>}
  */
 Item.prototype.identifiers = undefined
 
 /**
  * The images for an item in the Amazon catalog.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemImagesByMarketplace>} images
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemImagesByMarketplace>}
  */
 Item.prototype.images = undefined
 
 /**
  * Product types that are associated with the Amazon catalog item.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemProductTypeByMarketplace>} productTypes
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemProductTypeByMarketplace>}
  */
 Item.prototype.productTypes = undefined
 
 /**
  * Relationships grouped by `marketplaceId` for an Amazon catalog item (for example, variations).
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemRelationshipsByMarketplace>} relationships
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemRelationshipsByMarketplace>}
  */
 Item.prototype.relationships = undefined
 
 /**
  * Sales ranks of an Amazon catalog item.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemSalesRanksByMarketplace>} salesRanks
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemSalesRanksByMarketplace>}
  */
 Item.prototype.salesRanks = undefined
 
 /**
  * Summaries of Amazon catalog items.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace>} summaries
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace>}
  */
 Item.prototype.summaries = undefined
 
 /**
  * The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace>} vendorDetails
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace>}
  */
 Item.prototype.vendorDetails = undefined

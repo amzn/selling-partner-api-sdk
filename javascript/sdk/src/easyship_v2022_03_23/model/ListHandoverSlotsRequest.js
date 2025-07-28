@@ -71,21 +71,25 @@ export class ListHandoverSlotsRequest {
 /**
  * A string of up to 255 characters.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ListHandoverSlotsRequest.prototype.marketplaceId = undefined
 
 /**
  * An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 ListHandoverSlotsRequest.prototype.amazonOrderId = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/Dimensions} packageDimensions
+ * @type {module:easyship_v2022_03_23/model/Dimensions}
  */
 ListHandoverSlotsRequest.prototype.packageDimensions = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/Weight} packageWeight
+ * @type {module:easyship_v2022_03_23/model/Weight}
  */
 ListHandoverSlotsRequest.prototype.packageWeight = undefined

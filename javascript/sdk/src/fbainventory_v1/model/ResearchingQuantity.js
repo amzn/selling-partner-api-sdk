@@ -60,11 +60,13 @@ export class ResearchingQuantity {
 /**
  * The total number of units currently being researched in Amazon's fulfillment network.
  * @member {Number} totalResearchingQuantity
+ * @type {Number}
  */
 ResearchingQuantity.prototype.totalResearchingQuantity = undefined
 
 /**
  * A list of quantity details for items currently being researched.
  * @member {Array.<module:fbainventory_v1/model/ResearchingQuantityEntry>} researchingQuantityBreakdown
+ * @type {Array.<module:fbainventory_v1/model/ResearchingQuantityEntry>}
  */
 ResearchingQuantity.prototype.researchingQuantityBreakdown = undefined

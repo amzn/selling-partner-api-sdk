@@ -67,23 +67,27 @@ export class UnfulfillablePreviewItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type {String}
  */
 UnfulfillablePreviewItem.prototype.sellerSku = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantity
+ * @type {Number}
  */
 UnfulfillablePreviewItem.prototype.quantity = undefined
 
 /**
  * A fulfillment order item identifier created with a call to the `getFulfillmentPreview` operation.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type {String}
  */
 UnfulfillablePreviewItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * String list
  * @member {Array.<String>} itemUnfulfillableReasons
+ * @type {Array.<String>}
  */
 UnfulfillablePreviewItem.prototype.itemUnfulfillableReasons = undefined

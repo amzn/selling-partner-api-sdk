@@ -75,53 +75,62 @@ export class Item {
 /**
  * A selling partner provided identifier for an Amazon listing.
  * @member {String} sku
+ * @type {String}
  */
 Item.prototype.sku = undefined
 
 /**
  * Summary details of a listings item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace>} summaries
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace>}
  */
 Item.prototype.summaries = undefined
 
 /**
  * A JSON object containing structured listings item attribute data keyed by attribute name.
  * @member {Object.<String, Object>} attributes
+ * @type {Object.<String, Object>}
  */
 Item.prototype.attributes = undefined
 
 /**
  * The issues associated with the listings item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/Issue>} issues
+ * @type {Array.<module:listingsitems_v2021_08_01/model/Issue>}
  */
 Item.prototype.issues = undefined
 
 /**
  * Offer details for the listings item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace>} offers
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace>}
  */
 Item.prototype.offers = undefined
 
 /**
  * The fulfillment availability for the listings item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/FulfillmentAvailability>} fulfillmentAvailability
+ * @type {Array.<module:listingsitems_v2021_08_01/model/FulfillmentAvailability>}
  */
 Item.prototype.fulfillmentAvailability = undefined
 
 /**
  * The vendor procurement information for the listings item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemProcurement>} procurement
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemProcurement>}
  */
 Item.prototype.procurement = undefined
 
 /**
  * Relationships for a listing item, by marketplace (for example, variations).
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemRelationshipsByMarketplace>} relationships
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemRelationshipsByMarketplace>}
  */
 Item.prototype.relationships = undefined
 
 /**
  * Product types for a listing item, by marketplace.
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemProductTypeByMarketplace>} productTypes
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemProductTypeByMarketplace>}
  */
 Item.prototype.productTypes = undefined

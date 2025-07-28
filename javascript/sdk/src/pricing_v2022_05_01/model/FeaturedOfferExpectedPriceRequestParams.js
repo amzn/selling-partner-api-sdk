@@ -65,16 +65,19 @@ export class FeaturedOfferExpectedPriceRequestParams {
 /**
  * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.marketplaceId = undefined
 
 /**
  * The seller SKU of the item.
  * @member {String} sku
+ * @type {String}
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.sku = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Segment} segment
+ * @type {module:pricing_v2022_05_01/model/Segment}
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.segment = undefined

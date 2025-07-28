@@ -62,22 +62,26 @@ export class ShipmentMeasurements {
 
 /**
  * @member {module:vendorshipments_v1/model/Weight} grossShipmentWeight
+ * @type {module:vendorshipments_v1/model/Weight}
  */
 ShipmentMeasurements.prototype.grossShipmentWeight = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Volume} shipmentVolume
+ * @type {module:vendorshipments_v1/model/Volume}
  */
 ShipmentMeasurements.prototype.shipmentVolume = undefined
 
 /**
  * Number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.
  * @member {Number} cartonCount
+ * @type {Number}
  */
 ShipmentMeasurements.prototype.cartonCount = undefined
 
 /**
  * Number of pallets present in the shipment. Provide the palletCount only for palletized shipments.
  * @member {Number} palletCount
+ * @type {Number}
  */
 ShipmentMeasurements.prototype.palletCount = undefined

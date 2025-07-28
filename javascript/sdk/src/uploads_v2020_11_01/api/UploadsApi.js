@@ -22,7 +22,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-11-01
 */
 export class UploadsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -68,7 +68,7 @@ export class UploadsApi {
      * @param {String} resource The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.
      * @param {Object} opts Optional parameters
      * @param {String} opts.contentType The content type of the file you upload.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:uploads_v2020_11_01/model/CreateUploadDestinationResponse} and HTTP response
+     * @return {Promise<module:uploads_v2020_11_01/model/CreateUploadDestinationResponse>}
      */
   createUploadDestinationForResourceWithHttpInfo (marketplaceIds, contentMD5, resource, opts) {
     opts = opts || {}
@@ -120,7 +120,7 @@ export class UploadsApi {
      * @param {String} resource The upload destination for your resource. For example, if you create an upload destination for the &#x60;createLegalDisclosure&#x60; operation of the Messaging API, the &#x60;{resource}&#x60; would be &#x60;/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;, and the entire path would be &#x60;/uploads/2020-11-01/uploadDestinations/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure&#x60;. If you create an upload destination for an Aplus content document, the &#x60;{resource}&#x60; would be &#x60;aplus/2020-11-01/contentDocuments&#x60; and the path would be &#x60;/uploads/2020-11-01/uploadDestinations/aplus/2020-11-01/contentDocuments&#x60;.
      * @param {Object} opts Optional parameters
      * @param {String} opts.contentType The content type of the file you upload.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:uploads_v2020_11_01/model/CreateUploadDestinationResponse}
+     * @return {Promise<module:uploads_v2020_11_01/model/CreateUploadDestinationResponse>}
      */
   createUploadDestinationForResource (marketplaceIds, contentMD5, resource, opts) {
     return this.createUploadDestinationForResourceWithHttpInfo(marketplaceIds, contentMD5, resource, opts)

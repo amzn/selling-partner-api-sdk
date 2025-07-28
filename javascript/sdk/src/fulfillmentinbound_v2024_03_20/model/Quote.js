@@ -62,17 +62,20 @@ export class Quote {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Currency} cost
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Currency}
  */
 Quote.prototype.cost = undefined
 
 /**
  * The time at which this transportation option quote expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
  * @member {Date} expiration
+ * @type {Date}
  */
 Quote.prototype.expiration = undefined
 
 /**
  * Voidable until timestamp.
  * @member {Date} voidableUntil
+ * @type {Date}
  */
 Quote.prototype.voidableUntil = undefined

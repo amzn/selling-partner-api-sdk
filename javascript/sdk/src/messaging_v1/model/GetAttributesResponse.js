@@ -60,11 +60,13 @@ export class GetAttributesResponse {
 
 /**
  * @member {module:messaging_v1/model/GetAttributesResponseBuyer} buyer
+ * @type {module:messaging_v1/model/GetAttributesResponseBuyer}
  */
 GetAttributesResponse.prototype.buyer = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:messaging_v1/model/Error>} errors
+ * @type {Array.<module:messaging_v1/model/Error>}
  */
 GetAttributesResponse.prototype.errors = undefined

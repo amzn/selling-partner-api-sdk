@@ -58,5 +58,6 @@ export class BuyerCustomizedInfoDetail {
 /**
  * The location of a ZIP file containing Amazon Custom data.
  * @member {String} customizedURL
+ * @type {String}
  */
 BuyerCustomizedInfoDetail.prototype.customizedURL = undefined

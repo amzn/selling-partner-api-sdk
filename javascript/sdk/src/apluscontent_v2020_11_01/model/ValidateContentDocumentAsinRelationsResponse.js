@@ -69,12 +69,14 @@ export class ValidateContentDocumentAsinRelationsResponse {
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 ValidateContentDocumentAsinRelationsResponse.prototype.warnings = undefined
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} errors
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 ValidateContentDocumentAsinRelationsResponse.prototype.errors = undefined
 
@@ -82,6 +84,7 @@ ValidateContentDocumentAsinRelationsResponse.prototype.errors = undefined
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 AplusResponse.prototype.warnings = undefined
 
@@ -89,5 +92,6 @@ AplusResponse.prototype.warnings = undefined
 /**
  * A list of error responses that are returned when a request is unsuccessful.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} errors
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 ErrorList.prototype.errors = undefined

@@ -64,11 +64,13 @@ export class ValidVerificationDetail {
 /**
  * A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: `prescriptionDetail`.
  * @member {String} verificationDetailType
+ * @type {String}
  */
 ValidVerificationDetail.prototype.verificationDetailType = undefined
 
 /**
  * A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
  * @member {Array.<module:orders_v0/model/VerificationStatus>} validVerificationStatuses
+ * @type {Array.<module:orders_v0/model/VerificationStatus>}
  */
 ValidVerificationDetail.prototype.validVerificationStatuses = undefined

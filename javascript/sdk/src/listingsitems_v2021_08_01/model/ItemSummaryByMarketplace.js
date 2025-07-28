@@ -78,18 +78,21 @@ export class ItemSummaryByMarketplace {
 /**
  * A marketplace identifier. Identifies the Amazon marketplace for the listings item.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Amazon Standard Identification Number (ASIN) of the listings item.
  * @member {String} asin
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.asin = undefined
 
 /**
  * The Amazon product type of the listings item.
  * @member {String} productType
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.productType = undefined
 
@@ -182,6 +185,7 @@ ItemSummaryByMarketplace.ConditionTypeEnum = {
 /**
  * Identifies the condition of the listings item.
  * @member {module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.ConditionTypeEnum} conditionType
+ * @type {module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.ConditionTypeEnum}
  */
 ItemSummaryByMarketplace.prototype.conditionType = undefined
 
@@ -208,34 +212,40 @@ ItemSummaryByMarketplace.StatusEnum = {
 /**
  * Statuses that apply to the listings item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.StatusEnum>} status
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.StatusEnum>}
  */
 ItemSummaryByMarketplace.prototype.status = undefined
 
 /**
  * The fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.
  * @member {String} fnSku
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.fnSku = undefined
 
 /**
  * The name or title associated with an Amazon catalog item.
  * @member {String} itemName
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.itemName = undefined
 
 /**
  * The date the listings item was created in ISO 8601 format.
  * @member {Date} createdDate
+ * @type {Date}
  */
 ItemSummaryByMarketplace.prototype.createdDate = undefined
 
 /**
  * The date the listings item was last updated in ISO 8601 format.
  * @member {Date} lastUpdatedDate
+ * @type {Date}
  */
 ItemSummaryByMarketplace.prototype.lastUpdatedDate = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/ItemImage} mainImage
+ * @type {module:listingsitems_v2021_08_01/model/ItemImage}
  */
 ItemSummaryByMarketplace.prototype.mainImage = undefined

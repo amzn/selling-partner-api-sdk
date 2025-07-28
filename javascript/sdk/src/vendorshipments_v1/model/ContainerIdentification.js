@@ -101,11 +101,13 @@ ContainerIdentification.ContainerIdentificationTypeEnum = {
 /**
  * The container identification type.
  * @member {module:vendorshipments_v1/model/ContainerIdentification.ContainerIdentificationTypeEnum} containerIdentificationType
+ * @type {module:vendorshipments_v1/model/ContainerIdentification.ContainerIdentificationTypeEnum}
  */
 ContainerIdentification.prototype.containerIdentificationType = undefined
 
 /**
  * Container identification number that adheres to the definition of the container identification type.
  * @member {String} containerIdentificationNumber
+ * @type {String}
  */
 ContainerIdentification.prototype.containerIdentificationNumber = undefined

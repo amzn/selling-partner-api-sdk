@@ -67,16 +67,19 @@ export class ImageComponent {
 /**
  * This identifier is provided by the [Uploads API](https://developer-docs.amazon.com/sp-api/reference/welcome-to-api-references).
  * @member {String} uploadDestinationId
+ * @type {String}
  */
 ImageComponent.prototype.uploadDestinationId = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageCropSpecification} imageCropSpecification
+ * @type {module:apluscontent_v2020_11_01/model/ImageCropSpecification}
  */
 ImageComponent.prototype.imageCropSpecification = undefined
 
 /**
  * The alternative text for the image.
  * @member {String} altText
+ * @type {String}
  */
 ImageComponent.prototype.altText = undefined

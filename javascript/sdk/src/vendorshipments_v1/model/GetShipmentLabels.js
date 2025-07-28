@@ -60,11 +60,13 @@ export class GetShipmentLabels {
 
 /**
  * @member {module:vendorshipments_v1/model/TransportationLabels} payload
+ * @type {module:vendorshipments_v1/model/TransportationLabels}
  */
 GetShipmentLabels.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:vendorshipments_v1/model/Error>} errors
+ * @type {Array.<module:vendorshipments_v1/model/Error>}
  */
 GetShipmentLabels.prototype.errors = undefined

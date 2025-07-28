@@ -65,17 +65,20 @@ export class RangeSlotCapacityQuery {
 /**
  * An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.
  * @member {Array.<module:services_v1/model/CapacityType>} capacityTypes
+ * @type {Array.<module:services_v1/model/CapacityType>}
  */
 RangeSlotCapacityQuery.prototype.capacityTypes = undefined
 
 /**
  * Start date time from which the capacity slots are being requested in ISO 8601 format.
  * @member {Date} startDateTime
+ * @type {Date}
  */
 RangeSlotCapacityQuery.prototype.startDateTime = undefined
 
 /**
  * End date time up to which the capacity slots are being requested in ISO 8601 format.
  * @member {Date} endDateTime
+ * @type {Date}
  */
 RangeSlotCapacityQuery.prototype.endDateTime = undefined

@@ -75,12 +75,14 @@ export class FulfillmentShipment {
 /**
  * A shipment identifier assigned by Amazon.
  * @member {String} amazonShipmentId
+ * @type {String}
  */
 FulfillmentShipment.prototype.amazonShipmentId = undefined
 
 /**
  * An identifier for the fulfillment center that the shipment will be sent from.
  * @member {String} fulfillmentCenterId
+ * @type {String}
  */
 FulfillmentShipment.prototype.fulfillmentCenterId = undefined
 
@@ -119,35 +121,41 @@ FulfillmentShipment.FulfillmentShipmentStatusEnum = {
 /**
  * The current status of the shipment.
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment.FulfillmentShipmentStatusEnum} fulfillmentShipmentStatus
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment.FulfillmentShipmentStatusEnum}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentStatus = undefined
 
 /**
  * Date timestamp
  * @member {Date} shippingDate
+ * @type {Date}
  */
 FulfillmentShipment.prototype.shippingDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} estimatedArrivalDate
+ * @type {Date}
  */
 FulfillmentShipment.prototype.estimatedArrivalDate = undefined
 
 /**
  * Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren't available.
  * @member {Array.<String>} shippingNotes
+ * @type {Array.<String>}
  */
 FulfillmentShipment.prototype.shippingNotes = undefined
 
 /**
  * An array of fulfillment shipment item information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentItem>} fulfillmentShipmentItem
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentItem>}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentItem = undefined
 
 /**
  * An array of fulfillment shipment package information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentPackage>} fulfillmentShipmentPackage
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentPackage>}
  */
 FulfillmentShipment.prototype.fulfillmentShipmentPackage = undefined

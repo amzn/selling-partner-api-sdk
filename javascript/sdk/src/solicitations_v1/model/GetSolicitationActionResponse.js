@@ -64,21 +64,25 @@ export class GetSolicitationActionResponse {
 
 /**
  * @member {module:solicitations_v1/model/GetSolicitationActionResponseLinks} links
+ * @type {module:solicitations_v1/model/GetSolicitationActionResponseLinks}
  */
 GetSolicitationActionResponse.prototype.links = undefined
 
 /**
  * @member {module:solicitations_v1/model/GetSolicitationActionResponseEmbedded} embedded
+ * @type {module:solicitations_v1/model/GetSolicitationActionResponseEmbedded}
  */
 GetSolicitationActionResponse.prototype.embedded = undefined
 
 /**
  * @member {module:solicitations_v1/model/SolicitationsAction} payload
+ * @type {module:solicitations_v1/model/SolicitationsAction}
  */
 GetSolicitationActionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:solicitations_v1/model/Error>} errors
+ * @type {Array.<module:solicitations_v1/model/Error>}
  */
 GetSolicitationActionResponse.prototype.errors = undefined

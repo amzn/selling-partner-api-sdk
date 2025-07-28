@@ -66,17 +66,20 @@ export class TrackingAddress {
 /**
  * The city.
  * @member {String} city
+ * @type {String}
  */
 TrackingAddress.prototype.city = undefined
 
 /**
  * The state.
  * @member {String} state
+ * @type {String}
  */
 TrackingAddress.prototype.state = undefined
 
 /**
  * The country.
  * @member {String} country
+ * @type {String}
  */
 TrackingAddress.prototype.country = undefined

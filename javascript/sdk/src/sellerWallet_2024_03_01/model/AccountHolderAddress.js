@@ -74,41 +74,48 @@ export class AccountHolderAddress {
 /**
  * Address Line 1 of the public address.
  * @member {String} addressLine1
+ * @type {String}
  */
 AccountHolderAddress.prototype.addressLine1 = undefined
 
 /**
  * Address Line 2 of the public address.
  * @member {String} addressLine2
+ * @type {String}
  */
 AccountHolderAddress.prototype.addressLine2 = undefined
 
 /**
  * City name of the public address.
  * @member {String} city
+ * @type {String}
  */
 AccountHolderAddress.prototype.city = undefined
 
 /**
  * State name of the public address. This will be state or region for CN (China) based addresses.
  * @member {String} state
+ * @type {String}
  */
 AccountHolderAddress.prototype.state = undefined
 
 /**
  * Postal code of the public address.
  * @member {String} postalCode
+ * @type {String}
  */
 AccountHolderAddress.prototype.postalCode = undefined
 
 /**
  * Country name of the public address.
  * @member {String} country
+ * @type {String}
  */
 AccountHolderAddress.prototype.country = undefined
 
 /**
  * The two digit country code, in ISO 3166 format.
  * @member {String} countryCode
+ * @type {String}
  */
 AccountHolderAddress.prototype.countryCode = undefined

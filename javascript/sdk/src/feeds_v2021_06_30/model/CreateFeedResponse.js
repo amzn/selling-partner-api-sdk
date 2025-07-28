@@ -60,5 +60,6 @@ export class CreateFeedResponse {
 /**
  * The identifier for the feed. This identifier is unique only in combination with a seller ID.
  * @member {String} feedId
+ * @type {String}
  */
 CreateFeedResponse.prototype.feedId = undefined

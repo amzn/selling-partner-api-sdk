@@ -65,41 +65,48 @@ export class OperatingHoursByDay {
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} monday
+ * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
  */
 OperatingHoursByDay.prototype.monday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} tuesday
+ * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
  */
 OperatingHoursByDay.prototype.tuesday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} wednesday
+ * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
  */
 OperatingHoursByDay.prototype.wednesday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} thursday
+ * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
  */
 OperatingHoursByDay.prototype.thursday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} friday
+ * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
  */
 OperatingHoursByDay.prototype.friday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} saturday
+ * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
  */
 OperatingHoursByDay.prototype.saturday = undefined
 
 /**
  * A list of Operating Hours.
  * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} sunday
+ * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
  */
 OperatingHoursByDay.prototype.sunday = undefined

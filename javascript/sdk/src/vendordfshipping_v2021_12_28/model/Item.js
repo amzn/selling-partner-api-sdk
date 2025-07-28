@@ -66,22 +66,26 @@ export class Item {
 /**
  * The sequence number of the item. The number must be the same as the order number of the item.
  * @member {Number} itemSequenceNumber
+ * @type {Number}
  */
 Item.prototype.itemSequenceNumber = undefined
 
 /**
  * The buyer's Amazon Standard Identification Number (ASIN) of an item. Either `buyerProductIdentifier` or `vendorProductIdentifier` is required.
  * @member {String} buyerProductIdentifier
+ * @type {String}
  */
 Item.prototype.buyerProductIdentifier = undefined
 
 /**
  * An item's product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order.
  * @member {String} vendorProductIdentifier
+ * @type {String}
  */
 Item.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/ItemQuantity} shippedQuantity
+ * @type {module:vendordfshipping_v2021_12_28/model/ItemQuantity}
  */
 Item.prototype.shippedQuantity = undefined

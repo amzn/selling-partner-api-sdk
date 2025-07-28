@@ -68,16 +68,19 @@ export class CreateScheduledPackagesRequest {
 /**
  * A string of up to 255 characters.
  * @member {String} marketplaceId
+ * @type {String}
  */
 CreateScheduledPackagesRequest.prototype.marketplaceId = undefined
 
 /**
  * An array allowing users to specify orders to be scheduled.
  * @member {Array.<module:easyship_v2022_03_23/model/OrderScheduleDetails>} orderScheduleDetailsList
+ * @type {Array.<module:easyship_v2022_03_23/model/OrderScheduleDetails>}
  */
 CreateScheduledPackagesRequest.prototype.orderScheduleDetailsList = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/LabelFormat} labelFormat
+ * @type {module:easyship_v2022_03_23/model/LabelFormat}
  */
 CreateScheduledPackagesRequest.prototype.labelFormat = undefined

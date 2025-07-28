@@ -23,7 +23,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-08-01
 */
 export class ListingsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -70,7 +70,7 @@ export class ListingsApi {
      * @param {Object} opts Optional parameters
      * @param {module:listingsrestrictions_v2021_08_01/model/String} opts.conditionType The condition used to filter restrictions.
      * @param {String} opts.reasonLocale A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:listingsrestrictions_v2021_08_01/model/RestrictionList} and HTTP response
+     * @return {Promise<module:listingsrestrictions_v2021_08_01/model/RestrictionList>}
      */
   getListingsRestrictionsWithHttpInfo (asin, sellerId, marketplaceIds, opts) {
     opts = opts || {}
@@ -124,7 +124,7 @@ export class ListingsApi {
      * @param {Object} opts Optional parameters
      * @param {module:listingsrestrictions_v2021_08_01/model/String} opts.conditionType The condition used to filter restrictions.
      * @param {String} opts.reasonLocale A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:listingsrestrictions_v2021_08_01/model/RestrictionList}
+     * @return {Promise<module:listingsrestrictions_v2021_08_01/model/RestrictionList>}
      */
   getListingsRestrictions (asin, sellerId, marketplaceIds, opts) {
     return this.getListingsRestrictionsWithHttpInfo(asin, sellerId, marketplaceIds, opts)

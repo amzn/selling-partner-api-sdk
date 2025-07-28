@@ -64,10 +64,12 @@ export class BatchResponse {
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
  * @member {Object.<String, String>} headers
+ * @type {Object.<String, String>}
  */
 BatchResponse.prototype.headers = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/HttpStatusLine} status
+ * @type {module:pricing_v2022_05_01/model/HttpStatusLine}
  */
 BatchResponse.prototype.status = undefined

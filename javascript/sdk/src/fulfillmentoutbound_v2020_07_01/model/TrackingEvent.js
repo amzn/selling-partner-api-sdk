@@ -71,21 +71,25 @@ export class TrackingEvent {
 /**
  * Date timestamp
  * @member {Date} eventDate
+ * @type {Date}
  */
 TrackingEvent.prototype.eventDate = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress} eventAddress
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress}
  */
 TrackingEvent.prototype.eventAddress = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/EventCode} eventCode
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/EventCode}
  */
 TrackingEvent.prototype.eventCode = undefined
 
 /**
  * A description for the corresponding event code.
  * @member {String} eventDescription
+ * @type {String}
  */
 TrackingEvent.prototype.eventDescription = undefined

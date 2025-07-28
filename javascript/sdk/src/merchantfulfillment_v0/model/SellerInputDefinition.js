@@ -77,39 +77,46 @@ export class SellerInputDefinition {
 /**
  * When true, the additional input field is required.
  * @member {Boolean} isRequired
+ * @type {Boolean}
  */
 SellerInputDefinition.prototype.isRequired = undefined
 
 /**
  * The data type of the additional input field.
  * @member {String} dataType
+ * @type {String}
  */
 SellerInputDefinition.prototype.dataType = undefined
 
 /**
  * List of constraints.
  * @member {Array.<module:merchantfulfillment_v0/model/Constraint>} constraints
+ * @type {Array.<module:merchantfulfillment_v0/model/Constraint>}
  */
 SellerInputDefinition.prototype.constraints = undefined
 
 /**
  * The display text for the additional input field.
  * @member {String} inputDisplayText
+ * @type {String}
  */
 SellerInputDefinition.prototype.inputDisplayText = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/InputTargetType} inputTarget
+ * @type {module:merchantfulfillment_v0/model/InputTargetType}
  */
 SellerInputDefinition.prototype.inputTarget = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/AdditionalSellerInput} storedValue
+ * @type {module:merchantfulfillment_v0/model/AdditionalSellerInput}
  */
 SellerInputDefinition.prototype.storedValue = undefined
 
 /**
  * The set of fixed values in an additional seller input.
  * @member {Array.<String>} restrictedSetValues
+ * @type {Array.<String>}
  */
 SellerInputDefinition.prototype.restrictedSetValues = undefined

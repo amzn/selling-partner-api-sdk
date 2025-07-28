@@ -59,6 +59,7 @@ export class ChargeComponent {
 
 /**
  * @member {module:shipping_v2/model/Currency} amount
+ * @type {module:shipping_v2/model/Currency}
  */
 ChargeComponent.prototype.amount = undefined
 
@@ -85,5 +86,6 @@ ChargeComponent.ChargeTypeEnum = {
 /**
  * The type of charge.
  * @member {module:shipping_v2/model/ChargeComponent.ChargeTypeEnum} chargeType
+ * @type {module:shipping_v2/model/ChargeComponent.ChargeTypeEnum}
  */
 ChargeComponent.prototype.chargeType = undefined

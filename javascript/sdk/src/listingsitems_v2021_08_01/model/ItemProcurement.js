@@ -60,5 +60,6 @@ export class ItemProcurement {
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Money} costPrice
+ * @type {module:listingsitems_v2021_08_01/model/Money}
  */
 ItemProcurement.prototype.costPrice = undefined

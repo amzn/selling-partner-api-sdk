@@ -64,17 +64,20 @@ export class Feature {
 /**
  * The feature name.
  * @member {String} featureName
+ * @type {String}
  */
 Feature.prototype.featureName = undefined
 
 /**
  * The feature description.
  * @member {String} featureDescription
+ * @type {String}
  */
 Feature.prototype.featureDescription = undefined
 
 /**
  * When true, indicates that the seller is eligible to use the feature.
  * @member {Boolean} sellerEligible
+ * @type {Boolean}
  */
 Feature.prototype.sellerEligible = undefined

@@ -61,11 +61,13 @@ export class InvoiceData {
 /**
  * A string of up to 255 characters.
  * @member {String} invoiceNumber
+ * @type {String}
  */
 InvoiceData.prototype.invoiceNumber = undefined
 
 /**
  * A datetime value in ISO 8601 format.
  * @member {Date} invoiceDate
+ * @type {Date}
  */
 InvoiceData.prototype.invoiceDate = undefined

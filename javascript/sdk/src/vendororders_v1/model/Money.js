@@ -60,12 +60,14 @@ export class Money {
 /**
  * Three digit currency code in ISO 4217 format. String of length 3.
  * @member {String} currencyCode
+ * @type {String}
  */
 Money.prototype.currencyCode = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
  * @member {String} amount
+ * @type {String}
  */
 Money.prototype.amount = undefined
 
@@ -104,5 +106,6 @@ Money.UnitOfMeasureEnum = {
 /**
  * The unit of measure for prices of items sold by weight. If this field is absent, the item is sold by eaches.
  * @member {module:vendororders_v1/model/Money.UnitOfMeasureEnum} unitOfMeasure
+ * @type {module:vendororders_v1/model/Money.UnitOfMeasureEnum}
  */
 Money.prototype.unitOfMeasure = undefined

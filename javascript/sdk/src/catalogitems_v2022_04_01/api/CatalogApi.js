@@ -24,7 +24,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2022-04-01
 */
 export class CatalogApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -65,13 +65,13 @@ export class CatalogApi {
   }
 
   /**
-     * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {Array.<String>} marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {Array.<module:catalogitems_v2022_04_01/model/String>} opts.includedData A comma-delimited list of datasets to include in the response.
      * @param {String} opts.locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:catalogitems_v2022_04_01/model/Item} and HTTP response
+     * @return {Promise<module:catalogitems_v2022_04_01/model/Item>}
      */
   getCatalogItemWithHttpInfo (asin, marketplaceIds, opts) {
     opts = opts || {}
@@ -112,13 +112,13 @@ export class CatalogApi {
   }
 
   /**
-     * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Retrieves details for an item in the Amazon catalog.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {Array.<String>} marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {Array.<module:catalogitems_v2022_04_01/model/String>} opts.includedData A comma-delimited list of datasets to include in the response.
      * @param {String} opts.locale The locale for which you want to retrieve localized summaries. Defaults to the primary locale of the marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:catalogitems_v2022_04_01/model/Item}
+     * @return {Promise<module:catalogitems_v2022_04_01/model/Item>}
      */
   getCatalogItem (asin, marketplaceIds, opts) {
     return this.getCatalogItemWithHttpInfo(asin, marketplaceIds, opts)
@@ -128,7 +128,7 @@ export class CatalogApi {
   }
 
   /**
-     * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by keywords.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by keywords.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.identifiers A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request.
@@ -142,7 +142,7 @@ export class CatalogApi {
      * @param {Number} opts.pageSize The number of results to include on each page. (default to 10)
      * @param {String} opts.pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
      * @param {String} opts.keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:catalogitems_v2022_04_01/model/ItemSearchResults} and HTTP response
+     * @return {Promise<module:catalogitems_v2022_04_01/model/ItemSearchResults>}
      */
   searchCatalogItemsWithHttpInfo (marketplaceIds, opts) {
     opts = opts || {}
@@ -186,7 +186,7 @@ export class CatalogApi {
   }
 
   /**
-     * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by keywords.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Search for a list of Amazon catalog items and item-related information. You can search by identifier or by keywords.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} marketplaceIds A comma-delimited list of Amazon marketplace identifiers. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.identifiers A comma-delimited list of product identifiers that you can use to search the Amazon catalog. **Note:** You cannot include &#x60;identifiers&#x60; and &#x60;keywords&#x60; in the same request.
@@ -200,7 +200,7 @@ export class CatalogApi {
      * @param {Number} opts.pageSize The number of results to include on each page. (default to 10)
      * @param {String} opts.pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
      * @param {String} opts.keywordsLocale The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:catalogitems_v2022_04_01/model/ItemSearchResults}
+     * @return {Promise<module:catalogitems_v2022_04_01/model/ItemSearchResults>}
      */
   searchCatalogItems (marketplaceIds, opts) {
     return this.searchCatalogItemsWithHttpInfo(marketplaceIds, opts)

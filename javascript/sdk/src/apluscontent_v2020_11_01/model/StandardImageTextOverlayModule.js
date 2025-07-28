@@ -62,10 +62,12 @@ export class StandardImageTextOverlayModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ColorType} overlayColorType
+ * @type {module:apluscontent_v2020_11_01/model/ColorType}
  */
 StandardImageTextOverlayModule.prototype.overlayColorType = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
  */
 StandardImageTextOverlayModule.prototype.block = undefined

@@ -60,11 +60,13 @@ export class GetSupplySourcesResponse {
 /**
  * The list of `SupplySource`s.
  * @member {Array.<module:supplysources_v2020_07_01/model/SupplySourceListInner>} supplySources
+ * @type {Array.<module:supplysources_v2020_07_01/model/SupplySourceListInner>}
  */
 GetSupplySourcesResponse.prototype.supplySources = undefined
 
 /**
  * If present, use this pagination token to retrieve the next page of supply sources.
  * @member {String} nextPageToken
+ * @type {String}
  */
 GetSupplySourcesResponse.prototype.nextPageToken = undefined

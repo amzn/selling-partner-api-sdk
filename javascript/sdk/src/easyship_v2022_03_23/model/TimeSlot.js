@@ -64,22 +64,26 @@ export class TimeSlot {
 /**
  * A string of up to 255 characters.
  * @member {String} slotId
+ * @type {String}
  */
 TimeSlot.prototype.slotId = undefined
 
 /**
  * A datetime value in ISO 8601 format.
  * @member {Date} startTime
+ * @type {Date}
  */
 TimeSlot.prototype.startTime = undefined
 
 /**
  * A datetime value in ISO 8601 format.
  * @member {Date} endTime
+ * @type {Date}
  */
 TimeSlot.prototype.endTime = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/HandoverMethod} handoverMethod
+ * @type {module:easyship_v2022_03_23/model/HandoverMethod}
  */
 TimeSlot.prototype.handoverMethod = undefined

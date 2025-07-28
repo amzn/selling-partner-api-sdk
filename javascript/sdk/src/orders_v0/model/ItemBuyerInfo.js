@@ -63,27 +63,32 @@ export class ItemBuyerInfo {
 
 /**
  * @member {module:orders_v0/model/BuyerCustomizedInfoDetail} buyerCustomizedInfo
+ * @type {module:orders_v0/model/BuyerCustomizedInfoDetail}
  */
 ItemBuyerInfo.prototype.buyerCustomizedInfo = undefined
 
 /**
  * @member {module:orders_v0/model/Money} giftWrapPrice
+ * @type {module:orders_v0/model/Money}
  */
 ItemBuyerInfo.prototype.giftWrapPrice = undefined
 
 /**
  * @member {module:orders_v0/model/Money} giftWrapTax
+ * @type {module:orders_v0/model/Money}
  */
 ItemBuyerInfo.prototype.giftWrapTax = undefined
 
 /**
  * A gift message provided by the buyer.  **Note**: This attribute is only available for MFN (fulfilled by seller) orders.
  * @member {String} giftMessageText
+ * @type {String}
  */
 ItemBuyerInfo.prototype.giftMessageText = undefined
 
 /**
  * The gift wrap level specified by the buyer.
  * @member {String} giftWrapLevel
+ * @type {String}
  */
 ItemBuyerInfo.prototype.giftWrapLevel = undefined

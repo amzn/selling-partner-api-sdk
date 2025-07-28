@@ -67,30 +67,36 @@ export class StandardImageSidebarModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardImageSidebarModule.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageCaptionBlock} imageCaptionBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageCaptionBlock}
  */
 StandardImageSidebarModule.prototype.imageCaptionBlock = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} descriptionTextBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
  */
 StandardImageSidebarModule.prototype.descriptionTextBlock = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextListBlock} descriptionListBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextListBlock}
  */
 StandardImageSidebarModule.prototype.descriptionListBlock = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} sidebarImageTextBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
  */
 StandardImageSidebarModule.prototype.sidebarImageTextBlock = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextListBlock} sidebarListBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextListBlock}
  */
 StandardImageSidebarModule.prototype.sidebarListBlock = undefined

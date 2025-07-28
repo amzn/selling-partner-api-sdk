@@ -61,5 +61,6 @@ export class CompetitiveSummaryBatchResponse {
 /**
  * The response list for the `competitiveSummaryBatch` operation.
  * @member {Array.<module:pricing_v2022_05_01/model/CompetitiveSummaryResponse>} responses
+ * @type {Array.<module:pricing_v2022_05_01/model/CompetitiveSummaryResponse>}
  */
 CompetitiveSummaryBatchResponse.prototype.responses = undefined

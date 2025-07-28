@@ -60,11 +60,13 @@ export class ShippingLabelList {
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Pagination} pagination
+ * @type {module:vendordfshipping_v2021_12_28/model/Pagination}
  */
 ShippingLabelList.prototype.pagination = undefined
 
 /**
  * An array containing the details of the generated shipping labels.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShippingLabel>} shippingLabels
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/ShippingLabel>}
  */
 ShippingLabelList.prototype.shippingLabels = undefined

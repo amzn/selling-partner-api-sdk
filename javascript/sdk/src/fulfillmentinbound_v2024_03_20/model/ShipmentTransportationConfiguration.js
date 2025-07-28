@@ -69,27 +69,32 @@ export class ShipmentTransportationConfiguration {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/ContactInformation} contactInformation
+ * @type {module:fulfillmentinbound_v2024_03_20/model/ContactInformation}
  */
 ShipmentTransportationConfiguration.prototype.contactInformation = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/FreightInformation} freightInformation
+ * @type {module:fulfillmentinbound_v2024_03_20/model/FreightInformation}
  */
 ShipmentTransportationConfiguration.prototype.freightInformation = undefined
 
 /**
  * List of pallet configuration inputs.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PalletInput>} pallets
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PalletInput>}
  */
 ShipmentTransportationConfiguration.prototype.pallets = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/WindowInput} readyToShipWindow
+ * @type {module:fulfillmentinbound_v2024_03_20/model/WindowInput}
  */
 ShipmentTransportationConfiguration.prototype.readyToShipWindow = undefined
 
 /**
  * Identifier of a shipment. A shipment contains the boxes and units being inbounded.
  * @member {String} shipmentId
+ * @type {String}
  */
 ShipmentTransportationConfiguration.prototype.shipmentId = undefined

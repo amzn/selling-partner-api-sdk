@@ -63,10 +63,12 @@ export class ListPackingGroupBoxesResponse {
 /**
  * Provides the information about the list of boxes in the packing group.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>} boxes
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>}
  */
 ListPackingGroupBoxesResponse.prototype.boxes = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListPackingGroupBoxesResponse.prototype.pagination = undefined

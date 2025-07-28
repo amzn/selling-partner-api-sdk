@@ -64,17 +64,20 @@ export class ConfirmShipmentOrderItem {
 /**
  * The order item's unique identifier.
  * @member {String} orderItemId
+ * @type {String}
  */
 ConfirmShipmentOrderItem.prototype.orderItemId = undefined
 
 /**
  * The item's quantity.
  * @member {Number} quantity
+ * @type {Number}
  */
 ConfirmShipmentOrderItem.prototype.quantity = undefined
 
 /**
  * A list of order items.
  * @member {Array.<String>} transparencyCodes
+ * @type {Array.<String>}
  */
 ConfirmShipmentOrderItem.prototype.transparencyCodes = undefined

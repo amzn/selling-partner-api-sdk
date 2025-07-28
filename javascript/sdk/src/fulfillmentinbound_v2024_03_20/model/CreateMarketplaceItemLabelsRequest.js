@@ -73,11 +73,13 @@ export class CreateMarketplaceItemLabelsRequest {
 /**
  * The height of the item label.
  * @member {Number} height
+ * @type {Number}
  */
 CreateMarketplaceItemLabelsRequest.prototype.height = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/LabelPrintType} labelType
+ * @type {module:fulfillmentinbound_v2024_03_20/model/LabelPrintType}
  */
 CreateMarketplaceItemLabelsRequest.prototype.labelType = undefined
 
@@ -85,28 +87,33 @@ CreateMarketplaceItemLabelsRequest.prototype.labelType = undefined
  * The locale code constructed from ISO 639 language code and ISO 3166-1 alpha-2 standard of country codes separated by an underscore character.
  * @member {String} localeCode
  * @default 'en_US'
+ * @type {String}
  */
 CreateMarketplaceItemLabelsRequest.prototype.localeCode = 'en_US'
 
 /**
  * The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 CreateMarketplaceItemLabelsRequest.prototype.marketplaceId = undefined
 
 /**
  * Represents the quantity of an MSKU to print item labels for.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuQuantity>} mskuQuantities
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuQuantity>}
  */
 CreateMarketplaceItemLabelsRequest.prototype.mskuQuantities = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/ItemLabelPageType} pageType
+ * @type {module:fulfillmentinbound_v2024_03_20/model/ItemLabelPageType}
  */
 CreateMarketplaceItemLabelsRequest.prototype.pageType = undefined
 
 /**
  * The width of the item label.
  * @member {Number} width
+ * @type {Number}
  */
 CreateMarketplaceItemLabelsRequest.prototype.width = undefined

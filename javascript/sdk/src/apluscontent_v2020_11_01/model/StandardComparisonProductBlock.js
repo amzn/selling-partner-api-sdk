@@ -67,34 +67,40 @@ export class StandardComparisonProductBlock {
 /**
  * The rank or index of this comparison product block within the module. Different blocks cannot occupy the same position within a single module.
  * @member {Number} position
+ * @type {Number}
  */
 StandardComparisonProductBlock.prototype.position = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
+ * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
  */
 StandardComparisonProductBlock.prototype.image = undefined
 
 /**
  * The comparison product title.
  * @member {String} title
+ * @type {String}
  */
 StandardComparisonProductBlock.prototype.title = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN).
  * @member {String} asin
+ * @type {String}
  */
 StandardComparisonProductBlock.prototype.asin = undefined
 
 /**
  * When true, indicates that this content block is visually highlighted.
  * @member {Boolean} highlight
+ * @type {Boolean}
  */
 StandardComparisonProductBlock.prototype.highlight = undefined
 
 /**
  * Comparison metrics for the product.
  * @member {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>} metrics
+ * @type {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>}
  */
 StandardComparisonProductBlock.prototype.metrics = undefined

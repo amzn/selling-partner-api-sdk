@@ -68,16 +68,19 @@ export class MskuPrepDetailInput {
 /**
  * The merchant SKU, a merchant-supplied identifier for a specific SKU.
  * @member {String} msku
+ * @type {String}
  */
 MskuPrepDetailInput.prototype.msku = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/PrepCategory} prepCategory
+ * @type {module:fulfillmentinbound_v2024_03_20/model/PrepCategory}
  */
 MskuPrepDetailInput.prototype.prepCategory = undefined
 
 /**
  * A list of preparation types associated with a preparation category.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepType>} prepTypes
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepType>}
  */
 MskuPrepDetailInput.prototype.prepTypes = undefined

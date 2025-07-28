@@ -23,7 +23,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class TransferPreviewApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -70,7 +70,7 @@ export class TransferPreviewApi {
      * @param {String} destinationCountryCode Country code of the destination transaction account in ISO 3166 format.
      * @param {String} destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
      * @param {Number} baseAmount The base transaction amount without any markup fees.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/TransferRatePreview} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferRatePreview>}
      */
   getTransferPreviewWithHttpInfo (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {
     const postBody = null
@@ -133,7 +133,7 @@ export class TransferPreviewApi {
      * @param {String} destinationCountryCode Country code of the destination transaction account in ISO 3166 format.
      * @param {String} destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
      * @param {Number} baseAmount The base transaction amount without any markup fees.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/TransferRatePreview}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferRatePreview>}
      */
   getTransferPreview (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {
     return this.getTransferPreviewWithHttpInfo(sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount)

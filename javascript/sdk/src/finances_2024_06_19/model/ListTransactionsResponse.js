@@ -58,5 +58,6 @@ export class ListTransactionsResponse {
 
 /**
  * @member {module:finances_2024_06_19/model/TransactionsPayload} payload
+ * @type {module:finances_2024_06_19/model/TransactionsPayload}
  */
 ListTransactionsResponse.prototype.payload = undefined

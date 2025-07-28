@@ -73,50 +73,59 @@ export class CompetitivePriceType {
 /**
  * The pricing model for each price that is returned.  Possible values:  * 1 - New Buy Box Price. * 2 - Used Buy Box Price.
  * @member {String} competitivePriceId
+ * @type {String}
  */
 CompetitivePriceType.prototype.competitivePriceId = undefined
 
 /**
  * @member {module:pricing_v0/model/PriceType} price
+ * @type {module:pricing_v0/model/PriceType}
  */
 CompetitivePriceType.prototype.price = undefined
 
 /**
  * Indicates the condition of the item whose pricing information is returned. Possible values are: New, Used, Collectible, Refurbished, or Club.
  * @member {String} condition
+ * @type {String}
  */
 CompetitivePriceType.prototype.condition = undefined
 
 /**
  * Indicates the subcondition of the item whose pricing information is returned. Possible values are: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
  * @member {String} subcondition
+ * @type {String}
  */
 CompetitivePriceType.prototype.subcondition = undefined
 
 /**
  * @member {module:pricing_v0/model/OfferCustomerType} offerType
+ * @type {module:pricing_v0/model/OfferCustomerType}
  */
 CompetitivePriceType.prototype.offerType = undefined
 
 /**
  * Indicates at what quantity this price becomes active.
  * @member {Number} quantityTier
+ * @type {Number}
  */
 CompetitivePriceType.prototype.quantityTier = undefined
 
 /**
  * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
+ * @type {module:pricing_v0/model/QuantityDiscountType}
  */
 CompetitivePriceType.prototype.quantityDiscountType = undefined
 
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type {String}
  */
 CompetitivePriceType.prototype.sellerId = undefined
 
 /**
  *  Indicates whether or not the pricing information is for an offer listing that belongs to the requester. The requester is the seller associated with the SellerId that was submitted with the request. Possible values are: true and false.
  * @member {Boolean} belongsToRequester
+ * @type {Boolean}
  */
 CompetitivePriceType.prototype.belongsToRequester = undefined

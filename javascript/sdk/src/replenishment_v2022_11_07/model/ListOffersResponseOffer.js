@@ -67,38 +67,45 @@ export class ListOffersResponseOffer {
 /**
  * The SKU. This property is only supported for sellers and not for vendors.
  * @member {String} sku
+ * @type {String}
  */
 ListOffersResponseOffer.prototype.sku = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN).
  * @member {String} asin
+ * @type {String}
  */
 ListOffersResponseOffer.prototype.asin = undefined
 
 /**
  * The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ListOffersResponseOffer.prototype.marketplaceId = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/EligibilityStatus} eligibility
+ * @type {module:replenishment_v2022_11_07/model/EligibilityStatus}
  */
 ListOffersResponseOffer.prototype.eligibility = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/OfferProgramConfiguration} offerProgramConfiguration
+ * @type {module:replenishment_v2022_11_07/model/OfferProgramConfiguration}
  */
 ListOffersResponseOffer.prototype.offerProgramConfiguration = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ProgramType} programType
+ * @type {module:replenishment_v2022_11_07/model/ProgramType}
  */
 ListOffersResponseOffer.prototype.programType = undefined
 
 /**
  * A list of vendor codes associated with the offer.
  * @member {Array.<String>} vendorCodes
+ * @type {Array.<String>}
  */
 ListOffersResponseOffer.prototype.vendorCodes = undefined

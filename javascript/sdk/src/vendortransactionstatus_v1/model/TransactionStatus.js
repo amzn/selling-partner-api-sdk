@@ -58,5 +58,6 @@ export class TransactionStatus {
 
 /**
  * @member {module:vendortransactionstatus_v1/model/Transaction} transactionStatus
+ * @type {module:vendortransactionstatus_v1/model/Transaction}
  */
 TransactionStatus.prototype.transactionStatus = undefined

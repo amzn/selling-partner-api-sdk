@@ -59,11 +59,13 @@ export class ExcludedBenefit {
 /**
  * A benefit that is being excluded from a shipment.
  * @member {String} benefit
+ * @type {String}
  */
 ExcludedBenefit.prototype.benefit = undefined
 
 /**
  * List of reasons why a benefit is excluded for a shipping offer (for example, `LATE_DELIVERY_RISK`).
  * @member {Array.<String>} reasonCodes
+ * @type {Array.<String>}
  */
 ExcludedBenefit.prototype.reasonCodes = undefined

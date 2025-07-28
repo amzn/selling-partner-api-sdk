@@ -79,40 +79,47 @@ export class InboundPlanSummary {
 /**
  * The time at which the inbound plan was created. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.
  * @member {Date} createdAt
+ * @type {Date}
  */
 InboundPlanSummary.prototype.createdAt = undefined
 
 /**
  * Identifier of an inbound plan.
  * @member {String} inboundPlanId
+ * @type {String}
  */
 InboundPlanSummary.prototype.inboundPlanId = undefined
 
 /**
  * The time at which the inbound plan was last updated. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.
  * @member {Date} lastUpdatedAt
+ * @type {Date}
  */
 InboundPlanSummary.prototype.lastUpdatedAt = undefined
 
 /**
  * A list of marketplace IDs.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 InboundPlanSummary.prototype.marketplaceIds = undefined
 
 /**
  * Human-readable name of the inbound plan.
  * @member {String} name
+ * @type {String}
  */
 InboundPlanSummary.prototype.name = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Address} sourceAddress
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Address}
  */
 InboundPlanSummary.prototype.sourceAddress = undefined
 
 /**
  * The current status of the inbound plan. Possible values: `ACTIVE`, `VOIDED`, `SHIPPED`, `ERRORED`.
  * @member {String} status
+ * @type {String}
  */
 InboundPlanSummary.prototype.status = undefined

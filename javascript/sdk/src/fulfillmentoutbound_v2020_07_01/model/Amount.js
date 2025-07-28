@@ -77,11 +77,13 @@ Amount.UnitOfMeasureEnum = {
 /**
  * The unit of measure for the amount.
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Amount.UnitOfMeasureEnum} unitOfMeasure
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Amount.UnitOfMeasureEnum}
  */
 Amount.prototype.unitOfMeasure = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.
  * @member {String} value
+ * @type {String}
  */
 Amount.prototype.value = undefined

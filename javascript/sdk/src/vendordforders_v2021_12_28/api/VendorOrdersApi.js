@@ -26,7 +26,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-12-28
 */
 export class VendorOrdersApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -70,7 +70,7 @@ export class VendorOrdersApi {
   /**
      * Returns purchase order information for the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes: alpha-numeric code.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendordforders_v2021_12_28/model/Order} and HTTP response
+     * @return {Promise<module:vendordforders_v2021_12_28/model/Order>}
      */
   getOrderWithHttpInfo (purchaseOrderNumber) {
     const postBody = null
@@ -104,7 +104,7 @@ export class VendorOrdersApi {
   /**
      * Returns purchase order information for the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} purchaseOrderNumber The order identifier for the purchase order that you want. Formatting Notes: alpha-numeric code.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendordforders_v2021_12_28/model/Order}
+     * @return {Promise<module:vendordforders_v2021_12_28/model/Order>}
      */
   getOrder (purchaseOrderNumber) {
     return this.getOrderWithHttpInfo(purchaseOrderNumber)
@@ -124,7 +124,7 @@ export class VendorOrdersApi {
      * @param {module:vendordforders_v2021_12_28/model/String} opts.sortOrder Sort the list in ascending or descending order by order creation date.
      * @param {String} opts.nextToken Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call.
      * @param {Boolean} opts.includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (default to &#39;true&#39;)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendordforders_v2021_12_28/model/OrderList} and HTTP response
+     * @return {Promise<module:vendordforders_v2021_12_28/model/OrderList>}
      */
   getOrdersWithHttpInfo (createdAfter, createdBefore, opts) {
     opts = opts || {}
@@ -179,7 +179,7 @@ export class VendorOrdersApi {
      * @param {module:vendordforders_v2021_12_28/model/String} opts.sortOrder Sort the list in ascending or descending order by order creation date.
      * @param {String} opts.nextToken Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call.
      * @param {Boolean} opts.includeDetails When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (default to &#39;true&#39;)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendordforders_v2021_12_28/model/OrderList}
+     * @return {Promise<module:vendordforders_v2021_12_28/model/OrderList>}
      */
   getOrders (createdAfter, createdBefore, opts) {
     return this.getOrdersWithHttpInfo(createdAfter, createdBefore, opts)
@@ -191,7 +191,7 @@ export class VendorOrdersApi {
   /**
      * Submits acknowledgements for one or more purchase orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendordforders_v2021_12_28/model/SubmitAcknowledgementRequest} body The request body containing the acknowledgement to an order
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendordforders_v2021_12_28/model/TransactionId} and HTTP response
+     * @return {Promise<module:vendordforders_v2021_12_28/model/TransactionId>}
      */
   submitAcknowledgementWithHttpInfo (body) {
     const postBody = body
@@ -224,7 +224,7 @@ export class VendorOrdersApi {
   /**
      * Submits acknowledgements for one or more purchase orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendordforders_v2021_12_28/model/SubmitAcknowledgementRequest} body The request body containing the acknowledgement to an order
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendordforders_v2021_12_28/model/TransactionId}
+     * @return {Promise<module:vendordforders_v2021_12_28/model/TransactionId>}
      */
   submitAcknowledgement (body) {
     return this.submitAcknowledgementWithHttpInfo(body)

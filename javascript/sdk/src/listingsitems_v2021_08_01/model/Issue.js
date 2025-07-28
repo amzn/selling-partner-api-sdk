@@ -72,12 +72,14 @@ export class Issue {
 /**
  * An issue code that identifies the type of issue.
  * @member {String} code
+ * @type {String}
  */
 Issue.prototype.code = undefined
 
 /**
  * A message that describes the issue.
  * @member {String} message
+ * @type {String}
  */
 Issue.prototype.message = undefined
 
@@ -110,22 +112,26 @@ Issue.SeverityEnum = {
 /**
  * The severity of the issue.
  * @member {module:listingsitems_v2021_08_01/model/Issue.SeverityEnum} severity
+ * @type {module:listingsitems_v2021_08_01/model/Issue.SeverityEnum}
  */
 Issue.prototype.severity = undefined
 
 /**
  * The names of the attributes associated with the issue, if applicable.
  * @member {Array.<String>} attributeNames
+ * @type {Array.<String>}
  */
 Issue.prototype.attributeNames = undefined
 
 /**
  * List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.
  * @member {Array.<String>} categories
+ * @type {Array.<String>}
  */
 Issue.prototype.categories = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/IssueEnforcements} enforcements
+ * @type {module:listingsitems_v2021_08_01/model/IssueEnforcements}
  */
 Issue.prototype.enforcements = undefined

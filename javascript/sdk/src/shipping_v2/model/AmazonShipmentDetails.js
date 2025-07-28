@@ -60,5 +60,6 @@ export class AmazonShipmentDetails {
 /**
  * This attribute is required only for a Direct Fulfillment shipment. This is the encrypted shipment ID.
  * @member {String} shipmentId
+ * @type {String}
  */
 AmazonShipmentDetails.prototype.shipmentId = undefined

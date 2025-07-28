@@ -60,11 +60,13 @@ export class GetPrepInstructionsResponse {
 
 /**
  * @member {module:fulfillmentinbound_v0/model/GetPrepInstructionsResult} payload
+ * @type {module:fulfillmentinbound_v0/model/GetPrepInstructionsResult}
  */
 GetPrepInstructionsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentinbound_v0/model/Error>} errors
+ * @type {Array.<module:fulfillmentinbound_v0/model/Error>}
  */
 GetPrepInstructionsResponse.prototype.errors = undefined

@@ -63,11 +63,13 @@ export class PlacementOptionSummary {
 /**
  * The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
  * @member {String} placementOptionId
+ * @type {String}
  */
 PlacementOptionSummary.prototype.placementOptionId = undefined
 
 /**
  * The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`.
  * @member {String} status
+ * @type {String}
  */
 PlacementOptionSummary.prototype.status = undefined

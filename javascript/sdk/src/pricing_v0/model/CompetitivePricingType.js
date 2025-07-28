@@ -67,16 +67,19 @@ export class CompetitivePricingType {
 /**
  * A list of competitive pricing information.
  * @member {Array.<module:pricing_v0/model/CompetitivePriceType>} competitivePrices
+ * @type {Array.<module:pricing_v0/model/CompetitivePriceType>}
  */
 CompetitivePricingType.prototype.competitivePrices = undefined
 
 /**
  * The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
  * @member {Array.<module:pricing_v0/model/OfferListingCountType>} numberOfOfferListings
+ * @type {Array.<module:pricing_v0/model/OfferListingCountType>}
  */
 CompetitivePricingType.prototype.numberOfOfferListings = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} tradeInValue
+ * @type {module:pricing_v0/model/MoneyType}
  */
 CompetitivePricingType.prototype.tradeInValue = undefined

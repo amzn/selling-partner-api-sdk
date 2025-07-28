@@ -66,22 +66,26 @@ export class AvailabilityRecord {
 /**
  * Denotes the time from when the resource is available in a day in ISO-8601 format.
  * @member {Date} startTime
+ * @type {Date}
  */
 AvailabilityRecord.prototype.startTime = undefined
 
 /**
  * Denotes the time till when the resource is available in a day in ISO-8601 format.
  * @member {Date} endTime
+ * @type {Date}
  */
 AvailabilityRecord.prototype.endTime = undefined
 
 /**
  * @member {module:services_v1/model/Recurrence} recurrence
+ * @type {module:services_v1/model/Recurrence}
  */
 AvailabilityRecord.prototype.recurrence = undefined
 
 /**
  * Signifies the capacity of a resource which is available.
  * @member {Number} capacity
+ * @type {Number}
  */
 AvailabilityRecord.prototype.capacity = undefined

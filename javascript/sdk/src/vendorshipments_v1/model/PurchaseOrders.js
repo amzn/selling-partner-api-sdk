@@ -62,23 +62,27 @@ export class PurchaseOrders {
 /**
  * Purchase order numbers involved in this shipment, list all the PO that are involved as part of this shipment.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 PurchaseOrders.prototype.purchaseOrderNumber = undefined
 
 /**
  * Purchase order numbers involved in this shipment, list all the PO that are involved as part of this shipment.
  * @member {Date} purchaseOrderDate
+ * @type {Date}
  */
 PurchaseOrders.prototype.purchaseOrderDate = undefined
 
 /**
  * Date range in which shipment is expected for these purchase orders.
  * @member {String} shipWindow
+ * @type {String}
  */
 PurchaseOrders.prototype.shipWindow = undefined
 
 /**
  * A list of the items that are associated to the PO in this transport and their associated details.
  * @member {Array.<module:vendorshipments_v1/model/PurchaseOrderItems>} items
+ * @type {Array.<module:vendorshipments_v1/model/PurchaseOrderItems>}
  */
 PurchaseOrders.prototype.items = undefined

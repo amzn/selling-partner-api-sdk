@@ -71,21 +71,25 @@ export class ContentUpdatePreview {
 /**
  * Identifier of a content update preview.
  * @member {String} contentUpdatePreviewId
+ * @type {String}
  */
 ContentUpdatePreview.prototype.contentUpdatePreviewId = undefined
 
 /**
  * The time at which the content update expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
  * @member {Date} expiration
+ * @type {Date}
  */
 ContentUpdatePreview.prototype.expiration = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/RequestedUpdates} requestedUpdates
+ * @type {module:fulfillmentinbound_v2024_03_20/model/RequestedUpdates}
  */
 ContentUpdatePreview.prototype.requestedUpdates = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/TransportationOption} transportationOption
+ * @type {module:fulfillmentinbound_v2024_03_20/model/TransportationOption}
  */
 ContentUpdatePreview.prototype.transportationOption = undefined

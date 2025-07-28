@@ -63,10 +63,12 @@ export class ListShipmentBoxesResponse {
 /**
  * A list of boxes in a shipment.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>} boxes
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>}
  */
 ListShipmentBoxesResponse.prototype.boxes = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListShipmentBoxesResponse.prototype.pagination = undefined

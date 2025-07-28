@@ -64,11 +64,13 @@ export class ListHandoverSlotsResponse {
 /**
  * An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 ListHandoverSlotsResponse.prototype.amazonOrderId = undefined
 
 /**
  * A list of time slots.
  * @member {Array.<module:easyship_v2022_03_23/model/TimeSlot>} timeSlots
+ * @type {Array.<module:easyship_v2022_03_23/model/TimeSlot>}
  */
 ListHandoverSlotsResponse.prototype.timeSlots = undefined

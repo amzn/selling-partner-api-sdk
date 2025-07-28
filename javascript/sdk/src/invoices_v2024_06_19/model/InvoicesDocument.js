@@ -59,11 +59,13 @@ export class InvoicesDocument {
 /**
  * The identifier of the export document.
  * @member {String} invoicesDocumentId
+ * @type {String}
  */
 InvoicesDocument.prototype.invoicesDocumentId = undefined
 
 /**
  * A pre-signed URL that you can use to download the invoices document in zip format. This URL expires after 30 seconds.
  * @member {String} invoicesDocumentUrl
+ * @type {String}
  */
 InvoicesDocument.prototype.invoicesDocumentUrl = undefined

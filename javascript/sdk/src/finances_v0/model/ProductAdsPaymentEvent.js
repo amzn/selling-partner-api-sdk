@@ -64,32 +64,38 @@ export class ProductAdsPaymentEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 ProductAdsPaymentEvent.prototype.postedDate = undefined
 
 /**
  * Indicates if the transaction is for a charge or a refund.  Possible values:  * charge - Charge  * refund - Refund
  * @member {String} transactionType
+ * @type {String}
  */
 ProductAdsPaymentEvent.prototype.transactionType = undefined
 
 /**
  * Identifier for the invoice that the transaction appears in.
  * @member {String} invoiceId
+ * @type {String}
  */
 ProductAdsPaymentEvent.prototype.invoiceId = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} baseValue
+ * @type {module:finances_v0/model/Currency}
  */
 ProductAdsPaymentEvent.prototype.baseValue = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxValue
+ * @type {module:finances_v0/model/Currency}
  */
 ProductAdsPaymentEvent.prototype.taxValue = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} transactionValue
+ * @type {module:finances_v0/model/Currency}
  */
 ProductAdsPaymentEvent.prototype.transactionValue = undefined

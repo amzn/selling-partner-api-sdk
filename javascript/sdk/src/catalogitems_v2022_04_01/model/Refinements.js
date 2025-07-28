@@ -65,11 +65,13 @@ export class Refinements {
 /**
  * A list of brands you can use to refine your search.
  * @member {Array.<module:catalogitems_v2022_04_01/model/BrandRefinement>} brands
+ * @type {Array.<module:catalogitems_v2022_04_01/model/BrandRefinement>}
  */
 Refinements.prototype.brands = undefined
 
 /**
  * A list of classifications you can use to refine your search.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ClassificationRefinement>} classifications
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ClassificationRefinement>}
  */
 Refinements.prototype.classifications = undefined

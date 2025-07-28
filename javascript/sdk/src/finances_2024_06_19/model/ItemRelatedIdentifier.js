@@ -91,11 +91,13 @@ ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum = {
 /**
  * Enumerated set of related item identifier names for the item.
  * @member {module:finances_2024_06_19/model/ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum} itemRelatedIdentifierName
+ * @type {module:finances_2024_06_19/model/ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum}
  */
 ItemRelatedIdentifier.prototype.itemRelatedIdentifierName = undefined
 
 /**
  * Corresponding value of ItemRelatedIdentifierName
  * @member {String} itemRelatedIdentifierValue
+ * @type {String}
  */
 ItemRelatedIdentifier.prototype.itemRelatedIdentifierValue = undefined

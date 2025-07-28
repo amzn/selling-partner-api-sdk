@@ -63,10 +63,12 @@ export class GetMessagingActionResponseLinks {
 
 /**
  * @member {module:messaging_v1/model/LinkObject} self
+ * @type {module:messaging_v1/model/LinkObject}
  */
 GetMessagingActionResponseLinks.prototype.self = undefined
 
 /**
  * @member {module:messaging_v1/model/LinkObject} schema
+ * @type {module:messaging_v1/model/LinkObject}
  */
 GetMessagingActionResponseLinks.prototype.schema = undefined

@@ -63,11 +63,13 @@ export class Weight {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight} unit
+ * @type {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight}
  */
 Weight.prototype.unit = undefined
 
 /**
  * Value of a weight.
  * @member {Number} value
+ * @type {Number}
  */
 Weight.prototype.value = undefined

@@ -59,11 +59,13 @@ export class GetOffersHttpStatusLine {
 /**
  * The HTTP response Status Code.
  * @member {Number} statusCode
+ * @type {Number}
  */
 GetOffersHttpStatusLine.prototype.statusCode = undefined
 
 /**
  * The HTTP response Reason-Phase.
  * @member {String} reasonPhrase
+ * @type {String}
  */
 GetOffersHttpStatusLine.prototype.reasonPhrase = undefined

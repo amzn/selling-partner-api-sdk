@@ -61,15 +61,18 @@ export class AcknowledgementStatusDetails {
 /**
  * The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format.
  * @member {Date} acknowledgementDate
+ * @type {Date}
  */
 AcknowledgementStatusDetails.prototype.acknowledgementDate = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} acceptedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 AcknowledgementStatusDetails.prototype.acceptedQuantity = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} rejectedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 AcknowledgementStatusDetails.prototype.rejectedQuantity = undefined

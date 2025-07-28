@@ -62,16 +62,19 @@ export class TransportLabel {
 /**
  * Date on which label is created.
  * @member {Date} labelCreateDateTime
+ * @type {Date}
  */
 TransportLabel.prototype.labelCreateDateTime = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/ShipmentInformation} shipmentInformation
+ * @type {module:vendorshipments_v1/model/ShipmentInformation}
  */
 TransportLabel.prototype.shipmentInformation = undefined
 
 /**
  * Indicates the label data,format and type associated .
  * @member {Array.<module:vendorshipments_v1/model/LabelData>} labelData
+ * @type {Array.<module:vendorshipments_v1/model/LabelData>}
  */
 TransportLabel.prototype.labelData = undefined

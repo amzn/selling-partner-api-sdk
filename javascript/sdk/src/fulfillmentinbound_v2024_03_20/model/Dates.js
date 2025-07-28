@@ -58,5 +58,6 @@ export class Dates {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Window} readyToShipWindow
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Window}
  */
 Dates.prototype.readyToShipWindow = undefined

@@ -66,29 +66,34 @@ export class CreateReportSpecification {
 /**
  * Additional information passed to reports. This varies by report type.
  * @member {Object.<String, String>} reportOptions
+ * @type {Object.<String, String>}
  */
 CreateReportSpecification.prototype.reportOptions = undefined
 
 /**
  * The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
  * @member {String} reportType
+ * @type {String}
  */
 CreateReportSpecification.prototype.reportType = undefined
 
 /**
  * The start of a date and time range, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.
  * @member {Date} dataStartTime
+ * @type {Date}
  */
 CreateReportSpecification.prototype.dataStartTime = undefined
 
 /**
  * The end of a date and time range, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.
  * @member {Date} dataEndTime
+ * @type {Date}
  */
 CreateReportSpecification.prototype.dataEndTime = undefined
 
 /**
  * A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 CreateReportSpecification.prototype.marketplaceIds = undefined

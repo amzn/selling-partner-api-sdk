@@ -26,7 +26,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class FbaInboundApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -73,7 +73,7 @@ export class FbaInboundApi {
   /**
      * Returns a bill of lading for a Less Than Truckload/Full Truckload (LTL/FTL) shipment. The getBillOfLading operation returns PDF document data for printing a bill of lading for an Amazon-partnered Less Than Truckload/Full Truckload (LTL/FTL) inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v0/model/GetBillOfLadingResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetBillOfLadingResponse>}
      */
   getBillOfLadingWithHttpInfo (shipmentId) {
     const postBody = null
@@ -107,7 +107,7 @@ export class FbaInboundApi {
   /**
      * Returns a bill of lading for a Less Than Truckload/Full Truckload (LTL/FTL) shipment. The getBillOfLading operation returns PDF document data for printing a bill of lading for an Amazon-partnered Less Than Truckload/Full Truckload (LTL/FTL) inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v0/model/GetBillOfLadingResponse}
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetBillOfLadingResponse>}
      */
   getBillOfLading (shipmentId) {
     return this.getBillOfLadingWithHttpInfo(shipmentId)
@@ -127,7 +127,7 @@ export class FbaInboundApi {
      * @param {Number} opts.numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
      * @param {Number} opts.pageSize The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000.
      * @param {Number} opts.pageStartIndex The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v0/model/GetLabelsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetLabelsResponse>}
      */
   getLabelsWithHttpInfo (shipmentId, pageType, labelType, opts) {
     opts = opts || {}
@@ -187,7 +187,7 @@ export class FbaInboundApi {
      * @param {Number} opts.numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
      * @param {Number} opts.pageSize The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000.
      * @param {Number} opts.pageStartIndex The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v0/model/GetLabelsResponse}
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetLabelsResponse>}
      */
   getLabels (shipmentId, pageType, labelType, opts) {
     return this.getLabelsWithHttpInfo(shipmentId, pageType, labelType, opts)
@@ -202,7 +202,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.sellerSKUList A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response.
      * @param {Array.<String>} opts.aSINList A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v0/model/GetPrepInstructionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetPrepInstructionsResponse>}
      */
   getPrepInstructionsWithHttpInfo (shipToCountryCode, opts) {
     opts = opts || {}
@@ -242,7 +242,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.sellerSKUList A list of SellerSKU values. Used to identify items for which you want labeling requirements and item preparation instructions for shipment to Amazon&#39;s fulfillment network. The SellerSKU is qualified by the Seller ID, which is included with every call to the Seller Partner API.  Note: Include seller SKUs that you have used to list items on Amazon&#39;s retail website. If you include a seller SKU that you have never used to list an item on Amazon&#39;s retail website, the seller SKU is returned in the InvalidSKUList property in the response.
      * @param {Array.<String>} opts.aSINList A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.  Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v0/model/GetPrepInstructionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetPrepInstructionsResponse>}
      */
   getPrepInstructions (shipToCountryCode, opts) {
     return this.getPrepInstructionsWithHttpInfo(shipToCountryCode, opts)
@@ -259,7 +259,7 @@ export class FbaInboundApi {
      * @param {Date} opts.lastUpdatedAfter A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {Date} opts.lastUpdatedBefore A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {String} opts.nextToken A string token returned in the response to your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v0/model/GetShipmentItemsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetShipmentItemsResponse>}
      */
   getShipmentItemsWithHttpInfo (queryType, marketplaceId, opts) {
     opts = opts || {}
@@ -308,7 +308,7 @@ export class FbaInboundApi {
      * @param {Date} opts.lastUpdatedAfter A date used for selecting inbound shipment items that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {Date} opts.lastUpdatedBefore A date used for selecting inbound shipment items that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {String} opts.nextToken A string token returned in the response to your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v0/model/GetShipmentItemsResponse}
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetShipmentItemsResponse>}
      */
   getShipmentItems (queryType, marketplaceId, opts) {
     return this.getShipmentItemsWithHttpInfo(queryType, marketplaceId, opts)
@@ -322,7 +322,7 @@ export class FbaInboundApi {
      * @param {String} shipmentId A shipment identifier used for selecting items in a specific inbound shipment.
      * @param {Object} opts Optional parameters
      * @param {String} opts.marketplaceId Deprecated. Do not use.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v0/model/GetShipmentItemsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetShipmentItemsResponse>}
      */
   getShipmentItemsByShipmentIdWithHttpInfo (shipmentId, opts) {
     opts = opts || {}
@@ -360,7 +360,7 @@ export class FbaInboundApi {
      * @param {String} shipmentId A shipment identifier used for selecting items in a specific inbound shipment.
      * @param {Object} opts Optional parameters
      * @param {String} opts.marketplaceId Deprecated. Do not use.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v0/model/GetShipmentItemsResponse}
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetShipmentItemsResponse>}
      */
   getShipmentItemsByShipmentId (shipmentId, opts) {
     return this.getShipmentItemsByShipmentIdWithHttpInfo(shipmentId, opts)
@@ -379,7 +379,7 @@ export class FbaInboundApi {
      * @param {Date} opts.lastUpdatedAfter A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {Date} opts.lastUpdatedBefore A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {String} opts.nextToken A string token returned in the response to your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v0/model/GetShipmentsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetShipmentsResponse>}
      */
   getShipmentsWithHttpInfo (queryType, marketplaceId, opts) {
     opts = opts || {}
@@ -432,7 +432,7 @@ export class FbaInboundApi {
      * @param {Date} opts.lastUpdatedAfter A date used for selecting inbound shipments that were last updated after (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {Date} opts.lastUpdatedBefore A date used for selecting inbound shipments that were last updated before (or at) a specified time. The selection includes updates made by Amazon and by the seller.
      * @param {String} opts.nextToken A string token returned in the response to your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v0/model/GetShipmentsResponse}
+     * @return {Promise<module:fulfillmentinbound_v0/model/GetShipmentsResponse>}
      */
   getShipments (queryType, marketplaceId, opts) {
     return this.getShipmentsWithHttpInfo(queryType, marketplaceId, opts)

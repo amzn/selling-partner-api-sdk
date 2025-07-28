@@ -60,5 +60,6 @@ export class GetMessagingActionsForOrderResponseEmbedded {
 
 /**
  * @member {Array.<module:messaging_v1/model/GetMessagingActionResponse>} actions
+ * @type {Array.<module:messaging_v1/model/GetMessagingActionResponse>}
  */
 GetMessagingActionsForOrderResponseEmbedded.prototype.actions = undefined

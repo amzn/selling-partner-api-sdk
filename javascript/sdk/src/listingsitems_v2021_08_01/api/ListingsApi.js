@@ -27,7 +27,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-08-01
 */
 export class ListingsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -71,13 +71,13 @@ export class ListingsApi {
   }
 
   /**
-     * Delete a listings item for a selling partner.  **Note:** The parameters associated with this operation may contain special characters that must be encoded to successfully call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Delete a listings item for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
      * @param {String} sellerId A selling partner identifier, such as a merchant account or vendor code.
      * @param {String} sku A selling partner provided identifier for an Amazon listing.
      * @param {Array.<String>} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} opts Optional parameters
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse} and HTTP response
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse>}
      */
   deleteListingsItemWithHttpInfo (sellerId, sku, marketplaceIds, opts) {
     opts = opts || {}
@@ -123,13 +123,13 @@ export class ListingsApi {
   }
 
   /**
-     * Delete a listings item for a selling partner.  **Note:** The parameters associated with this operation may contain special characters that must be encoded to successfully call the API. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Delete a listings item for a selling partner.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput can receive higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api) in the Selling Partner API documentation.
      * @param {String} sellerId A selling partner identifier, such as a merchant account or vendor code.
      * @param {String} sku A selling partner provided identifier for an Amazon listing.
      * @param {Array.<String>} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
      * @param {Object} opts Optional parameters
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse}
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse>}
      */
   deleteListingsItem (sellerId, sku, marketplaceIds, opts) {
     return this.deleteListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, opts)
@@ -146,7 +146,7 @@ export class ListingsApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
      * @param {Array.<module:listingsitems_v2021_08_01/model/String>} opts.includedData A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:listingsitems_v2021_08_01/model/Item} and HTTP response
+     * @return {Promise<module:listingsitems_v2021_08_01/model/Item>}
      */
   getListingsItemWithHttpInfo (sellerId, sku, marketplaceIds, opts) {
     opts = opts || {}
@@ -200,7 +200,7 @@ export class ListingsApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
      * @param {Array.<module:listingsitems_v2021_08_01/model/String>} opts.includedData A comma-delimited list of data sets to include in the response. Default: &#x60;summaries&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:listingsitems_v2021_08_01/model/Item}
+     * @return {Promise<module:listingsitems_v2021_08_01/model/Item>}
      */
   getListingsItem (sellerId, sku, marketplaceIds, opts) {
     return this.getListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, opts)
@@ -219,7 +219,7 @@ export class ListingsApi {
      * @param {Array.<module:listingsitems_v2021_08_01/model/String>} opts.includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {module:listingsitems_v2021_08_01/model/String} opts.mode The mode of operation for the request.
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse} and HTTP response
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse>}
      */
   patchListingsItemWithHttpInfo (sellerId, sku, marketplaceIds, body, opts) {
     opts = opts || {}
@@ -281,7 +281,7 @@ export class ListingsApi {
      * @param {Array.<module:listingsitems_v2021_08_01/model/String>} opts.includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {module:listingsitems_v2021_08_01/model/String} opts.mode The mode of operation for the request.
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse}
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse>}
      */
   patchListingsItem (sellerId, sku, marketplaceIds, body, opts) {
     return this.patchListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, body, opts)
@@ -300,7 +300,7 @@ export class ListingsApi {
      * @param {Array.<module:listingsitems_v2021_08_01/model/String>} opts.includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {module:listingsitems_v2021_08_01/model/String} opts.mode The mode of operation for the request.
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse} and HTTP response
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse>}
      */
   putListingsItemWithHttpInfo (sellerId, sku, marketplaceIds, body, opts) {
     opts = opts || {}
@@ -362,7 +362,7 @@ export class ListingsApi {
      * @param {Array.<module:listingsitems_v2021_08_01/model/String>} opts.includedData A comma-delimited list of data sets to include in the response. Default: &#x60;issues&#x60;.
      * @param {module:listingsitems_v2021_08_01/model/String} opts.mode The mode of operation for the request.
      * @param {String} opts.issueLocale A locale for localization of issues. When not provided, the default language code of the first marketplace is used. Examples: &#x60;en_US&#x60;, &#x60;fr_CA&#x60;, &#x60;fr_FR&#x60;. Localized messages default to &#x60;en_US&#x60; when a localization is not available in the specified locale.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse}
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse>}
      */
   putListingsItem (sellerId, sku, marketplaceIds, body, opts) {
     return this.putListingsItemWithHttpInfo(sellerId, sku, marketplaceIds, body, opts)
@@ -393,7 +393,7 @@ export class ListingsApi {
      * @param {module:listingsitems_v2021_08_01/model/String} opts.sortOrder The order in which to sort the result items. (default to &#39;DESC&#39;)
      * @param {Number} opts.pageSize The number of results that you want to include on each page. (default to 10)
      * @param {String} opts.pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:listingsitems_v2021_08_01/model/ItemSearchResults} and HTTP response
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ItemSearchResults>}
      */
   searchListingsItemsWithHttpInfo (sellerId, marketplaceIds, opts) {
     opts = opts || {}
@@ -470,7 +470,7 @@ export class ListingsApi {
      * @param {module:listingsitems_v2021_08_01/model/String} opts.sortOrder The order in which to sort the result items. (default to &#39;DESC&#39;)
      * @param {Number} opts.pageSize The number of results that you want to include on each page. (default to 10)
      * @param {String} opts.pageToken A token that you can use to fetch a specific page when there are multiple pages of results.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:listingsitems_v2021_08_01/model/ItemSearchResults}
+     * @return {Promise<module:listingsitems_v2021_08_01/model/ItemSearchResults>}
      */
   searchListingsItems (sellerId, marketplaceIds, opts) {
     return this.searchListingsItemsWithHttpInfo(sellerId, marketplaceIds, opts)

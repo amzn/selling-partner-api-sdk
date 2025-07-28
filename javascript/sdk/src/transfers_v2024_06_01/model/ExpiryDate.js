@@ -59,11 +59,13 @@ export class ExpiryDate {
 /**
  * The month the card expires expressed as a number from `1` to `12`.
  * @member {String} month
+ * @type {String}
  */
 ExpiryDate.prototype.month = undefined
 
 /**
  * Year
  * @member {String} year
+ * @type {String}
  */
 ExpiryDate.prototype.year = undefined

@@ -60,5 +60,6 @@ export class PartyIdentification {
 /**
  * Assigned identification for the party.
  * @member {String} partyId
+ * @type {String}
  */
 PartyIdentification.prototype.partyId = undefined

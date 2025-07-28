@@ -59,5 +59,6 @@ export class SubmitInvoiceRequest {
 /**
  * An array of invoice details to be submitted.
  * @member {Array.<module:vendordfpayments_v1/model/InvoiceDetail>} invoices
+ * @type {Array.<module:vendordfpayments_v1/model/InvoiceDetail>}
  */
 SubmitInvoiceRequest.prototype.invoices = undefined

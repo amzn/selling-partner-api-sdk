@@ -67,16 +67,19 @@ export class FileContents {
 /**
  * Data for printing labels encoded into a Base64, GZip-compressed string.
  * @member {String} contents
+ * @type {String}
  */
 FileContents.prototype.contents = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/FileType} fileType
+ * @type {module:merchantfulfillment_v0/model/FileType}
  */
 FileContents.prototype.fileType = undefined
 
 /**
  * An MD5 hash to validate the PDF document data, in the form of a Base64 string.
  * @member {String} checksum
+ * @type {String}
  */
 FileContents.prototype.checksum = undefined

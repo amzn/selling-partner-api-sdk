@@ -60,10 +60,12 @@ export class InvalidSKU {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSKU
+ * @type {String}
  */
 InvalidSKU.prototype.sellerSKU = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/ErrorReason} errorReason
+ * @type {module:fulfillmentinbound_v0/model/ErrorReason}
  */
 InvalidSKU.prototype.errorReason = undefined

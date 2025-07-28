@@ -62,11 +62,13 @@ export class GetSolicitationActionsForOrderResponseLinks {
 
 /**
  * @member {module:solicitations_v1/model/LinkObject} self
+ * @type {module:solicitations_v1/model/LinkObject}
  */
 GetSolicitationActionsForOrderResponseLinks.prototype.self = undefined
 
 /**
  * Eligible actions for the specified amazonOrderId.
  * @member {Array.<module:solicitations_v1/model/LinkObject>} actions
+ * @type {Array.<module:solicitations_v1/model/LinkObject>}
  */
 GetSolicitationActionsForOrderResponseLinks.prototype.actions = undefined

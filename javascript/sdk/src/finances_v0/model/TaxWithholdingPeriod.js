@@ -59,11 +59,13 @@ export class TaxWithholdingPeriod {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} startDate
+ * @type {Date}
  */
 TaxWithholdingPeriod.prototype.startDate = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} endDate
+ * @type {Date}
  */
 TaxWithholdingPeriod.prototype.endDate = undefined

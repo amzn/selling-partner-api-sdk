@@ -63,11 +63,13 @@ export class ListOffersRequestPagination {
 /**
  * The maximum number of results to return in the response.
  * @member {Number} limit
+ * @type {Number}
  */
 ListOffersRequestPagination.prototype.limit = undefined
 
 /**
  * The offset from which to retrieve the number of results specified by the `limit` value. The first result is at offset 0.
  * @member {Number} offset
+ * @type {Number}
  */
 ListOffersRequestPagination.prototype.offset = undefined

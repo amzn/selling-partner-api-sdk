@@ -71,22 +71,26 @@ export class ItemOffersRequestParams {
 /**
  * A marketplace identifier. Specifies the marketplace for which prices are returned.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemCondition} itemCondition
+ * @type {module:pricing_v0/model/ItemCondition}
  */
 ItemOffersRequestParams.prototype.itemCondition = undefined
 
 /**
  * @member {module:pricing_v0/model/CustomerType} customerType
+ * @type {module:pricing_v0/model/CustomerType}
  */
 ItemOffersRequestParams.prototype.customerType = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item. This is the same Asin passed as a request parameter.
  * @member {String} asin
+ * @type {String}
  */
 ItemOffersRequestParams.prototype.asin = undefined
 
@@ -94,15 +98,18 @@ ItemOffersRequestParams.prototype.asin = undefined
 /**
  * A marketplace identifier. Specifies the marketplace for which prices are returned.
  * @member {String} marketplaceId
+ * @type {String}
  */
 BatchOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
  * @member {module:pricing_v0/model/ItemCondition} itemCondition
+ * @type {module:pricing_v0/model/ItemCondition}
  */
 BatchOffersRequestParams.prototype.itemCondition = undefined
 
 /**
  * @member {module:pricing_v0/model/CustomerType} customerType
+ * @type {module:pricing_v0/model/CustomerType}
  */
 BatchOffersRequestParams.prototype.customerType = undefined

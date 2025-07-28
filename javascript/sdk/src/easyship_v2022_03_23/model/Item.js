@@ -59,11 +59,13 @@ export class Item {
 /**
  * The Amazon-defined order item identifier.
  * @member {String} orderItemId
+ * @type {String}
  */
 Item.prototype.orderItemId = undefined
 
 /**
  * A list of serial numbers for the items associated with the `OrderItemId` value.
  * @member {Array.<String>} orderItemSerialNumbers
+ * @type {Array.<String>}
  */
 Item.prototype.orderItemSerialNumbers = undefined

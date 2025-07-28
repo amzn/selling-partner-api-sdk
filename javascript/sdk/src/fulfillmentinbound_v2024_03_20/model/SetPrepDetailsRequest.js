@@ -64,11 +64,13 @@ export class SetPrepDetailsRequest {
 /**
  * The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 SetPrepDetailsRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of MSKUs and related prep details.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetailInput>} mskuPrepDetails
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetailInput>}
  */
 SetPrepDetailsRequest.prototype.mskuPrepDetails = undefined

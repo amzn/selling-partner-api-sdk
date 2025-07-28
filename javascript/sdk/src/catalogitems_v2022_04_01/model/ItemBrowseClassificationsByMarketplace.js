@@ -62,11 +62,13 @@ export class ItemBrowseClassificationsByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemBrowseClassificationsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Classifications (browse nodes) that are associated with the item in the Amazon catalog.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemBrowseClassification>} classifications
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemBrowseClassification>}
  */
 ItemBrowseClassificationsByMarketplace.prototype.classifications = undefined

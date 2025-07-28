@@ -63,11 +63,13 @@ export class CurrencyAmount {
 /**
  * Three-digit currency code in ISO 4217 format.
  * @member {String} currencyCode
+ * @type {String}
  */
 CurrencyAmount.prototype.currencyCode = undefined
 
 /**
  * The currency amount.
  * @member {Number} amount
+ * @type {Number}
  */
 CurrencyAmount.prototype.amount = undefined

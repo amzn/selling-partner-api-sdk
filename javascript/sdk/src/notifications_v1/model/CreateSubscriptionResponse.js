@@ -60,11 +60,13 @@ export class CreateSubscriptionResponse {
 
 /**
  * @member {module:notifications_v1/model/Subscription} payload
+ * @type {module:notifications_v1/model/Subscription}
  */
 CreateSubscriptionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:notifications_v1/model/Error>} errors
+ * @type {Array.<module:notifications_v1/model/Error>}
  */
 CreateSubscriptionResponse.prototype.errors = undefined

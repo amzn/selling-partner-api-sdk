@@ -76,47 +76,56 @@ export class LowestPriceType {
 /**
  * Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
  * @member {String} condition
+ * @type {String}
  */
 LowestPriceType.prototype.condition = undefined
 
 /**
  * Indicates whether the item is fulfilled by Amazon or by the seller.
  * @member {String} fulfillmentChannel
+ * @type {String}
  */
 LowestPriceType.prototype.fulfillmentChannel = undefined
 
 /**
  * @member {module:pricing_v0/model/OfferCustomerType} offerType
+ * @type {module:pricing_v0/model/OfferCustomerType}
  */
 LowestPriceType.prototype.offerType = undefined
 
 /**
  * Indicates at what quantity this price becomes active.
  * @member {Number} quantityTier
+ * @type {Number}
  */
 LowestPriceType.prototype.quantityTier = undefined
 
 /**
  * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
+ * @type {module:pricing_v0/model/QuantityDiscountType}
  */
 LowestPriceType.prototype.quantityDiscountType = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} landedPrice
+ * @type {module:pricing_v0/model/MoneyType}
  */
 LowestPriceType.prototype.landedPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} listingPrice
+ * @type {module:pricing_v0/model/MoneyType}
  */
 LowestPriceType.prototype.listingPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} shipping
+ * @type {module:pricing_v0/model/MoneyType}
  */
 LowestPriceType.prototype.shipping = undefined
 
 /**
  * @member {module:pricing_v0/model/Points} points
+ * @type {module:pricing_v0/model/Points}
  */
 LowestPriceType.prototype.points = undefined

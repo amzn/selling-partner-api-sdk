@@ -71,21 +71,25 @@ export class Fee {
 /**
  * The unique identifier assigned to the fee.
  * @member {String} feeId
+ * @type {String}
  */
 Fee.prototype.feeId = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/FeeType} feeType
+ * @type {module:sellerWallet_2024_03_01/model/FeeType}
  */
 Fee.prototype.feeType = undefined
 
 /**
  * A decimal number, such as an amount or FX rate.
  * @member {Number} feeRateValue
+ * @type {Number}
  */
 Fee.prototype.feeRateValue = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/Currency} feeAmount
+ * @type {module:sellerWallet_2024_03_01/model/Currency}
  */
 Fee.prototype.feeAmount = undefined

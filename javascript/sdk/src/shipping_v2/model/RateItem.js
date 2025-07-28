@@ -63,21 +63,25 @@ export class RateItem {
 
 /**
  * @member {module:shipping_v2/model/RateItemID} rateItemID
+ * @type {module:shipping_v2/model/RateItemID}
  */
 RateItem.prototype.rateItemID = undefined
 
 /**
  * @member {module:shipping_v2/model/RateItemType} rateItemType
+ * @type {module:shipping_v2/model/RateItemType}
  */
 RateItem.prototype.rateItemType = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} rateItemCharge
+ * @type {module:shipping_v2/model/Currency}
  */
 RateItem.prototype.rateItemCharge = undefined
 
 /**
  * Used for the localization.
  * @member {String} rateItemNameLocalization
+ * @type {String}
  */
 RateItem.prototype.rateItemNameLocalization = undefined

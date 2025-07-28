@@ -85,54 +85,64 @@ export class ShipmentRequestDetails {
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 ShipmentRequestDetails.prototype.amazonOrderId = undefined
 
 /**
  * A seller-defined order identifier.
  * @member {String} sellerOrderId
+ * @type {String}
  */
 ShipmentRequestDetails.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
  * @member {Array.<module:merchantfulfillment_v0/model/Item>} itemList
+ * @type {Array.<module:merchantfulfillment_v0/model/Item>}
  */
 ShipmentRequestDetails.prototype.itemList = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Address} shipFromAddress
+ * @type {module:merchantfulfillment_v0/model/Address}
  */
 ShipmentRequestDetails.prototype.shipFromAddress = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/PackageDimensions} packageDimensions
+ * @type {module:merchantfulfillment_v0/model/PackageDimensions}
  */
 ShipmentRequestDetails.prototype.packageDimensions = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Weight} weight
+ * @type {module:merchantfulfillment_v0/model/Weight}
  */
 ShipmentRequestDetails.prototype.weight = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} mustArriveByDate
+ * @type {Date}
  */
 ShipmentRequestDetails.prototype.mustArriveByDate = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} shipDate
+ * @type {Date}
  */
 ShipmentRequestDetails.prototype.shipDate = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShippingServiceOptions} shippingServiceOptions
+ * @type {module:merchantfulfillment_v0/model/ShippingServiceOptions}
  */
 ShipmentRequestDetails.prototype.shippingServiceOptions = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/LabelCustomization} labelCustomization
+ * @type {module:merchantfulfillment_v0/model/LabelCustomization}
  */
 ShipmentRequestDetails.prototype.labelCustomization = undefined

@@ -65,10 +65,12 @@ export class IssueEnforcements {
 /**
  * List of enforcement actions taken by Amazon that affect the publishing or status of a listing.
  * @member {Array.<module:listingsitems_v2021_08_01/model/IssueEnforcementAction>} actions
+ * @type {Array.<module:listingsitems_v2021_08_01/model/IssueEnforcementAction>}
  */
 IssueEnforcements.prototype.actions = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/IssueExemption} exemption
+ * @type {module:listingsitems_v2021_08_01/model/IssueExemption}
  */
 IssueEnforcements.prototype.exemption = undefined

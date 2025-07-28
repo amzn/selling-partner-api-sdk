@@ -25,7 +25,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class TransactionsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -72,7 +72,7 @@ export class TransactionsApi {
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
      * @param {module:sellerWallet_2024_03_01/model/TransactionInitiationRequest} body The payload of the request
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/Transaction} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/Transaction>}
      */
   createTransactionWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
     const postBody = body
@@ -120,7 +120,7 @@ export class TransactionsApi {
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
      * @param {module:sellerWallet_2024_03_01/model/TransactionInitiationRequest} body The payload of the request
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/Transaction}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/Transaction>}
      */
   createTransaction (destAccountDigitalSignature, amountDigitalSignature, body) {
     return this.createTransactionWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, body)
@@ -133,7 +133,7 @@ export class TransactionsApi {
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      * Find a transaction by the Amazon transaction identifier.
      * @param {String} transactionId The ID of the Amazon Seller Wallet transaction.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/Transaction} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/Transaction>}
      */
   getTransactionWithHttpInfo (transactionId) {
     const postBody = null
@@ -168,7 +168,7 @@ export class TransactionsApi {
      * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
      * Find a transaction by the Amazon transaction identifier.
      * @param {String} transactionId The ID of the Amazon Seller Wallet transaction.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/Transaction}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/Transaction>}
      */
   getTransaction (transactionId) {
     return this.getTransactionWithHttpInfo(transactionId)
@@ -183,7 +183,7 @@ export class TransactionsApi {
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/TransactionListing} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransactionListing>}
      */
   listAccountTransactionsWithHttpInfo (accountId, opts) {
     opts = opts || {}
@@ -222,7 +222,7 @@ export class TransactionsApi {
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/TransactionListing}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransactionListing>}
      */
   listAccountTransactions (accountId, opts) {
     return this.listAccountTransactionsWithHttpInfo(accountId, opts)

@@ -57,5 +57,6 @@ export class GetSolicitationActionResponseEmbedded {
 
 /**
  * @member {module:solicitations_v1/model/GetSchemaResponse} schema
+ * @type {module:solicitations_v1/model/GetSchemaResponse}
  */
 GetSolicitationActionResponseEmbedded.prototype.schema = undefined

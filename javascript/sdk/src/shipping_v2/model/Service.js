@@ -63,11 +63,13 @@ export class Service {
 /**
  * An identifier for the shipping service.
  * @member {String} id
+ * @type {String}
  */
 Service.prototype.id = undefined
 
 /**
  * The name of the shipping service.
  * @member {String} name
+ * @type {String}
  */
 Service.prototype.name = undefined

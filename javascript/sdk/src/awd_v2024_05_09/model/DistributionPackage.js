@@ -68,15 +68,18 @@ export class DistributionPackage {
 
 /**
  * @member {module:awd_v2024_05_09/model/DistributionPackageContents} contents
+ * @type {module:awd_v2024_05_09/model/DistributionPackageContents}
  */
 DistributionPackage.prototype.contents = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/MeasurementData} measurements
+ * @type {module:awd_v2024_05_09/model/MeasurementData}
  */
 DistributionPackage.prototype.measurements = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/DistributionPackageType} type
+ * @type {module:awd_v2024_05_09/model/DistributionPackageType}
  */
 DistributionPackage.prototype.type = undefined

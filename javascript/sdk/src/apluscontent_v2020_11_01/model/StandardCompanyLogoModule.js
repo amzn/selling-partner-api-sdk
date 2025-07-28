@@ -60,5 +60,6 @@ export class StandardCompanyLogoModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageComponent} companyLogo
+ * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
  */
 StandardCompanyLogoModule.prototype.companyLogo = undefined

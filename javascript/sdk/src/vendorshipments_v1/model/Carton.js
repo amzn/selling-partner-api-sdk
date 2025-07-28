@@ -71,33 +71,39 @@ export class Carton {
 /**
  * A list of carton identifiers.
  * @member {Array.<module:vendorshipments_v1/model/ContainerIdentification>} cartonIdentifiers
+ * @type {Array.<module:vendorshipments_v1/model/ContainerIdentification>}
  */
 Carton.prototype.cartonIdentifiers = undefined
 
 /**
  * Carton sequence number for the carton. The first carton will be 001, the second 002, and so on. This number is used as a reference to refer to this carton from the pallet level.
  * @member {String} cartonSequenceNumber
+ * @type {String}
  */
 Carton.prototype.cartonSequenceNumber = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Dimensions} dimensions
+ * @type {module:vendorshipments_v1/model/Dimensions}
  */
 Carton.prototype.dimensions = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Weight} weight
+ * @type {module:vendorshipments_v1/model/Weight}
  */
 Carton.prototype.weight = undefined
 
 /**
  * This is required to be provided for every carton in the small parcel shipments.
  * @member {String} trackingNumber
+ * @type {String}
  */
 Carton.prototype.trackingNumber = undefined
 
 /**
  * A list of container item details.
  * @member {Array.<module:vendorshipments_v1/model/ContainerItem>} items
+ * @type {Array.<module:vendorshipments_v1/model/ContainerItem>}
  */
 Carton.prototype.items = undefined

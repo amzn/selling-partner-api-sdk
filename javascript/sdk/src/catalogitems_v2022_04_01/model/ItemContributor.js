@@ -63,11 +63,13 @@ export class ItemContributor {
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/ItemContributorRole} role
+ * @type {module:catalogitems_v2022_04_01/model/ItemContributorRole}
  */
 ItemContributor.prototype.role = undefined
 
 /**
  * Name of the contributor, such as `Jane Austen`.
  * @member {String} value
+ * @type {String}
  */
 ItemContributor.prototype.value = undefined

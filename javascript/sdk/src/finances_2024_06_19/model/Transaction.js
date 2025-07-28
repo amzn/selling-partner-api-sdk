@@ -75,69 +75,81 @@ export class Transaction {
 
 /**
  * @member {module:finances_2024_06_19/model/SellingPartnerMetadata} sellingPartnerMetadata
+ * @type {module:finances_2024_06_19/model/SellingPartnerMetadata}
  */
 Transaction.prototype.sellingPartnerMetadata = undefined
 
 /**
  * Related business identifiers of the transaction.
  * @member {Array.<module:finances_2024_06_19/model/RelatedIdentifier>} relatedIdentifiers
+ * @type {Array.<module:finances_2024_06_19/model/RelatedIdentifier>}
  */
 Transaction.prototype.relatedIdentifiers = undefined
 
 /**
  * The type of transaction.  Possible values:  * Shipment
  * @member {String} transactionType
+ * @type {String}
  */
 Transaction.prototype.transactionType = undefined
 
 /**
  * The unique identifier for the transaction.
  * @member {String} transactionId
+ * @type {String}
  */
 Transaction.prototype.transactionId = undefined
 
 /**
  * The status of the transaction.  **Possible values:**  * `DEFERRED`: the transaction is currently deferred. * `RELEASED`: the transaction is currently released. * `DEFERRED_RELEASED`: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to `DEFERRED_RELEASED` when the transaction is released.
  * @member {String} transactionStatus
+ * @type {String}
  */
 Transaction.prototype.transactionStatus = undefined
 
 /**
  * Describes the reasons for the transaction.  Example: 'Order Payment','Refund Order'
  * @member {String} description
+ * @type {String}
  */
 Transaction.prototype.description = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 Transaction.prototype.postedDate = undefined
 
 /**
  * @member {module:finances_2024_06_19/model/Currency} totalAmount
+ * @type {module:finances_2024_06_19/model/Currency}
  */
 Transaction.prototype.totalAmount = undefined
 
 /**
  * @member {module:finances_2024_06_19/model/MarketplaceDetails} marketplaceDetails
+ * @type {module:finances_2024_06_19/model/MarketplaceDetails}
  */
 Transaction.prototype.marketplaceDetails = undefined
 
 /**
  * List of items in the transaction
  * @member {Array.<module:finances_2024_06_19/model/Item>} items
+ * @type {Array.<module:finances_2024_06_19/model/Item>}
  */
 Transaction.prototype.items = undefined
 
 /**
  * List of additional Information about the item.
  * @member {Array.<module:finances_2024_06_19/model/Context>} contexts
+ * @type {Array.<module:finances_2024_06_19/model/Context>}
  */
 Transaction.prototype.contexts = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
  * @member {Array.<module:finances_2024_06_19/model/Breakdown>} breakdowns
+ * @type {Array.<module:finances_2024_06_19/model/Breakdown>}
  */
 Transaction.prototype.breakdowns = undefined

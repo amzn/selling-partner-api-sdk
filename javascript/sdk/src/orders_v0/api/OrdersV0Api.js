@@ -32,7 +32,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class OrdersV0Api {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -83,7 +83,7 @@ export class OrdersV0Api {
      * Updates the shipment confirmation status for a specified order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
      * @param {module:orders_v0/model/ConfirmShipmentRequest} payload Request body of &#x60;confirmShipment&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   confirmShipmentWithHttpInfo (orderId, payload) {
     const postBody = payload
@@ -123,7 +123,7 @@ export class OrdersV0Api {
      * Updates the shipment confirmation status for a specified order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
      * @param {module:orders_v0/model/ConfirmShipmentRequest} payload Request body of &#x60;confirmShipment&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   confirmShipment (orderId, payload) {
     return this.confirmShipmentWithHttpInfo(orderId, payload)
@@ -135,7 +135,7 @@ export class OrdersV0Api {
   /**
      * Returns the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:orders_v0/model/GetOrderResponse} and HTTP response
+     * @return {Promise<module:orders_v0/model/GetOrderResponse>}
      */
   getOrderWithHttpInfo (orderId) {
     const postBody = null
@@ -169,7 +169,7 @@ export class OrdersV0Api {
   /**
      * Returns the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:orders_v0/model/GetOrderResponse}
+     * @return {Promise<module:orders_v0/model/GetOrderResponse>}
      */
   getOrder (orderId) {
     return this.getOrderWithHttpInfo(orderId)
@@ -181,7 +181,7 @@ export class OrdersV0Api {
   /**
      * Returns the shipping address for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:orders_v0/model/GetOrderAddressResponse} and HTTP response
+     * @return {Promise<module:orders_v0/model/GetOrderAddressResponse>}
      */
   getOrderAddressWithHttpInfo (orderId) {
     const postBody = null
@@ -215,7 +215,7 @@ export class OrdersV0Api {
   /**
      * Returns the shipping address for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:orders_v0/model/GetOrderAddressResponse}
+     * @return {Promise<module:orders_v0/model/GetOrderAddressResponse>}
      */
   getOrderAddress (orderId) {
     return this.getOrderAddressWithHttpInfo(orderId)
@@ -227,7 +227,7 @@ export class OrdersV0Api {
   /**
      * Returns buyer information for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:orders_v0/model/GetOrderBuyerInfoResponse} and HTTP response
+     * @return {Promise<module:orders_v0/model/GetOrderBuyerInfoResponse>}
      */
   getOrderBuyerInfoWithHttpInfo (orderId) {
     const postBody = null
@@ -261,7 +261,7 @@ export class OrdersV0Api {
   /**
      * Returns buyer information for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:orders_v0/model/GetOrderBuyerInfoResponse}
+     * @return {Promise<module:orders_v0/model/GetOrderBuyerInfoResponse>}
      */
   getOrderBuyerInfo (orderId) {
     return this.getOrderBuyerInfoWithHttpInfo(orderId)
@@ -275,7 +275,7 @@ export class OrdersV0Api {
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:orders_v0/model/GetOrderItemsResponse} and HTTP response
+     * @return {Promise<module:orders_v0/model/GetOrderItemsResponse>}
      */
   getOrderItemsWithHttpInfo (orderId, opts) {
     opts = opts || {}
@@ -313,7 +313,7 @@ export class OrdersV0Api {
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:orders_v0/model/GetOrderItemsResponse}
+     * @return {Promise<module:orders_v0/model/GetOrderItemsResponse>}
      */
   getOrderItems (orderId, opts) {
     return this.getOrderItemsWithHttpInfo(orderId, opts)
@@ -327,7 +327,7 @@ export class OrdersV0Api {
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:orders_v0/model/GetOrderItemsBuyerInfoResponse} and HTTP response
+     * @return {Promise<module:orders_v0/model/GetOrderItemsBuyerInfoResponse>}
      */
   getOrderItemsBuyerInfoWithHttpInfo (orderId, opts) {
     opts = opts || {}
@@ -365,7 +365,7 @@ export class OrdersV0Api {
      * @param {String} orderId An Amazon-defined order identifier, in 3-7-7 format.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:orders_v0/model/GetOrderItemsBuyerInfoResponse}
+     * @return {Promise<module:orders_v0/model/GetOrderItemsBuyerInfoResponse>}
      */
   getOrderItemsBuyerInfo (orderId, opts) {
     return this.getOrderItemsBuyerInfoWithHttpInfo(orderId, opts)
@@ -377,7 +377,7 @@ export class OrdersV0Api {
   /**
      * Returns regulated information for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:orders_v0/model/GetOrderRegulatedInfoResponse} and HTTP response
+     * @return {Promise<module:orders_v0/model/GetOrderRegulatedInfoResponse>}
      */
   getOrderRegulatedInfoWithHttpInfo (orderId) {
     const postBody = null
@@ -411,7 +411,7 @@ export class OrdersV0Api {
   /**
      * Returns regulated information for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:orders_v0/model/GetOrderRegulatedInfoResponse}
+     * @return {Promise<module:orders_v0/model/GetOrderRegulatedInfoResponse>}
      */
   getOrderRegulatedInfo (orderId) {
     return this.getOrderRegulatedInfoWithHttpInfo(orderId)
@@ -445,7 +445,7 @@ export class OrdersV0Api {
      * @param {String} opts.earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param {String} opts.latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param {String} opts.latestDeliveryDateAfter Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:orders_v0/model/GetOrdersResponse} and HTTP response
+     * @return {Promise<module:orders_v0/model/GetOrdersResponse>}
      */
   getOrdersWithHttpInfo (marketplaceIds, opts) {
     opts = opts || {}
@@ -523,7 +523,7 @@ export class OrdersV0Api {
      * @param {String} opts.earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param {String} opts.latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
      * @param {String} opts.latestDeliveryDateAfter Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:orders_v0/model/GetOrdersResponse}
+     * @return {Promise<module:orders_v0/model/GetOrdersResponse>}
      */
   getOrders (marketplaceIds, opts) {
     return this.getOrdersWithHttpInfo(marketplaceIds, opts)
@@ -536,7 +536,7 @@ export class OrdersV0Api {
      * Updates (approves or rejects) the verification status of an order containing regulated products.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
      * @param {module:orders_v0/model/UpdateVerificationStatusRequest} payload The request body for the &#x60;updateVerificationStatus&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   updateVerificationStatusWithHttpInfo (orderId, payload) {
     const postBody = payload
@@ -576,7 +576,7 @@ export class OrdersV0Api {
      * Updates (approves or rejects) the verification status of an order containing regulated products.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The Amazon order identifier in 3-7-7 format.
      * @param {module:orders_v0/model/UpdateVerificationStatusRequest} payload The request body for the &#x60;updateVerificationStatus&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   updateVerificationStatus (orderId, payload) {
     return this.updateVerificationStatusWithHttpInfo(orderId, payload)

@@ -72,65 +72,76 @@ export class Address {
 /**
  * The name of the person, business, or institution.
  * @member {String} name
+ * @type {String}
  */
 Address.prototype.name = undefined
 
 /**
  * The first line of the address.
  * @member {String} addressLine1
+ * @type {String}
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional address information, if required.
  * @member {String} addressLine2
+ * @type {String}
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Additional address information, if required.
  * @member {String} addressLine3
+ * @type {String}
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * The city.
  * @member {String} city
+ * @type {String}
  */
 Address.prototype.city = undefined
 
 /**
  * The county.
  * @member {String} county
+ * @type {String}
  */
 Address.prototype.county = undefined
 
 /**
  * The district.
  * @member {String} district
+ * @type {String}
  */
 Address.prototype.district = undefined
 
 /**
  * The state or region.
  * @member {String} stateOrRegion
+ * @type {String}
  */
 Address.prototype.stateOrRegion = undefined
 
 /**
  * The postal code. This can contain letters, digits, spaces, and/or punctuation.
  * @member {String} postalCode
+ * @type {String}
  */
 Address.prototype.postalCode = undefined
 
 /**
  * The two digit country code, in ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The phone number.
  * @member {String} phone
+ * @type {String}
  */
 Address.prototype.phone = undefined

@@ -63,11 +63,13 @@ export class CreateDestinationRequest {
 
 /**
  * @member {module:notifications_v1/model/DestinationResourceSpecification} resourceSpecification
+ * @type {module:notifications_v1/model/DestinationResourceSpecification}
  */
 CreateDestinationRequest.prototype.resourceSpecification = undefined
 
 /**
  * A developer-defined name to help identify this destination.
  * @member {String} name
+ * @type {String}
  */
 CreateDestinationRequest.prototype.name = undefined

@@ -100,88 +100,104 @@ export class Transaction {
 /**
  * The unique identifier provided by Amazon to the transaction.
  * @member {String} transactionId
+ * @type {String}
  */
 Transaction.prototype.transactionId = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionType} transactionType
+ * @type {module:sellerWallet_2024_03_01/model/TransactionType}
  */
 Transaction.prototype.transactionType = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionStatus} transactionStatus
+ * @type {module:sellerWallet_2024_03_01/model/TransactionStatus}
  */
 Transaction.prototype.transactionStatus = undefined
 
 /**
  * The date on which the transaction was initiated.
  * @member {Date} transactionRequestDate
+ * @type {Date}
  */
 Transaction.prototype.transactionRequestDate = undefined
 
 /**
  * The expected completion date of the transaction.
  * @member {Date} expectedCompletionDate
+ * @type {Date}
  */
 Transaction.prototype.expectedCompletionDate = undefined
 
 /**
  * The transaction's completion date.
  * @member {Date} transactionActualCompletionDate
+ * @type {Date}
  */
 Transaction.prototype.transactionActualCompletionDate = undefined
 
 /**
  * The date of the most recent account balance update.
  * @member {Date} lastUpdateDate
+ * @type {Date}
  */
 Transaction.prototype.lastUpdateDate = undefined
 
 /**
  * The Amazon Seller Wallet customer who requested the transaction.
  * @member {String} requesterName
+ * @type {String}
  */
 Transaction.prototype.requesterName = undefined
 
 /**
  * The transaction initiation source. This value could be the Amazon portal or PISP name that the customer used to start the transaction.
  * @member {String} transactionRequesterSource
+ * @type {String}
  */
 Transaction.prototype.transactionRequesterSource = undefined
 
 /**
  * The description provided by the requester in the transaction request at time of transaction initiation.
  * @member {String} transactionDescription
+ * @type {String}
  */
 Transaction.prototype.transactionDescription = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionSourceAccount
+ * @type {module:sellerWallet_2024_03_01/model/TransactionAccount}
  */
 Transaction.prototype.transactionSourceAccount = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionDestinationAccount
+ * @type {module:sellerWallet_2024_03_01/model/TransactionAccount}
  */
 Transaction.prototype.transactionDestinationAccount = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/Currency} transactionRequestAmount
+ * @type {module:sellerWallet_2024_03_01/model/Currency}
  */
 Transaction.prototype.transactionRequestAmount = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferRatePreview} transferRateDetails
+ * @type {module:sellerWallet_2024_03_01/model/TransferRatePreview}
  */
 Transaction.prototype.transferRateDetails = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/Currency} transactionFinalAmount
+ * @type {module:sellerWallet_2024_03_01/model/Currency}
  */
 Transaction.prototype.transactionFinalAmount = undefined
 
 /**
  * The reason the transaction failed, if applicable.
  * @member {String} transactionFailureReason
+ * @type {String}
  */
 Transaction.prototype.transactionFailureReason = undefined

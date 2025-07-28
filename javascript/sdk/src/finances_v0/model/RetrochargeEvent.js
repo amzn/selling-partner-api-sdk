@@ -66,39 +66,46 @@ export class RetrochargeEvent {
 /**
  * The type of event.  Possible values:  * Retrocharge  * RetrochargeReversal
  * @member {String} retrochargeEventType
+ * @type {String}
  */
 RetrochargeEvent.prototype.retrochargeEventType = undefined
 
 /**
  * An Amazon-defined identifier for an order.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 RetrochargeEvent.prototype.amazonOrderId = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 RetrochargeEvent.prototype.postedDate = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} baseTax
+ * @type {module:finances_v0/model/Currency}
  */
 RetrochargeEvent.prototype.baseTax = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} shippingTax
+ * @type {module:finances_v0/model/Currency}
  */
 RetrochargeEvent.prototype.shippingTax = undefined
 
 /**
  * The name of the marketplace where the retrocharge event occurred.
  * @member {String} marketplaceName
+ * @type {String}
  */
 RetrochargeEvent.prototype.marketplaceName = undefined
 
 /**
  * A list of information about taxes withheld.
  * @member {Array.<module:finances_v0/model/TaxWithheldComponent>} retrochargeTaxWithheldList
+ * @type {Array.<module:finances_v0/model/TaxWithheldComponent>}
  */
 RetrochargeEvent.prototype.retrochargeTaxWithheldList = undefined

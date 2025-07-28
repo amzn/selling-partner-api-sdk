@@ -58,5 +58,6 @@ export class LabelFormatOptionRequest {
 /**
  * When true, include a packing slip with the label.
  * @member {Boolean} includePackingSlipWithLabel
+ * @type {Boolean}
  */
 LabelFormatOptionRequest.prototype.includePackingSlipWithLabel = undefined

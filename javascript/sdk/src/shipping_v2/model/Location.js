@@ -61,23 +61,27 @@ export class Location {
 /**
  * The state, county or region where the person, business or institution is located.
  * @member {String} stateOrRegion
+ * @type {String}
  */
 Location.prototype.stateOrRegion = undefined
 
 /**
  * The city or town where the person, business or institution is located.
  * @member {String} city
+ * @type {String}
  */
 Location.prototype.city = undefined
 
 /**
  * The two digit country code. Follows ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 Location.prototype.countryCode = undefined
 
 /**
  * The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
  * @member {String} postalCode
+ * @type {String}
  */
 Location.prototype.postalCode = undefined

@@ -61,22 +61,26 @@ export class DebtRecoveryItem {
 
 /**
  * @member {module:finances_v0/model/Currency} recoveryAmount
+ * @type {module:finances_v0/model/Currency}
  */
 DebtRecoveryItem.prototype.recoveryAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} originalAmount
+ * @type {module:finances_v0/model/Currency}
  */
 DebtRecoveryItem.prototype.originalAmount = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} groupBeginDate
+ * @type {Date}
  */
 DebtRecoveryItem.prototype.groupBeginDate = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} groupEndDate
+ * @type {Date}
  */
 DebtRecoveryItem.prototype.groupEndDate = undefined

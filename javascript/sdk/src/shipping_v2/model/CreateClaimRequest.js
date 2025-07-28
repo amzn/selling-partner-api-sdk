@@ -72,32 +72,38 @@ export class CreateClaimRequest {
 /**
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
+ * @type {String}
  */
 CreateClaimRequest.prototype.trackingId = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} declaredValue
+ * @type {module:shipping_v2/model/Currency}
  */
 CreateClaimRequest.prototype.declaredValue = undefined
 
 /**
  * @member {module:shipping_v2/model/ClaimReason} claimReason
+ * @type {module:shipping_v2/model/ClaimReason}
  */
 CreateClaimRequest.prototype.claimReason = undefined
 
 /**
  * Applicable for only On Amazon shipments to identify if replacement was sent
  * @member {Boolean} isReplacementPackageSent
+ * @type {Boolean}
  */
 CreateClaimRequest.prototype.isReplacementPackageSent = undefined
 
 /**
  * A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list
  * @member {Array.<String>} proofs
+ * @type {Array.<String>}
  */
 CreateClaimRequest.prototype.proofs = undefined
 
 /**
  * @member {module:shipping_v2/model/SettlementType} settlementType
+ * @type {module:shipping_v2/model/SettlementType}
  */
 CreateClaimRequest.prototype.settlementType = undefined

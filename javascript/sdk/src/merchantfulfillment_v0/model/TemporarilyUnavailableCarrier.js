@@ -60,5 +60,6 @@ export class TemporarilyUnavailableCarrier {
 /**
  * The name of the carrier.
  * @member {String} carrierName
+ * @type {String}
  */
 TemporarilyUnavailableCarrier.prototype.carrierName = undefined

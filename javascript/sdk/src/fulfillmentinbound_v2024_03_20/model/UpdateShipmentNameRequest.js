@@ -60,5 +60,6 @@ export class UpdateShipmentNameRequest {
 /**
  * A human-readable name to update the shipment name to.
  * @member {String} name
+ * @type {String}
  */
 UpdateShipmentNameRequest.prototype.name = undefined

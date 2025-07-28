@@ -68,58 +68,68 @@ export class SolutionProviderCreditEvent {
 /**
  * The transaction type.
  * @member {String} providerTransactionType
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.providerTransactionType = undefined
 
 /**
  * A seller-defined identifier for an order.
  * @member {String} sellerOrderId
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.sellerOrderId = undefined
 
 /**
  * The identifier of the marketplace where the order was placed.
  * @member {String} marketplaceId
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.marketplaceId = undefined
 
 /**
  * The two-letter country code of the country associated with the marketplace where the order was placed.
  * @member {String} marketplaceCountryCode
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.marketplaceCountryCode = undefined
 
 /**
  * The Amazon-defined identifier of the seller.
  * @member {String} sellerId
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.sellerId = undefined
 
 /**
  * The store name where the payment event occurred.
  * @member {String} sellerStoreName
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.sellerStoreName = undefined
 
 /**
  * The Amazon-defined identifier of the solution provider.
  * @member {String} providerId
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.providerId = undefined
 
 /**
  * The store name where the payment event occurred.
  * @member {String} providerStoreName
+ * @type {String}
  */
 SolutionProviderCreditEvent.prototype.providerStoreName = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} transactionAmount
+ * @type {module:finances_v0/model/Currency}
  */
 SolutionProviderCreditEvent.prototype.transactionAmount = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} transactionCreationDate
+ * @type {Date}
  */
 SolutionProviderCreditEvent.prototype.transactionCreationDate = undefined

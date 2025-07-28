@@ -59,5 +59,6 @@ export class CreateConfirmDeliveryDetailsResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:messaging_v1/model/Error>} errors
+ * @type {Array.<module:messaging_v1/model/Error>}
  */
 CreateConfirmDeliveryDetailsResponse.prototype.errors = undefined

@@ -82,70 +82,82 @@ export class Address {
 /**
  * The name of the person, business or institution at the address.
  * @member {String} name
+ * @type {String}
  */
 Address.prototype.name = undefined
 
 /**
  * The first line of the address.
  * @member {String} addressLine1
+ * @type {String}
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional address information, if required.
  * @member {String} addressLine2
+ * @type {String}
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Additional address information, if required.
  * @member {String} addressLine3
+ * @type {String}
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * The name of the business or institution associated with the address.
  * @member {String} companyName
+ * @type {String}
  */
 Address.prototype.companyName = undefined
 
 /**
  * The state, county or region where the person, business or institution is located.
  * @member {String} stateOrRegion
+ * @type {String}
  */
 Address.prototype.stateOrRegion = undefined
 
 /**
  * The city or town where the person, business or institution is located.
  * @member {String} city
+ * @type {String}
  */
 Address.prototype.city = undefined
 
 /**
  * The two digit country code. Follows ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
  * @member {String} postalCode
+ * @type {String}
  */
 Address.prototype.postalCode = undefined
 
 /**
  * The email address of the contact associated with the address.
  * @member {String} email
+ * @type {String}
  */
 Address.prototype.email = undefined
 
 /**
  * The phone number of the person, business or institution located at that address, including the country calling code.
  * @member {String} phoneNumber
+ * @type {String}
  */
 Address.prototype.phoneNumber = undefined
 
 /**
  * @member {module:shipping_v2/model/Geocode} geocode
+ * @type {module:shipping_v2/model/Geocode}
  */
 Address.prototype.geocode = undefined

@@ -60,6 +60,7 @@ export class ItemQuantity {
 /**
  * Acknowledged quantity. This value should not be zero.
  * @member {Number} amount
+ * @type {Number}
  */
 ItemQuantity.prototype.amount = undefined
 
@@ -86,11 +87,13 @@ ItemQuantity.UnitOfMeasureEnum = {
 /**
  * Unit of measure for the acknowledged quantity.
  * @member {module:vendororders_v1/model/ItemQuantity.UnitOfMeasureEnum} unitOfMeasure
+ * @type {module:vendororders_v1/model/ItemQuantity.UnitOfMeasureEnum}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined
 
 /**
  * The case size, in the event that we ordered using cases.
  * @member {Number} unitSize
+ * @type {Number}
  */
 ItemQuantity.prototype.unitSize = undefined

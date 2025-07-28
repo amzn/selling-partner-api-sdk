@@ -60,5 +60,6 @@ export class UpdateShipmentTrackingDetailsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 UpdateShipmentTrackingDetailsResponse.prototype.operationId = undefined

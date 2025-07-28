@@ -22,7 +22,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class FbaInboundApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -67,7 +67,7 @@ export class FbaInboundApi {
      * @param {module:fbaeligibility_v1/model/String} program The program that you want to check eligibility against.
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fbaeligibility_v1/model/GetItemEligibilityPreviewResponse} and HTTP response
+     * @return {Promise<module:fbaeligibility_v1/model/GetItemEligibilityPreviewResponse>}
      */
   getItemEligibilityPreviewWithHttpInfo (asin, program, opts) {
     opts = opts || {}
@@ -112,7 +112,7 @@ export class FbaInboundApi {
      * @param {module:fbaeligibility_v1/model/String} program The program that you want to check eligibility against.
      * @param {Object} opts Optional parameters
      * @param {Array.<String>} opts.marketplaceIds The identifier for the marketplace in which you want to determine eligibility. Required only when program&#x3D;INBOUND.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fbaeligibility_v1/model/GetItemEligibilityPreviewResponse}
+     * @return {Promise<module:fbaeligibility_v1/model/GetItemEligibilityPreviewResponse>}
      */
   getItemEligibilityPreview (asin, program, opts) {
     return this.getItemEligibilityPreviewWithHttpInfo(asin, program, opts)

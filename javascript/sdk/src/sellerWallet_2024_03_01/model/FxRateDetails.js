@@ -70,22 +70,26 @@ export class FxRateDetails {
 /**
  * The unique identifier assigned to the fees / foreign exchange rate of a transaction.
  * @member {String} fxRateId
+ * @type {String}
  */
 FxRateDetails.prototype.fxRateId = undefined
 
 /**
  * A decimal number, such as an amount or FX rate.
  * @member {Number} baseRate
+ * @type {Number}
  */
 FxRateDetails.prototype.baseRate = undefined
 
 /**
  * A decimal number, such as an amount or FX rate.
  * @member {Number} effectiveFxRate
+ * @type {Number}
  */
 FxRateDetails.prototype.effectiveFxRate = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/RateDirection} rateDirection
+ * @type {module:sellerWallet_2024_03_01/model/RateDirection}
  */
 FxRateDetails.prototype.rateDirection = undefined

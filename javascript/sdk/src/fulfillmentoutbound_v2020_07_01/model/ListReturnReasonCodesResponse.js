@@ -60,11 +60,13 @@ export class ListReturnReasonCodesResponse {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/ListReturnReasonCodesResult} payload
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/ListReturnReasonCodesResult}
  */
 ListReturnReasonCodesResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>}
  */
 ListReturnReasonCodesResponse.prototype.errors = undefined

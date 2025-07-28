@@ -79,45 +79,53 @@ export class TransportationOption {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Carrier} carrier
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Carrier}
  */
 TransportationOption.prototype.carrier = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/CarrierAppointment} carrierAppointment
+ * @type {module:fulfillmentinbound_v2024_03_20/model/CarrierAppointment}
  */
 TransportationOption.prototype.carrierAppointment = undefined
 
 /**
  * Identifies a list of preconditions for confirming the transportation option.
  * @member {Array.<String>} preconditions
+ * @type {Array.<String>}
  */
 TransportationOption.prototype.preconditions = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Quote} quote
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Quote}
  */
 TransportationOption.prototype.quote = undefined
 
 /**
  * Identifier of a shipment. A shipment contains the boxes and units being inbounded.
  * @member {String} shipmentId
+ * @type {String}
  */
 TransportationOption.prototype.shipmentId = undefined
 
 /**
  * Mode of shipment transportation that this option will provide.  Possible values: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.
  * @member {String} shippingMode
+ * @type {String}
  */
 TransportationOption.prototype.shippingMode = undefined
 
 /**
  * Shipping program for the option. Possible values: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
  * @member {String} shippingSolution
+ * @type {String}
  */
 TransportationOption.prototype.shippingSolution = undefined
 
 /**
  * Identifier of a transportation option. A transportation option represent one option for how to send a shipment.
  * @member {String} transportationOptionId
+ * @type {String}
  */
 TransportationOption.prototype.transportationOptionId = undefined

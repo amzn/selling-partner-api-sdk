@@ -61,16 +61,19 @@ export class OfferCountType {
 /**
  * Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club.
  * @member {String} condition
+ * @type {String}
  */
 OfferCountType.prototype.condition = undefined
 
 /**
  * @member {module:pricing_v0/model/FulfillmentChannelType} fulfillmentChannel
+ * @type {module:pricing_v0/model/FulfillmentChannelType}
  */
 OfferCountType.prototype.fulfillmentChannel = undefined
 
 /**
  * The number of offers in a fulfillment channel that meet a specific condition.
  * @member {Number} offerCount
+ * @type {Number}
  */
 OfferCountType.prototype.offerCount = undefined

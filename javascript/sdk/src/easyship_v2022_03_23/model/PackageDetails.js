@@ -64,16 +64,19 @@ export class PackageDetails {
 /**
  * A list of items contained in the package.
  * @member {Array.<module:easyship_v2022_03_23/model/Item>} packageItems
+ * @type {Array.<module:easyship_v2022_03_23/model/Item>}
  */
 PackageDetails.prototype.packageItems = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/TimeSlot} packageTimeSlot
+ * @type {module:easyship_v2022_03_23/model/TimeSlot}
  */
 PackageDetails.prototype.packageTimeSlot = undefined
 
 /**
  * Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.
  * @member {String} packageIdentifier
+ * @type {String}
  */
 PackageDetails.prototype.packageIdentifier = undefined

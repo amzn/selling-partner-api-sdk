@@ -59,11 +59,13 @@ export class UnmanifestedShipmentLocation {
 
 /**
  * @member {module:shipping_v2/model/Address} address
+ * @type {module:shipping_v2/model/Address}
  */
 UnmanifestedShipmentLocation.prototype.address = undefined
 
 /**
  * Its Last Manifest Date.
  * @member {String} lastManifestDate
+ * @type {String}
  */
 UnmanifestedShipmentLocation.prototype.lastManifestDate = undefined

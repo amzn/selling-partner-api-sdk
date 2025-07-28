@@ -64,10 +64,12 @@ export class ReferencePrice {
 /**
  * Reference price type (e.g., `CompetitivePriceThreshold`, `WasPrice`, `CompetitivePrice`). For definitions, see the [Product Pricing API Use Case Guide](https://developer-docs.amazon.com/sp-api/docs/product-pricing-api-v2022-05-01-use-case-guide).
  * @member {String} name
+ * @type {String}
  */
 ReferencePrice.prototype.name = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} price
+ * @type {module:pricing_v2022_05_01/model/MoneyType}
  */
 ReferencePrice.prototype.price = undefined

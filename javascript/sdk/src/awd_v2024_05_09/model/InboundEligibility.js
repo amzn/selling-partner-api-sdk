@@ -70,22 +70,26 @@ export class InboundEligibility {
 /**
  * If there are order level eligibility issues, then this list will contain those error codes and descriptions.
  * @member {Array.<module:awd_v2024_05_09/model/OrderIneligibilityReason>} ineligibilityReasons
+ * @type {Array.<module:awd_v2024_05_09/model/OrderIneligibilityReason>}
  */
 InboundEligibility.prototype.ineligibilityReasons = undefined
 
 /**
  * Details on SKU eligibility for each inbound package.
  * @member {Array.<module:awd_v2024_05_09/model/SkuEligibility>} packagesToInbound
+ * @type {Array.<module:awd_v2024_05_09/model/SkuEligibility>}
  */
 InboundEligibility.prototype.packagesToInbound = undefined
 
 /**
  * Timestamp when the eligibility check is performed.
  * @member {Date} previewedAt
+ * @type {Date}
  */
 InboundEligibility.prototype.previewedAt = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InboundEligibilityStatus} status
+ * @type {module:awd_v2024_05_09/model/InboundEligibilityStatus}
  */
 InboundEligibility.prototype.status = undefined

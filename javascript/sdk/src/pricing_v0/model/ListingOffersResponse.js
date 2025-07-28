@@ -70,36 +70,43 @@ export class ListingOffersResponse {
 
 /**
  * @member {module:pricing_v0/model/HttpResponseHeaders} headers
+ * @type {module:pricing_v0/model/HttpResponseHeaders}
  */
 ListingOffersResponse.prototype.headers = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
+ * @type {module:pricing_v0/model/GetOffersHttpStatusLine}
  */
 ListingOffersResponse.prototype.status = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersResponse} body
+ * @type {module:pricing_v0/model/GetOffersResponse}
  */
 ListingOffersResponse.prototype.body = undefined
 
 /**
  * @member {module:pricing_v0/model/ListingOffersRequestParams} request
+ * @type {module:pricing_v0/model/ListingOffersRequestParams}
  */
 ListingOffersResponse.prototype.request = undefined
 
 // Implement BatchOffersResponse interface:
 /**
  * @member {module:pricing_v0/model/HttpResponseHeaders} headers
+ * @type {module:pricing_v0/model/HttpResponseHeaders}
  */
 BatchOffersResponse.prototype.headers = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
+ * @type {module:pricing_v0/model/GetOffersHttpStatusLine}
  */
 BatchOffersResponse.prototype.status = undefined
 
 /**
  * @member {module:pricing_v0/model/GetOffersResponse} body
+ * @type {module:pricing_v0/model/GetOffersResponse}
  */
 BatchOffersResponse.prototype.body = undefined

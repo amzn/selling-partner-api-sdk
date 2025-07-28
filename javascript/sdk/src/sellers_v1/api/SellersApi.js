@@ -23,7 +23,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class SellersApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -65,7 +65,7 @@ export class SellersApi {
 
   /**
      * Returns information about a seller account and its marketplaces.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.016 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellers_v1/model/GetAccountResponse} and HTTP response
+     * @return {Promise<module:sellers_v1/model/GetAccountResponse>}
      */
   getAccountWithHttpInfo () {
     const postBody = null
@@ -92,7 +92,7 @@ export class SellersApi {
 
   /**
      * Returns information about a seller account and its marketplaces.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.016 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellers_v1/model/GetAccountResponse}
+     * @return {Promise<module:sellers_v1/model/GetAccountResponse>}
      */
   getAccount () {
     return this.getAccountWithHttpInfo()
@@ -103,7 +103,7 @@ export class SellersApi {
 
   /**
      * Returns a list of marketplaces where the seller can list items and information about the seller&#39;s participation in those marketplaces.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.016 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellers_v1/model/GetMarketplaceParticipationsResponse} and HTTP response
+     * @return {Promise<module:sellers_v1/model/GetMarketplaceParticipationsResponse>}
      */
   getMarketplaceParticipationsWithHttpInfo () {
     const postBody = null
@@ -130,7 +130,7 @@ export class SellersApi {
 
   /**
      * Returns a list of marketplaces where the seller can list items and information about the seller&#39;s participation in those marketplaces.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.016 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellers_v1/model/GetMarketplaceParticipationsResponse}
+     * @return {Promise<module:sellers_v1/model/GetMarketplaceParticipationsResponse>}
      */
   getMarketplaceParticipations () {
     return this.getMarketplaceParticipationsWithHttpInfo()

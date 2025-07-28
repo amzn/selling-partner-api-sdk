@@ -64,27 +64,32 @@ export class TransportShipmentMeasurements {
 /**
  * Total number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.
  * @member {Number} totalCartonCount
+ * @type {Number}
  */
 TransportShipmentMeasurements.prototype.totalCartonCount = undefined
 
 /**
  * Total number of Stackable Pallets present in the shipment.
  * @member {Number} totalPalletStackable
+ * @type {Number}
  */
 TransportShipmentMeasurements.prototype.totalPalletStackable = undefined
 
 /**
  * Total number of Non Stackable Pallets present in the shipment.
  * @member {Number} totalPalletNonStackable
+ * @type {Number}
  */
 TransportShipmentMeasurements.prototype.totalPalletNonStackable = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Weight} shipmentWeight
+ * @type {module:vendorshipments_v1/model/Weight}
  */
 TransportShipmentMeasurements.prototype.shipmentWeight = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Volume} shipmentVolume
+ * @type {module:vendorshipments_v1/model/Volume}
  */
 TransportShipmentMeasurements.prototype.shipmentVolume = undefined

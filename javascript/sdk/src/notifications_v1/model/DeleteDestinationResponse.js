@@ -59,5 +59,6 @@ export class DeleteDestinationResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:notifications_v1/model/Error>} errors
+ * @type {Array.<module:notifications_v1/model/Error>}
  */
 DeleteDestinationResponse.prototype.errors = undefined

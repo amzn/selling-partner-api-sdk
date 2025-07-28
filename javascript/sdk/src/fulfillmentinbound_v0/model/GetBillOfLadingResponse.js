@@ -60,11 +60,13 @@ export class GetBillOfLadingResponse {
 
 /**
  * @member {module:fulfillmentinbound_v0/model/BillOfLadingDownloadURL} payload
+ * @type {module:fulfillmentinbound_v0/model/BillOfLadingDownloadURL}
  */
 GetBillOfLadingResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentinbound_v0/model/Error>} errors
+ * @type {Array.<module:fulfillmentinbound_v0/model/Error>}
  */
 GetBillOfLadingResponse.prototype.errors = undefined

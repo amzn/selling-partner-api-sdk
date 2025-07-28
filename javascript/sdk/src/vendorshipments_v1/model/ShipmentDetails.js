@@ -60,11 +60,13 @@ export class ShipmentDetails {
 
 /**
  * @member {module:vendorshipments_v1/model/Pagination} pagination
+ * @type {module:vendorshipments_v1/model/Pagination}
  */
 ShipmentDetails.prototype.pagination = undefined
 
 /**
  * A list of one or more shipments with underlying details.
  * @member {Array.<module:vendorshipments_v1/model/Shipment>} shipments
+ * @type {Array.<module:vendorshipments_v1/model/Shipment>}
  */
 ShipmentDetails.prototype.shipments = undefined

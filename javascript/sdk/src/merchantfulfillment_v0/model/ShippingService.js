@@ -93,79 +93,93 @@ export class ShippingService {
 /**
  * A plain text representation of a carrier's shipping service. For example, \"UPS Ground\" or \"FedEx Standard Overnight\".
  * @member {String} shippingServiceName
+ * @type {String}
  */
 ShippingService.prototype.shippingServiceName = undefined
 
 /**
  * The name of the carrier.
  * @member {String} carrierName
+ * @type {String}
  */
 ShippingService.prototype.carrierName = undefined
 
 /**
  * An Amazon-defined shipping service identifier.
  * @member {String} shippingServiceId
+ * @type {String}
  */
 ShippingService.prototype.shippingServiceId = undefined
 
 /**
  * An Amazon-defined shipping service offer identifier.
  * @member {String} shippingServiceOfferId
+ * @type {String}
  */
 ShippingService.prototype.shippingServiceOfferId = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} shipDate
+ * @type {Date}
  */
 ShippingService.prototype.shipDate = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} earliestEstimatedDeliveryDate
+ * @type {Date}
  */
 ShippingService.prototype.earliestEstimatedDeliveryDate = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} latestEstimatedDeliveryDate
+ * @type {Date}
  */
 ShippingService.prototype.latestEstimatedDeliveryDate = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CurrencyAmount} rate
+ * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
  */
 ShippingService.prototype.rate = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShippingServiceOptions} shippingServiceOptions
+ * @type {module:merchantfulfillment_v0/model/ShippingServiceOptions}
  */
 ShippingService.prototype.shippingServiceOptions = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/AvailableShippingServiceOptions} availableShippingServiceOptions
+ * @type {module:merchantfulfillment_v0/model/AvailableShippingServiceOptions}
  */
 ShippingService.prototype.availableShippingServiceOptions = undefined
 
 /**
  * List of label formats.
  * @member {Array.<module:merchantfulfillment_v0/model/LabelFormat>} availableLabelFormats
+ * @type {Array.<module:merchantfulfillment_v0/model/LabelFormat>}
  */
 ShippingService.prototype.availableLabelFormats = undefined
 
 /**
  * The available label formats.
  * @member {Array.<module:merchantfulfillment_v0/model/LabelFormatOption>} availableFormatOptionsForLabel
+ * @type {Array.<module:merchantfulfillment_v0/model/LabelFormatOption>}
  */
 ShippingService.prototype.availableFormatOptionsForLabel = undefined
 
 /**
  * When true, additional seller inputs are required.
  * @member {Boolean} requiresAdditionalSellerInputs
+ * @type {Boolean}
  */
 ShippingService.prototype.requiresAdditionalSellerInputs = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Benefits} benefits
+ * @type {module:merchantfulfillment_v0/model/Benefits}
  */
 ShippingService.prototype.benefits = undefined

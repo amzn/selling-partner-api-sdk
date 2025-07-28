@@ -58,5 +58,6 @@ export class GetAccessPointsResponse {
 
 /**
  * @member {module:shipping_v2/model/GetAccessPointsResult} payload
+ * @type {module:shipping_v2/model/GetAccessPointsResult}
  */
 GetAccessPointsResponse.prototype.payload = undefined

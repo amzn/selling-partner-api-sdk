@@ -64,21 +64,25 @@ export class ASINPrepInstructions {
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type {String}
  */
 ASINPrepInstructions.prototype.ASIN = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/BarcodeInstruction} barcodeInstruction
+ * @type {module:fulfillmentinbound_v0/model/BarcodeInstruction}
  */
 ASINPrepInstructions.prototype.barcodeInstruction = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/PrepGuidance} prepGuidance
+ * @type {module:fulfillmentinbound_v0/model/PrepGuidance}
  */
 ASINPrepInstructions.prototype.prepGuidance = undefined
 
 /**
  * A list of preparation instructions to help with item sourcing decisions.
  * @member {Array.<module:fulfillmentinbound_v0/model/PrepInstruction>} prepInstructionList
+ * @type {Array.<module:fulfillmentinbound_v0/model/PrepInstruction>}
  */
 ASINPrepInstructions.prototype.prepInstructionList = undefined

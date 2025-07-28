@@ -64,20 +64,24 @@ export class PriceType {
 
 /**
  * @member {module:pricing_v0/model/MoneyType} landedPrice
+ * @type {module:pricing_v0/model/MoneyType}
  */
 PriceType.prototype.landedPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} listingPrice
+ * @type {module:pricing_v0/model/MoneyType}
  */
 PriceType.prototype.listingPrice = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} shipping
+ * @type {module:pricing_v0/model/MoneyType}
  */
 PriceType.prototype.shipping = undefined
 
 /**
  * @member {module:pricing_v0/model/Points} points
+ * @type {module:pricing_v0/model/Points}
  */
 PriceType.prototype.points = undefined

@@ -66,30 +66,36 @@ export class StandardSingleImageHighlightsModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
+ * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
  */
 StandardSingleImageHighlightsModule.prototype.image = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardSingleImageHighlightsModule.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} textBlock1
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
  */
 StandardSingleImageHighlightsModule.prototype.textBlock1 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} textBlock2
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
  */
 StandardSingleImageHighlightsModule.prototype.textBlock2 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} textBlock3
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
  */
 StandardSingleImageHighlightsModule.prototype.textBlock3 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock} bulletedListBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock}
  */
 StandardSingleImageHighlightsModule.prototype.bulletedListBlock = undefined

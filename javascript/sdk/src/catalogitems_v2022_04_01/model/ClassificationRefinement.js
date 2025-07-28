@@ -66,17 +66,20 @@ export class ClassificationRefinement {
 /**
  * The estimated number of results that would be returned if you refine your search by the specified `classificationId`.
  * @member {Number} numberOfResults
+ * @type {Number}
  */
 ClassificationRefinement.prototype.numberOfResults = undefined
 
 /**
  * Display name for the classification.
  * @member {String} displayName
+ * @type {String}
  */
 ClassificationRefinement.prototype.displayName = undefined
 
 /**
  * The identifier of the classification that you can use to refine your search.
  * @member {String} classificationId
+ * @type {String}
  */
 ClassificationRefinement.prototype.classificationId = undefined

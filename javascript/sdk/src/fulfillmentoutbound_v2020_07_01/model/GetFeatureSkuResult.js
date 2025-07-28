@@ -69,28 +69,33 @@ export class GetFeatureSkuResult {
 /**
  * The requested marketplace.
  * @member {String} marketplaceId
+ * @type {String}
  */
 GetFeatureSkuResult.prototype.marketplaceId = undefined
 
 /**
  * The name of the feature.
  * @member {String} featureName
+ * @type {String}
  */
 GetFeatureSkuResult.prototype.featureName = undefined
 
 /**
  * When true, the seller SKU is eligible for the requested feature.
  * @member {Boolean} isEligible
+ * @type {Boolean}
  */
 GetFeatureSkuResult.prototype.isEligible = undefined
 
 /**
  * A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED` - The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE` - The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU` - There is an issue with the SKU provided.
  * @member {Array.<String>} ineligibleReasons
+ * @type {Array.<String>}
  */
 GetFeatureSkuResult.prototype.ineligibleReasons = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FeatureSku} skuInfo
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FeatureSku}
  */
 GetFeatureSkuResult.prototype.skuInfo = undefined

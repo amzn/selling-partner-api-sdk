@@ -90,10 +90,12 @@ FeaturedOfferSegment.CustomerMembershipEnum = {
 /**
  * The customer membership type that makes up this segment
  * @member {module:pricing_v2022_05_01/model/FeaturedOfferSegment.CustomerMembershipEnum} customerMembership
+ * @type {module:pricing_v2022_05_01/model/FeaturedOfferSegment.CustomerMembershipEnum}
  */
 FeaturedOfferSegment.prototype.customerMembership = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/SegmentDetails} segmentDetails
+ * @type {module:pricing_v2022_05_01/model/SegmentDetails}
  */
 FeaturedOfferSegment.prototype.segmentDetails = undefined

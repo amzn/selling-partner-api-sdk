@@ -63,11 +63,13 @@ export class ItemQuantity {
 /**
  * Quantity of units available for a specific item.
  * @member {Number} amount
+ * @type {Number}
  */
 ItemQuantity.prototype.amount = undefined
 
 /**
  * Unit of measure for the available quantity.
  * @member {String} unitOfMeasure
+ * @type {String}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined

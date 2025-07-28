@@ -60,17 +60,20 @@ export class RangeSlot {
 /**
  * Start date time of slot in ISO 8601 format with precision of seconds.
  * @member {Date} startDateTime
+ * @type {Date}
  */
 RangeSlot.prototype.startDateTime = undefined
 
 /**
  * End date time of slot in ISO 8601 format with precision of seconds.
  * @member {Date} endDateTime
+ * @type {Date}
  */
 RangeSlot.prototype.endDateTime = undefined
 
 /**
  * Capacity of the slot.
  * @member {Number} capacity
+ * @type {Number}
  */
 RangeSlot.prototype.capacity = undefined

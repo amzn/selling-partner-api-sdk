@@ -66,16 +66,19 @@ export class UpdateShipmentStatusRequest {
 /**
  * The unobfuscated marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 UpdateShipmentStatusRequest.prototype.marketplaceId = undefined
 
 /**
  * @member {module:orders_v0/model/ShipmentStatus} shipmentStatus
+ * @type {module:orders_v0/model/ShipmentStatus}
  */
 UpdateShipmentStatusRequest.prototype.shipmentStatus = undefined
 
 /**
  * For partial shipment status updates, the list of order items and quantities to be updated.
  * @member {Array.<module:orders_v0/model/OrderItemsInner>} orderItems
+ * @type {Array.<module:orders_v0/model/OrderItemsInner>}
  */
 UpdateShipmentStatusRequest.prototype.orderItems = undefined

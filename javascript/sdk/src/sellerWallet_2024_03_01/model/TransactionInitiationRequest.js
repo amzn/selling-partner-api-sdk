@@ -79,43 +79,51 @@ export class TransactionInitiationRequest {
 /**
  * The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.
  * @member {String} sourceAccountId
+ * @type {String}
  */
 TransactionInitiationRequest.prototype.sourceAccountId = undefined
 
 /**
  * The unique identifier of the destination bank account where the money is deposited.
  * @member {String} destinationAccountId
+ * @type {String}
  */
 TransactionInitiationRequest.prototype.destinationAccountId = undefined
 
 /**
  * A description of the transaction.
  * @member {String} description
+ * @type {String}
  */
 TransactionInitiationRequest.prototype.description = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails} destinationTransactionInstrument
+ * @type {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails}
  */
 TransactionInitiationRequest.prototype.destinationTransactionInstrument = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/AccountHolderAddress} destinationAccountHolderAddress
+ * @type {module:sellerWallet_2024_03_01/model/AccountHolderAddress}
  */
 TransactionInitiationRequest.prototype.destinationAccountHolderAddress = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/Currency} sourceAmount
+ * @type {module:sellerWallet_2024_03_01/model/Currency}
  */
 TransactionInitiationRequest.prototype.sourceAmount = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferRatePreview} transferRateDetails
+ * @type {module:sellerWallet_2024_03_01/model/TransferRatePreview}
  */
 TransactionInitiationRequest.prototype.transferRateDetails = undefined
 
 /**
  * The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).
  * @member {Date} requestTime
+ * @type {Date}
  */
 TransactionInitiationRequest.prototype.requestTime = undefined

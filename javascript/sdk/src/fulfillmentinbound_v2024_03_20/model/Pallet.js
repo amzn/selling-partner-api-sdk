@@ -66,27 +66,32 @@ export class Pallet {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
  */
 Pallet.prototype.dimensions = undefined
 
 /**
  * Primary key to uniquely identify a Package (Box or Pallet).
  * @member {String} packageId
+ * @type {String}
  */
 Pallet.prototype.packageId = undefined
 
 /**
  * The number of containers where all other properties like weight or dimensions are identical.
  * @member {Number} quantity
+ * @type {Number}
  */
 Pallet.prototype.quantity = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Stackability} stackability
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Stackability}
  */
 Pallet.prototype.stackability = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Weight}
  */
 Pallet.prototype.weight = undefined

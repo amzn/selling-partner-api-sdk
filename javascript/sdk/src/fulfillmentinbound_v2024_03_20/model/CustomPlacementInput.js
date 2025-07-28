@@ -64,11 +64,13 @@ export class CustomPlacementInput {
 /**
  * Items included while creating Inbound Plan.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
  */
 CustomPlacementInput.prototype.items = undefined
 
 /**
  * Warehouse Id.
  * @member {String} warehouseId
+ * @type {String}
  */
 CustomPlacementInput.prototype.warehouseId = undefined

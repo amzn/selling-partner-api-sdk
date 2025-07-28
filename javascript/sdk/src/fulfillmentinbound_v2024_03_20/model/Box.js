@@ -75,61 +75,72 @@ export class Box {
 /**
  * The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.
  * @member {String} boxId
+ * @type {String}
  */
 Box.prototype.boxId = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource} contentInformationSource
+ * @type {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource}
  */
 Box.prototype.contentInformationSource = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Region} destinationRegion
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Region}
  */
 Box.prototype.destinationRegion = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
  */
 Box.prototype.dimensions = undefined
 
 /**
  * The external identifier for this container / box.
  * @member {String} externalContainerIdentifier
+ * @type {String}
  */
 Box.prototype.externalContainerIdentifier = undefined
 
 /**
  * Type of the external identifier used. Can be: `AMAZON`, `SSCC`.
  * @member {String} externalContainerIdentifierType
+ * @type {String}
  */
 Box.prototype.externalContainerIdentifierType = undefined
 
 /**
  * Items contained within the box.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>} items
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Item>}
  */
 Box.prototype.items = undefined
 
 /**
  * Primary key to uniquely identify a Package (Box or Pallet).
  * @member {String} packageId
+ * @type {String}
  */
 Box.prototype.packageId = undefined
 
 /**
  * The number of containers where all other properties like weight or dimensions are identical.
  * @member {Number} quantity
+ * @type {Number}
  */
 Box.prototype.quantity = undefined
 
 /**
  * Template name of the box.
  * @member {String} templateName
+ * @type {String}
  */
 Box.prototype.templateName = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Weight}
  */
 Box.prototype.weight = undefined

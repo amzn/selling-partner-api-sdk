@@ -60,11 +60,13 @@ export class ListFinancialEventGroupsPayload {
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 ListFinancialEventGroupsPayload.prototype.nextToken = undefined
 
 /**
  * A list of financial event group information.
  * @member {Array.<module:finances_v0/model/FinancialEventGroup>} financialEventGroupList
+ * @type {Array.<module:finances_v0/model/FinancialEventGroup>}
  */
 ListFinancialEventGroupsPayload.prototype.financialEventGroupList = undefined

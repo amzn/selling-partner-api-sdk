@@ -66,22 +66,26 @@ export class OrderItemAcknowledgement {
 /**
  * Line item sequence number for the item.
  * @member {String} itemSequenceNumber
+ * @type {String}
  */
 OrderItemAcknowledgement.prototype.itemSequenceNumber = undefined
 
 /**
  * Buyer's standard identification number (ASIN) of an item.
  * @member {String} buyerProductIdentifier
+ * @type {String}
  */
 OrderItemAcknowledgement.prototype.buyerProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item. Should be the same as was provided in the purchase order.
  * @member {String} vendorProductIdentifier
+ * @type {String}
  */
 OrderItemAcknowledgement.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ItemQuantity} acknowledgedQuantity
+ * @type {module:vendordforders_v2021_12_28/model/ItemQuantity}
  */
 OrderItemAcknowledgement.prototype.acknowledgedQuantity = undefined

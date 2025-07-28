@@ -72,39 +72,46 @@ export class AccessPoint {
 /**
  * Unique identifier for the access point
  * @member {String} accessPointId
+ * @type {String}
  */
 AccessPoint.prototype.accessPointId = undefined
 
 /**
  * Name of entity (store/hub etc) where this access point is located
  * @member {String} name
+ * @type {String}
  */
 AccessPoint.prototype.name = undefined
 
 /**
  * Timezone of access point
  * @member {String} timezone
+ * @type {String}
  */
 AccessPoint.prototype.timezone = undefined
 
 /**
  * @member {module:shipping_v2/model/AccessPointType} type
+ * @type {module:shipping_v2/model/AccessPointType}
  */
 AccessPoint.prototype.type = undefined
 
 /**
  * @member {module:shipping_v2/model/AccessibilityAttributes} accessibilityAttributes
+ * @type {module:shipping_v2/model/AccessibilityAttributes}
  */
 AccessPoint.prototype.accessibilityAttributes = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} address
+ * @type {module:shipping_v2/model/Address}
  */
 AccessPoint.prototype.address = undefined
 
 /**
  * Exception operating hours for Access Point
  * @member {Array.<module:shipping_v2/model/ExceptionOperatingHours>} exceptionOperatingHours
+ * @type {Array.<module:shipping_v2/model/ExceptionOperatingHours>}
  */
 AccessPoint.prototype.exceptionOperatingHours = undefined
 
@@ -131,17 +138,20 @@ AccessPoint.AssistanceTypeEnum = {
 /**
  * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
  * @member {module:shipping_v2/model/AccessPoint.AssistanceTypeEnum} assistanceType
+ * @type {module:shipping_v2/model/AccessPoint.AssistanceTypeEnum}
  */
 AccessPoint.prototype.assistanceType = undefined
 
 /**
  * The score of access point, based on proximity to postal code and sorting preference. This can be used to sort access point results on shipper's end.
  * @member {String} score
+ * @type {String}
  */
 AccessPoint.prototype.score = undefined
 
 /**
  * Map of day of the week to operating hours of that day
  * @member {Object.<String, module:shipping_v2/model/OperatingHours>} standardOperatingHours
+ * @type {Object.<String, module:shipping_v2/model/OperatingHours>}
  */
 AccessPoint.prototype.standardOperatingHours = undefined

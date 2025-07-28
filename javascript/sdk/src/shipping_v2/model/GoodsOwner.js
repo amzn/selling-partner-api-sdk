@@ -60,5 +60,6 @@ export class GoodsOwner {
 /**
  * merchant Id of provided merchant
  * @member {String} merchantId
+ * @type {String}
  */
 GoodsOwner.prototype.merchantId = undefined

@@ -62,23 +62,27 @@ export class InvoicesAttributes {
 /**
  * A list of all the options that are available for the invoice status attribute.
  * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} invoiceStatusOptions
+ * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
  */
 InvoicesAttributes.prototype.invoiceStatusOptions = undefined
 
 /**
  * A list of all the options that are available for the invoice type attribute.
  * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} invoiceTypeOptions
+ * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
  */
 InvoicesAttributes.prototype.invoiceTypeOptions = undefined
 
 /**
  * A list of all the options that are available for the transaction identifier name attribute.
  * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} transactionIdentifierNameOptions
+ * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
  */
 InvoicesAttributes.prototype.transactionIdentifierNameOptions = undefined
 
 /**
  * A list of all the options that are available for the transaction type attribute.
  * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} transactionTypeOptions
+ * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
  */
 InvoicesAttributes.prototype.transactionTypeOptions = undefined

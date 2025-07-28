@@ -60,11 +60,13 @@ export class LinkableCarrier {
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
+ * @type {String}
  */
 LinkableCarrier.prototype.carrierId = undefined
 
 /**
  * A list of LinkableAccountType
  * @member {Array.<module:shipping_v2/model/LinkableAccountType>} linkableAccountTypes
+ * @type {Array.<module:shipping_v2/model/LinkableAccountType>}
  */
 LinkableCarrier.prototype.linkableAccountTypes = undefined

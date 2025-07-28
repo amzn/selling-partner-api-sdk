@@ -60,10 +60,12 @@ export class ListFinancialEventsPayload {
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 ListFinancialEventsPayload.prototype.nextToken = undefined
 
 /**
  * @member {module:finances_v0/model/FinancialEvents} financialEvents
+ * @type {module:finances_v0/model/FinancialEvents}
  */
 ListFinancialEventsPayload.prototype.financialEvents = undefined

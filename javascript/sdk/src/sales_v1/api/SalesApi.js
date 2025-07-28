@@ -22,7 +22,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class SalesApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -74,7 +74,7 @@ export class SalesApi {
      * @param {String} opts.asin Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN.
      * @param {String} opts.sku Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU.
      * @param {module:sales_v1/model/String} opts.amazonProgram Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sales_v1/model/GetOrderMetricsResponse} and HTTP response
+     * @return {Promise<module:sales_v1/model/GetOrderMetricsResponse>}
      */
   getOrderMetricsWithHttpInfo (marketplaceIds, interval, granularity, opts) {
     opts = opts || {}
@@ -138,7 +138,7 @@ export class SalesApi {
      * @param {String} opts.asin Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN.
      * @param {String} opts.sku Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU.
      * @param {module:sales_v1/model/String} opts.amazonProgram Filters the results by the Amazon program that you specify. Do not include this filter if you want the response to include order metrics for all programs. **Example:** &#x60;AmazonHaul&#x60; returns order metrics for the Amazon Haul program only.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sales_v1/model/GetOrderMetricsResponse}
+     * @return {Promise<module:sales_v1/model/GetOrderMetricsResponse>}
      */
   getOrderMetrics (marketplaceIds, interval, granularity, opts) {
     return this.getOrderMetricsWithHttpInfo(marketplaceIds, interval, granularity, opts)

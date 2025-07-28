@@ -61,16 +61,19 @@ export class AssociatedItem {
 /**
  * The order item's order identifier, in 3-7-7 format.
  * @member {String} orderId
+ * @type {String}
  */
 AssociatedItem.prototype.orderId = undefined
 
 /**
  * An Amazon-defined item identifier for the associated item.
  * @member {String} orderItemId
+ * @type {String}
  */
 AssociatedItem.prototype.orderItemId = undefined
 
 /**
  * @member {module:orders_v0/model/AssociationType} associationType
+ * @type {module:orders_v0/model/AssociationType}
  */
 AssociatedItem.prototype.associationType = undefined

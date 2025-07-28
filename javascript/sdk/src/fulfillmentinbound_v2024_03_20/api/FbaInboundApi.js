@@ -81,7 +81,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-20
 */
 export class FbaInboundApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -167,7 +167,7 @@ export class FbaInboundApi {
   /**
      * Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void window. The window for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/CancelInboundPlanResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CancelInboundPlanResponse>}
      */
   cancelInboundPlanWithHttpInfo (inboundPlanId) {
     const postBody = null
@@ -201,7 +201,7 @@ export class FbaInboundApi {
   /**
      * Cancels an Inbound Plan. Charges may apply if the cancellation is performed outside of a void window. The window for Amazon Partnered Carriers is 24 hours for Small Parcel Delivery (SPD) and one hour for Less-Than-Truckload (LTL) carrier shipments.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/CancelInboundPlanResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CancelInboundPlanResponse>}
      */
   cancelInboundPlan (inboundPlanId) {
     return this.cancelInboundPlanWithHttpInfo(inboundPlanId)
@@ -215,7 +215,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentRequest} body The body of the request to &#x60;cancelSelfShipAppointment&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentResponse>}
      */
   cancelSelfShipAppointmentWithHttpInfo (inboundPlanId, shipmentId, body) {
     const postBody = body
@@ -262,7 +262,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentRequest} body The body of the request to &#x60;cancelSelfShipAppointment&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentResponse>}
      */
   cancelSelfShipAppointment (inboundPlanId, shipmentId, body) {
     return this.cancelSelfShipAppointmentWithHttpInfo(inboundPlanId, shipmentId, body)
@@ -276,7 +276,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId The shipment to confirm the delivery window option for.
      * @param {String} deliveryWindowOptionId The id of the delivery window option to be confirmed.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmDeliveryWindowOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmDeliveryWindowOptionsResponse>}
      */
   confirmDeliveryWindowOptionsWithHttpInfo (inboundPlanId, shipmentId, deliveryWindowOptionId) {
     const postBody = null
@@ -324,7 +324,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId The shipment to confirm the delivery window option for.
      * @param {String} deliveryWindowOptionId The id of the delivery window option to be confirmed.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmDeliveryWindowOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmDeliveryWindowOptionsResponse>}
      */
   confirmDeliveryWindowOptions (inboundPlanId, shipmentId, deliveryWindowOptionId) {
     return this.confirmDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, deliveryWindowOptionId)
@@ -337,7 +337,7 @@ export class FbaInboundApi {
      * Confirms the packing option for an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} packingOptionId Identifier of a packing option.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmPackingOptionResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmPackingOptionResponse>}
      */
   confirmPackingOptionWithHttpInfo (inboundPlanId, packingOptionId) {
     const postBody = null
@@ -378,7 +378,7 @@ export class FbaInboundApi {
      * Confirms the packing option for an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} packingOptionId Identifier of a packing option.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmPackingOptionResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmPackingOptionResponse>}
      */
   confirmPackingOption (inboundPlanId, packingOptionId) {
     return this.confirmPackingOptionWithHttpInfo(inboundPlanId, packingOptionId)
@@ -391,7 +391,7 @@ export class FbaInboundApi {
      * Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} placementOptionId The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmPlacementOptionResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmPlacementOptionResponse>}
      */
   confirmPlacementOptionWithHttpInfo (inboundPlanId, placementOptionId) {
     const postBody = null
@@ -432,7 +432,7 @@ export class FbaInboundApi {
      * Confirms the placement option for an inbound plan. Once confirmed, it cannot be changed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} placementOptionId The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmPlacementOptionResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmPlacementOptionResponse>}
      */
   confirmPlacementOption (inboundPlanId, placementOptionId) {
     return this.confirmPlacementOptionWithHttpInfo(inboundPlanId, placementOptionId)
@@ -446,7 +446,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {String} contentUpdatePreviewId Identifier of a content update preview.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmShipmentContentUpdatePreviewResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmShipmentContentUpdatePreviewResponse>}
      */
   confirmShipmentContentUpdatePreviewWithHttpInfo (inboundPlanId, shipmentId, contentUpdatePreviewId) {
     const postBody = null
@@ -494,7 +494,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {String} contentUpdatePreviewId Identifier of a content update preview.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmShipmentContentUpdatePreviewResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmShipmentContentUpdatePreviewResponse>}
      */
   confirmShipmentContentUpdatePreview (inboundPlanId, shipmentId, contentUpdatePreviewId) {
     return this.confirmShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId)
@@ -507,7 +507,7 @@ export class FbaInboundApi {
      * Confirms all the transportation options for an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new transportation options can not be generated or confirmed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsRequest} body The body of the request to &#x60;confirmTransportationOptions&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsResponse>}
      */
   confirmTransportationOptionsWithHttpInfo (inboundPlanId, body) {
     const postBody = body
@@ -547,7 +547,7 @@ export class FbaInboundApi {
      * Confirms all the transportation options for an inbound plan. A placement option must be confirmed prior to use of this API. Once confirmed, new transportation options can not be generated or confirmed for the Inbound Plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsRequest} body The body of the request to &#x60;confirmTransportationOptions&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsResponse>}
      */
   confirmTransportationOptions (inboundPlanId, body) {
     return this.confirmTransportationOptionsWithHttpInfo(inboundPlanId, body)
@@ -559,7 +559,7 @@ export class FbaInboundApi {
   /**
      * Creates an inbound plan. An inbound plan contains all the necessary information to send shipments into Amazon&#39;s fufillment network.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanRequest} body The body of the request to &#x60;createInboundPlan&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanResponse>}
      */
   createInboundPlanWithHttpInfo (body) {
     const postBody = body
@@ -592,7 +592,7 @@ export class FbaInboundApi {
   /**
      * Creates an inbound plan. An inbound plan contains all the necessary information to send shipments into Amazon&#39;s fufillment network.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanRequest} body The body of the request to &#x60;createInboundPlan&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanResponse>}
      */
   createInboundPlan (body) {
     return this.createInboundPlanWithHttpInfo(body)
@@ -604,7 +604,7 @@ export class FbaInboundApi {
   /**
      * For a given marketplace - creates labels for a list of MSKUs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsRequest} body The body of the request to &#x60;createMarketplaceItemLabels&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse>}
      */
   createMarketplaceItemLabelsWithHttpInfo (body) {
     const postBody = body
@@ -637,7 +637,7 @@ export class FbaInboundApi {
   /**
      * For a given marketplace - creates labels for a list of MSKUs.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsRequest} body The body of the request to &#x60;createMarketplaceItemLabels&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse>}
      */
   createMarketplaceItemLabels (body) {
     return this.createMarketplaceItemLabelsWithHttpInfo(body)
@@ -650,7 +650,7 @@ export class FbaInboundApi {
      * Generates available delivery window options for a given shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId The shipment to generate delivery window options for.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateDeliveryWindowOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateDeliveryWindowOptionsResponse>}
      */
   generateDeliveryWindowOptionsWithHttpInfo (inboundPlanId, shipmentId) {
     const postBody = null
@@ -691,7 +691,7 @@ export class FbaInboundApi {
      * Generates available delivery window options for a given shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId The shipment to generate delivery window options for.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateDeliveryWindowOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateDeliveryWindowOptionsResponse>}
      */
   generateDeliveryWindowOptions (inboundPlanId, shipmentId) {
     return this.generateDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId)
@@ -703,7 +703,7 @@ export class FbaInboundApi {
   /**
      * Generates available packing options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GeneratePackingOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GeneratePackingOptionsResponse>}
      */
   generatePackingOptionsWithHttpInfo (inboundPlanId) {
     const postBody = null
@@ -737,7 +737,7 @@ export class FbaInboundApi {
   /**
      * Generates available packing options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GeneratePackingOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GeneratePackingOptionsResponse>}
      */
   generatePackingOptions (inboundPlanId) {
     return this.generatePackingOptionsWithHttpInfo(inboundPlanId)
@@ -750,7 +750,7 @@ export class FbaInboundApi {
      * Generates placement options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsRequest} body The body of the request to &#x60;generatePlacementOptions&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsResponse>}
      */
   generatePlacementOptionsWithHttpInfo (inboundPlanId, body) {
     const postBody = body
@@ -790,7 +790,7 @@ export class FbaInboundApi {
      * Generates placement options for the inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsRequest} body The body of the request to &#x60;generatePlacementOptions&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GeneratePlacementOptionsResponse>}
      */
   generatePlacementOptions (inboundPlanId, body) {
     return this.generatePlacementOptionsWithHttpInfo(inboundPlanId, body)
@@ -804,7 +804,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateSelfShipAppointmentSlotsRequest} body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateSelfShipAppointmentSlotsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateSelfShipAppointmentSlotsResponse>}
      */
   generateSelfShipAppointmentSlotsWithHttpInfo (inboundPlanId, shipmentId, body) {
     const postBody = body
@@ -851,7 +851,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateSelfShipAppointmentSlotsRequest} body The body of the request to &#x60;generateSelfShipAppointmentSlots&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateSelfShipAppointmentSlotsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateSelfShipAppointmentSlotsResponse>}
      */
   generateSelfShipAppointmentSlots (inboundPlanId, shipmentId, body) {
     return this.generateSelfShipAppointmentSlotsWithHttpInfo(inboundPlanId, shipmentId, body)
@@ -865,7 +865,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsRequest} body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsResponse>}
      */
   generateShipmentContentUpdatePreviewsWithHttpInfo (inboundPlanId, shipmentId, body) {
     const postBody = body
@@ -912,7 +912,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsRequest} body The body of the request to &#x60;generateShipmentContentUpdatePreviews&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsResponse>}
      */
   generateShipmentContentUpdatePreviews (inboundPlanId, shipmentId, body) {
     return this.generateShipmentContentUpdatePreviewsWithHttpInfo(inboundPlanId, shipmentId, body)
@@ -925,7 +925,7 @@ export class FbaInboundApi {
      * Generates available transportation options for a given placement option.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsRequest} body The body of the request to &#x60;generateTransportationOptions&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsResponse>}
      */
   generateTransportationOptionsWithHttpInfo (inboundPlanId, body) {
     const postBody = body
@@ -965,7 +965,7 @@ export class FbaInboundApi {
      * Generates available transportation options for a given placement option.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsRequest} body The body of the request to &#x60;generateTransportationOptions&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsResponse>}
      */
   generateTransportationOptions (inboundPlanId, body) {
     return this.generateTransportationOptionsWithHttpInfo(inboundPlanId, body)
@@ -978,7 +978,7 @@ export class FbaInboundApi {
      * Provide delivery challan document for PCP transportation in IN marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GetDeliveryChallanDocumentResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GetDeliveryChallanDocumentResponse>}
      */
   getDeliveryChallanDocumentWithHttpInfo (inboundPlanId, shipmentId) {
     const postBody = null
@@ -1019,7 +1019,7 @@ export class FbaInboundApi {
      * Provide delivery challan document for PCP transportation in IN marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GetDeliveryChallanDocumentResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GetDeliveryChallanDocumentResponse>}
      */
   getDeliveryChallanDocument (inboundPlanId, shipmentId) {
     return this.getDeliveryChallanDocumentWithHttpInfo(inboundPlanId, shipmentId)
@@ -1031,7 +1031,7 @@ export class FbaInboundApi {
   /**
      * Gets the status of the processing of an asynchronous API call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} operationId Identifier of an asynchronous operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/InboundOperationStatus} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/InboundOperationStatus>}
      */
   getInboundOperationStatusWithHttpInfo (operationId) {
     const postBody = null
@@ -1065,7 +1065,7 @@ export class FbaInboundApi {
   /**
      * Gets the status of the processing of an asynchronous API call.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} operationId Identifier of an asynchronous operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/InboundOperationStatus}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/InboundOperationStatus>}
      */
   getInboundOperationStatus (operationId) {
     return this.getInboundOperationStatusWithHttpInfo(operationId)
@@ -1077,7 +1077,7 @@ export class FbaInboundApi {
   /**
      * Fetches the top level information about an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/InboundPlan} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/InboundPlan>}
      */
   getInboundPlanWithHttpInfo (inboundPlanId) {
     const postBody = null
@@ -1111,7 +1111,7 @@ export class FbaInboundApi {
   /**
      * Fetches the top level information about an inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/InboundPlan}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/InboundPlan>}
      */
   getInboundPlan (inboundPlanId) {
     return this.getInboundPlanWithHttpInfo(inboundPlanId)
@@ -1127,7 +1127,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of self ship appointment slots to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/GetSelfShipAppointmentSlotsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GetSelfShipAppointmentSlotsResponse>}
      */
   getSelfShipAppointmentSlotsWithHttpInfo (inboundPlanId, shipmentId, opts) {
     opts = opts || {}
@@ -1174,7 +1174,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of self ship appointment slots to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/GetSelfShipAppointmentSlotsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/GetSelfShipAppointmentSlotsResponse>}
      */
   getSelfShipAppointmentSlots (inboundPlanId, shipmentId, opts) {
     return this.getSelfShipAppointmentSlotsWithHttpInfo(inboundPlanId, shipmentId, opts)
@@ -1187,7 +1187,7 @@ export class FbaInboundApi {
      * Provides the full details for a specific shipment within an inbound plan. The &#x60;transportationOptionId&#x60; inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the transportation details for the shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/Shipment} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/Shipment>}
      */
   getShipmentWithHttpInfo (inboundPlanId, shipmentId) {
     const postBody = null
@@ -1228,7 +1228,7 @@ export class FbaInboundApi {
      * Provides the full details for a specific shipment within an inbound plan. The &#x60;transportationOptionId&#x60; inside &#x60;acceptedTransportationSelection&#x60; can be used to retrieve the transportation details for the shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/Shipment}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/Shipment>}
      */
   getShipment (inboundPlanId, shipmentId) {
     return this.getShipmentWithHttpInfo(inboundPlanId, shipmentId)
@@ -1242,7 +1242,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {String} contentUpdatePreviewId Identifier of a content update preview.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview>}
      */
   getShipmentContentUpdatePreviewWithHttpInfo (inboundPlanId, shipmentId, contentUpdatePreviewId) {
     const postBody = null
@@ -1290,7 +1290,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {String} contentUpdatePreviewId Identifier of a content update preview.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview>}
      */
   getShipmentContentUpdatePreview (inboundPlanId, shipmentId, contentUpdatePreviewId) {
     return this.getShipmentContentUpdatePreviewWithHttpInfo(inboundPlanId, shipmentId, contentUpdatePreviewId)
@@ -1306,7 +1306,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of delivery window options to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse>}
      */
   listDeliveryWindowOptionsWithHttpInfo (inboundPlanId, shipmentId, opts) {
     opts = opts || {}
@@ -1353,7 +1353,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of delivery window options to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse>}
      */
   listDeliveryWindowOptions (inboundPlanId, shipmentId, opts) {
     return this.listDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, opts)
@@ -1368,7 +1368,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of boxes to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse>}
      */
   listInboundPlanBoxesWithHttpInfo (inboundPlanId, opts) {
     opts = opts || {}
@@ -1408,7 +1408,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of boxes to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanBoxesResponse>}
      */
   listInboundPlanBoxes (inboundPlanId, opts) {
     return this.listInboundPlanBoxesWithHttpInfo(inboundPlanId, opts)
@@ -1423,7 +1423,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of items to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse>}
      */
   listInboundPlanItemsWithHttpInfo (inboundPlanId, opts) {
     opts = opts || {}
@@ -1463,7 +1463,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of items to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanItemsResponse>}
      */
   listInboundPlanItems (inboundPlanId, opts) {
     return this.listInboundPlanItemsWithHttpInfo(inboundPlanId, opts)
@@ -1478,7 +1478,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of pallets to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse>}
      */
   listInboundPlanPalletsWithHttpInfo (inboundPlanId, opts) {
     opts = opts || {}
@@ -1518,7 +1518,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of pallets to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse>}
      */
   listInboundPlanPallets (inboundPlanId, opts) {
     return this.listInboundPlanPalletsWithHttpInfo(inboundPlanId, opts)
@@ -1535,7 +1535,7 @@ export class FbaInboundApi {
      * @param {module:fulfillmentinbound_v2024_03_20/model/String} opts.status The status of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/String} opts.sortBy Sort by field.
      * @param {module:fulfillmentinbound_v2024_03_20/model/String} opts.sortOrder The sort order.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlansResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlansResponse>}
      */
   listInboundPlansWithHttpInfo (opts) {
     opts = opts || {}
@@ -1574,7 +1574,7 @@ export class FbaInboundApi {
      * @param {module:fulfillmentinbound_v2024_03_20/model/String} opts.status The status of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/String} opts.sortBy Sort by field.
      * @param {module:fulfillmentinbound_v2024_03_20/model/String} opts.sortOrder The sort order.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListInboundPlansResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListInboundPlansResponse>}
      */
   listInboundPlans (opts) {
     return this.listInboundPlansWithHttpInfo(opts)
@@ -1587,7 +1587,7 @@ export class FbaInboundApi {
      * List the inbound compliance details for MSKUs in a given marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
      * @param {String} marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListItemComplianceDetailsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListItemComplianceDetailsResponse>}
      */
   listItemComplianceDetailsWithHttpInfo (mskus, marketplaceId) {
     const postBody = null
@@ -1628,7 +1628,7 @@ export class FbaInboundApi {
      * List the inbound compliance details for MSKUs in a given marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
      * @param {String} marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListItemComplianceDetailsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListItemComplianceDetailsResponse>}
      */
   listItemComplianceDetails (mskus, marketplaceId) {
     return this.listItemComplianceDetailsWithHttpInfo(mskus, marketplaceId)
@@ -1644,7 +1644,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of packing group boxes to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse>}
      */
   listPackingGroupBoxesWithHttpInfo (inboundPlanId, packingGroupId, opts) {
     opts = opts || {}
@@ -1691,7 +1691,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of packing group boxes to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupBoxesResponse>}
      */
   listPackingGroupBoxes (inboundPlanId, packingGroupId, opts) {
     return this.listPackingGroupBoxesWithHttpInfo(inboundPlanId, packingGroupId, opts)
@@ -1707,7 +1707,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of packing group items to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupItemsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupItemsResponse>}
      */
   listPackingGroupItemsWithHttpInfo (inboundPlanId, packingGroupId, opts) {
     opts = opts || {}
@@ -1754,7 +1754,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of packing group items to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupItemsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPackingGroupItemsResponse>}
      */
   listPackingGroupItems (inboundPlanId, packingGroupId, opts) {
     return this.listPackingGroupItemsWithHttpInfo(inboundPlanId, packingGroupId, opts)
@@ -1769,7 +1769,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of packing options to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse>}
      */
   listPackingOptionsWithHttpInfo (inboundPlanId, opts) {
     opts = opts || {}
@@ -1809,7 +1809,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of packing options to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse>}
      */
   listPackingOptions (inboundPlanId, opts) {
     return this.listPackingOptionsWithHttpInfo(inboundPlanId, opts)
@@ -1824,7 +1824,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of placement options to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse>}
      */
   listPlacementOptionsWithHttpInfo (inboundPlanId, opts) {
     opts = opts || {}
@@ -1864,7 +1864,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of placement options to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse>}
      */
   listPlacementOptions (inboundPlanId, opts) {
     return this.listPlacementOptionsWithHttpInfo(inboundPlanId, opts)
@@ -1877,7 +1877,7 @@ export class FbaInboundApi {
      * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Array.<String>} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse>}
      */
   listPrepDetailsWithHttpInfo (marketplaceId, mskus) {
     const postBody = null
@@ -1918,7 +1918,7 @@ export class FbaInboundApi {
      * Get preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Array.<String>} mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse>}
      */
   listPrepDetails (marketplaceId, mskus) {
     return this.listPrepDetailsWithHttpInfo(marketplaceId, mskus)
@@ -1934,7 +1934,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of boxes to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentBoxesResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentBoxesResponse>}
      */
   listShipmentBoxesWithHttpInfo (inboundPlanId, shipmentId, opts) {
     opts = opts || {}
@@ -1981,7 +1981,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of boxes to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentBoxesResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentBoxesResponse>}
      */
   listShipmentBoxes (inboundPlanId, shipmentId, opts) {
     return this.listShipmentBoxesWithHttpInfo(inboundPlanId, shipmentId, opts)
@@ -1997,7 +1997,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of content update previews to return. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse>}
      */
   listShipmentContentUpdatePreviewsWithHttpInfo (inboundPlanId, shipmentId, opts) {
     opts = opts || {}
@@ -2044,7 +2044,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of content update previews to return. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentContentUpdatePreviewsResponse>}
      */
   listShipmentContentUpdatePreviews (inboundPlanId, shipmentId, opts) {
     return this.listShipmentContentUpdatePreviewsWithHttpInfo(inboundPlanId, shipmentId, opts)
@@ -2060,7 +2060,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of items to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentItemsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentItemsResponse>}
      */
   listShipmentItemsWithHttpInfo (inboundPlanId, shipmentId, opts) {
     opts = opts || {}
@@ -2107,7 +2107,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of items to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentItemsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentItemsResponse>}
      */
   listShipmentItems (inboundPlanId, shipmentId, opts) {
     return this.listShipmentItemsWithHttpInfo(inboundPlanId, shipmentId, opts)
@@ -2123,7 +2123,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of pallets to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse>}
      */
   listShipmentPalletsWithHttpInfo (inboundPlanId, shipmentId, opts) {
     opts = opts || {}
@@ -2170,7 +2170,7 @@ export class FbaInboundApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.pageSize The number of pallets to return in the response matching the given query. (default to 10)
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse>}
      */
   listShipmentPallets (inboundPlanId, shipmentId, opts) {
     return this.listShipmentPalletsWithHttpInfo(inboundPlanId, shipmentId, opts)
@@ -2187,7 +2187,7 @@ export class FbaInboundApi {
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
      * @param {String} opts.placementOptionId The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified.
      * @param {String} opts.shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse>}
      */
   listTransportationOptionsWithHttpInfo (inboundPlanId, opts) {
     opts = opts || {}
@@ -2231,7 +2231,7 @@ export class FbaInboundApi {
      * @param {String} opts.paginationToken A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result.
      * @param {String} opts.placementOptionId The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified.
      * @param {String} opts.shipmentId The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse>}
      */
   listTransportationOptions (inboundPlanId, opts) {
     return this.listTransportationOptionsWithHttpInfo(inboundPlanId, opts)
@@ -2246,7 +2246,7 @@ export class FbaInboundApi {
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {String} slotId An identifier to a self-ship appointment slot.
      * @param {module:fulfillmentinbound_v2024_03_20/model/ScheduleSelfShipAppointmentRequest} body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/ScheduleSelfShipAppointmentResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ScheduleSelfShipAppointmentResponse>}
      */
   scheduleSelfShipAppointmentWithHttpInfo (inboundPlanId, shipmentId, slotId, body) {
     const postBody = body
@@ -2300,7 +2300,7 @@ export class FbaInboundApi {
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {String} slotId An identifier to a self-ship appointment slot.
      * @param {module:fulfillmentinbound_v2024_03_20/model/ScheduleSelfShipAppointmentRequest} body The body of the request to &#x60;scheduleSelfShipAppointment&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/ScheduleSelfShipAppointmentResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/ScheduleSelfShipAppointmentResponse>}
      */
   scheduleSelfShipAppointment (inboundPlanId, shipmentId, slotId, body) {
     return this.scheduleSelfShipAppointmentWithHttpInfo(inboundPlanId, shipmentId, slotId, body)
@@ -2313,7 +2313,7 @@ export class FbaInboundApi {
      * Sets packing information for an inbound plan. This should be called after an inbound plan is created to populate the box level information required for planning and transportation estimates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationRequest} body The body of the request to &#x60;setPackingInformation&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationResponse>}
      */
   setPackingInformationWithHttpInfo (inboundPlanId, body) {
     const postBody = body
@@ -2353,7 +2353,7 @@ export class FbaInboundApi {
      * Sets packing information for an inbound plan. This should be called after an inbound plan is created to populate the box level information required for planning and transportation estimates.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationRequest} body The body of the request to &#x60;setPackingInformation&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationResponse>}
      */
   setPackingInformation (inboundPlanId, body) {
     return this.setPackingInformationWithHttpInfo(inboundPlanId, body)
@@ -2365,7 +2365,7 @@ export class FbaInboundApi {
   /**
      * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsRequest} body The body of the request to &#x60;setPrepDetails&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsResponse>}
      */
   setPrepDetailsWithHttpInfo (body) {
     const postBody = body
@@ -2398,7 +2398,7 @@ export class FbaInboundApi {
   /**
      * Set the preparation details for a list of MSKUs in a specified marketplace.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsRequest} body The body of the request to &#x60;setPrepDetails&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/SetPrepDetailsResponse>}
      */
   setPrepDetails (body) {
     return this.setPrepDetailsWithHttpInfo(body)
@@ -2411,7 +2411,7 @@ export class FbaInboundApi {
      * Updates the name of an existing inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateInboundPlanNameRequest} body The body of the request to &#x60;updateInboundPlanName&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   updateInboundPlanNameWithHttpInfo (inboundPlanId, body) {
     const postBody = body
@@ -2451,7 +2451,7 @@ export class FbaInboundApi {
      * Updates the name of an existing inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateInboundPlanNameRequest} body The body of the request to &#x60;updateInboundPlanName&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   updateInboundPlanName (inboundPlanId, body) {
     return this.updateInboundPlanNameWithHttpInfo(inboundPlanId, body)
@@ -2464,7 +2464,7 @@ export class FbaInboundApi {
      * Update compliance details for a list of MSKUs. The details provided here are only used for the India (IN - A21TJRUUN4KGV) marketplace compliance validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsRequest} body The body of the request to &#x60;updateItemComplianceDetails&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsResponse>}
      */
   updateItemComplianceDetailsWithHttpInfo (marketplaceId, body) {
     const postBody = body
@@ -2504,7 +2504,7 @@ export class FbaInboundApi {
      * Update compliance details for a list of MSKUs. The details provided here are only used for the India (IN - A21TJRUUN4KGV) marketplace compliance validation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsRequest} body The body of the request to &#x60;updateItemComplianceDetails&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/UpdateItemComplianceDetailsResponse>}
      */
   updateItemComplianceDetails (marketplaceId, body) {
     return this.updateItemComplianceDetailsWithHttpInfo(marketplaceId, body)
@@ -2518,7 +2518,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentNameRequest} body The body of the request to &#x60;updateShipmentName&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   updateShipmentNameWithHttpInfo (inboundPlanId, shipmentId, body) {
     const postBody = body
@@ -2565,7 +2565,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentNameRequest} body The body of the request to &#x60;updateShipmentName&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   updateShipmentName (inboundPlanId, shipmentId, body) {
     return this.updateShipmentNameWithHttpInfo(inboundPlanId, shipmentId, body)
@@ -2579,7 +2579,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentSourceAddressRequest} body The body of the request to &#x60;updateShipmentSourceAddress&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentSourceAddressResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentSourceAddressResponse>}
      */
   updateShipmentSourceAddressWithHttpInfo (inboundPlanId, shipmentId, body) {
     const postBody = body
@@ -2626,7 +2626,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentSourceAddressRequest} body The body of the request to &#x60;updateShipmentSourceAddress&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentSourceAddressResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentSourceAddressResponse>}
      */
   updateShipmentSourceAddress (inboundPlanId, shipmentId, body) {
     return this.updateShipmentSourceAddressWithHttpInfo(inboundPlanId, shipmentId, body)
@@ -2640,7 +2640,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsRequest} body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsResponse} and HTTP response
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsResponse>}
      */
   updateShipmentTrackingDetailsWithHttpInfo (inboundPlanId, shipmentId, body) {
     const postBody = body
@@ -2687,7 +2687,7 @@ export class FbaInboundApi {
      * @param {String} inboundPlanId Identifier of an inbound plan.
      * @param {String} shipmentId Identifier of a shipment. A shipment contains the boxes and units being inbounded.
      * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsRequest} body The body of the request to &#x60;updateShipmentTrackingDetails&#x60;.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsResponse}
+     * @return {Promise<module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsResponse>}
      */
   updateShipmentTrackingDetails (inboundPlanId, shipmentId, body) {
     return this.updateShipmentTrackingDetailsWithHttpInfo(inboundPlanId, shipmentId, body)

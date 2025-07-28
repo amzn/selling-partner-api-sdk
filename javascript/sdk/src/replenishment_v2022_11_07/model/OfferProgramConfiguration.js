@@ -62,15 +62,18 @@ export class OfferProgramConfiguration {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPreferences} preferences
+ * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPreferences}
  */
 OfferProgramConfiguration.prototype.preferences = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotions} promotions
+ * @type {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPromotions}
  */
 OfferProgramConfiguration.prototype.promotions = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/EnrollmentMethod} enrollmentMethod
+ * @type {module:replenishment_v2022_11_07/model/EnrollmentMethod}
  */
 OfferProgramConfiguration.prototype.enrollmentMethod = undefined

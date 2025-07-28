@@ -66,22 +66,26 @@ export class BatchRequest {
 /**
  * The URI associated with an individual request within a batch. For `FeaturedOfferExpectedPrice`, this is `/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice`.
  * @member {String} uri
+ * @type {String}
  */
 BatchRequest.prototype.uri = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/HttpMethod} method
+ * @type {module:pricing_v2022_05_01/model/HttpMethod}
  */
 BatchRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
  * @member {Object.<String, Object>} body
+ * @type {Object.<String, Object>}
  */
 BatchRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
  * @member {Object.<String, String>} headers
+ * @type {Object.<String, String>}
  */
 BatchRequest.prototype.headers = undefined

@@ -58,5 +58,6 @@ export class CreateClaimResponse {
 /**
  * The claim identifier originally returned by the createClaim operation.
  * @member {String} claimId
+ * @type {String}
  */
 CreateClaimResponse.prototype.claimId = undefined

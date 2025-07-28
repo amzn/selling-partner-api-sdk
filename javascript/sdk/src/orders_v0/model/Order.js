@@ -122,24 +122,28 @@ export class Order {
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 Order.prototype.amazonOrderId = undefined
 
 /**
  * A seller-defined order identifier.
  * @member {String} sellerOrderId
+ * @type {String}
  */
 Order.prototype.sellerOrderId = undefined
 
 /**
  * The date when the order was created.
  * @member {String} purchaseDate
+ * @type {String}
  */
 Order.prototype.purchaseDate = undefined
 
 /**
  * The date when the order was last updated.  __Note__: `LastUpdateDate` is returned with an incorrect date for orders that were last updated before 2009-04-01.
  * @member {String} lastUpdateDate
+ * @type {String}
  */
 Order.prototype.lastUpdateDate = undefined
 
@@ -202,6 +206,7 @@ Order.OrderStatusEnum = {
 /**
  * The current order status.
  * @member {module:orders_v0/model/Order.OrderStatusEnum} orderStatus
+ * @type {module:orders_v0/model/Order.OrderStatusEnum}
  */
 Order.prototype.orderStatus = undefined
 
@@ -228,47 +233,55 @@ Order.FulfillmentChannelEnum = {
 /**
  * Whether the order was fulfilled by Amazon (`AFN`) or by the seller (`MFN`).
  * @member {module:orders_v0/model/Order.FulfillmentChannelEnum} fulfillmentChannel
+ * @type {module:orders_v0/model/Order.FulfillmentChannelEnum}
  */
 Order.prototype.fulfillmentChannel = undefined
 
 /**
  * The sales channel for the first item in the order.
  * @member {String} salesChannel
+ * @type {String}
  */
 Order.prototype.salesChannel = undefined
 
 /**
  * The order channel for the first item in the order.
  * @member {String} orderChannel
+ * @type {String}
  */
 Order.prototype.orderChannel = undefined
 
 /**
  * The order's shipment service level.
  * @member {String} shipServiceLevel
+ * @type {String}
  */
 Order.prototype.shipServiceLevel = undefined
 
 /**
  * @member {module:orders_v0/model/Money} orderTotal
+ * @type {module:orders_v0/model/Money}
  */
 Order.prototype.orderTotal = undefined
 
 /**
  * The number of items shipped.
  * @member {Number} numberOfItemsShipped
+ * @type {Number}
  */
 Order.prototype.numberOfItemsShipped = undefined
 
 /**
  * The number of items unshipped.
  * @member {Number} numberOfItemsUnshipped
+ * @type {Number}
  */
 Order.prototype.numberOfItemsUnshipped = undefined
 
 /**
  * A list of payment execution detail items.
  * @member {Array.<module:orders_v0/model/PaymentExecutionDetailItem>} paymentExecutionDetail
+ * @type {Array.<module:orders_v0/model/PaymentExecutionDetailItem>}
  */
 Order.prototype.paymentExecutionDetail = undefined
 
@@ -301,35 +314,41 @@ Order.PaymentMethodEnum = {
 /**
  * The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the specific COD payment information provided by the `PaymentExecutionDetailItem` object, we recommend using the `PaymentMethodDetails` property to get payment method information.
  * @member {module:orders_v0/model/Order.PaymentMethodEnum} paymentMethod
+ * @type {module:orders_v0/model/Order.PaymentMethodEnum}
  */
 Order.prototype.paymentMethod = undefined
 
 /**
  * A list of payment method detail items.
  * @member {Array.<String>} paymentMethodDetails
+ * @type {Array.<String>}
  */
 Order.prototype.paymentMethodDetails = undefined
 
 /**
  * The identifier for the marketplace where the order was placed.
  * @member {String} marketplaceId
+ * @type {String}
  */
 Order.prototype.marketplaceId = undefined
 
 /**
  * The shipment service level category for the order.  **Possible values**: `Expedited`, `FreeEconomy`, `NextDay`, `Priority`, `SameDay`, `SecondDay`, `Scheduled`, and `Standard`.
  * @member {String} shipmentServiceLevelCategory
+ * @type {String}
  */
 Order.prototype.shipmentServiceLevelCategory = undefined
 
 /**
  * @member {module:orders_v0/model/EasyShipShipmentStatus} easyShipShipmentStatus
+ * @type {module:orders_v0/model/EasyShipShipmentStatus}
  */
 Order.prototype.easyShipShipmentStatus = undefined
 
 /**
  * Custom ship label for Checkout by Amazon (CBA).
  * @member {String} cbaDisplayableShippingLabel
+ * @type {String}
  */
 Order.prototype.cbaDisplayableShippingLabel = undefined
 
@@ -374,95 +393,111 @@ Order.OrderTypeEnum = {
 /**
  * The order's type.
  * @member {module:orders_v0/model/Order.OrderTypeEnum} orderType
+ * @type {module:orders_v0/model/Order.OrderTypeEnum}
  */
 Order.prototype.orderType = undefined
 
 /**
  * The start of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: `EarliestShipDate` might not be returned for orders placed before February 1, 2013.
  * @member {String} earliestShipDate
+ * @type {String}
  */
 Order.prototype.earliestShipDate = undefined
 
 /**
  * The end of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: `LatestShipDate` might not be returned for orders placed before February 1, 2013.
  * @member {String} latestShipDate
+ * @type {String}
  */
 Order.prototype.latestShipDate = undefined
 
 /**
  * The start of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.
  * @member {String} earliestDeliveryDate
+ * @type {String}
  */
 Order.prototype.earliestDeliveryDate = undefined
 
 /**
  * The end of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders that do not have a `PendingAvailability`, `Pending`, or `Canceled` status.
  * @member {String} latestDeliveryDate
+ * @type {String}
  */
 Order.prototype.latestDeliveryDate = undefined
 
 /**
  * When true, the order is an Amazon Business order. An Amazon Business order is an order where the buyer is a Verified Business Buyer.
  * @member {Boolean} isBusinessOrder
+ * @type {Boolean}
  */
 Order.prototype.isBusinessOrder = undefined
 
 /**
  * When true, the order is a seller-fulfilled Amazon Prime order.
  * @member {Boolean} isPrime
+ * @type {Boolean}
  */
 Order.prototype.isPrime = undefined
 
 /**
  * When true, the order has a Premium Shipping Service Level Agreement. For more information about Premium Shipping orders, refer to \"Premium Shipping Options\" in the Seller Central Help for your marketplace.
  * @member {Boolean} isPremiumOrder
+ * @type {Boolean}
  */
 Order.prototype.isPremiumOrder = undefined
 
 /**
  * When true, the order is a `GlobalExpress` order.
  * @member {Boolean} isGlobalExpressEnabled
+ * @type {Boolean}
  */
 Order.prototype.isGlobalExpressEnabled = undefined
 
 /**
  * The order ID value for the order that is being replaced. Returned only if IsReplacementOrder = true.
  * @member {String} replacedOrderId
+ * @type {String}
  */
 Order.prototype.replacedOrderId = undefined
 
 /**
  * When true, this is a replacement order.
  * @member {Boolean} isReplacementOrder
+ * @type {Boolean}
  */
 Order.prototype.isReplacementOrder = undefined
 
 /**
  * Indicates the date by which the seller must respond to the buyer with an estimated ship date. Only returned for Sourcing on Demand orders.
  * @member {String} promiseResponseDueDate
+ * @type {String}
  */
 Order.prototype.promiseResponseDueDate = undefined
 
 /**
  * When true, the estimated ship date is set for the order. Only returned for Sourcing on Demand orders.
  * @member {Boolean} isEstimatedShipDateSet
+ * @type {Boolean}
  */
 Order.prototype.isEstimatedShipDateSet = undefined
 
 /**
  * When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.
  * @member {Boolean} isSoldByAB
+ * @type {Boolean}
  */
 Order.prototype.isSoldByAB = undefined
 
 /**
  * When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.
  * @member {Boolean} isIBA
+ * @type {Boolean}
  */
 Order.prototype.isIBA = undefined
 
 /**
  * @member {module:orders_v0/model/Address} defaultShipFromLocationAddress
+ * @type {module:orders_v0/model/Address}
  */
 Order.prototype.defaultShipFromLocationAddress = undefined
 
@@ -489,64 +524,76 @@ Order.BuyerInvoicePreferenceEnum = {
 /**
  * The buyer's invoicing preference. Sellers can use this data to issue electronic invoices for orders in Turkey.  **Note**: This attribute is only available in the Turkey marketplace.
  * @member {module:orders_v0/model/Order.BuyerInvoicePreferenceEnum} buyerInvoicePreference
+ * @type {module:orders_v0/model/Order.BuyerInvoicePreferenceEnum}
  */
 Order.prototype.buyerInvoicePreference = undefined
 
 /**
  * @member {module:orders_v0/model/BuyerTaxInformation} buyerTaxInformation
+ * @type {module:orders_v0/model/BuyerTaxInformation}
  */
 Order.prototype.buyerTaxInformation = undefined
 
 /**
  * @member {module:orders_v0/model/FulfillmentInstruction} fulfillmentInstruction
+ * @type {module:orders_v0/model/FulfillmentInstruction}
  */
 Order.prototype.fulfillmentInstruction = undefined
 
 /**
  * When true, this order is marked to be picked up from a store rather than delivered.
  * @member {Boolean} isISPU
+ * @type {Boolean}
  */
 Order.prototype.isISPU = undefined
 
 /**
  * When true, this order is marked to be delivered to an Access Point. The access location is chosen by the customer. Access Points include Amazon Hub Lockers, Amazon Hub Counters, and pickup points operated by carriers.
  * @member {Boolean} isAccessPointOrder
+ * @type {Boolean}
  */
 Order.prototype.isAccessPointOrder = undefined
 
 /**
  * @member {module:orders_v0/model/MarketplaceTaxInfo} marketplaceTaxInfo
+ * @type {module:orders_v0/model/MarketplaceTaxInfo}
  */
 Order.prototype.marketplaceTaxInfo = undefined
 
 /**
  * The seller’s friendly name registered in the marketplace where the sale took place. Sellers can use this data to issue electronic invoices for orders in Brazil.  **Note**: This attribute is only available in the Brazil marketplace for the orders with `Pending` or `Unshipped` status.
  * @member {String} sellerDisplayName
+ * @type {String}
  */
 Order.prototype.sellerDisplayName = undefined
 
 /**
  * @member {module:orders_v0/model/Address} shippingAddress
+ * @type {module:orders_v0/model/Address}
  */
 Order.prototype.shippingAddress = undefined
 
 /**
  * @member {module:orders_v0/model/BuyerInfo} buyerInfo
+ * @type {module:orders_v0/model/BuyerInfo}
  */
 Order.prototype.buyerInfo = undefined
 
 /**
  * @member {module:orders_v0/model/AutomatedShippingSettings} automatedShippingSettings
+ * @type {module:orders_v0/model/AutomatedShippingSettings}
  */
 Order.prototype.automatedShippingSettings = undefined
 
 /**
  * Whether the order contains regulated items which may require additional approval steps before being fulfilled.
  * @member {Boolean} hasRegulatedItems
+ * @type {Boolean}
  */
 Order.prototype.hasRegulatedItems = undefined
 
 /**
  * @member {module:orders_v0/model/ElectronicInvoiceStatus} electronicInvoiceStatus
+ * @type {module:orders_v0/model/ElectronicInvoiceStatus}
  */
 Order.prototype.electronicInvoiceStatus = undefined

@@ -65,18 +65,21 @@ export class Error {
 /**
  * An error code that identifies the type of error that occurred.
  * @member {String} code
+ * @type {String}
  */
 Error.prototype.code = undefined
 
 /**
  * A message that describes the error condition.
  * @member {String} message
+ * @type {String}
  */
 Error.prototype.message = undefined
 
 /**
  * Additional details that can help the caller understand or fix the issue.
  * @member {String} details
+ * @type {String}
  */
 Error.prototype.details = undefined
 
@@ -103,5 +106,6 @@ Error.ErrorLevelEnum = {
 /**
  * The type of error.
  * @member {module:services_v1/model/Error.ErrorLevelEnum} errorLevel
+ * @type {module:services_v1/model/Error.ErrorLevelEnum}
  */
 Error.prototype.errorLevel = undefined

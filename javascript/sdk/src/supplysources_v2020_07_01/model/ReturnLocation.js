@@ -60,10 +60,12 @@ export class ReturnLocation {
 /**
  * The Amazon provided `supplySourceId` where orders can be returned to.
  * @member {String} supplySourceId
+ * @type {String}
  */
 ReturnLocation.prototype.supplySourceId = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/AddressWithContact} addressWithContact
+ * @type {module:supplysources_v2020_07_01/model/AddressWithContact}
  */
 ReturnLocation.prototype.addressWithContact = undefined

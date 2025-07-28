@@ -76,18 +76,21 @@ export class EventFilter {
 
 /**
  * @member {module:notifications_v1/model/AggregationSettings} aggregationSettings
+ * @type {module:notifications_v1/model/AggregationSettings}
  */
 EventFilter.prototype.aggregationSettings = undefined
 
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 EventFilter.prototype.marketplaceIds = undefined
 
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
  * @member {Array.<module:notifications_v1/model/OrderChangeTypeEnum>} orderChangeTypes
+ * @type {Array.<module:notifications_v1/model/OrderChangeTypeEnum>}
  */
 EventFilter.prototype.orderChangeTypes = undefined
 
@@ -114,12 +117,14 @@ EventFilter.EventFilterTypeEnum = {
 /**
  * An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
  * @member {module:notifications_v1/model/EventFilter.EventFilterTypeEnum} eventFilterType
+ * @type {module:notifications_v1/model/EventFilter.EventFilterTypeEnum}
  */
 EventFilter.prototype.eventFilterType = undefined
 
 // Implement AggregationFilter interface:
 /**
  * @member {module:notifications_v1/model/AggregationSettings} aggregationSettings
+ * @type {module:notifications_v1/model/AggregationSettings}
  */
 AggregationFilter.prototype.aggregationSettings = undefined
 
@@ -127,6 +132,7 @@ AggregationFilter.prototype.aggregationSettings = undefined
 /**
  * A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 MarketplaceFilter.prototype.marketplaceIds = undefined
 
@@ -134,5 +140,6 @@ MarketplaceFilter.prototype.marketplaceIds = undefined
 /**
  * A list of order change types to subscribe to (for example: `BuyerRequestedChange`). To receive notifications of all change types, do not provide this list.
  * @member {Array.<module:notifications_v1/model/OrderChangeTypeEnum>} orderChangeTypes
+ * @type {Array.<module:notifications_v1/model/OrderChangeTypeEnum>}
  */
 OrderChangeTypeFilter.prototype.orderChangeTypes = undefined

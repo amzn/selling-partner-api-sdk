@@ -62,10 +62,12 @@ export class OrderScheduleDetails {
 /**
  * An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 OrderScheduleDetails.prototype.amazonOrderId = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/PackageDetails} packageDetails
+ * @type {module:easyship_v2022_03_23/model/PackageDetails}
  */
 OrderScheduleDetails.prototype.packageDetails = undefined

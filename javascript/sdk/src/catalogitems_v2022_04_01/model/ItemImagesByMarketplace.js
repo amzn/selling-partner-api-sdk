@@ -64,11 +64,13 @@ export class ItemImagesByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemImagesByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Images for an item in the Amazon catalog, grouped by `marketplaceId`.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemImage>} images
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemImage>}
  */
 ItemImagesByMarketplace.prototype.images = undefined

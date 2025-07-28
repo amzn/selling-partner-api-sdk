@@ -59,5 +59,6 @@ export class CreateLegalDisclosureResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:messaging_v1/model/Error>} errors
+ * @type {Array.<module:messaging_v1/model/Error>}
  */
 CreateLegalDisclosureResponse.prototype.errors = undefined

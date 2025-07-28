@@ -63,11 +63,13 @@ export class Currency {
 /**
  * Decimal value of the currency.
  * @member {Number} amount
+ * @type {Number}
  */
 Currency.prototype.amount = undefined
 
 /**
  * ISO 4217 standard of a currency code.
  * @member {String} code
+ * @type {String}
  */
 Currency.prototype.code = undefined

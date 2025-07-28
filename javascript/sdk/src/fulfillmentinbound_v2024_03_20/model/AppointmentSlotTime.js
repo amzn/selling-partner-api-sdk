@@ -63,11 +63,13 @@ export class AppointmentSlotTime {
 /**
  * The end timestamp of the appointment in UTC.
  * @member {Date} endTime
+ * @type {Date}
  */
 AppointmentSlotTime.prototype.endTime = undefined
 
 /**
  * The start timestamp of the appointment in UTC.
  * @member {Date} startTime
+ * @type {Date}
  */
 AppointmentSlotTime.prototype.startTime = undefined

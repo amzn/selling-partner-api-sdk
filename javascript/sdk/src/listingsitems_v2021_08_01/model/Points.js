@@ -59,5 +59,6 @@ export class Points {
 
 /**
  * @member {Number} pointsNumber
+ * @type {Number}
  */
 Points.prototype.pointsNumber = undefined

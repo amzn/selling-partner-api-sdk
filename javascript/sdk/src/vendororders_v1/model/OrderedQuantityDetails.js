@@ -61,15 +61,18 @@ export class OrderedQuantityDetails {
 /**
  * The date when the line item quantity was updated by buyer. Must be in ISO-8601 date/time format.
  * @member {Date} updatedDate
+ * @type {Date}
  */
 OrderedQuantityDetails.prototype.updatedDate = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderedQuantityDetails.prototype.orderedQuantity = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} cancelledQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderedQuantityDetails.prototype.cancelledQuantity = undefined

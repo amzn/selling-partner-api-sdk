@@ -97,78 +97,92 @@ export class Rate {
 /**
  * An identifier for the rate (shipment offering) provided by a shipping service provider.
  * @member {String} rateId
+ * @type {String}
  */
 Rate.prototype.rateId = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
+ * @type {String}
  */
 Rate.prototype.carrierId = undefined
 
 /**
  * The carrier name for the offering.
  * @member {String} carrierName
+ * @type {String}
  */
 Rate.prototype.carrierName = undefined
 
 /**
  * An identifier for the shipping service.
  * @member {String} serviceId
+ * @type {String}
  */
 Rate.prototype.serviceId = undefined
 
 /**
  * The name of the shipping service.
  * @member {String} serviceName
+ * @type {String}
  */
 Rate.prototype.serviceName = undefined
 
 /**
  * @member {module:shipping_v2/model/Weight} billedWeight
+ * @type {module:shipping_v2/model/Weight}
  */
 Rate.prototype.billedWeight = undefined
 
 /**
  * @member {module:shipping_v2/model/Currency} totalCharge
+ * @type {module:shipping_v2/model/Currency}
  */
 Rate.prototype.totalCharge = undefined
 
 /**
  * @member {module:shipping_v2/model/Promise} promise
+ * @type {module:shipping_v2/model/Promise}
  */
 Rate.prototype.promise = undefined
 
 /**
  * A list of the document specifications supported for a shipment service offering.
  * @member {Array.<module:shipping_v2/model/SupportedDocumentSpecification>} supportedDocumentSpecifications
+ * @type {Array.<module:shipping_v2/model/SupportedDocumentSpecification>}
  */
 Rate.prototype.supportedDocumentSpecifications = undefined
 
 /**
  * A list of value-added services available for a shipping service offering.
  * @member {Array.<module:shipping_v2/model/AvailableValueAddedServiceGroup>} availableValueAddedServiceGroups
+ * @type {Array.<module:shipping_v2/model/AvailableValueAddedServiceGroup>}
  */
 Rate.prototype.availableValueAddedServiceGroups = undefined
 
 /**
  * When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.
  * @member {Boolean} requiresAdditionalInputs
+ * @type {Boolean}
  */
 Rate.prototype.requiresAdditionalInputs = undefined
 
 /**
  * A list of RateItem
  * @member {Array.<module:shipping_v2/model/RateItem>} rateItemList
+ * @type {Array.<module:shipping_v2/model/RateItem>}
  */
 Rate.prototype.rateItemList = undefined
 
 /**
  * @member {module:shipping_v2/model/PaymentType} paymentType
+ * @type {module:shipping_v2/model/PaymentType}
  */
 Rate.prototype.paymentType = undefined
 
 /**
  * @member {module:shipping_v2/model/Benefits} benefits
+ * @type {module:shipping_v2/model/Benefits}
  */
 Rate.prototype.benefits = undefined

@@ -60,17 +60,20 @@ export class ScheduledDeliveryShipment {
 /**
  * Scheduled delivery service type.
  * @member {String} scheduledDeliveryServiceType
+ * @type {String}
  */
 ScheduledDeliveryShipment.prototype.scheduledDeliveryServiceType = undefined
 
 /**
  * Earliest nominated delivery date for the scheduled delivery.
  * @member {Date} earliestNominatedDeliveryDate
+ * @type {Date}
  */
 ScheduledDeliveryShipment.prototype.earliestNominatedDeliveryDate = undefined
 
 /**
  * Latest nominated delivery date for the scheduled delivery.
  * @member {Date} latestNominatedDeliveryDate
+ * @type {Date}
  */
 ScheduledDeliveryShipment.prototype.latestNominatedDeliveryDate = undefined

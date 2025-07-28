@@ -59,11 +59,13 @@ export class VendorDetails {
 
 /**
  * @member {module:vendorshipments_v1/model/PartyIdentification} sellingParty
+ * @type {module:vendorshipments_v1/model/PartyIdentification}
  */
 VendorDetails.prototype.sellingParty = undefined
 
 /**
  * Unique vendor shipment id which is not used in last 365 days
  * @member {String} vendorShipmentIdentifier
+ * @type {String}
  */
 VendorDetails.prototype.vendorShipmentIdentifier = undefined

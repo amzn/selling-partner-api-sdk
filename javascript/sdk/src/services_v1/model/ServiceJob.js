@@ -79,12 +79,14 @@ export class ServiceJob {
 /**
  * The date and time of the creation of the job in ISO 8601 format.
  * @member {Date} createTime
+ * @type {Date}
  */
 ServiceJob.prototype.createTime = undefined
 
 /**
  * Amazon identifier for the service job.
  * @member {String} serviceJobId
+ * @type {String}
  */
 ServiceJob.prototype.serviceJobId = undefined
 
@@ -141,66 +143,78 @@ ServiceJob.ServiceJobStatusEnum = {
 /**
  * The status of the service job.
  * @member {module:services_v1/model/ServiceJob.ServiceJobStatusEnum} serviceJobStatus
+ * @type {module:services_v1/model/ServiceJob.ServiceJobStatusEnum}
  */
 ServiceJob.prototype.serviceJobStatus = undefined
 
 /**
  * @member {module:services_v1/model/ScopeOfWork} scopeOfWork
+ * @type {module:services_v1/model/ScopeOfWork}
  */
 ServiceJob.prototype.scopeOfWork = undefined
 
 /**
  * @member {module:services_v1/model/Seller} seller
+ * @type {module:services_v1/model/Seller}
  */
 ServiceJob.prototype.seller = undefined
 
 /**
  * @member {module:services_v1/model/ServiceJobProvider} serviceJobProvider
+ * @type {module:services_v1/model/ServiceJobProvider}
  */
 ServiceJob.prototype.serviceJobProvider = undefined
 
 /**
  * A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
  * @member {Array.<module:services_v1/model/AppointmentTime>} preferredAppointmentTimes
+ * @type {Array.<module:services_v1/model/AppointmentTime>}
  */
 ServiceJob.prototype.preferredAppointmentTimes = undefined
 
 /**
  * A list of appointments.
  * @member {Array.<module:services_v1/model/Appointment>} appointments
+ * @type {Array.<module:services_v1/model/Appointment>}
  */
 ServiceJob.prototype.appointments = undefined
 
 /**
  * The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
  * @member {String} serviceOrderId
+ * @type {String}
  */
 ServiceJob.prototype.serviceOrderId = undefined
 
 /**
  * The marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ServiceJob.prototype.marketplaceId = undefined
 
 /**
  * The Amazon-defined identifier for the region scope.
  * @member {String} storeId
+ * @type {String}
  */
 ServiceJob.prototype.storeId = undefined
 
 /**
  * @member {module:services_v1/model/Buyer} buyer
+ * @type {module:services_v1/model/Buyer}
  */
 ServiceJob.prototype.buyer = undefined
 
 /**
  * A list of items associated with the service job.
  * @member {Array.<module:services_v1/model/AssociatedItem>} associatedItems
+ * @type {Array.<module:services_v1/model/AssociatedItem>}
  */
 ServiceJob.prototype.associatedItems = undefined
 
 /**
  * @member {module:services_v1/model/ServiceLocation} serviceLocation
+ * @type {module:services_v1/model/ServiceLocation}
  */
 ServiceJob.prototype.serviceLocation = undefined

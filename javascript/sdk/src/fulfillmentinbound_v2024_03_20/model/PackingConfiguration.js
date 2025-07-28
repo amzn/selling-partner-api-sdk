@@ -63,16 +63,19 @@ export class PackingConfiguration {
 /**
  * The box content information sources that are allowed.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource>} boxPackingMethods
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource>}
  */
 PackingConfiguration.prototype.boxPackingMethods = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/BoxRequirements} boxRequirements
+ * @type {module:fulfillmentinbound_v2024_03_20/model/BoxRequirements}
  */
 PackingConfiguration.prototype.boxRequirements = undefined
 
 /**
  * A list of supported shipping requirements for this packing configuration.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ShippingRequirements>} shippingRequirements
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ShippingRequirements>}
  */
 PackingConfiguration.prototype.shippingRequirements = undefined

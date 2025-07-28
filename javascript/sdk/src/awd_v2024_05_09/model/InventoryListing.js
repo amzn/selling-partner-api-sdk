@@ -62,11 +62,13 @@ export class InventoryListing {
 /**
  * List of inventory summaries.
  * @member {Array.<module:awd_v2024_05_09/model/InventorySummary>} inventory
+ * @type {Array.<module:awd_v2024_05_09/model/InventorySummary>}
  */
 InventoryListing.prototype.inventory = undefined
 
 /**
  * A token that is used to retrieve the next page of results. The response includes `nextToken` when the number of results exceeds the specified `maxResults` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
  * @member {String} nextToken
+ * @type {String}
  */
 InventoryListing.prototype.nextToken = undefined

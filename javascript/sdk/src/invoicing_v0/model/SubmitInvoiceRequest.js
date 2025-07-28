@@ -64,17 +64,20 @@ export class SubmitInvoiceRequest {
 /**
  * Shipment invoice document content.
  * @member {Blob} invoiceContent
+ * @type {Blob}
  */
 SubmitInvoiceRequest.prototype.invoiceContent = undefined
 
 /**
  * An Amazon marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 SubmitInvoiceRequest.prototype.marketplaceId = undefined
 
 /**
  * MD5 sum for validating the invoice data. For more information about calculating this value, see [Working with Content-MD5 Checksums](https://docs.developer.amazonservices.com/en_US/dev_guide/DG_MD5.html).
  * @member {String} contentMD5Value
+ * @type {String}
  */
 SubmitInvoiceRequest.prototype.contentMD5Value = undefined

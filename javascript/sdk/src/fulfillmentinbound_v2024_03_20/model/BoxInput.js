@@ -73,27 +73,32 @@ export class BoxInput {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource} contentInformationSource
+ * @type {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource}
  */
 BoxInput.prototype.contentInformationSource = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
  */
 BoxInput.prototype.dimensions = undefined
 
 /**
  * The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
  */
 BoxInput.prototype.items = undefined
 
 /**
  * The number of containers where all other properties like weight or dimensions are identical.
  * @member {Number} quantity
+ * @type {Number}
  */
 BoxInput.prototype.quantity = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Weight}
  */
 BoxInput.prototype.weight = undefined

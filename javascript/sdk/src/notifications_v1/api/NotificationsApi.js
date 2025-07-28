@@ -31,7 +31,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class NotificationsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -80,7 +80,7 @@ export class NotificationsApi {
   /**
      * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:notifications_v1/model/CreateDestinationRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/CreateDestinationResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/CreateDestinationResponse>}
      */
   createDestinationWithHttpInfo (body) {
     const postBody = body
@@ -113,7 +113,7 @@ export class NotificationsApi {
   /**
      * Creates a destination resource to receive notifications. The &#x60;createDestination&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:notifications_v1/model/CreateDestinationRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/CreateDestinationResponse}
+     * @return {Promise<module:notifications_v1/model/CreateDestinationResponse>}
      */
   createDestination (body) {
     return this.createDestinationWithHttpInfo(body)
@@ -126,7 +126,7 @@ export class NotificationsApi {
      * Creates a subscription for the specified notification type to be delivered to the specified destination. Before you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation. In cases where the specified notification type supports multiple payload versions, you can utilize this API to subscribe to a different payload version if you already have an existing subscription for a different payload version.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      * @param {module:notifications_v1/model/CreateSubscriptionRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/CreateSubscriptionResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/CreateSubscriptionResponse>}
      */
   createSubscriptionWithHttpInfo (notificationType, body) {
     const postBody = body
@@ -166,7 +166,7 @@ export class NotificationsApi {
      * Creates a subscription for the specified notification type to be delivered to the specified destination. Before you can subscribe, you must first create the destination by calling the &#x60;createDestination&#x60; operation. In cases where the specified notification type supports multiple payload versions, you can utilize this API to subscribe to a different payload version if you already have an existing subscription for a different payload version.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      * @param {module:notifications_v1/model/CreateSubscriptionRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/CreateSubscriptionResponse}
+     * @return {Promise<module:notifications_v1/model/CreateSubscriptionResponse>}
      */
   createSubscription (notificationType, body) {
     return this.createSubscriptionWithHttpInfo(notificationType, body)
@@ -178,7 +178,7 @@ export class NotificationsApi {
   /**
      * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} destinationId The identifier for the destination that you want to delete.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/DeleteDestinationResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/DeleteDestinationResponse>}
      */
   deleteDestinationWithHttpInfo (destinationId) {
     const postBody = null
@@ -212,7 +212,7 @@ export class NotificationsApi {
   /**
      * Deletes the destination that you specify. The &#x60;deleteDestination&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} destinationId The identifier for the destination that you want to delete.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/DeleteDestinationResponse}
+     * @return {Promise<module:notifications_v1/model/DeleteDestinationResponse>}
      */
   deleteDestination (destinationId) {
     return this.deleteDestinationWithHttpInfo(destinationId)
@@ -225,7 +225,7 @@ export class NotificationsApi {
      * Deletes the subscription indicated by the subscription identifier and notification type that you specify. The subscription identifier can be for any subscription associated with your application. After you successfully call this operation, notifications will stop being sent for the associated subscription. The &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} subscriptionId The identifier for the subscription that you want to delete.
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/DeleteSubscriptionByIdResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/DeleteSubscriptionByIdResponse>}
      */
   deleteSubscriptionByIdWithHttpInfo (subscriptionId, notificationType) {
     const postBody = null
@@ -266,7 +266,7 @@ export class NotificationsApi {
      * Deletes the subscription indicated by the subscription identifier and notification type that you specify. The subscription identifier can be for any subscription associated with your application. After you successfully call this operation, notifications will stop being sent for the associated subscription. The &#x60;deleteSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} subscriptionId The identifier for the subscription that you want to delete.
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/DeleteSubscriptionByIdResponse}
+     * @return {Promise<module:notifications_v1/model/DeleteSubscriptionByIdResponse>}
      */
   deleteSubscriptionById (subscriptionId, notificationType) {
     return this.deleteSubscriptionByIdWithHttpInfo(subscriptionId, notificationType)
@@ -278,7 +278,7 @@ export class NotificationsApi {
   /**
      * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} destinationId The identifier generated when you created the destination.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/GetDestinationResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/GetDestinationResponse>}
      */
   getDestinationWithHttpInfo (destinationId) {
     const postBody = null
@@ -312,7 +312,7 @@ export class NotificationsApi {
   /**
      * Returns information about the destination that you specify. The &#x60;getDestination&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} destinationId The identifier generated when you created the destination.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/GetDestinationResponse}
+     * @return {Promise<module:notifications_v1/model/GetDestinationResponse>}
      */
   getDestination (destinationId) {
     return this.getDestinationWithHttpInfo(destinationId)
@@ -323,7 +323,7 @@ export class NotificationsApi {
 
   /**
      * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/GetDestinationsResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/GetDestinationsResponse>}
      */
   getDestinationsWithHttpInfo () {
     const postBody = null
@@ -350,7 +350,7 @@ export class NotificationsApi {
 
   /**
      * Returns information about all destinations. The &#x60;getDestinations&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/GetDestinationsResponse}
+     * @return {Promise<module:notifications_v1/model/GetDestinationsResponse>}
      */
   getDestinations () {
     return this.getDestinationsWithHttpInfo()
@@ -364,7 +364,7 @@ export class NotificationsApi {
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      * @param {Object} opts Optional parameters
      * @param {String} opts.payloadVersion The version of the payload object to be used in the notification.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/GetSubscriptionResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/GetSubscriptionResponse>}
      */
   getSubscriptionWithHttpInfo (notificationType, opts) {
     opts = opts || {}
@@ -402,7 +402,7 @@ export class NotificationsApi {
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
      * @param {Object} opts Optional parameters
      * @param {String} opts.payloadVersion The version of the payload object to be used in the notification.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/GetSubscriptionResponse}
+     * @return {Promise<module:notifications_v1/model/GetSubscriptionResponse>}
      */
   getSubscription (notificationType, opts) {
     return this.getSubscriptionWithHttpInfo(notificationType, opts)
@@ -415,7 +415,7 @@ export class NotificationsApi {
      * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} subscriptionId The identifier for the subscription that you want to get.
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:notifications_v1/model/GetSubscriptionByIdResponse} and HTTP response
+     * @return {Promise<module:notifications_v1/model/GetSubscriptionByIdResponse>}
      */
   getSubscriptionByIdWithHttpInfo (subscriptionId, notificationType) {
     const postBody = null
@@ -456,7 +456,7 @@ export class NotificationsApi {
      * Returns information about a subscription for the specified notification type. The &#x60;getSubscriptionById&#x60; operation is grantless. For more information, refer to [Grantless operations](https://developer-docs.amazon.com/sp-api/docs/grantless-operations).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may observe higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} subscriptionId The identifier for the subscription that you want to get.
      * @param {String} notificationType The type of notification.   For more information about notification types, refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:notifications_v1/model/GetSubscriptionByIdResponse}
+     * @return {Promise<module:notifications_v1/model/GetSubscriptionByIdResponse>}
      */
   getSubscriptionById (subscriptionId, notificationType) {
     return this.getSubscriptionByIdWithHttpInfo(subscriptionId, notificationType)

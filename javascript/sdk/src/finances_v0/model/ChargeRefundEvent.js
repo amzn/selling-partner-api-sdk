@@ -62,23 +62,27 @@ export class ChargeRefundEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 ChargeRefundEvent.prototype.postedDate = undefined
 
 /**
  * The reason given for a charge refund.  Example: `SubscriptionFeeCorrection`
  * @member {String} reasonCode
+ * @type {String}
  */
 ChargeRefundEvent.prototype.reasonCode = undefined
 
 /**
  * A description of the Reason Code.   Example: `SubscriptionFeeCorrection`
  * @member {String} reasonCodeDescription
+ * @type {String}
  */
 ChargeRefundEvent.prototype.reasonCodeDescription = undefined
 
 /**
  * A list of `ChargeRefund` transactions
  * @member {Array.<module:finances_v0/model/ChargeRefundTransaction>} chargeRefundTransactions
+ * @type {Array.<module:finances_v0/model/ChargeRefundTransaction>}
  */
 ChargeRefundEvent.prototype.chargeRefundTransactions = undefined

@@ -60,11 +60,13 @@ export class SelfShipAppointmentSlotsAvailability {
 /**
  * The time at which the self ship appointment slot expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
  * @member {Date} expiresAt
+ * @type {Date}
  */
 SelfShipAppointmentSlotsAvailability.prototype.expiresAt = undefined
 
 /**
  * A list of appointment slots.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/AppointmentSlot>} slots
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/AppointmentSlot>}
  */
 SelfShipAppointmentSlotsAvailability.prototype.slots = undefined

@@ -58,5 +58,6 @@ export class GetAdditionalInputsResponse {
 /**
  * The JSON schema to use to provide additional inputs when required to purchase a shipping offering.
  * @member {Object.<String, Object>} payload
+ * @type {Object.<String, Object>}
  */
 GetAdditionalInputsResponse.prototype.payload = undefined

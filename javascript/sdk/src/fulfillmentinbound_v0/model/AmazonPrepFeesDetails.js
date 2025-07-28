@@ -60,10 +60,12 @@ export class AmazonPrepFeesDetails {
 
 /**
  * @member {module:fulfillmentinbound_v0/model/PrepInstruction} prepInstruction
+ * @type {module:fulfillmentinbound_v0/model/PrepInstruction}
  */
 AmazonPrepFeesDetails.prototype.prepInstruction = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/Amount} feePerUnit
+ * @type {module:fulfillmentinbound_v0/model/Amount}
  */
 AmazonPrepFeesDetails.prototype.feePerUnit = undefined

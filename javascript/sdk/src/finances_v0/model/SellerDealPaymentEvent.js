@@ -66,44 +66,52 @@ export class SellerDealPaymentEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 SellerDealPaymentEvent.prototype.postedDate = undefined
 
 /**
  * The unique identifier of the deal.
  * @member {String} dealId
+ * @type {String}
  */
 SellerDealPaymentEvent.prototype.dealId = undefined
 
 /**
  * The internal description of the deal.
  * @member {String} dealDescription
+ * @type {String}
  */
 SellerDealPaymentEvent.prototype.dealDescription = undefined
 
 /**
  * The type of event: SellerDealComplete.
  * @member {String} eventType
+ * @type {String}
  */
 SellerDealPaymentEvent.prototype.eventType = undefined
 
 /**
  * The type of fee: RunLightningDealFee.
  * @member {String} feeType
+ * @type {String}
  */
 SellerDealPaymentEvent.prototype.feeType = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} feeAmount
+ * @type {module:finances_v0/model/Currency}
  */
 SellerDealPaymentEvent.prototype.feeAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxAmount
+ * @type {module:finances_v0/model/Currency}
  */
 SellerDealPaymentEvent.prototype.taxAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} totalAmount
+ * @type {module:finances_v0/model/Currency}
  */
 SellerDealPaymentEvent.prototype.totalAmount = undefined

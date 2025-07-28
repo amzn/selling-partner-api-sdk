@@ -96,17 +96,20 @@ PatchOperation.OpEnum = {
 /**
  * Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.
  * @member {module:listingsitems_v2021_08_01/model/PatchOperation.OpEnum} op
+ * @type {module:listingsitems_v2021_08_01/model/PatchOperation.OpEnum}
  */
 PatchOperation.prototype.op = undefined
 
 /**
  * JSON Pointer path of the element to patch. Refer to [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information.
  * @member {String} path
+ * @type {String}
  */
 PatchOperation.prototype.path = undefined
 
 /**
  * JSON value to `add`, `replace`, `merge` or `delete`.
  * @member {Array.<Object.<String, Object>>} value
+ * @type {Array.<Object.<String, Object>>}
  */
 PatchOperation.prototype.value = undefined

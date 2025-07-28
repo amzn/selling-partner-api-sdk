@@ -60,5 +60,6 @@ export class CreateFeedDocumentSpecification {
 /**
  * The content type of the feed.
  * @member {String} contentType
+ * @type {String}
  */
 CreateFeedDocumentSpecification.prototype.contentType = undefined

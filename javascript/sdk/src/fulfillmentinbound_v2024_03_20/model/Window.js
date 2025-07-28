@@ -64,17 +64,20 @@ export class Window {
 /**
  * The timestamp at which this Window can no longer be edited.
  * @member {Date} editableUntil
+ * @type {Date}
  */
 Window.prototype.editableUntil = undefined
 
 /**
  * The end timestamp of the window.
  * @member {Date} end
+ * @type {Date}
  */
 Window.prototype.end = undefined
 
 /**
  * The start timestamp of the window.
  * @member {Date} start
+ * @type {Date}
  */
 Window.prototype.start = undefined

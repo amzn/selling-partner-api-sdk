@@ -68,22 +68,26 @@ export class GetFulfillmentPreviewItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type {String}
  */
 GetFulfillmentPreviewItem.prototype.sellerSku = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantity
+ * @type {Number}
  */
 GetFulfillmentPreviewItem.prototype.quantity = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitDeclaredValue
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
  */
 GetFulfillmentPreviewItem.prototype.perUnitDeclaredValue = undefined
 
 /**
  * A fulfillment order item identifier that the seller creates to track items in the fulfillment preview.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type {String}
  */
 GetFulfillmentPreviewItem.prototype.sellerFulfillmentOrderItemId = undefined

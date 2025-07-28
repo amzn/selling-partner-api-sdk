@@ -59,6 +59,7 @@ export class ItemQuantity {
 /**
  * Acknowledged quantity. This value should not be zero.
  * @member {Number} amount
+ * @type {Number}
  */
 ItemQuantity.prototype.amount = undefined
 
@@ -79,5 +80,6 @@ ItemQuantity.UnitOfMeasureEnum = {
 /**
  * Unit of measure for the acknowledged quantity.
  * @member {module:vendordforders_v2021_12_28/model/ItemQuantity.UnitOfMeasureEnum} unitOfMeasure
+ * @type {module:vendordforders_v2021_12_28/model/ItemQuantity.UnitOfMeasureEnum}
  */
 ItemQuantity.prototype.unitOfMeasure = undefined

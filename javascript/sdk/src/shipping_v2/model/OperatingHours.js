@@ -60,16 +60,19 @@ export class OperatingHours {
 
 /**
  * @member {module:shipping_v2/model/TimeOfDay} closingTime
+ * @type {module:shipping_v2/model/TimeOfDay}
  */
 OperatingHours.prototype.closingTime = undefined
 
 /**
  * @member {module:shipping_v2/model/TimeOfDay} openingTime
+ * @type {module:shipping_v2/model/TimeOfDay}
  */
 OperatingHours.prototype.openingTime = undefined
 
 /**
  * midDayClosures operating hours array
  * @member {Array.<module:shipping_v2/model/TimeOfDay>} midDayClosures
+ * @type {Array.<module:shipping_v2/model/TimeOfDay>}
  */
 OperatingHours.prototype.midDayClosures = undefined

@@ -83,11 +83,13 @@ Weight.UnitOfMeasureEnum = {
 /**
  * The unit of measurement.
  * @member {module:vendordfshipping_v2021_12_28/model/Weight.UnitOfMeasureEnum} unitOfMeasure
+ * @type {module:vendordfshipping_v2021_12_28/model/Weight.UnitOfMeasureEnum}
  */
 Weight.prototype.unitOfMeasure = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.  <br>**Pattern** : `^-?(0|([1-9]\\\\d*))(\\\\.\\\\d+)?([eE][+-]?\\\\d+)?$`.
  * @member {String} value
+ * @type {String}
  */
 Weight.prototype.value = undefined

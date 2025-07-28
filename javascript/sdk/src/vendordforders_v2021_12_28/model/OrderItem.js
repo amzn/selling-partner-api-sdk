@@ -80,58 +80,69 @@ export class OrderItem {
 /**
  * Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
  * @member {String} itemSequenceNumber
+ * @type {String}
  */
 OrderItem.prototype.itemSequenceNumber = undefined
 
 /**
  * Buyer's standard identification number (ASIN) of an item.
  * @member {String} buyerProductIdentifier
+ * @type {String}
  */
 OrderItem.prototype.buyerProductIdentifier = undefined
 
 /**
  * The vendor selected product identification of the item.
  * @member {String} vendorProductIdentifier
+ * @type {String}
  */
 OrderItem.prototype.vendorProductIdentifier = undefined
 
 /**
  * Title for the item.
  * @member {String} title
+ * @type {String}
  */
 OrderItem.prototype.title = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ItemQuantity} orderedQuantity
+ * @type {module:vendordforders_v2021_12_28/model/ItemQuantity}
  */
 OrderItem.prototype.orderedQuantity = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ScheduledDeliveryShipment} scheduledDeliveryShipment
+ * @type {module:vendordforders_v2021_12_28/model/ScheduledDeliveryShipment}
  */
 OrderItem.prototype.scheduledDeliveryShipment = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/GiftDetails} giftDetails
+ * @type {module:vendordforders_v2021_12_28/model/GiftDetails}
  */
 OrderItem.prototype.giftDetails = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Money} netPrice
+ * @type {module:vendordforders_v2021_12_28/model/Money}
  */
 OrderItem.prototype.netPrice = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/TaxItemDetails} taxDetails
+ * @type {module:vendordforders_v2021_12_28/model/TaxItemDetails}
  */
 OrderItem.prototype.taxDetails = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Money} totalPrice
+ * @type {module:vendordforders_v2021_12_28/model/Money}
  */
 OrderItem.prototype.totalPrice = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/BuyerCustomizedInfoDetail} buyerCustomizedInfo
+ * @type {module:vendordforders_v2021_12_28/model/BuyerCustomizedInfoDetail}
  */
 OrderItem.prototype.buyerCustomizedInfo = undefined

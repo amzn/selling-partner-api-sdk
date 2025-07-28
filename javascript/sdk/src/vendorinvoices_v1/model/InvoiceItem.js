@@ -82,67 +82,79 @@ export class InvoiceItem {
 /**
  * Unique number related to this line item.
  * @member {Number} itemSequenceNumber
+ * @type {Number}
  */
 InvoiceItem.prototype.itemSequenceNumber = undefined
 
 /**
  * Amazon Standard Identification Number (ASIN) of an item.
  * @member {String} amazonProductIdentifier
+ * @type {String}
  */
 InvoiceItem.prototype.amazonProductIdentifier = undefined
 
 /**
  * The vendor selected product identifier of the item. Should be the same as was provided in the purchase order.
  * @member {String} vendorProductIdentifier
+ * @type {String}
  */
 InvoiceItem.prototype.vendorProductIdentifier = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/ItemQuantity} invoicedQuantity
+ * @type {module:vendorinvoices_v1/model/ItemQuantity}
  */
 InvoiceItem.prototype.invoicedQuantity = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/Money} netCost
+ * @type {module:vendorinvoices_v1/model/Money}
  */
 InvoiceItem.prototype.netCost = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/NetCostUnitOfMeasure} netCostUnitOfMeasure
+ * @type {module:vendorinvoices_v1/model/NetCostUnitOfMeasure}
  */
 InvoiceItem.prototype.netCostUnitOfMeasure = undefined
 
 /**
  * The Amazon purchase order number for this invoiced line item. Formatting Notes: 8-character alpha-numeric code. This value is mandatory only when invoiceType is Invoice, and is not required when invoiceType is CreditNote.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 InvoiceItem.prototype.purchaseOrderNumber = undefined
 
 /**
  * HSN Tax code. The HSN number cannot contain alphabets.
  * @member {String} hsnCode
+ * @type {String}
  */
 InvoiceItem.prototype.hsnCode = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/CreditNoteDetails} creditNoteDetails
+ * @type {module:vendorinvoices_v1/model/CreditNoteDetails}
  */
 InvoiceItem.prototype.creditNoteDetails = undefined
 
 /**
  * Individual tax details per line item.
  * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
+ * @type {Array.<module:vendorinvoices_v1/model/TaxDetails>}
  */
 InvoiceItem.prototype.taxDetails = undefined
 
 /**
  * Individual charge details per line item.
  * @member {Array.<module:vendorinvoices_v1/model/ChargeDetails>} chargeDetails
+ * @type {Array.<module:vendorinvoices_v1/model/ChargeDetails>}
  */
 InvoiceItem.prototype.chargeDetails = undefined
 
 /**
  * Individual allowance details per line item.
  * @member {Array.<module:vendorinvoices_v1/model/AllowanceDetails>} allowanceDetails
+ * @type {Array.<module:vendorinvoices_v1/model/AllowanceDetails>}
  */
 InvoiceItem.prototype.allowanceDetails = undefined

@@ -60,5 +60,6 @@ export class AmazonOrderDetails {
 /**
  * The Amazon order ID associated with the Amazon order fulfilled by this shipment.
  * @member {String} orderId
+ * @type {String}
  */
 AmazonOrderDetails.prototype.orderId = undefined

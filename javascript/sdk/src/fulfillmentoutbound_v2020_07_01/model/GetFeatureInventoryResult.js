@@ -66,23 +66,27 @@ export class GetFeatureInventoryResult {
 /**
  * The requested marketplace.
  * @member {String} marketplaceId
+ * @type {String}
  */
 GetFeatureInventoryResult.prototype.marketplaceId = undefined
 
 /**
  * The name of the feature.
  * @member {String} featureName
+ * @type {String}
  */
 GetFeatureInventoryResult.prototype.featureName = undefined
 
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 GetFeatureInventoryResult.prototype.nextToken = undefined
 
 /**
  * An array of SKUs eligible for this feature and the quantity available.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSku>} featureSkus
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSku>}
  */
 GetFeatureInventoryResult.prototype.featureSkus = undefined

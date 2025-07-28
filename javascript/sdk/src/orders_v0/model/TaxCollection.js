@@ -73,6 +73,7 @@ TaxCollection.ModelEnum = {
 /**
  * The tax collection model applied to the item.
  * @member {module:orders_v0/model/TaxCollection.ModelEnum} model
+ * @type {module:orders_v0/model/TaxCollection.ModelEnum}
  */
 TaxCollection.prototype.model = undefined
 
@@ -93,5 +94,6 @@ TaxCollection.ResponsiblePartyEnum = {
 /**
  * The party responsible for withholding the taxes and remitting them to the taxing authority.
  * @member {module:orders_v0/model/TaxCollection.ResponsiblePartyEnum} responsibleParty
+ * @type {module:orders_v0/model/TaxCollection.ResponsiblePartyEnum}
  */
 TaxCollection.prototype.responsibleParty = undefined

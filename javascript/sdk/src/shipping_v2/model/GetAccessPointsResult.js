@@ -61,5 +61,6 @@ export class GetAccessPointsResult {
 /**
  * Map of type of access point to list of access points
  * @member {Object.<String, Array.<module:shipping_v2/model/AccessPoint>>} accessPointsMap
+ * @type {Object.<String, Array.<module:shipping_v2/model/AccessPoint>>}
  */
 GetAccessPointsResult.prototype.accessPointsMap = undefined

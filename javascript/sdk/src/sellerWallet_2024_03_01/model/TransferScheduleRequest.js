@@ -84,42 +84,50 @@ export class TransferScheduleRequest {
 /**
  * The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.
  * @member {String} sourceAccountId
+ * @type {String}
  */
 TransferScheduleRequest.prototype.sourceAccountId = undefined
 
 /**
  * The three-letter currency code of the source payment method country, in ISO 4217 format.
  * @member {String} sourceCurrencyCode
+ * @type {String}
  */
 TransferScheduleRequest.prototype.sourceCurrencyCode = undefined
 
 /**
  * The unique identifier of the destination bank account where the money is deposited.
  * @member {String} destinationAccountId
+ * @type {String}
  */
 TransferScheduleRequest.prototype.destinationAccountId = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails} destinationTransactionInstrument
+ * @type {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails}
  */
 TransferScheduleRequest.prototype.destinationTransactionInstrument = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransactionType} transactionType
+ * @type {module:sellerWallet_2024_03_01/model/TransactionType}
  */
 TransferScheduleRequest.prototype.transactionType = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferScheduleInformation} transferScheduleInformation
+ * @type {module:sellerWallet_2024_03_01/model/TransferScheduleInformation}
  */
 TransferScheduleRequest.prototype.transferScheduleInformation = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/PaymentPreference} paymentPreference
+ * @type {module:sellerWallet_2024_03_01/model/PaymentPreference}
  */
 TransferScheduleRequest.prototype.paymentPreference = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/TransferScheduleStatus} transferScheduleStatus
+ * @type {module:sellerWallet_2024_03_01/model/TransferScheduleStatus}
  */
 TransferScheduleRequest.prototype.transferScheduleStatus = undefined

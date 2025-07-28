@@ -65,11 +65,13 @@ export class AvailableShippingServiceOptions {
 /**
  * List of available carrier pickup options.
  * @member {Array.<module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption>} availableCarrierWillPickUpOptions
+ * @type {Array.<module:merchantfulfillment_v0/model/AvailableCarrierWillPickUpOption>}
  */
 AvailableShippingServiceOptions.prototype.availableCarrierWillPickUpOptions = undefined
 
 /**
  * List of available delivery experience options.
  * @member {Array.<module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption>} availableDeliveryExperienceOptions
+ * @type {Array.<module:merchantfulfillment_v0/model/AvailableDeliveryExperienceOption>}
  */
 AvailableShippingServiceOptions.prototype.availableDeliveryExperienceOptions = undefined

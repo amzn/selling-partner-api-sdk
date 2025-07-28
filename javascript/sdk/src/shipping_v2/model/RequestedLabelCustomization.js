@@ -59,5 +59,6 @@ export class RequestedLabelCustomization {
 /**
  * Specify the type of attributes to be added on a label.
  * @member {Array.<module:shipping_v2/model/LabelAttribute>} requestAttributes
+ * @type {Array.<module:shipping_v2/model/LabelAttribute>}
  */
 RequestedLabelCustomization.prototype.requestAttributes = undefined

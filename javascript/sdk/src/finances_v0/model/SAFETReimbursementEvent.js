@@ -64,28 +64,33 @@ export class SAFETReimbursementEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 SAFETReimbursementEvent.prototype.postedDate = undefined
 
 /**
  * A SAFE-T claim identifier.
  * @member {String} sAFETClaimId
+ * @type {String}
  */
 SAFETReimbursementEvent.prototype.sAFETClaimId = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} reimbursedAmount
+ * @type {module:finances_v0/model/Currency}
  */
 SAFETReimbursementEvent.prototype.reimbursedAmount = undefined
 
 /**
  * Indicates why the seller was reimbursed.
  * @member {String} reasonCode
+ * @type {String}
  */
 SAFETReimbursementEvent.prototype.reasonCode = undefined
 
 /**
  * A list of SAFETReimbursementItems.
  * @member {Array.<module:finances_v0/model/SAFETReimbursementItem>} sAFETReimbursementItemList
+ * @type {Array.<module:finances_v0/model/SAFETReimbursementItem>}
  */
 SAFETReimbursementEvent.prototype.sAFETReimbursementItemList = undefined

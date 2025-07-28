@@ -58,5 +58,6 @@ export class ErrorList {
 
 /**
  * @member {Array.<module:tokens_v2021_03_01/model/Error>} errors
+ * @type {Array.<module:tokens_v2021_03_01/model/Error>}
  */
 ErrorList.prototype.errors = undefined

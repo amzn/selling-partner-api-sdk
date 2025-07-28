@@ -61,16 +61,19 @@ export class Promotion {
 /**
  * The type of promotion.
  * @member {String} promotionType
+ * @type {String}
  */
 Promotion.prototype.promotionType = undefined
 
 /**
  * The seller-specified identifier for the promotion.
  * @member {String} promotionId
+ * @type {String}
  */
 Promotion.prototype.promotionId = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} promotionAmount
+ * @type {module:finances_v0/model/Currency}
  */
 Promotion.prototype.promotionAmount = undefined

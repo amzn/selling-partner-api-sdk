@@ -60,10 +60,12 @@ export class StandardComparisonTableModule {
 
 /**
  * @member {Array.<module:apluscontent_v2020_11_01/model/StandardComparisonProductBlock>} productColumns
+ * @type {Array.<module:apluscontent_v2020_11_01/model/StandardComparisonProductBlock>}
  */
 StandardComparisonTableModule.prototype.productColumns = undefined
 
 /**
  * @member {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>} metricRowLabels
+ * @type {Array.<module:apluscontent_v2020_11_01/model/PlainTextItem>}
  */
 StandardComparisonTableModule.prototype.metricRowLabels = undefined

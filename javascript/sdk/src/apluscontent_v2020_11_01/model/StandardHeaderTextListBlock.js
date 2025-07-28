@@ -60,10 +60,12 @@ export class StandardHeaderTextListBlock {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardHeaderTextListBlock.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextListBlock} block
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextListBlock}
  */
 StandardHeaderTextListBlock.prototype.block = undefined

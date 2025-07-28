@@ -62,29 +62,34 @@ export class CarrierDetails {
 /**
  * The field is used to represent the carrier used for performing the shipment.
  * @member {String} name
+ * @type {String}
  */
 CarrierDetails.prototype.name = undefined
 
 /**
  * Code that identifies the carrier for the shipment. The Standard Carrier Alpha Code (SCAC) is a unique two to four letter code used to identify a carrier. Carrier SCAC codes are assigned and maintained by the NMFTA (National Motor Freight Association).
  * @member {String} code
+ * @type {String}
  */
 CarrierDetails.prototype.code = undefined
 
 /**
  * The field is used to represent the Carrier contact number.
  * @member {String} phone
+ * @type {String}
  */
 CarrierDetails.prototype.phone = undefined
 
 /**
  * The field is used to represent the carrier Email id.
  * @member {String} email
+ * @type {String}
  */
 CarrierDetails.prototype.email = undefined
 
 /**
  * The field is also known as PRO number is a unique number assigned by the carrier. It is used to identify and track the shipment that goes out for delivery. This field is mandatory for US, CA, MX shipment confirmations.
  * @member {String} shipmentReferenceNumber
+ * @type {String}
  */
 CarrierDetails.prototype.shipmentReferenceNumber = undefined

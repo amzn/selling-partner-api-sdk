@@ -113,95 +113,111 @@ Context.StoreNameEnum = {
 /**
  * The store name associated with the transaction.
  * @member {module:finances_2024_06_19/model/Context.StoreNameEnum} storeName
+ * @type {module:finances_2024_06_19/model/Context.StoreNameEnum}
  */
 Context.prototype.storeName = undefined
 
 /**
  * Order type of the transaction.
  * @member {String} orderType
+ * @type {String}
  */
 Context.prototype.orderType = undefined
 
 /**
  * Channel details of related transaction.
  * @member {String} channel
+ * @type {String}
  */
 Context.prototype.channel = undefined
 
 /**
  * Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
+ * @type {String}
  */
 Context.prototype.asin = undefined
 
 /**
  * Stock keeping unit (SKU) of the item.
  * @member {String} sku
+ * @type {String}
  */
 Context.prototype.sku = undefined
 
 /**
  * Quantity of the item shipped.
  * @member {Number} quantityShipped
+ * @type {Number}
  */
 Context.prototype.quantityShipped = undefined
 
 /**
  * Fulfillment network of the item.
  * @member {String} fulfillmentNetwork
+ * @type {String}
  */
 Context.prototype.fulfillmentNetwork = undefined
 
 /**
  * Type of payment made.
  * @member {String} paymentType
+ * @type {String}
  */
 Context.prototype.paymentType = undefined
 
 /**
  * Method of payment made.
  * @member {String} paymentMethod
+ * @type {String}
  */
 Context.prototype.paymentMethod = undefined
 
 /**
  * Reference number of payment made.
  * @member {String} paymentReference
+ * @type {String}
  */
 Context.prototype.paymentReference = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} paymentDate
+ * @type {Date}
  */
 Context.prototype.paymentDate = undefined
 
 /**
  * The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)
  * @member {String} deferralReason
+ * @type {String}
  */
 Context.prototype.deferralReason = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} maturityDate
+ * @type {Date}
  */
 Context.prototype.maturityDate = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} startTime
+ * @type {Date}
  */
 Context.prototype.startTime = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} endTime
+ * @type {Date}
  */
 Context.prototype.endTime = undefined
 
 /**
  * @member {String} contextType
+ * @type {String}
  */
 Context.prototype.contextType = undefined
 
@@ -209,18 +225,21 @@ Context.prototype.contextType = undefined
 /**
  * Store name related to transaction.
  * @member {String} storeName
+ * @type {String}
  */
 AmazonPayContext.prototype.storeName = undefined
 
 /**
  * Order type of the transaction.
  * @member {String} orderType
+ * @type {String}
  */
 AmazonPayContext.prototype.orderType = undefined
 
 /**
  * Channel details of related transaction.
  * @member {String} channel
+ * @type {String}
  */
 AmazonPayContext.prototype.channel = undefined
 
@@ -228,24 +247,28 @@ AmazonPayContext.prototype.channel = undefined
 /**
  * Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
+ * @type {String}
  */
 ProductContext.prototype.asin = undefined
 
 /**
  * Stock keeping unit (SKU) of the item.
  * @member {String} sku
+ * @type {String}
  */
 ProductContext.prototype.sku = undefined
 
 /**
  * Quantity of the item shipped.
  * @member {Number} quantityShipped
+ * @type {Number}
  */
 ProductContext.prototype.quantityShipped = undefined
 
 /**
  * Fulfillment network of the item.
  * @member {String} fulfillmentNetwork
+ * @type {String}
  */
 ProductContext.prototype.fulfillmentNetwork = undefined
 
@@ -253,24 +276,28 @@ ProductContext.prototype.fulfillmentNetwork = undefined
 /**
  * Type of payment made.
  * @member {String} paymentType
+ * @type {String}
  */
 PaymentsContext.prototype.paymentType = undefined
 
 /**
  * Method of payment made.
  * @member {String} paymentMethod
+ * @type {String}
  */
 PaymentsContext.prototype.paymentMethod = undefined
 
 /**
  * Reference number of payment made.
  * @member {String} paymentReference
+ * @type {String}
  */
 PaymentsContext.prototype.paymentReference = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} paymentDate
+ * @type {Date}
  */
 PaymentsContext.prototype.paymentDate = undefined
 
@@ -278,12 +305,14 @@ PaymentsContext.prototype.paymentDate = undefined
 /**
  * The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)
  * @member {String} deferralReason
+ * @type {String}
  */
 DeferredContext.prototype.deferralReason = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} maturityDate
+ * @type {Date}
  */
 DeferredContext.prototype.maturityDate = undefined
 
@@ -291,6 +320,7 @@ DeferredContext.prototype.maturityDate = undefined
 /**
  * The store name associated with the transaction.
  * @member {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum} storeName
+ * @type {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum}
  */
 BusinessContext.prototype.storeName = undefined
 
@@ -298,11 +328,13 @@ BusinessContext.prototype.storeName = undefined
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} startTime
+ * @type {Date}
  */
 TimeRangeContext.prototype.startTime = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} endTime
+ * @type {Date}
  */
 TimeRangeContext.prototype.endTime = undefined

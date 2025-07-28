@@ -61,11 +61,13 @@ export class ScheduledPackageId {
 /**
  * An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 ScheduledPackageId.prototype.amazonOrderId = undefined
 
 /**
  * An Amazon-defined identifier for the scheduled package.
  * @member {String} packageId
+ * @type {String}
  */
 ScheduledPackageId.prototype.packageId = undefined

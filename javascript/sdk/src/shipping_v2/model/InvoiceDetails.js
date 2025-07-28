@@ -59,11 +59,13 @@ export class InvoiceDetails {
 /**
  * The invoice number of the item.
  * @member {String} invoiceNumber
+ * @type {String}
  */
 InvoiceDetails.prototype.invoiceNumber = undefined
 
 /**
  * The invoice date of the item in ISO 8061 format.
  * @member {Date} invoiceDate
+ * @type {Date}
  */
 InvoiceDetails.prototype.invoiceDate = undefined

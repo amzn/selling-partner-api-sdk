@@ -73,33 +73,39 @@ export class ItemInput {
 /**
  * The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `YYYY-MM-DD`. Items with the same MSKU but different expiration dates cannot go into the same box.
  * @member {String} expiration
+ * @type {String}
  */
 ItemInput.prototype.expiration = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/LabelOwner} labelOwner
+ * @type {module:fulfillmentinbound_v2024_03_20/model/LabelOwner}
  */
 ItemInput.prototype.labelOwner = undefined
 
 /**
  * The manufacturing lot code.
  * @member {String} manufacturingLotCode
+ * @type {String}
  */
 ItemInput.prototype.manufacturingLotCode = undefined
 
 /**
  * The merchant SKU, a merchant-supplied identifier of a specific SKU.
  * @member {String} msku
+ * @type {String}
  */
 ItemInput.prototype.msku = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/PrepOwner} prepOwner
+ * @type {module:fulfillmentinbound_v2024_03_20/model/PrepOwner}
  */
 ItemInput.prototype.prepOwner = undefined
 
 /**
  * The number of units of the specified MSKU that will be shipped.
  * @member {Number} quantity
+ * @type {Number}
  */
 ItemInput.prototype.quantity = undefined

@@ -66,17 +66,20 @@ export class GetRatesResult {
 /**
  * A unique token generated to identify a getRates operation.
  * @member {String} requestToken
+ * @type {String}
  */
 GetRatesResult.prototype.requestToken = undefined
 
 /**
  * A list of eligible shipping service offerings.
  * @member {Array.<module:shipping_v2/model/Rate>} rates
+ * @type {Array.<module:shipping_v2/model/Rate>}
  */
 GetRatesResult.prototype.rates = undefined
 
 /**
  * A list of ineligible shipping service offerings.
  * @member {Array.<module:shipping_v2/model/IneligibleRate>} ineligibleRates
+ * @type {Array.<module:shipping_v2/model/IneligibleRate>}
  */
 GetRatesResult.prototype.ineligibleRates = undefined

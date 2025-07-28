@@ -26,7 +26,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-04-01
 */
 export class AppIntegrationsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -70,7 +70,7 @@ export class AppIntegrationsApi {
   /**
      * Create a notification for sellers in Seller Central.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Sellers whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:appintegrations_v2024_04_01/model/CreateNotificationRequest} body The request body for the &#x60;createNotification&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:appintegrations_v2024_04_01/model/CreateNotificationResponse} and HTTP response
+     * @return {Promise<module:appintegrations_v2024_04_01/model/CreateNotificationResponse>}
      */
   createNotificationWithHttpInfo (body) {
     const postBody = body
@@ -103,7 +103,7 @@ export class AppIntegrationsApi {
   /**
      * Create a notification for sellers in Seller Central.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Sellers whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:appintegrations_v2024_04_01/model/CreateNotificationRequest} body The request body for the &#x60;createNotification&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:appintegrations_v2024_04_01/model/CreateNotificationResponse}
+     * @return {Promise<module:appintegrations_v2024_04_01/model/CreateNotificationResponse>}
      */
   createNotification (body) {
     return this.createNotificationWithHttpInfo(body)
@@ -115,7 +115,7 @@ export class AppIntegrationsApi {
   /**
      * Remove your application&#39;s notifications from the Appstore notifications dashboard.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Sellers whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest} body The request body for the &#x60;deleteNotifications&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   deleteNotificationsWithHttpInfo (body) {
     const postBody = body
@@ -148,7 +148,7 @@ export class AppIntegrationsApi {
   /**
      * Remove your application&#39;s notifications from the Appstore notifications dashboard.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Sellers whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest} body The request body for the &#x60;deleteNotifications&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   deleteNotifications (body) {
     return this.deleteNotificationsWithHttpInfo(body)
@@ -161,7 +161,7 @@ export class AppIntegrationsApi {
      * Records the seller&#39;s response to a notification.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Sellers whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} notificationId A &#x60;notificationId&#x60; uniquely identifies a notification.
      * @param {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest} body The request body for the &#x60;recordActionFeedback&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   recordActionFeedbackWithHttpInfo (notificationId, body) {
     const postBody = body
@@ -201,7 +201,7 @@ export class AppIntegrationsApi {
      * Records the seller&#39;s response to a notification.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Sellers whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} notificationId A &#x60;notificationId&#x60; uniquely identifies a notification.
      * @param {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest} body The request body for the &#x60;recordActionFeedback&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   recordActionFeedback (notificationId, body) {
     return this.recordActionFeedbackWithHttpInfo(notificationId, body)

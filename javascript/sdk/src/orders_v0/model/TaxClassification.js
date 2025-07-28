@@ -59,11 +59,13 @@ export class TaxClassification {
 /**
  * The type of tax.
  * @member {String} name
+ * @type {String}
  */
 TaxClassification.prototype.name = undefined
 
 /**
  * The buyer's tax identifier.
  * @member {String} value
+ * @type {String}
  */
 TaxClassification.prototype.value = undefined

@@ -24,7 +24,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-09-01
 */
 export class DefinitionsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -74,7 +74,7 @@ export class DefinitionsApi {
      * @param {module:producttypedefinitions_v2020_09_01/model/String} opts.requirements The name of the requirements set to retrieve requirements for. (default to &#39;LISTING&#39;)
      * @param {module:producttypedefinitions_v2020_09_01/model/String} opts.requirementsEnforced Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (default to &#39;ENFORCED&#39;)
      * @param {module:producttypedefinitions_v2020_09_01/model/String} opts.locale Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (default to &#39;DEFAULT&#39;)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition} and HTTP response
+     * @return {Promise<module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition>}
      */
   getDefinitionsProductTypeWithHttpInfo (productType, marketplaceIds, opts) {
     opts = opts || {}
@@ -127,7 +127,7 @@ export class DefinitionsApi {
      * @param {module:producttypedefinitions_v2020_09_01/model/String} opts.requirements The name of the requirements set to retrieve requirements for. (default to &#39;LISTING&#39;)
      * @param {module:producttypedefinitions_v2020_09_01/model/String} opts.requirementsEnforced Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates). (default to &#39;ENFORCED&#39;)
      * @param {module:producttypedefinitions_v2020_09_01/model/String} opts.locale Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request. (default to &#39;DEFAULT&#39;)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition}
+     * @return {Promise<module:producttypedefinitions_v2020_09_01/model/ProductTypeDefinition>}
      */
   getDefinitionsProductType (productType, marketplaceIds, opts) {
     return this.getDefinitionsProductTypeWithHttpInfo(productType, marketplaceIds, opts)
@@ -144,7 +144,7 @@ export class DefinitionsApi {
      * @param {String} opts.itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
      * @param {String} opts.locale The locale for the display names in the response. Defaults to the primary locale of the marketplace.
      * @param {String} opts.searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:producttypedefinitions_v2020_09_01/model/ProductTypeList} and HTTP response
+     * @return {Promise<module:producttypedefinitions_v2020_09_01/model/ProductTypeList>}
      */
   searchDefinitionsProductTypesWithHttpInfo (marketplaceIds, opts) {
     opts = opts || {}
@@ -188,7 +188,7 @@ export class DefinitionsApi {
      * @param {String} opts.itemName The title of the ASIN to get the product type recommendation. **Note:** Cannot be used with &#x60;keywords&#x60;.
      * @param {String} opts.locale The locale for the display names in the response. Defaults to the primary locale of the marketplace.
      * @param {String} opts.searchLocale The locale used for the &#x60;keywords&#x60; and &#x60;itemName&#x60; parameters. Defaults to the primary locale of the marketplace.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:producttypedefinitions_v2020_09_01/model/ProductTypeList}
+     * @return {Promise<module:producttypedefinitions_v2020_09_01/model/ProductTypeList>}
      */
   searchDefinitionsProductTypes (marketplaceIds, opts) {
     return this.searchDefinitionsProductTypesWithHttpInfo(marketplaceIds, opts)

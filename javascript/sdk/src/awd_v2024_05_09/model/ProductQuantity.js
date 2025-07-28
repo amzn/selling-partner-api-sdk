@@ -68,28 +68,33 @@ export class ProductQuantity {
 /**
  * Contains attributes for this instance of the product. For example, item color, or other attributes that distinguish the product beyond the SKU. This is metadata for the product and Amazon does not process this data.
  * @member {Array.<module:awd_v2024_05_09/model/ProductAttribute>} attributes
+ * @type {Array.<module:awd_v2024_05_09/model/ProductAttribute>}
  */
 ProductQuantity.prototype.attributes = undefined
 
 /**
  * Product quantity.
  * @member {Number} quantity
+ * @type {Number}
  */
 ProductQuantity.prototype.quantity = undefined
 
 /**
  * The seller or merchant SKU.
  * @member {String} sku
+ * @type {String}
  */
 ProductQuantity.prototype.sku = undefined
 
 /**
  * The expiration date for the SKU. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} expiration
+ * @type {Date}
  */
 ProductQuantity.prototype.expiration = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/PrepDetails} prepDetails
+ * @type {module:awd_v2024_05_09/model/PrepDetails}
  */
 ProductQuantity.prototype.prepDetails = undefined

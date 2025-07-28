@@ -58,5 +58,6 @@ export class CreateNotificationResponse {
 /**
  * The unique identifier assigned to each notification.
  * @member {String} notificationId
+ * @type {String}
  */
 CreateNotificationResponse.prototype.notificationId = undefined

@@ -58,5 +58,6 @@ export class TransactionReference {
 /**
  * GUID to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction.
  * @member {String} transactionId
+ * @type {String}
  */
 TransactionReference.prototype.transactionId = undefined

@@ -64,11 +64,13 @@ export class UpdateScheduledPackagesRequest {
 /**
  * A string of up to 255 characters.
  * @member {String} marketplaceId
+ * @type {String}
  */
 UpdateScheduledPackagesRequest.prototype.marketplaceId = undefined
 
 /**
  * A list of package update details.
  * @member {Array.<module:easyship_v2022_03_23/model/UpdatePackageDetails>} updatePackageDetailsList
+ * @type {Array.<module:easyship_v2022_03_23/model/UpdatePackageDetails>}
  */
 UpdateScheduledPackagesRequest.prototype.updatePackageDetailsList = undefined

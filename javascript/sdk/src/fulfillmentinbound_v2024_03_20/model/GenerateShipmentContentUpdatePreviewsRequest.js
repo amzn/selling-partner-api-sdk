@@ -65,11 +65,13 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
 /**
  * A list of boxes that will be present in the shipment after the update.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput>} boxes
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput>}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.boxes = undefined
 
 /**
  * A list of all items that will be present in the shipment after the update.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.items = undefined

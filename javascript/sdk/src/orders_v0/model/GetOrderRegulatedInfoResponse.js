@@ -60,11 +60,13 @@ export class GetOrderRegulatedInfoResponse {
 
 /**
  * @member {module:orders_v0/model/OrderRegulatedInfo} payload
+ * @type {module:orders_v0/model/OrderRegulatedInfo}
  */
 GetOrderRegulatedInfoResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:orders_v0/model/Error>} errors
+ * @type {Array.<module:orders_v0/model/Error>}
  */
 GetOrderRegulatedInfoResponse.prototype.errors = undefined

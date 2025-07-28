@@ -61,5 +61,6 @@ export class RegulatedInformation {
 /**
  * A list of regulated information fields as collected from the regulatory form.
  * @member {Array.<module:orders_v0/model/RegulatedInformationField>} fields
+ * @type {Array.<module:orders_v0/model/RegulatedInformationField>}
  */
 RegulatedInformation.prototype.fields = undefined

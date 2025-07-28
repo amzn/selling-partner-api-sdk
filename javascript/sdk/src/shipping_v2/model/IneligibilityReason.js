@@ -63,11 +63,13 @@ export class IneligibilityReason {
 
 /**
  * @member {module:shipping_v2/model/IneligibilityReasonCode} code
+ * @type {module:shipping_v2/model/IneligibilityReasonCode}
  */
 IneligibilityReason.prototype.code = undefined
 
 /**
  * The ineligibility reason.
  * @member {String} message
+ * @type {String}
  */
 IneligibilityReason.prototype.message = undefined

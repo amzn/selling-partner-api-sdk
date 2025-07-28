@@ -59,5 +59,6 @@ export class AplusResponse {
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 AplusResponse.prototype.warnings = undefined

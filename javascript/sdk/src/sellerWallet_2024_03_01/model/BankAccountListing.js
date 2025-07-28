@@ -61,5 +61,6 @@ export class BankAccountListing {
 /**
  * A list of bank accounts.
  * @member {Array.<module:sellerWallet_2024_03_01/model/BankAccount>} accounts
+ * @type {Array.<module:sellerWallet_2024_03_01/model/BankAccount>}
  */
 BankAccountListing.prototype.accounts = undefined

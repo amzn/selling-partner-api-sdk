@@ -64,11 +64,13 @@ export class ItemRelationshipsByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemRelationshipsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Relationships for the item.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemRelationship>} relationships
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemRelationship>}
  */
 ItemRelationshipsByMarketplace.prototype.relationships = undefined

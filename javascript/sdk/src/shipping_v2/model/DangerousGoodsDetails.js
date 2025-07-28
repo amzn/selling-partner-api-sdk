@@ -61,12 +61,14 @@ export class DangerousGoodsDetails {
 /**
  * The specific UNID of the item being shipped.
  * @member {String} unitedNationsRegulatoryId
+ * @type {String}
  */
 DangerousGoodsDetails.prototype.unitedNationsRegulatoryId = undefined
 
 /**
  * The specific regulatory class  of the item being shipped.
  * @member {String} transportationRegulatoryClass
+ * @type {String}
  */
 DangerousGoodsDetails.prototype.transportationRegulatoryClass = undefined
 
@@ -99,6 +101,7 @@ DangerousGoodsDetails.PackingGroupEnum = {
 /**
  * The specific packaging group of the item being shipped.
  * @member {module:shipping_v2/model/DangerousGoodsDetails.PackingGroupEnum} packingGroup
+ * @type {module:shipping_v2/model/DangerousGoodsDetails.PackingGroupEnum}
  */
 DangerousGoodsDetails.prototype.packingGroup = undefined
 
@@ -191,5 +194,6 @@ DangerousGoodsDetails.PackingInstructionEnum = {
 /**
  * The specific packing instruction of the item being shipped.
  * @member {module:shipping_v2/model/DangerousGoodsDetails.PackingInstructionEnum} packingInstruction
+ * @type {module:shipping_v2/model/DangerousGoodsDetails.PackingInstructionEnum}
  */
 DangerousGoodsDetails.prototype.packingInstruction = undefined

@@ -68,22 +68,26 @@ export class Subscription {
 /**
  * The subscription identifier generated when the subscription is created.
  * @member {String} subscriptionId
+ * @type {String}
  */
 Subscription.prototype.subscriptionId = undefined
 
 /**
  * The version of the payload object to be used in the notification.
  * @member {String} payloadVersion
+ * @type {String}
  */
 Subscription.prototype.payloadVersion = undefined
 
 /**
  * The identifier for the destination where notifications will be delivered.
  * @member {String} destinationId
+ * @type {String}
  */
 Subscription.prototype.destinationId = undefined
 
 /**
  * @member {module:notifications_v1/model/ProcessingDirective} processingDirective
+ * @type {module:notifications_v1/model/ProcessingDirective}
  */
 Subscription.prototype.processingDirective = undefined

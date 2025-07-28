@@ -60,11 +60,13 @@ export class GetTransactionResponse {
 
 /**
  * @member {module:vendortransactionstatus_v1/model/TransactionStatus} payload
+ * @type {module:vendortransactionstatus_v1/model/TransactionStatus}
  */
 GetTransactionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:vendortransactionstatus_v1/model/Error>} errors
+ * @type {Array.<module:vendortransactionstatus_v1/model/Error>}
  */
 GetTransactionResponse.prototype.errors = undefined

@@ -70,6 +70,7 @@ export class ListingsItemSubmissionResponse {
 /**
  * A selling partner provided identifier for an Amazon listing.
  * @member {String} sku
+ * @type {String}
  */
 ListingsItemSubmissionResponse.prototype.sku = undefined
 
@@ -102,23 +103,27 @@ ListingsItemSubmissionResponse.StatusEnum = {
 /**
  * The status of the listings item submission.
  * @member {module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse.StatusEnum} status
+ * @type {module:listingsitems_v2021_08_01/model/ListingsItemSubmissionResponse.StatusEnum}
  */
 ListingsItemSubmissionResponse.prototype.status = undefined
 
 /**
  * The unique identifier of the listings item submission.
  * @member {String} submissionId
+ * @type {String}
  */
 ListingsItemSubmissionResponse.prototype.submissionId = undefined
 
 /**
  * Listings item issues related to the listings item submission.
  * @member {Array.<module:listingsitems_v2021_08_01/model/Issue>} issues
+ * @type {Array.<module:listingsitems_v2021_08_01/model/Issue>}
  */
 ListingsItemSubmissionResponse.prototype.issues = undefined
 
 /**
  * Identity attributes associated with the item in the Amazon catalog, such as the ASIN.
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemIdentifiersByMarketplace>} identifiers
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemIdentifiersByMarketplace>}
  */
 ListingsItemSubmissionResponse.prototype.identifiers = undefined

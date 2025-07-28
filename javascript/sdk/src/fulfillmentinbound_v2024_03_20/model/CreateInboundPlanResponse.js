@@ -63,11 +63,13 @@ export class CreateInboundPlanResponse {
 /**
  * Identifier of an inbound plan.
  * @member {String} inboundPlanId
+ * @type {String}
  */
 CreateInboundPlanResponse.prototype.inboundPlanId = undefined
 
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 CreateInboundPlanResponse.prototype.operationId = undefined

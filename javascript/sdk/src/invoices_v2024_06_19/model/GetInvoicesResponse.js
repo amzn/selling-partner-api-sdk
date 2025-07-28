@@ -60,11 +60,13 @@ export class GetInvoicesResponse {
 /**
  * A list of invoices.
  * @member {Array.<module:invoices_v2024_06_19/model/Invoice>} invoices
+ * @type {Array.<module:invoices_v2024_06_19/model/Invoice>}
  */
 GetInvoicesResponse.prototype.invoices = undefined
 
 /**
  * This token is returned when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the `getInvoices` operation and include this token with the previous call parameters.
  * @member {String} nextToken
+ * @type {String}
  */
 GetInvoicesResponse.prototype.nextToken = undefined

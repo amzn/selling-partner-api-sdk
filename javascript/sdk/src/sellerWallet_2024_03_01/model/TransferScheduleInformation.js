@@ -63,21 +63,25 @@ export class TransferScheduleInformation {
 /**
  * The start date of the scheduled transfer.
  * @member {Date} scheduleStartDate
+ * @type {Date}
  */
 TransferScheduleInformation.prototype.scheduleStartDate = undefined
 
 /**
  * The end date of the scheduled transfer.
  * @member {Date} scheduleEndDate
+ * @type {Date}
  */
 TransferScheduleInformation.prototype.scheduleEndDate = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/ScheduleExpression} scheduleExpression
+ * @type {module:sellerWallet_2024_03_01/model/ScheduleExpression}
  */
 TransferScheduleInformation.prototype.scheduleExpression = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/ScheduleTransferType} scheduleType
+ * @type {module:sellerWallet_2024_03_01/model/ScheduleTransferType}
  */
 TransferScheduleInformation.prototype.scheduleType = undefined

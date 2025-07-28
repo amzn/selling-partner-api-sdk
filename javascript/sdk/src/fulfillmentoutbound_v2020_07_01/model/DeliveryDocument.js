@@ -61,11 +61,13 @@ export class DeliveryDocument {
 /**
  * The delivery document type. Values are `SIGNATURE` and `DELIVERY_IMAGE`.
  * @member {String} documentType
+ * @type {String}
  */
 DeliveryDocument.prototype.documentType = undefined
 
 /**
  * A URL that you can use to download the document. This URL has a `Content-Type` header. Note that the URL expires after one hour. To get a new URL, you must call the API again.
  * @member {String} url
+ * @type {String}
  */
 DeliveryDocument.prototype.url = undefined

@@ -74,28 +74,33 @@ export class GetTrackingResult {
 /**
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
+ * @type {String}
  */
 GetTrackingResult.prototype.trackingId = undefined
 
 /**
  * The carrier generated reverse identifier for a returned package in a purchased shipment.
  * @member {String} alternateLegTrackingId
+ * @type {String}
  */
 GetTrackingResult.prototype.alternateLegTrackingId = undefined
 
 /**
  * A list of tracking events.
  * @member {Array.<module:shipping_v2/model/Event>} eventHistory
+ * @type {Array.<module:shipping_v2/model/Event>}
  */
 GetTrackingResult.prototype.eventHistory = undefined
 
 /**
  * The date and time by which the shipment is promised to be delivered.
  * @member {Date} promisedDeliveryDate
+ * @type {Date}
  */
 GetTrackingResult.prototype.promisedDeliveryDate = undefined
 
 /**
  * @member {module:shipping_v2/model/TrackingSummary} summary
+ * @type {module:shipping_v2/model/TrackingSummary}
  */
 GetTrackingResult.prototype.summary = undefined

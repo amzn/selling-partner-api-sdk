@@ -95,11 +95,13 @@ Weight.UnitEnum = {
 /**
  * The unit of weight.
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Weight.UnitEnum} unit
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Weight.UnitEnum}
  */
 Weight.prototype.unit = undefined
 
 /**
  * The weight value.
  * @member {String} value
+ * @type {String}
  */
 Weight.prototype.value = undefined

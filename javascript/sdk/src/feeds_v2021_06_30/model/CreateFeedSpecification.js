@@ -67,23 +67,27 @@ export class CreateFeedSpecification {
 /**
  * The feed type.
  * @member {String} feedType
+ * @type {String}
  */
 CreateFeedSpecification.prototype.feedType = undefined
 
 /**
  * A list of identifiers for marketplaces that you want the feed to be applied to.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 CreateFeedSpecification.prototype.marketplaceIds = undefined
 
 /**
  * The document identifier returned by the createFeedDocument operation. Upload the feed document contents before calling the createFeed operation.
  * @member {String} inputFeedDocumentId
+ * @type {String}
  */
 CreateFeedSpecification.prototype.inputFeedDocumentId = undefined
 
 /**
  * Additional options to control the feed. These vary by feed type.
  * @member {Object.<String, String>} feedOptions
+ * @type {Object.<String, String>}
  */
 CreateFeedSpecification.prototype.feedOptions = undefined

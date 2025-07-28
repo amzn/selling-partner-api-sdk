@@ -108,17 +108,20 @@ ServiceUploadDocument.ContentTypeEnum = {
 /**
  * The content type of the to-be-uploaded file
  * @member {module:services_v1/model/ServiceUploadDocument.ContentTypeEnum} contentType
+ * @type {module:services_v1/model/ServiceUploadDocument.ContentTypeEnum}
  */
 ServiceUploadDocument.prototype.contentType = undefined
 
 /**
  * The content length of the to-be-uploaded file
  * @member {Number} contentLength
+ * @type {Number}
  */
 ServiceUploadDocument.prototype.contentLength = undefined
 
 /**
  * An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.
  * @member {String} contentMD5
+ * @type {String}
  */
 ServiceUploadDocument.prototype.contentMD5 = undefined
