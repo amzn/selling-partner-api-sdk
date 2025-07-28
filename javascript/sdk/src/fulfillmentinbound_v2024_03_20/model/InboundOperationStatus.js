@@ -71,22 +71,26 @@ export class InboundOperationStatus {
 /**
  * The name of the operation in the asynchronous API call.
  * @member {String} operation
+ * @type {String}
  */
 InboundOperationStatus.prototype.operation = undefined
 
 /**
  * The operation ID returned by the asynchronous API call.
  * @member {String} operationId
+ * @type {String}
  */
 InboundOperationStatus.prototype.operationId = undefined
 
 /**
  * The problems in the processing of the asynchronous operation.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/OperationProblem>} operationProblems
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/OperationProblem>}
  */
 InboundOperationStatus.prototype.operationProblems = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/OperationStatus} operationStatus
+ * @type {module:fulfillmentinbound_v2024_03_20/model/OperationStatus}
  */
 InboundOperationStatus.prototype.operationStatus = undefined

@@ -61,20 +61,24 @@ export class Dimensions {
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} height
+ * @type {module:catalogitems_v2022_04_01/model/Dimension}
  */
 Dimensions.prototype.height = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} length
+ * @type {module:catalogitems_v2022_04_01/model/Dimension}
  */
 Dimensions.prototype.length = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} weight
+ * @type {module:catalogitems_v2022_04_01/model/Dimension}
  */
 Dimensions.prototype.weight = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/Dimension} width
+ * @type {module:catalogitems_v2022_04_01/model/Dimension}
  */
 Dimensions.prototype.width = undefined

@@ -63,11 +63,13 @@ export class CustomerInvoice {
 /**
  * The purchase order number for this order.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 CustomerInvoice.prototype.purchaseOrderNumber = undefined
 
 /**
  * The Base64 customer invoice.
  * @member {String} content
+ * @type {String}
  */
 CustomerInvoice.prototype.content = undefined

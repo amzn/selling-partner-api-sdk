@@ -63,6 +63,7 @@ export class LowestPricedOffersInput {
 
 /**
  * @member {module:pricing_v2022_05_01/model/Condition} itemCondition
+ * @type {module:pricing_v2022_05_01/model/Condition}
  */
 LowestPricedOffersInput.prototype.itemCondition = undefined
 
@@ -83,5 +84,6 @@ LowestPricedOffersInput.OfferTypeEnum = {
 /**
  * The input parameter specifies the type of offers requested for `LowestPricedOffers`. This applies to `Consumer` and `Business` offers. `Consumer` is the default `offerType`.
  * @member {module:pricing_v2022_05_01/model/LowestPricedOffersInput.OfferTypeEnum} offerType
+ * @type {module:pricing_v2022_05_01/model/LowestPricedOffersInput.OfferTypeEnum}
  */
 LowestPricedOffersInput.prototype.offerType = undefined

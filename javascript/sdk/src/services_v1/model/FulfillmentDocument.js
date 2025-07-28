@@ -59,11 +59,13 @@ export class FulfillmentDocument {
 /**
  * The identifier of the upload destination. Get this value by calling the `createServiceDocumentUploadDestination` operation of the Services API.
  * @member {String} uploadDestinationId
+ * @type {String}
  */
 FulfillmentDocument.prototype.uploadDestinationId = undefined
 
 /**
  * Sha256 hash of the file content. This value is used to determine if the file has been corrupted or tampered with during transit.
  * @member {String} contentSha256
+ * @type {String}
  */
 FulfillmentDocument.prototype.contentSha256 = undefined

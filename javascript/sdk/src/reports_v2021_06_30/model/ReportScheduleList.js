@@ -61,5 +61,6 @@ export class ReportScheduleList {
 /**
  * Detailed information about a report schedule.
  * @member {Array.<module:reports_v2021_06_30/model/ReportSchedule>} reportSchedules
+ * @type {Array.<module:reports_v2021_06_30/model/ReportSchedule>}
  */
 ReportScheduleList.prototype.reportSchedules = undefined

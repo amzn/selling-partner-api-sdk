@@ -58,5 +58,6 @@ export class GetTrackingResponse {
 
 /**
  * @member {module:shipping_v2/model/GetTrackingResult} payload
+ * @type {module:shipping_v2/model/GetTrackingResult}
  */
 GetTrackingResponse.prototype.payload = undefined

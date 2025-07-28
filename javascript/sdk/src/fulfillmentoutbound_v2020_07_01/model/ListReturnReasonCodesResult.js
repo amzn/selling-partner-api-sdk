@@ -59,5 +59,6 @@ export class ListReturnReasonCodesResult {
 /**
  * An array of return reason code details.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReasonCodeDetails>} reasonCodeDetails
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReasonCodeDetails>}
  */
 ListReturnReasonCodesResult.prototype.reasonCodeDetails = undefined

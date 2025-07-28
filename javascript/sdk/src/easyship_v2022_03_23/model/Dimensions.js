@@ -63,28 +63,33 @@ export class Dimensions {
 /**
  * The numerical value of the specified dimension.
  * @member {Number} length
+ * @type {Number}
  */
 Dimensions.prototype.length = undefined
 
 /**
  * The numerical value of the specified dimension.
  * @member {Number} width
+ * @type {Number}
  */
 Dimensions.prototype.width = undefined
 
 /**
  * The numerical value of the specified dimension.
  * @member {Number} height
+ * @type {Number}
  */
 Dimensions.prototype.height = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/UnitOfLength} unit
+ * @type {module:easyship_v2022_03_23/model/UnitOfLength}
  */
 Dimensions.prototype.unit = undefined
 
 /**
  * A string of up to 255 characters.
  * @member {String} identifier
+ * @type {String}
  */
 Dimensions.prototype.identifier = undefined

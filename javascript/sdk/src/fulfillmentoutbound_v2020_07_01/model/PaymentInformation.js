@@ -66,17 +66,20 @@ export class PaymentInformation {
 /**
  * The transaction identifier of this payment.
  * @member {String} paymentTransactionId
+ * @type {String}
  */
 PaymentInformation.prototype.paymentTransactionId = undefined
 
 /**
  * The transaction mode of this payment.
  * @member {String} paymentMode
+ * @type {String}
  */
 PaymentInformation.prototype.paymentMode = undefined
 
 /**
  * Date timestamp
  * @member {Date} paymentDate
+ * @type {Date}
  */
 PaymentInformation.prototype.paymentDate = undefined

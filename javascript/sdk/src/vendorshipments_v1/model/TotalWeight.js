@@ -95,11 +95,13 @@ TotalWeight.UnitOfMeasureEnum = {
 /**
  * The unit of measure for the weight of items that are ordered by cases and support pricing by weight.
  * @member {module:vendorshipments_v1/model/TotalWeight.UnitOfMeasureEnum} unitOfMeasure
+ * @type {module:vendorshipments_v1/model/TotalWeight.UnitOfMeasureEnum}
  */
 TotalWeight.prototype.unitOfMeasure = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
  * @member {String} amount
+ * @type {String}
  */
 TotalWeight.prototype.amount = undefined

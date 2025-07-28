@@ -64,17 +64,20 @@ export class ItemRelationship {
 /**
  * ASINs of the related items that are children of this item.
  * @member {Array.<String>} childAsins
+ * @type {Array.<String>}
  */
 ItemRelationship.prototype.childAsins = undefined
 
 /**
  * ASINs of the related items that are parents of this item.
  * @member {Array.<String>} parentAsins
+ * @type {Array.<String>}
  */
 ItemRelationship.prototype.parentAsins = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/ItemVariationTheme} variationTheme
+ * @type {module:catalogitems_v2022_04_01/model/ItemVariationTheme}
  */
 ItemRelationship.prototype.variationTheme = undefined
 
@@ -101,5 +104,6 @@ ItemRelationship.TypeEnum = {
 /**
  * Type of relationship.
  * @member {module:catalogitems_v2022_04_01/model/ItemRelationship.TypeEnum} type
+ * @type {module:catalogitems_v2022_04_01/model/ItemRelationship.TypeEnum}
  */
 ItemRelationship.prototype.type = undefined

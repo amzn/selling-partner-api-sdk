@@ -58,5 +58,6 @@ export class BillOfLadingDownloadURL {
 /**
  * URL to download the bill of lading for the package. Note: The URL will only be valid for 15 seconds
  * @member {String} downloadURL
+ * @type {String}
  */
 BillOfLadingDownloadURL.prototype.downloadURL = undefined

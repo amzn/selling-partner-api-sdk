@@ -64,22 +64,26 @@ export class UpdateVerificationStatusRequestBody {
 
 /**
  * @member {module:orders_v0/model/VerificationStatus} status
+ * @type {module:orders_v0/model/VerificationStatus}
  */
 UpdateVerificationStatusRequestBody.prototype.status = undefined
 
 /**
  * The identifier of the order's regulated information reviewer.
  * @member {String} externalReviewerId
+ * @type {String}
  */
 UpdateVerificationStatusRequestBody.prototype.externalReviewerId = undefined
 
 /**
  * The unique identifier of the rejection reason used for rejecting the order's regulated information. Only required if the new status is rejected.
  * @member {String} rejectionReasonId
+ * @type {String}
  */
 UpdateVerificationStatusRequestBody.prototype.rejectionReasonId = undefined
 
 /**
  * @member {module:orders_v0/model/VerificationDetails} verificationDetails
+ * @type {module:orders_v0/model/VerificationDetails}
  */
 UpdateVerificationStatusRequestBody.prototype.verificationDetails = undefined

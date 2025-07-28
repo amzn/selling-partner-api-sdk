@@ -70,47 +70,55 @@ export class InboundShipmentItem {
 /**
  * A shipment identifier originally returned by the createInboundShipmentPlan operation.
  * @member {String} shipmentId
+ * @type {String}
  */
 InboundShipmentItem.prototype.shipmentId = undefined
 
 /**
  * The seller SKU of the item.
  * @member {String} sellerSKU
+ * @type {String}
  */
 InboundShipmentItem.prototype.sellerSKU = undefined
 
 /**
  * Amazon's fulfillment network SKU of the item.
  * @member {String} fulfillmentNetworkSKU
+ * @type {String}
  */
 InboundShipmentItem.prototype.fulfillmentNetworkSKU = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantityShipped
+ * @type {Number}
  */
 InboundShipmentItem.prototype.quantityShipped = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantityReceived
+ * @type {Number}
  */
 InboundShipmentItem.prototype.quantityReceived = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantityInCase
+ * @type {Number}
  */
 InboundShipmentItem.prototype.quantityInCase = undefined
 
 /**
  * Type containing date in string format
  * @member {Date} releaseDate
+ * @type {Date}
  */
 InboundShipmentItem.prototype.releaseDate = undefined
 
 /**
  * A list of preparation instructions and who is responsible for that preparation.
  * @member {Array.<module:fulfillmentinbound_v0/model/PrepDetails>} prepDetailsList
+ * @type {Array.<module:fulfillmentinbound_v0/model/PrepDetails>}
  */
 InboundShipmentItem.prototype.prepDetailsList = undefined

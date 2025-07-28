@@ -59,5 +59,6 @@ export class GetItemOffersBatchRequest {
 /**
  * A list of `getListingOffers` batched requests to run.
  * @member {Array.<module:pricing_v0/model/ItemOffersRequest>} requests
+ * @type {Array.<module:pricing_v0/model/ItemOffersRequest>}
  */
 GetItemOffersBatchRequest.prototype.requests = undefined

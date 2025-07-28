@@ -60,11 +60,13 @@ export class GetFeatureInventoryResponse {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResult} payload
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResult}
  */
 GetFeatureInventoryResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>}
  */
 GetFeatureInventoryResponse.prototype.errors = undefined

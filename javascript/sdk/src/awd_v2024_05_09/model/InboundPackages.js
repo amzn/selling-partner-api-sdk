@@ -61,5 +61,6 @@ export class InboundPackages {
 /**
  * List of packages to be inbounded.
  * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packagesToInbound
+ * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
  */
 InboundPackages.prototype.packagesToInbound = undefined

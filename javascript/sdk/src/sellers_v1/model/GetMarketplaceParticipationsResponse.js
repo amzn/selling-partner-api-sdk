@@ -61,11 +61,13 @@ export class GetMarketplaceParticipationsResponse {
 /**
  * List of marketplace participations.
  * @member {Array.<module:sellers_v1/model/MarketplaceParticipation>} payload
+ * @type {Array.<module:sellers_v1/model/MarketplaceParticipation>}
  */
 GetMarketplaceParticipationsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:sellers_v1/model/Error>} errors
+ * @type {Array.<module:sellers_v1/model/Error>}
  */
 GetMarketplaceParticipationsResponse.prototype.errors = undefined

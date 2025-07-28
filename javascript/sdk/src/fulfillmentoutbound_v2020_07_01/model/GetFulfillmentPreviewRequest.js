@@ -72,40 +72,47 @@ export class GetFulfillmentPreviewRequest {
 /**
  * The marketplace the fulfillment order is placed against.
  * @member {String} marketplaceId
+ * @type {String}
  */
 GetFulfillmentPreviewRequest.prototype.marketplaceId = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} address
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Address}
  */
 GetFulfillmentPreviewRequest.prototype.address = undefined
 
 /**
  * An array of fulfillment preview item information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewItem>} items
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewItem>}
  */
 GetFulfillmentPreviewRequest.prototype.items = undefined
 
 /**
  * ShippingSpeedCategory List
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory>} shippingSpeedCategories
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory>}
  */
 GetFulfillmentPreviewRequest.prototype.shippingSpeedCategories = undefined
 
 /**
  * When true, returns all fulfillment order previews both for COD and not for COD. Otherwise, returns only fulfillment order previews that are not for COD.
  * @member {Boolean} includeCODFulfillmentPreview
+ * @type {Boolean}
  */
 GetFulfillmentPreviewRequest.prototype.includeCODFulfillmentPreview = undefined
 
 /**
  * When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.
  * @member {Boolean} includeDeliveryWindows
+ * @type {Boolean}
  */
 GetFulfillmentPreviewRequest.prototype.includeDeliveryWindows = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>}
  */
 GetFulfillmentPreviewRequest.prototype.featureConstraints = undefined

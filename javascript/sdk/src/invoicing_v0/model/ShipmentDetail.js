@@ -75,80 +75,94 @@ export class ShipmentDetail {
 /**
  * The Amazon-defined identifier for the warehouse.
  * @member {String} warehouseId
+ * @type {String}
  */
 ShipmentDetail.prototype.warehouseId = undefined
 
 /**
  * The Amazon-defined identifier for the order.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 ShipmentDetail.prototype.amazonOrderId = undefined
 
 /**
  * The Amazon-defined identifier for the shipment.
  * @member {String} amazonShipmentId
+ * @type {String}
  */
 ShipmentDetail.prototype.amazonShipmentId = undefined
 
 /**
  * The date and time when the order was created.
  * @member {Date} purchaseDate
+ * @type {Date}
  */
 ShipmentDetail.prototype.purchaseDate = undefined
 
 /**
  * @member {module:invoicing_v0/model/Address} shippingAddress
+ * @type {module:invoicing_v0/model/Address}
  */
 ShipmentDetail.prototype.shippingAddress = undefined
 
 /**
  * The list of payment method details.
  * @member {Array.<String>} paymentMethodDetails
+ * @type {Array.<String>}
  */
 ShipmentDetail.prototype.paymentMethodDetails = undefined
 
 /**
  * The identifier for the marketplace where the order was placed.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ShipmentDetail.prototype.marketplaceId = undefined
 
 /**
  * The seller identifier.
  * @member {String} sellerId
+ * @type {String}
  */
 ShipmentDetail.prototype.sellerId = undefined
 
 /**
  * The name of the buyer.
  * @member {String} buyerName
+ * @type {String}
  */
 ShipmentDetail.prototype.buyerName = undefined
 
 /**
  * The county of the buyer.
  * @member {String} buyerCounty
+ * @type {String}
  */
 ShipmentDetail.prototype.buyerCounty = undefined
 
 /**
  * @member {module:invoicing_v0/model/BuyerTaxInfo} buyerTaxInfo
+ * @type {module:invoicing_v0/model/BuyerTaxInfo}
  */
 ShipmentDetail.prototype.buyerTaxInfo = undefined
 
 /**
  * @member {module:invoicing_v0/model/MarketplaceTaxInfo} marketplaceTaxInfo
+ * @type {module:invoicing_v0/model/MarketplaceTaxInfo}
  */
 ShipmentDetail.prototype.marketplaceTaxInfo = undefined
 
 /**
  * The seller’s friendly name registered in the marketplace.
  * @member {String} sellerDisplayName
+ * @type {String}
  */
 ShipmentDetail.prototype.sellerDisplayName = undefined
 
 /**
  * A list of shipment items.
  * @member {Array.<module:invoicing_v0/model/ShipmentItem>} shipmentItems
+ * @type {Array.<module:invoicing_v0/model/ShipmentItem>}
  */
 ShipmentDetail.prototype.shipmentItems = undefined

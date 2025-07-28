@@ -83,11 +83,13 @@ TaxRegistrationDetails.TaxRegistrationTypeEnum = {
 /**
  * Tax registration type for the entity.
  * @member {module:vendororders_v1/model/TaxRegistrationDetails.TaxRegistrationTypeEnum} taxRegistrationType
+ * @type {module:vendororders_v1/model/TaxRegistrationDetails.TaxRegistrationTypeEnum}
  */
 TaxRegistrationDetails.prototype.taxRegistrationType = undefined
 
 /**
  * Tax registration number for the entity. For example, VAT ID.
  * @member {String} taxRegistrationNumber
+ * @type {String}
  */
 TaxRegistrationDetails.prototype.taxRegistrationNumber = undefined

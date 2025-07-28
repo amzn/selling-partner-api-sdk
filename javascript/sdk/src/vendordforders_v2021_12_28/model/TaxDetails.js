@@ -64,16 +64,19 @@ export class TaxDetails {
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.
  * @member {String} taxRate
+ * @type {String}
  */
 TaxDetails.prototype.taxRate = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Money} taxAmount
+ * @type {module:vendordforders_v2021_12_28/model/Money}
  */
 TaxDetails.prototype.taxAmount = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Money} taxableAmount
+ * @type {module:vendordforders_v2021_12_28/model/Money}
  */
 TaxDetails.prototype.taxableAmount = undefined
 
@@ -130,5 +133,6 @@ TaxDetails.TypeEnum = {
 /**
  * Tax type.
  * @member {module:vendordforders_v2021_12_28/model/TaxDetails.TypeEnum} type
+ * @type {module:vendordforders_v2021_12_28/model/TaxDetails.TypeEnum}
  */
 TaxDetails.prototype.type = undefined

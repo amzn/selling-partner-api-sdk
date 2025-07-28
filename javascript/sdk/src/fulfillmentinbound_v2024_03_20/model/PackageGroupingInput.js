@@ -63,17 +63,20 @@ export class PackageGroupingInput {
 /**
  * Box level information being provided.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxInput>} boxes
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxInput>}
  */
 PackageGroupingInput.prototype.boxes = undefined
 
 /**
  * The ID of the `packingGroup` that packages are grouped according to. The `PackingGroupId` can only be provided before placement confirmation, and it must belong to the confirmed `PackingOption`. One of `ShipmentId` or `PackingGroupId` must be provided with every request.
  * @member {String} packingGroupId
+ * @type {String}
  */
 PackageGroupingInput.prototype.packingGroupId = undefined
 
 /**
  * The ID of the shipment that packages are grouped according to. The `ShipmentId` can only be provided after placement confirmation, and the shipment must belong to the confirmed placement option. One of `ShipmentId` or `PackingGroupId` must be provided with every request.
  * @member {String} shipmentId
+ * @type {String}
  */
 PackageGroupingInput.prototype.shipmentId = undefined

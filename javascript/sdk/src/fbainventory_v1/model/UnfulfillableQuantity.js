@@ -64,41 +64,48 @@ export class UnfulfillableQuantity {
 /**
  * The total number of units in Amazon's fulfillment network in unsellable condition.
  * @member {Number} totalUnfulfillableQuantity
+ * @type {Number}
  */
 UnfulfillableQuantity.prototype.totalUnfulfillableQuantity = undefined
 
 /**
  * The number of units in customer damaged disposition.
  * @member {Number} customerDamagedQuantity
+ * @type {Number}
  */
 UnfulfillableQuantity.prototype.customerDamagedQuantity = undefined
 
 /**
  * The number of units in warehouse damaged disposition.
  * @member {Number} warehouseDamagedQuantity
+ * @type {Number}
  */
 UnfulfillableQuantity.prototype.warehouseDamagedQuantity = undefined
 
 /**
  * The number of units in distributor damaged disposition.
  * @member {Number} distributorDamagedQuantity
+ * @type {Number}
  */
 UnfulfillableQuantity.prototype.distributorDamagedQuantity = undefined
 
 /**
  * The number of units in carrier damaged disposition.
  * @member {Number} carrierDamagedQuantity
+ * @type {Number}
  */
 UnfulfillableQuantity.prototype.carrierDamagedQuantity = undefined
 
 /**
  * The number of units in defective disposition.
  * @member {Number} defectiveQuantity
+ * @type {Number}
  */
 UnfulfillableQuantity.prototype.defectiveQuantity = undefined
 
 /**
  * The number of units in expired disposition.
  * @member {Number} expiredQuantity
+ * @type {Number}
  */
 UnfulfillableQuantity.prototype.expiredQuantity = undefined

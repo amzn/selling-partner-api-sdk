@@ -63,11 +63,13 @@ export class SalesRankType {
 /**
  *  Identifies the item category from which the sales rank is taken.
  * @member {String} productCategoryId
+ * @type {String}
  */
 SalesRankType.prototype.productCategoryId = undefined
 
 /**
  * The sales rank of the item within the item category.
  * @member {Number} rank
+ * @type {Number}
  */
 SalesRankType.prototype.rank = undefined

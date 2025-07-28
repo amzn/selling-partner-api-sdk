@@ -60,10 +60,12 @@ export class PointsGrantedDetail {
 /**
  * The number of Amazon Points granted with the purchase of an item.
  * @member {Number} pointsNumber
+ * @type {Number}
  */
 PointsGrantedDetail.prototype.pointsNumber = undefined
 
 /**
  * @member {module:orders_v0/model/Money} pointsMonetaryValue
+ * @type {module:orders_v0/model/Money}
  */
 PointsGrantedDetail.prototype.pointsMonetaryValue = undefined

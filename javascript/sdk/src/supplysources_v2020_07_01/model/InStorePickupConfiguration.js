@@ -60,10 +60,12 @@ export class InStorePickupConfiguration {
 /**
  * When true, in-store pickup is supported by the supply source (default: `isSupported` value in `PickupChannel`).
  * @member {Boolean} isSupported
+ * @type {Boolean}
  */
 InStorePickupConfiguration.prototype.isSupported = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ParkingConfiguration} parkingConfiguration
+ * @type {module:supplysources_v2020_07_01/model/ParkingConfiguration}
  */
 InStorePickupConfiguration.prototype.parkingConfiguration = undefined

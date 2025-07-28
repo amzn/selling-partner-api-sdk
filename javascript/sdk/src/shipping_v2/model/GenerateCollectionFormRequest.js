@@ -64,16 +64,19 @@ export class GenerateCollectionFormRequest {
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
+ * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
  */
 GenerateCollectionFormRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * The carrier identifier for the offering, provided by the carrier.
  * @member {String} carrierId
+ * @type {String}
  */
 GenerateCollectionFormRequest.prototype.carrierId = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFromAddress
+ * @type {module:shipping_v2/model/Address}
  */
 GenerateCollectionFormRequest.prototype.shipFromAddress = undefined

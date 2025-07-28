@@ -60,5 +60,6 @@ export class AmazonPrograms {
 /**
  * A list of the programs that Amazon associates with the order item.  **Possible values**: `SUBSCRIBE_AND_SAVE`, `FBM_SHIP_PLUS`
  * @member {Array.<String>} programs
+ * @type {Array.<String>}
  */
 AmazonPrograms.prototype.programs = undefined

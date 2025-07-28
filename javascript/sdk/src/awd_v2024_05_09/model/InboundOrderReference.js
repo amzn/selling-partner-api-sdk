@@ -60,5 +60,6 @@ export class InboundOrderReference {
 /**
  * Order ID of the inbound order.
  * @member {String} orderId
+ * @type {String}
  */
 InboundOrderReference.prototype.orderId = undefined

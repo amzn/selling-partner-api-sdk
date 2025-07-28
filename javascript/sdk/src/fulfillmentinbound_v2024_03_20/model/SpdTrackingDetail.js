@@ -59,5 +59,6 @@ export class SpdTrackingDetail {
 /**
  * List of Small Parcel Delivery (SPD) tracking items.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/SpdTrackingItem>} spdTrackingItems
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/SpdTrackingItem>}
  */
 SpdTrackingDetail.prototype.spdTrackingItems = undefined

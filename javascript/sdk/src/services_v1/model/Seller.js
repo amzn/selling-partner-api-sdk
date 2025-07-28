@@ -58,5 +58,6 @@ export class Seller {
 /**
  * The identifier of the seller of the service job.
  * @member {String} sellerId
+ * @type {String}
  */
 Seller.prototype.sellerId = undefined

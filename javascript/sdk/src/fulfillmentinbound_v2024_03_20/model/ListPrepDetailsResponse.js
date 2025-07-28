@@ -61,5 +61,6 @@ export class ListPrepDetailsResponse {
 /**
  * A list of MSKUs and related prep details.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail>} mskuPrepDetails
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail>}
  */
 ListPrepDetailsResponse.prototype.mskuPrepDetails = undefined

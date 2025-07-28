@@ -64,12 +64,14 @@ export class ReportDocument {
 /**
  * The identifier for the report document. This identifier is unique only in combination with a seller ID.
  * @member {String} reportDocumentId
+ * @type {String}
  */
 ReportDocument.prototype.reportDocumentId = undefined
 
 /**
  * A presigned URL for the report document. If `compressionAlgorithm` is not returned, you can download the report directly from this URL. This URL expires after 5 minutes.
  * @member {String} url
+ * @type {String}
  */
 ReportDocument.prototype.url = undefined
 
@@ -90,5 +92,6 @@ ReportDocument.CompressionAlgorithmEnum = {
 /**
  * If the report document contents have been compressed, the compression algorithm used is returned in this property and you must decompress the report when you download. Otherwise, you can download the report directly. Refer to [Step 2. Download the report](https://developer-docs.amazon.com/sp-api/docs/reports-api-v2021-06-30-retrieve-a-report#step-2-download-the-report) in the use case guide, where sample code is provided.
  * @member {module:reports_v2021_06_30/model/ReportDocument.CompressionAlgorithmEnum} compressionAlgorithm
+ * @type {module:reports_v2021_06_30/model/ReportDocument.CompressionAlgorithmEnum}
  */
 ReportDocument.prototype.compressionAlgorithm = undefined

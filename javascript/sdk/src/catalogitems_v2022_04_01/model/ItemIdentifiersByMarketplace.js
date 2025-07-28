@@ -64,11 +64,13 @@ export class ItemIdentifiersByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemIdentifiersByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemIdentifier>} identifiers
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemIdentifier>}
  */
 ItemIdentifiersByMarketplace.prototype.identifiers = undefined

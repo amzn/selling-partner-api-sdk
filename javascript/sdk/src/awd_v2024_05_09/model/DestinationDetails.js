@@ -60,17 +60,20 @@ export class DestinationDetails {
 
 /**
  * @member {module:awd_v2024_05_09/model/Address} destinationAddress
+ * @type {module:awd_v2024_05_09/model/Address}
  */
 DestinationDetails.prototype.destinationAddress = undefined
 
 /**
  * Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
  * @member {String} destinationRegion
+ * @type {String}
  */
 DestinationDetails.prototype.destinationRegion = undefined
 
 /**
  * Unique ID of the confirmed shipment being shipped to the assigned destination. This will be available only after an inbound order is confirmed and can be used to track the shipment.
  * @member {String} shipmentId
+ * @type {String}
  */
 DestinationDetails.prototype.shipmentId = undefined

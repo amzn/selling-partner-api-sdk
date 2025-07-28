@@ -69,23 +69,27 @@ export class FulfillmentPreviewItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type {String}
  */
 FulfillmentPreviewItem.prototype.sellerSku = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantity
+ * @type {Number}
  */
 FulfillmentPreviewItem.prototype.quantity = undefined
 
 /**
  * A fulfillment order item identifier that the seller created with a call to the `createFulfillmentOrder` operation.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type {String}
  */
 FulfillmentPreviewItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Weight} estimatedShippingWeight
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Weight}
  */
 FulfillmentPreviewItem.prototype.estimatedShippingWeight = undefined
 
@@ -112,5 +116,6 @@ FulfillmentPreviewItem.ShippingWeightCalculationMethodEnum = {
 /**
  * The method used to calculate the estimated shipping weight.
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem.ShippingWeightCalculationMethodEnum} shippingWeightCalculationMethod
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem.ShippingWeightCalculationMethodEnum}
  */
 FulfillmentPreviewItem.prototype.shippingWeightCalculationMethod = undefined

@@ -72,39 +72,46 @@ export class ListOffersRequestFilters {
 /**
  * The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ListOffersRequestFilters.prototype.marketplaceId = undefined
 
 /**
  * A list of SKUs to filter. This filter is only supported for sellers and not for vendors.
  * @member {Array.<String>} skus
+ * @type {Array.<String>}
  */
 ListOffersRequestFilters.prototype.skus = undefined
 
 /**
  * A list of Amazon Standard Identification Numbers (ASINs).
  * @member {Array.<String>} asins
+ * @type {Array.<String>}
  */
 ListOffersRequestFilters.prototype.asins = undefined
 
 /**
  * A list of eligibilities associated with an offer.
  * @member {Array.<module:replenishment_v2022_11_07/model/EligibilityStatus>} eligibilities
+ * @type {Array.<module:replenishment_v2022_11_07/model/EligibilityStatus>}
  */
 ListOffersRequestFilters.prototype.eligibilities = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/Preference} preferences
+ * @type {module:replenishment_v2022_11_07/model/Preference}
  */
 ListOffersRequestFilters.prototype.preferences = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/Promotion} promotions
+ * @type {module:replenishment_v2022_11_07/model/Promotion}
  */
 ListOffersRequestFilters.prototype.promotions = undefined
 
 /**
  * A list of replenishment program types.
  * @member {Array.<module:replenishment_v2022_11_07/model/ProgramType>} programTypes
+ * @type {Array.<module:replenishment_v2022_11_07/model/ProgramType>}
  */
 ListOffersRequestFilters.prototype.programTypes = undefined

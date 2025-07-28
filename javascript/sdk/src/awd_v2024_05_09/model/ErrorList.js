@@ -61,5 +61,6 @@ export class ErrorList {
 /**
  * A list of errors describing the failures.
  * @member {Array.<module:awd_v2024_05_09/model/Error>} errors
+ * @type {Array.<module:awd_v2024_05_09/model/Error>}
  */
 ErrorList.prototype.errors = undefined

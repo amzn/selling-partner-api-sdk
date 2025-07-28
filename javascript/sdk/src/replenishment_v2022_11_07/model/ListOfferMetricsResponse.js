@@ -61,10 +61,12 @@ export class ListOfferMetricsResponse {
 /**
  * A list of offers and associated metrics.
  * @member {Array.<module:replenishment_v2022_11_07/model/ListOfferMetricsResponseOffer>} offers
+ * @type {Array.<module:replenishment_v2022_11_07/model/ListOfferMetricsResponseOffer>}
  */
 ListOfferMetricsResponse.prototype.offers = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/PaginationResponse} pagination
+ * @type {module:replenishment_v2022_11_07/model/PaginationResponse}
  */
 ListOfferMetricsResponse.prototype.pagination = undefined

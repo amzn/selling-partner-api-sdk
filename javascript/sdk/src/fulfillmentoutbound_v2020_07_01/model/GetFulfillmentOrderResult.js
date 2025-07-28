@@ -76,35 +76,41 @@ export class GetFulfillmentOrderResult {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder} fulfillmentOrder
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentOrder = undefined
 
 /**
  * An array of fulfillment order item information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderItem>} fulfillmentOrderItems
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderItem>}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentOrderItems = undefined
 
 /**
  * An array of fulfillment shipment information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment>} fulfillmentShipments
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment>}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentShipments = undefined
 
 /**
  * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>} returnItems
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>}
  */
 GetFulfillmentOrderResult.prototype.returnItems = undefined
 
 /**
  * An array of return authorization information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>} returnAuthorizations
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>}
  */
 GetFulfillmentOrderResult.prototype.returnAuthorizations = undefined
 
 /**
  * An array of various payment attributes related to this fulfillment order.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/PaymentInformation>} paymentInformation
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/PaymentInformation>}
  */
 GetFulfillmentOrderResult.prototype.paymentInformation = undefined

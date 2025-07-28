@@ -58,5 +58,6 @@ export class CancelShipmentResponse {
 /**
  * The payload for the cancelShipment operation.
  * @member {Object.<String, Object>} payload
+ * @type {Object.<String, Object>}
  */
 CancelShipmentResponse.prototype.payload = undefined

@@ -58,5 +58,6 @@ export class TrackingDetails {
 /**
  * A string of up to 255 characters.
  * @member {String} trackingId
+ * @type {String}
  */
 TrackingDetails.prototype.trackingId = undefined

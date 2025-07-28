@@ -65,17 +65,20 @@ export class PackageDocumentDetail {
 /**
  * A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
  * @member {String} packageClientReferenceId
+ * @type {String}
  */
 PackageDocumentDetail.prototype.packageClientReferenceId = undefined
 
 /**
  * A list of documents related to a package.
  * @member {Array.<module:shipping_v2/model/PackageDocument>} packageDocuments
+ * @type {Array.<module:shipping_v2/model/PackageDocument>}
  */
 PackageDocumentDetail.prototype.packageDocuments = undefined
 
 /**
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
+ * @type {String}
  */
 PackageDocumentDetail.prototype.trackingId = undefined

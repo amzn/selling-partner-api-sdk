@@ -66,35 +66,41 @@ export class FulfillmentPreviewShipment {
 /**
  * Date timestamp
  * @member {Date} earliestShipDate
+ * @type {Date}
  */
 FulfillmentPreviewShipment.prototype.earliestShipDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} latestShipDate
+ * @type {Date}
  */
 FulfillmentPreviewShipment.prototype.latestShipDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} earliestArrivalDate
+ * @type {Date}
  */
 FulfillmentPreviewShipment.prototype.earliestArrivalDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} latestArrivalDate
+ * @type {Date}
  */
 FulfillmentPreviewShipment.prototype.latestArrivalDate = undefined
 
 /**
  * Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.
  * @member {Array.<String>} shippingNotes
+ * @type {Array.<String>}
  */
 FulfillmentPreviewShipment.prototype.shippingNotes = undefined
 
 /**
  * An array of fulfillment preview item information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem>} fulfillmentPreviewItems
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem>}
  */
 FulfillmentPreviewShipment.prototype.fulfillmentPreviewItems = undefined

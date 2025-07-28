@@ -28,7 +28,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class ProductPricingApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -80,7 +80,7 @@ export class ProductPricingApi {
      * @param {Array.<String>} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
      * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:pricing_v0/model/GetPricingResponse} and HTTP response
+     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
      */
   getCompetitivePricingWithHttpInfo (marketplaceId, itemType, opts) {
     opts = opts || {}
@@ -129,7 +129,7 @@ export class ProductPricingApi {
      * @param {Array.<String>} opts.asins A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
      * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request pricing information from the point of view of Consumer or Business buyers. Default is Consumer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:pricing_v0/model/GetPricingResponse}
+     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
      */
   getCompetitivePricing (marketplaceId, itemType, opts) {
     return this.getCompetitivePricingWithHttpInfo(marketplaceId, itemType, opts)
@@ -145,7 +145,7 @@ export class ProductPricingApi {
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {Object} opts Optional parameters
      * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:pricing_v0/model/GetOffersResponse} and HTTP response
+     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
      */
   getItemOffersWithHttpInfo (marketplaceId, itemCondition, asin, opts) {
     opts = opts || {}
@@ -197,7 +197,7 @@ export class ProductPricingApi {
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {Object} opts Optional parameters
      * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:pricing_v0/model/GetOffersResponse}
+     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
      */
   getItemOffers (marketplaceId, itemCondition, asin, opts) {
     return this.getItemOffersWithHttpInfo(marketplaceId, itemCondition, asin, opts)
@@ -209,7 +209,7 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a batch of items based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:pricing_v0/model/GetItemOffersBatchRequest} getItemOffersBatchRequestBody The request associated with the &#x60;getItemOffersBatch&#x60; API call.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:pricing_v0/model/GetItemOffersBatchResponse} and HTTP response
+     * @return {Promise<module:pricing_v0/model/GetItemOffersBatchResponse>}
      */
   getItemOffersBatchWithHttpInfo (getItemOffersBatchRequestBody) {
     const postBody = getItemOffersBatchRequestBody
@@ -242,7 +242,7 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a batch of items based on ASIN.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:pricing_v0/model/GetItemOffersBatchRequest} getItemOffersBatchRequestBody The request associated with the &#x60;getItemOffersBatch&#x60; API call.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:pricing_v0/model/GetItemOffersBatchResponse}
+     * @return {Promise<module:pricing_v0/model/GetItemOffersBatchResponse>}
      */
   getItemOffersBatch (getItemOffersBatchRequestBody) {
     return this.getItemOffersBatchWithHttpInfo(getItemOffersBatchRequestBody)
@@ -258,7 +258,7 @@ export class ProductPricingApi {
      * @param {String} sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.
      * @param {Object} opts Optional parameters
      * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:pricing_v0/model/GetOffersResponse} and HTTP response
+     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
      */
   getListingOffersWithHttpInfo (marketplaceId, itemCondition, sellerSKU, opts) {
     opts = opts || {}
@@ -310,7 +310,7 @@ export class ProductPricingApi {
      * @param {String} sellerSKU Identifies an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.
      * @param {Object} opts Optional parameters
      * @param {module:pricing_v0/model/String} opts.customerType Indicates whether to request Consumer or Business offers. Default is Consumer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:pricing_v0/model/GetOffersResponse}
+     * @return {Promise<module:pricing_v0/model/GetOffersResponse>}
      */
   getListingOffers (marketplaceId, itemCondition, sellerSKU, opts) {
     return this.getListingOffersWithHttpInfo(marketplaceId, itemCondition, sellerSKU, opts)
@@ -322,7 +322,7 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:pricing_v0/model/GetListingOffersBatchRequest} getListingOffersBatchRequestBody The request associated with the &#x60;getListingOffersBatch&#x60; API call.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:pricing_v0/model/GetListingOffersBatchResponse} and HTTP response
+     * @return {Promise<module:pricing_v0/model/GetListingOffersBatchResponse>}
      */
   getListingOffersBatchWithHttpInfo (getListingOffersBatchRequestBody) {
     const postBody = getListingOffersBatchRequestBody
@@ -355,7 +355,7 @@ export class ProductPricingApi {
   /**
      * Returns the lowest priced offers for a batch of listings by SKU.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:pricing_v0/model/GetListingOffersBatchRequest} getListingOffersBatchRequestBody The request associated with the &#x60;getListingOffersBatch&#x60; API call.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:pricing_v0/model/GetListingOffersBatchResponse}
+     * @return {Promise<module:pricing_v0/model/GetListingOffersBatchResponse>}
      */
   getListingOffersBatch (getListingOffersBatchRequestBody) {
     return this.getListingOffersBatchWithHttpInfo(getListingOffersBatchRequestBody)
@@ -373,7 +373,7 @@ export class ProductPricingApi {
      * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {module:pricing_v0/model/String} opts.itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {module:pricing_v0/model/String} opts.offerType Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:pricing_v0/model/GetPricingResponse} and HTTP response
+     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
      */
   getPricingWithHttpInfo (marketplaceId, itemType, opts) {
     opts = opts || {}
@@ -424,7 +424,7 @@ export class ProductPricingApi {
      * @param {Array.<String>} opts.skus A list of up to twenty seller SKU values used to identify items in the given marketplace.
      * @param {module:pricing_v0/model/String} opts.itemCondition Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
      * @param {module:pricing_v0/model/String} opts.offerType Indicates whether to request pricing information for the seller&#39;s B2C or B2B offers. Default is B2C.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:pricing_v0/model/GetPricingResponse}
+     * @return {Promise<module:pricing_v0/model/GetPricingResponse>}
      */
   getPricing (marketplaceId, itemType, opts) {
     return this.getPricingWithHttpInfo(marketplaceId, itemType, opts)

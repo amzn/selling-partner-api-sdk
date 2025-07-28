@@ -23,7 +23,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-11-01
 */
 export class AutomotiveApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -69,7 +69,7 @@ export class AutomotiveApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token to fetch a certain page when there are multiple pages worth of results.
      * @param {String} opts.updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vehicles_v2024_11_01/model/VehiclesResponse} and HTTP response
+     * @return {Promise<module:vehicles_v2024_11_01/model/VehiclesResponse>}
      */
   getVehiclesWithHttpInfo (marketplaceId, vehicleType, opts) {
     opts = opts || {}
@@ -116,7 +116,7 @@ export class AutomotiveApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token to fetch a certain page when there are multiple pages worth of results.
      * @param {String} opts.updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vehicles_v2024_11_01/model/VehiclesResponse}
+     * @return {Promise<module:vehicles_v2024_11_01/model/VehiclesResponse>}
      */
   getVehicles (marketplaceId, vehicleType, opts) {
     return this.getVehiclesWithHttpInfo(marketplaceId, vehicleType, opts)

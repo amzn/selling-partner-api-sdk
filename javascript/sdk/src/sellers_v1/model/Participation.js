@@ -63,11 +63,13 @@ export class Participation {
 /**
  * If `true`, the seller participates in the marketplace. Otherwise `false`.
  * @member {Boolean} isParticipating
+ * @type {Boolean}
  */
 Participation.prototype.isParticipating = undefined
 
 /**
  * Specifies if the seller has suspended listings. `true` if the seller Listing Status is set to Inactive, otherwise `false`.
  * @member {Boolean} hasSuspendedListings
+ * @type {Boolean}
  */
 Participation.prototype.hasSuspendedListings = undefined

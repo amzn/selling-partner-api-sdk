@@ -60,11 +60,13 @@ export class RangeCapacity {
 
 /**
  * @member {module:services_v1/model/CapacityType} capacityType
+ * @type {module:services_v1/model/CapacityType}
  */
 RangeCapacity.prototype.capacityType = undefined
 
 /**
  * Array of capacity slots in range slot format.
  * @member {Array.<module:services_v1/model/RangeSlot>} slots
+ * @type {Array.<module:services_v1/model/RangeSlot>}
  */
 RangeCapacity.prototype.slots = undefined

@@ -62,16 +62,19 @@ export class GetMessagingActionsForOrderResponse {
 
 /**
  * @member {module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks} links
+ * @type {module:messaging_v1/model/GetMessagingActionsForOrderResponseLinks}
  */
 GetMessagingActionsForOrderResponse.prototype.links = undefined
 
 /**
  * @member {module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded} embedded
+ * @type {module:messaging_v1/model/GetMessagingActionsForOrderResponseEmbedded}
  */
 GetMessagingActionsForOrderResponse.prototype.embedded = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:messaging_v1/model/Error>} errors
+ * @type {Array.<module:messaging_v1/model/Error>}
  */
 GetMessagingActionsForOrderResponse.prototype.errors = undefined

@@ -63,11 +63,13 @@ export class BrandRefinement {
 /**
  * The estimated number of results that would be returned if you refine your search by the specified `brandName`.
  * @member {Number} numberOfResults
+ * @type {Number}
  */
 BrandRefinement.prototype.numberOfResults = undefined
 
 /**
  * The brand name that you can use to refine your search.
  * @member {String} brandName
+ * @type {String}
  */
 BrandRefinement.prototype.brandName = undefined

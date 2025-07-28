@@ -62,22 +62,26 @@ export class ValueAddedServiceChargeEvent {
 /**
  * Indicates the type of transaction.  Example: 'Other Support Service fees'
  * @member {String} transactionType
+ * @type {String}
  */
 ValueAddedServiceChargeEvent.prototype.transactionType = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 ValueAddedServiceChargeEvent.prototype.postedDate = undefined
 
 /**
  * A short description of the service charge event.
  * @member {String} description
+ * @type {String}
  */
 ValueAddedServiceChargeEvent.prototype.description = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} transactionAmount
+ * @type {module:finances_v0/model/Currency}
  */
 ValueAddedServiceChargeEvent.prototype.transactionAmount = undefined

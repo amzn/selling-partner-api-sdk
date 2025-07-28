@@ -64,11 +64,13 @@ export class GetInventorySummariesResult {
 
 /**
  * @member {module:fbainventory_v1/model/Granularity} granularity
+ * @type {module:fbainventory_v1/model/Granularity}
  */
 GetInventorySummariesResult.prototype.granularity = undefined
 
 /**
  * A list of inventory summaries.
  * @member {Array.<module:fbainventory_v1/model/InventorySummary>} inventorySummaries
+ * @type {Array.<module:fbainventory_v1/model/InventorySummary>}
  */
 GetInventorySummariesResult.prototype.inventorySummaries = undefined

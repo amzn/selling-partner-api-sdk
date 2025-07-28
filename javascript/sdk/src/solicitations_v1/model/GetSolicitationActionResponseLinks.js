@@ -62,10 +62,12 @@ export class GetSolicitationActionResponseLinks {
 
 /**
  * @member {module:solicitations_v1/model/LinkObject} self
+ * @type {module:solicitations_v1/model/LinkObject}
  */
 GetSolicitationActionResponseLinks.prototype.self = undefined
 
 /**
  * @member {module:solicitations_v1/model/LinkObject} schema
+ * @type {module:solicitations_v1/model/LinkObject}
  */
 GetSolicitationActionResponseLinks.prototype.schema = undefined

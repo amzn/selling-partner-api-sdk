@@ -61,11 +61,13 @@ export class DistributionPackageContents {
 /**
  * This is required only when `DistributionPackageType=PALLET`.
  * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packages
+ * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
  */
 DistributionPackageContents.prototype.packages = undefined
 
 /**
  * This is required only when `DistributionPackageType=CASE`.
  * @member {Array.<module:awd_v2024_05_09/model/ProductQuantity>} products
+ * @type {Array.<module:awd_v2024_05_09/model/ProductQuantity>}
  */
 DistributionPackageContents.prototype.products = undefined

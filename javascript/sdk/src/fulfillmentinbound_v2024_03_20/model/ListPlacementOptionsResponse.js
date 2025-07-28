@@ -62,11 +62,13 @@ export class ListPlacementOptionsResponse {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListPlacementOptionsResponse.prototype.pagination = undefined
 
 /**
  * Placement options generated for the inbound plan.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PlacementOption>} placementOptions
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PlacementOption>}
  */
 ListPlacementOptionsResponse.prototype.placementOptions = undefined

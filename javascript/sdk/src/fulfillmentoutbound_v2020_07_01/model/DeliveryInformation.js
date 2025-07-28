@@ -61,10 +61,12 @@ export class DeliveryInformation {
 /**
  * A list of delivery documents for a package.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryDocument>} deliveryDocumentList
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryDocument>}
  */
 DeliveryInformation.prototype.deliveryDocumentList = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation} dropOffLocation
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation}
  */
 DeliveryInformation.prototype.dropOffLocation = undefined

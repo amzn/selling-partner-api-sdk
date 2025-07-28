@@ -59,11 +59,13 @@ export class Destination {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/VariablePrecisionAddress} deliveryAddress
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/VariablePrecisionAddress}
  */
 Destination.prototype.deliveryAddress = undefined
 
 /**
  * An IP Address.
  * @member {String} ipAddress
+ * @type {String}
  */
 Destination.prototype.ipAddress = undefined

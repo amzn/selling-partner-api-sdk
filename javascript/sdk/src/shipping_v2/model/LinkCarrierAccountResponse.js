@@ -59,11 +59,13 @@ export class LinkCarrierAccountResponse {
 
 /**
  * @member {module:shipping_v2/model/AccountStatus} registrationStatus
+ * @type {module:shipping_v2/model/AccountStatus}
  */
 LinkCarrierAccountResponse.prototype.registrationStatus = undefined
 
 /**
  * Identifier for the seller's carrier account.
  * @member {String} accountId
+ * @type {String}
  */
 LinkCarrierAccountResponse.prototype.accountId = undefined

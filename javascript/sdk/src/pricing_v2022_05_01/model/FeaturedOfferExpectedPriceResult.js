@@ -64,21 +64,25 @@ export class FeaturedOfferExpectedPriceResult {
 
 /**
  * @member {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPrice} featuredOfferExpectedPrice
+ * @type {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPrice}
  */
 FeaturedOfferExpectedPriceResult.prototype.featuredOfferExpectedPrice = undefined
 
 /**
  * The status of the FOEP computation. Possible values include `VALID_FOEP`, `NO_COMPETING_OFFER`, `OFFER_NOT_ELIGIBLE`, `OFFER_NOT_FOUND`, and `ASIN_NOT_ELIGIBLE`. Additional values might be added in the future.
  * @member {String} resultStatus
+ * @type {String}
  */
 FeaturedOfferExpectedPriceResult.prototype.resultStatus = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/FeaturedOffer} competingFeaturedOffer
+ * @type {module:pricing_v2022_05_01/model/FeaturedOffer}
  */
 FeaturedOfferExpectedPriceResult.prototype.competingFeaturedOffer = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/FeaturedOffer} currentFeaturedOffer
+ * @type {module:pricing_v2022_05_01/model/FeaturedOffer}
  */
 FeaturedOfferExpectedPriceResult.prototype.currentFeaturedOffer = undefined

@@ -62,11 +62,13 @@ export class SchemaLink {
 
 /**
  * @member {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink} link
+ * @type {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink}
  */
 SchemaLink.prototype.link = undefined
 
 /**
  * Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.
  * @member {String} checksum
+ * @type {String}
  */
 SchemaLink.prototype.checksum = undefined

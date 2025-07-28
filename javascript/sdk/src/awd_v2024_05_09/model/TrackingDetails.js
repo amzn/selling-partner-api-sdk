@@ -61,11 +61,13 @@ export class TrackingDetails {
 
 /**
  * @member {module:awd_v2024_05_09/model/CarrierCode} carrierCode
+ * @type {module:awd_v2024_05_09/model/CarrierCode}
  */
 TrackingDetails.prototype.carrierCode = undefined
 
 /**
  * The identifier that is received from transportation to uniquely identify a booking.
  * @member {String} bookingId
+ * @type {String}
  */
 TrackingDetails.prototype.bookingId = undefined

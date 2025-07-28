@@ -137,23 +137,27 @@ ItemImage.VariantEnum = {
 /**
  * Variant of the image, such as `MAIN` or `PT01`.
  * @member {module:catalogitems_v2022_04_01/model/ItemImage.VariantEnum} variant
+ * @type {module:catalogitems_v2022_04_01/model/ItemImage.VariantEnum}
  */
 ItemImage.prototype.variant = undefined
 
 /**
  * URL for the image.
  * @member {String} link
+ * @type {String}
  */
 ItemImage.prototype.link = undefined
 
 /**
  * Height of the image in pixels.
  * @member {Number} height
+ * @type {Number}
  */
 ItemImage.prototype.height = undefined
 
 /**
  * Width of the image in pixels.
  * @member {Number} width
+ * @type {Number}
  */
 ItemImage.prototype.width = undefined

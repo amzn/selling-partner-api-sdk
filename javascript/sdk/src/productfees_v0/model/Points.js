@@ -58,10 +58,12 @@ export class Points {
 
 /**
  * @member {Number} pointsNumber
+ * @type {Number}
  */
 Points.prototype.pointsNumber = undefined
 
 /**
  * @member {module:productfees_v0/model/MoneyType} pointsMonetaryValue
+ * @type {module:productfees_v0/model/MoneyType}
  */
 Points.prototype.pointsMonetaryValue = undefined

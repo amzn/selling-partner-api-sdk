@@ -68,40 +68,48 @@ export class StandardSingleImageSpecsDetailModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
+ * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.image = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} descriptionHeadline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.descriptionHeadline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} descriptionBlock1
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.descriptionBlock1 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} descriptionBlock2
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.descriptionBlock2 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} specificationHeadline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardSingleImageSpecsDetailModule.prototype.specificationHeadline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock} specificationListBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardHeaderTextListBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.specificationListBlock = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextBlock} specificationTextBlock
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextBlock}
  */
 StandardSingleImageSpecsDetailModule.prototype.specificationTextBlock = undefined

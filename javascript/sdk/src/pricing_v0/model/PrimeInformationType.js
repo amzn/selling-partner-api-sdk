@@ -63,11 +63,13 @@ export class PrimeInformationType {
 /**
  * Indicates whether the offer is an Amazon Prime offer.
  * @member {Boolean} isPrime
+ * @type {Boolean}
  */
 PrimeInformationType.prototype.isPrime = undefined
 
 /**
  * Indicates whether the offer is an Amazon Prime offer throughout the entire marketplace where it is listed.
  * @member {Boolean} isNationalPrime
+ * @type {Boolean}
  */
 PrimeInformationType.prototype.isNationalPrime = undefined

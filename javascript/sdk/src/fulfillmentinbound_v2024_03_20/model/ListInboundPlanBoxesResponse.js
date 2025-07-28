@@ -63,10 +63,12 @@ export class ListInboundPlanBoxesResponse {
 /**
  * A list of boxes in an inbound plan.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>} boxes
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Box>}
  */
 ListInboundPlanBoxesResponse.prototype.boxes = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListInboundPlanBoxesResponse.prototype.pagination = undefined

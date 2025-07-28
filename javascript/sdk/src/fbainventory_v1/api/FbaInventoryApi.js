@@ -27,7 +27,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class FbaInventoryApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -73,7 +73,7 @@ export class FbaInventoryApi {
      * Requests that Amazon add items to the Sandbox Inventory with desired amount of quantity in the sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {String} xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency.
      * @param {module:fbainventory_v1/model/AddInventoryRequest} addInventoryRequestBody List of items to add to Sandbox inventory.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fbainventory_v1/model/AddInventoryResponse} and HTTP response
+     * @return {Promise<module:fbainventory_v1/model/AddInventoryResponse>}
      */
   addInventoryWithHttpInfo (xAmznIdempotencyToken, addInventoryRequestBody) {
     const postBody = addInventoryRequestBody
@@ -113,7 +113,7 @@ export class FbaInventoryApi {
      * Requests that Amazon add items to the Sandbox Inventory with desired amount of quantity in the sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {String} xAmznIdempotencyToken A unique token/requestId provided with each call to ensure idempotency.
      * @param {module:fbainventory_v1/model/AddInventoryRequest} addInventoryRequestBody List of items to add to Sandbox inventory.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fbainventory_v1/model/AddInventoryResponse}
+     * @return {Promise<module:fbainventory_v1/model/AddInventoryResponse>}
      */
   addInventory (xAmznIdempotencyToken, addInventoryRequestBody) {
     return this.addInventoryWithHttpInfo(xAmznIdempotencyToken, addInventoryRequestBody)
@@ -125,7 +125,7 @@ export class FbaInventoryApi {
   /**
      * Requests that Amazon create product-details in the Sandbox Inventory in the sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {module:fbainventory_v1/model/CreateInventoryItemRequest} createInventoryItemRequestBody CreateInventoryItem Request Body Parameter.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fbainventory_v1/model/CreateInventoryItemResponse} and HTTP response
+     * @return {Promise<module:fbainventory_v1/model/CreateInventoryItemResponse>}
      */
   createInventoryItemWithHttpInfo (createInventoryItemRequestBody) {
     const postBody = createInventoryItemRequestBody
@@ -158,7 +158,7 @@ export class FbaInventoryApi {
   /**
      * Requests that Amazon create product-details in the Sandbox Inventory in the sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {module:fbainventory_v1/model/CreateInventoryItemRequest} createInventoryItemRequestBody CreateInventoryItem Request Body Parameter.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fbainventory_v1/model/CreateInventoryItemResponse}
+     * @return {Promise<module:fbainventory_v1/model/CreateInventoryItemResponse>}
      */
   createInventoryItem (createInventoryItemRequestBody) {
     return this.createInventoryItemWithHttpInfo(createInventoryItemRequestBody)
@@ -171,7 +171,7 @@ export class FbaInventoryApi {
      * Requests that Amazon Deletes an item from the Sandbox Inventory in the sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {String} sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries.
      * @param {String} marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fbainventory_v1/model/DeleteInventoryItemResponse} and HTTP response
+     * @return {Promise<module:fbainventory_v1/model/DeleteInventoryItemResponse>}
      */
   deleteInventoryItemWithHttpInfo (sellerSku, marketplaceId) {
     const postBody = null
@@ -212,7 +212,7 @@ export class FbaInventoryApi {
      * Requests that Amazon Deletes an item from the Sandbox Inventory in the sandbox environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {String} sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries.
      * @param {String} marketplaceId The marketplace ID for the marketplace for which the sellerSku is to be deleted.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fbainventory_v1/model/DeleteInventoryItemResponse}
+     * @return {Promise<module:fbainventory_v1/model/DeleteInventoryItemResponse>}
      */
   deleteInventoryItem (sellerSku, marketplaceId) {
     return this.deleteInventoryItemWithHttpInfo(sellerSku, marketplaceId)
@@ -232,7 +232,7 @@ export class FbaInventoryApi {
      * @param {Array.<String>} opts.sellerSkus A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
      * @param {String} opts.sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries.
      * @param {String} opts.nextToken String token returned in the response of your previous request. The string token will expire 30 seconds after being created.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:fbainventory_v1/model/GetInventorySummariesResponse} and HTTP response
+     * @return {Promise<module:fbainventory_v1/model/GetInventorySummariesResponse>}
      */
   getInventorySummariesWithHttpInfo (granularityType, granularityId, marketplaceIds, opts) {
     opts = opts || {}
@@ -292,7 +292,7 @@ export class FbaInventoryApi {
      * @param {Array.<String>} opts.sellerSkus A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
      * @param {String} opts.sellerSku A single seller SKU used for querying the specified seller SKU inventory summaries.
      * @param {String} opts.nextToken String token returned in the response of your previous request. The string token will expire 30 seconds after being created.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:fbainventory_v1/model/GetInventorySummariesResponse}
+     * @return {Promise<module:fbainventory_v1/model/GetInventorySummariesResponse>}
      */
   getInventorySummaries (granularityType, granularityId, marketplaceIds, opts) {
     return this.getInventorySummariesWithHttpInfo(granularityType, granularityId, marketplaceIds, opts)

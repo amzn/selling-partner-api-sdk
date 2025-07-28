@@ -58,11 +58,13 @@ export class OrderItemsInner {
 /**
  * The order item's unique identifier.
  * @member {String} orderItemId
+ * @type {String}
  */
 OrderItemsInner.prototype.orderItemId = undefined
 
 /**
  * The quantity for which to update the shipment status.
  * @member {Number} quantity
+ * @type {Number}
  */
 OrderItemsInner.prototype.quantity = undefined

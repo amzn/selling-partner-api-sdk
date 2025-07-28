@@ -72,29 +72,34 @@ export class DeliveryWindowOption {
 /**
  * Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`
  * @member {String} availabilityType
+ * @type {String}
  */
 DeliveryWindowOption.prototype.availabilityType = undefined
 
 /**
  * Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered.
  * @member {String} deliveryWindowOptionId
+ * @type {String}
  */
 DeliveryWindowOption.prototype.deliveryWindowOptionId = undefined
 
 /**
  * The time at which this delivery window option ends. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mmZ`.
  * @member {Date} endDate
+ * @type {Date}
  */
 DeliveryWindowOption.prototype.endDate = undefined
 
 /**
  * The time at which this delivery window option starts. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mmZ`.
  * @member {Date} startDate
+ * @type {Date}
  */
 DeliveryWindowOption.prototype.startDate = undefined
 
 /**
  * The time at which this window delivery option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mmZ`.
  * @member {Date} validUntil
+ * @type {Date}
  */
 DeliveryWindowOption.prototype.validUntil = undefined

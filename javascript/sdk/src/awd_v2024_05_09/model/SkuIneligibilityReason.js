@@ -63,11 +63,13 @@ export class SkuIneligibilityReason {
 /**
  * Code for the SKU ineligibility.
  * @member {String} code
+ * @type {String}
  */
 SkuIneligibilityReason.prototype.code = undefined
 
 /**
  * Detailed description of the SKU ineligibility.
  * @member {String} description
+ * @type {String}
  */
 SkuIneligibilityReason.prototype.description = undefined

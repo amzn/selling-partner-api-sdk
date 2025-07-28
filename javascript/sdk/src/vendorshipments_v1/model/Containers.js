@@ -96,56 +96,66 @@ Containers.ContainerTypeEnum = {
 /**
  * The type of container.
  * @member {module:vendorshipments_v1/model/Containers.ContainerTypeEnum} containerType
+ * @type {module:vendorshipments_v1/model/Containers.ContainerTypeEnum}
  */
 Containers.prototype.containerType = undefined
 
 /**
  * An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
  * @member {String} containerSequenceNumber
+ * @type {String}
  */
 Containers.prototype.containerSequenceNumber = undefined
 
 /**
  * A list of carton identifiers.
  * @member {Array.<module:vendorshipments_v1/model/ContainerIdentification>} containerIdentifiers
+ * @type {Array.<module:vendorshipments_v1/model/ContainerIdentification>}
  */
 Containers.prototype.containerIdentifiers = undefined
 
 /**
  * The tracking number used for identifying the shipment.
  * @member {String} trackingNumber
+ * @type {String}
  */
 Containers.prototype.trackingNumber = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Dimensions} dimensions
+ * @type {module:vendorshipments_v1/model/Dimensions}
  */
 Containers.prototype.dimensions = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Weight} weight
+ * @type {module:vendorshipments_v1/model/Weight}
  */
 Containers.prototype.weight = undefined
 
 /**
  * Number of layers per pallet.
  * @member {Number} tier
+ * @type {Number}
  */
 Containers.prototype.tier = undefined
 
 /**
  * Number of cartons per layer on the pallet.
  * @member {Number} block
+ * @type {Number}
  */
 Containers.prototype.block = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/InnerContainersDetails} innerContainersDetails
+ * @type {module:vendorshipments_v1/model/InnerContainersDetails}
  */
 Containers.prototype.innerContainersDetails = undefined
 
 /**
  * A list of packed items.
  * @member {Array.<module:vendorshipments_v1/model/PackedItems>} packedItems
+ * @type {Array.<module:vendorshipments_v1/model/PackedItems>}
  */
 Containers.prototype.packedItems = undefined

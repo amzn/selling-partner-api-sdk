@@ -66,15 +66,18 @@ export class SubmitNdrFeedbackRequest {
 /**
  * The carrier generated identifier for a package in a purchased shipment.
  * @member {String} trackingId
+ * @type {String}
  */
 SubmitNdrFeedbackRequest.prototype.trackingId = undefined
 
 /**
  * @member {module:shipping_v2/model/NdrAction} ndrAction
+ * @type {module:shipping_v2/model/NdrAction}
  */
 SubmitNdrFeedbackRequest.prototype.ndrAction = undefined
 
 /**
  * @member {module:shipping_v2/model/NdrRequestData} ndrRequestData
+ * @type {module:shipping_v2/model/NdrRequestData}
  */
 SubmitNdrFeedbackRequest.prototype.ndrRequestData = undefined

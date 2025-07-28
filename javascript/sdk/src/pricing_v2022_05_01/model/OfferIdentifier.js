@@ -67,28 +67,33 @@ export class OfferIdentifier {
 /**
  * The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 OfferIdentifier.prototype.marketplaceId = undefined
 
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type {String}
  */
 OfferIdentifier.prototype.sellerId = undefined
 
 /**
  * The seller SKU of the item. This will only be present for the target offer, which belongs to the requesting seller.
  * @member {String} sku
+ * @type {String}
  */
 OfferIdentifier.prototype.sku = undefined
 
 /**
  * The ASIN of the item.
  * @member {String} asin
+ * @type {String}
  */
 OfferIdentifier.prototype.asin = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/FulfillmentType} fulfillmentType
+ * @type {module:pricing_v2022_05_01/model/FulfillmentType}
  */
 OfferIdentifier.prototype.fulfillmentType = undefined

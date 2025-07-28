@@ -58,5 +58,6 @@ export class DeliveryPolicy {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryMessage} message
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/DeliveryMessage}
  */
 DeliveryPolicy.prototype.message = undefined

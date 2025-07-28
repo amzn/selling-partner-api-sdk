@@ -67,16 +67,19 @@ export class PackageDocument {
 
 /**
  * @member {module:shipping_v2/model/DocumentType} type
+ * @type {module:shipping_v2/model/DocumentType}
  */
 PackageDocument.prototype.type = undefined
 
 /**
  * @member {module:shipping_v2/model/DocumentFormat} format
+ * @type {module:shipping_v2/model/DocumentFormat}
  */
 PackageDocument.prototype.format = undefined
 
 /**
  * A Base64 encoded string of the file contents.
  * @member {String} contents
+ * @type {String}
  */
 PackageDocument.prototype.contents = undefined

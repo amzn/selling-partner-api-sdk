@@ -61,5 +61,6 @@ export class ErrorList {
 /**
  * array of errors
  * @member {Array.<module:vehicles_v2024_11_01/model/Error>} errors
+ * @type {Array.<module:vehicles_v2024_11_01/model/Error>}
  */
 ErrorList.prototype.errors = undefined

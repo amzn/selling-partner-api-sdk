@@ -59,5 +59,6 @@ export class SubmitShipmentStatusUpdatesRequest {
 /**
  * Contains a list of one or more `ShipmentStatusUpdate` objects. Each `ShipmentStatusUpdate` object represents an update to the status of a specific shipment.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShipmentStatusUpdate>} shipmentStatusUpdates
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/ShipmentStatusUpdate>}
  */
 SubmitShipmentStatusUpdatesRequest.prototype.shipmentStatusUpdates = undefined

@@ -64,10 +64,12 @@ export class AvailableDeliveryExperienceOption {
 
 /**
  * @member {module:merchantfulfillment_v0/model/DeliveryExperienceOption} deliveryExperienceOption
+ * @type {module:merchantfulfillment_v0/model/DeliveryExperienceOption}
  */
 AvailableDeliveryExperienceOption.prototype.deliveryExperienceOption = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CurrencyAmount} charge
+ * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
  */
 AvailableDeliveryExperienceOption.prototype.charge = undefined

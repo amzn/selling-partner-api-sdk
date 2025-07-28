@@ -61,5 +61,6 @@ export class CreateFulfillmentReturnRequest {
 /**
  * An array of items to be returned.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/CreateReturnItem>} items
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/CreateReturnItem>}
  */
 CreateFulfillmentReturnRequest.prototype.items = undefined

@@ -60,11 +60,13 @@ export class SubmitInventoryUpdateResponse {
 
 /**
  * @member {module:vendordfinventory_v1/model/TransactionReference} payload
+ * @type {module:vendordfinventory_v1/model/TransactionReference}
  */
 SubmitInventoryUpdateResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:vendordfinventory_v1/model/Error>} errors
+ * @type {Array.<module:vendordfinventory_v1/model/Error>}
  */
 SubmitInventoryUpdateResponse.prototype.errors = undefined

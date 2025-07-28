@@ -64,17 +64,20 @@ export class ReasonCodeDetails {
 /**
  * A code that indicates a valid return reason.
  * @member {String} returnReasonCode
+ * @type {String}
  */
 ReasonCodeDetails.prototype.returnReasonCode = undefined
 
 /**
  * A human readable description of the return reason code.
  * @member {String} description
+ * @type {String}
  */
 ReasonCodeDetails.prototype.description = undefined
 
 /**
  * A translation of the description. The translation is in the language specified in the Language request parameter.
  * @member {String} translatedDescription
+ * @type {String}
  */
 ReasonCodeDetails.prototype.translatedDescription = undefined

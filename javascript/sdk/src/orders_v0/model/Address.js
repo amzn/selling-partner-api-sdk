@@ -75,83 +75,97 @@ export class Address {
 /**
  * The name.
  * @member {String} name
+ * @type {String}
  */
 Address.prototype.name = undefined
 
 /**
  * The company name of the recipient.  **Note**: This attribute is only available for shipping address.
  * @member {String} companyName
+ * @type {String}
  */
 Address.prototype.companyName = undefined
 
 /**
  * The street address.
  * @member {String} addressLine1
+ * @type {String}
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional street address information, if required.
  * @member {String} addressLine2
+ * @type {String}
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Additional street address information, if required.
  * @member {String} addressLine3
+ * @type {String}
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * The city.
  * @member {String} city
+ * @type {String}
  */
 Address.prototype.city = undefined
 
 /**
  * The county.
  * @member {String} county
+ * @type {String}
  */
 Address.prototype.county = undefined
 
 /**
  * The district.
  * @member {String} district
+ * @type {String}
  */
 Address.prototype.district = undefined
 
 /**
  * The state or region.
  * @member {String} stateOrRegion
+ * @type {String}
  */
 Address.prototype.stateOrRegion = undefined
 
 /**
  * The municipality.
  * @member {String} municipality
+ * @type {String}
  */
 Address.prototype.municipality = undefined
 
 /**
  * The postal code.
  * @member {String} postalCode
+ * @type {String}
  */
 Address.prototype.postalCode = undefined
 
 /**
  * The country code. A two-character country code, in ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The phone number of the buyer.  **Note**:  1. This attribute is only available for shipping address. 2. In some cases, the buyer phone number is suppressed:  a. Phone is suppressed for all `AFN` (fulfilled by Amazon) orders. b. Phone is suppressed for the shipped `MFN` (fulfilled by seller) order when the current date is past the Latest Delivery Date.
  * @member {String} phone
+ * @type {String}
  */
 Address.prototype.phone = undefined
 
 /**
  * @member {module:orders_v0/model/AddressExtendedFields} extendedFields
+ * @type {module:orders_v0/model/AddressExtendedFields}
  */
 Address.prototype.extendedFields = undefined
 
@@ -178,5 +192,6 @@ Address.AddressTypeEnum = {
 /**
  * The address type of the shipping address.
  * @member {module:orders_v0/model/Address.AddressTypeEnum} addressType
+ * @type {module:orders_v0/model/Address.AddressTypeEnum}
  */
 Address.prototype.addressType = undefined

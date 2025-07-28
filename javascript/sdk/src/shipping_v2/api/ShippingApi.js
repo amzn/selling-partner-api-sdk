@@ -52,7 +52,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v2
 */
 export class ShippingApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -115,7 +115,7 @@ export class ShippingApi {
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/CancelShipmentResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/CancelShipmentResponse>}
      */
   cancelShipmentWithHttpInfo (shipmentId, opts) {
     opts = opts || {}
@@ -153,7 +153,7 @@ export class ShippingApi {
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/CancelShipmentResponse}
+     * @return {Promise<module:shipping_v2/model/CancelShipmentResponse>}
      */
   cancelShipment (shipmentId, opts) {
     return this.cancelShipmentWithHttpInfo(shipmentId, opts)
@@ -167,7 +167,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/CreateClaimRequest} body Request body for the createClaim operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/CreateClaimResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/CreateClaimResponse>}
      */
   createClaimWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -204,7 +204,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/CreateClaimRequest} body Request body for the createClaim operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/CreateClaimResponse}
+     * @return {Promise<module:shipping_v2/model/CreateClaimResponse>}
      */
   createClaim (body, opts) {
     return this.createClaimWithHttpInfo(body, opts)
@@ -220,7 +220,7 @@ export class ShippingApi {
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
      * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/DirectPurchaseResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/DirectPurchaseResponse>}
      */
   directPurchaseShipmentWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -261,7 +261,7 @@ export class ShippingApi {
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
      * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/DirectPurchaseResponse}
+     * @return {Promise<module:shipping_v2/model/DirectPurchaseResponse>}
      */
   directPurchaseShipment (body, opts) {
     return this.directPurchaseShipmentWithHttpInfo(body, opts)
@@ -276,7 +276,7 @@ export class ShippingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GenerateCollectionFormResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GenerateCollectionFormResponse>}
      */
   generateCollectionFormWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -315,7 +315,7 @@ export class ShippingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GenerateCollectionFormResponse}
+     * @return {Promise<module:shipping_v2/model/GenerateCollectionFormResponse>}
      */
   generateCollectionForm (body, opts) {
     return this.generateCollectionFormWithHttpInfo(body, opts)
@@ -331,7 +331,7 @@ export class ShippingApi {
      * @param {String} postalCode postal code for access point
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetAccessPointsResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetAccessPointsResponse>}
      */
   getAccessPointsWithHttpInfo (accessPointTypes, countryCode, postalCode, opts) {
     opts = opts || {}
@@ -383,7 +383,7 @@ export class ShippingApi {
      * @param {String} postalCode postal code for access point
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetAccessPointsResponse}
+     * @return {Promise<module:shipping_v2/model/GetAccessPointsResponse>}
      */
   getAccessPoints (accessPointTypes, countryCode, postalCode, opts) {
     return this.getAccessPointsWithHttpInfo(accessPointTypes, countryCode, postalCode, opts)
@@ -398,7 +398,7 @@ export class ShippingApi {
      * @param {String} rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates operation.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetAdditionalInputsResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetAdditionalInputsResponse>}
      */
   getAdditionalInputsWithHttpInfo (requestToken, rateId, opts) {
     opts = opts || {}
@@ -443,7 +443,7 @@ export class ShippingApi {
      * @param {String} rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates operation.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetAdditionalInputsResponse}
+     * @return {Promise<module:shipping_v2/model/GetAdditionalInputsResponse>}
      */
   getAdditionalInputs (requestToken, rateId, opts) {
     return this.getAdditionalInputsWithHttpInfo(requestToken, rateId, opts)
@@ -456,7 +456,7 @@ export class ShippingApi {
      * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCarrierAccountFormInputsResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetCarrierAccountFormInputsResponse>}
      */
   getCarrierAccountFormInputsWithHttpInfo (opts) {
     opts = opts || {}
@@ -487,7 +487,7 @@ export class ShippingApi {
      * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCarrierAccountFormInputsResponse}
+     * @return {Promise<module:shipping_v2/model/GetCarrierAccountFormInputsResponse>}
      */
   getCarrierAccountFormInputs (opts) {
     return this.getCarrierAccountFormInputsWithHttpInfo(opts)
@@ -501,7 +501,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetCarrierAccountsRequest} body GetCarrierAccountsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCarrierAccountsResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetCarrierAccountsResponse>}
      */
   getCarrierAccountsWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -538,7 +538,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetCarrierAccountsRequest} body GetCarrierAccountsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCarrierAccountsResponse}
+     * @return {Promise<module:shipping_v2/model/GetCarrierAccountsResponse>}
      */
   getCarrierAccounts (body, opts) {
     return this.getCarrierAccountsWithHttpInfo(body, opts)
@@ -552,7 +552,7 @@ export class ShippingApi {
      * @param {String} collectionFormId collection form Id to reprint a collection.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCollectionFormResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetCollectionFormResponse>}
      */
   getCollectionFormWithHttpInfo (collectionFormId, opts) {
     opts = opts || {}
@@ -590,7 +590,7 @@ export class ShippingApi {
      * @param {String} collectionFormId collection form Id to reprint a collection.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCollectionFormResponse}
+     * @return {Promise<module:shipping_v2/model/GetCollectionFormResponse>}
      */
   getCollectionForm (collectionFormId, opts) {
     return this.getCollectionFormWithHttpInfo(collectionFormId, opts)
@@ -604,7 +604,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetCollectionFormHistoryRequest} body GetCollectionFormHistoryRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetCollectionFormHistoryResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetCollectionFormHistoryResponse>}
      */
   getCollectionFormHistoryWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -641,7 +641,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetCollectionFormHistoryRequest} body GetCollectionFormHistoryRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetCollectionFormHistoryResponse}
+     * @return {Promise<module:shipping_v2/model/GetCollectionFormHistoryResponse>}
      */
   getCollectionFormHistory (body, opts) {
     return this.getCollectionFormHistoryWithHttpInfo(body, opts)
@@ -655,7 +655,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetRatesRequest} body GetRatesRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetRatesResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetRatesResponse>}
      */
   getRatesWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -692,7 +692,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetRatesRequest} body GetRatesRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetRatesResponse}
+     * @return {Promise<module:shipping_v2/model/GetRatesResponse>}
      */
   getRates (body, opts) {
     return this.getRatesWithHttpInfo(body, opts)
@@ -709,7 +709,7 @@ export class ShippingApi {
      * @param {String} opts.format The file format of the document. Must be one of the supported formats returned by the getRates operation.
      * @param {Number} opts.dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the supported resolutions returned in the response to the getRates operation.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetShipmentDocumentsResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetShipmentDocumentsResponse>}
      */
   getShipmentDocumentsWithHttpInfo (shipmentId, packageClientReferenceId, opts) {
     opts = opts || {}
@@ -758,7 +758,7 @@ export class ShippingApi {
      * @param {String} opts.format The file format of the document. Must be one of the supported formats returned by the getRates operation.
      * @param {Number} opts.dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the supported resolutions returned in the response to the getRates operation.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetShipmentDocumentsResponse}
+     * @return {Promise<module:shipping_v2/model/GetShipmentDocumentsResponse>}
      */
   getShipmentDocuments (shipmentId, packageClientReferenceId, opts) {
     return this.getShipmentDocumentsWithHttpInfo(shipmentId, packageClientReferenceId, opts)
@@ -773,7 +773,7 @@ export class ShippingApi {
      * @param {String} carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetTrackingResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetTrackingResponse>}
      */
   getTrackingWithHttpInfo (trackingId, carrierId, opts) {
     opts = opts || {}
@@ -818,7 +818,7 @@ export class ShippingApi {
      * @param {String} carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetTrackingResponse}
+     * @return {Promise<module:shipping_v2/model/GetTrackingResponse>}
      */
   getTracking (trackingId, carrierId, opts) {
     return this.getTrackingWithHttpInfo(trackingId, carrierId, opts)
@@ -832,7 +832,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetUnmanifestedShipmentsRequest} body GetUmanifestedShipmentsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/GetUnmanifestedShipmentsResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/GetUnmanifestedShipmentsResponse>}
      */
   getUnmanifestedShipmentsWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -869,7 +869,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/GetUnmanifestedShipmentsRequest} body GetUmanifestedShipmentsRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/GetUnmanifestedShipmentsResponse}
+     * @return {Promise<module:shipping_v2/model/GetUnmanifestedShipmentsResponse>}
      */
   getUnmanifestedShipments (body, opts) {
     return this.getUnmanifestedShipmentsWithHttpInfo(body, opts)
@@ -884,7 +884,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/LinkCarrierAccountResponse>}
      */
   linkCarrierAccountWithHttpInfo (carrierId, body, opts) {
     opts = opts || {}
@@ -928,7 +928,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse}
+     * @return {Promise<module:shipping_v2/model/LinkCarrierAccountResponse>}
      */
   linkCarrierAccount (carrierId, body, opts) {
     return this.linkCarrierAccountWithHttpInfo(carrierId, body, opts)
@@ -943,7 +943,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/LinkCarrierAccountResponse>}
      */
   linkCarrierAccount_0WithHttpInfo (carrierId, body, opts) {
     opts = opts || {}
@@ -987,7 +987,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/LinkCarrierAccountResponse}
+     * @return {Promise<module:shipping_v2/model/LinkCarrierAccountResponse>}
      */
   linkCarrierAccount_0 (carrierId, body, opts) {
     return this.linkCarrierAccount_0WithHttpInfo(carrierId, body, opts)
@@ -1001,7 +1001,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/OneClickShipmentRequest} body OneClickShipmentRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/OneClickShipmentResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/OneClickShipmentResponse>}
      */
   oneClickShipmentWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -1038,7 +1038,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/OneClickShipmentRequest} body OneClickShipmentRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/OneClickShipmentResponse}
+     * @return {Promise<module:shipping_v2/model/OneClickShipmentResponse>}
      */
   oneClickShipment (body, opts) {
     return this.oneClickShipmentWithHttpInfo(body, opts)
@@ -1053,7 +1053,7 @@ export class ShippingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/PurchaseShipmentResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/PurchaseShipmentResponse>}
      */
   purchaseShipmentWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -1092,7 +1092,7 @@ export class ShippingApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/PurchaseShipmentResponse}
+     * @return {Promise<module:shipping_v2/model/PurchaseShipmentResponse>}
      */
   purchaseShipment (body, opts) {
     return this.purchaseShipmentWithHttpInfo(body, opts)
@@ -1106,7 +1106,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/SubmitNdrFeedbackRequest} body Request body for ndrFeedback operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   submitNdrFeedbackWithHttpInfo (body, opts) {
     opts = opts || {}
@@ -1143,7 +1143,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/SubmitNdrFeedbackRequest} body Request body for ndrFeedback operation
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   submitNdrFeedback (body, opts) {
     return this.submitNdrFeedbackWithHttpInfo(body, opts)
@@ -1158,7 +1158,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/UnlinkCarrierAccountRequest} body UnlinkCarrierAccountRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:shipping_v2/model/UnlinkCarrierAccountResponse} and HTTP response
+     * @return {Promise<module:shipping_v2/model/UnlinkCarrierAccountResponse>}
      */
   unlinkCarrierAccountWithHttpInfo (carrierId, body, opts) {
     opts = opts || {}
@@ -1202,7 +1202,7 @@ export class ShippingApi {
      * @param {module:shipping_v2/model/UnlinkCarrierAccountRequest} body UnlinkCarrierAccountRequest body
      * @param {Object} opts Optional parameters
      * @param {module:shipping_v2/model/String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:shipping_v2/model/UnlinkCarrierAccountResponse}
+     * @return {Promise<module:shipping_v2/model/UnlinkCarrierAccountResponse>}
      */
   unlinkCarrierAccount (carrierId, body, opts) {
     return this.unlinkCarrierAccountWithHttpInfo(carrierId, body, opts)

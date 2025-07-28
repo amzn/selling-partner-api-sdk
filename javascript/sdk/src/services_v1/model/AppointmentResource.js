@@ -58,5 +58,6 @@ export class AppointmentResource {
 /**
  * The resource identifier.
  * @member {String} resourceId
+ * @type {String}
  */
 AppointmentResource.prototype.resourceId = undefined

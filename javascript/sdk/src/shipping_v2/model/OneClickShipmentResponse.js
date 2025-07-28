@@ -58,5 +58,6 @@ export class OneClickShipmentResponse {
 
 /**
  * @member {module:shipping_v2/model/OneClickShipmentResult} payload
+ * @type {module:shipping_v2/model/OneClickShipmentResult}
  */
 OneClickShipmentResponse.prototype.payload = undefined

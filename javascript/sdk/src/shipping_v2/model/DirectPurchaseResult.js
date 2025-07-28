@@ -62,11 +62,13 @@ export class DirectPurchaseResult {
 /**
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
+ * @type {String}
  */
 DirectPurchaseResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
  * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetailList
+ * @type {Array.<module:shipping_v2/model/PackageDocumentDetail>}
  */
 DirectPurchaseResult.prototype.packageDocumentDetailList = undefined

@@ -63,24 +63,28 @@ export class Poa {
 
 /**
  * @member {module:services_v1/model/AppointmentTime} appointmentTime
+ * @type {module:services_v1/model/AppointmentTime}
  */
 Poa.prototype.appointmentTime = undefined
 
 /**
  * A list of technicians.
  * @member {Array.<module:services_v1/model/Technician>} technicians
+ * @type {Array.<module:services_v1/model/Technician>}
  */
 Poa.prototype.technicians = undefined
 
 /**
  * The identifier of the technician who uploaded the POA.
  * @member {String} uploadingTechnician
+ * @type {String}
  */
 Poa.prototype.uploadingTechnician = undefined
 
 /**
  * The date and time when the POA was uploaded in ISO 8601 format.
  * @member {Date} uploadTime
+ * @type {Date}
  */
 Poa.prototype.uploadTime = undefined
 
@@ -119,5 +123,6 @@ Poa.PoaTypeEnum = {
 /**
  * The type of POA uploaded.
  * @member {module:services_v1/model/Poa.PoaTypeEnum} poaType
+ * @type {module:services_v1/model/Poa.PoaTypeEnum}
  */
 Poa.prototype.poaType = undefined

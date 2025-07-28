@@ -59,5 +59,6 @@ export class TaxItemDetails {
 /**
  * A list of tax line items.
  * @member {Array.<module:vendordforders_v2021_12_28/model/TaxDetails>} taxLineItem
+ * @type {Array.<module:vendordforders_v2021_12_28/model/TaxDetails>}
  */
 TaxItemDetails.prototype.taxLineItem = undefined

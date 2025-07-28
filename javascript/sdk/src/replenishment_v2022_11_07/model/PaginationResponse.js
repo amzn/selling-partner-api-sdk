@@ -58,5 +58,6 @@ export class PaginationResponse {
 /**
  * Total number of results matching the given filter criteria.
  * @member {Number} totalResults
+ * @type {Number}
  */
 PaginationResponse.prototype.totalResults = undefined

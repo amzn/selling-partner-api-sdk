@@ -60,5 +60,6 @@ export class GeneratePlacementOptionsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 GeneratePlacementOptionsResponse.prototype.operationId = undefined

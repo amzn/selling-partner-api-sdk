@@ -60,11 +60,13 @@ export class CreateUploadDestinationResponse {
 
 /**
  * @member {module:uploads_v2020_11_01/model/UploadDestination} payload
+ * @type {module:uploads_v2020_11_01/model/UploadDestination}
  */
 CreateUploadDestinationResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:uploads_v2020_11_01/model/Error>} errors
+ * @type {Array.<module:uploads_v2020_11_01/model/Error>}
  */
 CreateUploadDestinationResponse.prototype.errors = undefined

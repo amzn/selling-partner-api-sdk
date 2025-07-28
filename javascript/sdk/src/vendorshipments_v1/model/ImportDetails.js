@@ -110,34 +110,40 @@ ImportDetails.MethodOfPaymentEnum = {
 /**
  * This is used for import purchase orders only. If the recipient requests, this field will contain the shipment method of payment.
  * @member {module:vendorshipments_v1/model/ImportDetails.MethodOfPaymentEnum} methodOfPayment
+ * @type {module:vendorshipments_v1/model/ImportDetails.MethodOfPaymentEnum}
  */
 ImportDetails.prototype.methodOfPayment = undefined
 
 /**
  * The container's seal number.
  * @member {String} sealNumber
+ * @type {String}
  */
 ImportDetails.prototype.sealNumber = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Route} route
+ * @type {module:vendorshipments_v1/model/Route}
  */
 ImportDetails.prototype.route = undefined
 
 /**
  * Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if shipment has multiple containers.
  * @member {String} importContainers
+ * @type {String}
  */
 ImportDetails.prototype.importContainers = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Weight} billableWeight
+ * @type {module:vendorshipments_v1/model/Weight}
  */
 ImportDetails.prototype.billableWeight = undefined
 
 /**
  * Date on which the shipment is expected to be shipped. This value should not be in the past and not more than 60 days out in the future.
  * @member {Date} estimatedShipByDate
+ * @type {Date}
  */
 ImportDetails.prototype.estimatedShipByDate = undefined
 
@@ -176,5 +182,6 @@ ImportDetails.HandlingInstructionsEnum = {
 /**
  * Identification of the instructions on how specified item/carton/pallet should be handled.
  * @member {module:vendorshipments_v1/model/ImportDetails.HandlingInstructionsEnum} handlingInstructions
+ * @type {module:vendorshipments_v1/model/ImportDetails.HandlingInstructionsEnum}
  */
 ImportDetails.prototype.handlingInstructions = undefined

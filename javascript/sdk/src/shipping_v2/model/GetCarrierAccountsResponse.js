@@ -61,5 +61,6 @@ export class GetCarrierAccountsResponse {
 /**
  * A list of ActiveAccount
  * @member {Array.<module:shipping_v2/model/ActiveAccount>} activeAccounts
+ * @type {Array.<module:shipping_v2/model/ActiveAccount>}
  */
 GetCarrierAccountsResponse.prototype.activeAccounts = undefined

@@ -66,35 +66,41 @@ export class AsinMetadata {
 /**
  * The Amazon Standard Identification Number (ASIN).
  * @member {String} asin
+ * @type {String}
  */
 AsinMetadata.prototype.asin = undefined
 
 /**
  * The set of ASIN badges.
  * @member {Array.<module:apluscontent_v2020_11_01/model/AsinBadge>} badgeSet
+ * @type {Array.<module:apluscontent_v2020_11_01/model/AsinBadge>}
  */
 AsinMetadata.prototype.badgeSet = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN).
  * @member {String} parent
+ * @type {String}
  */
 AsinMetadata.prototype.parent = undefined
 
 /**
  * The title for the ASIN in the Amazon catalog.
  * @member {String} title
+ * @type {String}
  */
 AsinMetadata.prototype.title = undefined
 
 /**
  * The default image for the ASIN in the Amazon catalog.
  * @member {String} imageUrl
+ * @type {String}
  */
 AsinMetadata.prototype.imageUrl = undefined
 
 /**
  * A set of content reference keys.
  * @member {Array.<String>} contentReferenceKeySet
+ * @type {Array.<String>}
  */
 AsinMetadata.prototype.contentReferenceKeySet = undefined

@@ -82,23 +82,27 @@ AppointmentSlotReport.SchedulingTypeEnum = {
 /**
  * Defines the type of slots.
  * @member {module:services_v1/model/AppointmentSlotReport.SchedulingTypeEnum} schedulingType
+ * @type {module:services_v1/model/AppointmentSlotReport.SchedulingTypeEnum}
  */
 AppointmentSlotReport.prototype.schedulingType = undefined
 
 /**
  * Start Time from which the appointment slots are generated in ISO 8601 format.
  * @member {Date} startTime
+ * @type {Date}
  */
 AppointmentSlotReport.prototype.startTime = undefined
 
 /**
  * End Time up to which the appointment slots are generated in ISO 8601 format.
  * @member {Date} endTime
+ * @type {Date}
  */
 AppointmentSlotReport.prototype.endTime = undefined
 
 /**
  * A list of time windows along with associated capacity in which the service can be performed.
  * @member {Array.<module:services_v1/model/AppointmentSlot>} appointmentSlots
+ * @type {Array.<module:services_v1/model/AppointmentSlot>}
  */
 AppointmentSlotReport.prototype.appointmentSlots = undefined

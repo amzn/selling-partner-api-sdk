@@ -61,23 +61,27 @@ export class ScopeOfWork {
 /**
  * The Amazon Standard Identification Number (ASIN) of the service job.
  * @member {String} asin
+ * @type {String}
  */
 ScopeOfWork.prototype.asin = undefined
 
 /**
  * The title of the service job.
  * @member {String} title
+ * @type {String}
  */
 ScopeOfWork.prototype.title = undefined
 
 /**
  * The number of service jobs.
  * @member {Number} quantity
+ * @type {Number}
  */
 ScopeOfWork.prototype.quantity = undefined
 
 /**
  * A list of skills required to perform the job.
  * @member {Array.<String>} requiredSkills
+ * @type {Array.<String>}
  */
 ScopeOfWork.prototype.requiredSkills = undefined

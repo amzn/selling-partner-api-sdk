@@ -62,29 +62,34 @@ export class FeatureSku {
 /**
  * Used to identify an item in the given marketplace. `SellerSKU` is qualified by the seller's SellerId, which is included with every operation that you submit.
  * @member {String} sellerSku
+ * @type {String}
  */
 FeatureSku.prototype.sellerSku = undefined
 
 /**
  * The unique SKU used by Amazon's fulfillment network.
  * @member {String} fnSku
+ * @type {String}
  */
 FeatureSku.prototype.fnSku = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
+ * @type {String}
  */
 FeatureSku.prototype.asin = undefined
 
 /**
  * The number of SKUs available for this service.
  * @member {Number} skuCount
+ * @type {Number}
  */
 FeatureSku.prototype.skuCount = undefined
 
 /**
  * Other seller SKUs that are shared across the same inventory.
  * @member {Array.<String>} overlappingSkus
+ * @type {Array.<String>}
  */
 FeatureSku.prototype.overlappingSkus = undefined

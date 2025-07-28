@@ -63,11 +63,13 @@ export class ShipmentSummary {
 /**
  * Identifier of a shipment. A shipment contains the boxes and units being inbounded.
  * @member {String} shipmentId
+ * @type {String}
  */
 ShipmentSummary.prototype.shipmentId = undefined
 
 /**
  * The status of a shipment. The state of the shipment will typically start as `UNCONFIRMED`, then transition to `WORKING` after a placement option has been confirmed, and then to `READY_TO_SHIP` once labels are generated.  Possible values: `ABANDONED`, `CANCELLED`, `CHECKED_IN`, `CLOSED`, `DELETED`, `DELIVERED`, `IN_TRANSIT`, `MIXED`, `READY_TO_SHIP`, `RECEIVING`, `SHIPPED`, `UNCONFIRMED`, `WORKING`
  * @member {String} status
+ * @type {String}
  */
 ShipmentSummary.prototype.status = undefined

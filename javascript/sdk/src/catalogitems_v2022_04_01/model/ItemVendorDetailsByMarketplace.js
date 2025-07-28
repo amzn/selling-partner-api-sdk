@@ -68,40 +68,47 @@ export class ItemVendorDetailsByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemVendorDetailsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * The brand code that is associated with an Amazon catalog item.
  * @member {String} brandCode
+ * @type {String}
  */
 ItemVendorDetailsByMarketplace.prototype.brandCode = undefined
 
 /**
  * The manufacturer code that is associated with an Amazon catalog item.
  * @member {String} manufacturerCode
+ * @type {String}
  */
 ItemVendorDetailsByMarketplace.prototype.manufacturerCode = undefined
 
 /**
  * The parent vendor code of the manufacturer code.
  * @member {String} manufacturerCodeParent
+ * @type {String}
  */
 ItemVendorDetailsByMarketplace.prototype.manufacturerCodeParent = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory} productCategory
+ * @type {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory}
  */
 ItemVendorDetailsByMarketplace.prototype.productCategory = undefined
 
 /**
  * The product group that is associated with an Amazon catalog item.
  * @member {String} productGroup
+ * @type {String}
  */
 ItemVendorDetailsByMarketplace.prototype.productGroup = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory} productSubcategory
+ * @type {module:catalogitems_v2022_04_01/model/ItemVendorDetailsCategory}
  */
 ItemVendorDetailsByMarketplace.prototype.productSubcategory = undefined
 
@@ -176,5 +183,6 @@ ItemVendorDetailsByMarketplace.ReplenishmentCategoryEnum = {
 /**
  * The replenishment category that is associated with an Amazon catalog item.
  * @member {module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace.ReplenishmentCategoryEnum} replenishmentCategory
+ * @type {module:catalogitems_v2022_04_01/model/ItemVendorDetailsByMarketplace.ReplenishmentCategoryEnum}
  */
 ItemVendorDetailsByMarketplace.prototype.replenishmentCategory = undefined

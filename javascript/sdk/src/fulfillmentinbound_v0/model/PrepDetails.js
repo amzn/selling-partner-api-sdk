@@ -64,10 +64,12 @@ export class PrepDetails {
 
 /**
  * @member {module:fulfillmentinbound_v0/model/PrepInstruction} prepInstruction
+ * @type {module:fulfillmentinbound_v0/model/PrepInstruction}
  */
 PrepDetails.prototype.prepInstruction = undefined
 
 /**
  * @member {module:fulfillmentinbound_v0/model/PrepOwner} prepOwner
+ * @type {module:fulfillmentinbound_v0/model/PrepOwner}
  */
 PrepDetails.prototype.prepOwner = undefined

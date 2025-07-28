@@ -68,23 +68,27 @@ export class AvailableValueAddedServiceGroup {
 /**
  * The type of the value-added service group.
  * @member {String} groupId
+ * @type {String}
  */
 AvailableValueAddedServiceGroup.prototype.groupId = undefined
 
 /**
  * The name of the value-added service group.
  * @member {String} groupDescription
+ * @type {String}
  */
 AvailableValueAddedServiceGroup.prototype.groupDescription = undefined
 
 /**
  * When true, one or more of the value-added services listed must be specified.
  * @member {Boolean} isRequired
+ * @type {Boolean}
  */
 AvailableValueAddedServiceGroup.prototype.isRequired = undefined
 
 /**
  * A list of optional value-added services available for purchase with a shipping service offering.
  * @member {Array.<module:shipping_v2/model/ValueAddedService>} valueAddedServices
+ * @type {Array.<module:shipping_v2/model/ValueAddedService>}
  */
 AvailableValueAddedServiceGroup.prototype.valueAddedServices = undefined

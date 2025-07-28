@@ -141,22 +141,26 @@ ChargeDetails.TypeEnum = {
 /**
  * Type of the charge applied.
  * @member {module:vendorinvoices_v1/model/ChargeDetails.TypeEnum} type
+ * @type {module:vendorinvoices_v1/model/ChargeDetails.TypeEnum}
  */
 ChargeDetails.prototype.type = undefined
 
 /**
  * Description of the charge.
  * @member {String} description
+ * @type {String}
  */
 ChargeDetails.prototype.description = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/Money} chargeAmount
+ * @type {module:vendorinvoices_v1/model/Money}
  */
 ChargeDetails.prototype.chargeAmount = undefined
 
 /**
  * Tax amount details applied on this charge.
  * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
+ * @type {Array.<module:vendorinvoices_v1/model/TaxDetails>}
  */
 ChargeDetails.prototype.taxDetails = undefined

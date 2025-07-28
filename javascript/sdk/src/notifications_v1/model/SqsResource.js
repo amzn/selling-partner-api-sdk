@@ -60,5 +60,6 @@ export class SqsResource {
 /**
  * The Amazon Resource Name (ARN) associated with the SQS queue.
  * @member {String} arn
+ * @type {String}
  */
 SqsResource.prototype.arn = undefined

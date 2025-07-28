@@ -104,81 +104,96 @@ export class Shipment {
 /**
  * An Amazon-defined shipment identifier.
  * @member {String} shipmentId
+ * @type {String}
  */
 Shipment.prototype.shipmentId = undefined
 
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 Shipment.prototype.amazonOrderId = undefined
 
 /**
  * A seller-defined order identifier.
  * @member {String} sellerOrderId
+ * @type {String}
  */
 Shipment.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
  * @member {Array.<module:merchantfulfillment_v0/model/Item>} itemList
+ * @type {Array.<module:merchantfulfillment_v0/model/Item>}
  */
 Shipment.prototype.itemList = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Address} shipFromAddress
+ * @type {module:merchantfulfillment_v0/model/Address}
  */
 Shipment.prototype.shipFromAddress = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Address} shipToAddress
+ * @type {module:merchantfulfillment_v0/model/Address}
  */
 Shipment.prototype.shipToAddress = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/PackageDimensions} packageDimensions
+ * @type {module:merchantfulfillment_v0/model/PackageDimensions}
  */
 Shipment.prototype.packageDimensions = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Weight} weight
+ * @type {module:merchantfulfillment_v0/model/Weight}
  */
 Shipment.prototype.weight = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/CurrencyAmount} insurance
+ * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
  */
 Shipment.prototype.insurance = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShippingService} shippingService
+ * @type {module:merchantfulfillment_v0/model/ShippingService}
  */
 Shipment.prototype.shippingService = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/Label} label
+ * @type {module:merchantfulfillment_v0/model/Label}
  */
 Shipment.prototype.label = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/ShipmentStatus} status
+ * @type {module:merchantfulfillment_v0/model/ShipmentStatus}
  */
 Shipment.prototype.status = undefined
 
 /**
  * The shipment tracking identifier provided by the carrier.
  * @member {String} trackingId
+ * @type {String}
  */
 Shipment.prototype.trackingId = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} createdDate
+ * @type {Date}
  */
 Shipment.prototype.createdDate = undefined
 
 /**
  * Date-time formatted timestamp.
  * @member {Date} lastUpdatedDate
+ * @type {Date}
  */
 Shipment.prototype.lastUpdatedDate = undefined

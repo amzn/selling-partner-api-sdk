@@ -75,39 +75,46 @@ export class RequestedDocumentSpecification {
 
 /**
  * @member {module:shipping_v2/model/DocumentFormat} format
+ * @type {module:shipping_v2/model/DocumentFormat}
  */
 RequestedDocumentSpecification.prototype.format = undefined
 
 /**
  * @member {module:shipping_v2/model/DocumentSize} size
+ * @type {module:shipping_v2/model/DocumentSize}
  */
 RequestedDocumentSpecification.prototype.size = undefined
 
 /**
  * The dots per inch (DPI) value used in printing. This value represents a measure of the resolution of the document.
  * @member {Number} dpi
+ * @type {Number}
  */
 RequestedDocumentSpecification.prototype.dpi = undefined
 
 /**
  * Indicates the position of the label on the paper. Should be the same value as returned in getRates response.
  * @member {String} pageLayout
+ * @type {String}
  */
 RequestedDocumentSpecification.prototype.pageLayout = undefined
 
 /**
  * When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.
  * @member {Boolean} needFileJoining
+ * @type {Boolean}
  */
 RequestedDocumentSpecification.prototype.needFileJoining = undefined
 
 /**
  * A list of the document types requested.
  * @member {Array.<module:shipping_v2/model/DocumentType>} requestedDocumentTypes
+ * @type {Array.<module:shipping_v2/model/DocumentType>}
  */
 RequestedDocumentSpecification.prototype.requestedDocumentTypes = undefined
 
 /**
  * @member {module:shipping_v2/model/RequestedLabelCustomization} requestedLabelCustomization
+ * @type {module:shipping_v2/model/RequestedLabelCustomization}
  */
 RequestedDocumentSpecification.prototype.requestedLabelCustomization = undefined

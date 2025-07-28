@@ -59,5 +59,6 @@ export class CreateLegalDisclosureRequest {
 /**
  * Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer's language of preference, which can be retrieved from the GetAttributes operation.
  * @member {Array.<module:messaging_v1/model/Attachment>} attachments
+ * @type {Array.<module:messaging_v1/model/Attachment>}
  */
 CreateLegalDisclosureRequest.prototype.attachments = undefined

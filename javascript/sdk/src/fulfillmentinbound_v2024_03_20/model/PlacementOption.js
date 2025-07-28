@@ -74,35 +74,41 @@ export class PlacementOption {
 /**
  * Discount for the offered option.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} discounts
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>}
  */
 PlacementOption.prototype.discounts = undefined
 
 /**
  * The expiration date of the placement option. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
  * @member {Date} expiration
+ * @type {Date}
  */
 PlacementOption.prototype.expiration = undefined
 
 /**
  * The fee for the offered option.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>} fees
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Incentive>}
  */
 PlacementOption.prototype.fees = undefined
 
 /**
  * The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
  * @member {String} placementOptionId
+ * @type {String}
  */
 PlacementOption.prototype.placementOptionId = undefined
 
 /**
  * Shipment ids.
  * @member {Array.<String>} shipmentIds
+ * @type {Array.<String>}
  */
 PlacementOption.prototype.shipmentIds = undefined
 
 /**
  * The status of a placement option. Possible values: `OFFERED`, `ACCEPTED`, `EXPIRED`.
  * @member {String} status
+ * @type {String}
  */
 PlacementOption.prototype.status = undefined

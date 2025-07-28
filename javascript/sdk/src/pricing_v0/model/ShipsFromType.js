@@ -59,11 +59,13 @@ export class ShipsFromType {
 /**
  * The state from where the item is shipped.
  * @member {String} state
+ * @type {String}
  */
 ShipsFromType.prototype.state = undefined
 
 /**
  * The country from where the item is shipped.
  * @member {String} country
+ * @type {String}
  */
 ShipsFromType.prototype.country = undefined

@@ -63,11 +63,13 @@ export class OfferListingCountType {
 /**
  * The number of offer listings.
  * @member {Number} count
+ * @type {Number}
  */
 OfferListingCountType.prototype.count = undefined
 
 /**
  * The condition of the item.
  * @member {String} condition
+ * @type {String}
  */
 OfferListingCountType.prototype.condition = undefined

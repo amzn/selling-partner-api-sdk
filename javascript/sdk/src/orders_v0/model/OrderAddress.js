@@ -65,21 +65,25 @@ export class OrderAddress {
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 OrderAddress.prototype.amazonOrderId = undefined
 
 /**
  * The company name of the contact buyer. For IBA orders, the buyer company must be Amazon entities.
  * @member {String} buyerCompanyName
+ * @type {String}
  */
 OrderAddress.prototype.buyerCompanyName = undefined
 
 /**
  * @member {module:orders_v0/model/Address} shippingAddress
+ * @type {module:orders_v0/model/Address}
  */
 OrderAddress.prototype.shippingAddress = undefined
 
 /**
  * @member {module:orders_v0/model/DeliveryPreferences} deliveryPreferences
+ * @type {module:orders_v0/model/DeliveryPreferences}
  */
 OrderAddress.prototype.deliveryPreferences = undefined

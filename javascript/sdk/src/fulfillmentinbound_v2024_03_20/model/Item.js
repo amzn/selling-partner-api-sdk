@@ -78,47 +78,55 @@ export class Item {
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
+ * @type {String}
  */
 Item.prototype.asin = undefined
 
 /**
  * The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern`YYYY-MM-DD`. The same MSKU with different expiration dates cannot go into the same box.
  * @member {String} expiration
+ * @type {String}
  */
 Item.prototype.expiration = undefined
 
 /**
  * A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
  * @member {String} fnsku
+ * @type {String}
  */
 Item.prototype.fnsku = undefined
 
 /**
  * Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.
  * @member {String} labelOwner
+ * @type {String}
  */
 Item.prototype.labelOwner = undefined
 
 /**
  * The manufacturing lot code.
  * @member {String} manufacturingLotCode
+ * @type {String}
  */
 Item.prototype.manufacturingLotCode = undefined
 
 /**
  * The merchant SKU, a merchant-supplied identifier of a specific SKU.
  * @member {String} msku
+ * @type {String}
  */
 Item.prototype.msku = undefined
 
 /**
  * Special preparations that are required for an item.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepInstruction>} prepInstructions
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepInstruction>}
  */
 Item.prototype.prepInstructions = undefined
 
 /**
  * The number of the specified MSKU.
  * @member {Number} quantity
+ * @type {Number}
  */
 Item.prototype.quantity = undefined

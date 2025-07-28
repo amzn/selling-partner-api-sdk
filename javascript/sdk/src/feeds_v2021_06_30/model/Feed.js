@@ -73,24 +73,28 @@ export class Feed {
 /**
  * The identifier for the feed. This identifier is unique only in combination with a seller ID.
  * @member {String} feedId
+ * @type {String}
  */
 Feed.prototype.feedId = undefined
 
 /**
  * The feed type.
  * @member {String} feedType
+ * @type {String}
  */
 Feed.prototype.feedType = undefined
 
 /**
  * A list of identifiers for the marketplaces that the feed is applied to.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 Feed.prototype.marketplaceIds = undefined
 
 /**
  * The date and time when the feed was created, in ISO 8601 date time format.
  * @member {Date} createdTime
+ * @type {Date}
  */
 Feed.prototype.createdTime = undefined
 
@@ -135,23 +139,27 @@ Feed.ProcessingStatusEnum = {
 /**
  * The processing status of the feed.
  * @member {module:feeds_v2021_06_30/model/Feed.ProcessingStatusEnum} processingStatus
+ * @type {module:feeds_v2021_06_30/model/Feed.ProcessingStatusEnum}
  */
 Feed.prototype.processingStatus = undefined
 
 /**
  * The date and time when feed processing started, in ISO 8601 date time format.
  * @member {Date} processingStartTime
+ * @type {Date}
  */
 Feed.prototype.processingStartTime = undefined
 
 /**
  * The date and time when feed processing completed, in ISO 8601 date time format.
  * @member {Date} processingEndTime
+ * @type {Date}
  */
 Feed.prototype.processingEndTime = undefined
 
 /**
  * The identifier for the feed document. This identifier is unique only in combination with a seller ID.
  * @member {String} resultFeedDocumentId
+ * @type {String}
  */
 Feed.prototype.resultFeedDocumentId = undefined

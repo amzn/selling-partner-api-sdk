@@ -61,11 +61,13 @@ export class AppointmentTimeInput {
 /**
  * The date, time in UTC for the start time of an appointment in ISO 8601 format.
  * @member {Date} startTime
+ * @type {Date}
  */
 AppointmentTimeInput.prototype.startTime = undefined
 
 /**
  * The duration of an appointment in minutes.
  * @member {Number} durationInMinutes
+ * @type {Number}
  */
 AppointmentTimeInput.prototype.durationInMinutes = undefined

@@ -61,20 +61,24 @@ export class Promotion {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/DiscountFunding} sellingPartnerFundedBaseDiscount
+ * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
  */
 Promotion.prototype.sellingPartnerFundedBaseDiscount = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/DiscountFunding} sellingPartnerFundedTieredDiscount
+ * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
  */
 Promotion.prototype.sellingPartnerFundedTieredDiscount = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/DiscountFunding} amazonFundedBaseDiscount
+ * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
  */
 Promotion.prototype.amazonFundedBaseDiscount = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/DiscountFunding} amazonFundedTieredDiscount
+ * @type {module:replenishment_v2022_11_07/model/DiscountFunding}
  */
 Promotion.prototype.amazonFundedTieredDiscount = undefined

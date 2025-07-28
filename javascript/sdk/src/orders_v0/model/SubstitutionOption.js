@@ -63,28 +63,33 @@ export class SubstitutionOption {
 /**
  * The item's Amazon Standard Identification Number (ASIN).
  * @member {String} ASIN
+ * @type {String}
  */
 SubstitutionOption.prototype.ASIN = undefined
 
 /**
  * The number of items to be picked for this substitution option.
  * @member {Number} quantityOrdered
+ * @type {Number}
  */
 SubstitutionOption.prototype.quantityOrdered = undefined
 
 /**
  * The item's seller stock keeping unit (SKU).
  * @member {String} sellerSKU
+ * @type {String}
  */
 SubstitutionOption.prototype.sellerSKU = undefined
 
 /**
  * The item's title.
  * @member {String} title
+ * @type {String}
  */
 SubstitutionOption.prototype.title = undefined
 
 /**
  * @member {module:orders_v0/model/Measurement} measurement
+ * @type {module:orders_v0/model/Measurement}
  */
 SubstitutionOption.prototype.measurement = undefined

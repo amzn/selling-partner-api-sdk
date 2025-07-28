@@ -58,5 +58,6 @@ export class ValueAddedServiceDetails {
 
 /**
  * @member {module:shipping_v2/model/CollectOnDelivery} collectOnDelivery
+ * @type {module:shipping_v2/model/CollectOnDelivery}
  */
 ValueAddedServiceDetails.prototype.collectOnDelivery = undefined

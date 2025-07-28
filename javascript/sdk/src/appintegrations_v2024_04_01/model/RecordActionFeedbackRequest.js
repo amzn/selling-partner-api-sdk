@@ -74,5 +74,6 @@ RecordActionFeedbackRequest.FeedbackActionCodeEnum = {
 /**
  * The unique identifier for each notification status.
  * @member {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest.FeedbackActionCodeEnum} feedbackActionCode
+ * @type {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest.FeedbackActionCodeEnum}
  */
 RecordActionFeedbackRequest.prototype.feedbackActionCode = undefined

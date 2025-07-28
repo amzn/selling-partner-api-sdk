@@ -69,35 +69,41 @@ export class FulfillmentShipmentItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type {String}
  */
 FulfillmentShipmentItem.prototype.sellerSku = undefined
 
 /**
  * The fulfillment order item identifier that the seller created and submitted with a call to the `createFulfillmentOrder` operation.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type {String}
  */
 FulfillmentShipmentItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantity
+ * @type {Number}
  */
 FulfillmentShipmentItem.prototype.quantity = undefined
 
 /**
  * An identifier for the package that contains the item quantity.
  * @member {Number} packageNumber
+ * @type {Number}
  */
 FulfillmentShipmentItem.prototype.packageNumber = undefined
 
 /**
  * The serial number of the shipped item.
  * @member {String} serialNumber
+ * @type {String}
  */
 FulfillmentShipmentItem.prototype.serialNumber = undefined
 
 /**
  * String list
  * @member {Array.<String>} manufacturerLotCodes
+ * @type {Array.<String>}
  */
 FulfillmentShipmentItem.prototype.manufacturerLotCodes = undefined

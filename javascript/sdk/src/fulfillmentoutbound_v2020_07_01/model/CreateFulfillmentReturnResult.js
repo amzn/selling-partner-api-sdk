@@ -63,17 +63,20 @@ export class CreateFulfillmentReturnResult {
 /**
  * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>} returnItems
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>}
  */
 CreateFulfillmentReturnResult.prototype.returnItems = undefined
 
 /**
  * An array of invalid return item information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/InvalidReturnItem>} invalidReturnItems
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/InvalidReturnItem>}
  */
 CreateFulfillmentReturnResult.prototype.invalidReturnItems = undefined
 
 /**
  * An array of return authorization information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>} returnAuthorizations
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>}
  */
 CreateFulfillmentReturnResult.prototype.returnAuthorizations = undefined

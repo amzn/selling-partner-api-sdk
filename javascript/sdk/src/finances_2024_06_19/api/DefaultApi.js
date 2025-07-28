@@ -23,7 +23,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-06-19
 */
 export class DefaultApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -70,7 +70,7 @@ export class DefaultApi {
      * @param {String} opts.marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {String} opts.transactionStatus The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:finances_2024_06_19/model/ListTransactionsResponse} and HTTP response
+     * @return {Promise<module:finances_2024_06_19/model/ListTransactionsResponse>}
      */
   listTransactionsWithHttpInfo (postedAfter, opts) {
     opts = opts || {}
@@ -114,7 +114,7 @@ export class DefaultApi {
      * @param {String} opts.marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {String} opts.transactionStatus The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:finances_2024_06_19/model/ListTransactionsResponse}
+     * @return {Promise<module:finances_2024_06_19/model/ListTransactionsResponse>}
      */
   listTransactions (postedAfter, opts) {
     return this.listTransactionsWithHttpInfo(postedAfter, opts)

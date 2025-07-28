@@ -67,15 +67,18 @@ export class SkuEligibility {
 /**
  * If not eligible, these are list of error codes and descriptions.
  * @member {Array.<module:awd_v2024_05_09/model/SkuIneligibilityReason>} ineligibilityReasons
+ * @type {Array.<module:awd_v2024_05_09/model/SkuIneligibilityReason>}
  */
 SkuEligibility.prototype.ineligibilityReasons = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/DistributionPackageQuantity} packageQuantity
+ * @type {module:awd_v2024_05_09/model/DistributionPackageQuantity}
  */
 SkuEligibility.prototype.packageQuantity = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InboundEligibilityStatus} status
+ * @type {module:awd_v2024_05_09/model/InboundEligibilityStatus}
  */
 SkuEligibility.prototype.status = undefined

@@ -66,28 +66,33 @@ export class InventorySummary {
 /**
  * The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.
  * @member {Array.<module:awd_v2024_05_09/model/ExpirationDetails>} expirationDetails
+ * @type {Array.<module:awd_v2024_05_09/model/ExpirationDetails>}
  */
 InventorySummary.prototype.expirationDetails = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InventoryDetails} inventoryDetails
+ * @type {module:awd_v2024_05_09/model/InventoryDetails}
  */
 InventorySummary.prototype.inventoryDetails = undefined
 
 /**
  * The seller or merchant SKU.
  * @member {String} sku
+ * @type {String}
  */
 InventorySummary.prototype.sku = undefined
 
 /**
  * Total quantity that is in-transit from the seller and has not yet been received at an AWD Distribution Center
  * @member {Number} totalInboundQuantity
+ * @type {Number}
  */
 InventorySummary.prototype.totalInboundQuantity = undefined
 
 /**
  * Total quantity that is present in AWD distribution centers.
  * @member {Number} totalOnhandQuantity
+ * @type {Number}
  */
 InventorySummary.prototype.totalOnhandQuantity = undefined

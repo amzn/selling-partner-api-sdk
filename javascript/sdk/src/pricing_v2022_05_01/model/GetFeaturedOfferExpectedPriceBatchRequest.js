@@ -59,5 +59,6 @@ export class GetFeaturedOfferExpectedPriceBatchRequest {
 /**
  * A batched list of FOEP requests.
  * @member {Array.<module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequest>} requests
+ * @type {Array.<module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequest>}
  */
 GetFeaturedOfferExpectedPriceBatchRequest.prototype.requests = undefined

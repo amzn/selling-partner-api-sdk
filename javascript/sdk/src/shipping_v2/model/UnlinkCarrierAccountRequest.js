@@ -60,11 +60,13 @@ export class UnlinkCarrierAccountRequest {
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
+ * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
  */
 UnlinkCarrierAccountRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * Identifier for the seller's carrier account.
  * @member {String} accountId
+ * @type {String}
  */
 UnlinkCarrierAccountRequest.prototype.accountId = undefined

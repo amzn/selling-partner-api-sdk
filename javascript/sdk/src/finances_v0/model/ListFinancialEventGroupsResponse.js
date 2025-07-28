@@ -60,11 +60,13 @@ export class ListFinancialEventGroupsResponse {
 
 /**
  * @member {module:finances_v0/model/ListFinancialEventGroupsPayload} payload
+ * @type {module:finances_v0/model/ListFinancialEventGroupsPayload}
  */
 ListFinancialEventGroupsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:finances_v0/model/Error>} errors
+ * @type {Array.<module:finances_v0/model/Error>}
  */
 ListFinancialEventGroupsResponse.prototype.errors = undefined

@@ -95,21 +95,25 @@ OrderItemStatusAcknowledgementStatus.ConfirmationStatusEnum = {
 /**
  * Confirmation status of line item.
  * @member {module:vendororders_v1/model/OrderItemStatusAcknowledgementStatus.ConfirmationStatusEnum} confirmationStatus
+ * @type {module:vendororders_v1/model/OrderItemStatusAcknowledgementStatus.ConfirmationStatusEnum}
  */
 OrderItemStatusAcknowledgementStatus.prototype.confirmationStatus = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} acceptedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderItemStatusAcknowledgementStatus.prototype.acceptedQuantity = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} rejectedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderItemStatusAcknowledgementStatus.prototype.rejectedQuantity = undefined
 
 /**
  * Details of item quantity confirmed.
  * @member {Array.<module:vendororders_v1/model/AcknowledgementStatusDetails>} acknowledgementStatusDetails
+ * @type {Array.<module:vendororders_v1/model/AcknowledgementStatusDetails>}
  */
 OrderItemStatusAcknowledgementStatus.prototype.acknowledgementStatusDetails = undefined

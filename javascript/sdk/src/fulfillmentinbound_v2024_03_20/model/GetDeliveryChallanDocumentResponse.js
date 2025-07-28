@@ -60,5 +60,6 @@ export class GetDeliveryChallanDocumentResponse {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/DocumentDownload} documentDownload
+ * @type {module:fulfillmentinbound_v2024_03_20/model/DocumentDownload}
  */
 GetDeliveryChallanDocumentResponse.prototype.documentDownload = undefined

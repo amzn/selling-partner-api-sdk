@@ -58,5 +58,6 @@ export class GetMyFeesEstimateResult {
 
 /**
  * @member {module:productfees_v0/model/FeesEstimateResult} feesEstimateResult
+ * @type {module:productfees_v0/model/FeesEstimateResult}
  */
 GetMyFeesEstimateResult.prototype.feesEstimateResult = undefined

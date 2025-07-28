@@ -60,5 +60,6 @@ export class UpdateItemComplianceDetailsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 UpdateItemComplianceDetailsResponse.prototype.operationId = undefined

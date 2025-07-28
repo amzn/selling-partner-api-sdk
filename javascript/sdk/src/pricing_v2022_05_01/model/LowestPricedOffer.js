@@ -64,11 +64,13 @@ export class LowestPricedOffer {
 
 /**
  * @member {module:pricing_v2022_05_01/model/LowestPricedOffersInput} lowestPricedOffersInput
+ * @type {module:pricing_v2022_05_01/model/LowestPricedOffersInput}
  */
 LowestPricedOffer.prototype.lowestPricedOffersInput = undefined
 
 /**
  * A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
  * @member {Array.<module:pricing_v2022_05_01/model/Offer>} offers
+ * @type {Array.<module:pricing_v2022_05_01/model/Offer>}
  */
 LowestPricedOffer.prototype.offers = undefined

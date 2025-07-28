@@ -66,45 +66,53 @@ export class AdjustmentItem {
 /**
  * Represents the number of units in the seller's inventory when the AdustmentType is FBAInventoryReimbursement.
  * @member {String} quantity
+ * @type {String}
  */
 AdjustmentItem.prototype.quantity = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} perUnitAmount
+ * @type {module:finances_v0/model/Currency}
  */
 AdjustmentItem.prototype.perUnitAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} totalAmount
+ * @type {module:finances_v0/model/Currency}
  */
 AdjustmentItem.prototype.totalAmount = undefined
 
 /**
  * The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.
  * @member {String} sellerSKU
+ * @type {String}
  */
 AdjustmentItem.prototype.sellerSKU = undefined
 
 /**
  * A unique identifier assigned to products stored in and fulfilled from a fulfillment center.
  * @member {String} fnSKU
+ * @type {String}
  */
 AdjustmentItem.prototype.fnSKU = undefined
 
 /**
  * A short description of the item.
  * @member {String} productDescription
+ * @type {String}
  */
 AdjustmentItem.prototype.productDescription = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type {String}
  */
 AdjustmentItem.prototype.ASIN = undefined
 
 /**
  * The transaction number that is related to the adjustment.
  * @member {String} transactionNumber
+ * @type {String}
  */
 AdjustmentItem.prototype.transactionNumber = undefined

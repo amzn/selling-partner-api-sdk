@@ -215,11 +215,13 @@ Measurement.UnitEnum = {
 /**
  * The unit of measure.
  * @member {module:orders_v0/model/Measurement.UnitEnum} unit
+ * @type {module:orders_v0/model/Measurement.UnitEnum}
  */
 Measurement.prototype.unit = undefined
 
 /**
  * The measurement value.
  * @member {Number} value
+ * @type {Number}
  */
 Measurement.prototype.value = undefined

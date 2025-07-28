@@ -80,18 +80,21 @@ export class OrderDetails {
 /**
  * The date the purchase order was placed. Must be in ISO-8601 date/time format.
  * @member {Date} purchaseOrderDate
+ * @type {Date}
  */
 OrderDetails.prototype.purchaseOrderDate = undefined
 
 /**
  * The date when purchase order was last changed by Amazon after the order was placed. This date will be greater than 'purchaseOrderDate'. This means the PO data was changed on that date and vendors are required to fulfill the  updated PO. The PO changes can be related to Item Quantity, Ship to Location, Ship Window etc. This field will not be present in orders that have not changed after creation. Must be in ISO-8601 date/time format.
  * @member {Date} purchaseOrderChangedDate
+ * @type {Date}
  */
 OrderDetails.prototype.purchaseOrderChangedDate = undefined
 
 /**
  * The date when current purchase order state was changed. Current purchase order state is available in the field 'purchaseOrderState'. Must be in ISO-8601 date/time format.
  * @member {Date} purchaseOrderStateChangedDate
+ * @type {Date}
  */
 OrderDetails.prototype.purchaseOrderStateChangedDate = undefined
 
@@ -130,17 +133,20 @@ OrderDetails.PurchaseOrderTypeEnum = {
 /**
  * Type of purchase order.
  * @member {module:vendororders_v1/model/OrderDetails.PurchaseOrderTypeEnum} purchaseOrderType
+ * @type {module:vendororders_v1/model/OrderDetails.PurchaseOrderTypeEnum}
  */
 OrderDetails.prototype.purchaseOrderType = undefined
 
 /**
  * @member {module:vendororders_v1/model/ImportDetails} importDetails
+ * @type {module:vendororders_v1/model/ImportDetails}
  */
 OrderDetails.prototype.importDetails = undefined
 
 /**
  * If requested by the recipient, this field will contain a promotional/deal number. The discount code line is optional. It is used to obtain a price discount on items on the order.
  * @member {String} dealCode
+ * @type {String}
  */
 OrderDetails.prototype.dealCode = undefined
 
@@ -179,43 +185,51 @@ OrderDetails.PaymentMethodEnum = {
 /**
  * Payment method used.
  * @member {module:vendororders_v1/model/OrderDetails.PaymentMethodEnum} paymentMethod
+ * @type {module:vendororders_v1/model/OrderDetails.PaymentMethodEnum}
  */
 OrderDetails.prototype.paymentMethod = undefined
 
 /**
  * @member {module:vendororders_v1/model/PartyIdentification} buyingParty
+ * @type {module:vendororders_v1/model/PartyIdentification}
  */
 OrderDetails.prototype.buyingParty = undefined
 
 /**
  * @member {module:vendororders_v1/model/PartyIdentification} sellingParty
+ * @type {module:vendororders_v1/model/PartyIdentification}
  */
 OrderDetails.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendororders_v1/model/PartyIdentification} shipToParty
+ * @type {module:vendororders_v1/model/PartyIdentification}
  */
 OrderDetails.prototype.shipToParty = undefined
 
 /**
  * @member {module:vendororders_v1/model/PartyIdentification} billToParty
+ * @type {module:vendororders_v1/model/PartyIdentification}
  */
 OrderDetails.prototype.billToParty = undefined
 
 /**
  * Defines a date time interval according to ISO8601. Interval is separated by double hyphen (--).
  * @member {String} shipWindow
+ * @type {String}
  */
 OrderDetails.prototype.shipWindow = undefined
 
 /**
  * Defines a date time interval according to ISO8601. Interval is separated by double hyphen (--).
  * @member {String} deliveryWindow
+ * @type {String}
  */
 OrderDetails.prototype.deliveryWindow = undefined
 
 /**
  * A list of items in this purchase order.
  * @member {Array.<module:vendororders_v1/model/OrderItem>} items
+ * @type {Array.<module:vendororders_v1/model/OrderItem>}
  */
 OrderDetails.prototype.items = undefined

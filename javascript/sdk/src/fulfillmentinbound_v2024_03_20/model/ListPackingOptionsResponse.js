@@ -63,10 +63,12 @@ export class ListPackingOptionsResponse {
 /**
  * List of packing options.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingOption>} packingOptions
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingOption>}
  */
 ListPackingOptionsResponse.prototype.packingOptions = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListPackingOptionsResponse.prototype.pagination = undefined

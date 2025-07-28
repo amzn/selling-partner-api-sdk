@@ -63,17 +63,20 @@ export class Recurrence {
 /**
  * End time of the recurrence.
  * @member {Date} endTime
+ * @type {Date}
  */
 Recurrence.prototype.endTime = undefined
 
 /**
  * Days of the week when recurrence is valid. If the schedule is valid every Monday, input will only contain `MONDAY` in the list.
  * @member {Array.<module:services_v1/model/DayOfWeek>} daysOfWeek
+ * @type {Array.<module:services_v1/model/DayOfWeek>}
  */
 Recurrence.prototype.daysOfWeek = undefined
 
 /**
  * Days of the month when recurrence is valid.
  * @member {Array.<Number>} daysOfMonth
+ * @type {Array.<Number>}
  */
 Recurrence.prototype.daysOfMonth = undefined

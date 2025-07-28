@@ -60,10 +60,12 @@ export class ItemDelivery {
 /**
  * The date and time of the latest Estimated Delivery Date (EDD) of all the items with an EDD. In ISO 8601 format.
  * @member {Date} estimatedDeliveryDate
+ * @type {Date}
  */
 ItemDelivery.prototype.estimatedDeliveryDate = undefined
 
 /**
  * @member {module:services_v1/model/ItemDeliveryPromise} itemDeliveryPromise
+ * @type {module:services_v1/model/ItemDeliveryPromise}
  */
 ItemDelivery.prototype.itemDeliveryPromise = undefined

@@ -66,15 +66,18 @@ export class ListOffersRequest {
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ListOffersRequestPagination} pagination
+ * @type {module:replenishment_v2022_11_07/model/ListOffersRequestPagination}
  */
 ListOffersRequest.prototype.pagination = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ListOffersRequestFilters} filters
+ * @type {module:replenishment_v2022_11_07/model/ListOffersRequestFilters}
  */
 ListOffersRequest.prototype.filters = undefined
 
 /**
  * @member {module:replenishment_v2022_11_07/model/ListOffersRequestSort} sort
+ * @type {module:replenishment_v2022_11_07/model/ListOffersRequestSort}
  */
 ListOffersRequest.prototype.sort = undefined

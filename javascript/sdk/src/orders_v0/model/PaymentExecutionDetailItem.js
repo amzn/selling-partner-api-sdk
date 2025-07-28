@@ -63,11 +63,13 @@ export class PaymentExecutionDetailItem {
 
 /**
  * @member {module:orders_v0/model/Money} payment
+ * @type {module:orders_v0/model/Money}
  */
 PaymentExecutionDetailItem.prototype.payment = undefined
 
 /**
  * A sub-payment method for a COD order.  **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points * `Invoice`: Invoice
  * @member {String} paymentMethod
+ * @type {String}
  */
 PaymentExecutionDetailItem.prototype.paymentMethod = undefined

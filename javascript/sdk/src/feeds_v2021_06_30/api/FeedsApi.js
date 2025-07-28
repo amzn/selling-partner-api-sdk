@@ -29,7 +29,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-06-30
 */
 export class FeedsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -76,7 +76,7 @@ export class FeedsApi {
   /**
      * Cancels the feed that you specify. Only feeds with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be cancelled. Cancelled feeds are returned in subsequent calls to the [&#x60;getFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeed) and [&#x60;getFeeds&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeeds) operations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   cancelFeedWithHttpInfo (feedId) {
     const postBody = null
@@ -110,7 +110,7 @@ export class FeedsApi {
   /**
      * Cancels the feed that you specify. Only feeds with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be cancelled. Cancelled feeds are returned in subsequent calls to the [&#x60;getFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeed) and [&#x60;getFeeds&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#getfeeds) operations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   cancelFeed (feedId) {
     return this.cancelFeedWithHttpInfo(feedId)
@@ -122,7 +122,7 @@ export class FeedsApi {
   /**
      * Creates a feed. Upload the contents of the feed document before calling this operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  The rate limit for the [&#x60;JSON_LISTINGS_FEED&#x60;](https://developer-docs.amazon.com/sp-api/docs/listings-feed-type-values#listings-feed) feed type differs from the rate limit for the [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#post-feeds2021-06-30feeds) operation. For more information, refer to the [Building Listings Management Workflows Guide](https://developer-docs.amazon.com/sp-api/docs/building-listings-management-workflows-guide#should-i-submit-in-bulk-using-the-json_listings_feed-or-individually-with-the-listings-items-api).
      * @param {module:feeds_v2021_06_30/model/CreateFeedSpecification} body Information required to create the feed.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:feeds_v2021_06_30/model/CreateFeedResponse} and HTTP response
+     * @return {Promise<module:feeds_v2021_06_30/model/CreateFeedResponse>}
      */
   createFeedWithHttpInfo (body) {
     const postBody = body
@@ -155,7 +155,7 @@ export class FeedsApi {
   /**
      * Creates a feed. Upload the contents of the feed document before calling this operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0083 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  The rate limit for the [&#x60;JSON_LISTINGS_FEED&#x60;](https://developer-docs.amazon.com/sp-api/docs/listings-feed-type-values#listings-feed) feed type differs from the rate limit for the [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#post-feeds2021-06-30feeds) operation. For more information, refer to the [Building Listings Management Workflows Guide](https://developer-docs.amazon.com/sp-api/docs/building-listings-management-workflows-guide#should-i-submit-in-bulk-using-the-json_listings_feed-or-individually-with-the-listings-items-api).
      * @param {module:feeds_v2021_06_30/model/CreateFeedSpecification} body Information required to create the feed.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:feeds_v2021_06_30/model/CreateFeedResponse}
+     * @return {Promise<module:feeds_v2021_06_30/model/CreateFeedResponse>}
      */
   createFeed (body) {
     return this.createFeedWithHttpInfo(body)
@@ -167,7 +167,7 @@ export class FeedsApi {
   /**
      * Creates a feed document for the feed type that you specify. This operation returns a presigned URL for uploading the feed document contents. It also returns a &#x60;feedDocumentId&#x60; value that you can pass in with a subsequent call to the [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#createfeed) operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:feeds_v2021_06_30/model/CreateFeedDocumentSpecification} body Specifies the content type for the createFeedDocument operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:feeds_v2021_06_30/model/CreateFeedDocumentResponse} and HTTP response
+     * @return {Promise<module:feeds_v2021_06_30/model/CreateFeedDocumentResponse>}
      */
   createFeedDocumentWithHttpInfo (body) {
     const postBody = body
@@ -200,7 +200,7 @@ export class FeedsApi {
   /**
      * Creates a feed document for the feed type that you specify. This operation returns a presigned URL for uploading the feed document contents. It also returns a &#x60;feedDocumentId&#x60; value that you can pass in with a subsequent call to the [&#x60;createFeed&#x60;](https://developer-docs.amazon.com/sp-api/docs/feeds-api-v2021-06-30-reference#createfeed) operation.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:feeds_v2021_06_30/model/CreateFeedDocumentSpecification} body Specifies the content type for the createFeedDocument operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:feeds_v2021_06_30/model/CreateFeedDocumentResponse}
+     * @return {Promise<module:feeds_v2021_06_30/model/CreateFeedDocumentResponse>}
      */
   createFeedDocument (body) {
     return this.createFeedDocumentWithHttpInfo(body)
@@ -212,7 +212,7 @@ export class FeedsApi {
   /**
      * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:feeds_v2021_06_30/model/Feed} and HTTP response
+     * @return {Promise<module:feeds_v2021_06_30/model/Feed>}
      */
   getFeedWithHttpInfo (feedId) {
     const postBody = null
@@ -246,7 +246,7 @@ export class FeedsApi {
   /**
      * Returns feed details (including the &#x60;resultDocumentId&#x60;, if available) for the feed that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:feeds_v2021_06_30/model/Feed}
+     * @return {Promise<module:feeds_v2021_06_30/model/Feed>}
      */
   getFeed (feedId) {
     return this.getFeedWithHttpInfo(feedId)
@@ -258,7 +258,7 @@ export class FeedsApi {
   /**
      * Returns the information required for retrieving a feed document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} feedDocumentId The identifier of the feed document.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:feeds_v2021_06_30/model/FeedDocument} and HTTP response
+     * @return {Promise<module:feeds_v2021_06_30/model/FeedDocument>}
      */
   getFeedDocumentWithHttpInfo (feedDocumentId) {
     const postBody = null
@@ -292,7 +292,7 @@ export class FeedsApi {
   /**
      * Returns the information required for retrieving a feed document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} feedDocumentId The identifier of the feed document.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:feeds_v2021_06_30/model/FeedDocument}
+     * @return {Promise<module:feeds_v2021_06_30/model/FeedDocument>}
      */
   getFeedDocument (feedDocumentId) {
     return this.getFeedDocumentWithHttpInfo(feedDocumentId)
@@ -311,7 +311,7 @@ export class FeedsApi {
      * @param {Date} opts.createdSince The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days.
      * @param {Date} opts.createdUntil The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now.
      * @param {String} opts.nextToken A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:feeds_v2021_06_30/model/GetFeedsResponse} and HTTP response
+     * @return {Promise<module:feeds_v2021_06_30/model/GetFeedsResponse>}
      */
   getFeedsWithHttpInfo (opts) {
     opts = opts || {}
@@ -354,7 +354,7 @@ export class FeedsApi {
      * @param {Date} opts.createdSince The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days.
      * @param {Date} opts.createdUntil The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now.
      * @param {String} opts.nextToken A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:feeds_v2021_06_30/model/GetFeedsResponse}
+     * @return {Promise<module:feeds_v2021_06_30/model/GetFeedsResponse>}
      */
   getFeeds (opts) {
     return this.getFeedsWithHttpInfo(opts)

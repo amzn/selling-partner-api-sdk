@@ -59,5 +59,6 @@ export class CancelServiceJobByServiceJobIdResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type {Array.<module:services_v1/model/Error>}
  */
 CancelServiceJobByServiceJobIdResponse.prototype.errors = undefined

@@ -69,23 +69,27 @@ export class FeesEstimateError {
 /**
  * An error type, identifying either the receiver or the sender as the originator of the error.
  * @member {String} type
+ * @type {String}
  */
 FeesEstimateError.prototype.type = undefined
 
 /**
  * An error code that identifies the type of error that occurred.
  * @member {String} code
+ * @type {String}
  */
 FeesEstimateError.prototype.code = undefined
 
 /**
  * A message that describes the error condition.
  * @member {String} message
+ * @type {String}
  */
 FeesEstimateError.prototype.message = undefined
 
 /**
  * Additional information that can help the caller understand or fix the issue.
  * @member {Array.<Object>} detail
+ * @type {Array.<Object>}
  */
 FeesEstimateError.prototype.detail = undefined

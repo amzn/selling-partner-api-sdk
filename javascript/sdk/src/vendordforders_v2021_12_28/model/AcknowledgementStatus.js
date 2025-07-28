@@ -59,11 +59,13 @@ export class AcknowledgementStatus {
 /**
  * Acknowledgement code is a unique two digit value which indicates the status of the acknowledgement. For a list of acknowledgement codes that Amazon supports, see the Vendor Direct Fulfillment APIs Use Case Guide.
  * @member {String} code
+ * @type {String}
  */
 AcknowledgementStatus.prototype.code = undefined
 
 /**
  * Reason for the acknowledgement code.
  * @member {String} description
+ * @type {String}
  */
 AcknowledgementStatus.prototype.description = undefined

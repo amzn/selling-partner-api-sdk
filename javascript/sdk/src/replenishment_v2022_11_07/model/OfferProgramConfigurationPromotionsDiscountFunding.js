@@ -58,5 +58,6 @@ export class OfferProgramConfigurationPromotionsDiscountFunding {
 /**
  * The percentage discount on the offer.
  * @member {Number} percentage
+ * @type {Number}
  */
 OfferProgramConfigurationPromotionsDiscountFunding.prototype.percentage = undefined

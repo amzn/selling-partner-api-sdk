@@ -59,5 +59,6 @@ export class GetFulfillmentPreviewResult {
 /**
  * An array of fulfillment preview information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreview>} fulfillmentPreviews
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreview>}
  */
 GetFulfillmentPreviewResult.prototype.fulfillmentPreviews = undefined

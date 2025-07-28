@@ -59,11 +59,13 @@ export class MarketplaceDetails {
 /**
  * The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 MarketplaceDetails.prototype.marketplaceId = undefined
 
 /**
  * The name of the marketplace where the transaction occurred.   Example: 'Amazon.com','Amazon.in'
  * @member {String} marketplaceName
+ * @type {String}
  */
 MarketplaceDetails.prototype.marketplaceName = undefined

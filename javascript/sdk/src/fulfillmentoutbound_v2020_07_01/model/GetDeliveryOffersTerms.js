@@ -64,10 +64,12 @@ export class GetDeliveryOffersTerms {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Origin} origin
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Origin}
  */
 GetDeliveryOffersTerms.prototype.origin = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Destination} destination
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Destination}
  */
 GetDeliveryOffersTerms.prototype.destination = undefined

@@ -61,5 +61,6 @@ export class Errors {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:pricing_v0/model/Error>} errors
+ * @type {Array.<module:pricing_v0/model/Error>}
  */
 Errors.prototype.errors = undefined

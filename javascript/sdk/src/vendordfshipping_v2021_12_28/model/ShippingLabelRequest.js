@@ -69,21 +69,25 @@ export class ShippingLabelRequest {
 /**
  * The purchase order number of the order for which to create a shipping label.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 ShippingLabelRequest.prototype.purchaseOrderNumber = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
  */
 ShippingLabelRequest.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
  */
 ShippingLabelRequest.prototype.shipFromParty = undefined
 
 /**
  * A list of the packages in this shipment.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/Container>} containers
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/Container>}
  */
 ShippingLabelRequest.prototype.containers = undefined

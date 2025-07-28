@@ -64,35 +64,41 @@ export class RemovalShipmentAdjustmentEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 RemovalShipmentAdjustmentEvent.prototype.postedDate = undefined
 
 /**
  * The unique identifier for the adjustment event.
  * @member {String} adjustmentEventId
+ * @type {String}
  */
 RemovalShipmentAdjustmentEvent.prototype.adjustmentEventId = undefined
 
 /**
  * The merchant removal orderId.
  * @member {String} merchantOrderId
+ * @type {String}
  */
 RemovalShipmentAdjustmentEvent.prototype.merchantOrderId = undefined
 
 /**
  * The orderId for shipping inventory.
  * @member {String} orderId
+ * @type {String}
  */
 RemovalShipmentAdjustmentEvent.prototype.orderId = undefined
 
 /**
  * The type of removal order.  Possible values:  * WHOLESALE_LIQUIDATION.
  * @member {String} transactionType
+ * @type {String}
  */
 RemovalShipmentAdjustmentEvent.prototype.transactionType = undefined
 
 /**
  * A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.
  * @member {Array.<module:finances_v0/model/RemovalShipmentItemAdjustment>} removalShipmentItemAdjustmentList
+ * @type {Array.<module:finances_v0/model/RemovalShipmentItemAdjustment>}
  */
 RemovalShipmentAdjustmentEvent.prototype.removalShipmentItemAdjustmentList = undefined

@@ -62,10 +62,12 @@ export class StandardSingleSideImageModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/PositionType} imagePositionType
+ * @type {module:apluscontent_v2020_11_01/model/PositionType}
  */
 StandardSingleSideImageModule.prototype.imagePositionType = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
  */
 StandardSingleSideImageModule.prototype.block = undefined

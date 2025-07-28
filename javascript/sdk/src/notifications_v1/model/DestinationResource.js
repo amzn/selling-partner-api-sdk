@@ -60,10 +60,12 @@ export class DestinationResource {
 
 /**
  * @member {module:notifications_v1/model/SqsResource} sqs
+ * @type {module:notifications_v1/model/SqsResource}
  */
 DestinationResource.prototype.sqs = undefined
 
 /**
  * @member {module:notifications_v1/model/EventBridgeResource} eventBridge
+ * @type {module:notifications_v1/model/EventBridgeResource}
  */
 DestinationResource.prototype.eventBridge = undefined

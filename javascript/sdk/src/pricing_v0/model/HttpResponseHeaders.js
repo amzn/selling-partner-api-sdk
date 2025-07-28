@@ -61,11 +61,13 @@ export class HttpResponseHeaders {
 /**
  * The timestamp that the API request was received.  For more information, consult [RFC 2616 Section 14](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
  * @member {String} date
+ * @type {String}
  */
 HttpResponseHeaders.prototype.date = undefined
 
 /**
  * Unique request reference identifier.
  * @member {String} xAmznRequestId
+ * @type {String}
  */
 HttpResponseHeaders.prototype.xAmznRequestId = undefined

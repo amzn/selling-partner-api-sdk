@@ -60,5 +60,6 @@ export class GenerateDeliveryWindowOptionsResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 GenerateDeliveryWindowOptionsResponse.prototype.operationId = undefined

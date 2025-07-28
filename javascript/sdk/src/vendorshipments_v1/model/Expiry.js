@@ -61,16 +61,19 @@ export class Expiry {
 /**
  * Production, packaging or assembly date determined by the manufacturer. Its meaning is determined based on the trade item context.
  * @member {Date} manufacturerDate
+ * @type {Date}
  */
 Expiry.prototype.manufacturerDate = undefined
 
 /**
  * The date that determines the limit of consumption or use of a product. Its meaning is determined based on the trade item context.
  * @member {Date} expiryDate
+ * @type {Date}
  */
 Expiry.prototype.expiryDate = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Duration} expiryAfterDuration
+ * @type {module:vendorshipments_v1/model/Duration}
  */
 Expiry.prototype.expiryAfterDuration = undefined

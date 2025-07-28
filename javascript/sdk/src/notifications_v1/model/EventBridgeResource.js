@@ -66,17 +66,20 @@ export class EventBridgeResource {
 /**
  * The name of the partner event source associated with the destination.
  * @member {String} name
+ * @type {String}
  */
 EventBridgeResource.prototype.name = undefined
 
 /**
  * The AWS region in which you receive the notifications. For AWS regions that are supported in Amazon EventBridge, refer to [Amazon EventBridge endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ev.html).
  * @member {String} region
+ * @type {String}
  */
 EventBridgeResource.prototype.region = undefined
 
 /**
  * The identifier for the AWS account that is responsible for charges related to receiving notifications.
  * @member {String} accountId
+ * @type {String}
  */
 EventBridgeResource.prototype.accountId = undefined

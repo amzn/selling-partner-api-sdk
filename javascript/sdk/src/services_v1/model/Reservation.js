@@ -65,6 +65,7 @@ export class Reservation {
 /**
  * Unique identifier for a reservation. If present, it is treated as an update reservation request and will update the corresponding reservation. Otherwise, it is treated as a new create reservation request.
  * @member {String} reservationId
+ * @type {String}
  */
 Reservation.prototype.reservationId = undefined
 
@@ -109,10 +110,12 @@ Reservation.TypeEnum = {
 /**
  * Type of reservation.
  * @member {module:services_v1/model/Reservation.TypeEnum} type
+ * @type {module:services_v1/model/Reservation.TypeEnum}
  */
 Reservation.prototype.type = undefined
 
 /**
  * @member {module:services_v1/model/AvailabilityRecord} availability
+ * @type {module:services_v1/model/AvailabilityRecord}
  */
 Reservation.prototype.availability = undefined

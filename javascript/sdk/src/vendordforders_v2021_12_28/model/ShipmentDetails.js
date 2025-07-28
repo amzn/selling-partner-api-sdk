@@ -75,40 +75,47 @@ export class ShipmentDetails {
 /**
  * When true, this is a priority shipment.
  * @member {Boolean} isPriorityShipment
+ * @type {Boolean}
  */
 ShipmentDetails.prototype.isPriorityShipment = undefined
 
 /**
  * When true, this order is part of a scheduled delivery program.
  * @member {Boolean} isScheduledDeliveryShipment
+ * @type {Boolean}
  */
 ShipmentDetails.prototype.isScheduledDeliveryShipment = undefined
 
 /**
  * When true, a packing slip is required to be sent to the customer.
  * @member {Boolean} isPslipRequired
+ * @type {Boolean}
  */
 ShipmentDetails.prototype.isPslipRequired = undefined
 
 /**
  * When true, the order contain a gift. Include the gift message and gift wrap information.
  * @member {Boolean} isGift
+ * @type {Boolean}
  */
 ShipmentDetails.prototype.isGift = undefined
 
 /**
  * Ship method to be used for shipping the order. Amazon defines ship method codes indicating the shipping carrier and shipment service level. To see the full list of ship methods in use, including both the code and the friendly name, search the 'Help' section on Vendor Central for 'ship methods'.
  * @member {String} shipMethod
+ * @type {String}
  */
 ShipmentDetails.prototype.shipMethod = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ShipmentDates} shipmentDates
+ * @type {module:vendordforders_v2021_12_28/model/ShipmentDates}
  */
 ShipmentDetails.prototype.shipmentDates = undefined
 
 /**
  * Message to customer for order status.
  * @member {String} messageToCustomer
+ * @type {String}
  */
 ShipmentDetails.prototype.messageToCustomer = undefined

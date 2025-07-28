@@ -90,80 +90,96 @@ export class ContentModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ContentModuleType} contentModuleType
+ * @type {module:apluscontent_v2020_11_01/model/ContentModuleType}
  */
 ContentModule.prototype.contentModuleType = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule} standardCompanyLogo
+ * @type {module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule}
  */
 ContentModule.prototype.standardCompanyLogo = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardComparisonTableModule} standardComparisonTable
+ * @type {module:apluscontent_v2020_11_01/model/StandardComparisonTableModule}
  */
 ContentModule.prototype.standardComparisonTable = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardFourImageTextModule} standardFourImageText
+ * @type {module:apluscontent_v2020_11_01/model/StandardFourImageTextModule}
  */
 ContentModule.prototype.standardFourImageText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule} standardFourImageTextQuadrant
+ * @type {module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule}
  */
 ContentModule.prototype.standardFourImageTextQuadrant = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardHeaderImageTextModule} standardHeaderImageText
+ * @type {module:apluscontent_v2020_11_01/model/StandardHeaderImageTextModule}
  */
 ContentModule.prototype.standardHeaderImageText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageSidebarModule} standardImageSidebar
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageSidebarModule}
  */
 ContentModule.prototype.standardImageSidebar = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule} standardImageTextOverlay
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule}
  */
 ContentModule.prototype.standardImageTextOverlay = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardMultipleImageTextModule} standardMultipleImageText
+ * @type {module:apluscontent_v2020_11_01/model/StandardMultipleImageTextModule}
  */
 ContentModule.prototype.standardMultipleImageText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule} standardProductDescription
+ * @type {module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule}
  */
 ContentModule.prototype.standardProductDescription = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardSingleImageHighlightsModule} standardSingleImageHighlights
+ * @type {module:apluscontent_v2020_11_01/model/StandardSingleImageHighlightsModule}
  */
 ContentModule.prototype.standardSingleImageHighlights = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardSingleImageSpecsDetailModule} standardSingleImageSpecsDetail
+ * @type {module:apluscontent_v2020_11_01/model/StandardSingleImageSpecsDetailModule}
  */
 ContentModule.prototype.standardSingleImageSpecsDetail = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule} standardSingleSideImage
+ * @type {module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule}
  */
 ContentModule.prototype.standardSingleSideImage = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTechSpecsModule} standardTechSpecs
+ * @type {module:apluscontent_v2020_11_01/model/StandardTechSpecsModule}
  */
 ContentModule.prototype.standardTechSpecs = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardTextModule} standardText
+ * @type {module:apluscontent_v2020_11_01/model/StandardTextModule}
  */
 ContentModule.prototype.standardText = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardThreeImageTextModule} standardThreeImageText
+ * @type {module:apluscontent_v2020_11_01/model/StandardThreeImageTextModule}
  */
 ContentModule.prototype.standardThreeImageText = undefined

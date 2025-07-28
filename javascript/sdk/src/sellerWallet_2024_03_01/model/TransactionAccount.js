@@ -73,40 +73,47 @@ export class TransactionAccount {
 /**
  * The unique identifier provided by Amazon to identify the account.
  * @member {String} accountId
+ * @type {String}
  */
 TransactionAccount.prototype.accountId = undefined
 
 /**
  * The account holder's name.
  * @member {String} bankAccountHolderName
+ * @type {String}
  */
 TransactionAccount.prototype.bankAccountHolderName = undefined
 
 /**
  * The name of the bank.
  * @member {String} bankName
+ * @type {String}
  */
 TransactionAccount.prototype.bankName = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat} bankAccountNumberFormat
+ * @type {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat}
  */
 TransactionAccount.prototype.bankAccountNumberFormat = undefined
 
 /**
  * The last three digits of the bank account number.
  * @member {String} bankAccountNumberTail
+ * @type {String}
  */
 TransactionAccount.prototype.bankAccountNumberTail = undefined
 
 /**
  * The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.
  * @member {String} bankAccountCountryCode
+ * @type {String}
  */
 TransactionAccount.prototype.bankAccountCountryCode = undefined
 
 /**
  * The currency code in ISO 4217 format.
  * @member {String} bankAccountCurrency
+ * @type {String}
  */
 TransactionAccount.prototype.bankAccountCurrency = undefined

@@ -61,10 +61,12 @@ export class ListInboundPlansResponse {
 /**
  * A list of inbound plans with minimal information.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/InboundPlanSummary>} inboundPlans
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/InboundPlanSummary>}
  */
 ListInboundPlansResponse.prototype.inboundPlans = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListInboundPlansResponse.prototype.pagination = undefined

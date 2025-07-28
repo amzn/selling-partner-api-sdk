@@ -79,85 +79,100 @@ export class PackageTrackingDetails {
 /**
  * The package identifier.
  * @member {Number} packageNumber
+ * @type {Number}
  */
 PackageTrackingDetails.prototype.packageNumber = undefined
 
 /**
  * The tracking number for the package.
  * @member {String} trackingNumber
+ * @type {String}
  */
 PackageTrackingDetails.prototype.trackingNumber = undefined
 
 /**
  * Link on swiship.com that allows customers to track the package.
  * @member {String} customerTrackingLink
+ * @type {String}
  */
 PackageTrackingDetails.prototype.customerTrackingLink = undefined
 
 /**
  * The name of the carrier.
  * @member {String} carrierCode
+ * @type {String}
  */
 PackageTrackingDetails.prototype.carrierCode = undefined
 
 /**
  * The phone number of the carrier.
  * @member {String} carrierPhoneNumber
+ * @type {String}
  */
 PackageTrackingDetails.prototype.carrierPhoneNumber = undefined
 
 /**
  * The URL of the carrier's website.
  * @member {String} carrierURL
+ * @type {String}
  */
 PackageTrackingDetails.prototype.carrierURL = undefined
 
 /**
  * Date timestamp
  * @member {Date} shipDate
+ * @type {Date}
  */
 PackageTrackingDetails.prototype.shipDate = undefined
 
 /**
  * Date timestamp
  * @member {Date} estimatedArrivalDate
+ * @type {Date}
  */
 PackageTrackingDetails.prototype.estimatedArrivalDate = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress} shipToAddress
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress}
  */
 PackageTrackingDetails.prototype.shipToAddress = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/CurrentStatus} currentStatus
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/CurrentStatus}
  */
 PackageTrackingDetails.prototype.currentStatus = undefined
 
 /**
  * Description corresponding to the CurrentStatus value.
  * @member {String} currentStatusDescription
+ * @type {String}
  */
 PackageTrackingDetails.prototype.currentStatusDescription = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DateRange} deliveryWindow
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/DateRange}
  */
 PackageTrackingDetails.prototype.deliveryWindow = undefined
 
 /**
  * The name of the person who signed for the package.
  * @member {String} signedForBy
+ * @type {String}
  */
 PackageTrackingDetails.prototype.signedForBy = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/AdditionalLocationInfo} additionalLocationInfo
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/AdditionalLocationInfo}
  */
 PackageTrackingDetails.prototype.additionalLocationInfo = undefined
 
 /**
  * An array of tracking event information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent>} trackingEvents
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent>}
  */
 PackageTrackingDetails.prototype.trackingEvents = undefined

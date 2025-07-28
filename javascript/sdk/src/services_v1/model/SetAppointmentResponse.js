@@ -62,17 +62,20 @@ export class SetAppointmentResponse {
 /**
  * The appointment identifier.
  * @member {String} appointmentId
+ * @type {String}
  */
 SetAppointmentResponse.prototype.appointmentId = undefined
 
 /**
  * A list of warnings returned in the sucessful execution response of an API request.
  * @member {Array.<module:services_v1/model/Warning>} warnings
+ * @type {Array.<module:services_v1/model/Warning>}
  */
 SetAppointmentResponse.prototype.warnings = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type {Array.<module:services_v1/model/Error>}
  */
 SetAppointmentResponse.prototype.errors = undefined

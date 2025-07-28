@@ -58,5 +58,6 @@ export class GetAttributesResponseBuyer {
 /**
  * The buyer's language of preference, indicated with a locale-specific language tag. Examples: \"en-US\", \"zh-CN\", and \"en-GB\".
  * @member {String} locale
+ * @type {String}
  */
 GetAttributesResponseBuyer.prototype.locale = undefined

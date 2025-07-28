@@ -61,23 +61,27 @@ export class ReservedQuantity {
 /**
  * The total number of units in Amazon's fulfillment network that are currently being picked, packed, and shipped; or are sidelined for measurement, sampling, or other internal processes.
  * @member {Number} totalReservedQuantity
+ * @type {Number}
  */
 ReservedQuantity.prototype.totalReservedQuantity = undefined
 
 /**
  * The number of units reserved for customer orders.
  * @member {Number} pendingCustomerOrderQuantity
+ * @type {Number}
  */
 ReservedQuantity.prototype.pendingCustomerOrderQuantity = undefined
 
 /**
  * The number of units being transferred from one fulfillment center to another.
  * @member {Number} pendingTransshipmentQuantity
+ * @type {Number}
  */
 ReservedQuantity.prototype.pendingTransshipmentQuantity = undefined
 
 /**
  * The number of units that have been sidelined at the fulfillment center for additional processing.
  * @member {Number} fcProcessingQuantity
+ * @type {Number}
  */
 ReservedQuantity.prototype.fcProcessingQuantity = undefined

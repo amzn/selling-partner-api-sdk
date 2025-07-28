@@ -60,11 +60,13 @@ export class OrderItemStatusOrderedQuantity {
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderItemStatusOrderedQuantity.prototype.orderedQuantity = undefined
 
 /**
  * Details of item quantity ordered.
  * @member {Array.<module:vendororders_v1/model/OrderedQuantityDetails>} orderedQuantityDetails
+ * @type {Array.<module:vendororders_v1/model/OrderedQuantityDetails>}
  */
 OrderItemStatusOrderedQuantity.prototype.orderedQuantityDetails = undefined

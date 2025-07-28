@@ -58,5 +58,6 @@ export class AccessPointDetails {
 /**
  * Unique identifier for the access point
  * @member {String} accessPointId
+ * @type {String}
  */
 AccessPointDetails.prototype.accessPointId = undefined

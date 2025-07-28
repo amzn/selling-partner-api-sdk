@@ -58,5 +58,6 @@ export class AggregationFilter {
 
 /**
  * @member {module:notifications_v1/model/AggregationSettings} aggregationSettings
+ * @type {module:notifications_v1/model/AggregationSettings}
  */
 AggregationFilter.prototype.aggregationSettings = undefined

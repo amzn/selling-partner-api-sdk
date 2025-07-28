@@ -65,16 +65,19 @@ export class PrimaryContact {
 /**
  * The full name of the seller's primary contact.
  * @member {String} name
+ * @type {String}
  */
 PrimaryContact.prototype.name = undefined
 
 /**
  * @member {module:sellers_v1/model/Address} address
+ * @type {module:sellers_v1/model/Address}
  */
 PrimaryContact.prototype.address = undefined
 
 /**
  * The non-Latin script version of the primary contact's name, if applicable.
  * @member {String} nonLatinName
+ * @type {String}
  */
 PrimaryContact.prototype.nonLatinName = undefined

@@ -60,10 +60,12 @@ export class TrackingSummary {
 
 /**
  * @member {module:shipping_v2/model/Status} status
+ * @type {module:shipping_v2/model/Status}
  */
 TrackingSummary.prototype.status = undefined
 
 /**
  * @member {module:shipping_v2/model/TrackingDetailCodes} trackingDetailCodes
+ * @type {module:shipping_v2/model/TrackingDetailCodes}
  */
 TrackingSummary.prototype.trackingDetailCodes = undefined

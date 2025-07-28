@@ -23,7 +23,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class UpdateInventoryApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -66,7 +66,7 @@ export class UpdateInventoryApi {
      * Submits inventory updates for the specified warehouse for either a partial or full feed of inventory items.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} warehouseId Identifier for the warehouse for which to update inventory.
      * @param {module:vendordfinventory_v1/model/SubmitInventoryUpdateRequest} body The request body containing the inventory update data to submit.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendordfinventory_v1/model/SubmitInventoryUpdateResponse} and HTTP response
+     * @return {Promise<module:vendordfinventory_v1/model/SubmitInventoryUpdateResponse>}
      */
   submitInventoryUpdateWithHttpInfo (warehouseId, body) {
     const postBody = body
@@ -106,7 +106,7 @@ export class UpdateInventoryApi {
      * Submits inventory updates for the specified warehouse for either a partial or full feed of inventory items.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} warehouseId Identifier for the warehouse for which to update inventory.
      * @param {module:vendordfinventory_v1/model/SubmitInventoryUpdateRequest} body The request body containing the inventory update data to submit.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendordfinventory_v1/model/SubmitInventoryUpdateResponse}
+     * @return {Promise<module:vendordfinventory_v1/model/SubmitInventoryUpdateResponse>}
      */
   submitInventoryUpdate (warehouseId, body) {
     return this.submitInventoryUpdateWithHttpInfo(warehouseId, body)

@@ -60,17 +60,20 @@ export class UploadDestination {
 /**
  * The unique identifier for the upload destination.
  * @member {String} uploadDestinationId
+ * @type {String}
  */
 UploadDestination.prototype.uploadDestinationId = undefined
 
 /**
  * The URL for the upload destination.
  * @member {String} url
+ * @type {String}
  */
 UploadDestination.prototype.url = undefined
 
 /**
  * The headers to include in the upload request.
  * @member {Object} headers
+ * @type {Object}
  */
 UploadDestination.prototype.headers = undefined

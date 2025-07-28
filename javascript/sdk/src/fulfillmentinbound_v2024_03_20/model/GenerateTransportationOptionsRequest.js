@@ -64,11 +64,13 @@ export class GenerateTransportationOptionsRequest {
 /**
  * The placement option to generate transportation options for.
  * @member {String} placementOptionId
+ * @type {String}
  */
 GenerateTransportationOptionsRequest.prototype.placementOptionId = undefined
 
 /**
  * List of shipment transportation configurations.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration>} shipmentTransportationConfigurations
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration>}
  */
 GenerateTransportationOptionsRequest.prototype.shipmentTransportationConfigurations = undefined

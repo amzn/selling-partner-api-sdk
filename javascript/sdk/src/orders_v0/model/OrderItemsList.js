@@ -65,17 +65,20 @@ export class OrderItemsList {
 /**
  * A list of order items.
  * @member {Array.<module:orders_v0/model/OrderItem>} orderItems
+ * @type {Array.<module:orders_v0/model/OrderItem>}
  */
 OrderItemsList.prototype.orderItems = undefined
 
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 OrderItemsList.prototype.nextToken = undefined
 
 /**
  * An Amazon-defined order identifier, in 3-7-7 format.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 OrderItemsList.prototype.amazonOrderId = undefined

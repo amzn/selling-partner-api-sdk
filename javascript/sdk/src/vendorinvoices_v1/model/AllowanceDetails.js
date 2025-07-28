@@ -111,22 +111,26 @@ AllowanceDetails.TypeEnum = {
 /**
  * Type of the allowance applied.
  * @member {module:vendorinvoices_v1/model/AllowanceDetails.TypeEnum} type
+ * @type {module:vendorinvoices_v1/model/AllowanceDetails.TypeEnum}
  */
 AllowanceDetails.prototype.type = undefined
 
 /**
  * Description of the allowance.
  * @member {String} description
+ * @type {String}
  */
 AllowanceDetails.prototype.description = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/Money} allowanceAmount
+ * @type {module:vendorinvoices_v1/model/Money}
  */
 AllowanceDetails.prototype.allowanceAmount = undefined
 
 /**
  * Tax amount details applied on this allowance.
  * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
+ * @type {Array.<module:vendorinvoices_v1/model/TaxDetails>}
  */
 AllowanceDetails.prototype.taxDetails = undefined

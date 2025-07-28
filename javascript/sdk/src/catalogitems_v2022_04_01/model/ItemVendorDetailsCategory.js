@@ -59,11 +59,13 @@ export class ItemVendorDetailsCategory {
 /**
  * The display name of the product category or subcategory.
  * @member {String} displayName
+ * @type {String}
  */
 ItemVendorDetailsCategory.prototype.displayName = undefined
 
 /**
  * The code that identifies the product category or subcategory.
  * @member {String} value
+ * @type {String}
  */
 ItemVendorDetailsCategory.prototype.value = undefined

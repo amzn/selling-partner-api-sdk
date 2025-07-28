@@ -64,6 +64,7 @@ export class ConfirmShipmentRequest {
 
 /**
  * @member {module:orders_v0/model/PackageDetail} packageDetail
+ * @type {module:orders_v0/model/PackageDetail}
  */
 ConfirmShipmentRequest.prototype.packageDetail = undefined
 
@@ -84,11 +85,13 @@ ConfirmShipmentRequest.CodCollectionMethodEnum = {
 /**
  * The COD collection method (only supported in the JP marketplace).
  * @member {module:orders_v0/model/ConfirmShipmentRequest.CodCollectionMethodEnum} codCollectionMethod
+ * @type {module:orders_v0/model/ConfirmShipmentRequest.CodCollectionMethodEnum}
  */
 ConfirmShipmentRequest.prototype.codCollectionMethod = undefined
 
 /**
  * The unobfuscated marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ConfirmShipmentRequest.prototype.marketplaceId = undefined

@@ -62,10 +62,12 @@ export class ScheduleExpression {
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/ScheduleExpressionType} scheduleExpressionType
+ * @type {module:sellerWallet_2024_03_01/model/ScheduleExpressionType}
  */
 ScheduleExpression.prototype.scheduleExpressionType = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/RecurringFrequency} recurringFrequency
+ * @type {module:sellerWallet_2024_03_01/model/RecurringFrequency}
  */
 ScheduleExpression.prototype.recurringFrequency = undefined

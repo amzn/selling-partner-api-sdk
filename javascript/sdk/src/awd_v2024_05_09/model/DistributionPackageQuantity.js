@@ -64,10 +64,12 @@ export class DistributionPackageQuantity {
 /**
  * Number of cases or pallets with the same package configuration.
  * @member {Number} count
+ * @type {Number}
  */
 DistributionPackageQuantity.prototype.count = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/DistributionPackage} distributionPackage
+ * @type {module:awd_v2024_05_09/model/DistributionPackage}
  */
 DistributionPackageQuantity.prototype.distributionPackage = undefined

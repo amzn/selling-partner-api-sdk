@@ -67,23 +67,27 @@ export class OperationProblem {
 /**
  * An error code that identifies the type of error that occurred.
  * @member {String} code
+ * @type {String}
  */
 OperationProblem.prototype.code = undefined
 
 /**
  * Additional details that can help the caller understand or fix the issue.
  * @member {String} details
+ * @type {String}
  */
 OperationProblem.prototype.details = undefined
 
 /**
  * A message that describes the error condition.
  * @member {String} message
+ * @type {String}
  */
 OperationProblem.prototype.message = undefined
 
 /**
  * The severity of the problem. Possible values: `WARNING`, `ERROR`.
  * @member {String} severity
+ * @type {String}
  */
 OperationProblem.prototype.severity = undefined

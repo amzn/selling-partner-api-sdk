@@ -60,11 +60,13 @@ export class GetServiceJobsResponse {
 
 /**
  * @member {module:services_v1/model/JobListing} payload
+ * @type {module:services_v1/model/JobListing}
  */
 GetServiceJobsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:services_v1/model/Error>} errors
+ * @type {Array.<module:services_v1/model/Error>}
  */
 GetServiceJobsResponse.prototype.errors = undefined

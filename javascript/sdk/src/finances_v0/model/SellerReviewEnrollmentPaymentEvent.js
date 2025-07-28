@@ -66,32 +66,38 @@ export class SellerReviewEnrollmentPaymentEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.postedDate = undefined
 
 /**
  * An enrollment identifier.
  * @member {String} enrollmentId
+ * @type {String}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.enrollmentId = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program.
  * @member {String} parentASIN
+ * @type {String}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.parentASIN = undefined
 
 /**
  * @member {module:finances_v0/model/FeeComponent} feeComponent
+ * @type {module:finances_v0/model/FeeComponent}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.feeComponent = undefined
 
 /**
  * @member {module:finances_v0/model/ChargeComponent} chargeComponent
+ * @type {module:finances_v0/model/ChargeComponent}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.chargeComponent = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} totalAmount
+ * @type {module:finances_v0/model/Currency}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.totalAmount = undefined

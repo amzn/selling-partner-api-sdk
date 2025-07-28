@@ -25,7 +25,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v0
 */
 export class ShipmentInvoiceApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -69,7 +69,7 @@ export class ShipmentInvoiceApi {
   /**
      * Returns the invoice status for the shipment you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier for the shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:invoicing_v0/model/GetInvoiceStatusResponse} and HTTP response
+     * @return {Promise<module:invoicing_v0/model/GetInvoiceStatusResponse>}
      */
   getInvoiceStatusWithHttpInfo (shipmentId) {
     const postBody = null
@@ -103,7 +103,7 @@ export class ShipmentInvoiceApi {
   /**
      * Returns the invoice status for the shipment you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier for the shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:invoicing_v0/model/GetInvoiceStatusResponse}
+     * @return {Promise<module:invoicing_v0/model/GetInvoiceStatusResponse>}
      */
   getInvoiceStatus (shipmentId) {
     return this.getInvoiceStatusWithHttpInfo(shipmentId)
@@ -115,7 +115,7 @@ export class ShipmentInvoiceApi {
   /**
      * Returns the shipment details required to issue an invoice for the specified shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:invoicing_v0/model/GetShipmentDetailsResponse} and HTTP response
+     * @return {Promise<module:invoicing_v0/model/GetShipmentDetailsResponse>}
      */
   getShipmentDetailsWithHttpInfo (shipmentId) {
     const postBody = null
@@ -149,7 +149,7 @@ export class ShipmentInvoiceApi {
   /**
      * Returns the shipment details required to issue an invoice for the specified shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](doc:notifications-api-v1-use-case-guide).
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:invoicing_v0/model/GetShipmentDetailsResponse}
+     * @return {Promise<module:invoicing_v0/model/GetShipmentDetailsResponse>}
      */
   getShipmentDetails (shipmentId) {
     return this.getShipmentDetailsWithHttpInfo(shipmentId)
@@ -162,7 +162,7 @@ export class ShipmentInvoiceApi {
      * Submits a shipment invoice document for a given shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The identifier for the shipment.
      * @param {module:invoicing_v0/model/SubmitInvoiceRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:invoicing_v0/model/SubmitInvoiceResponse} and HTTP response
+     * @return {Promise<module:invoicing_v0/model/SubmitInvoiceResponse>}
      */
   submitInvoiceWithHttpInfo (shipmentId, body) {
     const postBody = body
@@ -202,7 +202,7 @@ export class ShipmentInvoiceApi {
      * Submits a shipment invoice document for a given shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1.133 | 25 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The identifier for the shipment.
      * @param {module:invoicing_v0/model/SubmitInvoiceRequest} body
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:invoicing_v0/model/SubmitInvoiceResponse}
+     * @return {Promise<module:invoicing_v0/model/SubmitInvoiceResponse>}
      */
   submitInvoice (shipmentId, body) {
     return this.submitInvoiceWithHttpInfo(shipmentId, body)

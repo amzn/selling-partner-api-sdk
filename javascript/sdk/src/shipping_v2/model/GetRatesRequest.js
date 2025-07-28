@@ -85,70 +85,83 @@ export class GetRatesRequest {
 
 /**
  * @member {module:shipping_v2/model/Address} shipTo
+ * @type {module:shipping_v2/model/Address}
  */
 GetRatesRequest.prototype.shipTo = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFrom
+ * @type {module:shipping_v2/model/Address}
  */
 GetRatesRequest.prototype.shipFrom = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} returnTo
+ * @type {module:shipping_v2/model/Address}
  */
 GetRatesRequest.prototype.returnTo = undefined
 
 /**
  * The ship date and time (the requested pickup). This defaults to the current date and time.
  * @member {Date} shipDate
+ * @type {Date}
  */
 GetRatesRequest.prototype.shipDate = undefined
 
 /**
  * @member {module:shipping_v2/model/ShipperInstruction} shipperInstruction
+ * @type {module:shipping_v2/model/ShipperInstruction}
  */
 GetRatesRequest.prototype.shipperInstruction = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
  * @member {Array.<module:shipping_v2/model/Package>} packages
+ * @type {Array.<module:shipping_v2/model/Package>}
  */
 GetRatesRequest.prototype.packages = undefined
 
 /**
  * @member {module:shipping_v2/model/ValueAddedServiceDetails} valueAddedServices
+ * @type {module:shipping_v2/model/ValueAddedServiceDetails}
  */
 GetRatesRequest.prototype.valueAddedServices = undefined
 
 /**
  * A list of tax detail information.
  * @member {Array.<module:shipping_v2/model/TaxDetail>} taxDetails
+ * @type {Array.<module:shipping_v2/model/TaxDetail>}
  */
 GetRatesRequest.prototype.taxDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/ChannelDetails} channelDetails
+ * @type {module:shipping_v2/model/ChannelDetails}
  */
 GetRatesRequest.prototype.channelDetails = undefined
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
  * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
+ * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
  */
 GetRatesRequest.prototype.clientReferenceDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/ShipmentType} shipmentType
+ * @type {module:shipping_v2/model/ShipmentType}
  */
 GetRatesRequest.prototype.shipmentType = undefined
 
 /**
  * @member {module:shipping_v2/model/AccessPointDetails} destinationAccessPointDetails
+ * @type {module:shipping_v2/model/AccessPointDetails}
  */
 GetRatesRequest.prototype.destinationAccessPointDetails = undefined
 
 /**
  * A list of CarrierAccounts
  * @member {Array.<module:shipping_v2/model/CarrierAccount>} carrierAccounts
+ * @type {Array.<module:shipping_v2/model/CarrierAccount>}
  */
 GetRatesRequest.prototype.carrierAccounts = undefined

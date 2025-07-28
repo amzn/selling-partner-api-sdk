@@ -28,7 +28,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2020-07-01
 */
 export class SupplySourcesApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -75,7 +75,7 @@ export class SupplySourcesApi {
   /**
      * Archive a supply source, making it inactive. Cannot be undone.
      * @param {String} supplySourceId The unique identifier of a supply source.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:supplysources_v2020_07_01/model/ErrorList} and HTTP response
+     * @return {Promise<module:supplysources_v2020_07_01/model/ErrorList>}
      */
   archiveSupplySourceWithHttpInfo (supplySourceId) {
     const postBody = null
@@ -109,7 +109,7 @@ export class SupplySourcesApi {
   /**
      * Archive a supply source, making it inactive. Cannot be undone.
      * @param {String} supplySourceId The unique identifier of a supply source.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:supplysources_v2020_07_01/model/ErrorList}
+     * @return {Promise<module:supplysources_v2020_07_01/model/ErrorList>}
      */
   archiveSupplySource (supplySourceId) {
     return this.archiveSupplySourceWithHttpInfo(supplySourceId)
@@ -121,7 +121,7 @@ export class SupplySourcesApi {
   /**
      * Create a new supply source.
      * @param {module:supplysources_v2020_07_01/model/CreateSupplySourceRequest} payload A request to create a supply source.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:supplysources_v2020_07_01/model/CreateSupplySourceResponse} and HTTP response
+     * @return {Promise<module:supplysources_v2020_07_01/model/CreateSupplySourceResponse>}
      */
   createSupplySourceWithHttpInfo (payload) {
     const postBody = payload
@@ -154,7 +154,7 @@ export class SupplySourcesApi {
   /**
      * Create a new supply source.
      * @param {module:supplysources_v2020_07_01/model/CreateSupplySourceRequest} payload A request to create a supply source.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:supplysources_v2020_07_01/model/CreateSupplySourceResponse}
+     * @return {Promise<module:supplysources_v2020_07_01/model/CreateSupplySourceResponse>}
      */
   createSupplySource (payload) {
     return this.createSupplySourceWithHttpInfo(payload)
@@ -166,7 +166,7 @@ export class SupplySourcesApi {
   /**
      * Retrieve a supply source.
      * @param {String} supplySourceId The unique identifier of a supply source.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:supplysources_v2020_07_01/model/SupplySource} and HTTP response
+     * @return {Promise<module:supplysources_v2020_07_01/model/SupplySource>}
      */
   getSupplySourceWithHttpInfo (supplySourceId) {
     const postBody = null
@@ -200,7 +200,7 @@ export class SupplySourcesApi {
   /**
      * Retrieve a supply source.
      * @param {String} supplySourceId The unique identifier of a supply source.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:supplysources_v2020_07_01/model/SupplySource}
+     * @return {Promise<module:supplysources_v2020_07_01/model/SupplySource>}
      */
   getSupplySource (supplySourceId) {
     return this.getSupplySourceWithHttpInfo(supplySourceId)
@@ -214,7 +214,7 @@ export class SupplySourcesApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken The pagination token to retrieve a specific page of results.
      * @param {Number} opts.pageSize The number of supply sources to return per paginated request. (default to 10.0)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:supplysources_v2020_07_01/model/GetSupplySourcesResponse} and HTTP response
+     * @return {Promise<module:supplysources_v2020_07_01/model/GetSupplySourcesResponse>}
      */
   getSupplySourcesWithHttpInfo (opts) {
     opts = opts || {}
@@ -247,7 +247,7 @@ export class SupplySourcesApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken The pagination token to retrieve a specific page of results.
      * @param {Number} opts.pageSize The number of supply sources to return per paginated request. (default to 10.0)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:supplysources_v2020_07_01/model/GetSupplySourcesResponse}
+     * @return {Promise<module:supplysources_v2020_07_01/model/GetSupplySourcesResponse>}
      */
   getSupplySources (opts) {
     return this.getSupplySourcesWithHttpInfo(opts)
@@ -261,7 +261,7 @@ export class SupplySourcesApi {
      * @param {String} supplySourceId The unique identitier of a supply source.
      * @param {Object} opts Optional parameters
      * @param {module:supplysources_v2020_07_01/model/UpdateSupplySourceRequest} opts.payload
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:supplysources_v2020_07_01/model/ErrorList} and HTTP response
+     * @return {Promise<module:supplysources_v2020_07_01/model/ErrorList>}
      */
   updateSupplySourceWithHttpInfo (supplySourceId, opts) {
     opts = opts || {}
@@ -298,7 +298,7 @@ export class SupplySourcesApi {
      * @param {String} supplySourceId The unique identitier of a supply source.
      * @param {Object} opts Optional parameters
      * @param {module:supplysources_v2020_07_01/model/UpdateSupplySourceRequest} opts.payload
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:supplysources_v2020_07_01/model/ErrorList}
+     * @return {Promise<module:supplysources_v2020_07_01/model/ErrorList>}
      */
   updateSupplySource (supplySourceId, opts) {
     return this.updateSupplySourceWithHttpInfo(supplySourceId, opts)
@@ -312,7 +312,7 @@ export class SupplySourcesApi {
      * @param {String} supplySourceId The unique identifier of a supply source.
      * @param {Object} opts Optional parameters
      * @param {module:supplysources_v2020_07_01/model/UpdateSupplySourceStatusRequest} opts.payload
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:supplysources_v2020_07_01/model/ErrorList} and HTTP response
+     * @return {Promise<module:supplysources_v2020_07_01/model/ErrorList>}
      */
   updateSupplySourceStatusWithHttpInfo (supplySourceId, opts) {
     opts = opts || {}
@@ -349,7 +349,7 @@ export class SupplySourcesApi {
      * @param {String} supplySourceId The unique identifier of a supply source.
      * @param {Object} opts Optional parameters
      * @param {module:supplysources_v2020_07_01/model/UpdateSupplySourceStatusRequest} opts.payload
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:supplysources_v2020_07_01/model/ErrorList}
+     * @return {Promise<module:supplysources_v2020_07_01/model/ErrorList>}
      */
   updateSupplySourceStatus (supplySourceId, opts) {
     return this.updateSupplySourceStatusWithHttpInfo(supplySourceId, opts)

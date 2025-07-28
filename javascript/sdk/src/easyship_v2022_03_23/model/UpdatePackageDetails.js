@@ -64,10 +64,12 @@ export class UpdatePackageDetails {
 
 /**
  * @member {module:easyship_v2022_03_23/model/ScheduledPackageId} scheduledPackageId
+ * @type {module:easyship_v2022_03_23/model/ScheduledPackageId}
  */
 UpdatePackageDetails.prototype.scheduledPackageId = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/TimeSlot} packageTimeSlot
+ * @type {module:easyship_v2022_03_23/model/TimeSlot}
  */
 UpdatePackageDetails.prototype.packageTimeSlot = undefined

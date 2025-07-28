@@ -89,69 +89,82 @@ export class OneClickShipmentRequest {
 
 /**
  * @member {module:shipping_v2/model/Address} shipTo
+ * @type {module:shipping_v2/model/Address}
  */
 OneClickShipmentRequest.prototype.shipTo = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} shipFrom
+ * @type {module:shipping_v2/model/Address}
  */
 OneClickShipmentRequest.prototype.shipFrom = undefined
 
 /**
  * @member {module:shipping_v2/model/Address} returnTo
+ * @type {module:shipping_v2/model/Address}
  */
 OneClickShipmentRequest.prototype.returnTo = undefined
 
 /**
  * The ship date and time (the requested pickup). This defaults to the current date and time.
  * @member {Date} shipDate
+ * @type {Date}
  */
 OneClickShipmentRequest.prototype.shipDate = undefined
 
 /**
  * @member {module:shipping_v2/model/GoodsOwner} goodsOwner
+ * @type {module:shipping_v2/model/GoodsOwner}
  */
 OneClickShipmentRequest.prototype.goodsOwner = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
  * @member {Array.<module:shipping_v2/model/Package>} packages
+ * @type {Array.<module:shipping_v2/model/Package>}
  */
 OneClickShipmentRequest.prototype.packages = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
  * @member {Array.<module:shipping_v2/model/OneClickShipmentValueAddedService>} valueAddedServicesDetails
+ * @type {Array.<module:shipping_v2/model/OneClickShipmentValueAddedService>}
  */
 OneClickShipmentRequest.prototype.valueAddedServicesDetails = undefined
 
 /**
  * A list of tax detail information.
  * @member {Array.<module:shipping_v2/model/TaxDetail>} taxDetails
+ * @type {Array.<module:shipping_v2/model/TaxDetail>}
  */
 OneClickShipmentRequest.prototype.taxDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/ChannelDetails} channelDetails
+ * @type {module:shipping_v2/model/ChannelDetails}
  */
 OneClickShipmentRequest.prototype.channelDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/RequestedDocumentSpecification} labelSpecifications
+ * @type {module:shipping_v2/model/RequestedDocumentSpecification}
  */
 OneClickShipmentRequest.prototype.labelSpecifications = undefined
 
 /**
  * @member {module:shipping_v2/model/ServiceSelection} serviceSelection
+ * @type {module:shipping_v2/model/ServiceSelection}
  */
 OneClickShipmentRequest.prototype.serviceSelection = undefined
 
 /**
  * @member {module:shipping_v2/model/ShipperInstruction} shipperInstruction
+ * @type {module:shipping_v2/model/ShipperInstruction}
  */
 OneClickShipmentRequest.prototype.shipperInstruction = undefined
 
 /**
  * @member {module:shipping_v2/model/AccessPointDetails} destinationAccessPointDetails
+ * @type {module:shipping_v2/model/AccessPointDetails}
  */
 OneClickShipmentRequest.prototype.destinationAccessPointDetails = undefined

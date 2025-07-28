@@ -60,5 +60,6 @@ export class ConfirmPlacementOptionResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 ConfirmPlacementOptionResponse.prototype.operationId = undefined

@@ -59,5 +59,6 @@ export class SubmitAcknowledgementRequest {
 /**
  * A list of one or more purchase orders.
  * @member {Array.<module:vendordforders_v2021_12_28/model/OrderAcknowledgementItem>} orderAcknowledgements
+ * @type {Array.<module:vendordforders_v2021_12_28/model/OrderAcknowledgementItem>}
  */
 SubmitAcknowledgementRequest.prototype.orderAcknowledgements = undefined

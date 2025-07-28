@@ -60,11 +60,13 @@ export class GetOrderBuyerInfoResponse {
 
 /**
  * @member {module:orders_v0/model/OrderBuyerInfo} payload
+ * @type {module:orders_v0/model/OrderBuyerInfo}
  */
 GetOrderBuyerInfoResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:orders_v0/model/Error>} errors
+ * @type {Array.<module:orders_v0/model/Error>}
  */
 GetOrderBuyerInfoResponse.prototype.errors = undefined

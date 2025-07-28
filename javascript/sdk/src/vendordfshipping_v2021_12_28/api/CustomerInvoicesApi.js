@@ -24,7 +24,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-12-28
 */
 export class CustomerInvoicesApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -68,7 +68,7 @@ export class CustomerInvoicesApi {
      * getCustomerInvoice
      * Returns a customer invoice based on the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} purchaseOrderNumber Purchase order number of the shipment for which to return the invoice.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendordfshipping_v2021_12_28/model/CustomerInvoice} and HTTP response
+     * @return {Promise<module:vendordfshipping_v2021_12_28/model/CustomerInvoice>}
      */
   getCustomerInvoiceWithHttpInfo (purchaseOrderNumber) {
     const postBody = null
@@ -103,7 +103,7 @@ export class CustomerInvoicesApi {
      * getCustomerInvoice
      * Returns a customer invoice based on the purchaseOrderNumber that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {String} purchaseOrderNumber Purchase order number of the shipment for which to return the invoice.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendordfshipping_v2021_12_28/model/CustomerInvoice}
+     * @return {Promise<module:vendordfshipping_v2021_12_28/model/CustomerInvoice>}
      */
   getCustomerInvoice (purchaseOrderNumber) {
     return this.getCustomerInvoiceWithHttpInfo(purchaseOrderNumber)
@@ -122,7 +122,7 @@ export class CustomerInvoicesApi {
      * @param {Number} opts.limit The limit to the number of records returned
      * @param {module:vendordfshipping_v2021_12_28/model/String} opts.sortOrder Sort ASC or DESC by order creation date.
      * @param {String} opts.nextToken Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendordfshipping_v2021_12_28/model/CustomerInvoiceList} and HTTP response
+     * @return {Promise<module:vendordfshipping_v2021_12_28/model/CustomerInvoiceList>}
      */
   getCustomerInvoicesWithHttpInfo (createdAfter, createdBefore, opts) {
     opts = opts || {}
@@ -174,7 +174,7 @@ export class CustomerInvoicesApi {
      * @param {Number} opts.limit The limit to the number of records returned
      * @param {module:vendordfshipping_v2021_12_28/model/String} opts.sortOrder Sort ASC or DESC by order creation date.
      * @param {String} opts.nextToken Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendordfshipping_v2021_12_28/model/CustomerInvoiceList}
+     * @return {Promise<module:vendordfshipping_v2021_12_28/model/CustomerInvoiceList>}
      */
   getCustomerInvoices (createdAfter, createdBefore, opts) {
     return this.getCustomerInvoicesWithHttpInfo(createdAfter, createdBefore, opts)

@@ -81,38 +81,45 @@ export class OrderAcknowledgementItem {
 /**
  * The purchase order number for this order. Formatting Notes: alpha-numeric code.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 OrderAcknowledgementItem.prototype.purchaseOrderNumber = undefined
 
 /**
  * The vendor's order number for this order.
  * @member {String} vendorOrderNumber
+ * @type {String}
  */
 OrderAcknowledgementItem.prototype.vendorOrderNumber = undefined
 
 /**
  * The date and time when the order is acknowledged, in ISO-8601 date/time format. For example: 2018-07-16T23:00:00Z / 2018-07-16T23:00:00-05:00 / 2018-07-16T23:00:00-08:00.
  * @member {Date} acknowledgementDate
+ * @type {Date}
  */
 OrderAcknowledgementItem.prototype.acknowledgementDate = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/AcknowledgementStatus} acknowledgementStatus
+ * @type {module:vendordforders_v2021_12_28/model/AcknowledgementStatus}
  */
 OrderAcknowledgementItem.prototype.acknowledgementStatus = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
  */
 OrderAcknowledgementItem.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
  */
 OrderAcknowledgementItem.prototype.shipFromParty = undefined
 
 /**
  * Item details including acknowledged quantity.
  * @member {Array.<module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement>} itemAcknowledgements
+ * @type {Array.<module:vendordforders_v2021_12_28/model/OrderItemAcknowledgement>}
  */
 OrderAcknowledgementItem.prototype.itemAcknowledgements = undefined

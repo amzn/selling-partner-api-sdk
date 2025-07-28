@@ -70,28 +70,33 @@ export class PurchaseShipmentRequest {
 /**
  * A unique token generated to identify a getRates operation.
  * @member {String} requestToken
+ * @type {String}
  */
 PurchaseShipmentRequest.prototype.requestToken = undefined
 
 /**
  * An identifier for the rate (shipment offering) provided by a shipping service provider.
  * @member {String} rateId
+ * @type {String}
  */
 PurchaseShipmentRequest.prototype.rateId = undefined
 
 /**
  * @member {module:shipping_v2/model/RequestedDocumentSpecification} requestedDocumentSpecification
+ * @type {module:shipping_v2/model/RequestedDocumentSpecification}
  */
 PurchaseShipmentRequest.prototype.requestedDocumentSpecification = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
  * @member {Array.<module:shipping_v2/model/RequestedValueAddedService>} requestedValueAddedServices
+ * @type {Array.<module:shipping_v2/model/RequestedValueAddedService>}
  */
 PurchaseShipmentRequest.prototype.requestedValueAddedServices = undefined
 
 /**
  * The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation.
  * @member {Object.<String, Object>} additionalInputs
+ * @type {Object.<String, Object>}
  */
 PurchaseShipmentRequest.prototype.additionalInputs = undefined

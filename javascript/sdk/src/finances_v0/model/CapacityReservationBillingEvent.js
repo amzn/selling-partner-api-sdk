@@ -62,22 +62,26 @@ export class CapacityReservationBillingEvent {
 /**
  * Indicates the type of transaction. For example, FBA Inventory Fee
  * @member {String} transactionType
+ * @type {String}
  */
 CapacityReservationBillingEvent.prototype.transactionType = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 CapacityReservationBillingEvent.prototype.postedDate = undefined
 
 /**
  * A short description of the capacity reservation billing event.
  * @member {String} description
+ * @type {String}
  */
 CapacityReservationBillingEvent.prototype.description = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} transactionAmount
+ * @type {module:finances_v0/model/Currency}
  */
 CapacityReservationBillingEvent.prototype.transactionAmount = undefined

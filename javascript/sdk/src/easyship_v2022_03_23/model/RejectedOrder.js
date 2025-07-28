@@ -62,10 +62,12 @@ export class RejectedOrder {
 /**
  * An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 RejectedOrder.prototype.amazonOrderId = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/Error} error
+ * @type {module:easyship_v2022_03_23/model/Error}
  */
 RejectedOrder.prototype.error = undefined

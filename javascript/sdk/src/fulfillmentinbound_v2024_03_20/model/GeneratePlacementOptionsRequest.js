@@ -59,5 +59,6 @@ export class GeneratePlacementOptionsRequest {
 /**
  * Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput>} customPlacement
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/CustomPlacementInput>}
  */
 GeneratePlacementOptionsRequest.prototype.customPlacement = undefined

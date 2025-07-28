@@ -26,7 +26,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2024-03-01
 */
 export class TransferScheduleApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -75,7 +75,7 @@ export class TransferScheduleApi {
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
      * @param {module:sellerWallet_2024_03_01/model/TransferScheduleRequest} body The payload of the request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/TransferSchedule} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferSchedule>}
      */
   createTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
     const postBody = body
@@ -123,7 +123,7 @@ export class TransferScheduleApi {
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
      * @param {module:sellerWallet_2024_03_01/model/TransferScheduleRequest} body The payload of the request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/TransferSchedule}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferSchedule>}
      */
   createTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, body) {
     return this.createTransferScheduleWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, body)
@@ -136,7 +136,7 @@ export class TransferScheduleApi {
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.
      * @param {String} transferScheduleId A unique reference ID for a scheduled transfer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/DeleteTransferSchedule} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/DeleteTransferSchedule>}
      */
   deleteScheduleTransactionWithHttpInfo (transferScheduleId) {
     const postBody = null
@@ -171,7 +171,7 @@ export class TransferScheduleApi {
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.
      * @param {String} transferScheduleId A unique reference ID for a scheduled transfer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/DeleteTransferSchedule}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/DeleteTransferSchedule>}
      */
   deleteScheduleTransaction (transferScheduleId) {
     return this.deleteScheduleTransactionWithHttpInfo(transferScheduleId)
@@ -184,7 +184,7 @@ export class TransferScheduleApi {
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      * Find a particular Amazon Seller Wallet account transfer schedule.
      * @param {String} transferScheduleId The schedule ID of the Amazon Seller Wallet transfer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/TransferSchedule} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferSchedule>}
      */
   getTransferScheduleWithHttpInfo (transferScheduleId) {
     const postBody = null
@@ -219,7 +219,7 @@ export class TransferScheduleApi {
      * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      * Find a particular Amazon Seller Wallet account transfer schedule.
      * @param {String} transferScheduleId The schedule ID of the Amazon Seller Wallet transfer.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/TransferSchedule}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferSchedule>}
      */
   getTransferSchedule (transferScheduleId) {
     return this.getTransferScheduleWithHttpInfo(transferScheduleId)
@@ -234,7 +234,7 @@ export class TransferScheduleApi {
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/TransferScheduleListing} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferScheduleListing>}
      */
   listTransferSchedulesWithHttpInfo (accountId, opts) {
     opts = opts || {}
@@ -273,7 +273,7 @@ export class TransferScheduleApi {
      * @param {String} accountId The ID of the Amazon Seller Wallet account.
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/TransferScheduleListing}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferScheduleListing>}
      */
   listTransferSchedules (accountId, opts) {
     return this.listTransferSchedulesWithHttpInfo(accountId, opts)
@@ -288,7 +288,7 @@ export class TransferScheduleApi {
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
      * @param {module:sellerWallet_2024_03_01/model/TransferSchedule} body The payload of the scheduled transfer request that is to be updated.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:sellerWallet_2024_03_01/model/TransferSchedule} and HTTP response
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferSchedule>}
      */
   updateTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
     const postBody = body
@@ -336,7 +336,7 @@ export class TransferScheduleApi {
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
      * @param {module:sellerWallet_2024_03_01/model/TransferSchedule} body The payload of the scheduled transfer request that is to be updated.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:sellerWallet_2024_03_01/model/TransferSchedule}
+     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferSchedule>}
      */
   updateTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, body) {
     return this.updateTransferScheduleWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, body)

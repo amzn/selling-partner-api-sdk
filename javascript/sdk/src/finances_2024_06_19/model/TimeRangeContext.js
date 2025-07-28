@@ -59,11 +59,13 @@ export class TimeRangeContext {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} startTime
+ * @type {Date}
  */
 TimeRangeContext.prototype.startTime = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} endTime
+ * @type {Date}
  */
 TimeRangeContext.prototype.endTime = undefined

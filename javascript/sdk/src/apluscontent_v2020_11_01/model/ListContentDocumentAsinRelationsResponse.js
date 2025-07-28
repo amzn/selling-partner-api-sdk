@@ -67,18 +67,21 @@ export class ListContentDocumentAsinRelationsResponse {
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 ListContentDocumentAsinRelationsResponse.prototype.warnings = undefined
 
 /**
  * A token that you use to fetch a specific page when there are multiple pages of results.
  * @member {String} nextPageToken
+ * @type {String}
  */
 ListContentDocumentAsinRelationsResponse.prototype.nextPageToken = undefined
 
 /**
  * The set of ASIN metadata.
  * @member {Array.<module:apluscontent_v2020_11_01/model/AsinMetadata>} asinMetadataSet
+ * @type {Array.<module:apluscontent_v2020_11_01/model/AsinMetadata>}
  */
 ListContentDocumentAsinRelationsResponse.prototype.asinMetadataSet = undefined
 
@@ -86,11 +89,13 @@ ListContentDocumentAsinRelationsResponse.prototype.asinMetadataSet = undefined
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 
 /**
  * A token that you use to fetch a specific page when there are multiple pages of results.
  * @member {String} nextPageToken
+ * @type {String}
  */
 AplusPaginatedResponse.prototype.nextPageToken = undefined

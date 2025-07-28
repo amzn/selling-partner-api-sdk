@@ -71,28 +71,33 @@ export class Balance {
 /**
  * The unique identifier provided by Amazon to identify the account.
  * @member {String} accountId
+ * @type {String}
  */
 Balance.prototype.accountId = undefined
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BalanceType} balanceType
+ * @type {module:sellerWallet_2024_03_01/model/BalanceType}
  */
 Balance.prototype.balanceType = undefined
 
 /**
  * A decimal number, such as an amount or FX rate.
  * @member {Number} balanceAmount
+ * @type {Number}
  */
 Balance.prototype.balanceAmount = undefined
 
 /**
  * The Amazon Seller Wallet bank account currency code in ISO 4217 format.
  * @member {String} balanceCurrency
+ * @type {String}
  */
 Balance.prototype.balanceCurrency = undefined
 
 /**
  * The date of the most recent account balance update.
  * @member {Date} lastUpdateDate
+ * @type {Date}
  */
 Balance.prototype.lastUpdateDate = undefined

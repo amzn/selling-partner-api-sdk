@@ -60,17 +60,20 @@ export class Location {
 /**
  * Type of location identification.
  * @member {String} type
+ * @type {String}
  */
 Location.prototype.type = undefined
 
 /**
  * Location code.
  * @member {String} locationCode
+ * @type {String}
  */
 Location.prototype.locationCode = undefined
 
 /**
  * The two digit country code. In ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 Location.prototype.countryCode = undefined

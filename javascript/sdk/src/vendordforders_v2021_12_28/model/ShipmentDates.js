@@ -61,11 +61,13 @@ export class ShipmentDates {
 /**
  * Time by which the vendor is required to ship the order.
  * @member {Date} requiredShipDate
+ * @type {Date}
  */
 ShipmentDates.prototype.requiredShipDate = undefined
 
 /**
  * Delivery date promised to the Amazon customer.
  * @member {Date} promisedDeliveryDate
+ * @type {Date}
  */
 ShipmentDates.prototype.promisedDeliveryDate = undefined

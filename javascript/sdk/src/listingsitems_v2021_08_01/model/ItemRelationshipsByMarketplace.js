@@ -64,11 +64,13 @@ export class ItemRelationshipsByMarketplace {
 /**
  * Amazon marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemRelationshipsByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Relationships for the listing item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/ItemRelationship>} relationships
+ * @type {Array.<module:listingsitems_v2021_08_01/model/ItemRelationship>}
  */
 ItemRelationshipsByMarketplace.prototype.relationships = undefined

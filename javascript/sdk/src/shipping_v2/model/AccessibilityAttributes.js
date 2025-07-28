@@ -59,11 +59,13 @@ export class AccessibilityAttributes {
 /**
  * The approximate distance of access point from input postalCode's centroid.
  * @member {String} distance
+ * @type {String}
  */
 AccessibilityAttributes.prototype.distance = undefined
 
 /**
  * The approximate (static) drive time from input postal code's centroid.
  * @member {Number} driveTime
+ * @type {Number}
  */
 AccessibilityAttributes.prototype.driveTime = undefined

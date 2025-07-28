@@ -66,28 +66,33 @@ export class Item {
 /**
  * Description of items in the transaction
  * @member {String} description
+ * @type {String}
  */
 Item.prototype.description = undefined
 
 /**
  * Related Business identifiers of the item in Transaction.
  * @member {Array.<module:finances_2024_06_19/model/ItemRelatedIdentifier>} relatedIdentifiers
+ * @type {Array.<module:finances_2024_06_19/model/ItemRelatedIdentifier>}
  */
 Item.prototype.relatedIdentifiers = undefined
 
 /**
  * @member {module:finances_2024_06_19/model/Currency} totalAmount
+ * @type {module:finances_2024_06_19/model/Currency}
  */
 Item.prototype.totalAmount = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
  * @member {Array.<module:finances_2024_06_19/model/Breakdown>} breakdowns
+ * @type {Array.<module:finances_2024_06_19/model/Breakdown>}
  */
 Item.prototype.breakdowns = undefined
 
 /**
  * List of additional Information about the item.
  * @member {Array.<module:finances_2024_06_19/model/Context>} contexts
+ * @type {Array.<module:finances_2024_06_19/model/Context>}
  */
 Item.prototype.contexts = undefined

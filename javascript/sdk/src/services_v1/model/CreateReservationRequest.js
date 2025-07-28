@@ -64,10 +64,12 @@ export class CreateReservationRequest {
 /**
  * Resource (store) identifier.
  * @member {String} resourceId
+ * @type {String}
  */
 CreateReservationRequest.prototype.resourceId = undefined
 
 /**
  * @member {module:services_v1/model/Reservation} reservation
+ * @type {module:services_v1/model/Reservation}
  */
 CreateReservationRequest.prototype.reservation = undefined

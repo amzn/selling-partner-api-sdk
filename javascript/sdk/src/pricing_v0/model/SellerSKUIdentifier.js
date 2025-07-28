@@ -66,17 +66,20 @@ export class SellerSKUIdentifier {
 /**
  * A marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 SellerSKUIdentifier.prototype.marketplaceId = undefined
 
 /**
  * The seller identifier submitted for the operation.
  * @member {String} sellerId
+ * @type {String}
  */
 SellerSKUIdentifier.prototype.sellerId = undefined
 
 /**
  * The seller stock keeping unit (SKU) of the item.
  * @member {String} sellerSKU
+ * @type {String}
  */
 SellerSKUIdentifier.prototype.sellerSKU = undefined

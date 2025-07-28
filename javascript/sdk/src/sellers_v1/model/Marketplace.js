@@ -75,35 +75,41 @@ export class Marketplace {
 /**
  * The encrypted marketplace value.
  * @member {String} id
+ * @type {String}
  */
 Marketplace.prototype.id = undefined
 
 /**
  * The marketplace name.
  * @member {String} name
+ * @type {String}
  */
 Marketplace.prototype.name = undefined
 
 /**
  * The ISO 3166-1 alpha-2 format country code of the marketplace.
  * @member {String} countryCode
+ * @type {String}
  */
 Marketplace.prototype.countryCode = undefined
 
 /**
  * The ISO 4217 format currency code of the marketplace.
  * @member {String} defaultCurrencyCode
+ * @type {String}
  */
 Marketplace.prototype.defaultCurrencyCode = undefined
 
 /**
  * The ISO 639-1 format language code of the marketplace.
  * @member {String} defaultLanguageCode
+ * @type {String}
  */
 Marketplace.prototype.defaultLanguageCode = undefined
 
 /**
  * The domain name of the marketplace.
  * @member {String} domainName
+ * @type {String}
  */
 Marketplace.prototype.domainName = undefined

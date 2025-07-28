@@ -62,15 +62,18 @@ export class StandardImageTextBlock {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ImageComponent} image
+ * @type {module:apluscontent_v2020_11_01/model/ImageComponent}
  */
 StandardImageTextBlock.prototype.image = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
+ * @type {module:apluscontent_v2020_11_01/model/TextComponent}
  */
 StandardImageTextBlock.prototype.headline = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/ParagraphComponent} body
+ * @type {module:apluscontent_v2020_11_01/model/ParagraphComponent}
  */
 StandardImageTextBlock.prototype.body = undefined

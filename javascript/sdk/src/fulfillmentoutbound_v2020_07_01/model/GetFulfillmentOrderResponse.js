@@ -60,11 +60,13 @@ export class GetFulfillmentOrderResponse {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult} payload
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult}
  */
 GetFulfillmentOrderResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>}
  */
 GetFulfillmentOrderResponse.prototype.errors = undefined

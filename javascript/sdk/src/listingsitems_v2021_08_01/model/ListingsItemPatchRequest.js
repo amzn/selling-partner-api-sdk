@@ -64,11 +64,13 @@ export class ListingsItemPatchRequest {
 /**
  * The Amazon product type of the listings item.
  * @member {String} productType
+ * @type {String}
  */
 ListingsItemPatchRequest.prototype.productType = undefined
 
 /**
  * One or more JSON Patch operations to perform on the listings item.
  * @member {Array.<module:listingsitems_v2021_08_01/model/PatchOperation>} patches
+ * @type {Array.<module:listingsitems_v2021_08_01/model/PatchOperation>}
  */
 ListingsItemPatchRequest.prototype.patches = undefined

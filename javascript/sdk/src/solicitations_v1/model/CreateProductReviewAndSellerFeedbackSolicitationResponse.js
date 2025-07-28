@@ -59,5 +59,6 @@ export class CreateProductReviewAndSellerFeedbackSolicitationResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:solicitations_v1/model/Error>} errors
+ * @type {Array.<module:solicitations_v1/model/Error>}
  */
 CreateProductReviewAndSellerFeedbackSolicitationResponse.prototype.errors = undefined

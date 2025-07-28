@@ -67,16 +67,19 @@ export class CreateScheduledPackageRequest {
 /**
  * An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 CreateScheduledPackageRequest.prototype.amazonOrderId = undefined
 
 /**
  * A string of up to 255 characters.
  * @member {String} marketplaceId
+ * @type {String}
  */
 CreateScheduledPackageRequest.prototype.marketplaceId = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/PackageDetails} packageDetails
+ * @type {module:easyship_v2022_03_23/model/PackageDetails}
  */
 CreateScheduledPackageRequest.prototype.packageDetails = undefined

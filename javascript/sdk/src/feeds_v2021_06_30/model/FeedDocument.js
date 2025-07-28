@@ -64,12 +64,14 @@ export class FeedDocument {
 /**
  * The identifier for the feed document. This identifier is unique only in combination with a seller ID.
  * @member {String} feedDocumentId
+ * @type {String}
  */
 FeedDocument.prototype.feedDocumentId = undefined
 
 /**
  * A presigned URL for the feed document. If `compressionAlgorithm` is not returned, you can download the feed directly from this URL. This URL expires after 5 minutes.
  * @member {String} url
+ * @type {String}
  */
 FeedDocument.prototype.url = undefined
 
@@ -90,5 +92,6 @@ FeedDocument.CompressionAlgorithmEnum = {
 /**
  * If the feed document contents have been compressed, the compression algorithm used is returned in this property and you must decompress the feed when you download. Otherwise, you can download the feed directly. Refer to [Step 7. Download the feed processing report](doc:feeds-api-v2021-06-30-use-case-guide#step-7-download-the-feed-processing-report) in the use case guide, where sample code is provided.
  * @member {module:feeds_v2021_06_30/model/FeedDocument.CompressionAlgorithmEnum} compressionAlgorithm
+ * @type {module:feeds_v2021_06_30/model/FeedDocument.CompressionAlgorithmEnum}
  */
 FeedDocument.prototype.compressionAlgorithm = undefined

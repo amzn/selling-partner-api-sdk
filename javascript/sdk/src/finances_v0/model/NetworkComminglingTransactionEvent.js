@@ -66,45 +66,53 @@ export class NetworkComminglingTransactionEvent {
 /**
  * The type of network item swap.  Possible values:  * NetCo - A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * ComminglingVAT - A commingling VAT transaction. Available only in the UK, Spain, France, Germany, and Italy marketplaces.
  * @member {String} transactionType
+ * @type {String}
  */
 NetworkComminglingTransactionEvent.prototype.transactionType = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 NetworkComminglingTransactionEvent.prototype.postedDate = undefined
 
 /**
  * The identifier for the network item swap.
  * @member {String} netCoTransactionID
+ * @type {String}
  */
 NetworkComminglingTransactionEvent.prototype.netCoTransactionID = undefined
 
 /**
  * The reason for the network item swap.
  * @member {String} swapReason
+ * @type {String}
  */
 NetworkComminglingTransactionEvent.prototype.swapReason = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the swapped item.
  * @member {String} ASIN
+ * @type {String}
  */
 NetworkComminglingTransactionEvent.prototype.ASIN = undefined
 
 /**
  * The marketplace in which the event took place.
  * @member {String} marketplaceId
+ * @type {String}
  */
 NetworkComminglingTransactionEvent.prototype.marketplaceId = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxExclusiveAmount
+ * @type {module:finances_v0/model/Currency}
  */
 NetworkComminglingTransactionEvent.prototype.taxExclusiveAmount = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} taxAmount
+ * @type {module:finances_v0/model/Currency}
  */
 NetworkComminglingTransactionEvent.prototype.taxAmount = undefined

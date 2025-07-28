@@ -63,11 +63,13 @@ export class TransferScheduleFailures {
 /**
  * The transfer schedule failure date.
  * @member {Date} transferScheduleFailureDate
+ * @type {Date}
  */
 TransferScheduleFailures.prototype.transferScheduleFailureDate = undefined
 
 /**
  * The reason listed for the failure of the transfer schedule.
  * @member {String} transferScheduleFailureReason
+ * @type {String}
  */
 TransferScheduleFailures.prototype.transferScheduleFailureReason = undefined

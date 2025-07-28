@@ -67,18 +67,21 @@ export class SearchContentDocumentsResponse {
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 SearchContentDocumentsResponse.prototype.warnings = undefined
 
 /**
  * A token that you use to fetch a specific page when there are multiple pages of results.
  * @member {String} nextPageToken
+ * @type {String}
  */
 SearchContentDocumentsResponse.prototype.nextPageToken = undefined
 
 /**
  * A list of A+ Content metadata records.
  * @member {Array.<module:apluscontent_v2020_11_01/model/ContentMetadataRecord>} contentMetadataRecords
+ * @type {Array.<module:apluscontent_v2020_11_01/model/ContentMetadataRecord>}
  */
 SearchContentDocumentsResponse.prototype.contentMetadataRecords = undefined
 
@@ -86,11 +89,13 @@ SearchContentDocumentsResponse.prototype.contentMetadataRecords = undefined
 /**
  * A set of messages to the user, such as warnings or comments.
  * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
+ * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 
 /**
  * A token that you use to fetch a specific page when there are multiple pages of results.
  * @member {String} nextPageToken
+ * @type {String}
  */
 AplusPaginatedResponse.prototype.nextPageToken = undefined

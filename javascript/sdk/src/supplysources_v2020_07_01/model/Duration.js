@@ -60,10 +60,12 @@ export class Duration {
 /**
  * An unsigned integer that can be only positive or zero.
  * @member {Number} value
+ * @type {Number}
  */
 Duration.prototype.value = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/TimeUnit} timeUnit
+ * @type {module:supplysources_v2020_07_01/model/TimeUnit}
  */
 Duration.prototype.timeUnit = undefined

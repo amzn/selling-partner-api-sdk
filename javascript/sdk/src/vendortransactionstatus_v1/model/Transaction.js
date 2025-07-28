@@ -65,6 +65,7 @@ export class Transaction {
 /**
  * The unique identifier returned in the 'transactionId' field in response to the post request of a specific transaction.
  * @member {String} transactionId
+ * @type {String}
  */
 Transaction.prototype.transactionId = undefined
 
@@ -97,11 +98,13 @@ Transaction.StatusEnum = {
 /**
  * Current processing status of the transaction.
  * @member {module:vendortransactionstatus_v1/model/Transaction.StatusEnum} status
+ * @type {module:vendortransactionstatus_v1/model/Transaction.StatusEnum}
  */
 Transaction.prototype.status = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:vendortransactionstatus_v1/model/Error>} errors
+ * @type {Array.<module:vendortransactionstatus_v1/model/Error>}
  */
 Transaction.prototype.errors = undefined

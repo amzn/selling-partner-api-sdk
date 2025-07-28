@@ -59,5 +59,6 @@ export class SubmitInvoiceResponse {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:invoicing_v0/model/Error>} errors
+ * @type {Array.<module:invoicing_v0/model/Error>}
  */
 SubmitInvoiceResponse.prototype.errors = undefined

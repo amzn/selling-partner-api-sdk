@@ -61,5 +61,6 @@ export class GetFeaturesResult {
 /**
  * An array of features.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Feature>} features
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Feature>}
  */
 GetFeaturesResult.prototype.features = undefined

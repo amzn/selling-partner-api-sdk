@@ -67,16 +67,19 @@ export class LabelDimensions {
 /**
  * A label dimension.
  * @member {Number} length
+ * @type {Number}
  */
 LabelDimensions.prototype.length = undefined
 
 /**
  * A label dimension.
  * @member {Number} width
+ * @type {Number}
  */
 LabelDimensions.prototype.width = undefined
 
 /**
  * @member {module:merchantfulfillment_v0/model/UnitOfLength} unit
+ * @type {module:merchantfulfillment_v0/model/UnitOfLength}
  */
 LabelDimensions.prototype.unit = undefined

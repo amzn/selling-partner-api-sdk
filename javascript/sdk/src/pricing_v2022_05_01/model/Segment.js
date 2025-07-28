@@ -58,5 +58,6 @@ export class Segment {
 
 /**
  * @member {module:pricing_v2022_05_01/model/SegmentDetails} segmentDetails
+ * @type {module:pricing_v2022_05_01/model/SegmentDetails}
  */
 Segment.prototype.segmentDetails = undefined

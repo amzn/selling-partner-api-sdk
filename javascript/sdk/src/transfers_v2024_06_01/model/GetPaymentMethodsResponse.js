@@ -59,5 +59,6 @@ export class GetPaymentMethodsResponse {
 /**
  * The list of payment methods with payment method details.
  * @member {Array.<module:transfers_v2024_06_01/model/PaymentMethodDetails>} paymentMethods
+ * @type {Array.<module:transfers_v2024_06_01/model/PaymentMethodDetails>}
  */
 GetPaymentMethodsResponse.prototype.paymentMethods = undefined

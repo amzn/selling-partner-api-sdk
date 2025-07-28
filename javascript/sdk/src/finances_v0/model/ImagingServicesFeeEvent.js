@@ -62,23 +62,27 @@ export class ImagingServicesFeeEvent {
 /**
  * The identifier for the imaging services request.
  * @member {String} imagingRequestBillingItemID
+ * @type {String}
  */
 ImagingServicesFeeEvent.prototype.imagingRequestBillingItemID = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item for which the imaging service was requested.
  * @member {String} ASIN
+ * @type {String}
  */
 ImagingServicesFeeEvent.prototype.ASIN = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 ImagingServicesFeeEvent.prototype.postedDate = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
+ * @type {Array.<module:finances_v0/model/FeeComponent>}
  */
 ImagingServicesFeeEvent.prototype.feeList = undefined

@@ -60,5 +60,6 @@ export class CreateReportResponse {
 /**
  * The identifier for the report. This identifier is unique only in combination with a seller ID.
  * @member {String} reportId
+ * @type {String}
  */
 CreateReportResponse.prototype.reportId = undefined

@@ -61,23 +61,27 @@ export class PaymentsContext {
 /**
  * Type of payment made.
  * @member {String} paymentType
+ * @type {String}
  */
 PaymentsContext.prototype.paymentType = undefined
 
 /**
  * Method of payment made.
  * @member {String} paymentMethod
+ * @type {String}
  */
 PaymentsContext.prototype.paymentMethod = undefined
 
 /**
  * Reference number of payment made.
  * @member {String} paymentReference
+ * @type {String}
  */
 PaymentsContext.prototype.paymentReference = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} paymentDate
+ * @type {Date}
  */
 PaymentsContext.prototype.paymentDate = undefined

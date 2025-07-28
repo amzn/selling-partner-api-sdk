@@ -67,28 +67,33 @@ export class Business {
 /**
  * The registered business name.
  * @member {String} name
+ * @type {String}
  */
 Business.prototype.name = undefined
 
 /**
  * @member {module:sellers_v1/model/Address} registeredBusinessAddress
+ * @type {module:sellers_v1/model/Address}
  */
 Business.prototype.registeredBusinessAddress = undefined
 
 /**
  * The seller's company registration number, if applicable. This field will be absent for individual sellers and sole proprietorships.
  * @member {String} companyRegistrationNumber
+ * @type {String}
  */
 Business.prototype.companyRegistrationNumber = undefined
 
 /**
  * The seller's company tax identification number, if applicable. This field will be present for certain business types only, such as sole proprietorships.
  * @member {String} companyTaxIdentificationNumber
+ * @type {String}
  */
 Business.prototype.companyTaxIdentificationNumber = undefined
 
 /**
  * The non-Latin script version of the registered business name, if applicable.
  * @member {String} nonLatinName
+ * @type {String}
  */
 Business.prototype.nonLatinName = undefined

@@ -63,11 +63,13 @@ export class TaxDetail {
 
 /**
  * @member {module:shipping_v2/model/TaxType} taxType
+ * @type {module:shipping_v2/model/TaxType}
  */
 TaxDetail.prototype.taxType = undefined
 
 /**
  * The shipper's tax registration number associated with the shipment for customs compliance purposes in certain regions.
  * @member {String} taxRegistrationNumber
+ * @type {String}
  */
 TaxDetail.prototype.taxRegistrationNumber = undefined

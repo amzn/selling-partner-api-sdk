@@ -65,16 +65,19 @@ export class BatchRequest {
 /**
  * The resource path of the operation you are calling in batch without any query parameters.  If you are calling `getItemOffersBatch`, supply the path of `getItemOffers`.  **Example:** `/products/pricing/v0/items/B000P6Q7MY/offers`  If you are calling `getListingOffersBatch`, supply the path of `getListingOffers`.  **Example:** `/products/pricing/v0/listings/B000P6Q7MY/offers`
  * @member {String} uri
+ * @type {String}
  */
 BatchRequest.prototype.uri = undefined
 
 /**
  * @member {module:pricing_v0/model/HttpMethod} method
+ * @type {module:pricing_v0/model/HttpMethod}
  */
 BatchRequest.prototype.method = undefined
 
 /**
  * A mapping of additional HTTP headers to send/receive for the individual batch request.
  * @member {Object.<String, String>} headers
+ * @type {Object.<String, String>}
  */
 BatchRequest.prototype.headers = undefined

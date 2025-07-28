@@ -70,29 +70,34 @@ export class SelectedDeliveryWindow {
 /**
  * Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`
  * @member {String} availabilityType
+ * @type {String}
  */
 SelectedDeliveryWindow.prototype.availabilityType = undefined
 
 /**
  * Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered.
  * @member {String} deliveryWindowOptionId
+ * @type {String}
  */
 SelectedDeliveryWindow.prototype.deliveryWindowOptionId = undefined
 
 /**
  * The timestamp at which this Window can no longer be edited.
  * @member {Date} editableUntil
+ * @type {Date}
  */
 SelectedDeliveryWindow.prototype.editableUntil = undefined
 
 /**
  * The end timestamp of the window.
  * @member {Date} endDate
+ * @type {Date}
  */
 SelectedDeliveryWindow.prototype.endDate = undefined
 
 /**
  * The start timestamp of the window.
  * @member {Date} startDate
+ * @type {Date}
  */
 SelectedDeliveryWindow.prototype.startDate = undefined

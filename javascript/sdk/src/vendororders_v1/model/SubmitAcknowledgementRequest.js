@@ -59,5 +59,6 @@ export class SubmitAcknowledgementRequest {
 /**
  * An array of order acknowledgements to be submitted.
  * @member {Array.<module:vendororders_v1/model/OrderAcknowledgement>} acknowledgements
+ * @type {Array.<module:vendororders_v1/model/OrderAcknowledgement>}
  */
 SubmitAcknowledgementRequest.prototype.acknowledgements = undefined

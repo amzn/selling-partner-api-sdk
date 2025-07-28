@@ -24,7 +24,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-12-28
 */
 export class VendorTransactionApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -66,7 +66,7 @@ export class VendorTransactionApi {
   /**
      * Returns the status of the transaction indicated by the specified transactionId.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} transactionId Previously returned in the response to the POST request of a specific transaction.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendordftransactions_v2021_12_28/model/TransactionStatus} and HTTP response
+     * @return {Promise<module:vendordftransactions_v2021_12_28/model/TransactionStatus>}
      */
   getTransactionStatusWithHttpInfo (transactionId) {
     const postBody = null
@@ -100,7 +100,7 @@ export class VendorTransactionApi {
   /**
      * Returns the status of the transaction indicated by the specified transactionId.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} transactionId Previously returned in the response to the POST request of a specific transaction.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendordftransactions_v2021_12_28/model/TransactionStatus}
+     * @return {Promise<module:vendordftransactions_v2021_12_28/model/TransactionStatus>}
      */
   getTransactionStatus (transactionId) {
     return this.getTransactionStatusWithHttpInfo(transactionId)

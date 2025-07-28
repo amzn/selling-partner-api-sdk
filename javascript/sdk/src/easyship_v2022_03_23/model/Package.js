@@ -81,47 +81,56 @@ export class Package {
 
 /**
  * @member {module:easyship_v2022_03_23/model/ScheduledPackageId} scheduledPackageId
+ * @type {module:easyship_v2022_03_23/model/ScheduledPackageId}
  */
 Package.prototype.scheduledPackageId = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/Dimensions} packageDimensions
+ * @type {module:easyship_v2022_03_23/model/Dimensions}
  */
 Package.prototype.packageDimensions = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/Weight} packageWeight
+ * @type {module:easyship_v2022_03_23/model/Weight}
  */
 Package.prototype.packageWeight = undefined
 
 /**
  * A list of items contained in the package.
  * @member {Array.<module:easyship_v2022_03_23/model/Item>} packageItems
+ * @type {Array.<module:easyship_v2022_03_23/model/Item>}
  */
 Package.prototype.packageItems = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/TimeSlot} packageTimeSlot
+ * @type {module:easyship_v2022_03_23/model/TimeSlot}
  */
 Package.prototype.packageTimeSlot = undefined
 
 /**
  * Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.
  * @member {String} packageIdentifier
+ * @type {String}
  */
 Package.prototype.packageIdentifier = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/InvoiceData} invoice
+ * @type {module:easyship_v2022_03_23/model/InvoiceData}
  */
 Package.prototype.invoice = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/PackageStatus} packageStatus
+ * @type {module:easyship_v2022_03_23/model/PackageStatus}
  */
 Package.prototype.packageStatus = undefined
 
 /**
  * @member {module:easyship_v2022_03_23/model/TrackingDetails} trackingDetails
+ * @type {module:easyship_v2022_03_23/model/TrackingDetails}
  */
 Package.prototype.trackingDetails = undefined

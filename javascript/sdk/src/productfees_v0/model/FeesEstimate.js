@@ -64,16 +64,19 @@ export class FeesEstimate {
 /**
  * The time at which the fees were estimated. This defaults to the time the request is made.
  * @member {Date} timeOfFeesEstimation
+ * @type {Date}
  */
 FeesEstimate.prototype.timeOfFeesEstimation = undefined
 
 /**
  * @member {module:productfees_v0/model/MoneyType} totalFeesEstimate
+ * @type {module:productfees_v0/model/MoneyType}
  */
 FeesEstimate.prototype.totalFeesEstimate = undefined
 
 /**
  * A list of other fees that contribute to a given fee.
  * @member {Array.<module:productfees_v0/model/FeeDetail>} feeDetailList
+ * @type {Array.<module:productfees_v0/model/FeeDetail>}
  */
 FeesEstimate.prototype.feeDetailList = undefined

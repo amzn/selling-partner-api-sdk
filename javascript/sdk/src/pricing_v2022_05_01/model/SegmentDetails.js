@@ -60,10 +60,12 @@ export class SegmentDetails {
 /**
  * The glance view weighted percentage for this segment, which is the glance views for this segment as a percentage of total glance views across all segments for the ASIN. A higher percentage indicates that more Amazon customers receive this offer as the Featured Offer.
  * @member {Number} glanceViewWeightPercentage
+ * @type {Number}
  */
 SegmentDetails.prototype.glanceViewWeightPercentage = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/SampleLocation} sampleLocation
+ * @type {module:pricing_v2022_05_01/model/SampleLocation}
  */
 SegmentDetails.prototype.sampleLocation = undefined

@@ -59,5 +59,6 @@ export class GetDeliveryOffersResult {
 /**
  * An array of delivery offer information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryOffer>} deliveryOffers
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryOffer>}
  */
 GetDeliveryOffersResult.prototype.deliveryOffers = undefined

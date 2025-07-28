@@ -63,11 +63,13 @@ export class TransactionInstrumentDetails {
 
 /**
  * @member {module:sellerWallet_2024_03_01/model/BankAccount} bankAccount
+ * @type {module:sellerWallet_2024_03_01/model/BankAccount}
  */
 TransactionInstrumentDetails.prototype.bankAccount = undefined
 
 /**
  * The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.
  * @member {String} bankAccountNumber
+ * @type {String}
  */
 TransactionInstrumentDetails.prototype.bankAccountNumber = undefined

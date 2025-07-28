@@ -59,11 +59,13 @@ export class Money {
 /**
  * Three-digit currency code in ISO 4217 format.
  * @member {String} currencyCode
+ * @type {String}
  */
 Money.prototype.currencyCode = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
  * @member {String} amount
+ * @type {String}
  */
 Money.prototype.amount = undefined

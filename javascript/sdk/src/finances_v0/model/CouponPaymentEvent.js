@@ -68,44 +68,52 @@ export class CouponPaymentEvent {
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 CouponPaymentEvent.prototype.postedDate = undefined
 
 /**
  * A coupon identifier.
  * @member {String} couponId
+ * @type {String}
  */
 CouponPaymentEvent.prototype.couponId = undefined
 
 /**
  * The description provided by the seller when they created the coupon.
  * @member {String} sellerCouponDescription
+ * @type {String}
  */
 CouponPaymentEvent.prototype.sellerCouponDescription = undefined
 
 /**
  * The number of coupon clips or redemptions.
  * @member {Number} clipOrRedemptionCount
+ * @type {Number}
  */
 CouponPaymentEvent.prototype.clipOrRedemptionCount = undefined
 
 /**
  * A payment event identifier.
  * @member {String} paymentEventId
+ * @type {String}
  */
 CouponPaymentEvent.prototype.paymentEventId = undefined
 
 /**
  * @member {module:finances_v0/model/FeeComponent} feeComponent
+ * @type {module:finances_v0/model/FeeComponent}
  */
 CouponPaymentEvent.prototype.feeComponent = undefined
 
 /**
  * @member {module:finances_v0/model/ChargeComponent} chargeComponent
+ * @type {module:finances_v0/model/ChargeComponent}
  */
 CouponPaymentEvent.prototype.chargeComponent = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} totalAmount
+ * @type {module:finances_v0/model/Currency}
  */
 CouponPaymentEvent.prototype.totalAmount = undefined

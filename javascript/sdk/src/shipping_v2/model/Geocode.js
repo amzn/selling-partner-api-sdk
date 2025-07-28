@@ -59,11 +59,13 @@ export class Geocode {
 /**
  * The latitude of access point.
  * @member {String} latitude
+ * @type {String}
  */
 Geocode.prototype.latitude = undefined
 
 /**
  * The longitude of access point.
  * @member {String} longitude
+ * @type {String}
  */
 Geocode.prototype.longitude = undefined

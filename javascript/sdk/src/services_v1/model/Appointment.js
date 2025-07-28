@@ -66,6 +66,7 @@ export class Appointment {
 /**
  * The appointment identifier.
  * @member {String} appointmentId
+ * @type {String}
  */
 Appointment.prototype.appointmentId = undefined
 
@@ -98,27 +99,32 @@ Appointment.AppointmentStatusEnum = {
 /**
  * The status of the appointment.
  * @member {module:services_v1/model/Appointment.AppointmentStatusEnum} appointmentStatus
+ * @type {module:services_v1/model/Appointment.AppointmentStatusEnum}
  */
 Appointment.prototype.appointmentStatus = undefined
 
 /**
  * @member {module:services_v1/model/AppointmentTime} appointmentTime
+ * @type {module:services_v1/model/AppointmentTime}
  */
 Appointment.prototype.appointmentTime = undefined
 
 /**
  * A list of technicians assigned to the service job.
  * @member {Array.<module:services_v1/model/Technician>} assignedTechnicians
+ * @type {Array.<module:services_v1/model/Technician>}
  */
 Appointment.prototype.assignedTechnicians = undefined
 
 /**
  * The appointment identifier.
  * @member {String} rescheduledAppointmentId
+ * @type {String}
  */
 Appointment.prototype.rescheduledAppointmentId = undefined
 
 /**
  * @member {module:services_v1/model/Poa} poa
+ * @type {module:services_v1/model/Poa}
  */
 Appointment.prototype.poa = undefined

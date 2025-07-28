@@ -67,52 +67,61 @@ export class InventorySummary {
 /**
  * The Amazon Standard Identification Number (ASIN) of an item.
  * @member {String} asin
+ * @type {String}
  */
 InventorySummary.prototype.asin = undefined
 
 /**
  * Amazon's fulfillment network SKU identifier.
  * @member {String} fnSku
+ * @type {String}
  */
 InventorySummary.prototype.fnSku = undefined
 
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type {String}
  */
 InventorySummary.prototype.sellerSku = undefined
 
 /**
  * The condition of the item as described by the seller (for example, New Item).
  * @member {String} condition
+ * @type {String}
  */
 InventorySummary.prototype.condition = undefined
 
 /**
  * @member {module:fbainventory_v1/model/InventoryDetails} inventoryDetails
+ * @type {module:fbainventory_v1/model/InventoryDetails}
  */
 InventorySummary.prototype.inventoryDetails = undefined
 
 /**
  * The date and time that any quantity was last updated.
  * @member {Date} lastUpdatedTime
+ * @type {Date}
  */
 InventorySummary.prototype.lastUpdatedTime = undefined
 
 /**
  * The localized language product title of the item within the specific marketplace.
  * @member {String} productName
+ * @type {String}
  */
 InventorySummary.prototype.productName = undefined
 
 /**
  * The total number of units in an inbound shipment or in Amazon fulfillment centers.
  * @member {Number} totalQuantity
+ * @type {Number}
  */
 InventorySummary.prototype.totalQuantity = undefined
 
 /**
  * A list of seller-enrolled stores that apply to this seller SKU.
  * @member {Array.<String>} stores
+ * @type {Array.<String>}
  */
 InventorySummary.prototype.stores = undefined

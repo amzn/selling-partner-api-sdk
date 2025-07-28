@@ -70,70 +70,82 @@ export class Address {
 /**
  * The name.
  * @member {String} name
+ * @type {String}
  */
 Address.prototype.name = undefined
 
 /**
  * The street address.
  * @member {String} addressLine1
+ * @type {String}
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional street address information, if required.
  * @member {String} addressLine2
+ * @type {String}
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * Additional street address information, if required.
  * @member {String} addressLine3
+ * @type {String}
  */
 Address.prototype.addressLine3 = undefined
 
 /**
  * The city.
  * @member {String} city
+ * @type {String}
  */
 Address.prototype.city = undefined
 
 /**
  * The county.
  * @member {String} county
+ * @type {String}
  */
 Address.prototype.county = undefined
 
 /**
  * The district.
  * @member {String} district
+ * @type {String}
  */
 Address.prototype.district = undefined
 
 /**
  * The state or region.
  * @member {String} stateOrRegion
+ * @type {String}
  */
 Address.prototype.stateOrRegion = undefined
 
 /**
  * The postal code.
  * @member {String} postalCode
+ * @type {String}
  */
 Address.prototype.postalCode = undefined
 
 /**
  * The country code.
  * @member {String} countryCode
+ * @type {String}
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The phone number.
  * @member {String} phone
+ * @type {String}
  */
 Address.prototype.phone = undefined
 
 /**
  * @member {module:invoicing_v0/model/AddressTypeEnum} addressType
+ * @type {module:invoicing_v0/model/AddressTypeEnum}
  */
 Address.prototype.addressType = undefined

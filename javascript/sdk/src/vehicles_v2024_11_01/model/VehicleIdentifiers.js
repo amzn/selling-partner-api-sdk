@@ -63,11 +63,13 @@ export class VehicleIdentifiers {
 
 /**
  * @member {module:vehicles_v2024_11_01/model/VehicleStandard} standard
+ * @type {module:vehicles_v2024_11_01/model/VehicleStandard}
  */
 VehicleIdentifiers.prototype.standard = undefined
 
 /**
  * Id that can uniquely identify a vehicle based the vehicle identification standard.
  * @member {String} value
+ * @type {String}
  */
 VehicleIdentifiers.prototype.value = undefined

@@ -24,7 +24,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2022-11-07
 */
 export class SellingpartnersApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -67,7 +67,7 @@ export class SellingpartnersApi {
      * Returns aggregated replenishment program metrics for a selling partner.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsRequest} opts.body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsResponse} and HTTP response
+     * @return {Promise<module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsResponse>}
      */
   getSellingPartnerMetricsWithHttpInfo (opts) {
     opts = opts || {}
@@ -97,7 +97,7 @@ export class SellingpartnersApi {
      * Returns aggregated replenishment program metrics for a selling partner.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsRequest} opts.body The request body for the &#x60;getSellingPartnerMetrics&#x60; operation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsResponse}
+     * @return {Promise<module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsResponse>}
      */
   getSellingPartnerMetrics (opts) {
     return this.getSellingPartnerMetricsWithHttpInfo(opts)

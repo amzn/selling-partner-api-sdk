@@ -64,15 +64,18 @@ export class PartyIdentification {
 /**
  * Assigned identification for the party. For example, warehouse code or vendor code. Please refer to specific party for more details.
  * @member {String} partyId
+ * @type {String}
  */
 PartyIdentification.prototype.partyId = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Address} address
+ * @type {module:vendordforders_v2021_12_28/model/Address}
  */
 PartyIdentification.prototype.address = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/TaxRegistrationDetails} taxInfo
+ * @type {module:vendordforders_v2021_12_28/model/TaxRegistrationDetails}
  */
 PartyIdentification.prototype.taxInfo = undefined

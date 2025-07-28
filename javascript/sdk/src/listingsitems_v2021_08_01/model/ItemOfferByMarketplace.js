@@ -71,6 +71,7 @@ export class ItemOfferByMarketplace {
 /**
  * The Amazon marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemOfferByMarketplace.prototype.marketplaceId = undefined
 
@@ -97,20 +98,24 @@ ItemOfferByMarketplace.OfferTypeEnum = {
 /**
  * Type of offer for the listings item.
  * @member {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace.OfferTypeEnum} offerType
+ * @type {module:listingsitems_v2021_08_01/model/ItemOfferByMarketplace.OfferTypeEnum}
  */
 ItemOfferByMarketplace.prototype.offerType = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Money} price
+ * @type {module:listingsitems_v2021_08_01/model/Money}
  */
 ItemOfferByMarketplace.prototype.price = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Points} points
+ * @type {module:listingsitems_v2021_08_01/model/Points}
  */
 ItemOfferByMarketplace.prototype.points = undefined
 
 /**
  * @member {module:listingsitems_v2021_08_01/model/Audience} audience
+ * @type {module:listingsitems_v2021_08_01/model/Audience}
  */
 ItemOfferByMarketplace.prototype.audience = undefined

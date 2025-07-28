@@ -67,17 +67,20 @@ export class InventoryUpdate {
 
 /**
  * @member {module:vendordfinventory_v1/model/PartyIdentification} sellingParty
+ * @type {module:vendordfinventory_v1/model/PartyIdentification}
  */
 InventoryUpdate.prototype.sellingParty = undefined
 
 /**
  * When true, this request contains a full feed. Otherwise, this request contains a partial feed. When sending a full feed, you must send information about all items in the warehouse. Any items not in the full feed are updated as not available. When sending a partial feed, only include the items that need an update to inventory. The status of other items will remain unchanged.
  * @member {Boolean} isFullUpdate
+ * @type {Boolean}
  */
 InventoryUpdate.prototype.isFullUpdate = undefined
 
 /**
  * A list of inventory items with updated details, including quantity available.
  * @member {Array.<module:vendordfinventory_v1/model/ItemDetails>} items
+ * @type {Array.<module:vendordfinventory_v1/model/ItemDetails>}
  */
 InventoryUpdate.prototype.items = undefined

@@ -65,40 +65,47 @@ export class FailedAdhocDisbursementEvent {
 /**
  * The type of fund transfer.   Example \"Refund\"
  * @member {String} fundsTransfersType
+ * @type {String}
  */
 FailedAdhocDisbursementEvent.prototype.fundsTransfersType = undefined
 
 /**
  * The transfer identifier.
  * @member {String} transferId
+ * @type {String}
  */
 FailedAdhocDisbursementEvent.prototype.transferId = undefined
 
 /**
  * The disbursement identifier.
  * @member {String} disbursementId
+ * @type {String}
  */
 FailedAdhocDisbursementEvent.prototype.disbursementId = undefined
 
 /**
  * The type of payment for disbursement.   Example `CREDIT_CARD`
  * @member {String} paymentDisbursementType
+ * @type {String}
  */
 FailedAdhocDisbursementEvent.prototype.paymentDisbursementType = undefined
 
 /**
  * The status of the failed `AdhocDisbursement`.   Example `HARD_DECLINED`
  * @member {String} status
+ * @type {String}
  */
 FailedAdhocDisbursementEvent.prototype.status = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} transferAmount
+ * @type {module:finances_v0/model/Currency}
  */
 FailedAdhocDisbursementEvent.prototype.transferAmount = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 FailedAdhocDisbursementEvent.prototype.postedDate = undefined

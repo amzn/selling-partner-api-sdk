@@ -60,5 +60,6 @@ export class UpdateVerificationStatusRequest {
 
 /**
  * @member {module:orders_v0/model/UpdateVerificationStatusRequestBody} regulatedOrderVerificationStatus
+ * @type {module:orders_v0/model/UpdateVerificationStatusRequestBody}
  */
 UpdateVerificationStatusRequest.prototype.regulatedOrderVerificationStatus = undefined

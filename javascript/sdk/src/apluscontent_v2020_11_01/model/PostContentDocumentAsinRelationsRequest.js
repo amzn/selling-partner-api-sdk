@@ -59,5 +59,6 @@ export class PostContentDocumentAsinRelationsRequest {
 /**
  * The set of ASINs.
  * @member {Array.<String>} asinSet
+ * @type {Array.<String>}
  */
 PostContentDocumentAsinRelationsRequest.prototype.asinSet = undefined

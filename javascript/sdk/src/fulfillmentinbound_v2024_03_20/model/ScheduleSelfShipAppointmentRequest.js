@@ -58,5 +58,6 @@ export class ScheduleSelfShipAppointmentRequest {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/ReasonComment} reasonComment
+ * @type {module:fulfillmentinbound_v2024_03_20/model/ReasonComment}
  */
 ScheduleSelfShipAppointmentRequest.prototype.reasonComment = undefined

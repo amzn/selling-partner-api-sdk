@@ -88,11 +88,13 @@ SubstitutionPreferences.SubstitutionTypeEnum = {
 /**
  * The type of substitution that these preferences represent.
  * @member {module:orders_v0/model/SubstitutionPreferences.SubstitutionTypeEnum} substitutionType
+ * @type {module:orders_v0/model/SubstitutionPreferences.SubstitutionTypeEnum}
  */
 SubstitutionPreferences.prototype.substitutionType = undefined
 
 /**
  * A collection of substitution options.
  * @member {Array.<module:orders_v0/model/SubstitutionOption>} substitutionOptions
+ * @type {Array.<module:orders_v0/model/SubstitutionOption>}
  */
 SubstitutionPreferences.prototype.substitutionOptions = undefined

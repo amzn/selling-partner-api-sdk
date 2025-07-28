@@ -158,21 +158,25 @@ TaxDetails.TaxTypeEnum = {
 /**
  * Type of the tax applied.
  * @member {module:vendorinvoices_v1/model/TaxDetails.TaxTypeEnum} taxType
+ * @type {module:vendorinvoices_v1/model/TaxDetails.TaxTypeEnum}
  */
 TaxDetails.prototype.taxType = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
  * @member {String} taxRate
+ * @type {String}
  */
 TaxDetails.prototype.taxRate = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/Money} taxAmount
+ * @type {module:vendorinvoices_v1/model/Money}
  */
 TaxDetails.prototype.taxAmount = undefined
 
 /**
  * @member {module:vendorinvoices_v1/model/Money} taxableAmount
+ * @type {module:vendorinvoices_v1/model/Money}
  */
 TaxDetails.prototype.taxableAmount = undefined

@@ -61,5 +61,6 @@ export class ErrorList {
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:replenishment_v2022_11_07/model/Error>} errors
+ * @type {Array.<module:replenishment_v2022_11_07/model/Error>}
  */
 ErrorList.prototype.errors = undefined

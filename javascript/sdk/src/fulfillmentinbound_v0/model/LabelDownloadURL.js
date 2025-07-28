@@ -58,5 +58,6 @@ export class LabelDownloadURL {
 /**
  * URL to download the label for the package. Note: The URL will only be valid for 15 seconds
  * @member {String} downloadURL
+ * @type {String}
  */
 LabelDownloadURL.prototype.downloadURL = undefined

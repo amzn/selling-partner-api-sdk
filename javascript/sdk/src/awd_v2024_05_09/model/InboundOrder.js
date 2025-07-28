@@ -81,49 +81,58 @@ export class InboundOrder {
 /**
  * Date when this order was created.
  * @member {Date} createdAt
+ * @type {Date}
  */
 InboundOrder.prototype.createdAt = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/DestinationDetails} destinationDetails
+ * @type {module:awd_v2024_05_09/model/DestinationDetails}
  */
 InboundOrder.prototype.destinationDetails = undefined
 
 /**
  * Reference ID that can be used to correlate the order with partner resources.
  * @member {String} externalReferenceId
+ * @type {String}
  */
 InboundOrder.prototype.externalReferenceId = undefined
 
 /**
  * Inbound order ID.
  * @member {String} orderId
+ * @type {String}
  */
 InboundOrder.prototype.orderId = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InboundStatus} orderStatus
+ * @type {module:awd_v2024_05_09/model/InboundStatus}
  */
 InboundOrder.prototype.orderStatus = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/Address} originAddress
+ * @type {module:awd_v2024_05_09/model/Address}
  */
 InboundOrder.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
  * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packagesToInbound
+ * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
  */
 InboundOrder.prototype.packagesToInbound = undefined
 
 /**
  * @member {module:awd_v2024_05_09/model/InboundPreferences} preferences
+ * @type {module:awd_v2024_05_09/model/InboundPreferences}
  */
 InboundOrder.prototype.preferences = undefined
 
 /**
  * Date when this order was last updated.
  * @member {Date} updatedAt
+ * @type {Date}
  */
 InboundOrder.prototype.updatedAt = undefined

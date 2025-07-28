@@ -60,11 +60,13 @@ export class ListAllFulfillmentOrdersResult {
 /**
  * When present and not empty, pass this string token in the next request to return the next response page.
  * @member {String} nextToken
+ * @type {String}
  */
 ListAllFulfillmentOrdersResult.prototype.nextToken = undefined
 
 /**
  * An array of fulfillment order information.
  * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder>} fulfillmentOrders
+ * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder>}
  */
 ListAllFulfillmentOrdersResult.prototype.fulfillmentOrders = undefined

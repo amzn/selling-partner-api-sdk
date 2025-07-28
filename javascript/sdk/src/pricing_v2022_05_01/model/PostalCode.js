@@ -59,11 +59,13 @@ export class PostalCode {
 /**
  * Country code value
  * @member {String} countryCode
+ * @type {String}
  */
 PostalCode.prototype.countryCode = undefined
 
 /**
  * Postal code value
  * @member {String} value
+ * @type {String}
  */
 PostalCode.prototype.value = undefined

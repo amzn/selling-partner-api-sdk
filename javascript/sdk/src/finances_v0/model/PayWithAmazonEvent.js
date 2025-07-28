@@ -69,58 +69,68 @@ export class PayWithAmazonEvent {
 /**
  * An order identifier that is specified by the seller.
  * @member {String} sellerOrderId
+ * @type {String}
  */
 PayWithAmazonEvent.prototype.sellerOrderId = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} transactionPostedDate
+ * @type {Date}
  */
 PayWithAmazonEvent.prototype.transactionPostedDate = undefined
 
 /**
  * The type of business object.
  * @member {String} businessObjectType
+ * @type {String}
  */
 PayWithAmazonEvent.prototype.businessObjectType = undefined
 
 /**
  * The sales channel for the transaction.
  * @member {String} salesChannel
+ * @type {String}
  */
 PayWithAmazonEvent.prototype.salesChannel = undefined
 
 /**
  * @member {module:finances_v0/model/ChargeComponent} charge
+ * @type {module:finances_v0/model/ChargeComponent}
  */
 PayWithAmazonEvent.prototype.charge = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
+ * @type {Array.<module:finances_v0/model/FeeComponent>}
  */
 PayWithAmazonEvent.prototype.feeList = undefined
 
 /**
  * The type of payment.  Possible values:  * Sales
  * @member {String} paymentAmountType
+ * @type {String}
  */
 PayWithAmazonEvent.prototype.paymentAmountType = undefined
 
 /**
  * A short description of this payment event.
  * @member {String} amountDescription
+ * @type {String}
  */
 PayWithAmazonEvent.prototype.amountDescription = undefined
 
 /**
  * The fulfillment channel.  Possible values:  * AFN - Amazon Fulfillment Network (Fulfillment by Amazon)  * MFN - Merchant Fulfillment Network (self-fulfilled)
  * @member {String} fulfillmentChannel
+ * @type {String}
  */
 PayWithAmazonEvent.prototype.fulfillmentChannel = undefined
 
 /**
  * The store name where the event occurred.
  * @member {String} storeName
+ * @type {String}
  */
 PayWithAmazonEvent.prototype.storeName = undefined

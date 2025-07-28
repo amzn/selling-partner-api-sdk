@@ -76,47 +76,55 @@ export class PackageDetail {
 /**
  * A seller-supplied identifier that uniquely identifies a package within the scope of an order. Only positive numeric values are supported.
  * @member {String} packageReferenceId
+ * @type {String}
  */
 PackageDetail.prototype.packageReferenceId = undefined
 
 /**
  * Identifies the carrier that will deliver the package. This field is required for all marketplaces. For more information, refer to the [`CarrierCode` announcement](https://developer-docs.amazon.com/sp-api/changelog/carriercode-value-required-in-shipment-confirmations-for-br-mx-ca-sg-au-in-jp-marketplaces).
  * @member {String} carrierCode
+ * @type {String}
  */
 PackageDetail.prototype.carrierCode = undefined
 
 /**
  * Carrier name that will deliver the package. Required when `carrierCode` is \"Other\"
  * @member {String} carrierName
+ * @type {String}
  */
 PackageDetail.prototype.carrierName = undefined
 
 /**
  * Ship method to be used for shipping the order.
  * @member {String} shippingMethod
+ * @type {String}
  */
 PackageDetail.prototype.shippingMethod = undefined
 
 /**
  * The tracking number used to obtain tracking and delivery information.
  * @member {String} trackingNumber
+ * @type {String}
  */
 PackageDetail.prototype.trackingNumber = undefined
 
 /**
  * The shipping date for the package. Must be in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date/time format.
  * @member {Date} shipDate
+ * @type {Date}
  */
 PackageDetail.prototype.shipDate = undefined
 
 /**
  * The unique identifier for the supply source.
  * @member {String} shipFromSupplySourceId
+ * @type {String}
  */
 PackageDetail.prototype.shipFromSupplySourceId = undefined
 
 /**
  * A list of order items.
  * @member {Array.<module:orders_v0/model/ConfirmShipmentOrderItem>} orderItems
+ * @type {Array.<module:orders_v0/model/ConfirmShipmentOrderItem>}
  */
 PackageDetail.prototype.orderItems = undefined

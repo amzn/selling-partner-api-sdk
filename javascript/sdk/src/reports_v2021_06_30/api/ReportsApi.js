@@ -31,7 +31,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version 2021-06-30
 */
 export class ReportsApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -81,7 +81,7 @@ export class ReportsApi {
   /**
      * Cancels the report that you specify. Only reports with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be cancelled. Cancelled reports are returned in subsequent calls to the &#x60;getReport&#x60; and &#x60;getReports&#x60; operations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   cancelReportWithHttpInfo (reportId) {
     const postBody = null
@@ -115,7 +115,7 @@ export class ReportsApi {
   /**
      * Cancels the report that you specify. Only reports with &#x60;processingStatus&#x3D;IN_QUEUE&#x60; can be cancelled. Cancelled reports are returned in subsequent calls to the &#x60;getReport&#x60; and &#x60;getReports&#x60; operations.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   cancelReport (reportId) {
     return this.cancelReportWithHttpInfo(reportId)
@@ -127,7 +127,7 @@ export class ReportsApi {
   /**
      * Cancels the report schedule that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportScheduleId The identifier for the report schedule. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     * @return {Promise<void>}
      */
   cancelReportScheduleWithHttpInfo (reportScheduleId) {
     const postBody = null
@@ -161,7 +161,7 @@ export class ReportsApi {
   /**
      * Cancels the report schedule that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportScheduleId The identifier for the report schedule. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     * @return {Promise<void>}
      */
   cancelReportSchedule (reportScheduleId) {
     return this.cancelReportScheduleWithHttpInfo(reportScheduleId)
@@ -173,7 +173,7 @@ export class ReportsApi {
   /**
      * Creates a report.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:reports_v2021_06_30/model/CreateReportSpecification} body Information required to create the report.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:reports_v2021_06_30/model/CreateReportResponse} and HTTP response
+     * @return {Promise<module:reports_v2021_06_30/model/CreateReportResponse>}
      */
   createReportWithHttpInfo (body) {
     const postBody = body
@@ -206,7 +206,7 @@ export class ReportsApi {
   /**
      * Creates a report.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:reports_v2021_06_30/model/CreateReportSpecification} body Information required to create the report.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:reports_v2021_06_30/model/CreateReportResponse}
+     * @return {Promise<module:reports_v2021_06_30/model/CreateReportResponse>}
      */
   createReport (body) {
     return this.createReportWithHttpInfo(body)
@@ -218,7 +218,7 @@ export class ReportsApi {
   /**
      * Creates a report schedule. If a report schedule with the same report type and marketplace IDs already exists, it will be cancelled and replaced with this one.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:reports_v2021_06_30/model/CreateReportScheduleSpecification} body Information required to create the report schedule.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:reports_v2021_06_30/model/CreateReportScheduleResponse} and HTTP response
+     * @return {Promise<module:reports_v2021_06_30/model/CreateReportScheduleResponse>}
      */
   createReportScheduleWithHttpInfo (body) {
     const postBody = body
@@ -251,7 +251,7 @@ export class ReportsApi {
   /**
      * Creates a report schedule. If a report schedule with the same report type and marketplace IDs already exists, it will be cancelled and replaced with this one.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:reports_v2021_06_30/model/CreateReportScheduleSpecification} body Information required to create the report schedule.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:reports_v2021_06_30/model/CreateReportScheduleResponse}
+     * @return {Promise<module:reports_v2021_06_30/model/CreateReportScheduleResponse>}
      */
   createReportSchedule (body) {
     return this.createReportScheduleWithHttpInfo(body)
@@ -263,7 +263,7 @@ export class ReportsApi {
   /**
      * Returns report details (including the &#x60;reportDocumentId&#x60;, if available) for the report that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:reports_v2021_06_30/model/Report} and HTTP response
+     * @return {Promise<module:reports_v2021_06_30/model/Report>}
      */
   getReportWithHttpInfo (reportId) {
     const postBody = null
@@ -297,7 +297,7 @@ export class ReportsApi {
   /**
      * Returns report details (including the &#x60;reportDocumentId&#x60;, if available) for the report that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportId The identifier for the report. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:reports_v2021_06_30/model/Report}
+     * @return {Promise<module:reports_v2021_06_30/model/Report>}
      */
   getReport (reportId) {
     return this.getReportWithHttpInfo(reportId)
@@ -309,7 +309,7 @@ export class ReportsApi {
   /**
      * Returns the information required for retrieving a report document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportDocumentId The identifier for the report document.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:reports_v2021_06_30/model/ReportDocument} and HTTP response
+     * @return {Promise<module:reports_v2021_06_30/model/ReportDocument>}
      */
   getReportDocumentWithHttpInfo (reportDocumentId) {
     const postBody = null
@@ -343,7 +343,7 @@ export class ReportsApi {
   /**
      * Returns the information required for retrieving a report document&#39;s contents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportDocumentId The identifier for the report document.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:reports_v2021_06_30/model/ReportDocument}
+     * @return {Promise<module:reports_v2021_06_30/model/ReportDocument>}
      */
   getReportDocument (reportDocumentId) {
     return this.getReportDocumentWithHttpInfo(reportDocumentId)
@@ -355,7 +355,7 @@ export class ReportsApi {
   /**
      * Returns report schedule details for the report schedule that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportScheduleId The identifier for the report schedule. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:reports_v2021_06_30/model/ReportSchedule} and HTTP response
+     * @return {Promise<module:reports_v2021_06_30/model/ReportSchedule>}
      */
   getReportScheduleWithHttpInfo (reportScheduleId) {
     const postBody = null
@@ -389,7 +389,7 @@ export class ReportsApi {
   /**
      * Returns report schedule details for the report schedule that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} reportScheduleId The identifier for the report schedule. This identifier is unique only in combination with a seller ID.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:reports_v2021_06_30/model/ReportSchedule}
+     * @return {Promise<module:reports_v2021_06_30/model/ReportSchedule>}
      */
   getReportSchedule (reportScheduleId) {
     return this.getReportScheduleWithHttpInfo(reportScheduleId)
@@ -401,7 +401,7 @@ export class ReportsApi {
   /**
      * Returns report schedule details that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} reportTypes A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:reports_v2021_06_30/model/ReportScheduleList} and HTTP response
+     * @return {Promise<module:reports_v2021_06_30/model/ReportScheduleList>}
      */
   getReportSchedulesWithHttpInfo (reportTypes) {
     const postBody = null
@@ -435,7 +435,7 @@ export class ReportsApi {
   /**
      * Returns report schedule details that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0222 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Array.<String>} reportTypes A list of report types used to filter report schedules. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:reports_v2021_06_30/model/ReportScheduleList}
+     * @return {Promise<module:reports_v2021_06_30/model/ReportScheduleList>}
      */
   getReportSchedules (reportTypes) {
     return this.getReportSchedulesWithHttpInfo(reportTypes)
@@ -454,7 +454,7 @@ export class ReportsApi {
      * @param {Date} opts.createdSince The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days.
      * @param {Date} opts.createdUntil The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now.
      * @param {String} opts.nextToken A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:reports_v2021_06_30/model/GetReportsResponse} and HTTP response
+     * @return {Promise<module:reports_v2021_06_30/model/GetReportsResponse>}
      */
   getReportsWithHttpInfo (opts) {
     opts = opts || {}
@@ -497,7 +497,7 @@ export class ReportsApi {
      * @param {Date} opts.createdSince The earliest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is 90 days ago. Reports are retained for a maximum of 90 days.
      * @param {Date} opts.createdUntil The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now.
      * @param {String} opts.nextToken A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:reports_v2021_06_30/model/GetReportsResponse}
+     * @return {Promise<module:reports_v2021_06_30/model/GetReportsResponse>}
      */
   getReports (opts) {
     return this.getReportsWithHttpInfo(opts)

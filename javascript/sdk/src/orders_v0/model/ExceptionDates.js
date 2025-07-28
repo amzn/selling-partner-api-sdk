@@ -61,17 +61,20 @@ export class ExceptionDates {
 /**
  * Date when the business is closed, in <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> date format.
  * @member {String} exceptionDate
+ * @type {String}
  */
 ExceptionDates.prototype.exceptionDate = undefined
 
 /**
  * Boolean indicating if the business is closed or open on that date.
  * @member {Boolean} isOpen
+ * @type {Boolean}
  */
 ExceptionDates.prototype.isOpen = undefined
 
 /**
  * Time window during the day when the business is open.
  * @member {Array.<module:orders_v0/model/OpenInterval>} openIntervals
+ * @type {Array.<module:orders_v0/model/OpenInterval>}
  */
 ExceptionDates.prototype.openIntervals = undefined

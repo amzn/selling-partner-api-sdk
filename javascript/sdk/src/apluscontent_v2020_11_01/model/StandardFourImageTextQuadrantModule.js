@@ -69,20 +69,24 @@ export class StandardFourImageTextQuadrantModule {
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block1
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block1 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block2
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block2 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block3
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block3 = undefined
 
 /**
  * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block4
+ * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block4 = undefined

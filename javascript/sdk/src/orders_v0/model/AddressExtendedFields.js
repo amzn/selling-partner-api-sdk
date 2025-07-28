@@ -61,23 +61,27 @@ export class AddressExtendedFields {
 /**
  * The street name.
  * @member {String} streetName
+ * @type {String}
  */
 AddressExtendedFields.prototype.streetName = undefined
 
 /**
  * The house, building, or property number associated with the location's street address.
  * @member {String} streetNumber
+ * @type {String}
  */
 AddressExtendedFields.prototype.streetNumber = undefined
 
 /**
  * The floor number/unit number in the building/private house number.
  * @member {String} complement
+ * @type {String}
  */
 AddressExtendedFields.prototype.complement = undefined
 
 /**
  * The neighborhood. This value is only used in some countries (such as Brazil).
  * @member {String} neighborhood
+ * @type {String}
  */
 AddressExtendedFields.prototype.neighborhood = undefined

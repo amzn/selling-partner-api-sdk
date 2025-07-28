@@ -89,11 +89,13 @@ ResearchingQuantityEntry.NameEnum = {
 /**
  * The duration of the research.
  * @member {module:fbainventory_v1/model/ResearchingQuantityEntry.NameEnum} name
+ * @type {module:fbainventory_v1/model/ResearchingQuantityEntry.NameEnum}
  */
 ResearchingQuantityEntry.prototype.name = undefined
 
 /**
  * The number of units.
  * @member {Number} quantity
+ * @type {Number}
  */
 ResearchingQuantityEntry.prototype.quantity = undefined

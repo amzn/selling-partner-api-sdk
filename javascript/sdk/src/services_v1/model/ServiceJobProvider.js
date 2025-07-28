@@ -58,5 +58,6 @@ export class ServiceJobProvider {
 /**
  * The identifier of the service job provider.
  * @member {String} serviceJobProviderId
+ * @type {String}
  */
 ServiceJobProvider.prototype.serviceJobProviderId = undefined

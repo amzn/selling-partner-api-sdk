@@ -63,11 +63,13 @@ export class ItemProductTypeByMarketplace {
 /**
  * Amazon marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemProductTypeByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * The name of the product type that is submitted by the Selling Partner.
  * @member {String} productType
+ * @type {String}
  */
 ItemProductTypeByMarketplace.prototype.productType = undefined

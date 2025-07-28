@@ -58,5 +58,6 @@ export class GetMessagingActionResponseEmbedded {
 
 /**
  * @member {module:messaging_v1/model/GetSchemaResponse} schema
+ * @type {module:messaging_v1/model/GetSchemaResponse}
  */
 GetMessagingActionResponseEmbedded.prototype.schema = undefined

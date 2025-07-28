@@ -59,11 +59,13 @@ export class DeferredContext {
 /**
  * The deferral policy applied to the transaction.  **Examples:** `B2B` (invoiced orders), `DD7` (delivery date policy)
  * @member {String} deferralReason
+ * @type {String}
  */
 DeferredContext.prototype.deferralReason = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} maturityDate
+ * @type {Date}
  */
 DeferredContext.prototype.maturityDate = undefined

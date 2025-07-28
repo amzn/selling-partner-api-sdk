@@ -117,11 +117,13 @@ DropOffLocation.TypeEnum = {
 /**
  * Specifies the preferred location to leave the package at the destination address.
  * @member {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation.TypeEnum} type
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation.TypeEnum}
  */
 DropOffLocation.prototype.type = undefined
 
 /**
  * Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.
  * @member {Object.<String, String>} attributes
+ * @type {Object.<String, String>}
  */
 DropOffLocation.prototype.attributes = undefined

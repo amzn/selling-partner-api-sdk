@@ -88,12 +88,14 @@ export class OrderDetails {
 /**
  * The customer order number.
  * @member {String} customerOrderNumber
+ * @type {String}
  */
 OrderDetails.prototype.customerOrderNumber = undefined
 
 /**
  * The date the order was placed. This  field is expected to be in ISO-8601 date/time format, for example:2018-07-16T23:00:00Z/ 2018-07-16T23:00:00-05:00 /2018-07-16T23:00:00-08:00. If no time zone is specified, UTC should be assumed.
  * @member {Date} orderDate
+ * @type {Date}
  */
 OrderDetails.prototype.orderDate = undefined
 
@@ -132,41 +134,49 @@ OrderDetails.OrderStatusEnum = {
 /**
  * Current status of the order.
  * @member {module:vendordforders_v2021_12_28/model/OrderDetails.OrderStatusEnum} orderStatus
+ * @type {module:vendordforders_v2021_12_28/model/OrderDetails.OrderStatusEnum}
  */
 OrderDetails.prototype.orderStatus = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/ShipmentDetails} shipmentDetails
+ * @type {module:vendordforders_v2021_12_28/model/ShipmentDetails}
  */
 OrderDetails.prototype.shipmentDetails = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/TaxItemDetails} taxTotal
+ * @type {module:vendordforders_v2021_12_28/model/TaxItemDetails}
  */
 OrderDetails.prototype.taxTotal = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
  */
 OrderDetails.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
  */
 OrderDetails.prototype.shipFromParty = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Address} shipToParty
+ * @type {module:vendordforders_v2021_12_28/model/Address}
  */
 OrderDetails.prototype.shipToParty = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} billToParty
+ * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
  */
 OrderDetails.prototype.billToParty = undefined
 
 /**
  * A list of items in this purchase order.
  * @member {Array.<module:vendordforders_v2021_12_28/model/OrderItem>} items
+ * @type {Array.<module:vendordforders_v2021_12_28/model/OrderItem>}
  */
 OrderDetails.prototype.items = undefined

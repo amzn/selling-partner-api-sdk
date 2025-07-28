@@ -63,11 +63,13 @@ export class DateTimeRange {
 /**
  * The beginning of the time range. Must be in UTC in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
  * @member {Date} startTime
+ * @type {Date}
  */
 DateTimeRange.prototype.startTime = undefined
 
 /**
  * The end of the time range. Must be in UTC in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
  * @member {Date} endTime
+ * @type {Date}
  */
 DateTimeRange.prototype.endTime = undefined

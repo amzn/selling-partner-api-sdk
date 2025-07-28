@@ -62,22 +62,26 @@ export class AdhocDisbursementEvent {
 /**
  * Indicates the type of transaction.  Example: \"Disbursed to Amazon Gift Card balance\"
  * @member {String} transactionType
+ * @type {String}
  */
 AdhocDisbursementEvent.prototype.transactionType = undefined
 
 /**
  * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
  * @member {Date} postedDate
+ * @type {Date}
  */
 AdhocDisbursementEvent.prototype.postedDate = undefined
 
 /**
  * The identifier for the transaction.
  * @member {String} transactionId
+ * @type {String}
  */
 AdhocDisbursementEvent.prototype.transactionId = undefined
 
 /**
  * @member {module:finances_v0/model/Currency} transactionAmount
+ * @type {module:finances_v0/model/Currency}
  */
 AdhocDisbursementEvent.prototype.transactionAmount = undefined

@@ -58,5 +58,6 @@ export class QueryPagination {
 /**
  * A token that can be used to fetch the next page of results.
  * @member {String} nextToken
+ * @type {String}
  */
 QueryPagination.prototype.nextToken = undefined

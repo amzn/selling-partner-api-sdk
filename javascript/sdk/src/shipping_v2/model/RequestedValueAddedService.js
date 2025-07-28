@@ -60,5 +60,6 @@ export class RequestedValueAddedService {
 /**
  * The identifier of the selected value-added service. Must be among those returned in the response to the getRates operation.
  * @member {String} id
+ * @type {String}
  */
 RequestedValueAddedService.prototype.id = undefined

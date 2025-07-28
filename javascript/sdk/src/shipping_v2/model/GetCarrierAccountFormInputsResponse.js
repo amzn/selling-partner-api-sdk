@@ -59,5 +59,6 @@ export class GetCarrierAccountFormInputsResponse {
 /**
  * A list of LinkableCarrier
  * @member {Array.<module:shipping_v2/model/LinkableCarrier>} linkableCarriersList
+ * @type {Array.<module:shipping_v2/model/LinkableCarrier>}
  */
 GetCarrierAccountFormInputsResponse.prototype.linkableCarriersList = undefined

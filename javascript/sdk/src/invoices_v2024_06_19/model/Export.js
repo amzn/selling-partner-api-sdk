@@ -64,34 +64,40 @@ export class Export {
 /**
  * When the export generation fails, this attribute contains a description of the error.
  * @member {String} errorMessage
+ * @type {String}
  */
 Export.prototype.errorMessage = undefined
 
 /**
  * The export identifier.
  * @member {String} exportId
+ * @type {String}
  */
 Export.prototype.exportId = undefined
 
 /**
  * The date and time when the export generation finished. Vales are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} generateExportFinishedAt
+ * @type {Date}
  */
 Export.prototype.generateExportFinishedAt = undefined
 
 /**
  * The date and time when the export generation started. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} generateExportStartedAt
+ * @type {Date}
  */
 Export.prototype.generateExportStartedAt = undefined
 
 /**
  * The identifier for the export documents. To get the information required to retrieve the export document's contents, pass each ID in the `getInvoicesDocument` operation.  This list is empty until the status is `DONE`.
  * @member {Array.<String>} invoicesDocumentIds
+ * @type {Array.<String>}
  */
 Export.prototype.invoicesDocumentIds = undefined
 
 /**
  * @member {module:invoices_v2024_06_19/model/ExportStatus} status
+ * @type {module:invoices_v2024_06_19/model/ExportStatus}
  */
 Export.prototype.status = undefined

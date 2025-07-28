@@ -73,28 +73,33 @@ export class ReturnAuthorization {
 /**
  * An identifier for the return authorization. This identifier associates return items with the return authorization used to return them.
  * @member {String} returnAuthorizationId
+ * @type {String}
  */
 ReturnAuthorization.prototype.returnAuthorizationId = undefined
 
 /**
  * An identifier for the Amazon fulfillment center that the return items should be sent to.
  * @member {String} fulfillmentCenterId
+ * @type {String}
  */
 ReturnAuthorization.prototype.fulfillmentCenterId = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} returnToAddress
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Address}
  */
 ReturnAuthorization.prototype.returnToAddress = undefined
 
 /**
  * The return merchandise authorization (RMA) that Amazon needs to process the return.
  * @member {String} amazonRmaId
+ * @type {String}
  */
 ReturnAuthorization.prototype.amazonRmaId = undefined
 
 /**
  * A URL for a web page that contains the return authorization barcode and the mailing label. This does not include pre-paid shipping.
  * @member {String} rmaPageURL
+ * @type {String}
  */
 ReturnAuthorization.prototype.rmaPageURL = undefined

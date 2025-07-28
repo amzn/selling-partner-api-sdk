@@ -63,11 +63,13 @@ export class ShippingRequirements {
 /**
  * Available shipment modes for this shipping program.
  * @member {Array.<String>} modes
+ * @type {Array.<String>}
  */
 ShippingRequirements.prototype.modes = undefined
 
 /**
  * Shipping program for the option. Can be: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
  * @member {String} solution
+ * @type {String}
  */
 ShippingRequirements.prototype.solution = undefined

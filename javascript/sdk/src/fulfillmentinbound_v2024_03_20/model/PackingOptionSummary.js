@@ -63,11 +63,13 @@ export class PackingOptionSummary {
 /**
  * Identifier of a packing option.
  * @member {String} packingOptionId
+ * @type {String}
  */
 PackingOptionSummary.prototype.packingOptionId = undefined
 
 /**
  * The status of a packing option. Possible values: 'OFFERED', 'ACCEPTED', 'EXPIRED'.
  * @member {String} status
+ * @type {String}
  */
 PackingOptionSummary.prototype.status = undefined

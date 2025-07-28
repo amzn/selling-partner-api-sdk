@@ -68,44 +68,52 @@ export class FeesEstimateIdentifier {
 /**
  * A marketplace identifier.
  * @member {String} marketplaceId
+ * @type {String}
  */
 FeesEstimateIdentifier.prototype.marketplaceId = undefined
 
 /**
  * The seller identifier.
  * @member {String} sellerId
+ * @type {String}
  */
 FeesEstimateIdentifier.prototype.sellerId = undefined
 
 /**
  * @member {module:productfees_v0/model/IdType} idType
+ * @type {module:productfees_v0/model/IdType}
  */
 FeesEstimateIdentifier.prototype.idType = undefined
 
 /**
  * The item identifier.
  * @member {String} idValue
+ * @type {String}
  */
 FeesEstimateIdentifier.prototype.idValue = undefined
 
 /**
  * When true, the offer is fulfilled by Amazon.
  * @member {Boolean} isAmazonFulfilled
+ * @type {Boolean}
  */
 FeesEstimateIdentifier.prototype.isAmazonFulfilled = undefined
 
 /**
  * @member {module:productfees_v0/model/PriceToEstimateFees} priceToEstimateFees
+ * @type {module:productfees_v0/model/PriceToEstimateFees}
  */
 FeesEstimateIdentifier.prototype.priceToEstimateFees = undefined
 
 /**
  * A unique identifier provided by the caller to track this request.
  * @member {String} sellerInputIdentifier
+ * @type {String}
  */
 FeesEstimateIdentifier.prototype.sellerInputIdentifier = undefined
 
 /**
  * @member {module:productfees_v0/model/OptionalFulfillmentProgram} optionalFulfillmentProgram
+ * @type {module:productfees_v0/model/OptionalFulfillmentProgram}
  */
 FeesEstimateIdentifier.prototype.optionalFulfillmentProgram = undefined

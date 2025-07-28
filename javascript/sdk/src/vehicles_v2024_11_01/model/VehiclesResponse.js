@@ -62,11 +62,13 @@ export class VehiclesResponse {
 
 /**
  * @member {module:vehicles_v2024_11_01/model/Pagination} pagination
+ * @type {module:vehicles_v2024_11_01/model/Pagination}
  */
 VehiclesResponse.prototype.pagination = undefined
 
 /**
  * List of vehicles from Amazon's catalog.
  * @member {Array.<module:vehicles_v2024_11_01/model/Vehicle>} vehicles
+ * @type {Array.<module:vehicles_v2024_11_01/model/Vehicle>}
  */
 VehiclesResponse.prototype.vehicles = undefined

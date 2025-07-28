@@ -75,33 +75,39 @@ export class StatusUpdateDetails {
 /**
  * The shipment tracking number is required for every package and should match the `trackingNumber` sent for the shipment confirmation.
  * @member {String} trackingNumber
+ * @type {String}
  */
 StatusUpdateDetails.prototype.trackingNumber = undefined
 
 /**
  * Indicates the shipment status code of the package that provides transportation information for Amazon tracking systems and ultimately for the final customer. For more information, refer to the [Additional Fields Explanation](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-use-case-guide#additional-fields-explanation).
  * @member {String} statusCode
+ * @type {String}
  */
 StatusUpdateDetails.prototype.statusCode = undefined
 
 /**
  * Provides a reason code for the status of the package that will provide additional information about the transportation status. For more information, refer to the [Additional Fields Explanation](https://developer-docs.amazon.com/sp-api/docs/vendor-direct-fulfillment-shipping-api-use-case-guide#additional-fields-explanation).
  * @member {String} reasonCode
+ * @type {String}
  */
 StatusUpdateDetails.prototype.reasonCode = undefined
 
 /**
  * The date and time when the shipment status was updated. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.
  * @member {Date} statusDateTime
+ * @type {Date}
  */
 StatusUpdateDetails.prototype.statusDateTime = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Address} statusLocationAddress
+ * @type {module:vendordfshipping_v2021_12_28/model/Address}
  */
 StatusUpdateDetails.prototype.statusLocationAddress = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/ShipmentSchedule} shipmentSchedule
+ * @type {module:vendordfshipping_v2021_12_28/model/ShipmentSchedule}
  */
 StatusUpdateDetails.prototype.shipmentSchedule = undefined

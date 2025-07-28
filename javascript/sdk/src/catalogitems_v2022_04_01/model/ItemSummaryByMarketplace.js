@@ -81,41 +81,48 @@ export class ItemSummaryByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * When `true`, the Amazon catalog item is intended for an adult audience or is sexual in nature.
  * @member {Boolean} adultProduct
+ * @type {Boolean}
  */
 ItemSummaryByMarketplace.prototype.adultProduct = undefined
 
 /**
  * When `true`, the Amazon catalog item is autographed.
  * @member {Boolean} autographed
+ * @type {Boolean}
  */
 ItemSummaryByMarketplace.prototype.autographed = undefined
 
 /**
  * Name of the brand that is associated with the Amazon catalog item.
  * @member {String} brand
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.brand = undefined
 
 /**
  * @member {module:catalogitems_v2022_04_01/model/ItemBrowseClassification} browseClassification
+ * @type {module:catalogitems_v2022_04_01/model/ItemBrowseClassification}
  */
 ItemSummaryByMarketplace.prototype.browseClassification = undefined
 
 /**
  * The color that is associated with the Amazon catalog item.
  * @member {String} color
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.color = undefined
 
 /**
  * Individual contributors to the creation of the item, such as the authors or actors.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemContributor>} contributors
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemContributor>}
  */
 ItemSummaryByMarketplace.prototype.contributors = undefined
 
@@ -154,77 +161,90 @@ ItemSummaryByMarketplace.ItemClassificationEnum = {
 /**
  * Classification type that is associated with the Amazon catalog item.
  * @member {module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace.ItemClassificationEnum} itemClassification
+ * @type {module:catalogitems_v2022_04_01/model/ItemSummaryByMarketplace.ItemClassificationEnum}
  */
 ItemSummaryByMarketplace.prototype.itemClassification = undefined
 
 /**
  * The name that is associated with the Amazon catalog item.
  * @member {String} itemName
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.itemName = undefined
 
 /**
  * The name of the manufacturer that is associated with the Amazon catalog item.
  * @member {String} manufacturer
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.manufacturer = undefined
 
 /**
  * When true, the item is classified as memorabilia.
  * @member {Boolean} memorabilia
+ * @type {Boolean}
  */
 ItemSummaryByMarketplace.prototype.memorabilia = undefined
 
 /**
  * The model number that is associated with the Amazon catalog item.
  * @member {String} modelNumber
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.modelNumber = undefined
 
 /**
  * The quantity of the Amazon catalog item within one package.
  * @member {Number} packageQuantity
+ * @type {Number}
  */
 ItemSummaryByMarketplace.prototype.packageQuantity = undefined
 
 /**
  * The part number that is associated with the Amazon catalog item.
  * @member {String} partNumber
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.partNumber = undefined
 
 /**
  * The earliest date on which the Amazon catalog item can be shipped to customers.
  * @member {Date} releaseDate
+ * @type {Date}
  */
 ItemSummaryByMarketplace.prototype.releaseDate = undefined
 
 /**
  * The name of the size of the Amazon catalog item.
  * @member {String} size
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.size = undefined
 
 /**
  * The name of the style that is associated with the Amazon catalog item.
  * @member {String} style
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.style = undefined
 
 /**
  * When true, the Amazon catalog item is eligible for trade-in.
  * @member {Boolean} tradeInEligible
+ * @type {Boolean}
  */
 ItemSummaryByMarketplace.prototype.tradeInEligible = undefined
 
 /**
  * The identifier of the website display group that is associated with the Amazon catalog item.
  * @member {String} websiteDisplayGroup
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.websiteDisplayGroup = undefined
 
 /**
  * The display name of the website display group that is associated with the Amazon catalog item.
  * @member {String} websiteDisplayGroupName
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.websiteDisplayGroupName = undefined

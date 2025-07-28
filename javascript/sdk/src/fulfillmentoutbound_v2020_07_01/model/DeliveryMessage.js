@@ -59,11 +59,13 @@ export class DeliveryMessage {
 /**
  * The message content for a delivery offering.
  * @member {String} text
+ * @type {String}
  */
 DeliveryMessage.prototype.text = undefined
 
 /**
  * The locale for the message (for example, en_US).
  * @member {String} locale
+ * @type {String}
  */
 DeliveryMessage.prototype.locale = undefined

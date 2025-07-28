@@ -65,6 +65,7 @@ export class Link {
 /**
  * The URI of the related resource.
  * @member {String} resource
+ * @type {String}
  */
 Link.prototype.resource = undefined
 
@@ -85,17 +86,20 @@ Link.VerbEnum = {
 /**
  * The HTTP verb used to interact with the related resource.
  * @member {module:listingsrestrictions_v2021_08_01/model/Link.VerbEnum} verb
+ * @type {module:listingsrestrictions_v2021_08_01/model/Link.VerbEnum}
  */
 Link.prototype.verb = undefined
 
 /**
  * The title of the related resource.
  * @member {String} title
+ * @type {String}
  */
 Link.prototype.title = undefined
 
 /**
  * The media type of the related resource.
  * @member {String} type
+ * @type {String}
  */
 Link.prototype.type = undefined

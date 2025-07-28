@@ -63,11 +63,13 @@ export class PlainTextItem {
 /**
  * The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.
  * @member {Number} position
+ * @type {Number}
  */
 PlainTextItem.prototype.position = undefined
 
 /**
  * The actual plain text.
  * @member {String} value
+ * @type {String}
  */
 PlainTextItem.prototype.value = undefined

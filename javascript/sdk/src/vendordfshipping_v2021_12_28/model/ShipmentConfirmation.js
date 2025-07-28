@@ -77,32 +77,38 @@ export class ShipmentConfirmation {
 /**
  * Purchase order number corresponding to the shipment.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 ShipmentConfirmation.prototype.purchaseOrderNumber = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/ShipmentDetails} shipmentDetails
+ * @type {module:vendordfshipping_v2021_12_28/model/ShipmentDetails}
  */
 ShipmentConfirmation.prototype.shipmentDetails = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
  */
 ShipmentConfirmation.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
  */
 ShipmentConfirmation.prototype.shipFromParty = undefined
 
 /**
  * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/Item>} items
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/Item>}
  */
 ShipmentConfirmation.prototype.items = undefined
 
 /**
  * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/Container>} containers
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/Container>}
  */
 ShipmentConfirmation.prototype.containers = undefined

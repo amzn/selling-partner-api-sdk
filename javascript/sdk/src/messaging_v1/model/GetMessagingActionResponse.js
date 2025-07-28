@@ -64,21 +64,25 @@ export class GetMessagingActionResponse {
 
 /**
  * @member {module:messaging_v1/model/GetMessagingActionResponseLinks} links
+ * @type {module:messaging_v1/model/GetMessagingActionResponseLinks}
  */
 GetMessagingActionResponse.prototype.links = undefined
 
 /**
  * @member {module:messaging_v1/model/GetMessagingActionResponseEmbedded} embedded
+ * @type {module:messaging_v1/model/GetMessagingActionResponseEmbedded}
  */
 GetMessagingActionResponse.prototype.embedded = undefined
 
 /**
  * @member {module:messaging_v1/model/MessagingAction} payload
+ * @type {module:messaging_v1/model/MessagingAction}
  */
 GetMessagingActionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:messaging_v1/model/Error>} errors
+ * @type {Array.<module:messaging_v1/model/Error>}
  */
 GetMessagingActionResponse.prototype.errors = undefined

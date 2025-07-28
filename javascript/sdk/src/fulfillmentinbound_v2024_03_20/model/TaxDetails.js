@@ -61,17 +61,20 @@ export class TaxDetails {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Currency} declaredValue
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Currency}
  */
 TaxDetails.prototype.declaredValue = undefined
 
 /**
  * Harmonized System of Nomenclature code.
  * @member {String} hsnCode
+ * @type {String}
  */
 TaxDetails.prototype.hsnCode = undefined
 
 /**
  * List of tax rates.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/TaxRate>} taxRates
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/TaxRate>}
  */
 TaxDetails.prototype.taxRates = undefined

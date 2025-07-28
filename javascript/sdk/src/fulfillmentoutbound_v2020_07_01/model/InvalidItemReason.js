@@ -63,11 +63,13 @@ export class InvalidItemReason {
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReasonCode} invalidItemReasonCode
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReasonCode}
  */
 InvalidItemReason.prototype.invalidItemReasonCode = undefined
 
 /**
  * A human readable description of the invalid item reason code.
  * @member {String} description
+ * @type {String}
  */
 InvalidItemReason.prototype.description = undefined

@@ -82,63 +82,74 @@ export class ReturnItem {
 /**
  * An identifier assigned by the seller to the return item.
  * @member {String} sellerReturnItemId
+ * @type {String}
  */
 ReturnItem.prototype.sellerReturnItemId = undefined
 
 /**
  * The identifier assigned to the item by the seller when the fulfillment order was created.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type {String}
  */
 ReturnItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * The identifier for the shipment that is associated with the return item.
  * @member {String} amazonShipmentId
+ * @type {String}
  */
 ReturnItem.prototype.amazonShipmentId = undefined
 
 /**
  * The return reason code assigned to the return item by the seller.
  * @member {String} sellerReturnReasonCode
+ * @type {String}
  */
 ReturnItem.prototype.sellerReturnReasonCode = undefined
 
 /**
  * An optional comment about the return item.
  * @member {String} returnComment
+ * @type {String}
  */
 ReturnItem.prototype.returnComment = undefined
 
 /**
  * The return reason code that the Amazon fulfillment center assigned to the return item.
  * @member {String} amazonReturnReasonCode
+ * @type {String}
  */
 ReturnItem.prototype.amazonReturnReasonCode = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentReturnItemStatus} status
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentReturnItemStatus}
  */
 ReturnItem.prototype.status = undefined
 
 /**
  * Date timestamp
  * @member {Date} statusChangedDate
+ * @type {Date}
  */
 ReturnItem.prototype.statusChangedDate = undefined
 
 /**
  * Identifies the return authorization used to return this item. Refer to `ReturnAuthorization`.
  * @member {String} returnAuthorizationId
+ * @type {String}
  */
 ReturnItem.prototype.returnAuthorizationId = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/ReturnItemDisposition} returnReceivedCondition
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/ReturnItemDisposition}
  */
 ReturnItem.prototype.returnReceivedCondition = undefined
 
 /**
  * The identifier for the Amazon fulfillment center that processed the return item.
  * @member {String} fulfillmentCenterId
+ * @type {String}
  */
 ReturnItem.prototype.fulfillmentCenterId = undefined

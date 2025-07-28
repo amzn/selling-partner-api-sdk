@@ -70,21 +70,25 @@ export class PurchaseShipmentResult {
 /**
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
+ * @type {String}
  */
 PurchaseShipmentResult.prototype.shipmentId = undefined
 
 /**
  * A list of post-purchase details about a package that will be shipped using a shipping service.
  * @member {Array.<module:shipping_v2/model/PackageDocumentDetail>} packageDocumentDetails
+ * @type {Array.<module:shipping_v2/model/PackageDocumentDetail>}
  */
 PurchaseShipmentResult.prototype.packageDocumentDetails = undefined
 
 /**
  * @member {module:shipping_v2/model/Promise} promise
+ * @type {module:shipping_v2/model/Promise}
  */
 PurchaseShipmentResult.prototype.promise = undefined
 
 /**
  * @member {module:shipping_v2/model/Benefits} benefits
+ * @type {module:shipping_v2/model/Benefits}
  */
 PurchaseShipmentResult.prototype.benefits = undefined

@@ -87,11 +87,13 @@ export class SegmentedFeaturedOffer {
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type {String}
  */
 SegmentedFeaturedOffer.prototype.sellerId = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Condition} condition
+ * @type {module:pricing_v2022_05_01/model/Condition}
  */
 SegmentedFeaturedOffer.prototype.condition = undefined
 
@@ -184,38 +186,45 @@ SegmentedFeaturedOffer.SubConditionEnum = {
 /**
  * The item subcondition of the offer.
  * @member {module:pricing_v2022_05_01/model/SegmentedFeaturedOffer.SubConditionEnum} subCondition
+ * @type {module:pricing_v2022_05_01/model/SegmentedFeaturedOffer.SubConditionEnum}
  */
 SegmentedFeaturedOffer.prototype.subCondition = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/FulfillmentType} fulfillmentType
+ * @type {module:pricing_v2022_05_01/model/FulfillmentType}
  */
 SegmentedFeaturedOffer.prototype.fulfillmentType = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
+ * @type {module:pricing_v2022_05_01/model/MoneyType}
  */
 SegmentedFeaturedOffer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
  * @member {Array.<module:pricing_v2022_05_01/model/ShippingOption>} shippingOptions
+ * @type {Array.<module:pricing_v2022_05_01/model/ShippingOption>}
  */
 SegmentedFeaturedOffer.prototype.shippingOptions = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Points} points
+ * @type {module:pricing_v2022_05_01/model/Points}
  */
 SegmentedFeaturedOffer.prototype.points = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/PrimeDetails} primeDetails
+ * @type {module:pricing_v2022_05_01/model/PrimeDetails}
  */
 SegmentedFeaturedOffer.prototype.primeDetails = undefined
 
 /**
  * The list of segment information in which the offer is featured.
  * @member {Array.<module:pricing_v2022_05_01/model/FeaturedOfferSegment>} featuredOfferSegments
+ * @type {Array.<module:pricing_v2022_05_01/model/FeaturedOfferSegment>}
  */
 SegmentedFeaturedOffer.prototype.featuredOfferSegments = undefined
 
@@ -223,42 +232,50 @@ SegmentedFeaturedOffer.prototype.featuredOfferSegments = undefined
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type {String}
  */
 Offer.prototype.sellerId = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Condition} condition
+ * @type {module:pricing_v2022_05_01/model/Condition}
  */
 Offer.prototype.condition = undefined
 
 /**
  * The item subcondition of the offer.
  * @member {module:pricing_v2022_05_01/model/Offer.SubConditionEnum} subCondition
+ * @type {module:pricing_v2022_05_01/model/Offer.SubConditionEnum}
  */
 Offer.prototype.subCondition = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/FulfillmentType} fulfillmentType
+ * @type {module:pricing_v2022_05_01/model/FulfillmentType}
  */
 Offer.prototype.fulfillmentType = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
+ * @type {module:pricing_v2022_05_01/model/MoneyType}
  */
 Offer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
  * @member {Array.<module:pricing_v2022_05_01/model/ShippingOption>} shippingOptions
+ * @type {Array.<module:pricing_v2022_05_01/model/ShippingOption>}
  */
 Offer.prototype.shippingOptions = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Points} points
+ * @type {module:pricing_v2022_05_01/model/Points}
  */
 Offer.prototype.points = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/PrimeDetails} primeDetails
+ * @type {module:pricing_v2022_05_01/model/PrimeDetails}
  */
 Offer.prototype.primeDetails = undefined

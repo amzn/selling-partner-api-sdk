@@ -93,23 +93,27 @@ OrderItemAcknowledgement.AcknowledgementCodeEnum = {
 /**
  * This indicates the acknowledgement code.
  * @member {module:vendororders_v1/model/OrderItemAcknowledgement.AcknowledgementCodeEnum} acknowledgementCode
+ * @type {module:vendororders_v1/model/OrderItemAcknowledgement.AcknowledgementCodeEnum}
  */
 OrderItemAcknowledgement.prototype.acknowledgementCode = undefined
 
 /**
  * @member {module:vendororders_v1/model/ItemQuantity} acknowledgedQuantity
+ * @type {module:vendororders_v1/model/ItemQuantity}
  */
 OrderItemAcknowledgement.prototype.acknowledgedQuantity = undefined
 
 /**
  * Estimated ship date per line item. Must be in ISO-8601 date/time format.
  * @member {Date} scheduledShipDate
+ * @type {Date}
  */
 OrderItemAcknowledgement.prototype.scheduledShipDate = undefined
 
 /**
  * Estimated delivery date per line item. Must be in ISO-8601 date/time format.
  * @member {Date} scheduledDeliveryDate
+ * @type {Date}
  */
 OrderItemAcknowledgement.prototype.scheduledDeliveryDate = undefined
 
@@ -142,5 +146,6 @@ OrderItemAcknowledgement.RejectionReasonEnum = {
 /**
  * Indicates the reason for rejection.
  * @member {module:vendororders_v1/model/OrderItemAcknowledgement.RejectionReasonEnum} rejectionReason
+ * @type {module:vendororders_v1/model/OrderItemAcknowledgement.RejectionReasonEnum}
  */
 OrderItemAcknowledgement.prototype.rejectionReason = undefined

@@ -58,5 +58,6 @@ export class GetRatesResponse {
 
 /**
  * @member {module:shipping_v2/model/GetRatesResult} payload
+ * @type {module:shipping_v2/model/GetRatesResult}
  */
 GetRatesResponse.prototype.payload = undefined

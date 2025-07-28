@@ -62,10 +62,12 @@ export class GetSelfShipAppointmentSlotsResponse {
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 GetSelfShipAppointmentSlotsResponse.prototype.pagination = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentSlotsAvailability} selfShipAppointmentSlotsAvailability
+ * @type {module:fulfillmentinbound_v2024_03_20/model/SelfShipAppointmentSlotsAvailability}
  */
 GetSelfShipAppointmentSlotsResponse.prototype.selfShipAppointmentSlotsAvailability = undefined

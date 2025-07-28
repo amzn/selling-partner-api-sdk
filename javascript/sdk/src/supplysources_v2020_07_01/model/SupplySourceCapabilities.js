@@ -60,10 +60,12 @@ export class SupplySourceCapabilities {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OutboundCapability} outbound
+ * @type {module:supplysources_v2020_07_01/model/OutboundCapability}
  */
 SupplySourceCapabilities.prototype.outbound = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ServicesCapability} services
+ * @type {module:supplysources_v2020_07_01/model/ServicesCapability}
  */
 SupplySourceCapabilities.prototype.services = undefined

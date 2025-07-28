@@ -59,11 +59,13 @@ export class Dimension {
 /**
  * Unit of measurement for the dimension value.
  * @member {String} unit
+ * @type {String}
  */
 Dimension.prototype.unit = undefined
 
 /**
  * Numeric value of the dimension.
  * @member {Number} value
+ * @type {Number}
  */
 Dimension.prototype.value = undefined

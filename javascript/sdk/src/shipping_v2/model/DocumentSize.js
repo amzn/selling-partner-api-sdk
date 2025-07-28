@@ -66,12 +66,14 @@ export class DocumentSize {
 /**
  * The width of the document measured in the units specified.
  * @member {Number} width
+ * @type {Number}
  */
 DocumentSize.prototype.width = undefined
 
 /**
  * The length of the document measured in the units specified.
  * @member {Number} length
+ * @type {Number}
  */
 DocumentSize.prototype.length = undefined
 
@@ -98,5 +100,6 @@ DocumentSize.UnitEnum = {
 /**
  * The unit of measurement.
  * @member {module:shipping_v2/model/DocumentSize.UnitEnum} unit
+ * @type {module:shipping_v2/model/DocumentSize.UnitEnum}
  */
 DocumentSize.prototype.unit = undefined

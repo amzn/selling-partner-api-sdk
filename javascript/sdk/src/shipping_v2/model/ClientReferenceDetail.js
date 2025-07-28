@@ -83,11 +83,13 @@ ClientReferenceDetail.ClientReferenceTypeEnum = {
 /**
  * Client Reference type.
  * @member {module:shipping_v2/model/ClientReferenceDetail.ClientReferenceTypeEnum} clientReferenceType
+ * @type {module:shipping_v2/model/ClientReferenceDetail.ClientReferenceTypeEnum}
  */
 ClientReferenceDetail.prototype.clientReferenceType = undefined
 
 /**
  * The Client Reference Id.
  * @member {String} clientReferenceId
+ * @type {String}
  */
 ClientReferenceDetail.prototype.clientReferenceId = undefined

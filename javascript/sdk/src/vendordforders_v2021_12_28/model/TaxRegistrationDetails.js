@@ -84,22 +84,26 @@ TaxRegistrationDetails.TaxRegistrationTypeEnum = {
 /**
  * Tax registration type for the entity.
  * @member {module:vendordforders_v2021_12_28/model/TaxRegistrationDetails.TaxRegistrationTypeEnum} taxRegistrationType
+ * @type {module:vendordforders_v2021_12_28/model/TaxRegistrationDetails.TaxRegistrationTypeEnum}
  */
 TaxRegistrationDetails.prototype.taxRegistrationType = undefined
 
 /**
  * Tax registration number for the party. For example, VAT ID.
  * @member {String} taxRegistrationNumber
+ * @type {String}
  */
 TaxRegistrationDetails.prototype.taxRegistrationNumber = undefined
 
 /**
  * @member {module:vendordforders_v2021_12_28/model/Address} taxRegistrationAddress
+ * @type {module:vendordforders_v2021_12_28/model/Address}
  */
 TaxRegistrationDetails.prototype.taxRegistrationAddress = undefined
 
 /**
  * Tax registration message that can be used for additional tax related details.
  * @member {String} taxRegistrationMessages
+ * @type {String}
  */
 TaxRegistrationDetails.prototype.taxRegistrationMessages = undefined

@@ -59,6 +59,7 @@ export class FeatureSettings {
 /**
  * The name of the feature.
  * @member {String} featureName
+ * @type {String}
  */
 FeatureSettings.prototype.featureName = undefined
 
@@ -85,5 +86,6 @@ FeatureSettings.FeatureFulfillmentPolicyEnum = {
 /**
  * Specifies the policy to use when fulfilling an order.
  * @member {module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings.FeatureFulfillmentPolicyEnum} featureFulfillmentPolicy
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings.FeatureFulfillmentPolicyEnum}
  */
 FeatureSettings.prototype.featureFulfillmentPolicy = undefined

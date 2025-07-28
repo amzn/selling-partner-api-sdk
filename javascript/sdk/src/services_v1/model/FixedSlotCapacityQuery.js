@@ -66,23 +66,27 @@ export class FixedSlotCapacityQuery {
 /**
  * An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.
  * @member {Array.<module:services_v1/model/CapacityType>} capacityTypes
+ * @type {Array.<module:services_v1/model/CapacityType>}
  */
 FixedSlotCapacityQuery.prototype.capacityTypes = undefined
 
 /**
  * Size in which slots are being requested. This value should be a multiple of 5 and fall in the range: 5 <= `slotDuration` <= 360.
  * @member {Number} slotDuration
+ * @type {Number}
  */
 FixedSlotCapacityQuery.prototype.slotDuration = undefined
 
 /**
  * Start date time from which the capacity slots are being requested in ISO 8601 format.
  * @member {Date} startDateTime
+ * @type {Date}
  */
 FixedSlotCapacityQuery.prototype.startDateTime = undefined
 
 /**
  * End date time up to which the capacity slots are being requested in ISO 8601 format.
  * @member {Date} endDateTime
+ * @type {Date}
  */
 FixedSlotCapacityQuery.prototype.endDateTime = undefined

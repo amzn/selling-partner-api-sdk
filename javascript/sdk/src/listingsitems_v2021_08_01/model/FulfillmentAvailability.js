@@ -61,11 +61,13 @@ export class FulfillmentAvailability {
 /**
  * Designates which fulfillment network is used.
  * @member {String} fulfillmentChannelCode
+ * @type {String}
  */
 FulfillmentAvailability.prototype.fulfillmentChannelCode = undefined
 
 /**
  * The quantity of the item you are making available for sale.
  * @member {Number} quantity
+ * @type {Number}
  */
 FulfillmentAvailability.prototype.quantity = undefined

@@ -63,6 +63,7 @@ export class DeleteNotificationsRequest {
 /**
  * The unique identifier of the notification template you used to onboard your application.
  * @member {String} templateId
+ * @type {String}
  */
 DeleteNotificationsRequest.prototype.templateId = undefined
 
@@ -89,5 +90,6 @@ DeleteNotificationsRequest.DeletionReasonEnum = {
 /**
  * The unique identifier that maps each notification status to a reason code.
  * @member {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest.DeletionReasonEnum} deletionReason
+ * @type {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest.DeletionReasonEnum}
  */
 DeleteNotificationsRequest.prototype.deletionReason = undefined

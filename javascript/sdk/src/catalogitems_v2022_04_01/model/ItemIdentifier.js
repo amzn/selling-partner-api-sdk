@@ -63,11 +63,13 @@ export class ItemIdentifier {
 /**
  * Type of identifier, such as UPC, EAN, or ISBN.
  * @member {String} identifierType
+ * @type {String}
  */
 ItemIdentifier.prototype.identifierType = undefined
 
 /**
  * Identifier of the item.
  * @member {String} identifier
+ * @type {String}
  */
 ItemIdentifier.prototype.identifier = undefined

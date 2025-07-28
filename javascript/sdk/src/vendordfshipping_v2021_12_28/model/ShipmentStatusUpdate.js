@@ -71,20 +71,24 @@ export class ShipmentStatusUpdate {
 /**
  * Purchase order number of the shipment for which to update the shipment status.
  * @member {String} purchaseOrderNumber
+ * @type {String}
  */
 ShipmentStatusUpdate.prototype.purchaseOrderNumber = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
+ * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
  */
 ShipmentStatusUpdate.prototype.sellingParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
+ * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
  */
 ShipmentStatusUpdate.prototype.shipFromParty = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/StatusUpdateDetails} statusUpdateDetails
+ * @type {module:vendordfshipping_v2021_12_28/model/StatusUpdateDetails}
  */
 ShipmentStatusUpdate.prototype.statusUpdateDetails = undefined

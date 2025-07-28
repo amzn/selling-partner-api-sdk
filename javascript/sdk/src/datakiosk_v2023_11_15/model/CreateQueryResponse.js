@@ -60,5 +60,6 @@ export class CreateQueryResponse {
 /**
  * The identifier for the query. This identifier is unique only in combination with a selling partner account ID.
  * @member {String} queryId
+ * @type {String}
  */
 CreateQueryResponse.prototype.queryId = undefined

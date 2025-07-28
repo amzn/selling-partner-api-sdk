@@ -60,17 +60,20 @@ export class InventoryDetails {
 /**
  * Quantity that is available for downstream channel replenishment.
  * @member {Number} availableDistributableQuantity
+ * @type {Number}
  */
 InventoryDetails.prototype.availableDistributableQuantity = undefined
 
 /**
  * Quantity that is in transit from AWD and has not yet been received at FBA.
  * @member {Number} replenishmentQuantity
+ * @type {Number}
  */
 InventoryDetails.prototype.replenishmentQuantity = undefined
 
 /**
  * Quantity that is reserved for a downstream channel replenishment order that is being prepared for shipment.
  * @member {Number} reservedDistributableQuantity
+ * @type {Number}
  */
 InventoryDetails.prototype.reservedDistributableQuantity = undefined

@@ -80,17 +80,20 @@ EncryptionDetails.StandardEnum = {
 /**
  * The encryption standard required to encrypt or decrypt the document contents.
  * @member {module:services_v1/model/EncryptionDetails.StandardEnum} standard
+ * @type {module:services_v1/model/EncryptionDetails.StandardEnum}
  */
 EncryptionDetails.prototype.standard = undefined
 
 /**
  * The vector to encrypt or decrypt the document contents using Cipher Block Chaining (CBC).
  * @member {String} initializationVector
+ * @type {String}
  */
 EncryptionDetails.prototype.initializationVector = undefined
 
 /**
  * The encryption key used to encrypt or decrypt the document contents.
  * @member {String} key
+ * @type {String}
  */
 EncryptionDetails.prototype.key = undefined

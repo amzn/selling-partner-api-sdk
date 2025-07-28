@@ -60,11 +60,13 @@ export class GetShipmentDetailsResponse {
 
 /**
  * @member {module:invoicing_v0/model/ShipmentDetail} payload
+ * @type {module:invoicing_v0/model/ShipmentDetail}
  */
 GetShipmentDetailsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {Array.<module:invoicing_v0/model/Error>} errors
+ * @type {Array.<module:invoicing_v0/model/Error>}
  */
 GetShipmentDetailsResponse.prototype.errors = undefined

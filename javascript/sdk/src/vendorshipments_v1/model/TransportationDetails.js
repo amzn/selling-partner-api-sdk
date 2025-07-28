@@ -91,6 +91,7 @@ TransportationDetails.ShipModeEnum = {
 /**
  * The type of shipment.
  * @member {module:vendorshipments_v1/model/TransportationDetails.ShipModeEnum} shipMode
+ * @type {module:vendorshipments_v1/model/TransportationDetails.ShipModeEnum}
  */
 TransportationDetails.prototype.shipMode = undefined
 
@@ -123,34 +124,40 @@ TransportationDetails.TransportationModeEnum = {
 /**
  * The mode of transportation for this shipment.
  * @member {module:vendorshipments_v1/model/TransportationDetails.TransportationModeEnum} transportationMode
+ * @type {module:vendorshipments_v1/model/TransportationDetails.TransportationModeEnum}
  */
 TransportationDetails.prototype.transportationMode = undefined
 
 /**
  * Date when shipment is performed by the Vendor to Buyer
  * @member {Date} shippedDate
+ * @type {Date}
  */
 TransportationDetails.prototype.shippedDate = undefined
 
 /**
  * Estimated Date on which shipment will be delivered from Vendor to Buyer
  * @member {Date} estimatedDeliveryDate
+ * @type {Date}
  */
 TransportationDetails.prototype.estimatedDeliveryDate = undefined
 
 /**
  * Date on which shipment will be delivered from Vendor to Buyer
  * @member {Date} shipmentDeliveryDate
+ * @type {Date}
  */
 TransportationDetails.prototype.shipmentDeliveryDate = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/CarrierDetails} carrierDetails
+ * @type {module:vendorshipments_v1/model/CarrierDetails}
  */
 TransportationDetails.prototype.carrierDetails = undefined
 
 /**
  * The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field.
  * @member {String} billOfLadingNumber
+ * @type {String}
  */
 TransportationDetails.prototype.billOfLadingNumber = undefined

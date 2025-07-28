@@ -79,68 +79,80 @@ export class Vehicle {
 /**
  * Vehicle Brand.
  * @member {String} make
+ * @type {String}
  */
 Vehicle.prototype.make = undefined
 
 /**
  * Specific model of a vehicle.
  * @member {String} model
+ * @type {String}
  */
 Vehicle.prototype.model = undefined
 
 /**
  * Name of the vehicle variant.
  * @member {String} variantName
+ * @type {String}
  */
 Vehicle.prototype.variantName = undefined
 
 /**
  * Body style of vehicle (example: Hatchback, Cabriolet).
  * @member {String} bodyStyle
+ * @type {String}
  */
 Vehicle.prototype.bodyStyle = undefined
 
 /**
  * Drive type of vehicle(example: Rear wheel drive).
  * @member {String} driveType
+ * @type {String}
  */
 Vehicle.prototype.driveType = undefined
 
 /**
  * Energy Source for the vehicle(example: Petrol)
  * @member {String} energy
+ * @type {String}
  */
 Vehicle.prototype.energy = undefined
 
 /**
  * Engine output of vehicle.
  * @member {Array.<module:vehicles_v2024_11_01/model/EngineOutput>} engineOutput
+ * @type {Array.<module:vehicles_v2024_11_01/model/EngineOutput>}
  */
 Vehicle.prototype.engineOutput = undefined
 
 /**
  * @member {module:vehicles_v2024_11_01/model/MonthAndYear} manufacturingStartDate
+ * @type {module:vehicles_v2024_11_01/model/MonthAndYear}
  */
 Vehicle.prototype.manufacturingStartDate = undefined
 
 /**
  * @member {module:vehicles_v2024_11_01/model/MonthAndYear} manufacturingStopDate
+ * @type {module:vehicles_v2024_11_01/model/MonthAndYear}
  */
 Vehicle.prototype.manufacturingStopDate = undefined
 
 /**
  * The date on which the vehicle was last updated, in ISO-8601 date/time format.
  * @member {String} lastProcessedDate
+ * @type {String}
  */
 Vehicle.prototype.lastProcessedDate = undefined
 
 /**
  * @member {module:vehicles_v2024_11_01/model/VehicleStatusInCatalog} status
+ * @type {module:vehicles_v2024_11_01/model/VehicleStatusInCatalog}
  */
 Vehicle.prototype.status = undefined
 
 /**
  * Identifiers that can be used to identify the vehicle uniquely
  * @member {Array.<module:vehicles_v2024_11_01/model/VehicleIdentifiers>} identifiers
+ * @type {Array.<module:vehicles_v2024_11_01/model/VehicleIdentifiers>}
  */
 Vehicle.prototype.identifiers = undefined

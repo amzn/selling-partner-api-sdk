@@ -61,5 +61,6 @@ export class ErrorList {
 /**
  * An array of Error objects representing individual errors encountered during the request.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/Error>} errors
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/Error>}
  */
 ErrorList.prototype.errors = undefined

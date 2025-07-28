@@ -100,69 +100,81 @@ Container.ContainerTypeEnum = {
 /**
  * The type of container.
  * @member {module:vendordfshipping_v2021_12_28/model/Container.ContainerTypeEnum} containerType
+ * @type {module:vendordfshipping_v2021_12_28/model/Container.ContainerTypeEnum}
  */
 Container.prototype.containerType = undefined
 
 /**
  * The container identifier.
  * @member {String} containerIdentifier
+ * @type {String}
  */
 Container.prototype.containerIdentifier = undefined
 
 /**
  * The tracking number.
  * @member {String} trackingNumber
+ * @type {String}
  */
 Container.prototype.trackingNumber = undefined
 
 /**
  * The manifest identifier.
  * @member {String} manifestId
+ * @type {String}
  */
 Container.prototype.manifestId = undefined
 
 /**
  * The date of the manifest.
  * @member {String} manifestDate
+ * @type {String}
  */
 Container.prototype.manifestDate = undefined
 
 /**
  * The shipment method. This property is required when calling the `submitShipmentConfirmations` operation, and optional otherwise.
  * @member {String} shipMethod
+ * @type {String}
  */
 Container.prototype.shipMethod = undefined
 
 /**
  * SCAC code required for NA VOC vendors only.
  * @member {String} scacCode
+ * @type {String}
  */
 Container.prototype.scacCode = undefined
 
 /**
  * Carrier required for EU VOC vendors only.
  * @member {String} carrier
+ * @type {String}
  */
 Container.prototype.carrier = undefined
 
 /**
  * An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
  * @member {Number} containerSequenceNumber
+ * @type {Number}
  */
 Container.prototype.containerSequenceNumber = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Dimensions} dimensions
+ * @type {module:vendordfshipping_v2021_12_28/model/Dimensions}
  */
 Container.prototype.dimensions = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/Weight} weight
+ * @type {module:vendordfshipping_v2021_12_28/model/Weight}
  */
 Container.prototype.weight = undefined
 
 /**
  * A list of packed items.
  * @member {Array.<module:vendordfshipping_v2021_12_28/model/PackedItem>} packedItems
+ * @type {Array.<module:vendordfshipping_v2021_12_28/model/PackedItem>}
  */
 Container.prototype.packedItems = undefined

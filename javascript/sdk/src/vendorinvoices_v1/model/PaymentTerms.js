@@ -105,23 +105,27 @@ PaymentTerms.TypeEnum = {
 /**
  * The payment term type for the invoice.
  * @member {module:vendorinvoices_v1/model/PaymentTerms.TypeEnum} type
+ * @type {module:vendorinvoices_v1/model/PaymentTerms.TypeEnum}
  */
 PaymentTerms.prototype.type = undefined
 
 /**
  * A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. <br>**Pattern** : `^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$`.
  * @member {String} discountPercent
+ * @type {String}
  */
 PaymentTerms.prototype.discountPercent = undefined
 
 /**
  * The number of calendar days from the Base date (Invoice date) until the discount is no longer valid.
  * @member {Number} discountDueDays
+ * @type {Number}
  */
 PaymentTerms.prototype.discountDueDays = undefined
 
 /**
  * The number of calendar days from the base date (invoice date) until the total amount on the invoice is due.
  * @member {Number} netDueDays
+ * @type {Number}
  */
 PaymentTerms.prototype.netDueDays = undefined

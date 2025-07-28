@@ -60,5 +60,6 @@ export class ConfirmShipmentContentUpdatePreviewResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 ConfirmShipmentContentUpdatePreviewResponse.prototype.operationId = undefined

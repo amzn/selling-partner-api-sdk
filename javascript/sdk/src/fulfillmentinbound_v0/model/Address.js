@@ -77,47 +77,55 @@ export class Address {
 /**
  * Name of the individual or business.
  * @member {String} name
+ * @type {String}
  */
 Address.prototype.name = undefined
 
 /**
  * The street address information.
  * @member {String} addressLine1
+ * @type {String}
  */
 Address.prototype.addressLine1 = undefined
 
 /**
  * Additional street address information, if required.
  * @member {String} addressLine2
+ * @type {String}
  */
 Address.prototype.addressLine2 = undefined
 
 /**
  * The district or county.
  * @member {String} districtOrCounty
+ * @type {String}
  */
 Address.prototype.districtOrCounty = undefined
 
 /**
  * The city.
  * @member {String} city
+ * @type {String}
  */
 Address.prototype.city = undefined
 
 /**
  * The state or province code.  If state or province codes are used in your marketplace, it is recommended that you include one with your request. This helps Amazon to select the most appropriate Amazon fulfillment center for your inbound shipment plan.
  * @member {String} stateOrProvinceCode
+ * @type {String}
  */
 Address.prototype.stateOrProvinceCode = undefined
 
 /**
  * The country code in two-character ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 Address.prototype.countryCode = undefined
 
 /**
  * The postal code.  If postal codes are used in your marketplace, we recommended that you include one with your request. This helps Amazon select the most appropriate Amazon fulfillment center for the inbound shipment plan.
  * @member {String} postalCode
+ * @type {String}
  */
 Address.prototype.postalCode = undefined

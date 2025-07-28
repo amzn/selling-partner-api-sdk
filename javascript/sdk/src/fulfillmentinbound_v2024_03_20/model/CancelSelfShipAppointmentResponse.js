@@ -60,5 +60,6 @@ export class CancelSelfShipAppointmentResponse {
 /**
  * UUID for the given operation.
  * @member {String} operationId
+ * @type {String}
  */
 CancelSelfShipAppointmentResponse.prototype.operationId = undefined

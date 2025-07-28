@@ -63,6 +63,7 @@ export class SchemaLinkLink {
 /**
  * URI resource for the link.
  * @member {String} resource
+ * @type {String}
  */
 SchemaLinkLink.prototype.resource = undefined
 
@@ -83,5 +84,6 @@ SchemaLinkLink.VerbEnum = {
 /**
  * HTTP method for the link operation.
  * @member {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink.VerbEnum} verb
+ * @type {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink.VerbEnum}
  */
 SchemaLinkLink.prototype.verb = undefined

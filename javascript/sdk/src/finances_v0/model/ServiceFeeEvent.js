@@ -66,47 +66,55 @@ export class ServiceFeeEvent {
 /**
  * An Amazon-defined identifier for an order.
  * @member {String} amazonOrderId
+ * @type {String}
  */
 ServiceFeeEvent.prototype.amazonOrderId = undefined
 
 /**
  * A short description of the service fee reason.
  * @member {String} feeReason
+ * @type {String}
  */
 ServiceFeeEvent.prototype.feeReason = undefined
 
 /**
  * A list of fee component information.
  * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
+ * @type {Array.<module:finances_v0/model/FeeComponent>}
  */
 ServiceFeeEvent.prototype.feeList = undefined
 
 /**
  * The seller SKU of the item. The seller SKU is qualified by the seller's seller ID, which is included with every call to the Selling Partner API.
  * @member {String} sellerSKU
+ * @type {String}
  */
 ServiceFeeEvent.prototype.sellerSKU = undefined
 
 /**
  * A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
  * @member {String} fnSKU
+ * @type {String}
  */
 ServiceFeeEvent.prototype.fnSKU = undefined
 
 /**
  * A short description of the service fee event.
  * @member {String} feeDescription
+ * @type {String}
  */
 ServiceFeeEvent.prototype.feeDescription = undefined
 
 /**
  * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} ASIN
+ * @type {String}
  */
 ServiceFeeEvent.prototype.ASIN = undefined
 
 /**
  * The name of the store where the event occurred.
  * @member {String} storeName
+ * @type {String}
  */
 ServiceFeeEvent.prototype.storeName = undefined

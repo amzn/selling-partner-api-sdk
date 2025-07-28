@@ -64,17 +64,20 @@ export class ItemSalesRanksByMarketplace {
 /**
  * Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
  * @member {String} marketplaceId
+ * @type {String}
  */
 ItemSalesRanksByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by classification.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemClassificationSalesRank>} classificationRanks
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemClassificationSalesRank>}
  */
 ItemSalesRanksByMarketplace.prototype.classificationRanks = undefined
 
 /**
  * Sales ranks of an Amazon catalog item for a `marketplaceId`, grouped by website display group.
  * @member {Array.<module:catalogitems_v2022_04_01/model/ItemDisplayGroupSalesRank>} displayGroupRanks
+ * @type {Array.<module:catalogitems_v2022_04_01/model/ItemDisplayGroupSalesRank>}
  */
 ItemSalesRanksByMarketplace.prototype.displayGroupRanks = undefined

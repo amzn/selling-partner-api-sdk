@@ -60,5 +60,6 @@ export class UpdateInboundPlanNameRequest {
 /**
  * A human-readable name to update the inbound plan name to.
  * @member {String} name
+ * @type {String}
  */
 UpdateInboundPlanNameRequest.prototype.name = undefined

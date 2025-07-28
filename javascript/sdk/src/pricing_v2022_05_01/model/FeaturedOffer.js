@@ -64,15 +64,18 @@ export class FeaturedOffer {
 
 /**
  * @member {module:pricing_v2022_05_01/model/OfferIdentifier} offerIdentifier
+ * @type {module:pricing_v2022_05_01/model/OfferIdentifier}
  */
 FeaturedOffer.prototype.offerIdentifier = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Condition} condition
+ * @type {module:pricing_v2022_05_01/model/Condition}
  */
 FeaturedOffer.prototype.condition = undefined
 
 /**
  * @member {module:pricing_v2022_05_01/model/Price} price
+ * @type {module:pricing_v2022_05_01/model/Price}
  */
 FeaturedOffer.prototype.price = undefined

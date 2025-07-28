@@ -72,40 +72,47 @@ export class RegulatedOrderVerificationStatus {
 
 /**
  * @member {module:orders_v0/model/VerificationStatus} status
+ * @type {module:orders_v0/model/VerificationStatus}
  */
 RegulatedOrderVerificationStatus.prototype.status = undefined
 
 /**
  * When true, the regulated information provided in the order requires a review by the merchant.
  * @member {Boolean} requiresMerchantAction
+ * @type {Boolean}
  */
 RegulatedOrderVerificationStatus.prototype.requiresMerchantAction = undefined
 
 /**
  * A list of valid rejection reasons that may be used to reject the order's regulated information.
  * @member {Array.<module:orders_v0/model/RejectionReason>} validRejectionReasons
+ * @type {Array.<module:orders_v0/model/RejectionReason>}
  */
 RegulatedOrderVerificationStatus.prototype.validRejectionReasons = undefined
 
 /**
  * @member {module:orders_v0/model/RejectionReason} rejectionReason
+ * @type {module:orders_v0/model/RejectionReason}
  */
 RegulatedOrderVerificationStatus.prototype.rejectionReason = undefined
 
 /**
  * The date the order was reviewed. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
  * @member {String} reviewDate
+ * @type {String}
  */
 RegulatedOrderVerificationStatus.prototype.reviewDate = undefined
 
 /**
  * The identifier for the order's regulated information reviewer.
  * @member {String} externalReviewerId
+ * @type {String}
  */
 RegulatedOrderVerificationStatus.prototype.externalReviewerId = undefined
 
 /**
  * A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
  * @member {Array.<module:orders_v0/model/ValidVerificationDetail>} validVerificationDetails
+ * @type {Array.<module:orders_v0/model/ValidVerificationDetail>}
  */
 RegulatedOrderVerificationStatus.prototype.validVerificationDetails = undefined

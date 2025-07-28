@@ -65,16 +65,19 @@ export class ContainerLabel {
 /**
  * The container (pallet) tracking identifier from the shipping carrier.
  * @member {String} containerTrackingNumber
+ * @type {String}
  */
 ContainerLabel.prototype.containerTrackingNumber = undefined
 
 /**
  * The container label content encoded into a Base64 string.
  * @member {String} content
+ * @type {String}
  */
 ContainerLabel.prototype.content = undefined
 
 /**
  * @member {module:vendordfshipping_v2021_12_28/model/ContainerLabelFormat} format
+ * @type {module:vendordfshipping_v2021_12_28/model/ContainerLabelFormat}
  */
 ContainerLabel.prototype.format = undefined

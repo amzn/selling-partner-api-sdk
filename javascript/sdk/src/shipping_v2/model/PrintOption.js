@@ -68,23 +68,27 @@ export class PrintOption {
 /**
  * A list of the supported DPI options for a document.
  * @member {Array.<Number>} supportedDPIs
+ * @type {Array.<Number>}
  */
 PrintOption.prototype.supportedDPIs = undefined
 
 /**
  * A list of the supported page layout options for a document.
  * @member {Array.<String>} supportedPageLayouts
+ * @type {Array.<String>}
  */
 PrintOption.prototype.supportedPageLayouts = undefined
 
 /**
  * A list of the supported needFileJoining boolean values for a document.
  * @member {Array.<Boolean>} supportedFileJoiningOptions
+ * @type {Array.<Boolean>}
  */
 PrintOption.prototype.supportedFileJoiningOptions = undefined
 
 /**
  * A list of the supported documented details.
  * @member {Array.<module:shipping_v2/model/SupportedDocumentDetail>} supportedDocumentDetails
+ * @type {Array.<module:shipping_v2/model/SupportedDocumentDetail>}
  */
 PrintOption.prototype.supportedDocumentDetails = undefined

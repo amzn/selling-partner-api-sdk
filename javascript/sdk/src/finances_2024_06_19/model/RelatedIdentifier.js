@@ -127,11 +127,13 @@ RelatedIdentifier.RelatedIdentifierNameEnum = {
 /**
  * Enumerated set of related business identifier names.
  * @member {module:finances_2024_06_19/model/RelatedIdentifier.RelatedIdentifierNameEnum} relatedIdentifierName
+ * @type {module:finances_2024_06_19/model/RelatedIdentifier.RelatedIdentifierNameEnum}
  */
 RelatedIdentifier.prototype.relatedIdentifierName = undefined
 
 /**
  * Corresponding value of RelatedIdentifierName
  * @member {String} relatedIdentifierValue
+ * @type {String}
  */
 RelatedIdentifier.prototype.relatedIdentifierValue = undefined

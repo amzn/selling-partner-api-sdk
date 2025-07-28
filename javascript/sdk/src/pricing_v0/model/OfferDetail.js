@@ -91,87 +91,103 @@ export class OfferDetail {
 /**
  * When true, this is the seller's offer.
  * @member {Boolean} myOffer
+ * @type {Boolean}
  */
 OfferDetail.prototype.myOffer = undefined
 
 /**
  * @member {module:pricing_v0/model/OfferCustomerType} offerType
+ * @type {module:pricing_v0/model/OfferCustomerType}
  */
 OfferDetail.prototype.offerType = undefined
 
 /**
  * The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
  * @member {String} subCondition
+ * @type {String}
  */
 OfferDetail.prototype.subCondition = undefined
 
 /**
  * The seller identifier for the offer.
  * @member {String} sellerId
+ * @type {String}
  */
 OfferDetail.prototype.sellerId = undefined
 
 /**
  * Information about the condition of the item.
  * @member {String} conditionNotes
+ * @type {String}
  */
 OfferDetail.prototype.conditionNotes = undefined
 
 /**
  * @member {module:pricing_v0/model/SellerFeedbackType} sellerFeedbackRating
+ * @type {module:pricing_v0/model/SellerFeedbackType}
  */
 OfferDetail.prototype.sellerFeedbackRating = undefined
 
 /**
  * @member {module:pricing_v0/model/DetailedShippingTimeType} shippingTime
+ * @type {module:pricing_v0/model/DetailedShippingTimeType}
  */
 OfferDetail.prototype.shippingTime = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} listingPrice
+ * @type {module:pricing_v0/model/MoneyType}
  */
 OfferDetail.prototype.listingPrice = undefined
 
 /**
  * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
  * @member {Array.<module:pricing_v0/model/QuantityDiscountPriceType>} quantityDiscountPrices
+ * @type {Array.<module:pricing_v0/model/QuantityDiscountPriceType>}
  */
 OfferDetail.prototype.quantityDiscountPrices = undefined
 
 /**
  * @member {module:pricing_v0/model/Points} points
+ * @type {module:pricing_v0/model/Points}
  */
 OfferDetail.prototype.points = undefined
 
 /**
  * @member {module:pricing_v0/model/MoneyType} shipping
+ * @type {module:pricing_v0/model/MoneyType}
  */
 OfferDetail.prototype.shipping = undefined
 
 /**
  * @member {module:pricing_v0/model/ShipsFromType} shipsFrom
+ * @type {module:pricing_v0/model/ShipsFromType}
  */
 OfferDetail.prototype.shipsFrom = undefined
 
 /**
  * When true, the offer is fulfilled by Amazon.
  * @member {Boolean} isFulfilledByAmazon
+ * @type {Boolean}
  */
 OfferDetail.prototype.isFulfilledByAmazon = undefined
 
 /**
  * @member {module:pricing_v0/model/PrimeInformationType} primeInformation
+ * @type {module:pricing_v0/model/PrimeInformationType}
  */
 OfferDetail.prototype.primeInformation = undefined
 
 /**
  * When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.
  * @member {Boolean} isBuyBoxWinner
+ * @type {Boolean}
  */
 OfferDetail.prototype.isBuyBoxWinner = undefined
 
 /**
  * When true, the seller of the item is eligible to win the Buy Box.
  * @member {Boolean} isFeaturedMerchant
+ * @type {Boolean}
  */
 OfferDetail.prototype.isFeaturedMerchant = undefined

@@ -71,31 +71,37 @@ export class FeeDetail {
 /**
  * The type of fee charged to a seller.
  * @member {String} feeType
+ * @type {String}
  */
 FeeDetail.prototype.feeType = undefined
 
 /**
  * @member {module:productfees_v0/model/MoneyType} feeAmount
+ * @type {module:productfees_v0/model/MoneyType}
  */
 FeeDetail.prototype.feeAmount = undefined
 
 /**
  * @member {module:productfees_v0/model/MoneyType} feePromotion
+ * @type {module:productfees_v0/model/MoneyType}
  */
 FeeDetail.prototype.feePromotion = undefined
 
 /**
  * @member {module:productfees_v0/model/MoneyType} taxAmount
+ * @type {module:productfees_v0/model/MoneyType}
  */
 FeeDetail.prototype.taxAmount = undefined
 
 /**
  * @member {module:productfees_v0/model/MoneyType} finalFee
+ * @type {module:productfees_v0/model/MoneyType}
  */
 FeeDetail.prototype.finalFee = undefined
 
 /**
  * A list of other fees that contribute to a given fee.
  * @member {Array.<module:productfees_v0/model/IncludedFeeDetail>} includedFeeDetailList
+ * @type {Array.<module:productfees_v0/model/IncludedFeeDetail>}
  */
 FeeDetail.prototype.includedFeeDetailList = undefined

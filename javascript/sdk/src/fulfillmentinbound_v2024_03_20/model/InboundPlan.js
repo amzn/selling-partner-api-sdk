@@ -85,58 +85,68 @@ export class InboundPlan {
 /**
  * The time at which the inbound plan was created. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime with pattern `yyyy-MM-ddTHH:mm:ssZ`.
  * @member {Date} createdAt
+ * @type {Date}
  */
 InboundPlan.prototype.createdAt = undefined
 
 /**
  * Identifier of an inbound plan.
  * @member {String} inboundPlanId
+ * @type {String}
  */
 InboundPlan.prototype.inboundPlanId = undefined
 
 /**
  * The time at which the inbound plan was last updated. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ssZ`.
  * @member {Date} lastUpdatedAt
+ * @type {Date}
  */
 InboundPlan.prototype.lastUpdatedAt = undefined
 
 /**
  * A list of marketplace IDs.
  * @member {Array.<String>} marketplaceIds
+ * @type {Array.<String>}
  */
 InboundPlan.prototype.marketplaceIds = undefined
 
 /**
  * Human-readable name of the inbound plan.
  * @member {String} name
+ * @type {String}
  */
 InboundPlan.prototype.name = undefined
 
 /**
  * Packing options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, only packing options for that placement option will be returned. If there are confirmed shipments, only packing options for those shipments will be returned. Query the packing option for more details.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingOptionSummary>} packingOptions
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingOptionSummary>}
  */
 InboundPlan.prototype.packingOptions = undefined
 
 /**
  * Placement options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, that will be the only returned option. Query the placement option for more details.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PlacementOptionSummary>} placementOptions
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PlacementOptionSummary>}
  */
 InboundPlan.prototype.placementOptions = undefined
 
 /**
  * A list of shipment IDs for the inbound plan. This property is populated when it has been generated with the `confirmPlacementOptions` operation. Only shipments from the chosen placement option are returned. Query the shipment for more details.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ShipmentSummary>} shipments
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ShipmentSummary>}
  */
 InboundPlan.prototype.shipments = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Address} sourceAddress
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Address}
  */
 InboundPlan.prototype.sourceAddress = undefined
 
 /**
  * Current status of the inbound plan. Possible values: `ACTIVE`, `VOIDED`, `SHIPPED`, `ERRORED`.
  * @member {String} status
+ * @type {String}
  */
 InboundPlan.prototype.status = undefined

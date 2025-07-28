@@ -63,22 +63,26 @@ export class DeliveryPreferences {
 /**
  * Drop-off location selected by the customer.
  * @member {String} dropOffLocation
+ * @type {String}
  */
 DeliveryPreferences.prototype.dropOffLocation = undefined
 
 /**
  * @member {module:orders_v0/model/PreferredDeliveryTime} preferredDeliveryTime
+ * @type {module:orders_v0/model/PreferredDeliveryTime}
  */
 DeliveryPreferences.prototype.preferredDeliveryTime = undefined
 
 /**
  * Enumerated list of miscellaneous delivery attributes associated with the shipping address.
  * @member {Array.<module:orders_v0/model/OtherDeliveryAttributes>} otherAttributes
+ * @type {Array.<module:orders_v0/model/OtherDeliveryAttributes>}
  */
 DeliveryPreferences.prototype.otherAttributes = undefined
 
 /**
  * Building instructions, nearby landmark or navigation instructions.
  * @member {String} addressInstructions
+ * @type {String}
  */
 DeliveryPreferences.prototype.addressInstructions = undefined

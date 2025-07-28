@@ -72,5 +72,6 @@ BusinessContext.StoreNameEnum = {
 /**
  * The store name associated with the transaction.
  * @member {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum} storeName
+ * @type {module:finances_2024_06_19/model/BusinessContext.StoreNameEnum}
  */
 BusinessContext.prototype.storeName = undefined

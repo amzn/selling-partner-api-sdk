@@ -26,7 +26,7 @@ import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher
 * @version v1
 */
 export class VendorShippingApi {
-  // Private memeber stores the default rate limiters
+  // Private member stores the default rate limiters
   #defaultRateLimiterMap
 
   /**
@@ -96,7 +96,7 @@ export class VendorShippingApi {
      * @param {String} opts.buyerReferenceNumber Get Shipment Details by passing buyer Reference ID
      * @param {String} opts.buyerWarehouseCode Get Shipping Details based on buyer warehouse code. This value should be same as &#39;shipToParty.partyId&#39; in the Shipment.
      * @param {String} opts.sellerWarehouseCode Get Shipping Details based on vendor warehouse code. This value should be same as &#39;sellingParty.partyId&#39; in the Shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendorshipments_v1/model/GetShipmentDetailsResponse} and HTTP response
+     * @return {Promise<module:vendorshipments_v1/model/GetShipmentDetailsResponse>}
      */
   getShipmentDetailsWithHttpInfo (opts) {
     opts = opts || {}
@@ -174,7 +174,7 @@ export class VendorShippingApi {
      * @param {String} opts.buyerReferenceNumber Get Shipment Details by passing buyer Reference ID
      * @param {String} opts.buyerWarehouseCode Get Shipping Details based on buyer warehouse code. This value should be same as &#39;shipToParty.partyId&#39; in the Shipment.
      * @param {String} opts.sellerWarehouseCode Get Shipping Details based on vendor warehouse code. This value should be same as &#39;sellingParty.partyId&#39; in the Shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendorshipments_v1/model/GetShipmentDetailsResponse}
+     * @return {Promise<module:vendorshipments_v1/model/GetShipmentDetailsResponse>}
      */
   getShipmentDetails (opts) {
     return this.getShipmentDetailsWithHttpInfo(opts)
@@ -194,7 +194,7 @@ export class VendorShippingApi {
      * @param {String} opts.buyerReferenceNumber Get Shipment labels by passing buyer reference number.
      * @param {String} opts.vendorShipmentIdentifier Get Shipment labels by passing vendor shipment identifier.
      * @param {String} opts.sellerWarehouseCode Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendorshipments_v1/model/GetShipmentLabels} and HTTP response
+     * @return {Promise<module:vendorshipments_v1/model/GetShipmentLabels>}
      */
   getShipmentLabelsWithHttpInfo (opts) {
     opts = opts || {}
@@ -239,7 +239,7 @@ export class VendorShippingApi {
      * @param {String} opts.buyerReferenceNumber Get Shipment labels by passing buyer reference number.
      * @param {String} opts.vendorShipmentIdentifier Get Shipment labels by passing vendor shipment identifier.
      * @param {String} opts.sellerWarehouseCode Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendorshipments_v1/model/GetShipmentLabels}
+     * @return {Promise<module:vendorshipments_v1/model/GetShipmentLabels>}
      */
   getShipmentLabels (opts) {
     return this.getShipmentLabelsWithHttpInfo(opts)
@@ -252,7 +252,7 @@ export class VendorShippingApi {
      * SubmitShipmentConfirmations
      * Submits one or more shipment confirmations for vendor orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendorshipments_v1/model/SubmitShipmentConfirmationsRequest} body A request to submit shipment confirmation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse} and HTTP response
+     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
      */
   submitShipmentConfirmationsWithHttpInfo (body) {
     const postBody = body
@@ -286,7 +286,7 @@ export class VendorShippingApi {
      * SubmitShipmentConfirmations
      * Submits one or more shipment confirmations for vendor orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendorshipments_v1/model/SubmitShipmentConfirmationsRequest} body A request to submit shipment confirmation.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse}
+     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
      */
   submitShipmentConfirmations (body) {
     return this.submitShipmentConfirmationsWithHttpInfo(body)
@@ -299,7 +299,7 @@ export class VendorShippingApi {
      * SubmitShipments
      * Submits one or more shipment request for vendor Orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendorshipments_v1/model/SubmitShipments} body A request to submit shipment request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse} and HTTP response
+     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
      */
   submitShipmentsWithHttpInfo (body) {
     const postBody = body
@@ -333,7 +333,7 @@ export class VendorShippingApi {
      * SubmitShipments
      * Submits one or more shipment request for vendor Orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {module:vendorshipments_v1/model/SubmitShipments} body A request to submit shipment request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse}
+     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
      */
   submitShipments (body) {
     return this.submitShipmentsWithHttpInfo(body)

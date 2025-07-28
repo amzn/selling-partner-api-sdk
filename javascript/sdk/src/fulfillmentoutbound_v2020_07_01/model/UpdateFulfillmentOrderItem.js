@@ -72,56 +72,66 @@ export class UpdateFulfillmentOrderItem {
 /**
  * The seller SKU of the item.
  * @member {String} sellerSku
+ * @type {String}
  */
 UpdateFulfillmentOrderItem.prototype.sellerSku = undefined
 
 /**
  * Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.
  * @member {String} sellerFulfillmentOrderItemId
+ * @type {String}
  */
 UpdateFulfillmentOrderItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
  * The item quantity.
  * @member {Number} quantity
+ * @type {Number}
  */
 UpdateFulfillmentOrderItem.prototype.quantity = undefined
 
 /**
  * A message to the gift recipient, if applicable.
  * @member {String} giftMessage
+ * @type {String}
  */
 UpdateFulfillmentOrderItem.prototype.giftMessage = undefined
 
 /**
  * Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip.
  * @member {String} displayableComment
+ * @type {String}
  */
 UpdateFulfillmentOrderItem.prototype.displayableComment = undefined
 
 /**
  * Amazon's fulfillment network SKU of the item.
  * @member {String} fulfillmentNetworkSku
+ * @type {String}
  */
 UpdateFulfillmentOrderItem.prototype.fulfillmentNetworkSku = undefined
 
 /**
  * Indicates whether the item is sellable or unsellable.
  * @member {String} orderItemDisposition
+ * @type {String}
  */
 UpdateFulfillmentOrderItem.prototype.orderItemDisposition = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitDeclaredValue
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
  */
 UpdateFulfillmentOrderItem.prototype.perUnitDeclaredValue = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitPrice
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
  */
 UpdateFulfillmentOrderItem.prototype.perUnitPrice = undefined
 
 /**
  * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitTax
+ * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
  */
 UpdateFulfillmentOrderItem.prototype.perUnitTax = undefined

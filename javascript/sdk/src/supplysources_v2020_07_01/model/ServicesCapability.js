@@ -60,10 +60,12 @@ export class ServicesCapability {
 /**
  * When true, `SupplySource` supports the Service capability.
  * @member {Boolean} isSupported
+ * @type {Boolean}
  */
 ServicesCapability.prototype.isSupported = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/OperationalConfiguration} operationalConfiguration
+ * @type {module:supplysources_v2020_07_01/model/OperationalConfiguration}
  */
 ServicesCapability.prototype.operationalConfiguration = undefined

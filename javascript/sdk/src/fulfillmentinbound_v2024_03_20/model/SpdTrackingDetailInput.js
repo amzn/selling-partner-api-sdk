@@ -61,5 +61,6 @@ export class SpdTrackingDetailInput {
 /**
  * List of Small Parcel Delivery (SPD) tracking items input.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/SpdTrackingItemInput>} spdTrackingItems
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/SpdTrackingItemInput>}
  */
 SpdTrackingDetailInput.prototype.spdTrackingItems = undefined

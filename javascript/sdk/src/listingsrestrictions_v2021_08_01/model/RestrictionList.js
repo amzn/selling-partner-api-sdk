@@ -60,5 +60,6 @@ export class RestrictionList {
 
 /**
  * @member {Array.<module:listingsrestrictions_v2021_08_01/model/Restriction>} restrictions
+ * @type {Array.<module:listingsrestrictions_v2021_08_01/model/Restriction>}
  */
 RestrictionList.prototype.restrictions = undefined

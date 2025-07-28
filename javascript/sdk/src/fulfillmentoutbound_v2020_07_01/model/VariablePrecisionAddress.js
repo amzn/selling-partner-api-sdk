@@ -69,47 +69,55 @@ export class VariablePrecisionAddress {
 /**
  * The first line of the address.
  * @member {String} addressLine1
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.addressLine1 = undefined
 
 /**
  * Additional address information, if required.
  * @member {String} addressLine2
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.addressLine2 = undefined
 
 /**
  * Additional address information, if required.
  * @member {String} addressLine3
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.addressLine3 = undefined
 
 /**
  * The city where the person, business, or institution is located. This property should not be used in Japan.
  * @member {String} city
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.city = undefined
 
 /**
  * The district or county where the person, business, or institution is located.
  * @member {String} districtOrCounty
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.districtOrCounty = undefined
 
 /**
  * The state or region where the person, business or institution is located.
  * @member {String} stateOrRegion
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.stateOrRegion = undefined
 
 /**
  * The postal code of the address.
  * @member {String} postalCode
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.postalCode = undefined
 
 /**
  * The two digit country code. In ISO 3166-1 alpha-2 format.
  * @member {String} countryCode
+ * @type {String}
  */
 VariablePrecisionAddress.prototype.countryCode = undefined

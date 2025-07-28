@@ -59,11 +59,13 @@ export class ExpirationDetails {
 /**
  * The expiration date of the SKU.
  * @member {Date} expiration
+ * @type {Date}
  */
 ExpirationDetails.prototype.expiration = undefined
 
 /**
  * The quantity that is present in AWD.
  * @member {Number} onhandQuantity
+ * @type {Number}
  */
 ExpirationDetails.prototype.onhandQuantity = undefined

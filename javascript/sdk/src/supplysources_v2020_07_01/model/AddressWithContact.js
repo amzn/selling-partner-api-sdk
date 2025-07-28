@@ -60,10 +60,12 @@ export class AddressWithContact {
 
 /**
  * @member {module:supplysources_v2020_07_01/model/ContactDetails} contactDetails
+ * @type {module:supplysources_v2020_07_01/model/ContactDetails}
  */
 AddressWithContact.prototype.contactDetails = undefined
 
 /**
  * @member {module:supplysources_v2020_07_01/model/Address} address
+ * @type {module:supplysources_v2020_07_01/model/Address}
  */
 AddressWithContact.prototype.address = undefined

@@ -71,38 +71,45 @@ export class Pallet {
 /**
  * A list of pallet identifiers.
  * @member {Array.<module:vendorshipments_v1/model/ContainerIdentification>} palletIdentifiers
+ * @type {Array.<module:vendorshipments_v1/model/ContainerIdentification>}
  */
 Pallet.prototype.palletIdentifiers = undefined
 
 /**
  * Number of layers per pallet. Only applicable to container type Pallet.
  * @member {Number} tier
+ * @type {Number}
  */
 Pallet.prototype.tier = undefined
 
 /**
  * Number of cartons per layer on the pallet. Only applicable to container type Pallet.
  * @member {Number} block
+ * @type {Number}
  */
 Pallet.prototype.block = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Dimensions} dimensions
+ * @type {module:vendorshipments_v1/model/Dimensions}
  */
 Pallet.prototype.dimensions = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/Weight} weight
+ * @type {module:vendorshipments_v1/model/Weight}
  */
 Pallet.prototype.weight = undefined
 
 /**
  * @member {module:vendorshipments_v1/model/CartonReferenceDetails} cartonReferenceDetails
+ * @type {module:vendorshipments_v1/model/CartonReferenceDetails}
  */
 Pallet.prototype.cartonReferenceDetails = undefined
 
 /**
  * A list of container item details.
  * @member {Array.<module:vendorshipments_v1/model/ContainerItem>} items
+ * @type {Array.<module:vendorshipments_v1/model/ContainerItem>}
  */
 Pallet.prototype.items = undefined

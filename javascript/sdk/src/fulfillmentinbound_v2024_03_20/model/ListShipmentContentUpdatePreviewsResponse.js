@@ -63,10 +63,12 @@ export class ListShipmentContentUpdatePreviewsResponse {
 /**
  * A list of content update previews in a shipment.
  * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview>} contentUpdatePreviews
+ * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview>}
  */
 ListShipmentContentUpdatePreviewsResponse.prototype.contentUpdatePreviews = undefined
 
 /**
  * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
+ * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
  */
 ListShipmentContentUpdatePreviewsResponse.prototype.pagination = undefined

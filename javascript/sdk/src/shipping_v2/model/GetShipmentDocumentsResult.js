@@ -66,15 +66,18 @@ export class GetShipmentDocumentsResult {
 /**
  * The unique shipment identifier provided by a shipping service.
  * @member {String} shipmentId
+ * @type {String}
  */
 GetShipmentDocumentsResult.prototype.shipmentId = undefined
 
 /**
  * @member {module:shipping_v2/model/PackageDocumentDetail} packageDocumentDetail
+ * @type {module:shipping_v2/model/PackageDocumentDetail}
  */
 GetShipmentDocumentsResult.prototype.packageDocumentDetail = undefined
 
 /**
  * @member {module:shipping_v2/model/Benefits} benefits
+ * @type {module:shipping_v2/model/Benefits}
  */
 GetShipmentDocumentsResult.prototype.benefits = undefined
