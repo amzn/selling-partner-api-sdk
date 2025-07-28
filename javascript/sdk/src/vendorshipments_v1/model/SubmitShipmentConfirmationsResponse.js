@@ -34,8 +34,8 @@ export class SubmitShipmentConfirmationsResponse {
    * Constructs a <code>SubmitShipmentConfirmationsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse} The populated <code>SubmitShipmentConfirmationsResponse</code> instance.
+   * @param {SubmitShipmentConfirmationsResponse} obj Optional instance to populate.
+   * @return {SubmitShipmentConfirmationsResponse} The populated <code>SubmitShipmentConfirmationsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class SubmitShipmentConfirmationsResponse {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/TransactionReference} payload
- * @type {module:vendorshipments_v1/model/TransactionReference}
+ * @member {TransactionReference} payload
+ * @type {TransactionReference}
  */
 SubmitShipmentConfirmationsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:vendorshipments_v1/model/Error>} errors
- * @type {Array.<module:vendorshipments_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 SubmitShipmentConfirmationsResponse.prototype.errors = undefined

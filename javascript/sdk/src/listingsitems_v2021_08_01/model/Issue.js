@@ -27,8 +27,8 @@ export class Issue {
    * @class
    * @param code {String} An issue code that identifies the type of issue.
    * @param message {String} A message that describes the issue.
-   * @param severity {module:listingsitems_v2021_08_01/model/Issue.SeverityEnum} The severity of the issue.
-   * @param categories {Array.<String>} List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.
+   * @param severity {String} The severity of the issue.
+   * @param categories {[String]} List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.
    */
   constructor (code, message, severity, categories) {
     this.code = code
@@ -41,8 +41,8 @@ export class Issue {
    * Constructs a <code>Issue</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/Issue} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/Issue} The populated <code>Issue</code> instance.
+   * @param {Issue} obj Optional instance to populate.
+   * @return {Issue} The populated <code>Issue</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -111,27 +111,27 @@ Issue.SeverityEnum = {
 
 /**
  * The severity of the issue.
- * @member {module:listingsitems_v2021_08_01/model/Issue.SeverityEnum} severity
- * @type {module:listingsitems_v2021_08_01/model/Issue.SeverityEnum}
+ * @member {String} severity
+ * @type {String}
  */
 Issue.prototype.severity = undefined
 
 /**
  * The names of the attributes associated with the issue, if applicable.
- * @member {Array.<String>} attributeNames
- * @type {Array.<String>}
+ * @member {[String]} attributeNames
+ * @type {[String]}
  */
 Issue.prototype.attributeNames = undefined
 
 /**
  * List of issue categories.   Possible values:   * 'INVALID_ATTRIBUTE' - Indicating an invalid attribute in the listing.   * 'MISSING_ATTRIBUTE' - Highlighting a missing attribute in the listing.   * 'INVALID_IMAGE' - Signifying an invalid image in the listing.   * 'MISSING_IMAGE' - Noting the absence of an image in the listing.   * 'INVALID_PRICE' - Pertaining to issues with the listing's price-related attributes.   * 'MISSING_PRICE' - Pointing out the absence of a price attribute in the listing.   * 'DUPLICATE' - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * 'QUALIFICATION_REQUIRED' - Indicating that the listing requires qualification-related approval.
- * @member {Array.<String>} categories
- * @type {Array.<String>}
+ * @member {[String]} categories
+ * @type {[String]}
  */
 Issue.prototype.categories = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/IssueEnforcements} enforcements
- * @type {module:listingsitems_v2021_08_01/model/IssueEnforcements}
+ * @member {IssueEnforcements} enforcements
+ * @type {IssueEnforcements}
  */
 Issue.prototype.enforcements = undefined

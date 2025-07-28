@@ -27,7 +27,7 @@ export class SearchContentDocumentsResponse {
    * @alias module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusPaginatedResponse
-   * @param contentMetadataRecords {Array.<module:apluscontent_v2020_11_01/model/ContentMetadataRecord>} A list of A+ Content metadata records.
+   * @param contentMetadataRecords {[ContentMetadataRecord]} A list of A+ Content metadata records.
    */
   constructor (contentMetadataRecords) {
     AplusPaginatedResponse.call(this)
@@ -38,8 +38,8 @@ export class SearchContentDocumentsResponse {
    * Constructs a <code>SearchContentDocumentsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/SearchContentDocumentsResponse} The populated <code>SearchContentDocumentsResponse</code> instance.
+   * @param {SearchContentDocumentsResponse} obj Optional instance to populate.
+   * @return {SearchContentDocumentsResponse} The populated <code>SearchContentDocumentsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,8 +66,8 @@ export class SearchContentDocumentsResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 SearchContentDocumentsResponse.prototype.warnings = undefined
 
@@ -80,16 +80,16 @@ SearchContentDocumentsResponse.prototype.nextPageToken = undefined
 
 /**
  * A list of A+ Content metadata records.
- * @member {Array.<module:apluscontent_v2020_11_01/model/ContentMetadataRecord>} contentMetadataRecords
- * @type {Array.<module:apluscontent_v2020_11_01/model/ContentMetadataRecord>}
+ * @member {[ContentMetadataRecord]} contentMetadataRecords
+ * @type {[ContentMetadataRecord]}
  */
 SearchContentDocumentsResponse.prototype.contentMetadataRecords = undefined
 
 // Implement AplusPaginatedResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 

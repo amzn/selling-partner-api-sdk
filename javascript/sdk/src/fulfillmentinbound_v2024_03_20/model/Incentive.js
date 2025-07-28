@@ -28,7 +28,7 @@ export class Incentive {
    * @param description {String} Description of the incentive.
    * @param target {String} Target of the incentive. Possible values: 'Placement Services', 'Fulfillment Fee Discount'.
    * @param type {String} Type of incentive. Possible values: `FEE`, `DISCOUNT`.
-   * @param value {module:fulfillmentinbound_v2024_03_20/model/Currency}
+   * @param value {Currency}
    */
   constructor (description, target, type, value) {
     this.description = description
@@ -41,8 +41,8 @@ export class Incentive {
    * Constructs a <code>Incentive</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Incentive} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Incentive} The populated <code>Incentive</code> instance.
+   * @param {Incentive} obj Optional instance to populate.
+   * @return {Incentive} The populated <code>Incentive</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,7 +89,7 @@ Incentive.prototype.target = undefined
 Incentive.prototype.type = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Currency} value
- * @type {module:fulfillmentinbound_v2024_03_20/model/Currency}
+ * @member {Currency} value
+ * @type {Currency}
  */
 Incentive.prototype.value = undefined

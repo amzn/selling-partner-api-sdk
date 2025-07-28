@@ -36,8 +36,8 @@ export class ListOfferMetricsRequestPagination {
    * Constructs a <code>ListOfferMetricsRequestPagination</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestPagination} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestPagination} The populated <code>ListOfferMetricsRequestPagination</code> instance.
+   * @param {ListOfferMetricsRequestPagination} obj Optional instance to populate.
+   * @return {ListOfferMetricsRequestPagination} The populated <code>ListOfferMetricsRequestPagination</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

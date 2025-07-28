@@ -32,8 +32,8 @@ export class Region {
    * Constructs a <code>Region</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Region} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Region} The populated <code>Region</code> instance.
+   * @param {Region} obj Optional instance to populate.
+   * @return {Region} The populated <code>Region</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

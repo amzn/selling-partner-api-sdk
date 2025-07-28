@@ -33,8 +33,8 @@ export class InvalidSKU {
    * Constructs a <code>InvalidSKU</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/InvalidSKU} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/InvalidSKU} The populated <code>InvalidSKU</code> instance.
+   * @param {InvalidSKU} obj Optional instance to populate.
+   * @return {InvalidSKU} The populated <code>InvalidSKU</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class InvalidSKU {
 InvalidSKU.prototype.sellerSKU = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/ErrorReason} errorReason
- * @type {module:fulfillmentinbound_v0/model/ErrorReason}
+ * @member {ErrorReason} errorReason
+ * @type {ErrorReason}
  */
 InvalidSKU.prototype.errorReason = undefined

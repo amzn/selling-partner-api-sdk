@@ -35,8 +35,8 @@ export class TaxRegistrationDetails {
    * Constructs a <code>TaxRegistrationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/TaxRegistrationDetails} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/TaxRegistrationDetails} The populated <code>TaxRegistrationDetails</code> instance.
+   * @param {TaxRegistrationDetails} obj Optional instance to populate.
+   * @return {TaxRegistrationDetails} The populated <code>TaxRegistrationDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,8 +83,8 @@ TaxRegistrationDetails.TaxRegistrationTypeEnum = {
 
 /**
  * Tax registration type for the entity.
- * @member {module:vendordfshipping_v2021_12_28/model/TaxRegistrationDetails.TaxRegistrationTypeEnum} taxRegistrationType
- * @type {module:vendordfshipping_v2021_12_28/model/TaxRegistrationDetails.TaxRegistrationTypeEnum}
+ * @member {String} taxRegistrationType
+ * @type {String}
  */
 TaxRegistrationDetails.prototype.taxRegistrationType = undefined
 
@@ -96,8 +96,8 @@ TaxRegistrationDetails.prototype.taxRegistrationType = undefined
 TaxRegistrationDetails.prototype.taxRegistrationNumber = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/Address} taxRegistrationAddress
- * @type {module:vendordfshipping_v2021_12_28/model/Address}
+ * @member {Address} taxRegistrationAddress
+ * @type {Address}
  */
 TaxRegistrationDetails.prototype.taxRegistrationAddress = undefined
 

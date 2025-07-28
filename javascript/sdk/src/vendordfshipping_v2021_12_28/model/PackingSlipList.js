@@ -34,8 +34,8 @@ export class PackingSlipList {
    * Constructs a <code>PackingSlipList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/PackingSlipList} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/PackingSlipList} The populated <code>PackingSlipList</code> instance.
+   * @param {PackingSlipList} obj Optional instance to populate.
+   * @return {PackingSlipList} The populated <code>PackingSlipList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class PackingSlipList {
 }
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/Pagination} pagination
- * @type {module:vendordfshipping_v2021_12_28/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 PackingSlipList.prototype.pagination = undefined
 
 /**
  * An array of packing slip objects.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/PackingSlip>} packingSlips
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/PackingSlip>}
+ * @member {[PackingSlip]} packingSlips
+ * @type {[PackingSlip]}
  */
 PackingSlipList.prototype.packingSlips = undefined

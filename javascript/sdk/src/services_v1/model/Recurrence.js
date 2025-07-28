@@ -35,8 +35,8 @@ export class Recurrence {
    * Constructs a <code>Recurrence</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/Recurrence} obj Optional instance to populate.
-   * @return {module:services_v1/model/Recurrence} The populated <code>Recurrence</code> instance.
+   * @param {Recurrence} obj Optional instance to populate.
+   * @return {Recurrence} The populated <code>Recurrence</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,14 +69,14 @@ Recurrence.prototype.endTime = undefined
 
 /**
  * Days of the week when recurrence is valid. If the schedule is valid every Monday, input will only contain `MONDAY` in the list.
- * @member {Array.<module:services_v1/model/DayOfWeek>} daysOfWeek
- * @type {Array.<module:services_v1/model/DayOfWeek>}
+ * @member {[DayOfWeek]} daysOfWeek
+ * @type {[DayOfWeek]}
  */
 Recurrence.prototype.daysOfWeek = undefined
 
 /**
  * Days of the month when recurrence is valid.
- * @member {Array.<Number>} daysOfMonth
- * @type {Array.<Number>}
+ * @member {[Number]} daysOfMonth
+ * @type {[Number]}
  */
 Recurrence.prototype.daysOfMonth = undefined

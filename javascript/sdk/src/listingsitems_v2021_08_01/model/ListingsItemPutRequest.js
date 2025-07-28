@@ -25,7 +25,7 @@ export class ListingsItemPutRequest {
    * @alias module:listingsitems_v2021_08_01/model/ListingsItemPutRequest
    * @class
    * @param productType {String} The Amazon product type of the listings item.
-   * @param attributes {Object.<String, Object>} A JSON object containing structured listings item attribute data keyed by attribute name.
+   * @param attributes {{String: Object}} A JSON object containing structured listings item attribute data keyed by attribute name.
    */
   constructor (productType, attributes) {
     this.productType = productType
@@ -36,8 +36,8 @@ export class ListingsItemPutRequest {
    * Constructs a <code>ListingsItemPutRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ListingsItemPutRequest} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ListingsItemPutRequest} The populated <code>ListingsItemPutRequest</code> instance.
+   * @param {ListingsItemPutRequest} obj Optional instance to populate.
+   * @return {ListingsItemPutRequest} The populated <code>ListingsItemPutRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -96,14 +96,14 @@ ListingsItemPutRequest.RequirementsEnum = {
 
 /**
  * The name of the requirements set for the provided data.
- * @member {module:listingsitems_v2021_08_01/model/ListingsItemPutRequest.RequirementsEnum} requirements
- * @type {module:listingsitems_v2021_08_01/model/ListingsItemPutRequest.RequirementsEnum}
+ * @member {String} requirements
+ * @type {String}
  */
 ListingsItemPutRequest.prototype.requirements = undefined
 
 /**
  * A JSON object containing structured listings item attribute data keyed by attribute name.
- * @member {Object.<String, Object>} attributes
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} attributes
+ * @type {{String: Object}}
  */
 ListingsItemPutRequest.prototype.attributes = undefined

@@ -33,8 +33,8 @@ export class ChargeRefundEvent {
    * Constructs a <code>ChargeRefundEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ChargeRefundEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ChargeRefundEvent} The populated <code>ChargeRefundEvent</code> instance.
+   * @param {ChargeRefundEvent} obj Optional instance to populate.
+   * @return {ChargeRefundEvent} The populated <code>ChargeRefundEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,7 +82,7 @@ ChargeRefundEvent.prototype.reasonCodeDescription = undefined
 
 /**
  * A list of `ChargeRefund` transactions
- * @member {Array.<module:finances_v0/model/ChargeRefundTransaction>} chargeRefundTransactions
- * @type {Array.<module:finances_v0/model/ChargeRefundTransaction>}
+ * @member {[ChargeRefundTransaction]} chargeRefundTransactions
+ * @type {[ChargeRefundTransaction]}
  */
 ChargeRefundEvent.prototype.chargeRefundTransactions = undefined

@@ -28,7 +28,7 @@ export class CreateShipmentRequest {
    * Request schema.
    * @alias module:merchantfulfillment_v0/model/CreateShipmentRequest
    * @class
-   * @param shipmentRequestDetails {module:merchantfulfillment_v0/model/ShipmentRequestDetails}
+   * @param shipmentRequestDetails {ShipmentRequestDetails}
    * @param shippingServiceId {String} An Amazon-defined shipping service identifier.
    */
   constructor (shipmentRequestDetails, shippingServiceId) {
@@ -40,8 +40,8 @@ export class CreateShipmentRequest {
    * Constructs a <code>CreateShipmentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/CreateShipmentRequest} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/CreateShipmentRequest} The populated <code>CreateShipmentRequest</code> instance.
+   * @param {CreateShipmentRequest} obj Optional instance to populate.
+   * @return {CreateShipmentRequest} The populated <code>CreateShipmentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,8 +69,8 @@ export class CreateShipmentRequest {
 }
 
 /**
- * @member {module:merchantfulfillment_v0/model/ShipmentRequestDetails} shipmentRequestDetails
- * @type {module:merchantfulfillment_v0/model/ShipmentRequestDetails}
+ * @member {ShipmentRequestDetails} shipmentRequestDetails
+ * @type {ShipmentRequestDetails}
  */
 CreateShipmentRequest.prototype.shipmentRequestDetails = undefined
 
@@ -89,20 +89,20 @@ CreateShipmentRequest.prototype.shippingServiceId = undefined
 CreateShipmentRequest.prototype.shippingServiceOfferId = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/HazmatType} hazmatType
- * @type {module:merchantfulfillment_v0/model/HazmatType}
+ * @member {HazmatType} hazmatType
+ * @type {HazmatType}
  */
 CreateShipmentRequest.prototype.hazmatType = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/LabelFormatOptionRequest} labelFormatOption
- * @type {module:merchantfulfillment_v0/model/LabelFormatOptionRequest}
+ * @member {LabelFormatOptionRequest} labelFormatOption
+ * @type {LabelFormatOptionRequest}
  */
 CreateShipmentRequest.prototype.labelFormatOption = undefined
 
 /**
  * A list of additional seller input pairs required to purchase shipping.
- * @member {Array.<module:merchantfulfillment_v0/model/AdditionalSellerInputs>} shipmentLevelSellerInputsList
- * @type {Array.<module:merchantfulfillment_v0/model/AdditionalSellerInputs>}
+ * @member {[AdditionalSellerInputs]} shipmentLevelSellerInputsList
+ * @type {[AdditionalSellerInputs]}
  */
 CreateShipmentRequest.prototype.shipmentLevelSellerInputsList = undefined

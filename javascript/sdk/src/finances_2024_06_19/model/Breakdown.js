@@ -33,8 +33,8 @@ export class Breakdown {
    * Constructs a <code>Breakdown</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/Breakdown} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/Breakdown} The populated <code>Breakdown</code> instance.
+   * @param {Breakdown} obj Optional instance to populate.
+   * @return {Breakdown} The populated <code>Breakdown</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,14 +66,14 @@ export class Breakdown {
 Breakdown.prototype.breakdownType = undefined
 
 /**
- * @member {module:finances_2024_06_19/model/Currency} breakdownAmount
- * @type {module:finances_2024_06_19/model/Currency}
+ * @member {Currency} breakdownAmount
+ * @type {Currency}
  */
 Breakdown.prototype.breakdownAmount = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
- * @member {Array.<module:finances_2024_06_19/model/Breakdown>} breakdowns
- * @type {Array.<module:finances_2024_06_19/model/Breakdown>}
+ * @member {[Breakdown]} breakdowns
+ * @type {[Breakdown]}
  */
 Breakdown.prototype.breakdowns = undefined

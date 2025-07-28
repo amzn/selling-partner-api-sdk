@@ -25,7 +25,7 @@ export class ItemEligibilityPreview {
    * @alias module:fbaeligibility_v1/model/ItemEligibilityPreview
    * @class
    * @param asin {String} The ASIN for which eligibility was determined.
-   * @param program {module:fbaeligibility_v1/model/ItemEligibilityPreview.ProgramEnum} The program for which eligibility was determined.
+   * @param program {String} The program for which eligibility was determined.
    * @param isEligibleForProgram {Boolean} Indicates if the item is eligible for the program.
    */
   constructor (asin, program, isEligibleForProgram) {
@@ -38,8 +38,8 @@ export class ItemEligibilityPreview {
    * Constructs a <code>ItemEligibilityPreview</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbaeligibility_v1/model/ItemEligibilityPreview} obj Optional instance to populate.
-   * @return {module:fbaeligibility_v1/model/ItemEligibilityPreview} The populated <code>ItemEligibilityPreview</code> instance.
+   * @param {ItemEligibilityPreview} obj Optional instance to populate.
+   * @return {ItemEligibilityPreview} The populated <code>ItemEligibilityPreview</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -101,8 +101,8 @@ ItemEligibilityPreview.ProgramEnum = {
 
 /**
  * The program for which eligibility was determined.
- * @member {module:fbaeligibility_v1/model/ItemEligibilityPreview.ProgramEnum} program
- * @type {module:fbaeligibility_v1/model/ItemEligibilityPreview.ProgramEnum}
+ * @member {String} program
+ * @type {String}
  */
 ItemEligibilityPreview.prototype.program = undefined
 
@@ -357,7 +357,7 @@ ItemEligibilityPreview.IneligibilityReasonListEnum = {
 
 /**
  * Potential Ineligibility Reason Codes.
- * @member {Array.<module:fbaeligibility_v1/model/ItemEligibilityPreview.IneligibilityReasonListEnum>} ineligibilityReasonList
- * @type {Array.<module:fbaeligibility_v1/model/ItemEligibilityPreview.IneligibilityReasonListEnum>}
+ * @member {[String]} ineligibilityReasonList
+ * @type {[String]}
  */
 ItemEligibilityPreview.prototype.ineligibilityReasonList = undefined

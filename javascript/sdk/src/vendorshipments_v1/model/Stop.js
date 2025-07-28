@@ -25,7 +25,7 @@ export class Stop {
    * Contractual or operational port or point relevant to the movement of the cargo.
    * @alias module:vendorshipments_v1/model/Stop
    * @class
-   * @param functionCode {module:vendorshipments_v1/model/Stop.FunctionCodeEnum} Provide the function code.
+   * @param functionCode {String} Provide the function code.
    */
   constructor (functionCode) {
     this.functionCode = functionCode
@@ -35,8 +35,8 @@ export class Stop {
    * Constructs a <code>Stop</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Stop} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Stop} The populated <code>Stop</code> instance.
+   * @param {Stop} obj Optional instance to populate.
+   * @return {Stop} The populated <code>Stop</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,14 +89,14 @@ Stop.FunctionCodeEnum = {
 
 /**
  * Provide the function code.
- * @member {module:vendorshipments_v1/model/Stop.FunctionCodeEnum} functionCode
- * @type {module:vendorshipments_v1/model/Stop.FunctionCodeEnum}
+ * @member {String} functionCode
+ * @type {String}
  */
 Stop.prototype.functionCode = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Location} locationIdentification
- * @type {module:vendorshipments_v1/model/Location}
+ * @member {Location} locationIdentification
+ * @type {Location}
  */
 Stop.prototype.locationIdentification = undefined
 

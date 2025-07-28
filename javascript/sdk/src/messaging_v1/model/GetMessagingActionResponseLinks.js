@@ -25,8 +25,8 @@ export class GetMessagingActionResponseLinks {
    * The links response that is associated with the messaging action.
    * @alias module:messaging_v1/model/GetMessagingActionResponseLinks
    * @class
-   * @param self {module:messaging_v1/model/LinkObject}
-   * @param schema {module:messaging_v1/model/LinkObject}
+   * @param self {LinkObject}
+   * @param schema {LinkObject}
    */
   constructor (self, schema) {
     this.self = self
@@ -37,8 +37,8 @@ export class GetMessagingActionResponseLinks {
    * Constructs a <code>GetMessagingActionResponseLinks</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/GetMessagingActionResponseLinks} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/GetMessagingActionResponseLinks} The populated <code>GetMessagingActionResponseLinks</code> instance.
+   * @param {GetMessagingActionResponseLinks} obj Optional instance to populate.
+   * @return {GetMessagingActionResponseLinks} The populated <code>GetMessagingActionResponseLinks</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class GetMessagingActionResponseLinks {
 }
 
 /**
- * @member {module:messaging_v1/model/LinkObject} self
- * @type {module:messaging_v1/model/LinkObject}
+ * @member {LinkObject} self
+ * @type {LinkObject}
  */
 GetMessagingActionResponseLinks.prototype.self = undefined
 
 /**
- * @member {module:messaging_v1/model/LinkObject} schema
- * @type {module:messaging_v1/model/LinkObject}
+ * @member {LinkObject} schema
+ * @type {LinkObject}
  */
 GetMessagingActionResponseLinks.prototype.schema = undefined

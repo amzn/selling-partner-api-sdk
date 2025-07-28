@@ -26,9 +26,9 @@ export class InventoryUpdate {
    * Inventory details required to update some or all items for the requested warehouse.
    * @alias module:vendordfinventory_v1/model/InventoryUpdate
    * @class
-   * @param sellingParty {module:vendordfinventory_v1/model/PartyIdentification}
+   * @param sellingParty {PartyIdentification}
    * @param isFullUpdate {Boolean} When true, this request contains a full feed. Otherwise, this request contains a partial feed. When sending a full feed, you must send information about all items in the warehouse. Any items not in the full feed are updated as not available. When sending a partial feed, only include the items that need an update to inventory. The status of other items will remain unchanged.
-   * @param items {Array.<module:vendordfinventory_v1/model/ItemDetails>} A list of inventory items with updated details, including quantity available.
+   * @param items {[ItemDetails]} A list of inventory items with updated details, including quantity available.
    */
   constructor (sellingParty, isFullUpdate, items) {
     this.sellingParty = sellingParty
@@ -40,8 +40,8 @@ export class InventoryUpdate {
    * Constructs a <code>InventoryUpdate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfinventory_v1/model/InventoryUpdate} obj Optional instance to populate.
-   * @return {module:vendordfinventory_v1/model/InventoryUpdate} The populated <code>InventoryUpdate</code> instance.
+   * @param {InventoryUpdate} obj Optional instance to populate.
+   * @return {InventoryUpdate} The populated <code>InventoryUpdate</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,8 +66,8 @@ export class InventoryUpdate {
 }
 
 /**
- * @member {module:vendordfinventory_v1/model/PartyIdentification} sellingParty
- * @type {module:vendordfinventory_v1/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 InventoryUpdate.prototype.sellingParty = undefined
 
@@ -80,7 +80,7 @@ InventoryUpdate.prototype.isFullUpdate = undefined
 
 /**
  * A list of inventory items with updated details, including quantity available.
- * @member {Array.<module:vendordfinventory_v1/model/ItemDetails>} items
- * @type {Array.<module:vendordfinventory_v1/model/ItemDetails>}
+ * @member {[ItemDetails]} items
+ * @type {[ItemDetails]}
  */
 InventoryUpdate.prototype.items = undefined

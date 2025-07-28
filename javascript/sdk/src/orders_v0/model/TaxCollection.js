@@ -32,8 +32,8 @@ export class TaxCollection {
    * Constructs a <code>TaxCollection</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/TaxCollection} obj Optional instance to populate.
-   * @return {module:orders_v0/model/TaxCollection} The populated <code>TaxCollection</code> instance.
+   * @param {TaxCollection} obj Optional instance to populate.
+   * @return {TaxCollection} The populated <code>TaxCollection</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,8 +72,8 @@ TaxCollection.ModelEnum = {
 
 /**
  * The tax collection model applied to the item.
- * @member {module:orders_v0/model/TaxCollection.ModelEnum} model
- * @type {module:orders_v0/model/TaxCollection.ModelEnum}
+ * @member {String} model
+ * @type {String}
  */
 TaxCollection.prototype.model = undefined
 
@@ -93,7 +93,7 @@ TaxCollection.ResponsiblePartyEnum = {
 
 /**
  * The party responsible for withholding the taxes and remitting them to the taxing authority.
- * @member {module:orders_v0/model/TaxCollection.ResponsiblePartyEnum} responsibleParty
- * @type {module:orders_v0/model/TaxCollection.ResponsiblePartyEnum}
+ * @member {String} responsibleParty
+ * @type {String}
  */
 TaxCollection.prototype.responsibleParty = undefined

@@ -27,7 +27,7 @@ export class WeightRange {
    * @class
    * @param maximum {Number} Maximum allowed weight.
    * @param minimum {Number} Minimum allowed weight.
-   * @param unit {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight}
+   * @param unit {UnitOfWeight}
    */
   constructor (maximum, minimum, unit) {
     this.maximum = maximum
@@ -39,8 +39,8 @@ export class WeightRange {
    * Constructs a <code>WeightRange</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/WeightRange} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/WeightRange} The populated <code>WeightRange</code> instance.
+   * @param {WeightRange} obj Optional instance to populate.
+   * @return {WeightRange} The populated <code>WeightRange</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,7 +79,7 @@ WeightRange.prototype.maximum = undefined
 WeightRange.prototype.minimum = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight} unit
- * @type {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight}
+ * @member {UnitOfWeight} unit
+ * @type {UnitOfWeight}
  */
 WeightRange.prototype.unit = undefined

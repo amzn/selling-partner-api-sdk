@@ -33,8 +33,8 @@ export class UnmanifestedShipmentLocation {
    * Constructs a <code>UnmanifestedShipmentLocation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/UnmanifestedShipmentLocation} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/UnmanifestedShipmentLocation} The populated <code>UnmanifestedShipmentLocation</code> instance.
+   * @param {UnmanifestedShipmentLocation} obj Optional instance to populate.
+   * @return {UnmanifestedShipmentLocation} The populated <code>UnmanifestedShipmentLocation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,8 +58,8 @@ export class UnmanifestedShipmentLocation {
 }
 
 /**
- * @member {module:shipping_v2/model/Address} address
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 UnmanifestedShipmentLocation.prototype.address = undefined
 

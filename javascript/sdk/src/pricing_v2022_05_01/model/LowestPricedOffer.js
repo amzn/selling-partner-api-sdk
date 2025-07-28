@@ -26,8 +26,8 @@ export class LowestPricedOffer {
    * Describes the lowest priced offers for the specified item condition and offer type.
    * @alias module:pricing_v2022_05_01/model/LowestPricedOffer
    * @class
-   * @param lowestPricedOffersInput {module:pricing_v2022_05_01/model/LowestPricedOffersInput}
-   * @param offers {Array.<module:pricing_v2022_05_01/model/Offer>} A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
+   * @param lowestPricedOffersInput {LowestPricedOffersInput}
+   * @param offers {[Offer]} A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
    */
   constructor (lowestPricedOffersInput, offers) {
     this.lowestPricedOffersInput = lowestPricedOffersInput
@@ -38,8 +38,8 @@ export class LowestPricedOffer {
    * Constructs a <code>LowestPricedOffer</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/LowestPricedOffer} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/LowestPricedOffer} The populated <code>LowestPricedOffer</code> instance.
+   * @param {LowestPricedOffer} obj Optional instance to populate.
+   * @return {LowestPricedOffer} The populated <code>LowestPricedOffer</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,14 +63,14 @@ export class LowestPricedOffer {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/LowestPricedOffersInput} lowestPricedOffersInput
- * @type {module:pricing_v2022_05_01/model/LowestPricedOffersInput}
+ * @member {LowestPricedOffersInput} lowestPricedOffersInput
+ * @type {LowestPricedOffersInput}
  */
 LowestPricedOffer.prototype.lowestPricedOffersInput = undefined
 
 /**
  * A list of up to 20 lowest priced offers that match the criteria specified in `lowestPricedOffersInput`.
- * @member {Array.<module:pricing_v2022_05_01/model/Offer>} offers
- * @type {Array.<module:pricing_v2022_05_01/model/Offer>}
+ * @member {[Offer]} offers
+ * @type {[Offer]}
  */
 LowestPricedOffer.prototype.offers = undefined

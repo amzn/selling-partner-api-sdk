@@ -26,7 +26,7 @@ export class PackageDetails {
    * Package details. Includes &#x60;packageItems&#x60;, &#x60;packageTimeSlot&#x60;, and &#x60;packageIdentifier&#x60;.
    * @alias module:easyship_v2022_03_23/model/PackageDetails
    * @class
-   * @param packageTimeSlot {module:easyship_v2022_03_23/model/TimeSlot}
+   * @param packageTimeSlot {TimeSlot}
    */
   constructor (packageTimeSlot) {
     this.packageTimeSlot = packageTimeSlot
@@ -36,8 +36,8 @@ export class PackageDetails {
    * Constructs a <code>PackageDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/PackageDetails} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/PackageDetails} The populated <code>PackageDetails</code> instance.
+   * @param {PackageDetails} obj Optional instance to populate.
+   * @return {PackageDetails} The populated <code>PackageDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,14 +63,14 @@ export class PackageDetails {
 
 /**
  * A list of items contained in the package.
- * @member {Array.<module:easyship_v2022_03_23/model/Item>} packageItems
- * @type {Array.<module:easyship_v2022_03_23/model/Item>}
+ * @member {[Item]} packageItems
+ * @type {[Item]}
  */
 PackageDetails.prototype.packageItems = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/TimeSlot} packageTimeSlot
- * @type {module:easyship_v2022_03_23/model/TimeSlot}
+ * @member {TimeSlot} packageTimeSlot
+ * @type {TimeSlot}
  */
 PackageDetails.prototype.packageTimeSlot = undefined
 

@@ -25,7 +25,7 @@ export class TransferScheduleListing {
    * A list of transfer schedules.
    * @alias module:sellerWallet_2024_03_01/model/TransferScheduleListing
    * @class
-   * @param transferSchedules {Array.<module:sellerWallet_2024_03_01/model/TransferSchedule>} A list of transfer schedules.
+   * @param transferSchedules {[TransferSchedule]} A list of transfer schedules.
    */
   constructor (transferSchedules) {
     this.transferSchedules = transferSchedules
@@ -35,8 +35,8 @@ export class TransferScheduleListing {
    * Constructs a <code>TransferScheduleListing</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransferScheduleListing} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransferScheduleListing} The populated <code>TransferScheduleListing</code> instance.
+   * @param {TransferScheduleListing} obj Optional instance to populate.
+   * @return {TransferScheduleListing} The populated <code>TransferScheduleListing</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,7 +68,7 @@ TransferScheduleListing.prototype.nextPageToken = undefined
 
 /**
  * A list of transfer schedules.
- * @member {Array.<module:sellerWallet_2024_03_01/model/TransferSchedule>} transferSchedules
- * @type {Array.<module:sellerWallet_2024_03_01/model/TransferSchedule>}
+ * @member {[TransferSchedule]} transferSchedules
+ * @type {[TransferSchedule]}
  */
 TransferScheduleListing.prototype.transferSchedules = undefined

@@ -33,8 +33,8 @@ export class DeliveryPolicy {
    * Constructs a <code>DeliveryPolicy</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPolicy} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPolicy} The populated <code>DeliveryPolicy</code> instance.
+   * @param {DeliveryPolicy} obj Optional instance to populate.
+   * @return {DeliveryPolicy} The populated <code>DeliveryPolicy</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class DeliveryPolicy {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DeliveryMessage} message
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DeliveryMessage}
+ * @member {DeliveryMessage} message
+ * @type {DeliveryMessage}
  */
 DeliveryPolicy.prototype.message = undefined

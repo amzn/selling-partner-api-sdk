@@ -26,7 +26,7 @@ export class VehiclesResponse {
    * Get paginated list of vehicle from Amazon&#39;s catalog
    * @alias module:vehicles_v2024_11_01/model/VehiclesResponse
    * @class
-   * @param vehicles {Array.<module:vehicles_v2024_11_01/model/Vehicle>} List of vehicles from Amazon's catalog.
+   * @param vehicles {[Vehicle]} List of vehicles from Amazon's catalog.
    */
   constructor (vehicles) {
     this.vehicles = vehicles
@@ -36,8 +36,8 @@ export class VehiclesResponse {
    * Constructs a <code>VehiclesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vehicles_v2024_11_01/model/VehiclesResponse} obj Optional instance to populate.
-   * @return {module:vehicles_v2024_11_01/model/VehiclesResponse} The populated <code>VehiclesResponse</code> instance.
+   * @param {VehiclesResponse} obj Optional instance to populate.
+   * @return {VehiclesResponse} The populated <code>VehiclesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,14 +61,14 @@ export class VehiclesResponse {
 }
 
 /**
- * @member {module:vehicles_v2024_11_01/model/Pagination} pagination
- * @type {module:vehicles_v2024_11_01/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 VehiclesResponse.prototype.pagination = undefined
 
 /**
  * List of vehicles from Amazon's catalog.
- * @member {Array.<module:vehicles_v2024_11_01/model/Vehicle>} vehicles
- * @type {Array.<module:vehicles_v2024_11_01/model/Vehicle>}
+ * @member {[Vehicle]} vehicles
+ * @type {[Vehicle]}
  */
 VehiclesResponse.prototype.vehicles = undefined

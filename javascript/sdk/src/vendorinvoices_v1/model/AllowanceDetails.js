@@ -26,8 +26,8 @@ export class AllowanceDetails {
    * Monetary and tax details of the allowance.
    * @alias module:vendorinvoices_v1/model/AllowanceDetails
    * @class
-   * @param type {module:vendorinvoices_v1/model/AllowanceDetails.TypeEnum} Type of the allowance applied.
-   * @param allowanceAmount {module:vendorinvoices_v1/model/Money}
+   * @param type {String} Type of the allowance applied.
+   * @param allowanceAmount {Money}
    */
   constructor (type, allowanceAmount) {
     this.type = type
@@ -38,8 +38,8 @@ export class AllowanceDetails {
    * Constructs a <code>AllowanceDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/AllowanceDetails} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/AllowanceDetails} The populated <code>AllowanceDetails</code> instance.
+   * @param {AllowanceDetails} obj Optional instance to populate.
+   * @return {AllowanceDetails} The populated <code>AllowanceDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -110,8 +110,8 @@ AllowanceDetails.TypeEnum = {
 
 /**
  * Type of the allowance applied.
- * @member {module:vendorinvoices_v1/model/AllowanceDetails.TypeEnum} type
- * @type {module:vendorinvoices_v1/model/AllowanceDetails.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 AllowanceDetails.prototype.type = undefined
 
@@ -123,14 +123,14 @@ AllowanceDetails.prototype.type = undefined
 AllowanceDetails.prototype.description = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/Money} allowanceAmount
- * @type {module:vendorinvoices_v1/model/Money}
+ * @member {Money} allowanceAmount
+ * @type {Money}
  */
 AllowanceDetails.prototype.allowanceAmount = undefined
 
 /**
  * Tax amount details applied on this allowance.
- * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
- * @type {Array.<module:vendorinvoices_v1/model/TaxDetails>}
+ * @member {[TaxDetails]} taxDetails
+ * @type {[TaxDetails]}
  */
 AllowanceDetails.prototype.taxDetails = undefined

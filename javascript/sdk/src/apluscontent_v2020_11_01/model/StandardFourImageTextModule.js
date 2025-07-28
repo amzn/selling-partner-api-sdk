@@ -34,8 +34,8 @@ export class StandardFourImageTextModule {
    * Constructs a <code>StandardFourImageTextModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardFourImageTextModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardFourImageTextModule} The populated <code>StandardFourImageTextModule</code> instance.
+   * @param {StandardFourImageTextModule} obj Optional instance to populate.
+   * @return {StandardFourImageTextModule} The populated <code>StandardFourImageTextModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,31 +62,31 @@ export class StandardFourImageTextModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardFourImageTextModule.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block1
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block1
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextModule.prototype.block1 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block2
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block2
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextModule.prototype.block2 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block3
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block3
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextModule.prototype.block3 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block4
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block4
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextModule.prototype.block4 = undefined

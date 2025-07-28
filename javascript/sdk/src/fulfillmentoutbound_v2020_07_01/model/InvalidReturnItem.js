@@ -27,7 +27,7 @@ export class InvalidReturnItem {
    * @class
    * @param sellerReturnItemId {String} An identifier assigned by the seller to the return item.
    * @param sellerFulfillmentOrderItemId {String} The identifier assigned to the item by the seller when the fulfillment order was created.
-   * @param invalidItemReason {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReason}
+   * @param invalidItemReason {InvalidItemReason}
    */
   constructor (sellerReturnItemId, sellerFulfillmentOrderItemId, invalidItemReason) {
     this.sellerReturnItemId = sellerReturnItemId
@@ -39,8 +39,8 @@ export class InvalidReturnItem {
    * Constructs a <code>InvalidReturnItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/InvalidReturnItem} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/InvalidReturnItem} The populated <code>InvalidReturnItem</code> instance.
+   * @param {InvalidReturnItem} obj Optional instance to populate.
+   * @return {InvalidReturnItem} The populated <code>InvalidReturnItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,7 +79,7 @@ InvalidReturnItem.prototype.sellerReturnItemId = undefined
 InvalidReturnItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReason} invalidItemReason
- * @type {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReason}
+ * @member {InvalidItemReason} invalidItemReason
+ * @type {InvalidItemReason}
  */
 InvalidReturnItem.prototype.invalidItemReason = undefined

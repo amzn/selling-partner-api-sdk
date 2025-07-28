@@ -33,8 +33,8 @@ export class OperatingHoursByDay {
    * Constructs a <code>OperatingHoursByDay</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/OperatingHoursByDay} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/OperatingHoursByDay} The populated <code>OperatingHoursByDay</code> instance.
+   * @param {OperatingHoursByDay} obj Optional instance to populate.
+   * @return {OperatingHoursByDay} The populated <code>OperatingHoursByDay</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,49 +64,49 @@ export class OperatingHoursByDay {
 
 /**
  * A list of Operating Hours.
- * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} monday
- * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
+ * @member {[OperatingHour]} monday
+ * @type {[OperatingHour]}
  */
 OperatingHoursByDay.prototype.monday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} tuesday
- * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
+ * @member {[OperatingHour]} tuesday
+ * @type {[OperatingHour]}
  */
 OperatingHoursByDay.prototype.tuesday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} wednesday
- * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
+ * @member {[OperatingHour]} wednesday
+ * @type {[OperatingHour]}
  */
 OperatingHoursByDay.prototype.wednesday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} thursday
- * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
+ * @member {[OperatingHour]} thursday
+ * @type {[OperatingHour]}
  */
 OperatingHoursByDay.prototype.thursday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} friday
- * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
+ * @member {[OperatingHour]} friday
+ * @type {[OperatingHour]}
  */
 OperatingHoursByDay.prototype.friday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} saturday
- * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
+ * @member {[OperatingHour]} saturday
+ * @type {[OperatingHour]}
  */
 OperatingHoursByDay.prototype.saturday = undefined
 
 /**
  * A list of Operating Hours.
- * @member {Array.<module:supplysources_v2020_07_01/model/OperatingHour>} sunday
- * @type {Array.<module:supplysources_v2020_07_01/model/OperatingHour>}
+ * @member {[OperatingHour]} sunday
+ * @type {[OperatingHour]}
  */
 OperatingHoursByDay.prototype.sunday = undefined

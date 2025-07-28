@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DistributionPackageType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class DistributionPackageType {
@@ -34,7 +34,7 @@ export class DistributionPackageType {
   /**
     * Returns a <code>DistributionPackageType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/DistributionPackageType} The enum <code>DistributionPackageType</code> value.
+    * @return {DistributionPackageType} The enum <code>DistributionPackageType</code> value.
     */
   static constructFromObject (object) {
     return object

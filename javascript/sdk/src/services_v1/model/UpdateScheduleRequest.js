@@ -25,7 +25,7 @@ export class UpdateScheduleRequest {
    * Request schema for the &#x60;updateSchedule&#x60; operation.
    * @alias module:services_v1/model/UpdateScheduleRequest
    * @class
-   * @param schedules {Array.<module:services_v1/model/AvailabilityRecord>} List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
+   * @param schedules {[AvailabilityRecord]} List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
    */
   constructor (schedules) {
     this.schedules = schedules
@@ -35,8 +35,8 @@ export class UpdateScheduleRequest {
    * Constructs a <code>UpdateScheduleRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/UpdateScheduleRequest} obj Optional instance to populate.
-   * @return {module:services_v1/model/UpdateScheduleRequest} The populated <code>UpdateScheduleRequest</code> instance.
+   * @param {UpdateScheduleRequest} obj Optional instance to populate.
+   * @return {UpdateScheduleRequest} The populated <code>UpdateScheduleRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class UpdateScheduleRequest {
 
 /**
  * List of `AvailabilityRecord`s to represent the capacity of a resource over a time range.
- * @member {Array.<module:services_v1/model/AvailabilityRecord>} schedules
- * @type {Array.<module:services_v1/model/AvailabilityRecord>}
+ * @member {[AvailabilityRecord]} schedules
+ * @type {[AvailabilityRecord]}
  */
 UpdateScheduleRequest.prototype.schedules = undefined

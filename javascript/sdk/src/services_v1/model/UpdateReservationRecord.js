@@ -35,8 +35,8 @@ export class UpdateReservationRecord {
    * Constructs a <code>UpdateReservationRecord</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/UpdateReservationRecord} obj Optional instance to populate.
-   * @return {module:services_v1/model/UpdateReservationRecord} The populated <code>UpdateReservationRecord</code> instance.
+   * @param {UpdateReservationRecord} obj Optional instance to populate.
+   * @return {UpdateReservationRecord} The populated <code>UpdateReservationRecord</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,21 +61,21 @@ export class UpdateReservationRecord {
 }
 
 /**
- * @member {module:services_v1/model/Reservation} reservation
- * @type {module:services_v1/model/Reservation}
+ * @member {Reservation} reservation
+ * @type {Reservation}
  */
 UpdateReservationRecord.prototype.reservation = undefined
 
 /**
  * A list of warnings returned in the sucessful execution response of an API request.
- * @member {Array.<module:services_v1/model/Warning>} warnings
- * @type {Array.<module:services_v1/model/Warning>}
+ * @member {[Warning]} warnings
+ * @type {[Warning]}
  */
 UpdateReservationRecord.prototype.warnings = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:services_v1/model/Error>} errors
- * @type {Array.<module:services_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 UpdateReservationRecord.prototype.errors = undefined

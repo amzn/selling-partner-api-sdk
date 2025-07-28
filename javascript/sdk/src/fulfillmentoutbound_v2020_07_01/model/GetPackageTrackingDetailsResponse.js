@@ -34,8 +34,8 @@ export class GetPackageTrackingDetailsResponse {
    * Constructs a <code>GetPackageTrackingDetailsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetPackageTrackingDetailsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetPackageTrackingDetailsResponse} The populated <code>GetPackageTrackingDetailsResponse</code> instance.
+   * @param {GetPackageTrackingDetailsResponse} obj Optional instance to populate.
+   * @return {GetPackageTrackingDetailsResponse} The populated <code>GetPackageTrackingDetailsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetPackageTrackingDetailsResponse {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/PackageTrackingDetails} payload
- * @type {module:fulfillmentoutbound_v2020_07_01/model/PackageTrackingDetails}
+ * @member {PackageTrackingDetails} payload
+ * @type {PackageTrackingDetails}
  */
 GetPackageTrackingDetailsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetPackageTrackingDetailsResponse.prototype.errors = undefined

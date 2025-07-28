@@ -25,7 +25,7 @@ export class InboundPackages {
    * Represents the packages to inbound.
    * @alias module:awd_v2024_05_09/model/InboundPackages
    * @class
-   * @param packagesToInbound {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} List of packages to be inbounded.
+   * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
    */
   constructor (packagesToInbound) {
     this.packagesToInbound = packagesToInbound
@@ -35,8 +35,8 @@ export class InboundPackages {
    * Constructs a <code>InboundPackages</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InboundPackages} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InboundPackages} The populated <code>InboundPackages</code> instance.
+   * @param {InboundPackages} obj Optional instance to populate.
+   * @return {InboundPackages} The populated <code>InboundPackages</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class InboundPackages {
 
 /**
  * List of packages to be inbounded.
- * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packagesToInbound
- * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
+ * @member {[DistributionPackageQuantity]} packagesToInbound
+ * @type {[DistributionPackageQuantity]}
  */
 InboundPackages.prototype.packagesToInbound = undefined

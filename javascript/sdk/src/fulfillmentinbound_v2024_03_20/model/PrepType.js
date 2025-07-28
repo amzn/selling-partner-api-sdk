@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class PrepType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class PrepType {
@@ -118,7 +118,7 @@ export class PrepType {
   /**
     * Returns a <code>PrepType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v2024_03_20/model/PrepType} The enum <code>PrepType</code> value.
+    * @return {PrepType} The enum <code>PrepType</code> value.
     */
   static constructFromObject (object) {
     return object

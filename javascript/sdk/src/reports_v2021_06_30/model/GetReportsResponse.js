@@ -25,7 +25,7 @@ export class GetReportsResponse {
    * The response for the &#x60;getReports&#x60; operation.
    * @alias module:reports_v2021_06_30/model/GetReportsResponse
    * @class
-   * @param reports {Array.<module:reports_v2021_06_30/model/Report>} A list of reports.
+   * @param reports {[Report]} A list of reports.
    */
   constructor (reports) {
     this.reports = reports
@@ -35,8 +35,8 @@ export class GetReportsResponse {
    * Constructs a <code>GetReportsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/GetReportsResponse} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/GetReportsResponse} The populated <code>GetReportsResponse</code> instance.
+   * @param {GetReportsResponse} obj Optional instance to populate.
+   * @return {GetReportsResponse} The populated <code>GetReportsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,8 +61,8 @@ export class GetReportsResponse {
 
 /**
  * A list of reports.
- * @member {Array.<module:reports_v2021_06_30/model/Report>} reports
- * @type {Array.<module:reports_v2021_06_30/model/Report>}
+ * @member {[Report]} reports
+ * @type {[Report]}
  */
 GetReportsResponse.prototype.reports = undefined
 

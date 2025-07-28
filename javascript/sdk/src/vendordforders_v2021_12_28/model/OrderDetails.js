@@ -31,12 +31,12 @@ export class OrderDetails {
    * @class
    * @param customerOrderNumber {String} The customer order number.
    * @param orderDate {Date} The date the order was placed. This  field is expected to be in ISO-8601 date/time format, for example:2018-07-16T23:00:00Z/ 2018-07-16T23:00:00-05:00 /2018-07-16T23:00:00-08:00. If no time zone is specified, UTC should be assumed.
-   * @param shipmentDetails {module:vendordforders_v2021_12_28/model/ShipmentDetails}
-   * @param sellingParty {module:vendordforders_v2021_12_28/model/PartyIdentification}
-   * @param shipFromParty {module:vendordforders_v2021_12_28/model/PartyIdentification}
-   * @param shipToParty {module:vendordforders_v2021_12_28/model/Address}
-   * @param billToParty {module:vendordforders_v2021_12_28/model/PartyIdentification}
-   * @param items {Array.<module:vendordforders_v2021_12_28/model/OrderItem>} A list of items in this purchase order.
+   * @param shipmentDetails {ShipmentDetails}
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param shipToParty {Address}
+   * @param billToParty {PartyIdentification}
+   * @param items {[OrderItem]} A list of items in this purchase order.
    */
   constructor (customerOrderNumber, orderDate, shipmentDetails, sellingParty, shipFromParty, shipToParty, billToParty, items) {
     this.customerOrderNumber = customerOrderNumber
@@ -53,8 +53,8 @@ export class OrderDetails {
    * Constructs a <code>OrderDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/OrderDetails} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/OrderDetails} The populated <code>OrderDetails</code> instance.
+   * @param {OrderDetails} obj Optional instance to populate.
+   * @return {OrderDetails} The populated <code>OrderDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -133,50 +133,50 @@ OrderDetails.OrderStatusEnum = {
 
 /**
  * Current status of the order.
- * @member {module:vendordforders_v2021_12_28/model/OrderDetails.OrderStatusEnum} orderStatus
- * @type {module:vendordforders_v2021_12_28/model/OrderDetails.OrderStatusEnum}
+ * @member {String} orderStatus
+ * @type {String}
  */
 OrderDetails.prototype.orderStatus = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/ShipmentDetails} shipmentDetails
- * @type {module:vendordforders_v2021_12_28/model/ShipmentDetails}
+ * @member {ShipmentDetails} shipmentDetails
+ * @type {ShipmentDetails}
  */
 OrderDetails.prototype.shipmentDetails = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/TaxItemDetails} taxTotal
- * @type {module:vendordforders_v2021_12_28/model/TaxItemDetails}
+ * @member {TaxItemDetails} taxTotal
+ * @type {TaxItemDetails}
  */
 OrderDetails.prototype.taxTotal = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} sellingParty
- * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 OrderDetails.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} shipFromParty
- * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 OrderDetails.prototype.shipFromParty = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/Address} shipToParty
- * @type {module:vendordforders_v2021_12_28/model/Address}
+ * @member {Address} shipToParty
+ * @type {Address}
  */
 OrderDetails.prototype.shipToParty = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/PartyIdentification} billToParty
- * @type {module:vendordforders_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} billToParty
+ * @type {PartyIdentification}
  */
 OrderDetails.prototype.billToParty = undefined
 
 /**
  * A list of items in this purchase order.
- * @member {Array.<module:vendordforders_v2021_12_28/model/OrderItem>} items
- * @type {Array.<module:vendordforders_v2021_12_28/model/OrderItem>}
+ * @member {[OrderItem]} items
+ * @type {[OrderItem]}
  */
 OrderDetails.prototype.items = undefined

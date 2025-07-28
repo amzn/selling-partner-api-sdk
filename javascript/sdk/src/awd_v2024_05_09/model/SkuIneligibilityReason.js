@@ -36,8 +36,8 @@ export class SkuIneligibilityReason {
    * Constructs a <code>SkuIneligibilityReason</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/SkuIneligibilityReason} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/SkuIneligibilityReason} The populated <code>SkuIneligibilityReason</code> instance.
+   * @param {SkuIneligibilityReason} obj Optional instance to populate.
+   * @return {SkuIneligibilityReason} The populated <code>SkuIneligibilityReason</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

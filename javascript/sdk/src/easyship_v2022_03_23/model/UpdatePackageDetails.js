@@ -26,8 +26,8 @@ export class UpdatePackageDetails {
    * Request to update the time slot of a package.
    * @alias module:easyship_v2022_03_23/model/UpdatePackageDetails
    * @class
-   * @param scheduledPackageId {module:easyship_v2022_03_23/model/ScheduledPackageId}
-   * @param packageTimeSlot {module:easyship_v2022_03_23/model/TimeSlot}
+   * @param scheduledPackageId {ScheduledPackageId}
+   * @param packageTimeSlot {TimeSlot}
    */
   constructor (scheduledPackageId, packageTimeSlot) {
     this.scheduledPackageId = scheduledPackageId
@@ -38,8 +38,8 @@ export class UpdatePackageDetails {
    * Constructs a <code>UpdatePackageDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/UpdatePackageDetails} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/UpdatePackageDetails} The populated <code>UpdatePackageDetails</code> instance.
+   * @param {UpdatePackageDetails} obj Optional instance to populate.
+   * @return {UpdatePackageDetails} The populated <code>UpdatePackageDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class UpdatePackageDetails {
 }
 
 /**
- * @member {module:easyship_v2022_03_23/model/ScheduledPackageId} scheduledPackageId
- * @type {module:easyship_v2022_03_23/model/ScheduledPackageId}
+ * @member {ScheduledPackageId} scheduledPackageId
+ * @type {ScheduledPackageId}
  */
 UpdatePackageDetails.prototype.scheduledPackageId = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/TimeSlot} packageTimeSlot
- * @type {module:easyship_v2022_03_23/model/TimeSlot}
+ * @member {TimeSlot} packageTimeSlot
+ * @type {TimeSlot}
  */
 UpdatePackageDetails.prototype.packageTimeSlot = undefined

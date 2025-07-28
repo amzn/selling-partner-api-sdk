@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class Metric.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class Metric {
@@ -94,7 +94,7 @@ export class Metric {
   /**
     * Returns a <code>Metric</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:replenishment_v2022_11_07/model/Metric} The enum <code>Metric</code> value.
+    * @return {Metric} The enum <code>Metric</code> value.
     */
   static constructFromObject (object) {
     return object

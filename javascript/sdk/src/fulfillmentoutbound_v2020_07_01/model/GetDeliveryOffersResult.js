@@ -33,8 +33,8 @@ export class GetDeliveryOffersResult {
    * Constructs a <code>GetDeliveryOffersResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersResult} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersResult} The populated <code>GetDeliveryOffersResult</code> instance.
+   * @param {GetDeliveryOffersResult} obj Optional instance to populate.
+   * @return {GetDeliveryOffersResult} The populated <code>GetDeliveryOffersResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GetDeliveryOffersResult {
 
 /**
  * An array of delivery offer information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryOffer>} deliveryOffers
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryOffer>}
+ * @member {[DeliveryOffer]} deliveryOffers
+ * @type {[DeliveryOffer]}
  */
 GetDeliveryOffersResult.prototype.deliveryOffers = undefined

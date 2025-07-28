@@ -34,8 +34,8 @@ export class ImportDetails {
    * Constructs a <code>ImportDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ImportDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ImportDetails} The populated <code>ImportDetails</code> instance.
+   * @param {ImportDetails} obj Optional instance to populate.
+   * @return {ImportDetails} The populated <code>ImportDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -109,8 +109,8 @@ ImportDetails.MethodOfPaymentEnum = {
 
 /**
  * This is used for import purchase orders only. If the recipient requests, this field will contain the shipment method of payment.
- * @member {module:vendorshipments_v1/model/ImportDetails.MethodOfPaymentEnum} methodOfPayment
- * @type {module:vendorshipments_v1/model/ImportDetails.MethodOfPaymentEnum}
+ * @member {String} methodOfPayment
+ * @type {String}
  */
 ImportDetails.prototype.methodOfPayment = undefined
 
@@ -122,8 +122,8 @@ ImportDetails.prototype.methodOfPayment = undefined
 ImportDetails.prototype.sealNumber = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Route} route
- * @type {module:vendorshipments_v1/model/Route}
+ * @member {Route} route
+ * @type {Route}
  */
 ImportDetails.prototype.route = undefined
 
@@ -135,8 +135,8 @@ ImportDetails.prototype.route = undefined
 ImportDetails.prototype.importContainers = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Weight} billableWeight
- * @type {module:vendorshipments_v1/model/Weight}
+ * @member {Weight} billableWeight
+ * @type {Weight}
  */
 ImportDetails.prototype.billableWeight = undefined
 
@@ -181,7 +181,7 @@ ImportDetails.HandlingInstructionsEnum = {
 
 /**
  * Identification of the instructions on how specified item/carton/pallet should be handled.
- * @member {module:vendorshipments_v1/model/ImportDetails.HandlingInstructionsEnum} handlingInstructions
- * @type {module:vendorshipments_v1/model/ImportDetails.HandlingInstructionsEnum}
+ * @member {String} handlingInstructions
+ * @type {String}
  */
 ImportDetails.prototype.handlingInstructions = undefined

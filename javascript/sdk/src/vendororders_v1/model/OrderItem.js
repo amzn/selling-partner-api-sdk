@@ -27,7 +27,7 @@ export class OrderItem {
    * @alias module:vendororders_v1/model/OrderItem
    * @class
    * @param itemSequenceNumber {String} Numbering of the item on the purchase order. The first item will be 1, the second 2, and so on.
-   * @param orderedQuantity {module:vendororders_v1/model/ItemQuantity}
+   * @param orderedQuantity {ItemQuantity}
    * @param isBackOrderAllowed {Boolean} When true, we will accept backorder confirmations for this item.
    */
   constructor (itemSequenceNumber, orderedQuantity, isBackOrderAllowed) {
@@ -40,8 +40,8 @@ export class OrderItem {
    * Constructs a <code>OrderItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderItem} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderItem} The populated <code>OrderItem</code> instance.
+   * @param {OrderItem} obj Optional instance to populate.
+   * @return {OrderItem} The populated <code>OrderItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,8 +91,8 @@ OrderItem.prototype.amazonProductIdentifier = undefined
 OrderItem.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendororders_v1/model/ItemQuantity} orderedQuantity
- * @type {module:vendororders_v1/model/ItemQuantity}
+ * @member {ItemQuantity} orderedQuantity
+ * @type {ItemQuantity}
  */
 OrderItem.prototype.orderedQuantity = undefined
 
@@ -104,13 +104,13 @@ OrderItem.prototype.orderedQuantity = undefined
 OrderItem.prototype.isBackOrderAllowed = undefined
 
 /**
- * @member {module:vendororders_v1/model/Money} netCost
- * @type {module:vendororders_v1/model/Money}
+ * @member {Money} netCost
+ * @type {Money}
  */
 OrderItem.prototype.netCost = undefined
 
 /**
- * @member {module:vendororders_v1/model/Money} listPrice
- * @type {module:vendororders_v1/model/Money}
+ * @member {Money} listPrice
+ * @type {Money}
  */
 OrderItem.prototype.listPrice = undefined

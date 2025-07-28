@@ -26,7 +26,7 @@ export class ItemIdentifier {
    * @alias module:pricing_v0/model/ItemIdentifier
    * @class
    * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace from which prices are returned.
-   * @param itemCondition {module:pricing_v0/model/ConditionType}
+   * @param itemCondition {ConditionType}
    */
   constructor (marketplaceId, itemCondition) {
     this.marketplaceId = marketplaceId
@@ -37,8 +37,8 @@ export class ItemIdentifier {
    * Constructs a <code>ItemIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/ItemIdentifier} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/ItemIdentifier} The populated <code>ItemIdentifier</code> instance.
+   * @param {ItemIdentifier} obj Optional instance to populate.
+   * @return {ItemIdentifier} The populated <code>ItemIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,7 +85,7 @@ ItemIdentifier.prototype.ASIN = undefined
 ItemIdentifier.prototype.sellerSKU = undefined
 
 /**
- * @member {module:pricing_v0/model/ConditionType} itemCondition
- * @type {module:pricing_v0/model/ConditionType}
+ * @member {ConditionType} itemCondition
+ * @type {ConditionType}
  */
 ItemIdentifier.prototype.itemCondition = undefined

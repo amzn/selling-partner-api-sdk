@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class UnitOfLength.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class UnitOfLength {
@@ -28,7 +28,7 @@ export class UnitOfLength {
   /**
     * Returns a <code>UnitOfLength</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:easyship_v2022_03_23/model/UnitOfLength} The enum <code>UnitOfLength</code> value.
+    * @return {UnitOfLength} The enum <code>UnitOfLength</code> value.
     */
   static constructFromObject (object) {
     return object

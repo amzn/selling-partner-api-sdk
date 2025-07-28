@@ -32,8 +32,8 @@ export class ProductContext {
    * Constructs a <code>ProductContext</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/ProductContext} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/ProductContext} The populated <code>ProductContext</code> instance.
+   * @param {ProductContext} obj Optional instance to populate.
+   * @return {ProductContext} The populated <code>ProductContext</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

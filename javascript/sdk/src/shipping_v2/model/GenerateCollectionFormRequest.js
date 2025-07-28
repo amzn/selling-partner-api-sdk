@@ -36,8 +36,8 @@ export class GenerateCollectionFormRequest {
    * Constructs a <code>GenerateCollectionFormRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GenerateCollectionFormRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GenerateCollectionFormRequest} The populated <code>GenerateCollectionFormRequest</code> instance.
+   * @param {GenerateCollectionFormRequest} obj Optional instance to populate.
+   * @return {GenerateCollectionFormRequest} The populated <code>GenerateCollectionFormRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class GenerateCollectionFormRequest {
 
 /**
  * Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail
- * @member {Array.<module:shipping_v2/model/ClientReferenceDetail>} clientReferenceDetails
- * @type {Array.<module:shipping_v2/model/ClientReferenceDetail>}
+ * @member {[ClientReferenceDetail]} clientReferenceDetails
+ * @type {[ClientReferenceDetail]}
  */
 GenerateCollectionFormRequest.prototype.clientReferenceDetails = undefined
 
@@ -76,7 +76,7 @@ GenerateCollectionFormRequest.prototype.clientReferenceDetails = undefined
 GenerateCollectionFormRequest.prototype.carrierId = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} shipFromAddress
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipFromAddress
+ * @type {Address}
  */
 GenerateCollectionFormRequest.prototype.shipFromAddress = undefined

@@ -31,7 +31,7 @@ export class FeaturedOfferExpectedPriceRequest {
    * @implements module:pricing_v2022_05_01/model/BatchRequest
    * @implements module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams
    * @param uri {String} The URI associated with an individual request within a batch. For `FeaturedOfferExpectedPrice`, this is `/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice`.
-   * @param method {module:pricing_v2022_05_01/model/HttpMethod}
+   * @param method {HttpMethod}
    * @param marketplaceId {String} The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
    * @param sku {String} The seller SKU of the item.
    */
@@ -48,8 +48,8 @@ export class FeaturedOfferExpectedPriceRequest {
    * Constructs a <code>FeaturedOfferExpectedPriceRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequest} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequest} The populated <code>FeaturedOfferExpectedPriceRequest</code> instance.
+   * @param {FeaturedOfferExpectedPriceRequest} obj Optional instance to populate.
+   * @return {FeaturedOfferExpectedPriceRequest} The populated <code>FeaturedOfferExpectedPriceRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -87,22 +87,22 @@ export class FeaturedOfferExpectedPriceRequest {
 FeaturedOfferExpectedPriceRequest.prototype.uri = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/HttpMethod} method
- * @type {module:pricing_v2022_05_01/model/HttpMethod}
+ * @member {HttpMethod} method
+ * @type {HttpMethod}
  */
 FeaturedOfferExpectedPriceRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
- * @member {Object.<String, Object>} body
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} body
+ * @type {{String: Object}}
  */
 FeaturedOfferExpectedPriceRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {Object.<String, String>} headers
- * @type {Object.<String, String>}
+ * @member {{String: String}} headers
+ * @type {{String: String}}
  */
 FeaturedOfferExpectedPriceRequest.prototype.headers = undefined
 
@@ -121,8 +121,8 @@ FeaturedOfferExpectedPriceRequest.prototype.marketplaceId = undefined
 FeaturedOfferExpectedPriceRequest.prototype.sku = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Segment} segment
- * @type {module:pricing_v2022_05_01/model/Segment}
+ * @member {Segment} segment
+ * @type {Segment}
  */
 FeaturedOfferExpectedPriceRequest.prototype.segment = undefined
 
@@ -135,22 +135,22 @@ FeaturedOfferExpectedPriceRequest.prototype.segment = undefined
 BatchRequest.prototype.uri = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/HttpMethod} method
- * @type {module:pricing_v2022_05_01/model/HttpMethod}
+ * @member {HttpMethod} method
+ * @type {HttpMethod}
  */
 BatchRequest.prototype.method = undefined
 
 /**
  * Additional HTTP body information that is associated with an individual request within a batch.
- * @member {Object.<String, Object>} body
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} body
+ * @type {{String: Object}}
  */
 BatchRequest.prototype.body = undefined
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {Object.<String, String>} headers
- * @type {Object.<String, String>}
+ * @member {{String: String}} headers
+ * @type {{String: String}}
  */
 BatchRequest.prototype.headers = undefined
 
@@ -170,7 +170,7 @@ FeaturedOfferExpectedPriceRequestParams.prototype.marketplaceId = undefined
 FeaturedOfferExpectedPriceRequestParams.prototype.sku = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Segment} segment
- * @type {module:pricing_v2022_05_01/model/Segment}
+ * @member {Segment} segment
+ * @type {Segment}
  */
 FeaturedOfferExpectedPriceRequestParams.prototype.segment = undefined

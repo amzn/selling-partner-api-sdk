@@ -27,9 +27,9 @@ export class OrderRegulatedInfo {
    * @alias module:orders_v0/model/OrderRegulatedInfo
    * @class
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
-   * @param regulatedInformation {module:orders_v0/model/RegulatedInformation}
+   * @param regulatedInformation {RegulatedInformation}
    * @param requiresDosageLabel {Boolean} When true, the order requires attaching a dosage information label when shipped.
-   * @param regulatedOrderVerificationStatus {module:orders_v0/model/RegulatedOrderVerificationStatus}
+   * @param regulatedOrderVerificationStatus {RegulatedOrderVerificationStatus}
    */
   constructor (amazonOrderId, regulatedInformation, requiresDosageLabel, regulatedOrderVerificationStatus) {
     this.amazonOrderId = amazonOrderId
@@ -42,8 +42,8 @@ export class OrderRegulatedInfo {
    * Constructs a <code>OrderRegulatedInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OrderRegulatedInfo} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OrderRegulatedInfo} The populated <code>OrderRegulatedInfo</code> instance.
+   * @param {OrderRegulatedInfo} obj Optional instance to populate.
+   * @return {OrderRegulatedInfo} The populated <code>OrderRegulatedInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ export class OrderRegulatedInfo {
 OrderRegulatedInfo.prototype.amazonOrderId = undefined
 
 /**
- * @member {module:orders_v0/model/RegulatedInformation} regulatedInformation
- * @type {module:orders_v0/model/RegulatedInformation}
+ * @member {RegulatedInformation} regulatedInformation
+ * @type {RegulatedInformation}
  */
 OrderRegulatedInfo.prototype.regulatedInformation = undefined
 
@@ -89,7 +89,7 @@ OrderRegulatedInfo.prototype.regulatedInformation = undefined
 OrderRegulatedInfo.prototype.requiresDosageLabel = undefined
 
 /**
- * @member {module:orders_v0/model/RegulatedOrderVerificationStatus} regulatedOrderVerificationStatus
- * @type {module:orders_v0/model/RegulatedOrderVerificationStatus}
+ * @member {RegulatedOrderVerificationStatus} regulatedOrderVerificationStatus
+ * @type {RegulatedOrderVerificationStatus}
  */
 OrderRegulatedInfo.prototype.regulatedOrderVerificationStatus = undefined

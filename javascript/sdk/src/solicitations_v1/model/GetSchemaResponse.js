@@ -33,8 +33,8 @@ export class GetSchemaResponse {
    * Constructs a <code>GetSchemaResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:solicitations_v1/model/GetSchemaResponse} obj Optional instance to populate.
-   * @return {module:solicitations_v1/model/GetSchemaResponse} The populated <code>GetSchemaResponse</code> instance.
+   * @param {GetSchemaResponse} obj Optional instance to populate.
+   * @return {GetSchemaResponse} The populated <code>GetSchemaResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,21 +59,21 @@ export class GetSchemaResponse {
 }
 
 /**
- * @member {module:solicitations_v1/model/GetSchemaResponseLinks} links
- * @type {module:solicitations_v1/model/GetSchemaResponseLinks}
+ * @member {GetSchemaResponseLinks} links
+ * @type {GetSchemaResponseLinks}
  */
 GetSchemaResponse.prototype.links = undefined
 
 /**
  * A JSON schema document describing the expected payload of the action. This object can be validated against <a href=http://json-schema.org/draft-04/schema>http://json-schema.org/draft-04/schema</a>.
- * @member {Object.<String, Object>} payload
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} payload
+ * @type {{String: Object}}
  */
 GetSchemaResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:solicitations_v1/model/Error>} errors
- * @type {Array.<module:solicitations_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetSchemaResponse.prototype.errors = undefined

@@ -37,8 +37,8 @@ export class PalletInput {
    * Constructs a <code>PalletInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/PalletInput} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/PalletInput} The populated <code>PalletInput</code> instance.
+   * @param {PalletInput} obj Optional instance to populate.
+   * @return {PalletInput} The populated <code>PalletInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,8 +64,8 @@ export class PalletInput {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
- * @type {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 PalletInput.prototype.dimensions = undefined
 
@@ -77,13 +77,13 @@ PalletInput.prototype.dimensions = undefined
 PalletInput.prototype.quantity = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Stackability} stackability
- * @type {module:fulfillmentinbound_v2024_03_20/model/Stackability}
+ * @member {Stackability} stackability
+ * @type {Stackability}
  */
 PalletInput.prototype.stackability = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
- * @type {module:fulfillmentinbound_v2024_03_20/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 PalletInput.prototype.weight = undefined

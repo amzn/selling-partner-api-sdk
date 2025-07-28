@@ -28,10 +28,10 @@ export class BoxUpdateInput {
    * Input information for updating a box
    * @alias module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput
    * @class
-   * @param contentInformationSource {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource}
-   * @param dimensions {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
+   * @param contentInformationSource {BoxContentInformationSource}
+   * @param dimensions {Dimensions}
    * @param quantity {Number} The number of containers where all other properties like weight or dimensions are identical.
-   * @param weight {module:fulfillmentinbound_v2024_03_20/model/Weight}
+   * @param weight {Weight}
    */
   constructor (contentInformationSource, dimensions, quantity, weight) {
     this.contentInformationSource = contentInformationSource
@@ -44,8 +44,8 @@ export class BoxUpdateInput {
    * Constructs a <code>BoxUpdateInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput} The populated <code>BoxUpdateInput</code> instance.
+   * @param {BoxUpdateInput} obj Optional instance to populate.
+   * @return {BoxUpdateInput} The populated <code>BoxUpdateInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,21 +73,21 @@ export class BoxUpdateInput {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource} contentInformationSource
- * @type {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource}
+ * @member {BoxContentInformationSource} contentInformationSource
+ * @type {BoxContentInformationSource}
  */
 BoxUpdateInput.prototype.contentInformationSource = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Dimensions} dimensions
- * @type {module:fulfillmentinbound_v2024_03_20/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 BoxUpdateInput.prototype.dimensions = undefined
 
 /**
  * The items and their quantity in the box. This must be empty if the box `contentInformationSource` is `BARCODE_2D` or `MANUAL_PROCESS`.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
+ * @member {[ItemInput]} items
+ * @type {[ItemInput]}
  */
 BoxUpdateInput.prototype.items = undefined
 
@@ -106,7 +106,7 @@ BoxUpdateInput.prototype.packageId = undefined
 BoxUpdateInput.prototype.quantity = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Weight} weight
- * @type {module:fulfillmentinbound_v2024_03_20/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 BoxUpdateInput.prototype.weight = undefined

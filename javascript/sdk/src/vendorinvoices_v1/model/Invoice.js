@@ -32,11 +32,11 @@ export class Invoice {
    * Represents an invoice or credit note document with details about the transaction, parties involved, and line items.
    * @alias module:vendorinvoices_v1/model/Invoice
    * @class
-   * @param invoiceType {module:vendorinvoices_v1/model/Invoice.InvoiceTypeEnum} Identifies the type of invoice.
+   * @param invoiceType {String} Identifies the type of invoice.
    * @param id {String} Unique number relating to the charges defined in this document. This will be invoice number if the document type is Invoice or CreditNote number if the document type is Credit Note. Failure to provide this reference will result in a rejection.
    * @param date {Date} Defines a date and time according to ISO8601.
-   * @param remitToParty {module:vendorinvoices_v1/model/PartyIdentification}
-   * @param invoiceTotal {module:vendorinvoices_v1/model/Money}
+   * @param remitToParty {PartyIdentification}
+   * @param invoiceTotal {Money}
    */
   constructor (invoiceType, id, date, remitToParty, invoiceTotal) {
     this.invoiceType = invoiceType
@@ -50,8 +50,8 @@ export class Invoice {
    * Constructs a <code>Invoice</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/Invoice} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/Invoice} The populated <code>Invoice</code> instance.
+   * @param {Invoice} obj Optional instance to populate.
+   * @return {Invoice} The populated <code>Invoice</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -109,8 +109,8 @@ Invoice.InvoiceTypeEnum = {
 
 /**
  * Identifies the type of invoice.
- * @member {module:vendorinvoices_v1/model/Invoice.InvoiceTypeEnum} invoiceType
- * @type {module:vendorinvoices_v1/model/Invoice.InvoiceTypeEnum}
+ * @member {String} invoiceType
+ * @type {String}
  */
 Invoice.prototype.invoiceType = undefined
 
@@ -136,72 +136,72 @@ Invoice.prototype.referenceNumber = undefined
 Invoice.prototype.date = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/PartyIdentification} remitToParty
- * @type {module:vendorinvoices_v1/model/PartyIdentification}
+ * @member {PartyIdentification} remitToParty
+ * @type {PartyIdentification}
  */
 Invoice.prototype.remitToParty = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/PartyIdentification} shipToParty
- * @type {module:vendorinvoices_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipToParty
+ * @type {PartyIdentification}
  */
 Invoice.prototype.shipToParty = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/PartyIdentification} shipFromParty
- * @type {module:vendorinvoices_v1/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 Invoice.prototype.shipFromParty = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/PartyIdentification} billToParty
- * @type {module:vendorinvoices_v1/model/PartyIdentification}
+ * @member {PartyIdentification} billToParty
+ * @type {PartyIdentification}
  */
 Invoice.prototype.billToParty = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/PaymentTerms} paymentTerms
- * @type {module:vendorinvoices_v1/model/PaymentTerms}
+ * @member {PaymentTerms} paymentTerms
+ * @type {PaymentTerms}
  */
 Invoice.prototype.paymentTerms = undefined
 
 /**
- * @member {module:vendorinvoices_v1/model/Money} invoiceTotal
- * @type {module:vendorinvoices_v1/model/Money}
+ * @member {Money} invoiceTotal
+ * @type {Money}
  */
 Invoice.prototype.invoiceTotal = undefined
 
 /**
  * Total tax amount details for all line items.
- * @member {Array.<module:vendorinvoices_v1/model/TaxDetails>} taxDetails
- * @type {Array.<module:vendorinvoices_v1/model/TaxDetails>}
+ * @member {[TaxDetails]} taxDetails
+ * @type {[TaxDetails]}
  */
 Invoice.prototype.taxDetails = undefined
 
 /**
  * Additional details provided by the selling party, for tax related or other purposes.
- * @member {Array.<module:vendorinvoices_v1/model/AdditionalDetails>} additionalDetails
- * @type {Array.<module:vendorinvoices_v1/model/AdditionalDetails>}
+ * @member {[AdditionalDetails]} additionalDetails
+ * @type {[AdditionalDetails]}
  */
 Invoice.prototype.additionalDetails = undefined
 
 /**
  * Total charge amount details for all line items.
- * @member {Array.<module:vendorinvoices_v1/model/ChargeDetails>} chargeDetails
- * @type {Array.<module:vendorinvoices_v1/model/ChargeDetails>}
+ * @member {[ChargeDetails]} chargeDetails
+ * @type {[ChargeDetails]}
  */
 Invoice.prototype.chargeDetails = undefined
 
 /**
  * Total allowance amount details for all line items.
- * @member {Array.<module:vendorinvoices_v1/model/AllowanceDetails>} allowanceDetails
- * @type {Array.<module:vendorinvoices_v1/model/AllowanceDetails>}
+ * @member {[AllowanceDetails]} allowanceDetails
+ * @type {[AllowanceDetails]}
  */
 Invoice.prototype.allowanceDetails = undefined
 
 /**
  * The list of invoice items.
- * @member {Array.<module:vendorinvoices_v1/model/InvoiceItem>} items
- * @type {Array.<module:vendorinvoices_v1/model/InvoiceItem>}
+ * @member {[InvoiceItem]} items
+ * @type {[InvoiceItem]}
  */
 Invoice.prototype.items = undefined

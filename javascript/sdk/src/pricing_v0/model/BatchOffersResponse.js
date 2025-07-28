@@ -27,7 +27,7 @@ export class BatchOffersResponse {
    * Common schema that present in &#x60;ItemOffersResponse&#x60; and &#x60;ListingOffersResponse&#x60;
    * @alias module:pricing_v0/model/BatchOffersResponse
    * @class
-   * @param body {module:pricing_v0/model/GetOffersResponse}
+   * @param body {GetOffersResponse}
    */
   constructor (body) {
     this.body = body
@@ -37,8 +37,8 @@ export class BatchOffersResponse {
    * Constructs a <code>BatchOffersResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/BatchOffersResponse} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/BatchOffersResponse} The populated <code>BatchOffersResponse</code> instance.
+   * @param {BatchOffersResponse} obj Optional instance to populate.
+   * @return {BatchOffersResponse} The populated <code>BatchOffersResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,19 +63,19 @@ export class BatchOffersResponse {
 }
 
 /**
- * @member {module:pricing_v0/model/HttpResponseHeaders} headers
- * @type {module:pricing_v0/model/HttpResponseHeaders}
+ * @member {HttpResponseHeaders} headers
+ * @type {HttpResponseHeaders}
  */
 BatchOffersResponse.prototype.headers = undefined
 
 /**
- * @member {module:pricing_v0/model/GetOffersHttpStatusLine} status
- * @type {module:pricing_v0/model/GetOffersHttpStatusLine}
+ * @member {GetOffersHttpStatusLine} status
+ * @type {GetOffersHttpStatusLine}
  */
 BatchOffersResponse.prototype.status = undefined
 
 /**
- * @member {module:pricing_v0/model/GetOffersResponse} body
- * @type {module:pricing_v0/model/GetOffersResponse}
+ * @member {GetOffersResponse} body
+ * @type {GetOffersResponse}
  */
 BatchOffersResponse.prototype.body = undefined

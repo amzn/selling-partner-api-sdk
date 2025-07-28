@@ -28,7 +28,7 @@ export class ShipmentDetails {
    * @param isPriorityShipment {Boolean} When true, this is a priority shipment.
    * @param isPslipRequired {Boolean} When true, a packing slip is required to be sent to the customer.
    * @param shipMethod {String} Ship method to be used for shipping the order. Amazon defines ship method codes indicating the shipping carrier and shipment service level. To see the full list of ship methods in use, including both the code and the friendly name, search the 'Help' section on Vendor Central for 'ship methods'.
-   * @param shipmentDates {module:vendordforders_v2021_12_28/model/ShipmentDates}
+   * @param shipmentDates {ShipmentDates}
    * @param messageToCustomer {String} Message to customer for order status.
    */
   constructor (isPriorityShipment, isPslipRequired, shipMethod, shipmentDates, messageToCustomer) {
@@ -43,8 +43,8 @@ export class ShipmentDetails {
    * Constructs a <code>ShipmentDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/ShipmentDetails} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/ShipmentDetails} The populated <code>ShipmentDetails</code> instance.
+   * @param {ShipmentDetails} obj Optional instance to populate.
+   * @return {ShipmentDetails} The populated <code>ShipmentDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -108,8 +108,8 @@ ShipmentDetails.prototype.isGift = undefined
 ShipmentDetails.prototype.shipMethod = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/ShipmentDates} shipmentDates
- * @type {module:vendordforders_v2021_12_28/model/ShipmentDates}
+ * @member {ShipmentDates} shipmentDates
+ * @type {ShipmentDates}
  */
 ShipmentDetails.prototype.shipmentDates = undefined
 

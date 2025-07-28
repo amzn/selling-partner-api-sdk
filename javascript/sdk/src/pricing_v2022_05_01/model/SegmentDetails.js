@@ -33,8 +33,8 @@ export class SegmentDetails {
    * Constructs a <code>SegmentDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/SegmentDetails} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/SegmentDetails} The populated <code>SegmentDetails</code> instance.
+   * @param {SegmentDetails} obj Optional instance to populate.
+   * @return {SegmentDetails} The populated <code>SegmentDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class SegmentDetails {
 SegmentDetails.prototype.glanceViewWeightPercentage = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/SampleLocation} sampleLocation
- * @type {module:pricing_v2022_05_01/model/SampleLocation}
+ * @member {SampleLocation} sampleLocation
+ * @type {SampleLocation}
  */
 SegmentDetails.prototype.sampleLocation = undefined

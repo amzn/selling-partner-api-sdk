@@ -26,7 +26,7 @@ export class Item {
    * @alias module:vendordfshipping_v2021_12_28/model/Item
    * @class
    * @param itemSequenceNumber {Number} The sequence number of the item. The number must be the same as the order number of the item.
-   * @param shippedQuantity {module:vendordfshipping_v2021_12_28/model/ItemQuantity}
+   * @param shippedQuantity {ItemQuantity}
    */
   constructor (itemSequenceNumber, shippedQuantity) {
     this.itemSequenceNumber = itemSequenceNumber
@@ -37,8 +37,8 @@ export class Item {
    * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/Item} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/Item} The populated <code>Item</code> instance.
+   * @param {Item} obj Optional instance to populate.
+   * @return {Item} The populated <code>Item</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,7 +85,7 @@ Item.prototype.buyerProductIdentifier = undefined
 Item.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/ItemQuantity} shippedQuantity
- * @type {module:vendordfshipping_v2021_12_28/model/ItemQuantity}
+ * @member {ItemQuantity} shippedQuantity
+ * @type {ItemQuantity}
  */
 Item.prototype.shippedQuantity = undefined

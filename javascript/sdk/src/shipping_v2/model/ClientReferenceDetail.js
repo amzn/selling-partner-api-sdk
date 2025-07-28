@@ -24,7 +24,7 @@ export class ClientReferenceDetail {
    * Client Reference Details
    * @alias module:shipping_v2/model/ClientReferenceDetail
    * @class
-   * @param clientReferenceType {module:shipping_v2/model/ClientReferenceDetail.ClientReferenceTypeEnum} Client Reference type.
+   * @param clientReferenceType {String} Client Reference type.
    * @param clientReferenceId {String} The Client Reference Id.
    */
   constructor (clientReferenceType, clientReferenceId) {
@@ -36,8 +36,8 @@ export class ClientReferenceDetail {
    * Constructs a <code>ClientReferenceDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/ClientReferenceDetail} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/ClientReferenceDetail} The populated <code>ClientReferenceDetail</code> instance.
+   * @param {ClientReferenceDetail} obj Optional instance to populate.
+   * @return {ClientReferenceDetail} The populated <code>ClientReferenceDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,8 +82,8 @@ ClientReferenceDetail.ClientReferenceTypeEnum = {
 
 /**
  * Client Reference type.
- * @member {module:shipping_v2/model/ClientReferenceDetail.ClientReferenceTypeEnum} clientReferenceType
- * @type {module:shipping_v2/model/ClientReferenceDetail.ClientReferenceTypeEnum}
+ * @member {String} clientReferenceType
+ * @type {String}
  */
 ClientReferenceDetail.prototype.clientReferenceType = undefined
 

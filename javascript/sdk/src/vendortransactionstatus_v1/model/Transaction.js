@@ -26,7 +26,7 @@ export class Transaction {
    * @alias module:vendortransactionstatus_v1/model/Transaction
    * @class
    * @param transactionId {String} The unique identifier returned in the 'transactionId' field in response to the post request of a specific transaction.
-   * @param status {module:vendortransactionstatus_v1/model/Transaction.StatusEnum} Current processing status of the transaction.
+   * @param status {String} Current processing status of the transaction.
    */
   constructor (transactionId, status) {
     this.transactionId = transactionId
@@ -37,8 +37,8 @@ export class Transaction {
    * Constructs a <code>Transaction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendortransactionstatus_v1/model/Transaction} obj Optional instance to populate.
-   * @return {module:vendortransactionstatus_v1/model/Transaction} The populated <code>Transaction</code> instance.
+   * @param {Transaction} obj Optional instance to populate.
+   * @return {Transaction} The populated <code>Transaction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -97,14 +97,14 @@ Transaction.StatusEnum = {
 
 /**
  * Current processing status of the transaction.
- * @member {module:vendortransactionstatus_v1/model/Transaction.StatusEnum} status
- * @type {module:vendortransactionstatus_v1/model/Transaction.StatusEnum}
+ * @member {String} status
+ * @type {String}
  */
 Transaction.prototype.status = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:vendortransactionstatus_v1/model/Error>} errors
- * @type {Array.<module:vendortransactionstatus_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 Transaction.prototype.errors = undefined

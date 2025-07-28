@@ -32,8 +32,8 @@ export class ImportDetails {
    * Constructs a <code>ImportDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/ImportDetails} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/ImportDetails} The populated <code>ImportDetails</code> instance.
+   * @param {ImportDetails} obj Optional instance to populate.
+   * @return {ImportDetails} The populated <code>ImportDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -105,8 +105,8 @@ ImportDetails.MethodOfPaymentEnum = {
 
 /**
  * If the recipient requests, contains the shipment method of payment. This is for import PO's only.
- * @member {module:vendororders_v1/model/ImportDetails.MethodOfPaymentEnum} methodOfPayment
- * @type {module:vendororders_v1/model/ImportDetails.MethodOfPaymentEnum}
+ * @member {String} methodOfPayment
+ * @type {String}
  */
 ImportDetails.prototype.methodOfPayment = undefined
 
@@ -186,8 +186,8 @@ ImportDetails.InternationalCommercialTermsEnum = {
 
 /**
  * Incoterms (International Commercial Terms) are used to divide transaction costs and responsibilities between buyer and seller and reflect state-of-the-art transportation practices. This is for import purchase orders only.
- * @member {module:vendororders_v1/model/ImportDetails.InternationalCommercialTermsEnum} internationalCommercialTerms
- * @type {module:vendororders_v1/model/ImportDetails.InternationalCommercialTermsEnum}
+ * @member {String} internationalCommercialTerms
+ * @type {String}
  */
 ImportDetails.prototype.internationalCommercialTerms = undefined
 

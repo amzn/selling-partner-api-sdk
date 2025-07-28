@@ -27,7 +27,7 @@ export class Feed {
    * @param feedId {String} The identifier for the feed. This identifier is unique only in combination with a seller ID.
    * @param feedType {String} The feed type.
    * @param createdTime {Date} The date and time when the feed was created, in ISO 8601 date time format.
-   * @param processingStatus {module:feeds_v2021_06_30/model/Feed.ProcessingStatusEnum} The processing status of the feed.
+   * @param processingStatus {String} The processing status of the feed.
    */
   constructor (feedId, feedType, createdTime, processingStatus) {
     this.feedId = feedId
@@ -40,8 +40,8 @@ export class Feed {
    * Constructs a <code>Feed</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:feeds_v2021_06_30/model/Feed} obj Optional instance to populate.
-   * @return {module:feeds_v2021_06_30/model/Feed} The populated <code>Feed</code> instance.
+   * @param {Feed} obj Optional instance to populate.
+   * @return {Feed} The populated <code>Feed</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,8 +86,8 @@ Feed.prototype.feedType = undefined
 
 /**
  * A list of identifiers for the marketplaces that the feed is applied to.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 Feed.prototype.marketplaceIds = undefined
 
@@ -138,8 +138,8 @@ Feed.ProcessingStatusEnum = {
 
 /**
  * The processing status of the feed.
- * @member {module:feeds_v2021_06_30/model/Feed.ProcessingStatusEnum} processingStatus
- * @type {module:feeds_v2021_06_30/model/Feed.ProcessingStatusEnum}
+ * @member {String} processingStatus
+ * @type {String}
  */
 Feed.prototype.processingStatus = undefined
 

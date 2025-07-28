@@ -25,7 +25,7 @@ export class SetPackingInformationRequest {
    * The &#x60;setPackingInformation&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationRequest
    * @class
-   * @param packageGroupings {Array.<module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput>} List of packing information for the inbound plan.
+   * @param packageGroupings {[PackageGroupingInput]} List of packing information for the inbound plan.
    */
   constructor (packageGroupings) {
     this.packageGroupings = packageGroupings
@@ -35,8 +35,8 @@ export class SetPackingInformationRequest {
    * Constructs a <code>SetPackingInformationRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/SetPackingInformationRequest} The populated <code>SetPackingInformationRequest</code> instance.
+   * @param {SetPackingInformationRequest} obj Optional instance to populate.
+   * @return {SetPackingInformationRequest} The populated <code>SetPackingInformationRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class SetPackingInformationRequest {
 
 /**
  * List of packing information for the inbound plan.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput>} packageGroupings
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput>}
+ * @member {[PackageGroupingInput]} packageGroupings
+ * @type {[PackageGroupingInput]}
  */
 SetPackingInformationRequest.prototype.packageGroupings = undefined

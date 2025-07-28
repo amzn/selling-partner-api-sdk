@@ -40,8 +40,8 @@ export class SelectedDeliveryWindow {
    * Constructs a <code>SelectedDeliveryWindow</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/SelectedDeliveryWindow} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/SelectedDeliveryWindow} The populated <code>SelectedDeliveryWindow</code> instance.
+   * @param {SelectedDeliveryWindow} obj Optional instance to populate.
+   * @return {SelectedDeliveryWindow} The populated <code>SelectedDeliveryWindow</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

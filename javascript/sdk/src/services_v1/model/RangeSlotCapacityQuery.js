@@ -37,8 +37,8 @@ export class RangeSlotCapacityQuery {
    * Constructs a <code>RangeSlotCapacityQuery</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/RangeSlotCapacityQuery} obj Optional instance to populate.
-   * @return {module:services_v1/model/RangeSlotCapacityQuery} The populated <code>RangeSlotCapacityQuery</code> instance.
+   * @param {RangeSlotCapacityQuery} obj Optional instance to populate.
+   * @return {RangeSlotCapacityQuery} The populated <code>RangeSlotCapacityQuery</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,8 +64,8 @@ export class RangeSlotCapacityQuery {
 
 /**
  * An array of capacity types which are being requested. Default value is `[SCHEDULED_CAPACITY]`.
- * @member {Array.<module:services_v1/model/CapacityType>} capacityTypes
- * @type {Array.<module:services_v1/model/CapacityType>}
+ * @member {[CapacityType]} capacityTypes
+ * @type {[CapacityType]}
  */
 RangeSlotCapacityQuery.prototype.capacityTypes = undefined
 

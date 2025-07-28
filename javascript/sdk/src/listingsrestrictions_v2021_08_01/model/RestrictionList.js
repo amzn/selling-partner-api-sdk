@@ -25,7 +25,7 @@ export class RestrictionList {
    * A list of restrictions for the specified Amazon catalog item.
    * @alias module:listingsrestrictions_v2021_08_01/model/RestrictionList
    * @class
-   * @param restrictions {Array.<module:listingsrestrictions_v2021_08_01/model/Restriction>}
+   * @param restrictions {[Restriction]}
    */
   constructor (restrictions) {
     this.restrictions = restrictions
@@ -35,8 +35,8 @@ export class RestrictionList {
    * Constructs a <code>RestrictionList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsrestrictions_v2021_08_01/model/RestrictionList} obj Optional instance to populate.
-   * @return {module:listingsrestrictions_v2021_08_01/model/RestrictionList} The populated <code>RestrictionList</code> instance.
+   * @param {RestrictionList} obj Optional instance to populate.
+   * @return {RestrictionList} The populated <code>RestrictionList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class RestrictionList {
 }
 
 /**
- * @member {Array.<module:listingsrestrictions_v2021_08_01/model/Restriction>} restrictions
- * @type {Array.<module:listingsrestrictions_v2021_08_01/model/Restriction>}
+ * @member {[Restriction]} restrictions
+ * @type {[Restriction]}
  */
 RestrictionList.prototype.restrictions = undefined

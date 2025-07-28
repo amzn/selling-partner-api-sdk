@@ -34,8 +34,8 @@ export class Package {
    * Constructs a <code>Package</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/Package} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/Package} The populated <code>Package</code> instance.
+   * @param {Package} obj Optional instance to populate.
+   * @return {Package} The populated <code>Package</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

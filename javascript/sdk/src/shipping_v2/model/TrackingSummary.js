@@ -34,8 +34,8 @@ export class TrackingSummary {
    * Constructs a <code>TrackingSummary</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/TrackingSummary} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/TrackingSummary} The populated <code>TrackingSummary</code> instance.
+   * @param {TrackingSummary} obj Optional instance to populate.
+   * @return {TrackingSummary} The populated <code>TrackingSummary</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class TrackingSummary {
 }
 
 /**
- * @member {module:shipping_v2/model/Status} status
- * @type {module:shipping_v2/model/Status}
+ * @member {Status} status
+ * @type {Status}
  */
 TrackingSummary.prototype.status = undefined
 
 /**
- * @member {module:shipping_v2/model/TrackingDetailCodes} trackingDetailCodes
- * @type {module:shipping_v2/model/TrackingDetailCodes}
+ * @member {TrackingDetailCodes} trackingDetailCodes
+ * @type {TrackingDetailCodes}
  */
 TrackingSummary.prototype.trackingDetailCodes = undefined

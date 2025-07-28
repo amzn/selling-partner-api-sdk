@@ -25,7 +25,7 @@ export class RegulatedInformation {
    * The regulated information collected during purchase and used to verify the order.
    * @alias module:orders_v0/model/RegulatedInformation
    * @class
-   * @param fields {Array.<module:orders_v0/model/RegulatedInformationField>} A list of regulated information fields as collected from the regulatory form.
+   * @param fields {[RegulatedInformationField]} A list of regulated information fields as collected from the regulatory form.
    */
   constructor (fields) {
     this.fields = fields
@@ -35,8 +35,8 @@ export class RegulatedInformation {
    * Constructs a <code>RegulatedInformation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/RegulatedInformation} obj Optional instance to populate.
-   * @return {module:orders_v0/model/RegulatedInformation} The populated <code>RegulatedInformation</code> instance.
+   * @param {RegulatedInformation} obj Optional instance to populate.
+   * @return {RegulatedInformation} The populated <code>RegulatedInformation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class RegulatedInformation {
 
 /**
  * A list of regulated information fields as collected from the regulatory form.
- * @member {Array.<module:orders_v0/model/RegulatedInformationField>} fields
- * @type {Array.<module:orders_v0/model/RegulatedInformationField>}
+ * @member {[RegulatedInformationField]} fields
+ * @type {[RegulatedInformationField]}
  */
 RegulatedInformation.prototype.fields = undefined

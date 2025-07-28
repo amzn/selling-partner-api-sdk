@@ -33,8 +33,8 @@ export class ExceptionDates {
    * Constructs a <code>ExceptionDates</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/ExceptionDates} obj Optional instance to populate.
-   * @return {module:orders_v0/model/ExceptionDates} The populated <code>ExceptionDates</code> instance.
+   * @param {ExceptionDates} obj Optional instance to populate.
+   * @return {ExceptionDates} The populated <code>ExceptionDates</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,7 +74,7 @@ ExceptionDates.prototype.isOpen = undefined
 
 /**
  * Time window during the day when the business is open.
- * @member {Array.<module:orders_v0/model/OpenInterval>} openIntervals
- * @type {Array.<module:orders_v0/model/OpenInterval>}
+ * @member {[OpenInterval]} openIntervals
+ * @type {[OpenInterval]}
  */
 ExceptionDates.prototype.openIntervals = undefined

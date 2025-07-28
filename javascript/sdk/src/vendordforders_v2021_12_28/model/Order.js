@@ -35,8 +35,8 @@ export class Order {
    * Constructs a <code>Order</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/Order} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/Order} The populated <code>Order</code> instance.
+   * @param {Order} obj Optional instance to populate.
+   * @return {Order} The populated <code>Order</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,7 +67,7 @@ export class Order {
 Order.prototype.purchaseOrderNumber = undefined
 
 /**
- * @member {module:vendordforders_v2021_12_28/model/OrderDetails} orderDetails
- * @type {module:vendordforders_v2021_12_28/model/OrderDetails}
+ * @member {OrderDetails} orderDetails
+ * @type {OrderDetails}
  */
 Order.prototype.orderDetails = undefined

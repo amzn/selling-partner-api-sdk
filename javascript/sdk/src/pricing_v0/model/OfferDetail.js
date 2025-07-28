@@ -33,9 +33,9 @@ export class OfferDetail {
    * @alias module:pricing_v0/model/OfferDetail
    * @class
    * @param subCondition {String} The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
-   * @param shippingTime {module:pricing_v0/model/DetailedShippingTimeType}
-   * @param listingPrice {module:pricing_v0/model/MoneyType}
-   * @param shipping {module:pricing_v0/model/MoneyType}
+   * @param shippingTime {DetailedShippingTimeType}
+   * @param listingPrice {MoneyType}
+   * @param shipping {MoneyType}
    * @param isFulfilledByAmazon {Boolean} When true, the offer is fulfilled by Amazon.
    */
   constructor (subCondition, shippingTime, listingPrice, shipping, isFulfilledByAmazon) {
@@ -50,8 +50,8 @@ export class OfferDetail {
    * Constructs a <code>OfferDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/OfferDetail} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/OfferDetail} The populated <code>OfferDetail</code> instance.
+   * @param {OfferDetail} obj Optional instance to populate.
+   * @return {OfferDetail} The populated <code>OfferDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -96,8 +96,8 @@ export class OfferDetail {
 OfferDetail.prototype.myOffer = undefined
 
 /**
- * @member {module:pricing_v0/model/OfferCustomerType} offerType
- * @type {module:pricing_v0/model/OfferCustomerType}
+ * @member {OfferCustomerType} offerType
+ * @type {OfferCustomerType}
  */
 OfferDetail.prototype.offerType = undefined
 
@@ -123,45 +123,45 @@ OfferDetail.prototype.sellerId = undefined
 OfferDetail.prototype.conditionNotes = undefined
 
 /**
- * @member {module:pricing_v0/model/SellerFeedbackType} sellerFeedbackRating
- * @type {module:pricing_v0/model/SellerFeedbackType}
+ * @member {SellerFeedbackType} sellerFeedbackRating
+ * @type {SellerFeedbackType}
  */
 OfferDetail.prototype.sellerFeedbackRating = undefined
 
 /**
- * @member {module:pricing_v0/model/DetailedShippingTimeType} shippingTime
- * @type {module:pricing_v0/model/DetailedShippingTimeType}
+ * @member {DetailedShippingTimeType} shippingTime
+ * @type {DetailedShippingTimeType}
  */
 OfferDetail.prototype.shippingTime = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} listingPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 OfferDetail.prototype.listingPrice = undefined
 
 /**
  * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
- * @member {Array.<module:pricing_v0/model/QuantityDiscountPriceType>} quantityDiscountPrices
- * @type {Array.<module:pricing_v0/model/QuantityDiscountPriceType>}
+ * @member {[QuantityDiscountPriceType]} quantityDiscountPrices
+ * @type {[QuantityDiscountPriceType]}
  */
 OfferDetail.prototype.quantityDiscountPrices = undefined
 
 /**
- * @member {module:pricing_v0/model/Points} points
- * @type {module:pricing_v0/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 OfferDetail.prototype.points = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} shipping
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} shipping
+ * @type {MoneyType}
  */
 OfferDetail.prototype.shipping = undefined
 
 /**
- * @member {module:pricing_v0/model/ShipsFromType} shipsFrom
- * @type {module:pricing_v0/model/ShipsFromType}
+ * @member {ShipsFromType} shipsFrom
+ * @type {ShipsFromType}
  */
 OfferDetail.prototype.shipsFrom = undefined
 
@@ -173,8 +173,8 @@ OfferDetail.prototype.shipsFrom = undefined
 OfferDetail.prototype.isFulfilledByAmazon = undefined
 
 /**
- * @member {module:pricing_v0/model/PrimeInformationType} primeInformation
- * @type {module:pricing_v0/model/PrimeInformationType}
+ * @member {PrimeInformationType} primeInformation
+ * @type {PrimeInformationType}
  */
 OfferDetail.prototype.primeInformation = undefined
 

@@ -39,8 +39,8 @@ export class FulfillmentPreviewItem {
    * Constructs a <code>FulfillmentPreviewItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem} The populated <code>FulfillmentPreviewItem</code> instance.
+   * @param {FulfillmentPreviewItem} obj Optional instance to populate.
+   * @return {FulfillmentPreviewItem} The populated <code>FulfillmentPreviewItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,8 +88,8 @@ FulfillmentPreviewItem.prototype.quantity = undefined
 FulfillmentPreviewItem.prototype.sellerFulfillmentOrderItemId = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Weight} estimatedShippingWeight
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Weight}
+ * @member {Weight} estimatedShippingWeight
+ * @type {Weight}
  */
 FulfillmentPreviewItem.prototype.estimatedShippingWeight = undefined
 
@@ -115,7 +115,7 @@ FulfillmentPreviewItem.ShippingWeightCalculationMethodEnum = {
 
 /**
  * The method used to calculate the estimated shipping weight.
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem.ShippingWeightCalculationMethodEnum} shippingWeightCalculationMethod
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewItem.ShippingWeightCalculationMethodEnum}
+ * @member {String} shippingWeightCalculationMethod
+ * @type {String}
  */
 FulfillmentPreviewItem.prototype.shippingWeightCalculationMethod = undefined

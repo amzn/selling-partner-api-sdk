@@ -36,8 +36,8 @@ export class UpdateVerificationStatusRequestBody {
    * Constructs a <code>UpdateVerificationStatusRequestBody</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/UpdateVerificationStatusRequestBody} obj Optional instance to populate.
-   * @return {module:orders_v0/model/UpdateVerificationStatusRequestBody} The populated <code>UpdateVerificationStatusRequestBody</code> instance.
+   * @param {UpdateVerificationStatusRequestBody} obj Optional instance to populate.
+   * @return {UpdateVerificationStatusRequestBody} The populated <code>UpdateVerificationStatusRequestBody</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class UpdateVerificationStatusRequestBody {
 }
 
 /**
- * @member {module:orders_v0/model/VerificationStatus} status
- * @type {module:orders_v0/model/VerificationStatus}
+ * @member {VerificationStatus} status
+ * @type {VerificationStatus}
  */
 UpdateVerificationStatusRequestBody.prototype.status = undefined
 
@@ -83,7 +83,7 @@ UpdateVerificationStatusRequestBody.prototype.externalReviewerId = undefined
 UpdateVerificationStatusRequestBody.prototype.rejectionReasonId = undefined
 
 /**
- * @member {module:orders_v0/model/VerificationDetails} verificationDetails
- * @type {module:orders_v0/model/VerificationDetails}
+ * @member {VerificationDetails} verificationDetails
+ * @type {VerificationDetails}
  */
 UpdateVerificationStatusRequestBody.prototype.verificationDetails = undefined

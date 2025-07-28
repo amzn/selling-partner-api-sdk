@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class PredefinedPackageDimensions.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class PredefinedPackageDimensions {
@@ -322,7 +322,7 @@ export class PredefinedPackageDimensions {
   /**
     * Returns a <code>PredefinedPackageDimensions</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/PredefinedPackageDimensions} The enum <code>PredefinedPackageDimensions</code> value.
+    * @return {PredefinedPackageDimensions} The enum <code>PredefinedPackageDimensions</code> value.
     */
   static constructFromObject (object) {
     return object

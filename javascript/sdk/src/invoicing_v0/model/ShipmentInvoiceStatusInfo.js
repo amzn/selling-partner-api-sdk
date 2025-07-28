@@ -33,8 +33,8 @@ export class ShipmentInvoiceStatusInfo {
    * Constructs a <code>ShipmentInvoiceStatusInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoicing_v0/model/ShipmentInvoiceStatusInfo} obj Optional instance to populate.
-   * @return {module:invoicing_v0/model/ShipmentInvoiceStatusInfo} The populated <code>ShipmentInvoiceStatusInfo</code> instance.
+   * @param {ShipmentInvoiceStatusInfo} obj Optional instance to populate.
+   * @return {ShipmentInvoiceStatusInfo} The populated <code>ShipmentInvoiceStatusInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class ShipmentInvoiceStatusInfo {
 ShipmentInvoiceStatusInfo.prototype.amazonShipmentId = undefined
 
 /**
- * @member {module:invoicing_v0/model/ShipmentInvoiceStatus} invoiceStatus
- * @type {module:invoicing_v0/model/ShipmentInvoiceStatus}
+ * @member {ShipmentInvoiceStatus} invoiceStatus
+ * @type {ShipmentInvoiceStatus}
  */
 ShipmentInvoiceStatusInfo.prototype.invoiceStatus = undefined

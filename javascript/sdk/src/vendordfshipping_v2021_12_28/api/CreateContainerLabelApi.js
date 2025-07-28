@@ -31,8 +31,8 @@ export class CreateContainerLabelApi {
     * Constructs a new CreateContainerLabelApi.
     * @alias module:vendordfshipping_v2021_12_28/api/CreateContainerLabelApi
     * @class
-    * @param {module:vendordfshipping_v2021_12_28/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:vendordfshipping_v2021_12_28/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -66,8 +66,8 @@ export class CreateContainerLabelApi {
   /**
      * createContainerLabel
      * Creates a container (pallet) label for the associated shipment package.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:vendordfshipping_v2021_12_28/model/CreateContainerLabelRequest} body Request body containing the container label data.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/CreateContainerLabelResponse>}
+     * @param {CreateContainerLabelRequest} body Request body containing the container label data.
+     * @return {Promise<CreateContainerLabelResponse>}
      */
   createContainerLabelWithHttpInfo (body) {
     const postBody = body
@@ -100,8 +100,8 @@ export class CreateContainerLabelApi {
   /**
      * createContainerLabel
      * Creates a container (pallet) label for the associated shipment package.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:vendordfshipping_v2021_12_28/model/CreateContainerLabelRequest} body Request body containing the container label data.
-     * @return {Promise<module:vendordfshipping_v2021_12_28/model/CreateContainerLabelResponse>}
+     * @param {CreateContainerLabelRequest} body Request body containing the container label data.
+     * @return {Promise<CreateContainerLabelResponse>}
      */
   createContainerLabel (body) {
     return this.createContainerLabelWithHttpInfo(body)

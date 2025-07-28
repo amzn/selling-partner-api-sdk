@@ -33,8 +33,8 @@ export class ListOfferMetricsResponseOffer {
    * Constructs a <code>ListOfferMetricsResponseOffer</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOfferMetricsResponseOffer} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOfferMetricsResponseOffer} The populated <code>ListOfferMetricsResponseOffer</code> instance.
+   * @param {ListOfferMetricsResponseOffer} obj Optional instance to populate.
+   * @return {ListOfferMetricsResponseOffer} The populated <code>ListOfferMetricsResponseOffer</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -178,8 +178,8 @@ ListOfferMetricsResponseOffer.prototype.next60DayShippedSubscriptionUnits = unde
 ListOfferMetricsResponseOffer.prototype.next90DayShippedSubscriptionUnits = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/TimeInterval} timeInterval
- * @type {module:replenishment_v2022_11_07/model/TimeInterval}
+ * @member {TimeInterval} timeInterval
+ * @type {TimeInterval}
  */
 ListOfferMetricsResponseOffer.prototype.timeInterval = undefined
 

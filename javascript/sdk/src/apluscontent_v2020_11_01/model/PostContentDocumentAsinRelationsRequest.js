@@ -23,7 +23,7 @@ export class PostContentDocumentAsinRelationsRequest {
    * Constructs a new <code>PostContentDocumentAsinRelationsRequest</code>.
    * @alias module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest
    * @class
-   * @param asinSet {Array.<String>} The set of ASINs.
+   * @param asinSet {[String]} The set of ASINs.
    */
   constructor (asinSet) {
     this.asinSet = asinSet
@@ -33,8 +33,8 @@ export class PostContentDocumentAsinRelationsRequest {
    * Constructs a <code>PostContentDocumentAsinRelationsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/PostContentDocumentAsinRelationsRequest} The populated <code>PostContentDocumentAsinRelationsRequest</code> instance.
+   * @param {PostContentDocumentAsinRelationsRequest} obj Optional instance to populate.
+   * @return {PostContentDocumentAsinRelationsRequest} The populated <code>PostContentDocumentAsinRelationsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class PostContentDocumentAsinRelationsRequest {
 
 /**
  * The set of ASINs.
- * @member {Array.<String>} asinSet
- * @type {Array.<String>}
+ * @member {[String]} asinSet
+ * @type {[String]}
  */
 PostContentDocumentAsinRelationsRequest.prototype.asinSet = undefined

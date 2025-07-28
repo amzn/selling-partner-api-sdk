@@ -36,8 +36,8 @@ export class RejectionReason {
    * Constructs a <code>RejectionReason</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/RejectionReason} obj Optional instance to populate.
-   * @return {module:orders_v0/model/RejectionReason} The populated <code>RejectionReason</code> instance.
+   * @param {RejectionReason} obj Optional instance to populate.
+   * @return {RejectionReason} The populated <code>RejectionReason</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

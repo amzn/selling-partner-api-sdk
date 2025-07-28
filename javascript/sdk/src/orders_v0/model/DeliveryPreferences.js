@@ -34,8 +34,8 @@ export class DeliveryPreferences {
    * Constructs a <code>DeliveryPreferences</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/DeliveryPreferences} obj Optional instance to populate.
-   * @return {module:orders_v0/model/DeliveryPreferences} The populated <code>DeliveryPreferences</code> instance.
+   * @param {DeliveryPreferences} obj Optional instance to populate.
+   * @return {DeliveryPreferences} The populated <code>DeliveryPreferences</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,15 +68,15 @@ export class DeliveryPreferences {
 DeliveryPreferences.prototype.dropOffLocation = undefined
 
 /**
- * @member {module:orders_v0/model/PreferredDeliveryTime} preferredDeliveryTime
- * @type {module:orders_v0/model/PreferredDeliveryTime}
+ * @member {PreferredDeliveryTime} preferredDeliveryTime
+ * @type {PreferredDeliveryTime}
  */
 DeliveryPreferences.prototype.preferredDeliveryTime = undefined
 
 /**
  * Enumerated list of miscellaneous delivery attributes associated with the shipping address.
- * @member {Array.<module:orders_v0/model/OtherDeliveryAttributes>} otherAttributes
- * @type {Array.<module:orders_v0/model/OtherDeliveryAttributes>}
+ * @member {[OtherDeliveryAttributes]} otherAttributes
+ * @type {[OtherDeliveryAttributes]}
  */
 DeliveryPreferences.prototype.otherAttributes = undefined
 

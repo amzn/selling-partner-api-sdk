@@ -34,8 +34,8 @@ export class StandardThreeImageTextModule {
    * Constructs a <code>StandardThreeImageTextModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardThreeImageTextModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardThreeImageTextModule} The populated <code>StandardThreeImageTextModule</code> instance.
+   * @param {StandardThreeImageTextModule} obj Optional instance to populate.
+   * @return {StandardThreeImageTextModule} The populated <code>StandardThreeImageTextModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,25 +61,25 @@ export class StandardThreeImageTextModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardThreeImageTextModule.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block1
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block1
+ * @type {StandardImageTextBlock}
  */
 StandardThreeImageTextModule.prototype.block1 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block2
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block2
+ * @type {StandardImageTextBlock}
  */
 StandardThreeImageTextModule.prototype.block2 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block3
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block3
+ * @type {StandardImageTextBlock}
  */
 StandardThreeImageTextModule.prototype.block3 = undefined

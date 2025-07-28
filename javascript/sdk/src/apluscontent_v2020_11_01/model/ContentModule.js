@@ -40,7 +40,7 @@ export class ContentModule {
    * An A+ Content module. An A+ Content document is composed of content modules. The &#x60;contentModuleType&#x60; property selects which content module types to use.
    * @alias module:apluscontent_v2020_11_01/model/ContentModule
    * @class
-   * @param contentModuleType {module:apluscontent_v2020_11_01/model/ContentModuleType}
+   * @param contentModuleType {ContentModuleType}
    */
   constructor (contentModuleType) {
     this.contentModuleType = contentModuleType
@@ -50,8 +50,8 @@ export class ContentModule {
    * Constructs a <code>ContentModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ContentModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ContentModule} The populated <code>ContentModule</code> instance.
+   * @param {ContentModule} obj Optional instance to populate.
+   * @return {ContentModule} The populated <code>ContentModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,97 +89,97 @@ export class ContentModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ContentModuleType} contentModuleType
- * @type {module:apluscontent_v2020_11_01/model/ContentModuleType}
+ * @member {ContentModuleType} contentModuleType
+ * @type {ContentModuleType}
  */
 ContentModule.prototype.contentModuleType = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule} standardCompanyLogo
- * @type {module:apluscontent_v2020_11_01/model/StandardCompanyLogoModule}
+ * @member {StandardCompanyLogoModule} standardCompanyLogo
+ * @type {StandardCompanyLogoModule}
  */
 ContentModule.prototype.standardCompanyLogo = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardComparisonTableModule} standardComparisonTable
- * @type {module:apluscontent_v2020_11_01/model/StandardComparisonTableModule}
+ * @member {StandardComparisonTableModule} standardComparisonTable
+ * @type {StandardComparisonTableModule}
  */
 ContentModule.prototype.standardComparisonTable = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardFourImageTextModule} standardFourImageText
- * @type {module:apluscontent_v2020_11_01/model/StandardFourImageTextModule}
+ * @member {StandardFourImageTextModule} standardFourImageText
+ * @type {StandardFourImageTextModule}
  */
 ContentModule.prototype.standardFourImageText = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule} standardFourImageTextQuadrant
- * @type {module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule}
+ * @member {StandardFourImageTextQuadrantModule} standardFourImageTextQuadrant
+ * @type {StandardFourImageTextQuadrantModule}
  */
 ContentModule.prototype.standardFourImageTextQuadrant = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardHeaderImageTextModule} standardHeaderImageText
- * @type {module:apluscontent_v2020_11_01/model/StandardHeaderImageTextModule}
+ * @member {StandardHeaderImageTextModule} standardHeaderImageText
+ * @type {StandardHeaderImageTextModule}
  */
 ContentModule.prototype.standardHeaderImageText = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageSidebarModule} standardImageSidebar
- * @type {module:apluscontent_v2020_11_01/model/StandardImageSidebarModule}
+ * @member {StandardImageSidebarModule} standardImageSidebar
+ * @type {StandardImageSidebarModule}
  */
 ContentModule.prototype.standardImageSidebar = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule} standardImageTextOverlay
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule}
+ * @member {StandardImageTextOverlayModule} standardImageTextOverlay
+ * @type {StandardImageTextOverlayModule}
  */
 ContentModule.prototype.standardImageTextOverlay = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardMultipleImageTextModule} standardMultipleImageText
- * @type {module:apluscontent_v2020_11_01/model/StandardMultipleImageTextModule}
+ * @member {StandardMultipleImageTextModule} standardMultipleImageText
+ * @type {StandardMultipleImageTextModule}
  */
 ContentModule.prototype.standardMultipleImageText = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule} standardProductDescription
- * @type {module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule}
+ * @member {StandardProductDescriptionModule} standardProductDescription
+ * @type {StandardProductDescriptionModule}
  */
 ContentModule.prototype.standardProductDescription = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardSingleImageHighlightsModule} standardSingleImageHighlights
- * @type {module:apluscontent_v2020_11_01/model/StandardSingleImageHighlightsModule}
+ * @member {StandardSingleImageHighlightsModule} standardSingleImageHighlights
+ * @type {StandardSingleImageHighlightsModule}
  */
 ContentModule.prototype.standardSingleImageHighlights = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardSingleImageSpecsDetailModule} standardSingleImageSpecsDetail
- * @type {module:apluscontent_v2020_11_01/model/StandardSingleImageSpecsDetailModule}
+ * @member {StandardSingleImageSpecsDetailModule} standardSingleImageSpecsDetail
+ * @type {StandardSingleImageSpecsDetailModule}
  */
 ContentModule.prototype.standardSingleImageSpecsDetail = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule} standardSingleSideImage
- * @type {module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule}
+ * @member {StandardSingleSideImageModule} standardSingleSideImage
+ * @type {StandardSingleSideImageModule}
  */
 ContentModule.prototype.standardSingleSideImage = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTechSpecsModule} standardTechSpecs
- * @type {module:apluscontent_v2020_11_01/model/StandardTechSpecsModule}
+ * @member {StandardTechSpecsModule} standardTechSpecs
+ * @type {StandardTechSpecsModule}
  */
 ContentModule.prototype.standardTechSpecs = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardTextModule} standardText
- * @type {module:apluscontent_v2020_11_01/model/StandardTextModule}
+ * @member {StandardTextModule} standardText
+ * @type {StandardTextModule}
  */
 ContentModule.prototype.standardText = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardThreeImageTextModule} standardThreeImageText
- * @type {module:apluscontent_v2020_11_01/model/StandardThreeImageTextModule}
+ * @member {StandardThreeImageTextModule} standardThreeImageText
+ * @type {StandardThreeImageTextModule}
  */
 ContentModule.prototype.standardThreeImageText = undefined

@@ -33,8 +33,8 @@ export class BuyerTaxInfo {
    * Constructs a <code>BuyerTaxInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/BuyerTaxInfo} obj Optional instance to populate.
-   * @return {module:orders_v0/model/BuyerTaxInfo} The populated <code>BuyerTaxInfo</code> instance.
+   * @param {BuyerTaxInfo} obj Optional instance to populate.
+   * @return {BuyerTaxInfo} The populated <code>BuyerTaxInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,7 +74,7 @@ BuyerTaxInfo.prototype.taxingRegion = undefined
 
 /**
  * A list of tax classifications that apply to the order.
- * @member {Array.<module:orders_v0/model/TaxClassification>} taxClassifications
- * @type {Array.<module:orders_v0/model/TaxClassification>}
+ * @member {[TaxClassification]} taxClassifications
+ * @type {[TaxClassification]}
  */
 BuyerTaxInfo.prototype.taxClassifications = undefined

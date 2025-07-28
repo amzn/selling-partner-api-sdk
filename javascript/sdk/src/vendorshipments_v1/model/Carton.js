@@ -29,7 +29,7 @@ export class Carton {
    * @alias module:vendorshipments_v1/model/Carton
    * @class
    * @param cartonSequenceNumber {String} Carton sequence number for the carton. The first carton will be 001, the second 002, and so on. This number is used as a reference to refer to this carton from the pallet level.
-   * @param items {Array.<module:vendorshipments_v1/model/ContainerItem>} A list of container item details.
+   * @param items {[ContainerItem]} A list of container item details.
    */
   constructor (cartonSequenceNumber, items) {
     this.cartonSequenceNumber = cartonSequenceNumber
@@ -40,8 +40,8 @@ export class Carton {
    * Constructs a <code>Carton</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Carton} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Carton} The populated <code>Carton</code> instance.
+   * @param {Carton} obj Optional instance to populate.
+   * @return {Carton} The populated <code>Carton</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,8 +70,8 @@ export class Carton {
 
 /**
  * A list of carton identifiers.
- * @member {Array.<module:vendorshipments_v1/model/ContainerIdentification>} cartonIdentifiers
- * @type {Array.<module:vendorshipments_v1/model/ContainerIdentification>}
+ * @member {[ContainerIdentification]} cartonIdentifiers
+ * @type {[ContainerIdentification]}
  */
 Carton.prototype.cartonIdentifiers = undefined
 
@@ -83,14 +83,14 @@ Carton.prototype.cartonIdentifiers = undefined
 Carton.prototype.cartonSequenceNumber = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Dimensions} dimensions
- * @type {module:vendorshipments_v1/model/Dimensions}
+ * @member {Dimensions} dimensions
+ * @type {Dimensions}
  */
 Carton.prototype.dimensions = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Weight} weight
- * @type {module:vendorshipments_v1/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Carton.prototype.weight = undefined
 
@@ -103,7 +103,7 @@ Carton.prototype.trackingNumber = undefined
 
 /**
  * A list of container item details.
- * @member {Array.<module:vendorshipments_v1/model/ContainerItem>} items
- * @type {Array.<module:vendorshipments_v1/model/ContainerItem>}
+ * @member {[ContainerItem]} items
+ * @type {[ContainerItem]}
  */
 Carton.prototype.items = undefined

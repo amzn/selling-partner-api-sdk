@@ -33,8 +33,8 @@ export class GetMyFeesEstimateResponse {
    * Constructs a <code>GetMyFeesEstimateResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/GetMyFeesEstimateResponse} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/GetMyFeesEstimateResponse} The populated <code>GetMyFeesEstimateResponse</code> instance.
+   * @param {GetMyFeesEstimateResponse} obj Optional instance to populate.
+   * @return {GetMyFeesEstimateResponse} The populated <code>GetMyFeesEstimateResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,14 +58,14 @@ export class GetMyFeesEstimateResponse {
 }
 
 /**
- * @member {module:productfees_v0/model/GetMyFeesEstimateResult} payload
- * @type {module:productfees_v0/model/GetMyFeesEstimateResult}
+ * @member {GetMyFeesEstimateResult} payload
+ * @type {GetMyFeesEstimateResult}
  */
 GetMyFeesEstimateResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:productfees_v0/model/Error>} errors
- * @type {Array.<module:productfees_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetMyFeesEstimateResponse.prototype.errors = undefined

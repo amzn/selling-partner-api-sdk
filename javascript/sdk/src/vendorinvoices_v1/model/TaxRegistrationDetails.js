@@ -24,7 +24,7 @@ export class TaxRegistrationDetails {
    * Tax registration details of the entity.
    * @alias module:vendorinvoices_v1/model/TaxRegistrationDetails
    * @class
-   * @param taxRegistrationType {module:vendorinvoices_v1/model/TaxRegistrationDetails.TaxRegistrationTypeEnum} The tax registration type for the entity.
+   * @param taxRegistrationType {String} The tax registration type for the entity.
    * @param taxRegistrationNumber {String} The tax registration number for the entity. For example, VAT ID, Consumption Tax ID.
    */
   constructor (taxRegistrationType, taxRegistrationNumber) {
@@ -36,8 +36,8 @@ export class TaxRegistrationDetails {
    * Constructs a <code>TaxRegistrationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/TaxRegistrationDetails} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/TaxRegistrationDetails} The populated <code>TaxRegistrationDetails</code> instance.
+   * @param {TaxRegistrationDetails} obj Optional instance to populate.
+   * @return {TaxRegistrationDetails} The populated <code>TaxRegistrationDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,8 +82,8 @@ TaxRegistrationDetails.TaxRegistrationTypeEnum = {
 
 /**
  * The tax registration type for the entity.
- * @member {module:vendorinvoices_v1/model/TaxRegistrationDetails.TaxRegistrationTypeEnum} taxRegistrationType
- * @type {module:vendorinvoices_v1/model/TaxRegistrationDetails.TaxRegistrationTypeEnum}
+ * @member {String} taxRegistrationType
+ * @type {String}
  */
 TaxRegistrationDetails.prototype.taxRegistrationType = undefined
 

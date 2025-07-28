@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ColorType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ColorType {
@@ -34,7 +34,7 @@ export class ColorType {
   /**
     * Returns a <code>ColorType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:apluscontent_v2020_11_01/model/ColorType} The enum <code>ColorType</code> value.
+    * @return {ColorType} The enum <code>ColorType</code> value.
     */
   static constructFromObject (object) {
     return object

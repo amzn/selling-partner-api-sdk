@@ -49,8 +49,8 @@ export class OrderItem {
    * Constructs a <code>OrderItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OrderItem} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OrderItem} The populated <code>OrderItem</code> instance.
+   * @param {OrderItem} obj Optional instance to populate.
+   * @return {OrderItem} The populated <code>OrderItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -134,8 +134,8 @@ OrderItem.prototype.orderItemId = undefined
 
 /**
  * A list of associated items that a customer has purchased with a product. For example, a tire installation service purchased with tires.
- * @member {Array.<module:orders_v0/model/AssociatedItem>} associatedItems
- * @type {Array.<module:orders_v0/model/AssociatedItem>}
+ * @member {[AssociatedItem]} associatedItems
+ * @type {[AssociatedItem]}
  */
 OrderItem.prototype.associatedItems = undefined
 
@@ -161,81 +161,81 @@ OrderItem.prototype.quantityOrdered = undefined
 OrderItem.prototype.quantityShipped = undefined
 
 /**
- * @member {module:orders_v0/model/ProductInfoDetail} productInfo
- * @type {module:orders_v0/model/ProductInfoDetail}
+ * @member {ProductInfoDetail} productInfo
+ * @type {ProductInfoDetail}
  */
 OrderItem.prototype.productInfo = undefined
 
 /**
- * @member {module:orders_v0/model/PointsGrantedDetail} pointsGranted
- * @type {module:orders_v0/model/PointsGrantedDetail}
+ * @member {PointsGrantedDetail} pointsGranted
+ * @type {PointsGrantedDetail}
  */
 OrderItem.prototype.pointsGranted = undefined
 
 /**
- * @member {module:orders_v0/model/Money} itemPrice
- * @type {module:orders_v0/model/Money}
+ * @member {Money} itemPrice
+ * @type {Money}
  */
 OrderItem.prototype.itemPrice = undefined
 
 /**
- * @member {module:orders_v0/model/Money} shippingPrice
- * @type {module:orders_v0/model/Money}
+ * @member {Money} shippingPrice
+ * @type {Money}
  */
 OrderItem.prototype.shippingPrice = undefined
 
 /**
- * @member {module:orders_v0/model/Money} itemTax
- * @type {module:orders_v0/model/Money}
+ * @member {Money} itemTax
+ * @type {Money}
  */
 OrderItem.prototype.itemTax = undefined
 
 /**
- * @member {module:orders_v0/model/Money} shippingTax
- * @type {module:orders_v0/model/Money}
+ * @member {Money} shippingTax
+ * @type {Money}
  */
 OrderItem.prototype.shippingTax = undefined
 
 /**
- * @member {module:orders_v0/model/Money} shippingDiscount
- * @type {module:orders_v0/model/Money}
+ * @member {Money} shippingDiscount
+ * @type {Money}
  */
 OrderItem.prototype.shippingDiscount = undefined
 
 /**
- * @member {module:orders_v0/model/Money} shippingDiscountTax
- * @type {module:orders_v0/model/Money}
+ * @member {Money} shippingDiscountTax
+ * @type {Money}
  */
 OrderItem.prototype.shippingDiscountTax = undefined
 
 /**
- * @member {module:orders_v0/model/Money} promotionDiscount
- * @type {module:orders_v0/model/Money}
+ * @member {Money} promotionDiscount
+ * @type {Money}
  */
 OrderItem.prototype.promotionDiscount = undefined
 
 /**
- * @member {module:orders_v0/model/Money} promotionDiscountTax
- * @type {module:orders_v0/model/Money}
+ * @member {Money} promotionDiscountTax
+ * @type {Money}
  */
 OrderItem.prototype.promotionDiscountTax = undefined
 
 /**
  * A list of promotion identifiers provided by the seller when the promotions were created.
- * @member {Array.<String>} promotionIds
- * @type {Array.<String>}
+ * @member {[String]} promotionIds
+ * @type {[String]}
  */
 OrderItem.prototype.promotionIds = undefined
 
 /**
- * @member {module:orders_v0/model/Money} cODFee
- * @type {module:orders_v0/model/Money}
+ * @member {Money} cODFee
+ * @type {Money}
  */
 OrderItem.prototype.cODFee = undefined
 
 /**
- * @member {module:orders_v0/model/Money} cODFeeDiscount
- * @type {module:orders_v0/model/Money}
+ * @member {Money} cODFeeDiscount
+ * @type {Money}
  */
 OrderItem.prototype.cODFeeDiscount = undefined
 
@@ -289,8 +289,8 @@ OrderItem.prototype.scheduledDeliveryEndDate = undefined
 OrderItem.prototype.priceDesignation = undefined
 
 /**
- * @member {module:orders_v0/model/TaxCollection} taxCollection
- * @type {module:orders_v0/model/TaxCollection}
+ * @member {TaxCollection} taxCollection
+ * @type {TaxCollection}
  */
 OrderItem.prototype.taxCollection = undefined
 
@@ -344,50 +344,50 @@ OrderItem.DeemedResellerCategoryEnum = {
 
 /**
  * The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.
- * @member {module:orders_v0/model/OrderItem.DeemedResellerCategoryEnum} deemedResellerCategory
- * @type {module:orders_v0/model/OrderItem.DeemedResellerCategoryEnum}
+ * @member {String} deemedResellerCategory
+ * @type {String}
  */
 OrderItem.prototype.deemedResellerCategory = undefined
 
 /**
- * @member {module:orders_v0/model/ItemBuyerInfo} buyerInfo
- * @type {module:orders_v0/model/ItemBuyerInfo}
+ * @member {ItemBuyerInfo} buyerInfo
+ * @type {ItemBuyerInfo}
  */
 OrderItem.prototype.buyerInfo = undefined
 
 /**
- * @member {module:orders_v0/model/BuyerRequestedCancel} buyerRequestedCancel
- * @type {module:orders_v0/model/BuyerRequestedCancel}
+ * @member {BuyerRequestedCancel} buyerRequestedCancel
+ * @type {BuyerRequestedCancel}
  */
 OrderItem.prototype.buyerRequestedCancel = undefined
 
 /**
  * A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.
- * @member {Array.<String>} serialNumbers
- * @type {Array.<String>}
+ * @member {[String]} serialNumbers
+ * @type {[String]}
  */
 OrderItem.prototype.serialNumbers = undefined
 
 /**
- * @member {module:orders_v0/model/SubstitutionPreferences} substitutionPreferences
- * @type {module:orders_v0/model/SubstitutionPreferences}
+ * @member {SubstitutionPreferences} substitutionPreferences
+ * @type {SubstitutionPreferences}
  */
 OrderItem.prototype.substitutionPreferences = undefined
 
 /**
- * @member {module:orders_v0/model/Measurement} measurement
- * @type {module:orders_v0/model/Measurement}
+ * @member {Measurement} measurement
+ * @type {Measurement}
  */
 OrderItem.prototype.measurement = undefined
 
 /**
- * @member {module:orders_v0/model/ShippingConstraints} shippingConstraints
- * @type {module:orders_v0/model/ShippingConstraints}
+ * @member {ShippingConstraints} shippingConstraints
+ * @type {ShippingConstraints}
  */
 OrderItem.prototype.shippingConstraints = undefined
 
 /**
- * @member {module:orders_v0/model/AmazonPrograms} amazonPrograms
- * @type {module:orders_v0/model/AmazonPrograms}
+ * @member {AmazonPrograms} amazonPrograms
+ * @type {AmazonPrograms}
  */
 OrderItem.prototype.amazonPrograms = undefined

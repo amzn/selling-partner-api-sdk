@@ -26,7 +26,7 @@ export class ListPackingOptionsResponse {
    * The &#x60;listPlacementOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse
    * @class
-   * @param packingOptions {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingOption>} List of packing options.
+   * @param packingOptions {[PackingOption]} List of packing options.
    */
   constructor (packingOptions) {
     this.packingOptions = packingOptions
@@ -36,8 +36,8 @@ export class ListPackingOptionsResponse {
    * Constructs a <code>ListPackingOptionsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListPackingOptionsResponse} The populated <code>ListPackingOptionsResponse</code> instance.
+   * @param {ListPackingOptionsResponse} obj Optional instance to populate.
+   * @return {ListPackingOptionsResponse} The populated <code>ListPackingOptionsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ListPackingOptionsResponse {
 
 /**
  * List of packing options.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingOption>} packingOptions
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PackingOption>}
+ * @member {[PackingOption]} packingOptions
+ * @type {[PackingOption]}
  */
 ListPackingOptionsResponse.prototype.packingOptions = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListPackingOptionsResponse.prototype.pagination = undefined

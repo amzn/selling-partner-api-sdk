@@ -36,8 +36,8 @@ export class OrderAddress {
    * Constructs a <code>OrderAddress</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OrderAddress} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OrderAddress} The populated <code>OrderAddress</code> instance.
+   * @param {OrderAddress} obj Optional instance to populate.
+   * @return {OrderAddress} The populated <code>OrderAddress</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,13 +77,13 @@ OrderAddress.prototype.amazonOrderId = undefined
 OrderAddress.prototype.buyerCompanyName = undefined
 
 /**
- * @member {module:orders_v0/model/Address} shippingAddress
- * @type {module:orders_v0/model/Address}
+ * @member {Address} shippingAddress
+ * @type {Address}
  */
 OrderAddress.prototype.shippingAddress = undefined
 
 /**
- * @member {module:orders_v0/model/DeliveryPreferences} deliveryPreferences
- * @type {module:orders_v0/model/DeliveryPreferences}
+ * @member {DeliveryPreferences} deliveryPreferences
+ * @type {DeliveryPreferences}
  */
 OrderAddress.prototype.deliveryPreferences = undefined

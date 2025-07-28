@@ -36,8 +36,8 @@ export class OrderItemBuyerInfo {
    * Constructs a <code>OrderItemBuyerInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OrderItemBuyerInfo} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OrderItemBuyerInfo} The populated <code>OrderItemBuyerInfo</code> instance.
+   * @param {OrderItemBuyerInfo} obj Optional instance to populate.
+   * @return {OrderItemBuyerInfo} The populated <code>OrderItemBuyerInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,20 +72,20 @@ export class OrderItemBuyerInfo {
 OrderItemBuyerInfo.prototype.orderItemId = undefined
 
 /**
- * @member {module:orders_v0/model/BuyerCustomizedInfoDetail} buyerCustomizedInfo
- * @type {module:orders_v0/model/BuyerCustomizedInfoDetail}
+ * @member {BuyerCustomizedInfoDetail} buyerCustomizedInfo
+ * @type {BuyerCustomizedInfoDetail}
  */
 OrderItemBuyerInfo.prototype.buyerCustomizedInfo = undefined
 
 /**
- * @member {module:orders_v0/model/Money} giftWrapPrice
- * @type {module:orders_v0/model/Money}
+ * @member {Money} giftWrapPrice
+ * @type {Money}
  */
 OrderItemBuyerInfo.prototype.giftWrapPrice = undefined
 
 /**
- * @member {module:orders_v0/model/Money} giftWrapTax
- * @type {module:orders_v0/model/Money}
+ * @member {Money} giftWrapTax
+ * @type {Money}
  */
 OrderItemBuyerInfo.prototype.giftWrapTax = undefined
 

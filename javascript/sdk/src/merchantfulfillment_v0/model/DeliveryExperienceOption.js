@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DeliveryExperienceOption.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class DeliveryExperienceOption {
@@ -52,7 +52,7 @@ export class DeliveryExperienceOption {
   /**
     * Returns a <code>DeliveryExperienceOption</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/DeliveryExperienceOption} The enum <code>DeliveryExperienceOption</code> value.
+    * @return {DeliveryExperienceOption} The enum <code>DeliveryExperienceOption</code> value.
     */
   static constructFromObject (object) {
     return object

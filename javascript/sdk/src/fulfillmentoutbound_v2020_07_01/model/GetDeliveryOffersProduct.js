@@ -26,7 +26,7 @@ export class GetDeliveryOffersProduct {
    * The product details for the delivery offer.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersProduct
    * @class
-   * @param productIdentifier {module:fulfillmentoutbound_v2020_07_01/model/ProductIdentifier}
+   * @param productIdentifier {ProductIdentifier}
    */
   constructor (productIdentifier) {
     this.productIdentifier = productIdentifier
@@ -36,8 +36,8 @@ export class GetDeliveryOffersProduct {
    * Constructs a <code>GetDeliveryOffersProduct</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersProduct} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersProduct} The populated <code>GetDeliveryOffersProduct</code> instance.
+   * @param {GetDeliveryOffersProduct} obj Optional instance to populate.
+   * @return {GetDeliveryOffersProduct} The populated <code>GetDeliveryOffersProduct</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class GetDeliveryOffersProduct {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/ProductIdentifier} productIdentifier
- * @type {module:fulfillmentoutbound_v2020_07_01/model/ProductIdentifier}
+ * @member {ProductIdentifier} productIdentifier
+ * @type {ProductIdentifier}
  */
 GetDeliveryOffersProduct.prototype.productIdentifier = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Amount} amount
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Amount}
+ * @member {Amount} amount
+ * @type {Amount}
  */
 GetDeliveryOffersProduct.prototype.amount = undefined

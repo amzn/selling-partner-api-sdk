@@ -33,8 +33,8 @@ export class TransactionsPayload {
    * Constructs a <code>TransactionsPayload</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/TransactionsPayload} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/TransactionsPayload} The populated <code>TransactionsPayload</code> instance.
+   * @param {TransactionsPayload} obj Optional instance to populate.
+   * @return {TransactionsPayload} The populated <code>TransactionsPayload</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,7 +66,7 @@ TransactionsPayload.prototype.nextToken = undefined
 
 /**
  * Contains transactions within a given time period.
- * @member {Array.<module:finances_2024_06_19/model/Transaction>} transactions
- * @type {Array.<module:finances_2024_06_19/model/Transaction>}
+ * @member {[Transaction]} transactions
+ * @type {[Transaction]}
  */
 TransactionsPayload.prototype.transactions = undefined

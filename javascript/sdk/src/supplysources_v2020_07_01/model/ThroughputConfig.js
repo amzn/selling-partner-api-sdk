@@ -26,7 +26,7 @@ export class ThroughputConfig {
    * The throughput configuration.
    * @alias module:supplysources_v2020_07_01/model/ThroughputConfig
    * @class
-   * @param throughputUnit {module:supplysources_v2020_07_01/model/ThroughputUnit}
+   * @param throughputUnit {ThroughputUnit}
    */
   constructor (throughputUnit) {
     this.throughputUnit = throughputUnit
@@ -36,8 +36,8 @@ export class ThroughputConfig {
    * Constructs a <code>ThroughputConfig</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/ThroughputConfig} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/ThroughputConfig} The populated <code>ThroughputConfig</code> instance.
+   * @param {ThroughputConfig} obj Optional instance to populate.
+   * @return {ThroughputConfig} The populated <code>ThroughputConfig</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class ThroughputConfig {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ThroughputCap} throughputCap
- * @type {module:supplysources_v2020_07_01/model/ThroughputCap}
+ * @member {ThroughputCap} throughputCap
+ * @type {ThroughputCap}
  */
 ThroughputConfig.prototype.throughputCap = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ThroughputUnit} throughputUnit
- * @type {module:supplysources_v2020_07_01/model/ThroughputUnit}
+ * @member {ThroughputUnit} throughputUnit
+ * @type {ThroughputUnit}
  */
 ThroughputConfig.prototype.throughputUnit = undefined

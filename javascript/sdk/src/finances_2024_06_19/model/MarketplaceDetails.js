@@ -32,8 +32,8 @@ export class MarketplaceDetails {
    * Constructs a <code>MarketplaceDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/MarketplaceDetails} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/MarketplaceDetails} The populated <code>MarketplaceDetails</code> instance.
+   * @param {MarketplaceDetails} obj Optional instance to populate.
+   * @return {MarketplaceDetails} The populated <code>MarketplaceDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

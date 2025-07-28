@@ -25,7 +25,7 @@ export class ShipmentDetails {
    * @alias module:vendordfshipping_v2021_12_28/model/ShipmentDetails
    * @class
    * @param shippedDate {Date} The date of the shipment's departure from vendor's location. Vendors send ASNs within 30 minutes of departure from their warehouse/distribution center or six hours prior to the appointment time at the Amazon destination warehouse. The shipped date mentioned in the shipment confirmation cannot be in the future.
-   * @param shipmentStatus {module:vendordfshipping_v2021_12_28/model/ShipmentDetails.ShipmentStatusEnum} The shipment status.
+   * @param shipmentStatus {String} The shipment status.
    */
   constructor (shippedDate, shipmentStatus) {
     this.shippedDate = shippedDate
@@ -36,8 +36,8 @@ export class ShipmentDetails {
    * Constructs a <code>ShipmentDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ShipmentDetails} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ShipmentDetails} The populated <code>ShipmentDetails</code> instance.
+   * @param {ShipmentDetails} obj Optional instance to populate.
+   * @return {ShipmentDetails} The populated <code>ShipmentDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -92,8 +92,8 @@ ShipmentDetails.ShipmentStatusEnum = {
 
 /**
  * The shipment status.
- * @member {module:vendordfshipping_v2021_12_28/model/ShipmentDetails.ShipmentStatusEnum} shipmentStatus
- * @type {module:vendordfshipping_v2021_12_28/model/ShipmentDetails.ShipmentStatusEnum}
+ * @member {String} shipmentStatus
+ * @type {String}
  */
 ShipmentDetails.prototype.shipmentStatus = undefined
 

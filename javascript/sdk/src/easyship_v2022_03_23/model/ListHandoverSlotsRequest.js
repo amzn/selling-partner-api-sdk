@@ -28,8 +28,8 @@ export class ListHandoverSlotsRequest {
    * @class
    * @param marketplaceId {String} A string of up to 255 characters.
    * @param amazonOrderId {String} An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
-   * @param packageDimensions {module:easyship_v2022_03_23/model/Dimensions}
-   * @param packageWeight {module:easyship_v2022_03_23/model/Weight}
+   * @param packageDimensions {Dimensions}
+   * @param packageWeight {Weight}
    */
   constructor (marketplaceId, amazonOrderId, packageDimensions, packageWeight) {
     this.marketplaceId = marketplaceId
@@ -42,8 +42,8 @@ export class ListHandoverSlotsRequest {
    * Constructs a <code>ListHandoverSlotsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/ListHandoverSlotsRequest} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/ListHandoverSlotsRequest} The populated <code>ListHandoverSlotsRequest</code> instance.
+   * @param {ListHandoverSlotsRequest} obj Optional instance to populate.
+   * @return {ListHandoverSlotsRequest} The populated <code>ListHandoverSlotsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,13 +83,13 @@ ListHandoverSlotsRequest.prototype.marketplaceId = undefined
 ListHandoverSlotsRequest.prototype.amazonOrderId = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/Dimensions} packageDimensions
- * @type {module:easyship_v2022_03_23/model/Dimensions}
+ * @member {Dimensions} packageDimensions
+ * @type {Dimensions}
  */
 ListHandoverSlotsRequest.prototype.packageDimensions = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/Weight} packageWeight
- * @type {module:easyship_v2022_03_23/model/Weight}
+ * @member {Weight} packageWeight
+ * @type {Weight}
  */
 ListHandoverSlotsRequest.prototype.packageWeight = undefined

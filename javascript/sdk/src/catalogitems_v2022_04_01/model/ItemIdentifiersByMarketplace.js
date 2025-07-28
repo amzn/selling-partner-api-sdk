@@ -26,7 +26,7 @@ export class ItemIdentifiersByMarketplace {
    * @alias module:catalogitems_v2022_04_01/model/ItemIdentifiersByMarketplace
    * @class
    * @param marketplaceId {String} Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).identifier.
-   * @param identifiers {Array.<module:catalogitems_v2022_04_01/model/ItemIdentifier>} Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
+   * @param identifiers {[ItemIdentifier]} Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
    */
   constructor (marketplaceId, identifiers) {
     this.marketplaceId = marketplaceId
@@ -37,8 +37,8 @@ export class ItemIdentifiersByMarketplace {
    * Constructs a <code>ItemIdentifiersByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemIdentifiersByMarketplace} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemIdentifiersByMarketplace} The populated <code>ItemIdentifiersByMarketplace</code> instance.
+   * @param {ItemIdentifiersByMarketplace} obj Optional instance to populate.
+   * @return {ItemIdentifiersByMarketplace} The populated <code>ItemIdentifiersByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ ItemIdentifiersByMarketplace.prototype.marketplaceId = undefined
 
 /**
  * Identifiers associated with the item in the Amazon catalog for the indicated `marketplaceId`.
- * @member {Array.<module:catalogitems_v2022_04_01/model/ItemIdentifier>} identifiers
- * @type {Array.<module:catalogitems_v2022_04_01/model/ItemIdentifier>}
+ * @member {[ItemIdentifier]} identifiers
+ * @type {[ItemIdentifier]}
  */
 ItemIdentifiersByMarketplace.prototype.identifiers = undefined

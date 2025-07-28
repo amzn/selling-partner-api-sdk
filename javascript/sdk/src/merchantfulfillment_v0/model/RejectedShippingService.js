@@ -40,8 +40,8 @@ export class RejectedShippingService {
    * Constructs a <code>RejectedShippingService</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/RejectedShippingService} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/RejectedShippingService} The populated <code>RejectedShippingService</code> instance.
+   * @param {RejectedShippingService} obj Optional instance to populate.
+   * @return {RejectedShippingService} The populated <code>RejectedShippingService</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

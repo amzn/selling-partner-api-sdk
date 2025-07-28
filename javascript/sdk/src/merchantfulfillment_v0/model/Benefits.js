@@ -33,8 +33,8 @@ export class Benefits {
    * Constructs a <code>Benefits</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/Benefits} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/Benefits} The populated <code>Benefits</code> instance.
+   * @param {Benefits} obj Optional instance to populate.
+   * @return {Benefits} The populated <code>Benefits</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class Benefits {
 
 /**
  * A list of included benefits.
- * @member {Array.<String>} includedBenefits
- * @type {Array.<String>}
+ * @member {[String]} includedBenefits
+ * @type {[String]}
  */
 Benefits.prototype.includedBenefits = undefined
 
 /**
  * A list of excluded benefits. Refer to the `ExcludeBenefit` object for further documentation.
- * @member {Array.<module:merchantfulfillment_v0/model/ExcludedBenefit>} excludedBenefits
- * @type {Array.<module:merchantfulfillment_v0/model/ExcludedBenefit>}
+ * @member {[ExcludedBenefit]} excludedBenefits
+ * @type {[ExcludedBenefit]}
  */
 Benefits.prototype.excludedBenefits = undefined

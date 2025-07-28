@@ -32,8 +32,8 @@ export class BillOfLadingDownloadURL {
    * Constructs a <code>BillOfLadingDownloadURL</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/BillOfLadingDownloadURL} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/BillOfLadingDownloadURL} The populated <code>BillOfLadingDownloadURL</code> instance.
+   * @param {BillOfLadingDownloadURL} obj Optional instance to populate.
+   * @return {BillOfLadingDownloadURL} The populated <code>BillOfLadingDownloadURL</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

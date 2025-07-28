@@ -33,8 +33,8 @@ export class BalanceListing {
    * Constructs a <code>BalanceListing</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/BalanceListing} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/BalanceListing} The populated <code>BalanceListing</code> instance.
+   * @param {BalanceListing} obj Optional instance to populate.
+   * @return {BalanceListing} The populated <code>BalanceListing</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class BalanceListing {
 
 /**
  * A list of balances in the seller account.
- * @member {Array.<module:sellerWallet_2024_03_01/model/Balance>} balances
- * @type {Array.<module:sellerWallet_2024_03_01/model/Balance>}
+ * @member {[Balance]} balances
+ * @type {[Balance]}
  */
 BalanceListing.prototype.balances = undefined

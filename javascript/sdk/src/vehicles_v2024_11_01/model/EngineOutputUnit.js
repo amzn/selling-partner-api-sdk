@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class EngineOutputUnit.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class EngineOutputUnit {
@@ -34,7 +34,7 @@ export class EngineOutputUnit {
   /**
     * Returns a <code>EngineOutputUnit</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:vehicles_v2024_11_01/model/EngineOutputUnit} The enum <code>EngineOutputUnit</code> value.
+    * @return {EngineOutputUnit} The enum <code>EngineOutputUnit</code> value.
     */
   static constructFromObject (object) {
     return object

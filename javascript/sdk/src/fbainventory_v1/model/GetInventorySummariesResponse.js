@@ -35,8 +35,8 @@ export class GetInventorySummariesResponse {
    * Constructs a <code>GetInventorySummariesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/GetInventorySummariesResponse} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/GetInventorySummariesResponse} The populated <code>GetInventorySummariesResponse</code> instance.
+   * @param {GetInventorySummariesResponse} obj Optional instance to populate.
+   * @return {GetInventorySummariesResponse} The populated <code>GetInventorySummariesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,20 +61,20 @@ export class GetInventorySummariesResponse {
 }
 
 /**
- * @member {module:fbainventory_v1/model/GetInventorySummariesResult} payload
- * @type {module:fbainventory_v1/model/GetInventorySummariesResult}
+ * @member {GetInventorySummariesResult} payload
+ * @type {GetInventorySummariesResult}
  */
 GetInventorySummariesResponse.prototype.payload = undefined
 
 /**
- * @member {module:fbainventory_v1/model/Pagination} pagination
- * @type {module:fbainventory_v1/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 GetInventorySummariesResponse.prototype.pagination = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fbainventory_v1/model/Error>} errors
- * @type {Array.<module:fbainventory_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetInventorySummariesResponse.prototype.errors = undefined

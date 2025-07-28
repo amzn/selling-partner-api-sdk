@@ -33,8 +33,8 @@ export class GetSellingPartnerMetricsResponseMetric {
    * Constructs a <code>GetSellingPartnerMetricsResponseMetric</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsResponseMetric} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/GetSellingPartnerMetricsResponseMetric} The populated <code>GetSellingPartnerMetricsResponseMetric</code> instance.
+   * @param {GetSellingPartnerMetricsResponseMetric} obj Optional instance to populate.
+   * @return {GetSellingPartnerMetricsResponseMetric} The populated <code>GetSellingPartnerMetricsResponseMetric</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -218,8 +218,8 @@ GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor5PlusPerce
 GetSellingPartnerMetricsResponseMetric.prototype.shareOfCouponSubscriptions = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/TimeInterval} timeInterval
- * @type {module:replenishment_v2022_11_07/model/TimeInterval}
+ * @member {TimeInterval} timeInterval
+ * @type {TimeInterval}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.timeInterval = undefined
 

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class InboundEligibilityStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class InboundEligibilityStatus {
@@ -34,7 +34,7 @@ export class InboundEligibilityStatus {
   /**
     * Returns a <code>InboundEligibilityStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/InboundEligibilityStatus} The enum <code>InboundEligibilityStatus</code> value.
+    * @return {InboundEligibilityStatus} The enum <code>InboundEligibilityStatus</code> value.
     */
   static constructFromObject (object) {
     return object

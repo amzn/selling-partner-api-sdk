@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ShipmentInvoiceStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ShipmentInvoiceStatus {
@@ -46,7 +46,7 @@ export class ShipmentInvoiceStatus {
   /**
     * Returns a <code>ShipmentInvoiceStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:invoicing_v0/model/ShipmentInvoiceStatus} The enum <code>ShipmentInvoiceStatus</code> value.
+    * @return {ShipmentInvoiceStatus} The enum <code>ShipmentInvoiceStatus</code> value.
     */
   static constructFromObject (object) {
     return object

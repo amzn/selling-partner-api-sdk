@@ -33,8 +33,8 @@ export class UnmanifestedCarrierInformation {
    * Constructs a <code>UnmanifestedCarrierInformation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/UnmanifestedCarrierInformation} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/UnmanifestedCarrierInformation} The populated <code>UnmanifestedCarrierInformation</code> instance.
+   * @param {UnmanifestedCarrierInformation} obj Optional instance to populate.
+   * @return {UnmanifestedCarrierInformation} The populated <code>UnmanifestedCarrierInformation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,7 +74,7 @@ UnmanifestedCarrierInformation.prototype.carrierName = undefined
 
 /**
  * A list of UnmanifestedShipmentLocation
- * @member {Array.<module:shipping_v2/model/UnmanifestedShipmentLocation>} unmanifestedShipmentLocationList
- * @type {Array.<module:shipping_v2/model/UnmanifestedShipmentLocation>}
+ * @member {[UnmanifestedShipmentLocation]} unmanifestedShipmentLocationList
+ * @type {[UnmanifestedShipmentLocation]}
  */
 UnmanifestedCarrierInformation.prototype.unmanifestedShipmentLocationList = undefined

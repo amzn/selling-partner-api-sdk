@@ -37,8 +37,8 @@ export class AccessPoint {
    * Constructs a <code>AccessPoint</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/AccessPoint} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/AccessPoint} The populated <code>AccessPoint</code> instance.
+   * @param {AccessPoint} obj Optional instance to populate.
+   * @return {AccessPoint} The populated <code>AccessPoint</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,27 +91,27 @@ AccessPoint.prototype.name = undefined
 AccessPoint.prototype.timezone = undefined
 
 /**
- * @member {module:shipping_v2/model/AccessPointType} type
- * @type {module:shipping_v2/model/AccessPointType}
+ * @member {AccessPointType} type
+ * @type {AccessPointType}
  */
 AccessPoint.prototype.type = undefined
 
 /**
- * @member {module:shipping_v2/model/AccessibilityAttributes} accessibilityAttributes
- * @type {module:shipping_v2/model/AccessibilityAttributes}
+ * @member {AccessibilityAttributes} accessibilityAttributes
+ * @type {AccessibilityAttributes}
  */
 AccessPoint.prototype.accessibilityAttributes = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} address
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 AccessPoint.prototype.address = undefined
 
 /**
  * Exception operating hours for Access Point
- * @member {Array.<module:shipping_v2/model/ExceptionOperatingHours>} exceptionOperatingHours
- * @type {Array.<module:shipping_v2/model/ExceptionOperatingHours>}
+ * @member {[ExceptionOperatingHours]} exceptionOperatingHours
+ * @type {[ExceptionOperatingHours]}
  */
 AccessPoint.prototype.exceptionOperatingHours = undefined
 
@@ -137,8 +137,8 @@ AccessPoint.AssistanceTypeEnum = {
 
 /**
  * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
- * @member {module:shipping_v2/model/AccessPoint.AssistanceTypeEnum} assistanceType
- * @type {module:shipping_v2/model/AccessPoint.AssistanceTypeEnum}
+ * @member {String} assistanceType
+ * @type {String}
  */
 AccessPoint.prototype.assistanceType = undefined
 
@@ -151,7 +151,7 @@ AccessPoint.prototype.score = undefined
 
 /**
  * Map of day of the week to operating hours of that day
- * @member {Object.<String, module:shipping_v2/model/OperatingHours>} standardOperatingHours
- * @type {Object.<String, module:shipping_v2/model/OperatingHours>}
+ * @member {{String: OperatingHours}} standardOperatingHours
+ * @type {{String: OperatingHours}}
  */
 AccessPoint.prototype.standardOperatingHours = undefined

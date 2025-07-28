@@ -26,7 +26,7 @@ export class StandardSingleSideImageModule {
    * A standard headline and body text with an image on the side.
    * @alias module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule
    * @class
-   * @param imagePositionType {module:apluscontent_v2020_11_01/model/PositionType}
+   * @param imagePositionType {PositionType}
    */
   constructor (imagePositionType) {
     this.imagePositionType = imagePositionType
@@ -36,8 +36,8 @@ export class StandardSingleSideImageModule {
    * Constructs a <code>StandardSingleSideImageModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardSingleSideImageModule} The populated <code>StandardSingleSideImageModule</code> instance.
+   * @param {StandardSingleSideImageModule} obj Optional instance to populate.
+   * @return {StandardSingleSideImageModule} The populated <code>StandardSingleSideImageModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class StandardSingleSideImageModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/PositionType} imagePositionType
- * @type {module:apluscontent_v2020_11_01/model/PositionType}
+ * @member {PositionType} imagePositionType
+ * @type {PositionType}
  */
 StandardSingleSideImageModule.prototype.imagePositionType = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block
+ * @type {StandardImageTextBlock}
  */
 StandardSingleSideImageModule.prototype.block = undefined

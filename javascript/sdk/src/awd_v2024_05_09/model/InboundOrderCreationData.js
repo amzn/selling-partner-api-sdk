@@ -27,8 +27,8 @@ export class InboundOrderCreationData {
    * Payload for creating an inbound order.
    * @alias module:awd_v2024_05_09/model/InboundOrderCreationData
    * @class
-   * @param originAddress {module:awd_v2024_05_09/model/Address}
-   * @param packagesToInbound {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} List of packages to be inbounded.
+   * @param originAddress {Address}
+   * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
    */
   constructor (originAddress, packagesToInbound) {
     this.originAddress = originAddress
@@ -39,8 +39,8 @@ export class InboundOrderCreationData {
    * Constructs a <code>InboundOrderCreationData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InboundOrderCreationData} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InboundOrderCreationData} The populated <code>InboundOrderCreationData</code> instance.
+   * @param {InboundOrderCreationData} obj Optional instance to populate.
+   * @return {InboundOrderCreationData} The populated <code>InboundOrderCreationData</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,20 +73,20 @@ export class InboundOrderCreationData {
 InboundOrderCreationData.prototype.externalReferenceId = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/Address} originAddress
- * @type {module:awd_v2024_05_09/model/Address}
+ * @member {Address} originAddress
+ * @type {Address}
  */
 InboundOrderCreationData.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
- * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packagesToInbound
- * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
+ * @member {[DistributionPackageQuantity]} packagesToInbound
+ * @type {[DistributionPackageQuantity]}
  */
 InboundOrderCreationData.prototype.packagesToInbound = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InboundPreferences} preferences
- * @type {module:awd_v2024_05_09/model/InboundPreferences}
+ * @member {InboundPreferences} preferences
+ * @type {InboundPreferences}
  */
 InboundOrderCreationData.prototype.preferences = undefined

@@ -37,9 +37,9 @@ export class Rate {
    * @param carrierName {String} The carrier name for the offering.
    * @param serviceId {String} An identifier for the shipping service.
    * @param serviceName {String} The name of the shipping service.
-   * @param totalCharge {module:shipping_v2/model/Currency}
-   * @param promise {module:shipping_v2/model/Promise}
-   * @param supportedDocumentSpecifications {Array.<module:shipping_v2/model/SupportedDocumentSpecification>} A list of the document specifications supported for a shipment service offering.
+   * @param totalCharge {Currency}
+   * @param promise {Promise}
+   * @param supportedDocumentSpecifications {[SupportedDocumentSpecification]} A list of the document specifications supported for a shipment service offering.
    * @param requiresAdditionalInputs {Boolean} When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.
    */
   constructor (rateId, carrierId, carrierName, serviceId, serviceName, totalCharge, promise, supportedDocumentSpecifications, requiresAdditionalInputs) {
@@ -58,8 +58,8 @@ export class Rate {
    * Constructs a <code>Rate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/Rate} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/Rate} The populated <code>Rate</code> instance.
+   * @param {Rate} obj Optional instance to populate.
+   * @return {Rate} The populated <code>Rate</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -130,34 +130,34 @@ Rate.prototype.serviceId = undefined
 Rate.prototype.serviceName = undefined
 
 /**
- * @member {module:shipping_v2/model/Weight} billedWeight
- * @type {module:shipping_v2/model/Weight}
+ * @member {Weight} billedWeight
+ * @type {Weight}
  */
 Rate.prototype.billedWeight = undefined
 
 /**
- * @member {module:shipping_v2/model/Currency} totalCharge
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} totalCharge
+ * @type {Currency}
  */
 Rate.prototype.totalCharge = undefined
 
 /**
- * @member {module:shipping_v2/model/Promise} promise
- * @type {module:shipping_v2/model/Promise}
+ * @member {Promise} promise
+ * @type {Promise}
  */
 Rate.prototype.promise = undefined
 
 /**
  * A list of the document specifications supported for a shipment service offering.
- * @member {Array.<module:shipping_v2/model/SupportedDocumentSpecification>} supportedDocumentSpecifications
- * @type {Array.<module:shipping_v2/model/SupportedDocumentSpecification>}
+ * @member {[SupportedDocumentSpecification]} supportedDocumentSpecifications
+ * @type {[SupportedDocumentSpecification]}
  */
 Rate.prototype.supportedDocumentSpecifications = undefined
 
 /**
  * A list of value-added services available for a shipping service offering.
- * @member {Array.<module:shipping_v2/model/AvailableValueAddedServiceGroup>} availableValueAddedServiceGroups
- * @type {Array.<module:shipping_v2/model/AvailableValueAddedServiceGroup>}
+ * @member {[AvailableValueAddedServiceGroup]} availableValueAddedServiceGroups
+ * @type {[AvailableValueAddedServiceGroup]}
  */
 Rate.prototype.availableValueAddedServiceGroups = undefined
 
@@ -170,19 +170,19 @@ Rate.prototype.requiresAdditionalInputs = undefined
 
 /**
  * A list of RateItem
- * @member {Array.<module:shipping_v2/model/RateItem>} rateItemList
- * @type {Array.<module:shipping_v2/model/RateItem>}
+ * @member {[RateItem]} rateItemList
+ * @type {[RateItem]}
  */
 Rate.prototype.rateItemList = undefined
 
 /**
- * @member {module:shipping_v2/model/PaymentType} paymentType
- * @type {module:shipping_v2/model/PaymentType}
+ * @member {PaymentType} paymentType
+ * @type {PaymentType}
  */
 Rate.prototype.paymentType = undefined
 
 /**
- * @member {module:shipping_v2/model/Benefits} benefits
- * @type {module:shipping_v2/model/Benefits}
+ * @member {Benefits} benefits
+ * @type {Benefits}
  */
 Rate.prototype.benefits = undefined

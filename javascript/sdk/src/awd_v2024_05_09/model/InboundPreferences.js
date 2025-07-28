@@ -32,8 +32,8 @@ export class InboundPreferences {
    * Constructs a <code>InboundPreferences</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InboundPreferences} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InboundPreferences} The populated <code>InboundPreferences</code> instance.
+   * @param {InboundPreferences} obj Optional instance to populate.
+   * @return {InboundPreferences} The populated <code>InboundPreferences</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

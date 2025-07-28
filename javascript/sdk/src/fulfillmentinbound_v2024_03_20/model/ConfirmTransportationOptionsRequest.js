@@ -25,7 +25,7 @@ export class ConfirmTransportationOptionsRequest {
    * The &#x60;confirmTransportationOptions&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsRequest
    * @class
-   * @param transportationSelections {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationSelection>} Information needed to confirm one of the available transportation options.
+   * @param transportationSelections {[TransportationSelection]} Information needed to confirm one of the available transportation options.
    */
   constructor (transportationSelections) {
     this.transportationSelections = transportationSelections
@@ -35,8 +35,8 @@ export class ConfirmTransportationOptionsRequest {
    * Constructs a <code>ConfirmTransportationOptionsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ConfirmTransportationOptionsRequest} The populated <code>ConfirmTransportationOptionsRequest</code> instance.
+   * @param {ConfirmTransportationOptionsRequest} obj Optional instance to populate.
+   * @return {ConfirmTransportationOptionsRequest} The populated <code>ConfirmTransportationOptionsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class ConfirmTransportationOptionsRequest {
 
 /**
  * Information needed to confirm one of the available transportation options.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationSelection>} transportationSelections
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationSelection>}
+ * @member {[TransportationSelection]} transportationSelections
+ * @type {[TransportationSelection]}
  */
 ConfirmTransportationOptionsRequest.prototype.transportationSelections = undefined

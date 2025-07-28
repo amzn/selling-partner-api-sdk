@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class CurrencyCode.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class CurrencyCode {
@@ -34,7 +34,7 @@ export class CurrencyCode {
   /**
     * Returns a <code>CurrencyCode</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v0/model/CurrencyCode} The enum <code>CurrencyCode</code> value.
+    * @return {CurrencyCode} The enum <code>CurrencyCode</code> value.
     */
   static constructFromObject (object) {
     return object

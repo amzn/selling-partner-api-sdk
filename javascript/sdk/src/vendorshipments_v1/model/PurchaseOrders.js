@@ -33,8 +33,8 @@ export class PurchaseOrders {
    * Constructs a <code>PurchaseOrders</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/PurchaseOrders} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/PurchaseOrders} The populated <code>PurchaseOrders</code> instance.
+   * @param {PurchaseOrders} obj Optional instance to populate.
+   * @return {PurchaseOrders} The populated <code>PurchaseOrders</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,7 +82,7 @@ PurchaseOrders.prototype.shipWindow = undefined
 
 /**
  * A list of the items that are associated to the PO in this transport and their associated details.
- * @member {Array.<module:vendorshipments_v1/model/PurchaseOrderItems>} items
- * @type {Array.<module:vendorshipments_v1/model/PurchaseOrderItems>}
+ * @member {[PurchaseOrderItems]} items
+ * @type {[PurchaseOrderItems]}
  */
 PurchaseOrders.prototype.items = undefined

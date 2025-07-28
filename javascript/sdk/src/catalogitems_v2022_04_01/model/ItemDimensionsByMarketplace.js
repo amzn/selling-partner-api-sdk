@@ -35,8 +35,8 @@ export class ItemDimensionsByMarketplace {
    * Constructs a <code>ItemDimensionsByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemDimensionsByMarketplace} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemDimensionsByMarketplace} The populated <code>ItemDimensionsByMarketplace</code> instance.
+   * @param {ItemDimensionsByMarketplace} obj Optional instance to populate.
+   * @return {ItemDimensionsByMarketplace} The populated <code>ItemDimensionsByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,13 +68,13 @@ export class ItemDimensionsByMarketplace {
 ItemDimensionsByMarketplace.prototype.marketplaceId = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Dimensions} item
- * @type {module:catalogitems_v2022_04_01/model/Dimensions}
+ * @member {Dimensions} item
+ * @type {Dimensions}
  */
 ItemDimensionsByMarketplace.prototype.item = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Dimensions} _package
- * @type {module:catalogitems_v2022_04_01/model/Dimensions}
+ * @member {Dimensions} _package
+ * @type {Dimensions}
  */
 ItemDimensionsByMarketplace.prototype._package = undefined

@@ -25,7 +25,7 @@ export class StandardProductDescriptionModule {
    * Standard product description text.
    * @alias module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule
    * @class
-   * @param body {module:apluscontent_v2020_11_01/model/ParagraphComponent}
+   * @param body {ParagraphComponent}
    */
   constructor (body) {
     this.body = body
@@ -35,8 +35,8 @@ export class StandardProductDescriptionModule {
    * Constructs a <code>StandardProductDescriptionModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardProductDescriptionModule} The populated <code>StandardProductDescriptionModule</code> instance.
+   * @param {StandardProductDescriptionModule} obj Optional instance to populate.
+   * @return {StandardProductDescriptionModule} The populated <code>StandardProductDescriptionModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class StandardProductDescriptionModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ParagraphComponent} body
- * @type {module:apluscontent_v2020_11_01/model/ParagraphComponent}
+ * @member {ParagraphComponent} body
+ * @type {ParagraphComponent}
  */
 StandardProductDescriptionModule.prototype.body = undefined

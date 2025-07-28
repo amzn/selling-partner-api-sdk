@@ -37,8 +37,8 @@ export class AvailabilityRecord {
    * Constructs a <code>AvailabilityRecord</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AvailabilityRecord} obj Optional instance to populate.
-   * @return {module:services_v1/model/AvailabilityRecord} The populated <code>AvailabilityRecord</code> instance.
+   * @param {AvailabilityRecord} obj Optional instance to populate.
+   * @return {AvailabilityRecord} The populated <code>AvailabilityRecord</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -78,8 +78,8 @@ AvailabilityRecord.prototype.startTime = undefined
 AvailabilityRecord.prototype.endTime = undefined
 
 /**
- * @member {module:services_v1/model/Recurrence} recurrence
- * @type {module:services_v1/model/Recurrence}
+ * @member {Recurrence} recurrence
+ * @type {Recurrence}
  */
 AvailabilityRecord.prototype.recurrence = undefined
 

@@ -34,8 +34,8 @@ export class SupplySourceCapabilities {
    * Constructs a <code>SupplySourceCapabilities</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/SupplySourceCapabilities} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/SupplySourceCapabilities} The populated <code>SupplySourceCapabilities</code> instance.
+   * @param {SupplySourceCapabilities} obj Optional instance to populate.
+   * @return {SupplySourceCapabilities} The populated <code>SupplySourceCapabilities</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class SupplySourceCapabilities {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/OutboundCapability} outbound
- * @type {module:supplysources_v2020_07_01/model/OutboundCapability}
+ * @member {OutboundCapability} outbound
+ * @type {OutboundCapability}
  */
 SupplySourceCapabilities.prototype.outbound = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ServicesCapability} services
- * @type {module:supplysources_v2020_07_01/model/ServicesCapability}
+ * @member {ServicesCapability} services
+ * @type {ServicesCapability}
  */
 SupplySourceCapabilities.prototype.services = undefined

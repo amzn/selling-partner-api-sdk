@@ -26,7 +26,7 @@ export class GenerateTransportationOptionsRequest {
    * @alias module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsRequest
    * @class
    * @param placementOptionId {String} The placement option to generate transportation options for.
-   * @param shipmentTransportationConfigurations {Array.<module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration>} List of shipment transportation configurations.
+   * @param shipmentTransportationConfigurations {[ShipmentTransportationConfiguration]} List of shipment transportation configurations.
    */
   constructor (placementOptionId, shipmentTransportationConfigurations) {
     this.placementOptionId = placementOptionId
@@ -37,8 +37,8 @@ export class GenerateTransportationOptionsRequest {
    * Constructs a <code>GenerateTransportationOptionsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/GenerateTransportationOptionsRequest} The populated <code>GenerateTransportationOptionsRequest</code> instance.
+   * @param {GenerateTransportationOptionsRequest} obj Optional instance to populate.
+   * @return {GenerateTransportationOptionsRequest} The populated <code>GenerateTransportationOptionsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ GenerateTransportationOptionsRequest.prototype.placementOptionId = undefined
 
 /**
  * List of shipment transportation configurations.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration>} shipmentTransportationConfigurations
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration>}
+ * @member {[ShipmentTransportationConfiguration]} shipmentTransportationConfigurations
+ * @type {[ShipmentTransportationConfiguration]}
  */
 GenerateTransportationOptionsRequest.prototype.shipmentTransportationConfigurations = undefined

@@ -27,7 +27,7 @@ export class PackageDimensions {
    * @class
    * @param height {Number} Height of the package.
    * @param length {Number} Length of the package.
-   * @param unitOfMeasurement {module:awd_v2024_05_09/model/DimensionUnitOfMeasurement}
+   * @param unitOfMeasurement {DimensionUnitOfMeasurement}
    * @param width {Number} Width of the package.
    */
   constructor (height, length, unitOfMeasurement, width) {
@@ -41,8 +41,8 @@ export class PackageDimensions {
    * Constructs a <code>PackageDimensions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/PackageDimensions} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/PackageDimensions} The populated <code>PackageDimensions</code> instance.
+   * @param {PackageDimensions} obj Optional instance to populate.
+   * @return {PackageDimensions} The populated <code>PackageDimensions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,8 +82,8 @@ PackageDimensions.prototype.height = undefined
 PackageDimensions.prototype.length = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/DimensionUnitOfMeasurement} unitOfMeasurement
- * @type {module:awd_v2024_05_09/model/DimensionUnitOfMeasurement}
+ * @member {DimensionUnitOfMeasurement} unitOfMeasurement
+ * @type {DimensionUnitOfMeasurement}
  */
 PackageDimensions.prototype.unitOfMeasurement = undefined
 

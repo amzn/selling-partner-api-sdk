@@ -35,8 +35,8 @@ export class OrderBuyerInfo {
    * Constructs a <code>OrderBuyerInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OrderBuyerInfo} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OrderBuyerInfo} The populated <code>OrderBuyerInfo</code> instance.
+   * @param {OrderBuyerInfo} obj Optional instance to populate.
+   * @return {OrderBuyerInfo} The populated <code>OrderBuyerInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -92,8 +92,8 @@ OrderBuyerInfo.prototype.buyerName = undefined
 OrderBuyerInfo.prototype.buyerCounty = undefined
 
 /**
- * @member {module:orders_v0/model/BuyerTaxInfo} buyerTaxInfo
- * @type {module:orders_v0/model/BuyerTaxInfo}
+ * @member {BuyerTaxInfo} buyerTaxInfo
+ * @type {BuyerTaxInfo}
  */
 OrderBuyerInfo.prototype.buyerTaxInfo = undefined
 

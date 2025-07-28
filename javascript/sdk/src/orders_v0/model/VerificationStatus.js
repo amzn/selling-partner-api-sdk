@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class VerificationStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class VerificationStatus {
@@ -52,7 +52,7 @@ export class VerificationStatus {
   /**
     * Returns a <code>VerificationStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:orders_v0/model/VerificationStatus} The enum <code>VerificationStatus</code> value.
+    * @return {VerificationStatus} The enum <code>VerificationStatus</code> value.
     */
   static constructFromObject (object) {
     return object

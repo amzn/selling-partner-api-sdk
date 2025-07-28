@@ -38,8 +38,8 @@ export class ReportSchedule {
    * Constructs a <code>ReportSchedule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/ReportSchedule} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/ReportSchedule} The populated <code>ReportSchedule</code> instance.
+   * @param {ReportSchedule} obj Optional instance to populate.
+   * @return {ReportSchedule} The populated <code>ReportSchedule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,15 +82,15 @@ ReportSchedule.prototype.reportType = undefined
 
 /**
  * A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 ReportSchedule.prototype.marketplaceIds = undefined
 
 /**
  * Additional information passed to reports. This varies by report type.
- * @member {Object.<String, String>} reportOptions
- * @type {Object.<String, String>}
+ * @member {{String: String}} reportOptions
+ * @type {{String: String}}
  */
 ReportSchedule.prototype.reportOptions = undefined
 

@@ -28,8 +28,8 @@ export class OfferType {
    * Schema for an individual offer.
    * @alias module:pricing_v0/model/OfferType
    * @class
-   * @param buyingPrice {module:pricing_v0/model/PriceType}
-   * @param regularPrice {module:pricing_v0/model/MoneyType}
+   * @param buyingPrice {PriceType}
+   * @param regularPrice {MoneyType}
    * @param fulfillmentChannel {String} The fulfillment channel for the offer listing. Possible values:  * Amazon - Fulfilled by Amazon. * Merchant - Fulfilled by the seller.
    * @param itemCondition {String} The item condition for the offer listing. Possible values: New, Used, Collectible, Refurbished, or Club.
    * @param itemSubCondition {String} The item subcondition for the offer listing. Possible values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
@@ -48,8 +48,8 @@ export class OfferType {
    * Constructs a <code>OfferType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/OfferType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/OfferType} The populated <code>OfferType</code> instance.
+   * @param {OfferType} obj Optional instance to populate.
+   * @return {OfferType} The populated <code>OfferType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -80,33 +80,33 @@ export class OfferType {
 }
 
 /**
- * @member {module:pricing_v0/model/OfferCustomerType} offerType
- * @type {module:pricing_v0/model/OfferCustomerType}
+ * @member {OfferCustomerType} offerType
+ * @type {OfferCustomerType}
  */
 OfferType.prototype.offerType = undefined
 
 /**
- * @member {module:pricing_v0/model/PriceType} buyingPrice
- * @type {module:pricing_v0/model/PriceType}
+ * @member {PriceType} buyingPrice
+ * @type {PriceType}
  */
 OfferType.prototype.buyingPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} regularPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} regularPrice
+ * @type {MoneyType}
  */
 OfferType.prototype.regularPrice = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} businessPrice
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} businessPrice
+ * @type {MoneyType}
  */
 OfferType.prototype.businessPrice = undefined
 
 /**
  * List of `QuantityDiscountPrice` that contains item's pricing information when buy in bulk.
- * @member {Array.<module:pricing_v0/model/QuantityDiscountPriceType>} quantityDiscountPrices
- * @type {Array.<module:pricing_v0/model/QuantityDiscountPriceType>}
+ * @member {[QuantityDiscountPriceType]} quantityDiscountPrices
+ * @type {[QuantityDiscountPriceType]}
  */
 OfferType.prototype.quantityDiscountPrices = undefined
 

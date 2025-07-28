@@ -26,7 +26,7 @@ export class ListPlacementOptionsResponse {
    * The &#x60;listPlacementOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse
    * @class
-   * @param placementOptions {Array.<module:fulfillmentinbound_v2024_03_20/model/PlacementOption>} Placement options generated for the inbound plan.
+   * @param placementOptions {[PlacementOption]} Placement options generated for the inbound plan.
    */
   constructor (placementOptions) {
     this.placementOptions = placementOptions
@@ -36,8 +36,8 @@ export class ListPlacementOptionsResponse {
    * Constructs a <code>ListPlacementOptionsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListPlacementOptionsResponse} The populated <code>ListPlacementOptionsResponse</code> instance.
+   * @param {ListPlacementOptionsResponse} obj Optional instance to populate.
+   * @return {ListPlacementOptionsResponse} The populated <code>ListPlacementOptionsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,14 +61,14 @@ export class ListPlacementOptionsResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListPlacementOptionsResponse.prototype.pagination = undefined
 
 /**
  * Placement options generated for the inbound plan.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PlacementOption>} placementOptions
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PlacementOption>}
+ * @member {[PlacementOption]} placementOptions
+ * @type {[PlacementOption]}
  */
 ListPlacementOptionsResponse.prototype.placementOptions = undefined

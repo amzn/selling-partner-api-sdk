@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AssignmentType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class AssignmentType {
@@ -28,7 +28,7 @@ export class AssignmentType {
   /**
     * Returns a <code>AssignmentType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:transfers_v2024_06_01/model/AssignmentType} The enum <code>AssignmentType</code> value.
+    * @return {AssignmentType} The enum <code>AssignmentType</code> value.
     */
   static constructFromObject (object) {
     return object

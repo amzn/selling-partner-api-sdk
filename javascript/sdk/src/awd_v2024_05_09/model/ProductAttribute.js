@@ -32,8 +32,8 @@ export class ProductAttribute {
    * Constructs a <code>ProductAttribute</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/ProductAttribute} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/ProductAttribute} The populated <code>ProductAttribute</code> instance.
+   * @param {ProductAttribute} obj Optional instance to populate.
+   * @return {ProductAttribute} The populated <code>ProductAttribute</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -38,8 +38,8 @@ export class ProductQuantity {
    * Constructs a <code>ProductQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/ProductQuantity} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/ProductQuantity} The populated <code>ProductQuantity</code> instance.
+   * @param {ProductQuantity} obj Optional instance to populate.
+   * @return {ProductQuantity} The populated <code>ProductQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,8 +67,8 @@ export class ProductQuantity {
 
 /**
  * Contains attributes for this instance of the product. For example, item color, or other attributes that distinguish the product beyond the SKU. This is metadata for the product and Amazon does not process this data.
- * @member {Array.<module:awd_v2024_05_09/model/ProductAttribute>} attributes
- * @type {Array.<module:awd_v2024_05_09/model/ProductAttribute>}
+ * @member {[ProductAttribute]} attributes
+ * @type {[ProductAttribute]}
  */
 ProductQuantity.prototype.attributes = undefined
 
@@ -94,7 +94,7 @@ ProductQuantity.prototype.sku = undefined
 ProductQuantity.prototype.expiration = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/PrepDetails} prepDetails
- * @type {module:awd_v2024_05_09/model/PrepDetails}
+ * @member {PrepDetails} prepDetails
+ * @type {PrepDetails}
  */
 ProductQuantity.prototype.prepDetails = undefined

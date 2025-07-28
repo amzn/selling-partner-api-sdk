@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class SupplySourceStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class SupplySourceStatus {
@@ -34,7 +34,7 @@ export class SupplySourceStatus {
   /**
     * Returns a <code>SupplySourceStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:supplysources_v2020_07_01/model/SupplySourceStatus} The enum <code>SupplySourceStatus</code> value.
+    * @return {SupplySourceStatus} The enum <code>SupplySourceStatus</code> value.
     */
   static constructFromObject (object) {
     return object

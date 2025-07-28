@@ -25,7 +25,7 @@ export class CreateReportSpecification {
    * @alias module:reports_v2021_06_30/model/CreateReportSpecification
    * @class
    * @param reportType {String} The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
-   * @param marketplaceIds {Array.<String>} A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
+   * @param marketplaceIds {[String]} A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
    */
   constructor (reportType, marketplaceIds) {
     this.reportType = reportType
@@ -36,8 +36,8 @@ export class CreateReportSpecification {
    * Constructs a <code>CreateReportSpecification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/CreateReportSpecification} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/CreateReportSpecification} The populated <code>CreateReportSpecification</code> instance.
+   * @param {CreateReportSpecification} obj Optional instance to populate.
+   * @return {CreateReportSpecification} The populated <code>CreateReportSpecification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,8 +65,8 @@ export class CreateReportSpecification {
 
 /**
  * Additional information passed to reports. This varies by report type.
- * @member {Object.<String, String>} reportOptions
- * @type {Object.<String, String>}
+ * @member {{String: String}} reportOptions
+ * @type {{String: String}}
  */
 CreateReportSpecification.prototype.reportOptions = undefined
 
@@ -93,7 +93,7 @@ CreateReportSpecification.prototype.dataEndTime = undefined
 
 /**
  * A list of marketplace identifiers. The report document's contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 CreateReportSpecification.prototype.marketplaceIds = undefined

@@ -26,7 +26,7 @@ export class IdentifierType {
    * Specifies the identifiers used to uniquely identify an item.
    * @alias module:pricing_v0/model/IdentifierType
    * @class
-   * @param marketplaceASIN {module:pricing_v0/model/ASINIdentifier}
+   * @param marketplaceASIN {ASINIdentifier}
    */
   constructor (marketplaceASIN) {
     this.marketplaceASIN = marketplaceASIN
@@ -36,8 +36,8 @@ export class IdentifierType {
    * Constructs a <code>IdentifierType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/IdentifierType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/IdentifierType} The populated <code>IdentifierType</code> instance.
+   * @param {IdentifierType} obj Optional instance to populate.
+   * @return {IdentifierType} The populated <code>IdentifierType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class IdentifierType {
 }
 
 /**
- * @member {module:pricing_v0/model/ASINIdentifier} marketplaceASIN
- * @type {module:pricing_v0/model/ASINIdentifier}
+ * @member {ASINIdentifier} marketplaceASIN
+ * @type {ASINIdentifier}
  */
 IdentifierType.prototype.marketplaceASIN = undefined
 
 /**
- * @member {module:pricing_v0/model/SellerSKUIdentifier} sKUIdentifier
- * @type {module:pricing_v0/model/SellerSKUIdentifier}
+ * @member {SellerSKUIdentifier} sKUIdentifier
+ * @type {SellerSKUIdentifier}
  */
 IdentifierType.prototype.sKUIdentifier = undefined

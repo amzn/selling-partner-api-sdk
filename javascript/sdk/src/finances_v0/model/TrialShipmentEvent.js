@@ -33,8 +33,8 @@ export class TrialShipmentEvent {
    * Constructs a <code>TrialShipmentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/TrialShipmentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/TrialShipmentEvent} The populated <code>TrialShipmentEvent</code> instance.
+   * @param {TrialShipmentEvent} obj Optional instance to populate.
+   * @return {TrialShipmentEvent} The populated <code>TrialShipmentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,7 +90,7 @@ TrialShipmentEvent.prototype.SKU = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} feeList
+ * @type {[FeeComponent]}
  */
 TrialShipmentEvent.prototype.feeList = undefined

@@ -33,8 +33,8 @@ export class StandardMultipleImageTextModule {
    * Constructs a <code>StandardMultipleImageTextModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardMultipleImageTextModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardMultipleImageTextModule} The populated <code>StandardMultipleImageTextModule</code> instance.
+   * @param {StandardMultipleImageTextModule} obj Optional instance to populate.
+   * @return {StandardMultipleImageTextModule} The populated <code>StandardMultipleImageTextModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class StandardMultipleImageTextModule {
 }
 
 /**
- * @member {Array.<module:apluscontent_v2020_11_01/model/StandardImageTextCaptionBlock>} blocks
- * @type {Array.<module:apluscontent_v2020_11_01/model/StandardImageTextCaptionBlock>}
+ * @member {[StandardImageTextCaptionBlock]} blocks
+ * @type {[StandardImageTextCaptionBlock]}
  */
 StandardMultipleImageTextModule.prototype.blocks = undefined

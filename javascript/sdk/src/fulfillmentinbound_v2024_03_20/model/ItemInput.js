@@ -26,9 +26,9 @@ export class ItemInput {
    * Defines an item&#39;s input parameters.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ItemInput
    * @class
-   * @param labelOwner {module:fulfillmentinbound_v2024_03_20/model/LabelOwner}
+   * @param labelOwner {LabelOwner}
    * @param msku {String} The merchant SKU, a merchant-supplied identifier of a specific SKU.
-   * @param prepOwner {module:fulfillmentinbound_v2024_03_20/model/PrepOwner}
+   * @param prepOwner {PrepOwner}
    * @param quantity {Number} The number of units of the specified MSKU that will be shipped.
    */
   constructor (labelOwner, msku, prepOwner, quantity) {
@@ -42,8 +42,8 @@ export class ItemInput {
    * Constructs a <code>ItemInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ItemInput} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ItemInput} The populated <code>ItemInput</code> instance.
+   * @param {ItemInput} obj Optional instance to populate.
+   * @return {ItemInput} The populated <code>ItemInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -78,8 +78,8 @@ export class ItemInput {
 ItemInput.prototype.expiration = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/LabelOwner} labelOwner
- * @type {module:fulfillmentinbound_v2024_03_20/model/LabelOwner}
+ * @member {LabelOwner} labelOwner
+ * @type {LabelOwner}
  */
 ItemInput.prototype.labelOwner = undefined
 
@@ -98,8 +98,8 @@ ItemInput.prototype.manufacturingLotCode = undefined
 ItemInput.prototype.msku = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/PrepOwner} prepOwner
- * @type {module:fulfillmentinbound_v2024_03_20/model/PrepOwner}
+ * @member {PrepOwner} prepOwner
+ * @type {PrepOwner}
  */
 ItemInput.prototype.prepOwner = undefined
 

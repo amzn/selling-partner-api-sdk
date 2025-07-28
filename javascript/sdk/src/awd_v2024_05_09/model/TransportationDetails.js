@@ -25,7 +25,7 @@ export class TransportationDetails {
    * Transportation details for the shipment.
    * @alias module:awd_v2024_05_09/model/TransportationDetails
    * @class
-   * @param trackingDetails {Array.<module:awd_v2024_05_09/model/TrackingDetails>} Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
+   * @param trackingDetails {[TrackingDetails]} Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
    */
   constructor (trackingDetails) {
     this.trackingDetails = trackingDetails
@@ -35,8 +35,8 @@ export class TransportationDetails {
    * Constructs a <code>TransportationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/TransportationDetails} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/TransportationDetails} The populated <code>TransportationDetails</code> instance.
+   * @param {TransportationDetails} obj Optional instance to populate.
+   * @return {TransportationDetails} The populated <code>TransportationDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class TransportationDetails {
 
 /**
  * Tracking details for the shipment. If using SPD transportation, this can be for each case. If not using SPD transportation, this is a single tracking entry for the entire shipment.
- * @member {Array.<module:awd_v2024_05_09/model/TrackingDetails>} trackingDetails
- * @type {Array.<module:awd_v2024_05_09/model/TrackingDetails>}
+ * @member {[TrackingDetails]} trackingDetails
+ * @type {[TrackingDetails]}
  */
 TransportationDetails.prototype.trackingDetails = undefined

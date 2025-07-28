@@ -32,8 +32,8 @@ export class AttributeOption {
    * Constructs a <code>AttributeOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoices_v2024_06_19/model/AttributeOption} obj Optional instance to populate.
-   * @return {module:invoices_v2024_06_19/model/AttributeOption} The populated <code>AttributeOption</code> instance.
+   * @param {AttributeOption} obj Optional instance to populate.
+   * @return {AttributeOption} The populated <code>AttributeOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

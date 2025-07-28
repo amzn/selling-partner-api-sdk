@@ -32,8 +32,8 @@ export class TransportationDetailsForShipmentConfirmation {
    * Constructs a <code>TransportationDetailsForShipmentConfirmation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/TransportationDetailsForShipmentConfirmation} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/TransportationDetailsForShipmentConfirmation} The populated <code>TransportationDetailsForShipmentConfirmation</code> instance.
+   * @param {TransportationDetailsForShipmentConfirmation} obj Optional instance to populate.
+   * @return {TransportationDetailsForShipmentConfirmation} The populated <code>TransportationDetailsForShipmentConfirmation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -100,8 +100,8 @@ TransportationDetailsForShipmentConfirmation.TransportationModeEnum = {
 
 /**
  * The mode of transportation for this shipment.
- * @member {module:vendorshipments_v1/model/TransportationDetailsForShipmentConfirmation.TransportationModeEnum} transportationMode
- * @type {module:vendorshipments_v1/model/TransportationDetailsForShipmentConfirmation.TransportationModeEnum}
+ * @member {String} transportationMode
+ * @type {String}
  */
 TransportationDetailsForShipmentConfirmation.prototype.transportationMode = undefined
 

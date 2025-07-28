@@ -28,7 +28,7 @@ export class ShippingServiceOptions {
    * Extra services provided by a carrier.
    * @alias module:merchantfulfillment_v0/model/ShippingServiceOptions
    * @class
-   * @param deliveryExperience {module:merchantfulfillment_v0/model/DeliveryExperienceType}
+   * @param deliveryExperience {DeliveryExperienceType}
    * @param carrierWillPickUp {Boolean} When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
    */
   constructor (deliveryExperience, carrierWillPickUp) {
@@ -40,8 +40,8 @@ export class ShippingServiceOptions {
    * Constructs a <code>ShippingServiceOptions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/ShippingServiceOptions} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/ShippingServiceOptions} The populated <code>ShippingServiceOptions</code> instance.
+   * @param {ShippingServiceOptions} obj Optional instance to populate.
+   * @return {ShippingServiceOptions} The populated <code>ShippingServiceOptions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,14 +68,14 @@ export class ShippingServiceOptions {
 }
 
 /**
- * @member {module:merchantfulfillment_v0/model/DeliveryExperienceType} deliveryExperience
- * @type {module:merchantfulfillment_v0/model/DeliveryExperienceType}
+ * @member {DeliveryExperienceType} deliveryExperience
+ * @type {DeliveryExperienceType}
  */
 ShippingServiceOptions.prototype.deliveryExperience = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CurrencyAmount} declaredValue
- * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
+ * @member {CurrencyAmount} declaredValue
+ * @type {CurrencyAmount}
  */
 ShippingServiceOptions.prototype.declaredValue = undefined
 
@@ -87,13 +87,13 @@ ShippingServiceOptions.prototype.declaredValue = undefined
 ShippingServiceOptions.prototype.carrierWillPickUp = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CarrierWillPickUpOption} carrierWillPickUpOption
- * @type {module:merchantfulfillment_v0/model/CarrierWillPickUpOption}
+ * @member {CarrierWillPickUpOption} carrierWillPickUpOption
+ * @type {CarrierWillPickUpOption}
  */
 ShippingServiceOptions.prototype.carrierWillPickUpOption = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/LabelFormat} labelFormat
- * @type {module:merchantfulfillment_v0/model/LabelFormat}
+ * @member {LabelFormat} labelFormat
+ * @type {LabelFormat}
  */
 ShippingServiceOptions.prototype.labelFormat = undefined

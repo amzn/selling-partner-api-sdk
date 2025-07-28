@@ -27,8 +27,8 @@ export class CreateScheduledPackagesRequest {
    * @alias module:easyship_v2022_03_23/model/CreateScheduledPackagesRequest
    * @class
    * @param marketplaceId {String} A string of up to 255 characters.
-   * @param orderScheduleDetailsList {Array.<module:easyship_v2022_03_23/model/OrderScheduleDetails>} An array allowing users to specify orders to be scheduled.
-   * @param labelFormat {module:easyship_v2022_03_23/model/LabelFormat}
+   * @param orderScheduleDetailsList {[OrderScheduleDetails]} An array allowing users to specify orders to be scheduled.
+   * @param labelFormat {LabelFormat}
    */
   constructor (marketplaceId, orderScheduleDetailsList, labelFormat) {
     this.marketplaceId = marketplaceId
@@ -40,8 +40,8 @@ export class CreateScheduledPackagesRequest {
    * Constructs a <code>CreateScheduledPackagesRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/CreateScheduledPackagesRequest} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/CreateScheduledPackagesRequest} The populated <code>CreateScheduledPackagesRequest</code> instance.
+   * @param {CreateScheduledPackagesRequest} obj Optional instance to populate.
+   * @return {CreateScheduledPackagesRequest} The populated <code>CreateScheduledPackagesRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,13 +74,13 @@ CreateScheduledPackagesRequest.prototype.marketplaceId = undefined
 
 /**
  * An array allowing users to specify orders to be scheduled.
- * @member {Array.<module:easyship_v2022_03_23/model/OrderScheduleDetails>} orderScheduleDetailsList
- * @type {Array.<module:easyship_v2022_03_23/model/OrderScheduleDetails>}
+ * @member {[OrderScheduleDetails]} orderScheduleDetailsList
+ * @type {[OrderScheduleDetails]}
  */
 CreateScheduledPackagesRequest.prototype.orderScheduleDetailsList = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/LabelFormat} labelFormat
- * @type {module:easyship_v2022_03_23/model/LabelFormat}
+ * @member {LabelFormat} labelFormat
+ * @type {LabelFormat}
  */
 CreateScheduledPackagesRequest.prototype.labelFormat = undefined

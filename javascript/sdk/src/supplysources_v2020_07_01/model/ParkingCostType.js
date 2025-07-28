@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ParkingCostType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ParkingCostType {
@@ -34,7 +34,7 @@ export class ParkingCostType {
   /**
     * Returns a <code>ParkingCostType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:supplysources_v2020_07_01/model/ParkingCostType} The enum <code>ParkingCostType</code> value.
+    * @return {ParkingCostType} The enum <code>ParkingCostType</code> value.
     */
   static constructFromObject (object) {
     return object

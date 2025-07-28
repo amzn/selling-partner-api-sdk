@@ -27,7 +27,7 @@ export class GetContentDocumentResponse {
    * @alias module:apluscontent_v2020_11_01/model/GetContentDocumentResponse
    * @class
    * @implements module:apluscontent_v2020_11_01/model/AplusResponse
-   * @param contentRecord {module:apluscontent_v2020_11_01/model/ContentRecord}
+   * @param contentRecord {ContentRecord}
    */
   constructor (contentRecord) {
     AplusResponse.call(this)
@@ -38,8 +38,8 @@ export class GetContentDocumentResponse {
    * Constructs a <code>GetContentDocumentResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/GetContentDocumentResponse} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/GetContentDocumentResponse} The populated <code>GetContentDocumentResponse</code> instance.
+   * @param {GetContentDocumentResponse} obj Optional instance to populate.
+   * @return {GetContentDocumentResponse} The populated <code>GetContentDocumentResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,21 +65,21 @@ export class GetContentDocumentResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 GetContentDocumentResponse.prototype.warnings = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ContentRecord} contentRecord
- * @type {module:apluscontent_v2020_11_01/model/ContentRecord}
+ * @member {ContentRecord} contentRecord
+ * @type {ContentRecord}
  */
 GetContentDocumentResponse.prototype.contentRecord = undefined
 
 // Implement AplusResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 AplusResponse.prototype.warnings = undefined

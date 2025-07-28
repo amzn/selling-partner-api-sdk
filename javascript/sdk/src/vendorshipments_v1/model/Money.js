@@ -36,8 +36,8 @@ export class Money {
    * Constructs a <code>Money</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Money} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Money} The populated <code>Money</code> instance.
+   * @param {Money} obj Optional instance to populate.
+   * @return {Money} The populated <code>Money</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

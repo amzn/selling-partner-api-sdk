@@ -33,8 +33,8 @@ export class ListItemComplianceDetailsResponse {
    * Constructs a <code>ListItemComplianceDetailsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListItemComplianceDetailsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListItemComplianceDetailsResponse} The populated <code>ListItemComplianceDetailsResponse</code> instance.
+   * @param {ListItemComplianceDetailsResponse} obj Optional instance to populate.
+   * @return {ListItemComplianceDetailsResponse} The populated <code>ListItemComplianceDetailsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class ListItemComplianceDetailsResponse {
 
 /**
  * List of compliance details.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ComplianceDetail>} complianceDetails
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ComplianceDetail>}
+ * @member {[ComplianceDetail]} complianceDetails
+ * @type {[ComplianceDetail]}
  */
 ListItemComplianceDetailsResponse.prototype.complianceDetails = undefined

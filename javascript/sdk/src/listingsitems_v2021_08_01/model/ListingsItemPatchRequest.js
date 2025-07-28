@@ -26,7 +26,7 @@ export class ListingsItemPatchRequest {
    * @alias module:listingsitems_v2021_08_01/model/ListingsItemPatchRequest
    * @class
    * @param productType {String} The Amazon product type of the listings item.
-   * @param patches {Array.<module:listingsitems_v2021_08_01/model/PatchOperation>} One or more JSON Patch operations to perform on the listings item.
+   * @param patches {[PatchOperation]} One or more JSON Patch operations to perform on the listings item.
    */
   constructor (productType, patches) {
     this.productType = productType
@@ -37,8 +37,8 @@ export class ListingsItemPatchRequest {
    * Constructs a <code>ListingsItemPatchRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ListingsItemPatchRequest} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ListingsItemPatchRequest} The populated <code>ListingsItemPatchRequest</code> instance.
+   * @param {ListingsItemPatchRequest} obj Optional instance to populate.
+   * @return {ListingsItemPatchRequest} The populated <code>ListingsItemPatchRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ ListingsItemPatchRequest.prototype.productType = undefined
 
 /**
  * One or more JSON Patch operations to perform on the listings item.
- * @member {Array.<module:listingsitems_v2021_08_01/model/PatchOperation>} patches
- * @type {Array.<module:listingsitems_v2021_08_01/model/PatchOperation>}
+ * @member {[PatchOperation]} patches
+ * @type {[PatchOperation]}
  */
 ListingsItemPatchRequest.prototype.patches = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ContentType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ContentType {
@@ -34,7 +34,7 @@ export class ContentType {
   /**
     * Returns a <code>ContentType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:apluscontent_v2020_11_01/model/ContentType} The enum <code>ContentType</code> value.
+    * @return {ContentType} The enum <code>ContentType</code> value.
     */
   static constructFromObject (object) {
     return object

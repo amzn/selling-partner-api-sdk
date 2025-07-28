@@ -48,8 +48,8 @@ export class FbaOutboundApi {
     * Constructs a new FbaOutboundApi.
     * @alias module:fulfillmentoutbound_v2020_07_01/api/FbaOutboundApi
     * @class
-    * @param {module:fulfillmentoutbound_v2020_07_01/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:fulfillmentoutbound_v2020_07_01/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -96,7 +96,7 @@ export class FbaOutboundApi {
   /**
      * Requests that Amazon stop attempting to fulfill the fulfillment order indicated by the specified order identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/CancelFulfillmentOrderResponse>}
+     * @return {Promise<CancelFulfillmentOrderResponse>}
      */
   cancelFulfillmentOrderWithHttpInfo (sellerFulfillmentOrderId) {
     const postBody = null
@@ -130,7 +130,7 @@ export class FbaOutboundApi {
   /**
      * Requests that Amazon stop attempting to fulfill the fulfillment order indicated by the specified order identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/CancelFulfillmentOrderResponse>}
+     * @return {Promise<CancelFulfillmentOrderResponse>}
      */
   cancelFulfillmentOrder (sellerFulfillmentOrderId) {
     return this.cancelFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId)
@@ -141,8 +141,8 @@ export class FbaOutboundApi {
 
   /**
      * Requests that Amazon ship items from the seller&#39;s inventory in Amazon&#39;s fulfillment network to a destination address.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderRequest} body CreateFulfillmentOrderRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderResponse>}
+     * @param {CreateFulfillmentOrderRequest} body CreateFulfillmentOrderRequest parameter
+     * @return {Promise<CreateFulfillmentOrderResponse>}
      */
   createFulfillmentOrderWithHttpInfo (body) {
     const postBody = body
@@ -174,8 +174,8 @@ export class FbaOutboundApi {
 
   /**
      * Requests that Amazon ship items from the seller&#39;s inventory in Amazon&#39;s fulfillment network to a destination address.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderRequest} body CreateFulfillmentOrderRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderResponse>}
+     * @param {CreateFulfillmentOrderRequest} body CreateFulfillmentOrderRequest parameter
+     * @return {Promise<CreateFulfillmentOrderResponse>}
      */
   createFulfillmentOrder (body) {
     return this.createFulfillmentOrderWithHttpInfo(body)
@@ -187,8 +187,8 @@ export class FbaOutboundApi {
   /**
      * Creates a fulfillment return.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items.
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnRequest} body CreateFulfillmentReturnRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResponse>}
+     * @param {CreateFulfillmentReturnRequest} body CreateFulfillmentReturnRequest parameter
+     * @return {Promise<CreateFulfillmentReturnResponse>}
      */
   createFulfillmentReturnWithHttpInfo (sellerFulfillmentOrderId, body) {
     const postBody = body
@@ -227,8 +227,8 @@ export class FbaOutboundApi {
   /**
      * Creates a fulfillment return.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items.
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnRequest} body CreateFulfillmentReturnRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResponse>}
+     * @param {CreateFulfillmentReturnRequest} body CreateFulfillmentReturnRequest parameter
+     * @return {Promise<CreateFulfillmentReturnResponse>}
      */
   createFulfillmentReturn (sellerFulfillmentOrderId, body) {
     return this.createFulfillmentReturnWithHttpInfo(sellerFulfillmentOrderId, body)
@@ -239,8 +239,8 @@ export class FbaOutboundApi {
 
   /**
      * Returns delivery options that include an estimated delivery date and offer expiration, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersRequest} body GetDeliveryOffersRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersResponse>}
+     * @param {GetDeliveryOffersRequest} body GetDeliveryOffersRequest parameter
+     * @return {Promise<GetDeliveryOffersResponse>}
      */
   deliveryOffersWithHttpInfo (body) {
     const postBody = body
@@ -272,8 +272,8 @@ export class FbaOutboundApi {
 
   /**
      * Returns delivery options that include an estimated delivery date and offer expiration, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersRequest} body GetDeliveryOffersRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersResponse>}
+     * @param {GetDeliveryOffersRequest} body GetDeliveryOffersRequest parameter
+     * @return {Promise<GetDeliveryOffersResponse>}
      */
   deliveryOffers (body) {
     return this.deliveryOffersWithHttpInfo(body)
@@ -289,7 +289,7 @@ export class FbaOutboundApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextToken A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page.
      * @param {Date} opts.queryStartDate A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResponse>}
+     * @return {Promise<GetFeatureInventoryResponse>}
      */
   getFeatureInventoryWithHttpInfo (marketplaceId, featureName, opts) {
     opts = opts || {}
@@ -336,7 +336,7 @@ export class FbaOutboundApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextToken A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page.
      * @param {Date} opts.queryStartDate A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResponse>}
+     * @return {Promise<GetFeatureInventoryResponse>}
      */
   getFeatureInventory (marketplaceId, featureName, opts) {
     return this.getFeatureInventoryWithHttpInfo(marketplaceId, featureName, opts)
@@ -350,7 +350,7 @@ export class FbaOutboundApi {
      * @param {String} marketplaceId The marketplace for which to return the count.
      * @param {String} featureName The name of the feature.
      * @param {String} sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFeatureSkuResponse>}
+     * @return {Promise<GetFeatureSkuResponse>}
      */
   getFeatureSKUWithHttpInfo (marketplaceId, featureName, sellerSku) {
     const postBody = null
@@ -398,7 +398,7 @@ export class FbaOutboundApi {
      * @param {String} marketplaceId The marketplace for which to return the count.
      * @param {String} featureName The name of the feature.
      * @param {String} sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFeatureSkuResponse>}
+     * @return {Promise<GetFeatureSkuResponse>}
      */
   getFeatureSKU (marketplaceId, featureName, sellerSku) {
     return this.getFeatureSKUWithHttpInfo(marketplaceId, featureName, sellerSku)
@@ -410,7 +410,7 @@ export class FbaOutboundApi {
   /**
      * Returns a list of features available for Multi-Channel Fulfillment orders in the marketplace you specify, and whether the seller for which you made the call is enrolled for each feature.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace for which to return the list of features.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFeaturesResponse>}
+     * @return {Promise<GetFeaturesResponse>}
      */
   getFeaturesWithHttpInfo (marketplaceId) {
     const postBody = null
@@ -444,7 +444,7 @@ export class FbaOutboundApi {
   /**
      * Returns a list of features available for Multi-Channel Fulfillment orders in the marketplace you specify, and whether the seller for which you made the call is enrolled for each feature.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The marketplace for which to return the list of features.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFeaturesResponse>}
+     * @return {Promise<GetFeaturesResponse>}
      */
   getFeatures (marketplaceId) {
     return this.getFeaturesWithHttpInfo(marketplaceId)
@@ -456,7 +456,7 @@ export class FbaOutboundApi {
   /**
      * Returns the fulfillment order indicated by the specified order identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResponse>}
+     * @return {Promise<GetFulfillmentOrderResponse>}
      */
   getFulfillmentOrderWithHttpInfo (sellerFulfillmentOrderId) {
     const postBody = null
@@ -490,7 +490,7 @@ export class FbaOutboundApi {
   /**
      * Returns the fulfillment order indicated by the specified order identifier.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResponse>}
+     * @return {Promise<GetFulfillmentOrderResponse>}
      */
   getFulfillmentOrder (sellerFulfillmentOrderId) {
     return this.getFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId)
@@ -501,8 +501,8 @@ export class FbaOutboundApi {
 
   /**
      * Returns a list of fulfillment order previews based on shipping criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewRequest} body GetFulfillmentPreviewRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewResponse>}
+     * @param {GetFulfillmentPreviewRequest} body GetFulfillmentPreviewRequest parameter
+     * @return {Promise<GetFulfillmentPreviewResponse>}
      */
   getFulfillmentPreviewWithHttpInfo (body) {
     const postBody = body
@@ -534,8 +534,8 @@ export class FbaOutboundApi {
 
   /**
      * Returns a list of fulfillment order previews based on shipping criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewRequest} body GetFulfillmentPreviewRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewResponse>}
+     * @param {GetFulfillmentPreviewRequest} body GetFulfillmentPreviewRequest parameter
+     * @return {Promise<GetFulfillmentPreviewResponse>}
      */
   getFulfillmentPreview (body) {
     return this.getFulfillmentPreviewWithHttpInfo(body)
@@ -547,7 +547,7 @@ export class FbaOutboundApi {
   /**
      * Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Number} packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetPackageTrackingDetailsResponse>}
+     * @return {Promise<GetPackageTrackingDetailsResponse>}
      */
   getPackageTrackingDetailsWithHttpInfo (packageNumber) {
     const postBody = null
@@ -581,7 +581,7 @@ export class FbaOutboundApi {
   /**
      * Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Number} packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/GetPackageTrackingDetailsResponse>}
+     * @return {Promise<GetPackageTrackingDetailsResponse>}
      */
   getPackageTrackingDetails (packageNumber) {
     return this.getPackageTrackingDetailsWithHttpInfo(packageNumber)
@@ -595,7 +595,7 @@ export class FbaOutboundApi {
      * @param {Object} opts Optional parameters
      * @param {Date} opts.queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order.
      * @param {String} opts.nextToken A string token returned in the response to your previous request.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/ListAllFulfillmentOrdersResponse>}
+     * @return {Promise<ListAllFulfillmentOrdersResponse>}
      */
   listAllFulfillmentOrdersWithHttpInfo (opts) {
     opts = opts || {}
@@ -628,7 +628,7 @@ export class FbaOutboundApi {
      * @param {Object} opts Optional parameters
      * @param {Date} opts.queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order.
      * @param {String} opts.nextToken A string token returned in the response to your previous request.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/ListAllFulfillmentOrdersResponse>}
+     * @return {Promise<ListAllFulfillmentOrdersResponse>}
      */
   listAllFulfillmentOrders (opts) {
     return this.listAllFulfillmentOrdersWithHttpInfo(opts)
@@ -644,7 +644,7 @@ export class FbaOutboundApi {
      * @param {String} opts.marketplaceId The marketplace for which the seller wants return reason codes.
      * @param {String} opts.sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes.
      * @param {String} opts.language The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/ListReturnReasonCodesResponse>}
+     * @return {Promise<ListReturnReasonCodesResponse>}
      */
   listReturnReasonCodesWithHttpInfo (sellerSku, opts) {
     opts = opts || {}
@@ -686,7 +686,7 @@ export class FbaOutboundApi {
      * @param {String} opts.marketplaceId The marketplace for which the seller wants return reason codes.
      * @param {String} opts.sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes.
      * @param {String} opts.language The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/ListReturnReasonCodesResponse>}
+     * @return {Promise<ListReturnReasonCodesResponse>}
      */
   listReturnReasonCodes (sellerSku, opts) {
     return this.listReturnReasonCodesWithHttpInfo(sellerSku, opts)
@@ -698,8 +698,8 @@ export class FbaOutboundApi {
   /**
      * Requests that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/SubmitFulfillmentOrderStatusUpdateRequest} body The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/SubmitFulfillmentOrderStatusUpdateResponse>}
+     * @param {SubmitFulfillmentOrderStatusUpdateRequest} body The identifier assigned to the item by the seller when the fulfillment order was created.
+     * @return {Promise<SubmitFulfillmentOrderStatusUpdateResponse>}
      */
   submitFulfillmentOrderStatusUpdateWithHttpInfo (sellerFulfillmentOrderId, body) {
     const postBody = body
@@ -738,8 +738,8 @@ export class FbaOutboundApi {
   /**
      * Requests that Amazon update the status of an order in the sandbox testing environment. This is a sandbox-only operation and must be directed to a sandbox endpoint. Refer to [Fulfillment Outbound Dynamic Sandbox Guide](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-dynamic-sandbox-guide) and [Selling Partner API sandbox](https://developer-docs.amazon.com/sp-api/docs/the-selling-partner-api-sandbox) for more information.
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/SubmitFulfillmentOrderStatusUpdateRequest} body The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/SubmitFulfillmentOrderStatusUpdateResponse>}
+     * @param {SubmitFulfillmentOrderStatusUpdateRequest} body The identifier assigned to the item by the seller when the fulfillment order was created.
+     * @return {Promise<SubmitFulfillmentOrderStatusUpdateResponse>}
      */
   submitFulfillmentOrderStatusUpdate (sellerFulfillmentOrderId, body) {
     return this.submitFulfillmentOrderStatusUpdateWithHttpInfo(sellerFulfillmentOrderId, body)
@@ -751,8 +751,8 @@ export class FbaOutboundApi {
   /**
      * Updates and/or requests shipment for a fulfillment order with an order hold on it.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderRequest} body UpdateFulfillmentOrderRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderResponse>}
+     * @param {UpdateFulfillmentOrderRequest} body UpdateFulfillmentOrderRequest parameter
+     * @return {Promise<UpdateFulfillmentOrderResponse>}
      */
   updateFulfillmentOrderWithHttpInfo (sellerFulfillmentOrderId, body) {
     const postBody = body
@@ -791,8 +791,8 @@ export class FbaOutboundApi {
   /**
      * Updates and/or requests shipment for a fulfillment order with an order hold on it.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-     * @param {module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderRequest} body UpdateFulfillmentOrderRequest parameter
-     * @return {Promise<module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderResponse>}
+     * @param {UpdateFulfillmentOrderRequest} body UpdateFulfillmentOrderRequest parameter
+     * @return {Promise<UpdateFulfillmentOrderResponse>}
      */
   updateFulfillmentOrder (sellerFulfillmentOrderId, body) {
     return this.updateFulfillmentOrderWithHttpInfo(sellerFulfillmentOrderId, body)

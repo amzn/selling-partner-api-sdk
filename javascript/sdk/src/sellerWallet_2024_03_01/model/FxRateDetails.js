@@ -28,7 +28,7 @@ export class FxRateDetails {
    * @param fxRateId {String} The unique identifier assigned to the fees / foreign exchange rate of a transaction.
    * @param baseRate {Number} A decimal number, such as an amount or FX rate.
    * @param effectiveFxRate {Number} A decimal number, such as an amount or FX rate.
-   * @param rateDirection {module:sellerWallet_2024_03_01/model/RateDirection}
+   * @param rateDirection {RateDirection}
    */
   constructor (fxRateId, baseRate, effectiveFxRate, rateDirection) {
     this.fxRateId = fxRateId
@@ -41,8 +41,8 @@ export class FxRateDetails {
    * Constructs a <code>FxRateDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/FxRateDetails} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/FxRateDetails} The populated <code>FxRateDetails</code> instance.
+   * @param {FxRateDetails} obj Optional instance to populate.
+   * @return {FxRateDetails} The populated <code>FxRateDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,7 +89,7 @@ FxRateDetails.prototype.baseRate = undefined
 FxRateDetails.prototype.effectiveFxRate = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/RateDirection} rateDirection
- * @type {module:sellerWallet_2024_03_01/model/RateDirection}
+ * @member {RateDirection} rateDirection
+ * @type {RateDirection}
  */
 FxRateDetails.prototype.rateDirection = undefined

@@ -27,8 +27,8 @@ export class CompetitivePricingType {
    * Competitive pricing information for the item.
    * @alias module:pricing_v0/model/CompetitivePricingType
    * @class
-   * @param competitivePrices {Array.<module:pricing_v0/model/CompetitivePriceType>} A list of competitive pricing information.
-   * @param numberOfOfferListings {Array.<module:pricing_v0/model/OfferListingCountType>} The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
+   * @param competitivePrices {[CompetitivePriceType]} A list of competitive pricing information.
+   * @param numberOfOfferListings {[OfferListingCountType]} The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
    */
   constructor (competitivePrices, numberOfOfferListings) {
     this.competitivePrices = competitivePrices
@@ -39,8 +39,8 @@ export class CompetitivePricingType {
    * Constructs a <code>CompetitivePricingType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/CompetitivePricingType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/CompetitivePricingType} The populated <code>CompetitivePricingType</code> instance.
+   * @param {CompetitivePricingType} obj Optional instance to populate.
+   * @return {CompetitivePricingType} The populated <code>CompetitivePricingType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,20 +66,20 @@ export class CompetitivePricingType {
 
 /**
  * A list of competitive pricing information.
- * @member {Array.<module:pricing_v0/model/CompetitivePriceType>} competitivePrices
- * @type {Array.<module:pricing_v0/model/CompetitivePriceType>}
+ * @member {[CompetitivePriceType]} competitivePrices
+ * @type {[CompetitivePriceType]}
  */
 CompetitivePricingType.prototype.competitivePrices = undefined
 
 /**
  * The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned.
- * @member {Array.<module:pricing_v0/model/OfferListingCountType>} numberOfOfferListings
- * @type {Array.<module:pricing_v0/model/OfferListingCountType>}
+ * @member {[OfferListingCountType]} numberOfOfferListings
+ * @type {[OfferListingCountType]}
  */
 CompetitivePricingType.prototype.numberOfOfferListings = undefined
 
 /**
- * @member {module:pricing_v0/model/MoneyType} tradeInValue
- * @type {module:pricing_v0/model/MoneyType}
+ * @member {MoneyType} tradeInValue
+ * @type {MoneyType}
  */
 CompetitivePricingType.prototype.tradeInValue = undefined

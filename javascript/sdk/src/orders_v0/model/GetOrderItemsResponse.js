@@ -34,8 +34,8 @@ export class GetOrderItemsResponse {
    * Constructs a <code>GetOrderItemsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/GetOrderItemsResponse} obj Optional instance to populate.
-   * @return {module:orders_v0/model/GetOrderItemsResponse} The populated <code>GetOrderItemsResponse</code> instance.
+   * @param {GetOrderItemsResponse} obj Optional instance to populate.
+   * @return {GetOrderItemsResponse} The populated <code>GetOrderItemsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetOrderItemsResponse {
 }
 
 /**
- * @member {module:orders_v0/model/OrderItemsList} payload
- * @type {module:orders_v0/model/OrderItemsList}
+ * @member {OrderItemsList} payload
+ * @type {OrderItemsList}
  */
 GetOrderItemsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:orders_v0/model/Error>} errors
- * @type {Array.<module:orders_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetOrderItemsResponse.prototype.errors = undefined

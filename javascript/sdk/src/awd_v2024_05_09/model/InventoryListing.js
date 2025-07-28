@@ -25,7 +25,7 @@ export class InventoryListing {
    * AWD inventory payload.
    * @alias module:awd_v2024_05_09/model/InventoryListing
    * @class
-   * @param inventory {Array.<module:awd_v2024_05_09/model/InventorySummary>} List of inventory summaries.
+   * @param inventory {[InventorySummary]} List of inventory summaries.
    */
   constructor (inventory) {
     this.inventory = inventory
@@ -35,8 +35,8 @@ export class InventoryListing {
    * Constructs a <code>InventoryListing</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InventoryListing} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InventoryListing} The populated <code>InventoryListing</code> instance.
+   * @param {InventoryListing} obj Optional instance to populate.
+   * @return {InventoryListing} The populated <code>InventoryListing</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,8 +61,8 @@ export class InventoryListing {
 
 /**
  * List of inventory summaries.
- * @member {Array.<module:awd_v2024_05_09/model/InventorySummary>} inventory
- * @type {Array.<module:awd_v2024_05_09/model/InventorySummary>}
+ * @member {[InventorySummary]} inventory
+ * @type {[InventorySummary]}
  */
 InventoryListing.prototype.inventory = undefined
 

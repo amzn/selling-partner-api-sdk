@@ -33,8 +33,8 @@ export class DestinationDetails {
    * Constructs a <code>DestinationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/DestinationDetails} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/DestinationDetails} The populated <code>DestinationDetails</code> instance.
+   * @param {DestinationDetails} obj Optional instance to populate.
+   * @return {DestinationDetails} The populated <code>DestinationDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,8 +59,8 @@ export class DestinationDetails {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/Address} destinationAddress
- * @type {module:awd_v2024_05_09/model/Address}
+ * @member {Address} destinationAddress
+ * @type {Address}
  */
 DestinationDetails.prototype.destinationAddress = undefined
 

@@ -26,7 +26,7 @@ export class Business {
    * @alias module:sellers_v1/model/Business
    * @class
    * @param name {String} The registered business name.
-   * @param registeredBusinessAddress {module:sellers_v1/model/Address}
+   * @param registeredBusinessAddress {Address}
    */
   constructor (name, registeredBusinessAddress) {
     this.name = name
@@ -37,8 +37,8 @@ export class Business {
    * Constructs a <code>Business</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellers_v1/model/Business} obj Optional instance to populate.
-   * @return {module:sellers_v1/model/Business} The populated <code>Business</code> instance.
+   * @param {Business} obj Optional instance to populate.
+   * @return {Business} The populated <code>Business</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,8 +72,8 @@ export class Business {
 Business.prototype.name = undefined
 
 /**
- * @member {module:sellers_v1/model/Address} registeredBusinessAddress
- * @type {module:sellers_v1/model/Address}
+ * @member {Address} registeredBusinessAddress
+ * @type {Address}
  */
 Business.prototype.registeredBusinessAddress = undefined
 

@@ -36,8 +36,8 @@ export class ShipmentDetail {
    * Constructs a <code>ShipmentDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoicing_v0/model/ShipmentDetail} obj Optional instance to populate.
-   * @return {module:invoicing_v0/model/ShipmentDetail} The populated <code>ShipmentDetail</code> instance.
+   * @param {ShipmentDetail} obj Optional instance to populate.
+   * @return {ShipmentDetail} The populated <code>ShipmentDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -101,15 +101,15 @@ ShipmentDetail.prototype.amazonShipmentId = undefined
 ShipmentDetail.prototype.purchaseDate = undefined
 
 /**
- * @member {module:invoicing_v0/model/Address} shippingAddress
- * @type {module:invoicing_v0/model/Address}
+ * @member {Address} shippingAddress
+ * @type {Address}
  */
 ShipmentDetail.prototype.shippingAddress = undefined
 
 /**
  * The list of payment method details.
- * @member {Array.<String>} paymentMethodDetails
- * @type {Array.<String>}
+ * @member {[String]} paymentMethodDetails
+ * @type {[String]}
  */
 ShipmentDetail.prototype.paymentMethodDetails = undefined
 
@@ -142,14 +142,14 @@ ShipmentDetail.prototype.buyerName = undefined
 ShipmentDetail.prototype.buyerCounty = undefined
 
 /**
- * @member {module:invoicing_v0/model/BuyerTaxInfo} buyerTaxInfo
- * @type {module:invoicing_v0/model/BuyerTaxInfo}
+ * @member {BuyerTaxInfo} buyerTaxInfo
+ * @type {BuyerTaxInfo}
  */
 ShipmentDetail.prototype.buyerTaxInfo = undefined
 
 /**
- * @member {module:invoicing_v0/model/MarketplaceTaxInfo} marketplaceTaxInfo
- * @type {module:invoicing_v0/model/MarketplaceTaxInfo}
+ * @member {MarketplaceTaxInfo} marketplaceTaxInfo
+ * @type {MarketplaceTaxInfo}
  */
 ShipmentDetail.prototype.marketplaceTaxInfo = undefined
 
@@ -162,7 +162,7 @@ ShipmentDetail.prototype.sellerDisplayName = undefined
 
 /**
  * A list of shipment items.
- * @member {Array.<module:invoicing_v0/model/ShipmentItem>} shipmentItems
- * @type {Array.<module:invoicing_v0/model/ShipmentItem>}
+ * @member {[ShipmentItem]} shipmentItems
+ * @type {[ShipmentItem]}
  */
 ShipmentDetail.prototype.shipmentItems = undefined

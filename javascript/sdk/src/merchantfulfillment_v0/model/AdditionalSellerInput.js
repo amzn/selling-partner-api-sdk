@@ -36,8 +36,8 @@ export class AdditionalSellerInput {
    * Constructs a <code>AdditionalSellerInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/AdditionalSellerInput} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/AdditionalSellerInput} The populated <code>AdditionalSellerInput</code> instance.
+   * @param {AdditionalSellerInput} obj Optional instance to populate.
+   * @return {AdditionalSellerInput} The populated <code>AdditionalSellerInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -103,25 +103,25 @@ AdditionalSellerInput.prototype.valueAsInteger = undefined
 AdditionalSellerInput.prototype.valueAsTimestamp = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Address} valueAsAddress
- * @type {module:merchantfulfillment_v0/model/Address}
+ * @member {Address} valueAsAddress
+ * @type {Address}
  */
 AdditionalSellerInput.prototype.valueAsAddress = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Weight} valueAsWeight
- * @type {module:merchantfulfillment_v0/model/Weight}
+ * @member {Weight} valueAsWeight
+ * @type {Weight}
  */
 AdditionalSellerInput.prototype.valueAsWeight = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Length} valueAsDimension
- * @type {module:merchantfulfillment_v0/model/Length}
+ * @member {Length} valueAsDimension
+ * @type {Length}
  */
 AdditionalSellerInput.prototype.valueAsDimension = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CurrencyAmount} valueAsCurrency
- * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
+ * @member {CurrencyAmount} valueAsCurrency
+ * @type {CurrencyAmount}
  */
 AdditionalSellerInput.prototype.valueAsCurrency = undefined

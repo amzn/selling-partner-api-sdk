@@ -26,8 +26,8 @@ export class GetInventorySummariesResult {
    * The payload schema for the getInventorySummaries operation.
    * @alias module:fbainventory_v1/model/GetInventorySummariesResult
    * @class
-   * @param granularity {module:fbainventory_v1/model/Granularity}
-   * @param inventorySummaries {Array.<module:fbainventory_v1/model/InventorySummary>} A list of inventory summaries.
+   * @param granularity {Granularity}
+   * @param inventorySummaries {[InventorySummary]} A list of inventory summaries.
    */
   constructor (granularity, inventorySummaries) {
     this.granularity = granularity
@@ -38,8 +38,8 @@ export class GetInventorySummariesResult {
    * Constructs a <code>GetInventorySummariesResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/GetInventorySummariesResult} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/GetInventorySummariesResult} The populated <code>GetInventorySummariesResult</code> instance.
+   * @param {GetInventorySummariesResult} obj Optional instance to populate.
+   * @return {GetInventorySummariesResult} The populated <code>GetInventorySummariesResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,14 +63,14 @@ export class GetInventorySummariesResult {
 }
 
 /**
- * @member {module:fbainventory_v1/model/Granularity} granularity
- * @type {module:fbainventory_v1/model/Granularity}
+ * @member {Granularity} granularity
+ * @type {Granularity}
  */
 GetInventorySummariesResult.prototype.granularity = undefined
 
 /**
  * A list of inventory summaries.
- * @member {Array.<module:fbainventory_v1/model/InventorySummary>} inventorySummaries
- * @type {Array.<module:fbainventory_v1/model/InventorySummary>}
+ * @member {[InventorySummary]} inventorySummaries
+ * @type {[InventorySummary]}
  */
 GetInventorySummariesResult.prototype.inventorySummaries = undefined

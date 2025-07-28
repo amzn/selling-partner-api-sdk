@@ -26,7 +26,7 @@ export class GetEligibleShipmentServicesRequest {
    * Request schema.
    * @alias module:merchantfulfillment_v0/model/GetEligibleShipmentServicesRequest
    * @class
-   * @param shipmentRequestDetails {module:merchantfulfillment_v0/model/ShipmentRequestDetails}
+   * @param shipmentRequestDetails {ShipmentRequestDetails}
    */
   constructor (shipmentRequestDetails) {
     this.shipmentRequestDetails = shipmentRequestDetails
@@ -36,8 +36,8 @@ export class GetEligibleShipmentServicesRequest {
    * Constructs a <code>GetEligibleShipmentServicesRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesRequest} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesRequest} The populated <code>GetEligibleShipmentServicesRequest</code> instance.
+   * @param {GetEligibleShipmentServicesRequest} obj Optional instance to populate.
+   * @return {GetEligibleShipmentServicesRequest} The populated <code>GetEligibleShipmentServicesRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class GetEligibleShipmentServicesRequest {
 }
 
 /**
- * @member {module:merchantfulfillment_v0/model/ShipmentRequestDetails} shipmentRequestDetails
- * @type {module:merchantfulfillment_v0/model/ShipmentRequestDetails}
+ * @member {ShipmentRequestDetails} shipmentRequestDetails
+ * @type {ShipmentRequestDetails}
  */
 GetEligibleShipmentServicesRequest.prototype.shipmentRequestDetails = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/ShippingOfferingFilter} shippingOfferingFilter
- * @type {module:merchantfulfillment_v0/model/ShippingOfferingFilter}
+ * @member {ShippingOfferingFilter} shippingOfferingFilter
+ * @type {ShippingOfferingFilter}
  */
 GetEligibleShipmentServicesRequest.prototype.shippingOfferingFilter = undefined

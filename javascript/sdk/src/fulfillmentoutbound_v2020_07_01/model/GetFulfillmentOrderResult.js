@@ -30,10 +30,10 @@ export class GetFulfillmentOrderResult {
    * The request for the getFulfillmentOrder operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult
    * @class
-   * @param fulfillmentOrder {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder}
-   * @param fulfillmentOrderItems {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderItem>} An array of fulfillment order item information.
-   * @param returnItems {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
-   * @param returnAuthorizations {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>} An array of return authorization information.
+   * @param fulfillmentOrder {FulfillmentOrder}
+   * @param fulfillmentOrderItems {[FulfillmentOrderItem]} An array of fulfillment order item information.
+   * @param returnItems {[ReturnItem]} An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
+   * @param returnAuthorizations {[ReturnAuthorization]} An array of return authorization information.
    */
   constructor (fulfillmentOrder, fulfillmentOrderItems, returnItems, returnAuthorizations) {
     this.fulfillmentOrder = fulfillmentOrder
@@ -46,8 +46,8 @@ export class GetFulfillmentOrderResult {
    * Constructs a <code>GetFulfillmentOrderResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult} The populated <code>GetFulfillmentOrderResult</code> instance.
+   * @param {GetFulfillmentOrderResult} obj Optional instance to populate.
+   * @return {GetFulfillmentOrderResult} The populated <code>GetFulfillmentOrderResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -75,42 +75,42 @@ export class GetFulfillmentOrderResult {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder} fulfillmentOrder
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrder}
+ * @member {FulfillmentOrder} fulfillmentOrder
+ * @type {FulfillmentOrder}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentOrder = undefined
 
 /**
  * An array of fulfillment order item information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderItem>} fulfillmentOrderItems
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentOrderItem>}
+ * @member {[FulfillmentOrderItem]} fulfillmentOrderItems
+ * @type {[FulfillmentOrderItem]}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentOrderItems = undefined
 
 /**
  * An array of fulfillment shipment information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment>} fulfillmentShipments
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment>}
+ * @member {[FulfillmentShipment]} fulfillmentShipments
+ * @type {[FulfillmentShipment]}
  */
 GetFulfillmentOrderResult.prototype.fulfillmentShipments = undefined
 
 /**
  * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>} returnItems
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>}
+ * @member {[ReturnItem]} returnItems
+ * @type {[ReturnItem]}
  */
 GetFulfillmentOrderResult.prototype.returnItems = undefined
 
 /**
  * An array of return authorization information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>} returnAuthorizations
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>}
+ * @member {[ReturnAuthorization]} returnAuthorizations
+ * @type {[ReturnAuthorization]}
  */
 GetFulfillmentOrderResult.prototype.returnAuthorizations = undefined
 
 /**
  * An array of various payment attributes related to this fulfillment order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/PaymentInformation>} paymentInformation
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/PaymentInformation>}
+ * @member {[PaymentInformation]} paymentInformation
+ * @type {[PaymentInformation]}
  */
 GetFulfillmentOrderResult.prototype.paymentInformation = undefined

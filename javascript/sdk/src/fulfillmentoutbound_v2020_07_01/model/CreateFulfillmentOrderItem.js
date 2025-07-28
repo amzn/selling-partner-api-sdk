@@ -39,8 +39,8 @@ export class CreateFulfillmentOrderItem {
    * Constructs a <code>CreateFulfillmentOrderItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderItem} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderItem} The populated <code>CreateFulfillmentOrderItem</code> instance.
+   * @param {CreateFulfillmentOrderItem} obj Optional instance to populate.
+   * @return {CreateFulfillmentOrderItem} The populated <code>CreateFulfillmentOrderItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -113,19 +113,19 @@ CreateFulfillmentOrderItem.prototype.displayableComment = undefined
 CreateFulfillmentOrderItem.prototype.fulfillmentNetworkSku = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitDeclaredValue
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} perUnitDeclaredValue
+ * @type {Money}
  */
 CreateFulfillmentOrderItem.prototype.perUnitDeclaredValue = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitPrice
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} perUnitPrice
+ * @type {Money}
  */
 CreateFulfillmentOrderItem.prototype.perUnitPrice = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} perUnitTax
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} perUnitTax
+ * @type {Money}
  */
 CreateFulfillmentOrderItem.prototype.perUnitTax = undefined

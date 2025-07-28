@@ -27,9 +27,9 @@ export class Account {
    * The response schema for the &#x60;getAccount&#x60; operation.
    * @alias module:sellers_v1/model/Account
    * @class
-   * @param marketplaceParticipationList {Array.<module:sellers_v1/model/MarketplaceParticipation>} List of marketplace participations.
-   * @param businessType {module:sellers_v1/model/Account.BusinessTypeEnum} The type of business registered for the seller account.
-   * @param sellingPlan {module:sellers_v1/model/Account.SellingPlanEnum} The selling plan details.
+   * @param marketplaceParticipationList {[MarketplaceParticipation]} List of marketplace participations.
+   * @param businessType {String} The type of business registered for the seller account.
+   * @param sellingPlan {String} The selling plan details.
    */
   constructor (marketplaceParticipationList, businessType, sellingPlan) {
     this.marketplaceParticipationList = marketplaceParticipationList
@@ -41,8 +41,8 @@ export class Account {
    * Constructs a <code>Account</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellers_v1/model/Account} obj Optional instance to populate.
-   * @return {module:sellers_v1/model/Account} The populated <code>Account</code> instance.
+   * @param {Account} obj Optional instance to populate.
+   * @return {Account} The populated <code>Account</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,8 +70,8 @@ export class Account {
 
 /**
  * List of marketplace participations.
- * @member {Array.<module:sellers_v1/model/MarketplaceParticipation>} marketplaceParticipationList
- * @type {Array.<module:sellers_v1/model/MarketplaceParticipation>}
+ * @member {[MarketplaceParticipation]} marketplaceParticipationList
+ * @type {[MarketplaceParticipation]}
  */
 Account.prototype.marketplaceParticipationList = undefined
 
@@ -133,8 +133,8 @@ Account.BusinessTypeEnum = {
 
 /**
  * The type of business registered for the seller account.
- * @member {module:sellers_v1/model/Account.BusinessTypeEnum} businessType
- * @type {module:sellers_v1/model/Account.BusinessTypeEnum}
+ * @member {String} businessType
+ * @type {String}
  */
 Account.prototype.businessType = undefined
 
@@ -160,19 +160,19 @@ Account.SellingPlanEnum = {
 
 /**
  * The selling plan details.
- * @member {module:sellers_v1/model/Account.SellingPlanEnum} sellingPlan
- * @type {module:sellers_v1/model/Account.SellingPlanEnum}
+ * @member {String} sellingPlan
+ * @type {String}
  */
 Account.prototype.sellingPlan = undefined
 
 /**
- * @member {module:sellers_v1/model/Business} business
- * @type {module:sellers_v1/model/Business}
+ * @member {Business} business
+ * @type {Business}
  */
 Account.prototype.business = undefined
 
 /**
- * @member {module:sellers_v1/model/PrimaryContact} primaryContact
- * @type {module:sellers_v1/model/PrimaryContact}
+ * @member {PrimaryContact} primaryContact
+ * @type {PrimaryContact}
  */
 Account.prototype.primaryContact = undefined

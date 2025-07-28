@@ -34,8 +34,8 @@ export class StandardTextBlock {
    * Constructs a <code>StandardTextBlock</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardTextBlock} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardTextBlock} The populated <code>StandardTextBlock</code> instance.
+   * @param {StandardTextBlock} obj Optional instance to populate.
+   * @return {StandardTextBlock} The populated <code>StandardTextBlock</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class StandardTextBlock {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardTextBlock.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ParagraphComponent} body
- * @type {module:apluscontent_v2020_11_01/model/ParagraphComponent}
+ * @member {ParagraphComponent} body
+ * @type {ParagraphComponent}
  */
 StandardTextBlock.prototype.body = undefined

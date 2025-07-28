@@ -36,8 +36,8 @@ export class SetAppointmentFulfillmentDataRequest {
    * Constructs a <code>SetAppointmentFulfillmentDataRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/SetAppointmentFulfillmentDataRequest} obj Optional instance to populate.
-   * @return {module:services_v1/model/SetAppointmentFulfillmentDataRequest} The populated <code>SetAppointmentFulfillmentDataRequest</code> instance.
+   * @param {SetAppointmentFulfillmentDataRequest} obj Optional instance to populate.
+   * @return {SetAppointmentFulfillmentDataRequest} The populated <code>SetAppointmentFulfillmentDataRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,27 +63,27 @@ export class SetAppointmentFulfillmentDataRequest {
 }
 
 /**
- * @member {module:services_v1/model/DateTimeRange} estimatedArrivalTime
- * @type {module:services_v1/model/DateTimeRange}
+ * @member {DateTimeRange} estimatedArrivalTime
+ * @type {DateTimeRange}
  */
 SetAppointmentFulfillmentDataRequest.prototype.estimatedArrivalTime = undefined
 
 /**
- * @member {module:services_v1/model/FulfillmentTime} fulfillmentTime
- * @type {module:services_v1/model/FulfillmentTime}
+ * @member {FulfillmentTime} fulfillmentTime
+ * @type {FulfillmentTime}
  */
 SetAppointmentFulfillmentDataRequest.prototype.fulfillmentTime = undefined
 
 /**
  * List of resources that performs or performed job appointment fulfillment.
- * @member {Array.<module:services_v1/model/AppointmentResource>} appointmentResources
- * @type {Array.<module:services_v1/model/AppointmentResource>}
+ * @member {[AppointmentResource]} appointmentResources
+ * @type {[AppointmentResource]}
  */
 SetAppointmentFulfillmentDataRequest.prototype.appointmentResources = undefined
 
 /**
  * List of documents captured during service appointment fulfillment.
- * @member {Array.<module:services_v1/model/FulfillmentDocument>} fulfillmentDocuments
- * @type {Array.<module:services_v1/model/FulfillmentDocument>}
+ * @member {[FulfillmentDocument]} fulfillmentDocuments
+ * @type {[FulfillmentDocument]}
  */
 SetAppointmentFulfillmentDataRequest.prototype.fulfillmentDocuments = undefined

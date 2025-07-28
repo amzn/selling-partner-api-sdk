@@ -33,8 +33,8 @@ export class Length {
    * Constructs a <code>Length</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/Length} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/Length} The populated <code>Length</code> instance.
+   * @param {Length} obj Optional instance to populate.
+   * @return {Length} The populated <code>Length</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class Length {
 Length.prototype.value = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/UnitOfLength} unit
- * @type {module:merchantfulfillment_v0/model/UnitOfLength}
+ * @member {UnitOfLength} unit
+ * @type {UnitOfLength}
  */
 Length.prototype.unit = undefined

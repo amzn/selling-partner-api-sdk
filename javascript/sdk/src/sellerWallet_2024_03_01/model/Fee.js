@@ -27,9 +27,9 @@ export class Fee {
    * @alias module:sellerWallet_2024_03_01/model/Fee
    * @class
    * @param feeId {String} The unique identifier assigned to the fee.
-   * @param feeType {module:sellerWallet_2024_03_01/model/FeeType}
+   * @param feeType {FeeType}
    * @param feeRateValue {Number} A decimal number, such as an amount or FX rate.
-   * @param feeAmount {module:sellerWallet_2024_03_01/model/Currency}
+   * @param feeAmount {Currency}
    */
   constructor (feeId, feeType, feeRateValue, feeAmount) {
     this.feeId = feeId
@@ -42,8 +42,8 @@ export class Fee {
    * Constructs a <code>Fee</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/Fee} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/Fee} The populated <code>Fee</code> instance.
+   * @param {Fee} obj Optional instance to populate.
+   * @return {Fee} The populated <code>Fee</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ export class Fee {
 Fee.prototype.feeId = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/FeeType} feeType
- * @type {module:sellerWallet_2024_03_01/model/FeeType}
+ * @member {FeeType} feeType
+ * @type {FeeType}
  */
 Fee.prototype.feeType = undefined
 
@@ -89,7 +89,7 @@ Fee.prototype.feeType = undefined
 Fee.prototype.feeRateValue = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/Currency} feeAmount
- * @type {module:sellerWallet_2024_03_01/model/Currency}
+ * @member {Currency} feeAmount
+ * @type {Currency}
  */
 Fee.prototype.feeAmount = undefined

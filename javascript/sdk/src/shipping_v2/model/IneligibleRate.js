@@ -29,7 +29,7 @@ export class IneligibleRate {
    * @param serviceName {String} The name of the shipping service.
    * @param carrierName {String} The carrier name for the offering.
    * @param carrierId {String} The carrier identifier for the offering, provided by the carrier.
-   * @param ineligibilityReasons {Array.<module:shipping_v2/model/IneligibilityReason>} A list of reasons why a shipping service offering is ineligible.
+   * @param ineligibilityReasons {[IneligibilityReason]} A list of reasons why a shipping service offering is ineligible.
    */
   constructor (serviceId, serviceName, carrierName, carrierId, ineligibilityReasons) {
     this.serviceId = serviceId
@@ -43,8 +43,8 @@ export class IneligibleRate {
    * Constructs a <code>IneligibleRate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/IneligibleRate} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/IneligibleRate} The populated <code>IneligibleRate</code> instance.
+   * @param {IneligibleRate} obj Optional instance to populate.
+   * @return {IneligibleRate} The populated <code>IneligibleRate</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -100,7 +100,7 @@ IneligibleRate.prototype.carrierId = undefined
 
 /**
  * A list of reasons why a shipping service offering is ineligible.
- * @member {Array.<module:shipping_v2/model/IneligibilityReason>} ineligibilityReasons
- * @type {Array.<module:shipping_v2/model/IneligibilityReason>}
+ * @member {[IneligibilityReason]} ineligibilityReasons
+ * @type {[IneligibilityReason]}
  */
 IneligibleRate.prototype.ineligibilityReasons = undefined

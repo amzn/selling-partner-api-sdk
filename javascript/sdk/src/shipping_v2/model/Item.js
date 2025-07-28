@@ -40,8 +40,8 @@ export class Item {
    * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/Item} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/Item} The populated <code>Item</code> instance.
+   * @param {Item} obj Optional instance to populate.
+   * @return {Item} The populated <code>Item</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -75,8 +75,8 @@ export class Item {
 }
 
 /**
- * @member {module:shipping_v2/model/Currency} itemValue
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} itemValue
+ * @type {Currency}
  */
 Item.prototype.itemValue = undefined
 
@@ -102,14 +102,14 @@ Item.prototype.itemIdentifier = undefined
 Item.prototype.quantity = undefined
 
 /**
- * @member {module:shipping_v2/model/Weight} weight
- * @type {module:shipping_v2/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Item.prototype.weight = undefined
 
 /**
- * @member {module:shipping_v2/model/LiquidVolume} liquidVolume
- * @type {module:shipping_v2/model/LiquidVolume}
+ * @member {LiquidVolume} liquidVolume
+ * @type {LiquidVolume}
  */
 Item.prototype.liquidVolume = undefined
 
@@ -121,8 +121,8 @@ Item.prototype.liquidVolume = undefined
 Item.prototype.isHazmat = undefined
 
 /**
- * @member {module:shipping_v2/model/DangerousGoodsDetails} dangerousGoodsDetails
- * @type {module:shipping_v2/model/DangerousGoodsDetails}
+ * @member {DangerousGoodsDetails} dangerousGoodsDetails
+ * @type {DangerousGoodsDetails}
  */
 Item.prototype.dangerousGoodsDetails = undefined
 
@@ -134,20 +134,20 @@ Item.prototype.dangerousGoodsDetails = undefined
 Item.prototype.productType = undefined
 
 /**
- * @member {module:shipping_v2/model/InvoiceDetails} invoiceDetails
- * @type {module:shipping_v2/model/InvoiceDetails}
+ * @member {InvoiceDetails} invoiceDetails
+ * @type {InvoiceDetails}
  */
 Item.prototype.invoiceDetails = undefined
 
 /**
  * A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon.
- * @member {Array.<String>} serialNumbers
- * @type {Array.<String>}
+ * @member {[String]} serialNumbers
+ * @type {[String]}
  */
 Item.prototype.serialNumbers = undefined
 
 /**
- * @member {module:shipping_v2/model/DirectFulfillmentItemIdentifiers} directFulfillmentItemIdentifiers
- * @type {module:shipping_v2/model/DirectFulfillmentItemIdentifiers}
+ * @member {DirectFulfillmentItemIdentifiers} directFulfillmentItemIdentifiers
+ * @type {DirectFulfillmentItemIdentifiers}
  */
 Item.prototype.directFulfillmentItemIdentifiers = undefined

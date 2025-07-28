@@ -27,7 +27,7 @@ export class Report {
    * @param reportId {String} The identifier for the report. This identifier is unique only in combination with a seller ID.
    * @param reportType {String} The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
    * @param createdTime {Date} The date and time when the report was created.
-   * @param processingStatus {module:reports_v2021_06_30/model/Report.ProcessingStatusEnum} The processing status of the report.
+   * @param processingStatus {String} The processing status of the report.
    */
   constructor (reportId, reportType, createdTime, processingStatus) {
     this.reportId = reportId
@@ -40,8 +40,8 @@ export class Report {
    * Constructs a <code>Report</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/Report} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/Report} The populated <code>Report</code> instance.
+   * @param {Report} obj Optional instance to populate.
+   * @return {Report} The populated <code>Report</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -75,8 +75,8 @@ export class Report {
 
 /**
  * A list of marketplace identifiers for the report.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 Report.prototype.marketplaceIds = undefined
 
@@ -162,8 +162,8 @@ Report.ProcessingStatusEnum = {
 
 /**
  * The processing status of the report.
- * @member {module:reports_v2021_06_30/model/Report.ProcessingStatusEnum} processingStatus
- * @type {module:reports_v2021_06_30/model/Report.ProcessingStatusEnum}
+ * @member {String} processingStatus
+ * @type {String}
  */
 Report.prototype.processingStatus = undefined
 

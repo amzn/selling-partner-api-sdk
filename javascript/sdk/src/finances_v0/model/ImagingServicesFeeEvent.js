@@ -33,8 +33,8 @@ export class ImagingServicesFeeEvent {
    * Constructs a <code>ImagingServicesFeeEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ImagingServicesFeeEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ImagingServicesFeeEvent} The populated <code>ImagingServicesFeeEvent</code> instance.
+   * @param {ImagingServicesFeeEvent} obj Optional instance to populate.
+   * @return {ImagingServicesFeeEvent} The populated <code>ImagingServicesFeeEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,7 +82,7 @@ ImagingServicesFeeEvent.prototype.postedDate = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} feeList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} feeList
+ * @type {[FeeComponent]}
  */
 ImagingServicesFeeEvent.prototype.feeList = undefined

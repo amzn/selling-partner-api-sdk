@@ -36,8 +36,8 @@ export class SKUPrepInstructions {
    * Constructs a <code>SKUPrepInstructions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/SKUPrepInstructions} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/SKUPrepInstructions} The populated <code>SKUPrepInstructions</code> instance.
+   * @param {SKUPrepInstructions} obj Optional instance to populate.
+   * @return {SKUPrepInstructions} The populated <code>SKUPrepInstructions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,27 +79,27 @@ SKUPrepInstructions.prototype.sellerSKU = undefined
 SKUPrepInstructions.prototype.ASIN = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/BarcodeInstruction} barcodeInstruction
- * @type {module:fulfillmentinbound_v0/model/BarcodeInstruction}
+ * @member {BarcodeInstruction} barcodeInstruction
+ * @type {BarcodeInstruction}
  */
 SKUPrepInstructions.prototype.barcodeInstruction = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/PrepGuidance} prepGuidance
- * @type {module:fulfillmentinbound_v0/model/PrepGuidance}
+ * @member {PrepGuidance} prepGuidance
+ * @type {PrepGuidance}
  */
 SKUPrepInstructions.prototype.prepGuidance = undefined
 
 /**
  * A list of preparation instructions to help with item sourcing decisions.
- * @member {Array.<module:fulfillmentinbound_v0/model/PrepInstruction>} prepInstructionList
- * @type {Array.<module:fulfillmentinbound_v0/model/PrepInstruction>}
+ * @member {[PrepInstruction]} prepInstructionList
+ * @type {[PrepInstruction]}
  */
 SKUPrepInstructions.prototype.prepInstructionList = undefined
 
 /**
  * A list of preparation instructions and fees for Amazon to prep goods for shipment.
- * @member {Array.<module:fulfillmentinbound_v0/model/AmazonPrepFeesDetails>} amazonPrepFeesDetailsList
- * @type {Array.<module:fulfillmentinbound_v0/model/AmazonPrepFeesDetails>}
+ * @member {[AmazonPrepFeesDetails]} amazonPrepFeesDetailsList
+ * @type {[AmazonPrepFeesDetails]}
  */
 SKUPrepInstructions.prototype.amazonPrepFeesDetailsList = undefined

@@ -32,8 +32,8 @@ export class ItemRelatedIdentifier {
    * Constructs a <code>ItemRelatedIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/ItemRelatedIdentifier} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/ItemRelatedIdentifier} The populated <code>ItemRelatedIdentifier</code> instance.
+   * @param {ItemRelatedIdentifier} obj Optional instance to populate.
+   * @return {ItemRelatedIdentifier} The populated <code>ItemRelatedIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,8 +90,8 @@ ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum = {
 
 /**
  * Enumerated set of related item identifier names for the item.
- * @member {module:finances_2024_06_19/model/ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum} itemRelatedIdentifierName
- * @type {module:finances_2024_06_19/model/ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum}
+ * @member {String} itemRelatedIdentifierName
+ * @type {String}
  */
 ItemRelatedIdentifier.prototype.itemRelatedIdentifierName = undefined
 

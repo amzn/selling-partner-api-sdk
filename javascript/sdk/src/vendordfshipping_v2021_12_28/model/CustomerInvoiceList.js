@@ -34,8 +34,8 @@ export class CustomerInvoiceList {
    * Constructs a <code>CustomerInvoiceList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/CustomerInvoiceList} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/CustomerInvoiceList} The populated <code>CustomerInvoiceList</code> instance.
+   * @param {CustomerInvoiceList} obj Optional instance to populate.
+   * @return {CustomerInvoiceList} The populated <code>CustomerInvoiceList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class CustomerInvoiceList {
 }
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/Pagination} pagination
- * @type {module:vendordfshipping_v2021_12_28/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 CustomerInvoiceList.prototype.pagination = undefined
 
 /**
  * Represents a customer invoice within the `CustomerInvoiceList`.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/CustomerInvoice>} customerInvoices
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/CustomerInvoice>}
+ * @member {[CustomerInvoice]} customerInvoices
+ * @type {[CustomerInvoice]}
  */
 CustomerInvoiceList.prototype.customerInvoices = undefined

@@ -34,8 +34,8 @@ export class ShipmentDetails {
    * Constructs a <code>ShipmentDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ShipmentDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ShipmentDetails} The populated <code>ShipmentDetails</code> instance.
+   * @param {ShipmentDetails} obj Optional instance to populate.
+   * @return {ShipmentDetails} The populated <code>ShipmentDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class ShipmentDetails {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/Pagination} pagination
- * @type {module:vendorshipments_v1/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ShipmentDetails.prototype.pagination = undefined
 
 /**
  * A list of one or more shipments with underlying details.
- * @member {Array.<module:vendorshipments_v1/model/Shipment>} shipments
- * @type {Array.<module:vendorshipments_v1/model/Shipment>}
+ * @member {[Shipment]} shipments
+ * @type {[Shipment]}
  */
 ShipmentDetails.prototype.shipments = undefined

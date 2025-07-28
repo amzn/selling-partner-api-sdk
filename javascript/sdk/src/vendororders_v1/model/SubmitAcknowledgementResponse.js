@@ -34,8 +34,8 @@ export class SubmitAcknowledgementResponse {
    * Constructs a <code>SubmitAcknowledgementResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/SubmitAcknowledgementResponse} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/SubmitAcknowledgementResponse} The populated <code>SubmitAcknowledgementResponse</code> instance.
+   * @param {SubmitAcknowledgementResponse} obj Optional instance to populate.
+   * @return {SubmitAcknowledgementResponse} The populated <code>SubmitAcknowledgementResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class SubmitAcknowledgementResponse {
 }
 
 /**
- * @member {module:vendororders_v1/model/TransactionId} payload
- * @type {module:vendororders_v1/model/TransactionId}
+ * @member {TransactionId} payload
+ * @type {TransactionId}
  */
 SubmitAcknowledgementResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:vendororders_v1/model/Error>} errors
- * @type {Array.<module:vendororders_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 SubmitAcknowledgementResponse.prototype.errors = undefined

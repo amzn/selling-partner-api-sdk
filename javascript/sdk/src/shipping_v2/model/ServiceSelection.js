@@ -24,7 +24,7 @@ export class ServiceSelection {
    * Service Selection Criteria.
    * @alias module:shipping_v2/model/ServiceSelection
    * @class
-   * @param serviceId {Array.<String>} A list of ServiceId.
+   * @param serviceId {[String]} A list of ServiceId.
    */
   constructor (serviceId) {
     this.serviceId = serviceId
@@ -34,8 +34,8 @@ export class ServiceSelection {
    * Constructs a <code>ServiceSelection</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/ServiceSelection} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/ServiceSelection} The populated <code>ServiceSelection</code> instance.
+   * @param {ServiceSelection} obj Optional instance to populate.
+   * @return {ServiceSelection} The populated <code>ServiceSelection</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class ServiceSelection {
 
 /**
  * A list of ServiceId.
- * @member {Array.<String>} serviceId
- * @type {Array.<String>}
+ * @member {[String]} serviceId
+ * @type {[String]}
  */
 ServiceSelection.prototype.serviceId = undefined

@@ -30,7 +30,7 @@ export class Vehicle {
    * @class
    * @param make {String} Vehicle Brand.
    * @param model {String} Specific model of a vehicle.
-   * @param identifiers {Array.<module:vehicles_v2024_11_01/model/VehicleIdentifiers>} Identifiers that can be used to identify the vehicle uniquely
+   * @param identifiers {[VehicleIdentifiers]} Identifiers that can be used to identify the vehicle uniquely
    */
   constructor (make, model, identifiers) {
     this.make = make
@@ -42,8 +42,8 @@ export class Vehicle {
    * Constructs a <code>Vehicle</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vehicles_v2024_11_01/model/Vehicle} obj Optional instance to populate.
-   * @return {module:vehicles_v2024_11_01/model/Vehicle} The populated <code>Vehicle</code> instance.
+   * @param {Vehicle} obj Optional instance to populate.
+   * @return {Vehicle} The populated <code>Vehicle</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -120,20 +120,20 @@ Vehicle.prototype.energy = undefined
 
 /**
  * Engine output of vehicle.
- * @member {Array.<module:vehicles_v2024_11_01/model/EngineOutput>} engineOutput
- * @type {Array.<module:vehicles_v2024_11_01/model/EngineOutput>}
+ * @member {[EngineOutput]} engineOutput
+ * @type {[EngineOutput]}
  */
 Vehicle.prototype.engineOutput = undefined
 
 /**
- * @member {module:vehicles_v2024_11_01/model/MonthAndYear} manufacturingStartDate
- * @type {module:vehicles_v2024_11_01/model/MonthAndYear}
+ * @member {MonthAndYear} manufacturingStartDate
+ * @type {MonthAndYear}
  */
 Vehicle.prototype.manufacturingStartDate = undefined
 
 /**
- * @member {module:vehicles_v2024_11_01/model/MonthAndYear} manufacturingStopDate
- * @type {module:vehicles_v2024_11_01/model/MonthAndYear}
+ * @member {MonthAndYear} manufacturingStopDate
+ * @type {MonthAndYear}
  */
 Vehicle.prototype.manufacturingStopDate = undefined
 
@@ -145,14 +145,14 @@ Vehicle.prototype.manufacturingStopDate = undefined
 Vehicle.prototype.lastProcessedDate = undefined
 
 /**
- * @member {module:vehicles_v2024_11_01/model/VehicleStatusInCatalog} status
- * @type {module:vehicles_v2024_11_01/model/VehicleStatusInCatalog}
+ * @member {VehicleStatusInCatalog} status
+ * @type {VehicleStatusInCatalog}
  */
 Vehicle.prototype.status = undefined
 
 /**
  * Identifiers that can be used to identify the vehicle uniquely
- * @member {Array.<module:vehicles_v2024_11_01/model/VehicleIdentifiers>} identifiers
- * @type {Array.<module:vehicles_v2024_11_01/model/VehicleIdentifiers>}
+ * @member {[VehicleIdentifiers]} identifiers
+ * @type {[VehicleIdentifiers]}
  */
 Vehicle.prototype.identifiers = undefined

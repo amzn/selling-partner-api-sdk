@@ -34,8 +34,8 @@ export class GetSubscriptionResponse {
    * Constructs a <code>GetSubscriptionResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/GetSubscriptionResponse} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/GetSubscriptionResponse} The populated <code>GetSubscriptionResponse</code> instance.
+   * @param {GetSubscriptionResponse} obj Optional instance to populate.
+   * @return {GetSubscriptionResponse} The populated <code>GetSubscriptionResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetSubscriptionResponse {
 }
 
 /**
- * @member {module:notifications_v1/model/Subscription} payload
- * @type {module:notifications_v1/model/Subscription}
+ * @member {Subscription} payload
+ * @type {Subscription}
  */
 GetSubscriptionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:notifications_v1/model/Error>} errors
- * @type {Array.<module:notifications_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetSubscriptionResponse.prototype.errors = undefined

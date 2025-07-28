@@ -36,8 +36,8 @@ export class ProductTypeVersion {
    * Constructs a <code>ProductTypeVersion</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:producttypedefinitions_v2020_09_01/model/ProductTypeVersion} obj Optional instance to populate.
-   * @return {module:producttypedefinitions_v2020_09_01/model/ProductTypeVersion} The populated <code>ProductTypeVersion</code> instance.
+   * @param {ProductTypeVersion} obj Optional instance to populate.
+   * @return {ProductTypeVersion} The populated <code>ProductTypeVersion</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

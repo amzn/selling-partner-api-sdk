@@ -40,8 +40,8 @@ export class CreateReturnItem {
    * Constructs a <code>CreateReturnItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateReturnItem} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/CreateReturnItem} The populated <code>CreateReturnItem</code> instance.
+   * @param {CreateReturnItem} obj Optional instance to populate.
+   * @return {CreateReturnItem} The populated <code>CreateReturnItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

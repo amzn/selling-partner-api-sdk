@@ -34,8 +34,8 @@ export class PackageDimensions {
    * Constructs a <code>PackageDimensions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/PackageDimensions} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/PackageDimensions} The populated <code>PackageDimensions</code> instance.
+   * @param {PackageDimensions} obj Optional instance to populate.
+   * @return {PackageDimensions} The populated <code>PackageDimensions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,13 +83,13 @@ PackageDimensions.prototype.width = undefined
 PackageDimensions.prototype.height = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/UnitOfLength} unit
- * @type {module:merchantfulfillment_v0/model/UnitOfLength}
+ * @member {UnitOfLength} unit
+ * @type {UnitOfLength}
  */
 PackageDimensions.prototype.unit = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/PredefinedPackageDimensions} predefinedPackageDimensions
- * @type {module:merchantfulfillment_v0/model/PredefinedPackageDimensions}
+ * @member {PredefinedPackageDimensions} predefinedPackageDimensions
+ * @type {PredefinedPackageDimensions}
  */
 PackageDimensions.prototype.predefinedPackageDimensions = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class UnitOfWeight.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class UnitOfWeight {
@@ -34,7 +34,7 @@ export class UnitOfWeight {
   /**
     * Returns a <code>UnitOfWeight</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/UnitOfWeight} The enum <code>UnitOfWeight</code> value.
+    * @return {UnitOfWeight} The enum <code>UnitOfWeight</code> value.
     */
   static constructFromObject (object) {
     return object

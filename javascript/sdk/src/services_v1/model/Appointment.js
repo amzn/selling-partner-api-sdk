@@ -35,8 +35,8 @@ export class Appointment {
    * Constructs a <code>Appointment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/Appointment} obj Optional instance to populate.
-   * @return {module:services_v1/model/Appointment} The populated <code>Appointment</code> instance.
+   * @param {Appointment} obj Optional instance to populate.
+   * @return {Appointment} The populated <code>Appointment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -98,21 +98,21 @@ Appointment.AppointmentStatusEnum = {
 
 /**
  * The status of the appointment.
- * @member {module:services_v1/model/Appointment.AppointmentStatusEnum} appointmentStatus
- * @type {module:services_v1/model/Appointment.AppointmentStatusEnum}
+ * @member {String} appointmentStatus
+ * @type {String}
  */
 Appointment.prototype.appointmentStatus = undefined
 
 /**
- * @member {module:services_v1/model/AppointmentTime} appointmentTime
- * @type {module:services_v1/model/AppointmentTime}
+ * @member {AppointmentTime} appointmentTime
+ * @type {AppointmentTime}
  */
 Appointment.prototype.appointmentTime = undefined
 
 /**
  * A list of technicians assigned to the service job.
- * @member {Array.<module:services_v1/model/Technician>} assignedTechnicians
- * @type {Array.<module:services_v1/model/Technician>}
+ * @member {[Technician]} assignedTechnicians
+ * @type {[Technician]}
  */
 Appointment.prototype.assignedTechnicians = undefined
 
@@ -124,7 +124,7 @@ Appointment.prototype.assignedTechnicians = undefined
 Appointment.prototype.rescheduledAppointmentId = undefined
 
 /**
- * @member {module:services_v1/model/Poa} poa
- * @type {module:services_v1/model/Poa}
+ * @member {Poa} poa
+ * @type {Poa}
  */
 Appointment.prototype.poa = undefined

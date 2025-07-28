@@ -35,8 +35,8 @@ export class CreateFulfillmentReturnResult {
    * Constructs a <code>CreateFulfillmentReturnResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResult} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResult} The populated <code>CreateFulfillmentReturnResult</code> instance.
+   * @param {CreateFulfillmentReturnResult} obj Optional instance to populate.
+   * @return {CreateFulfillmentReturnResult} The populated <code>CreateFulfillmentReturnResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,21 +62,21 @@ export class CreateFulfillmentReturnResult {
 
 /**
  * An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>} returnItems
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnItem>}
+ * @member {[ReturnItem]} returnItems
+ * @type {[ReturnItem]}
  */
 CreateFulfillmentReturnResult.prototype.returnItems = undefined
 
 /**
  * An array of invalid return item information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/InvalidReturnItem>} invalidReturnItems
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/InvalidReturnItem>}
+ * @member {[InvalidReturnItem]} invalidReturnItems
+ * @type {[InvalidReturnItem]}
  */
 CreateFulfillmentReturnResult.prototype.invalidReturnItems = undefined
 
 /**
  * An array of return authorization information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>} returnAuthorizations
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ReturnAuthorization>}
+ * @member {[ReturnAuthorization]} returnAuthorizations
+ * @type {[ReturnAuthorization]}
  */
 CreateFulfillmentReturnResult.prototype.returnAuthorizations = undefined

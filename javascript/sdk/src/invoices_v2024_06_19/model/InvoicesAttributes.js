@@ -33,8 +33,8 @@ export class InvoicesAttributes {
    * Constructs a <code>InvoicesAttributes</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoices_v2024_06_19/model/InvoicesAttributes} obj Optional instance to populate.
-   * @return {module:invoices_v2024_06_19/model/InvoicesAttributes} The populated <code>InvoicesAttributes</code> instance.
+   * @param {InvoicesAttributes} obj Optional instance to populate.
+   * @return {InvoicesAttributes} The populated <code>InvoicesAttributes</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,28 +61,28 @@ export class InvoicesAttributes {
 
 /**
  * A list of all the options that are available for the invoice status attribute.
- * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} invoiceStatusOptions
- * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
+ * @member {[AttributeOption]} invoiceStatusOptions
+ * @type {[AttributeOption]}
  */
 InvoicesAttributes.prototype.invoiceStatusOptions = undefined
 
 /**
  * A list of all the options that are available for the invoice type attribute.
- * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} invoiceTypeOptions
- * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
+ * @member {[AttributeOption]} invoiceTypeOptions
+ * @type {[AttributeOption]}
  */
 InvoicesAttributes.prototype.invoiceTypeOptions = undefined
 
 /**
  * A list of all the options that are available for the transaction identifier name attribute.
- * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} transactionIdentifierNameOptions
- * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
+ * @member {[AttributeOption]} transactionIdentifierNameOptions
+ * @type {[AttributeOption]}
  */
 InvoicesAttributes.prototype.transactionIdentifierNameOptions = undefined
 
 /**
  * A list of all the options that are available for the transaction type attribute.
- * @member {Array.<module:invoices_v2024_06_19/model/AttributeOption>} transactionTypeOptions
- * @type {Array.<module:invoices_v2024_06_19/model/AttributeOption>}
+ * @member {[AttributeOption]} transactionTypeOptions
+ * @type {[AttributeOption]}
  */
 InvoicesAttributes.prototype.transactionTypeOptions = undefined

@@ -34,8 +34,8 @@ export class GetServiceJobByServiceJobIdResponse {
    * Constructs a <code>GetServiceJobByServiceJobIdResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/GetServiceJobByServiceJobIdResponse} obj Optional instance to populate.
-   * @return {module:services_v1/model/GetServiceJobByServiceJobIdResponse} The populated <code>GetServiceJobByServiceJobIdResponse</code> instance.
+   * @param {GetServiceJobByServiceJobIdResponse} obj Optional instance to populate.
+   * @return {GetServiceJobByServiceJobIdResponse} The populated <code>GetServiceJobByServiceJobIdResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetServiceJobByServiceJobIdResponse {
 }
 
 /**
- * @member {module:services_v1/model/ServiceJob} payload
- * @type {module:services_v1/model/ServiceJob}
+ * @member {ServiceJob} payload
+ * @type {ServiceJob}
  */
 GetServiceJobByServiceJobIdResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:services_v1/model/Error>} errors
- * @type {Array.<module:services_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetServiceJobByServiceJobIdResponse.prototype.errors = undefined

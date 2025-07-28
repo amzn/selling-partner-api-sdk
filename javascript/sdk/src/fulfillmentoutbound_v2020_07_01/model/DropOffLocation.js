@@ -24,7 +24,7 @@ export class DropOffLocation {
    * The preferred location to leave packages at the destination address.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation
    * @class
-   * @param type {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation.TypeEnum} Specifies the preferred location to leave the package at the destination address.
+   * @param type {String} Specifies the preferred location to leave the package at the destination address.
    */
   constructor (type) {
     this.type = type
@@ -34,8 +34,8 @@ export class DropOffLocation {
    * Constructs a <code>DropOffLocation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation} The populated <code>DropOffLocation</code> instance.
+   * @param {DropOffLocation} obj Optional instance to populate.
+   * @return {DropOffLocation} The populated <code>DropOffLocation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -116,14 +116,14 @@ DropOffLocation.TypeEnum = {
 
 /**
  * Specifies the preferred location to leave the package at the destination address.
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation.TypeEnum} type
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 DropOffLocation.prototype.type = undefined
 
 /**
  * Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the `type` field. If the `type` is set to `FALLBACK_NEIGHBOR_DELIVERY`, the `attributes` object should include the exact keys `neighborName` and `houseNumber` to provide the name and house number of the designated neighbor.
- * @member {Object.<String, String>} attributes
- * @type {Object.<String, String>}
+ * @member {{String: String}} attributes
+ * @type {{String: String}}
  */
 DropOffLocation.prototype.attributes = undefined

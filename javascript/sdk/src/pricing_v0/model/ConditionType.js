@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ConditionType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ConditionType {
@@ -52,7 +52,7 @@ export class ConditionType {
   /**
     * Returns a <code>ConditionType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:pricing_v0/model/ConditionType} The enum <code>ConditionType</code> value.
+    * @return {ConditionType} The enum <code>ConditionType</code> value.
     */
   static constructFromObject (object) {
     return object

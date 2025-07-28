@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class DimensionUnitOfMeasurement.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class DimensionUnitOfMeasurement {
@@ -34,7 +34,7 @@ export class DimensionUnitOfMeasurement {
   /**
     * Returns a <code>DimensionUnitOfMeasurement</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/DimensionUnitOfMeasurement} The enum <code>DimensionUnitOfMeasurement</code> value.
+    * @return {DimensionUnitOfMeasurement} The enum <code>DimensionUnitOfMeasurement</code> value.
     */
   static constructFromObject (object) {
     return object

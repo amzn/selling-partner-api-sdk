@@ -34,8 +34,8 @@ export class GetOffersResponse {
    * Constructs a <code>GetOffersResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/GetOffersResponse} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/GetOffersResponse} The populated <code>GetOffersResponse</code> instance.
+   * @param {GetOffersResponse} obj Optional instance to populate.
+   * @return {GetOffersResponse} The populated <code>GetOffersResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetOffersResponse {
 }
 
 /**
- * @member {module:pricing_v0/model/GetOffersResult} payload
- * @type {module:pricing_v0/model/GetOffersResult}
+ * @member {GetOffersResult} payload
+ * @type {GetOffersResult}
  */
 GetOffersResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:pricing_v0/model/Error>} errors
- * @type {Array.<module:pricing_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetOffersResponse.prototype.errors = undefined

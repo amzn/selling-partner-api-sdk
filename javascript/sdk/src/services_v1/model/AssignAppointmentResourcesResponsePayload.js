@@ -33,8 +33,8 @@ export class AssignAppointmentResourcesResponsePayload {
    * Constructs a <code>AssignAppointmentResourcesResponsePayload</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AssignAppointmentResourcesResponsePayload} obj Optional instance to populate.
-   * @return {module:services_v1/model/AssignAppointmentResourcesResponsePayload} The populated <code>AssignAppointmentResourcesResponsePayload</code> instance.
+   * @param {AssignAppointmentResourcesResponsePayload} obj Optional instance to populate.
+   * @return {AssignAppointmentResourcesResponsePayload} The populated <code>AssignAppointmentResourcesResponsePayload</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class AssignAppointmentResourcesResponsePayload {
 
 /**
  * A list of warnings returned in the sucessful execution response of an API request.
- * @member {Array.<module:services_v1/model/Warning>} warnings
- * @type {Array.<module:services_v1/model/Warning>}
+ * @member {[Warning]} warnings
+ * @type {[Warning]}
  */
 AssignAppointmentResourcesResponsePayload.prototype.warnings = undefined

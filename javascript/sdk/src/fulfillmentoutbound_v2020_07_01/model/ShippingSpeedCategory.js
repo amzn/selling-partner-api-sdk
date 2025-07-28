@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ShippingSpeedCategory.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ShippingSpeedCategory {
@@ -46,7 +46,7 @@ export class ShippingSpeedCategory {
   /**
     * Returns a <code>ShippingSpeedCategory</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory} The enum <code>ShippingSpeedCategory</code> value.
+    * @return {ShippingSpeedCategory} The enum <code>ShippingSpeedCategory</code> value.
     */
   static constructFromObject (object) {
     return object

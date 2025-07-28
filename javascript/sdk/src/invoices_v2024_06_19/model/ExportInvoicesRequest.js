@@ -36,8 +36,8 @@ export class ExportInvoicesRequest {
    * Constructs a <code>ExportInvoicesRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoices_v2024_06_19/model/ExportInvoicesRequest} obj Optional instance to populate.
-   * @return {module:invoices_v2024_06_19/model/ExportInvoicesRequest} The populated <code>ExportInvoicesRequest</code> instance.
+   * @param {ExportInvoicesRequest} obj Optional instance to populate.
+   * @return {ExportInvoicesRequest} The populated <code>ExportInvoicesRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,8 +90,8 @@ ExportInvoicesRequest.prototype.dateStart = undefined
 ExportInvoicesRequest.prototype.externalInvoiceId = undefined
 
 /**
- * @member {module:invoices_v2024_06_19/model/FileFormat} fileFormat
- * @type {module:invoices_v2024_06_19/model/FileFormat}
+ * @member {FileFormat} fileFormat
+ * @type {FileFormat}
  */
 ExportInvoicesRequest.prototype.fileFormat = undefined
 
@@ -118,14 +118,14 @@ ExportInvoicesRequest.prototype.series = undefined
 
 /**
  * A list of statuses that you can use to filter invoices. Use the `getInvoicesAttributes` operation to check invoice status options.  Min count: 1
- * @member {Array.<String>} statuses
- * @type {Array.<String>}
+ * @member {[String]} statuses
+ * @type {[String]}
  */
 ExportInvoicesRequest.prototype.statuses = undefined
 
 /**
- * @member {module:invoices_v2024_06_19/model/TransactionIdentifier} transactionIdentifier
- * @type {module:invoices_v2024_06_19/model/TransactionIdentifier}
+ * @member {TransactionIdentifier} transactionIdentifier
+ * @type {TransactionIdentifier}
  */
 ExportInvoicesRequest.prototype.transactionIdentifier = undefined
 

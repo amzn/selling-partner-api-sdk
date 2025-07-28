@@ -27,9 +27,9 @@ export class ContentDocument {
    * @alias module:apluscontent_v2020_11_01/model/ContentDocument
    * @class
    * @param name {String} The A+ Content document name.
-   * @param contentType {module:apluscontent_v2020_11_01/model/ContentType}
+   * @param contentType {ContentType}
    * @param locale {String} The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn't support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$
-   * @param contentModuleList {Array.<module:apluscontent_v2020_11_01/model/ContentModule>} A list of A+ Content modules.
+   * @param contentModuleList {[ContentModule]} A list of A+ Content modules.
    */
   constructor (name, contentType, locale, contentModuleList) {
     this.name = name
@@ -42,8 +42,8 @@ export class ContentDocument {
    * Constructs a <code>ContentDocument</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ContentDocument} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ContentDocument} The populated <code>ContentDocument</code> instance.
+   * @param {ContentDocument} obj Optional instance to populate.
+   * @return {ContentDocument} The populated <code>ContentDocument</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,8 +77,8 @@ export class ContentDocument {
 ContentDocument.prototype.name = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ContentType} contentType
- * @type {module:apluscontent_v2020_11_01/model/ContentType}
+ * @member {ContentType} contentType
+ * @type {ContentType}
  */
 ContentDocument.prototype.contentType = undefined
 
@@ -98,7 +98,7 @@ ContentDocument.prototype.locale = undefined
 
 /**
  * A list of A+ Content modules.
- * @member {Array.<module:apluscontent_v2020_11_01/model/ContentModule>} contentModuleList
- * @type {Array.<module:apluscontent_v2020_11_01/model/ContentModule>}
+ * @member {[ContentModule]} contentModuleList
+ * @type {[ContentModule]}
  */
 ContentDocument.prototype.contentModuleList = undefined

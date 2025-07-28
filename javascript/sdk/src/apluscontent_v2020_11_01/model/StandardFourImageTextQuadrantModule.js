@@ -25,10 +25,10 @@ export class StandardFourImageTextQuadrantModule {
    * Four standard images with text, presented on a grid of four quadrants.
    * @alias module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule
    * @class
-   * @param block1 {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
-   * @param block2 {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
-   * @param block3 {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
-   * @param block4 {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+   * @param block1 {StandardImageTextBlock}
+   * @param block2 {StandardImageTextBlock}
+   * @param block3 {StandardImageTextBlock}
+   * @param block4 {StandardImageTextBlock}
    */
   constructor (block1, block2, block3, block4) {
     this.block1 = block1
@@ -41,8 +41,8 @@ export class StandardFourImageTextQuadrantModule {
    * Constructs a <code>StandardFourImageTextQuadrantModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardFourImageTextQuadrantModule} The populated <code>StandardFourImageTextQuadrantModule</code> instance.
+   * @param {StandardFourImageTextQuadrantModule} obj Optional instance to populate.
+   * @return {StandardFourImageTextQuadrantModule} The populated <code>StandardFourImageTextQuadrantModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,25 +68,25 @@ export class StandardFourImageTextQuadrantModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block1
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block1
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block1 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block2
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block2
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block2 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block3
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block3
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block3 = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block4
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block4
+ * @type {StandardImageTextBlock}
  */
 StandardFourImageTextQuadrantModule.prototype.block4 = undefined

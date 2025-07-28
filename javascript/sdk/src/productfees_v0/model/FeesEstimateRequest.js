@@ -27,7 +27,7 @@ export class FeesEstimateRequest {
    * @alias module:productfees_v0/model/FeesEstimateRequest
    * @class
    * @param marketplaceId {String} A marketplace identifier.
-   * @param priceToEstimateFees {module:productfees_v0/model/PriceToEstimateFees}
+   * @param priceToEstimateFees {PriceToEstimateFees}
    * @param identifier {String} A unique identifier provided by the caller to track this request.
    */
   constructor (marketplaceId, priceToEstimateFees, identifier) {
@@ -40,8 +40,8 @@ export class FeesEstimateRequest {
    * Constructs a <code>FeesEstimateRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/FeesEstimateRequest} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/FeesEstimateRequest} The populated <code>FeesEstimateRequest</code> instance.
+   * @param {FeesEstimateRequest} obj Optional instance to populate.
+   * @return {FeesEstimateRequest} The populated <code>FeesEstimateRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,8 +82,8 @@ FeesEstimateRequest.prototype.marketplaceId = undefined
 FeesEstimateRequest.prototype.isAmazonFulfilled = undefined
 
 /**
- * @member {module:productfees_v0/model/PriceToEstimateFees} priceToEstimateFees
- * @type {module:productfees_v0/model/PriceToEstimateFees}
+ * @member {PriceToEstimateFees} priceToEstimateFees
+ * @type {PriceToEstimateFees}
  */
 FeesEstimateRequest.prototype.priceToEstimateFees = undefined
 
@@ -95,7 +95,7 @@ FeesEstimateRequest.prototype.priceToEstimateFees = undefined
 FeesEstimateRequest.prototype.identifier = undefined
 
 /**
- * @member {module:productfees_v0/model/OptionalFulfillmentProgram} optionalFulfillmentProgram
- * @type {module:productfees_v0/model/OptionalFulfillmentProgram}
+ * @member {OptionalFulfillmentProgram} optionalFulfillmentProgram
+ * @type {OptionalFulfillmentProgram}
  */
 FeesEstimateRequest.prototype.optionalFulfillmentProgram = undefined

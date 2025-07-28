@@ -35,8 +35,8 @@ export class AsinMetadata {
    * Constructs a <code>AsinMetadata</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/AsinMetadata} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/AsinMetadata} The populated <code>AsinMetadata</code> instance.
+   * @param {AsinMetadata} obj Optional instance to populate.
+   * @return {AsinMetadata} The populated <code>AsinMetadata</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,8 +72,8 @@ AsinMetadata.prototype.asin = undefined
 
 /**
  * The set of ASIN badges.
- * @member {Array.<module:apluscontent_v2020_11_01/model/AsinBadge>} badgeSet
- * @type {Array.<module:apluscontent_v2020_11_01/model/AsinBadge>}
+ * @member {[AsinBadge]} badgeSet
+ * @type {[AsinBadge]}
  */
 AsinMetadata.prototype.badgeSet = undefined
 
@@ -100,7 +100,7 @@ AsinMetadata.prototype.imageUrl = undefined
 
 /**
  * A set of content reference keys.
- * @member {Array.<String>} contentReferenceKeySet
- * @type {Array.<String>}
+ * @member {[String]} contentReferenceKeySet
+ * @type {[String]}
  */
 AsinMetadata.prototype.contentReferenceKeySet = undefined

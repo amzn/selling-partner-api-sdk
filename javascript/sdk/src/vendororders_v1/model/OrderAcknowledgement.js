@@ -27,9 +27,9 @@ export class OrderAcknowledgement {
    * @alias module:vendororders_v1/model/OrderAcknowledgement
    * @class
    * @param purchaseOrderNumber {String} The purchase order number. Formatting Notes: 8-character alpha-numeric code.
-   * @param sellingParty {module:vendororders_v1/model/PartyIdentification}
+   * @param sellingParty {PartyIdentification}
    * @param acknowledgementDate {Date} The date and time when the purchase order is acknowledged, in ISO-8601 date/time format.
-   * @param items {Array.<module:vendororders_v1/model/OrderAcknowledgementItem>} A list of the items being acknowledged with associated details.
+   * @param items {[OrderAcknowledgementItem]} A list of the items being acknowledged with associated details.
    */
   constructor (purchaseOrderNumber, sellingParty, acknowledgementDate, items) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -42,8 +42,8 @@ export class OrderAcknowledgement {
    * Constructs a <code>OrderAcknowledgement</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendororders_v1/model/OrderAcknowledgement} obj Optional instance to populate.
-   * @return {module:vendororders_v1/model/OrderAcknowledgement} The populated <code>OrderAcknowledgement</code> instance.
+   * @param {OrderAcknowledgement} obj Optional instance to populate.
+   * @return {OrderAcknowledgement} The populated <code>OrderAcknowledgement</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ export class OrderAcknowledgement {
 OrderAcknowledgement.prototype.purchaseOrderNumber = undefined
 
 /**
- * @member {module:vendororders_v1/model/PartyIdentification} sellingParty
- * @type {module:vendororders_v1/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 OrderAcknowledgement.prototype.sellingParty = undefined
 
@@ -90,7 +90,7 @@ OrderAcknowledgement.prototype.acknowledgementDate = undefined
 
 /**
  * A list of the items being acknowledged with associated details.
- * @member {Array.<module:vendororders_v1/model/OrderAcknowledgementItem>} items
- * @type {Array.<module:vendororders_v1/model/OrderAcknowledgementItem>}
+ * @member {[OrderAcknowledgementItem]} items
+ * @type {[OrderAcknowledgementItem]}
  */
 OrderAcknowledgement.prototype.items = undefined

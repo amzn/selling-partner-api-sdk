@@ -30,8 +30,8 @@ export class DefaultApi {
     * Constructs a new DefaultApi.
     * @alias module:finances_v0/api/DefaultApi
     * @class
-    * @param {module:finances_v0/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:finances_v0/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -72,7 +72,7 @@ export class DefaultApi {
      * @param {Date} opts.financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The date-time  must be later than FinancialEventGroupStartedAfter and no later than two minutes before the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more than 180 days apart, no financial event groups are returned.
      * @param {Date} opts.financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The date-time must be no later than two minutes before the request was submitted.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventGroupsResponse>}
+     * @return {Promise<ListFinancialEventGroupsResponse>}
      */
   listFinancialEventGroupsWithHttpInfo (opts) {
     opts = opts || {}
@@ -109,7 +109,7 @@ export class DefaultApi {
      * @param {Date} opts.financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The date-time  must be later than FinancialEventGroupStartedAfter and no later than two minutes before the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more than 180 days apart, no financial event groups are returned.
      * @param {Date} opts.financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The date-time must be no later than two minutes before the request was submitted.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventGroupsResponse>}
+     * @return {Promise<ListFinancialEventGroupsResponse>}
      */
   listFinancialEventGroups (opts) {
     return this.listFinancialEventGroupsWithHttpInfo(opts)
@@ -125,7 +125,7 @@ export class DefaultApi {
      * @param {Date} opts.postedAfter A date used for selecting financial events posted after (or at) a specified time. The date-time must be no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
      * @param {Date} opts.postedBefore A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventsResponse>}
+     * @return {Promise<ListFinancialEventsResponse>}
      */
   listFinancialEventsWithHttpInfo (opts) {
     opts = opts || {}
@@ -162,7 +162,7 @@ export class DefaultApi {
      * @param {Date} opts.postedAfter A date used for selecting financial events posted after (or at) a specified time. The date-time must be no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
      * @param {Date} opts.postedBefore A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventsResponse>}
+     * @return {Promise<ListFinancialEventsResponse>}
      */
   listFinancialEvents (opts) {
     return this.listFinancialEventsWithHttpInfo(opts)
@@ -179,7 +179,7 @@ export class DefaultApi {
      * @param {Date} opts.postedAfter A date used for selecting financial events posted after (or at) a specified time. The date-time **must** be more than two minutes before the time of the request, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
      * @param {Date} opts.postedBefore A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60; parameter. Default: Now minus two minutes.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventsResponse>}
+     * @return {Promise<ListFinancialEventsResponse>}
      */
   listFinancialEventsByGroupIdWithHttpInfo (eventGroupId, opts) {
     opts = opts || {}
@@ -223,7 +223,7 @@ export class DefaultApi {
      * @param {Date} opts.postedAfter A date used for selecting financial events posted after (or at) a specified time. The date-time **must** be more than two minutes before the time of the request, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
      * @param {Date} opts.postedBefore A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60; parameter. Default: Now minus two minutes.
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventsResponse>}
+     * @return {Promise<ListFinancialEventsResponse>}
      */
   listFinancialEventsByGroupId (eventGroupId, opts) {
     return this.listFinancialEventsByGroupIdWithHttpInfo(eventGroupId, opts)
@@ -238,7 +238,7 @@ export class DefaultApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with &#39;InvalidInput&#39;. (default to 100)
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventsResponse>}
+     * @return {Promise<ListFinancialEventsResponse>}
      */
   listFinancialEventsByOrderIdWithHttpInfo (orderId, opts) {
     opts = opts || {}
@@ -278,7 +278,7 @@ export class DefaultApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum number of transactions or 10 MB, the API responds with &#39;InvalidInput&#39;. (default to 100)
      * @param {String} opts.nextToken A string token returned in the response of your previous request.
-     * @return {Promise<module:finances_v0/model/ListFinancialEventsResponse>}
+     * @return {Promise<ListFinancialEventsResponse>}
      */
   listFinancialEventsByOrderId (orderId, opts) {
     return this.listFinancialEventsByOrderIdWithHttpInfo(orderId, opts)

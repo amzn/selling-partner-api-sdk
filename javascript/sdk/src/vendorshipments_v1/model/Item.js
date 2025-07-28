@@ -27,7 +27,7 @@ export class Item {
    * @alias module:vendorshipments_v1/model/Item
    * @class
    * @param itemSequenceNumber {String} Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.
-   * @param shippedQuantity {module:vendorshipments_v1/model/ItemQuantity}
+   * @param shippedQuantity {ItemQuantity}
    */
   constructor (itemSequenceNumber, shippedQuantity) {
     this.itemSequenceNumber = itemSequenceNumber
@@ -38,8 +38,8 @@ export class Item {
    * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Item} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Item} The populated <code>Item</code> instance.
+   * @param {Item} obj Optional instance to populate.
+   * @return {Item} The populated <code>Item</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -87,13 +87,13 @@ Item.prototype.amazonProductIdentifier = undefined
 Item.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ItemQuantity} shippedQuantity
- * @type {module:vendorshipments_v1/model/ItemQuantity}
+ * @member {ItemQuantity} shippedQuantity
+ * @type {ItemQuantity}
  */
 Item.prototype.shippedQuantity = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ItemDetails} itemDetails
- * @type {module:vendorshipments_v1/model/ItemDetails}
+ * @member {ItemDetails} itemDetails
+ * @type {ItemDetails}
  */
 Item.prototype.itemDetails = undefined

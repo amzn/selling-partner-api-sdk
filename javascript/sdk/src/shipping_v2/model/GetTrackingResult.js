@@ -28,9 +28,9 @@ export class GetTrackingResult {
    * @class
    * @param trackingId {String} The carrier generated identifier for a package in a purchased shipment.
    * @param alternateLegTrackingId {String} The carrier generated reverse identifier for a returned package in a purchased shipment.
-   * @param eventHistory {Array.<module:shipping_v2/model/Event>} A list of tracking events.
+   * @param eventHistory {[Event]} A list of tracking events.
    * @param promisedDeliveryDate {Date} The date and time by which the shipment is promised to be delivered.
-   * @param summary {module:shipping_v2/model/TrackingSummary}
+   * @param summary {TrackingSummary}
    */
   constructor (trackingId, alternateLegTrackingId, eventHistory, promisedDeliveryDate, summary) {
     this.trackingId = trackingId
@@ -44,8 +44,8 @@ export class GetTrackingResult {
    * Constructs a <code>GetTrackingResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetTrackingResult} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetTrackingResult} The populated <code>GetTrackingResult</code> instance.
+   * @param {GetTrackingResult} obj Optional instance to populate.
+   * @return {GetTrackingResult} The populated <code>GetTrackingResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -87,8 +87,8 @@ GetTrackingResult.prototype.alternateLegTrackingId = undefined
 
 /**
  * A list of tracking events.
- * @member {Array.<module:shipping_v2/model/Event>} eventHistory
- * @type {Array.<module:shipping_v2/model/Event>}
+ * @member {[Event]} eventHistory
+ * @type {[Event]}
  */
 GetTrackingResult.prototype.eventHistory = undefined
 
@@ -100,7 +100,7 @@ GetTrackingResult.prototype.eventHistory = undefined
 GetTrackingResult.prototype.promisedDeliveryDate = undefined
 
 /**
- * @member {module:shipping_v2/model/TrackingSummary} summary
- * @type {module:shipping_v2/model/TrackingSummary}
+ * @member {TrackingSummary} summary
+ * @type {TrackingSummary}
  */
 GetTrackingResult.prototype.summary = undefined

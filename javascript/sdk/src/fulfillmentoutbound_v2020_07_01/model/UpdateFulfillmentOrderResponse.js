@@ -33,8 +33,8 @@ export class UpdateFulfillmentOrderResponse {
    * Constructs a <code>UpdateFulfillmentOrderResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderResponse} The populated <code>UpdateFulfillmentOrderResponse</code> instance.
+   * @param {UpdateFulfillmentOrderResponse} obj Optional instance to populate.
+   * @return {UpdateFulfillmentOrderResponse} The populated <code>UpdateFulfillmentOrderResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class UpdateFulfillmentOrderResponse {
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 UpdateFulfillmentOrderResponse.prototype.errors = undefined

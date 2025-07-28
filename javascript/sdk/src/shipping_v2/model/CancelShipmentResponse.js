@@ -32,8 +32,8 @@ export class CancelShipmentResponse {
    * Constructs a <code>CancelShipmentResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/CancelShipmentResponse} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/CancelShipmentResponse} The populated <code>CancelShipmentResponse</code> instance.
+   * @param {CancelShipmentResponse} obj Optional instance to populate.
+   * @return {CancelShipmentResponse} The populated <code>CancelShipmentResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class CancelShipmentResponse {
 
 /**
  * The payload for the cancelShipment operation.
- * @member {Object.<String, Object>} payload
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} payload
+ * @type {{String: Object}}
  */
 CancelShipmentResponse.prototype.payload = undefined

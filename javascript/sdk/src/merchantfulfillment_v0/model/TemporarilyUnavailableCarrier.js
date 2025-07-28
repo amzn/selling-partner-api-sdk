@@ -34,8 +34,8 @@ export class TemporarilyUnavailableCarrier {
    * Constructs a <code>TemporarilyUnavailableCarrier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/TemporarilyUnavailableCarrier} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/TemporarilyUnavailableCarrier} The populated <code>TemporarilyUnavailableCarrier</code> instance.
+   * @param {TemporarilyUnavailableCarrier} obj Optional instance to populate.
+   * @return {TemporarilyUnavailableCarrier} The populated <code>TemporarilyUnavailableCarrier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -28,7 +28,7 @@ export class CompetitivePriceType {
    * @alias module:pricing_v0/model/CompetitivePriceType
    * @class
    * @param competitivePriceId {String} The pricing model for each price that is returned.  Possible values:  * 1 - New Buy Box Price. * 2 - Used Buy Box Price.
-   * @param price {module:pricing_v0/model/PriceType}
+   * @param price {PriceType}
    */
   constructor (competitivePriceId, price) {
     this.competitivePriceId = competitivePriceId
@@ -39,8 +39,8 @@ export class CompetitivePriceType {
    * Constructs a <code>CompetitivePriceType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/CompetitivePriceType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/CompetitivePriceType} The populated <code>CompetitivePriceType</code> instance.
+   * @param {CompetitivePriceType} obj Optional instance to populate.
+   * @return {CompetitivePriceType} The populated <code>CompetitivePriceType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -78,8 +78,8 @@ export class CompetitivePriceType {
 CompetitivePriceType.prototype.competitivePriceId = undefined
 
 /**
- * @member {module:pricing_v0/model/PriceType} price
- * @type {module:pricing_v0/model/PriceType}
+ * @member {PriceType} price
+ * @type {PriceType}
  */
 CompetitivePriceType.prototype.price = undefined
 
@@ -98,8 +98,8 @@ CompetitivePriceType.prototype.condition = undefined
 CompetitivePriceType.prototype.subcondition = undefined
 
 /**
- * @member {module:pricing_v0/model/OfferCustomerType} offerType
- * @type {module:pricing_v0/model/OfferCustomerType}
+ * @member {OfferCustomerType} offerType
+ * @type {OfferCustomerType}
  */
 CompetitivePriceType.prototype.offerType = undefined
 
@@ -111,8 +111,8 @@ CompetitivePriceType.prototype.offerType = undefined
 CompetitivePriceType.prototype.quantityTier = undefined
 
 /**
- * @member {module:pricing_v0/model/QuantityDiscountType} quantityDiscountType
- * @type {module:pricing_v0/model/QuantityDiscountType}
+ * @member {QuantityDiscountType} quantityDiscountType
+ * @type {QuantityDiscountType}
  */
 CompetitivePriceType.prototype.quantityDiscountType = undefined
 

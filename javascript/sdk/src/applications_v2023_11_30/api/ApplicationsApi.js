@@ -29,8 +29,8 @@ export class ApplicationsApi {
     * Constructs a new ApplicationsApi.
     * @alias module:applications_v2023_11_30/api/ApplicationsApi
     * @class
-    * @param {module:applications_v2023_11_30/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:applications_v2023_11_30/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance

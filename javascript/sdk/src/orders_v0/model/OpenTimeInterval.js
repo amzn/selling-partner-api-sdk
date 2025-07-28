@@ -32,8 +32,8 @@ export class OpenTimeInterval {
    * Constructs a <code>OpenTimeInterval</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/OpenTimeInterval} obj Optional instance to populate.
-   * @return {module:orders_v0/model/OpenTimeInterval} The populated <code>OpenTimeInterval</code> instance.
+   * @param {OpenTimeInterval} obj Optional instance to populate.
+   * @return {OpenTimeInterval} The populated <code>OpenTimeInterval</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -38,8 +38,8 @@ export class CreateInventoryItemRequest {
    * Constructs a <code>CreateInventoryItemRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/CreateInventoryItemRequest} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/CreateInventoryItemRequest} The populated <code>CreateInventoryItemRequest</code> instance.
+   * @param {CreateInventoryItemRequest} obj Optional instance to populate.
+   * @return {CreateInventoryItemRequest} The populated <code>CreateInventoryItemRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

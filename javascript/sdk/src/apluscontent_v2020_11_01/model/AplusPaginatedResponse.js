@@ -36,8 +36,8 @@ export class AplusPaginatedResponse {
    * Constructs a <code>AplusPaginatedResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/AplusPaginatedResponse} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/AplusPaginatedResponse} The populated <code>AplusPaginatedResponse</code> instance.
+   * @param {AplusPaginatedResponse} obj Optional instance to populate.
+   * @return {AplusPaginatedResponse} The populated <code>AplusPaginatedResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,8 +63,8 @@ export class AplusPaginatedResponse {
 
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 AplusPaginatedResponse.prototype.warnings = undefined
 
@@ -78,7 +78,7 @@ AplusPaginatedResponse.prototype.nextPageToken = undefined
 // Implement AplusResponse interface:
 /**
  * A set of messages to the user, such as warnings or comments.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} warnings
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} warnings
+ * @type {[Error]}
  */
 AplusResponse.prototype.warnings = undefined

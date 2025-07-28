@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class BankAccountOwnershipType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class BankAccountOwnershipType {
@@ -40,7 +40,7 @@ export class BankAccountOwnershipType {
   /**
     * Returns a <code>BankAccountOwnershipType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/BankAccountOwnershipType} The enum <code>BankAccountOwnershipType</code> value.
+    * @return {BankAccountOwnershipType} The enum <code>BankAccountOwnershipType</code> value.
     */
   static constructFromObject (object) {
     return object

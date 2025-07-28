@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class Stackability.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class Stackability {
@@ -34,7 +34,7 @@ export class Stackability {
   /**
     * Returns a <code>Stackability</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentinbound_v2024_03_20/model/Stackability} The enum <code>Stackability</code> value.
+    * @return {Stackability} The enum <code>Stackability</code> value.
     */
   static constructFromObject (object) {
     return object

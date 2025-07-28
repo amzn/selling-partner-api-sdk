@@ -37,8 +37,8 @@ export class OfferIdentifier {
    * Constructs a <code>OfferIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/OfferIdentifier} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/OfferIdentifier} The populated <code>OfferIdentifier</code> instance.
+   * @param {OfferIdentifier} obj Optional instance to populate.
+   * @return {OfferIdentifier} The populated <code>OfferIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -93,7 +93,7 @@ OfferIdentifier.prototype.sku = undefined
 OfferIdentifier.prototype.asin = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/FulfillmentType} fulfillmentType
- * @type {module:pricing_v2022_05_01/model/FulfillmentType}
+ * @member {FulfillmentType} fulfillmentType
+ * @type {FulfillmentType}
  */
 OfferIdentifier.prototype.fulfillmentType = undefined

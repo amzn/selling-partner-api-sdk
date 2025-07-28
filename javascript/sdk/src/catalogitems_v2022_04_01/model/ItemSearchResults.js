@@ -28,9 +28,9 @@ export class ItemSearchResults {
    * @alias module:catalogitems_v2022_04_01/model/ItemSearchResults
    * @class
    * @param numberOfResults {Number} For searches that are based on `identifiers`, `numberOfResults` is the total number of Amazon catalog items found. For searches that are based on `keywords`, `numberOfResults` is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.
-   * @param pagination {module:catalogitems_v2022_04_01/model/Pagination}
-   * @param refinements {module:catalogitems_v2022_04_01/model/Refinements}
-   * @param items {Array.<module:catalogitems_v2022_04_01/model/Item>} A list of items from the Amazon catalog.
+   * @param pagination {Pagination}
+   * @param refinements {Refinements}
+   * @param items {[Item]} A list of items from the Amazon catalog.
    */
   constructor (numberOfResults, pagination, refinements, items) {
     this.numberOfResults = numberOfResults
@@ -43,8 +43,8 @@ export class ItemSearchResults {
    * Constructs a <code>ItemSearchResults</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/ItemSearchResults} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/ItemSearchResults} The populated <code>ItemSearchResults</code> instance.
+   * @param {ItemSearchResults} obj Optional instance to populate.
+   * @return {ItemSearchResults} The populated <code>ItemSearchResults</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,20 +77,20 @@ export class ItemSearchResults {
 ItemSearchResults.prototype.numberOfResults = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Pagination} pagination
- * @type {module:catalogitems_v2022_04_01/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ItemSearchResults.prototype.pagination = undefined
 
 /**
- * @member {module:catalogitems_v2022_04_01/model/Refinements} refinements
- * @type {module:catalogitems_v2022_04_01/model/Refinements}
+ * @member {Refinements} refinements
+ * @type {Refinements}
  */
 ItemSearchResults.prototype.refinements = undefined
 
 /**
  * A list of items from the Amazon catalog.
- * @member {Array.<module:catalogitems_v2022_04_01/model/Item>} items
- * @type {Array.<module:catalogitems_v2022_04_01/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 ItemSearchResults.prototype.items = undefined

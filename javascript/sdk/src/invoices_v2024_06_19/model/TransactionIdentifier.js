@@ -32,8 +32,8 @@ export class TransactionIdentifier {
    * Constructs a <code>TransactionIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoices_v2024_06_19/model/TransactionIdentifier} obj Optional instance to populate.
-   * @return {module:invoices_v2024_06_19/model/TransactionIdentifier} The populated <code>TransactionIdentifier</code> instance.
+   * @param {TransactionIdentifier} obj Optional instance to populate.
+   * @return {TransactionIdentifier} The populated <code>TransactionIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

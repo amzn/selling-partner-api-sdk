@@ -33,8 +33,8 @@ export class TransportationDetails {
    * Constructs a <code>TransportationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/TransportationDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/TransportationDetails} The populated <code>TransportationDetails</code> instance.
+   * @param {TransportationDetails} obj Optional instance to populate.
+   * @return {TransportationDetails} The populated <code>TransportationDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -90,8 +90,8 @@ TransportationDetails.ShipModeEnum = {
 
 /**
  * The type of shipment.
- * @member {module:vendorshipments_v1/model/TransportationDetails.ShipModeEnum} shipMode
- * @type {module:vendorshipments_v1/model/TransportationDetails.ShipModeEnum}
+ * @member {String} shipMode
+ * @type {String}
  */
 TransportationDetails.prototype.shipMode = undefined
 
@@ -123,8 +123,8 @@ TransportationDetails.TransportationModeEnum = {
 
 /**
  * The mode of transportation for this shipment.
- * @member {module:vendorshipments_v1/model/TransportationDetails.TransportationModeEnum} transportationMode
- * @type {module:vendorshipments_v1/model/TransportationDetails.TransportationModeEnum}
+ * @member {String} transportationMode
+ * @type {String}
  */
 TransportationDetails.prototype.transportationMode = undefined
 
@@ -150,8 +150,8 @@ TransportationDetails.prototype.estimatedDeliveryDate = undefined
 TransportationDetails.prototype.shipmentDeliveryDate = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/CarrierDetails} carrierDetails
- * @type {module:vendorshipments_v1/model/CarrierDetails}
+ * @member {CarrierDetails} carrierDetails
+ * @type {CarrierDetails}
  */
 TransportationDetails.prototype.carrierDetails = undefined
 

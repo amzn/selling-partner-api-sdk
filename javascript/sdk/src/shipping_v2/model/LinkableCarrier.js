@@ -33,8 +33,8 @@ export class LinkableCarrier {
    * Constructs a <code>LinkableCarrier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/LinkableCarrier} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/LinkableCarrier} The populated <code>LinkableCarrier</code> instance.
+   * @param {LinkableCarrier} obj Optional instance to populate.
+   * @return {LinkableCarrier} The populated <code>LinkableCarrier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,7 +66,7 @@ LinkableCarrier.prototype.carrierId = undefined
 
 /**
  * A list of LinkableAccountType
- * @member {Array.<module:shipping_v2/model/LinkableAccountType>} linkableAccountTypes
- * @type {Array.<module:shipping_v2/model/LinkableAccountType>}
+ * @member {[LinkableAccountType]} linkableAccountTypes
+ * @type {[LinkableAccountType]}
  */
 LinkableCarrier.prototype.linkableAccountTypes = undefined

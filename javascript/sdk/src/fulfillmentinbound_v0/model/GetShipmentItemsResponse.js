@@ -34,8 +34,8 @@ export class GetShipmentItemsResponse {
    * Constructs a <code>GetShipmentItemsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/GetShipmentItemsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/GetShipmentItemsResponse} The populated <code>GetShipmentItemsResponse</code> instance.
+   * @param {GetShipmentItemsResponse} obj Optional instance to populate.
+   * @return {GetShipmentItemsResponse} The populated <code>GetShipmentItemsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetShipmentItemsResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v0/model/GetShipmentItemsResult} payload
- * @type {module:fulfillmentinbound_v0/model/GetShipmentItemsResult}
+ * @member {GetShipmentItemsResult} payload
+ * @type {GetShipmentItemsResult}
  */
 GetShipmentItemsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fulfillmentinbound_v0/model/Error>} errors
- * @type {Array.<module:fulfillmentinbound_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetShipmentItemsResponse.prototype.errors = undefined

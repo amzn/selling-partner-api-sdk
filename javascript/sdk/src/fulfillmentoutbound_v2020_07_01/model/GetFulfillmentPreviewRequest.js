@@ -28,8 +28,8 @@ export class GetFulfillmentPreviewRequest {
    * The request body schema for the &#x60;getFulfillmentPreview&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewRequest
    * @class
-   * @param address {module:fulfillmentoutbound_v2020_07_01/model/Address}
-   * @param items {Array.<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewItem>} An array of fulfillment preview item information.
+   * @param address {Address}
+   * @param items {[GetFulfillmentPreviewItem]} An array of fulfillment preview item information.
    */
   constructor (address, items) {
     this.address = address
@@ -40,8 +40,8 @@ export class GetFulfillmentPreviewRequest {
    * Constructs a <code>GetFulfillmentPreviewRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewRequest} The populated <code>GetFulfillmentPreviewRequest</code> instance.
+   * @param {GetFulfillmentPreviewRequest} obj Optional instance to populate.
+   * @return {GetFulfillmentPreviewRequest} The populated <code>GetFulfillmentPreviewRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,22 +77,22 @@ export class GetFulfillmentPreviewRequest {
 GetFulfillmentPreviewRequest.prototype.marketplaceId = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} address
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 GetFulfillmentPreviewRequest.prototype.address = undefined
 
 /**
  * An array of fulfillment preview item information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewItem>} items
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentPreviewItem>}
+ * @member {[GetFulfillmentPreviewItem]} items
+ * @type {[GetFulfillmentPreviewItem]}
  */
 GetFulfillmentPreviewRequest.prototype.items = undefined
 
 /**
  * ShippingSpeedCategory List
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory>} shippingSpeedCategories
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory>}
+ * @member {[ShippingSpeedCategory]} shippingSpeedCategories
+ * @type {[ShippingSpeedCategory]}
  */
 GetFulfillmentPreviewRequest.prototype.shippingSpeedCategories = undefined
 
@@ -112,7 +112,7 @@ GetFulfillmentPreviewRequest.prototype.includeDeliveryWindows = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>}
+ * @member {[FeatureSettings]} featureConstraints
+ * @type {[FeatureSettings]}
  */
 GetFulfillmentPreviewRequest.prototype.featureConstraints = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class CarrierCodeType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class CarrierCodeType {
@@ -28,7 +28,7 @@ export class CarrierCodeType {
   /**
     * Returns a <code>CarrierCodeType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/CarrierCodeType} The enum <code>CarrierCodeType</code> value.
+    * @return {CarrierCodeType} The enum <code>CarrierCodeType</code> value.
     */
   static constructFromObject (object) {
     return object

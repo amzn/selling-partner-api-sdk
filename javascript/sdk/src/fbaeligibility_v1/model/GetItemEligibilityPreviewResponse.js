@@ -34,8 +34,8 @@ export class GetItemEligibilityPreviewResponse {
    * Constructs a <code>GetItemEligibilityPreviewResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbaeligibility_v1/model/GetItemEligibilityPreviewResponse} obj Optional instance to populate.
-   * @return {module:fbaeligibility_v1/model/GetItemEligibilityPreviewResponse} The populated <code>GetItemEligibilityPreviewResponse</code> instance.
+   * @param {GetItemEligibilityPreviewResponse} obj Optional instance to populate.
+   * @return {GetItemEligibilityPreviewResponse} The populated <code>GetItemEligibilityPreviewResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetItemEligibilityPreviewResponse {
 }
 
 /**
- * @member {module:fbaeligibility_v1/model/ItemEligibilityPreview} payload
- * @type {module:fbaeligibility_v1/model/ItemEligibilityPreview}
+ * @member {ItemEligibilityPreview} payload
+ * @type {ItemEligibilityPreview}
  */
 GetItemEligibilityPreviewResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fbaeligibility_v1/model/Error>} errors
- * @type {Array.<module:fbaeligibility_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetItemEligibilityPreviewResponse.prototype.errors = undefined

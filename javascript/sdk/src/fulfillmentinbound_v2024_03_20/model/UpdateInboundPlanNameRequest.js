@@ -34,8 +34,8 @@ export class UpdateInboundPlanNameRequest {
    * Constructs a <code>UpdateInboundPlanNameRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateInboundPlanNameRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/UpdateInboundPlanNameRequest} The populated <code>UpdateInboundPlanNameRequest</code> instance.
+   * @param {UpdateInboundPlanNameRequest} obj Optional instance to populate.
+   * @return {UpdateInboundPlanNameRequest} The populated <code>UpdateInboundPlanNameRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

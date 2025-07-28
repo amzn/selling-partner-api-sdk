@@ -26,7 +26,7 @@ export class PrimaryContact {
    * @alias module:sellers_v1/model/PrimaryContact
    * @class
    * @param name {String} The full name of the seller's primary contact.
-   * @param address {module:sellers_v1/model/Address}
+   * @param address {Address}
    */
   constructor (name, address) {
     this.name = name
@@ -37,8 +37,8 @@ export class PrimaryContact {
    * Constructs a <code>PrimaryContact</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellers_v1/model/PrimaryContact} obj Optional instance to populate.
-   * @return {module:sellers_v1/model/PrimaryContact} The populated <code>PrimaryContact</code> instance.
+   * @param {PrimaryContact} obj Optional instance to populate.
+   * @return {PrimaryContact} The populated <code>PrimaryContact</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,8 +70,8 @@ export class PrimaryContact {
 PrimaryContact.prototype.name = undefined
 
 /**
- * @member {module:sellers_v1/model/Address} address
- * @type {module:sellers_v1/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 PrimaryContact.prototype.address = undefined
 

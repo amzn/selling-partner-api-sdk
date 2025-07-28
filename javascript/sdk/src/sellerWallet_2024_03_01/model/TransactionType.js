@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class TransactionType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class TransactionType {
@@ -34,7 +34,7 @@ export class TransactionType {
   /**
     * Returns a <code>TransactionType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/TransactionType} The enum <code>TransactionType</code> value.
+    * @return {TransactionType} The enum <code>TransactionType</code> value.
     */
   static constructFromObject (object) {
     return object

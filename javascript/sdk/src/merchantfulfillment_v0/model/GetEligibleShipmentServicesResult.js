@@ -28,7 +28,7 @@ export class GetEligibleShipmentServicesResult {
    * The payload for the &#x60;getEligibleShipmentServices&#x60; operation.
    * @alias module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult
    * @class
-   * @param shippingServiceList {Array.<module:merchantfulfillment_v0/model/ShippingService>} A list of shipping services offers.
+   * @param shippingServiceList {[ShippingService]} A list of shipping services offers.
    */
   constructor (shippingServiceList) {
     this.shippingServiceList = shippingServiceList
@@ -38,8 +38,8 @@ export class GetEligibleShipmentServicesResult {
    * Constructs a <code>GetEligibleShipmentServicesResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult} The populated <code>GetEligibleShipmentServicesResult</code> instance.
+   * @param {GetEligibleShipmentServicesResult} obj Optional instance to populate.
+   * @return {GetEligibleShipmentServicesResult} The populated <code>GetEligibleShipmentServicesResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,28 +66,28 @@ export class GetEligibleShipmentServicesResult {
 
 /**
  * A list of shipping services offers.
- * @member {Array.<module:merchantfulfillment_v0/model/ShippingService>} shippingServiceList
- * @type {Array.<module:merchantfulfillment_v0/model/ShippingService>}
+ * @member {[ShippingService]} shippingServiceList
+ * @type {[ShippingService]}
  */
 GetEligibleShipmentServicesResult.prototype.shippingServiceList = undefined
 
 /**
  * List of services that are for some reason unavailable for this request
- * @member {Array.<module:merchantfulfillment_v0/model/RejectedShippingService>} rejectedShippingServiceList
- * @type {Array.<module:merchantfulfillment_v0/model/RejectedShippingService>}
+ * @member {[RejectedShippingService]} rejectedShippingServiceList
+ * @type {[RejectedShippingService]}
  */
 GetEligibleShipmentServicesResult.prototype.rejectedShippingServiceList = undefined
 
 /**
  * A list of temporarily unavailable carriers.
- * @member {Array.<module:merchantfulfillment_v0/model/TemporarilyUnavailableCarrier>} temporarilyUnavailableCarrierList
- * @type {Array.<module:merchantfulfillment_v0/model/TemporarilyUnavailableCarrier>}
+ * @member {[TemporarilyUnavailableCarrier]} temporarilyUnavailableCarrierList
+ * @type {[TemporarilyUnavailableCarrier]}
  */
 GetEligibleShipmentServicesResult.prototype.temporarilyUnavailableCarrierList = undefined
 
 /**
  * List of carriers whose terms and conditions were not accepted by the seller.
- * @member {Array.<module:merchantfulfillment_v0/model/TermsAndConditionsNotAcceptedCarrier>} termsAndConditionsNotAcceptedCarrierList
- * @type {Array.<module:merchantfulfillment_v0/model/TermsAndConditionsNotAcceptedCarrier>}
+ * @member {[TermsAndConditionsNotAcceptedCarrier]} termsAndConditionsNotAcceptedCarrierList
+ * @type {[TermsAndConditionsNotAcceptedCarrier]}
  */
 GetEligibleShipmentServicesResult.prototype.termsAndConditionsNotAcceptedCarrierList = undefined

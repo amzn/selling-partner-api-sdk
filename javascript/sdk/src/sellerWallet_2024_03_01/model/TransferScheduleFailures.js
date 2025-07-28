@@ -36,8 +36,8 @@ export class TransferScheduleFailures {
    * Constructs a <code>TransferScheduleFailures</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransferScheduleFailures} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransferScheduleFailures} The populated <code>TransferScheduleFailures</code> instance.
+   * @param {TransferScheduleFailures} obj Optional instance to populate.
+   * @return {TransferScheduleFailures} The populated <code>TransferScheduleFailures</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

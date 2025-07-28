@@ -27,7 +27,7 @@ export class ValueAddedService {
    * @class
    * @param id {String} The identifier for the value-added service.
    * @param name {String} The name of the value-added service.
-   * @param cost {module:shipping_v2/model/Currency}
+   * @param cost {Currency}
    */
   constructor (id, name, cost) {
     this.id = id
@@ -39,8 +39,8 @@ export class ValueAddedService {
    * Constructs a <code>ValueAddedService</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/ValueAddedService} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/ValueAddedService} The populated <code>ValueAddedService</code> instance.
+   * @param {ValueAddedService} obj Optional instance to populate.
+   * @return {ValueAddedService} The populated <code>ValueAddedService</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,7 +79,7 @@ ValueAddedService.prototype.id = undefined
 ValueAddedService.prototype.name = undefined
 
 /**
- * @member {module:shipping_v2/model/Currency} cost
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} cost
+ * @type {Currency}
  */
 ValueAddedService.prototype.cost = undefined

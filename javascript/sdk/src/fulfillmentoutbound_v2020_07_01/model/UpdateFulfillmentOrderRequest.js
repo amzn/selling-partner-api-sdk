@@ -38,8 +38,8 @@ export class UpdateFulfillmentOrderRequest {
    * Constructs a <code>UpdateFulfillmentOrderRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderRequest} The populated <code>UpdateFulfillmentOrderRequest</code> instance.
+   * @param {UpdateFulfillmentOrderRequest} obj Optional instance to populate.
+   * @return {UpdateFulfillmentOrderRequest} The populated <code>UpdateFulfillmentOrderRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -101,26 +101,26 @@ UpdateFulfillmentOrderRequest.prototype.displayableOrderDate = undefined
 UpdateFulfillmentOrderRequest.prototype.displayableOrderComment = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory} shippingSpeedCategory
- * @type {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
+ * @member {ShippingSpeedCategory} shippingSpeedCategory
+ * @type {ShippingSpeedCategory}
  */
 UpdateFulfillmentOrderRequest.prototype.shippingSpeedCategory = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Address} destinationAddress
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Address}
+ * @member {Address} destinationAddress
+ * @type {Address}
  */
 UpdateFulfillmentOrderRequest.prototype.destinationAddress = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction} fulfillmentAction
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentAction}
+ * @member {FulfillmentAction} fulfillmentAction
+ * @type {FulfillmentAction}
  */
 UpdateFulfillmentOrderRequest.prototype.fulfillmentAction = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy} fulfillmentPolicy
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPolicy}
+ * @member {FulfillmentPolicy} fulfillmentPolicy
+ * @type {FulfillmentPolicy}
  */
 UpdateFulfillmentOrderRequest.prototype.fulfillmentPolicy = undefined
 
@@ -133,21 +133,21 @@ UpdateFulfillmentOrderRequest.prototype.shipFromCountryCode = undefined
 
 /**
  * A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
- * @member {Array.<String>} notificationEmails
- * @type {Array.<String>}
+ * @member {[String]} notificationEmails
+ * @type {[String]}
  */
 UpdateFulfillmentOrderRequest.prototype.notificationEmails = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>}
+ * @member {[FeatureSettings]} featureConstraints
+ * @type {[FeatureSettings]}
  */
 UpdateFulfillmentOrderRequest.prototype.featureConstraints = undefined
 
 /**
  * An array of fulfillment order item information for updating a fulfillment order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderItem>} items
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderItem>}
+ * @member {[UpdateFulfillmentOrderItem]} items
+ * @type {[UpdateFulfillmentOrderItem]}
  */
 UpdateFulfillmentOrderRequest.prototype.items = undefined

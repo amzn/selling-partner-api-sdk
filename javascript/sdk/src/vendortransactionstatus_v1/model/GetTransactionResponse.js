@@ -34,8 +34,8 @@ export class GetTransactionResponse {
    * Constructs a <code>GetTransactionResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendortransactionstatus_v1/model/GetTransactionResponse} obj Optional instance to populate.
-   * @return {module:vendortransactionstatus_v1/model/GetTransactionResponse} The populated <code>GetTransactionResponse</code> instance.
+   * @param {GetTransactionResponse} obj Optional instance to populate.
+   * @return {GetTransactionResponse} The populated <code>GetTransactionResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetTransactionResponse {
 }
 
 /**
- * @member {module:vendortransactionstatus_v1/model/TransactionStatus} payload
- * @type {module:vendortransactionstatus_v1/model/TransactionStatus}
+ * @member {TransactionStatus} payload
+ * @type {TransactionStatus}
  */
 GetTransactionResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:vendortransactionstatus_v1/model/Error>} errors
- * @type {Array.<module:vendortransactionstatus_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetTransactionResponse.prototype.errors = undefined

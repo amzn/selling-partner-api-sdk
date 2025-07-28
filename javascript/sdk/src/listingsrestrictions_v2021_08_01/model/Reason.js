@@ -35,8 +35,8 @@ export class Reason {
    * Constructs a <code>Reason</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsrestrictions_v2021_08_01/model/Reason} obj Optional instance to populate.
-   * @return {module:listingsrestrictions_v2021_08_01/model/Reason} The populated <code>Reason</code> instance.
+   * @param {Reason} obj Optional instance to populate.
+   * @return {Reason} The populated <code>Reason</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -95,14 +95,14 @@ Reason.ReasonCodeEnum = {
 
 /**
  * A code indicating why the listing is restricted.
- * @member {module:listingsrestrictions_v2021_08_01/model/Reason.ReasonCodeEnum} reasonCode
- * @type {module:listingsrestrictions_v2021_08_01/model/Reason.ReasonCodeEnum}
+ * @member {String} reasonCode
+ * @type {String}
  */
 Reason.prototype.reasonCode = undefined
 
 /**
  * A list of path forward links that may allow Selling Partners to remove the restriction.
- * @member {Array.<module:listingsrestrictions_v2021_08_01/model/Link>} links
- * @type {Array.<module:listingsrestrictions_v2021_08_01/model/Link>}
+ * @member {[Link]} links
+ * @type {[Link]}
  */
 Reason.prototype.links = undefined

@@ -34,8 +34,8 @@ export class ParkingConfiguration {
    * Constructs a <code>ParkingConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/ParkingConfiguration} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/ParkingConfiguration} The populated <code>ParkingConfiguration</code> instance.
+   * @param {ParkingConfiguration} obj Optional instance to populate.
+   * @return {ParkingConfiguration} The populated <code>ParkingConfiguration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,14 +60,14 @@ export class ParkingConfiguration {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ParkingCostType} parkingCostType
- * @type {module:supplysources_v2020_07_01/model/ParkingCostType}
+ * @member {ParkingCostType} parkingCostType
+ * @type {ParkingCostType}
  */
 ParkingConfiguration.prototype.parkingCostType = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType} parkingSpotIdentificationType
- * @type {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType}
+ * @member {ParkingSpotIdentificationType} parkingSpotIdentificationType
+ * @type {ParkingSpotIdentificationType}
  */
 ParkingConfiguration.prototype.parkingSpotIdentificationType = undefined
 

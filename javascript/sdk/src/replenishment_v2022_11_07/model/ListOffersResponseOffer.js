@@ -35,8 +35,8 @@ export class ListOffersResponseOffer {
    * Constructs a <code>ListOffersResponseOffer</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOffersResponseOffer} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOffersResponseOffer} The populated <code>ListOffersResponseOffer</code> instance.
+   * @param {ListOffersResponseOffer} obj Optional instance to populate.
+   * @return {ListOffersResponseOffer} The populated <code>ListOffersResponseOffer</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,26 +86,26 @@ ListOffersResponseOffer.prototype.asin = undefined
 ListOffersResponseOffer.prototype.marketplaceId = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/EligibilityStatus} eligibility
- * @type {module:replenishment_v2022_11_07/model/EligibilityStatus}
+ * @member {EligibilityStatus} eligibility
+ * @type {EligibilityStatus}
  */
 ListOffersResponseOffer.prototype.eligibility = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/OfferProgramConfiguration} offerProgramConfiguration
- * @type {module:replenishment_v2022_11_07/model/OfferProgramConfiguration}
+ * @member {OfferProgramConfiguration} offerProgramConfiguration
+ * @type {OfferProgramConfiguration}
  */
 ListOffersResponseOffer.prototype.offerProgramConfiguration = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ProgramType} programType
- * @type {module:replenishment_v2022_11_07/model/ProgramType}
+ * @member {ProgramType} programType
+ * @type {ProgramType}
  */
 ListOffersResponseOffer.prototype.programType = undefined
 
 /**
  * A list of vendor codes associated with the offer.
- * @member {Array.<String>} vendorCodes
- * @type {Array.<String>}
+ * @member {[String]} vendorCodes
+ * @type {[String]}
  */
 ListOffersResponseOffer.prototype.vendorCodes = undefined

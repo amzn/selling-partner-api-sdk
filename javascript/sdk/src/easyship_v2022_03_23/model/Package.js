@@ -32,10 +32,10 @@ export class Package {
    * This object contains all the details of the scheduled Easy Ship package.
    * @alias module:easyship_v2022_03_23/model/Package
    * @class
-   * @param scheduledPackageId {module:easyship_v2022_03_23/model/ScheduledPackageId}
-   * @param packageDimensions {module:easyship_v2022_03_23/model/Dimensions}
-   * @param packageWeight {module:easyship_v2022_03_23/model/Weight}
-   * @param packageTimeSlot {module:easyship_v2022_03_23/model/TimeSlot}
+   * @param scheduledPackageId {ScheduledPackageId}
+   * @param packageDimensions {Dimensions}
+   * @param packageWeight {Weight}
+   * @param packageTimeSlot {TimeSlot}
    */
   constructor (scheduledPackageId, packageDimensions, packageWeight, packageTimeSlot) {
     this.scheduledPackageId = scheduledPackageId
@@ -48,8 +48,8 @@ export class Package {
    * Constructs a <code>Package</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/Package} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/Package} The populated <code>Package</code> instance.
+   * @param {Package} obj Optional instance to populate.
+   * @return {Package} The populated <code>Package</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -80,33 +80,33 @@ export class Package {
 }
 
 /**
- * @member {module:easyship_v2022_03_23/model/ScheduledPackageId} scheduledPackageId
- * @type {module:easyship_v2022_03_23/model/ScheduledPackageId}
+ * @member {ScheduledPackageId} scheduledPackageId
+ * @type {ScheduledPackageId}
  */
 Package.prototype.scheduledPackageId = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/Dimensions} packageDimensions
- * @type {module:easyship_v2022_03_23/model/Dimensions}
+ * @member {Dimensions} packageDimensions
+ * @type {Dimensions}
  */
 Package.prototype.packageDimensions = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/Weight} packageWeight
- * @type {module:easyship_v2022_03_23/model/Weight}
+ * @member {Weight} packageWeight
+ * @type {Weight}
  */
 Package.prototype.packageWeight = undefined
 
 /**
  * A list of items contained in the package.
- * @member {Array.<module:easyship_v2022_03_23/model/Item>} packageItems
- * @type {Array.<module:easyship_v2022_03_23/model/Item>}
+ * @member {[Item]} packageItems
+ * @type {[Item]}
  */
 Package.prototype.packageItems = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/TimeSlot} packageTimeSlot
- * @type {module:easyship_v2022_03_23/model/TimeSlot}
+ * @member {TimeSlot} packageTimeSlot
+ * @type {TimeSlot}
  */
 Package.prototype.packageTimeSlot = undefined
 
@@ -118,19 +118,19 @@ Package.prototype.packageTimeSlot = undefined
 Package.prototype.packageIdentifier = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/InvoiceData} invoice
- * @type {module:easyship_v2022_03_23/model/InvoiceData}
+ * @member {InvoiceData} invoice
+ * @type {InvoiceData}
  */
 Package.prototype.invoice = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/PackageStatus} packageStatus
- * @type {module:easyship_v2022_03_23/model/PackageStatus}
+ * @member {PackageStatus} packageStatus
+ * @type {PackageStatus}
  */
 Package.prototype.packageStatus = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/TrackingDetails} trackingDetails
- * @type {module:easyship_v2022_03_23/model/TrackingDetails}
+ * @member {TrackingDetails} trackingDetails
+ * @type {TrackingDetails}
  */
 Package.prototype.trackingDetails = undefined

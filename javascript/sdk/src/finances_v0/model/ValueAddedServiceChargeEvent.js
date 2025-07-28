@@ -33,8 +33,8 @@ export class ValueAddedServiceChargeEvent {
    * Constructs a <code>ValueAddedServiceChargeEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ValueAddedServiceChargeEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ValueAddedServiceChargeEvent} The populated <code>ValueAddedServiceChargeEvent</code> instance.
+   * @param {ValueAddedServiceChargeEvent} obj Optional instance to populate.
+   * @return {ValueAddedServiceChargeEvent} The populated <code>ValueAddedServiceChargeEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -81,7 +81,7 @@ ValueAddedServiceChargeEvent.prototype.postedDate = undefined
 ValueAddedServiceChargeEvent.prototype.description = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} transactionAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} transactionAmount
+ * @type {Currency}
  */
 ValueAddedServiceChargeEvent.prototype.transactionAmount = undefined

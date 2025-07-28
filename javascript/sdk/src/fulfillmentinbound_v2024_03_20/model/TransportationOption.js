@@ -27,8 +27,8 @@ export class TransportationOption {
    * Contains information pertaining to a transportation option and the related carrier.
    * @alias module:fulfillmentinbound_v2024_03_20/model/TransportationOption
    * @class
-   * @param carrier {module:fulfillmentinbound_v2024_03_20/model/Carrier}
-   * @param preconditions {Array.<String>} Identifies a list of preconditions for confirming the transportation option.
+   * @param carrier {Carrier}
+   * @param preconditions {[String]} Identifies a list of preconditions for confirming the transportation option.
    * @param shipmentId {String} Identifier of a shipment. A shipment contains the boxes and units being inbounded.
    * @param shippingMode {String} Mode of shipment transportation that this option will provide.  Possible values: `GROUND_SMALL_PARCEL`, `FREIGHT_LTL`, `FREIGHT_FTL_PALLET`, `FREIGHT_FTL_NONPALLET`, `OCEAN_LCL`, `OCEAN_FCL`, `AIR_SMALL_PARCEL`, `AIR_SMALL_PARCEL_EXPRESS`.
    * @param shippingSolution {String} Shipping program for the option. Possible values: `AMAZON_PARTNERED_CARRIER`, `USE_YOUR_OWN_CARRIER`.
@@ -47,8 +47,8 @@ export class TransportationOption {
    * Constructs a <code>TransportationOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/TransportationOption} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/TransportationOption} The populated <code>TransportationOption</code> instance.
+   * @param {TransportationOption} obj Optional instance to populate.
+   * @return {TransportationOption} The populated <code>TransportationOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -78,27 +78,27 @@ export class TransportationOption {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Carrier} carrier
- * @type {module:fulfillmentinbound_v2024_03_20/model/Carrier}
+ * @member {Carrier} carrier
+ * @type {Carrier}
  */
 TransportationOption.prototype.carrier = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/CarrierAppointment} carrierAppointment
- * @type {module:fulfillmentinbound_v2024_03_20/model/CarrierAppointment}
+ * @member {CarrierAppointment} carrierAppointment
+ * @type {CarrierAppointment}
  */
 TransportationOption.prototype.carrierAppointment = undefined
 
 /**
  * Identifies a list of preconditions for confirming the transportation option.
- * @member {Array.<String>} preconditions
- * @type {Array.<String>}
+ * @member {[String]} preconditions
+ * @type {[String]}
  */
 TransportationOption.prototype.preconditions = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Quote} quote
- * @type {module:fulfillmentinbound_v2024_03_20/model/Quote}
+ * @member {Quote} quote
+ * @type {Quote}
  */
 TransportationOption.prototype.quote = undefined
 

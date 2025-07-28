@@ -26,7 +26,7 @@ export class GetQueriesResponse {
    * The response for the &#x60;getQueries&#x60; operation.
    * @alias module:datakiosk_v2023_11_15/model/GetQueriesResponse
    * @class
-   * @param queries {Array.<module:datakiosk_v2023_11_15/model/Query>} A list of queries.
+   * @param queries {[Query]} A list of queries.
    */
   constructor (queries) {
     this.queries = queries
@@ -36,8 +36,8 @@ export class GetQueriesResponse {
    * Constructs a <code>GetQueriesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:datakiosk_v2023_11_15/model/GetQueriesResponse} obj Optional instance to populate.
-   * @return {module:datakiosk_v2023_11_15/model/GetQueriesResponse} The populated <code>GetQueriesResponse</code> instance.
+   * @param {GetQueriesResponse} obj Optional instance to populate.
+   * @return {GetQueriesResponse} The populated <code>GetQueriesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class GetQueriesResponse {
 
 /**
  * A list of queries.
- * @member {Array.<module:datakiosk_v2023_11_15/model/Query>} queries
- * @type {Array.<module:datakiosk_v2023_11_15/model/Query>}
+ * @member {[Query]} queries
+ * @type {[Query]}
  */
 GetQueriesResponse.prototype.queries = undefined
 
 /**
- * @member {module:datakiosk_v2023_11_15/model/GetQueriesResponsePagination} pagination
- * @type {module:datakiosk_v2023_11_15/model/GetQueriesResponsePagination}
+ * @member {GetQueriesResponsePagination} pagination
+ * @type {GetQueriesResponsePagination}
  */
 GetQueriesResponse.prototype.pagination = undefined

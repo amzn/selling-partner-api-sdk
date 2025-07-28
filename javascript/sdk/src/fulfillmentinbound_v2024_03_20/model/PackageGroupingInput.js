@@ -25,7 +25,7 @@ export class PackageGroupingInput {
    * Packing information for the inbound plan.
    * @alias module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput
    * @class
-   * @param boxes {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxInput>} Box level information being provided.
+   * @param boxes {[BoxInput]} Box level information being provided.
    */
   constructor (boxes) {
     this.boxes = boxes
@@ -35,8 +35,8 @@ export class PackageGroupingInput {
    * Constructs a <code>PackageGroupingInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/PackageGroupingInput} The populated <code>PackageGroupingInput</code> instance.
+   * @param {PackageGroupingInput} obj Optional instance to populate.
+   * @return {PackageGroupingInput} The populated <code>PackageGroupingInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class PackageGroupingInput {
 
 /**
  * Box level information being provided.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxInput>} boxes
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxInput>}
+ * @member {[BoxInput]} boxes
+ * @type {[BoxInput]}
  */
 PackageGroupingInput.prototype.boxes = undefined
 

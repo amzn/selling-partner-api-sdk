@@ -34,8 +34,8 @@ export class CreateShipmentResponse {
    * Constructs a <code>CreateShipmentResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/CreateShipmentResponse} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/CreateShipmentResponse} The populated <code>CreateShipmentResponse</code> instance.
+   * @param {CreateShipmentResponse} obj Optional instance to populate.
+   * @return {CreateShipmentResponse} The populated <code>CreateShipmentResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class CreateShipmentResponse {
 }
 
 /**
- * @member {module:merchantfulfillment_v0/model/Shipment} payload
- * @type {module:merchantfulfillment_v0/model/Shipment}
+ * @member {Shipment} payload
+ * @type {Shipment}
  */
 CreateShipmentResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:merchantfulfillment_v0/model/Error>} errors
- * @type {Array.<module:merchantfulfillment_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 CreateShipmentResponse.prototype.errors = undefined

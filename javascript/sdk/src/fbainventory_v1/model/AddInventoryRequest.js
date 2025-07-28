@@ -33,8 +33,8 @@ export class AddInventoryRequest {
    * Constructs a <code>AddInventoryRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/AddInventoryRequest} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/AddInventoryRequest} The populated <code>AddInventoryRequest</code> instance.
+   * @param {AddInventoryRequest} obj Optional instance to populate.
+   * @return {AddInventoryRequest} The populated <code>AddInventoryRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class AddInventoryRequest {
 
 /**
  * List of Inventory to be added
- * @member {Array.<module:fbainventory_v1/model/InventoryItem>} inventoryItems
- * @type {Array.<module:fbainventory_v1/model/InventoryItem>}
+ * @member {[InventoryItem]} inventoryItems
+ * @type {[InventoryItem]}
  */
 AddInventoryRequest.prototype.inventoryItems = undefined

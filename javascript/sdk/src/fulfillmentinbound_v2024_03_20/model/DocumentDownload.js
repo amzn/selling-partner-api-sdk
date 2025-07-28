@@ -36,8 +36,8 @@ export class DocumentDownload {
    * Constructs a <code>DocumentDownload</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/DocumentDownload} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/DocumentDownload} The populated <code>DocumentDownload</code> instance.
+   * @param {DocumentDownload} obj Optional instance to populate.
+   * @return {DocumentDownload} The populated <code>DocumentDownload</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

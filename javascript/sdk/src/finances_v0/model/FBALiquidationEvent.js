@@ -33,8 +33,8 @@ export class FBALiquidationEvent {
    * Constructs a <code>FBALiquidationEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/FBALiquidationEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/FBALiquidationEvent} The populated <code>FBALiquidationEvent</code> instance.
+   * @param {FBALiquidationEvent} obj Optional instance to populate.
+   * @return {FBALiquidationEvent} The populated <code>FBALiquidationEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,13 +74,13 @@ FBALiquidationEvent.prototype.postedDate = undefined
 FBALiquidationEvent.prototype.originalRemovalOrderId = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} liquidationProceedsAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} liquidationProceedsAmount
+ * @type {Currency}
  */
 FBALiquidationEvent.prototype.liquidationProceedsAmount = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} liquidationFeeAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} liquidationFeeAmount
+ * @type {Currency}
  */
 FBALiquidationEvent.prototype.liquidationFeeAmount = undefined

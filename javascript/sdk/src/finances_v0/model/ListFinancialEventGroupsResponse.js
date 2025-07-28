@@ -34,8 +34,8 @@ export class ListFinancialEventGroupsResponse {
    * Constructs a <code>ListFinancialEventGroupsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ListFinancialEventGroupsResponse} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ListFinancialEventGroupsResponse} The populated <code>ListFinancialEventGroupsResponse</code> instance.
+   * @param {ListFinancialEventGroupsResponse} obj Optional instance to populate.
+   * @return {ListFinancialEventGroupsResponse} The populated <code>ListFinancialEventGroupsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class ListFinancialEventGroupsResponse {
 }
 
 /**
- * @member {module:finances_v0/model/ListFinancialEventGroupsPayload} payload
- * @type {module:finances_v0/model/ListFinancialEventGroupsPayload}
+ * @member {ListFinancialEventGroupsPayload} payload
+ * @type {ListFinancialEventGroupsPayload}
  */
 ListFinancialEventGroupsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:finances_v0/model/Error>} errors
- * @type {Array.<module:finances_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 ListFinancialEventGroupsResponse.prototype.errors = undefined

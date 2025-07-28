@@ -26,7 +26,7 @@ export class ScheduledDeliveryInfo {
    * @alias module:fulfillmentoutbound_v2020_07_01/model/ScheduledDeliveryInfo
    * @class
    * @param deliveryTimeZone {String} The time zone of the destination address for the fulfillment order preview. Must be an IANA time zone name. Example: Asia/Tokyo.
-   * @param deliveryWindows {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow>} An array of delivery windows.
+   * @param deliveryWindows {[DeliveryWindow]} An array of delivery windows.
    */
   constructor (deliveryTimeZone, deliveryWindows) {
     this.deliveryTimeZone = deliveryTimeZone
@@ -37,8 +37,8 @@ export class ScheduledDeliveryInfo {
    * Constructs a <code>ScheduledDeliveryInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/ScheduledDeliveryInfo} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/ScheduledDeliveryInfo} The populated <code>ScheduledDeliveryInfo</code> instance.
+   * @param {ScheduledDeliveryInfo} obj Optional instance to populate.
+   * @return {ScheduledDeliveryInfo} The populated <code>ScheduledDeliveryInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ ScheduledDeliveryInfo.prototype.deliveryTimeZone = undefined
 
 /**
  * An array of delivery windows.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow>} deliveryWindows
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryWindow>}
+ * @member {[DeliveryWindow]} deliveryWindows
+ * @type {[DeliveryWindow]}
  */
 ScheduledDeliveryInfo.prototype.deliveryWindows = undefined

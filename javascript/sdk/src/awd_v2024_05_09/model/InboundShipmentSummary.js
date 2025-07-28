@@ -27,7 +27,7 @@ export class InboundShipmentSummary {
    * @class
    * @param orderId {String} The AWD inbound order ID that this inbound shipment belongs to.
    * @param shipmentId {String} A unique shipment ID.
-   * @param shipmentStatus {module:awd_v2024_05_09/model/InboundShipmentStatus}
+   * @param shipmentStatus {InboundShipmentStatus}
    */
   constructor (orderId, shipmentId, shipmentStatus) {
     this.orderId = orderId
@@ -39,8 +39,8 @@ export class InboundShipmentSummary {
    * Constructs a <code>InboundShipmentSummary</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InboundShipmentSummary} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InboundShipmentSummary} The populated <code>InboundShipmentSummary</code> instance.
+   * @param {InboundShipmentSummary} obj Optional instance to populate.
+   * @return {InboundShipmentSummary} The populated <code>InboundShipmentSummary</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -96,8 +96,8 @@ InboundShipmentSummary.prototype.orderId = undefined
 InboundShipmentSummary.prototype.shipmentId = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InboundShipmentStatus} shipmentStatus
- * @type {module:awd_v2024_05_09/model/InboundShipmentStatus}
+ * @member {InboundShipmentStatus} shipmentStatus
+ * @type {InboundShipmentStatus}
  */
 InboundShipmentSummary.prototype.shipmentStatus = undefined
 

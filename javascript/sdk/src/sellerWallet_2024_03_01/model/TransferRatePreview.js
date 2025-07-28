@@ -27,10 +27,10 @@ export class TransferRatePreview {
    * The fees and foreign exchange rates applied to the transaction.  If the fees are in terms of the &#x60;baseAmount&#x60; (source account) currency, then the effective rate is equal to **1 - (fees * &#x60;baseRate&#x60; / &#x60;baseAmount&#x60;)**.  If the fees are in terms of the &#x60;transferAmount&#x60; (destination account) currency, then the effective rate is equal to **&#x60;baseRate&#x60; - (fees / &#x60;baseAmount&#x60;)**.  In the preceding expressions, **fees** is equal to the sum of all &#x60;feeAmount.currencyAmount&#x60; values in the &#x60;fees&#x60; array.
    * @alias module:sellerWallet_2024_03_01/model/TransferRatePreview
    * @class
-   * @param baseAmount {module:sellerWallet_2024_03_01/model/Currency}
-   * @param fxRateDetails {module:sellerWallet_2024_03_01/model/FxRateDetails}
-   * @param transferAmount {module:sellerWallet_2024_03_01/model/Currency}
-   * @param fees {Array.<module:sellerWallet_2024_03_01/model/Fee>} A list of fees.
+   * @param baseAmount {Currency}
+   * @param fxRateDetails {FxRateDetails}
+   * @param transferAmount {Currency}
+   * @param fees {[Fee]} A list of fees.
    */
   constructor (baseAmount, fxRateDetails, transferAmount, fees) {
     this.baseAmount = baseAmount
@@ -43,8 +43,8 @@ export class TransferRatePreview {
    * Constructs a <code>TransferRatePreview</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransferRatePreview} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransferRatePreview} The populated <code>TransferRatePreview</code> instance.
+   * @param {TransferRatePreview} obj Optional instance to populate.
+   * @return {TransferRatePreview} The populated <code>TransferRatePreview</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,26 +70,26 @@ export class TransferRatePreview {
 }
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/Currency} baseAmount
- * @type {module:sellerWallet_2024_03_01/model/Currency}
+ * @member {Currency} baseAmount
+ * @type {Currency}
  */
 TransferRatePreview.prototype.baseAmount = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/FxRateDetails} fxRateDetails
- * @type {module:sellerWallet_2024_03_01/model/FxRateDetails}
+ * @member {FxRateDetails} fxRateDetails
+ * @type {FxRateDetails}
  */
 TransferRatePreview.prototype.fxRateDetails = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/Currency} transferAmount
- * @type {module:sellerWallet_2024_03_01/model/Currency}
+ * @member {Currency} transferAmount
+ * @type {Currency}
  */
 TransferRatePreview.prototype.transferAmount = undefined
 
 /**
  * A list of fees.
- * @member {Array.<module:sellerWallet_2024_03_01/model/Fee>} fees
- * @type {Array.<module:sellerWallet_2024_03_01/model/Fee>}
+ * @member {[Fee]} fees
+ * @type {[Fee]}
  */
 TransferRatePreview.prototype.fees = undefined

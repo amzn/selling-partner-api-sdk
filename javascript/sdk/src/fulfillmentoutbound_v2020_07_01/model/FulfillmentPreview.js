@@ -31,7 +31,7 @@ export class FulfillmentPreview {
    * Information about a fulfillment order preview, including delivery and fee information based on shipping method.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreview
    * @class
-   * @param shippingSpeedCategory {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
+   * @param shippingSpeedCategory {ShippingSpeedCategory}
    * @param isFulfillable {Boolean} When true, this fulfillment order preview is fulfillable.
    * @param isCODCapable {Boolean} When true, this fulfillment order preview is for COD (Cash On Delivery).
    * @param marketplaceId {String} The marketplace the fulfillment order is placed against.
@@ -47,8 +47,8 @@ export class FulfillmentPreview {
    * Constructs a <code>FulfillmentPreview</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreview} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreview} The populated <code>FulfillmentPreview</code> instance.
+   * @param {FulfillmentPreview} obj Optional instance to populate.
+   * @return {FulfillmentPreview} The populated <code>FulfillmentPreview</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -81,14 +81,14 @@ export class FulfillmentPreview {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory} shippingSpeedCategory
- * @type {module:fulfillmentoutbound_v2020_07_01/model/ShippingSpeedCategory}
+ * @member {ShippingSpeedCategory} shippingSpeedCategory
+ * @type {ShippingSpeedCategory}
  */
 FulfillmentPreview.prototype.shippingSpeedCategory = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/ScheduledDeliveryInfo} scheduledDeliveryInfo
- * @type {module:fulfillmentoutbound_v2020_07_01/model/ScheduledDeliveryInfo}
+ * @member {ScheduledDeliveryInfo} scheduledDeliveryInfo
+ * @type {ScheduledDeliveryInfo}
  */
 FulfillmentPreview.prototype.scheduledDeliveryInfo = undefined
 
@@ -107,36 +107,36 @@ FulfillmentPreview.prototype.isFulfillable = undefined
 FulfillmentPreview.prototype.isCODCapable = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Weight} estimatedShippingWeight
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Weight}
+ * @member {Weight} estimatedShippingWeight
+ * @type {Weight}
  */
 FulfillmentPreview.prototype.estimatedShippingWeight = undefined
 
 /**
  * An array of fee type and cost pairs.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Fee>} estimatedFees
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Fee>}
+ * @member {[Fee]} estimatedFees
+ * @type {[Fee]}
  */
 FulfillmentPreview.prototype.estimatedFees = undefined
 
 /**
  * An array of fulfillment preview shipment information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewShipment>} fulfillmentPreviewShipments
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FulfillmentPreviewShipment>}
+ * @member {[FulfillmentPreviewShipment]} fulfillmentPreviewShipments
+ * @type {[FulfillmentPreviewShipment]}
  */
 FulfillmentPreview.prototype.fulfillmentPreviewShipments = undefined
 
 /**
  * An array of unfulfillable preview item information.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/UnfulfillablePreviewItem>} unfulfillablePreviewItems
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/UnfulfillablePreviewItem>}
+ * @member {[UnfulfillablePreviewItem]} unfulfillablePreviewItems
+ * @type {[UnfulfillablePreviewItem]}
  */
 FulfillmentPreview.prototype.unfulfillablePreviewItems = undefined
 
 /**
  * String list
- * @member {Array.<String>} orderUnfulfillableReasons
- * @type {Array.<String>}
+ * @member {[String]} orderUnfulfillableReasons
+ * @type {[String]}
  */
 FulfillmentPreview.prototype.orderUnfulfillableReasons = undefined
 
@@ -149,7 +149,7 @@ FulfillmentPreview.prototype.marketplaceId = undefined
 
 /**
  * A list of features and their fulfillment policies to apply to the order.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>} featureConstraints
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings>}
+ * @member {[FeatureSettings]} featureConstraints
+ * @type {[FeatureSettings]}
  */
 FulfillmentPreview.prototype.featureConstraints = undefined

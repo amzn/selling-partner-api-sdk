@@ -27,7 +27,7 @@ export class Destination {
    * @class
    * @param name {String} The developer-defined name for this destination.
    * @param destinationId {String} The destination identifier generated when you created the destination.
-   * @param resource {module:notifications_v1/model/DestinationResource}
+   * @param resource {DestinationResource}
    */
   constructor (name, destinationId, resource) {
     this.name = name
@@ -39,8 +39,8 @@ export class Destination {
    * Constructs a <code>Destination</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/Destination} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/Destination} The populated <code>Destination</code> instance.
+   * @param {Destination} obj Optional instance to populate.
+   * @return {Destination} The populated <code>Destination</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,7 +79,7 @@ Destination.prototype.name = undefined
 Destination.prototype.destinationId = undefined
 
 /**
- * @member {module:notifications_v1/model/DestinationResource} resource
- * @type {module:notifications_v1/model/DestinationResource}
+ * @member {DestinationResource} resource
+ * @type {DestinationResource}
  */
 Destination.prototype.resource = undefined

@@ -26,7 +26,7 @@ export class ListInboundPlanPalletsResponse {
    * The &#x60;listInboundPlanPallets&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse
    * @class
-   * @param pallets {Array.<module:fulfillmentinbound_v2024_03_20/model/Pallet>} The pallets in an inbound plan.
+   * @param pallets {[Pallet]} The pallets in an inbound plan.
    */
   constructor (pallets) {
     this.pallets = pallets
@@ -36,8 +36,8 @@ export class ListInboundPlanPalletsResponse {
    * Constructs a <code>ListInboundPlanPalletsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListInboundPlanPalletsResponse} The populated <code>ListInboundPlanPalletsResponse</code> instance.
+   * @param {ListInboundPlanPalletsResponse} obj Optional instance to populate.
+   * @return {ListInboundPlanPalletsResponse} The populated <code>ListInboundPlanPalletsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,14 +61,14 @@ export class ListInboundPlanPalletsResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListInboundPlanPalletsResponse.prototype.pagination = undefined
 
 /**
  * The pallets in an inbound plan.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Pallet>} pallets
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Pallet>}
+ * @member {[Pallet]} pallets
+ * @type {[Pallet]}
  */
 ListInboundPlanPalletsResponse.prototype.pallets = undefined

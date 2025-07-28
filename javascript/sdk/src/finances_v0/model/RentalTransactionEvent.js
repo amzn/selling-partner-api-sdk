@@ -36,8 +36,8 @@ export class RentalTransactionEvent {
    * Constructs a <code>RentalTransactionEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/RentalTransactionEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/RentalTransactionEvent} The populated <code>RentalTransactionEvent</code> instance.
+   * @param {RentalTransactionEvent} obj Optional instance to populate.
+   * @return {RentalTransactionEvent} The populated <code>RentalTransactionEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -98,15 +98,15 @@ RentalTransactionEvent.prototype.postedDate = undefined
 
 /**
  * A list of charge information on the seller's account.
- * @member {Array.<module:finances_v0/model/ChargeComponent>} rentalChargeList
- * @type {Array.<module:finances_v0/model/ChargeComponent>}
+ * @member {[ChargeComponent]} rentalChargeList
+ * @type {[ChargeComponent]}
  */
 RentalTransactionEvent.prototype.rentalChargeList = undefined
 
 /**
  * A list of fee component information.
- * @member {Array.<module:finances_v0/model/FeeComponent>} rentalFeeList
- * @type {Array.<module:finances_v0/model/FeeComponent>}
+ * @member {[FeeComponent]} rentalFeeList
+ * @type {[FeeComponent]}
  */
 RentalTransactionEvent.prototype.rentalFeeList = undefined
 
@@ -118,20 +118,20 @@ RentalTransactionEvent.prototype.rentalFeeList = undefined
 RentalTransactionEvent.prototype.marketplaceName = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} rentalInitialValue
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} rentalInitialValue
+ * @type {Currency}
  */
 RentalTransactionEvent.prototype.rentalInitialValue = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} rentalReimbursement
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} rentalReimbursement
+ * @type {Currency}
  */
 RentalTransactionEvent.prototype.rentalReimbursement = undefined
 
 /**
  * A list of information about taxes withheld.
- * @member {Array.<module:finances_v0/model/TaxWithheldComponent>} rentalTaxWithheldList
- * @type {Array.<module:finances_v0/model/TaxWithheldComponent>}
+ * @member {[TaxWithheldComponent]} rentalTaxWithheldList
+ * @type {[TaxWithheldComponent]}
  */
 RentalTransactionEvent.prototype.rentalTaxWithheldList = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class RecurringFrequency.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class RecurringFrequency {
@@ -46,7 +46,7 @@ export class RecurringFrequency {
   /**
     * Returns a <code>RecurringFrequency</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/RecurringFrequency} The enum <code>RecurringFrequency</code> value.
+    * @return {RecurringFrequency} The enum <code>RecurringFrequency</code> value.
     */
   static constructFromObject (object) {
     return object

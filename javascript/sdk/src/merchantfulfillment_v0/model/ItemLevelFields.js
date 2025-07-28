@@ -26,7 +26,7 @@ export class ItemLevelFields {
    * @alias module:merchantfulfillment_v0/model/ItemLevelFields
    * @class
    * @param asin {String} The Amazon Standard Identification Number (ASIN) of the item.
-   * @param additionalInputs {Array.<module:merchantfulfillment_v0/model/AdditionalInputs>} A list of additional inputs.
+   * @param additionalInputs {[AdditionalInputs]} A list of additional inputs.
    */
   constructor (asin, additionalInputs) {
     this.asin = asin
@@ -37,8 +37,8 @@ export class ItemLevelFields {
    * Constructs a <code>ItemLevelFields</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/ItemLevelFields} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/ItemLevelFields} The populated <code>ItemLevelFields</code> instance.
+   * @param {ItemLevelFields} obj Optional instance to populate.
+   * @return {ItemLevelFields} The populated <code>ItemLevelFields</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ ItemLevelFields.prototype.asin = undefined
 
 /**
  * A list of additional inputs.
- * @member {Array.<module:merchantfulfillment_v0/model/AdditionalInputs>} additionalInputs
- * @type {Array.<module:merchantfulfillment_v0/model/AdditionalInputs>}
+ * @member {[AdditionalInputs]} additionalInputs
+ * @type {[AdditionalInputs]}
  */
 ItemLevelFields.prototype.additionalInputs = undefined

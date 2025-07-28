@@ -25,7 +25,7 @@ export class ListPrepDetailsResponse {
    * The response to the &#x60;listPrepDetails&#x60; operation.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse
    * @class
-   * @param mskuPrepDetails {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail>} A list of MSKUs and related prep details.
+   * @param mskuPrepDetails {[MskuPrepDetail]} A list of MSKUs and related prep details.
    */
   constructor (mskuPrepDetails) {
     this.mskuPrepDetails = mskuPrepDetails
@@ -35,8 +35,8 @@ export class ListPrepDetailsResponse {
    * Constructs a <code>ListPrepDetailsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListPrepDetailsResponse} The populated <code>ListPrepDetailsResponse</code> instance.
+   * @param {ListPrepDetailsResponse} obj Optional instance to populate.
+   * @return {ListPrepDetailsResponse} The populated <code>ListPrepDetailsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class ListPrepDetailsResponse {
 
 /**
  * A list of MSKUs and related prep details.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail>} mskuPrepDetails
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail>}
+ * @member {[MskuPrepDetail]} mskuPrepDetails
+ * @type {[MskuPrepDetail]}
  */
 ListPrepDetailsResponse.prototype.mskuPrepDetails = undefined

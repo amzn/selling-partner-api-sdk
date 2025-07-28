@@ -25,7 +25,7 @@ export class BoxRequirements {
    * The requirements for a box in the packing option.
    * @alias module:fulfillmentinbound_v2024_03_20/model/BoxRequirements
    * @class
-   * @param weight {module:fulfillmentinbound_v2024_03_20/model/WeightRange}
+   * @param weight {WeightRange}
    */
   constructor (weight) {
     this.weight = weight
@@ -35,8 +35,8 @@ export class BoxRequirements {
    * Constructs a <code>BoxRequirements</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/BoxRequirements} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/BoxRequirements} The populated <code>BoxRequirements</code> instance.
+   * @param {BoxRequirements} obj Optional instance to populate.
+   * @return {BoxRequirements} The populated <code>BoxRequirements</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class BoxRequirements {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/WeightRange} weight
- * @type {module:fulfillmentinbound_v2024_03_20/model/WeightRange}
+ * @member {WeightRange} weight
+ * @type {WeightRange}
  */
 BoxRequirements.prototype.weight = undefined

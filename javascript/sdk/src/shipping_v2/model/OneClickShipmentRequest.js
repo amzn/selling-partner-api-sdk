@@ -34,11 +34,11 @@ export class OneClickShipmentRequest {
    * The request schema for the OneClickShipment operation. When the channelType is not Amazon, shipTo is required and when channelType is Amazon shipTo is ignored.
    * @alias module:shipping_v2/model/OneClickShipmentRequest
    * @class
-   * @param shipFrom {module:shipping_v2/model/Address}
-   * @param packages {Array.<module:shipping_v2/model/Package>} A list of packages to be shipped through a shipping service offering.
-   * @param channelDetails {module:shipping_v2/model/ChannelDetails}
-   * @param labelSpecifications {module:shipping_v2/model/RequestedDocumentSpecification}
-   * @param serviceSelection {module:shipping_v2/model/ServiceSelection}
+   * @param shipFrom {Address}
+   * @param packages {[Package]} A list of packages to be shipped through a shipping service offering.
+   * @param channelDetails {ChannelDetails}
+   * @param labelSpecifications {RequestedDocumentSpecification}
+   * @param serviceSelection {ServiceSelection}
    */
   constructor (shipFrom, packages, channelDetails, labelSpecifications, serviceSelection) {
     this.shipFrom = shipFrom
@@ -52,8 +52,8 @@ export class OneClickShipmentRequest {
    * Constructs a <code>OneClickShipmentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/OneClickShipmentRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/OneClickShipmentRequest} The populated <code>OneClickShipmentRequest</code> instance.
+   * @param {OneClickShipmentRequest} obj Optional instance to populate.
+   * @return {OneClickShipmentRequest} The populated <code>OneClickShipmentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,20 +88,20 @@ export class OneClickShipmentRequest {
 }
 
 /**
- * @member {module:shipping_v2/model/Address} shipTo
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipTo
+ * @type {Address}
  */
 OneClickShipmentRequest.prototype.shipTo = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} shipFrom
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} shipFrom
+ * @type {Address}
  */
 OneClickShipmentRequest.prototype.shipFrom = undefined
 
 /**
- * @member {module:shipping_v2/model/Address} returnTo
- * @type {module:shipping_v2/model/Address}
+ * @member {Address} returnTo
+ * @type {Address}
  */
 OneClickShipmentRequest.prototype.returnTo = undefined
 
@@ -113,58 +113,58 @@ OneClickShipmentRequest.prototype.returnTo = undefined
 OneClickShipmentRequest.prototype.shipDate = undefined
 
 /**
- * @member {module:shipping_v2/model/GoodsOwner} goodsOwner
- * @type {module:shipping_v2/model/GoodsOwner}
+ * @member {GoodsOwner} goodsOwner
+ * @type {GoodsOwner}
  */
 OneClickShipmentRequest.prototype.goodsOwner = undefined
 
 /**
  * A list of packages to be shipped through a shipping service offering.
- * @member {Array.<module:shipping_v2/model/Package>} packages
- * @type {Array.<module:shipping_v2/model/Package>}
+ * @member {[Package]} packages
+ * @type {[Package]}
  */
 OneClickShipmentRequest.prototype.packages = undefined
 
 /**
  * The value-added services to be added to a shipping service purchase.
- * @member {Array.<module:shipping_v2/model/OneClickShipmentValueAddedService>} valueAddedServicesDetails
- * @type {Array.<module:shipping_v2/model/OneClickShipmentValueAddedService>}
+ * @member {[OneClickShipmentValueAddedService]} valueAddedServicesDetails
+ * @type {[OneClickShipmentValueAddedService]}
  */
 OneClickShipmentRequest.prototype.valueAddedServicesDetails = undefined
 
 /**
  * A list of tax detail information.
- * @member {Array.<module:shipping_v2/model/TaxDetail>} taxDetails
- * @type {Array.<module:shipping_v2/model/TaxDetail>}
+ * @member {[TaxDetail]} taxDetails
+ * @type {[TaxDetail]}
  */
 OneClickShipmentRequest.prototype.taxDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/ChannelDetails} channelDetails
- * @type {module:shipping_v2/model/ChannelDetails}
+ * @member {ChannelDetails} channelDetails
+ * @type {ChannelDetails}
  */
 OneClickShipmentRequest.prototype.channelDetails = undefined
 
 /**
- * @member {module:shipping_v2/model/RequestedDocumentSpecification} labelSpecifications
- * @type {module:shipping_v2/model/RequestedDocumentSpecification}
+ * @member {RequestedDocumentSpecification} labelSpecifications
+ * @type {RequestedDocumentSpecification}
  */
 OneClickShipmentRequest.prototype.labelSpecifications = undefined
 
 /**
- * @member {module:shipping_v2/model/ServiceSelection} serviceSelection
- * @type {module:shipping_v2/model/ServiceSelection}
+ * @member {ServiceSelection} serviceSelection
+ * @type {ServiceSelection}
  */
 OneClickShipmentRequest.prototype.serviceSelection = undefined
 
 /**
- * @member {module:shipping_v2/model/ShipperInstruction} shipperInstruction
- * @type {module:shipping_v2/model/ShipperInstruction}
+ * @member {ShipperInstruction} shipperInstruction
+ * @type {ShipperInstruction}
  */
 OneClickShipmentRequest.prototype.shipperInstruction = undefined
 
 /**
- * @member {module:shipping_v2/model/AccessPointDetails} destinationAccessPointDetails
- * @type {module:shipping_v2/model/AccessPointDetails}
+ * @member {AccessPointDetails} destinationAccessPointDetails
+ * @type {AccessPointDetails}
  */
 OneClickShipmentRequest.prototype.destinationAccessPointDetails = undefined

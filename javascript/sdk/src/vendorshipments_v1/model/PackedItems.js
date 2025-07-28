@@ -34,8 +34,8 @@ export class PackedItems {
    * Constructs a <code>PackedItems</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/PackedItems} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/PackedItems} The populated <code>PackedItems</code> instance.
+   * @param {PackedItems} obj Optional instance to populate.
+   * @return {PackedItems} The populated <code>PackedItems</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,13 +83,13 @@ PackedItems.prototype.buyerProductIdentifier = undefined
 PackedItems.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ItemQuantity} packedQuantity
- * @type {module:vendorshipments_v1/model/ItemQuantity}
+ * @member {ItemQuantity} packedQuantity
+ * @type {ItemQuantity}
  */
 PackedItems.prototype.packedQuantity = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/PackageItemDetails} itemDetails
- * @type {module:vendorshipments_v1/model/PackageItemDetails}
+ * @member {PackageItemDetails} itemDetails
+ * @type {PackageItemDetails}
  */
 PackedItems.prototype.itemDetails = undefined

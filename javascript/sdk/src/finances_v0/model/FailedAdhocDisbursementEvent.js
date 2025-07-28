@@ -33,8 +33,8 @@ export class FailedAdhocDisbursementEvent {
    * Constructs a <code>FailedAdhocDisbursementEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/FailedAdhocDisbursementEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/FailedAdhocDisbursementEvent} The populated <code>FailedAdhocDisbursementEvent</code> instance.
+   * @param {FailedAdhocDisbursementEvent} obj Optional instance to populate.
+   * @return {FailedAdhocDisbursementEvent} The populated <code>FailedAdhocDisbursementEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -98,8 +98,8 @@ FailedAdhocDisbursementEvent.prototype.paymentDisbursementType = undefined
 FailedAdhocDisbursementEvent.prototype.status = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} transferAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} transferAmount
+ * @type {Currency}
  */
 FailedAdhocDisbursementEvent.prototype.transferAmount = undefined
 

@@ -27,7 +27,7 @@ export class PurchaseOrderItems {
    * @alias module:vendorshipments_v1/model/PurchaseOrderItems
    * @class
    * @param itemSequenceNumber {String} Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.
-   * @param shippedQuantity {module:vendorshipments_v1/model/ItemQuantity}
+   * @param shippedQuantity {ItemQuantity}
    */
   constructor (itemSequenceNumber, shippedQuantity) {
     this.itemSequenceNumber = itemSequenceNumber
@@ -38,8 +38,8 @@ export class PurchaseOrderItems {
    * Constructs a <code>PurchaseOrderItems</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/PurchaseOrderItems} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/PurchaseOrderItems} The populated <code>PurchaseOrderItems</code> instance.
+   * @param {PurchaseOrderItems} obj Optional instance to populate.
+   * @return {PurchaseOrderItems} The populated <code>PurchaseOrderItems</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -87,13 +87,13 @@ PurchaseOrderItems.prototype.buyerProductIdentifier = undefined
 PurchaseOrderItems.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ItemQuantity} shippedQuantity
- * @type {module:vendorshipments_v1/model/ItemQuantity}
+ * @member {ItemQuantity} shippedQuantity
+ * @type {ItemQuantity}
  */
 PurchaseOrderItems.prototype.shippedQuantity = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Money} maximumRetailPrice
- * @type {module:vendorshipments_v1/model/Money}
+ * @member {Money} maximumRetailPrice
+ * @type {Money}
  */
 PurchaseOrderItems.prototype.maximumRetailPrice = undefined

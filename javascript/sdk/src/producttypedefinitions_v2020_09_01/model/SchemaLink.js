@@ -24,7 +24,7 @@ export class SchemaLink {
    * Constructs a new <code>SchemaLink</code>.
    * @alias module:producttypedefinitions_v2020_09_01/model/SchemaLink
    * @class
-   * @param link {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink}
+   * @param link {SchemaLinkLink}
    * @param checksum {String} Checksum hash of the schema (Base64 MD5). Can be used to verify schema contents, identify changes between schema versions, and for caching.
    */
   constructor (link, checksum) {
@@ -36,8 +36,8 @@ export class SchemaLink {
    * Constructs a <code>SchemaLink</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:producttypedefinitions_v2020_09_01/model/SchemaLink} obj Optional instance to populate.
-   * @return {module:producttypedefinitions_v2020_09_01/model/SchemaLink} The populated <code>SchemaLink</code> instance.
+   * @param {SchemaLink} obj Optional instance to populate.
+   * @return {SchemaLink} The populated <code>SchemaLink</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,8 +61,8 @@ export class SchemaLink {
 }
 
 /**
- * @member {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink} link
- * @type {module:producttypedefinitions_v2020_09_01/model/SchemaLinkLink}
+ * @member {SchemaLinkLink} link
+ * @type {SchemaLinkLink}
  */
 SchemaLink.prototype.link = undefined
 

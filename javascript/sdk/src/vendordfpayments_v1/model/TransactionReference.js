@@ -32,8 +32,8 @@ export class TransactionReference {
    * Constructs a <code>TransactionReference</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfpayments_v1/model/TransactionReference} obj Optional instance to populate.
-   * @return {module:vendordfpayments_v1/model/TransactionReference} The populated <code>TransactionReference</code> instance.
+   * @param {TransactionReference} obj Optional instance to populate.
+   * @return {TransactionReference} The populated <code>TransactionReference</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

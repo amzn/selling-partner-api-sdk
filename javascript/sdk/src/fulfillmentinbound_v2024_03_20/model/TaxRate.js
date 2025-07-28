@@ -32,8 +32,8 @@ export class TaxRate {
    * Constructs a <code>TaxRate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/TaxRate} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/TaxRate} The populated <code>TaxRate</code> instance.
+   * @param {TaxRate} obj Optional instance to populate.
+   * @return {TaxRate} The populated <code>TaxRate</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

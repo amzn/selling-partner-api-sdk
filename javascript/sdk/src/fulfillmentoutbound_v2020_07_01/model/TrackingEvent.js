@@ -27,8 +27,8 @@ export class TrackingEvent {
    * @alias module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent
    * @class
    * @param eventDate {Date} Date timestamp
-   * @param eventAddress {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress}
-   * @param eventCode {module:fulfillmentoutbound_v2020_07_01/model/EventCode}
+   * @param eventAddress {TrackingAddress}
+   * @param eventCode {EventCode}
    * @param eventDescription {String} A description for the corresponding event code.
    */
   constructor (eventDate, eventAddress, eventCode, eventDescription) {
@@ -42,8 +42,8 @@ export class TrackingEvent {
    * Constructs a <code>TrackingEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/TrackingEvent} The populated <code>TrackingEvent</code> instance.
+   * @param {TrackingEvent} obj Optional instance to populate.
+   * @return {TrackingEvent} The populated <code>TrackingEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,14 +76,14 @@ export class TrackingEvent {
 TrackingEvent.prototype.eventDate = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress} eventAddress
- * @type {module:fulfillmentoutbound_v2020_07_01/model/TrackingAddress}
+ * @member {TrackingAddress} eventAddress
+ * @type {TrackingAddress}
  */
 TrackingEvent.prototype.eventAddress = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/EventCode} eventCode
- * @type {module:fulfillmentoutbound_v2020_07_01/model/EventCode}
+ * @member {EventCode} eventCode
+ * @type {EventCode}
  */
 TrackingEvent.prototype.eventCode = undefined
 

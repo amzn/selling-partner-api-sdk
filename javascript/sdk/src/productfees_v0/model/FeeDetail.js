@@ -27,8 +27,8 @@ export class FeeDetail {
    * @alias module:productfees_v0/model/FeeDetail
    * @class
    * @param feeType {String} The type of fee charged to a seller.
-   * @param feeAmount {module:productfees_v0/model/MoneyType}
-   * @param finalFee {module:productfees_v0/model/MoneyType}
+   * @param feeAmount {MoneyType}
+   * @param finalFee {MoneyType}
    */
   constructor (feeType, feeAmount, finalFee) {
     this.feeType = feeType
@@ -40,8 +40,8 @@ export class FeeDetail {
    * Constructs a <code>FeeDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/FeeDetail} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/FeeDetail} The populated <code>FeeDetail</code> instance.
+   * @param {FeeDetail} obj Optional instance to populate.
+   * @return {FeeDetail} The populated <code>FeeDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,32 +76,32 @@ export class FeeDetail {
 FeeDetail.prototype.feeType = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} feeAmount
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} feeAmount
+ * @type {MoneyType}
  */
 FeeDetail.prototype.feeAmount = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} feePromotion
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} feePromotion
+ * @type {MoneyType}
  */
 FeeDetail.prototype.feePromotion = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} taxAmount
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} taxAmount
+ * @type {MoneyType}
  */
 FeeDetail.prototype.taxAmount = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} finalFee
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} finalFee
+ * @type {MoneyType}
  */
 FeeDetail.prototype.finalFee = undefined
 
 /**
  * A list of other fees that contribute to a given fee.
- * @member {Array.<module:productfees_v0/model/IncludedFeeDetail>} includedFeeDetailList
- * @type {Array.<module:productfees_v0/model/IncludedFeeDetail>}
+ * @member {[IncludedFeeDetail]} includedFeeDetailList
+ * @type {[IncludedFeeDetail]}
  */
 FeeDetail.prototype.includedFeeDetailList = undefined

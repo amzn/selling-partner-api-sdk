@@ -36,8 +36,8 @@ export class PackingSlip {
    * Constructs a <code>PackingSlip</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/PackingSlip} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/PackingSlip} The populated <code>PackingSlip</code> instance.
+   * @param {PackingSlip} obj Optional instance to populate.
+   * @return {PackingSlip} The populated <code>PackingSlip</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,7 +91,7 @@ PackingSlip.ContentTypeEnum = {
 
 /**
  * The format of the file such as PDF, JPEG etc.
- * @member {module:vendordfshipping_v2021_12_28/model/PackingSlip.ContentTypeEnum} contentType
- * @type {module:vendordfshipping_v2021_12_28/model/PackingSlip.ContentTypeEnum}
+ * @member {String} contentType
+ * @type {String}
  */
 PackingSlip.prototype.contentType = undefined

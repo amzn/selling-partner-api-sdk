@@ -33,8 +33,8 @@ export class SubmitShipmentConfirmationsRequest {
    * Constructs a <code>SubmitShipmentConfirmationsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/SubmitShipmentConfirmationsRequest} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/SubmitShipmentConfirmationsRequest} The populated <code>SubmitShipmentConfirmationsRequest</code> instance.
+   * @param {SubmitShipmentConfirmationsRequest} obj Optional instance to populate.
+   * @return {SubmitShipmentConfirmationsRequest} The populated <code>SubmitShipmentConfirmationsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class SubmitShipmentConfirmationsRequest {
 
 /**
  * A list of one or more shipment confirmations.
- * @member {Array.<module:vendorshipments_v1/model/ShipmentConfirmation>} shipmentConfirmations
- * @type {Array.<module:vendorshipments_v1/model/ShipmentConfirmation>}
+ * @member {[ShipmentConfirmation]} shipmentConfirmations
+ * @type {[ShipmentConfirmation]}
  */
 SubmitShipmentConfirmationsRequest.prototype.shipmentConfirmations = undefined

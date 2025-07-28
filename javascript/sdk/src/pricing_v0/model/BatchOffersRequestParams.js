@@ -27,7 +27,7 @@ export class BatchOffersRequestParams {
    * @alias module:pricing_v0/model/BatchOffersRequestParams
    * @class
    * @param marketplaceId {String} A marketplace identifier. Specifies the marketplace for which prices are returned.
-   * @param itemCondition {module:pricing_v0/model/ItemCondition}
+   * @param itemCondition {ItemCondition}
    */
   constructor (marketplaceId, itemCondition) {
     this.marketplaceId = marketplaceId
@@ -38,8 +38,8 @@ export class BatchOffersRequestParams {
    * Constructs a <code>BatchOffersRequestParams</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/BatchOffersRequestParams} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/BatchOffersRequestParams} The populated <code>BatchOffersRequestParams</code> instance.
+   * @param {BatchOffersRequestParams} obj Optional instance to populate.
+   * @return {BatchOffersRequestParams} The populated <code>BatchOffersRequestParams</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,13 +71,13 @@ export class BatchOffersRequestParams {
 BatchOffersRequestParams.prototype.marketplaceId = undefined
 
 /**
- * @member {module:pricing_v0/model/ItemCondition} itemCondition
- * @type {module:pricing_v0/model/ItemCondition}
+ * @member {ItemCondition} itemCondition
+ * @type {ItemCondition}
  */
 BatchOffersRequestParams.prototype.itemCondition = undefined
 
 /**
- * @member {module:pricing_v0/model/CustomerType} customerType
- * @type {module:pricing_v0/model/CustomerType}
+ * @member {CustomerType} customerType
+ * @type {CustomerType}
  */
 BatchOffersRequestParams.prototype.customerType = undefined

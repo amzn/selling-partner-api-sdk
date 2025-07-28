@@ -34,8 +34,8 @@ export class GetEligibleShipmentServicesResponse {
    * Constructs a <code>GetEligibleShipmentServicesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResponse} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResponse} The populated <code>GetEligibleShipmentServicesResponse</code> instance.
+   * @param {GetEligibleShipmentServicesResponse} obj Optional instance to populate.
+   * @return {GetEligibleShipmentServicesResponse} The populated <code>GetEligibleShipmentServicesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetEligibleShipmentServicesResponse {
 }
 
 /**
- * @member {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult} payload
- * @type {module:merchantfulfillment_v0/model/GetEligibleShipmentServicesResult}
+ * @member {GetEligibleShipmentServicesResult} payload
+ * @type {GetEligibleShipmentServicesResult}
  */
 GetEligibleShipmentServicesResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:merchantfulfillment_v0/model/Error>} errors
- * @type {Array.<module:merchantfulfillment_v0/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetEligibleShipmentServicesResponse.prototype.errors = undefined

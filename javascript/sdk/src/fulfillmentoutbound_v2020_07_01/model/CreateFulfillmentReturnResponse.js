@@ -34,8 +34,8 @@ export class CreateFulfillmentReturnResponse {
    * Constructs a <code>CreateFulfillmentReturnResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResponse} The populated <code>CreateFulfillmentReturnResponse</code> instance.
+   * @param {CreateFulfillmentReturnResponse} obj Optional instance to populate.
+   * @return {CreateFulfillmentReturnResponse} The populated <code>CreateFulfillmentReturnResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class CreateFulfillmentReturnResponse {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResult} payload
- * @type {module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResult}
+ * @member {CreateFulfillmentReturnResult} payload
+ * @type {CreateFulfillmentReturnResult}
  */
 CreateFulfillmentReturnResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 CreateFulfillmentReturnResponse.prototype.errors = undefined

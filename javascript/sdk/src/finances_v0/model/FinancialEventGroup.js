@@ -33,8 +33,8 @@ export class FinancialEventGroup {
    * Constructs a <code>FinancialEventGroup</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/FinancialEventGroup} obj Optional instance to populate.
-   * @return {module:finances_v0/model/FinancialEventGroup} The populated <code>FinancialEventGroup</code> instance.
+   * @param {FinancialEventGroup} obj Optional instance to populate.
+   * @return {FinancialEventGroup} The populated <code>FinancialEventGroup</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,14 +88,14 @@ FinancialEventGroup.prototype.processingStatus = undefined
 FinancialEventGroup.prototype.fundTransferStatus = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} originalTotal
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} originalTotal
+ * @type {Currency}
  */
 FinancialEventGroup.prototype.originalTotal = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} convertedTotal
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} convertedTotal
+ * @type {Currency}
  */
 FinancialEventGroup.prototype.convertedTotal = undefined
 
@@ -121,8 +121,8 @@ FinancialEventGroup.prototype.traceId = undefined
 FinancialEventGroup.prototype.accountTail = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} beginningBalance
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} beginningBalance
+ * @type {Currency}
  */
 FinancialEventGroup.prototype.beginningBalance = undefined
 

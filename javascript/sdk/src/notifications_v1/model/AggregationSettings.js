@@ -25,7 +25,7 @@ export class AggregationSettings {
    * A container that holds all of the necessary properties to configure the aggregation of notifications.
    * @alias module:notifications_v1/model/AggregationSettings
    * @class
-   * @param aggregationTimePeriod {module:notifications_v1/model/AggregationTimePeriod}
+   * @param aggregationTimePeriod {AggregationTimePeriod}
    */
   constructor (aggregationTimePeriod) {
     this.aggregationTimePeriod = aggregationTimePeriod
@@ -35,8 +35,8 @@ export class AggregationSettings {
    * Constructs a <code>AggregationSettings</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/AggregationSettings} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/AggregationSettings} The populated <code>AggregationSettings</code> instance.
+   * @param {AggregationSettings} obj Optional instance to populate.
+   * @return {AggregationSettings} The populated <code>AggregationSettings</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class AggregationSettings {
 }
 
 /**
- * @member {module:notifications_v1/model/AggregationTimePeriod} aggregationTimePeriod
- * @type {module:notifications_v1/model/AggregationTimePeriod}
+ * @member {AggregationTimePeriod} aggregationTimePeriod
+ * @type {AggregationTimePeriod}
  */
 AggregationSettings.prototype.aggregationTimePeriod = undefined

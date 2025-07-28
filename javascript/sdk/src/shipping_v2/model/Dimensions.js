@@ -27,7 +27,7 @@ export class Dimensions {
    * @param length {Number} The length of the package.
    * @param width {Number} The width of the package.
    * @param height {Number} The height of the package.
-   * @param unit {module:shipping_v2/model/Dimensions.UnitEnum} The unit of measurement.
+   * @param unit {String} The unit of measurement.
    */
   constructor (length, width, height, unit) {
     this.length = length
@@ -40,8 +40,8 @@ export class Dimensions {
    * Constructs a <code>Dimensions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/Dimensions} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/Dimensions} The populated <code>Dimensions</code> instance.
+   * @param {Dimensions} obj Optional instance to populate.
+   * @return {Dimensions} The populated <code>Dimensions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -109,7 +109,7 @@ Dimensions.UnitEnum = {
 
 /**
  * The unit of measurement.
- * @member {module:shipping_v2/model/Dimensions.UnitEnum} unit
- * @type {module:shipping_v2/model/Dimensions.UnitEnum}
+ * @member {String} unit
+ * @type {String}
  */
 Dimensions.prototype.unit = undefined

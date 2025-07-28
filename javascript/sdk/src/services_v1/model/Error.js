@@ -36,8 +36,8 @@ export class Error {
    * Constructs a <code>Error</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/Error} obj Optional instance to populate.
-   * @return {module:services_v1/model/Error} The populated <code>Error</code> instance.
+   * @param {Error} obj Optional instance to populate.
+   * @return {Error} The populated <code>Error</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -105,7 +105,7 @@ Error.ErrorLevelEnum = {
 
 /**
  * The type of error.
- * @member {module:services_v1/model/Error.ErrorLevelEnum} errorLevel
- * @type {module:services_v1/model/Error.ErrorLevelEnum}
+ * @member {String} errorLevel
+ * @type {String}
  */
 Error.prototype.errorLevel = undefined

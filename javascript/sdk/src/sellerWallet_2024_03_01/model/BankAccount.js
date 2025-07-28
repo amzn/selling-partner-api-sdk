@@ -29,10 +29,10 @@ export class BankAccount {
    * @alias module:sellerWallet_2024_03_01/model/BankAccount
    * @class
    * @param accountHolderName {String} The bank account holder's name (expected to be an Amazon customer).
-   * @param bankAccountNumberFormat {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat}
-   * @param bankAccountOwnershipType {module:sellerWallet_2024_03_01/model/BankAccountOwnershipType}
+   * @param bankAccountNumberFormat {BankAccountNumberFormat}
+   * @param bankAccountOwnershipType {BankAccountOwnershipType}
    * @param routingNumber {String} Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
-   * @param bankNumberFormat {module:sellerWallet_2024_03_01/model/BankNumberFormat}
+   * @param bankNumberFormat {BankNumberFormat}
    * @param accountCountryCode {String} The two-digit country code in ISO 3166 format.
    * @param accountCurrency {String} Bank account currency code in ISO 4217 format.
    * @param bankAccountNumberTail {String} The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
@@ -52,8 +52,8 @@ export class BankAccount {
    * Constructs a <code>BankAccount</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/BankAccount} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/BankAccount} The populated <code>BankAccount</code> instance.
+   * @param {BankAccount} obj Optional instance to populate.
+   * @return {BankAccount} The populated <code>BankAccount</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -100,8 +100,8 @@ BankAccount.prototype.accountId = undefined
 BankAccount.prototype.accountHolderName = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat} bankAccountNumberFormat
- * @type {module:sellerWallet_2024_03_01/model/BankAccountNumberFormat}
+ * @member {BankAccountNumberFormat} bankAccountNumberFormat
+ * @type {BankAccountNumberFormat}
  */
 BankAccount.prototype.bankAccountNumberFormat = undefined
 
@@ -113,8 +113,8 @@ BankAccount.prototype.bankAccountNumberFormat = undefined
 BankAccount.prototype.bankName = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/BankAccountOwnershipType} bankAccountOwnershipType
- * @type {module:sellerWallet_2024_03_01/model/BankAccountOwnershipType}
+ * @member {BankAccountOwnershipType} bankAccountOwnershipType
+ * @type {BankAccountOwnershipType}
  */
 BankAccount.prototype.bankAccountOwnershipType = undefined
 
@@ -126,8 +126,8 @@ BankAccount.prototype.bankAccountOwnershipType = undefined
 BankAccount.prototype.routingNumber = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/BankNumberFormat} bankNumberFormat
- * @type {module:sellerWallet_2024_03_01/model/BankNumberFormat}
+ * @member {BankNumberFormat} bankNumberFormat
+ * @type {BankNumberFormat}
  */
 BankAccount.prototype.bankNumberFormat = undefined
 
@@ -153,7 +153,7 @@ BankAccount.prototype.accountCurrency = undefined
 BankAccount.prototype.bankAccountNumberTail = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/BankAccountHolderStatus} bankAccountHolderStatus
- * @type {module:sellerWallet_2024_03_01/model/BankAccountHolderStatus}
+ * @member {BankAccountHolderStatus} bankAccountHolderStatus
+ * @type {BankAccountHolderStatus}
  */
 BankAccount.prototype.bankAccountHolderStatus = undefined

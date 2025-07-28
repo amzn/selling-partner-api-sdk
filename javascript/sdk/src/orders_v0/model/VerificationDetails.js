@@ -33,8 +33,8 @@ export class VerificationDetails {
    * Constructs a <code>VerificationDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/VerificationDetails} obj Optional instance to populate.
-   * @return {module:orders_v0/model/VerificationDetails} The populated <code>VerificationDetails</code> instance.
+   * @param {VerificationDetails} obj Optional instance to populate.
+   * @return {VerificationDetails} The populated <code>VerificationDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class VerificationDetails {
 }
 
 /**
- * @member {module:orders_v0/model/PrescriptionDetail} prescriptionDetail
- * @type {module:orders_v0/model/PrescriptionDetail}
+ * @member {PrescriptionDetail} prescriptionDetail
+ * @type {PrescriptionDetail}
  */
 VerificationDetails.prototype.prescriptionDetail = undefined

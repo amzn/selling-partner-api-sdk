@@ -26,8 +26,8 @@ export class GetDeliveryOffersTerms {
    * The delivery terms for the delivery offer.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersTerms
    * @class
-   * @param origin {module:fulfillmentoutbound_v2020_07_01/model/Origin}
-   * @param destination {module:fulfillmentoutbound_v2020_07_01/model/Destination}
+   * @param origin {Origin}
+   * @param destination {Destination}
    */
   constructor (origin, destination) {
     this.origin = origin
@@ -38,8 +38,8 @@ export class GetDeliveryOffersTerms {
    * Constructs a <code>GetDeliveryOffersTerms</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersTerms} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersTerms} The populated <code>GetDeliveryOffersTerms</code> instance.
+   * @param {GetDeliveryOffersTerms} obj Optional instance to populate.
+   * @return {GetDeliveryOffersTerms} The populated <code>GetDeliveryOffersTerms</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class GetDeliveryOffersTerms {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Origin} origin
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Origin}
+ * @member {Origin} origin
+ * @type {Origin}
  */
 GetDeliveryOffersTerms.prototype.origin = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Destination} destination
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Destination}
+ * @member {Destination} destination
+ * @type {Destination}
  */
 GetDeliveryOffersTerms.prototype.destination = undefined

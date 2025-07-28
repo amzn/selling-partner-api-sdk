@@ -32,8 +32,8 @@ export class OperatingHour {
    * Constructs a <code>OperatingHour</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/OperatingHour} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/OperatingHour} The populated <code>OperatingHour</code> instance.
+   * @param {OperatingHour} obj Optional instance to populate.
+   * @return {OperatingHour} The populated <code>OperatingHour</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

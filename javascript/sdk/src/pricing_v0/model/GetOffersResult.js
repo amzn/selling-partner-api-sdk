@@ -29,11 +29,11 @@ export class GetOffersResult {
    * @alias module:pricing_v0/model/GetOffersResult
    * @class
    * @param marketplaceID {String} A marketplace identifier.
-   * @param itemCondition {module:pricing_v0/model/ConditionType}
+   * @param itemCondition {ConditionType}
    * @param status {String} The status of the operation.
-   * @param identifier {module:pricing_v0/model/ItemIdentifier}
-   * @param summary {module:pricing_v0/model/Summary}
-   * @param offers {Array.<module:pricing_v0/model/OfferDetail>} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
+   * @param identifier {ItemIdentifier}
+   * @param summary {Summary}
+   * @param offers {[OfferDetail]} A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
    */
   constructor (marketplaceID, itemCondition, status, identifier, summary, offers) {
     this.marketplaceID = marketplaceID
@@ -48,8 +48,8 @@ export class GetOffersResult {
    * Constructs a <code>GetOffersResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/GetOffersResult} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/GetOffersResult} The populated <code>GetOffersResult</code> instance.
+   * @param {GetOffersResult} obj Optional instance to populate.
+   * @return {GetOffersResult} The populated <code>GetOffersResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -100,8 +100,8 @@ GetOffersResult.prototype.ASIN = undefined
 GetOffersResult.prototype.SKU = undefined
 
 /**
- * @member {module:pricing_v0/model/ConditionType} itemCondition
- * @type {module:pricing_v0/model/ConditionType}
+ * @member {ConditionType} itemCondition
+ * @type {ConditionType}
  */
 GetOffersResult.prototype.itemCondition = undefined
 
@@ -113,20 +113,20 @@ GetOffersResult.prototype.itemCondition = undefined
 GetOffersResult.prototype.status = undefined
 
 /**
- * @member {module:pricing_v0/model/ItemIdentifier} identifier
- * @type {module:pricing_v0/model/ItemIdentifier}
+ * @member {ItemIdentifier} identifier
+ * @type {ItemIdentifier}
  */
 GetOffersResult.prototype.identifier = undefined
 
 /**
- * @member {module:pricing_v0/model/Summary} summary
- * @type {module:pricing_v0/model/Summary}
+ * @member {Summary} summary
+ * @type {Summary}
  */
 GetOffersResult.prototype.summary = undefined
 
 /**
  * A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less.
- * @member {Array.<module:pricing_v0/model/OfferDetail>} offers
- * @type {Array.<module:pricing_v0/model/OfferDetail>}
+ * @member {[OfferDetail]} offers
+ * @type {[OfferDetail]}
  */
 GetOffersResult.prototype.offers = undefined

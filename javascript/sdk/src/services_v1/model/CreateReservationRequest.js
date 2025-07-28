@@ -26,7 +26,7 @@ export class CreateReservationRequest {
    * @alias module:services_v1/model/CreateReservationRequest
    * @class
    * @param resourceId {String} Resource (store) identifier.
-   * @param reservation {module:services_v1/model/Reservation}
+   * @param reservation {Reservation}
    */
   constructor (resourceId, reservation) {
     this.resourceId = resourceId
@@ -37,8 +37,8 @@ export class CreateReservationRequest {
    * Constructs a <code>CreateReservationRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/CreateReservationRequest} obj Optional instance to populate.
-   * @return {module:services_v1/model/CreateReservationRequest} The populated <code>CreateReservationRequest</code> instance.
+   * @param {CreateReservationRequest} obj Optional instance to populate.
+   * @return {CreateReservationRequest} The populated <code>CreateReservationRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class CreateReservationRequest {
 CreateReservationRequest.prototype.resourceId = undefined
 
 /**
- * @member {module:services_v1/model/Reservation} reservation
- * @type {module:services_v1/model/Reservation}
+ * @member {Reservation} reservation
+ * @type {Reservation}
  */
 CreateReservationRequest.prototype.reservation = undefined

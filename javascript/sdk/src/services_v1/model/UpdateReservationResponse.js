@@ -34,8 +34,8 @@ export class UpdateReservationResponse {
    * Constructs a <code>UpdateReservationResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/UpdateReservationResponse} obj Optional instance to populate.
-   * @return {module:services_v1/model/UpdateReservationResponse} The populated <code>UpdateReservationResponse</code> instance.
+   * @param {UpdateReservationResponse} obj Optional instance to populate.
+   * @return {UpdateReservationResponse} The populated <code>UpdateReservationResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class UpdateReservationResponse {
 }
 
 /**
- * @member {module:services_v1/model/UpdateReservationRecord} payload
- * @type {module:services_v1/model/UpdateReservationRecord}
+ * @member {UpdateReservationRecord} payload
+ * @type {UpdateReservationRecord}
  */
 UpdateReservationResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:services_v1/model/Error>} errors
- * @type {Array.<module:services_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 UpdateReservationResponse.prototype.errors = undefined

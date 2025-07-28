@@ -27,7 +27,7 @@ export class UpdateShipmentStatusRequest {
    * @alias module:orders_v0/model/UpdateShipmentStatusRequest
    * @class
    * @param marketplaceId {String} The unobfuscated marketplace identifier.
-   * @param shipmentStatus {module:orders_v0/model/ShipmentStatus}
+   * @param shipmentStatus {ShipmentStatus}
    */
   constructor (marketplaceId, shipmentStatus) {
     this.marketplaceId = marketplaceId
@@ -38,8 +38,8 @@ export class UpdateShipmentStatusRequest {
    * Constructs a <code>UpdateShipmentStatusRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/UpdateShipmentStatusRequest} obj Optional instance to populate.
-   * @return {module:orders_v0/model/UpdateShipmentStatusRequest} The populated <code>UpdateShipmentStatusRequest</code> instance.
+   * @param {UpdateShipmentStatusRequest} obj Optional instance to populate.
+   * @return {UpdateShipmentStatusRequest} The populated <code>UpdateShipmentStatusRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,14 +71,14 @@ export class UpdateShipmentStatusRequest {
 UpdateShipmentStatusRequest.prototype.marketplaceId = undefined
 
 /**
- * @member {module:orders_v0/model/ShipmentStatus} shipmentStatus
- * @type {module:orders_v0/model/ShipmentStatus}
+ * @member {ShipmentStatus} shipmentStatus
+ * @type {ShipmentStatus}
  */
 UpdateShipmentStatusRequest.prototype.shipmentStatus = undefined
 
 /**
  * For partial shipment status updates, the list of order items and quantities to be updated.
- * @member {Array.<module:orders_v0/model/OrderItemsInner>} orderItems
- * @type {Array.<module:orders_v0/model/OrderItemsInner>}
+ * @member {[OrderItemsInner]} orderItems
+ * @type {[OrderItemsInner]}
  */
 UpdateShipmentStatusRequest.prototype.orderItems = undefined

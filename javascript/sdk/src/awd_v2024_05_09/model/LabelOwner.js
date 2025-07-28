@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class LabelOwner.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class LabelOwner {
@@ -34,7 +34,7 @@ export class LabelOwner {
   /**
     * Returns a <code>LabelOwner</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/LabelOwner} The enum <code>LabelOwner</code> value.
+    * @return {LabelOwner} The enum <code>LabelOwner</code> value.
     */
   static constructFromObject (object) {
     return object

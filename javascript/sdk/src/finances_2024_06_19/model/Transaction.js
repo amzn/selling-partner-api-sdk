@@ -39,8 +39,8 @@ export class Transaction {
    * Constructs a <code>Transaction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/Transaction} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/Transaction} The populated <code>Transaction</code> instance.
+   * @param {Transaction} obj Optional instance to populate.
+   * @return {Transaction} The populated <code>Transaction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,15 +74,15 @@ export class Transaction {
 }
 
 /**
- * @member {module:finances_2024_06_19/model/SellingPartnerMetadata} sellingPartnerMetadata
- * @type {module:finances_2024_06_19/model/SellingPartnerMetadata}
+ * @member {SellingPartnerMetadata} sellingPartnerMetadata
+ * @type {SellingPartnerMetadata}
  */
 Transaction.prototype.sellingPartnerMetadata = undefined
 
 /**
  * Related business identifiers of the transaction.
- * @member {Array.<module:finances_2024_06_19/model/RelatedIdentifier>} relatedIdentifiers
- * @type {Array.<module:finances_2024_06_19/model/RelatedIdentifier>}
+ * @member {[RelatedIdentifier]} relatedIdentifiers
+ * @type {[RelatedIdentifier]}
  */
 Transaction.prototype.relatedIdentifiers = undefined
 
@@ -122,34 +122,34 @@ Transaction.prototype.description = undefined
 Transaction.prototype.postedDate = undefined
 
 /**
- * @member {module:finances_2024_06_19/model/Currency} totalAmount
- * @type {module:finances_2024_06_19/model/Currency}
+ * @member {Currency} totalAmount
+ * @type {Currency}
  */
 Transaction.prototype.totalAmount = undefined
 
 /**
- * @member {module:finances_2024_06_19/model/MarketplaceDetails} marketplaceDetails
- * @type {module:finances_2024_06_19/model/MarketplaceDetails}
+ * @member {MarketplaceDetails} marketplaceDetails
+ * @type {MarketplaceDetails}
  */
 Transaction.prototype.marketplaceDetails = undefined
 
 /**
  * List of items in the transaction
- * @member {Array.<module:finances_2024_06_19/model/Item>} items
- * @type {Array.<module:finances_2024_06_19/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 Transaction.prototype.items = undefined
 
 /**
  * List of additional Information about the item.
- * @member {Array.<module:finances_2024_06_19/model/Context>} contexts
- * @type {Array.<module:finances_2024_06_19/model/Context>}
+ * @member {[Context]} contexts
+ * @type {[Context]}
  */
 Transaction.prototype.contexts = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
- * @member {Array.<module:finances_2024_06_19/model/Breakdown>} breakdowns
- * @type {Array.<module:finances_2024_06_19/model/Breakdown>}
+ * @member {[Breakdown]} breakdowns
+ * @type {[Breakdown]}
  */
 Transaction.prototype.breakdowns = undefined

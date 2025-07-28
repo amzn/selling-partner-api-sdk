@@ -34,8 +34,8 @@ export class AmazonShipmentDetails {
    * Constructs a <code>AmazonShipmentDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/AmazonShipmentDetails} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/AmazonShipmentDetails} The populated <code>AmazonShipmentDetails</code> instance.
+   * @param {AmazonShipmentDetails} obj Optional instance to populate.
+   * @return {AmazonShipmentDetails} The populated <code>AmazonShipmentDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -38,8 +38,8 @@ export class InventoryItem {
    * Constructs a <code>InventoryItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/InventoryItem} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/InventoryItem} The populated <code>InventoryItem</code> instance.
+   * @param {InventoryItem} obj Optional instance to populate.
+   * @return {InventoryItem} The populated <code>InventoryItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

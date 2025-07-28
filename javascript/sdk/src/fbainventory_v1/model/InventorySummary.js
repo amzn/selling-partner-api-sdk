@@ -33,8 +33,8 @@ export class InventorySummary {
    * Constructs a <code>InventorySummary</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/InventorySummary} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/InventorySummary} The populated <code>InventorySummary</code> instance.
+   * @param {InventorySummary} obj Optional instance to populate.
+   * @return {InventorySummary} The populated <code>InventorySummary</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -93,8 +93,8 @@ InventorySummary.prototype.sellerSku = undefined
 InventorySummary.prototype.condition = undefined
 
 /**
- * @member {module:fbainventory_v1/model/InventoryDetails} inventoryDetails
- * @type {module:fbainventory_v1/model/InventoryDetails}
+ * @member {InventoryDetails} inventoryDetails
+ * @type {InventoryDetails}
  */
 InventorySummary.prototype.inventoryDetails = undefined
 
@@ -121,7 +121,7 @@ InventorySummary.prototype.totalQuantity = undefined
 
 /**
  * A list of seller-enrolled stores that apply to this seller SKU.
- * @member {Array.<String>} stores
- * @type {Array.<String>}
+ * @member {[String]} stores
+ * @type {[String]}
  */
 InventorySummary.prototype.stores = undefined

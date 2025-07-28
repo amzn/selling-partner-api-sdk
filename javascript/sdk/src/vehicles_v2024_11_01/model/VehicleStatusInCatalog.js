@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class VehicleStatusInCatalog.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class VehicleStatusInCatalog {
@@ -34,7 +34,7 @@ export class VehicleStatusInCatalog {
   /**
     * Returns a <code>VehicleStatusInCatalog</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:vehicles_v2024_11_01/model/VehicleStatusInCatalog} The enum <code>VehicleStatusInCatalog</code> value.
+    * @return {VehicleStatusInCatalog} The enum <code>VehicleStatusInCatalog</code> value.
     */
   static constructFromObject (object) {
     return object

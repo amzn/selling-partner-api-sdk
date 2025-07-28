@@ -24,7 +24,7 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
    * Constructs a new <code>GetSolicitationActionsForOrderResponseEmbedded</code>.
    * @alias module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded
    * @class
-   * @param actions {Array.<module:solicitations_v1/model/GetSolicitationActionResponse>}
+   * @param actions {[GetSolicitationActionResponse]}
    */
   constructor (actions) {
     this.actions = actions
@@ -34,8 +34,8 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
    * Constructs a <code>GetSolicitationActionsForOrderResponseEmbedded</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded} obj Optional instance to populate.
-   * @return {module:solicitations_v1/model/GetSolicitationActionsForOrderResponseEmbedded} The populated <code>GetSolicitationActionsForOrderResponseEmbedded</code> instance.
+   * @param {GetSolicitationActionsForOrderResponseEmbedded} obj Optional instance to populate.
+   * @return {GetSolicitationActionsForOrderResponseEmbedded} The populated <code>GetSolicitationActionsForOrderResponseEmbedded</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class GetSolicitationActionsForOrderResponseEmbedded {
 }
 
 /**
- * @member {Array.<module:solicitations_v1/model/GetSolicitationActionResponse>} actions
- * @type {Array.<module:solicitations_v1/model/GetSolicitationActionResponse>}
+ * @member {[GetSolicitationActionResponse]} actions
+ * @type {[GetSolicitationActionResponse]}
  */
 GetSolicitationActionsForOrderResponseEmbedded.prototype.actions = undefined

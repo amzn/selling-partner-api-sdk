@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class TransferScheduleStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class TransferScheduleStatus {
@@ -46,7 +46,7 @@ export class TransferScheduleStatus {
   /**
     * Returns a <code>TransferScheduleStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/TransferScheduleStatus} The enum <code>TransferScheduleStatus</code> value.
+    * @return {TransferScheduleStatus} The enum <code>TransferScheduleStatus</code> value.
     */
   static constructFromObject (object) {
     return object

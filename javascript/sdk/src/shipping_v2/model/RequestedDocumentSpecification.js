@@ -28,10 +28,10 @@ export class RequestedDocumentSpecification {
    * The document specifications requested. For calls to the purchaseShipment operation, the shipment purchase fails if the specified document specifications are not among those returned in the response to the getRates operation.
    * @alias module:shipping_v2/model/RequestedDocumentSpecification
    * @class
-   * @param format {module:shipping_v2/model/DocumentFormat}
-   * @param size {module:shipping_v2/model/DocumentSize}
+   * @param format {DocumentFormat}
+   * @param size {DocumentSize}
    * @param needFileJoining {Boolean} When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.
-   * @param requestedDocumentTypes {Array.<module:shipping_v2/model/DocumentType>} A list of the document types requested.
+   * @param requestedDocumentTypes {[DocumentType]} A list of the document types requested.
    */
   constructor (format, size, needFileJoining, requestedDocumentTypes) {
     this.format = format
@@ -44,8 +44,8 @@ export class RequestedDocumentSpecification {
    * Constructs a <code>RequestedDocumentSpecification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/RequestedDocumentSpecification} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/RequestedDocumentSpecification} The populated <code>RequestedDocumentSpecification</code> instance.
+   * @param {RequestedDocumentSpecification} obj Optional instance to populate.
+   * @return {RequestedDocumentSpecification} The populated <code>RequestedDocumentSpecification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -74,14 +74,14 @@ export class RequestedDocumentSpecification {
 }
 
 /**
- * @member {module:shipping_v2/model/DocumentFormat} format
- * @type {module:shipping_v2/model/DocumentFormat}
+ * @member {DocumentFormat} format
+ * @type {DocumentFormat}
  */
 RequestedDocumentSpecification.prototype.format = undefined
 
 /**
- * @member {module:shipping_v2/model/DocumentSize} size
- * @type {module:shipping_v2/model/DocumentSize}
+ * @member {DocumentSize} size
+ * @type {DocumentSize}
  */
 RequestedDocumentSpecification.prototype.size = undefined
 
@@ -108,13 +108,13 @@ RequestedDocumentSpecification.prototype.needFileJoining = undefined
 
 /**
  * A list of the document types requested.
- * @member {Array.<module:shipping_v2/model/DocumentType>} requestedDocumentTypes
- * @type {Array.<module:shipping_v2/model/DocumentType>}
+ * @member {[DocumentType]} requestedDocumentTypes
+ * @type {[DocumentType]}
  */
 RequestedDocumentSpecification.prototype.requestedDocumentTypes = undefined
 
 /**
- * @member {module:shipping_v2/model/RequestedLabelCustomization} requestedLabelCustomization
- * @type {module:shipping_v2/model/RequestedLabelCustomization}
+ * @member {RequestedLabelCustomization} requestedLabelCustomization
+ * @type {RequestedLabelCustomization}
  */
 RequestedDocumentSpecification.prototype.requestedLabelCustomization = undefined

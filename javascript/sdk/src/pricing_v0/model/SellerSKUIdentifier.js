@@ -38,8 +38,8 @@ export class SellerSKUIdentifier {
    * Constructs a <code>SellerSKUIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/SellerSKUIdentifier} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/SellerSKUIdentifier} The populated <code>SellerSKUIdentifier</code> instance.
+   * @param {SellerSKUIdentifier} obj Optional instance to populate.
+   * @return {SellerSKUIdentifier} The populated <code>SellerSKUIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

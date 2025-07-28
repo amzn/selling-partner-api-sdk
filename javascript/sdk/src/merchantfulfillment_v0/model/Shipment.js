@@ -34,15 +34,15 @@ export class Shipment {
    * @class
    * @param shipmentId {String} An Amazon-defined shipment identifier.
    * @param amazonOrderId {String} An Amazon-defined order identifier, in 3-7-7 format.
-   * @param itemList {Array.<module:merchantfulfillment_v0/model/Item>} The list of items you want to include in a shipment.
-   * @param shipFromAddress {module:merchantfulfillment_v0/model/Address}
-   * @param shipToAddress {module:merchantfulfillment_v0/model/Address}
-   * @param packageDimensions {module:merchantfulfillment_v0/model/PackageDimensions}
-   * @param weight {module:merchantfulfillment_v0/model/Weight}
-   * @param insurance {module:merchantfulfillment_v0/model/CurrencyAmount}
-   * @param shippingService {module:merchantfulfillment_v0/model/ShippingService}
-   * @param label {module:merchantfulfillment_v0/model/Label}
-   * @param status {module:merchantfulfillment_v0/model/ShipmentStatus}
+   * @param itemList {[Item]} The list of items you want to include in a shipment.
+   * @param shipFromAddress {Address}
+   * @param shipToAddress {Address}
+   * @param packageDimensions {PackageDimensions}
+   * @param weight {Weight}
+   * @param insurance {CurrencyAmount}
+   * @param shippingService {ShippingService}
+   * @param label {Label}
+   * @param status {ShipmentStatus}
    * @param createdDate {Date} Date-time formatted timestamp.
    */
   constructor (shipmentId, amazonOrderId, itemList, shipFromAddress, shipToAddress, packageDimensions, weight, insurance, shippingService, label, status, createdDate) {
@@ -64,8 +64,8 @@ export class Shipment {
    * Constructs a <code>Shipment</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/Shipment} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/Shipment} The populated <code>Shipment</code> instance.
+   * @param {Shipment} obj Optional instance to populate.
+   * @return {Shipment} The populated <code>Shipment</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -124,56 +124,56 @@ Shipment.prototype.sellerOrderId = undefined
 
 /**
  * The list of items you want to include in a shipment.
- * @member {Array.<module:merchantfulfillment_v0/model/Item>} itemList
- * @type {Array.<module:merchantfulfillment_v0/model/Item>}
+ * @member {[Item]} itemList
+ * @type {[Item]}
  */
 Shipment.prototype.itemList = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Address} shipFromAddress
- * @type {module:merchantfulfillment_v0/model/Address}
+ * @member {Address} shipFromAddress
+ * @type {Address}
  */
 Shipment.prototype.shipFromAddress = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Address} shipToAddress
- * @type {module:merchantfulfillment_v0/model/Address}
+ * @member {Address} shipToAddress
+ * @type {Address}
  */
 Shipment.prototype.shipToAddress = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/PackageDimensions} packageDimensions
- * @type {module:merchantfulfillment_v0/model/PackageDimensions}
+ * @member {PackageDimensions} packageDimensions
+ * @type {PackageDimensions}
  */
 Shipment.prototype.packageDimensions = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Weight} weight
- * @type {module:merchantfulfillment_v0/model/Weight}
+ * @member {Weight} weight
+ * @type {Weight}
  */
 Shipment.prototype.weight = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/CurrencyAmount} insurance
- * @type {module:merchantfulfillment_v0/model/CurrencyAmount}
+ * @member {CurrencyAmount} insurance
+ * @type {CurrencyAmount}
  */
 Shipment.prototype.insurance = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/ShippingService} shippingService
- * @type {module:merchantfulfillment_v0/model/ShippingService}
+ * @member {ShippingService} shippingService
+ * @type {ShippingService}
  */
 Shipment.prototype.shippingService = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Label} label
- * @type {module:merchantfulfillment_v0/model/Label}
+ * @member {Label} label
+ * @type {Label}
  */
 Shipment.prototype.label = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/ShipmentStatus} status
- * @type {module:merchantfulfillment_v0/model/ShipmentStatus}
+ * @member {ShipmentStatus} status
+ * @type {ShipmentStatus}
  */
 Shipment.prototype.status = undefined
 

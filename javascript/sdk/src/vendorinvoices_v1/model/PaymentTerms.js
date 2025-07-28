@@ -32,8 +32,8 @@ export class PaymentTerms {
    * Constructs a <code>PaymentTerms</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/PaymentTerms} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/PaymentTerms} The populated <code>PaymentTerms</code> instance.
+   * @param {PaymentTerms} obj Optional instance to populate.
+   * @return {PaymentTerms} The populated <code>PaymentTerms</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -104,8 +104,8 @@ PaymentTerms.TypeEnum = {
 
 /**
  * The payment term type for the invoice.
- * @member {module:vendorinvoices_v1/model/PaymentTerms.TypeEnum} type
- * @type {module:vendorinvoices_v1/model/PaymentTerms.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 PaymentTerms.prototype.type = undefined
 

@@ -25,7 +25,7 @@ export class UpdateShipmentTrackingDetailsRequest {
    * The &#x60;updateShipmentTrackingDetails&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsRequest
    * @class
-   * @param trackingDetails {module:fulfillmentinbound_v2024_03_20/model/TrackingDetailsInput}
+   * @param trackingDetails {TrackingDetailsInput}
    */
   constructor (trackingDetails) {
     this.trackingDetails = trackingDetails
@@ -35,8 +35,8 @@ export class UpdateShipmentTrackingDetailsRequest {
    * Constructs a <code>UpdateShipmentTrackingDetailsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/UpdateShipmentTrackingDetailsRequest} The populated <code>UpdateShipmentTrackingDetailsRequest</code> instance.
+   * @param {UpdateShipmentTrackingDetailsRequest} obj Optional instance to populate.
+   * @return {UpdateShipmentTrackingDetailsRequest} The populated <code>UpdateShipmentTrackingDetailsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class UpdateShipmentTrackingDetailsRequest {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/TrackingDetailsInput} trackingDetails
- * @type {module:fulfillmentinbound_v2024_03_20/model/TrackingDetailsInput}
+ * @member {TrackingDetailsInput} trackingDetails
+ * @type {TrackingDetailsInput}
  */
 UpdateShipmentTrackingDetailsRequest.prototype.trackingDetails = undefined

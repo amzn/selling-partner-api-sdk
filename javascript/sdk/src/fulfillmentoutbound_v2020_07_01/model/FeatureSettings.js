@@ -32,8 +32,8 @@ export class FeatureSettings {
    * Constructs a <code>FeatureSettings</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings} The populated <code>FeatureSettings</code> instance.
+   * @param {FeatureSettings} obj Optional instance to populate.
+   * @return {FeatureSettings} The populated <code>FeatureSettings</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,7 +85,7 @@ FeatureSettings.FeatureFulfillmentPolicyEnum = {
 
 /**
  * Specifies the policy to use when fulfilling an order.
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings.FeatureFulfillmentPolicyEnum} featureFulfillmentPolicy
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FeatureSettings.FeatureFulfillmentPolicyEnum}
+ * @member {String} featureFulfillmentPolicy
+ * @type {String}
  */
 FeatureSettings.prototype.featureFulfillmentPolicy = undefined

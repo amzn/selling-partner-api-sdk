@@ -26,7 +26,7 @@ export class ProductType {
    * @class
    * @param name {String} The name of the Amazon product type.
    * @param displayName {String} The human-readable and localized description of the Amazon product type.
-   * @param marketplaceIds {Array.<String>} The Amazon marketplace identifiers for which the product type definition is available.
+   * @param marketplaceIds {[String]} The Amazon marketplace identifiers for which the product type definition is available.
    */
   constructor (name, displayName, marketplaceIds) {
     this.name = name
@@ -38,8 +38,8 @@ export class ProductType {
    * Constructs a <code>ProductType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:producttypedefinitions_v2020_09_01/model/ProductType} obj Optional instance to populate.
-   * @return {module:producttypedefinitions_v2020_09_01/model/ProductType} The populated <code>ProductType</code> instance.
+   * @param {ProductType} obj Optional instance to populate.
+   * @return {ProductType} The populated <code>ProductType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,7 +79,7 @@ ProductType.prototype.displayName = undefined
 
 /**
  * The Amazon marketplace identifiers for which the product type definition is available.
- * @member {Array.<String>} marketplaceIds
- * @type {Array.<String>}
+ * @member {[String]} marketplaceIds
+ * @type {[String]}
  */
 ProductType.prototype.marketplaceIds = undefined

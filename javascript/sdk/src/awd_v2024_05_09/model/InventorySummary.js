@@ -36,8 +36,8 @@ export class InventorySummary {
    * Constructs a <code>InventorySummary</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InventorySummary} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InventorySummary} The populated <code>InventorySummary</code> instance.
+   * @param {InventorySummary} obj Optional instance to populate.
+   * @return {InventorySummary} The populated <code>InventorySummary</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,14 +65,14 @@ export class InventorySummary {
 
 /**
  * The expiration details of the inventory. This object will only appear if the `details` parameter in the request is set to `SHOW`.
- * @member {Array.<module:awd_v2024_05_09/model/ExpirationDetails>} expirationDetails
- * @type {Array.<module:awd_v2024_05_09/model/ExpirationDetails>}
+ * @member {[ExpirationDetails]} expirationDetails
+ * @type {[ExpirationDetails]}
  */
 InventorySummary.prototype.expirationDetails = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InventoryDetails} inventoryDetails
- * @type {module:awd_v2024_05_09/model/InventoryDetails}
+ * @member {InventoryDetails} inventoryDetails
+ * @type {InventoryDetails}
  */
 InventorySummary.prototype.inventoryDetails = undefined
 

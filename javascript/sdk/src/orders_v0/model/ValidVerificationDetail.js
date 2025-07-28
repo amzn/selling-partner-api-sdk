@@ -26,7 +26,7 @@ export class ValidVerificationDetail {
    * @alias module:orders_v0/model/ValidVerificationDetail
    * @class
    * @param verificationDetailType {String} A supported type of verification detail. The type indicates which verification detail could be shared while updating the regulated order. Valid value: `prescriptionDetail`.
-   * @param validVerificationStatuses {Array.<module:orders_v0/model/VerificationStatus>} A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
+   * @param validVerificationStatuses {[VerificationStatus]} A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
    */
   constructor (verificationDetailType, validVerificationStatuses) {
     this.verificationDetailType = verificationDetailType
@@ -37,8 +37,8 @@ export class ValidVerificationDetail {
    * Constructs a <code>ValidVerificationDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/ValidVerificationDetail} obj Optional instance to populate.
-   * @return {module:orders_v0/model/ValidVerificationDetail} The populated <code>ValidVerificationDetail</code> instance.
+   * @param {ValidVerificationDetail} obj Optional instance to populate.
+   * @return {ValidVerificationDetail} The populated <code>ValidVerificationDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,7 +70,7 @@ ValidVerificationDetail.prototype.verificationDetailType = undefined
 
 /**
  * A list of valid verification statuses where the associated verification detail type may be provided. For example, if the value of this field is [\"Approved\"], calls to provide the associated verification detail will fail for orders with a `VerificationStatus` of `Pending`, `Rejected`, `Expired`, or `Cancelled`.
- * @member {Array.<module:orders_v0/model/VerificationStatus>} validVerificationStatuses
- * @type {Array.<module:orders_v0/model/VerificationStatus>}
+ * @member {[VerificationStatus]} validVerificationStatuses
+ * @type {[VerificationStatus]}
  */
 ValidVerificationDetail.prototype.validVerificationStatuses = undefined

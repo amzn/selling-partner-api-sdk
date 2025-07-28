@@ -25,7 +25,7 @@ export class ErrorList {
    * A list of error responses returned when a request is unsuccessful.
    * @alias module:vendordftransactions_v2021_12_28/model/ErrorList
    * @class
-   * @param errors {Array.<module:vendordftransactions_v2021_12_28/model/Error>} An array of individual error objects containing error details.
+   * @param errors {[Error]} An array of individual error objects containing error details.
    */
   constructor (errors) {
     this.errors = errors
@@ -35,8 +35,8 @@ export class ErrorList {
    * Constructs a <code>ErrorList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordftransactions_v2021_12_28/model/ErrorList} obj Optional instance to populate.
-   * @return {module:vendordftransactions_v2021_12_28/model/ErrorList} The populated <code>ErrorList</code> instance.
+   * @param {ErrorList} obj Optional instance to populate.
+   * @return {ErrorList} The populated <code>ErrorList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * An array of individual error objects containing error details.
- * @member {Array.<module:vendordftransactions_v2021_12_28/model/Error>} errors
- * @type {Array.<module:vendordftransactions_v2021_12_28/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 ErrorList.prototype.errors = undefined

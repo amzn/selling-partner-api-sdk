@@ -25,9 +25,9 @@ export class PrintOption {
    * The format options available for a label.
    * @alias module:shipping_v2/model/PrintOption
    * @class
-   * @param supportedPageLayouts {Array.<String>} A list of the supported page layout options for a document.
-   * @param supportedFileJoiningOptions {Array.<Boolean>} A list of the supported needFileJoining boolean values for a document.
-   * @param supportedDocumentDetails {Array.<module:shipping_v2/model/SupportedDocumentDetail>} A list of the supported documented details.
+   * @param supportedPageLayouts {[String]} A list of the supported page layout options for a document.
+   * @param supportedFileJoiningOptions {[Boolean]} A list of the supported needFileJoining boolean values for a document.
+   * @param supportedDocumentDetails {[SupportedDocumentDetail]} A list of the supported documented details.
    */
   constructor (supportedPageLayouts, supportedFileJoiningOptions, supportedDocumentDetails) {
     this.supportedPageLayouts = supportedPageLayouts
@@ -39,8 +39,8 @@ export class PrintOption {
    * Constructs a <code>PrintOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/PrintOption} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/PrintOption} The populated <code>PrintOption</code> instance.
+   * @param {PrintOption} obj Optional instance to populate.
+   * @return {PrintOption} The populated <code>PrintOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,28 +67,28 @@ export class PrintOption {
 
 /**
  * A list of the supported DPI options for a document.
- * @member {Array.<Number>} supportedDPIs
- * @type {Array.<Number>}
+ * @member {[Number]} supportedDPIs
+ * @type {[Number]}
  */
 PrintOption.prototype.supportedDPIs = undefined
 
 /**
  * A list of the supported page layout options for a document.
- * @member {Array.<String>} supportedPageLayouts
- * @type {Array.<String>}
+ * @member {[String]} supportedPageLayouts
+ * @type {[String]}
  */
 PrintOption.prototype.supportedPageLayouts = undefined
 
 /**
  * A list of the supported needFileJoining boolean values for a document.
- * @member {Array.<Boolean>} supportedFileJoiningOptions
- * @type {Array.<Boolean>}
+ * @member {[Boolean]} supportedFileJoiningOptions
+ * @type {[Boolean]}
  */
 PrintOption.prototype.supportedFileJoiningOptions = undefined
 
 /**
  * A list of the supported documented details.
- * @member {Array.<module:shipping_v2/model/SupportedDocumentDetail>} supportedDocumentDetails
- * @type {Array.<module:shipping_v2/model/SupportedDocumentDetail>}
+ * @member {[SupportedDocumentDetail]} supportedDocumentDetails
+ * @type {[SupportedDocumentDetail]}
  */
 PrintOption.prototype.supportedDocumentDetails = undefined

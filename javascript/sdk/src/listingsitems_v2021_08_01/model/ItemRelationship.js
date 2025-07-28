@@ -25,7 +25,7 @@ export class ItemRelationship {
    * The relationship details for a listing item.
    * @alias module:listingsitems_v2021_08_01/model/ItemRelationship
    * @class
-   * @param type {module:listingsitems_v2021_08_01/model/ItemRelationship.TypeEnum} The type of relationship.
+   * @param type {String} The type of relationship.
    */
   constructor (type) {
     this.type = type
@@ -35,8 +35,8 @@ export class ItemRelationship {
    * Constructs a <code>ItemRelationship</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ItemRelationship} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ItemRelationship} The populated <code>ItemRelationship</code> instance.
+   * @param {ItemRelationship} obj Optional instance to populate.
+   * @return {ItemRelationship} The populated <code>ItemRelationship</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,21 +63,21 @@ export class ItemRelationship {
 
 /**
  * Identifiers (SKUs) of the related items that are children of this listing item.
- * @member {Array.<String>} childSkus
- * @type {Array.<String>}
+ * @member {[String]} childSkus
+ * @type {[String]}
  */
 ItemRelationship.prototype.childSkus = undefined
 
 /**
  * Identifiers (SKUs) of the related items that are parents of this listing item.
- * @member {Array.<String>} parentSkus
- * @type {Array.<String>}
+ * @member {[String]} parentSkus
+ * @type {[String]}
  */
 ItemRelationship.prototype.parentSkus = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/ItemVariationTheme} variationTheme
- * @type {module:listingsitems_v2021_08_01/model/ItemVariationTheme}
+ * @member {ItemVariationTheme} variationTheme
+ * @type {ItemVariationTheme}
  */
 ItemRelationship.prototype.variationTheme = undefined
 
@@ -103,7 +103,7 @@ ItemRelationship.TypeEnum = {
 
 /**
  * The type of relationship.
- * @member {module:listingsitems_v2021_08_01/model/ItemRelationship.TypeEnum} type
- * @type {module:listingsitems_v2021_08_01/model/ItemRelationship.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 ItemRelationship.prototype.type = undefined

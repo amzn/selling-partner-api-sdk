@@ -24,7 +24,7 @@ export class Amount {
    * A quantity based on unit of measure.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/Amount
    * @class
-   * @param unitOfMeasure {module:fulfillmentoutbound_v2020_07_01/model/Amount.UnitOfMeasureEnum} The unit of measure for the amount.
+   * @param unitOfMeasure {String} The unit of measure for the amount.
    * @param value {String} A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.
    */
   constructor (unitOfMeasure, value) {
@@ -36,8 +36,8 @@ export class Amount {
    * Constructs a <code>Amount</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/Amount} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/Amount} The populated <code>Amount</code> instance.
+   * @param {Amount} obj Optional instance to populate.
+   * @return {Amount} The populated <code>Amount</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ Amount.UnitOfMeasureEnum = {
 
 /**
  * The unit of measure for the amount.
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Amount.UnitOfMeasureEnum} unitOfMeasure
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Amount.UnitOfMeasureEnum}
+ * @member {String} unitOfMeasure
+ * @type {String}
  */
 Amount.prototype.unitOfMeasure = undefined
 

@@ -39,8 +39,8 @@ export class AwdApi {
     * Constructs a new AwdApi.
     * @alias module:awd_v2024_05_09/api/AwdApi
     * @class
-    * @param {module:awd_v2024_05_09/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:awd_v2024_05_09/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -129,8 +129,8 @@ export class AwdApi {
 
   /**
      * Determines if the packages you specify are eligible for an AWD inbound order and contains error details for ineligible packages.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:awd_v2024_05_09/model/InboundPackages} body Represents the packages you want to inbound.
-     * @return {Promise<module:awd_v2024_05_09/model/InboundEligibility>}
+     * @param {InboundPackages} body Represents the packages you want to inbound.
+     * @return {Promise<InboundEligibility>}
      */
   checkInboundEligibilityWithHttpInfo (body) {
     const postBody = body
@@ -162,8 +162,8 @@ export class AwdApi {
 
   /**
      * Determines if the packages you specify are eligible for an AWD inbound order and contains error details for ineligible packages.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:awd_v2024_05_09/model/InboundPackages} body Represents the packages you want to inbound.
-     * @return {Promise<module:awd_v2024_05_09/model/InboundEligibility>}
+     * @param {InboundPackages} body Represents the packages you want to inbound.
+     * @return {Promise<InboundEligibility>}
      */
   checkInboundEligibility (body) {
     return this.checkInboundEligibilityWithHttpInfo(body)
@@ -220,8 +220,8 @@ export class AwdApi {
 
   /**
      * Creates a draft AWD inbound order with a list of packages for inbound shipment. The operation creates one shipment per order.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:awd_v2024_05_09/model/InboundOrderCreationData} body Payload for creating an inbound order.
-     * @return {Promise<module:awd_v2024_05_09/model/InboundOrderReference>}
+     * @param {InboundOrderCreationData} body Payload for creating an inbound order.
+     * @return {Promise<InboundOrderReference>}
      */
   createInboundWithHttpInfo (body) {
     const postBody = body
@@ -253,8 +253,8 @@ export class AwdApi {
 
   /**
      * Creates a draft AWD inbound order with a list of packages for inbound shipment. The operation creates one shipment per order.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:awd_v2024_05_09/model/InboundOrderCreationData} body Payload for creating an inbound order.
-     * @return {Promise<module:awd_v2024_05_09/model/InboundOrderReference>}
+     * @param {InboundOrderCreationData} body Payload for creating an inbound order.
+     * @return {Promise<InboundOrderReference>}
      */
   createInbound (body) {
     return this.createInboundWithHttpInfo(body)
@@ -266,7 +266,7 @@ export class AwdApi {
   /**
      * Retrieves an AWD inbound order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The ID of the inbound order that you want to retrieve.
-     * @return {Promise<module:awd_v2024_05_09/model/InboundOrder>}
+     * @return {Promise<InboundOrder>}
      */
   getInboundWithHttpInfo (orderId) {
     const postBody = null
@@ -300,7 +300,7 @@ export class AwdApi {
   /**
      * Retrieves an AWD inbound order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The ID of the inbound order that you want to retrieve.
-     * @return {Promise<module:awd_v2024_05_09/model/InboundOrder>}
+     * @return {Promise<InboundOrder>}
      */
   getInbound (orderId) {
     return this.getInboundWithHttpInfo(orderId)
@@ -313,8 +313,8 @@ export class AwdApi {
      * Retrieves an AWD inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      * @param {String} shipmentId ID for the shipment. A shipment contains the cases being inbounded.
      * @param {Object} opts Optional parameters
-     * @param {module:awd_v2024_05_09/model/String} opts.skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
-     * @return {Promise<module:awd_v2024_05_09/model/InboundShipment>}
+     * @param {String} opts.skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
+     * @return {Promise<InboundShipment>}
      */
   getInboundShipmentWithHttpInfo (shipmentId, opts) {
     opts = opts || {}
@@ -351,8 +351,8 @@ export class AwdApi {
      * Retrieves an AWD inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      * @param {String} shipmentId ID for the shipment. A shipment contains the cases being inbounded.
      * @param {Object} opts Optional parameters
-     * @param {module:awd_v2024_05_09/model/String} opts.skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
-     * @return {Promise<module:awd_v2024_05_09/model/InboundShipment>}
+     * @param {String} opts.skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
+     * @return {Promise<InboundShipment>}
      */
   getInboundShipment (shipmentId, opts) {
     return this.getInboundShipmentWithHttpInfo(shipmentId, opts)
@@ -365,9 +365,9 @@ export class AwdApi {
      * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the label URL is available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId ID for the shipment.
      * @param {Object} opts Optional parameters
-     * @param {module:awd_v2024_05_09/model/String} opts.pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
-     * @param {module:awd_v2024_05_09/model/String} opts.formatType The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
-     * @return {Promise<module:awd_v2024_05_09/model/ShipmentLabels>}
+     * @param {String} opts.pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
+     * @param {String} opts.formatType The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
+     * @return {Promise<ShipmentLabels>}
      */
   getInboundShipmentLabelsWithHttpInfo (shipmentId, opts) {
     opts = opts || {}
@@ -405,9 +405,9 @@ export class AwdApi {
      * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the label URL is available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId ID for the shipment.
      * @param {Object} opts Optional parameters
-     * @param {module:awd_v2024_05_09/model/String} opts.pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
-     * @param {module:awd_v2024_05_09/model/String} opts.formatType The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
-     * @return {Promise<module:awd_v2024_05_09/model/ShipmentLabels>}
+     * @param {String} opts.pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
+     * @param {String} opts.formatType The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
+     * @return {Promise<ShipmentLabels>}
      */
   getInboundShipmentLabels (shipmentId, opts) {
     return this.getInboundShipmentLabelsWithHttpInfo(shipmentId, opts)
@@ -419,14 +419,14 @@ export class AwdApi {
   /**
      * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {module:awd_v2024_05_09/model/String} opts.sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT.
-     * @param {module:awd_v2024_05_09/model/String} opts.sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
-     * @param {module:awd_v2024_05_09/model/String} opts.shipmentStatus Filter by inbound shipment status.
+     * @param {String} opts.sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT.
+     * @param {String} opts.sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
+     * @param {String} opts.shipmentStatus Filter by inbound shipment status.
      * @param {Date} opts.updatedAfter List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
      * @param {Date} opts.updatedBefore List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
      * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
      * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @return {Promise<module:awd_v2024_05_09/model/ShipmentListing>}
+     * @return {Promise<ShipmentListing>}
      */
   listInboundShipmentsWithHttpInfo (opts) {
     opts = opts || {}
@@ -462,14 +462,14 @@ export class AwdApi {
   /**
      * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
-     * @param {module:awd_v2024_05_09/model/String} opts.sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT.
-     * @param {module:awd_v2024_05_09/model/String} opts.sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
-     * @param {module:awd_v2024_05_09/model/String} opts.shipmentStatus Filter by inbound shipment status.
+     * @param {String} opts.sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT.
+     * @param {String} opts.sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
+     * @param {String} opts.shipmentStatus Filter by inbound shipment status.
      * @param {Date} opts.updatedAfter List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
      * @param {Date} opts.updatedBefore List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
      * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
      * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @return {Promise<module:awd_v2024_05_09/model/ShipmentListing>}
+     * @return {Promise<ShipmentListing>}
      */
   listInboundShipments (opts) {
     return this.listInboundShipmentsWithHttpInfo(opts)
@@ -482,11 +482,11 @@ export class AwdApi {
      * Lists AWD inventory associated with a merchant with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {String} opts.sku Filter by seller or merchant SKU for the item.
-     * @param {module:awd_v2024_05_09/model/String} opts.sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
-     * @param {module:awd_v2024_05_09/model/String} opts.details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
+     * @param {String} opts.sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
+     * @param {String} opts.details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
      * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
-     * @return {Promise<module:awd_v2024_05_09/model/InventoryListing>}
+     * @return {Promise<InventoryListing>}
      */
   listInventoryWithHttpInfo (opts) {
     opts = opts || {}
@@ -521,11 +521,11 @@ export class AwdApi {
      * Lists AWD inventory associated with a merchant with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {String} opts.sku Filter by seller or merchant SKU for the item.
-     * @param {module:awd_v2024_05_09/model/String} opts.sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
-     * @param {module:awd_v2024_05_09/model/String} opts.details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
+     * @param {String} opts.sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
+     * @param {String} opts.details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
      * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
-     * @return {Promise<module:awd_v2024_05_09/model/InventoryListing>}
+     * @return {Promise<InventoryListing>}
      */
   listInventory (opts) {
     return this.listInventoryWithHttpInfo(opts)
@@ -537,7 +537,7 @@ export class AwdApi {
   /**
      * Updates an AWD inbound order that is in &#x60;DRAFT&#x60; status and not yet confirmed. Use this operation to update the &#x60;packagesToInbound&#x60;, &#x60;originAddress&#x60; and &#x60;preferences&#x60; attributes.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The ID of the inbound order that you want to update.
-     * @param {module:awd_v2024_05_09/model/InboundOrder} body Represents an AWD inbound order.
+     * @param {InboundOrder} body Represents an AWD inbound order.
      * @return {Promise<void>}
      */
   updateInboundWithHttpInfo (orderId, body) {
@@ -577,7 +577,7 @@ export class AwdApi {
   /**
      * Updates an AWD inbound order that is in &#x60;DRAFT&#x60; status and not yet confirmed. Use this operation to update the &#x60;packagesToInbound&#x60;, &#x60;originAddress&#x60; and &#x60;preferences&#x60; attributes.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} orderId The ID of the inbound order that you want to update.
-     * @param {module:awd_v2024_05_09/model/InboundOrder} body Represents an AWD inbound order.
+     * @param {InboundOrder} body Represents an AWD inbound order.
      * @return {Promise<void>}
      */
   updateInbound (orderId, body) {
@@ -590,7 +590,7 @@ export class AwdApi {
   /**
      * Updates transport details for an AWD shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment ID.
-     * @param {module:awd_v2024_05_09/model/TransportationDetails} body Transportation details for the shipment.
+     * @param {TransportationDetails} body Transportation details for the shipment.
      * @return {Promise<void>}
      */
   updateInboundShipmentTransportDetailsWithHttpInfo (shipmentId, body) {
@@ -630,7 +630,7 @@ export class AwdApi {
   /**
      * Updates transport details for an AWD shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment ID.
-     * @param {module:awd_v2024_05_09/model/TransportationDetails} body Transportation details for the shipment.
+     * @param {TransportationDetails} body Transportation details for the shipment.
      * @return {Promise<void>}
      */
   updateInboundShipmentTransportDetails (shipmentId, body) {

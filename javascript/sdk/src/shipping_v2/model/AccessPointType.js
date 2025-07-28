@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AccessPointType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class AccessPointType {
@@ -70,7 +70,7 @@ export class AccessPointType {
   /**
     * Returns a <code>AccessPointType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:shipping_v2/model/AccessPointType} The enum <code>AccessPointType</code> value.
+    * @return {AccessPointType} The enum <code>AccessPointType</code> value.
     */
   static constructFromObject (object) {
     return object

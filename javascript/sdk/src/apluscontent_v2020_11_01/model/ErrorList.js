@@ -25,7 +25,7 @@ export class ErrorList {
    * The error response that is returned when a request is unsuccessful.
    * @alias module:apluscontent_v2020_11_01/model/ErrorList
    * @class
-   * @param errors {Array.<module:apluscontent_v2020_11_01/model/Error>} A list of error responses that are returned when a request is unsuccessful.
+   * @param errors {[Error]} A list of error responses that are returned when a request is unsuccessful.
    */
   constructor (errors) {
     this.errors = errors
@@ -35,8 +35,8 @@ export class ErrorList {
    * Constructs a <code>ErrorList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ErrorList} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ErrorList} The populated <code>ErrorList</code> instance.
+   * @param {ErrorList} obj Optional instance to populate.
+   * @return {ErrorList} The populated <code>ErrorList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * A list of error responses that are returned when a request is unsuccessful.
- * @member {Array.<module:apluscontent_v2020_11_01/model/Error>} errors
- * @type {Array.<module:apluscontent_v2020_11_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 ErrorList.prototype.errors = undefined

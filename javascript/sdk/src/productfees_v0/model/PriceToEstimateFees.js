@@ -26,7 +26,7 @@ export class PriceToEstimateFees {
    * Price information for an item, used to estimate fees.
    * @alias module:productfees_v0/model/PriceToEstimateFees
    * @class
-   * @param listingPrice {module:productfees_v0/model/MoneyType}
+   * @param listingPrice {MoneyType}
    */
   constructor (listingPrice) {
     this.listingPrice = listingPrice
@@ -36,8 +36,8 @@ export class PriceToEstimateFees {
    * Constructs a <code>PriceToEstimateFees</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/PriceToEstimateFees} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/PriceToEstimateFees} The populated <code>PriceToEstimateFees</code> instance.
+   * @param {PriceToEstimateFees} obj Optional instance to populate.
+   * @return {PriceToEstimateFees} The populated <code>PriceToEstimateFees</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,19 +62,19 @@ export class PriceToEstimateFees {
 }
 
 /**
- * @member {module:productfees_v0/model/MoneyType} listingPrice
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 PriceToEstimateFees.prototype.listingPrice = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} shipping
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} shipping
+ * @type {MoneyType}
  */
 PriceToEstimateFees.prototype.shipping = undefined
 
 /**
- * @member {module:productfees_v0/model/Points} points
- * @type {module:productfees_v0/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 PriceToEstimateFees.prototype.points = undefined

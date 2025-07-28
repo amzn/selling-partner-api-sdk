@@ -30,16 +30,16 @@ export class Transaction {
    * @alias module:sellerWallet_2024_03_01/model/Transaction
    * @class
    * @param transactionId {String} The unique identifier provided by Amazon to the transaction.
-   * @param transactionType {module:sellerWallet_2024_03_01/model/TransactionType}
-   * @param transactionStatus {module:sellerWallet_2024_03_01/model/TransactionStatus}
+   * @param transactionType {TransactionType}
+   * @param transactionStatus {TransactionStatus}
    * @param transactionRequestDate {Date} The date on which the transaction was initiated.
    * @param lastUpdateDate {Date} The date of the most recent account balance update.
    * @param transactionRequesterSource {String} The transaction initiation source. This value could be the Amazon portal or PISP name that the customer used to start the transaction.
    * @param transactionDescription {String} The description provided by the requester in the transaction request at time of transaction initiation.
-   * @param transactionSourceAccount {module:sellerWallet_2024_03_01/model/TransactionAccount}
-   * @param transactionDestinationAccount {module:sellerWallet_2024_03_01/model/TransactionAccount}
-   * @param transactionRequestAmount {module:sellerWallet_2024_03_01/model/Currency}
-   * @param transferRateDetails {module:sellerWallet_2024_03_01/model/TransferRatePreview}
+   * @param transactionSourceAccount {TransactionAccount}
+   * @param transactionDestinationAccount {TransactionAccount}
+   * @param transactionRequestAmount {Currency}
+   * @param transferRateDetails {TransferRatePreview}
    */
   constructor (transactionId, transactionType, transactionStatus, transactionRequestDate, lastUpdateDate, transactionRequesterSource, transactionDescription, transactionSourceAccount, transactionDestinationAccount, transactionRequestAmount, transferRateDetails) {
     this.transactionId = transactionId
@@ -59,8 +59,8 @@ export class Transaction {
    * Constructs a <code>Transaction</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/Transaction} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/Transaction} The populated <code>Transaction</code> instance.
+   * @param {Transaction} obj Optional instance to populate.
+   * @return {Transaction} The populated <code>Transaction</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -105,14 +105,14 @@ export class Transaction {
 Transaction.prototype.transactionId = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionType} transactionType
- * @type {module:sellerWallet_2024_03_01/model/TransactionType}
+ * @member {TransactionType} transactionType
+ * @type {TransactionType}
  */
 Transaction.prototype.transactionType = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionStatus} transactionStatus
- * @type {module:sellerWallet_2024_03_01/model/TransactionStatus}
+ * @member {TransactionStatus} transactionStatus
+ * @type {TransactionStatus}
  */
 Transaction.prototype.transactionStatus = undefined
 
@@ -166,32 +166,32 @@ Transaction.prototype.transactionRequesterSource = undefined
 Transaction.prototype.transactionDescription = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionSourceAccount
- * @type {module:sellerWallet_2024_03_01/model/TransactionAccount}
+ * @member {TransactionAccount} transactionSourceAccount
+ * @type {TransactionAccount}
  */
 Transaction.prototype.transactionSourceAccount = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionAccount} transactionDestinationAccount
- * @type {module:sellerWallet_2024_03_01/model/TransactionAccount}
+ * @member {TransactionAccount} transactionDestinationAccount
+ * @type {TransactionAccount}
  */
 Transaction.prototype.transactionDestinationAccount = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/Currency} transactionRequestAmount
- * @type {module:sellerWallet_2024_03_01/model/Currency}
+ * @member {Currency} transactionRequestAmount
+ * @type {Currency}
  */
 Transaction.prototype.transactionRequestAmount = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransferRatePreview} transferRateDetails
- * @type {module:sellerWallet_2024_03_01/model/TransferRatePreview}
+ * @member {TransferRatePreview} transferRateDetails
+ * @type {TransferRatePreview}
  */
 Transaction.prototype.transferRateDetails = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/Currency} transactionFinalAmount
- * @type {module:sellerWallet_2024_03_01/model/Currency}
+ * @member {Currency} transactionFinalAmount
+ * @type {Currency}
  */
 Transaction.prototype.transactionFinalAmount = undefined
 

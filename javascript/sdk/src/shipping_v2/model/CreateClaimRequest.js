@@ -28,8 +28,8 @@ export class CreateClaimRequest {
    * @alias module:shipping_v2/model/CreateClaimRequest
    * @class
    * @param trackingId {String} The carrier generated identifier for a package in a purchased shipment.
-   * @param claimReason {module:shipping_v2/model/ClaimReason}
-   * @param settlementType {module:shipping_v2/model/SettlementType}
+   * @param claimReason {ClaimReason}
+   * @param settlementType {SettlementType}
    */
   constructor (trackingId, claimReason, settlementType) {
     this.trackingId = trackingId
@@ -41,8 +41,8 @@ export class CreateClaimRequest {
    * Constructs a <code>CreateClaimRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/CreateClaimRequest} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/CreateClaimRequest} The populated <code>CreateClaimRequest</code> instance.
+   * @param {CreateClaimRequest} obj Optional instance to populate.
+   * @return {CreateClaimRequest} The populated <code>CreateClaimRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,14 +77,14 @@ export class CreateClaimRequest {
 CreateClaimRequest.prototype.trackingId = undefined
 
 /**
- * @member {module:shipping_v2/model/Currency} declaredValue
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} declaredValue
+ * @type {Currency}
  */
 CreateClaimRequest.prototype.declaredValue = undefined
 
 /**
- * @member {module:shipping_v2/model/ClaimReason} claimReason
- * @type {module:shipping_v2/model/ClaimReason}
+ * @member {ClaimReason} claimReason
+ * @type {ClaimReason}
  */
 CreateClaimRequest.prototype.claimReason = undefined
 
@@ -97,13 +97,13 @@ CreateClaimRequest.prototype.isReplacementPackageSent = undefined
 
 /**
  * A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list
- * @member {Array.<String>} proofs
- * @type {Array.<String>}
+ * @member {[String]} proofs
+ * @type {[String]}
  */
 CreateClaimRequest.prototype.proofs = undefined
 
 /**
- * @member {module:shipping_v2/model/SettlementType} settlementType
- * @type {module:shipping_v2/model/SettlementType}
+ * @member {SettlementType} settlementType
+ * @type {SettlementType}
  */
 CreateClaimRequest.prototype.settlementType = undefined

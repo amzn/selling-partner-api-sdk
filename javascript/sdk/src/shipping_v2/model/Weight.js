@@ -24,7 +24,7 @@ export class Weight {
    * The weight in the units indicated.
    * @alias module:shipping_v2/model/Weight
    * @class
-   * @param unit {module:shipping_v2/model/Weight.UnitEnum} The unit of measurement.
+   * @param unit {String} The unit of measurement.
    * @param value {Number} The measurement value.
    */
   constructor (unit, value) {
@@ -36,8 +36,8 @@ export class Weight {
    * Constructs a <code>Weight</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/Weight} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/Weight} The populated <code>Weight</code> instance.
+   * @param {Weight} obj Optional instance to populate.
+   * @return {Weight} The populated <code>Weight</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -94,8 +94,8 @@ Weight.UnitEnum = {
 
 /**
  * The unit of measurement.
- * @member {module:shipping_v2/model/Weight.UnitEnum} unit
- * @type {module:shipping_v2/model/Weight.UnitEnum}
+ * @member {String} unit
+ * @type {String}
  */
 Weight.prototype.unit = undefined
 

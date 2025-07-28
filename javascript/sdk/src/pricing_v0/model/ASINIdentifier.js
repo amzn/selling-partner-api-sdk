@@ -36,8 +36,8 @@ export class ASINIdentifier {
    * Constructs a <code>ASINIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/ASINIdentifier} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/ASINIdentifier} The populated <code>ASINIdentifier</code> instance.
+   * @param {ASINIdentifier} obj Optional instance to populate.
+   * @return {ASINIdentifier} The populated <code>ASINIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

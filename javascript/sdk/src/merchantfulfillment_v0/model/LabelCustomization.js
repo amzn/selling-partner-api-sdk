@@ -33,8 +33,8 @@ export class LabelCustomization {
    * Constructs a <code>LabelCustomization</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/LabelCustomization} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/LabelCustomization} The populated <code>LabelCustomization</code> instance.
+   * @param {LabelCustomization} obj Optional instance to populate.
+   * @return {LabelCustomization} The populated <code>LabelCustomization</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class LabelCustomization {
 LabelCustomization.prototype.customTextForLabel = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/StandardIdForLabel} standardIdForLabel
- * @type {module:merchantfulfillment_v0/model/StandardIdForLabel}
+ * @member {StandardIdForLabel} standardIdForLabel
+ * @type {StandardIdForLabel}
  */
 LabelCustomization.prototype.standardIdForLabel = undefined

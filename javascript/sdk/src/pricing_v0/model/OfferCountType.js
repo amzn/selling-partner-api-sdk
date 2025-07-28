@@ -33,8 +33,8 @@ export class OfferCountType {
    * Constructs a <code>OfferCountType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/OfferCountType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/OfferCountType} The populated <code>OfferCountType</code> instance.
+   * @param {OfferCountType} obj Optional instance to populate.
+   * @return {OfferCountType} The populated <code>OfferCountType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,8 +66,8 @@ export class OfferCountType {
 OfferCountType.prototype.condition = undefined
 
 /**
- * @member {module:pricing_v0/model/FulfillmentChannelType} fulfillmentChannel
- * @type {module:pricing_v0/model/FulfillmentChannelType}
+ * @member {FulfillmentChannelType} fulfillmentChannel
+ * @type {FulfillmentChannelType}
  */
 OfferCountType.prototype.fulfillmentChannel = undefined
 

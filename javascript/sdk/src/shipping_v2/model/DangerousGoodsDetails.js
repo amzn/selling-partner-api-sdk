@@ -32,8 +32,8 @@ export class DangerousGoodsDetails {
    * Constructs a <code>DangerousGoodsDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/DangerousGoodsDetails} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/DangerousGoodsDetails} The populated <code>DangerousGoodsDetails</code> instance.
+   * @param {DangerousGoodsDetails} obj Optional instance to populate.
+   * @return {DangerousGoodsDetails} The populated <code>DangerousGoodsDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -100,8 +100,8 @@ DangerousGoodsDetails.PackingGroupEnum = {
 
 /**
  * The specific packaging group of the item being shipped.
- * @member {module:shipping_v2/model/DangerousGoodsDetails.PackingGroupEnum} packingGroup
- * @type {module:shipping_v2/model/DangerousGoodsDetails.PackingGroupEnum}
+ * @member {String} packingGroup
+ * @type {String}
  */
 DangerousGoodsDetails.prototype.packingGroup = undefined
 
@@ -193,7 +193,7 @@ DangerousGoodsDetails.PackingInstructionEnum = {
 
 /**
  * The specific packing instruction of the item being shipped.
- * @member {module:shipping_v2/model/DangerousGoodsDetails.PackingInstructionEnum} packingInstruction
- * @type {module:shipping_v2/model/DangerousGoodsDetails.PackingInstructionEnum}
+ * @member {String} packingInstruction
+ * @type {String}
  */
 DangerousGoodsDetails.prototype.packingInstruction = undefined

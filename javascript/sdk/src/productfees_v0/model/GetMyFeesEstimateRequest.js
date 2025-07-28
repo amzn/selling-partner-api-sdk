@@ -33,8 +33,8 @@ export class GetMyFeesEstimateRequest {
    * Constructs a <code>GetMyFeesEstimateRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/GetMyFeesEstimateRequest} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/GetMyFeesEstimateRequest} The populated <code>GetMyFeesEstimateRequest</code> instance.
+   * @param {GetMyFeesEstimateRequest} obj Optional instance to populate.
+   * @return {GetMyFeesEstimateRequest} The populated <code>GetMyFeesEstimateRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class GetMyFeesEstimateRequest {
 }
 
 /**
- * @member {module:productfees_v0/model/FeesEstimateRequest} feesEstimateRequest
- * @type {module:productfees_v0/model/FeesEstimateRequest}
+ * @member {FeesEstimateRequest} feesEstimateRequest
+ * @type {FeesEstimateRequest}
  */
 GetMyFeesEstimateRequest.prototype.feesEstimateRequest = undefined

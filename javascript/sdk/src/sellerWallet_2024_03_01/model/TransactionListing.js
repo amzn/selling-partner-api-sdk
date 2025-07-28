@@ -25,7 +25,7 @@ export class TransactionListing {
    * A list of transactions.
    * @alias module:sellerWallet_2024_03_01/model/TransactionListing
    * @class
-   * @param transactions {Array.<module:sellerWallet_2024_03_01/model/Transaction>} A list of transactions.
+   * @param transactions {[Transaction]} A list of transactions.
    */
   constructor (transactions) {
     this.transactions = transactions
@@ -35,8 +35,8 @@ export class TransactionListing {
    * Constructs a <code>TransactionListing</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransactionListing} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransactionListing} The populated <code>TransactionListing</code> instance.
+   * @param {TransactionListing} obj Optional instance to populate.
+   * @return {TransactionListing} The populated <code>TransactionListing</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,7 +68,7 @@ TransactionListing.prototype.nextPageToken = undefined
 
 /**
  * A list of transactions.
- * @member {Array.<module:sellerWallet_2024_03_01/model/Transaction>} transactions
- * @type {Array.<module:sellerWallet_2024_03_01/model/Transaction>}
+ * @member {[Transaction]} transactions
+ * @type {[Transaction]}
  */
 TransactionListing.prototype.transactions = undefined

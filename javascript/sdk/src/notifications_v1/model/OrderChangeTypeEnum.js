@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class OrderChangeTypeEnum.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class OrderChangeTypeEnum {
@@ -34,7 +34,7 @@ export class OrderChangeTypeEnum {
   /**
     * Returns a <code>OrderChangeTypeEnum</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:notifications_v1/model/OrderChangeTypeEnum} The enum <code>OrderChangeTypeEnum</code> value.
+    * @return {OrderChangeTypeEnum} The enum <code>OrderChangeTypeEnum</code> value.
     */
   static constructFromObject (object) {
     return object

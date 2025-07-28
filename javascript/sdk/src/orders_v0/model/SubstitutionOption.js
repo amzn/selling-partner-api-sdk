@@ -33,8 +33,8 @@ export class SubstitutionOption {
    * Constructs a <code>SubstitutionOption</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/SubstitutionOption} obj Optional instance to populate.
-   * @return {module:orders_v0/model/SubstitutionOption} The populated <code>SubstitutionOption</code> instance.
+   * @param {SubstitutionOption} obj Optional instance to populate.
+   * @return {SubstitutionOption} The populated <code>SubstitutionOption</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,7 +89,7 @@ SubstitutionOption.prototype.sellerSKU = undefined
 SubstitutionOption.prototype.title = undefined
 
 /**
- * @member {module:orders_v0/model/Measurement} measurement
- * @type {module:orders_v0/model/Measurement}
+ * @member {Measurement} measurement
+ * @type {Measurement}
  */
 SubstitutionOption.prototype.measurement = undefined

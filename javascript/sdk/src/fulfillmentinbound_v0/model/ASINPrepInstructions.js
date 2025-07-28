@@ -35,8 +35,8 @@ export class ASINPrepInstructions {
    * Constructs a <code>ASINPrepInstructions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/ASINPrepInstructions} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/ASINPrepInstructions} The populated <code>ASINPrepInstructions</code> instance.
+   * @param {ASINPrepInstructions} obj Optional instance to populate.
+   * @return {ASINPrepInstructions} The populated <code>ASINPrepInstructions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,20 +69,20 @@ export class ASINPrepInstructions {
 ASINPrepInstructions.prototype.ASIN = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/BarcodeInstruction} barcodeInstruction
- * @type {module:fulfillmentinbound_v0/model/BarcodeInstruction}
+ * @member {BarcodeInstruction} barcodeInstruction
+ * @type {BarcodeInstruction}
  */
 ASINPrepInstructions.prototype.barcodeInstruction = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/PrepGuidance} prepGuidance
- * @type {module:fulfillmentinbound_v0/model/PrepGuidance}
+ * @member {PrepGuidance} prepGuidance
+ * @type {PrepGuidance}
  */
 ASINPrepInstructions.prototype.prepGuidance = undefined
 
 /**
  * A list of preparation instructions to help with item sourcing decisions.
- * @member {Array.<module:fulfillmentinbound_v0/model/PrepInstruction>} prepInstructionList
- * @type {Array.<module:fulfillmentinbound_v0/model/PrepInstruction>}
+ * @member {[PrepInstruction]} prepInstructionList
+ * @type {[PrepInstruction]}
  */
 ASINPrepInstructions.prototype.prepInstructionList = undefined

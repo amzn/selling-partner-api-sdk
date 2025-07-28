@@ -32,8 +32,8 @@ export class SellingPartnerMetadata {
    * Constructs a <code>SellingPartnerMetadata</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/SellingPartnerMetadata} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/SellingPartnerMetadata} The populated <code>SellingPartnerMetadata</code> instance.
+   * @param {SellingPartnerMetadata} obj Optional instance to populate.
+   * @return {SellingPartnerMetadata} The populated <code>SellingPartnerMetadata</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

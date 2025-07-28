@@ -33,8 +33,8 @@ export class Export {
    * Constructs a <code>Export</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoices_v2024_06_19/model/Export} obj Optional instance to populate.
-   * @return {module:invoices_v2024_06_19/model/Export} The populated <code>Export</code> instance.
+   * @param {Export} obj Optional instance to populate.
+   * @return {Export} The populated <code>Export</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,13 +91,13 @@ Export.prototype.generateExportStartedAt = undefined
 
 /**
  * The identifier for the export documents. To get the information required to retrieve the export document's contents, pass each ID in the `getInvoicesDocument` operation.  This list is empty until the status is `DONE`.
- * @member {Array.<String>} invoicesDocumentIds
- * @type {Array.<String>}
+ * @member {[String]} invoicesDocumentIds
+ * @type {[String]}
  */
 Export.prototype.invoicesDocumentIds = undefined
 
 /**
- * @member {module:invoices_v2024_06_19/model/ExportStatus} status
- * @type {module:invoices_v2024_06_19/model/ExportStatus}
+ * @member {ExportStatus} status
+ * @type {ExportStatus}
  */
 Export.prototype.status = undefined

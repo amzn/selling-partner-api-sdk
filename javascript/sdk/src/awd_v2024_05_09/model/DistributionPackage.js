@@ -27,9 +27,9 @@ export class DistributionPackage {
    * Represents an AWD distribution package.
    * @alias module:awd_v2024_05_09/model/DistributionPackage
    * @class
-   * @param contents {module:awd_v2024_05_09/model/DistributionPackageContents}
-   * @param measurements {module:awd_v2024_05_09/model/MeasurementData}
-   * @param type {module:awd_v2024_05_09/model/DistributionPackageType}
+   * @param contents {DistributionPackageContents}
+   * @param measurements {MeasurementData}
+   * @param type {DistributionPackageType}
    */
   constructor (contents, measurements, type) {
     this.contents = contents
@@ -41,8 +41,8 @@ export class DistributionPackage {
    * Constructs a <code>DistributionPackage</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/DistributionPackage} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/DistributionPackage} The populated <code>DistributionPackage</code> instance.
+   * @param {DistributionPackage} obj Optional instance to populate.
+   * @return {DistributionPackage} The populated <code>DistributionPackage</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,19 +67,19 @@ export class DistributionPackage {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/DistributionPackageContents} contents
- * @type {module:awd_v2024_05_09/model/DistributionPackageContents}
+ * @member {DistributionPackageContents} contents
+ * @type {DistributionPackageContents}
  */
 DistributionPackage.prototype.contents = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/MeasurementData} measurements
- * @type {module:awd_v2024_05_09/model/MeasurementData}
+ * @member {MeasurementData} measurements
+ * @type {MeasurementData}
  */
 DistributionPackage.prototype.measurements = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/DistributionPackageType} type
- * @type {module:awd_v2024_05_09/model/DistributionPackageType}
+ * @member {DistributionPackageType} type
+ * @type {DistributionPackageType}
  */
 DistributionPackage.prototype.type = undefined

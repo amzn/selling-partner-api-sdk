@@ -30,8 +30,8 @@ export class AutomotiveApi {
     * Constructs a new AutomotiveApi.
     * @alias module:vehicles_v2024_11_01/api/AutomotiveApi
     * @class
-    * @param {module:vehicles_v2024_11_01/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:vehicles_v2024_11_01/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -65,11 +65,11 @@ export class AutomotiveApi {
   /**
      * Get the latest collection of vehicles
      * @param {String} marketplaceId An identifier for the marketplace in which the resource operates.
-     * @param {module:vehicles_v2024_11_01/model/String} vehicleType An identifier for vehicle type.
+     * @param {String} vehicleType An identifier for vehicle type.
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token to fetch a certain page when there are multiple pages worth of results.
      * @param {String} opts.updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
-     * @return {Promise<module:vehicles_v2024_11_01/model/VehiclesResponse>}
+     * @return {Promise<VehiclesResponse>}
      */
   getVehiclesWithHttpInfo (marketplaceId, vehicleType, opts) {
     opts = opts || {}
@@ -112,11 +112,11 @@ export class AutomotiveApi {
   /**
      * Get the latest collection of vehicles
      * @param {String} marketplaceId An identifier for the marketplace in which the resource operates.
-     * @param {module:vehicles_v2024_11_01/model/String} vehicleType An identifier for vehicle type.
+     * @param {String} vehicleType An identifier for vehicle type.
      * @param {Object} opts Optional parameters
      * @param {String} opts.pageToken A token to fetch a certain page when there are multiple pages worth of results.
      * @param {String} opts.updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
-     * @return {Promise<module:vehicles_v2024_11_01/model/VehiclesResponse>}
+     * @return {Promise<VehiclesResponse>}
      */
   getVehicles (marketplaceId, vehicleType, opts) {
     return this.getVehiclesWithHttpInfo(marketplaceId, vehicleType, opts)

@@ -36,8 +36,8 @@ export class DateRange {
    * Constructs a <code>DateRange</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DateRange} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DateRange} The populated <code>DateRange</code> instance.
+   * @param {DateRange} obj Optional instance to populate.
+   * @return {DateRange} The populated <code>DateRange</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

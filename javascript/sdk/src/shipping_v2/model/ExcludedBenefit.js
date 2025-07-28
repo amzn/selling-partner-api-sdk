@@ -34,8 +34,8 @@ export class ExcludedBenefit {
    * Constructs a <code>ExcludedBenefit</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/ExcludedBenefit} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/ExcludedBenefit} The populated <code>ExcludedBenefit</code> instance.
+   * @param {ExcludedBenefit} obj Optional instance to populate.
+   * @return {ExcludedBenefit} The populated <code>ExcludedBenefit</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,7 +67,7 @@ ExcludedBenefit.prototype.benefit = undefined
 
 /**
  * List of reasons (eg. LATE_DELIVERY_RISK, etc.) indicating why a benefit is excluded for a shipping offer.
- * @member {Array.<String>} reasonCodes
- * @type {Array.<String>}
+ * @member {[String]} reasonCodes
+ * @type {[String]}
  */
 ExcludedBenefit.prototype.reasonCodes = undefined

@@ -33,8 +33,8 @@ export class InvoiceRequest {
    * Constructs a <code>InvoiceRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:messaging_v1/model/InvoiceRequest} obj Optional instance to populate.
-   * @return {module:messaging_v1/model/InvoiceRequest} The populated <code>InvoiceRequest</code> instance.
+   * @param {InvoiceRequest} obj Optional instance to populate.
+   * @return {InvoiceRequest} The populated <code>InvoiceRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class InvoiceRequest {
 
 /**
  * Attachments to include in the message to the buyer.
- * @member {Array.<module:messaging_v1/model/Attachment>} attachments
- * @type {Array.<module:messaging_v1/model/Attachment>}
+ * @member {[Attachment]} attachments
+ * @type {[Attachment]}
  */
 InvoiceRequest.prototype.attachments = undefined

@@ -33,8 +33,8 @@ export class AppointmentSlotReport {
    * Constructs a <code>AppointmentSlotReport</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AppointmentSlotReport} obj Optional instance to populate.
-   * @return {module:services_v1/model/AppointmentSlotReport} The populated <code>AppointmentSlotReport</code> instance.
+   * @param {AppointmentSlotReport} obj Optional instance to populate.
+   * @return {AppointmentSlotReport} The populated <code>AppointmentSlotReport</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -81,8 +81,8 @@ AppointmentSlotReport.SchedulingTypeEnum = {
 
 /**
  * Defines the type of slots.
- * @member {module:services_v1/model/AppointmentSlotReport.SchedulingTypeEnum} schedulingType
- * @type {module:services_v1/model/AppointmentSlotReport.SchedulingTypeEnum}
+ * @member {String} schedulingType
+ * @type {String}
  */
 AppointmentSlotReport.prototype.schedulingType = undefined
 
@@ -102,7 +102,7 @@ AppointmentSlotReport.prototype.endTime = undefined
 
 /**
  * A list of time windows along with associated capacity in which the service can be performed.
- * @member {Array.<module:services_v1/model/AppointmentSlot>} appointmentSlots
- * @type {Array.<module:services_v1/model/AppointmentSlot>}
+ * @member {[AppointmentSlot]} appointmentSlots
+ * @type {[AppointmentSlot]}
  */
 AppointmentSlotReport.prototype.appointmentSlots = undefined

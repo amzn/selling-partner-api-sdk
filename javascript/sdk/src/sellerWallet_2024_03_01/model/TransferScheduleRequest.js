@@ -32,10 +32,10 @@ export class TransferScheduleRequest {
    * @param sourceAccountId {String} The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.
    * @param sourceCurrencyCode {String} The three-letter currency code of the source payment method country, in ISO 4217 format.
    * @param destinationAccountId {String} The unique identifier of the destination bank account where the money is deposited.
-   * @param destinationTransactionInstrument {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails}
-   * @param transactionType {module:sellerWallet_2024_03_01/model/TransactionType}
-   * @param transferScheduleInformation {module:sellerWallet_2024_03_01/model/TransferScheduleInformation}
-   * @param paymentPreference {module:sellerWallet_2024_03_01/model/PaymentPreference}
+   * @param destinationTransactionInstrument {TransactionInstrumentDetails}
+   * @param transactionType {TransactionType}
+   * @param transferScheduleInformation {TransferScheduleInformation}
+   * @param paymentPreference {PaymentPreference}
    */
   constructor (sourceAccountId, sourceCurrencyCode, destinationAccountId, destinationTransactionInstrument, transactionType, transferScheduleInformation, paymentPreference) {
     this.sourceAccountId = sourceAccountId
@@ -51,8 +51,8 @@ export class TransferScheduleRequest {
    * Constructs a <code>TransferScheduleRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransferScheduleRequest} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransferScheduleRequest} The populated <code>TransferScheduleRequest</code> instance.
+   * @param {TransferScheduleRequest} obj Optional instance to populate.
+   * @return {TransferScheduleRequest} The populated <code>TransferScheduleRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -103,31 +103,31 @@ TransferScheduleRequest.prototype.sourceCurrencyCode = undefined
 TransferScheduleRequest.prototype.destinationAccountId = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails} destinationTransactionInstrument
- * @type {module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails}
+ * @member {TransactionInstrumentDetails} destinationTransactionInstrument
+ * @type {TransactionInstrumentDetails}
  */
 TransferScheduleRequest.prototype.destinationTransactionInstrument = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransactionType} transactionType
- * @type {module:sellerWallet_2024_03_01/model/TransactionType}
+ * @member {TransactionType} transactionType
+ * @type {TransactionType}
  */
 TransferScheduleRequest.prototype.transactionType = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransferScheduleInformation} transferScheduleInformation
- * @type {module:sellerWallet_2024_03_01/model/TransferScheduleInformation}
+ * @member {TransferScheduleInformation} transferScheduleInformation
+ * @type {TransferScheduleInformation}
  */
 TransferScheduleRequest.prototype.transferScheduleInformation = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/PaymentPreference} paymentPreference
- * @type {module:sellerWallet_2024_03_01/model/PaymentPreference}
+ * @member {PaymentPreference} paymentPreference
+ * @type {PaymentPreference}
  */
 TransferScheduleRequest.prototype.paymentPreference = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/TransferScheduleStatus} transferScheduleStatus
- * @type {module:sellerWallet_2024_03_01/model/TransferScheduleStatus}
+ * @member {TransferScheduleStatus} transferScheduleStatus
+ * @type {TransferScheduleStatus}
  */
 TransferScheduleRequest.prototype.transferScheduleStatus = undefined

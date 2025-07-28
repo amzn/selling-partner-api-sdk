@@ -34,8 +34,8 @@ export class CreateScheduledPackagesResponse {
    * Constructs a <code>CreateScheduledPackagesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/CreateScheduledPackagesResponse} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/CreateScheduledPackagesResponse} The populated <code>CreateScheduledPackagesResponse</code> instance.
+   * @param {CreateScheduledPackagesResponse} obj Optional instance to populate.
+   * @return {CreateScheduledPackagesResponse} The populated <code>CreateScheduledPackagesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,15 +61,15 @@ export class CreateScheduledPackagesResponse {
 
 /**
  * A list of packages. Refer to the `Package` object.
- * @member {Array.<module:easyship_v2022_03_23/model/Package>} scheduledPackages
- * @type {Array.<module:easyship_v2022_03_23/model/Package>}
+ * @member {[Package]} scheduledPackages
+ * @type {[Package]}
  */
 CreateScheduledPackagesResponse.prototype.scheduledPackages = undefined
 
 /**
  * A list of orders we couldn't scheduled on your behalf. Each element contains the reason and details on the error.
- * @member {Array.<module:easyship_v2022_03_23/model/RejectedOrder>} rejectedOrders
- * @type {Array.<module:easyship_v2022_03_23/model/RejectedOrder>}
+ * @member {[RejectedOrder]} rejectedOrders
+ * @type {[RejectedOrder]}
  */
 CreateScheduledPackagesResponse.prototype.rejectedOrders = undefined
 

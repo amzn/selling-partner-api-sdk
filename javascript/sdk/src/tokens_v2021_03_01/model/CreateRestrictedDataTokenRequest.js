@@ -25,7 +25,7 @@ export class CreateRestrictedDataTokenRequest {
    * The request schema for the createRestrictedDataToken operation.
    * @alias module:tokens_v2021_03_01/model/CreateRestrictedDataTokenRequest
    * @class
-   * @param restrictedResources {Array.<module:tokens_v2021_03_01/model/RestrictedResource>} A list of restricted resources. Maximum: 50
+   * @param restrictedResources {[RestrictedResource]} A list of restricted resources. Maximum: 50
    */
   constructor (restrictedResources) {
     this.restrictedResources = restrictedResources
@@ -35,8 +35,8 @@ export class CreateRestrictedDataTokenRequest {
    * Constructs a <code>CreateRestrictedDataTokenRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:tokens_v2021_03_01/model/CreateRestrictedDataTokenRequest} obj Optional instance to populate.
-   * @return {module:tokens_v2021_03_01/model/CreateRestrictedDataTokenRequest} The populated <code>CreateRestrictedDataTokenRequest</code> instance.
+   * @param {CreateRestrictedDataTokenRequest} obj Optional instance to populate.
+   * @return {CreateRestrictedDataTokenRequest} The populated <code>CreateRestrictedDataTokenRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,7 +68,7 @@ CreateRestrictedDataTokenRequest.prototype.targetApplication = undefined
 
 /**
  * A list of restricted resources. Maximum: 50
- * @member {Array.<module:tokens_v2021_03_01/model/RestrictedResource>} restrictedResources
- * @type {Array.<module:tokens_v2021_03_01/model/RestrictedResource>}
+ * @member {[RestrictedResource]} restrictedResources
+ * @type {[RestrictedResource]}
  */
 CreateRestrictedDataTokenRequest.prototype.restrictedResources = undefined

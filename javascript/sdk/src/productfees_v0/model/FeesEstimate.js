@@ -36,8 +36,8 @@ export class FeesEstimate {
    * Constructs a <code>FeesEstimate</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/FeesEstimate} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/FeesEstimate} The populated <code>FeesEstimate</code> instance.
+   * @param {FeesEstimate} obj Optional instance to populate.
+   * @return {FeesEstimate} The populated <code>FeesEstimate</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,14 +69,14 @@ export class FeesEstimate {
 FeesEstimate.prototype.timeOfFeesEstimation = undefined
 
 /**
- * @member {module:productfees_v0/model/MoneyType} totalFeesEstimate
- * @type {module:productfees_v0/model/MoneyType}
+ * @member {MoneyType} totalFeesEstimate
+ * @type {MoneyType}
  */
 FeesEstimate.prototype.totalFeesEstimate = undefined
 
 /**
  * A list of other fees that contribute to a given fee.
- * @member {Array.<module:productfees_v0/model/FeeDetail>} feeDetailList
- * @type {Array.<module:productfees_v0/model/FeeDetail>}
+ * @member {[FeeDetail]} feeDetailList
+ * @type {[FeeDetail]}
  */
 FeesEstimate.prototype.feeDetailList = undefined

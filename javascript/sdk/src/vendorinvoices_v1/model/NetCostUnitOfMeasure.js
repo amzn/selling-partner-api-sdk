@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class NetCostUnitOfMeasure.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class NetCostUnitOfMeasure {
@@ -46,7 +46,7 @@ export class NetCostUnitOfMeasure {
   /**
     * Returns a <code>NetCostUnitOfMeasure</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:vendorinvoices_v1/model/NetCostUnitOfMeasure} The enum <code>NetCostUnitOfMeasure</code> value.
+    * @return {NetCostUnitOfMeasure} The enum <code>NetCostUnitOfMeasure</code> value.
     */
   static constructFromObject (object) {
     return object

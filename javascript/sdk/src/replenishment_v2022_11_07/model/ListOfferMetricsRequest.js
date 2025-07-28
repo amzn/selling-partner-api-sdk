@@ -27,8 +27,8 @@ export class ListOfferMetricsRequest {
    * The request body for the &#x60;listOfferMetrics&#x60; operation.
    * @alias module:replenishment_v2022_11_07/model/ListOfferMetricsRequest
    * @class
-   * @param pagination {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestPagination}
-   * @param filters {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestFilters}
+   * @param pagination {ListOfferMetricsRequestPagination}
+   * @param filters {ListOfferMetricsRequestFilters}
    */
   constructor (pagination, filters) {
     this.pagination = pagination
@@ -39,8 +39,8 @@ export class ListOfferMetricsRequest {
    * Constructs a <code>ListOfferMetricsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOfferMetricsRequest} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOfferMetricsRequest} The populated <code>ListOfferMetricsRequest</code> instance.
+   * @param {ListOfferMetricsRequest} obj Optional instance to populate.
+   * @return {ListOfferMetricsRequest} The populated <code>ListOfferMetricsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,19 +65,19 @@ export class ListOfferMetricsRequest {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestPagination} pagination
- * @type {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestPagination}
+ * @member {ListOfferMetricsRequestPagination} pagination
+ * @type {ListOfferMetricsRequestPagination}
  */
 ListOfferMetricsRequest.prototype.pagination = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestSort} sort
- * @type {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestSort}
+ * @member {ListOfferMetricsRequestSort} sort
+ * @type {ListOfferMetricsRequestSort}
  */
 ListOfferMetricsRequest.prototype.sort = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestFilters} filters
- * @type {module:replenishment_v2022_11_07/model/ListOfferMetricsRequestFilters}
+ * @member {ListOfferMetricsRequestFilters} filters
+ * @type {ListOfferMetricsRequestFilters}
  */
 ListOfferMetricsRequest.prototype.filters = undefined

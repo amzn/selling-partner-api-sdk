@@ -25,8 +25,8 @@ export class TaxDetail {
    * Details of tax amount applied.
    * @alias module:vendordfpayments_v1/model/TaxDetail
    * @class
-   * @param taxType {module:vendordfpayments_v1/model/TaxDetail.TaxTypeEnum} Type of the tax applied.
-   * @param taxAmount {module:vendordfpayments_v1/model/Money}
+   * @param taxType {String} Type of the tax applied.
+   * @param taxAmount {Money}
    */
   constructor (taxType, taxAmount) {
     this.taxType = taxType
@@ -37,8 +37,8 @@ export class TaxDetail {
    * Constructs a <code>TaxDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfpayments_v1/model/TaxDetail} obj Optional instance to populate.
-   * @return {module:vendordfpayments_v1/model/TaxDetail} The populated <code>TaxDetail</code> instance.
+   * @param {TaxDetail} obj Optional instance to populate.
+   * @return {TaxDetail} The populated <code>TaxDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -157,8 +157,8 @@ TaxDetail.TaxTypeEnum = {
 
 /**
  * Type of the tax applied.
- * @member {module:vendordfpayments_v1/model/TaxDetail.TaxTypeEnum} taxType
- * @type {module:vendordfpayments_v1/model/TaxDetail.TaxTypeEnum}
+ * @member {String} taxType
+ * @type {String}
  */
 TaxDetail.prototype.taxType = undefined
 
@@ -170,13 +170,13 @@ TaxDetail.prototype.taxType = undefined
 TaxDetail.prototype.taxRate = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/Money} taxAmount
- * @type {module:vendordfpayments_v1/model/Money}
+ * @member {Money} taxAmount
+ * @type {Money}
  */
 TaxDetail.prototype.taxAmount = undefined
 
 /**
- * @member {module:vendordfpayments_v1/model/Money} taxableAmount
- * @type {module:vendordfpayments_v1/model/Money}
+ * @member {Money} taxableAmount
+ * @type {Money}
  */
 TaxDetail.prototype.taxableAmount = undefined

@@ -26,7 +26,7 @@ export class GetAdditionalSellerInputsRequest {
    * @alias module:merchantfulfillment_v0/model/GetAdditionalSellerInputsRequest
    * @class
    * @param shippingServiceId {String} An Amazon-defined shipping service identifier.
-   * @param shipFromAddress {module:merchantfulfillment_v0/model/Address}
+   * @param shipFromAddress {Address}
    * @param orderId {String} An Amazon-defined order identifier, in 3-7-7 format.
    */
   constructor (shippingServiceId, shipFromAddress, orderId) {
@@ -39,8 +39,8 @@ export class GetAdditionalSellerInputsRequest {
    * Constructs a <code>GetAdditionalSellerInputsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/GetAdditionalSellerInputsRequest} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/GetAdditionalSellerInputsRequest} The populated <code>GetAdditionalSellerInputsRequest</code> instance.
+   * @param {GetAdditionalSellerInputsRequest} obj Optional instance to populate.
+   * @return {GetAdditionalSellerInputsRequest} The populated <code>GetAdditionalSellerInputsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,8 +72,8 @@ export class GetAdditionalSellerInputsRequest {
 GetAdditionalSellerInputsRequest.prototype.shippingServiceId = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/Address} shipFromAddress
- * @type {module:merchantfulfillment_v0/model/Address}
+ * @member {Address} shipFromAddress
+ * @type {Address}
  */
 GetAdditionalSellerInputsRequest.prototype.shipFromAddress = undefined
 

@@ -29,7 +29,7 @@ export class InboundShipmentInfo {
    * Information about the seller&#39;s inbound shipments. Returned by the listInboundShipments operation.
    * @alias module:fulfillmentinbound_v0/model/InboundShipmentInfo
    * @class
-   * @param shipFromAddress {module:fulfillmentinbound_v0/model/Address}
+   * @param shipFromAddress {Address}
    * @param areCasesRequired {Boolean} Indicates whether or not an inbound shipment contains case-packed boxes. When AreCasesRequired = true for an inbound shipment, all items in the inbound shipment must be case packed.
    */
   constructor (shipFromAddress, areCasesRequired) {
@@ -41,8 +41,8 @@ export class InboundShipmentInfo {
    * Constructs a <code>InboundShipmentInfo</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/InboundShipmentInfo} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/InboundShipmentInfo} The populated <code>InboundShipmentInfo</code> instance.
+   * @param {InboundShipmentInfo} obj Optional instance to populate.
+   * @return {InboundShipmentInfo} The populated <code>InboundShipmentInfo</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,8 +88,8 @@ InboundShipmentInfo.prototype.shipmentId = undefined
 InboundShipmentInfo.prototype.shipmentName = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/Address} shipFromAddress
- * @type {module:fulfillmentinbound_v0/model/Address}
+ * @member {Address} shipFromAddress
+ * @type {Address}
  */
 InboundShipmentInfo.prototype.shipFromAddress = undefined
 
@@ -101,14 +101,14 @@ InboundShipmentInfo.prototype.shipFromAddress = undefined
 InboundShipmentInfo.prototype.destinationFulfillmentCenterId = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/ShipmentStatus} shipmentStatus
- * @type {module:fulfillmentinbound_v0/model/ShipmentStatus}
+ * @member {ShipmentStatus} shipmentStatus
+ * @type {ShipmentStatus}
  */
 InboundShipmentInfo.prototype.shipmentStatus = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/LabelPrepType} labelPrepType
- * @type {module:fulfillmentinbound_v0/model/LabelPrepType}
+ * @member {LabelPrepType} labelPrepType
+ * @type {LabelPrepType}
  */
 InboundShipmentInfo.prototype.labelPrepType = undefined
 
@@ -127,13 +127,13 @@ InboundShipmentInfo.prototype.areCasesRequired = undefined
 InboundShipmentInfo.prototype.confirmedNeedByDate = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/BoxContentsSource} boxContentsSource
- * @type {module:fulfillmentinbound_v0/model/BoxContentsSource}
+ * @member {BoxContentsSource} boxContentsSource
+ * @type {BoxContentsSource}
  */
 InboundShipmentInfo.prototype.boxContentsSource = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/BoxContentsFeeDetails} estimatedBoxContentsFee
- * @type {module:fulfillmentinbound_v0/model/BoxContentsFeeDetails}
+ * @member {BoxContentsFeeDetails} estimatedBoxContentsFee
+ * @type {BoxContentsFeeDetails}
  */
 InboundShipmentInfo.prototype.estimatedBoxContentsFee = undefined

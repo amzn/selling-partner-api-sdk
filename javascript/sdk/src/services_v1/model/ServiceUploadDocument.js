@@ -24,7 +24,7 @@ export class ServiceUploadDocument {
    * Input for to be uploaded document.
    * @alias module:services_v1/model/ServiceUploadDocument
    * @class
-   * @param contentType {module:services_v1/model/ServiceUploadDocument.ContentTypeEnum} The content type of the to-be-uploaded file
+   * @param contentType {String} The content type of the to-be-uploaded file
    * @param contentLength {Number} The content length of the to-be-uploaded file
    */
   constructor (contentType, contentLength) {
@@ -36,8 +36,8 @@ export class ServiceUploadDocument {
    * Constructs a <code>ServiceUploadDocument</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/ServiceUploadDocument} obj Optional instance to populate.
-   * @return {module:services_v1/model/ServiceUploadDocument} The populated <code>ServiceUploadDocument</code> instance.
+   * @param {ServiceUploadDocument} obj Optional instance to populate.
+   * @return {ServiceUploadDocument} The populated <code>ServiceUploadDocument</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -107,8 +107,8 @@ ServiceUploadDocument.ContentTypeEnum = {
 
 /**
  * The content type of the to-be-uploaded file
- * @member {module:services_v1/model/ServiceUploadDocument.ContentTypeEnum} contentType
- * @type {module:services_v1/model/ServiceUploadDocument.ContentTypeEnum}
+ * @member {String} contentType
+ * @type {String}
  */
 ServiceUploadDocument.prototype.contentType = undefined
 

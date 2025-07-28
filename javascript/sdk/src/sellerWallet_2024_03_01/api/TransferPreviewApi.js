@@ -30,8 +30,8 @@ export class TransferPreviewApi {
     * Constructs a new TransferPreviewApi.
     * @alias module:sellerWallet_2024_03_01/api/TransferPreviewApi
     * @class
-    * @param {module:sellerWallet_2024_03_01/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:sellerWallet_2024_03_01/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -70,7 +70,7 @@ export class TransferPreviewApi {
      * @param {String} destinationCountryCode Country code of the destination transaction account in ISO 3166 format.
      * @param {String} destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
      * @param {Number} baseAmount The base transaction amount without any markup fees.
-     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferRatePreview>}
+     * @return {Promise<TransferRatePreview>}
      */
   getTransferPreviewWithHttpInfo (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {
     const postBody = null
@@ -133,7 +133,7 @@ export class TransferPreviewApi {
      * @param {String} destinationCountryCode Country code of the destination transaction account in ISO 3166 format.
      * @param {String} destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
      * @param {Number} baseAmount The base transaction amount without any markup fees.
-     * @return {Promise<module:sellerWallet_2024_03_01/model/TransferRatePreview>}
+     * @return {Promise<TransferRatePreview>}
      */
   getTransferPreview (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {
     return this.getTransferPreviewWithHttpInfo(sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount)

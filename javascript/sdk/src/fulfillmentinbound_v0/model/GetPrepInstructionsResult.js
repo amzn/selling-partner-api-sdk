@@ -36,8 +36,8 @@ export class GetPrepInstructionsResult {
    * Constructs a <code>GetPrepInstructionsResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/GetPrepInstructionsResult} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/GetPrepInstructionsResult} The populated <code>GetPrepInstructionsResult</code> instance.
+   * @param {GetPrepInstructionsResult} obj Optional instance to populate.
+   * @return {GetPrepInstructionsResult} The populated <code>GetPrepInstructionsResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,28 +64,28 @@ export class GetPrepInstructionsResult {
 
 /**
  * A list of SKU labeling requirements and item preparation instructions.
- * @member {Array.<module:fulfillmentinbound_v0/model/SKUPrepInstructions>} sKUPrepInstructionsList
- * @type {Array.<module:fulfillmentinbound_v0/model/SKUPrepInstructions>}
+ * @member {[SKUPrepInstructions]} sKUPrepInstructionsList
+ * @type {[SKUPrepInstructions]}
  */
 GetPrepInstructionsResult.prototype.sKUPrepInstructionsList = undefined
 
 /**
  * A list of invalid SKU values and the reason they are invalid.
- * @member {Array.<module:fulfillmentinbound_v0/model/InvalidSKU>} invalidSKUList
- * @type {Array.<module:fulfillmentinbound_v0/model/InvalidSKU>}
+ * @member {[InvalidSKU]} invalidSKUList
+ * @type {[InvalidSKU]}
  */
 GetPrepInstructionsResult.prototype.invalidSKUList = undefined
 
 /**
  * A list of item preparation instructions.
- * @member {Array.<module:fulfillmentinbound_v0/model/ASINPrepInstructions>} aSINPrepInstructionsList
- * @type {Array.<module:fulfillmentinbound_v0/model/ASINPrepInstructions>}
+ * @member {[ASINPrepInstructions]} aSINPrepInstructionsList
+ * @type {[ASINPrepInstructions]}
  */
 GetPrepInstructionsResult.prototype.aSINPrepInstructionsList = undefined
 
 /**
  * A list of invalid ASIN values and the reasons they are invalid.
- * @member {Array.<module:fulfillmentinbound_v0/model/InvalidASIN>} invalidASINList
- * @type {Array.<module:fulfillmentinbound_v0/model/InvalidASIN>}
+ * @member {[InvalidASIN]} invalidASINList
+ * @type {[InvalidASIN]}
  */
 GetPrepInstructionsResult.prototype.invalidASINList = undefined

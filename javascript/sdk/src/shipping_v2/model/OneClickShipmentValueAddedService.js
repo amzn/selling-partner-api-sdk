@@ -35,8 +35,8 @@ export class OneClickShipmentValueAddedService {
    * Constructs a <code>OneClickShipmentValueAddedService</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/OneClickShipmentValueAddedService} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/OneClickShipmentValueAddedService} The populated <code>OneClickShipmentValueAddedService</code> instance.
+   * @param {OneClickShipmentValueAddedService} obj Optional instance to populate.
+   * @return {OneClickShipmentValueAddedService} The populated <code>OneClickShipmentValueAddedService</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,7 +67,7 @@ export class OneClickShipmentValueAddedService {
 OneClickShipmentValueAddedService.prototype.id = undefined
 
 /**
- * @member {module:shipping_v2/model/Currency} amount
- * @type {module:shipping_v2/model/Currency}
+ * @member {Currency} amount
+ * @type {Currency}
  */
 OneClickShipmentValueAddedService.prototype.amount = undefined

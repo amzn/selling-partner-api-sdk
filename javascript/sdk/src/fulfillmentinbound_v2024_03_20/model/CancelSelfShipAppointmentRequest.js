@@ -33,8 +33,8 @@ export class CancelSelfShipAppointmentRequest {
    * Constructs a <code>CancelSelfShipAppointmentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/CancelSelfShipAppointmentRequest} The populated <code>CancelSelfShipAppointmentRequest</code> instance.
+   * @param {CancelSelfShipAppointmentRequest} obj Optional instance to populate.
+   * @return {CancelSelfShipAppointmentRequest} The populated <code>CancelSelfShipAppointmentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class CancelSelfShipAppointmentRequest {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/ReasonComment} reasonComment
- * @type {module:fulfillmentinbound_v2024_03_20/model/ReasonComment}
+ * @member {ReasonComment} reasonComment
+ * @type {ReasonComment}
  */
 CancelSelfShipAppointmentRequest.prototype.reasonComment = undefined

@@ -36,8 +36,8 @@ export class OperationalConfiguration {
    * Constructs a <code>OperationalConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/OperationalConfiguration} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/OperationalConfiguration} The populated <code>OperationalConfiguration</code> instance.
+   * @param {OperationalConfiguration} obj Optional instance to populate.
+   * @return {OperationalConfiguration} The populated <code>OperationalConfiguration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,25 +63,25 @@ export class OperationalConfiguration {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ContactDetails} contactDetails
- * @type {module:supplysources_v2020_07_01/model/ContactDetails}
+ * @member {ContactDetails} contactDetails
+ * @type {ContactDetails}
  */
 OperationalConfiguration.prototype.contactDetails = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ThroughputConfig} throughputConfig
- * @type {module:supplysources_v2020_07_01/model/ThroughputConfig}
+ * @member {ThroughputConfig} throughputConfig
+ * @type {ThroughputConfig}
  */
 OperationalConfiguration.prototype.throughputConfig = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/OperatingHoursByDay} operatingHoursByDay
- * @type {module:supplysources_v2020_07_01/model/OperatingHoursByDay}
+ * @member {OperatingHoursByDay} operatingHoursByDay
+ * @type {OperatingHoursByDay}
  */
 OperationalConfiguration.prototype.operatingHoursByDay = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/Duration} handlingTime
- * @type {module:supplysources_v2020_07_01/model/Duration}
+ * @member {Duration} handlingTime
+ * @type {Duration}
  */
 OperationalConfiguration.prototype.handlingTime = undefined

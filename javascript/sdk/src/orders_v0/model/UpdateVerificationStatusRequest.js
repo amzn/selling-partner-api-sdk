@@ -25,7 +25,7 @@ export class UpdateVerificationStatusRequest {
    * The request body for the &#x60;updateVerificationStatus&#x60; operation.
    * @alias module:orders_v0/model/UpdateVerificationStatusRequest
    * @class
-   * @param regulatedOrderVerificationStatus {module:orders_v0/model/UpdateVerificationStatusRequestBody}
+   * @param regulatedOrderVerificationStatus {UpdateVerificationStatusRequestBody}
    */
   constructor (regulatedOrderVerificationStatus) {
     this.regulatedOrderVerificationStatus = regulatedOrderVerificationStatus
@@ -35,8 +35,8 @@ export class UpdateVerificationStatusRequest {
    * Constructs a <code>UpdateVerificationStatusRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/UpdateVerificationStatusRequest} obj Optional instance to populate.
-   * @return {module:orders_v0/model/UpdateVerificationStatusRequest} The populated <code>UpdateVerificationStatusRequest</code> instance.
+   * @param {UpdateVerificationStatusRequest} obj Optional instance to populate.
+   * @return {UpdateVerificationStatusRequest} The populated <code>UpdateVerificationStatusRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class UpdateVerificationStatusRequest {
 }
 
 /**
- * @member {module:orders_v0/model/UpdateVerificationStatusRequestBody} regulatedOrderVerificationStatus
- * @type {module:orders_v0/model/UpdateVerificationStatusRequestBody}
+ * @member {UpdateVerificationStatusRequestBody} regulatedOrderVerificationStatus
+ * @type {UpdateVerificationStatusRequestBody}
  */
 UpdateVerificationStatusRequest.prototype.regulatedOrderVerificationStatus = undefined

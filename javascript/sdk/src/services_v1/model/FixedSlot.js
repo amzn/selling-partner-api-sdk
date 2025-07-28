@@ -32,8 +32,8 @@ export class FixedSlot {
    * Constructs a <code>FixedSlot</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/FixedSlot} obj Optional instance to populate.
-   * @return {module:services_v1/model/FixedSlot} The populated <code>FixedSlot</code> instance.
+   * @param {FixedSlot} obj Optional instance to populate.
+   * @return {FixedSlot} The populated <code>FixedSlot</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

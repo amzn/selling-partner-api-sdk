@@ -37,8 +37,8 @@ export class GetFeatureInventoryResult {
    * Constructs a <code>GetFeatureInventoryResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResult} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResult} The populated <code>GetFeatureInventoryResult</code> instance.
+   * @param {GetFeatureInventoryResult} obj Optional instance to populate.
+   * @return {GetFeatureInventoryResult} The populated <code>GetFeatureInventoryResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,7 +86,7 @@ GetFeatureInventoryResult.prototype.nextToken = undefined
 
 /**
  * An array of SKUs eligible for this feature and the quantity available.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSku>} featureSkus
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/FeatureSku>}
+ * @member {[FeatureSku]} featureSkus
+ * @type {[FeatureSku]}
  */
 GetFeatureInventoryResult.prototype.featureSkus = undefined

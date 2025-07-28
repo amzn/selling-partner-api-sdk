@@ -27,7 +27,7 @@ export class Dimensions {
    * @class
    * @param height {Number} The height of a package.
    * @param length {Number} The length of a package.
-   * @param unitOfMeasurement {module:fulfillmentinbound_v2024_03_20/model/UnitOfMeasurement}
+   * @param unitOfMeasurement {UnitOfMeasurement}
    * @param width {Number} The width of a package.
    */
   constructor (height, length, unitOfMeasurement, width) {
@@ -41,8 +41,8 @@ export class Dimensions {
    * Constructs a <code>Dimensions</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/Dimensions} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/Dimensions} The populated <code>Dimensions</code> instance.
+   * @param {Dimensions} obj Optional instance to populate.
+   * @return {Dimensions} The populated <code>Dimensions</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,8 +82,8 @@ Dimensions.prototype.height = undefined
 Dimensions.prototype.length = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/UnitOfMeasurement} unitOfMeasurement
- * @type {module:fulfillmentinbound_v2024_03_20/model/UnitOfMeasurement}
+ * @member {UnitOfMeasurement} unitOfMeasurement
+ * @type {UnitOfMeasurement}
  */
 Dimensions.prototype.unitOfMeasurement = undefined
 

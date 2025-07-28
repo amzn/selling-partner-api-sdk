@@ -29,8 +29,8 @@ export class MskuPrepDetail {
    * @alias module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail
    * @class
    * @param msku {String} The merchant SKU, a merchant-supplied identifier for a specific SKU.
-   * @param prepCategory {module:fulfillmentinbound_v2024_03_20/model/PrepCategory}
-   * @param prepTypes {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepType>} A list of preparation types associated with a preparation category.
+   * @param prepCategory {PrepCategory}
+   * @param prepTypes {[PrepType]} A list of preparation types associated with a preparation category.
    */
   constructor (msku, prepCategory, prepTypes) {
     this.msku = msku
@@ -42,8 +42,8 @@ export class MskuPrepDetail {
    * Constructs a <code>MskuPrepDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/MskuPrepDetail} The populated <code>MskuPrepDetail</code> instance.
+   * @param {MskuPrepDetail} obj Optional instance to populate.
+   * @return {MskuPrepDetail} The populated <code>MskuPrepDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -71,14 +71,14 @@ export class MskuPrepDetail {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/AllOwnersConstraint} allOwnersConstraint
- * @type {module:fulfillmentinbound_v2024_03_20/model/AllOwnersConstraint}
+ * @member {AllOwnersConstraint} allOwnersConstraint
+ * @type {AllOwnersConstraint}
  */
 MskuPrepDetail.prototype.allOwnersConstraint = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/OwnerConstraint} labelOwnerConstraint
- * @type {module:fulfillmentinbound_v2024_03_20/model/OwnerConstraint}
+ * @member {OwnerConstraint} labelOwnerConstraint
+ * @type {OwnerConstraint}
  */
 MskuPrepDetail.prototype.labelOwnerConstraint = undefined
 
@@ -90,20 +90,20 @@ MskuPrepDetail.prototype.labelOwnerConstraint = undefined
 MskuPrepDetail.prototype.msku = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/PrepCategory} prepCategory
- * @type {module:fulfillmentinbound_v2024_03_20/model/PrepCategory}
+ * @member {PrepCategory} prepCategory
+ * @type {PrepCategory}
  */
 MskuPrepDetail.prototype.prepCategory = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/OwnerConstraint} prepOwnerConstraint
- * @type {module:fulfillmentinbound_v2024_03_20/model/OwnerConstraint}
+ * @member {OwnerConstraint} prepOwnerConstraint
+ * @type {OwnerConstraint}
  */
 MskuPrepDetail.prototype.prepOwnerConstraint = undefined
 
 /**
  * A list of preparation types associated with a preparation category.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepType>} prepTypes
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PrepType>}
+ * @member {[PrepType]} prepTypes
+ * @type {[PrepType]}
  */
 MskuPrepDetail.prototype.prepTypes = undefined

@@ -25,8 +25,8 @@ export class LowestPricedOffersInput {
    * The input required for building &#x60;LowestPricedOffers&#x60; data in the response.
    * @alias module:pricing_v2022_05_01/model/LowestPricedOffersInput
    * @class
-   * @param itemCondition {module:pricing_v2022_05_01/model/Condition}
-   * @param offerType {module:pricing_v2022_05_01/model/LowestPricedOffersInput.OfferTypeEnum} The input parameter specifies the type of offers requested for `LowestPricedOffers`. This applies to `Consumer` and `Business` offers. `Consumer` is the default `offerType`.
+   * @param itemCondition {Condition}
+   * @param offerType {String} The input parameter specifies the type of offers requested for `LowestPricedOffers`. This applies to `Consumer` and `Business` offers. `Consumer` is the default `offerType`.
    */
   constructor (itemCondition, offerType) {
     this.itemCondition = itemCondition
@@ -37,8 +37,8 @@ export class LowestPricedOffersInput {
    * Constructs a <code>LowestPricedOffersInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/LowestPricedOffersInput} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/LowestPricedOffersInput} The populated <code>LowestPricedOffersInput</code> instance.
+   * @param {LowestPricedOffersInput} obj Optional instance to populate.
+   * @return {LowestPricedOffersInput} The populated <code>LowestPricedOffersInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class LowestPricedOffersInput {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/Condition} itemCondition
- * @type {module:pricing_v2022_05_01/model/Condition}
+ * @member {Condition} itemCondition
+ * @type {Condition}
  */
 LowestPricedOffersInput.prototype.itemCondition = undefined
 
@@ -83,7 +83,7 @@ LowestPricedOffersInput.OfferTypeEnum = {
 
 /**
  * The input parameter specifies the type of offers requested for `LowestPricedOffers`. This applies to `Consumer` and `Business` offers. `Consumer` is the default `offerType`.
- * @member {module:pricing_v2022_05_01/model/LowestPricedOffersInput.OfferTypeEnum} offerType
- * @type {module:pricing_v2022_05_01/model/LowestPricedOffersInput.OfferTypeEnum}
+ * @member {String} offerType
+ * @type {String}
  */
 LowestPricedOffersInput.prototype.offerType = undefined

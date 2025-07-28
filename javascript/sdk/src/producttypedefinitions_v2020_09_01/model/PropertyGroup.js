@@ -32,8 +32,8 @@ export class PropertyGroup {
    * Constructs a <code>PropertyGroup</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:producttypedefinitions_v2020_09_01/model/PropertyGroup} obj Optional instance to populate.
-   * @return {module:producttypedefinitions_v2020_09_01/model/PropertyGroup} The populated <code>PropertyGroup</code> instance.
+   * @param {PropertyGroup} obj Optional instance to populate.
+   * @return {PropertyGroup} The populated <code>PropertyGroup</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,7 +73,7 @@ PropertyGroup.prototype.description = undefined
 
 /**
  * The names of the schema properties for the property group.
- * @member {Array.<String>} propertyNames
- * @type {Array.<String>}
+ * @member {[String]} propertyNames
+ * @type {[String]}
  */
 PropertyGroup.prototype.propertyNames = undefined

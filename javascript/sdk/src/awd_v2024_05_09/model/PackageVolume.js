@@ -25,7 +25,7 @@ export class PackageVolume {
    * Represents the volume of the package with a unit of measurement.
    * @alias module:awd_v2024_05_09/model/PackageVolume
    * @class
-   * @param unitOfMeasurement {module:awd_v2024_05_09/model/VolumeUnitOfMeasurement}
+   * @param unitOfMeasurement {VolumeUnitOfMeasurement}
    * @param volume {Number} The package volume value.
    */
   constructor (unitOfMeasurement, volume) {
@@ -37,8 +37,8 @@ export class PackageVolume {
    * Constructs a <code>PackageVolume</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/PackageVolume} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/PackageVolume} The populated <code>PackageVolume</code> instance.
+   * @param {PackageVolume} obj Optional instance to populate.
+   * @return {PackageVolume} The populated <code>PackageVolume</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class PackageVolume {
 }
 
 /**
- * @member {module:awd_v2024_05_09/model/VolumeUnitOfMeasurement} unitOfMeasurement
- * @type {module:awd_v2024_05_09/model/VolumeUnitOfMeasurement}
+ * @member {VolumeUnitOfMeasurement} unitOfMeasurement
+ * @type {VolumeUnitOfMeasurement}
  */
 PackageVolume.prototype.unitOfMeasurement = undefined
 

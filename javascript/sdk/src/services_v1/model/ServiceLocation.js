@@ -33,8 +33,8 @@ export class ServiceLocation {
    * Constructs a <code>ServiceLocation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/ServiceLocation} obj Optional instance to populate.
-   * @return {module:services_v1/model/ServiceLocation} The populated <code>ServiceLocation</code> instance.
+   * @param {ServiceLocation} obj Optional instance to populate.
+   * @return {ServiceLocation} The populated <code>ServiceLocation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,13 +85,13 @@ ServiceLocation.ServiceLocationTypeEnum = {
 
 /**
  * The location of the service job.
- * @member {module:services_v1/model/ServiceLocation.ServiceLocationTypeEnum} serviceLocationType
- * @type {module:services_v1/model/ServiceLocation.ServiceLocationTypeEnum}
+ * @member {String} serviceLocationType
+ * @type {String}
  */
 ServiceLocation.prototype.serviceLocationType = undefined
 
 /**
- * @member {module:services_v1/model/Address} address
- * @type {module:services_v1/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 ServiceLocation.prototype.address = undefined

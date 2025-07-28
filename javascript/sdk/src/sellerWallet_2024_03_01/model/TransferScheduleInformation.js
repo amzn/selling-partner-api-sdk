@@ -34,8 +34,8 @@ export class TransferScheduleInformation {
    * Constructs a <code>TransferScheduleInformation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:sellerWallet_2024_03_01/model/TransferScheduleInformation} obj Optional instance to populate.
-   * @return {module:sellerWallet_2024_03_01/model/TransferScheduleInformation} The populated <code>TransferScheduleInformation</code> instance.
+   * @param {TransferScheduleInformation} obj Optional instance to populate.
+   * @return {TransferScheduleInformation} The populated <code>TransferScheduleInformation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -75,13 +75,13 @@ TransferScheduleInformation.prototype.scheduleStartDate = undefined
 TransferScheduleInformation.prototype.scheduleEndDate = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/ScheduleExpression} scheduleExpression
- * @type {module:sellerWallet_2024_03_01/model/ScheduleExpression}
+ * @member {ScheduleExpression} scheduleExpression
+ * @type {ScheduleExpression}
  */
 TransferScheduleInformation.prototype.scheduleExpression = undefined
 
 /**
- * @member {module:sellerWallet_2024_03_01/model/ScheduleTransferType} scheduleType
- * @type {module:sellerWallet_2024_03_01/model/ScheduleTransferType}
+ * @member {ScheduleTransferType} scheduleType
+ * @type {ScheduleTransferType}
  */
 TransferScheduleInformation.prototype.scheduleType = undefined

@@ -31,9 +31,9 @@ export class InboundOrder {
    * @class
    * @param createdAt {Date} Date when this order was created.
    * @param orderId {String} Inbound order ID.
-   * @param orderStatus {module:awd_v2024_05_09/model/InboundStatus}
-   * @param originAddress {module:awd_v2024_05_09/model/Address}
-   * @param packagesToInbound {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} List of packages to be inbounded.
+   * @param orderStatus {InboundStatus}
+   * @param originAddress {Address}
+   * @param packagesToInbound {[DistributionPackageQuantity]} List of packages to be inbounded.
    */
   constructor (createdAt, orderId, orderStatus, originAddress, packagesToInbound) {
     this.createdAt = createdAt
@@ -47,8 +47,8 @@ export class InboundOrder {
    * Constructs a <code>InboundOrder</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InboundOrder} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InboundOrder} The populated <code>InboundOrder</code> instance.
+   * @param {InboundOrder} obj Optional instance to populate.
+   * @return {InboundOrder} The populated <code>InboundOrder</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -86,8 +86,8 @@ export class InboundOrder {
 InboundOrder.prototype.createdAt = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/DestinationDetails} destinationDetails
- * @type {module:awd_v2024_05_09/model/DestinationDetails}
+ * @member {DestinationDetails} destinationDetails
+ * @type {DestinationDetails}
  */
 InboundOrder.prototype.destinationDetails = undefined
 
@@ -106,27 +106,27 @@ InboundOrder.prototype.externalReferenceId = undefined
 InboundOrder.prototype.orderId = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InboundStatus} orderStatus
- * @type {module:awd_v2024_05_09/model/InboundStatus}
+ * @member {InboundStatus} orderStatus
+ * @type {InboundStatus}
  */
 InboundOrder.prototype.orderStatus = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/Address} originAddress
- * @type {module:awd_v2024_05_09/model/Address}
+ * @member {Address} originAddress
+ * @type {Address}
  */
 InboundOrder.prototype.originAddress = undefined
 
 /**
  * List of packages to be inbounded.
- * @member {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>} packagesToInbound
- * @type {Array.<module:awd_v2024_05_09/model/DistributionPackageQuantity>}
+ * @member {[DistributionPackageQuantity]} packagesToInbound
+ * @type {[DistributionPackageQuantity]}
  */
 InboundOrder.prototype.packagesToInbound = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InboundPreferences} preferences
- * @type {module:awd_v2024_05_09/model/InboundPreferences}
+ * @member {InboundPreferences} preferences
+ * @type {InboundPreferences}
  */
 InboundOrder.prototype.preferences = undefined
 

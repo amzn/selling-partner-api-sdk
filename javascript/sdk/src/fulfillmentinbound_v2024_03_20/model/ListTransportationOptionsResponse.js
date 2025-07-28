@@ -26,7 +26,7 @@ export class ListTransportationOptionsResponse {
    * The &#x60;listTransportationOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse
    * @class
-   * @param transportationOptions {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationOption>} Transportation options generated for the placement option.
+   * @param transportationOptions {[TransportationOption]} Transportation options generated for the placement option.
    */
   constructor (transportationOptions) {
     this.transportationOptions = transportationOptions
@@ -36,8 +36,8 @@ export class ListTransportationOptionsResponse {
    * Constructs a <code>ListTransportationOptionsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListTransportationOptionsResponse} The populated <code>ListTransportationOptionsResponse</code> instance.
+   * @param {ListTransportationOptionsResponse} obj Optional instance to populate.
+   * @return {ListTransportationOptionsResponse} The populated <code>ListTransportationOptionsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,14 +61,14 @@ export class ListTransportationOptionsResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListTransportationOptionsResponse.prototype.pagination = undefined
 
 /**
  * Transportation options generated for the placement option.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationOption>} transportationOptions
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/TransportationOption>}
+ * @member {[TransportationOption]} transportationOptions
+ * @type {[TransportationOption]}
  */
 ListTransportationOptionsResponse.prototype.transportationOptions = undefined

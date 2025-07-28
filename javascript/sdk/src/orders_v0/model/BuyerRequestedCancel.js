@@ -32,8 +32,8 @@ export class BuyerRequestedCancel {
    * Constructs a <code>BuyerRequestedCancel</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/BuyerRequestedCancel} obj Optional instance to populate.
-   * @return {module:orders_v0/model/BuyerRequestedCancel} The populated <code>BuyerRequestedCancel</code> instance.
+   * @param {BuyerRequestedCancel} obj Optional instance to populate.
+   * @return {BuyerRequestedCancel} The populated <code>BuyerRequestedCancel</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

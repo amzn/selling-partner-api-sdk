@@ -36,8 +36,8 @@ export class BrandRefinement {
    * Constructs a <code>BrandRefinement</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:catalogitems_v2022_04_01/model/BrandRefinement} obj Optional instance to populate.
-   * @return {module:catalogitems_v2022_04_01/model/BrandRefinement} The populated <code>BrandRefinement</code> instance.
+   * @param {BrandRefinement} obj Optional instance to populate.
+   * @return {BrandRefinement} The populated <code>BrandRefinement</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

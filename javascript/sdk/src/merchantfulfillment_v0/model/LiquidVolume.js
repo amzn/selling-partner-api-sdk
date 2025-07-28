@@ -24,7 +24,7 @@ export class LiquidVolume {
    * Liquid volume.
    * @alias module:merchantfulfillment_v0/model/LiquidVolume
    * @class
-   * @param unit {module:merchantfulfillment_v0/model/LiquidVolume.UnitEnum} The unit of measurement.
+   * @param unit {String} The unit of measurement.
    * @param value {Number} The measurement value.
    */
   constructor (unit, value) {
@@ -36,8 +36,8 @@ export class LiquidVolume {
    * Constructs a <code>LiquidVolume</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/LiquidVolume} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/LiquidVolume} The populated <code>LiquidVolume</code> instance.
+   * @param {LiquidVolume} obj Optional instance to populate.
+   * @return {LiquidVolume} The populated <code>LiquidVolume</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -112,8 +112,8 @@ LiquidVolume.UnitEnum = {
 
 /**
  * The unit of measurement.
- * @member {module:merchantfulfillment_v0/model/LiquidVolume.UnitEnum} unit
- * @type {module:merchantfulfillment_v0/model/LiquidVolume.UnitEnum}
+ * @member {String} unit
+ * @type {String}
  */
 LiquidVolume.prototype.unit = undefined
 

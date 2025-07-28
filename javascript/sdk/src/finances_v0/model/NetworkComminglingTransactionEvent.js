@@ -33,8 +33,8 @@ export class NetworkComminglingTransactionEvent {
    * Constructs a <code>NetworkComminglingTransactionEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/NetworkComminglingTransactionEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/NetworkComminglingTransactionEvent} The populated <code>NetworkComminglingTransactionEvent</code> instance.
+   * @param {NetworkComminglingTransactionEvent} obj Optional instance to populate.
+   * @return {NetworkComminglingTransactionEvent} The populated <code>NetworkComminglingTransactionEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -106,13 +106,13 @@ NetworkComminglingTransactionEvent.prototype.ASIN = undefined
 NetworkComminglingTransactionEvent.prototype.marketplaceId = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxExclusiveAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxExclusiveAmount
+ * @type {Currency}
  */
 NetworkComminglingTransactionEvent.prototype.taxExclusiveAmount = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} taxAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} taxAmount
+ * @type {Currency}
  */
 NetworkComminglingTransactionEvent.prototype.taxAmount = undefined

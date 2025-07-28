@@ -24,7 +24,7 @@ export class Duration {
    * Duration after manufacturing date during which the product is valid for consumption.
    * @alias module:vendorshipments_v1/model/Duration
    * @class
-   * @param durationUnit {module:vendorshipments_v1/model/Duration.DurationUnitEnum} Unit for duration.
+   * @param durationUnit {String} Unit for duration.
    * @param durationValue {Number} Value for the duration in terms of the durationUnit.
    */
   constructor (durationUnit, durationValue) {
@@ -36,8 +36,8 @@ export class Duration {
    * Constructs a <code>Duration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/Duration} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/Duration} The populated <code>Duration</code> instance.
+   * @param {Duration} obj Optional instance to populate.
+   * @return {Duration} The populated <code>Duration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,8 +82,8 @@ Duration.DurationUnitEnum = {
 
 /**
  * Unit for duration.
- * @member {module:vendorshipments_v1/model/Duration.DurationUnitEnum} durationUnit
- * @type {module:vendorshipments_v1/model/Duration.DurationUnitEnum}
+ * @member {String} durationUnit
+ * @type {String}
  */
 Duration.prototype.durationUnit = undefined
 

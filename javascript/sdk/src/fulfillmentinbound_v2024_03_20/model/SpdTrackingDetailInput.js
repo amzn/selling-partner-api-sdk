@@ -25,7 +25,7 @@ export class SpdTrackingDetailInput {
    * Contains input information to update Small Parcel Delivery (SPD) tracking information.
    * @alias module:fulfillmentinbound_v2024_03_20/model/SpdTrackingDetailInput
    * @class
-   * @param spdTrackingItems {Array.<module:fulfillmentinbound_v2024_03_20/model/SpdTrackingItemInput>} List of Small Parcel Delivery (SPD) tracking items input.
+   * @param spdTrackingItems {[SpdTrackingItemInput]} List of Small Parcel Delivery (SPD) tracking items input.
    */
   constructor (spdTrackingItems) {
     this.spdTrackingItems = spdTrackingItems
@@ -35,8 +35,8 @@ export class SpdTrackingDetailInput {
    * Constructs a <code>SpdTrackingDetailInput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/SpdTrackingDetailInput} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/SpdTrackingDetailInput} The populated <code>SpdTrackingDetailInput</code> instance.
+   * @param {SpdTrackingDetailInput} obj Optional instance to populate.
+   * @return {SpdTrackingDetailInput} The populated <code>SpdTrackingDetailInput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class SpdTrackingDetailInput {
 
 /**
  * List of Small Parcel Delivery (SPD) tracking items input.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/SpdTrackingItemInput>} spdTrackingItems
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/SpdTrackingItemInput>}
+ * @member {[SpdTrackingItemInput]} spdTrackingItems
+ * @type {[SpdTrackingItemInput]}
  */
 SpdTrackingDetailInput.prototype.spdTrackingItems = undefined

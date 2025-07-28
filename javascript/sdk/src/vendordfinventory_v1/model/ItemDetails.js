@@ -25,7 +25,7 @@ export class ItemDetails {
    * Updated inventory details for an item.
    * @alias module:vendordfinventory_v1/model/ItemDetails
    * @class
-   * @param availableQuantity {module:vendordfinventory_v1/model/ItemQuantity}
+   * @param availableQuantity {ItemQuantity}
    */
   constructor (availableQuantity) {
     this.availableQuantity = availableQuantity
@@ -35,8 +35,8 @@ export class ItemDetails {
    * Constructs a <code>ItemDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfinventory_v1/model/ItemDetails} obj Optional instance to populate.
-   * @return {module:vendordfinventory_v1/model/ItemDetails} The populated <code>ItemDetails</code> instance.
+   * @param {ItemDetails} obj Optional instance to populate.
+   * @return {ItemDetails} The populated <code>ItemDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -76,8 +76,8 @@ ItemDetails.prototype.buyerProductIdentifier = undefined
 ItemDetails.prototype.vendorProductIdentifier = undefined
 
 /**
- * @member {module:vendordfinventory_v1/model/ItemQuantity} availableQuantity
- * @type {module:vendordfinventory_v1/model/ItemQuantity}
+ * @member {ItemQuantity} availableQuantity
+ * @type {ItemQuantity}
  */
 ItemDetails.prototype.availableQuantity = undefined
 

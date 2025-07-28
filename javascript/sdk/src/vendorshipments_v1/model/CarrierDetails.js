@@ -32,8 +32,8 @@ export class CarrierDetails {
    * Constructs a <code>CarrierDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/CarrierDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/CarrierDetails} The populated <code>CarrierDetails</code> instance.
+   * @param {CarrierDetails} obj Optional instance to populate.
+   * @return {CarrierDetails} The populated <code>CarrierDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

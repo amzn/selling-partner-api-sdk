@@ -34,10 +34,10 @@ export class SegmentedFeaturedOffer {
    * @class
    * @implements module:pricing_v2022_05_01/model/Offer
    * @param sellerId {String} The seller identifier for the offer.
-   * @param condition {module:pricing_v2022_05_01/model/Condition}
-   * @param fulfillmentType {module:pricing_v2022_05_01/model/FulfillmentType}
-   * @param listingPrice {module:pricing_v2022_05_01/model/MoneyType}
-   * @param featuredOfferSegments {Array.<module:pricing_v2022_05_01/model/FeaturedOfferSegment>} The list of segment information in which the offer is featured.
+   * @param condition {Condition}
+   * @param fulfillmentType {FulfillmentType}
+   * @param listingPrice {MoneyType}
+   * @param featuredOfferSegments {[FeaturedOfferSegment]} The list of segment information in which the offer is featured.
    */
   constructor (sellerId, condition, fulfillmentType, listingPrice, featuredOfferSegments) {
     Offer.call(this, sellerId, condition, fulfillmentType, listingPrice)
@@ -52,8 +52,8 @@ export class SegmentedFeaturedOffer {
    * Constructs a <code>SegmentedFeaturedOffer</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/SegmentedFeaturedOffer} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/SegmentedFeaturedOffer} The populated <code>SegmentedFeaturedOffer</code> instance.
+   * @param {SegmentedFeaturedOffer} obj Optional instance to populate.
+   * @return {SegmentedFeaturedOffer} The populated <code>SegmentedFeaturedOffer</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -92,8 +92,8 @@ export class SegmentedFeaturedOffer {
 SegmentedFeaturedOffer.prototype.sellerId = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Condition} condition
- * @type {module:pricing_v2022_05_01/model/Condition}
+ * @member {Condition} condition
+ * @type {Condition}
  */
 SegmentedFeaturedOffer.prototype.condition = undefined
 
@@ -185,46 +185,46 @@ SegmentedFeaturedOffer.SubConditionEnum = {
 
 /**
  * The item subcondition of the offer.
- * @member {module:pricing_v2022_05_01/model/SegmentedFeaturedOffer.SubConditionEnum} subCondition
- * @type {module:pricing_v2022_05_01/model/SegmentedFeaturedOffer.SubConditionEnum}
+ * @member {String} subCondition
+ * @type {String}
  */
 SegmentedFeaturedOffer.prototype.subCondition = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/FulfillmentType} fulfillmentType
- * @type {module:pricing_v2022_05_01/model/FulfillmentType}
+ * @member {FulfillmentType} fulfillmentType
+ * @type {FulfillmentType}
  */
 SegmentedFeaturedOffer.prototype.fulfillmentType = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
- * @type {module:pricing_v2022_05_01/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 SegmentedFeaturedOffer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
- * @member {Array.<module:pricing_v2022_05_01/model/ShippingOption>} shippingOptions
- * @type {Array.<module:pricing_v2022_05_01/model/ShippingOption>}
+ * @member {[ShippingOption]} shippingOptions
+ * @type {[ShippingOption]}
  */
 SegmentedFeaturedOffer.prototype.shippingOptions = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Points} points
- * @type {module:pricing_v2022_05_01/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 SegmentedFeaturedOffer.prototype.points = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/PrimeDetails} primeDetails
- * @type {module:pricing_v2022_05_01/model/PrimeDetails}
+ * @member {PrimeDetails} primeDetails
+ * @type {PrimeDetails}
  */
 SegmentedFeaturedOffer.prototype.primeDetails = undefined
 
 /**
  * The list of segment information in which the offer is featured.
- * @member {Array.<module:pricing_v2022_05_01/model/FeaturedOfferSegment>} featuredOfferSegments
- * @type {Array.<module:pricing_v2022_05_01/model/FeaturedOfferSegment>}
+ * @member {[FeaturedOfferSegment]} featuredOfferSegments
+ * @type {[FeaturedOfferSegment]}
  */
 SegmentedFeaturedOffer.prototype.featuredOfferSegments = undefined
 
@@ -237,45 +237,45 @@ SegmentedFeaturedOffer.prototype.featuredOfferSegments = undefined
 Offer.prototype.sellerId = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Condition} condition
- * @type {module:pricing_v2022_05_01/model/Condition}
+ * @member {Condition} condition
+ * @type {Condition}
  */
 Offer.prototype.condition = undefined
 
 /**
  * The item subcondition of the offer.
- * @member {module:pricing_v2022_05_01/model/Offer.SubConditionEnum} subCondition
- * @type {module:pricing_v2022_05_01/model/Offer.SubConditionEnum}
+ * @member {String} subCondition
+ * @type {String}
  */
 Offer.prototype.subCondition = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/FulfillmentType} fulfillmentType
- * @type {module:pricing_v2022_05_01/model/FulfillmentType}
+ * @member {FulfillmentType} fulfillmentType
+ * @type {FulfillmentType}
  */
 Offer.prototype.fulfillmentType = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
- * @type {module:pricing_v2022_05_01/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 Offer.prototype.listingPrice = undefined
 
 /**
  * A list of shipping options associated with this offer
- * @member {Array.<module:pricing_v2022_05_01/model/ShippingOption>} shippingOptions
- * @type {Array.<module:pricing_v2022_05_01/model/ShippingOption>}
+ * @member {[ShippingOption]} shippingOptions
+ * @type {[ShippingOption]}
  */
 Offer.prototype.shippingOptions = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Points} points
- * @type {module:pricing_v2022_05_01/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 Offer.prototype.points = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/PrimeDetails} primeDetails
- * @type {module:pricing_v2022_05_01/model/PrimeDetails}
+ * @member {PrimeDetails} primeDetails
+ * @type {PrimeDetails}
  */
 Offer.prototype.primeDetails = undefined

@@ -38,8 +38,8 @@ export class ParkingWithAddressConfiguration {
    * Constructs a <code>ParkingWithAddressConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:supplysources_v2020_07_01/model/ParkingWithAddressConfiguration} obj Optional instance to populate.
-   * @return {module:supplysources_v2020_07_01/model/ParkingWithAddressConfiguration} The populated <code>ParkingWithAddressConfiguration</code> instance.
+   * @param {ParkingWithAddressConfiguration} obj Optional instance to populate.
+   * @return {ParkingWithAddressConfiguration} The populated <code>ParkingWithAddressConfiguration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -66,14 +66,14 @@ export class ParkingWithAddressConfiguration {
 }
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ParkingCostType} parkingCostType
- * @type {module:supplysources_v2020_07_01/model/ParkingCostType}
+ * @member {ParkingCostType} parkingCostType
+ * @type {ParkingCostType}
  */
 ParkingWithAddressConfiguration.prototype.parkingCostType = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType} parkingSpotIdentificationType
- * @type {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType}
+ * @member {ParkingSpotIdentificationType} parkingSpotIdentificationType
+ * @type {ParkingSpotIdentificationType}
  */
 ParkingWithAddressConfiguration.prototype.parkingSpotIdentificationType = undefined
 
@@ -85,21 +85,21 @@ ParkingWithAddressConfiguration.prototype.parkingSpotIdentificationType = undefi
 ParkingWithAddressConfiguration.prototype.numberOfParkingSpots = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/Address} address
- * @type {module:supplysources_v2020_07_01/model/Address}
+ * @member {Address} address
+ * @type {Address}
  */
 ParkingWithAddressConfiguration.prototype.address = undefined
 
 // Implement ParkingConfiguration interface:
 /**
- * @member {module:supplysources_v2020_07_01/model/ParkingCostType} parkingCostType
- * @type {module:supplysources_v2020_07_01/model/ParkingCostType}
+ * @member {ParkingCostType} parkingCostType
+ * @type {ParkingCostType}
  */
 ParkingConfiguration.prototype.parkingCostType = undefined
 
 /**
- * @member {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType} parkingSpotIdentificationType
- * @type {module:supplysources_v2020_07_01/model/ParkingSpotIdentificationType}
+ * @member {ParkingSpotIdentificationType} parkingSpotIdentificationType
+ * @type {ParkingSpotIdentificationType}
  */
 ParkingConfiguration.prototype.parkingSpotIdentificationType = undefined
 

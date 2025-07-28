@@ -27,9 +27,9 @@ export class InboundEligibility {
    * Represents the eligibility status of the inbound packages.
    * @alias module:awd_v2024_05_09/model/InboundEligibility
    * @class
-   * @param packagesToInbound {Array.<module:awd_v2024_05_09/model/SkuEligibility>} Details on SKU eligibility for each inbound package.
+   * @param packagesToInbound {[SkuEligibility]} Details on SKU eligibility for each inbound package.
    * @param previewedAt {Date} Timestamp when the eligibility check is performed.
-   * @param status {module:awd_v2024_05_09/model/InboundEligibilityStatus}
+   * @param status {InboundEligibilityStatus}
    */
   constructor (packagesToInbound, previewedAt, status) {
     this.packagesToInbound = packagesToInbound
@@ -41,8 +41,8 @@ export class InboundEligibility {
    * Constructs a <code>InboundEligibility</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/InboundEligibility} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/InboundEligibility} The populated <code>InboundEligibility</code> instance.
+   * @param {InboundEligibility} obj Optional instance to populate.
+   * @return {InboundEligibility} The populated <code>InboundEligibility</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,15 +69,15 @@ export class InboundEligibility {
 
 /**
  * If there are order level eligibility issues, then this list will contain those error codes and descriptions.
- * @member {Array.<module:awd_v2024_05_09/model/OrderIneligibilityReason>} ineligibilityReasons
- * @type {Array.<module:awd_v2024_05_09/model/OrderIneligibilityReason>}
+ * @member {[OrderIneligibilityReason]} ineligibilityReasons
+ * @type {[OrderIneligibilityReason]}
  */
 InboundEligibility.prototype.ineligibilityReasons = undefined
 
 /**
  * Details on SKU eligibility for each inbound package.
- * @member {Array.<module:awd_v2024_05_09/model/SkuEligibility>} packagesToInbound
- * @type {Array.<module:awd_v2024_05_09/model/SkuEligibility>}
+ * @member {[SkuEligibility]} packagesToInbound
+ * @type {[SkuEligibility]}
  */
 InboundEligibility.prototype.packagesToInbound = undefined
 
@@ -89,7 +89,7 @@ InboundEligibility.prototype.packagesToInbound = undefined
 InboundEligibility.prototype.previewedAt = undefined
 
 /**
- * @member {module:awd_v2024_05_09/model/InboundEligibilityStatus} status
- * @type {module:awd_v2024_05_09/model/InboundEligibilityStatus}
+ * @member {InboundEligibilityStatus} status
+ * @type {InboundEligibilityStatus}
  */
 InboundEligibility.prototype.status = undefined

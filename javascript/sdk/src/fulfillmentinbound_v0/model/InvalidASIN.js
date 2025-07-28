@@ -33,8 +33,8 @@ export class InvalidASIN {
    * Constructs a <code>InvalidASIN</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v0/model/InvalidASIN} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v0/model/InvalidASIN} The populated <code>InvalidASIN</code> instance.
+   * @param {InvalidASIN} obj Optional instance to populate.
+   * @return {InvalidASIN} The populated <code>InvalidASIN</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class InvalidASIN {
 InvalidASIN.prototype.ASIN = undefined
 
 /**
- * @member {module:fulfillmentinbound_v0/model/ErrorReason} errorReason
- * @type {module:fulfillmentinbound_v0/model/ErrorReason}
+ * @member {ErrorReason} errorReason
+ * @type {ErrorReason}
  */
 InvalidASIN.prototype.errorReason = undefined

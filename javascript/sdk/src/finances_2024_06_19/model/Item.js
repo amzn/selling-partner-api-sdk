@@ -36,8 +36,8 @@ export class Item {
    * Constructs a <code>Item</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/Item} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/Item} The populated <code>Item</code> instance.
+   * @param {Item} obj Optional instance to populate.
+   * @return {Item} The populated <code>Item</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -72,27 +72,27 @@ Item.prototype.description = undefined
 
 /**
  * Related Business identifiers of the item in Transaction.
- * @member {Array.<module:finances_2024_06_19/model/ItemRelatedIdentifier>} relatedIdentifiers
- * @type {Array.<module:finances_2024_06_19/model/ItemRelatedIdentifier>}
+ * @member {[ItemRelatedIdentifier]} relatedIdentifiers
+ * @type {[ItemRelatedIdentifier]}
  */
 Item.prototype.relatedIdentifiers = undefined
 
 /**
- * @member {module:finances_2024_06_19/model/Currency} totalAmount
- * @type {module:finances_2024_06_19/model/Currency}
+ * @member {Currency} totalAmount
+ * @type {Currency}
  */
 Item.prototype.totalAmount = undefined
 
 /**
  * A list of breakdowns that detail how the total amount is calculated for the transaction.
- * @member {Array.<module:finances_2024_06_19/model/Breakdown>} breakdowns
- * @type {Array.<module:finances_2024_06_19/model/Breakdown>}
+ * @member {[Breakdown]} breakdowns
+ * @type {[Breakdown]}
  */
 Item.prototype.breakdowns = undefined
 
 /**
  * List of additional Information about the item.
- * @member {Array.<module:finances_2024_06_19/model/Context>} contexts
- * @type {Array.<module:finances_2024_06_19/model/Context>}
+ * @member {[Context]} contexts
+ * @type {[Context]}
  */
 Item.prototype.contexts = undefined

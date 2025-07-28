@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class CarrierWillPickUpOption.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class CarrierWillPickUpOption {
@@ -40,7 +40,7 @@ export class CarrierWillPickUpOption {
   /**
     * Returns a <code>CarrierWillPickUpOption</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:merchantfulfillment_v0/model/CarrierWillPickUpOption} The enum <code>CarrierWillPickUpOption</code> value.
+    * @return {CarrierWillPickUpOption} The enum <code>CarrierWillPickUpOption</code> value.
     */
   static constructFromObject (object) {
     return object

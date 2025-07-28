@@ -26,7 +26,7 @@ export class ListShipmentPalletsResponse {
    * The &#x60;listShipmentPallets&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse
    * @class
-   * @param pallets {Array.<module:fulfillmentinbound_v2024_03_20/model/Pallet>} The pallets in a shipment.
+   * @param pallets {[Pallet]} The pallets in a shipment.
    */
   constructor (pallets) {
     this.pallets = pallets
@@ -36,8 +36,8 @@ export class ListShipmentPalletsResponse {
    * Constructs a <code>ListShipmentPalletsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListShipmentPalletsResponse} The populated <code>ListShipmentPalletsResponse</code> instance.
+   * @param {ListShipmentPalletsResponse} obj Optional instance to populate.
+   * @return {ListShipmentPalletsResponse} The populated <code>ListShipmentPalletsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,14 +61,14 @@ export class ListShipmentPalletsResponse {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListShipmentPalletsResponse.prototype.pagination = undefined
 
 /**
  * The pallets in a shipment.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/Pallet>} pallets
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/Pallet>}
+ * @member {[Pallet]} pallets
+ * @type {[Pallet]}
  */
 ListShipmentPalletsResponse.prototype.pallets = undefined

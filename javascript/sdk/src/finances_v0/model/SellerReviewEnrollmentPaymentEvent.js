@@ -35,8 +35,8 @@ export class SellerReviewEnrollmentPaymentEvent {
    * Constructs a <code>SellerReviewEnrollmentPaymentEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/SellerReviewEnrollmentPaymentEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/SellerReviewEnrollmentPaymentEvent} The populated <code>SellerReviewEnrollmentPaymentEvent</code> instance.
+   * @param {SellerReviewEnrollmentPaymentEvent} obj Optional instance to populate.
+   * @return {SellerReviewEnrollmentPaymentEvent} The populated <code>SellerReviewEnrollmentPaymentEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -85,19 +85,19 @@ SellerReviewEnrollmentPaymentEvent.prototype.enrollmentId = undefined
 SellerReviewEnrollmentPaymentEvent.prototype.parentASIN = undefined
 
 /**
- * @member {module:finances_v0/model/FeeComponent} feeComponent
- * @type {module:finances_v0/model/FeeComponent}
+ * @member {FeeComponent} feeComponent
+ * @type {FeeComponent}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.feeComponent = undefined
 
 /**
- * @member {module:finances_v0/model/ChargeComponent} chargeComponent
- * @type {module:finances_v0/model/ChargeComponent}
+ * @member {ChargeComponent} chargeComponent
+ * @type {ChargeComponent}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.chargeComponent = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} totalAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} totalAmount
+ * @type {Currency}
  */
 SellerReviewEnrollmentPaymentEvent.prototype.totalAmount = undefined

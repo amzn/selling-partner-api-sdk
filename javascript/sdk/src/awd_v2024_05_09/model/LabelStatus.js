@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class LabelStatus.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class LabelStatus {
@@ -46,7 +46,7 @@ export class LabelStatus {
   /**
     * Returns a <code>LabelStatus</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:awd_v2024_05_09/model/LabelStatus} The enum <code>LabelStatus</code> value.
+    * @return {LabelStatus} The enum <code>LabelStatus</code> value.
     */
   static constructFromObject (object) {
     return object

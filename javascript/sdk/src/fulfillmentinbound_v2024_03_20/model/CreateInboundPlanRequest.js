@@ -26,9 +26,9 @@ export class CreateInboundPlanRequest {
    * The &#x60;createInboundPlan&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanRequest
    * @class
-   * @param destinationMarketplaces {Array.<String>} Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
-   * @param items {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} Items included in this plan.
-   * @param sourceAddress {module:fulfillmentinbound_v2024_03_20/model/AddressInput}
+   * @param destinationMarketplaces {[String]} Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
+   * @param items {[ItemInput]} Items included in this plan.
+   * @param sourceAddress {AddressInput}
    */
   constructor (destinationMarketplaces, items, sourceAddress) {
     this.destinationMarketplaces = destinationMarketplaces
@@ -40,8 +40,8 @@ export class CreateInboundPlanRequest {
    * Constructs a <code>CreateInboundPlanRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/CreateInboundPlanRequest} The populated <code>CreateInboundPlanRequest</code> instance.
+   * @param {CreateInboundPlanRequest} obj Optional instance to populate.
+   * @return {CreateInboundPlanRequest} The populated <code>CreateInboundPlanRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,15 +68,15 @@ export class CreateInboundPlanRequest {
 
 /**
  * Marketplaces where the items need to be shipped to. Currently only one marketplace can be selected in this request.
- * @member {Array.<String>} destinationMarketplaces
- * @type {Array.<String>}
+ * @member {[String]} destinationMarketplaces
+ * @type {[String]}
  */
 CreateInboundPlanRequest.prototype.destinationMarketplaces = undefined
 
 /**
  * Items included in this plan.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
+ * @member {[ItemInput]} items
+ * @type {[ItemInput]}
  */
 CreateInboundPlanRequest.prototype.items = undefined
 
@@ -88,7 +88,7 @@ CreateInboundPlanRequest.prototype.items = undefined
 CreateInboundPlanRequest.prototype.name = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/AddressInput} sourceAddress
- * @type {module:fulfillmentinbound_v2024_03_20/model/AddressInput}
+ * @member {AddressInput} sourceAddress
+ * @type {AddressInput}
  */
 CreateInboundPlanRequest.prototype.sourceAddress = undefined

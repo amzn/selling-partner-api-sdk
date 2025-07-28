@@ -33,8 +33,8 @@ export class ShippingConstraints {
    * Constructs a <code>ShippingConstraints</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/ShippingConstraints} obj Optional instance to populate.
-   * @return {module:orders_v0/model/ShippingConstraints} The populated <code>ShippingConstraints</code> instance.
+   * @param {ShippingConstraints} obj Optional instance to populate.
+   * @return {ShippingConstraints} The populated <code>ShippingConstraints</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,25 +60,25 @@ export class ShippingConstraints {
 }
 
 /**
- * @member {module:orders_v0/model/ConstraintType} palletDelivery
- * @type {module:orders_v0/model/ConstraintType}
+ * @member {ConstraintType} palletDelivery
+ * @type {ConstraintType}
  */
 ShippingConstraints.prototype.palletDelivery = undefined
 
 /**
- * @member {module:orders_v0/model/ConstraintType} signatureConfirmation
- * @type {module:orders_v0/model/ConstraintType}
+ * @member {ConstraintType} signatureConfirmation
+ * @type {ConstraintType}
  */
 ShippingConstraints.prototype.signatureConfirmation = undefined
 
 /**
- * @member {module:orders_v0/model/ConstraintType} recipientIdentityVerification
- * @type {module:orders_v0/model/ConstraintType}
+ * @member {ConstraintType} recipientIdentityVerification
+ * @type {ConstraintType}
  */
 ShippingConstraints.prototype.recipientIdentityVerification = undefined
 
 /**
- * @member {module:orders_v0/model/ConstraintType} recipientAgeVerification
- * @type {module:orders_v0/model/ConstraintType}
+ * @member {ConstraintType} recipientAgeVerification
+ * @type {ConstraintType}
  */
 ShippingConstraints.prototype.recipientAgeVerification = undefined

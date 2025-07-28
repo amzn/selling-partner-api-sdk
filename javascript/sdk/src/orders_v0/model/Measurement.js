@@ -24,7 +24,7 @@ export class Measurement {
    * Measurement information for an order item.
    * @alias module:orders_v0/model/Measurement
    * @class
-   * @param unit {module:orders_v0/model/Measurement.UnitEnum} The unit of measure.
+   * @param unit {String} The unit of measure.
    * @param value {Number} The measurement value.
    */
   constructor (unit, value) {
@@ -36,8 +36,8 @@ export class Measurement {
    * Constructs a <code>Measurement</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/Measurement} obj Optional instance to populate.
-   * @return {module:orders_v0/model/Measurement} The populated <code>Measurement</code> instance.
+   * @param {Measurement} obj Optional instance to populate.
+   * @return {Measurement} The populated <code>Measurement</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -214,8 +214,8 @@ Measurement.UnitEnum = {
 
 /**
  * The unit of measure.
- * @member {module:orders_v0/model/Measurement.UnitEnum} unit
- * @type {module:orders_v0/model/Measurement.UnitEnum}
+ * @member {String} unit
+ * @type {String}
  */
 Measurement.prototype.unit = undefined
 

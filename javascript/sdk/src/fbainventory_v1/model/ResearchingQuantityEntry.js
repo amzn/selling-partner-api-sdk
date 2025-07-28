@@ -24,7 +24,7 @@ export class ResearchingQuantityEntry {
    * The misplaced or warehouse damaged inventory that is actively being confirmed at our fulfillment centers.
    * @alias module:fbainventory_v1/model/ResearchingQuantityEntry
    * @class
-   * @param name {module:fbainventory_v1/model/ResearchingQuantityEntry.NameEnum} The duration of the research.
+   * @param name {String} The duration of the research.
    * @param quantity {Number} The number of units.
    */
   constructor (name, quantity) {
@@ -36,8 +36,8 @@ export class ResearchingQuantityEntry {
    * Constructs a <code>ResearchingQuantityEntry</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/ResearchingQuantityEntry} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/ResearchingQuantityEntry} The populated <code>ResearchingQuantityEntry</code> instance.
+   * @param {ResearchingQuantityEntry} obj Optional instance to populate.
+   * @return {ResearchingQuantityEntry} The populated <code>ResearchingQuantityEntry</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -88,8 +88,8 @@ ResearchingQuantityEntry.NameEnum = {
 
 /**
  * The duration of the research.
- * @member {module:fbainventory_v1/model/ResearchingQuantityEntry.NameEnum} name
- * @type {module:fbainventory_v1/model/ResearchingQuantityEntry.NameEnum}
+ * @member {String} name
+ * @type {String}
  */
 ResearchingQuantityEntry.prototype.name = undefined
 

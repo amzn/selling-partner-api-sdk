@@ -28,7 +28,7 @@ export class Product {
    * An item.
    * @alias module:pricing_v0/model/Product
    * @class
-   * @param identifiers {module:pricing_v0/model/IdentifierType}
+   * @param identifiers {IdentifierType}
    */
   constructor (identifiers) {
     this.identifiers = identifiers
@@ -38,8 +38,8 @@ export class Product {
    * Constructs a <code>Product</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/Product} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/Product} The populated <code>Product</code> instance.
+   * @param {Product} obj Optional instance to populate.
+   * @return {Product} The populated <code>Product</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,41 +67,41 @@ export class Product {
 }
 
 /**
- * @member {module:pricing_v0/model/IdentifierType} identifiers
- * @type {module:pricing_v0/model/IdentifierType}
+ * @member {IdentifierType} identifiers
+ * @type {IdentifierType}
  */
 Product.prototype.identifiers = undefined
 
 /**
  * A list of product attributes if they are applicable to the product that is returned.
- * @member {Array.<Object>} attributeSets
- * @type {Array.<Object>}
+ * @member {[Object]} attributeSets
+ * @type {[Object]}
  */
 Product.prototype.attributeSets = undefined
 
 /**
  * A list that contains product variation information, if applicable.
- * @member {Array.<Object>} relationships
- * @type {Array.<Object>}
+ * @member {[Object]} relationships
+ * @type {[Object]}
  */
 Product.prototype.relationships = undefined
 
 /**
- * @member {module:pricing_v0/model/CompetitivePricingType} competitivePricing
- * @type {module:pricing_v0/model/CompetitivePricingType}
+ * @member {CompetitivePricingType} competitivePricing
+ * @type {CompetitivePricingType}
  */
 Product.prototype.competitivePricing = undefined
 
 /**
  * A list of sales rank information for the item, by category.
- * @member {Array.<module:pricing_v0/model/SalesRankType>} salesRankings
- * @type {Array.<module:pricing_v0/model/SalesRankType>}
+ * @member {[SalesRankType]} salesRankings
+ * @type {[SalesRankType]}
  */
 Product.prototype.salesRankings = undefined
 
 /**
  * A list of offers.
- * @member {Array.<module:pricing_v0/model/OfferType>} offers
- * @type {Array.<module:pricing_v0/model/OfferType>}
+ * @member {[OfferType]} offers
+ * @type {[OfferType]}
  */
 Product.prototype.offers = undefined

@@ -26,7 +26,7 @@ export class EngineOutput {
    * @alias module:vehicles_v2024_11_01/model/EngineOutput
    * @class
    * @param value {Number} Engine power value in specified unit.
-   * @param unit {module:vehicles_v2024_11_01/model/EngineOutputUnit}
+   * @param unit {EngineOutputUnit}
    */
   constructor (value, unit) {
     this.value = value
@@ -37,8 +37,8 @@ export class EngineOutput {
    * Constructs a <code>EngineOutput</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vehicles_v2024_11_01/model/EngineOutput} obj Optional instance to populate.
-   * @return {module:vehicles_v2024_11_01/model/EngineOutput} The populated <code>EngineOutput</code> instance.
+   * @param {EngineOutput} obj Optional instance to populate.
+   * @return {EngineOutput} The populated <code>EngineOutput</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,7 +69,7 @@ export class EngineOutput {
 EngineOutput.prototype.value = undefined
 
 /**
- * @member {module:vehicles_v2024_11_01/model/EngineOutputUnit} unit
- * @type {module:vehicles_v2024_11_01/model/EngineOutputUnit}
+ * @member {EngineOutputUnit} unit
+ * @type {EngineOutputUnit}
  */
 EngineOutput.prototype.unit = undefined

@@ -25,7 +25,7 @@ export class CreateNotificationRequest {
    * @alias module:appintegrations_v2024_04_01/model/CreateNotificationRequest
    * @class
    * @param templateId {String} The unique identifier of the notification template you used to onboard your application.
-   * @param notificationParameters {Object.<String, Object>} The dynamic parameters required by the notification templated specified by `templateId`.
+   * @param notificationParameters {{String: Object}} The dynamic parameters required by the notification templated specified by `templateId`.
    */
   constructor (templateId, notificationParameters) {
     this.templateId = templateId
@@ -36,8 +36,8 @@ export class CreateNotificationRequest {
    * Constructs a <code>CreateNotificationRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:appintegrations_v2024_04_01/model/CreateNotificationRequest} obj Optional instance to populate.
-   * @return {module:appintegrations_v2024_04_01/model/CreateNotificationRequest} The populated <code>CreateNotificationRequest</code> instance.
+   * @param {CreateNotificationRequest} obj Optional instance to populate.
+   * @return {CreateNotificationRequest} The populated <code>CreateNotificationRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,8 +70,8 @@ CreateNotificationRequest.prototype.templateId = undefined
 
 /**
  * The dynamic parameters required by the notification templated specified by `templateId`.
- * @member {Object.<String, Object>} notificationParameters
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} notificationParameters
+ * @type {{String: Object}}
  */
 CreateNotificationRequest.prototype.notificationParameters = undefined
 

@@ -32,8 +32,8 @@ export class DefaultApi {
     * Constructs a new DefaultApi.
     * @alias module:transfers_v2024_06_01/api/DefaultApi
     * @class
-    * @param {module:transfers_v2024_06_01/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:transfers_v2024_06_01/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -69,8 +69,8 @@ export class DefaultApi {
      * Returns the list of payment methods for the seller, which can be filtered by method type.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | .5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:transfers_v2024_06_01/model/String>} opts.paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
-     * @return {Promise<module:transfers_v2024_06_01/model/GetPaymentMethodsResponse>}
+     * @param {[String]} opts.paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
+     * @return {Promise<GetPaymentMethodsResponse>}
      */
   getPaymentMethodsWithHttpInfo (marketplaceId, opts) {
     opts = opts || {}
@@ -107,8 +107,8 @@ export class DefaultApi {
      * Returns the list of payment methods for the seller, which can be filtered by method type.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | .5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The identifier of the marketplace from which you want to retrieve payment methods. For the list of possible marketplace identifiers, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:transfers_v2024_06_01/model/String>} opts.paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
-     * @return {Promise<module:transfers_v2024_06_01/model/GetPaymentMethodsResponse>}
+     * @param {[String]} opts.paymentMethodTypes A comma-separated list of the payment method types you want to include in the response.
+     * @return {Promise<GetPaymentMethodsResponse>}
      */
   getPaymentMethods (marketplaceId, opts) {
     return this.getPaymentMethodsWithHttpInfo(marketplaceId, opts)
@@ -119,8 +119,8 @@ export class DefaultApi {
 
   /**
      * Initiates an on-demand payout to the seller&#39;s default deposit method in Seller Central for the given &#x60;marketplaceId&#x60; and &#x60;accountType&#x60;, if eligible. You can only initiate one on-demand payout for each marketplace and account type within a 24-hour period.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.017 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:transfers_v2024_06_01/model/InitiatePayoutRequest} body The request body for the &#x60;initiatePayout&#x60; operation.
-     * @return {Promise<module:transfers_v2024_06_01/model/InitiatePayoutResponse>}
+     * @param {InitiatePayoutRequest} body The request body for the &#x60;initiatePayout&#x60; operation.
+     * @return {Promise<InitiatePayoutResponse>}
      */
   initiatePayoutWithHttpInfo (body) {
     const postBody = body
@@ -152,8 +152,8 @@ export class DefaultApi {
 
   /**
      * Initiates an on-demand payout to the seller&#39;s default deposit method in Seller Central for the given &#x60;marketplaceId&#x60; and &#x60;accountType&#x60;, if eligible. You can only initiate one on-demand payout for each marketplace and account type within a 24-hour period.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.017 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:transfers_v2024_06_01/model/InitiatePayoutRequest} body The request body for the &#x60;initiatePayout&#x60; operation.
-     * @return {Promise<module:transfers_v2024_06_01/model/InitiatePayoutResponse>}
+     * @param {InitiatePayoutRequest} body The request body for the &#x60;initiatePayout&#x60; operation.
+     * @return {Promise<InitiatePayoutResponse>}
      */
   initiatePayout (body) {
     return this.initiatePayoutWithHttpInfo(body)

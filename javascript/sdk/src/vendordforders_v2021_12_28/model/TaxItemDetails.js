@@ -33,8 +33,8 @@ export class TaxItemDetails {
    * Constructs a <code>TaxItemDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordforders_v2021_12_28/model/TaxItemDetails} obj Optional instance to populate.
-   * @return {module:vendordforders_v2021_12_28/model/TaxItemDetails} The populated <code>TaxItemDetails</code> instance.
+   * @param {TaxItemDetails} obj Optional instance to populate.
+   * @return {TaxItemDetails} The populated <code>TaxItemDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class TaxItemDetails {
 
 /**
  * A list of tax line items.
- * @member {Array.<module:vendordforders_v2021_12_28/model/TaxDetails>} taxLineItem
- * @type {Array.<module:vendordforders_v2021_12_28/model/TaxDetails>}
+ * @member {[TaxDetails]} taxLineItem
+ * @type {[TaxDetails]}
  */
 TaxItemDetails.prototype.taxLineItem = undefined

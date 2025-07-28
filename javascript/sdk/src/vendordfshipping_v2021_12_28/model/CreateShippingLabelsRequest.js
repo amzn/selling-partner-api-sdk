@@ -26,8 +26,8 @@ export class CreateShippingLabelsRequest {
    * The request body for the createShippingLabels operation.
    * @alias module:vendordfshipping_v2021_12_28/model/CreateShippingLabelsRequest
    * @class
-   * @param sellingParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param shipFromParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
    */
   constructor (sellingParty, shipFromParty) {
     this.sellingParty = sellingParty
@@ -38,8 +38,8 @@ export class CreateShippingLabelsRequest {
    * Constructs a <code>CreateShippingLabelsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/CreateShippingLabelsRequest} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/CreateShippingLabelsRequest} The populated <code>CreateShippingLabelsRequest</code> instance.
+   * @param {CreateShippingLabelsRequest} obj Optional instance to populate.
+   * @return {CreateShippingLabelsRequest} The populated <code>CreateShippingLabelsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,20 +64,20 @@ export class CreateShippingLabelsRequest {
 }
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 CreateShippingLabelsRequest.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 CreateShippingLabelsRequest.prototype.shipFromParty = undefined
 
 /**
  * A list of the packages in this shipment.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/Container>} containers
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/Container>}
+ * @member {[Container]} containers
+ * @type {[Container]}
  */
 CreateShippingLabelsRequest.prototype.containers = undefined

@@ -32,8 +32,8 @@ export class CreditNoteDetails {
    * Constructs a <code>CreditNoteDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorinvoices_v1/model/CreditNoteDetails} obj Optional instance to populate.
-   * @return {module:vendorinvoices_v1/model/CreditNoteDetails} The populated <code>CreditNoteDetails</code> instance.
+   * @param {CreditNoteDetails} obj Optional instance to populate.
+   * @return {CreditNoteDetails} The populated <code>CreditNoteDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

@@ -24,7 +24,7 @@ export class CartonReferenceDetails {
    * Carton reference details.
    * @alias module:vendorshipments_v1/model/CartonReferenceDetails
    * @class
-   * @param cartonReferenceNumbers {Array.<String>} Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.
+   * @param cartonReferenceNumbers {[String]} Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.
    */
   constructor (cartonReferenceNumbers) {
     this.cartonReferenceNumbers = cartonReferenceNumbers
@@ -34,8 +34,8 @@ export class CartonReferenceDetails {
    * Constructs a <code>CartonReferenceDetails</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/CartonReferenceDetails} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/CartonReferenceDetails} The populated <code>CartonReferenceDetails</code> instance.
+   * @param {CartonReferenceDetails} obj Optional instance to populate.
+   * @return {CartonReferenceDetails} The populated <code>CartonReferenceDetails</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,7 +67,7 @@ CartonReferenceDetails.prototype.cartonCount = undefined
 
 /**
  * Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.
- * @member {Array.<String>} cartonReferenceNumbers
- * @type {Array.<String>}
+ * @member {[String]} cartonReferenceNumbers
+ * @type {[String]}
  */
 CartonReferenceDetails.prototype.cartonReferenceNumbers = undefined

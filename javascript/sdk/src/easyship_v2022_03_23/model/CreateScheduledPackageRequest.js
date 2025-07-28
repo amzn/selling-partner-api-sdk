@@ -27,7 +27,7 @@ export class CreateScheduledPackageRequest {
    * @class
    * @param amazonOrderId {String} An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.
    * @param marketplaceId {String} A string of up to 255 characters.
-   * @param packageDetails {module:easyship_v2022_03_23/model/PackageDetails}
+   * @param packageDetails {PackageDetails}
    */
   constructor (amazonOrderId, marketplaceId, packageDetails) {
     this.amazonOrderId = amazonOrderId
@@ -39,8 +39,8 @@ export class CreateScheduledPackageRequest {
    * Constructs a <code>CreateScheduledPackageRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/CreateScheduledPackageRequest} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/CreateScheduledPackageRequest} The populated <code>CreateScheduledPackageRequest</code> instance.
+   * @param {CreateScheduledPackageRequest} obj Optional instance to populate.
+   * @return {CreateScheduledPackageRequest} The populated <code>CreateScheduledPackageRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -79,7 +79,7 @@ CreateScheduledPackageRequest.prototype.amazonOrderId = undefined
 CreateScheduledPackageRequest.prototype.marketplaceId = undefined
 
 /**
- * @member {module:easyship_v2022_03_23/model/PackageDetails} packageDetails
- * @type {module:easyship_v2022_03_23/model/PackageDetails}
+ * @member {PackageDetails} packageDetails
+ * @type {PackageDetails}
  */
 CreateScheduledPackageRequest.prototype.packageDetails = undefined

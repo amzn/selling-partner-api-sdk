@@ -34,8 +34,8 @@ export class TaxWithholdingEvent {
    * Constructs a <code>TaxWithholdingEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/TaxWithholdingEvent} obj Optional instance to populate.
-   * @return {module:finances_v0/model/TaxWithholdingEvent} The populated <code>TaxWithholdingEvent</code> instance.
+   * @param {TaxWithholdingEvent} obj Optional instance to populate.
+   * @return {TaxWithholdingEvent} The populated <code>TaxWithholdingEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,19 +68,19 @@ export class TaxWithholdingEvent {
 TaxWithholdingEvent.prototype.postedDate = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} baseAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} baseAmount
+ * @type {Currency}
  */
 TaxWithholdingEvent.prototype.baseAmount = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} withheldAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} withheldAmount
+ * @type {Currency}
  */
 TaxWithholdingEvent.prototype.withheldAmount = undefined
 
 /**
- * @member {module:finances_v0/model/TaxWithholdingPeriod} taxWithholdingPeriod
- * @type {module:finances_v0/model/TaxWithholdingPeriod}
+ * @member {TaxWithholdingPeriod} taxWithholdingPeriod
+ * @type {TaxWithholdingPeriod}
  */
 TaxWithholdingEvent.prototype.taxWithholdingPeriod = undefined

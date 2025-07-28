@@ -25,8 +25,8 @@ export class Reservation {
    * Reservation object reduces the capacity of a resource.
    * @alias module:services_v1/model/Reservation
    * @class
-   * @param type {module:services_v1/model/Reservation.TypeEnum} Type of reservation.
-   * @param availability {module:services_v1/model/AvailabilityRecord}
+   * @param type {String} Type of reservation.
+   * @param availability {AvailabilityRecord}
    */
   constructor (type, availability) {
     this.type = type
@@ -37,8 +37,8 @@ export class Reservation {
    * Constructs a <code>Reservation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/Reservation} obj Optional instance to populate.
-   * @return {module:services_v1/model/Reservation} The populated <code>Reservation</code> instance.
+   * @param {Reservation} obj Optional instance to populate.
+   * @return {Reservation} The populated <code>Reservation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -109,13 +109,13 @@ Reservation.TypeEnum = {
 
 /**
  * Type of reservation.
- * @member {module:services_v1/model/Reservation.TypeEnum} type
- * @type {module:services_v1/model/Reservation.TypeEnum}
+ * @member {String} type
+ * @type {String}
  */
 Reservation.prototype.type = undefined
 
 /**
- * @member {module:services_v1/model/AvailabilityRecord} availability
- * @type {module:services_v1/model/AvailabilityRecord}
+ * @member {AvailabilityRecord} availability
+ * @type {AvailabilityRecord}
  */
 Reservation.prototype.availability = undefined

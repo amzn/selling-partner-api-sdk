@@ -33,8 +33,8 @@ export class OperatingHours {
    * Constructs a <code>OperatingHours</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/OperatingHours} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/OperatingHours} The populated <code>OperatingHours</code> instance.
+   * @param {OperatingHours} obj Optional instance to populate.
+   * @return {OperatingHours} The populated <code>OperatingHours</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,20 +59,20 @@ export class OperatingHours {
 }
 
 /**
- * @member {module:shipping_v2/model/TimeOfDay} closingTime
- * @type {module:shipping_v2/model/TimeOfDay}
+ * @member {TimeOfDay} closingTime
+ * @type {TimeOfDay}
  */
 OperatingHours.prototype.closingTime = undefined
 
 /**
- * @member {module:shipping_v2/model/TimeOfDay} openingTime
- * @type {module:shipping_v2/model/TimeOfDay}
+ * @member {TimeOfDay} openingTime
+ * @type {TimeOfDay}
  */
 OperatingHours.prototype.openingTime = undefined
 
 /**
  * midDayClosures operating hours array
- * @member {Array.<module:shipping_v2/model/TimeOfDay>} midDayClosures
- * @type {Array.<module:shipping_v2/model/TimeOfDay>}
+ * @member {[TimeOfDay]} midDayClosures
+ * @type {[TimeOfDay]}
  */
 OperatingHours.prototype.midDayClosures = undefined

@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class InvalidItemReasonCode.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class InvalidItemReasonCode {
@@ -46,7 +46,7 @@ export class InvalidItemReasonCode {
   /**
     * Returns a <code>InvalidItemReasonCode</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:fulfillmentoutbound_v2020_07_01/model/InvalidItemReasonCode} The enum <code>InvalidItemReasonCode</code> value.
+    * @return {InvalidItemReasonCode} The enum <code>InvalidItemReasonCode</code> value.
     */
   static constructFromObject (object) {
     return object

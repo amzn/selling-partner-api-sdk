@@ -29,9 +29,9 @@ export class FeaturedOfferExpectedPriceResponse {
    * @alias module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResponse
    * @class
    * @implements module:pricing_v2022_05_01/model/BatchResponse
-   * @param headers {Object.<String, String>} A mapping of additional HTTP headers to send or receive for an individual request within a batch.
-   * @param status {module:pricing_v2022_05_01/model/HttpStatusLine}
-   * @param request {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams}
+   * @param headers {{String: String}} A mapping of additional HTTP headers to send or receive for an individual request within a batch.
+   * @param status {HttpStatusLine}
+   * @param request {FeaturedOfferExpectedPriceRequestParams}
    */
   constructor (headers, status, request) {
     BatchResponse.call(this, headers, status)
@@ -44,8 +44,8 @@ export class FeaturedOfferExpectedPriceResponse {
    * Constructs a <code>FeaturedOfferExpectedPriceResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResponse} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResponse} The populated <code>FeaturedOfferExpectedPriceResponse</code> instance.
+   * @param {FeaturedOfferExpectedPriceResponse} obj Optional instance to populate.
+   * @return {FeaturedOfferExpectedPriceResponse} The populated <code>FeaturedOfferExpectedPriceResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,39 +73,39 @@ export class FeaturedOfferExpectedPriceResponse {
 
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {Object.<String, String>} headers
- * @type {Object.<String, String>}
+ * @member {{String: String}} headers
+ * @type {{String: String}}
  */
 FeaturedOfferExpectedPriceResponse.prototype.headers = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/HttpStatusLine} status
- * @type {module:pricing_v2022_05_01/model/HttpStatusLine}
+ * @member {HttpStatusLine} status
+ * @type {HttpStatusLine}
  */
 FeaturedOfferExpectedPriceResponse.prototype.status = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams} request
- * @type {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceRequestParams}
+ * @member {FeaturedOfferExpectedPriceRequestParams} request
+ * @type {FeaturedOfferExpectedPriceRequestParams}
  */
 FeaturedOfferExpectedPriceResponse.prototype.request = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResponseBody} body
- * @type {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPriceResponseBody}
+ * @member {FeaturedOfferExpectedPriceResponseBody} body
+ * @type {FeaturedOfferExpectedPriceResponseBody}
  */
 FeaturedOfferExpectedPriceResponse.prototype.body = undefined
 
 // Implement BatchResponse interface:
 /**
  * A mapping of additional HTTP headers to send or receive for an individual request within a batch.
- * @member {Object.<String, String>} headers
- * @type {Object.<String, String>}
+ * @member {{String: String}} headers
+ * @type {{String: String}}
  */
 BatchResponse.prototype.headers = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/HttpStatusLine} status
- * @type {module:pricing_v2022_05_01/model/HttpStatusLine}
+ * @member {HttpStatusLine} status
+ * @type {HttpStatusLine}
  */
 BatchResponse.prototype.status = undefined

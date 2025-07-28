@@ -33,8 +33,8 @@ export class Invoice {
    * Constructs a <code>Invoice</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:invoices_v2024_06_19/model/Invoice} obj Optional instance to populate.
-   * @return {module:invoices_v2024_06_19/model/Invoice} The populated <code>Invoice</code> instance.
+   * @param {Invoice} obj Optional instance to populate.
+   * @return {Invoice} The populated <code>Invoice</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -123,8 +123,8 @@ Invoice.prototype.status = undefined
 
 /**
  * List with identifiers for the transactions associated to the invoice.
- * @member {Array.<module:invoices_v2024_06_19/model/TransactionIdentifier>} transactionIds
- * @type {Array.<module:invoices_v2024_06_19/model/TransactionIdentifier>}
+ * @member {[TransactionIdentifier]} transactionIds
+ * @type {[TransactionIdentifier]}
  */
 Invoice.prototype.transactionIds = undefined
 

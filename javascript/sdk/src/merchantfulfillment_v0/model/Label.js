@@ -28,8 +28,8 @@ export class Label {
    * Data for creating a shipping label and dimensions for printing the label.
    * @alias module:merchantfulfillment_v0/model/Label
    * @class
-   * @param dimensions {module:merchantfulfillment_v0/model/LabelDimensions}
-   * @param fileContents {module:merchantfulfillment_v0/model/FileContents}
+   * @param dimensions {LabelDimensions}
+   * @param fileContents {FileContents}
    */
   constructor (dimensions, fileContents) {
     this.dimensions = dimensions
@@ -40,8 +40,8 @@ export class Label {
    * Constructs a <code>Label</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/Label} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/Label} The populated <code>Label</code> instance.
+   * @param {Label} obj Optional instance to populate.
+   * @return {Label} The populated <code>Label</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -75,25 +75,25 @@ export class Label {
 Label.prototype.customTextForLabel = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/LabelDimensions} dimensions
- * @type {module:merchantfulfillment_v0/model/LabelDimensions}
+ * @member {LabelDimensions} dimensions
+ * @type {LabelDimensions}
  */
 Label.prototype.dimensions = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/FileContents} fileContents
- * @type {module:merchantfulfillment_v0/model/FileContents}
+ * @member {FileContents} fileContents
+ * @type {FileContents}
  */
 Label.prototype.fileContents = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/LabelFormat} labelFormat
- * @type {module:merchantfulfillment_v0/model/LabelFormat}
+ * @member {LabelFormat} labelFormat
+ * @type {LabelFormat}
  */
 Label.prototype.labelFormat = undefined
 
 /**
- * @member {module:merchantfulfillment_v0/model/StandardIdForLabel} standardIdForLabel
- * @type {module:merchantfulfillment_v0/model/StandardIdForLabel}
+ * @member {StandardIdForLabel} standardIdForLabel
+ * @type {StandardIdForLabel}
  */
 Label.prototype.standardIdForLabel = undefined

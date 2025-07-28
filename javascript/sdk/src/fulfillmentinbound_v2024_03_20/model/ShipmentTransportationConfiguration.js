@@ -28,7 +28,7 @@ export class ShipmentTransportationConfiguration {
    * Details needed to generate the transportation options.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration
    * @class
-   * @param readyToShipWindow {module:fulfillmentinbound_v2024_03_20/model/WindowInput}
+   * @param readyToShipWindow {WindowInput}
    * @param shipmentId {String} Identifier of a shipment. A shipment contains the boxes and units being inbounded.
    */
   constructor (readyToShipWindow, shipmentId) {
@@ -40,8 +40,8 @@ export class ShipmentTransportationConfiguration {
    * Constructs a <code>ShipmentTransportationConfiguration</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ShipmentTransportationConfiguration} The populated <code>ShipmentTransportationConfiguration</code> instance.
+   * @param {ShipmentTransportationConfiguration} obj Optional instance to populate.
+   * @return {ShipmentTransportationConfiguration} The populated <code>ShipmentTransportationConfiguration</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -68,27 +68,27 @@ export class ShipmentTransportationConfiguration {
 }
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/ContactInformation} contactInformation
- * @type {module:fulfillmentinbound_v2024_03_20/model/ContactInformation}
+ * @member {ContactInformation} contactInformation
+ * @type {ContactInformation}
  */
 ShipmentTransportationConfiguration.prototype.contactInformation = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/FreightInformation} freightInformation
- * @type {module:fulfillmentinbound_v2024_03_20/model/FreightInformation}
+ * @member {FreightInformation} freightInformation
+ * @type {FreightInformation}
  */
 ShipmentTransportationConfiguration.prototype.freightInformation = undefined
 
 /**
  * List of pallet configuration inputs.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/PalletInput>} pallets
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/PalletInput>}
+ * @member {[PalletInput]} pallets
+ * @type {[PalletInput]}
  */
 ShipmentTransportationConfiguration.prototype.pallets = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/WindowInput} readyToShipWindow
- * @type {module:fulfillmentinbound_v2024_03_20/model/WindowInput}
+ * @member {WindowInput} readyToShipWindow
+ * @type {WindowInput}
  */
 ShipmentTransportationConfiguration.prototype.readyToShipWindow = undefined
 

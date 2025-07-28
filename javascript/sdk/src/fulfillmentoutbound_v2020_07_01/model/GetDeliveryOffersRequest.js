@@ -26,8 +26,8 @@ export class GetDeliveryOffersRequest {
    * The request body schema for the getDeliveryOffers operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersRequest
    * @class
-   * @param product {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersProduct}
-   * @param terms {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersTerms}
+   * @param product {GetDeliveryOffersProduct}
+   * @param terms {GetDeliveryOffersTerms}
    */
   constructor (product, terms) {
     this.product = product
@@ -38,8 +38,8 @@ export class GetDeliveryOffersRequest {
    * Constructs a <code>GetDeliveryOffersRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersRequest} The populated <code>GetDeliveryOffersRequest</code> instance.
+   * @param {GetDeliveryOffersRequest} obj Optional instance to populate.
+   * @return {GetDeliveryOffersRequest} The populated <code>GetDeliveryOffersRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -63,13 +63,13 @@ export class GetDeliveryOffersRequest {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersProduct} product
- * @type {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersProduct}
+ * @member {GetDeliveryOffersProduct} product
+ * @type {GetDeliveryOffersProduct}
  */
 GetDeliveryOffersRequest.prototype.product = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersTerms} terms
- * @type {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersTerms}
+ * @member {GetDeliveryOffersTerms} terms
+ * @type {GetDeliveryOffersTerms}
  */
 GetDeliveryOffersRequest.prototype.terms = undefined

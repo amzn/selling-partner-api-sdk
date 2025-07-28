@@ -25,7 +25,7 @@ export class ReportScheduleList {
    * A list of report schedules.
    * @alias module:reports_v2021_06_30/model/ReportScheduleList
    * @class
-   * @param reportSchedules {Array.<module:reports_v2021_06_30/model/ReportSchedule>} Detailed information about a report schedule.
+   * @param reportSchedules {[ReportSchedule]} Detailed information about a report schedule.
    */
   constructor (reportSchedules) {
     this.reportSchedules = reportSchedules
@@ -35,8 +35,8 @@ export class ReportScheduleList {
    * Constructs a <code>ReportScheduleList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/ReportScheduleList} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/ReportScheduleList} The populated <code>ReportScheduleList</code> instance.
+   * @param {ReportScheduleList} obj Optional instance to populate.
+   * @return {ReportScheduleList} The populated <code>ReportScheduleList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class ReportScheduleList {
 
 /**
  * Detailed information about a report schedule.
- * @member {Array.<module:reports_v2021_06_30/model/ReportSchedule>} reportSchedules
- * @type {Array.<module:reports_v2021_06_30/model/ReportSchedule>}
+ * @member {[ReportSchedule]} reportSchedules
+ * @type {[ReportSchedule]}
  */
 ReportScheduleList.prototype.reportSchedules = undefined

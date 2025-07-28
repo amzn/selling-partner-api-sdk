@@ -29,10 +29,10 @@ export class ShipmentConfirmation {
    * @alias module:vendordfshipping_v2021_12_28/model/ShipmentConfirmation
    * @class
    * @param purchaseOrderNumber {String} Purchase order number corresponding to the shipment.
-   * @param shipmentDetails {module:vendordfshipping_v2021_12_28/model/ShipmentDetails}
-   * @param sellingParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param shipFromParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param items {Array.<module:vendordfshipping_v2021_12_28/model/Item>} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
+   * @param shipmentDetails {ShipmentDetails}
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param items {[Item]} Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
    */
   constructor (purchaseOrderNumber, shipmentDetails, sellingParty, shipFromParty, items) {
     this.purchaseOrderNumber = purchaseOrderNumber
@@ -46,8 +46,8 @@ export class ShipmentConfirmation {
    * Constructs a <code>ShipmentConfirmation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ShipmentConfirmation} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ShipmentConfirmation} The populated <code>ShipmentConfirmation</code> instance.
+   * @param {ShipmentConfirmation} obj Optional instance to populate.
+   * @return {ShipmentConfirmation} The populated <code>ShipmentConfirmation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -82,33 +82,33 @@ export class ShipmentConfirmation {
 ShipmentConfirmation.prototype.purchaseOrderNumber = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/ShipmentDetails} shipmentDetails
- * @type {module:vendordfshipping_v2021_12_28/model/ShipmentDetails}
+ * @member {ShipmentDetails} shipmentDetails
+ * @type {ShipmentDetails}
  */
 ShipmentConfirmation.prototype.shipmentDetails = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 ShipmentConfirmation.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 ShipmentConfirmation.prototype.shipFromParty = undefined
 
 /**
  * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/Item>} items
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/Item>}
+ * @member {[Item]} items
+ * @type {[Item]}
  */
 ShipmentConfirmation.prototype.items = undefined
 
 /**
  * Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/Container>} containers
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/Container>}
+ * @member {[Container]} containers
+ * @type {[Container]}
  */
 ShipmentConfirmation.prototype.containers = undefined

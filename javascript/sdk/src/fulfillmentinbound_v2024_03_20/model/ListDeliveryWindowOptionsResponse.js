@@ -26,7 +26,7 @@ export class ListDeliveryWindowOptionsResponse {
    * The &#x60;listDeliveryWindowOptions&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse
    * @class
-   * @param deliveryWindowOptions {Array.<module:fulfillmentinbound_v2024_03_20/model/DeliveryWindowOption>} Delivery window options generated for the placement option.
+   * @param deliveryWindowOptions {[DeliveryWindowOption]} Delivery window options generated for the placement option.
    */
   constructor (deliveryWindowOptions) {
     this.deliveryWindowOptions = deliveryWindowOptions
@@ -36,8 +36,8 @@ export class ListDeliveryWindowOptionsResponse {
    * Constructs a <code>ListDeliveryWindowOptionsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ListDeliveryWindowOptionsResponse} The populated <code>ListDeliveryWindowOptionsResponse</code> instance.
+   * @param {ListDeliveryWindowOptionsResponse} obj Optional instance to populate.
+   * @return {ListDeliveryWindowOptionsResponse} The populated <code>ListDeliveryWindowOptionsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,13 +62,13 @@ export class ListDeliveryWindowOptionsResponse {
 
 /**
  * Delivery window options generated for the placement option.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/DeliveryWindowOption>} deliveryWindowOptions
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/DeliveryWindowOption>}
+ * @member {[DeliveryWindowOption]} deliveryWindowOptions
+ * @type {[DeliveryWindowOption]}
  */
 ListDeliveryWindowOptionsResponse.prototype.deliveryWindowOptions = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/Pagination} pagination
- * @type {module:fulfillmentinbound_v2024_03_20/model/Pagination}
+ * @member {Pagination} pagination
+ * @type {Pagination}
  */
 ListDeliveryWindowOptionsResponse.prototype.pagination = undefined

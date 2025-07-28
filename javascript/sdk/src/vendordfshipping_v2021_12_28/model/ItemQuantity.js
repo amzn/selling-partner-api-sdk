@@ -36,8 +36,8 @@ export class ItemQuantity {
    * Constructs a <code>ItemQuantity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/ItemQuantity} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/ItemQuantity} The populated <code>ItemQuantity</code> instance.
+   * @param {ItemQuantity} obj Optional instance to populate.
+   * @return {ItemQuantity} The populated <code>ItemQuantity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

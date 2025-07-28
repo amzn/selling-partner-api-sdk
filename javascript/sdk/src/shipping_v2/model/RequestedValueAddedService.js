@@ -34,8 +34,8 @@ export class RequestedValueAddedService {
    * Constructs a <code>RequestedValueAddedService</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/RequestedValueAddedService} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/RequestedValueAddedService} The populated <code>RequestedValueAddedService</code> instance.
+   * @param {RequestedValueAddedService} obj Optional instance to populate.
+   * @return {RequestedValueAddedService} The populated <code>RequestedValueAddedService</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

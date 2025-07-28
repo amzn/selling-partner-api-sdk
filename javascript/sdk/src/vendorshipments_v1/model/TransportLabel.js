@@ -34,8 +34,8 @@ export class TransportLabel {
    * Constructs a <code>TransportLabel</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/TransportLabel} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/TransportLabel} The populated <code>TransportLabel</code> instance.
+   * @param {TransportLabel} obj Optional instance to populate.
+   * @return {TransportLabel} The populated <code>TransportLabel</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,14 +67,14 @@ export class TransportLabel {
 TransportLabel.prototype.labelCreateDateTime = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/ShipmentInformation} shipmentInformation
- * @type {module:vendorshipments_v1/model/ShipmentInformation}
+ * @member {ShipmentInformation} shipmentInformation
+ * @type {ShipmentInformation}
  */
 TransportLabel.prototype.shipmentInformation = undefined
 
 /**
  * Indicates the label data,format and type associated .
- * @member {Array.<module:vendorshipments_v1/model/LabelData>} labelData
- * @type {Array.<module:vendorshipments_v1/model/LabelData>}
+ * @member {[LabelData]} labelData
+ * @type {[LabelData]}
  */
 TransportLabel.prototype.labelData = undefined

@@ -25,7 +25,7 @@ export class CreateMarketplaceItemLabelsResponse {
    * The &#x60;createMarketplaceItemLabels&#x60; response.
    * @alias module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse
    * @class
-   * @param documentDownloads {Array.<module:fulfillmentinbound_v2024_03_20/model/DocumentDownload>} Resources to download the requested document.
+   * @param documentDownloads {[DocumentDownload]} Resources to download the requested document.
    */
   constructor (documentDownloads) {
     this.documentDownloads = documentDownloads
@@ -35,8 +35,8 @@ export class CreateMarketplaceItemLabelsResponse {
    * Constructs a <code>CreateMarketplaceItemLabelsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/CreateMarketplaceItemLabelsResponse} The populated <code>CreateMarketplaceItemLabelsResponse</code> instance.
+   * @param {CreateMarketplaceItemLabelsResponse} obj Optional instance to populate.
+   * @return {CreateMarketplaceItemLabelsResponse} The populated <code>CreateMarketplaceItemLabelsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class CreateMarketplaceItemLabelsResponse {
 
 /**
  * Resources to download the requested document.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/DocumentDownload>} documentDownloads
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/DocumentDownload>}
+ * @member {[DocumentDownload]} documentDownloads
+ * @type {[DocumentDownload]}
  */
 CreateMarketplaceItemLabelsResponse.prototype.documentDownloads = undefined

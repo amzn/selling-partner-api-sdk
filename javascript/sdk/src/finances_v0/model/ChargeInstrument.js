@@ -33,8 +33,8 @@ export class ChargeInstrument {
    * Constructs a <code>ChargeInstrument</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/ChargeInstrument} obj Optional instance to populate.
-   * @return {module:finances_v0/model/ChargeInstrument} The populated <code>ChargeInstrument</code> instance.
+   * @param {ChargeInstrument} obj Optional instance to populate.
+   * @return {ChargeInstrument} The populated <code>ChargeInstrument</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,7 +73,7 @@ ChargeInstrument.prototype.description = undefined
 ChargeInstrument.prototype.tail = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} amount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} amount
+ * @type {Currency}
  */
 ChargeInstrument.prototype.amount = undefined

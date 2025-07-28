@@ -34,8 +34,8 @@ export class StandardHeaderImageTextModule {
    * Constructs a <code>StandardHeaderImageTextModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardHeaderImageTextModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardHeaderImageTextModule} The populated <code>StandardHeaderImageTextModule</code> instance.
+   * @param {StandardHeaderImageTextModule} obj Optional instance to populate.
+   * @return {StandardHeaderImageTextModule} The populated <code>StandardHeaderImageTextModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,13 +59,13 @@ export class StandardHeaderImageTextModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/TextComponent} headline
- * @type {module:apluscontent_v2020_11_01/model/TextComponent}
+ * @member {TextComponent} headline
+ * @type {TextComponent}
  */
 StandardHeaderImageTextModule.prototype.headline = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block
+ * @type {StandardImageTextBlock}
  */
 StandardHeaderImageTextModule.prototype.block = undefined

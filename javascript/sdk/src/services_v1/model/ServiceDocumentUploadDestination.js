@@ -27,7 +27,7 @@ export class ServiceDocumentUploadDestination {
    * @class
    * @param uploadDestinationId {String} The unique identifier to be used by APIs that reference the upload destination.
    * @param url {String} The URL to which to upload the file.
-   * @param encryptionDetails {module:services_v1/model/EncryptionDetails}
+   * @param encryptionDetails {EncryptionDetails}
    */
   constructor (uploadDestinationId, url, encryptionDetails) {
     this.uploadDestinationId = uploadDestinationId
@@ -39,8 +39,8 @@ export class ServiceDocumentUploadDestination {
    * Constructs a <code>ServiceDocumentUploadDestination</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/ServiceDocumentUploadDestination} obj Optional instance to populate.
-   * @return {module:services_v1/model/ServiceDocumentUploadDestination} The populated <code>ServiceDocumentUploadDestination</code> instance.
+   * @param {ServiceDocumentUploadDestination} obj Optional instance to populate.
+   * @return {ServiceDocumentUploadDestination} The populated <code>ServiceDocumentUploadDestination</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -80,8 +80,8 @@ ServiceDocumentUploadDestination.prototype.uploadDestinationId = undefined
 ServiceDocumentUploadDestination.prototype.url = undefined
 
 /**
- * @member {module:services_v1/model/EncryptionDetails} encryptionDetails
- * @type {module:services_v1/model/EncryptionDetails}
+ * @member {EncryptionDetails} encryptionDetails
+ * @type {EncryptionDetails}
  */
 ServiceDocumentUploadDestination.prototype.encryptionDetails = undefined
 

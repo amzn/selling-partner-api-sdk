@@ -36,8 +36,8 @@ export class ConfirmShipmentOrderItem {
    * Constructs a <code>ConfirmShipmentOrderItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:orders_v0/model/ConfirmShipmentOrderItem} obj Optional instance to populate.
-   * @return {module:orders_v0/model/ConfirmShipmentOrderItem} The populated <code>ConfirmShipmentOrderItem</code> instance.
+   * @param {ConfirmShipmentOrderItem} obj Optional instance to populate.
+   * @return {ConfirmShipmentOrderItem} The populated <code>ConfirmShipmentOrderItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -77,7 +77,7 @@ ConfirmShipmentOrderItem.prototype.quantity = undefined
 
 /**
  * A list of order items.
- * @member {Array.<String>} transparencyCodes
- * @type {Array.<String>}
+ * @member {[String]} transparencyCodes
+ * @type {[String]}
  */
 ConfirmShipmentOrderItem.prototype.transparencyCodes = undefined

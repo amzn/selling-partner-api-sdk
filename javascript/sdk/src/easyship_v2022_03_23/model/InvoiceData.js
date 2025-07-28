@@ -34,8 +34,8 @@ export class InvoiceData {
    * Constructs a <code>InvoiceData</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:easyship_v2022_03_23/model/InvoiceData} obj Optional instance to populate.
-   * @return {module:easyship_v2022_03_23/model/InvoiceData} The populated <code>InvoiceData</code> instance.
+   * @param {InvoiceData} obj Optional instance to populate.
+   * @return {InvoiceData} The populated <code>InvoiceData</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

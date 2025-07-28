@@ -33,8 +33,8 @@ export class RangeSlotCapacity {
    * Constructs a <code>RangeSlotCapacity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/RangeSlotCapacity} obj Optional instance to populate.
-   * @return {module:services_v1/model/RangeSlotCapacity} The populated <code>RangeSlotCapacity</code> instance.
+   * @param {RangeSlotCapacity} obj Optional instance to populate.
+   * @return {RangeSlotCapacity} The populated <code>RangeSlotCapacity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -67,8 +67,8 @@ RangeSlotCapacity.prototype.resourceId = undefined
 
 /**
  * Array of range capacities where each entry is for a specific capacity type.
- * @member {Array.<module:services_v1/model/RangeCapacity>} capacities
- * @type {Array.<module:services_v1/model/RangeCapacity>}
+ * @member {[RangeCapacity]} capacities
+ * @type {[RangeCapacity]}
  */
 RangeSlotCapacity.prototype.capacities = undefined
 

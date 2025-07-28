@@ -28,8 +28,8 @@ export class ContentUpdatePreview {
    * @class
    * @param contentUpdatePreviewId {String} Identifier of a content update preview.
    * @param expiration {Date} The time at which the content update expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern `yyyy-MM-ddTHH:mm:ss.sssZ`.
-   * @param requestedUpdates {module:fulfillmentinbound_v2024_03_20/model/RequestedUpdates}
-   * @param transportationOption {module:fulfillmentinbound_v2024_03_20/model/TransportationOption}
+   * @param requestedUpdates {RequestedUpdates}
+   * @param transportationOption {TransportationOption}
    */
   constructor (contentUpdatePreviewId, expiration, requestedUpdates, transportationOption) {
     this.contentUpdatePreviewId = contentUpdatePreviewId
@@ -42,8 +42,8 @@ export class ContentUpdatePreview {
    * Constructs a <code>ContentUpdatePreview</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/ContentUpdatePreview} The populated <code>ContentUpdatePreview</code> instance.
+   * @param {ContentUpdatePreview} obj Optional instance to populate.
+   * @return {ContentUpdatePreview} The populated <code>ContentUpdatePreview</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -83,13 +83,13 @@ ContentUpdatePreview.prototype.contentUpdatePreviewId = undefined
 ContentUpdatePreview.prototype.expiration = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/RequestedUpdates} requestedUpdates
- * @type {module:fulfillmentinbound_v2024_03_20/model/RequestedUpdates}
+ * @member {RequestedUpdates} requestedUpdates
+ * @type {RequestedUpdates}
  */
 ContentUpdatePreview.prototype.requestedUpdates = undefined
 
 /**
- * @member {module:fulfillmentinbound_v2024_03_20/model/TransportationOption} transportationOption
- * @type {module:fulfillmentinbound_v2024_03_20/model/TransportationOption}
+ * @member {TransportationOption} transportationOption
+ * @type {TransportationOption}
  */
 ContentUpdatePreview.prototype.transportationOption = undefined

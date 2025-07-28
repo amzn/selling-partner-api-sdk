@@ -34,8 +34,8 @@ export class GetFeatureInventoryResponse {
    * Constructs a <code>GetFeatureInventoryResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResponse} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResponse} The populated <code>GetFeatureInventoryResponse</code> instance.
+   * @param {GetFeatureInventoryResponse} obj Optional instance to populate.
+   * @return {GetFeatureInventoryResponse} The populated <code>GetFeatureInventoryResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetFeatureInventoryResponse {
 }
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResult} payload
- * @type {module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResult}
+ * @member {GetFeatureInventoryResult} payload
+ * @type {GetFeatureInventoryResult}
  */
 GetFeatureInventoryResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>} errors
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetFeatureInventoryResponse.prototype.errors = undefined

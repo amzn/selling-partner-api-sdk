@@ -34,8 +34,8 @@ export class ShipmentMeasurements {
    * Constructs a <code>ShipmentMeasurements</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/ShipmentMeasurements} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/ShipmentMeasurements} The populated <code>ShipmentMeasurements</code> instance.
+   * @param {ShipmentMeasurements} obj Optional instance to populate.
+   * @return {ShipmentMeasurements} The populated <code>ShipmentMeasurements</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,14 +61,14 @@ export class ShipmentMeasurements {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/Weight} grossShipmentWeight
- * @type {module:vendorshipments_v1/model/Weight}
+ * @member {Weight} grossShipmentWeight
+ * @type {Weight}
  */
 ShipmentMeasurements.prototype.grossShipmentWeight = undefined
 
 /**
- * @member {module:vendorshipments_v1/model/Volume} shipmentVolume
- * @type {module:vendorshipments_v1/model/Volume}
+ * @member {Volume} shipmentVolume
+ * @type {Volume}
  */
 ShipmentMeasurements.prototype.shipmentVolume = undefined
 

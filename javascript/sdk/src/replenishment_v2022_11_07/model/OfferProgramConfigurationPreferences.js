@@ -33,8 +33,8 @@ export class OfferProgramConfigurationPreferences {
    * Constructs a <code>OfferProgramConfigurationPreferences</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPreferences} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/OfferProgramConfigurationPreferences} The populated <code>OfferProgramConfigurationPreferences</code> instance.
+   * @param {OfferProgramConfigurationPreferences} obj Optional instance to populate.
+   * @return {OfferProgramConfigurationPreferences} The populated <code>OfferProgramConfigurationPreferences</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class OfferProgramConfigurationPreferences {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/AutoEnrollmentPreference} autoEnrollment
- * @type {module:replenishment_v2022_11_07/model/AutoEnrollmentPreference}
+ * @member {AutoEnrollmentPreference} autoEnrollment
+ * @type {AutoEnrollmentPreference}
  */
 OfferProgramConfigurationPreferences.prototype.autoEnrollment = undefined

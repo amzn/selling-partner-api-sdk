@@ -33,8 +33,8 @@ export class SubmitShipmentConfirmationsRequest {
    * Constructs a <code>SubmitShipmentConfirmationsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/SubmitShipmentConfirmationsRequest} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/SubmitShipmentConfirmationsRequest} The populated <code>SubmitShipmentConfirmationsRequest</code> instance.
+   * @param {SubmitShipmentConfirmationsRequest} obj Optional instance to populate.
+   * @return {SubmitShipmentConfirmationsRequest} The populated <code>SubmitShipmentConfirmationsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -58,7 +58,7 @@ export class SubmitShipmentConfirmationsRequest {
 
 /**
  * Array of `ShipmentConfirmation` objects. Each `ShipmentConfirmation` object represents the confirmation details for a specific shipment.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/ShipmentConfirmation>} shipmentConfirmations
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/ShipmentConfirmation>}
+ * @member {[ShipmentConfirmation]} shipmentConfirmations
+ * @type {[ShipmentConfirmation]}
  */
 SubmitShipmentConfirmationsRequest.prototype.shipmentConfirmations = undefined

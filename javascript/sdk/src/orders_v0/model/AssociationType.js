@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class AssociationType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class AssociationType {
@@ -28,7 +28,7 @@ export class AssociationType {
   /**
     * Returns a <code>AssociationType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:orders_v0/model/AssociationType} The enum <code>AssociationType</code> value.
+    * @return {AssociationType} The enum <code>AssociationType</code> value.
     */
   static constructFromObject (object) {
     return object

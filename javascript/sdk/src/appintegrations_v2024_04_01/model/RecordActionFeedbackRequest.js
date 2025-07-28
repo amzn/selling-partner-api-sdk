@@ -24,7 +24,7 @@ export class RecordActionFeedbackRequest {
    * The request for the &#x60;recordActionFeedback&#x60; operation.
    * @alias module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest
    * @class
-   * @param feedbackActionCode {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest.FeedbackActionCodeEnum} The unique identifier for each notification status.
+   * @param feedbackActionCode {String} The unique identifier for each notification status.
    */
   constructor (feedbackActionCode) {
     this.feedbackActionCode = feedbackActionCode
@@ -34,8 +34,8 @@ export class RecordActionFeedbackRequest {
    * Constructs a <code>RecordActionFeedbackRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest} obj Optional instance to populate.
-   * @return {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest} The populated <code>RecordActionFeedbackRequest</code> instance.
+   * @param {RecordActionFeedbackRequest} obj Optional instance to populate.
+   * @return {RecordActionFeedbackRequest} The populated <code>RecordActionFeedbackRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,7 +73,7 @@ RecordActionFeedbackRequest.FeedbackActionCodeEnum = {
 
 /**
  * The unique identifier for each notification status.
- * @member {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest.FeedbackActionCodeEnum} feedbackActionCode
- * @type {module:appintegrations_v2024_04_01/model/RecordActionFeedbackRequest.FeedbackActionCodeEnum}
+ * @member {String} feedbackActionCode
+ * @type {String}
  */
 RecordActionFeedbackRequest.prototype.feedbackActionCode = undefined

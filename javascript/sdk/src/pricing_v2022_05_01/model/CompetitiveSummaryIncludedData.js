@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class CompetitiveSummaryIncludedData.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class CompetitiveSummaryIncludedData {
@@ -40,7 +40,7 @@ export class CompetitiveSummaryIncludedData {
   /**
     * Returns a <code>CompetitiveSummaryIncludedData</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:pricing_v2022_05_01/model/CompetitiveSummaryIncludedData} The enum <code>CompetitiveSummaryIncludedData</code> value.
+    * @return {CompetitiveSummaryIncludedData} The enum <code>CompetitiveSummaryIncludedData</code> value.
     */
   static constructFromObject (object) {
     return object

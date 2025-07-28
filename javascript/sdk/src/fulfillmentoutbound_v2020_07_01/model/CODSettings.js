@@ -35,8 +35,8 @@ export class CODSettings {
    * Constructs a <code>CODSettings</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/CODSettings} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/CODSettings} The populated <code>CODSettings</code> instance.
+   * @param {CODSettings} obj Optional instance to populate.
+   * @return {CODSettings} The populated <code>CODSettings</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -70,25 +70,25 @@ export class CODSettings {
 CODSettings.prototype.isCodRequired = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} codCharge
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} codCharge
+ * @type {Money}
  */
 CODSettings.prototype.codCharge = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} codChargeTax
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} codChargeTax
+ * @type {Money}
  */
 CODSettings.prototype.codChargeTax = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} shippingCharge
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} shippingCharge
+ * @type {Money}
  */
 CODSettings.prototype.shippingCharge = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/Money} shippingChargeTax
- * @type {module:fulfillmentoutbound_v2020_07_01/model/Money}
+ * @member {Money} shippingChargeTax
+ * @type {Money}
  */
 CODSettings.prototype.shippingChargeTax = undefined

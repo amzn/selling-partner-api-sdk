@@ -33,8 +33,8 @@ export class Promotion {
    * Constructs a <code>Promotion</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_v0/model/Promotion} obj Optional instance to populate.
-   * @return {module:finances_v0/model/Promotion} The populated <code>Promotion</code> instance.
+   * @param {Promotion} obj Optional instance to populate.
+   * @return {Promotion} The populated <code>Promotion</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,7 +73,7 @@ Promotion.prototype.promotionType = undefined
 Promotion.prototype.promotionId = undefined
 
 /**
- * @member {module:finances_v0/model/Currency} promotionAmount
- * @type {module:finances_v0/model/Currency}
+ * @member {Currency} promotionAmount
+ * @type {Currency}
  */
 Promotion.prototype.promotionAmount = undefined

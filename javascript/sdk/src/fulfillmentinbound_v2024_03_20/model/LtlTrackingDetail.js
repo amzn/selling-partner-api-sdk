@@ -32,8 +32,8 @@ export class LtlTrackingDetail {
    * Constructs a <code>LtlTrackingDetail</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetail} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/LtlTrackingDetail} The populated <code>LtlTrackingDetail</code> instance.
+   * @param {LtlTrackingDetail} obj Optional instance to populate.
+   * @return {LtlTrackingDetail} The populated <code>LtlTrackingDetail</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ LtlTrackingDetail.prototype.billOfLadingNumber = undefined
 
 /**
  * The number associated with the freight bill.
- * @member {Array.<String>} freightBillNumber
- * @type {Array.<String>}
+ * @member {[String]} freightBillNumber
+ * @type {[String]}
  */
 LtlTrackingDetail.prototype.freightBillNumber = undefined

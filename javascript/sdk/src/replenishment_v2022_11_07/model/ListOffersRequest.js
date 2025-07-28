@@ -27,8 +27,8 @@ export class ListOffersRequest {
    * The request body for the &#x60;listOffers&#x60; operation.
    * @alias module:replenishment_v2022_11_07/model/ListOffersRequest
    * @class
-   * @param pagination {module:replenishment_v2022_11_07/model/ListOffersRequestPagination}
-   * @param filters {module:replenishment_v2022_11_07/model/ListOffersRequestFilters}
+   * @param pagination {ListOffersRequestPagination}
+   * @param filters {ListOffersRequestFilters}
    */
   constructor (pagination, filters) {
     this.pagination = pagination
@@ -39,8 +39,8 @@ export class ListOffersRequest {
    * Constructs a <code>ListOffersRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/ListOffersRequest} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/ListOffersRequest} The populated <code>ListOffersRequest</code> instance.
+   * @param {ListOffersRequest} obj Optional instance to populate.
+   * @return {ListOffersRequest} The populated <code>ListOffersRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,19 +65,19 @@ export class ListOffersRequest {
 }
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ListOffersRequestPagination} pagination
- * @type {module:replenishment_v2022_11_07/model/ListOffersRequestPagination}
+ * @member {ListOffersRequestPagination} pagination
+ * @type {ListOffersRequestPagination}
  */
 ListOffersRequest.prototype.pagination = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ListOffersRequestFilters} filters
- * @type {module:replenishment_v2022_11_07/model/ListOffersRequestFilters}
+ * @member {ListOffersRequestFilters} filters
+ * @type {ListOffersRequestFilters}
  */
 ListOffersRequest.prototype.filters = undefined
 
 /**
- * @member {module:replenishment_v2022_11_07/model/ListOffersRequestSort} sort
- * @type {module:replenishment_v2022_11_07/model/ListOffersRequestSort}
+ * @member {ListOffersRequestSort} sort
+ * @type {ListOffersRequestSort}
  */
 ListOffersRequest.prototype.sort = undefined

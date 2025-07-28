@@ -35,8 +35,8 @@ export class FeesEstimateResult {
    * Constructs a <code>FeesEstimateResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:productfees_v0/model/FeesEstimateResult} obj Optional instance to populate.
-   * @return {module:productfees_v0/model/FeesEstimateResult} The populated <code>FeesEstimateResult</code> instance.
+   * @param {FeesEstimateResult} obj Optional instance to populate.
+   * @return {FeesEstimateResult} The populated <code>FeesEstimateResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -69,19 +69,19 @@ export class FeesEstimateResult {
 FeesEstimateResult.prototype.status = undefined
 
 /**
- * @member {module:productfees_v0/model/FeesEstimateIdentifier} feesEstimateIdentifier
- * @type {module:productfees_v0/model/FeesEstimateIdentifier}
+ * @member {FeesEstimateIdentifier} feesEstimateIdentifier
+ * @type {FeesEstimateIdentifier}
  */
 FeesEstimateResult.prototype.feesEstimateIdentifier = undefined
 
 /**
- * @member {module:productfees_v0/model/FeesEstimate} feesEstimate
- * @type {module:productfees_v0/model/FeesEstimate}
+ * @member {FeesEstimate} feesEstimate
+ * @type {FeesEstimate}
  */
 FeesEstimateResult.prototype.feesEstimate = undefined
 
 /**
- * @member {module:productfees_v0/model/FeesEstimateError} error
- * @type {module:productfees_v0/model/FeesEstimateError}
+ * @member {FeesEstimateError} error
+ * @type {FeesEstimateError}
  */
 FeesEstimateResult.prototype.error = undefined

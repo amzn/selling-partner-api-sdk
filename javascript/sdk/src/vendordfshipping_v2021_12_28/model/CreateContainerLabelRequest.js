@@ -27,11 +27,11 @@ export class CreateContainerLabelRequest {
    * The request body schema for the &#x60;createContainerLabel&#x60; operation.
    * @alias module:vendordfshipping_v2021_12_28/model/CreateContainerLabelRequest
    * @class
-   * @param sellingParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param shipFromParty {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
-   * @param carrierId {module:vendordfshipping_v2021_12_28/model/CarrierId}
+   * @param sellingParty {PartyIdentification}
+   * @param shipFromParty {PartyIdentification}
+   * @param carrierId {CarrierId}
    * @param vendorContainerId {String} The unique, vendor-provided identifier for the container.
-   * @param packages {Array.<module:vendordfshipping_v2021_12_28/model/Package>} An array of package objects in a container.
+   * @param packages {[Package]} An array of package objects in a container.
    */
   constructor (sellingParty, shipFromParty, carrierId, vendorContainerId, packages) {
     this.sellingParty = sellingParty
@@ -45,8 +45,8 @@ export class CreateContainerLabelRequest {
    * Constructs a <code>CreateContainerLabelRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/CreateContainerLabelRequest} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/CreateContainerLabelRequest} The populated <code>CreateContainerLabelRequest</code> instance.
+   * @param {CreateContainerLabelRequest} obj Optional instance to populate.
+   * @return {CreateContainerLabelRequest} The populated <code>CreateContainerLabelRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -73,20 +73,20 @@ export class CreateContainerLabelRequest {
 }
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} sellingParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} sellingParty
+ * @type {PartyIdentification}
  */
 CreateContainerLabelRequest.prototype.sellingParty = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/PartyIdentification} shipFromParty
- * @type {module:vendordfshipping_v2021_12_28/model/PartyIdentification}
+ * @member {PartyIdentification} shipFromParty
+ * @type {PartyIdentification}
  */
 CreateContainerLabelRequest.prototype.shipFromParty = undefined
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/CarrierId} carrierId
- * @type {module:vendordfshipping_v2021_12_28/model/CarrierId}
+ * @member {CarrierId} carrierId
+ * @type {CarrierId}
  */
 CreateContainerLabelRequest.prototype.carrierId = undefined
 
@@ -99,7 +99,7 @@ CreateContainerLabelRequest.prototype.vendorContainerId = undefined
 
 /**
  * An array of package objects in a container.
- * @member {Array.<module:vendordfshipping_v2021_12_28/model/Package>} packages
- * @type {Array.<module:vendordfshipping_v2021_12_28/model/Package>}
+ * @member {[Package]} packages
+ * @type {[Package]}
  */
 CreateContainerLabelRequest.prototype.packages = undefined

@@ -25,7 +25,7 @@ export class CreateContainerLabelResponse {
    * The response schema for the &#x60;createContainerLabel&#x60; operation.
    * @alias module:vendordfshipping_v2021_12_28/model/CreateContainerLabelResponse
    * @class
-   * @param containerLabel {module:vendordfshipping_v2021_12_28/model/ContainerLabel}
+   * @param containerLabel {ContainerLabel}
    */
   constructor (containerLabel) {
     this.containerLabel = containerLabel
@@ -35,8 +35,8 @@ export class CreateContainerLabelResponse {
    * Constructs a <code>CreateContainerLabelResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordfshipping_v2021_12_28/model/CreateContainerLabelResponse} obj Optional instance to populate.
-   * @return {module:vendordfshipping_v2021_12_28/model/CreateContainerLabelResponse} The populated <code>CreateContainerLabelResponse</code> instance.
+   * @param {CreateContainerLabelResponse} obj Optional instance to populate.
+   * @return {CreateContainerLabelResponse} The populated <code>CreateContainerLabelResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,7 +59,7 @@ export class CreateContainerLabelResponse {
 }
 
 /**
- * @member {module:vendordfshipping_v2021_12_28/model/ContainerLabel} containerLabel
- * @type {module:vendordfshipping_v2021_12_28/model/ContainerLabel}
+ * @member {ContainerLabel} containerLabel
+ * @type {ContainerLabel}
  */
 CreateContainerLabelResponse.prototype.containerLabel = undefined

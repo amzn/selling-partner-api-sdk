@@ -28,7 +28,7 @@ export class Query {
    * @param queryId {String} The query identifier. This identifier is unique only in combination with a selling partner account ID.
    * @param query {String} The submitted query.
    * @param createdTime {Date} The date and time when the query was created, in ISO 8601 date time format.
-   * @param processingStatus {module:datakiosk_v2023_11_15/model/Query.ProcessingStatusEnum} The processing status of the query.
+   * @param processingStatus {String} The processing status of the query.
    */
   constructor (queryId, query, createdTime, processingStatus) {
     this.queryId = queryId
@@ -41,8 +41,8 @@ export class Query {
    * Constructs a <code>Query</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:datakiosk_v2023_11_15/model/Query} obj Optional instance to populate.
-   * @return {module:datakiosk_v2023_11_15/model/Query} The populated <code>Query</code> instance.
+   * @param {Query} obj Optional instance to populate.
+   * @return {Query} The populated <code>Query</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -133,8 +133,8 @@ Query.ProcessingStatusEnum = {
 
 /**
  * The processing status of the query.
- * @member {module:datakiosk_v2023_11_15/model/Query.ProcessingStatusEnum} processingStatus
- * @type {module:datakiosk_v2023_11_15/model/Query.ProcessingStatusEnum}
+ * @member {String} processingStatus
+ * @type {String}
  */
 Query.prototype.processingStatus = undefined
 
@@ -167,7 +167,7 @@ Query.prototype.dataDocumentId = undefined
 Query.prototype.errorDocumentId = undefined
 
 /**
- * @member {module:datakiosk_v2023_11_15/model/QueryPagination} pagination
- * @type {module:datakiosk_v2023_11_15/model/QueryPagination}
+ * @member {QueryPagination} pagination
+ * @type {QueryPagination}
  */
 Query.prototype.pagination = undefined

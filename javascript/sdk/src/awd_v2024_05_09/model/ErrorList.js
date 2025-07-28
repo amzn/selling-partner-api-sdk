@@ -25,7 +25,7 @@ export class ErrorList {
    * This exception is thrown when client inputs are invalid.
    * @alias module:awd_v2024_05_09/model/ErrorList
    * @class
-   * @param errors {Array.<module:awd_v2024_05_09/model/Error>} A list of errors describing the failures.
+   * @param errors {[Error]} A list of errors describing the failures.
    */
   constructor (errors) {
     this.errors = errors
@@ -35,8 +35,8 @@ export class ErrorList {
    * Constructs a <code>ErrorList</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:awd_v2024_05_09/model/ErrorList} obj Optional instance to populate.
-   * @return {module:awd_v2024_05_09/model/ErrorList} The populated <code>ErrorList</code> instance.
+   * @param {ErrorList} obj Optional instance to populate.
+   * @return {ErrorList} The populated <code>ErrorList</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class ErrorList {
 
 /**
  * A list of errors describing the failures.
- * @member {Array.<module:awd_v2024_05_09/model/Error>} errors
- * @type {Array.<module:awd_v2024_05_09/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 ErrorList.prototype.errors = undefined

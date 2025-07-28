@@ -27,7 +27,7 @@ export class ItemSummaryByMarketplace {
    * @class
    * @param marketplaceId {String} A marketplace identifier. Identifies the Amazon marketplace for the listings item.
    * @param productType {String} The Amazon product type of the listings item.
-   * @param status {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.StatusEnum>} Statuses that apply to the listings item.
+   * @param status {[String]} Statuses that apply to the listings item.
    * @param createdDate {Date} The date the listings item was created in ISO 8601 format.
    * @param lastUpdatedDate {Date} The date the listings item was last updated in ISO 8601 format.
    */
@@ -43,8 +43,8 @@ export class ItemSummaryByMarketplace {
    * Constructs a <code>ItemSummaryByMarketplace</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace} obj Optional instance to populate.
-   * @return {module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace} The populated <code>ItemSummaryByMarketplace</code> instance.
+   * @param {ItemSummaryByMarketplace} obj Optional instance to populate.
+   * @return {ItemSummaryByMarketplace} The populated <code>ItemSummaryByMarketplace</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -184,8 +184,8 @@ ItemSummaryByMarketplace.ConditionTypeEnum = {
 
 /**
  * Identifies the condition of the listings item.
- * @member {module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.ConditionTypeEnum} conditionType
- * @type {module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.ConditionTypeEnum}
+ * @member {String} conditionType
+ * @type {String}
  */
 ItemSummaryByMarketplace.prototype.conditionType = undefined
 
@@ -211,8 +211,8 @@ ItemSummaryByMarketplace.StatusEnum = {
 
 /**
  * Statuses that apply to the listings item.
- * @member {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.StatusEnum>} status
- * @type {Array.<module:listingsitems_v2021_08_01/model/ItemSummaryByMarketplace.StatusEnum>}
+ * @member {[String]} status
+ * @type {[String]}
  */
 ItemSummaryByMarketplace.prototype.status = undefined
 
@@ -245,7 +245,7 @@ ItemSummaryByMarketplace.prototype.createdDate = undefined
 ItemSummaryByMarketplace.prototype.lastUpdatedDate = undefined
 
 /**
- * @member {module:listingsitems_v2021_08_01/model/ItemImage} mainImage
- * @type {module:listingsitems_v2021_08_01/model/ItemImage}
+ * @member {ItemImage} mainImage
+ * @type {ItemImage}
  */
 ItemSummaryByMarketplace.prototype.mainImage = undefined

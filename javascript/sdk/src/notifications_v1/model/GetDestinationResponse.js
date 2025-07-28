@@ -34,8 +34,8 @@ export class GetDestinationResponse {
    * Constructs a <code>GetDestinationResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:notifications_v1/model/GetDestinationResponse} obj Optional instance to populate.
-   * @return {module:notifications_v1/model/GetDestinationResponse} The populated <code>GetDestinationResponse</code> instance.
+   * @param {GetDestinationResponse} obj Optional instance to populate.
+   * @return {GetDestinationResponse} The populated <code>GetDestinationResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetDestinationResponse {
 }
 
 /**
- * @member {module:notifications_v1/model/Destination} payload
- * @type {module:notifications_v1/model/Destination}
+ * @member {Destination} payload
+ * @type {Destination}
  */
 GetDestinationResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:notifications_v1/model/Error>} errors
- * @type {Array.<module:notifications_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetDestinationResponse.prototype.errors = undefined

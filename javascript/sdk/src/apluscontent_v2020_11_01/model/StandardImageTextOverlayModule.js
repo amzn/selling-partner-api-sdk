@@ -26,7 +26,7 @@ export class StandardImageTextOverlayModule {
    * A standard background image with a floating text box.
    * @alias module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule
    * @class
-   * @param overlayColorType {module:apluscontent_v2020_11_01/model/ColorType}
+   * @param overlayColorType {ColorType}
    */
   constructor (overlayColorType) {
     this.overlayColorType = overlayColorType
@@ -36,8 +36,8 @@ export class StandardImageTextOverlayModule {
    * Constructs a <code>StandardImageTextOverlayModule</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/StandardImageTextOverlayModule} The populated <code>StandardImageTextOverlayModule</code> instance.
+   * @param {StandardImageTextOverlayModule} obj Optional instance to populate.
+   * @return {StandardImageTextOverlayModule} The populated <code>StandardImageTextOverlayModule</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class StandardImageTextOverlayModule {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ColorType} overlayColorType
- * @type {module:apluscontent_v2020_11_01/model/ColorType}
+ * @member {ColorType} overlayColorType
+ * @type {ColorType}
  */
 StandardImageTextOverlayModule.prototype.overlayColorType = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/StandardImageTextBlock} block
- * @type {module:apluscontent_v2020_11_01/model/StandardImageTextBlock}
+ * @member {StandardImageTextBlock} block
+ * @type {StandardImageTextBlock}
  */
 StandardImageTextOverlayModule.prototype.block = undefined

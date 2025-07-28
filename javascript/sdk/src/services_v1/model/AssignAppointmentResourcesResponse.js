@@ -34,8 +34,8 @@ export class AssignAppointmentResourcesResponse {
    * Constructs a <code>AssignAppointmentResourcesResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AssignAppointmentResourcesResponse} obj Optional instance to populate.
-   * @return {module:services_v1/model/AssignAppointmentResourcesResponse} The populated <code>AssignAppointmentResourcesResponse</code> instance.
+   * @param {AssignAppointmentResourcesResponse} obj Optional instance to populate.
+   * @return {AssignAppointmentResourcesResponse} The populated <code>AssignAppointmentResourcesResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class AssignAppointmentResourcesResponse {
 }
 
 /**
- * @member {module:services_v1/model/AssignAppointmentResourcesResponsePayload} payload
- * @type {module:services_v1/model/AssignAppointmentResourcesResponsePayload}
+ * @member {AssignAppointmentResourcesResponsePayload} payload
+ * @type {AssignAppointmentResourcesResponsePayload}
  */
 AssignAppointmentResourcesResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:services_v1/model/Error>} errors
- * @type {Array.<module:services_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 AssignAppointmentResourcesResponse.prototype.errors = undefined

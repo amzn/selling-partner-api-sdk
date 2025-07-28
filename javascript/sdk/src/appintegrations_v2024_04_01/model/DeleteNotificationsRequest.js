@@ -25,7 +25,7 @@ export class DeleteNotificationsRequest {
    * @alias module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest
    * @class
    * @param templateId {String} The unique identifier of the notification template you used to onboard your application.
-   * @param deletionReason {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest.DeletionReasonEnum} The unique identifier that maps each notification status to a reason code.
+   * @param deletionReason {String} The unique identifier that maps each notification status to a reason code.
    */
   constructor (templateId, deletionReason) {
     this.templateId = templateId
@@ -36,8 +36,8 @@ export class DeleteNotificationsRequest {
    * Constructs a <code>DeleteNotificationsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest} obj Optional instance to populate.
-   * @return {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest} The populated <code>DeleteNotificationsRequest</code> instance.
+   * @param {DeleteNotificationsRequest} obj Optional instance to populate.
+   * @return {DeleteNotificationsRequest} The populated <code>DeleteNotificationsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -89,7 +89,7 @@ DeleteNotificationsRequest.DeletionReasonEnum = {
 
 /**
  * The unique identifier that maps each notification status to a reason code.
- * @member {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest.DeletionReasonEnum} deletionReason
- * @type {module:appintegrations_v2024_04_01/model/DeleteNotificationsRequest.DeletionReasonEnum}
+ * @member {String} deletionReason
+ * @type {String}
  */
 DeleteNotificationsRequest.prototype.deletionReason = undefined

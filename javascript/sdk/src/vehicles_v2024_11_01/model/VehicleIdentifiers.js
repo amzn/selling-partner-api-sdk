@@ -25,7 +25,7 @@ export class VehicleIdentifiers {
    * Combination of vehicle standard and id that can uniquely identify a vehicle from Amazon&#39;s catalog.
    * @alias module:vehicles_v2024_11_01/model/VehicleIdentifiers
    * @class
-   * @param standard {module:vehicles_v2024_11_01/model/VehicleStandard}
+   * @param standard {VehicleStandard}
    * @param value {String} Id that can uniquely identify a vehicle based the vehicle identification standard.
    */
   constructor (standard, value) {
@@ -37,8 +37,8 @@ export class VehicleIdentifiers {
    * Constructs a <code>VehicleIdentifiers</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vehicles_v2024_11_01/model/VehicleIdentifiers} obj Optional instance to populate.
-   * @return {module:vehicles_v2024_11_01/model/VehicleIdentifiers} The populated <code>VehicleIdentifiers</code> instance.
+   * @param {VehicleIdentifiers} obj Optional instance to populate.
+   * @return {VehicleIdentifiers} The populated <code>VehicleIdentifiers</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class VehicleIdentifiers {
 }
 
 /**
- * @member {module:vehicles_v2024_11_01/model/VehicleStandard} standard
- * @type {module:vehicles_v2024_11_01/model/VehicleStandard}
+ * @member {VehicleStandard} standard
+ * @type {VehicleStandard}
  */
 VehicleIdentifiers.prototype.standard = undefined
 

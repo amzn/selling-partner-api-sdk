@@ -33,8 +33,8 @@ export class TransactionStatus {
    * Constructs a <code>TransactionStatus</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendordftransactions_v2021_12_28/model/TransactionStatus} obj Optional instance to populate.
-   * @return {module:vendordftransactions_v2021_12_28/model/TransactionStatus} The populated <code>TransactionStatus</code> instance.
+   * @param {TransactionStatus} obj Optional instance to populate.
+   * @return {TransactionStatus} The populated <code>TransactionStatus</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class TransactionStatus {
 }
 
 /**
- * @member {module:vendordftransactions_v2021_12_28/model/Transaction} transactionStatus
- * @type {module:vendordftransactions_v2021_12_28/model/Transaction}
+ * @member {Transaction} transactionStatus
+ * @type {Transaction}
  */
 TransactionStatus.prototype.transactionStatus = undefined

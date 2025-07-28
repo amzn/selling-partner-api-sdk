@@ -32,8 +32,8 @@ export class GetAdditionalInputsResponse {
    * Constructs a <code>GetAdditionalInputsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:shipping_v2/model/GetAdditionalInputsResponse} obj Optional instance to populate.
-   * @return {module:shipping_v2/model/GetAdditionalInputsResponse} The populated <code>GetAdditionalInputsResponse</code> instance.
+   * @param {GetAdditionalInputsResponse} obj Optional instance to populate.
+   * @return {GetAdditionalInputsResponse} The populated <code>GetAdditionalInputsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class GetAdditionalInputsResponse {
 
 /**
  * The JSON schema to use to provide additional inputs when required to purchase a shipping offering.
- * @member {Object.<String, Object>} payload
- * @type {Object.<String, Object>}
+ * @member {{String: Object}} payload
+ * @type {{String: Object}}
  */
 GetAdditionalInputsResponse.prototype.payload = undefined

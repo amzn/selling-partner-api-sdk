@@ -26,8 +26,8 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
    * The &#x60;GenerateShipmentContentUpdatePreviews&#x60; request.
    * @alias module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsRequest
    * @class
-   * @param boxes {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput>} A list of boxes that will be present in the shipment after the update.
-   * @param items {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} A list of all items that will be present in the shipment after the update.
+   * @param boxes {[BoxUpdateInput]} A list of boxes that will be present in the shipment after the update.
+   * @param items {[ItemInput]} A list of all items that will be present in the shipment after the update.
    */
   constructor (boxes, items) {
     this.boxes = boxes
@@ -38,8 +38,8 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
    * Constructs a <code>GenerateShipmentContentUpdatePreviewsRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsRequest} obj Optional instance to populate.
-   * @return {module:fulfillmentinbound_v2024_03_20/model/GenerateShipmentContentUpdatePreviewsRequest} The populated <code>GenerateShipmentContentUpdatePreviewsRequest</code> instance.
+   * @param {GenerateShipmentContentUpdatePreviewsRequest} obj Optional instance to populate.
+   * @return {GenerateShipmentContentUpdatePreviewsRequest} The populated <code>GenerateShipmentContentUpdatePreviewsRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -64,14 +64,14 @@ export class GenerateShipmentContentUpdatePreviewsRequest {
 
 /**
  * A list of boxes that will be present in the shipment after the update.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput>} boxes
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/BoxUpdateInput>}
+ * @member {[BoxUpdateInput]} boxes
+ * @type {[BoxUpdateInput]}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.boxes = undefined
 
 /**
  * A list of all items that will be present in the shipment after the update.
- * @member {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>} items
- * @type {Array.<module:fulfillmentinbound_v2024_03_20/model/ItemInput>}
+ * @member {[ItemInput]} items
+ * @type {[ItemInput]}
  */
 GenerateShipmentContentUpdatePreviewsRequest.prototype.items = undefined

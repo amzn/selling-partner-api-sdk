@@ -26,7 +26,7 @@ export class FeaturedOfferExpectedPrice {
    * The item price at or below which the target offer may be featured.
    * @alias module:pricing_v2022_05_01/model/FeaturedOfferExpectedPrice
    * @class
-   * @param listingPrice {module:pricing_v2022_05_01/model/MoneyType}
+   * @param listingPrice {MoneyType}
    */
   constructor (listingPrice) {
     this.listingPrice = listingPrice
@@ -36,8 +36,8 @@ export class FeaturedOfferExpectedPrice {
    * Constructs a <code>FeaturedOfferExpectedPrice</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPrice} obj Optional instance to populate.
-   * @return {module:pricing_v2022_05_01/model/FeaturedOfferExpectedPrice} The populated <code>FeaturedOfferExpectedPrice</code> instance.
+   * @param {FeaturedOfferExpectedPrice} obj Optional instance to populate.
+   * @return {FeaturedOfferExpectedPrice} The populated <code>FeaturedOfferExpectedPrice</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class FeaturedOfferExpectedPrice {
 }
 
 /**
- * @member {module:pricing_v2022_05_01/model/MoneyType} listingPrice
- * @type {module:pricing_v2022_05_01/model/MoneyType}
+ * @member {MoneyType} listingPrice
+ * @type {MoneyType}
  */
 FeaturedOfferExpectedPrice.prototype.listingPrice = undefined
 
 /**
- * @member {module:pricing_v2022_05_01/model/Points} points
- * @type {module:pricing_v2022_05_01/model/Points}
+ * @member {Points} points
+ * @type {Points}
  */
 FeaturedOfferExpectedPrice.prototype.points = undefined

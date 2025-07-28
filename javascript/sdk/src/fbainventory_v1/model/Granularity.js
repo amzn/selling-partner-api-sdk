@@ -32,8 +32,8 @@ export class Granularity {
    * Constructs a <code>Granularity</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fbainventory_v1/model/Granularity} obj Optional instance to populate.
-   * @return {module:fbainventory_v1/model/Granularity} The populated <code>Granularity</code> instance.
+   * @param {Granularity} obj Optional instance to populate.
+   * @return {Granularity} The populated <code>Granularity</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

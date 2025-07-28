@@ -36,8 +36,8 @@ export class PrimeInformationType {
    * Constructs a <code>PrimeInformationType</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:pricing_v0/model/PrimeInformationType} obj Optional instance to populate.
-   * @return {module:pricing_v0/model/PrimeInformationType} The populated <code>PrimeInformationType</code> instance.
+   * @param {PrimeInformationType} obj Optional instance to populate.
+   * @return {PrimeInformationType} The populated <code>PrimeInformationType</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {

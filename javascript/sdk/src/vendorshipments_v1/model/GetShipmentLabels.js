@@ -34,8 +34,8 @@ export class GetShipmentLabels {
    * Constructs a <code>GetShipmentLabels</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:vendorshipments_v1/model/GetShipmentLabels} obj Optional instance to populate.
-   * @return {module:vendorshipments_v1/model/GetShipmentLabels} The populated <code>GetShipmentLabels</code> instance.
+   * @param {GetShipmentLabels} obj Optional instance to populate.
+   * @return {GetShipmentLabels} The populated <code>GetShipmentLabels</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -59,14 +59,14 @@ export class GetShipmentLabels {
 }
 
 /**
- * @member {module:vendorshipments_v1/model/TransportationLabels} payload
- * @type {module:vendorshipments_v1/model/TransportationLabels}
+ * @member {TransportationLabels} payload
+ * @type {TransportationLabels}
  */
 GetShipmentLabels.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
- * @member {Array.<module:vendorshipments_v1/model/Error>} errors
- * @type {Array.<module:vendorshipments_v1/model/Error>}
+ * @member {[Error]} errors
+ * @type {[Error]}
  */
 GetShipmentLabels.prototype.errors = undefined

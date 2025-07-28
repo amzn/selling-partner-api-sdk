@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ThroughputUnit.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ThroughputUnit {
@@ -28,7 +28,7 @@ export class ThroughputUnit {
   /**
     * Returns a <code>ThroughputUnit</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:supplysources_v2020_07_01/model/ThroughputUnit} The enum <code>ThroughputUnit</code> value.
+    * @return {ThroughputUnit} The enum <code>ThroughputUnit</code> value.
     */
   static constructFromObject (object) {
     return object

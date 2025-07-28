@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ScheduleTransferType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ScheduleTransferType {
@@ -28,7 +28,7 @@ export class ScheduleTransferType {
   /**
     * Returns a <code>ScheduleTransferType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:sellerWallet_2024_03_01/model/ScheduleTransferType} The enum <code>ScheduleTransferType</code> value.
+    * @return {ScheduleTransferType} The enum <code>ScheduleTransferType</code> value.
     */
   static constructFromObject (object) {
     return object

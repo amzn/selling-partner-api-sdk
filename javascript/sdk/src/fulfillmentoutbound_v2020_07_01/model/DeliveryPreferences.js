@@ -33,8 +33,8 @@ export class DeliveryPreferences {
    * Constructs a <code>DeliveryPreferences</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPreferences} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPreferences} The populated <code>DeliveryPreferences</code> instance.
+   * @param {DeliveryPreferences} obj Optional instance to populate.
+   * @return {DeliveryPreferences} The populated <code>DeliveryPreferences</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ export class DeliveryPreferences {
 DeliveryPreferences.prototype.deliveryInstructions = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation} dropOffLocation
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation}
+ * @member {DropOffLocation} dropOffLocation
+ * @type {DropOffLocation}
  */
 DeliveryPreferences.prototype.dropOffLocation = undefined

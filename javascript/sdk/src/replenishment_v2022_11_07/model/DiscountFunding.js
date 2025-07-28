@@ -32,8 +32,8 @@ export class DiscountFunding {
    * Constructs a <code>DiscountFunding</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:replenishment_v2022_11_07/model/DiscountFunding} obj Optional instance to populate.
-   * @return {module:replenishment_v2022_11_07/model/DiscountFunding} The populated <code>DiscountFunding</code> instance.
+   * @param {DiscountFunding} obj Optional instance to populate.
+   * @return {DiscountFunding} The populated <code>DiscountFunding</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -57,7 +57,7 @@ export class DiscountFunding {
 
 /**
  * Filters the results to only include offers with the percentage specified.
- * @member {Array.<Number>} percentage
- * @type {Array.<Number>}
+ * @member {[Number]} percentage
+ * @type {[Number]}
  */
 DiscountFunding.prototype.percentage = undefined

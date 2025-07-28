@@ -26,7 +26,7 @@ export class ImageCropSpecification {
    * The instructions for optionally cropping an image. If you don&#39;t want to crop the image, set the dimensions to the original image size. If the image is cropped and you don&#39;t include offset values, the coordinates of the top left corner of the cropped image are set to (0,0) by default.
    * @alias module:apluscontent_v2020_11_01/model/ImageCropSpecification
    * @class
-   * @param size {module:apluscontent_v2020_11_01/model/ImageDimensions}
+   * @param size {ImageDimensions}
    */
   constructor (size) {
     this.size = size
@@ -36,8 +36,8 @@ export class ImageCropSpecification {
    * Constructs a <code>ImageCropSpecification</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:apluscontent_v2020_11_01/model/ImageCropSpecification} obj Optional instance to populate.
-   * @return {module:apluscontent_v2020_11_01/model/ImageCropSpecification} The populated <code>ImageCropSpecification</code> instance.
+   * @param {ImageCropSpecification} obj Optional instance to populate.
+   * @return {ImageCropSpecification} The populated <code>ImageCropSpecification</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -61,13 +61,13 @@ export class ImageCropSpecification {
 }
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageDimensions} size
- * @type {module:apluscontent_v2020_11_01/model/ImageDimensions}
+ * @member {ImageDimensions} size
+ * @type {ImageDimensions}
  */
 ImageCropSpecification.prototype.size = undefined
 
 /**
- * @member {module:apluscontent_v2020_11_01/model/ImageOffsets} offset
- * @type {module:apluscontent_v2020_11_01/model/ImageOffsets}
+ * @member {ImageOffsets} offset
+ * @type {ImageOffsets}
  */
 ImageCropSpecification.prototype.offset = undefined

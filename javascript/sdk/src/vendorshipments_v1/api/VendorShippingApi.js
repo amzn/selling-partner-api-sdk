@@ -33,8 +33,8 @@ export class VendorShippingApi {
     * Constructs a new VendorShippingApi.
     * @alias module:vendorshipments_v1/api/VendorShippingApi
     * @class
-    * @param {module:vendorshipments_v1/ApiClient} [apiClient] Optional API client implementation to use,
-    * default to {@link module:vendorshipments_v1/ApiClient#instance} if unspecified.
+    * @param {ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link ApiClient#instance} if unspecified.
     */
   constructor (apiClient) {
     this.apiClient = apiClient || ApiClient.instance
@@ -73,7 +73,7 @@ export class VendorShippingApi {
      * Returns the Details about Shipment, Carrier Details,  status of the shipment, container details and other details related to shipment based on the filter parameters value that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The limit to the number of records returned. Default value is 50 records.
-     * @param {module:vendorshipments_v1/model/String} opts.sortOrder Sort in ascending or descending order by purchase order creation date.
+     * @param {String} opts.sortOrder Sort in ascending or descending order by purchase order creation date.
      * @param {String} opts.nextToken Used for pagination when there are more shipments than the specified result size limit.
      * @param {Date} opts.createdAfter Get Shipment Details that became available after this timestamp will be included in the result. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
      * @param {Date} opts.createdBefore Get Shipment Details that became available before this timestamp will be included in the result. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
@@ -96,7 +96,7 @@ export class VendorShippingApi {
      * @param {String} opts.buyerReferenceNumber Get Shipment Details by passing buyer Reference ID
      * @param {String} opts.buyerWarehouseCode Get Shipping Details based on buyer warehouse code. This value should be same as &#39;shipToParty.partyId&#39; in the Shipment.
      * @param {String} opts.sellerWarehouseCode Get Shipping Details based on vendor warehouse code. This value should be same as &#39;sellingParty.partyId&#39; in the Shipment.
-     * @return {Promise<module:vendorshipments_v1/model/GetShipmentDetailsResponse>}
+     * @return {Promise<GetShipmentDetailsResponse>}
      */
   getShipmentDetailsWithHttpInfo (opts) {
     opts = opts || {}
@@ -151,7 +151,7 @@ export class VendorShippingApi {
      * Returns the Details about Shipment, Carrier Details,  status of the shipment, container details and other details related to shipment based on the filter parameters value that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The limit to the number of records returned. Default value is 50 records.
-     * @param {module:vendorshipments_v1/model/String} opts.sortOrder Sort in ascending or descending order by purchase order creation date.
+     * @param {String} opts.sortOrder Sort in ascending or descending order by purchase order creation date.
      * @param {String} opts.nextToken Used for pagination when there are more shipments than the specified result size limit.
      * @param {Date} opts.createdAfter Get Shipment Details that became available after this timestamp will be included in the result. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
      * @param {Date} opts.createdBefore Get Shipment Details that became available before this timestamp will be included in the result. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
@@ -174,7 +174,7 @@ export class VendorShippingApi {
      * @param {String} opts.buyerReferenceNumber Get Shipment Details by passing buyer Reference ID
      * @param {String} opts.buyerWarehouseCode Get Shipping Details based on buyer warehouse code. This value should be same as &#39;shipToParty.partyId&#39; in the Shipment.
      * @param {String} opts.sellerWarehouseCode Get Shipping Details based on vendor warehouse code. This value should be same as &#39;sellingParty.partyId&#39; in the Shipment.
-     * @return {Promise<module:vendorshipments_v1/model/GetShipmentDetailsResponse>}
+     * @return {Promise<GetShipmentDetailsResponse>}
      */
   getShipmentDetails (opts) {
     return this.getShipmentDetailsWithHttpInfo(opts)
@@ -187,14 +187,14 @@ export class VendorShippingApi {
      * Returns small parcel shipment labels based on the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The limit to the number of records returned. Default value is 50 records.
-     * @param {module:vendorshipments_v1/model/String} opts.sortOrder Sort the list by shipment label creation date in ascending or descending order.
+     * @param {String} opts.sortOrder Sort the list by shipment label creation date in ascending or descending order.
      * @param {String} opts.nextToken A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {Date} opts.labelCreatedAfter Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
      * @param {Date} opts.labelCreatedBefore Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
      * @param {String} opts.buyerReferenceNumber Get Shipment labels by passing buyer reference number.
      * @param {String} opts.vendorShipmentIdentifier Get Shipment labels by passing vendor shipment identifier.
      * @param {String} opts.sellerWarehouseCode Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment.
-     * @return {Promise<module:vendorshipments_v1/model/GetShipmentLabels>}
+     * @return {Promise<GetShipmentLabels>}
      */
   getShipmentLabelsWithHttpInfo (opts) {
     opts = opts || {}
@@ -232,14 +232,14 @@ export class VendorShippingApi {
      * Returns small parcel shipment labels based on the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit The limit to the number of records returned. Default value is 50 records.
-     * @param {module:vendorshipments_v1/model/String} opts.sortOrder Sort the list by shipment label creation date in ascending or descending order.
+     * @param {String} opts.sortOrder Sort the list by shipment label creation date in ascending or descending order.
      * @param {String} opts.nextToken A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @param {Date} opts.labelCreatedAfter Shipment labels created after this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
      * @param {Date} opts.labelCreatedBefore Shipment labels created before this time will be included in the result. This field must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
      * @param {String} opts.buyerReferenceNumber Get Shipment labels by passing buyer reference number.
      * @param {String} opts.vendorShipmentIdentifier Get Shipment labels by passing vendor shipment identifier.
      * @param {String} opts.sellerWarehouseCode Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment.
-     * @return {Promise<module:vendorshipments_v1/model/GetShipmentLabels>}
+     * @return {Promise<GetShipmentLabels>}
      */
   getShipmentLabels (opts) {
     return this.getShipmentLabelsWithHttpInfo(opts)
@@ -251,8 +251,8 @@ export class VendorShippingApi {
   /**
      * SubmitShipmentConfirmations
      * Submits one or more shipment confirmations for vendor orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:vendorshipments_v1/model/SubmitShipmentConfirmationsRequest} body A request to submit shipment confirmation.
-     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
+     * @param {SubmitShipmentConfirmationsRequest} body A request to submit shipment confirmation.
+     * @return {Promise<SubmitShipmentConfirmationsResponse>}
      */
   submitShipmentConfirmationsWithHttpInfo (body) {
     const postBody = body
@@ -285,8 +285,8 @@ export class VendorShippingApi {
   /**
      * SubmitShipmentConfirmations
      * Submits one or more shipment confirmations for vendor orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:vendorshipments_v1/model/SubmitShipmentConfirmationsRequest} body A request to submit shipment confirmation.
-     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
+     * @param {SubmitShipmentConfirmationsRequest} body A request to submit shipment confirmation.
+     * @return {Promise<SubmitShipmentConfirmationsResponse>}
      */
   submitShipmentConfirmations (body) {
     return this.submitShipmentConfirmationsWithHttpInfo(body)
@@ -298,8 +298,8 @@ export class VendorShippingApi {
   /**
      * SubmitShipments
      * Submits one or more shipment request for vendor Orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:vendorshipments_v1/model/SubmitShipments} body A request to submit shipment request.
-     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
+     * @param {SubmitShipments} body A request to submit shipment request.
+     * @return {Promise<SubmitShipmentConfirmationsResponse>}
      */
   submitShipmentsWithHttpInfo (body) {
     const postBody = body
@@ -332,8 +332,8 @@ export class VendorShippingApi {
   /**
      * SubmitShipments
      * Submits one or more shipment request for vendor Orders.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {module:vendorshipments_v1/model/SubmitShipments} body A request to submit shipment request.
-     * @return {Promise<module:vendorshipments_v1/model/SubmitShipmentConfirmationsResponse>}
+     * @param {SubmitShipments} body A request to submit shipment request.
+     * @return {Promise<SubmitShipmentConfirmationsResponse>}
      */
   submitShipments (body) {
     return this.submitShipmentsWithHttpInfo(body)

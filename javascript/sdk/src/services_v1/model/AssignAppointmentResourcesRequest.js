@@ -25,7 +25,7 @@ export class AssignAppointmentResourcesRequest {
    * Request schema for the &#x60;assignAppointmentResources&#x60; operation.
    * @alias module:services_v1/model/AssignAppointmentResourcesRequest
    * @class
-   * @param resources {Array.<module:services_v1/model/AppointmentResource>} List of resources that performs or performed job appointment fulfillment.
+   * @param resources {[AppointmentResource]} List of resources that performs or performed job appointment fulfillment.
    */
   constructor (resources) {
     this.resources = resources
@@ -35,8 +35,8 @@ export class AssignAppointmentResourcesRequest {
    * Constructs a <code>AssignAppointmentResourcesRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/AssignAppointmentResourcesRequest} obj Optional instance to populate.
-   * @return {module:services_v1/model/AssignAppointmentResourcesRequest} The populated <code>AssignAppointmentResourcesRequest</code> instance.
+   * @param {AssignAppointmentResourcesRequest} obj Optional instance to populate.
+   * @return {AssignAppointmentResourcesRequest} The populated <code>AssignAppointmentResourcesRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,7 +60,7 @@ export class AssignAppointmentResourcesRequest {
 
 /**
  * List of resources that performs or performed job appointment fulfillment.
- * @member {Array.<module:services_v1/model/AppointmentResource>} resources
- * @type {Array.<module:services_v1/model/AppointmentResource>}
+ * @member {[AppointmentResource]} resources
+ * @type {[AppointmentResource]}
  */
 AssignAppointmentResourcesRequest.prototype.resources = undefined

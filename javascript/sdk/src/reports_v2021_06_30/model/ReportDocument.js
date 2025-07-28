@@ -36,8 +36,8 @@ export class ReportDocument {
    * Constructs a <code>ReportDocument</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:reports_v2021_06_30/model/ReportDocument} obj Optional instance to populate.
-   * @return {module:reports_v2021_06_30/model/ReportDocument} The populated <code>ReportDocument</code> instance.
+   * @param {ReportDocument} obj Optional instance to populate.
+   * @return {ReportDocument} The populated <code>ReportDocument</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -91,7 +91,7 @@ ReportDocument.CompressionAlgorithmEnum = {
 
 /**
  * If the report document contents have been compressed, the compression algorithm used is returned in this property and you must decompress the report when you download. Otherwise, you can download the report directly. Refer to [Step 2. Download the report](https://developer-docs.amazon.com/sp-api/docs/reports-api-v2021-06-30-retrieve-a-report#step-2-download-the-report) in the use case guide, where sample code is provided.
- * @member {module:reports_v2021_06_30/model/ReportDocument.CompressionAlgorithmEnum} compressionAlgorithm
- * @type {module:reports_v2021_06_30/model/ReportDocument.CompressionAlgorithmEnum}
+ * @member {String} compressionAlgorithm
+ * @type {String}
  */
 ReportDocument.prototype.compressionAlgorithm = undefined

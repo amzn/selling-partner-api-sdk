@@ -25,7 +25,7 @@ export class RescheduleAppointmentRequest {
    * Input for rescheduled appointment operation.
    * @alias module:services_v1/model/RescheduleAppointmentRequest
    * @class
-   * @param appointmentTime {module:services_v1/model/AppointmentTimeInput}
+   * @param appointmentTime {AppointmentTimeInput}
    * @param rescheduleReasonCode {String} The appointment reschedule reason code.
    */
   constructor (appointmentTime, rescheduleReasonCode) {
@@ -37,8 +37,8 @@ export class RescheduleAppointmentRequest {
    * Constructs a <code>RescheduleAppointmentRequest</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:services_v1/model/RescheduleAppointmentRequest} obj Optional instance to populate.
-   * @return {module:services_v1/model/RescheduleAppointmentRequest} The populated <code>RescheduleAppointmentRequest</code> instance.
+   * @param {RescheduleAppointmentRequest} obj Optional instance to populate.
+   * @return {RescheduleAppointmentRequest} The populated <code>RescheduleAppointmentRequest</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -62,8 +62,8 @@ export class RescheduleAppointmentRequest {
 }
 
 /**
- * @member {module:services_v1/model/AppointmentTimeInput} appointmentTime
- * @type {module:services_v1/model/AppointmentTimeInput}
+ * @member {AppointmentTimeInput} appointmentTime
+ * @type {AppointmentTimeInput}
  */
 RescheduleAppointmentRequest.prototype.appointmentTime = undefined
 

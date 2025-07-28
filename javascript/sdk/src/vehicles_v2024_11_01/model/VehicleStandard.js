@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class VehicleStandard.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class VehicleStandard {
@@ -34,7 +34,7 @@ export class VehicleStandard {
   /**
     * Returns a <code>VehicleStandard</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:vehicles_v2024_11_01/model/VehicleStandard} The enum <code>VehicleStandard</code> value.
+    * @return {VehicleStandard} The enum <code>VehicleStandard</code> value.
     */
   static constructFromObject (object) {
     return object

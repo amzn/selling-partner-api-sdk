@@ -30,7 +30,7 @@ export class ReturnItem {
    * @param sellerFulfillmentOrderItemId {String} The identifier assigned to the item by the seller when the fulfillment order was created.
    * @param amazonShipmentId {String} The identifier for the shipment that is associated with the return item.
    * @param sellerReturnReasonCode {String} The return reason code assigned to the return item by the seller.
-   * @param status {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentReturnItemStatus}
+   * @param status {FulfillmentReturnItemStatus}
    * @param statusChangedDate {Date} Date timestamp
    */
   constructor (sellerReturnItemId, sellerFulfillmentOrderItemId, amazonShipmentId, sellerReturnReasonCode, status, statusChangedDate) {
@@ -46,8 +46,8 @@ export class ReturnItem {
    * Constructs a <code>ReturnItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/ReturnItem} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/ReturnItem} The populated <code>ReturnItem</code> instance.
+   * @param {ReturnItem} obj Optional instance to populate.
+   * @return {ReturnItem} The populated <code>ReturnItem</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -122,8 +122,8 @@ ReturnItem.prototype.returnComment = undefined
 ReturnItem.prototype.amazonReturnReasonCode = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentReturnItemStatus} status
- * @type {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentReturnItemStatus}
+ * @member {FulfillmentReturnItemStatus} status
+ * @type {FulfillmentReturnItemStatus}
  */
 ReturnItem.prototype.status = undefined
 
@@ -142,8 +142,8 @@ ReturnItem.prototype.statusChangedDate = undefined
 ReturnItem.prototype.returnAuthorizationId = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/ReturnItemDisposition} returnReceivedCondition
- * @type {module:fulfillmentoutbound_v2020_07_01/model/ReturnItemDisposition}
+ * @member {ReturnItemDisposition} returnReceivedCondition
+ * @type {ReturnItemDisposition}
  */
 ReturnItem.prototype.returnReceivedCondition = undefined
 

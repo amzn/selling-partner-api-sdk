@@ -32,8 +32,8 @@ export class RelatedIdentifier {
    * Constructs a <code>RelatedIdentifier</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:finances_2024_06_19/model/RelatedIdentifier} obj Optional instance to populate.
-   * @return {module:finances_2024_06_19/model/RelatedIdentifier} The populated <code>RelatedIdentifier</code> instance.
+   * @param {RelatedIdentifier} obj Optional instance to populate.
+   * @return {RelatedIdentifier} The populated <code>RelatedIdentifier</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -126,8 +126,8 @@ RelatedIdentifier.RelatedIdentifierNameEnum = {
 
 /**
  * Enumerated set of related business identifier names.
- * @member {module:finances_2024_06_19/model/RelatedIdentifier.RelatedIdentifierNameEnum} relatedIdentifierName
- * @type {module:finances_2024_06_19/model/RelatedIdentifier.RelatedIdentifierNameEnum}
+ * @member {String} relatedIdentifierName
+ * @type {String}
  */
 RelatedIdentifier.prototype.relatedIdentifierName = undefined
 

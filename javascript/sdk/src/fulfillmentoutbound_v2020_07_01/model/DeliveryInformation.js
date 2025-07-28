@@ -34,8 +34,8 @@ export class DeliveryInformation {
    * Constructs a <code>DeliveryInformation</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:fulfillmentoutbound_v2020_07_01/model/DeliveryInformation} obj Optional instance to populate.
-   * @return {module:fulfillmentoutbound_v2020_07_01/model/DeliveryInformation} The populated <code>DeliveryInformation</code> instance.
+   * @param {DeliveryInformation} obj Optional instance to populate.
+   * @return {DeliveryInformation} The populated <code>DeliveryInformation</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -60,13 +60,13 @@ export class DeliveryInformation {
 
 /**
  * A list of delivery documents for a package.
- * @member {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryDocument>} deliveryDocumentList
- * @type {Array.<module:fulfillmentoutbound_v2020_07_01/model/DeliveryDocument>}
+ * @member {[DeliveryDocument]} deliveryDocumentList
+ * @type {[DeliveryDocument]}
  */
 DeliveryInformation.prototype.deliveryDocumentList = undefined
 
 /**
- * @member {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation} dropOffLocation
- * @type {module:fulfillmentoutbound_v2020_07_01/model/DropOffLocation}
+ * @member {DropOffLocation} dropOffLocation
+ * @type {DropOffLocation}
  */
 DeliveryInformation.prototype.dropOffLocation = undefined

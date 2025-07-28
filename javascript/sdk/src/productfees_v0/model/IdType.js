@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class IdType.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class IdType {
@@ -34,7 +34,7 @@ export class IdType {
   /**
     * Returns a <code>IdType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:productfees_v0/model/IdType} The enum <code>IdType</code> value.
+    * @return {IdType} The enum <code>IdType</code> value.
     */
   static constructFromObject (object) {
     return object

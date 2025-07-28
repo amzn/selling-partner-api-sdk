@@ -32,8 +32,8 @@ export class ExcludedBenefit {
    * Constructs a <code>ExcludedBenefit</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:merchantfulfillment_v0/model/ExcludedBenefit} obj Optional instance to populate.
-   * @return {module:merchantfulfillment_v0/model/ExcludedBenefit} The populated <code>ExcludedBenefit</code> instance.
+   * @param {ExcludedBenefit} obj Optional instance to populate.
+   * @return {ExcludedBenefit} The populated <code>ExcludedBenefit</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -65,7 +65,7 @@ ExcludedBenefit.prototype.benefit = undefined
 
 /**
  * List of reasons why a benefit is excluded for a shipping offer (for example, `LATE_DELIVERY_RISK`).
- * @member {Array.<String>} reasonCodes
- * @type {Array.<String>}
+ * @member {[String]} reasonCodes
+ * @type {[String]}
  */
 ExcludedBenefit.prototype.reasonCodes = undefined

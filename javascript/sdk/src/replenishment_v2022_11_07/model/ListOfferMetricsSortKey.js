@@ -15,7 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 
 /**
 * Enum class ListOfferMetricsSortKey.
-* @enum {}
+* @enum {String}
 * @readonly
 */
 export class ListOfferMetricsSortKey {
@@ -76,7 +76,7 @@ export class ListOfferMetricsSortKey {
   /**
     * Returns a <code>ListOfferMetricsSortKey</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
-    * @return {module:replenishment_v2022_11_07/model/ListOfferMetricsSortKey} The enum <code>ListOfferMetricsSortKey</code> value.
+    * @return {ListOfferMetricsSortKey} The enum <code>ListOfferMetricsSortKey</code> value.
     */
   static constructFromObject (object) {
     return object
