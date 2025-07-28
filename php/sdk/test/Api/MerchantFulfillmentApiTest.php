@@ -479,7 +479,7 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             },
             &quot;RequiresAdditionalSellerInputs&quot; : false,
             &quot;Benefits&quot; : {
-              &quot;IncludedBenefits&quot; : [ &quot;CLAIMS_PROTECTED&quot; ],
+              &quot;IncludedBenefits&quot; : [ &quot;CLAIMS_PROTECTED&quot;, &quot;FBM_SHIP_PLUS&quot; ],
               &quot;ExcludedBenefits&quot; : [ ]
             }
           },
