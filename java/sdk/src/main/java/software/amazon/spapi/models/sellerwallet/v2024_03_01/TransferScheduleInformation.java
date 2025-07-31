@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Mandatory information for initiating a schedule transfer. */
-@Schema(description = "Mandatory information for initiating a schedule transfer.")
+/** Parameters containing information required for initiating a schedule transfer */
+@Schema(description = "Parameters containing information required for initiating a schedule transfer ")
 public class TransferScheduleInformation {
     @SerializedName("scheduleStartDate")
     private OffsetDateTime scheduleStartDate = null;
@@ -38,11 +38,11 @@ public class TransferScheduleInformation {
     }
 
     /**
-     * The start date of the scheduled transfer.
+     * Field to specify start date of the scheduled transfer
      *
      * @return scheduleStartDate
      */
-    @Schema(example = "2024-03-01T00:00Z", description = "The start date of the scheduled transfer.")
+    @Schema(example = "2024-03-01T00:00Z", description = "Field to specify start date of the scheduled transfer ")
     public OffsetDateTime getScheduleStartDate() {
         return scheduleStartDate;
     }
@@ -57,11 +57,11 @@ public class TransferScheduleInformation {
     }
 
     /**
-     * The end date of the scheduled transfer.
+     * Field to specify end date of the scheduled transfer
      *
      * @return scheduleEndDate
      */
-    @Schema(example = "2027-03-01T00:00Z", description = "The end date of the scheduled transfer.")
+    @Schema(example = "2027-03-01T00:00Z", description = "Field to specify end date of the scheduled transfer ")
     public OffsetDateTime getScheduleEndDate() {
         return scheduleEndDate;
     }

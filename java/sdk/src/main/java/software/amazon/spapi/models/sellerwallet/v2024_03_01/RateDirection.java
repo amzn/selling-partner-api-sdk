@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** Whether the customer is buying or selling the source currency. */
+/** Represents the rate direction at which the transaction is performed. */
 @JsonAdapter(RateDirection.Adapter.class)
 public enum RateDirection {
     @SerializedName("BUY")

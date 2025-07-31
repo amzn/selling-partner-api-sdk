@@ -39,7 +39,7 @@ public class ErrorList {
      *
      * @return errors
      */
-    @Schema(required = true, description = "List of errors")
+    @Schema(required = true, description = "List of errors ")
     public List<Error> getErrors() {
         return errors;
     }

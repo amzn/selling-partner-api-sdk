@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/** The type of payment preference in which the transfer is being scheduled. */
-@Schema(description = "The type of payment preference in which the transfer is being scheduled.")
+/** Payment preference type in which transfer is being scheduled */
+@Schema(description = "Payment preference type in which transfer is being scheduled ")
 public class PaymentPreference {
     @SerializedName("paymentPreferencePaymentType")
     private PaymentPreferencePaymentType paymentPreferencePaymentType = null;

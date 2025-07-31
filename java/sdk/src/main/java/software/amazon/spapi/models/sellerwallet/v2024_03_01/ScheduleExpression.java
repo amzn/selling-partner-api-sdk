@@ -16,8 +16,13 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The configuration of the schedule. */
-@Schema(description = "The configuration of the schedule.")
+/**
+ * Parameters containing information of the expression that defines when the schedule runs. The following formats are
+ * supported.
+ */
+@Schema(
+        description =
+                "Parameters containing information of the expression that defines when the schedule runs. The following formats are supported. ")
 public class ScheduleExpression {
     @SerializedName("scheduleExpressionType")
     private ScheduleExpressionType scheduleExpressionType = null;

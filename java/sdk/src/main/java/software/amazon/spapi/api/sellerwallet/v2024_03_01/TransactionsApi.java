@@ -63,7 +63,7 @@ public class TransactionsApi {
     /**
      * Build call for createTransaction
      *
-     * @param body The payload of the request (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param progressRequestListener Progress request listener
@@ -139,10 +139,10 @@ public class TransactionsApi {
     }
 
     /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a
-     * transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transaction request from Amazon SW account to another customer provided account Create a transaction
+     * request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -162,10 +162,10 @@ public class TransactionsApi {
     }
 
     /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a
-     * transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transaction request from Amazon SW account to another customer provided account Create a transaction
+     * request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return Transaction
@@ -181,10 +181,10 @@ public class TransactionsApi {
     }
 
     /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a
-     * transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transaction request from Amazon SW account to another customer provided account Create a transaction
+     * request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -214,10 +214,10 @@ public class TransactionsApi {
     }
 
     /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account Create a
-     * transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transaction request from Amazon SW account to another customer provided account Create a transaction
+     * request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return ApiResponse&lt;Transaction&gt;
@@ -231,11 +231,10 @@ public class TransactionsApi {
     }
 
     /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
-     * (asynchronously) Create a transaction request from an Amazon Seller Wallet account to another customer-provided
-     * account.
+     * Create a transaction request from Amazon SW account to another customer provided account (asynchronously) Create
+     * a transaction request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -252,11 +251,10 @@ public class TransactionsApi {
         return createTransactionAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
     }
     /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
-     * (asynchronously) Create a transaction request from an Amazon Seller Wallet account to another customer-provided
-     * account.
+     * Create a transaction request from Amazon SW account to another customer provided account (asynchronously) Create
+     * a transaction request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -297,7 +295,7 @@ public class TransactionsApi {
     /**
      * Build call for getTransaction
      *
-     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param transactionId ID of the Amazon SW transaction (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -351,10 +349,9 @@ public class TransactionsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by
-     * the Amazon transaction identifier.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
-     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param transactionId ID of the Amazon SW transaction (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return Transaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -367,10 +364,9 @@ public class TransactionsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by
-     * the Amazon transaction identifier.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
-     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param transactionId ID of the Amazon SW transaction (required)
      * @return Transaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -381,10 +377,9 @@ public class TransactionsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by
-     * the Amazon transaction identifier.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
-     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param transactionId ID of the Amazon SW transaction (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;Transaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -407,10 +402,9 @@ public class TransactionsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier Find a transaction by
-     * the Amazon transaction identifier.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
-     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param transactionId ID of the Amazon SW transaction (required)
      * @return ApiResponse&lt;Transaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -420,10 +414,10 @@ public class TransactionsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier (asynchronously) Find a
-     * transaction by the Amazon transaction identifier.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier (asynchronously) Returns a
+     * transaction
      *
-     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param transactionId ID of the Amazon SW transaction (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -434,10 +428,10 @@ public class TransactionsApi {
         return getTransactionAsync(transactionId, callback, null);
     }
     /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier (asynchronously) Find a
-     * transaction by the Amazon transaction identifier.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier (asynchronously) Returns a
+     * transaction
      *
-     * @param transactionId The ID of the Amazon Seller Wallet transaction. (required)
+     * @param transactionId ID of the Amazon SW transaction (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -471,12 +465,8 @@ public class TransactionsApi {
     /**
      * Build call for listAccountTransactions
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
-     *     operation with this token and include the same arguments as the call that produced the token. To get a
-     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
-     *     return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -537,15 +527,11 @@ public class TransactionsApi {
     }
 
     /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
-     * request date Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
-     *     operation with this token and include the same arguments as the call that produced the token. To get a
-     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
-     *     return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransactionListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -559,15 +545,11 @@ public class TransactionsApi {
     }
 
     /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
-     * request date Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
-     *     operation with this token and include the same arguments as the call that produced the token. To get a
-     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
-     *     return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return TransactionListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -579,15 +561,11 @@ public class TransactionsApi {
     }
 
     /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
-     * request date Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
-     *     operation with this token and include the same arguments as the call that produced the token. To get a
-     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
-     *     return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransactionListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -611,15 +589,11 @@ public class TransactionsApi {
     }
 
     /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
-     * request date Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
-     *     operation with this token and include the same arguments as the call that produced the token. To get a
-     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
-     *     return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return ApiResponse&lt;TransactionListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -630,15 +604,11 @@ public class TransactionsApi {
     }
 
     /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
-     * request date (asynchronously) Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * (asynchronously) Retrieve a list of transactions for a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
-     *     operation with this token and include the same arguments as the call that produced the token. To get a
-     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
-     *     return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -650,15 +620,11 @@ public class TransactionsApi {
         return listAccountTransactionsAsync(accountId, nextPageToken, callback, null);
     }
     /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction
-     * request date (asynchronously) Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * (asynchronously) Retrieve a list of transactions for a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the
-     *     operation with this token and include the same arguments as the call that produced the token. To get a
-     *     complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can
-     *     return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call

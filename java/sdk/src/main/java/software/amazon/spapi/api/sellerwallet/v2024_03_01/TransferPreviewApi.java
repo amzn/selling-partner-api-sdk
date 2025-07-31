@@ -54,12 +54,16 @@ public class TransferPreviewApi {
     /**
      * Build call for getTransferPreview
      *
-     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
-     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     *     (required)
-     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard
+     *     format. (required)
+     * @param sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction
+     *     country. (required)
+     * @param destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166
+     *     standard format. (required)
+     * @param destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination
+     *     transaction country. (required)
+     * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
+     *     the transfer preview. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -159,14 +163,19 @@ public class TransferPreviewApi {
 
     /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
-     * currency code Retrieve a list of potential fees on a transaction.
+     * currency code Returns list of potential fees on a transaction based on the source and destination country
+     * currency code
      *
-     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
-     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     *     (required)
-     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard
+     *     format. (required)
+     * @param sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction
+     *     country. (required)
+     * @param destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166
+     *     standard format. (required)
+     * @param destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination
+     *     transaction country. (required)
+     * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
+     *     the transfer preview. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferRatePreview
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -192,14 +201,19 @@ public class TransferPreviewApi {
 
     /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
-     * currency code Retrieve a list of potential fees on a transaction.
+     * currency code Returns list of potential fees on a transaction based on the source and destination country
+     * currency code
      *
-     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
-     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     *     (required)
-     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard
+     *     format. (required)
+     * @param sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction
+     *     country. (required)
+     * @param destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166
+     *     standard format. (required)
+     * @param destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination
+     *     transaction country. (required)
+     * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
+     *     the transfer preview. (required)
      * @return TransferRatePreview
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -223,14 +237,19 @@ public class TransferPreviewApi {
 
     /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
-     * currency code Retrieve a list of potential fees on a transaction.
+     * currency code Returns list of potential fees on a transaction based on the source and destination country
+     * currency code
      *
-     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
-     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     *     (required)
-     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard
+     *     format. (required)
+     * @param sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction
+     *     country. (required)
+     * @param destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166
+     *     standard format. (required)
+     * @param destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination
+     *     transaction country. (required)
+     * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
+     *     the transfer preview. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferRatePreview&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -267,14 +286,19 @@ public class TransferPreviewApi {
 
     /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
-     * currency code Retrieve a list of potential fees on a transaction.
+     * currency code Returns list of potential fees on a transaction based on the source and destination country
+     * currency code
      *
-     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
-     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     *     (required)
-     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard
+     *     format. (required)
+     * @param sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction
+     *     country. (required)
+     * @param destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166
+     *     standard format. (required)
+     * @param destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination
+     *     transaction country. (required)
+     * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
+     *     the transfer preview. (required)
      * @return ApiResponse&lt;TransferRatePreview&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -297,14 +321,19 @@ public class TransferPreviewApi {
 
     /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
-     * currency code (asynchronously) Retrieve a list of potential fees on a transaction.
+     * currency code (asynchronously) Returns list of potential fees on a transaction based on the source and
+     * destination country currency code
      *
-     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
-     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     *     (required)
-     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard
+     *     format. (required)
+     * @param sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction
+     *     country. (required)
+     * @param destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166
+     *     standard format. (required)
+     * @param destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination
+     *     transaction country. (required)
+     * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
+     *     the transfer preview. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -329,14 +358,19 @@ public class TransferPreviewApi {
     }
     /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country
-     * currency code (asynchronously) Retrieve a list of potential fees on a transaction.
+     * currency code (asynchronously) Returns list of potential fees on a transaction based on the source and
+     * destination country currency code
      *
-     * @param sourceCountryCode Country code of the source transaction account in ISO 3166 format. (required)
-     * @param sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format. (required)
-     * @param destinationCountryCode Country code of the destination transaction account in ISO 3166 format. (required)
-     * @param destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     *     (required)
-     * @param baseAmount The base transaction amount without any markup fees. (required)
+     * @param sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard
+     *     format. (required)
+     * @param sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction
+     *     country. (required)
+     * @param destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166
+     *     standard format. (required)
+     * @param destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination
+     *     transaction country. (required)
+     * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
+     *     the transfer preview. (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call

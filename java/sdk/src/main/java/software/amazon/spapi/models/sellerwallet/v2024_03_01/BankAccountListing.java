@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** A list of bank accounts. */
-@Schema(description = "A list of bank accounts.")
+/** Struct that holds collection of accounts. */
+@Schema(description = "Struct that holds collection of accounts.")
 public class BankAccountListing {
     @SerializedName("accounts")
     private List<BankAccount> accounts = new ArrayList<BankAccount>();
@@ -35,11 +35,11 @@ public class BankAccountListing {
     }
 
     /**
-     * A list of bank accounts.
+     * Collection that holds BankAccount
      *
      * @return accounts
      */
-    @Schema(required = true, description = "A list of bank accounts.")
+    @Schema(required = true, description = "Collection that holds BankAccount ")
     public List<BankAccount> getAccounts() {
         return accounts;
     }

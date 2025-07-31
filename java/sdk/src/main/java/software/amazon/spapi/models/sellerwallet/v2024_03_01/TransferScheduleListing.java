@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** A list of transfer schedules. */
-@Schema(description = "A list of transfer schedules.")
+/** Struct that holds collection of transfer schedules. */
+@Schema(description = "Struct that holds collection of transfer schedules.")
 public class TransferScheduleListing {
     @SerializedName("nextPageToken")
     private String nextPageToken = null;
@@ -33,17 +33,15 @@ public class TransferScheduleListing {
     }
 
     /**
-     * A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when
-     * the number of results exceeds 100. To get the next page of results, call the operation with this token and
-     * include the same arguments as the call that produced the token. To get a complete list, call this operation until
-     * &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
+     * If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will
+     * return same response. The field will only be provided when the list is greater than 100.
      *
      * @return nextPageToken
      */
     @Schema(
             example = "3493805734095308457308475",
             description =
-                    "A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.")
+                    "If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.")
     public String getNextPageToken() {
         return nextPageToken;
     }
@@ -63,11 +61,11 @@ public class TransferScheduleListing {
     }
 
     /**
-     * A list of transfer schedules.
+     * Collection that holds list of Transfer Schedules
      *
      * @return transferSchedules
      */
-    @Schema(required = true, description = "A list of transfer schedules.")
+    @Schema(required = true, description = "Collection that holds list of Transfer Schedules ")
     public List<TransferSchedule> getTransferSchedules() {
         return transferSchedules;
     }

@@ -17,12 +17,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/**
- * Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.
- */
+/** Request body to initiate a transaction from a SW bank account to another customer defined bank account */
 @Schema(
         description =
-                "Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.")
+                "Request body to initiate a transaction from a SW bank account to another customer defined bank account ")
 public class TransactionInitiationRequest {
     @SerializedName("sourceAccountId")
     private String sourceAccountId = null;
@@ -54,7 +52,7 @@ public class TransactionInitiationRequest {
     }
 
     /**
-     * The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.
+     * The unique identifier of the source Amazon SW bank account from where the money needs to be debited
      *
      * @return sourceAccountId
      */
@@ -62,7 +60,7 @@ public class TransactionInitiationRequest {
             example = "amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI",
             required = true,
             description =
-                    "The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.")
+                    "The unique identifier of the source Amazon SW bank account from where the money needs to be debited ")
     public String getSourceAccountId() {
         return sourceAccountId;
     }
@@ -77,13 +75,15 @@ public class TransactionInitiationRequest {
     }
 
     /**
-     * The unique identifier of the destination bank account where the money is deposited.
+     * Optional field to specify the unique identifier of the destination bank account where the money needs to be
+     * deposited
      *
      * @return destinationAccountId
      */
     @Schema(
             example = "amzn1.account.AJKBFWEJFBNH2KCJPII5FBN",
-            description = "The unique identifier of the destination bank account where the money is deposited.")
+            description =
+                    "Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited ")
     public String getDestinationAccountId() {
         return destinationAccountId;
     }
@@ -98,14 +98,14 @@ public class TransactionInitiationRequest {
     }
 
     /**
-     * A description of the transaction.
+     * Optional field to specify description for the transaction
      *
      * @return description
      */
     @Schema(
             example = "Payment to the delivery partner",
             required = true,
-            description = "A description of the transaction.")
+            description = "Optional field to specify description for the transaction ")
     public String getDescription() {
         return description;
     }
@@ -198,16 +198,14 @@ public class TransactionInitiationRequest {
     }
 
     /**
-     * The time at which the transaction was initiated in [ISO 8601 date time
-     * format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).
+     * The transaction initiation request time in date-time format
      *
      * @return requestTime
      */
     @Schema(
             example = "2024-03-26T02:32:59.787Z",
             required = true,
-            description =
-                    "The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).")
+            description = "The transaction initiation request time in date-time format ")
     public OffsetDateTime getRequestTime() {
         return requestTime;
     }

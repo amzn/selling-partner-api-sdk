@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The schedule status of the transfer. */
+/** Represents the schedule status of the transfer. */
 @JsonAdapter(TransferScheduleStatus.Adapter.class)
 public enum TransferScheduleStatus {
     @SerializedName("ENABLED")

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The fees and foreign exchange rates applied to the transaction. If the fees are in terms of the
+ * The fees and foreign exchange rates that apply to the transaction. If the fees are in terms of the
  * &#x60;baseAmount&#x60; (source account) currency, then the effective rate is equal to **1 - (fees *
  * &#x60;baseRate&#x60; / &#x60;baseAmount&#x60;)**. If the fees are in terms of the &#x60;transferAmount&#x60;
  * (destination account) currency, then the effective rate is equal to **&#x60;baseRate&#x60; - (fees /
@@ -28,7 +28,7 @@ import java.util.Objects;
  */
 @Schema(
         description =
-                "The fees and foreign exchange rates applied to the transaction.  If the fees are in terms of the `baseAmount` (source account) currency, then the effective rate is equal to **1 - (fees * `baseRate` / `baseAmount`)**.  If the fees are in terms of the `transferAmount` (destination account) currency, then the effective rate is equal to **`baseRate` - (fees / `baseAmount`)**.  In the preceding expressions, **fees** is equal to the sum of all `feeAmount.currencyAmount` values in the `fees` array.")
+                "The fees and foreign exchange rates that apply to the transaction.  If the fees are in terms of the `baseAmount` (source account) currency, then the effective rate is equal to **1 - (fees * `baseRate` / `baseAmount`)**.  If the fees are in terms of the `transferAmount` (destination account) currency, then the effective rate is equal to **`baseRate` - (fees / `baseAmount`)**.  In the preceding expressions, **fees** is equal to the sum of all `feeAmount.currencyAmount` values in the `fees` array.")
 public class TransferRatePreview {
     @SerializedName("baseAmount")
     private Currency baseAmount = null;
@@ -110,11 +110,11 @@ public class TransferRatePreview {
     }
 
     /**
-     * A list of fees.
+     * List of fees
      *
      * @return fees
      */
-    @Schema(required = true, description = "A list of fees.")
+    @Schema(required = true, description = "List of fees ")
     public List<Fee> getFees() {
         return fees;
     }

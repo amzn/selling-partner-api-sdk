@@ -18,8 +18,8 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** The balance amount in the Amazon Seller Wallet bank account. */
-@Schema(description = "The balance amount in the Amazon Seller Wallet bank account.")
+/** Specifies the balance amount in the Amazon SW bank account */
+@Schema(description = "Specifies the balance amount in the Amazon SW bank account")
 public class Balance {
     @SerializedName("accountId")
     private String accountId = null;
@@ -42,14 +42,14 @@ public class Balance {
     }
 
     /**
-     * The unique identifier provided by Amazon to identify the account.
+     * The unique identifier provided by Amazon to identify the account
      *
      * @return accountId
      */
     @Schema(
             example = "amzn1.account.AGUGL2EM3ZHYSRJWH2UCRPIM5JFQ",
             required = true,
-            description = "The unique identifier provided by Amazon to identify the account.")
+            description = "The unique identifier provided by Amazon to identify the account ")
     public String getAccountId() {
         return accountId;
     }
@@ -102,14 +102,14 @@ public class Balance {
     }
 
     /**
-     * The Amazon Seller Wallet bank account currency code in ISO 4217 format.
+     * The Amazon SW bank account currency code in ISO 4217 format
      *
      * @return balanceCurrency
      */
     @Schema(
             example = "USD",
             required = true,
-            description = "The Amazon Seller Wallet bank account currency code in ISO 4217 format.")
+            description = "The Amazon SW bank account currency code in ISO 4217 format ")
     public String getBalanceCurrency() {
         return balanceCurrency;
     }
@@ -124,11 +124,11 @@ public class Balance {
     }
 
     /**
-     * The date of the most recent account balance update.
+     * The last update date on the account balance
      *
      * @return lastUpdateDate
      */
-    @Schema(required = true, description = "The date of the most recent account balance update.")
+    @Schema(required = true, description = "The last update date on the account balance ")
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }

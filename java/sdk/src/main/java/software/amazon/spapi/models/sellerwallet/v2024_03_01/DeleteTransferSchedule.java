@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The response returned when the schedule transfer&#x27;s delete request is successful. */
-@Schema(description = "The response returned when the schedule transfer's delete request is successful.")
+/** Response returned when the schedule transfer&#x27;s delete request is successful. */
+@Schema(description = "Response returned when the schedule transfer's delete request is successful.")
 public class DeleteTransferSchedule {
     @SerializedName("code")
     private String code = null;
@@ -34,14 +34,13 @@ public class DeleteTransferSchedule {
     }
 
     /**
-     * A success code that specifies that the delete operation was successful. For example, HTTP 200.
+     * A success code that specifies the delete operation was successful. eg:HTTP 200.
      *
      * @return code
      */
     @Schema(
             required = true,
-            description =
-                    "A success code that specifies that the delete operation was successful. For example, HTTP 200.")
+            description = "A success code that specifies the delete operation was successful. eg:HTTP 200.")
     public String getCode() {
         return code;
     }

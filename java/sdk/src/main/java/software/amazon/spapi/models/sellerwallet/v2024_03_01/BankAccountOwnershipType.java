@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The destination bank account&#x27;s ownership type. */
+/** Represents destination bank account&#x27;s ownership type. */
 @JsonAdapter(BankAccountOwnershipType.Adapter.class)
 public enum BankAccountOwnershipType {
     @SerializedName("THIRD_PARTY")

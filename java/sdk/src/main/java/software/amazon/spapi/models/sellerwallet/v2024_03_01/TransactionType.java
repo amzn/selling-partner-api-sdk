@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The type of transaction. */
+/** Represent type of transaction. */
 @JsonAdapter(TransactionType.Adapter.class)
 public enum TransactionType {
     @SerializedName("CREDIT")

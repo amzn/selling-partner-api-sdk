@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The type of payment preference. */
+/** Represent a type of payment preference. */
 @JsonAdapter(PaymentPreferencePaymentType.Adapter.class)
 public enum PaymentPreferencePaymentType {
     @SerializedName("PERCENTAGE")

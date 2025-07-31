@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The status of the Amazon Seller Wallet account holder. */
+/** Represents status of the Amazon Seller Wallet accountholder */
 @JsonAdapter(BankAccountHolderStatus.Adapter.class)
 public enum BankAccountHolderStatus {
     @SerializedName("ACTIVE")

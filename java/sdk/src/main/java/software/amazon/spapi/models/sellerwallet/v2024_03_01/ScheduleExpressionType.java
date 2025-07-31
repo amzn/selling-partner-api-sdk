@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The type of scheduled transfer expression. */
+/** Represent a type of schedule transfer expression. */
 @JsonAdapter(ScheduleExpressionType.Adapter.class)
 public enum ScheduleExpressionType {
     @SerializedName("RECURRING")

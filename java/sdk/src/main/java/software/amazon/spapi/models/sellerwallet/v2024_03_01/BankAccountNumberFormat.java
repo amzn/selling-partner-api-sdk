@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The bank account&#x27;s format type. */
+/** The format of the bank account number. */
 @JsonAdapter(BankAccountNumberFormat.Adapter.class)
 public enum BankAccountNumberFormat {
     @SerializedName("IBAN")

@@ -62,7 +62,7 @@ public class AccountsApi {
     /**
      * Build call for getAccount
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -116,10 +116,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve an Amazon Seller Wallet bank
-     * account by Amazon account identifier.
+     * Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon
+     * account identifier.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return BankAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -131,10 +131,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve an Amazon Seller Wallet bank
-     * account by Amazon account identifier.
+     * Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon
+     * account identifier.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @return BankAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -145,10 +145,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve an Amazon Seller Wallet bank
-     * account by Amazon account identifier.
+     * Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon
+     * account identifier.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;BankAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -171,10 +171,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier Retrieve an Amazon Seller Wallet bank
-     * account by Amazon account identifier.
+     * Find particular Amazon SW account by Amazon account identifier Retrieve a Seller Wallet bank account by Amazon
+     * account identifier.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @return ApiResponse&lt;BankAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -184,10 +184,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier (asynchronously) Retrieve an Amazon
-     * Seller Wallet bank account by Amazon account identifier.
+     * Find particular Amazon SW account by Amazon account identifier (asynchronously) Retrieve a Seller Wallet bank
+     * account by Amazon account identifier.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -198,10 +198,10 @@ public class AccountsApi {
         return getAccountAsync(accountId, callback, null);
     }
     /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier (asynchronously) Retrieve an Amazon
-     * Seller Wallet bank account by Amazon account identifier.
+     * Find particular Amazon SW account by Amazon account identifier (asynchronously) Retrieve a Seller Wallet bank
+     * account by Amazon account identifier.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -235,7 +235,7 @@ public class AccountsApi {
     /**
      * Build call for listAccountBalances
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -290,10 +290,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a
-     * given Amazon Seller Wallet bank account.
+     * Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller
+     * Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return BalanceListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -306,10 +306,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a
-     * given Amazon Seller Wallet bank account.
+     * Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller
+     * Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @return BalanceListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -320,10 +320,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a
-     * given Amazon Seller Wallet bank account.
+     * Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller
+     * Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;BalanceListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -346,10 +346,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier Retrieve the balance in a
-     * given Amazon Seller Wallet bank account.
+     * Find balance in particular Amazon SW account by Amazon account identifier Retrieve the balance in a given Seller
+     * Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @return ApiResponse&lt;BalanceListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -360,10 +360,10 @@ public class AccountsApi {
     }
 
     /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier (asynchronously) Retrieve
-     * the balance in a given Amazon Seller Wallet bank account.
+     * Find balance in particular Amazon SW account by Amazon account identifier (asynchronously) Retrieve the balance
+     * in a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -374,10 +374,10 @@ public class AccountsApi {
         return listAccountBalancesAsync(accountId, callback, null);
     }
     /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier (asynchronously) Retrieve
-     * the balance in a given Amazon Seller Wallet bank account.
+     * Find balance in particular Amazon SW account by Amazon account identifier (asynchronously) Retrieve the balance
+     * in a given Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
+     * @param accountId ID of the Amazon SW account (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -411,9 +411,7 @@ public class AccountsApi {
     /**
      * Build call for listAccounts
      *
-     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
-     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -468,11 +466,9 @@ public class AccountsApi {
     }
 
     /**
-     * Get all Amazon Seller Wallet accounts for the seller Get all Seller Wallet accounts for a given seller.
+     * Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
      *
-     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
-     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return BankAccountListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -485,11 +481,9 @@ public class AccountsApi {
     }
 
     /**
-     * Get all Amazon Seller Wallet accounts for the seller Get all Seller Wallet accounts for a given seller.
+     * Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
      *
-     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
-     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned. (required)
      * @return BankAccountListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -500,11 +494,9 @@ public class AccountsApi {
     }
 
     /**
-     * Get all Amazon Seller Wallet accounts for the seller Get all Seller Wallet accounts for a given seller.
+     * Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
      *
-     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
-     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;BankAccountListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -527,11 +519,9 @@ public class AccountsApi {
     }
 
     /**
-     * Get all Amazon Seller Wallet accounts for the seller Get all Seller Wallet accounts for a given seller.
+     * Get all Amazon SW accounts for the seller Get Seller Wallet accounts for a seller.
      *
-     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
-     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned. (required)
      * @return ApiResponse&lt;BankAccountListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -542,12 +532,9 @@ public class AccountsApi {
     }
 
     /**
-     * Get all Amazon Seller Wallet accounts for the seller (asynchronously) Get all Seller Wallet accounts for a given
-     * seller.
+     * Get all Amazon SW accounts for the seller (asynchronously) Get Seller Wallet accounts for a seller.
      *
-     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
-     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -558,12 +545,9 @@ public class AccountsApi {
         return listAccountsAsync(marketplaceId, callback, null);
     }
     /**
-     * Get all Amazon Seller Wallet accounts for the seller (asynchronously) Get all Seller Wallet accounts for a given
-     * seller.
+     * Get all Amazon SW accounts for the seller (asynchronously) Get Seller Wallet accounts for a seller.
      *
-     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
-     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
-     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @param marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned. (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call

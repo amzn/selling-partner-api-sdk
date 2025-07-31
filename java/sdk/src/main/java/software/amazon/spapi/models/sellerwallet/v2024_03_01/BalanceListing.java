@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** A list of balances in the seller account. */
-@Schema(description = "A list of balances in the seller account.")
+/** Struct that holds list of balances on the seller account. */
+@Schema(description = "Struct that holds list of balances on the seller account.")
 public class BalanceListing {
     @SerializedName("balances")
     private List<Balance> balances = null;
@@ -38,11 +38,11 @@ public class BalanceListing {
     }
 
     /**
-     * A list of balances in the seller account.
+     * Collection that holds list of balances on the account
      *
      * @return balances
      */
-    @Schema(description = "A list of balances in the seller account.")
+    @Schema(description = "Collection that holds list of balances on the account ")
     public List<Balance> getBalances() {
         return balances;
     }

@@ -72,7 +72,7 @@ public class TransferScheduleApi {
     /**
      * Build call for createTransferSchedule
      *
-     * @param body The payload of the request. (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param progressRequestListener Progress request listener
@@ -148,10 +148,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create
-     * a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer
+     * schedule request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request. (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -171,10 +171,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create
-     * a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer
+     * schedule request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request. (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return TransferSchedule
@@ -190,10 +190,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create
-     * a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer
+     * schedule request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request. (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -224,10 +224,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account Create
-     * a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account Create a transfer
+     * schedule request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request. (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return ApiResponse&lt;TransferSchedule&gt;
@@ -241,11 +241,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
-     * (asynchronously) Create a transfer schedule request from an Amazon Seller Wallet account to another
-     * customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account (asynchronously)
+     * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request. (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -262,11 +261,10 @@ public class TransferScheduleApi {
         return createTransferScheduleAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
     }
     /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
-     * (asynchronously) Create a transfer schedule request from an Amazon Seller Wallet account to another
-     * customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account (asynchronously)
+     * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
      *
-     * @param body The payload of the request. (required)
+     * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -308,7 +306,7 @@ public class TransferScheduleApi {
     /**
      * Build call for deleteScheduleTransaction
      *
-     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -320,7 +318,7 @@ public class TransferScheduleApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
+        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules"
                 .replaceAll(
                         "\\{" + "transferScheduleId" + "\\}", apiClient.escapeString(transferScheduleId.toString()));
 
@@ -364,11 +362,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
-     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
-     * customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
+     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
      *
-     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return DeleteTransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -382,11 +379,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
-     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
-     * customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
+     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
      *
-     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
      * @return DeleteTransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -398,11 +394,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
-     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
-     * customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
+     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
      *
-     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;DeleteTransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -426,11 +421,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
-     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
-     * customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
+     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
      *
-     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
      * @return ApiResponse&lt;DeleteTransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -441,11 +435,11 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
-     * account (asynchronously) Delete a transaction request that is scheduled from Amazon Seller Wallet account to
-     * another customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * (asynchronously) Delete a transaction request that is scheduled from a Seller Wallet account to another
+     * customer-provided account.
      *
-     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -457,11 +451,11 @@ public class TransferScheduleApi {
         return deleteScheduleTransactionAsync(transferScheduleId, callback, null);
     }
     /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
-     * account (asynchronously) Delete a transaction request that is scheduled from Amazon Seller Wallet account to
-     * another customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * (asynchronously) Delete a transaction request that is scheduled from a Seller Wallet account to another
+     * customer-provided account.
      *
-     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -496,7 +490,7 @@ public class TransferScheduleApi {
     /**
      * Build call for getTransferSchedule
      *
-     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -552,10 +546,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
-     * particular Amazon Seller Wallet account transfer schedule.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
+     * Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -568,10 +562,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
-     * particular Amazon Seller Wallet account transfer schedule.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
+     * Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -582,10 +576,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
-     * particular Amazon Seller Wallet account transfer schedule.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
+     * Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -609,10 +603,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
-     * particular Amazon Seller Wallet account transfer schedule.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
+     * Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -623,10 +617,10 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
-     * (asynchronously) Find a particular Amazon Seller Wallet account transfer schedule.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier (asynchronously) Find
+     * a particular Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -637,10 +631,10 @@ public class TransferScheduleApi {
         return getTransferScheduleAsync(transferScheduleId, callback, null);
     }
     /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
-     * (asynchronously) Find a particular Amazon Seller Wallet account transfer schedule.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier (asynchronously) Find
+     * a particular Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -675,12 +669,8 @@ public class TransferScheduleApi {
     /**
      * Build call for listTransferSchedules
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
-     *     the next page of results, call the operation with this token and include the same arguments as the call that
-     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
-     *     that this operation can return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -741,15 +731,11 @@ public class TransferScheduleApi {
     }
 
     /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account Returns all transfer
-     * schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     * The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a
+     * Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
-     *     the next page of results, call the operation with this token and include the same arguments as the call that
-     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
-     *     that this operation can return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferScheduleListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -763,15 +749,11 @@ public class TransferScheduleApi {
     }
 
     /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account Returns all transfer
-     * schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     * The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a
+     * Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
-     *     the next page of results, call the operation with this token and include the same arguments as the call that
-     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
-     *     that this operation can return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return TransferScheduleListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -783,15 +765,11 @@ public class TransferScheduleApi {
     }
 
     /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account Returns all transfer
-     * schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     * The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a
+     * Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
-     *     the next page of results, call the operation with this token and include the same arguments as the call that
-     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
-     *     that this operation can return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferScheduleListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -815,15 +793,11 @@ public class TransferScheduleApi {
     }
 
     /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account Returns all transfer
-     * schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     * The API will return all the transfer schedules for a given Amazon SW account Retrieve transfer schedules of a
+     * Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
-     *     the next page of results, call the operation with this token and include the same arguments as the call that
-     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
-     *     that this operation can return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return ApiResponse&lt;TransferScheduleListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -834,15 +808,11 @@ public class TransferScheduleApi {
     }
 
     /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account (asynchronously) Returns
-     * all transfer schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     * The API will return all the transfer schedules for a given Amazon SW account (asynchronously) Retrieve transfer
+     * schedules of a Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
-     *     the next page of results, call the operation with this token and include the same arguments as the call that
-     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
-     *     that this operation can return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -854,15 +824,11 @@ public class TransferScheduleApi {
         return listTransferSchedulesAsync(accountId, nextPageToken, callback, null);
     }
     /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account (asynchronously) Returns
-     * all transfer schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
+     * The API will return all the transfer schedules for a given Amazon SW account (asynchronously) Retrieve transfer
+     * schedules of a Seller Wallet bank account.
      *
-     * @param accountId The ID of the Amazon Seller Wallet account. (required)
-     * @param nextPageToken A token that you use to retrieve the next page of results. The response includes
-     *     &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get
-     *     the next page of results, call the operation with this token and include the same arguments as the call that
-     *     produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note
-     *     that this operation can return empty pages. (optional)
+     * @param accountId ID of the Amazon SW account (required)
+     * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -900,7 +866,7 @@ public class TransferScheduleApi {
     /**
      * Build call for updateTransferSchedule
      *
-     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param progressRequestListener Progress request listener
@@ -977,10 +943,10 @@ public class TransferScheduleApi {
 
     /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
-     * transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a
-     * transfer belonging to the updated scheduled transfer request.
+     * transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled
+     * transfer request
      *
-     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -1001,10 +967,10 @@ public class TransferScheduleApi {
 
     /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
-     * transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a
-     * transfer belonging to the updated scheduled transfer request.
+     * transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled
+     * transfer request
      *
-     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return TransferSchedule
@@ -1021,10 +987,10 @@ public class TransferScheduleApi {
 
     /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
-     * transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a
-     * transfer belonging to the updated scheduled transfer request.
+     * transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled
+     * transfer request
      *
-     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -1056,10 +1022,10 @@ public class TransferScheduleApi {
 
     /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
-     * transferScheduleStatus) in the request body can be updated. Update transfer schedule information. Returns a
-     * transfer belonging to the updated scheduled transfer request.
+     * transferScheduleStatus) in the request body can be updated. Returns a transfer belonging to the updated scheduled
+     * transfer request
      *
-     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @return ApiResponse&lt;TransferSchedule&gt;
@@ -1074,10 +1040,10 @@ public class TransferScheduleApi {
 
     /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
-     * transferScheduleStatus) in the request body can be updated. (asynchronously) Update transfer schedule
-     * information. Returns a transfer belonging to the updated scheduled transfer request.
+     * transferScheduleStatus) in the request body can be updated. (asynchronously) Returns a transfer belonging to the
+     * updated scheduled transfer request
      *
-     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1095,10 +1061,10 @@ public class TransferScheduleApi {
     }
     /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
-     * transferScheduleStatus) in the request body can be updated. (asynchronously) Update transfer schedule
-     * information. Returns a transfer belonging to the updated scheduled transfer request.
+     * transferScheduleStatus) in the request body can be updated. (asynchronously) Returns a transfer belonging to the
+     * updated scheduled transfer request
      *
-     * @param body The payload of the scheduled transfer request that is to be updated. (required)
+     * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
      * @param callback The callback to be executed when the API call finishes

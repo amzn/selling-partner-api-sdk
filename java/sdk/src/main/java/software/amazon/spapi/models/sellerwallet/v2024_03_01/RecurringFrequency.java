@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The frequency at which the transaction is repeated. */
+/** Represent parameters to specify recurrence of the scheduled transfer. */
 @JsonAdapter(RecurringFrequency.Adapter.class)
 public enum RecurringFrequency {
     @SerializedName("BIWEEKLY")

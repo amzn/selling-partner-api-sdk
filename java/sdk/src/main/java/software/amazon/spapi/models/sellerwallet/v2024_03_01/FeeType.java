@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The type of fee on the transaction. */
+/** Represents different types of fees that can be applied on a transaction. */
 @JsonAdapter(FeeType.Adapter.class)
 public enum FeeType {
     @SerializedName("MISCELLANEOUS_FEE")

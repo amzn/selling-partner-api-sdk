@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/** Foreign exchange rate details. */
-@Schema(description = "Foreign exchange rate details.")
+/** Foreign exchange rate details displayed when transfer preview is requested. */
+@Schema(description = "Foreign exchange rate details displayed when transfer preview is requested. ")
 public class FxRateDetails {
     @SerializedName("fxRateId")
     private String fxRateId = null;
@@ -38,13 +38,13 @@ public class FxRateDetails {
     }
 
     /**
-     * The unique identifier assigned to the fees / foreign exchange rate of a transaction.
+     * Unique identifier assigned to the fees/foreign exchange Rate of a transaction.
      *
      * @return fxRateId
      */
     @Schema(
             required = true,
-            description = "The unique identifier assigned to the fees / foreign exchange rate of a transaction.")
+            description = "Unique identifier assigned to the fees/foreign exchange Rate of a transaction. ")
     public String getFxRateId() {
         return fxRateId;
     }

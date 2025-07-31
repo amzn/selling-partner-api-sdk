@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The current status of the transaction. */
+/** Represents current status of the transaction. */
 @JsonAdapter(TransactionStatus.Adapter.class)
 public enum TransactionStatus {
     @SerializedName("FAILED")

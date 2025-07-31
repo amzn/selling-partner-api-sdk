@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** The time of and reason for the transfer schedule failure. */
-@Schema(description = "The time of and reason for the transfer schedule failure.")
+/** Specifies the balance amount in the Amazon SW bank account */
+@Schema(description = "Specifies the balance amount in the Amazon SW bank account")
 public class TransferScheduleFailures {
     @SerializedName("transferScheduleFailureDate")
     private OffsetDateTime transferScheduleFailureDate = null;
@@ -32,11 +32,11 @@ public class TransferScheduleFailures {
     }
 
     /**
-     * The transfer schedule failure date.
+     * The transfer schedule cancellation date
      *
      * @return transferScheduleFailureDate
      */
-    @Schema(required = true, description = "The transfer schedule failure date.")
+    @Schema(required = true, description = "The transfer schedule cancellation date ")
     public OffsetDateTime getTransferScheduleFailureDate() {
         return transferScheduleFailureDate;
     }
@@ -51,14 +51,14 @@ public class TransferScheduleFailures {
     }
 
     /**
-     * The reason listed for the failure of the transfer schedule.
+     * The statement/reasoning listed for the cancellation of the transfer schedule
      *
      * @return transferScheduleFailureReason
      */
     @Schema(
             example = "INSUFFICIENT_BALANCE",
             required = true,
-            description = "The reason listed for the failure of the transfer schedule.")
+            description = "The statement/reasoning listed for the cancellation of the transfer schedule ")
     public String getTransferScheduleFailureReason() {
         return transferScheduleFailureReason;
     }

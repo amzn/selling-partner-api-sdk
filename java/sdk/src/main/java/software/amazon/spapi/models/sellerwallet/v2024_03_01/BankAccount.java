@@ -17,12 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer
- * earns by selling items.
+ * Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not
+ * including account_links, short cut links to the account balance and transactions -&gt; since not mandatory
  */
 @Schema(
         description =
-                "Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.")
+                "Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not including account_links, short cut links to the account balance and transactions -> since not mandatory ")
 public class BankAccount {
     @SerializedName("accountId")
     private String accountId = null;
@@ -63,13 +63,13 @@ public class BankAccount {
     }
 
     /**
-     * The unique identifier provided by Amazon to identify the account.
+     * The unique identifier provided by Amazon to identify the account
      *
      * @return accountId
      */
     @Schema(
             example = "amzn1.account.AGUGL2EM3ZHYSRJWH2UCRPIM5JFQ",
-            description = "The unique identifier provided by Amazon to identify the account.")
+            description = "The unique identifier provided by Amazon to identify the account ")
     public String getAccountId() {
         return accountId;
     }
@@ -84,14 +84,14 @@ public class BankAccount {
     }
 
     /**
-     * The bank account holder&#x27;s name (expected to be an Amazon customer).
+     * BankAccount holder&#x27;s name (expected to be Amazon customer)
      *
      * @return accountHolderName
      */
     @Schema(
             example = "John Doe",
             required = true,
-            description = "The bank account holder's name (expected to be an Amazon customer).")
+            description = "BankAccount holder's name (expected to be Amazon customer) ")
     public String getAccountHolderName() {
         return accountHolderName;
     }
@@ -125,13 +125,14 @@ public class BankAccount {
     }
 
     /**
-     * The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
+     * The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet
      *
      * @return bankName
      */
     @Schema(
             example = "Bank Of America",
-            description = "The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.")
+            description =
+                    "The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet ")
     public String getBankName() {
         return bankName;
     }
@@ -165,8 +166,8 @@ public class BankAccount {
     }
 
     /**
-     * Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller
-     * Wallet accounts.
+     * Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be
+     * denoted by nine cosecutive 0&#x27;s,
      *
      * @return routingNumber
      */
@@ -174,7 +175,7 @@ public class BankAccount {
             example = "026009593",
             required = true,
             description =
-                    "Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.")
+                    "Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,  ")
     public String getRoutingNumber() {
         return routingNumber;
     }
@@ -208,11 +209,11 @@ public class BankAccount {
     }
 
     /**
-     * The two-digit country code in ISO 3166 format.
+     * The two digit country code, in ISO 3166 format.
      *
      * @return accountCountryCode
      */
-    @Schema(example = "US", required = true, description = "The two-digit country code in ISO 3166 format.")
+    @Schema(example = "US", required = true, description = "The two digit country code, in ISO 3166 format. ")
     public String getAccountCountryCode() {
         return accountCountryCode;
     }
@@ -227,11 +228,11 @@ public class BankAccount {
     }
 
     /**
-     * Bank account currency code in ISO 4217 format.
+     * BankAccount currency code in ISO 4217 format
      *
      * @return accountCurrency
      */
-    @Schema(example = "USD", required = true, description = "Bank account currency code in ISO 4217 format.")
+    @Schema(example = "USD", required = true, description = "BankAccount currency code in ISO 4217 format ")
     public String getAccountCurrency() {
         return accountCurrency;
     }
@@ -246,16 +247,16 @@ public class BankAccount {
     }
 
     /**
-     * The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet
-     * accounts.
+     * Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive
+     * 0&#x27;s
      *
      * @return bankAccountNumberTail
      */
     @Schema(
-            example = "123",
+            example = "666",
             required = true,
             description =
-                    "The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.")
+                    "Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's ")
     public String getBankAccountNumberTail() {
         return bankAccountNumberTail;
     }

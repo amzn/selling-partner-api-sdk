@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** Transfer schedule details and historical details related to it. */
-@Schema(description = "Transfer schedule details and historical details related to it.")
+/** Transfer schedule details and related historical details. */
+@Schema(description = "Transfer schedule details and related historical details.")
 public class TransferSchedule {
     @SerializedName("transferScheduleId")
     private String transferScheduleId = null;
@@ -51,11 +51,11 @@ public class TransferSchedule {
     }
 
     /**
-     * The unique identifier provided by Amazon to the scheduled transfer.
+     * The unique identifier provided by Amazon to the scheduled transfer
      *
      * @return transferScheduleId
      */
-    @Schema(required = true, description = "The unique identifier provided by Amazon to the scheduled transfer.")
+    @Schema(required = true, description = "The unique identifier provided by Amazon to the scheduled transfer ")
     public String getTransferScheduleId() {
         return transferScheduleId;
     }
@@ -189,11 +189,14 @@ public class TransferSchedule {
     }
 
     /**
-     * A list of transfer schedule failures.
+     * Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
      *
      * @return transferScheduleFailures
      */
-    @Schema(required = true, description = "A list of transfer schedule failures.")
+    @Schema(
+            required = true,
+            description =
+                    "Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons. ")
     public List<TransferScheduleFailures> getTransferScheduleFailures() {
         return transferScheduleFailures;
     }

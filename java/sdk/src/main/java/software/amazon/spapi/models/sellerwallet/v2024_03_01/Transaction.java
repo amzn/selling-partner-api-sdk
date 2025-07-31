@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** The current transaction status and historical details related to it. */
-@Schema(description = "The current transaction status and historical details related to it.")
+/** The current transaction status and related historical details. */
+@Schema(description = "The current transaction status and related historical details.")
 public class Transaction {
     @SerializedName("transactionId")
     private String transactionId = null;
@@ -74,11 +74,11 @@ public class Transaction {
     }
 
     /**
-     * The unique identifier provided by Amazon to the transaction.
+     * The unique identifier provided by Amazon to the transaction
      *
      * @return transactionId
      */
-    @Schema(required = true, description = "The unique identifier provided by Amazon to the transaction.")
+    @Schema(required = true, description = "The unique identifier provided by Amazon to the transaction ")
     public String getTransactionId() {
         return transactionId;
     }
@@ -131,11 +131,11 @@ public class Transaction {
     }
 
     /**
-     * The date on which the transaction was initiated.
+     * The date when the transaction was initiated.
      *
      * @return transactionRequestDate
      */
-    @Schema(required = true, description = "The date on which the transaction was initiated.")
+    @Schema(required = true, description = "The date when the transaction was initiated.")
     public OffsetDateTime getTransactionRequestDate() {
         return transactionRequestDate;
     }
@@ -150,11 +150,15 @@ public class Transaction {
     }
 
     /**
-     * The expected completion date of the transaction.
+     * Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours
+     * but for new destination bank accounts the value could go up to 5 days
      *
      * @return expectedCompletionDate
      */
-    @Schema(example = "2023-09-26T02:32:59.787Z", description = "The expected completion date of the transaction.")
+    @Schema(
+            example = "2023-09-26T02:32:59.787Z",
+            description =
+                    "Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days ")
     public OffsetDateTime getExpectedCompletionDate() {
         return expectedCompletionDate;
     }
@@ -169,11 +173,11 @@ public class Transaction {
     }
 
     /**
-     * The transaction&#x27;s completion date.
+     * Transaction completion date
      *
      * @return transactionActualCompletionDate
      */
-    @Schema(description = "The transaction's completion date.")
+    @Schema(description = "Transaction completion date ")
     public OffsetDateTime getTransactionActualCompletionDate() {
         return transactionActualCompletionDate;
     }
@@ -188,11 +192,11 @@ public class Transaction {
     }
 
     /**
-     * The date of the most recent account balance update.
+     * The last update date on the transaction
      *
      * @return lastUpdateDate
      */
-    @Schema(required = true, description = "The date of the most recent account balance update.")
+    @Schema(required = true, description = "The last update date on the transaction ")
     public OffsetDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
@@ -207,11 +211,11 @@ public class Transaction {
     }
 
     /**
-     * The Amazon Seller Wallet customer who requested the transaction.
+     * Amazon SW customer who requested the transaction
      *
      * @return requesterName
      */
-    @Schema(example = "TPPOrgId", description = "The Amazon Seller Wallet customer who requested the transaction.")
+    @Schema(example = "TPPOrgId", description = "Amazon SW customer who requested the transaction ")
     public String getRequesterName() {
         return requesterName;
     }
@@ -226,7 +230,7 @@ public class Transaction {
     }
 
     /**
-     * The transaction initiation source. This value could be the Amazon portal or PISP name that the customer used to
+     * The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to
      * start the transaction.
      *
      * @return transactionRequesterSource
@@ -234,7 +238,7 @@ public class Transaction {
     @Schema(
             required = true,
             description =
-                    "The transaction initiation source. This value could be the Amazon portal or PISP name that the customer used to start the transaction.")
+                    "The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.")
     public String getTransactionRequesterSource() {
         return transactionRequesterSource;
     }
@@ -249,14 +253,14 @@ public class Transaction {
     }
 
     /**
-     * The description provided by the requester in the transaction request at time of transaction initiation.
+     * A description of the transaction that the requester provides when they initiate the transaction.
      *
      * @return transactionDescription
      */
     @Schema(
             required = true,
             description =
-                    "The description provided by the requester in the transaction request at time of transaction initiation.")
+                    "A description of the transaction that the requester provides when they initiate the transaction.")
     public String getTransactionDescription() {
         return transactionDescription;
     }
@@ -366,11 +370,13 @@ public class Transaction {
     }
 
     /**
-     * The reason the transaction failed, if applicable.
+     * Description in case the transaction fails before completion
      *
      * @return transactionFailureReason
      */
-    @Schema(example = "Insufficient Balance", description = "The reason the transaction failed, if applicable.")
+    @Schema(
+            example = "Insufficient Balance",
+            description = "Description in case the transaction fails before completion ")
     public String getTransactionFailureReason() {
         return transactionFailureReason;
     }

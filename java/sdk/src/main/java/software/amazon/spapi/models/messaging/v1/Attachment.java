@@ -18,12 +18,12 @@ import java.util.Objects;
 
 /**
  * Represents a file that was uploaded to a destination that was created by the Uploads API
- * [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource)
+ * [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource)
  * operation.
  */
 @Schema(
         description =
-                "Represents a file that was uploaded to a destination that was created by the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.")
+                "Represents a file that was uploaded to a destination that was created by the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.")
 public class Attachment {
     @SerializedName("uploadDestinationId")
     private String uploadDestinationId = null;
@@ -38,7 +38,7 @@ public class Attachment {
 
     /**
      * The identifier for the upload destination. To retrieve this value, call the Uploads API
-     * [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource)
+     * [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource)
      * operation.
      *
      * @return uploadDestinationId
@@ -46,7 +46,7 @@ public class Attachment {
     @Schema(
             required = true,
             description =
-                    "The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.")
+                    "The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.")
     public String getUploadDestinationId() {
         return uploadDestinationId;
     }

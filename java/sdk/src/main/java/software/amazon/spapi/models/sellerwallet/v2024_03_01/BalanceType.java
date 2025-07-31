@@ -19,7 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** The type of bank account balance. */
+/** Represent a bank account balance type. */
 @JsonAdapter(BalanceType.Adapter.class)
 public enum BalanceType {
     @SerializedName("AVAILABLE")

@@ -16,8 +16,14 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Details of the destination bank account in the transaction request. */
-@Schema(description = "Details of the destination bank account in the transaction request.")
+/**
+ * Request body to create transaction instrument, Amazon performs validation and screening (anti-money laundering
+ * measuers) on all the transaction instruments before executing a transaction thus it requires transaction instrument
+ * holder&#x27;s contact details as well
+ */
+@Schema(
+        description =
+                "Request body to create transaction instrument, Amazon performs validation and screening (anti-money laundering measuers) on all the transaction instruments before executing a transaction thus it requires transaction instrument holder's contact details as well ")
 public class TransactionInstrumentDetails {
     @SerializedName("bankAccount")
     private BankAccount bankAccount = null;
@@ -50,9 +56,9 @@ public class TransactionInstrumentDetails {
     }
 
     /**
-     * The bank account number of the destination payment method. **Note:** This field is encrypted before Amazon
-     * receives it, so should not be used to generate &#x60;destAccountDigitalSignature&#x60;, and should not be
-     * included in the request signature.
+     * This field would be used to populate the bank account number of the destination payment method. The field is
+     * intentionally not included in any other Schemas since Amazon internal systems will never receive it in
+     * unencrypted format, so field won&#x27;t be part of the request signature
      *
      * @return bankAccountNumber
      */
@@ -60,7 +66,7 @@ public class TransactionInstrumentDetails {
             example = "GB29RBOS60161331926819",
             required = true,
             description =
-                    "The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.")
+                    "This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won't be part of the request signature ")
     public String getBankAccountNumber() {
         return bankAccountNumber;
     }

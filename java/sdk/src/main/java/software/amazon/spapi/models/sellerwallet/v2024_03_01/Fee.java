@@ -17,8 +17,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/** Details of the fee. */
-@Schema(description = "Details of the fee.")
+/**
+ * If the fees is in baseAmount (sourceAccount) currency, effectiveRate &#x3D; (baseAmount -
+ * sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount)
+ * currency, effectiveRate &#x3D; (( baseAmount * baseRate ) - sum(fees.feeAmount.currencyAmount )) / baseAmount
+ */
+@Schema(
+        description =
+                "If the fees is in baseAmount (sourceAccount) currency, effectiveRate =  (baseAmount - sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount) currency, effectiveRate =  (( baseAmount * baseRate ) -  sum(fees.feeAmount.currencyAmount )) / baseAmount ")
 public class Fee {
     @SerializedName("feeId")
     private String feeId = null;
@@ -38,11 +44,11 @@ public class Fee {
     }
 
     /**
-     * The unique identifier assigned to the fee.
+     * Unique identifier assigned to the Fee.
      *
      * @return feeId
      */
-    @Schema(required = true, description = "The unique identifier assigned to the fee.")
+    @Schema(required = true, description = "Unique identifier assigned to the Fee. ")
     public String getFeeId() {
         return feeId;
     }

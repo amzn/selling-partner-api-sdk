@@ -16,10 +16,10 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The Address used to verify the bank account of the payee. This can be a person or business mailing address. */
+/** Address for bank account verification of the Payee. For example, this can be a person or business mailing address */
 @Schema(
         description =
-                "The Address used to verify the bank account of the payee. This can be a person or business mailing address.")
+                "Address for bank account verification of the Payee. For example, this can be a person or business mailing address ")
 public class AccountHolderAddress {
     @SerializedName("addressLine1")
     private String addressLine1 = null;
@@ -48,11 +48,11 @@ public class AccountHolderAddress {
     }
 
     /**
-     * Address Line 1 of the public address.
+     * Address Line 1 of the public address
      *
      * @return addressLine1
      */
-    @Schema(example = "678 JFK Street", required = true, description = "Address Line 1 of the public address.")
+    @Schema(example = "678 JFK Street", required = true, description = "Address Line 1 of the public address ")
     public String getAddressLine1() {
         return addressLine1;
     }
@@ -67,11 +67,11 @@ public class AccountHolderAddress {
     }
 
     /**
-     * Address Line 2 of the public address.
+     * Address Line 2 of the public address
      *
      * @return addressLine2
      */
-    @Schema(example = "Unit 415", description = "Address Line 2 of the public address.")
+    @Schema(example = "Unit 415", description = "Address Line 2 of the public address ")
     public String getAddressLine2() {
         return addressLine2;
     }
@@ -86,11 +86,11 @@ public class AccountHolderAddress {
     }
 
     /**
-     * City name of the public address.
+     * City name of the public address
      *
      * @return city
      */
-    @Schema(example = "Seattle", required = true, description = "City name of the public address.")
+    @Schema(example = "Seattle", required = true, description = "City name of the public address ")
     public String getCity() {
         return city;
     }
@@ -105,15 +105,14 @@ public class AccountHolderAddress {
     }
 
     /**
-     * State name of the public address. This will be state or region for CN (China) based addresses.
+     * State name of the public address. This is the state or region for China-based addresses.
      *
      * @return state
      */
     @Schema(
             example = "WA",
             required = true,
-            description =
-                    "State name of the public address. This will be state or region for CN (China) based addresses.")
+            description = "State name of the public address. This is the state or region for China-based addresses.")
     public String getState() {
         return state;
     }
@@ -128,11 +127,11 @@ public class AccountHolderAddress {
     }
 
     /**
-     * Postal code of the public address.
+     * Postal code of the public address
      *
      * @return postalCode
      */
-    @Schema(example = "98109", required = true, description = "Postal code of the public address.")
+    @Schema(example = "98109", required = true, description = "Postal code of the public address ")
     public String getPostalCode() {
         return postalCode;
     }
@@ -147,11 +146,11 @@ public class AccountHolderAddress {
     }
 
     /**
-     * Country name of the public address.
+     * Country name of the public address
      *
      * @return country
      */
-    @Schema(example = "United States", description = "Country name of the public address.")
+    @Schema(example = "United States", description = "Country name of the public address ")
     public String getCountry() {
         return country;
     }
@@ -170,7 +169,7 @@ public class AccountHolderAddress {
      *
      * @return countryCode
      */
-    @Schema(example = "US", required = true, description = "The two digit country code, in ISO 3166 format.")
+    @Schema(example = "US", required = true, description = "The two digit country code, in ISO 3166 format. ")
     public String getCountryCode() {
         return countryCode;
     }

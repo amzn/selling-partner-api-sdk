@@ -308,7 +308,7 @@ public class FbaInboundApi {
      *     then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that
      *     feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then
      *     &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the
-     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes)
+     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/reference/listshipmentboxes)
      *     response. If these values do not match as required, the operation returns the
      *     &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
      * @param numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
@@ -435,7 +435,7 @@ public class FbaInboundApi {
      *     then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that
      *     feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then
      *     &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the
-     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes)
+     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/reference/listshipmentboxes)
      *     response. If these values do not match as required, the operation returns the
      *     &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
      * @param numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
@@ -494,7 +494,7 @@ public class FbaInboundApi {
      *     then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that
      *     feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then
      *     &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the
-     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes)
+     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/reference/listshipmentboxes)
      *     response. If these values do not match as required, the operation returns the
      *     &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
      * @param numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
@@ -551,7 +551,7 @@ public class FbaInboundApi {
      *     then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that
      *     feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then
      *     &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the
-     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes)
+     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/reference/listshipmentboxes)
      *     response. If these values do not match as required, the operation returns the
      *     &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
      * @param numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
@@ -620,7 +620,7 @@ public class FbaInboundApi {
      *     then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that
      *     feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then
      *     &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the
-     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes)
+     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/reference/listshipmentboxes)
      *     response. If these values do not match as required, the operation returns the
      *     &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
      * @param numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
@@ -676,7 +676,7 @@ public class FbaInboundApi {
      *     then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that
      *     feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then
      *     &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the
-     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes)
+     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/reference/listshipmentboxes)
      *     response. If these values do not match as required, the operation returns the
      *     &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
      * @param numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
@@ -734,7 +734,7 @@ public class FbaInboundApi {
      *     then &#x60;PackageLabelsToPrint&#x60; must match the &#x60;CartonId&#x60; values you provide through that
      *     feed. If you provide box content information with the Fulfillment Inbound API v2024-03-20, then
      *     &#x60;PackageLabelsToPrint&#x60; must match the &#x60;boxID&#x60; values from the
-     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/docs/fulfillment-inbound-api-v2024-03-20-reference#listshipmentboxes)
+     *     [&#x60;listShipmentBoxes&#x60;](https://developer-docs.amazon.com/sp-api/reference/listshipmentboxes)
      *     response. If these values do not match as required, the operation returns the
      *     &#x60;IncorrectPackageIdentifier&#x60; error code. (optional)
      * @param numberOfPallets The number of pallets in the shipment. This returns four identical labels for each pallet.
