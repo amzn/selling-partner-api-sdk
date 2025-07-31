@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.messaging.v1
 {
     /// <summary>
-    /// Represents a file that was uploaded to a destination that was created by the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.
+    /// Represents a file that was uploaded to a destination that was created by the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.
     /// </summary>
     [DataContract(Name = "Attachment")]
     public partial class Attachment : IValidatableObject
@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// <summary>
         /// Initializes a new instance of the <see cref="Attachment" /> class.
         /// </summary>
-        /// <param name="uploadDestinationId">The identifier for the upload destination. To retrieve this value, call the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation. (required).</param>
+        /// <param name="uploadDestinationId">The identifier for the upload destination. To retrieve this value, call the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation. (required).</param>
         /// <param name="fileName">The name of the file, including the extension. This is the file name that will appear in the message. This does not need to match the file name of the file that you uploaded. (required).</param>
         public Attachment(string uploadDestinationId = default(string), string fileName = default(string))
         {
@@ -58,9 +58,9 @@ namespace software.amzn.spapi.Model.messaging.v1
         }
 
         /// <summary>
-        /// The identifier for the upload destination. To retrieve this value, call the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.
+        /// The identifier for the upload destination. To retrieve this value, call the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.
         /// </summary>
-        /// <value>The identifier for the upload destination. To retrieve this value, call the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.</value>
+        /// <value>The identifier for the upload destination. To retrieve this value, call the Uploads API [&#x60;createUploadDestinationForResource&#x60;](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.</value>
         [DataMember(Name = "uploadDestinationId", IsRequired = true, EmitDefaultValue = true)]
         public string UploadDestinationId { get; set; }
 
