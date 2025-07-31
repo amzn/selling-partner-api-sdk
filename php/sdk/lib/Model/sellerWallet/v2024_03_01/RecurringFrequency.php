@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The frequency at which the transaction is repeated.
+ * @description Represent parameters to specify recurrence of the scheduled transfer.
  *
  * @author   OpenAPI Generator team
  *

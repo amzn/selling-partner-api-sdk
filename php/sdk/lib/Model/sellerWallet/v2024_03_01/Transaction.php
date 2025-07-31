@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The current transaction status and historical details related to it.
+ * @description The current transaction status and related historical details.
  *
  * @author   OpenAPI Generator team
  *
@@ -386,7 +386,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_id.
      *
-     * @param string $transaction_id the unique identifier provided by Amazon to the transaction
+     * @param string $transaction_id The unique identifier provided by Amazon to the transaction
      */
     public function setTransactionId(string $transaction_id): self
     {
@@ -455,7 +455,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_request_date.
      *
-     * @param \DateTime $transaction_request_date the date on which the transaction was initiated
+     * @param \DateTime $transaction_request_date the date when the transaction was initiated
      */
     public function setTransactionRequestDate(\DateTime $transaction_request_date): self
     {
@@ -478,7 +478,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets expected_completion_date.
      *
-     * @param null|\DateTime $expected_completion_date the expected completion date of the transaction
+     * @param null|\DateTime $expected_completion_date Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days
      */
     public function setExpectedCompletionDate(?\DateTime $expected_completion_date): self
     {
@@ -508,7 +508,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_actual_completion_date.
      *
-     * @param null|\DateTime $transaction_actual_completion_date the transaction's completion date
+     * @param null|\DateTime $transaction_actual_completion_date Transaction completion date
      */
     public function setTransactionActualCompletionDate(?\DateTime $transaction_actual_completion_date): self
     {
@@ -538,7 +538,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets last_update_date.
      *
-     * @param \DateTime $last_update_date the date of the most recent account balance update
+     * @param \DateTime $last_update_date The last update date on the transaction
      */
     public function setLastUpdateDate(\DateTime $last_update_date): self
     {
@@ -561,7 +561,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets requester_name.
      *
-     * @param null|string $requester_name the Amazon Seller Wallet customer who requested the transaction
+     * @param null|string $requester_name Amazon SW customer who requested the transaction
      */
     public function setRequesterName(?string $requester_name): self
     {
@@ -591,7 +591,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_requester_source.
      *
-     * @param string $transaction_requester_source The transaction initiation source. This value could be the Amazon portal or PISP name that the customer used to start the transaction.
+     * @param string $transaction_requester_source The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
      */
     public function setTransactionRequesterSource(string $transaction_requester_source): self
     {
@@ -614,7 +614,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_description.
      *
-     * @param string $transaction_description the description provided by the requester in the transaction request at time of transaction initiation
+     * @param string $transaction_description a description of the transaction that the requester provides when they initiate the transaction
      */
     public function setTransactionDescription(string $transaction_description): self
     {
@@ -759,7 +759,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_failure_reason.
      *
-     * @param null|string $transaction_failure_reason the reason the transaction failed, if applicable
+     * @param null|string $transaction_failure_reason Description in case the transaction fails before completion
      */
     public function setTransactionFailureReason(?string $transaction_failure_reason): self
     {

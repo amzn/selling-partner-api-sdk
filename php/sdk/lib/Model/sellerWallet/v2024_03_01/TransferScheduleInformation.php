@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Mandatory information for initiating a schedule transfer.
+ * @description Parameters containing information required for initiating a schedule transfer
  *
  * @author   OpenAPI Generator team
  *
@@ -266,7 +266,7 @@ class TransferScheduleInformation implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets schedule_start_date.
      *
-     * @param null|\DateTime $schedule_start_date the start date of the scheduled transfer
+     * @param null|\DateTime $schedule_start_date Field to specify start date of the scheduled transfer
      */
     public function setScheduleStartDate(?\DateTime $schedule_start_date): self
     {
@@ -296,7 +296,7 @@ class TransferScheduleInformation implements ModelInterface, \ArrayAccess, \Json
     /**
      * Sets schedule_end_date.
      *
-     * @param null|\DateTime $schedule_end_date the end date of the scheduled transfer
+     * @param null|\DateTime $schedule_end_date Field to specify end date of the scheduled transfer
      */
     public function setScheduleEndDate(?\DateTime $schedule_end_date): self
     {

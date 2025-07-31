@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description A list of bank accounts.
+ * @description Struct that holds collection of accounts.
  *
  * @author   OpenAPI Generator team
  *
@@ -251,7 +251,7 @@ class BankAccountListing implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets accounts.
      *
-     * @param array $accounts a list of bank accounts
+     * @param array $accounts Collection that holds BankAccount
      */
     public function setAccounts(array $accounts): self
     {

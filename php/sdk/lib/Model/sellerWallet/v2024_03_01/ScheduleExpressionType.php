@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The type of scheduled transfer expression.
+ * @description Represent a type of schedule transfer expression.
  *
  * @author   OpenAPI Generator team
  *

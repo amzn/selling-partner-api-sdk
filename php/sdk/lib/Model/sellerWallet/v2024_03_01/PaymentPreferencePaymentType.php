@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The type of payment preference.
+ * @description Represent a type of payment preference.
  *
  * @author   OpenAPI Generator team
  *

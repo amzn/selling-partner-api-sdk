@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The Address used to verify the bank account of the payee. This can be a person or business mailing address.
+ * @description Address for bank account verification of the Payee. For example, this can be a person or business mailing address
  *
  * @author   OpenAPI Generator team
  *
@@ -305,7 +305,7 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets address_line1.
      *
-     * @param string $address_line1 address Line 1 of the public address
+     * @param string $address_line1 Address Line 1 of the public address
      */
     public function setAddressLine1(string $address_line1): self
     {
@@ -328,7 +328,7 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets address_line2.
      *
-     * @param null|string $address_line2 address Line 2 of the public address
+     * @param null|string $address_line2 Address Line 2 of the public address
      */
     public function setAddressLine2(?string $address_line2): self
     {
@@ -358,7 +358,7 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets city.
      *
-     * @param string $city city name of the public address
+     * @param string $city City name of the public address
      */
     public function setCity(string $city): self
     {
@@ -381,7 +381,7 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets state.
      *
-     * @param string $state State name of the public address. This will be state or region for CN (China) based addresses.
+     * @param string $state State name of the public address. This is the state or region for China-based addresses.
      */
     public function setState(string $state): self
     {
@@ -404,7 +404,7 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets postal_code.
      *
-     * @param string $postal_code postal code of the public address
+     * @param string $postal_code Postal code of the public address
      */
     public function setPostalCode(string $postal_code): self
     {
@@ -427,7 +427,7 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets country.
      *
-     * @param null|string $country country name of the public address
+     * @param null|string $country Country name of the public address
      */
     public function setCountry(?string $country): self
     {

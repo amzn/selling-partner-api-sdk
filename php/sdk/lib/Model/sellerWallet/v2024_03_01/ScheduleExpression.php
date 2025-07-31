@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The configuration of the schedule.
+ * @description Parameters containing information of the expression that defines when the schedule runs. The following formats are supported.
  *
  * @author   OpenAPI Generator team
  *

@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The status of the Amazon Seller Wallet account holder.
+ * @description Represents status of the Amazon Seller Wallet accountholder
  *
  * @author   OpenAPI Generator team
  *

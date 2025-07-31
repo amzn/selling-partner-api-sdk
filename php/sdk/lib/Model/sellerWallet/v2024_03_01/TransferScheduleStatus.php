@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The schedule status of the transfer.
+ * @description Represents the schedule status of the transfer.
  *
  * @author   OpenAPI Generator team
  *

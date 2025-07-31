@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The type of payment preference in which the transfer is being scheduled.
+ * @description Payment preference type in which transfer is being scheduled
  *
  * @author   OpenAPI Generator team
  *
@@ -284,7 +284,7 @@ class PaymentPreference implements ModelInterface, \ArrayAccess, \JsonSerializab
     /**
      * Sets value.
      *
-     * @param float $value a decimal number, such as an amount or FX rate
+     * @param float $value a decimal number such as amount or FX rate
      */
     public function setValue(float $value): self
     {

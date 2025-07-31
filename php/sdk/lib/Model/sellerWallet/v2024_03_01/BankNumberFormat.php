@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The format of the bank number. Also known as the routing number type.
+ * @description Represents a format of a bank number also called routing number type
  *
  * @author   OpenAPI Generator team
  *

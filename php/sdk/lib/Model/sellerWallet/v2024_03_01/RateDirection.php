@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description Whether the customer is buying or selling the source currency.
+ * @description Represents the rate direction at which the transaction is performed.
  *
  * @author   OpenAPI Generator team
  *

@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The response returned when the schedule transfer&#39;s delete request is successful.
+ * @description Response returned when the schedule transfer&#39;s delete request is successful.
  *
  * @author   OpenAPI Generator team
  *
@@ -268,7 +268,7 @@ class DeleteTransferSchedule implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets code.
      *
-     * @param string $code A success code that specifies that the delete operation was successful. For example, HTTP 200.
+     * @param string $code A success code that specifies the delete operation was successful. eg:HTTP 200.
      */
     public function setCode(string $code): self
     {

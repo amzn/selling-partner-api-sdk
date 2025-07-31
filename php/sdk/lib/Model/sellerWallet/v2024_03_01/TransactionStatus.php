@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The current status of the transaction.
+ * @description Represents current status of the transaction.
  *
  * @author   OpenAPI Generator team
  *

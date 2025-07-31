@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Request body to initiate a transaction from a Seller Wallet bank account to another customer-defined bank account.
+ * @description Request body to initiate a transaction from a SW bank account to another customer defined bank account
  *
  * @author   OpenAPI Generator team
  *
@@ -312,7 +312,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets source_account_id.
      *
-     * @param string $source_account_id the unique identifier of the source Amazon Seller Wallet bank account from which the money is debited
+     * @param string $source_account_id The unique identifier of the source Amazon SW bank account from where the money needs to be debited
      */
     public function setSourceAccountId(string $source_account_id): self
     {
@@ -335,7 +335,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets destination_account_id.
      *
-     * @param null|string $destination_account_id the unique identifier of the destination bank account where the money is deposited
+     * @param null|string $destination_account_id Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited
      */
     public function setDestinationAccountId(?string $destination_account_id): self
     {
@@ -365,7 +365,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets description.
      *
-     * @param string $description a description of the transaction
+     * @param string $description Optional field to specify description for the transaction
      */
     public function setDescription(string $description): self
     {
@@ -494,7 +494,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets request_time.
      *
-     * @param \DateTime $request_time The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).
+     * @param \DateTime $request_time The transaction initiation request time in date-time format
      */
     public function setRequestTime(\DateTime $request_time): self
     {

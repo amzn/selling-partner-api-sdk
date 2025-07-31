@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Details of the bank account involved in transaction.
+ * @description Details of the bank account involved in the transaction.
  *
  * @author   OpenAPI Generator team
  *
@@ -302,7 +302,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets account_id.
      *
-     * @param null|string $account_id the unique identifier provided by Amazon to identify the account
+     * @param null|string $account_id The unique identifier provided by Amazon to identify the account
      */
     public function setAccountId(?string $account_id): self
     {
@@ -332,7 +332,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets bank_account_holder_name.
      *
-     * @param string $bank_account_holder_name the account holder's name
+     * @param string $bank_account_holder_name BankAccount holder's name
      */
     public function setBankAccountHolderName(string $bank_account_holder_name): self
     {
@@ -355,7 +355,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets bank_name.
      *
-     * @param string $bank_name the name of the bank
+     * @param string $bank_name The name of the bank
      */
     public function setBankName(string $bank_name): self
     {
@@ -401,7 +401,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets bank_account_number_tail.
      *
-     * @param null|string $bank_account_number_tail the last three digits of the bank account number
+     * @param null|string $bank_account_number_tail Last 3 digit of the bank account number
      */
     public function setBankAccountNumberTail(?string $bank_account_number_tail): self
     {
@@ -431,7 +431,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets bank_account_country_code.
      *
-     * @param null|string $bank_account_country_code The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.
+     * @param null|string $bank_account_country_code The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount
      */
     public function setBankAccountCountryCode(?string $bank_account_country_code): self
     {
@@ -461,7 +461,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets bank_account_currency.
      *
-     * @param string $bank_account_currency the currency code in ISO 4217 format
+     * @param string $bank_account_currency The currency code in ISO 4217 format
      */
     public function setBankAccountCurrency(string $bank_account_currency): self
     {

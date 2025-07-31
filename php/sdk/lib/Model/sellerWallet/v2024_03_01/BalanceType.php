@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The type of bank account balance.
+ * @description Represent a bank account balance type.
  *
  * @author   OpenAPI Generator team
  *

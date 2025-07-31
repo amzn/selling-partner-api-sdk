@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Details of the fee.
+ * @description If the fees is in baseAmount (sourceAccount) currency, effectiveRate &#x3D;  (baseAmount - sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount) currency, effectiveRate &#x3D;  (( baseAmount * baseRate ) -  sum(fees.feeAmount.currencyAmount )) / baseAmount
  *
  * @author   OpenAPI Generator team
  *
@@ -281,7 +281,7 @@ class Fee implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets fee_id.
      *
-     * @param string $fee_id the unique identifier assigned to the fee
+     * @param string $fee_id unique identifier assigned to the Fee
      */
     public function setFeeId(string $fee_id): self
     {
@@ -327,7 +327,7 @@ class Fee implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets fee_rate_value.
      *
-     * @param float $fee_rate_value a decimal number, such as an amount or FX rate
+     * @param float $fee_rate_value a decimal number such as amount or FX rate
      */
     public function setFeeRateValue(float $fee_rate_value): self
     {

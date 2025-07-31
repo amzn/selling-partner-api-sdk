@@ -282,7 +282,7 @@ class Currency implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets currency_amount.
      *
-     * @param null|float $currency_amount a decimal number, such as an amount or FX rate
+     * @param null|float $currency_amount a decimal number such as amount or FX rate
      */
     public function setCurrencyAmount(?float $currency_amount): self
     {

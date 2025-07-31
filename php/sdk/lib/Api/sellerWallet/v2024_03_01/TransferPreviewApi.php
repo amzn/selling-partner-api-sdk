@@ -129,15 +129,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string      $source_country_code
-     *                                               Country code of the source transaction account in ISO 3166 format. (required)
+     *                                               Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
      * @param string      $source_currency_code
-     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
+     *                                               Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
      * @param string      $destination_country_code
-     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
+     *                                               Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
      * @param string      $destination_currency_code
-     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
+     *                                               Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float       $base_amount
-     *                                               The base transaction amount without any markup fees. (required)
+     *                                               Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
      * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -162,15 +162,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string      $source_country_code
-     *                                               Country code of the source transaction account in ISO 3166 format. (required)
+     *                                               Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
      * @param string      $source_currency_code
-     *                                               Currency code of the source transaction country in ISO 4217 format. (required)
+     *                                               Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
      * @param string      $destination_country_code
-     *                                               Country code of the destination transaction account in ISO 3166 format. (required)
+     *                                               Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
      * @param string      $destination_currency_code
-     *                                               Currency code of the destination transaction country in ISO 4217 format. (required)
+     *                                               Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float       $base_amount
-     *                                               The base transaction amount without any markup fees. (required)
+     *                                               Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
      * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview, HTTP status code, HTTP response headers (array of strings)
@@ -263,15 +263,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string $source_country_code
-     *                                          Country code of the source transaction account in ISO 3166 format. (required)
+     *                                          Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
      * @param string $source_currency_code
-     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
+     *                                          Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
      * @param string $destination_country_code
-     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
+     *                                          Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
      * @param string $destination_currency_code
-     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
+     *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float  $base_amount
-     *                                          The base transaction amount without any markup fees. (required)
+     *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -297,15 +297,15 @@ class TransferPreviewApi
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
      *
      * @param string $source_country_code
-     *                                          Country code of the source transaction account in ISO 3166 format. (required)
+     *                                          Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
      * @param string $source_currency_code
-     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
+     *                                          Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
      * @param string $destination_country_code
-     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
+     *                                          Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
      * @param string $destination_currency_code
-     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
+     *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float  $base_amount
-     *                                          The base transaction amount without any markup fees. (required)
+     *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -370,15 +370,15 @@ class TransferPreviewApi
      * Create request for operation 'getTransferPreview'.
      *
      * @param string $source_country_code
-     *                                          Country code of the source transaction account in ISO 3166 format. (required)
+     *                                          Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
      * @param string $source_currency_code
-     *                                          Currency code of the source transaction country in ISO 4217 format. (required)
+     *                                          Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
      * @param string $destination_country_code
-     *                                          Country code of the destination transaction account in ISO 3166 format. (required)
+     *                                          Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
      * @param string $destination_currency_code
-     *                                          Currency code of the destination transaction country in ISO 4217 format. (required)
+     *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float  $base_amount
-     *                                          The base transaction amount without any markup fees. (required)
+     *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
      *
      * @throws \InvalidArgumentException
      */

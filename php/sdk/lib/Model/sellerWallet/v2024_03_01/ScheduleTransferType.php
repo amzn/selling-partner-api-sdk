@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The type of schedule the transfer is on. Schedules based on time patterns use EventBridge.
+ * @description Defines the type of schedule trigger used for executing transfers. Schedule based on time patterns using EventBridge.
  *
  * @author   OpenAPI Generator team
  *

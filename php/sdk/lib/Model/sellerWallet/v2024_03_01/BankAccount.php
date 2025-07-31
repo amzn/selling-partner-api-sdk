@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.
+ * @description Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not including account_links, short cut links to the account balance and transactions -&gt; since not mandatory
  *
  * @author   OpenAPI Generator team
  *
@@ -342,7 +342,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets account_id.
      *
-     * @param null|string $account_id the unique identifier provided by Amazon to identify the account
+     * @param null|string $account_id The unique identifier provided by Amazon to identify the account
      */
     public function setAccountId(?string $account_id): self
     {
@@ -372,7 +372,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets account_holder_name.
      *
-     * @param string $account_holder_name the bank account holder's name (expected to be an Amazon customer)
+     * @param string $account_holder_name BankAccount holder's name (expected to be Amazon customer)
      */
     public function setAccountHolderName(string $account_holder_name): self
     {
@@ -418,7 +418,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets bank_name.
      *
-     * @param null|string $bank_name The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
+     * @param null|string $bank_name The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet
      */
     public function setBankName(?string $bank_name): self
     {
@@ -471,7 +471,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets routing_number.
      *
-     * @param string $routing_number Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
+     * @param string $routing_number Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,
      */
     public function setRoutingNumber(string $routing_number): self
     {
@@ -517,7 +517,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets account_country_code.
      *
-     * @param string $account_country_code the two-digit country code in ISO 3166 format
+     * @param string $account_country_code the two digit country code, in ISO 3166 format
      */
     public function setAccountCountryCode(string $account_country_code): self
     {
@@ -540,7 +540,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets account_currency.
      *
-     * @param string $account_currency bank account currency code in ISO 4217 format
+     * @param string $account_currency BankAccount currency code in ISO 4217 format
      */
     public function setAccountCurrency(string $account_currency): self
     {
@@ -563,7 +563,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets bank_account_number_tail.
      *
-     * @param string $bank_account_number_tail The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
+     * @param string $bank_account_number_tail Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
      */
     public function setBankAccountNumberTail(string $bank_account_number_tail): self
     {

@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The bank account&#39;s format type.
+ * @description The format of the bank account number.
  *
  * @author   OpenAPI Generator team
  *

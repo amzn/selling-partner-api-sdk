@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The type of transaction.
+ * @description Represent type of transaction.
  *
  * @author   OpenAPI Generator team
  *

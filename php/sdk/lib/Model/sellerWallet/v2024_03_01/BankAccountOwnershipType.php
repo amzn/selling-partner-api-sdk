@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The destination bank account&#39;s ownership type.
+ * @description Represents destination bank account&#39;s ownership type.
  *
  * @author   OpenAPI Generator team
  *

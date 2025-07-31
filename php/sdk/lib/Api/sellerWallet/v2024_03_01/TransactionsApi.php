@@ -134,14 +134,14 @@ class TransactionsApi
     /**
      * Operation createTransaction.
      *
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transaction request from Amazon SW account to another customer provided account
      *
      * @param string                       $dest_account_digital_signature
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
      * @param TransactionInitiationRequest $body
-     *                                                                     The payload of the request (required)
+     *                                                                     Defines the actual payload of the request (required)
      * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -161,14 +161,14 @@ class TransactionsApi
     /**
      * Operation createTransactionWithHttpInfo.
      *
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transaction request from Amazon SW account to another customer provided account
      *
      * @param string                       $dest_account_digital_signature
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
      * @param TransactionInitiationRequest $body
-     *                                                                     The payload of the request (required)
+     *                                                                     Defines the actual payload of the request (required)
      * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
@@ -256,14 +256,14 @@ class TransactionsApi
     /**
      * Operation createTransactionAsync.
      *
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transaction request from Amazon SW account to another customer provided account
      *
      * @param string                       $dest_account_digital_signature
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
      * @param TransactionInitiationRequest $body
-     *                                                                     The payload of the request (required)
+     *                                                                     Defines the actual payload of the request (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -284,14 +284,14 @@ class TransactionsApi
     /**
      * Operation createTransactionAsyncWithHttpInfo.
      *
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transaction request from Amazon SW account to another customer provided account
      *
      * @param string                       $dest_account_digital_signature
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
      * @param TransactionInitiationRequest $body
-     *                                                                     The payload of the request (required)
+     *                                                                     Defines the actual payload of the request (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -358,7 +358,7 @@ class TransactionsApi
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
      * @param TransactionInitiationRequest $body
-     *                                                                     The payload of the request (required)
+     *                                                                     Defines the actual payload of the request (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -461,10 +461,10 @@ class TransactionsApi
     /**
      * Operation getTransaction.
      *
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
+     * Find particular Amazon SW account transaction by Amazon transaction identifier
      *
      * @param string      $transaction_id
-     *                                         The ID of the Amazon Seller Wallet transaction. (required)
+     *                                         ID of the Amazon SW transaction (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -482,10 +482,10 @@ class TransactionsApi
     /**
      * Operation getTransactionWithHttpInfo.
      *
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
+     * Find particular Amazon SW account transaction by Amazon transaction identifier
      *
      * @param string      $transaction_id
-     *                                         The ID of the Amazon Seller Wallet transaction. (required)
+     *                                         ID of the Amazon SW transaction (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
@@ -571,10 +571,10 @@ class TransactionsApi
     /**
      * Operation getTransactionAsync.
      *
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
+     * Find particular Amazon SW account transaction by Amazon transaction identifier
      *
      * @param string $transaction_id
-     *                               The ID of the Amazon Seller Wallet transaction. (required)
+     *                               ID of the Amazon SW transaction (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -593,10 +593,10 @@ class TransactionsApi
     /**
      * Operation getTransactionAsyncWithHttpInfo.
      *
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
+     * Find particular Amazon SW account transaction by Amazon transaction identifier
      *
      * @param string $transaction_id
-     *                               The ID of the Amazon Seller Wallet transaction. (required)
+     *                               ID of the Amazon SW transaction (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -657,7 +657,7 @@ class TransactionsApi
      * Create request for operation 'getTransaction'.
      *
      * @param string $transaction_id
-     *                               The ID of the Amazon Seller Wallet transaction. (required)
+     *                               ID of the Amazon SW transaction (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -740,12 +740,12 @@ class TransactionsApi
     /**
      * Operation listAccountTransactions.
      *
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
      *
      * @param string      $account_id
-     *                                         The ID of the Amazon Seller Wallet account. (required)
+     *                                         ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -764,12 +764,12 @@ class TransactionsApi
     /**
      * Operation listAccountTransactionsWithHttpInfo.
      *
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
      *
      * @param string      $account_id
-     *                                         The ID of the Amazon Seller Wallet account. (required)
+     *                                         ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransactionListing, HTTP status code, HTTP response headers (array of strings)
@@ -856,12 +856,12 @@ class TransactionsApi
     /**
      * Operation listAccountTransactionsAsync.
      *
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                     ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                     Pagination token to retrieve a specific page of results. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -881,12 +881,12 @@ class TransactionsApi
     /**
      * Operation listAccountTransactionsAsyncWithHttpInfo.
      *
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                     ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                     Pagination token to retrieve a specific page of results. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -948,9 +948,9 @@ class TransactionsApi
      * Create request for operation 'listAccountTransactions'.
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                     ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                     Pagination token to retrieve a specific page of results. (optional)
      *
      * @throws \InvalidArgumentException
      */

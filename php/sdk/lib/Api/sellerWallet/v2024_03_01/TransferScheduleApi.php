@@ -141,14 +141,14 @@ class TransferScheduleApi
     /**
      * Operation createTransferSchedule.
      *
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transfer schedule request from Amazon SW account to another customer provided account
      *
      * @param string                  $dest_account_digital_signature
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
      * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     *                                                                Defines the actual payload of the request (required)
      * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -168,14 +168,14 @@ class TransferScheduleApi
     /**
      * Operation createTransferScheduleWithHttpInfo.
      *
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transfer schedule request from Amazon SW account to another customer provided account
      *
      * @param string                  $dest_account_digital_signature
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
      * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     *                                                                Defines the actual payload of the request (required)
      * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
@@ -263,14 +263,14 @@ class TransferScheduleApi
     /**
      * Operation createTransferScheduleAsync.
      *
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transfer schedule request from Amazon SW account to another customer provided account
      *
      * @param string                  $dest_account_digital_signature
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
      * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     *                                                                Defines the actual payload of the request (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -291,14 +291,14 @@ class TransferScheduleApi
     /**
      * Operation createTransferScheduleAsyncWithHttpInfo.
      *
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
+     * Create a transfer schedule request from Amazon SW account to another customer provided account
      *
      * @param string                  $dest_account_digital_signature
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
      * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     *                                                                Defines the actual payload of the request (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -365,7 +365,7 @@ class TransferScheduleApi
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
      * @param TransferScheduleRequest $body
-     *                                                                The payload of the request. (required)
+     *                                                                Defines the actual payload of the request (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -468,10 +468,10 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransaction.
      *
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
      *
      * @param string      $transfer_schedule_id
-     *                                          A unique reference ID for a scheduled transfer. (required)
+     *                                          A unique reference id for a scheduled transfer (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -489,10 +489,10 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransactionWithHttpInfo.
      *
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
      *
      * @param string      $transfer_schedule_id
-     *                                          A unique reference ID for a scheduled transfer. (required)
+     *                                          A unique reference id for a scheduled transfer (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule, HTTP status code, HTTP response headers (array of strings)
@@ -578,10 +578,10 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransactionAsync.
      *
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
      *
      * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     *                                     A unique reference id for a scheduled transfer (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -600,10 +600,10 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransactionAsyncWithHttpInfo.
      *
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
      *
      * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     *                                     A unique reference id for a scheduled transfer (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -664,7 +664,7 @@ class TransferScheduleApi
      * Create request for operation 'deleteScheduleTransaction'.
      *
      * @param string $transfer_schedule_id
-     *                                     A unique reference ID for a scheduled transfer. (required)
+     *                                     A unique reference id for a scheduled transfer (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -678,7 +678,7 @@ class TransferScheduleApi
             );
         }
 
-        $resourcePath = '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}';
+        $resourcePath = '/finances/transfers/wallet/2024-03-01/transferSchedules';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -747,10 +747,10 @@ class TransferScheduleApi
     /**
      * Operation getTransferSchedule.
      *
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string      $transfer_schedule_id
-     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
+     *                                          Schedule ID of the Amazon SW transfer (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -768,10 +768,10 @@ class TransferScheduleApi
     /**
      * Operation getTransferScheduleWithHttpInfo.
      *
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string      $transfer_schedule_id
-     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
+     *                                          Schedule ID of the Amazon SW transfer (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
@@ -857,10 +857,10 @@ class TransferScheduleApi
     /**
      * Operation getTransferScheduleAsync.
      *
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     *                                     Schedule ID of the Amazon SW transfer (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -879,10 +879,10 @@ class TransferScheduleApi
     /**
      * Operation getTransferScheduleAsyncWithHttpInfo.
      *
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     *                                     Schedule ID of the Amazon SW transfer (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -943,7 +943,7 @@ class TransferScheduleApi
      * Create request for operation 'getTransferSchedule'.
      *
      * @param string $transfer_schedule_id
-     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     *                                     Schedule ID of the Amazon SW transfer (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1026,12 +1026,12 @@ class TransferScheduleApi
     /**
      * Operation listTransferSchedules.
      *
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account
+     * The API will return all the transfer schedules for a given Amazon SW account
      *
      * @param string      $account_id
-     *                                         The ID of the Amazon Seller Wallet account. (required)
+     *                                         ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1050,12 +1050,12 @@ class TransferScheduleApi
     /**
      * Operation listTransferSchedulesWithHttpInfo.
      *
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account
+     * The API will return all the transfer schedules for a given Amazon SW account
      *
      * @param string      $account_id
-     *                                         The ID of the Amazon Seller Wallet account. (required)
+     *                                         ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                         A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing, HTTP status code, HTTP response headers (array of strings)
@@ -1142,12 +1142,12 @@ class TransferScheduleApi
     /**
      * Operation listTransferSchedulesAsync.
      *
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account
+     * The API will return all the transfer schedules for a given Amazon SW account
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                     ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                     Pagination token to retrieve a specific page of results. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1167,12 +1167,12 @@ class TransferScheduleApi
     /**
      * Operation listTransferSchedulesAsyncWithHttpInfo.
      *
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account
+     * The API will return all the transfer schedules for a given Amazon SW account
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                     ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                     Pagination token to retrieve a specific page of results. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1234,9 +1234,9 @@ class TransferScheduleApi
      * Create request for operation 'listTransferSchedules'.
      *
      * @param string      $account_id
-     *                                     The ID of the Amazon Seller Wallet account. (required)
+     *                                     ID of the Amazon SW account (required)
      * @param null|string $next_page_token
-     *                                     A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     *                                     Pagination token to retrieve a specific page of results. (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1339,7 +1339,7 @@ class TransferScheduleApi
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
      * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1366,7 +1366,7 @@ class TransferScheduleApi
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
      * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
@@ -1461,7 +1461,7 @@ class TransferScheduleApi
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
      * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1489,7 +1489,7 @@ class TransferScheduleApi
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
      * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1556,7 +1556,7 @@ class TransferScheduleApi
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
      * @param TransferSchedule $body
-     *                                                         The payload of the scheduled transfer request that is to be updated. (required)
+     *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      *
      * @throws \InvalidArgumentException
      */

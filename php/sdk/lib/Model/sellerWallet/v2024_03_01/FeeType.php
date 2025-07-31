@@ -35,7 +35,7 @@ namespace SpApi\Model\sellerWallet\v2024_03_01;
  *
  * @category Class
  *
- * @description The type of fee on the transaction.
+ * @description Represents different types of fees that can be applied on a transaction.
  *
  * @author   OpenAPI Generator team
  *

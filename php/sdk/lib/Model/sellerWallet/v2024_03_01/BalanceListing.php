@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description A list of balances in the seller account.
+ * @description Struct that holds list of balances on the seller account.
  *
  * @author   OpenAPI Generator team
  *
@@ -245,7 +245,7 @@ class BalanceListing implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets balances.
      *
-     * @param null|array $balances a list of balances in the seller account
+     * @param null|array $balances Collection that holds list of balances on the account
      */
     public function setBalances(?array $balances): self
     {

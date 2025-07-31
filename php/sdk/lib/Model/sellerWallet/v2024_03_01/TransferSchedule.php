@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Transfer schedule details and historical details related to it.
+ * @description Transfer schedule details and related historical details.
  *
  * @author   OpenAPI Generator team
  *
@@ -315,7 +315,7 @@ class TransferSchedule implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets transfer_schedule_id.
      *
-     * @param string $transfer_schedule_id the unique identifier provided by Amazon to the scheduled transfer
+     * @param string $transfer_schedule_id The unique identifier provided by Amazon to the scheduled transfer
      */
     public function setTransferScheduleId(string $transfer_schedule_id): self
     {
@@ -490,7 +490,7 @@ class TransferSchedule implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets transfer_schedule_failures.
      *
-     * @param array $transfer_schedule_failures a list of transfer schedule failures
+     * @param array $transfer_schedule_failures collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons
      */
     public function setTransferScheduleFailures(array $transfer_schedule_failures): self
     {
