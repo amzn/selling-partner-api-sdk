@@ -83,7 +83,7 @@ class PaymentPreference(object):
     def value(self):
         """Gets the value of this PaymentPreference.  # noqa: E501
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :return: The value of this PaymentPreference.  # noqa: E501
         :rtype: float
@@ -94,7 +94,7 @@ class PaymentPreference(object):
     def value(self, value):
         """Sets the value of this PaymentPreference.
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :param value: The value of this PaymentPreference.  # noqa: E501
         :type: float

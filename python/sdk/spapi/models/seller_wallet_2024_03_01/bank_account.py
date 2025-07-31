@@ -99,7 +99,7 @@ class BankAccount(object):
     def account_id(self):
         """Gets the account_id of this BankAccount.  # noqa: E501
 
-        The unique identifier provided by Amazon to identify the account.  # noqa: E501
+        The unique identifier provided by Amazon to identify the account   # noqa: E501
 
         :return: The account_id of this BankAccount.  # noqa: E501
         :rtype: str
@@ -110,7 +110,7 @@ class BankAccount(object):
     def account_id(self, account_id):
         """Sets the account_id of this BankAccount.
 
-        The unique identifier provided by Amazon to identify the account.  # noqa: E501
+        The unique identifier provided by Amazon to identify the account   # noqa: E501
 
         :param account_id: The account_id of this BankAccount.  # noqa: E501
         :type: str
@@ -122,7 +122,7 @@ class BankAccount(object):
     def account_holder_name(self):
         """Gets the account_holder_name of this BankAccount.  # noqa: E501
 
-        The bank account holder's name (expected to be an Amazon customer).  # noqa: E501
+        BankAccount holder's name (expected to be Amazon customer)   # noqa: E501
 
         :return: The account_holder_name of this BankAccount.  # noqa: E501
         :rtype: str
@@ -133,7 +133,7 @@ class BankAccount(object):
     def account_holder_name(self, account_holder_name):
         """Sets the account_holder_name of this BankAccount.
 
-        The bank account holder's name (expected to be an Amazon customer).  # noqa: E501
+        BankAccount holder's name (expected to be Amazon customer)   # noqa: E501
 
         :param account_holder_name: The account_holder_name of this BankAccount.  # noqa: E501
         :type: str
@@ -170,7 +170,7 @@ class BankAccount(object):
     def bank_name(self):
         """Gets the bank_name of this BankAccount.  # noqa: E501
 
-        The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.  # noqa: E501
+        The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet   # noqa: E501
 
         :return: The bank_name of this BankAccount.  # noqa: E501
         :rtype: str
@@ -181,7 +181,7 @@ class BankAccount(object):
     def bank_name(self, bank_name):
         """Sets the bank_name of this BankAccount.
 
-        The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.  # noqa: E501
+        The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet   # noqa: E501
 
         :param bank_name: The bank_name of this BankAccount.  # noqa: E501
         :type: str
@@ -216,7 +216,7 @@ class BankAccount(object):
     def routing_number(self):
         """Gets the routing_number of this BankAccount.  # noqa: E501
 
-        Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
+        Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,    # noqa: E501
 
         :return: The routing_number of this BankAccount.  # noqa: E501
         :rtype: str
@@ -227,7 +227,7 @@ class BankAccount(object):
     def routing_number(self, routing_number):
         """Sets the routing_number of this BankAccount.
 
-        Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
+        Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,    # noqa: E501
 
         :param routing_number: The routing_number of this BankAccount.  # noqa: E501
         :type: str
@@ -264,7 +264,7 @@ class BankAccount(object):
     def account_country_code(self):
         """Gets the account_country_code of this BankAccount.  # noqa: E501
 
-        The two-digit country code in ISO 3166 format.  # noqa: E501
+        The two digit country code, in ISO 3166 format.   # noqa: E501
 
         :return: The account_country_code of this BankAccount.  # noqa: E501
         :rtype: str
@@ -275,7 +275,7 @@ class BankAccount(object):
     def account_country_code(self, account_country_code):
         """Sets the account_country_code of this BankAccount.
 
-        The two-digit country code in ISO 3166 format.  # noqa: E501
+        The two digit country code, in ISO 3166 format.   # noqa: E501
 
         :param account_country_code: The account_country_code of this BankAccount.  # noqa: E501
         :type: str
@@ -289,7 +289,7 @@ class BankAccount(object):
     def account_currency(self):
         """Gets the account_currency of this BankAccount.  # noqa: E501
 
-        Bank account currency code in ISO 4217 format.  # noqa: E501
+        BankAccount currency code in ISO 4217 format   # noqa: E501
 
         :return: The account_currency of this BankAccount.  # noqa: E501
         :rtype: str
@@ -300,7 +300,7 @@ class BankAccount(object):
     def account_currency(self, account_currency):
         """Sets the account_currency of this BankAccount.
 
-        Bank account currency code in ISO 4217 format.  # noqa: E501
+        BankAccount currency code in ISO 4217 format   # noqa: E501
 
         :param account_currency: The account_currency of this BankAccount.  # noqa: E501
         :type: str
@@ -314,7 +314,7 @@ class BankAccount(object):
     def bank_account_number_tail(self):
         """Gets the bank_account_number_tail of this BankAccount.  # noqa: E501
 
-        The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
+        Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's   # noqa: E501
 
         :return: The bank_account_number_tail of this BankAccount.  # noqa: E501
         :rtype: str
@@ -325,7 +325,7 @@ class BankAccount(object):
     def bank_account_number_tail(self, bank_account_number_tail):
         """Sets the bank_account_number_tail of this BankAccount.
 
-        The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
+        Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's   # noqa: E501
 
         :param bank_account_number_tail: The bank_account_number_tail of this BankAccount.  # noqa: E501
         :type: str

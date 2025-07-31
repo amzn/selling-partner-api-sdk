@@ -68,7 +68,7 @@ class FxRateDetails(object):
     def fx_rate_id(self):
         """Gets the fx_rate_id of this FxRateDetails.  # noqa: E501
 
-        The unique identifier assigned to the fees / foreign exchange rate of a transaction.  # noqa: E501
+        Unique identifier assigned to the fees/foreign exchange Rate of a transaction.   # noqa: E501
 
         :return: The fx_rate_id of this FxRateDetails.  # noqa: E501
         :rtype: str
@@ -79,7 +79,7 @@ class FxRateDetails(object):
     def fx_rate_id(self, fx_rate_id):
         """Sets the fx_rate_id of this FxRateDetails.
 
-        The unique identifier assigned to the fees / foreign exchange rate of a transaction.  # noqa: E501
+        Unique identifier assigned to the fees/foreign exchange Rate of a transaction.   # noqa: E501
 
         :param fx_rate_id: The fx_rate_id of this FxRateDetails.  # noqa: E501
         :type: str
@@ -93,7 +93,7 @@ class FxRateDetails(object):
     def base_rate(self):
         """Gets the base_rate of this FxRateDetails.  # noqa: E501
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :return: The base_rate of this FxRateDetails.  # noqa: E501
         :rtype: float
@@ -104,7 +104,7 @@ class FxRateDetails(object):
     def base_rate(self, base_rate):
         """Sets the base_rate of this FxRateDetails.
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :param base_rate: The base_rate of this FxRateDetails.  # noqa: E501
         :type: float
@@ -118,7 +118,7 @@ class FxRateDetails(object):
     def effective_fx_rate(self):
         """Gets the effective_fx_rate of this FxRateDetails.  # noqa: E501
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :return: The effective_fx_rate of this FxRateDetails.  # noqa: E501
         :rtype: float
@@ -129,7 +129,7 @@ class FxRateDetails(object):
     def effective_fx_rate(self, effective_fx_rate):
         """Sets the effective_fx_rate of this FxRateDetails.
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :param effective_fx_rate: The effective_fx_rate of this FxRateDetails.  # noqa: E501
         :type: float

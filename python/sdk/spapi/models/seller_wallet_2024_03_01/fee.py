@@ -68,7 +68,7 @@ class Fee(object):
     def fee_id(self):
         """Gets the fee_id of this Fee.  # noqa: E501
 
-        The unique identifier assigned to the fee.  # noqa: E501
+        Unique identifier assigned to the Fee.   # noqa: E501
 
         :return: The fee_id of this Fee.  # noqa: E501
         :rtype: str
@@ -79,7 +79,7 @@ class Fee(object):
     def fee_id(self, fee_id):
         """Sets the fee_id of this Fee.
 
-        The unique identifier assigned to the fee.  # noqa: E501
+        Unique identifier assigned to the Fee.   # noqa: E501
 
         :param fee_id: The fee_id of this Fee.  # noqa: E501
         :type: str
@@ -116,7 +116,7 @@ class Fee(object):
     def fee_rate_value(self):
         """Gets the fee_rate_value of this Fee.  # noqa: E501
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :return: The fee_rate_value of this Fee.  # noqa: E501
         :rtype: float
@@ -127,7 +127,7 @@ class Fee(object):
     def fee_rate_value(self, fee_rate_value):
         """Sets the fee_rate_value of this Fee.
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :param fee_rate_value: The fee_rate_value of this Fee.  # noqa: E501
         :type: float

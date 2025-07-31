@@ -87,7 +87,7 @@ class TransactionInitiationRequest(object):
     def source_account_id(self):
         """Gets the source_account_id of this TransactionInitiationRequest.  # noqa: E501
 
-        The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.  # noqa: E501
+        The unique identifier of the source Amazon SW bank account from where the money needs to be debited   # noqa: E501
 
         :return: The source_account_id of this TransactionInitiationRequest.  # noqa: E501
         :rtype: str
@@ -98,7 +98,7 @@ class TransactionInitiationRequest(object):
     def source_account_id(self, source_account_id):
         """Sets the source_account_id of this TransactionInitiationRequest.
 
-        The unique identifier of the source Amazon Seller Wallet bank account from which the money is debited.  # noqa: E501
+        The unique identifier of the source Amazon SW bank account from where the money needs to be debited   # noqa: E501
 
         :param source_account_id: The source_account_id of this TransactionInitiationRequest.  # noqa: E501
         :type: str
@@ -112,7 +112,7 @@ class TransactionInitiationRequest(object):
     def destination_account_id(self):
         """Gets the destination_account_id of this TransactionInitiationRequest.  # noqa: E501
 
-        The unique identifier of the destination bank account where the money is deposited.  # noqa: E501
+        Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited   # noqa: E501
 
         :return: The destination_account_id of this TransactionInitiationRequest.  # noqa: E501
         :rtype: str
@@ -123,7 +123,7 @@ class TransactionInitiationRequest(object):
     def destination_account_id(self, destination_account_id):
         """Sets the destination_account_id of this TransactionInitiationRequest.
 
-        The unique identifier of the destination bank account where the money is deposited.  # noqa: E501
+        Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited   # noqa: E501
 
         :param destination_account_id: The destination_account_id of this TransactionInitiationRequest.  # noqa: E501
         :type: str
@@ -135,7 +135,7 @@ class TransactionInitiationRequest(object):
     def description(self):
         """Gets the description of this TransactionInitiationRequest.  # noqa: E501
 
-        A description of the transaction.  # noqa: E501
+        Optional field to specify description for the transaction   # noqa: E501
 
         :return: The description of this TransactionInitiationRequest.  # noqa: E501
         :rtype: str
@@ -146,7 +146,7 @@ class TransactionInitiationRequest(object):
     def description(self, description):
         """Sets the description of this TransactionInitiationRequest.
 
-        A description of the transaction.  # noqa: E501
+        Optional field to specify description for the transaction   # noqa: E501
 
         :param description: The description of this TransactionInitiationRequest.  # noqa: E501
         :type: str
@@ -248,7 +248,7 @@ class TransactionInitiationRequest(object):
     def request_time(self):
         """Gets the request_time of this TransactionInitiationRequest.  # noqa: E501
 
-        The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).  # noqa: E501
+        The transaction initiation request time in date-time format   # noqa: E501
 
         :return: The request_time of this TransactionInitiationRequest.  # noqa: E501
         :rtype: datetime
@@ -259,7 +259,7 @@ class TransactionInitiationRequest(object):
     def request_time(self, request_time):
         """Sets the request_time of this TransactionInitiationRequest.
 
-        The time at which the transaction was initiated in [ISO 8601 date time format](https://developer-docs.amazon.com/sp-api/docs/iso-8601).  # noqa: E501
+        The transaction initiation request time in date-time format   # noqa: E501
 
         :param request_time: The request_time of this TransactionInitiationRequest.  # noqa: E501
         :type: datetime

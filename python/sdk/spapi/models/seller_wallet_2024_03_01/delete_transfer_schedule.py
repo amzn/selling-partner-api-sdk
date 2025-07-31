@@ -65,7 +65,7 @@ class DeleteTransferSchedule(object):
     def code(self):
         """Gets the code of this DeleteTransferSchedule.  # noqa: E501
 
-        A success code that specifies that the delete operation was successful. For example, HTTP 200.  # noqa: E501
+        A success code that specifies the delete operation was successful. eg:HTTP 200.  # noqa: E501
 
         :return: The code of this DeleteTransferSchedule.  # noqa: E501
         :rtype: str
@@ -76,7 +76,7 @@ class DeleteTransferSchedule(object):
     def code(self, code):
         """Sets the code of this DeleteTransferSchedule.
 
-        A success code that specifies that the delete operation was successful. For example, HTTP 200.  # noqa: E501
+        A success code that specifies the delete operation was successful. eg:HTTP 200.  # noqa: E501
 
         :param code: The code of this DeleteTransferSchedule.  # noqa: E501
         :type: str

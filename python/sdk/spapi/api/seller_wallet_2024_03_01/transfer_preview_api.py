@@ -39,18 +39,18 @@ class TransferPreviewApi(object):
     def get_transfer_preview(self, source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, **kwargs):  # noqa: E501
         """Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code  # noqa: E501
 
-        Retrieve a list of potential fees on a transaction.  # noqa: E501
+        Returns list of potential fees on a transaction based on the source and destination country currency code  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_transfer_preview(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str source_country_code: Country code of the source transaction account in ISO 3166 format. (required)
-        :param str source_currency_code: Currency code of the source transaction country in ISO 4217 format. (required)
-        :param str destination_country_code: Country code of the destination transaction account in ISO 3166 format. (required)
-        :param str destination_currency_code: Currency code of the destination transaction country in ISO 4217 format. (required)
-        :param float base_amount: The base transaction amount without any markup fees. (required)
+        :param str source_country_code: Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
+        :param str source_currency_code: Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
+        :param str destination_country_code: Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
+        :param str destination_currency_code: Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
+        :param float base_amount: Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
         :return: TransferRatePreview
                  If the method is called asynchronously,
                  returns the request thread.
@@ -65,18 +65,18 @@ class TransferPreviewApi(object):
     def get_transfer_preview_with_http_info(self, source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, **kwargs):  # noqa: E501
         """Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code  # noqa: E501
 
-        Retrieve a list of potential fees on a transaction.  # noqa: E501
+        Returns list of potential fees on a transaction based on the source and destination country currency code  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str source_country_code: Country code of the source transaction account in ISO 3166 format. (required)
-        :param str source_currency_code: Currency code of the source transaction country in ISO 4217 format. (required)
-        :param str destination_country_code: Country code of the destination transaction account in ISO 3166 format. (required)
-        :param str destination_currency_code: Currency code of the destination transaction country in ISO 4217 format. (required)
-        :param float base_amount: The base transaction amount without any markup fees. (required)
+        :param str source_country_code: Represents 2 character country code of source transaction account in ISO 3166 standard format. (required)
+        :param str source_currency_code: Represents 3 letter currency code in ISO 4217 standard format of the source transaction country. (required)
+        :param str destination_country_code: Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
+        :param str destination_currency_code: Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
+        :param float base_amount: Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
         :return: TransferRatePreview
                  If the method is called asynchronously,
                  returns the request thread.

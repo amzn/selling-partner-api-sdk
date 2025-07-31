@@ -83,7 +83,7 @@ class TransactionAccount(object):
     def account_id(self):
         """Gets the account_id of this TransactionAccount.  # noqa: E501
 
-        The unique identifier provided by Amazon to identify the account.  # noqa: E501
+        The unique identifier provided by Amazon to identify the account   # noqa: E501
 
         :return: The account_id of this TransactionAccount.  # noqa: E501
         :rtype: str
@@ -94,7 +94,7 @@ class TransactionAccount(object):
     def account_id(self, account_id):
         """Sets the account_id of this TransactionAccount.
 
-        The unique identifier provided by Amazon to identify the account.  # noqa: E501
+        The unique identifier provided by Amazon to identify the account   # noqa: E501
 
         :param account_id: The account_id of this TransactionAccount.  # noqa: E501
         :type: str
@@ -106,7 +106,7 @@ class TransactionAccount(object):
     def bank_account_holder_name(self):
         """Gets the bank_account_holder_name of this TransactionAccount.  # noqa: E501
 
-        The account holder's name.  # noqa: E501
+        BankAccount holder's name   # noqa: E501
 
         :return: The bank_account_holder_name of this TransactionAccount.  # noqa: E501
         :rtype: str
@@ -117,7 +117,7 @@ class TransactionAccount(object):
     def bank_account_holder_name(self, bank_account_holder_name):
         """Sets the bank_account_holder_name of this TransactionAccount.
 
-        The account holder's name.  # noqa: E501
+        BankAccount holder's name   # noqa: E501
 
         :param bank_account_holder_name: The bank_account_holder_name of this TransactionAccount.  # noqa: E501
         :type: str
@@ -131,7 +131,7 @@ class TransactionAccount(object):
     def bank_name(self):
         """Gets the bank_name of this TransactionAccount.  # noqa: E501
 
-        The name of the bank.  # noqa: E501
+        The name of the bank   # noqa: E501
 
         :return: The bank_name of this TransactionAccount.  # noqa: E501
         :rtype: str
@@ -142,7 +142,7 @@ class TransactionAccount(object):
     def bank_name(self, bank_name):
         """Sets the bank_name of this TransactionAccount.
 
-        The name of the bank.  # noqa: E501
+        The name of the bank   # noqa: E501
 
         :param bank_name: The bank_name of this TransactionAccount.  # noqa: E501
         :type: str
@@ -179,7 +179,7 @@ class TransactionAccount(object):
     def bank_account_number_tail(self):
         """Gets the bank_account_number_tail of this TransactionAccount.  # noqa: E501
 
-        The last three digits of the bank account number.  # noqa: E501
+        Last 3 digit of the bank account number   # noqa: E501
 
         :return: The bank_account_number_tail of this TransactionAccount.  # noqa: E501
         :rtype: str
@@ -190,7 +190,7 @@ class TransactionAccount(object):
     def bank_account_number_tail(self, bank_account_number_tail):
         """Sets the bank_account_number_tail of this TransactionAccount.
 
-        The last three digits of the bank account number.  # noqa: E501
+        Last 3 digit of the bank account number   # noqa: E501
 
         :param bank_account_number_tail: The bank_account_number_tail of this TransactionAccount.  # noqa: E501
         :type: str
@@ -202,7 +202,7 @@ class TransactionAccount(object):
     def bank_account_country_code(self):
         """Gets the bank_account_country_code of this TransactionAccount.  # noqa: E501
 
-        The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.  # noqa: E501
+        The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount   # noqa: E501
 
         :return: The bank_account_country_code of this TransactionAccount.  # noqa: E501
         :rtype: str
@@ -213,7 +213,7 @@ class TransactionAccount(object):
     def bank_account_country_code(self, bank_account_country_code):
         """Sets the bank_account_country_code of this TransactionAccount.
 
-        The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.  # noqa: E501
+        The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount   # noqa: E501
 
         :param bank_account_country_code: The bank_account_country_code of this TransactionAccount.  # noqa: E501
         :type: str
@@ -225,7 +225,7 @@ class TransactionAccount(object):
     def bank_account_currency(self):
         """Gets the bank_account_currency of this TransactionAccount.  # noqa: E501
 
-        The currency code in ISO 4217 format.  # noqa: E501
+        The currency code in ISO 4217 format   # noqa: E501
 
         :return: The bank_account_currency of this TransactionAccount.  # noqa: E501
         :rtype: str
@@ -236,7 +236,7 @@ class TransactionAccount(object):
     def bank_account_currency(self, bank_account_currency):
         """Sets the bank_account_currency of this TransactionAccount.
 
-        The currency code in ISO 4217 format.  # noqa: E501
+        The currency code in ISO 4217 format   # noqa: E501
 
         :param bank_account_currency: The bank_account_currency of this TransactionAccount.  # noqa: E501
         :type: str

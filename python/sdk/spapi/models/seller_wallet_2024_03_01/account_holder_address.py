@@ -82,7 +82,7 @@ class AccountHolderAddress(object):
     def address_line1(self):
         """Gets the address_line1 of this AccountHolderAddress.  # noqa: E501
 
-        Address Line 1 of the public address.  # noqa: E501
+        Address Line 1 of the public address   # noqa: E501
 
         :return: The address_line1 of this AccountHolderAddress.  # noqa: E501
         :rtype: str
@@ -93,7 +93,7 @@ class AccountHolderAddress(object):
     def address_line1(self, address_line1):
         """Sets the address_line1 of this AccountHolderAddress.
 
-        Address Line 1 of the public address.  # noqa: E501
+        Address Line 1 of the public address   # noqa: E501
 
         :param address_line1: The address_line1 of this AccountHolderAddress.  # noqa: E501
         :type: str
@@ -107,7 +107,7 @@ class AccountHolderAddress(object):
     def address_line2(self):
         """Gets the address_line2 of this AccountHolderAddress.  # noqa: E501
 
-        Address Line 2 of the public address.  # noqa: E501
+        Address Line 2 of the public address   # noqa: E501
 
         :return: The address_line2 of this AccountHolderAddress.  # noqa: E501
         :rtype: str
@@ -118,7 +118,7 @@ class AccountHolderAddress(object):
     def address_line2(self, address_line2):
         """Sets the address_line2 of this AccountHolderAddress.
 
-        Address Line 2 of the public address.  # noqa: E501
+        Address Line 2 of the public address   # noqa: E501
 
         :param address_line2: The address_line2 of this AccountHolderAddress.  # noqa: E501
         :type: str
@@ -130,7 +130,7 @@ class AccountHolderAddress(object):
     def city(self):
         """Gets the city of this AccountHolderAddress.  # noqa: E501
 
-        City name of the public address.  # noqa: E501
+        City name of the public address   # noqa: E501
 
         :return: The city of this AccountHolderAddress.  # noqa: E501
         :rtype: str
@@ -141,7 +141,7 @@ class AccountHolderAddress(object):
     def city(self, city):
         """Sets the city of this AccountHolderAddress.
 
-        City name of the public address.  # noqa: E501
+        City name of the public address   # noqa: E501
 
         :param city: The city of this AccountHolderAddress.  # noqa: E501
         :type: str
@@ -155,7 +155,7 @@ class AccountHolderAddress(object):
     def state(self):
         """Gets the state of this AccountHolderAddress.  # noqa: E501
 
-        State name of the public address. This will be state or region for CN (China) based addresses.  # noqa: E501
+        State name of the public address. This is the state or region for China-based addresses.  # noqa: E501
 
         :return: The state of this AccountHolderAddress.  # noqa: E501
         :rtype: str
@@ -166,7 +166,7 @@ class AccountHolderAddress(object):
     def state(self, state):
         """Sets the state of this AccountHolderAddress.
 
-        State name of the public address. This will be state or region for CN (China) based addresses.  # noqa: E501
+        State name of the public address. This is the state or region for China-based addresses.  # noqa: E501
 
         :param state: The state of this AccountHolderAddress.  # noqa: E501
         :type: str
@@ -180,7 +180,7 @@ class AccountHolderAddress(object):
     def postal_code(self):
         """Gets the postal_code of this AccountHolderAddress.  # noqa: E501
 
-        Postal code of the public address.  # noqa: E501
+        Postal code of the public address   # noqa: E501
 
         :return: The postal_code of this AccountHolderAddress.  # noqa: E501
         :rtype: str
@@ -191,7 +191,7 @@ class AccountHolderAddress(object):
     def postal_code(self, postal_code):
         """Sets the postal_code of this AccountHolderAddress.
 
-        Postal code of the public address.  # noqa: E501
+        Postal code of the public address   # noqa: E501
 
         :param postal_code: The postal_code of this AccountHolderAddress.  # noqa: E501
         :type: str
@@ -205,7 +205,7 @@ class AccountHolderAddress(object):
     def country(self):
         """Gets the country of this AccountHolderAddress.  # noqa: E501
 
-        Country name of the public address.  # noqa: E501
+        Country name of the public address   # noqa: E501
 
         :return: The country of this AccountHolderAddress.  # noqa: E501
         :rtype: str
@@ -216,7 +216,7 @@ class AccountHolderAddress(object):
     def country(self, country):
         """Sets the country of this AccountHolderAddress.
 
-        Country name of the public address.  # noqa: E501
+        Country name of the public address   # noqa: E501
 
         :param country: The country of this AccountHolderAddress.  # noqa: E501
         :type: str
@@ -228,7 +228,7 @@ class AccountHolderAddress(object):
     def country_code(self):
         """Gets the country_code of this AccountHolderAddress.  # noqa: E501
 
-        The two digit country code, in ISO 3166 format.  # noqa: E501
+        The two digit country code, in ISO 3166 format.   # noqa: E501
 
         :return: The country_code of this AccountHolderAddress.  # noqa: E501
         :rtype: str
@@ -239,7 +239,7 @@ class AccountHolderAddress(object):
     def country_code(self, country_code):
         """Sets the country_code of this AccountHolderAddress.
 
-        The two digit country code, in ISO 3166 format.  # noqa: E501
+        The two digit country code, in ISO 3166 format.   # noqa: E501
 
         :param country_code: The country_code of this AccountHolderAddress.  # noqa: E501
         :type: str

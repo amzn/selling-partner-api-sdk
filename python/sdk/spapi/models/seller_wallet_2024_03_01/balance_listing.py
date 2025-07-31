@@ -57,7 +57,7 @@ class BalanceListing(object):
     def balances(self):
         """Gets the balances of this BalanceListing.  # noqa: E501
 
-        A list of balances in the seller account.  # noqa: E501
+        Collection that holds list of balances on the account   # noqa: E501
 
         :return: The balances of this BalanceListing.  # noqa: E501
         :rtype: List[Balance]
@@ -68,7 +68,7 @@ class BalanceListing(object):
     def balances(self, balances):
         """Sets the balances of this BalanceListing.
 
-        A list of balances in the seller account.  # noqa: E501
+        Collection that holds list of balances on the account   # noqa: E501
 
         :param balances: The balances of this BalanceListing.  # noqa: E501
         :type: List[Balance]

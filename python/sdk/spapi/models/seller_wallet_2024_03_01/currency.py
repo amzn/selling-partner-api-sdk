@@ -85,7 +85,7 @@ class Currency(object):
     def currency_amount(self):
         """Gets the currency_amount of this Currency.  # noqa: E501
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :return: The currency_amount of this Currency.  # noqa: E501
         :rtype: float
@@ -96,7 +96,7 @@ class Currency(object):
     def currency_amount(self, currency_amount):
         """Sets the currency_amount of this Currency.
 
-        A decimal number, such as an amount or FX rate.  # noqa: E501
+        A decimal number such as amount or FX rate.  # noqa: E501
 
         :param currency_amount: The currency_amount of this Currency.  # noqa: E501
         :type: float

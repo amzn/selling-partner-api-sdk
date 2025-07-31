@@ -137,7 +137,7 @@ class TransferRatePreview(object):
     def fees(self):
         """Gets the fees of this TransferRatePreview.  # noqa: E501
 
-        A list of fees.  # noqa: E501
+        List of fees   # noqa: E501
 
         :return: The fees of this TransferRatePreview.  # noqa: E501
         :rtype: List[Fee]
@@ -148,7 +148,7 @@ class TransferRatePreview(object):
     def fees(self, fees):
         """Sets the fees of this TransferRatePreview.
 
-        A list of fees.  # noqa: E501
+        List of fees   # noqa: E501
 
         :param fees: The fees of this TransferRatePreview.  # noqa: E501
         :type: List[Fee]

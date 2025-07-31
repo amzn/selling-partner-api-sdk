@@ -56,7 +56,7 @@ class BankAccountListing(object):
     def accounts(self):
         """Gets the accounts of this BankAccountListing.  # noqa: E501
 
-        A list of bank accounts.  # noqa: E501
+        Collection that holds BankAccount   # noqa: E501
 
         :return: The accounts of this BankAccountListing.  # noqa: E501
         :rtype: List[BankAccount]
@@ -67,7 +67,7 @@ class BankAccountListing(object):
     def accounts(self, accounts):
         """Sets the accounts of this BankAccountListing.
 
-        A list of bank accounts.  # noqa: E501
+        Collection that holds BankAccount   # noqa: E501
 
         :param accounts: The accounts of this BankAccountListing.  # noqa: E501
         :type: List[BankAccount]

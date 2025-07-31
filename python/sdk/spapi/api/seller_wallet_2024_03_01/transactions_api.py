@@ -37,9 +37,9 @@ class TransactionsApi(object):
         self.classFileName = 'transactions_api'
 
     def create_transaction(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
-        """Create a transaction request from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
+        """Create a transaction request from Amazon SW account to another customer provided account  # noqa: E501
 
-        Create a transaction request from an Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
+        Create a transaction request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_transaction(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
@@ -48,7 +48,7 @@ class TransactionsApi(object):
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
-        :param TransactionInitiationRequest body: The payload of the request (required)
+        :param TransactionInitiationRequest body: Defines the actual payload of the request (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
@@ -61,9 +61,9 @@ class TransactionsApi(object):
             return data
 
     def create_transaction_with_http_info(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
-        """Create a transaction request from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
+        """Create a transaction request from Amazon SW account to another customer provided account  # noqa: E501
 
-        Create a transaction request from an Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
+        Create a transaction request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
@@ -72,7 +72,7 @@ class TransactionsApi(object):
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
-        :param TransactionInitiationRequest body: The payload of the request (required)
+        :param TransactionInitiationRequest body: Defines the actual payload of the request (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
@@ -152,16 +152,16 @@ class TransactionsApi(object):
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
     def get_transaction(self, transaction_id, **kwargs):  # noqa: E501
-        """Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier  # noqa: E501
+        """Find particular Amazon SW account transaction by Amazon transaction identifier  # noqa: E501
 
-        Find a transaction by the Amazon transaction identifier.  # noqa: E501
+        Returns a transaction  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_transaction(transaction_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transaction_id: The ID of the Amazon Seller Wallet transaction. (required)
+        :param str transaction_id: ID of the Amazon SW transaction (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
@@ -174,16 +174,16 @@ class TransactionsApi(object):
             return data
 
     def get_transaction_with_http_info(self, transaction_id, **kwargs):  # noqa: E501
-        """Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier  # noqa: E501
+        """Find particular Amazon SW account transaction by Amazon transaction identifier  # noqa: E501
 
-        Find a transaction by the Amazon transaction identifier.  # noqa: E501
+        Returns a transaction  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_transaction_with_http_info(transaction_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transaction_id: The ID of the Amazon Seller Wallet transaction. (required)
+        :param str transaction_id: ID of the Amazon SW transaction (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
@@ -247,17 +247,17 @@ class TransactionsApi(object):
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
     def list_account_transactions(self, account_id, **kwargs):  # noqa: E501
-        """The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date  # noqa: E501
+        """The API will return all the transactions for a given Amazon SW account sorted by the transaction request date  # noqa: E501
 
-        Retrieve a list of transactions for a given Amazon Seller Wallet bank account.  # noqa: E501
+        Retrieve a list of transactions for a given Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_account_transactions(account_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
-        :param str next_page_token: A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.
+        :param str account_id: ID of the Amazon SW account (required)
+        :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransactionListing
                  If the method is called asynchronously,
                  returns the request thread.
@@ -270,17 +270,17 @@ class TransactionsApi(object):
             return data
 
     def list_account_transactions_with_http_info(self, account_id, **kwargs):  # noqa: E501
-        """The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date  # noqa: E501
+        """The API will return all the transactions for a given Amazon SW account sorted by the transaction request date  # noqa: E501
 
-        Retrieve a list of transactions for a given Amazon Seller Wallet bank account.  # noqa: E501
+        Retrieve a list of transactions for a given Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_account_transactions_with_http_info(account_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
-        :param str next_page_token: A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.
+        :param str account_id: ID of the Amazon SW account (required)
+        :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransactionListing
                  If the method is called asynchronously,
                  returns the request thread.

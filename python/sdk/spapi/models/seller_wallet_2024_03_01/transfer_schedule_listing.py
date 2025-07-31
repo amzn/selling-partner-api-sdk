@@ -61,7 +61,7 @@ class TransferScheduleListing(object):
     def next_page_token(self):
         """Gets the next_page_token of this TransferScheduleListing.  # noqa: E501
 
-        A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.  # noqa: E501
+        If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.  # noqa: E501
 
         :return: The next_page_token of this TransferScheduleListing.  # noqa: E501
         :rtype: str
@@ -72,7 +72,7 @@ class TransferScheduleListing(object):
     def next_page_token(self, next_page_token):
         """Sets the next_page_token of this TransferScheduleListing.
 
-        A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.  # noqa: E501
+        If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.  # noqa: E501
 
         :param next_page_token: The next_page_token of this TransferScheduleListing.  # noqa: E501
         :type: str
@@ -84,7 +84,7 @@ class TransferScheduleListing(object):
     def transfer_schedules(self):
         """Gets the transfer_schedules of this TransferScheduleListing.  # noqa: E501
 
-        A list of transfer schedules.  # noqa: E501
+        Collection that holds list of Transfer Schedules   # noqa: E501
 
         :return: The transfer_schedules of this TransferScheduleListing.  # noqa: E501
         :rtype: List[TransferSchedule]
@@ -95,7 +95,7 @@ class TransferScheduleListing(object):
     def transfer_schedules(self, transfer_schedules):
         """Sets the transfer_schedules of this TransferScheduleListing.
 
-        A list of transfer schedules.  # noqa: E501
+        Collection that holds list of Transfer Schedules   # noqa: E501
 
         :param transfer_schedules: The transfer_schedules of this TransferScheduleListing.  # noqa: E501
         :type: List[TransferSchedule]

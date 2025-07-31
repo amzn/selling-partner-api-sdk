@@ -37,9 +37,9 @@ class TransferScheduleApi(object):
         self.classFileName = 'transfer_schedule_api'
 
     def create_transfer_schedule(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
-        """Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
+        """Create a transfer schedule request from Amazon SW account to another customer provided account  # noqa: E501
 
-        Create a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
+        Create a transfer schedule request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_transfer_schedule(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
@@ -48,7 +48,7 @@ class TransferScheduleApi(object):
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
-        :param TransferScheduleRequest body: The payload of the request. (required)
+        :param TransferScheduleRequest body: Defines the actual payload of the request (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
@@ -61,9 +61,9 @@ class TransferScheduleApi(object):
             return data
 
     def create_transfer_schedule_with_http_info(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
-        """Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
+        """Create a transfer schedule request from Amazon SW account to another customer provided account  # noqa: E501
 
-        Create a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
+        Create a transfer schedule request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
@@ -72,7 +72,7 @@ class TransferScheduleApi(object):
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
-        :param TransferScheduleRequest body: The payload of the request. (required)
+        :param TransferScheduleRequest body: Defines the actual payload of the request (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
@@ -152,16 +152,16 @@ class TransferScheduleApi(object):
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
     def delete_schedule_transaction(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
+        """Delete a transaction request that is scheduled from Amazon SW account to another customer provided account  # noqa: E501
 
-        Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
+        Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_schedule_transaction(transfer_schedule_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: A unique reference ID for a scheduled transfer. (required)
+        :param str transfer_schedule_id: A unique reference id for a scheduled transfer (required)
         :return: DeleteTransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
@@ -174,16 +174,16 @@ class TransferScheduleApi(object):
             return data
 
     def delete_schedule_transaction_with_http_info(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
+        """Delete a transaction request that is scheduled from Amazon SW account to another customer provided account  # noqa: E501
 
-        Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
+        Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.delete_schedule_transaction_with_http_info(transfer_schedule_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: A unique reference ID for a scheduled transfer. (required)
+        :param str transfer_schedule_id: A unique reference id for a scheduled transfer (required)
         :return: DeleteTransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
@@ -231,7 +231,7 @@ class TransferScheduleApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'DELETE',
+            '/finances/transfers/wallet/2024-03-01/transferSchedules', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -247,16 +247,16 @@ class TransferScheduleApi(object):
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
     def get_transfer_schedule(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
+        """Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
 
-        Find a particular Amazon Seller Wallet account transfer schedule.  # noqa: E501
+        Find a particular Seller Wallet account transfer schedule.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_transfer_schedule(transfer_schedule_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: The schedule ID of the Amazon Seller Wallet transfer. (required)
+        :param str transfer_schedule_id: Schedule ID of the Amazon SW transfer (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
@@ -269,16 +269,16 @@ class TransferScheduleApi(object):
             return data
 
     def get_transfer_schedule_with_http_info(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
+        """Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
 
-        Find a particular Amazon Seller Wallet account transfer schedule.  # noqa: E501
+        Find a particular Seller Wallet account transfer schedule.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_transfer_schedule_with_http_info(transfer_schedule_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: The schedule ID of the Amazon Seller Wallet transfer. (required)
+        :param str transfer_schedule_id: Schedule ID of the Amazon SW transfer (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
@@ -342,17 +342,17 @@ class TransferScheduleApi(object):
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
     def list_transfer_schedules(self, account_id, **kwargs):  # noqa: E501
-        """The API will return all the transfer schedules for a given Amazon Seller Wallet account  # noqa: E501
+        """The API will return all the transfer schedules for a given Amazon SW account  # noqa: E501
 
-        Returns all transfer schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.  # noqa: E501
+        Retrieve transfer schedules of a Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_transfer_schedules(account_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
-        :param str next_page_token: A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.
+        :param str account_id: ID of the Amazon SW account (required)
+        :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransferScheduleListing
                  If the method is called asynchronously,
                  returns the request thread.
@@ -365,17 +365,17 @@ class TransferScheduleApi(object):
             return data
 
     def list_transfer_schedules_with_http_info(self, account_id, **kwargs):  # noqa: E501
-        """The API will return all the transfer schedules for a given Amazon Seller Wallet account  # noqa: E501
+        """The API will return all the transfer schedules for a given Amazon SW account  # noqa: E501
 
-        Returns all transfer schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.  # noqa: E501
+        Retrieve transfer schedules of a Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_transfer_schedules_with_http_info(account_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str account_id: The ID of the Amazon Seller Wallet account. (required)
-        :param str next_page_token: A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.
+        :param str account_id: ID of the Amazon SW account (required)
+        :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransferScheduleListing
                  If the method is called asynchronously,
                  returns the request thread.
@@ -443,7 +443,7 @@ class TransferScheduleApi(object):
     def update_transfer_schedule(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
         """Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.  # noqa: E501
 
-        Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.  # noqa: E501
+        Returns a transfer belonging to the updated scheduled transfer request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_transfer_schedule(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
@@ -452,7 +452,7 @@ class TransferScheduleApi(object):
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
-        :param TransferSchedule body: The payload of the scheduled transfer request that is to be updated. (required)
+        :param TransferSchedule body: Defines the actual payload of the scheduled transfer request that is to be updated.  (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
@@ -467,7 +467,7 @@ class TransferScheduleApi(object):
     def update_transfer_schedule_with_http_info(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
         """Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.  # noqa: E501
 
-        Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.  # noqa: E501
+        Returns a transfer belonging to the updated scheduled transfer request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
@@ -476,7 +476,7 @@ class TransferScheduleApi(object):
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
-        :param TransferSchedule body: The payload of the scheduled transfer request that is to be updated. (required)
+        :param TransferSchedule body: Defines the actual payload of the scheduled transfer request that is to be updated.  (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.

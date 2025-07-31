@@ -60,7 +60,7 @@ class Attachment(object):
     def upload_destination_id(self):
         """Gets the upload_destination_id of this Attachment.  # noqa: E501
 
-        The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.  # noqa: E501
+        The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.  # noqa: E501
 
         :return: The upload_destination_id of this Attachment.  # noqa: E501
         :rtype: str
@@ -71,7 +71,7 @@ class Attachment(object):
     def upload_destination_id(self, upload_destination_id):
         """Sets the upload_destination_id of this Attachment.
 
-        The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/docs/uploads-api-reference#post-uploads2020-11-01uploaddestinationsresource) operation.  # noqa: E501
+        The identifier for the upload destination. To retrieve this value, call the Uploads API [`createUploadDestinationForResource`](https://developer-docs.amazon.com/sp-api/reference/createuploaddestinationforresource) operation.  # noqa: E501
 
         :param upload_destination_id: The upload_destination_id of this Attachment.  # noqa: E501
         :type: str
