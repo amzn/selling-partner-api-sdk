@@ -22,7 +22,7 @@ import { Balance } from './Balance.js'
 export class BalanceListing {
   /**
    * Constructs a new <code>BalanceListing</code>.
-   * A list of balances in the seller account.
+   * Struct that holds list of balances on the seller account.
    * @alias module:sellerWallet_2024_03_01/model/BalanceListing
    * @class
    */
@@ -57,7 +57,7 @@ export class BalanceListing {
 }
 
 /**
- * A list of balances in the seller account.
+ * Collection that holds list of balances on the account
  * @member {[Balance]} balances
  * @type {[Balance]}
  */

@@ -22,11 +22,11 @@ import { BankAccount } from './BankAccount.js'
 export class TransactionInstrumentDetails {
   /**
    * Constructs a new <code>TransactionInstrumentDetails</code>.
-   * Details of the destination bank account in the transaction request.
+   * Request body to create transaction instrument, Amazon performs validation and screening (anti-money laundering measuers) on all the transaction instruments before executing a transaction thus it requires transaction instrument holder&#39;s contact details as well
    * @alias module:sellerWallet_2024_03_01/model/TransactionInstrumentDetails
    * @class
    * @param bankAccount {BankAccount}
-   * @param bankAccountNumber {String} The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.
+   * @param bankAccountNumber {String} This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won't be part of the request signature
    */
   constructor (bankAccount, bankAccountNumber) {
     this.bankAccount = bankAccount
@@ -68,7 +68,7 @@ export class TransactionInstrumentDetails {
 TransactionInstrumentDetails.prototype.bankAccount = undefined
 
 /**
- * The bank account number of the destination payment method.  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.
+ * This field would be used to populate the bank account number of the destination payment method. The field is intentionally not included in any other Schemas since Amazon internal systems will never receive it in unencrypted format, so field won't be part of the request signature
  * @member {String} bankAccountNumber
  * @type {String}
  */

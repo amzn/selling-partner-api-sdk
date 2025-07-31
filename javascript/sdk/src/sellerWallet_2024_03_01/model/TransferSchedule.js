@@ -27,15 +27,15 @@ import { TransferScheduleStatus } from './TransferScheduleStatus.js'
 export class TransferSchedule {
   /**
    * Constructs a new <code>TransferSchedule</code>.
-   * Transfer schedule details and historical details related to it.
+   * Transfer schedule details and related historical details.
    * @alias module:sellerWallet_2024_03_01/model/TransferSchedule
    * @class
-   * @param transferScheduleId {String} The unique identifier provided by Amazon to the scheduled transfer.
+   * @param transferScheduleId {String} The unique identifier provided by Amazon to the scheduled transfer
    * @param transactionType {TransactionType}
    * @param transactionDestinationAccount {TransactionAccount}
    * @param transferScheduleStatus {TransferScheduleStatus}
    * @param transferScheduleInformation {TransferScheduleInformation}
-   * @param transferScheduleFailures {[TransferScheduleFailures]} A list of transfer schedule failures.
+   * @param transferScheduleFailures {[TransferScheduleFailures]} Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
    */
   constructor (transferScheduleId, transactionType, transactionDestinationAccount, transferScheduleStatus, transferScheduleInformation, transferScheduleFailures) {
     this.transferScheduleId = transferScheduleId
@@ -81,7 +81,7 @@ export class TransferSchedule {
 }
 
 /**
- * The unique identifier provided by Amazon to the scheduled transfer.
+ * The unique identifier provided by Amazon to the scheduled transfer
  * @member {String} transferScheduleId
  * @type {String}
  */
@@ -124,7 +124,7 @@ TransferSchedule.prototype.transferScheduleInformation = undefined
 TransferSchedule.prototype.paymentPreference = undefined
 
 /**
- * A list of transfer schedule failures.
+ * Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.
  * @member {[TransferScheduleFailures]} transferScheduleFailures
  * @type {[TransferScheduleFailures]}
  */

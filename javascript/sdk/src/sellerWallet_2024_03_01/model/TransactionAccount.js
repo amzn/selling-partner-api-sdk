@@ -22,13 +22,13 @@ import { BankAccountNumberFormat } from './BankAccountNumberFormat.js'
 export class TransactionAccount {
   /**
    * Constructs a new <code>TransactionAccount</code>.
-   * Details of the bank account involved in transaction.
+   * Details of the bank account involved in the transaction.
    * @alias module:sellerWallet_2024_03_01/model/TransactionAccount
    * @class
-   * @param bankAccountHolderName {String} The account holder's name.
-   * @param bankName {String} The name of the bank.
+   * @param bankAccountHolderName {String} BankAccount holder's name
+   * @param bankName {String} The name of the bank
    * @param bankAccountNumberFormat {BankAccountNumberFormat}
-   * @param bankAccountCurrency {String} The currency code in ISO 4217 format.
+   * @param bankAccountCurrency {String} The currency code in ISO 4217 format
    */
   constructor (bankAccountHolderName, bankName, bankAccountNumberFormat, bankAccountCurrency) {
     this.bankAccountHolderName = bankAccountHolderName
@@ -71,21 +71,21 @@ export class TransactionAccount {
 }
 
 /**
- * The unique identifier provided by Amazon to identify the account.
+ * The unique identifier provided by Amazon to identify the account
  * @member {String} accountId
  * @type {String}
  */
 TransactionAccount.prototype.accountId = undefined
 
 /**
- * The account holder's name.
+ * BankAccount holder's name
  * @member {String} bankAccountHolderName
  * @type {String}
  */
 TransactionAccount.prototype.bankAccountHolderName = undefined
 
 /**
- * The name of the bank.
+ * The name of the bank
  * @member {String} bankName
  * @type {String}
  */
@@ -98,21 +98,21 @@ TransactionAccount.prototype.bankName = undefined
 TransactionAccount.prototype.bankAccountNumberFormat = undefined
 
 /**
- * The last three digits of the bank account number.
+ * Last 3 digit of the bank account number
  * @member {String} bankAccountNumberTail
  * @type {String}
  */
 TransactionAccount.prototype.bankAccountNumberTail = undefined
 
 /**
- * The two-digit country code, in ISO 3166 format. This field is optional for `transactionSourceAccount`, but is mandatory for `transactionDestinationAccount`.
+ * The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount
  * @member {String} bankAccountCountryCode
  * @type {String}
  */
 TransactionAccount.prototype.bankAccountCountryCode = undefined
 
 /**
- * The currency code in ISO 4217 format.
+ * The currency code in ISO 4217 format
  * @member {String} bankAccountCurrency
  * @type {String}
  */

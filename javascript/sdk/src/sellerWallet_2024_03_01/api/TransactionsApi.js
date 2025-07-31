@@ -67,11 +67,11 @@ export class TransactionsApi {
   }
 
   /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
-     * Create a transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transaction request from Amazon SW account to another customer provided account
+     * Create a transaction request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
-     * @param {TransactionInitiationRequest} body The payload of the request
+     * @param {TransactionInitiationRequest} body Defines the actual payload of the request
      * @return {Promise<Transaction>}
      */
   createTransactionWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
@@ -115,11 +115,11 @@ export class TransactionsApi {
   }
 
   /**
-     * Create a transaction request from Amazon Seller Wallet account to another customer-provided account
-     * Create a transaction request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transaction request from Amazon SW account to another customer provided account
+     * Create a transaction request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
-     * @param {TransactionInitiationRequest} body The payload of the request
+     * @param {TransactionInitiationRequest} body Defines the actual payload of the request
      * @return {Promise<Transaction>}
      */
   createTransaction (destAccountDigitalSignature, amountDigitalSignature, body) {
@@ -130,9 +130,9 @@ export class TransactionsApi {
   }
 
   /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
-     * Find a transaction by the Amazon transaction identifier.
-     * @param {String} transactionId The ID of the Amazon Seller Wallet transaction.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier
+     * Returns a transaction
+     * @param {String} transactionId ID of the Amazon SW transaction
      * @return {Promise<Transaction>}
      */
   getTransactionWithHttpInfo (transactionId) {
@@ -165,9 +165,9 @@ export class TransactionsApi {
   }
 
   /**
-     * Find particular Amazon Seller Wallet account transaction by Amazon transaction identifier
-     * Find a transaction by the Amazon transaction identifier.
-     * @param {String} transactionId The ID of the Amazon Seller Wallet transaction.
+     * Find particular Amazon SW account transaction by Amazon transaction identifier
+     * Returns a transaction
+     * @param {String} transactionId ID of the Amazon SW transaction
      * @return {Promise<Transaction>}
      */
   getTransaction (transactionId) {
@@ -178,11 +178,11 @@ export class TransactionsApi {
   }
 
   /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
-     * Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * Retrieve a list of transactions for a given Seller Wallet bank account.
+     * @param {String} accountId ID of the Amazon SW account
      * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransactionListing>}
      */
   listAccountTransactionsWithHttpInfo (accountId, opts) {
@@ -217,11 +217,11 @@ export class TransactionsApi {
   }
 
   /**
-     * The API will return all the transactions for a given Amazon Seller Wallet account sorted by the transaction request date
-     * Retrieve a list of transactions for a given Amazon Seller Wallet bank account.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
+     * Retrieve a list of transactions for a given Seller Wallet bank account.
+     * @param {String} accountId ID of the Amazon SW account
      * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransactionListing>}
      */
   listAccountTransactions (accountId, opts) {

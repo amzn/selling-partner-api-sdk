@@ -21,10 +21,10 @@ import { ApiClient } from '../ApiClient.js'
 export class DeleteTransferSchedule {
   /**
    * Constructs a new <code>DeleteTransferSchedule</code>.
-   * The response returned when the schedule transfer&#39;s delete request is successful.
+   * Response returned when the schedule transfer&#39;s delete request is successful.
    * @alias module:sellerWallet_2024_03_01/model/DeleteTransferSchedule
    * @class
-   * @param code {String} A success code that specifies that the delete operation was successful. For example, HTTP 200.
+   * @param code {String} A success code that specifies the delete operation was successful. eg:HTTP 200.
    * @param message {String} A message that describes the success condition of the delete schedule transaction.
    */
   constructor (code, message) {
@@ -62,7 +62,7 @@ export class DeleteTransferSchedule {
 }
 
 /**
- * A success code that specifies that the delete operation was successful. For example, HTTP 200.
+ * A success code that specifies the delete operation was successful. eg:HTTP 200.
  * @member {String} code
  * @type {String}
  */

@@ -25,17 +25,17 @@ import { BankNumberFormat } from './BankNumberFormat.js'
 export class BankAccount {
   /**
    * Constructs a new <code>BankAccount</code>.
-   * Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.
+   * Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not including account_links, short cut links to the account balance and transactions -&gt; since not mandatory
    * @alias module:sellerWallet_2024_03_01/model/BankAccount
    * @class
-   * @param accountHolderName {String} The bank account holder's name (expected to be an Amazon customer).
+   * @param accountHolderName {String} BankAccount holder's name (expected to be Amazon customer)
    * @param bankAccountNumberFormat {BankAccountNumberFormat}
    * @param bankAccountOwnershipType {BankAccountOwnershipType}
-   * @param routingNumber {String} Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
+   * @param routingNumber {String} Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,
    * @param bankNumberFormat {BankNumberFormat}
-   * @param accountCountryCode {String} The two-digit country code in ISO 3166 format.
-   * @param accountCurrency {String} Bank account currency code in ISO 4217 format.
-   * @param bankAccountNumberTail {String} The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
+   * @param accountCountryCode {String} The two digit country code, in ISO 3166 format.
+   * @param accountCurrency {String} BankAccount currency code in ISO 4217 format
+   * @param bankAccountNumberTail {String} Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
    */
   constructor (accountHolderName, bankAccountNumberFormat, bankAccountOwnershipType, routingNumber, bankNumberFormat, accountCountryCode, accountCurrency, bankAccountNumberTail) {
     this.accountHolderName = accountHolderName
@@ -86,14 +86,14 @@ export class BankAccount {
 }
 
 /**
- * The unique identifier provided by Amazon to identify the account.
+ * The unique identifier provided by Amazon to identify the account
  * @member {String} accountId
  * @type {String}
  */
 BankAccount.prototype.accountId = undefined
 
 /**
- * The bank account holder's name (expected to be an Amazon customer).
+ * BankAccount holder's name (expected to be Amazon customer)
  * @member {String} accountHolderName
  * @type {String}
  */
@@ -106,7 +106,7 @@ BankAccount.prototype.accountHolderName = undefined
 BankAccount.prototype.bankAccountNumberFormat = undefined
 
 /**
- * The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
+ * The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet
  * @member {String} bankName
  * @type {String}
  */
@@ -119,7 +119,7 @@ BankAccount.prototype.bankName = undefined
 BankAccount.prototype.bankAccountOwnershipType = undefined
 
 /**
- * Routing number for automated clearing house transfers. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
+ * Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,
  * @member {String} routingNumber
  * @type {String}
  */
@@ -132,21 +132,21 @@ BankAccount.prototype.routingNumber = undefined
 BankAccount.prototype.bankNumberFormat = undefined
 
 /**
- * The two-digit country code in ISO 3166 format.
+ * The two digit country code, in ISO 3166 format.
  * @member {String} accountCountryCode
  * @type {String}
  */
 BankAccount.prototype.accountCountryCode = undefined
 
 /**
- * Bank account currency code in ISO 4217 format.
+ * BankAccount currency code in ISO 4217 format
  * @member {String} accountCurrency
  * @type {String}
  */
 BankAccount.prototype.accountCurrency = undefined
 
 /**
- * The last 3 digit of the bank account number. This value is three consecutive zeros for Amazon Seller Wallet accounts.
+ * Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
  * @member {String} bankAccountNumberTail
  * @type {String}
  */

@@ -67,9 +67,9 @@ export class AccountsApi {
   }
 
   /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier
-     * Retrieve an Amazon Seller Wallet bank account by Amazon account identifier.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * Find particular Amazon SW account by Amazon account identifier
+     * Retrieve a Seller Wallet bank account by Amazon account identifier.
+     * @param {String} accountId ID of the Amazon SW account
      * @return {Promise<BankAccount>}
      */
   getAccountWithHttpInfo (accountId) {
@@ -102,9 +102,9 @@ export class AccountsApi {
   }
 
   /**
-     * Find particular Amazon Seller Wallet account by Amazon account identifier
-     * Retrieve an Amazon Seller Wallet bank account by Amazon account identifier.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * Find particular Amazon SW account by Amazon account identifier
+     * Retrieve a Seller Wallet bank account by Amazon account identifier.
+     * @param {String} accountId ID of the Amazon SW account
      * @return {Promise<BankAccount>}
      */
   getAccount (accountId) {
@@ -115,9 +115,9 @@ export class AccountsApi {
   }
 
   /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
-     * Retrieve the balance in a given Amazon Seller Wallet bank account.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * Find balance in particular Amazon SW account by Amazon account identifier
+     * Retrieve the balance in a given Seller Wallet bank account.
+     * @param {String} accountId ID of the Amazon SW account
      * @return {Promise<BalanceListing>}
      */
   listAccountBalancesWithHttpInfo (accountId) {
@@ -150,9 +150,9 @@ export class AccountsApi {
   }
 
   /**
-     * Find balance in particular Amazon Seller Wallet account by Amazon account identifier
-     * Retrieve the balance in a given Amazon Seller Wallet bank account.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * Find balance in particular Amazon SW account by Amazon account identifier
+     * Retrieve the balance in a given Seller Wallet bank account.
+     * @param {String} accountId ID of the Amazon SW account
      * @return {Promise<BalanceListing>}
      */
   listAccountBalances (accountId) {
@@ -163,9 +163,9 @@ export class AccountsApi {
   }
 
   /**
-     * Get all Amazon Seller Wallet accounts for the seller
-     * Get all Seller Wallet accounts for a given seller.
-     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * Get all Amazon SW accounts for the seller
+     * Get Seller Wallet accounts for a seller.
+     * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned.
      * @return {Promise<BankAccountListing>}
      */
   listAccountsWithHttpInfo (marketplaceId) {
@@ -198,9 +198,9 @@ export class AccountsApi {
   }
 
   /**
-     * Get all Amazon Seller Wallet accounts for the seller
-     * Get all Seller Wallet accounts for a given seller.
-     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
+     * Get all Amazon SW accounts for the seller
+     * Get Seller Wallet accounts for a seller.
+     * @param {String} marketplaceId A marketplace identifier. Specifies the marketplace for which items are returned.
      * @return {Promise<BankAccountListing>}
      */
   listAccounts (marketplaceId) {

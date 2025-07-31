@@ -22,11 +22,11 @@ import { PaymentPreferencePaymentType } from './PaymentPreferencePaymentType.js'
 export class PaymentPreference {
   /**
    * Constructs a new <code>PaymentPreference</code>.
-   * The type of payment preference in which the transfer is being scheduled.
+   * Payment preference type in which transfer is being scheduled
    * @alias module:sellerWallet_2024_03_01/model/PaymentPreference
    * @class
    * @param paymentPreferencePaymentType {PaymentPreferencePaymentType}
-   * @param value {Number} A decimal number, such as an amount or FX rate.
+   * @param value {Number} A decimal number such as amount or FX rate.
    */
   constructor (paymentPreferencePaymentType, value) {
     this.paymentPreferencePaymentType = paymentPreferencePaymentType
@@ -68,7 +68,7 @@ export class PaymentPreference {
 PaymentPreference.prototype.paymentPreferencePaymentType = undefined
 
 /**
- * A decimal number, such as an amount or FX rate.
+ * A decimal number such as amount or FX rate.
  * @member {Number} value
  * @type {Number}
  */

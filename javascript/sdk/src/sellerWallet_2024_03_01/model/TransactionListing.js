@@ -22,10 +22,10 @@ import { Transaction } from './Transaction.js'
 export class TransactionListing {
   /**
    * Constructs a new <code>TransactionListing</code>.
-   * A list of transactions.
+   * Struct that holds collection of transactions.
    * @alias module:sellerWallet_2024_03_01/model/TransactionListing
    * @class
-   * @param transactions {[Transaction]} A list of transactions.
+   * @param transactions {[Transaction]} Collection that holds Transaction
    */
   constructor (transactions) {
     this.transactions = transactions
@@ -60,14 +60,14 @@ export class TransactionListing {
 }
 
 /**
- * A token that you use to retrieve the next page of results. The response includes `nextPageToken` when the number of results exceeds 100. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextPageToken` is null. Note that this operation can return empty pages.
+ * If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.
  * @member {String} nextPageToken
  * @type {String}
  */
 TransactionListing.prototype.nextPageToken = undefined
 
 /**
- * A list of transactions.
+ * Collection that holds Transaction
  * @member {[Transaction]} transactions
  * @type {[Transaction]}
  */

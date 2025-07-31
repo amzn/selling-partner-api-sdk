@@ -26,16 +26,16 @@ import { TransferRatePreview } from './TransferRatePreview.js'
 export class Transaction {
   /**
    * Constructs a new <code>Transaction</code>.
-   * The current transaction status and historical details related to it.
+   * The current transaction status and related historical details.
    * @alias module:sellerWallet_2024_03_01/model/Transaction
    * @class
-   * @param transactionId {String} The unique identifier provided by Amazon to the transaction.
+   * @param transactionId {String} The unique identifier provided by Amazon to the transaction
    * @param transactionType {TransactionType}
    * @param transactionStatus {TransactionStatus}
-   * @param transactionRequestDate {Date} The date on which the transaction was initiated.
-   * @param lastUpdateDate {Date} The date of the most recent account balance update.
-   * @param transactionRequesterSource {String} The transaction initiation source. This value could be the Amazon portal or PISP name that the customer used to start the transaction.
-   * @param transactionDescription {String} The description provided by the requester in the transaction request at time of transaction initiation.
+   * @param transactionRequestDate {Date} The date when the transaction was initiated.
+   * @param lastUpdateDate {Date} The last update date on the transaction
+   * @param transactionRequesterSource {String} The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
+   * @param transactionDescription {String} A description of the transaction that the requester provides when they initiate the transaction.
    * @param transactionSourceAccount {TransactionAccount}
    * @param transactionDestinationAccount {TransactionAccount}
    * @param transactionRequestAmount {Currency}
@@ -98,7 +98,7 @@ export class Transaction {
 }
 
 /**
- * The unique identifier provided by Amazon to the transaction.
+ * The unique identifier provided by Amazon to the transaction
  * @member {String} transactionId
  * @type {String}
  */
@@ -117,49 +117,49 @@ Transaction.prototype.transactionType = undefined
 Transaction.prototype.transactionStatus = undefined
 
 /**
- * The date on which the transaction was initiated.
+ * The date when the transaction was initiated.
  * @member {Date} transactionRequestDate
  * @type {Date}
  */
 Transaction.prototype.transactionRequestDate = undefined
 
 /**
- * The expected completion date of the transaction.
+ * Expected completion date of a transaction, for existing active Payees (Trusted Beneficiaries) it will be 24 hours but for new destination bank accounts the value could go up to 5 days
  * @member {Date} expectedCompletionDate
  * @type {Date}
  */
 Transaction.prototype.expectedCompletionDate = undefined
 
 /**
- * The transaction's completion date.
+ * Transaction completion date
  * @member {Date} transactionActualCompletionDate
  * @type {Date}
  */
 Transaction.prototype.transactionActualCompletionDate = undefined
 
 /**
- * The date of the most recent account balance update.
+ * The last update date on the transaction
  * @member {Date} lastUpdateDate
  * @type {Date}
  */
 Transaction.prototype.lastUpdateDate = undefined
 
 /**
- * The Amazon Seller Wallet customer who requested the transaction.
+ * Amazon SW customer who requested the transaction
  * @member {String} requesterName
  * @type {String}
  */
 Transaction.prototype.requesterName = undefined
 
 /**
- * The transaction initiation source. This value could be the Amazon portal or PISP name that the customer used to start the transaction.
+ * The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
  * @member {String} transactionRequesterSource
  * @type {String}
  */
 Transaction.prototype.transactionRequesterSource = undefined
 
 /**
- * The description provided by the requester in the transaction request at time of transaction initiation.
+ * A description of the transaction that the requester provides when they initiate the transaction.
  * @member {String} transactionDescription
  * @type {String}
  */
@@ -196,7 +196,7 @@ Transaction.prototype.transferRateDetails = undefined
 Transaction.prototype.transactionFinalAmount = undefined
 
 /**
- * The reason the transaction failed, if applicable.
+ * Description in case the transaction fails before completion
  * @member {String} transactionFailureReason
  * @type {String}
  */

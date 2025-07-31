@@ -22,12 +22,12 @@ import { RateDirection } from './RateDirection.js'
 export class FxRateDetails {
   /**
    * Constructs a new <code>FxRateDetails</code>.
-   * Foreign exchange rate details.
+   * Foreign exchange rate details displayed when transfer preview is requested.
    * @alias module:sellerWallet_2024_03_01/model/FxRateDetails
    * @class
-   * @param fxRateId {String} The unique identifier assigned to the fees / foreign exchange rate of a transaction.
-   * @param baseRate {Number} A decimal number, such as an amount or FX rate.
-   * @param effectiveFxRate {Number} A decimal number, such as an amount or FX rate.
+   * @param fxRateId {String} Unique identifier assigned to the fees/foreign exchange Rate of a transaction.
+   * @param baseRate {Number} A decimal number such as amount or FX rate.
+   * @param effectiveFxRate {Number} A decimal number such as amount or FX rate.
    * @param rateDirection {RateDirection}
    */
   constructor (fxRateId, baseRate, effectiveFxRate, rateDirection) {
@@ -68,21 +68,21 @@ export class FxRateDetails {
 }
 
 /**
- * The unique identifier assigned to the fees / foreign exchange rate of a transaction.
+ * Unique identifier assigned to the fees/foreign exchange Rate of a transaction.
  * @member {String} fxRateId
  * @type {String}
  */
 FxRateDetails.prototype.fxRateId = undefined
 
 /**
- * A decimal number, such as an amount or FX rate.
+ * A decimal number such as amount or FX rate.
  * @member {Number} baseRate
  * @type {Number}
  */
 FxRateDetails.prototype.baseRate = undefined
 
 /**
- * A decimal number, such as an amount or FX rate.
+ * A decimal number such as amount or FX rate.
  * @member {Number} effectiveFxRate
  * @type {Number}
  */

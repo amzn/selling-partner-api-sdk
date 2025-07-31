@@ -22,10 +22,10 @@ import { BankAccount } from './BankAccount.js'
 export class BankAccountListing {
   /**
    * Constructs a new <code>BankAccountListing</code>.
-   * A list of bank accounts.
+   * Struct that holds collection of accounts.
    * @alias module:sellerWallet_2024_03_01/model/BankAccountListing
    * @class
-   * @param accounts {[BankAccount]} A list of bank accounts.
+   * @param accounts {[BankAccount]} Collection that holds BankAccount
    */
   constructor (accounts) {
     this.accounts = accounts
@@ -59,7 +59,7 @@ export class BankAccountListing {
 }
 
 /**
- * A list of bank accounts.
+ * Collection that holds BankAccount
  * @member {[BankAccount]} accounts
  * @type {[BankAccount]}
  */

@@ -23,12 +23,12 @@ import { FeeType } from './FeeType.js'
 export class Fee {
   /**
    * Constructs a new <code>Fee</code>.
-   * Details of the fee.
+   * If the fees is in baseAmount (sourceAccount) currency, effectiveRate &#x3D;  (baseAmount - sum(fees.feeAmount.currencyAmount)) * baseRate) / baseAmount. If the fees is in transferAmount (destinationAccount) currency, effectiveRate &#x3D;  (( baseAmount * baseRate ) -  sum(fees.feeAmount.currencyAmount )) / baseAmount
    * @alias module:sellerWallet_2024_03_01/model/Fee
    * @class
-   * @param feeId {String} The unique identifier assigned to the fee.
+   * @param feeId {String} Unique identifier assigned to the Fee.
    * @param feeType {FeeType}
-   * @param feeRateValue {Number} A decimal number, such as an amount or FX rate.
+   * @param feeRateValue {Number} A decimal number such as amount or FX rate.
    * @param feeAmount {Currency}
    */
   constructor (feeId, feeType, feeRateValue, feeAmount) {
@@ -69,7 +69,7 @@ export class Fee {
 }
 
 /**
- * The unique identifier assigned to the fee.
+ * Unique identifier assigned to the Fee.
  * @member {String} feeId
  * @type {String}
  */
@@ -82,7 +82,7 @@ Fee.prototype.feeId = undefined
 Fee.prototype.feeType = undefined
 
 /**
- * A decimal number, such as an amount or FX rate.
+ * A decimal number such as amount or FX rate.
  * @member {Number} feeRateValue
  * @type {Number}
  */

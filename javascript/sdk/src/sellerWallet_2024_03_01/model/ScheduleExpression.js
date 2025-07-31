@@ -23,7 +23,7 @@ import { ScheduleExpressionType } from './ScheduleExpressionType.js'
 export class ScheduleExpression {
   /**
    * Constructs a new <code>ScheduleExpression</code>.
-   * The configuration of the schedule.
+   * Parameters containing information of the expression that defines when the schedule runs. The following formats are supported.
    * @alias module:sellerWallet_2024_03_01/model/ScheduleExpression
    * @class
    * @param scheduleExpressionType {ScheduleExpressionType}

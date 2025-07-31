@@ -64,7 +64,7 @@ export class Currency {
 Currency.prototype.currencyCode = undefined
 
 /**
- * A decimal number, such as an amount or FX rate.
+ * A decimal number such as amount or FX rate.
  * @member {Number} currencyAmount
  * @type {Number}
  */

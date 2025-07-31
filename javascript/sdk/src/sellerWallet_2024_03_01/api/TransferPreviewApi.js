@@ -64,12 +64,12 @@ export class TransferPreviewApi {
 
   /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
-     * Retrieve a list of potential fees on a transaction.
-     * @param {String} sourceCountryCode Country code of the source transaction account in ISO 3166 format.
-     * @param {String} sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format.
-     * @param {String} destinationCountryCode Country code of the destination transaction account in ISO 3166 format.
-     * @param {String} destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     * @param {Number} baseAmount The base transaction amount without any markup fees.
+     * Returns list of potential fees on a transaction based on the source and destination country currency code
+     * @param {String} sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard format.
+     * @param {String} sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction country.
+     * @param {String} destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166 standard format.
+     * @param {String} destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country.
+     * @param {Number} baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview.
      * @return {Promise<TransferRatePreview>}
      */
   getTransferPreviewWithHttpInfo (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {
@@ -127,12 +127,12 @@ export class TransferPreviewApi {
 
   /**
      * Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code
-     * Retrieve a list of potential fees on a transaction.
-     * @param {String} sourceCountryCode Country code of the source transaction account in ISO 3166 format.
-     * @param {String} sourceCurrencyCode Currency code of the source transaction country in ISO 4217 format.
-     * @param {String} destinationCountryCode Country code of the destination transaction account in ISO 3166 format.
-     * @param {String} destinationCurrencyCode Currency code of the destination transaction country in ISO 4217 format.
-     * @param {Number} baseAmount The base transaction amount without any markup fees.
+     * Returns list of potential fees on a transaction based on the source and destination country currency code
+     * @param {String} sourceCountryCode Represents 2 character country code of source transaction account in ISO 3166 standard format.
+     * @param {String} sourceCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the source transaction country.
+     * @param {String} destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166 standard format.
+     * @param {String} destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country.
+     * @param {Number} baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview.
      * @return {Promise<TransferRatePreview>}
      */
   getTransferPreview (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {

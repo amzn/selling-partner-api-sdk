@@ -21,13 +21,13 @@ import { ApiClient } from '../ApiClient.js'
 export class AccountHolderAddress {
   /**
    * Constructs a new <code>AccountHolderAddress</code>.
-   * The Address used to verify the bank account of the payee. This can be a person or business mailing address.
+   * Address for bank account verification of the Payee. For example, this can be a person or business mailing address
    * @alias module:sellerWallet_2024_03_01/model/AccountHolderAddress
    * @class
-   * @param addressLine1 {String} Address Line 1 of the public address.
-   * @param city {String} City name of the public address.
-   * @param state {String} State name of the public address. This will be state or region for CN (China) based addresses.
-   * @param postalCode {String} Postal code of the public address.
+   * @param addressLine1 {String} Address Line 1 of the public address
+   * @param city {String} City name of the public address
+   * @param state {String} State name of the public address. This is the state or region for China-based addresses.
+   * @param postalCode {String} Postal code of the public address
    * @param countryCode {String} The two digit country code, in ISO 3166 format.
    */
   constructor (addressLine1, city, state, postalCode, countryCode) {
@@ -72,42 +72,42 @@ export class AccountHolderAddress {
 }
 
 /**
- * Address Line 1 of the public address.
+ * Address Line 1 of the public address
  * @member {String} addressLine1
  * @type {String}
  */
 AccountHolderAddress.prototype.addressLine1 = undefined
 
 /**
- * Address Line 2 of the public address.
+ * Address Line 2 of the public address
  * @member {String} addressLine2
  * @type {String}
  */
 AccountHolderAddress.prototype.addressLine2 = undefined
 
 /**
- * City name of the public address.
+ * City name of the public address
  * @member {String} city
  * @type {String}
  */
 AccountHolderAddress.prototype.city = undefined
 
 /**
- * State name of the public address. This will be state or region for CN (China) based addresses.
+ * State name of the public address. This is the state or region for China-based addresses.
  * @member {String} state
  * @type {String}
  */
 AccountHolderAddress.prototype.state = undefined
 
 /**
- * Postal code of the public address.
+ * Postal code of the public address
  * @member {String} postalCode
  * @type {String}
  */
 AccountHolderAddress.prototype.postalCode = undefined
 
 /**
- * Country name of the public address.
+ * Country name of the public address
  * @member {String} country
  * @type {String}
  */

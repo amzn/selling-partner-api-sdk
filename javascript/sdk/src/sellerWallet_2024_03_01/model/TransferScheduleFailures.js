@@ -21,11 +21,11 @@ import { ApiClient } from '../ApiClient.js'
 export class TransferScheduleFailures {
   /**
    * Constructs a new <code>TransferScheduleFailures</code>.
-   * The time of and reason for the transfer schedule failure.
+   * Specifies the balance amount in the Amazon SW bank account
    * @alias module:sellerWallet_2024_03_01/model/TransferScheduleFailures
    * @class
-   * @param transferScheduleFailureDate {Date} The transfer schedule failure date.
-   * @param transferScheduleFailureReason {String} The reason listed for the failure of the transfer schedule.
+   * @param transferScheduleFailureDate {Date} The transfer schedule cancellation date
+   * @param transferScheduleFailureReason {String} The statement/reasoning listed for the cancellation of the transfer schedule
    */
   constructor (transferScheduleFailureDate, transferScheduleFailureReason) {
     this.transferScheduleFailureDate = transferScheduleFailureDate
@@ -61,14 +61,14 @@ export class TransferScheduleFailures {
 }
 
 /**
- * The transfer schedule failure date.
+ * The transfer schedule cancellation date
  * @member {Date} transferScheduleFailureDate
  * @type {Date}
  */
 TransferScheduleFailures.prototype.transferScheduleFailureDate = undefined
 
 /**
- * The reason listed for the failure of the transfer schedule.
+ * The statement/reasoning listed for the cancellation of the transfer schedule
  * @member {String} transferScheduleFailureReason
  * @type {String}
  */

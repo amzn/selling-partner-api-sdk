@@ -26,12 +26,12 @@ import { TransferScheduleStatus } from './TransferScheduleStatus.js'
 export class TransferScheduleRequest {
   /**
    * Constructs a new <code>TransferScheduleRequest</code>.
-   * Request body to initiate a scheduled transfer from a Seller Wallet bank account to another customer-defined bank account.
+   * Request body to initiate a scheduled transfer from a SW bank account to another customer defined bank account
    * @alias module:sellerWallet_2024_03_01/model/TransferScheduleRequest
    * @class
-   * @param sourceAccountId {String} The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.
-   * @param sourceCurrencyCode {String} The three-letter currency code of the source payment method country, in ISO 4217 format.
-   * @param destinationAccountId {String} The unique identifier of the destination bank account where the money is deposited.
+   * @param sourceAccountId {String} The unique identifier of the source Amazon SW bank account from where the money needs to be debited
+   * @param sourceCurrencyCode {String} Represents 3 letter currency code in ISO 4217 standard format of the source payment method country
+   * @param destinationAccountId {String} Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited
    * @param destinationTransactionInstrument {TransactionInstrumentDetails}
    * @param transactionType {TransactionType}
    * @param transferScheduleInformation {TransferScheduleInformation}
@@ -82,21 +82,21 @@ export class TransferScheduleRequest {
 }
 
 /**
- * The unique identifier of the source Amazon Seller Wallet bank account from which money is debited.
+ * The unique identifier of the source Amazon SW bank account from where the money needs to be debited
  * @member {String} sourceAccountId
  * @type {String}
  */
 TransferScheduleRequest.prototype.sourceAccountId = undefined
 
 /**
- * The three-letter currency code of the source payment method country, in ISO 4217 format.
+ * Represents 3 letter currency code in ISO 4217 standard format of the source payment method country
  * @member {String} sourceCurrencyCode
  * @type {String}
  */
 TransferScheduleRequest.prototype.sourceCurrencyCode = undefined
 
 /**
- * The unique identifier of the destination bank account where the money is deposited.
+ * Optional field to specify the unique identifier of the destination bank account where the money needs to be deposited
  * @member {String} destinationAccountId
  * @type {String}
  */

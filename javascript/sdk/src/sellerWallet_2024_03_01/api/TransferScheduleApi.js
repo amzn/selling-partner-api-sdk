@@ -70,11 +70,11 @@ export class TransferScheduleApi {
   }
 
   /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
-     * Create a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account
+     * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
-     * @param {TransferScheduleRequest} body The payload of the request.
+     * @param {TransferScheduleRequest} body Defines the actual payload of the request
      * @return {Promise<TransferSchedule>}
      */
   createTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
@@ -118,11 +118,11 @@ export class TransferScheduleApi {
   }
 
   /**
-     * Create a transfer schedule request from Amazon Seller Wallet account to another customer-provided account
-     * Create a transfer schedule request from an Amazon Seller Wallet account to another customer-provided account.
+     * Create a transfer schedule request from Amazon SW account to another customer provided account
+     * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
-     * @param {TransferScheduleRequest} body The payload of the request.
+     * @param {TransferScheduleRequest} body Defines the actual payload of the request
      * @return {Promise<TransferSchedule>}
      */
   createTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, body) {
@@ -133,9 +133,9 @@ export class TransferScheduleApi {
   }
 
   /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.
-     * @param {String} transferScheduleId A unique reference ID for a scheduled transfer.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
+     * @param {String} transferScheduleId A unique reference id for a scheduled transfer
      * @return {Promise<DeleteTransferSchedule>}
      */
   deleteScheduleTransactionWithHttpInfo (transferScheduleId) {
@@ -161,16 +161,16 @@ export class TransferScheduleApi {
     const returnType = DeleteTransferSchedule
 
     return this.apiClient.callApi('TransferScheduleApi-deleteScheduleTransaction',
-      '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'DELETE',
+      '/finances/transfers/wallet/2024-03-01/transferSchedules', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
       contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-deleteScheduleTransaction')
     )
   }
 
   /**
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
-     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.
-     * @param {String} transferScheduleId A unique reference ID for a scheduled transfer.
+     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
+     * @param {String} transferScheduleId A unique reference id for a scheduled transfer
      * @return {Promise<DeleteTransferSchedule>}
      */
   deleteScheduleTransaction (transferScheduleId) {
@@ -181,9 +181,9 @@ export class TransferScheduleApi {
   }
 
   /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
-     * Find a particular Amazon Seller Wallet account transfer schedule.
-     * @param {String} transferScheduleId The schedule ID of the Amazon Seller Wallet transfer.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
+     * Find a particular Seller Wallet account transfer schedule.
+     * @param {String} transferScheduleId Schedule ID of the Amazon SW transfer
      * @return {Promise<TransferSchedule>}
      */
   getTransferScheduleWithHttpInfo (transferScheduleId) {
@@ -216,9 +216,9 @@ export class TransferScheduleApi {
   }
 
   /**
-     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
-     * Find a particular Amazon Seller Wallet account transfer schedule.
-     * @param {String} transferScheduleId The schedule ID of the Amazon Seller Wallet transfer.
+     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
+     * Find a particular Seller Wallet account transfer schedule.
+     * @param {String} transferScheduleId Schedule ID of the Amazon SW transfer
      * @return {Promise<TransferSchedule>}
      */
   getTransferSchedule (transferScheduleId) {
@@ -229,11 +229,11 @@ export class TransferScheduleApi {
   }
 
   /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account
-     * Returns all transfer schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * The API will return all the transfer schedules for a given Amazon SW account
+     * Retrieve transfer schedules of a Seller Wallet bank account.
+     * @param {String} accountId ID of the Amazon SW account
      * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransferScheduleListing>}
      */
   listTransferSchedulesWithHttpInfo (accountId, opts) {
@@ -268,11 +268,11 @@ export class TransferScheduleApi {
   }
 
   /**
-     * The API will return all the transfer schedules for a given Amazon Seller Wallet account
-     * Returns all transfer schedules of a given Amazon Seller Wallet bank account with the schedule ID in response if present.
-     * @param {String} accountId The ID of the Amazon Seller Wallet account.
+     * The API will return all the transfer schedules for a given Amazon SW account
+     * Retrieve transfer schedules of a Seller Wallet bank account.
+     * @param {String} accountId ID of the Amazon SW account
      * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken A token that you use to retrieve the next page of results. The response includes &#x60;nextPageToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextPageToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransferScheduleListing>}
      */
   listTransferSchedules (accountId, opts) {
@@ -284,10 +284,10 @@ export class TransferScheduleApi {
 
   /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
-     * Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
+     * Returns a transfer belonging to the updated scheduled transfer request
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
-     * @param {TransferSchedule} body The payload of the scheduled transfer request that is to be updated.
+     * @param {TransferSchedule} body Defines the actual payload of the scheduled transfer request that is to be updated.
      * @return {Promise<TransferSchedule>}
      */
   updateTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
@@ -332,10 +332,10 @@ export class TransferScheduleApi {
 
   /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.
-     * Update transfer schedule information. Returns a transfer belonging to the updated scheduled transfer request.
+     * Returns a transfer belonging to the updated scheduled transfer request
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
-     * @param {TransferSchedule} body The payload of the scheduled transfer request that is to be updated.
+     * @param {TransferSchedule} body Defines the actual payload of the scheduled transfer request that is to be updated.
      * @return {Promise<TransferSchedule>}
      */
   updateTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, body) {

@@ -23,7 +23,7 @@ import { ScheduleTransferType } from './ScheduleTransferType.js'
 export class TransferScheduleInformation {
   /**
    * Constructs a new <code>TransferScheduleInformation</code>.
-   * Mandatory information for initiating a schedule transfer.
+   * Parameters containing information required for initiating a schedule transfer
    * @alias module:sellerWallet_2024_03_01/model/TransferScheduleInformation
    * @class
    */
@@ -61,14 +61,14 @@ export class TransferScheduleInformation {
 }
 
 /**
- * The start date of the scheduled transfer.
+ * Field to specify start date of the scheduled transfer
  * @member {Date} scheduleStartDate
  * @type {Date}
  */
 TransferScheduleInformation.prototype.scheduleStartDate = undefined
 
 /**
- * The end date of the scheduled transfer.
+ * Field to specify end date of the scheduled transfer
  * @member {Date} scheduleEndDate
  * @type {Date}
  */
