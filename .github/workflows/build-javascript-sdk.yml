@@ -91,7 +91,8 @@ jobs:
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vendor-shipments-api-model/vendorShipments.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package vendorshipments_v1 && \
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vendor-transaction-status-api-model/vendorTransactionStatus.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package vendortransactionstatus_v1 && \
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package vehicles_v2024_11_01 && \
-          openapi-generator-cli generate -i ../../selling-partner-api-models/models/seller-wallet-api-model/sellerWallet_2024-03-01.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package sellerWallet_2024_03_01
+          openapi-generator-cli generate -i ../../selling-partner-api-models/models/seller-wallet-api-model/sellerWallet_2024-03-01.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package sellerWallet_2024_03_01 && \
+          openapi-generator-cli generate -i ../../selling-partner-api-models/models/customer-feedback-api-model/customerFeedback_2024-06-01.json -g javascript -t config/templates -o sdk -c config/config.json --model-package model --api-package api --invoker-package customerFeedback_2024_06_01
       - name: Generate consolidated index.js file
         working-directory: ./selling-partner-api-sdk/javascript
         run: |

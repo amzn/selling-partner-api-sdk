@@ -89,6 +89,7 @@ jobs:
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.vehicles_v2024_11_01,apiPackage=api.vehicles_v2024_11_01 -c config/config.json
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/shipping-api-model/shippingV2.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.shipping_v2,apiPackage=api.shipping_v2 -c config/config.json --skip-validate-spec
           openapi-generator-cli generate -i ../../selling-partner-api-models/models/seller-wallet-api-model/sellerWallet_2024-03-01.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.seller_wallet_2024_03_01,apiPackage=api.seller_wallet_2024_03_01 -c config/config.json
+          openapi-generator-cli generate -i ../../selling-partner-api-models/models/customer-feedback-api-model/customerFeedback_2024-06-01.json -g python -o ./sdk -t config/templates/ --additional-properties=packageName=spapi,modelPackage=models.customer_feedback_2024_06_01,apiPackage=api.customer_feedback_2024_06_01 -c config/config.json
       - name: Create SDK python package __init__.py file
         working-directory: ./selling-partner-api-sdk/python
         run: python3 dev-toolkit/scripts/script_create_init.py
