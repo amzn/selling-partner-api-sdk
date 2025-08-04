@@ -204,29 +204,6 @@ namespace software.amzn.spapi.Api.messaging.v1
         /// 
         /// </summary>
         /// <remarks>
-        /// Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </remarks>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>CreateNegativeFeedbackRemovalResponse</returns>
-        CreateNegativeFeedbackRemovalResponse CreateNegativeFeedbackRemoval (string amazonOrderId, List<string> marketplaceIds);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </remarks>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>ApiResponse of CreateNegativeFeedbackRemovalResponse</returns>
-        ApiResponse<CreateNegativeFeedbackRemovalResponse> CreateNegativeFeedbackRemovalWithHttpInfo (string amazonOrderId, List<string> marketplaceIds);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
         /// Sends a critical message to a buyer that an unexpected problem was encountered affecting the completion of the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -521,29 +498,6 @@ namespace software.amzn.spapi.Api.messaging.v1
         /// <param name="body">This contains the message body for a message.</param>
         /// <returns>Task of ApiResponse (CreateLegalDisclosureResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateLegalDisclosureResponse>> CreateLegalDisclosureAsyncWithHttpInfo (string amazonOrderId, List<string> marketplaceIds, CreateLegalDisclosureRequest body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </remarks>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>Task of CreateNegativeFeedbackRemovalResponse</returns>
-        System.Threading.Tasks.Task<CreateNegativeFeedbackRemovalResponse> CreateNegativeFeedbackRemovalAsync (string amazonOrderId, List<string> marketplaceIds);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </remarks>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>Task of ApiResponse (CreateNegativeFeedbackRemovalResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateNegativeFeedbackRemovalResponse>> CreateNegativeFeedbackRemovalAsyncWithHttpInfo (string amazonOrderId, List<string> marketplaceIds);
         /// <summary>
         /// 
         /// </summary>
@@ -1930,146 +1884,6 @@ namespace software.amzn.spapi.Api.messaging.v1
             return new ApiResponse<CreateLegalDisclosureResponse>(localVarResponse.StatusCode,
                 ConvertHeadersToMultimap(localVarResponse),
                 (CreateLegalDisclosureResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateLegalDisclosureResponse)));
-        }
-
-        /// <summary>
-        ///  Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </summary>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>CreateNegativeFeedbackRemovalResponse</returns>
-        public CreateNegativeFeedbackRemovalResponse CreateNegativeFeedbackRemoval (string amazonOrderId, List<string> marketplaceIds)
-        {
-             ApiResponse<CreateNegativeFeedbackRemovalResponse> localVarResponse = CreateNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </summary>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>ApiResponse of CreateNegativeFeedbackRemovalResponse</returns>
-        public ApiResponse< CreateNegativeFeedbackRemovalResponse > CreateNegativeFeedbackRemovalWithHttpInfo (string amazonOrderId, List<string> marketplaceIds)
-        {
-            // verify the required parameter 'amazonOrderId' is set
-            if (amazonOrderId == null)
-                throw new ApiException(400, "Missing required parameter 'amazonOrderId' when calling MessagingApi->CreateNegativeFeedbackRemoval");
-            // verify the required parameter 'marketplaceIds' is set
-            if (marketplaceIds == null)
-                throw new ApiException(400, "Missing required parameter 'marketplaceIds' when calling MessagingApi->CreateNegativeFeedbackRemoval");
-
-            var localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/negativeFeedbackRemoval";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/hal+json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (amazonOrderId != null) localVarPathParams.Add("amazonOrderId", this.Configuration.ApiClient.ParameterToString(amazonOrderId)); // path parameter
-            if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
-
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("CreateNegativeFeedbackRemoval", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<CreateNegativeFeedbackRemovalResponse>(localVarResponse.StatusCode,
-                ConvertHeadersToMultimap(localVarResponse),
-                (CreateNegativeFeedbackRemovalResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateNegativeFeedbackRemovalResponse)));
-        }
-
-        /// <summary>
-        ///  Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </summary>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>Task of CreateNegativeFeedbackRemovalResponse</returns>
-        public async System.Threading.Tasks.Task<CreateNegativeFeedbackRemovalResponse> CreateNegativeFeedbackRemovalAsync (string amazonOrderId, List<string> marketplaceIds)
-        {
-             ApiResponse<CreateNegativeFeedbackRemovalResponse> localVarResponse = await CreateNegativeFeedbackRemovalAsyncWithHttpInfo(amazonOrderId, marketplaceIds);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-        /// </summary>
-        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="amazonOrderId">An Amazon order identifier. This identifies the order for which a message is sent.</param>
-        /// <param name="marketplaceIds">A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.</param>
-        /// <returns>Task of ApiResponse (CreateNegativeFeedbackRemovalResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CreateNegativeFeedbackRemovalResponse>> CreateNegativeFeedbackRemovalAsyncWithHttpInfo (string amazonOrderId, List<string> marketplaceIds)
-        {
-            // verify the required parameter 'amazonOrderId' is set
-            if (amazonOrderId == null)
-                throw new ApiException(400, "Missing required parameter 'amazonOrderId' when calling MessagingApi->CreateNegativeFeedbackRemoval");
-            // verify the required parameter 'marketplaceIds' is set
-            if (marketplaceIds == null)
-                throw new ApiException(400, "Missing required parameter 'marketplaceIds' when calling MessagingApi->CreateNegativeFeedbackRemoval");
-
-            var localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/negativeFeedbackRemoval";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/hal+json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (amazonOrderId != null) localVarPathParams.Add("amazonOrderId", this.Configuration.ApiClient.ParameterToString(amazonOrderId)); // path parameter
-            if (marketplaceIds != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("csv", "marketplaceIds", marketplaceIds)); // query parameter
-
-
-            // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("CreateNegativeFeedbackRemoval", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<CreateNegativeFeedbackRemovalResponse>(localVarResponse.StatusCode,
-                ConvertHeadersToMultimap(localVarResponse),
-                (CreateNegativeFeedbackRemovalResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateNegativeFeedbackRemovalResponse)));
         }
 
         /// <summary>
