@@ -141,17 +141,6 @@ const mockcreateLegalDisclosureData = {
     headers: {}
   }
 };
-const mockcreateNegativeFeedbackRemovalData = {
-  request: {
-    'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('String', true)
-  },
-  response: {
-    data: generateMockData('CreateNegativeFeedbackRemovalResponse'),
-    statusCode: 201,
-    headers: {}
-  }
-};
 const mockcreateUnexpectedProblemData = {
   request: {
     'amazonOrderId': generateMockData('String'),
@@ -595,57 +584,6 @@ describe('MessagingApi', () => {
           mockcreateLegalDisclosureData.request['body']
         ];
         await instance.createLegalDisclosure(...params);
-        throw new Error('Expected error to be thrown');
-      } catch (error) {
-        expect(error).to.exist;
-        expect(error.statusCode).to.equal(400);
-      }
-    });
-  });
-  describe('createNegativeFeedbackRemoval', () => {
-    it('should successfully call createNegativeFeedbackRemoval', async () => {
-      instance.apiClient.callApi.resolves(mockcreateNegativeFeedbackRemovalData.response);
-
-      const params = [
-        mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
-        mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
-      ];
-      const data = await instance.createNegativeFeedbackRemoval(...params);
-
-      expect(data instanceof SellingPartnerApiForMessaging.CreateNegativeFeedbackRemovalResponse).to.be.true;
-      expect(data).to.equal(mockcreateNegativeFeedbackRemovalData.response.data);
-    });
-
-    it('should successfully call createNegativeFeedbackRemovalWithHttpInfo', async () => {
-      instance.apiClient.callApi.resolves(mockcreateNegativeFeedbackRemovalData.response);
-
-      const params = [
-        mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
-        mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
-      ];
-      const response = await instance.createNegativeFeedbackRemovalWithHttpInfo(...params);
-
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal(mockcreateNegativeFeedbackRemovalData.response.statusCode)
-      expect(response).to.have.property('headers');
-      expect(response).to.have.property('data');
-      expect(response.data).to.equal(mockcreateNegativeFeedbackRemovalData.response.data)
-    });
-
-    it('should handle API errors', async () => {
-      const errorResponse = {
-        errors: new Error('Expected error to be thrown'),
-        statusCode: 400,
-        headers: {}
-      };
-      instance.apiClient.callApi.rejects(errorResponse);
-
-      try {
-        const params = [
-          mockcreateNegativeFeedbackRemovalData.request['amazonOrderId'],
-          mockcreateNegativeFeedbackRemovalData.request['marketplaceIds']
-        ];
-        await instance.createNegativeFeedbackRemoval(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;
