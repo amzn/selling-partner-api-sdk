@@ -109,16 +109,6 @@ class TestMessagingApi(unittest.TestCase):
         self.assert_valid_response_payload(201, response[0])
         pass
 
-    def test_create_negative_feedback_removal(self):
-        amazon_order_id = self._get_random_value("str", None)
-        marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
-        
-        self.instruct_backend_mock(self.to_camel_case("create_negative_feedback_removal"), "201")
-        response = self.api.create_negative_feedback_removal_with_http_info(amazon_order_id, marketplace_ids, )
-        self.assertEqual(201, response[1])
-        self.assert_valid_response_payload(201, response[0])
-        pass
-
     def test_create_unexpected_problem(self):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
