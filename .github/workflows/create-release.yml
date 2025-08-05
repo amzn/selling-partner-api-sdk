@@ -11,26 +11,31 @@ on:
 jobs:
   release_python:
     uses: ./.github/workflows/create-python-release.yml
+    secrets: inherit
     with:
       newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   release_java:
     uses: ./.github/workflows/create-java-release.yml
+    secrets: inherit
     with:
       newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   release_javascript:
     uses: ./.github/workflows/create-javascript-release.yml
+    secrets: inherit
     with:
       newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   release_php:
     uses: ./.github/workflows/create-php-release.yml
+    secrets: inherit
     with:
       newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
   tag_and_release:
     needs: [release_java, release_php, release_javascript, release_python]
     uses: ./.github/workflows/create-tag-release.yml
+    secrets: inherit
     with:
       tagName: ${{ github.event.inputs.newVersionNumber }}
