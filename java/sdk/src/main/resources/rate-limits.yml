@@ -197,7 +197,7 @@ FbaInboundApi-getPrepInstructions:
   - 2
   - 30
 FbaInboundApi-getLabels:
-  - 2
+  - 5
   - 30
 FbaInboundApi-getBillOfLading:
   - 2
@@ -264,10 +264,10 @@ FbaInboundApi-confirmPlacementOption:
   - 2
   - 2
 FbaInboundApi-getShipment:
-  - 2
+  - 5
   - 6
 FbaInboundApi-listShipmentBoxes:
-  - 2
+  - 5
   - 30
 FbaInboundApi-listShipmentContentUpdatePreviews:
   - 2
@@ -285,7 +285,7 @@ FbaInboundApi-getDeliveryChallanDocument:
   - 2
   - 6
 FbaInboundApi-listDeliveryWindowOptions:
-  - 2
+  - 5
   - 30
 FbaInboundApi-generateDeliveryWindowOptions:
   - 2
@@ -321,7 +321,7 @@ FbaInboundApi-updateShipmentTrackingDetails:
   - 2
   - 2
 FbaInboundApi-listTransportationOptions:
-  - 2
+  - 5
   - 6
 FbaInboundApi-generateTransportationOptions:
   - 2
@@ -345,7 +345,7 @@ FbaInboundApi-setPrepDetails:
   - 2
   - 30
 FbaInboundApi-getInboundOperationStatus:
-  - 2
+  - 5
   - 6
 # FBA Outbound API
 FbaOutboundApi-getFulfillmentPreview:
@@ -985,3 +985,25 @@ TransferScheduleApi-deleteScheduleTransaction:
   - 1
   - 10
   - 2
+# Customer Feedback API
+CustomerFeedbackApi-getItemReviewTopics:
+  - 1
+  - 10
+CustomerFeedbackApi-getItemBrowseNode:
+  - 1
+  - 10
+CustomerFeedbackApi-getBrowseNodeReviewTopics:
+  - 1
+  - 10
+CustomerFeedbackApi-getItemReviewTrends:
+  - 1
+  - 10
+CustomerFeedbackApi-getBrowseNodeReviewTrends:
+  - 1
+  - 10
+CustomerFeedbackApi-getBrowseNodeReturnTopics:
+  - 1
+  - 10
+CustomerFeedbackApi-getBrowseNodeReturnTrends:
+  - 1
+  - 10
