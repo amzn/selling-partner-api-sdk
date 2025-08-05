@@ -366,7 +366,7 @@ class Configuration
         $report = 'PHP SDK (SpApi) Debug Report:'.PHP_EOL;
         $report .= '    OS: '.php_uname().PHP_EOL;
         $report .= '    PHP Version: '.PHP_VERSION.PHP_EOL;
-        $report .= '    The version of the OpenAPI document: 2024-03-01'.PHP_EOL;
+        $report .= '    The version of the OpenAPI document: 2024-06-01'.PHP_EOL;
         $report .= '    Temp Folder Path: '.self::getDefaultConfiguration()->getTempFolderPath().PHP_EOL;
 
         return $report;
