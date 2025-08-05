@@ -5,21 +5,15 @@ on:
   repository_dispatch:
     types: [trigger-build]
 
-
 env:
   SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
-
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout csharp feature branch
-        uses: actions/checkout@v4
-        with:
-          repository: amzn/selling-partner-api-sdk  
-          ref: feature/update-csharp-sdk
+      - uses: actions/checkout@v4
         
       - name: Install .NET
         uses: actions/setup-dotnet@v3
