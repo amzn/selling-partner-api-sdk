@@ -1,6 +1,11 @@
 name: Create Tag and GitHub Release
 
 on:
+  workflow_dispatch:
+    inputs:
+      tagName:
+        type: string
+        required: true
   workflow_call:
     inputs:
       tagName:
