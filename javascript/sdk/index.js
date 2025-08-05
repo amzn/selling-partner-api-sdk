@@ -3,6 +3,7 @@ export * as AppintegrationsSpApi from './src/appintegrations_v2024_04_01/index.j
 export * as ApplicationsSpApi from './src/applications_v2023_11_30/index.js';
 export * as AwdSpApi from './src/awd_v2024_05_09/index.js';
 export * as CatalogitemsSpApi from './src/catalogitems_v2022_04_01/index.js';
+export * as CustomerFeedback20240601SpApi from './src/customerFeedback_2024_06_01/index.js';
 export * as DatakioskSpApi from './src/datakiosk_v2023_11_15/index.js';
 export * as EasyshipSpApi from './src/easyship_v2022_03_23/index.js';
 export * as FbaeligibilitySpApi from './src/fbaeligibility_v1/index.js';
