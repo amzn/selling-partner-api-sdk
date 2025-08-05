@@ -30,7 +30,7 @@ namespace software.amzn.spapi.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.1.2";
+        public const string Version = "1.2.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -125,7 +125,7 @@ namespace software.amzn.spapi.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "amazon-selling-partner-api-sdk/1.1.2/csharp";
+            UserAgent = "amazon-selling-partner-api-sdk/1.2.0/csharp";
             BasePath = "https://sellingpartnerapi-na.amazon.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -195,7 +195,7 @@ namespace software.amzn.spapi.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.1.2/csharp"
+            string userAgent = "Swagger-Codegen/1.2.0/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -478,7 +478,7 @@ namespace software.amzn.spapi.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2024-06-01\n";
-            report += "    SDK Package Version: 1.1.2\n";
+            report += "    SDK Package Version: 1.2.0\n";
 
             return report;
         }
