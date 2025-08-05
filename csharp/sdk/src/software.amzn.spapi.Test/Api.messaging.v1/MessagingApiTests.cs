@@ -160,19 +160,6 @@ namespace software.amzn.spapi.Api.messaging.v1.Test
         }
         
         /// <summary>
-        /// Test CreateNegativeFeedbackRemoval
-        /// </summary>
-        [Fact]
-        public void CreateNegativeFeedbackRemovalTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string amazonOrderId = null;
-            //List<string> marketplaceIds = null;
-            //var response = instance.CreateNegativeFeedbackRemoval(amazonOrderIdmarketplaceIds);
-            //Assert.IsInstanceOf<CreateNegativeFeedbackRemovalResponse> (response, "response is CreateNegativeFeedbackRemovalResponse");
-        }
-        
-        /// <summary>
         /// Test CreateUnexpectedProblem
         /// </summary>
         [Fact]

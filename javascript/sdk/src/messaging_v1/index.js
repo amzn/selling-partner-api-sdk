@@ -27,7 +27,6 @@ import { CreateDigitalAccessKeyRequest } from './model/CreateDigitalAccessKeyReq
 import { CreateDigitalAccessKeyResponse } from './model/CreateDigitalAccessKeyResponse.js'
 import { CreateLegalDisclosureRequest } from './model/CreateLegalDisclosureRequest.js'
 import { CreateLegalDisclosureResponse } from './model/CreateLegalDisclosureResponse.js'
-import { CreateNegativeFeedbackRemovalResponse } from './model/CreateNegativeFeedbackRemovalResponse.js'
 import { CreateUnexpectedProblemRequest } from './model/CreateUnexpectedProblemRequest.js'
 import { CreateUnexpectedProblemResponse } from './model/CreateUnexpectedProblemResponse.js'
 import { CreateWarrantyRequest } from './model/CreateWarrantyRequest.js'
@@ -151,12 +150,6 @@ export {
      * @property {module:messaging_v1/model/CreateLegalDisclosureResponse}
      */
   CreateLegalDisclosureResponse,
-
-  /**
-     * The CreateNegativeFeedbackRemovalResponse model constructor.
-     * @property {module:messaging_v1/model/CreateNegativeFeedbackRemovalResponse}
-     */
-  CreateNegativeFeedbackRemovalResponse,
 
   /**
      * The CreateUnexpectedProblemRequest model constructor.

@@ -41,7 +41,6 @@ import software.amazon.spapi.models.messaging.v1.CreateDigitalAccessKeyRequest;
 import software.amazon.spapi.models.messaging.v1.CreateDigitalAccessKeyResponse;
 import software.amazon.spapi.models.messaging.v1.CreateLegalDisclosureRequest;
 import software.amazon.spapi.models.messaging.v1.CreateLegalDisclosureResponse;
-import software.amazon.spapi.models.messaging.v1.CreateNegativeFeedbackRemovalResponse;
 import software.amazon.spapi.models.messaging.v1.CreateUnexpectedProblemRequest;
 import software.amazon.spapi.models.messaging.v1.CreateUnexpectedProblemResponse;
 import software.amazon.spapi.models.messaging.v1.CreateWarrantyRequest;
@@ -166,19 +165,6 @@ public class MessagingApiTest {
 
         ApiResponse<CreateLegalDisclosureResponse> response =
                 api.createLegalDisclosureWithHttpInfo(body, amazonOrderId, marketplaceIds);
-
-        assertEquals(201, response.getStatusCode());
-        assertValidResponsePayload(201, response.getData());
-    }
-
-    @Test
-    public void createNegativeFeedbackRemovalTest() throws Exception {
-        instructBackendMock("createNegativeFeedbackRemoval", "201");
-        String amazonOrderId = easyRandom.nextObject(String.class);
-        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
-
-        ApiResponse<CreateNegativeFeedbackRemovalResponse> response =
-                api.createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
         assertValidResponsePayload(201, response.getData());

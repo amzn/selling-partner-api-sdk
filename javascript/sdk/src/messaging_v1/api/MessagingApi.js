@@ -26,7 +26,6 @@ import { CreateDigitalAccessKeyRequest } from '../model/CreateDigitalAccessKeyRe
 import { CreateDigitalAccessKeyResponse } from '../model/CreateDigitalAccessKeyResponse.js'
 import { CreateLegalDisclosureRequest } from '../model/CreateLegalDisclosureRequest.js'
 import { CreateLegalDisclosureResponse } from '../model/CreateLegalDisclosureResponse.js'
-import { CreateNegativeFeedbackRemovalResponse } from '../model/CreateNegativeFeedbackRemovalResponse.js'
 import { CreateUnexpectedProblemRequest } from '../model/CreateUnexpectedProblemRequest.js'
 import { CreateUnexpectedProblemResponse } from '../model/CreateUnexpectedProblemResponse.js'
 import { CreateWarrantyRequest } from '../model/CreateWarrantyRequest.js'
@@ -73,7 +72,6 @@ export class MessagingApi {
       'MessagingApi-createConfirmServiceDetails',
       'MessagingApi-createDigitalAccessKey',
       'MessagingApi-createLegalDisclosure',
-      'MessagingApi-createNegativeFeedbackRemoval',
       'MessagingApi-createUnexpectedProblem',
       'MessagingApi-createWarranty',
       'MessagingApi-getAttributes',
@@ -517,60 +515,6 @@ export class MessagingApi {
      */
   createLegalDisclosure (amazonOrderId, marketplaceIds, body) {
     return this.createLegalDisclosureWithHttpInfo(amazonOrderId, marketplaceIds, body)
-      .then(function (response_and_data) {
-        return response_and_data.data
-      })
-  }
-
-  /**
-     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<CreateNegativeFeedbackRemovalResponse>}
-     */
-  createNegativeFeedbackRemovalWithHttpInfo (amazonOrderId, marketplaceIds) {
-    const postBody = null
-
-    // verify the required parameter 'amazonOrderId' is set
-    if (amazonOrderId === undefined || amazonOrderId === null) {
-      throw new Error("Missing the required parameter 'amazonOrderId' when calling createNegativeFeedbackRemoval")
-    }
-
-    // verify the required parameter 'marketplaceIds' is set
-    if (marketplaceIds === undefined || marketplaceIds === null) {
-      throw new Error("Missing the required parameter 'marketplaceIds' when calling createNegativeFeedbackRemoval")
-    }
-
-    const pathParams = {
-      amazonOrderId
-    }
-    const queryParams = {
-      marketplaceIds: this.apiClient.buildCollectionParam(marketplaceIds, 'csv')
-    }
-    const headerParams = {
-    }
-    const formParams = {
-    }
-
-    const contentTypes = []
-    const accepts = ['application/hal+json']
-    const returnType = CreateNegativeFeedbackRemovalResponse
-
-    return this.apiClient.callApi('MessagingApi-createNegativeFeedbackRemoval',
-      '/messaging/v1/orders/{amazonOrderId}/messages/negativeFeedbackRemoval', 'POST',
-      pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createNegativeFeedbackRemoval')
-    )
-  }
-
-  /**
-     * Sends a non-critical message that asks a buyer to remove their negative feedback. This message should only be sent after the seller has resolved the buyer&#39;s problem.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @return {Promise<CreateNegativeFeedbackRemovalResponse>}
-     */
-  createNegativeFeedbackRemoval (amazonOrderId, marketplaceIds) {
-    return this.createNegativeFeedbackRemovalWithHttpInfo(amazonOrderId, marketplaceIds)
       .then(function (response_and_data) {
         return response_and_data.data
       })
