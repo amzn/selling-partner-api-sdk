@@ -15,6 +15,7 @@ from spapi.api.appintegrations_v2024_04_01.app_integrations_api import AppIntegr
 from spapi.api.applications_v2023_11_30.applications_api import ApplicationsApi
 from spapi.api.awd_v2024_05_09.awd_api import AwdApi
 from spapi.api.catalogitems_v2022_04_01.catalog_api import CatalogApi
+from spapi.api.customer_feedback_2024_06_01.customer_feedback_api import CustomerFeedbackApi
 from spapi.api.datakiosk_v2023_11_15.queries_api import QueriesApi
 from spapi.api.easyship_v2022_03_23.easy_ship_api import EasyShipApi
 from spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
