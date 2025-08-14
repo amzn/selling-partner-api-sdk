@@ -37,9 +37,14 @@ jobs:
       - name: Publish Java SDK to Maven Central
         working-directory: java/sdk
         run: ./gradlew publish
+      - name: Make deployment visible in Central Portal
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/com.sonatype.central.testing.amazon'
+          method: 'POST'
 
-  tag_and_release:
-    needs: [ release_java ]
-    uses: ./.github/workflows/create-tag-release.yml
-    with:
-      tagName: "java-${{ github.event.inputs.newVersionNumber }}"
+  #tag_and_release:
+    #needs: [ release_java ]
+    #uses: ./.github/workflows/create-tag-release.yml
+    #with:
+      #tagName: "java-${{ github.event.inputs.newVersionNumber }}"
