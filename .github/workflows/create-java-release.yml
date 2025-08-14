@@ -42,6 +42,7 @@ jobs:
         with:
           url: 'https://ossrh-staging-api.central.sonatype.com/manual/upload/defaultRepository/com.sonatype.central.testing.amazon'
           method: 'POST'
+          bearerToken: ${{ secrets.JAVA_OSSHR_USR_PW_B64 }}
 
   #tag_and_release:
     #needs: [ release_java ]
