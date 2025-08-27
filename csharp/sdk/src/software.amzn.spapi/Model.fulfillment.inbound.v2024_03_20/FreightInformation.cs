@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
 {
     /// <summary>
-    /// Freight information describes the skus being transported. Freight carrier options and quotes will only be returned if the freight information is provided.
+    /// Freight information describes the SKUs that are in transit. Freight carrier options and quotes will only be returned if the freight information is provided.
     /// </summary>
     [DataContract(Name = "FreightInformation")]
     public partial class FreightInformation : IValidatableObject

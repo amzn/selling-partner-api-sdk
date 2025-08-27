@@ -33,7 +33,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>GetMyFeesEstimateResponse</returns>
         GetMyFeesEstimateResponse GetMyFeesEstimateForASIN (string asin, GetMyFeesEstimateRequest body);
 
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>ApiResponse of GetMyFeesEstimateResponse</returns>
         ApiResponse<GetMyFeesEstimateResponse> GetMyFeesEstimateForASINWithHttpInfo (string asin, GetMyFeesEstimateRequest body);
         /// <summary>
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>GetMyFeesEstimateResponse</returns>
         GetMyFeesEstimateResponse GetMyFeesEstimateForSKU (string sellerSKU, GetMyFeesEstimateRequest body);
 
@@ -68,7 +68,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>ApiResponse of GetMyFeesEstimateResponse</returns>
         ApiResponse<GetMyFeesEstimateResponse> GetMyFeesEstimateForSKUWithHttpInfo (string sellerSKU, GetMyFeesEstimateRequest body);
         /// <summary>
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>List&lt;FeesEstimateResult&gt;</returns>
         List<FeesEstimateResult> GetMyFeesEstimates (List<FeesEstimateByIdRequest> body);
 
@@ -89,7 +89,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>ApiResponse of List&lt;FeesEstimateResult&gt;</returns>
         ApiResponse<List<FeesEstimateResult>> GetMyFeesEstimatesWithHttpInfo (List<FeesEstimateByIdRequest> body);
         #endregion Synchronous Operations
@@ -102,7 +102,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of GetMyFeesEstimateResponse</returns>
         System.Threading.Tasks.Task<GetMyFeesEstimateResponse> GetMyFeesEstimateForASINAsync (string asin, GetMyFeesEstimateRequest body);
 
@@ -114,7 +114,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of ApiResponse (GetMyFeesEstimateResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetMyFeesEstimateResponse>> GetMyFeesEstimateForASINAsyncWithHttpInfo (string asin, GetMyFeesEstimateRequest body);
         /// <summary>
@@ -125,7 +125,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of GetMyFeesEstimateResponse</returns>
         System.Threading.Tasks.Task<GetMyFeesEstimateResponse> GetMyFeesEstimateForSKUAsync (string sellerSKU, GetMyFeesEstimateRequest body);
 
@@ -137,7 +137,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of ApiResponse (GetMyFeesEstimateResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetMyFeesEstimateResponse>> GetMyFeesEstimateForSKUAsyncWithHttpInfo (string sellerSKU, GetMyFeesEstimateRequest body);
         /// <summary>
@@ -147,7 +147,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of List&lt;FeesEstimateResult&gt;</returns>
         System.Threading.Tasks.Task<List<FeesEstimateResult>> GetMyFeesEstimatesAsync (List<FeesEstimateByIdRequest> body);
 
@@ -158,7 +158,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of ApiResponse (List&lt;FeesEstimateResult&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<FeesEstimateResult>>> GetMyFeesEstimatesAsyncWithHttpInfo (List<FeesEstimateByIdRequest> body);
         #endregion Asynchronous Operations
@@ -257,7 +257,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>GetMyFeesEstimateResponse</returns>
         public GetMyFeesEstimateResponse GetMyFeesEstimateForASIN (string asin, GetMyFeesEstimateRequest body)
         {
@@ -270,7 +270,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>ApiResponse of GetMyFeesEstimateResponse</returns>
         public ApiResponse< GetMyFeesEstimateResponse > GetMyFeesEstimateForASINWithHttpInfo (string asin, GetMyFeesEstimateRequest body)
         {
@@ -335,7 +335,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of GetMyFeesEstimateResponse</returns>
         public async System.Threading.Tasks.Task<GetMyFeesEstimateResponse> GetMyFeesEstimateForASINAsync (string asin, GetMyFeesEstimateRequest body)
         {
@@ -349,7 +349,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of ApiResponse (GetMyFeesEstimateResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetMyFeesEstimateResponse>> GetMyFeesEstimateForASINAsyncWithHttpInfo (string asin, GetMyFeesEstimateRequest body)
         {
@@ -413,7 +413,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>GetMyFeesEstimateResponse</returns>
         public GetMyFeesEstimateResponse GetMyFeesEstimateForSKU (string sellerSKU, GetMyFeesEstimateRequest body)
         {
@@ -426,7 +426,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>ApiResponse of GetMyFeesEstimateResponse</returns>
         public ApiResponse< GetMyFeesEstimateResponse > GetMyFeesEstimateForSKUWithHttpInfo (string sellerSKU, GetMyFeesEstimateRequest body)
         {
@@ -491,7 +491,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of GetMyFeesEstimateResponse</returns>
         public async System.Threading.Tasks.Task<GetMyFeesEstimateResponse> GetMyFeesEstimateForSKUAsync (string sellerSKU, GetMyFeesEstimateRequest body)
         {
@@ -505,7 +505,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="sellerSKU">Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</param>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of ApiResponse (GetMyFeesEstimateResponse)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<GetMyFeesEstimateResponse>> GetMyFeesEstimateForSKUAsyncWithHttpInfo (string sellerSKU, GetMyFeesEstimateRequest body)
         {
@@ -568,7 +568,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         ///  Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>List&lt;FeesEstimateResult&gt;</returns>
         public List<FeesEstimateResult> GetMyFeesEstimates (List<FeesEstimateByIdRequest> body)
         {
@@ -580,7 +580,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         ///  Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>ApiResponse of List&lt;FeesEstimateResult&gt;</returns>
         public ApiResponse< List<FeesEstimateResult> > GetMyFeesEstimatesWithHttpInfo (List<FeesEstimateByIdRequest> body)
         {
@@ -640,7 +640,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         ///  Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of List&lt;FeesEstimateResult&gt;</returns>
         public async System.Threading.Tasks.Task<List<FeesEstimateResult>> GetMyFeesEstimatesAsync (List<FeesEstimateByIdRequest> body)
         {
@@ -653,7 +653,7 @@ namespace software.amzn.spapi.Api.productFees.v0
         ///  Returns the estimated fees for a list of products.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body"></param>
+        /// <param name="body">The request body schema for the getMyFeesEstimates operation</param>
         /// <returns>Task of ApiResponse (List&lt;FeesEstimateResult&gt;)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<List<FeesEstimateResult>>> GetMyFeesEstimatesAsyncWithHttpInfo (List<FeesEstimateByIdRequest> body)
         {

@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="address">address.</param>
         /// <param name="destinationType">The type of destination for this shipment. Possible values: &#x60;AMAZON_OPTIMIZED&#x60;, &#x60;AMAZON_WAREHOUSE&#x60;. (required).</param>
-        /// <param name="warehouseId">The warehouse that the shipment should be sent to. Empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;..</param>
+        /// <param name="warehouseId">The warehouse that the shipment should be sent to. This can be empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;..</param>
         public ShipmentDestination(Address address = default(Address), string destinationType = default(string), string warehouseId = default(string))
         {
             // to ensure "destinationType" is required (not null)
@@ -68,9 +68,9 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         public string DestinationType { get; set; }
 
         /// <summary>
-        /// The warehouse that the shipment should be sent to. Empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;.
+        /// The warehouse that the shipment should be sent to. This can be empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;.
         /// </summary>
-        /// <value>The warehouse that the shipment should be sent to. Empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;.</value>
+        /// <value>The warehouse that the shipment should be sent to. This can be empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;.</value>
         [DataMember(Name = "warehouseId", EmitDefaultValue = false)]
         public string WarehouseId { get; set; }
 

@@ -114,9 +114,9 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             }
 
             // TrackingId (string) maxLength
-            if (this.TrackingId != null && this.TrackingId.Length > 1024)
+            if (this.TrackingId != null && this.TrackingId.Length > 64)
             {
-                yield return new ValidationResult("Invalid value for TrackingId, length must be less than 1024.", new [] { "TrackingId" });
+                yield return new ValidationResult("Invalid value for TrackingId, length must be less than 64.", new [] { "TrackingId" });
             }
 
             // TrackingId (string) minLength

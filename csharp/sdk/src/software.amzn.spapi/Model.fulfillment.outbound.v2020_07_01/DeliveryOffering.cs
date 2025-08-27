@@ -26,35 +26,42 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The request for the &#x60;listAllFulfillmentOrders&#x60; operation.
+    /// An available offering for delivery of a product.
     /// </summary>
-    [DataContract(Name = "ListAllFulfillmentOrdersResult")]
-    public partial class ListAllFulfillmentOrdersResult : IValidatableObject
+    [DataContract(Name = "DeliveryOffering")]
+    public partial class DeliveryOffering : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListAllFulfillmentOrdersResult" /> class.
+        /// Initializes a new instance of the <see cref="DeliveryOffering" /> class.
         /// </summary>
-        /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        /// <param name="fulfillmentOrders">An array of fulfillment order information..</param>
-        public ListAllFulfillmentOrdersResult(string nextToken = default(string), List<FulfillmentOrder> fulfillmentOrders = default(List<FulfillmentOrder>))
+        /// <param name="expiresAt">Date timestamp.</param>
+        /// <param name="dateRange">dateRange.</param>
+        /// <param name="policy">policy.</param>
+        public DeliveryOffering(DateTime expiresAt = default(DateTime), DateRange dateRange = default(DateRange), DeliveryPolicy policy = default(DeliveryPolicy))
         {
-            this.NextToken = nextToken;
-            this.FulfillmentOrders = fulfillmentOrders;
+            this.ExpiresAt = expiresAt;
+            this.DateRange = dateRange;
+            this.Policy = policy;
         }
 
         /// <summary>
-        /// When present and not empty, pass this string token in the next request to return the next response page.
+        /// Date timestamp
         /// </summary>
-        /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
-        [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        /// <value>Date timestamp</value>
+        [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
+        public DateTime ExpiresAt { get; set; }
 
         /// <summary>
-        /// An array of fulfillment order information.
+        /// Gets or Sets DateRange
         /// </summary>
-        /// <value>An array of fulfillment order information.</value>
-        [DataMember(Name = "fulfillmentOrders", EmitDefaultValue = false)]
-        public List<FulfillmentOrder> FulfillmentOrders { get; set; }
+        [DataMember(Name = "dateRange", EmitDefaultValue = false)]
+        public DateRange DateRange { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Policy
+        /// </summary>
+        [DataMember(Name = "policy", EmitDefaultValue = false)]
+        public DeliveryPolicy Policy { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +70,10 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListAllFulfillmentOrdersResult {\n");
-            sb.Append("  NextToken: ").Append(NextToken).Append("\n");
-            sb.Append("  FulfillmentOrders: ").Append(FulfillmentOrders).Append("\n");
+            sb.Append("class DeliveryOffering {\n");
+            sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
+            sb.Append("  DateRange: ").Append(DateRange).Append("\n");
+            sb.Append("  Policy: ").Append(Policy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

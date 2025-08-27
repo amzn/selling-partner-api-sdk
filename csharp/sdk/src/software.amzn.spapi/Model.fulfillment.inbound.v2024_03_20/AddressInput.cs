@@ -44,12 +44,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="city">The city. (required).</param>
         /// <param name="companyName">The name of the business..</param>
         /// <param name="countryCode">The country code in two-character ISO 3166-1 alpha-2 format. (required).</param>
+        /// <param name="districtOrCounty">The district or county..</param>
         /// <param name="email">The email address..</param>
         /// <param name="name">The name of the individual who is the primary contact. (required).</param>
         /// <param name="phoneNumber">The phone number. (required).</param>
         /// <param name="postalCode">The postal code. (required).</param>
         /// <param name="stateOrProvinceCode">The state or province code..</param>
-        public AddressInput(string addressLine1 = default(string), string addressLine2 = default(string), string city = default(string), string companyName = default(string), string countryCode = default(string), string email = default(string), string name = default(string), string phoneNumber = default(string), string postalCode = default(string), string stateOrProvinceCode = default(string))
+        public AddressInput(string addressLine1 = default(string), string addressLine2 = default(string), string city = default(string), string companyName = default(string), string countryCode = default(string), string districtOrCounty = default(string), string email = default(string), string name = default(string), string phoneNumber = default(string), string postalCode = default(string), string stateOrProvinceCode = default(string))
         {
             // to ensure "addressLine1" is required (not null)
             if (addressLine1 == null)
@@ -89,6 +90,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             this.PostalCode = postalCode;
             this.AddressLine2 = addressLine2;
             this.CompanyName = companyName;
+            this.DistrictOrCounty = districtOrCounty;
             this.Email = email;
             this.StateOrProvinceCode = stateOrProvinceCode;
         }
@@ -127,6 +129,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <value>The country code in two-character ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "countryCode", IsRequired = true, EmitDefaultValue = true)]
         public string CountryCode { get; set; }
+
+        /// <summary>
+        /// The district or county.
+        /// </summary>
+        /// <value>The district or county.</value>
+        [DataMember(Name = "districtOrCounty", EmitDefaultValue = false)]
+        public string DistrictOrCounty { get; set; }
 
         /// <summary>
         /// The email address.
@@ -176,6 +185,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  DistrictOrCounty: ").Append(DistrictOrCounty).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
@@ -268,6 +278,18 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CountryCode, must match a pattern of " + regexCountryCode, new [] { "CountryCode" });
                 }
+            }
+
+            // DistrictOrCounty (string) maxLength
+            if (this.DistrictOrCounty != null && this.DistrictOrCounty.Length > 50)
+            {
+                yield return new ValidationResult("Invalid value for DistrictOrCounty, length must be less than 50.", new [] { "DistrictOrCounty" });
+            }
+
+            // DistrictOrCounty (string) minLength
+            if (this.DistrictOrCounty != null && this.DistrictOrCounty.Length < 1)
+            {
+                yield return new ValidationResult("Invalid value for DistrictOrCounty, length must be greater than 1.", new [] { "DistrictOrCounty" });
             }
 
             // Email (string) maxLength

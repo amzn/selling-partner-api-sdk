@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The result for the createFulfillmentReturn operation.
+    /// The result for the &#x60;createFulfillmentReturn&#x60; operation.
     /// </summary>
     [DataContract(Name = "CreateFulfillmentReturnResult")]
     public partial class CreateFulfillmentReturnResult : IValidatableObject

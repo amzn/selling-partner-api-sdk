@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="DeliveryMessage" /> class.
         /// </summary>
         /// <param name="text">The message content for a delivery offering..</param>
-        /// <param name="locale">The locale for the message (for example, en_US)..</param>
+        /// <param name="locale">The locale for the message (e.g., &#x60;en_US&#x60;)..</param>
         public DeliveryMessage(string text = default(string), string locale = default(string))
         {
             this.Text = text;
@@ -50,9 +50,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public string Text { get; set; }
 
         /// <summary>
-        /// The locale for the message (for example, en_US).
+        /// The locale for the message (e.g., &#x60;en_US&#x60;).
         /// </summary>
-        /// <value>The locale for the message (for example, en_US).</value>
+        /// <value>The locale for the message (e.g., &#x60;en_US&#x60;).</value>
         [DataMember(Name = "locale", EmitDefaultValue = false)]
         public string Locale { get; set; }
 

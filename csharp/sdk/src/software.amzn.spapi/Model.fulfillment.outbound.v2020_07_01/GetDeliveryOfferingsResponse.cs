@@ -26,35 +26,34 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The request for the &#x60;listAllFulfillmentOrders&#x60; operation.
+    /// The response schema for the &#x60;getDeliveryOfferings&#x60; operation.
     /// </summary>
-    [DataContract(Name = "ListAllFulfillmentOrdersResult")]
-    public partial class ListAllFulfillmentOrdersResult : IValidatableObject
+    [DataContract(Name = "GetDeliveryOfferingsResponse")]
+    public partial class GetDeliveryOfferingsResponse : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListAllFulfillmentOrdersResult" /> class.
+        /// Initializes a new instance of the <see cref="GetDeliveryOfferingsResponse" /> class.
         /// </summary>
-        /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        /// <param name="fulfillmentOrders">An array of fulfillment order information..</param>
-        public ListAllFulfillmentOrdersResult(string nextToken = default(string), List<FulfillmentOrder> fulfillmentOrders = default(List<FulfillmentOrder>))
+        /// <param name="payload">payload.</param>
+        /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
+        public GetDeliveryOfferingsResponse(GetDeliveryOfferingsResult payload = default(GetDeliveryOfferingsResult), List<Error> errors = default(List<Error>))
         {
-            this.NextToken = nextToken;
-            this.FulfillmentOrders = fulfillmentOrders;
+            this.Payload = payload;
+            this.Errors = errors;
         }
 
         /// <summary>
-        /// When present and not empty, pass this string token in the next request to return the next response page.
+        /// Gets or Sets Payload
         /// </summary>
-        /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
-        [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        [DataMember(Name = "payload", EmitDefaultValue = false)]
+        public GetDeliveryOfferingsResult Payload { get; set; }
 
         /// <summary>
-        /// An array of fulfillment order information.
+        /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
-        /// <value>An array of fulfillment order information.</value>
-        [DataMember(Name = "fulfillmentOrders", EmitDefaultValue = false)]
-        public List<FulfillmentOrder> FulfillmentOrders { get; set; }
+        /// <value>A list of error responses returned when a request is unsuccessful.</value>
+        [DataMember(Name = "errors", EmitDefaultValue = false)]
+        public List<Error> Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +62,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListAllFulfillmentOrdersResult {\n");
-            sb.Append("  NextToken: ").Append(NextToken).Append("\n");
-            sb.Append("  FulfillmentOrders: ").Append(FulfillmentOrders).Append("\n");
+            sb.Append("class GetDeliveryOfferingsResponse {\n");
+            sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

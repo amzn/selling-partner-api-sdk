@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="estimatedArrivalDate">Date timestamp.</param>
         /// <param name="shipToAddress">shipToAddress.</param>
         /// <param name="currentStatus">currentStatus.</param>
-        /// <param name="currentStatusDescription">Description corresponding to the CurrentStatus value..</param>
+        /// <param name="currentStatusDescription">Description corresponding to the &#x60;CurrentStatus&#x60; value..</param>
         /// <param name="deliveryWindow">deliveryWindow.</param>
         /// <param name="signedForBy">The name of the person who signed for the package..</param>
         /// <param name="additionalLocationInfo">additionalLocationInfo.</param>
@@ -148,9 +148,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public TrackingAddress ShipToAddress { get; set; }
 
         /// <summary>
-        /// Description corresponding to the CurrentStatus value.
+        /// Description corresponding to the &#x60;CurrentStatus&#x60; value.
         /// </summary>
-        /// <value>Description corresponding to the CurrentStatus value.</value>
+        /// <value>Description corresponding to the &#x60;CurrentStatus&#x60; value.</value>
         [DataMember(Name = "currentStatusDescription", EmitDefaultValue = false)]
         public string CurrentStatusDescription { get; set; }
 

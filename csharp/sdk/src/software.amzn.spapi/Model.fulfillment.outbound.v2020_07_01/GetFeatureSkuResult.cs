@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="marketplaceId">The requested marketplace. (required).</param>
         /// <param name="featureName">The name of the feature. (required).</param>
         /// <param name="isEligible">When true, the seller SKU is eligible for the requested feature. (required).</param>
-        /// <param name="ineligibleReasons">A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * &#x60;MERCHANT_NOT_ENROLLED&#x60; - The merchant isn&#39;t enrolled for the feature. * &#x60;SKU_NOT_ELIGIBLE&#x60; - The SKU doesn&#39;t reside in a warehouse that supports the feature. * &#x60;INVALID_SKU&#x60; - There is an issue with the SKU provided..</param>
+        /// <param name="ineligibleReasons">A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * &#x60;MERCHANT_NOT_ENROLLED&#x60;: The merchant isn&#39;t enrolled for the feature. * &#x60;SKU_NOT_ELIGIBLE&#x60;: The SKU doesn&#39;t reside in a warehouse that supports the feature. * &#x60;INVALID_SKU&#x60;: There is an issue with the SKU provided..</param>
         /// <param name="skuInfo">skuInfo.</param>
         public GetFeatureSkuResult(string marketplaceId = default(string), string featureName = default(string), bool isEligible = default(bool), List<string> ineligibleReasons = default(List<string>), FeatureSku skuInfo = default(FeatureSku))
         {
@@ -85,9 +85,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public bool IsEligible { get; set; }
 
         /// <summary>
-        /// A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * &#x60;MERCHANT_NOT_ENROLLED&#x60; - The merchant isn&#39;t enrolled for the feature. * &#x60;SKU_NOT_ELIGIBLE&#x60; - The SKU doesn&#39;t reside in a warehouse that supports the feature. * &#x60;INVALID_SKU&#x60; - There is an issue with the SKU provided.
+        /// A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * &#x60;MERCHANT_NOT_ENROLLED&#x60;: The merchant isn&#39;t enrolled for the feature. * &#x60;SKU_NOT_ELIGIBLE&#x60;: The SKU doesn&#39;t reside in a warehouse that supports the feature. * &#x60;INVALID_SKU&#x60;: There is an issue with the SKU provided.
         /// </summary>
-        /// <value>A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * &#x60;MERCHANT_NOT_ENROLLED&#x60; - The merchant isn&#39;t enrolled for the feature. * &#x60;SKU_NOT_ELIGIBLE&#x60; - The SKU doesn&#39;t reside in a warehouse that supports the feature. * &#x60;INVALID_SKU&#x60; - There is an issue with the SKU provided.</value>
+        /// <value>A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * &#x60;MERCHANT_NOT_ENROLLED&#x60;: The merchant isn&#39;t enrolled for the feature. * &#x60;SKU_NOT_ELIGIBLE&#x60;: The SKU doesn&#39;t reside in a warehouse that supports the feature. * &#x60;INVALID_SKU&#x60;: There is an issue with the SKU provided.</value>
         [DataMember(Name = "ineligibleReasons", EmitDefaultValue = false)]
         public List<string> IneligibleReasons { get; set; }
 

@@ -26,9 +26,9 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The &#x60;FulfillmentPolicy&#x60; value specified when you submitted the &#x60;createFulfillmentOrder&#x60; operation.
+    /// The &#x60;FulfillmentPolicy&#x60; value specified when you called the &#x60;createFulfillmentOrder&#x60; operation.
     /// </summary>
-    /// <value>The &#x60;FulfillmentPolicy&#x60; value specified when you submitted the &#x60;createFulfillmentOrder&#x60; operation.</value>
+    /// <value>The &#x60;FulfillmentPolicy&#x60; value specified when you called the &#x60;createFulfillmentOrder&#x60; operation.</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum FulfillmentPolicy
     {
