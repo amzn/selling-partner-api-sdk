@@ -234,7 +234,7 @@ class Item(object):
     def msku(self):
         """Gets the msku of this Item.  # noqa: E501
 
-        The merchant SKU, a merchant-supplied identifier of a specific SKU.  # noqa: E501
+        The merchant-defined SKU ID.  # noqa: E501
 
         :return: The msku of this Item.  # noqa: E501
         :rtype: str
@@ -245,7 +245,7 @@ class Item(object):
     def msku(self, msku):
         """Sets the msku of this Item.
 
-        The merchant SKU, a merchant-supplied identifier of a specific SKU.  # noqa: E501
+        The merchant-defined SKU ID.  # noqa: E501
 
         :param msku: The msku of this Item.  # noqa: E501
         :type: str
@@ -253,8 +253,8 @@ class Item(object):
         if self._configuration.client_side_validation and msku is None:
             raise ValueError("Invalid value for `msku`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                msku is not None and len(msku) > 40):
-            raise ValueError("Invalid value for `msku`, length must be less than or equal to `40`")  # noqa: E501
+                msku is not None and len(msku) > 255):
+            raise ValueError("Invalid value for `msku`, length must be less than or equal to `255`")  # noqa: E501
         if (self._configuration.client_side_validation and
                 msku is not None and len(msku) < 1):
             raise ValueError("Invalid value for `msku`, length must be greater than or equal to `1`")  # noqa: E501
@@ -309,8 +309,8 @@ class Item(object):
         if self._configuration.client_side_validation and quantity is None:
             raise ValueError("Invalid value for `quantity`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                quantity is not None and quantity > 10000):  # noqa: E501
-            raise ValueError("Invalid value for `quantity`, must be a value less than or equal to `10000`")  # noqa: E501
+                quantity is not None and quantity > 500000):  # noqa: E501
+            raise ValueError("Invalid value for `quantity`, must be a value less than or equal to `500000`")  # noqa: E501
         if (self._configuration.client_side_validation and
                 quantity is not None and quantity < 1):  # noqa: E501
             raise ValueError("Invalid value for `quantity`, must be a value greater than or equal to `1`")  # noqa: E501

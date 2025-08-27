@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -24,6 +24,7 @@ from spapi.models.seller_wallet_2024_03_01.bank_account_listing import BankAccou
 from spapi.models.seller_wallet_2024_03_01.bank_account_number_format import BankAccountNumberFormat
 from spapi.models.seller_wallet_2024_03_01.bank_account_ownership_type import BankAccountOwnershipType
 from spapi.models.seller_wallet_2024_03_01.bank_number_format import BankNumberFormat
+from spapi.models.seller_wallet_2024_03_01.create_transaction_response import CreateTransactionResponse
 from spapi.models.seller_wallet_2024_03_01.currency import Currency
 from spapi.models.seller_wallet_2024_03_01.delete_transfer_schedule import DeleteTransferSchedule
 from spapi.models.seller_wallet_2024_03_01.error import Error

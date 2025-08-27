@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -36,13 +36,13 @@ class TransferPreviewApi(object):
         self.api_client = api_client
         self.classFileName = 'transfer_preview_api'
 
-    def get_transfer_preview(self, source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, **kwargs):  # noqa: E501
+    def get_transfer_preview(self, source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, marketplace_id, **kwargs):  # noqa: E501
         """Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code  # noqa: E501
 
         Returns list of potential fees on a transaction based on the source and destination country currency code  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_transfer_preview(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, async_req=True)
+        >>> thread = api.get_transfer_preview(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -51,24 +51,25 @@ class TransferPreviewApi(object):
         :param str destination_country_code: Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
         :param str destination_currency_code: Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
         :param float base_amount: Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: TransferRatePreview
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, **kwargs)  # noqa: E501
+            return self.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, marketplace_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, **kwargs)  # noqa: E501
+            (data) = self.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, marketplace_id, **kwargs)  # noqa: E501
             return data
 
-    def get_transfer_preview_with_http_info(self, source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, **kwargs):  # noqa: E501
+    def get_transfer_preview_with_http_info(self, source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, marketplace_id, **kwargs):  # noqa: E501
         """Fetch potential fees that could be applied on a transaction on the basis of the source and destination country currency code  # noqa: E501
 
         Returns list of potential fees on a transaction based on the source and destination country currency code  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, async_req=True)
+        >>> thread = api.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -77,12 +78,13 @@ class TransferPreviewApi(object):
         :param str destination_country_code: Represents 2 character country code of destination transaction account in ISO 3166 standard format. (required)
         :param str destination_currency_code: Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
         :param float base_amount: Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: TransferRatePreview
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['source_country_code', 'source_currency_code', 'destination_country_code', 'destination_currency_code', 'base_amount']  # noqa: E501
+        all_params = ['source_country_code', 'source_currency_code', 'destination_country_code', 'destination_currency_code', 'base_amount', 'marketplace_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -117,6 +119,10 @@ class TransferPreviewApi(object):
         if self.api_client.client_side_validation and ('base_amount' not in params or
                                                        params['base_amount'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `base_amount` when calling `get_transfer_preview`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `get_transfer_preview`")  # noqa: E501
 
         collection_formats = {}
 
@@ -133,6 +139,8 @@ class TransferPreviewApi(object):
             query_params.append(('destinationCurrencyCode', params['destination_currency_code']))  # noqa: E501
         if 'base_amount' in params:
             query_params.append(('baseAmount', params['base_amount']))  # noqa: E501
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
 

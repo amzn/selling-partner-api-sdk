@@ -156,7 +156,7 @@ class GetFulfillmentPreviewRequest(object):
     def shipping_speed_categories(self):
         """Gets the shipping_speed_categories of this GetFulfillmentPreviewRequest.  # noqa: E501
 
-        ShippingSpeedCategory List  # noqa: E501
+        List of shipping speed categories.  # noqa: E501
 
         :return: The shipping_speed_categories of this GetFulfillmentPreviewRequest.  # noqa: E501
         :rtype: List[ShippingSpeedCategory]
@@ -167,7 +167,7 @@ class GetFulfillmentPreviewRequest(object):
     def shipping_speed_categories(self, shipping_speed_categories):
         """Sets the shipping_speed_categories of this GetFulfillmentPreviewRequest.
 
-        ShippingSpeedCategory List  # noqa: E501
+        List of shipping speed categories.  # noqa: E501
 
         :param shipping_speed_categories: The shipping_speed_categories of this GetFulfillmentPreviewRequest.  # noqa: E501
         :type: List[ShippingSpeedCategory]
@@ -202,7 +202,7 @@ class GetFulfillmentPreviewRequest(object):
     def include_delivery_windows(self):
         """Gets the include_delivery_windows of this GetFulfillmentPreviewRequest.  # noqa: E501
 
-        When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.  # noqa: E501
+        When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` equal to `ScheduledDelivery`.  # noqa: E501
 
         :return: The include_delivery_windows of this GetFulfillmentPreviewRequest.  # noqa: E501
         :rtype: bool
@@ -213,7 +213,7 @@ class GetFulfillmentPreviewRequest(object):
     def include_delivery_windows(self, include_delivery_windows):
         """Sets the include_delivery_windows of this GetFulfillmentPreviewRequest.
 
-        When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.  # noqa: E501
+        When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` equal to `ScheduledDelivery`.  # noqa: E501
 
         :param include_delivery_windows: The include_delivery_windows of this GetFulfillmentPreviewRequest.  # noqa: E501
         :type: bool

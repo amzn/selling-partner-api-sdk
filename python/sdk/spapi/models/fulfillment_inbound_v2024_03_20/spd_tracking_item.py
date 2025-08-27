@@ -125,7 +125,7 @@ class SpdTrackingItem(object):
     def tracking_number_validation_status(self):
         """Gets the tracking_number_validation_status of this SpdTrackingItem.  # noqa: E501
 
-        Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet 'VALIDATED', please verify the number and update if necessary. Possible values: `VALIDATED`, `NOT_VALIDATED`.  # noqa: E501
+        Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet 'VALIDATED' or `NOT_SUPPORTED`, verify the number and update it if necessary. **Possible values:** `VALIDATED`, `NOT_VALIDATED`, `NOT_SUPPORTED` (Amazon is unable to find tracking information for the provided tracking ID).  # noqa: E501
 
         :return: The tracking_number_validation_status of this SpdTrackingItem.  # noqa: E501
         :rtype: str
@@ -136,7 +136,7 @@ class SpdTrackingItem(object):
     def tracking_number_validation_status(self, tracking_number_validation_status):
         """Sets the tracking_number_validation_status of this SpdTrackingItem.
 
-        Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet 'VALIDATED', please verify the number and update if necessary. Possible values: `VALIDATED`, `NOT_VALIDATED`.  # noqa: E501
+        Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet 'VALIDATED' or `NOT_SUPPORTED`, verify the number and update it if necessary. **Possible values:** `VALIDATED`, `NOT_VALIDATED`, `NOT_SUPPORTED` (Amazon is unable to find tracking information for the provided tracking ID).  # noqa: E501
 
         :param tracking_number_validation_status: The tracking_number_validation_status of this SpdTrackingItem.  # noqa: E501
         :type: str

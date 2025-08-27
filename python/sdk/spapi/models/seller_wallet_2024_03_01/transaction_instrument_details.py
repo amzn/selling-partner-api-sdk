@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -36,14 +36,16 @@ class TransactionInstrumentDetails(object):
     swagger_types = {
         'bank_account': 'BankAccount',
         'bank_account_number': 'str',
+        'account_holder_name': 'str',
     }
 
     attribute_map = {
         'bank_account': 'bankAccount',
         'bank_account_number': 'bankAccountNumber',
+        'account_holder_name': 'accountHolderName',
     }
 
-    def __init__(self, bank_account=None, bank_account_number=None, _configuration=None):  # noqa: E501
+    def __init__(self, bank_account=None, bank_account_number=None, account_holder_name=None, _configuration=None):  # noqa: E501
         """TransactionInstrumentDetails - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -51,10 +53,12 @@ class TransactionInstrumentDetails(object):
 
         self._bank_account = None
         self._bank_account_number = None
+        self._account_holder_name = None
         self.discriminator = None
 
         self.bank_account = bank_account
         self.bank_account_number = bank_account_number
+        self.account_holder_name = account_holder_name
 
     @property
     def bank_account(self):
@@ -103,6 +107,31 @@ class TransactionInstrumentDetails(object):
             raise ValueError("Invalid value for `bank_account_number`, must not be `None`")  # noqa: E501
 
         self._bank_account_number = bank_account_number
+
+    @property
+    def account_holder_name(self):
+        """Gets the account_holder_name of this TransactionInstrumentDetails.  # noqa: E501
+
+        The bank account holder's name (expected to be an Amazon customer).  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.  # noqa: E501
+
+        :return: The account_holder_name of this TransactionInstrumentDetails.  # noqa: E501
+        :rtype: str
+        """
+        return self._account_holder_name
+
+    @account_holder_name.setter
+    def account_holder_name(self, account_holder_name):
+        """Sets the account_holder_name of this TransactionInstrumentDetails.
+
+        The bank account holder's name (expected to be an Amazon customer).  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.  # noqa: E501
+
+        :param account_holder_name: The account_holder_name of this TransactionInstrumentDetails.  # noqa: E501
+        :type: str
+        """
+        if self._configuration.client_side_validation and account_holder_name is None:
+            raise ValueError("Invalid value for `account_holder_name`, must not be `None`")  # noqa: E501
+
+        self._account_holder_name = account_holder_name
 
     def to_dict(self):
         """Returns the model properties as a dict"""

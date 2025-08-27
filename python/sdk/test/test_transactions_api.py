@@ -35,28 +35,31 @@ class TestTransactionsApi(unittest.TestCase):
     def test_create_transaction(self):
         dest_account_digital_signature = self._get_random_value("str", None)
         amount_digital_signature = self._get_random_value("str", None)
+        marketplace_id = self._get_random_value("str", None)
         body = self._get_random_value("TransactionInitiationRequest", None)
         
         self.instruct_backend_mock(self.to_camel_case("create_transaction"), "200")
-        response = self.api.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, body, )
+        response = self.api.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
     def test_get_transaction(self):
         transaction_id = self._get_random_value("str", None)
+        marketplace_id = self._get_random_value("str", None)
         
         self.instruct_backend_mock(self.to_camel_case("get_transaction"), "200")
-        response = self.api.get_transaction_with_http_info(transaction_id, )
+        response = self.api.get_transaction_with_http_info(transaction_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
     def test_list_account_transactions(self):
         account_id = self._get_random_value("str", None)
+        marketplace_id = self._get_random_value("str", None)
         
         self.instruct_backend_mock(self.to_camel_case("list_account_transactions"), "200")
-        response = self.api.list_account_transactions_with_http_info(account_id, )
+        response = self.api.list_account_transactions_with_http_info(account_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass

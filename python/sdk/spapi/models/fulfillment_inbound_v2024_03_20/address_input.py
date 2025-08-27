@@ -39,6 +39,7 @@ class AddressInput(object):
         'city': 'str',
         'company_name': 'str',
         'country_code': 'str',
+        'district_or_county': 'str',
         'email': 'str',
         'name': 'str',
         'phone_number': 'str',
@@ -52,6 +53,7 @@ class AddressInput(object):
         'city': 'city',
         'company_name': 'companyName',
         'country_code': 'countryCode',
+        'district_or_county': 'districtOrCounty',
         'email': 'email',
         'name': 'name',
         'phone_number': 'phoneNumber',
@@ -59,7 +61,7 @@ class AddressInput(object):
         'state_or_province_code': 'stateOrProvinceCode',
     }
 
-    def __init__(self, address_line1=None, address_line2=None, city=None, company_name=None, country_code=None, email=None, name=None, phone_number=None, postal_code=None, state_or_province_code=None, _configuration=None):  # noqa: E501
+    def __init__(self, address_line1=None, address_line2=None, city=None, company_name=None, country_code=None, district_or_county=None, email=None, name=None, phone_number=None, postal_code=None, state_or_province_code=None, _configuration=None):  # noqa: E501
         """AddressInput - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -70,6 +72,7 @@ class AddressInput(object):
         self._city = None
         self._company_name = None
         self._country_code = None
+        self._district_or_county = None
         self._email = None
         self._name = None
         self._phone_number = None
@@ -84,6 +87,8 @@ class AddressInput(object):
         if company_name is not None:
             self.company_name = company_name
         self.country_code = country_code
+        if district_or_county is not None:
+            self.district_or_county = district_or_county
         if email is not None:
             self.email = email
         self.name = name
@@ -245,6 +250,35 @@ class AddressInput(object):
             raise ValueError(r"Invalid value for `country_code`, must be a follow pattern or equal to `/^[A-Z]{2}$/`")  # noqa: E501
 
         self._country_code = country_code
+
+    @property
+    def district_or_county(self):
+        """Gets the district_or_county of this AddressInput.  # noqa: E501
+
+        The district or county.  # noqa: E501
+
+        :return: The district_or_county of this AddressInput.  # noqa: E501
+        :rtype: str
+        """
+        return self._district_or_county
+
+    @district_or_county.setter
+    def district_or_county(self, district_or_county):
+        """Sets the district_or_county of this AddressInput.
+
+        The district or county.  # noqa: E501
+
+        :param district_or_county: The district_or_county of this AddressInput.  # noqa: E501
+        :type: str
+        """
+        if (self._configuration.client_side_validation and
+                district_or_county is not None and len(district_or_county) > 50):
+            raise ValueError("Invalid value for `district_or_county`, length must be less than or equal to `50`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                district_or_county is not None and len(district_or_county) < 1):
+            raise ValueError("Invalid value for `district_or_county`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._district_or_county = district_or_county
 
     @property
     def email(self):

@@ -354,7 +354,7 @@ class PackageTrackingDetails(object):
     def current_status_description(self):
         """Gets the current_status_description of this PackageTrackingDetails.  # noqa: E501
 
-        Description corresponding to the CurrentStatus value.  # noqa: E501
+        Description corresponding to the `CurrentStatus` value.  # noqa: E501
 
         :return: The current_status_description of this PackageTrackingDetails.  # noqa: E501
         :rtype: str
@@ -365,7 +365,7 @@ class PackageTrackingDetails(object):
     def current_status_description(self, current_status_description):
         """Sets the current_status_description of this PackageTrackingDetails.
 
-        Description corresponding to the CurrentStatus value.  # noqa: E501
+        Description corresponding to the `CurrentStatus` value.  # noqa: E501
 
         :param current_status_description: The current_status_description of this PackageTrackingDetails.  # noqa: E501
         :type: str

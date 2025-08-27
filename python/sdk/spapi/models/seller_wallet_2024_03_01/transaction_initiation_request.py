@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -36,8 +36,9 @@ class TransactionInitiationRequest(object):
     swagger_types = {
         'source_account_id': 'str',
         'destination_account_id': 'str',
-        'description': 'str',
         'destination_transaction_instrument': 'TransactionInstrumentDetails',
+        'transaction_description': 'str',
+        'customer_payment_reference': 'str',
         'destination_account_holder_address': 'AccountHolderAddress',
         'source_amount': 'Currency',
         'transfer_rate_details': 'TransferRatePreview',
@@ -47,15 +48,16 @@ class TransactionInitiationRequest(object):
     attribute_map = {
         'source_account_id': 'sourceAccountId',
         'destination_account_id': 'destinationAccountId',
-        'description': 'description',
         'destination_transaction_instrument': 'destinationTransactionInstrument',
+        'transaction_description': 'transactionDescription',
+        'customer_payment_reference': 'customerPaymentReference',
         'destination_account_holder_address': 'destinationAccountHolderAddress',
         'source_amount': 'sourceAmount',
         'transfer_rate_details': 'transferRateDetails',
         'request_time': 'requestTime',
     }
 
-    def __init__(self, source_account_id=None, destination_account_id=None, description=None, destination_transaction_instrument=None, destination_account_holder_address=None, source_amount=None, transfer_rate_details=None, request_time=None, _configuration=None):  # noqa: E501
+    def __init__(self, source_account_id=None, destination_account_id=None, destination_transaction_instrument=None, transaction_description=None, customer_payment_reference=None, destination_account_holder_address=None, source_amount=None, transfer_rate_details=None, request_time=None, _configuration=None):  # noqa: E501
         """TransactionInitiationRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -63,8 +65,9 @@ class TransactionInitiationRequest(object):
 
         self._source_account_id = None
         self._destination_account_id = None
-        self._description = None
         self._destination_transaction_instrument = None
+        self._transaction_description = None
+        self._customer_payment_reference = None
         self._destination_account_holder_address = None
         self._source_amount = None
         self._transfer_rate_details = None
@@ -74,8 +77,11 @@ class TransactionInitiationRequest(object):
         self.source_account_id = source_account_id
         if destination_account_id is not None:
             self.destination_account_id = destination_account_id
-        self.description = description
         self.destination_transaction_instrument = destination_transaction_instrument
+        if transaction_description is not None:
+            self.transaction_description = transaction_description
+        if customer_payment_reference is not None:
+            self.customer_payment_reference = customer_payment_reference
         if destination_account_holder_address is not None:
             self.destination_account_holder_address = destination_account_holder_address
         self.source_amount = source_amount
@@ -132,31 +138,6 @@ class TransactionInitiationRequest(object):
         self._destination_account_id = destination_account_id
 
     @property
-    def description(self):
-        """Gets the description of this TransactionInitiationRequest.  # noqa: E501
-
-        Optional field to specify description for the transaction   # noqa: E501
-
-        :return: The description of this TransactionInitiationRequest.  # noqa: E501
-        :rtype: str
-        """
-        return self._description
-
-    @description.setter
-    def description(self, description):
-        """Sets the description of this TransactionInitiationRequest.
-
-        Optional field to specify description for the transaction   # noqa: E501
-
-        :param description: The description of this TransactionInitiationRequest.  # noqa: E501
-        :type: str
-        """
-        if self._configuration.client_side_validation and description is None:
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
-
-        self._description = description
-
-    @property
     def destination_transaction_instrument(self):
         """Gets the destination_transaction_instrument of this TransactionInitiationRequest.  # noqa: E501
 
@@ -178,6 +159,52 @@ class TransactionInitiationRequest(object):
             raise ValueError("Invalid value for `destination_transaction_instrument`, must not be `None`")  # noqa: E501
 
         self._destination_transaction_instrument = destination_transaction_instrument
+
+    @property
+    def transaction_description(self):
+        """Gets the transaction_description of this TransactionInitiationRequest.  # noqa: E501
+
+        A description of the transaction.  # noqa: E501
+
+        :return: The transaction_description of this TransactionInitiationRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._transaction_description
+
+    @transaction_description.setter
+    def transaction_description(self, transaction_description):
+        """Sets the transaction_description of this TransactionInitiationRequest.
+
+        A description of the transaction.  # noqa: E501
+
+        :param transaction_description: The transaction_description of this TransactionInitiationRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._transaction_description = transaction_description
+
+    @property
+    def customer_payment_reference(self):
+        """Gets the customer_payment_reference of this TransactionInitiationRequest.  # noqa: E501
+
+        If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.  # noqa: E501
+
+        :return: The customer_payment_reference of this TransactionInitiationRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._customer_payment_reference
+
+    @customer_payment_reference.setter
+    def customer_payment_reference(self, customer_payment_reference):
+        """Sets the customer_payment_reference of this TransactionInitiationRequest.
+
+        If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.  # noqa: E501
+
+        :param customer_payment_reference: The customer_payment_reference of this TransactionInitiationRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._customer_payment_reference = customer_payment_reference
 
     @property
     def destination_account_holder_address(self):

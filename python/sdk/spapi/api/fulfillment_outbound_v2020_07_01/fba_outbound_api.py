@@ -243,8 +243,8 @@ class FbaOutboundApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str seller_fulfillment_order_id: An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct `SellerFulfillmentOrderId` value based on the buyer's request to return items. (required)
-        :param CreateFulfillmentReturnRequest body: CreateFulfillmentReturnRequest parameter (required)
+        :param str seller_fulfillment_order_id: An identifier the seller assigns to the fulfillment order at the time it was created. The seller uses their own records to find the correct `sellerFulfillmentOrderId` value based on the buyer's request to return items. (required)
+        :param CreateFulfillmentReturnRequest body: The request body of the `createFulfillmentReturn` operation. (required)
         :return: CreateFulfillmentReturnResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -266,8 +266,8 @@ class FbaOutboundApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str seller_fulfillment_order_id: An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct `SellerFulfillmentOrderId` value based on the buyer's request to return items. (required)
-        :param CreateFulfillmentReturnRequest body: CreateFulfillmentReturnRequest parameter (required)
+        :param str seller_fulfillment_order_id: An identifier the seller assigns to the fulfillment order at the time it was created. The seller uses their own records to find the correct `sellerFulfillmentOrderId` value based on the buyer's request to return items. (required)
+        :param CreateFulfillmentReturnRequest body: The request body of the `createFulfillmentReturn` operation. (required)
         :return: CreateFulfillmentReturnResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -333,6 +333,105 @@ class FbaOutboundApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='CreateFulfillmentReturnResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
+    def delivery_offerings(self, body, **kwargs):  # noqa: E501
+        """delivery_offerings  # noqa: E501
+
+        Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delivery_offerings(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param GetDeliveryOfferingsRequest body: GetDeliveryOfferingsRequest parameter (required)
+        :return: GetDeliveryOfferingsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delivery_offerings_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delivery_offerings_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def delivery_offerings_with_http_info(self, body, **kwargs):  # noqa: E501
+        """delivery_offerings  # noqa: E501
+
+        Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delivery_offerings_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param GetDeliveryOfferingsRequest body: GetDeliveryOfferingsRequest parameter (required)
+        :return: GetDeliveryOfferingsResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delivery_offerings" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `delivery_offerings`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'payload'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/fba/outbound/2020-07-01/deliveryOfferings', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='GetDeliveryOfferingsResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -451,8 +550,8 @@ class FbaOutboundApi(object):
         :param async_req bool
         :param str marketplace_id: The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
         :param str feature_name: The name of the feature for which to return a list of eligible inventory. (required)
-        :param str next_token: A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page.
-        :param datetime query_start_date: A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ
+        :param str next_token: A string token returned in the response to your previous request that is used to return the next response page. A value of `null` will return the first page.
+        :param datetime query_start_date: A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format `yyyy-MM-ddTHH:mm:ss.sssZ`
         :return: GetFeatureInventoryResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -476,8 +575,8 @@ class FbaOutboundApi(object):
         :param async_req bool
         :param str marketplace_id: The marketplace for which to return a list of the inventory that is eligible for the specified feature. (required)
         :param str feature_name: The name of the feature for which to return a list of eligible inventory. (required)
-        :param str next_token: A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page.
-        :param datetime query_start_date: A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ
+        :param str next_token: A string token returned in the response to your previous request that is used to return the next response page. A value of `null` will return the first page.
+        :param datetime query_start_date: A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format `yyyy-MM-ddTHH:mm:ss.sssZ`
         :return: GetFeatureInventoryResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -553,7 +652,7 @@ class FbaOutboundApi(object):
     def get_feature_sku(self, marketplace_id, feature_name, seller_sku, **kwargs):  # noqa: E501
         """get_feature_sku  # noqa: E501
 
-        Returns the number of items with the sellerSKU you specify that can have orders fulfilled using the specified feature. Note that if the sellerSKU isn't eligible, the response will contain an empty skuInfo object. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns the number of items with the `sellerSku` you specify that can have orders fulfilled using the specified feature. Note that if the `sellerSku` isn't eligible, the response will contain an empty `skuInfo` object. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_feature_sku(marketplace_id, feature_name, seller_sku, async_req=True)
@@ -562,7 +661,7 @@ class FbaOutboundApi(object):
         :param async_req bool
         :param str marketplace_id: The marketplace for which to return the count. (required)
         :param str feature_name: The name of the feature. (required)
-        :param str seller_sku: Used to identify an item in the given marketplace. `SellerSKU` is qualified by the seller's `SellerId`, which is included with every operation that you submit. (required)
+        :param str seller_sku: Used to identify an item in the given marketplace. `sellerSku` is qualified by the seller's `sellerId`, which is included with every operation that you submit. (required)
         :return: GetFeatureSkuResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -577,7 +676,7 @@ class FbaOutboundApi(object):
     def get_feature_sku_with_http_info(self, marketplace_id, feature_name, seller_sku, **kwargs):  # noqa: E501
         """get_feature_sku  # noqa: E501
 
-        Returns the number of items with the sellerSKU you specify that can have orders fulfilled using the specified feature. Note that if the sellerSKU isn't eligible, the response will contain an empty skuInfo object. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
+        Returns the number of items with the `sellerSku` you specify that can have orders fulfilled using the specified feature. Note that if the `sellerSku` isn't eligible, the response will contain an empty `skuInfo` object. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.get_feature_sku_with_http_info(marketplace_id, feature_name, seller_sku, async_req=True)
@@ -586,7 +685,7 @@ class FbaOutboundApi(object):
         :param async_req bool
         :param str marketplace_id: The marketplace for which to return the count. (required)
         :param str feature_name: The name of the feature. (required)
-        :param str seller_sku: Used to identify an item in the given marketplace. `SellerSKU` is qualified by the seller's `SellerId`, which is included with every operation that you submit. (required)
+        :param str seller_sku: Used to identify an item in the given marketplace. `sellerSku` is qualified by the seller's `sellerId`, which is included with every operation that you submit. (required)
         :return: GetFeatureSkuResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -953,45 +1052,47 @@ class FbaOutboundApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
-    def get_package_tracking_details(self, package_number, **kwargs):  # noqa: E501
+    def get_package_tracking_details(self, **kwargs):  # noqa: E501
         """get_package_tracking_details  # noqa: E501
 
         Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_package_tracking_details(package_number, async_req=True)
+        >>> thread = api.get_package_tracking_details(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int package_number: The unencrypted package identifier returned by the `getFulfillmentOrder` operation. (required)
+        :param int package_number: The unencrypted package identifier. You can obtain this value from the `getFulfillmentOrder` operation.
+        :param str amazon_fulfillment_tracking_number: The Amazon fulfillment tracking number. You can obtain this value from the `getFulfillmentOrder` operation.
         :return: GetPackageTrackingDetailsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_package_tracking_details_with_http_info(package_number, **kwargs)  # noqa: E501
+            return self.get_package_tracking_details_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.get_package_tracking_details_with_http_info(package_number, **kwargs)  # noqa: E501
+            (data) = self.get_package_tracking_details_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def get_package_tracking_details_with_http_info(self, package_number, **kwargs):  # noqa: E501
+    def get_package_tracking_details_with_http_info(self, **kwargs):  # noqa: E501
         """get_package_tracking_details  # noqa: E501
 
         Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_package_tracking_details_with_http_info(package_number, async_req=True)
+        >>> thread = api.get_package_tracking_details_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param int package_number: The unencrypted package identifier returned by the `getFulfillmentOrder` operation. (required)
+        :param int package_number: The unencrypted package identifier. You can obtain this value from the `getFulfillmentOrder` operation.
+        :param str amazon_fulfillment_tracking_number: The Amazon fulfillment tracking number. You can obtain this value from the `getFulfillmentOrder` operation.
         :return: GetPackageTrackingDetailsResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['package_number']  # noqa: E501
+        all_params = ['package_number', 'amazon_fulfillment_tracking_number']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1006,10 +1107,6 @@ class FbaOutboundApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'package_number' is set
-        if self.api_client.client_side_validation and ('package_number' not in params or
-                                                       params['package_number'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `package_number` when calling `get_package_tracking_details`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1018,6 +1115,8 @@ class FbaOutboundApi(object):
         query_params = []
         if 'package_number' in params:
             query_params.append(('packageNumber', params['package_number']))  # noqa: E501
+        if 'amazon_fulfillment_tracking_number' in params:
+            query_params.append(('amazonFulfillmentTrackingNumber', params['amazon_fulfillment_tracking_number']))  # noqa: E501
 
         header_params = {}
 
@@ -1051,7 +1150,7 @@ class FbaOutboundApi(object):
     def list_all_fulfillment_orders(self, **kwargs):  # noqa: E501
         """list_all_fulfillment_orders  # noqa: E501
 
-        Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the next token parameter.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)  # noqa: E501
+        Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the `nextToken` parameter.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_all_fulfillment_orders(async_req=True)
@@ -1074,7 +1173,7 @@ class FbaOutboundApi(object):
     def list_all_fulfillment_orders_with_http_info(self, **kwargs):  # noqa: E501
         """list_all_fulfillment_orders  # noqa: E501
 
-        Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the next token parameter.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)  # noqa: E501
+        Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the `nextToken` parameter.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.list_all_fulfillment_orders_with_http_info(async_req=True)
@@ -1371,7 +1470,7 @@ class FbaOutboundApi(object):
 
         :param async_req bool
         :param str seller_fulfillment_order_id: The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-        :param UpdateFulfillmentOrderRequest body: UpdateFulfillmentOrderRequest parameter (required)
+        :param UpdateFulfillmentOrderRequest body: The request body of the `updateFulfillmentOrder` operation. (required)
         :return: UpdateFulfillmentOrderResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1394,7 +1493,7 @@ class FbaOutboundApi(object):
 
         :param async_req bool
         :param str seller_fulfillment_order_id: The identifier assigned to the item by the seller when the fulfillment order was created. (required)
-        :param UpdateFulfillmentOrderRequest body: UpdateFulfillmentOrderRequest parameter (required)
+        :param UpdateFulfillmentOrderRequest body: The request body of the `updateFulfillmentOrder` operation. (required)
         :return: UpdateFulfillmentOrderResponse
                  If the method is called asynchronously,
                  returns the request thread.

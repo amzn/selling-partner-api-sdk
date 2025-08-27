@@ -115,7 +115,7 @@ class ReasonCodeDetails(object):
     def translated_description(self):
         """Gets the translated_description of this ReasonCodeDetails.  # noqa: E501
 
-        A translation of the description. The translation is in the language specified in the Language request parameter.  # noqa: E501
+        A translation of the description. The translation is in the language specified in the `language` request parameter.  # noqa: E501
 
         :return: The translated_description of this ReasonCodeDetails.  # noqa: E501
         :rtype: str
@@ -126,7 +126,7 @@ class ReasonCodeDetails(object):
     def translated_description(self, translated_description):
         """Sets the translated_description of this ReasonCodeDetails.
 
-        A translation of the description. The translation is in the language specified in the Language request parameter.  # noqa: E501
+        A translation of the description. The translation is in the language specified in the `language` request parameter.  # noqa: E501
 
         :param translated_description: The translated_description of this ReasonCodeDetails.  # noqa: E501
         :type: str

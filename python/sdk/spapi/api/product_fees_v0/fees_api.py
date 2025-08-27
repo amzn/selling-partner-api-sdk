@@ -47,7 +47,7 @@ class FeesApi(object):
 
         :param async_req bool
         :param str asin: The Amazon Standard Identification Number (ASIN) of the item. (required)
-        :param GetMyFeesEstimateRequest body: (required)
+        :param GetMyFeesEstimateRequest body: The request body schema for the getMyFeesEstimates operation (required)
         :return: GetMyFeesEstimateResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -70,7 +70,7 @@ class FeesApi(object):
 
         :param async_req bool
         :param str asin: The Amazon Standard Identification Number (ASIN) of the item. (required)
-        :param GetMyFeesEstimateRequest body: (required)
+        :param GetMyFeesEstimateRequest body: The request body schema for the getMyFeesEstimates operation (required)
         :return: GetMyFeesEstimateResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -154,7 +154,7 @@ class FeesApi(object):
 
         :param async_req bool
         :param str seller_sku: Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit. (required)
-        :param GetMyFeesEstimateRequest body: (required)
+        :param GetMyFeesEstimateRequest body: The request body schema for the getMyFeesEstimates operation (required)
         :return: GetMyFeesEstimateResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -177,7 +177,7 @@ class FeesApi(object):
 
         :param async_req bool
         :param str seller_sku: Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit. (required)
-        :param GetMyFeesEstimateRequest body: (required)
+        :param GetMyFeesEstimateRequest body: The request body schema for the getMyFeesEstimates operation (required)
         :return: GetMyFeesEstimateResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -260,7 +260,7 @@ class FeesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param List[FeesEstimateByIdRequest] body: (required)
+        :param List[FeesEstimateByIdRequest] body: The request body schema for the getMyFeesEstimates operation (required)
         :return: List[FeesEstimateResult]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -282,7 +282,7 @@ class FeesApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param List[FeesEstimateByIdRequest] body: (required)
+        :param List[FeesEstimateByIdRequest] body: The request body schema for the getMyFeesEstimates operation (required)
         :return: List[FeesEstimateResult]
                  If the method is called asynchronously,
                  returns the request thread.

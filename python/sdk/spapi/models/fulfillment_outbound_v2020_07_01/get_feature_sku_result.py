@@ -149,7 +149,7 @@ class GetFeatureSkuResult(object):
     def ineligible_reasons(self):
         """Gets the ineligible_reasons of this GetFeatureSkuResult.  # noqa: E501
 
-        A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED` - The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE` - The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU` - There is an issue with the SKU provided.  # noqa: E501
+        A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED`: The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE`: The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU`: There is an issue with the SKU provided.  # noqa: E501
 
         :return: The ineligible_reasons of this GetFeatureSkuResult.  # noqa: E501
         :rtype: List[str]
@@ -160,7 +160,7 @@ class GetFeatureSkuResult(object):
     def ineligible_reasons(self, ineligible_reasons):
         """Sets the ineligible_reasons of this GetFeatureSkuResult.
 
-        A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED` - The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE` - The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU` - There is an issue with the SKU provided.  # noqa: E501
+        A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED`: The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE`: The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU`: There is an issue with the SKU provided.  # noqa: E501
 
         :param ineligible_reasons: The ineligible_reasons of this GetFeatureSkuResult.  # noqa: E501
         :type: List[str]
