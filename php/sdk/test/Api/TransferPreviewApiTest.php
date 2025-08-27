@@ -10,7 +10,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -107,6 +107,9 @@ class TransferPreviewApiTest extends BaseTestCase
           },
           &quot;baseAmount&quot; : {
             &quot;value&quot; : 500.0
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
@@ -128,7 +131,7 @@ class TransferPreviewApiTest extends BaseTestCase
         &quot;fees&quot; : [ {
           &quot;feeId&quot; : &quot;Unique_FeeId_001&quot;,
           &quot;feeType&quot; : &quot;TRANSACTION_FEE&quot;,
-          &quot;feeRateValue&quot; : 0.9,
+          &quot;feeRateValue&quot; : &quot;0.9&quot;,
           &quot;feeAmount&quot; : {
             &quot;currencyCode&quot; : &quot;EUR&quot;,
             &quot;currencyAmount&quot; : 4.5
@@ -136,7 +139,7 @@ class TransferPreviewApiTest extends BaseTestCase
         }, {
           &quot;feeId&quot; : &quot;Unique_FeeId_002&quot;,
           &quot;feeType&quot; : &quot;TAX&quot;,
-          &quot;feeRateValue&quot; : 20.0,
+          &quot;feeRateValue&quot; : &quot;20.0&quot;,
           &quot;feeAmount&quot; : {
             &quot;currencyCode&quot; : &quot;EUR&quot;,
             &quot;currencyAmount&quot; : 0.9

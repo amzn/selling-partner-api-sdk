@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The &#x60;createFulfillmentReturn&#x60; operation creates a fulfillment return for items that were fulfilled using the &#x60;createFulfillmentOrder&#x60; operation. For calls to &#x60;createFulfillmentReturn&#x60;, you must include &#x60;ReturnReasonCode&#x60; values returned by a previous call to the &#x60;listReturnReasonCodes&#x60; operation.
+ * @description The &#x60;createFulfillmentReturn&#x60; operation creates a fulfillment return for items that were fulfilled using the &#x60;createFulfillmentOrder&#x60; operation. For calls to &#x60;createFulfillmentReturn&#x60;, you must include &#x60;returnReasonCode&#x60; values returned by a previous call to the &#x60;listReturnReasonCodes&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

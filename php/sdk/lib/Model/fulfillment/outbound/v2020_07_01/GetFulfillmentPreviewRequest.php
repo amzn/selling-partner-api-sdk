@@ -372,7 +372,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets shipping_speed_categories.
      *
-     * @param null|array $shipping_speed_categories ShippingSpeedCategory List
+     * @param null|array $shipping_speed_categories list of shipping speed categories
      */
     public function setShippingSpeedCategories(?array $shipping_speed_categories): self
     {
@@ -432,7 +432,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, \ArrayAccess, \Jso
     /**
      * Sets include_delivery_windows.
      *
-     * @param null|bool $include_delivery_windows When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.
+     * @param null|bool $include_delivery_windows When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` equal to `ScheduledDelivery`.
      */
     public function setIncludeDeliveryWindows(?bool $include_delivery_windows): self
     {

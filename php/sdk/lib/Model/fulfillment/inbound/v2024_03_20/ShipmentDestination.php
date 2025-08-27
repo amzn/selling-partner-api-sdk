@@ -340,7 +340,7 @@ class ShipmentDestination implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets warehouse_id.
      *
-     * @param null|string $warehouse_id The warehouse that the shipment should be sent to. Empty if the destination type is `AMAZON_OPTIMIZED`.
+     * @param null|string $warehouse_id The warehouse that the shipment should be sent to. This can be empty if the destination type is `AMAZON_OPTIMIZED`.
      */
     public function setWarehouseId(?string $warehouse_id): self
     {

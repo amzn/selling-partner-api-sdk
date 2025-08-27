@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GetDeliveryOffersResponse.
+ * DeliveryOffering.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * GetDeliveryOffersResponse Class Doc Comment.
+ * DeliveryOffering Class Doc Comment.
  *
  * @category Class
  *
- * @description The response schema for the &#x60;getDeliveryOffers&#x60; operation.
+ * @description An available offering for delivery of a product.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class DeliveryOffering implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'GetDeliveryOffersResponse';
+    protected static string $openAPIModelName = 'DeliveryOffering';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +61,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResult',
-        'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'];
+        'expires_at' => '\DateTime',
+        'date_range' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DateRange',
+        'policy' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryPolicy'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +75,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'payload' => null,
-        'errors' => null];
+        'expires_at' => 'date-time',
+        'date_range' => null,
+        'policy' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +85,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'payload' => true,
-        'errors' => true,
+        'expires_at' => true,
+        'date_range' => true,
+        'policy' => true,
     ];
 
     /**
@@ -101,8 +104,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $attributeMap = [
-        'payload' => 'payload',
-        'errors' => 'errors',
+        'expires_at' => 'expiresAt',
+        'date_range' => 'dateRange',
+        'policy' => 'policy',
     ];
 
     /**
@@ -111,8 +115,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $setters = [
-        'payload' => 'setPayload',
-        'errors' => 'setErrors',
+        'expires_at' => 'setExpiresAt',
+        'date_range' => 'setDateRange',
+        'policy' => 'setPolicy',
     ];
 
     /**
@@ -121,8 +126,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $getters = [
-        'payload' => 'getPayload',
-        'errors' => 'getErrors',
+        'expires_at' => 'getExpiresAt',
+        'date_range' => 'getDateRange',
+        'policy' => 'getPolicy',
     ];
 
     /**
@@ -138,8 +144,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('payload', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('date_range', $data ?? [], null);
+        $this->setIfExists('policy', $data ?? [], null);
     }
 
     /**
@@ -242,61 +249,91 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets payload.
+     * Gets expires_at.
      */
-    public function getPayload(): ?GetDeliveryOffersResult
+    public function getExpiresAt(): ?\DateTime
     {
-        return $this->container['payload'];
+        return $this->container['expires_at'];
     }
 
     /**
-     * Sets payload.
+     * Sets expires_at.
      *
-     * @param null|GetDeliveryOffersResult $payload payload
+     * @param null|\DateTime $expires_at Date timestamp
      */
-    public function setPayload(?GetDeliveryOffersResult $payload): self
+    public function setExpiresAt(?\DateTime $expires_at): self
     {
-        if (is_null($payload)) {
-            array_push($this->openAPINullablesSetToNull, 'payload');
+        if (is_null($expires_at)) {
+            array_push($this->openAPINullablesSetToNull, 'expires_at');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('payload', $nullablesSetToNull);
+            $index = array_search('expires_at', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['payload'] = $payload;
+        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }
 
     /**
-     * Gets errors.
+     * Gets date_range.
      */
-    public function getErrors(): ?array
+    public function getDateRange(): ?DateRange
     {
-        return $this->container['errors'];
+        return $this->container['date_range'];
     }
 
     /**
-     * Sets errors.
+     * Sets date_range.
      *
-     * @param null|array $errors a list of error responses returned when a request is unsuccessful
+     * @param null|DateRange $date_range date_range
      */
-    public function setErrors(?array $errors): self
+    public function setDateRange(?DateRange $date_range): self
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($date_range)) {
+            array_push($this->openAPINullablesSetToNull, 'date_range');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('date_range', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $this->container['date_range'] = $date_range;
+
+        return $this;
+    }
+
+    /**
+     * Gets policy.
+     */
+    public function getPolicy(): ?DeliveryPolicy
+    {
+        return $this->container['policy'];
+    }
+
+    /**
+     * Sets policy.
+     *
+     * @param null|DeliveryPolicy $policy policy
+     */
+    public function setPolicy(?DeliveryPolicy $policy): self
+    {
+        if (is_null($policy)) {
+            array_push($this->openAPINullablesSetToNull, 'policy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('policy', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['policy'] = $policy;
 
         return $this;
     }

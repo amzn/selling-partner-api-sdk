@@ -12,7 +12,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -147,6 +147,8 @@ class TransferScheduleApi
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
+     * @param string                  $marketplace_id
+     *                                                                The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferScheduleRequest $body
      *                                                                Defines the actual payload of the request (required)
      * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -157,10 +159,11 @@ class TransferScheduleApi
     public function createTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferScheduleRequest $body,
         ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
+        list($response) = $this->createTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -174,6 +177,8 @@ class TransferScheduleApi
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
+     * @param string                  $marketplace_id
+     *                                                                The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferScheduleRequest $body
      *                                                                Defines the actual payload of the request (required)
      * @param null|string             $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -186,10 +191,11 @@ class TransferScheduleApi
     public function createTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferScheduleRequest $body,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
+        $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-createTransferSchedule');
         } else {
@@ -269,6 +275,8 @@ class TransferScheduleApi
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
+     * @param string                  $marketplace_id
+     *                                                                The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferScheduleRequest $body
      *                                                                Defines the actual payload of the request (required)
      *
@@ -277,9 +285,10 @@ class TransferScheduleApi
     public function createTransferScheduleAsync(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferScheduleRequest $body
     ): PromiseInterface {
-        return $this->createTransferScheduleAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body)
+        return $this->createTransferScheduleAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -297,6 +306,8 @@ class TransferScheduleApi
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
+     * @param string                  $marketplace_id
+     *                                                                The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferScheduleRequest $body
      *                                                                Defines the actual payload of the request (required)
      *
@@ -305,11 +316,12 @@ class TransferScheduleApi
     public function createTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferScheduleRequest $body,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
-        $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
+        $request = $this->createTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-createTransferSchedule');
         } else {
@@ -364,6 +376,8 @@ class TransferScheduleApi
      *                                                                Digital signature for the destination bank account details. (required)
      * @param string                  $amount_digital_signature
      *                                                                Digital signature for the source currency transaction amount. (required)
+     * @param string                  $marketplace_id
+     *                                                                The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferScheduleRequest $body
      *                                                                Defines the actual payload of the request (required)
      *
@@ -372,6 +386,7 @@ class TransferScheduleApi
     public function createTransferScheduleRequest(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferScheduleRequest $body
     ): Request {
         // verify the required parameter 'dest_account_digital_signature' is set
@@ -384,6 +399,12 @@ class TransferScheduleApi
         if (null === $amount_digital_signature || (is_array($amount_digital_signature) && 0 === count($amount_digital_signature))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amount_digital_signature when calling createTransferSchedule'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling createTransferSchedule'
             );
         }
         // verify the required parameter 'body' is set
@@ -399,6 +420,17 @@ class TransferScheduleApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // header params
         if (null !== $dest_account_digital_signature) {
@@ -468,10 +500,12 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransaction.
      *
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
      * @param string      $transfer_schedule_id
-     *                                          A unique reference id for a scheduled transfer (required)
+     *                                          A unique reference ID for a scheduled transfer. (required)
+     * @param string      $marketplace_id
+     *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -479,9 +513,10 @@ class TransferScheduleApi
      */
     public function deleteScheduleTransaction(
         string $transfer_schedule_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): DeleteTransferSchedule {
-        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
+        list($response) = $this->deleteScheduleTransactionWithHttpInfo($transfer_schedule_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -489,10 +524,12 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransactionWithHttpInfo.
      *
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
      * @param string      $transfer_schedule_id
-     *                                          A unique reference id for a scheduled transfer (required)
+     *                                          A unique reference ID for a scheduled transfer. (required)
+     * @param string      $marketplace_id
+     *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule, HTTP status code, HTTP response headers (array of strings)
@@ -502,9 +539,10 @@ class TransferScheduleApi
      */
     public function deleteScheduleTransactionWithHttpInfo(
         string $transfer_schedule_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
+        $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-deleteScheduleTransaction');
         } else {
@@ -578,17 +616,20 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransactionAsync.
      *
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
      * @param string $transfer_schedule_id
-     *                                     A unique reference id for a scheduled transfer (required)
+     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param string $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransactionAsync(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        string $marketplace_id
     ): PromiseInterface {
-        return $this->deleteScheduleTransactionAsyncWithHttpInfo($transfer_schedule_id)
+        return $this->deleteScheduleTransactionAsyncWithHttpInfo($transfer_schedule_id, $marketplace_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -600,19 +641,22 @@ class TransferScheduleApi
     /**
      * Operation deleteScheduleTransactionAsyncWithHttpInfo.
      *
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
      *
      * @param string $transfer_schedule_id
-     *                                     A unique reference id for a scheduled transfer (required)
+     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param string $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransactionAsyncWithHttpInfo(
         string $transfer_schedule_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\DeleteTransferSchedule';
-        $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id);
+        $request = $this->deleteScheduleTransactionRequest($transfer_schedule_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-deleteScheduleTransaction');
         } else {
@@ -664,12 +708,15 @@ class TransferScheduleApi
      * Create request for operation 'deleteScheduleTransaction'.
      *
      * @param string $transfer_schedule_id
-     *                                     A unique reference id for a scheduled transfer (required)
+     *                                     A unique reference ID for a scheduled transfer. (required)
+     * @param string $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function deleteScheduleTransactionRequest(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        string $marketplace_id
     ): Request {
         // verify the required parameter 'transfer_schedule_id' is set
         if (null === $transfer_schedule_id || (is_array($transfer_schedule_id) && 0 === count($transfer_schedule_id))) {
@@ -677,13 +724,30 @@ class TransferScheduleApi
                 'Missing the required parameter $transfer_schedule_id when calling deleteScheduleTransaction'
             );
         }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling deleteScheduleTransaction'
+            );
+        }
 
-        $resourcePath = '/finances/transfers/wallet/2024-03-01/transferSchedules';
+        $resourcePath = '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $transfer_schedule_id) {
@@ -747,10 +811,12 @@ class TransferScheduleApi
     /**
      * Operation getTransferSchedule.
      *
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string      $transfer_schedule_id
-     *                                          Schedule ID of the Amazon SW transfer (required)
+     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param string      $marketplace_id
+     *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -758,9 +824,10 @@ class TransferScheduleApi
      */
     public function getTransferSchedule(
         string $transfer_schedule_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id, $restrictedDataToken);
+        list($response) = $this->getTransferScheduleWithHttpInfo($transfer_schedule_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -768,10 +835,12 @@ class TransferScheduleApi
     /**
      * Operation getTransferScheduleWithHttpInfo.
      *
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string      $transfer_schedule_id
-     *                                          Schedule ID of the Amazon SW transfer (required)
+     *                                          The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param string      $marketplace_id
+     *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken  Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule, HTTP status code, HTTP response headers (array of strings)
@@ -781,9 +850,10 @@ class TransferScheduleApi
      */
     public function getTransferScheduleWithHttpInfo(
         string $transfer_schedule_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getTransferScheduleRequest($transfer_schedule_id);
+        $request = $this->getTransferScheduleRequest($transfer_schedule_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-getTransferSchedule');
         } else {
@@ -857,17 +927,20 @@ class TransferScheduleApi
     /**
      * Operation getTransferScheduleAsync.
      *
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string $transfer_schedule_id
-     *                                     Schedule ID of the Amazon SW transfer (required)
+     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param string $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getTransferScheduleAsync(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        string $marketplace_id
     ): PromiseInterface {
-        return $this->getTransferScheduleAsyncWithHttpInfo($transfer_schedule_id)
+        return $this->getTransferScheduleAsyncWithHttpInfo($transfer_schedule_id, $marketplace_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -879,19 +952,22 @@ class TransferScheduleApi
     /**
      * Operation getTransferScheduleAsyncWithHttpInfo.
      *
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
      *
      * @param string $transfer_schedule_id
-     *                                     Schedule ID of the Amazon SW transfer (required)
+     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param string $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getTransferScheduleAsyncWithHttpInfo(
         string $transfer_schedule_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
-        $request = $this->getTransferScheduleRequest($transfer_schedule_id);
+        $request = $this->getTransferScheduleRequest($transfer_schedule_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-getTransferSchedule');
         } else {
@@ -943,17 +1019,26 @@ class TransferScheduleApi
      * Create request for operation 'getTransferSchedule'.
      *
      * @param string $transfer_schedule_id
-     *                                     Schedule ID of the Amazon SW transfer (required)
+     *                                     The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param string $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getTransferScheduleRequest(
-        string $transfer_schedule_id
+        string $transfer_schedule_id,
+        string $marketplace_id
     ): Request {
         // verify the required parameter 'transfer_schedule_id' is set
         if (null === $transfer_schedule_id || (is_array($transfer_schedule_id) && 0 === count($transfer_schedule_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $transfer_schedule_id when calling getTransferSchedule'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling getTransferSchedule'
             );
         }
 
@@ -963,6 +1048,17 @@ class TransferScheduleApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $transfer_schedule_id) {
@@ -1030,6 +1126,8 @@ class TransferScheduleApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -1039,10 +1137,11 @@ class TransferScheduleApi
      */
     public function listTransferSchedules(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): TransferScheduleListing {
-        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
+        list($response) = $this->listTransferSchedulesWithHttpInfo($account_id, $marketplace_id, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -1054,6 +1153,8 @@ class TransferScheduleApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -1065,10 +1166,11 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
+        $request = $this->listTransferSchedulesRequest($account_id, $marketplace_id, $next_page_token);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-listTransferSchedules');
         } else {
@@ -1146,6 +1248,8 @@ class TransferScheduleApi
      *
      * @param string      $account_id
      *                                     ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                     Pagination token to retrieve a specific page of results. (optional)
      *
@@ -1153,9 +1257,10 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesAsync(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null
     ): PromiseInterface {
-        return $this->listTransferSchedulesAsyncWithHttpInfo($account_id, $next_page_token)
+        return $this->listTransferSchedulesAsyncWithHttpInfo($account_id, $marketplace_id, $next_page_token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1171,6 +1276,8 @@ class TransferScheduleApi
      *
      * @param string      $account_id
      *                                     ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                     Pagination token to retrieve a specific page of results. (optional)
      *
@@ -1178,11 +1285,12 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesAsyncWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferScheduleListing';
-        $request = $this->listTransferSchedulesRequest($account_id, $next_page_token);
+        $request = $this->listTransferSchedulesRequest($account_id, $marketplace_id, $next_page_token);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-listTransferSchedules');
         } else {
@@ -1235,6 +1343,8 @@ class TransferScheduleApi
      *
      * @param string      $account_id
      *                                     ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                     Pagination token to retrieve a specific page of results. (optional)
      *
@@ -1242,12 +1352,19 @@ class TransferScheduleApi
      */
     public function listTransferSchedulesRequest(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'account_id' is set
         if (null === $account_id || (is_array($account_id) && 0 === count($account_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $account_id when calling listTransferSchedules'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling listTransferSchedules'
             );
         }
 
@@ -1262,6 +1379,16 @@ class TransferScheduleApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $account_id,
             'accountId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
             'string', // openApiType
             '', // style
             false, // explode
@@ -1338,6 +1465,8 @@ class TransferScheduleApi
      *                                                         Digital signature for the destination bank account details. (required)
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
+     * @param string           $marketplace_id
+     *                                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferSchedule $body
      *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -1348,10 +1477,11 @@ class TransferScheduleApi
     public function updateTransferSchedule(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferSchedule $body,
         ?string $restrictedDataToken = null
     ): TransferSchedule {
-        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
+        list($response) = $this->updateTransferScheduleWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -1365,6 +1495,8 @@ class TransferScheduleApi
      *                                                         Digital signature for the destination bank account details. (required)
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
+     * @param string           $marketplace_id
+     *                                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferSchedule $body
      *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param null|string      $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -1377,10 +1509,11 @@ class TransferScheduleApi
     public function updateTransferScheduleWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferSchedule $body,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
+        $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-updateTransferSchedule');
         } else {
@@ -1460,6 +1593,8 @@ class TransferScheduleApi
      *                                                         Digital signature for the destination bank account details. (required)
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
+     * @param string           $marketplace_id
+     *                                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferSchedule $body
      *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      *
@@ -1468,9 +1603,10 @@ class TransferScheduleApi
     public function updateTransferScheduleAsync(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferSchedule $body
     ): PromiseInterface {
-        return $this->updateTransferScheduleAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body)
+        return $this->updateTransferScheduleAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1488,6 +1624,8 @@ class TransferScheduleApi
      *                                                         Digital signature for the destination bank account details. (required)
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
+     * @param string           $marketplace_id
+     *                                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferSchedule $body
      *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      *
@@ -1496,11 +1634,12 @@ class TransferScheduleApi
     public function updateTransferScheduleAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferSchedule $body,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferSchedule';
-        $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $body);
+        $request = $this->updateTransferScheduleRequest($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferScheduleApi-updateTransferSchedule');
         } else {
@@ -1555,6 +1694,8 @@ class TransferScheduleApi
      *                                                         Digital signature for the destination bank account details. (required)
      * @param string           $amount_digital_signature
      *                                                         Digital signature for the source currency transaction amount. (required)
+     * @param string           $marketplace_id
+     *                                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransferSchedule $body
      *                                                         Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      *
@@ -1563,6 +1704,7 @@ class TransferScheduleApi
     public function updateTransferScheduleRequest(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransferSchedule $body
     ): Request {
         // verify the required parameter 'dest_account_digital_signature' is set
@@ -1575,6 +1717,12 @@ class TransferScheduleApi
         if (null === $amount_digital_signature || (is_array($amount_digital_signature) && 0 === count($amount_digital_signature))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amount_digital_signature when calling updateTransferSchedule'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling updateTransferSchedule'
             );
         }
         // verify the required parameter 'body' is set
@@ -1590,6 +1738,17 @@ class TransferScheduleApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // header params
         if (null !== $dest_account_digital_signature) {

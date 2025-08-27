@@ -35,7 +35,7 @@ namespace SpApi\Model\fulfillment\outbound\v2020_07_01;
  *
  * @category Class
  *
- * @description The &#x60;FulfillmentPolicy&#x60; value specified when you submitted the &#x60;createFulfillmentOrder&#x60; operation.
+ * @description The &#x60;FulfillmentPolicy&#x60; value specified when you called the &#x60;createFulfillmentOrder&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

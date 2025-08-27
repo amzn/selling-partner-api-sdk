@@ -282,7 +282,7 @@ class DeliveryMessage implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets locale.
      *
-     * @param null|string $locale the locale for the message (for example, en_US)
+     * @param null|string $locale The locale for the message (e.g., `en_US`).
      */
     public function setLocale(?string $locale): self
     {

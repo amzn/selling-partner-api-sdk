@@ -12,7 +12,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -41,6 +41,7 @@ use SpApi\ApiException;
 use SpApi\AuthAndAuth\RestrictedDataTokenSigner;
 use SpApi\Configuration;
 use SpApi\HeaderSelector;
+use SpApi\Model\sellerWallet\v2024_03_01\CreateTransactionResponse;
 use SpApi\Model\sellerWallet\v2024_03_01\Transaction;
 use SpApi\Model\sellerWallet\v2024_03_01\TransactionInitiationRequest;
 use SpApi\Model\sellerWallet\v2024_03_01\TransactionListing;
@@ -140,6 +141,8 @@ class TransactionsApi
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param string                       $marketplace_id
+     *                                                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransactionInitiationRequest $body
      *                                                                     Defines the actual payload of the request (required)
      * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -150,10 +153,11 @@ class TransactionsApi
     public function createTransaction(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransactionInitiationRequest $body,
         ?string $restrictedDataToken = null
-    ): Transaction {
-        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body, $restrictedDataToken);
+    ): CreateTransactionResponse {
+        list($response) = $this->createTransactionWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body, $restrictedDataToken);
 
         return $response;
     }
@@ -167,11 +171,13 @@ class TransactionsApi
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param string                       $marketplace_id
+     *                                                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransactionInitiationRequest $body
      *                                                                     Defines the actual payload of the request (required)
      * @param null|string                  $restrictedDataToken            Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
-     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SpApi\Model\sellerWallet\v2024_03_01\CreateTransactionResponse, HTTP status code, HTTP response headers (array of strings)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
@@ -179,10 +185,11 @@ class TransactionsApi
     public function createTransactionWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransactionInitiationRequest $body,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
+        $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-createTransaction');
         } else {
@@ -227,17 +234,17 @@ class TransactionsApi
                     (string) $response->getBody()
                 );
             }
-            if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' === '\SplFileObject') {
+            if ('\SpApi\Model\sellerWallet\v2024_03_01\CreateTransactionResponse' === '\SplFileObject') {
                 $content = $response->getBody(); // stream goes to serializer
             } else {
                 $content = (string) $response->getBody();
-                if ('\SpApi\Model\sellerWallet\v2024_03_01\Transaction' !== 'string') {
+                if ('\SpApi\Model\sellerWallet\v2024_03_01\CreateTransactionResponse' !== 'string') {
                     $content = json_decode($content);
                 }
             }
 
             return [
-                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\Transaction', []),
+                ObjectSerializer::deserialize($content, '\SpApi\Model\sellerWallet\v2024_03_01\CreateTransactionResponse', []),
                 $response->getStatusCode(),
                 $response->getHeaders(),
             ];
@@ -262,6 +269,8 @@ class TransactionsApi
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param string                       $marketplace_id
+     *                                                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransactionInitiationRequest $body
      *                                                                     Defines the actual payload of the request (required)
      *
@@ -270,9 +279,10 @@ class TransactionsApi
     public function createTransactionAsync(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransactionInitiationRequest $body
     ): PromiseInterface {
-        return $this->createTransactionAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $body)
+        return $this->createTransactionAsyncWithHttpInfo($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -290,6 +300,8 @@ class TransactionsApi
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param string                       $marketplace_id
+     *                                                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransactionInitiationRequest $body
      *                                                                     Defines the actual payload of the request (required)
      *
@@ -298,11 +310,12 @@ class TransactionsApi
     public function createTransactionAsyncWithHttpInfo(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransactionInitiationRequest $body,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
-        $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
-        $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $body);
+        $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\CreateTransactionResponse';
+        $request = $this->createTransactionRequest($dest_account_digital_signature, $amount_digital_signature, $marketplace_id, $body);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-createTransaction');
         } else {
@@ -357,6 +370,8 @@ class TransactionsApi
      *                                                                     Digital signature for the destination bank account details. (required)
      * @param string                       $amount_digital_signature
      *                                                                     Digital signature for the source currency transaction amount. (required)
+     * @param string                       $marketplace_id
+     *                                                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param TransactionInitiationRequest $body
      *                                                                     Defines the actual payload of the request (required)
      *
@@ -365,6 +380,7 @@ class TransactionsApi
     public function createTransactionRequest(
         string $dest_account_digital_signature,
         string $amount_digital_signature,
+        string $marketplace_id,
         TransactionInitiationRequest $body
     ): Request {
         // verify the required parameter 'dest_account_digital_signature' is set
@@ -377,6 +393,12 @@ class TransactionsApi
         if (null === $amount_digital_signature || (is_array($amount_digital_signature) && 0 === count($amount_digital_signature))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $amount_digital_signature when calling createTransaction'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling createTransaction'
             );
         }
         // verify the required parameter 'body' is set
@@ -392,6 +414,17 @@ class TransactionsApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // header params
         if (null !== $dest_account_digital_signature) {
@@ -465,6 +498,8 @@ class TransactionsApi
      *
      * @param string      $transaction_id
      *                                         ID of the Amazon SW transaction (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -472,9 +507,10 @@ class TransactionsApi
      */
     public function getTransaction(
         string $transaction_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): Transaction {
-        list($response) = $this->getTransactionWithHttpInfo($transaction_id, $restrictedDataToken);
+        list($response) = $this->getTransactionWithHttpInfo($transaction_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -486,6 +522,8 @@ class TransactionsApi
      *
      * @param string      $transaction_id
      *                                         ID of the Amazon SW transaction (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\Transaction, HTTP status code, HTTP response headers (array of strings)
@@ -495,9 +533,10 @@ class TransactionsApi
      */
     public function getTransactionWithHttpInfo(
         string $transaction_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getTransactionRequest($transaction_id);
+        $request = $this->getTransactionRequest($transaction_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-getTransaction');
         } else {
@@ -575,13 +614,16 @@ class TransactionsApi
      *
      * @param string $transaction_id
      *                               ID of the Amazon SW transaction (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getTransactionAsync(
-        string $transaction_id
+        string $transaction_id,
+        string $marketplace_id
     ): PromiseInterface {
-        return $this->getTransactionAsyncWithHttpInfo($transaction_id)
+        return $this->getTransactionAsyncWithHttpInfo($transaction_id, $marketplace_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -597,15 +639,18 @@ class TransactionsApi
      *
      * @param string $transaction_id
      *                               ID of the Amazon SW transaction (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getTransactionAsyncWithHttpInfo(
         string $transaction_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\Transaction';
-        $request = $this->getTransactionRequest($transaction_id);
+        $request = $this->getTransactionRequest($transaction_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-getTransaction');
         } else {
@@ -658,16 +703,25 @@ class TransactionsApi
      *
      * @param string $transaction_id
      *                               ID of the Amazon SW transaction (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getTransactionRequest(
-        string $transaction_id
+        string $transaction_id,
+        string $marketplace_id
     ): Request {
         // verify the required parameter 'transaction_id' is set
         if (null === $transaction_id || (is_array($transaction_id) && 0 === count($transaction_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $transaction_id when calling getTransaction'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling getTransaction'
             );
         }
 
@@ -677,6 +731,17 @@ class TransactionsApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $transaction_id) {
@@ -744,6 +809,8 @@ class TransactionsApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -753,10 +820,11 @@ class TransactionsApi
      */
     public function listAccountTransactions(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): TransactionListing {
-        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $next_page_token, $restrictedDataToken);
+        list($response) = $this->listAccountTransactionsWithHttpInfo($account_id, $marketplace_id, $next_page_token, $restrictedDataToken);
 
         return $response;
     }
@@ -768,6 +836,8 @@ class TransactionsApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                         Pagination token to retrieve a specific page of results. (optional)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
@@ -779,10 +849,11 @@ class TransactionsApi
      */
     public function listAccountTransactionsWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
+        $request = $this->listAccountTransactionsRequest($account_id, $marketplace_id, $next_page_token);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-listAccountTransactions');
         } else {
@@ -860,6 +931,8 @@ class TransactionsApi
      *
      * @param string      $account_id
      *                                     ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                     Pagination token to retrieve a specific page of results. (optional)
      *
@@ -867,9 +940,10 @@ class TransactionsApi
      */
     public function listAccountTransactionsAsync(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null
     ): PromiseInterface {
-        return $this->listAccountTransactionsAsyncWithHttpInfo($account_id, $next_page_token)
+        return $this->listAccountTransactionsAsyncWithHttpInfo($account_id, $marketplace_id, $next_page_token)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -885,6 +959,8 @@ class TransactionsApi
      *
      * @param string      $account_id
      *                                     ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                     Pagination token to retrieve a specific page of results. (optional)
      *
@@ -892,11 +968,12 @@ class TransactionsApi
      */
     public function listAccountTransactionsAsyncWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransactionListing';
-        $request = $this->listAccountTransactionsRequest($account_id, $next_page_token);
+        $request = $this->listAccountTransactionsRequest($account_id, $marketplace_id, $next_page_token);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransactionsApi-listAccountTransactions');
         } else {
@@ -949,6 +1026,8 @@ class TransactionsApi
      *
      * @param string      $account_id
      *                                     ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                     The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $next_page_token
      *                                     Pagination token to retrieve a specific page of results. (optional)
      *
@@ -956,12 +1035,19 @@ class TransactionsApi
      */
     public function listAccountTransactionsRequest(
         string $account_id,
+        string $marketplace_id,
         ?string $next_page_token = null
     ): Request {
         // verify the required parameter 'account_id' is set
         if (null === $account_id || (is_array($account_id) && 0 === count($account_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $account_id when calling listAccountTransactions'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling listAccountTransactions'
             );
         }
 
@@ -990,6 +1076,16 @@ class TransactionsApi
             '', // style
             false, // explode
             false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
             $this->config
         ) ?? []);
 

@@ -355,7 +355,7 @@ class CreateFulfillmentOrderItem implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets seller_fulfillment_order_item_id.
      *
-     * @param string $seller_fulfillment_order_item_id A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `SellerSKU`. For example, the seller might assign different `SellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `SellerSKU` but have different `GiftMessage` values.
+     * @param string $seller_fulfillment_order_item_id A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `sellerSku` value. For example, the seller might assign different `sellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `sellerSku` value but have different `giftMessage` values.
      */
     public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {

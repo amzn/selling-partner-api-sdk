@@ -10,7 +10,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -85,7 +85,7 @@ class TransactionsApiTest extends BaseTestCase
   &quot;content&quot; : {
     &quot;application/json&quot; : {
       &quot;schema&quot; : {
-        &quot;$ref&quot; : &quot;#/components/schemas/Transaction&quot;
+        &quot;$ref&quot; : &quot;#/components/schemas/CreateTransactionResponse&quot;
       }
     }
   },
@@ -93,12 +93,14 @@ class TransactionsApiTest extends BaseTestCase
     &quot;static&quot; : [ {
       &quot;request&quot; : {
         &quot;parameters&quot; : {
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
+          },
           &quot;body&quot; : {
             &quot;value&quot; : {
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase200&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;Joane Packaging Ltd&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -108,8 +110,10 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
+                &quot;accountHolderName&quot; : &quot;Joane Packaging Ltd&quot;,
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
               },
+              &quot;transactionDescription&quot; : &quot;BG999999999&quot;,
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
                 &quot;addressLine2&quot; : &quot;Unit 101&quot;,
@@ -129,72 +133,74 @@ class TransactionsApiTest extends BaseTestCase
         }
       },
       &quot;response&quot; : {
-        &quot;transactionId&quot; : &quot;amzn.transaction.ALNR19JCVWLN3E&quot;,
-        &quot;transactionType&quot; : &quot;DEBIT&quot;,
-        &quot;transactionStatus&quot; : &quot;PAYEE_UNDER_REVIEW&quot;,
-        &quot;transactionRequestDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
-        &quot;expectedCompletionDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
-        &quot;transactionActualCompletionDate&quot; : &quot;2023-09-30T02:32:59.787Z&quot;,
-        &quot;lastUpdateDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
-        &quot;requesterName&quot; : &quot;TppOrgId&quot;,
-        &quot;transactionRequesterSource&quot; : &quot;TPP&quot;,
-        &quot;transactionDescription&quot; : &quot;Test transaction request&quot;,
-        &quot;transactionSourceAccount&quot; : {
-          &quot;accountId&quot; : &quot;sourceAccountIdCase200&quot;,
-          &quot;bankAccountHolderName&quot; : &quot;John Doe&quot;,
-          &quot;bankName&quot; : &quot;Amazon Seller Wallet&quot;,
-          &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
-          &quot;bankAccountCurrency&quot; : &quot;GBP&quot;
-        },
-        &quot;transactionDestinationAccount&quot; : {
-          &quot;bankAccountHolderName&quot; : &quot;Johnny Packaging&quot;,
-          &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
-          &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
-          &quot;bankAccountNumberTail&quot; : &quot;819&quot;,
-          &quot;bankAccountCurrency&quot; : &quot;GBP&quot;,
-          &quot;bankAccountCountryCode&quot; : &quot;EU&quot;
-        },
-        &quot;transactionRequestAmount&quot; : {
-          &quot;currencyCode&quot; : &quot;EUR&quot;,
-          &quot;currencyAmount&quot; : 500.0
-        },
-        &quot;transferRateDetails&quot; : {
-          &quot;baseAmount&quot; : {
+        &quot;transaction&quot; : {
+          &quot;transactionId&quot; : &quot;amzn.transaction.ALNR19JCVWLN3E&quot;,
+          &quot;transactionType&quot; : &quot;DEBIT&quot;,
+          &quot;transactionStatus&quot; : &quot;IN_PROGRESS&quot;,
+          &quot;transactionRequestDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
+          &quot;expectedCompletionDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
+          &quot;transactionActualCompletionDate&quot; : &quot;2023-09-30T02:32:59.787Z&quot;,
+          &quot;lastUpdateDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
+          &quot;requesterName&quot; : &quot;TppOrgId&quot;,
+          &quot;transactionRequesterSource&quot; : &quot;TPP&quot;,
+          &quot;transactionDescription&quot; : &quot;Test transaction request&quot;,
+          &quot;transactionSourceAccount&quot; : {
+            &quot;accountId&quot; : &quot;sourceAccountIdCase200&quot;,
+            &quot;bankAccountHolderName&quot; : &quot;John Doe&quot;,
+            &quot;bankName&quot; : &quot;Amazon Seller Wallet&quot;,
+            &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
+            &quot;bankAccountCurrency&quot; : &quot;GBP&quot;
+          },
+          &quot;transactionDestinationAccount&quot; : {
+            &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
+            &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
+            &quot;bankAccountNumberTail&quot; : &quot;819&quot;,
+            &quot;bankAccountCurrency&quot; : &quot;GBP&quot;,
+            &quot;bankAccountCountryCode&quot; : &quot;EU&quot;
+          },
+          &quot;transactionRequestAmount&quot; : {
             &quot;currencyCode&quot; : &quot;EUR&quot;,
             &quot;currencyAmount&quot; : 500.0
           },
-          &quot;fxRateDetails&quot; : {
-            &quot;fxRateId&quot; : &quot;UNIQUE_FX_RATE_ID_1&quot;,
-            &quot;baseRate&quot; : 7.6915,
-            &quot;effectiveFxRate&quot; : 7.6084,
-            &quot;rateDirection&quot; : &quot;BUY&quot;
+          &quot;transferRateDetails&quot; : {
+            &quot;baseAmount&quot; : {
+              &quot;currencyCode&quot; : &quot;EUR&quot;,
+              &quot;currencyAmount&quot; : 500.0
+            },
+            &quot;fxRateDetails&quot; : {
+              &quot;fxRateId&quot; : &quot;UNIQUE_FX_RATE_ID_1&quot;,
+              &quot;baseRate&quot; : 7.6915,
+              &quot;effectiveFxRate&quot; : 7.6084,
+              &quot;rateDirection&quot; : &quot;BUY&quot;
+            },
+            &quot;transferAmount&quot; : {
+              &quot;currencyCode&quot; : &quot;CNY&quot;,
+              &quot;currencyAmount&quot; : 3804.2
+            },
+            &quot;fees&quot; : [ {
+              &quot;feeId&quot; : &quot;Unique_FeeId_001&quot;,
+              &quot;feeType&quot; : &quot;TRANSACTION_FEE&quot;,
+              &quot;feeRateValue&quot; : &quot;0.9&quot;,
+              &quot;feeAmount&quot; : {
+                &quot;currencyCode&quot; : &quot;EUR&quot;,
+                &quot;currencyAmount&quot; : 4.5
+              }
+            }, {
+              &quot;feeId&quot; : &quot;Unique_FeeId_002&quot;,
+              &quot;feeType&quot; : &quot;TAX&quot;,
+              &quot;feeRateValue&quot; : &quot;20.0&quot;,
+              &quot;feeAmount&quot; : {
+                &quot;currencyCode&quot; : &quot;EUR&quot;,
+                &quot;currencyAmount&quot; : 0.9
+              }
+            } ]
           },
-          &quot;transferAmount&quot; : {
+          &quot;transactionFinalAmount&quot; : {
             &quot;currencyCode&quot; : &quot;CNY&quot;,
             &quot;currencyAmount&quot; : 3804.2
-          },
-          &quot;fees&quot; : [ {
-            &quot;feeId&quot; : &quot;Unique_FeeId_001&quot;,
-            &quot;feeType&quot; : &quot;TRANSACTION_FEE&quot;,
-            &quot;feeRateValue&quot; : 0.9,
-            &quot;feeAmount&quot; : {
-              &quot;currencyCode&quot; : &quot;EUR&quot;,
-              &quot;currencyAmount&quot; : 4.5
-            }
-          }, {
-            &quot;feeId&quot; : &quot;Unique_FeeId_002&quot;,
-            &quot;feeType&quot; : &quot;TAX&quot;,
-            &quot;feeRateValue&quot; : 20.0,
-            &quot;feeAmount&quot; : {
-              &quot;currencyCode&quot; : &quot;EUR&quot;,
-              &quot;currencyAmount&quot; : 0.9
-            }
-          } ]
+          }
         },
-        &quot;transactionFinalAmount&quot; : {
-          &quot;currencyCode&quot; : &quot;CNY&quot;,
-          &quot;currencyAmount&quot; : 3804.2
-        }
+        &quot;callBackURL&quot; : &quot;https://www.example.com/callback/transaction_id&quot;
       }
     } ]
   }
@@ -271,7 +277,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase400&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;Johnny Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -281,7 +286,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
@@ -377,7 +383,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase403&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;Johnny Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -387,7 +392,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
@@ -489,7 +495,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase404&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -499,7 +504,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
@@ -595,7 +601,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase408&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -605,7 +610,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
@@ -717,7 +723,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase422&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -727,7 +732,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
@@ -823,7 +829,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase429&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -833,7 +838,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
@@ -929,7 +935,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase500&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -939,7 +944,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
@@ -1035,7 +1041,6 @@ class TransactionsApiTest extends BaseTestCase
               &quot;sourceAccountId&quot; : &quot;sourceAccountIdCase503&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankAccountNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankName&quot; : &quot;Royal Bank of Scotland&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;THIRD_PARTY&quot;,
@@ -1045,7 +1050,8 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;destinationAccountHolderAddress&quot; : {
                 &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
@@ -1144,13 +1150,16 @@ class TransactionsApiTest extends BaseTestCase
         &quot;parameters&quot; : {
           &quot;transactionId&quot; : {
             &quot;value&quot; : &quot;transactionIdCase200&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
       &quot;response&quot; : {
         &quot;transactionId&quot; : &quot;amzn.transaction.AKJBNEFNL23R84V&quot;,
         &quot;transactionType&quot; : &quot;DEBIT&quot;,
-        &quot;transactionStatus&quot; : &quot;PAYEE_UNDER_REVIEW&quot;,
+        &quot;transactionStatus&quot; : &quot;IN_PROGRESS&quot;,
         &quot;transactionRequestDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
         &quot;expectedCompletionDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
         &quot;transactionActualCompletionDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
@@ -1196,7 +1205,7 @@ class TransactionsApiTest extends BaseTestCase
           &quot;fees&quot; : [ {
             &quot;feeId&quot; : &quot;Unique_FeeId_001&quot;,
             &quot;feeType&quot; : &quot;TRANSACTION_FEE&quot;,
-            &quot;feeRateValue&quot; : 0.9,
+            &quot;feeRateValue&quot; : &quot;0.9&quot;,
             &quot;feeAmount&quot; : {
               &quot;currencyCode&quot; : &quot;EUR&quot;,
               &quot;currencyAmount&quot; : 4.5
@@ -1204,7 +1213,7 @@ class TransactionsApiTest extends BaseTestCase
           }, {
             &quot;feeId&quot; : &quot;Unique_FeeId_002&quot;,
             &quot;feeType&quot; : &quot;TAX&quot;,
-            &quot;feeRateValue&quot; : 20.0,
+            &quot;feeRateValue&quot; : &quot;20.0&quot;,
             &quot;feeAmount&quot; : {
               &quot;currencyCode&quot; : &quot;EUR&quot;,
               &quot;currencyAmount&quot; : 0.9
@@ -1848,6 +1857,9 @@ class TransactionsApiTest extends BaseTestCase
         &quot;parameters&quot; : {
           &quot;accountId&quot; : {
             &quot;value&quot; : &quot;sourceAccountIdCase200&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
@@ -1856,7 +1868,7 @@ class TransactionsApiTest extends BaseTestCase
         &quot;transactions&quot; : [ {
           &quot;transactionId&quot; : &quot;amzn.transaction.AKJBNEFNL23R84V&quot;,
           &quot;transactionType&quot; : &quot;DEBIT&quot;,
-          &quot;transactionStatus&quot; : &quot;PAYEE_UNDER_REVIEW&quot;,
+          &quot;transactionStatus&quot; : &quot;IN_PROGRESS&quot;,
           &quot;transactionRequestDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
           &quot;expectedCompletionDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
           &quot;transactionActualCompletionDate&quot; : &quot;2023-09-26T02:32:59.787Z&quot;,
@@ -1902,7 +1914,7 @@ class TransactionsApiTest extends BaseTestCase
             &quot;fees&quot; : [ {
               &quot;feeId&quot; : &quot;Unique_FeeId_001&quot;,
               &quot;feeType&quot; : &quot;TRANSACTION_FEE&quot;,
-              &quot;feeRateValue&quot; : 0.9,
+              &quot;feeRateValue&quot; : &quot;0.9&quot;,
               &quot;feeAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
                 &quot;currencyAmount&quot; : 4.5
@@ -1910,7 +1922,7 @@ class TransactionsApiTest extends BaseTestCase
             }, {
               &quot;feeId&quot; : &quot;Unique_FeeId_002&quot;,
               &quot;feeType&quot; : &quot;TAX&quot;,
-              &quot;feeRateValue&quot; : 20.0,
+              &quot;feeRateValue&quot; : &quot;20.0&quot;,
               &quot;feeAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
                 &quot;currencyAmount&quot; : 0.9

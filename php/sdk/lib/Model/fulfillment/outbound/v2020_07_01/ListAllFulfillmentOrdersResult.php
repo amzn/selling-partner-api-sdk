@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The request for the listAllFulfillmentOrders operation.
+ * @description The request for the &#x60;listAllFulfillmentOrders&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

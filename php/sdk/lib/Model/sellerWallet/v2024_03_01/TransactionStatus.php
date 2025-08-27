@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -46,15 +46,15 @@ class TransactionStatus
     /**
      * Possible values of this enum.
      */
+    public const EXPIRED = 'EXPIRED';
+
     public const FAILED = 'FAILED';
 
     public const FAILED_CREDITS_APPLIED = 'FAILED_CREDITS_APPLIED';
 
-    public const INITIATED = 'INITIATED';
-
     public const IN_PROGRESS = 'IN_PROGRESS';
 
-    public const PAYEE_UNDER_REVIEW = 'PAYEE_UNDER_REVIEW';
+    public const PENDING_USER_APPROVAL = 'PENDING_USER_APPROVAL';
 
     public const SUCCESSFUL = 'SUCCESSFUL';
 
@@ -66,11 +66,11 @@ class TransactionStatus
     public static function getAllowableEnumValues(): array
     {
         return [
+            self::EXPIRED,
             self::FAILED,
             self::FAILED_CREDITS_APPLIED,
-            self::INITIATED,
             self::IN_PROGRESS,
-            self::PAYEE_UNDER_REVIEW,
+            self::PENDING_USER_APPROVAL,
             self::SUCCESSFUL,
         ];
     }
