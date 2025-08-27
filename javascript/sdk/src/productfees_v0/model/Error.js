@@ -21,6 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class Error {
   /**
    * Constructs a new <code>Error</code>.
+   * An object representing an error that occurred during the API operation.
    * @alias module:productfees_v0/model/Error
    * @class
    * @param code {String} An error code that identifies the type of error that occurred.

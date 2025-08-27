@@ -27,7 +27,7 @@ export class FulfillmentShipment {
    * @alias module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipment
    * @class
    * @param amazonShipmentId {String} A shipment identifier assigned by Amazon.
-   * @param fulfillmentCenterId {String} An identifier for the fulfillment center that the shipment will be sent from.
+   * @param fulfillmentCenterId {String} An identifier for the fulfillment center from which the shipment is sent.
    * @param fulfillmentShipmentStatus {String} The current status of the shipment.
    * @param fulfillmentShipmentItem {[FulfillmentShipmentItem]} An array of fulfillment shipment item information.
    */
@@ -80,7 +80,7 @@ export class FulfillmentShipment {
 FulfillmentShipment.prototype.amazonShipmentId = undefined
 
 /**
- * An identifier for the fulfillment center that the shipment will be sent from.
+ * An identifier for the fulfillment center from which the shipment is sent.
  * @member {String} fulfillmentCenterId
  * @type {String}
  */
@@ -140,7 +140,7 @@ FulfillmentShipment.prototype.shippingDate = undefined
 FulfillmentShipment.prototype.estimatedArrivalDate = undefined
 
 /**
- * Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren't available.
+ * Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.
  * @member {[String]} shippingNotes
  * @type {[String]}
  */

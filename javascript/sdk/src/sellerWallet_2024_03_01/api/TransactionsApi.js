@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -12,6 +12,7 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
+import { CreateTransactionResponse } from '../model/CreateTransactionResponse.js'
 import { ErrorList } from '../model/ErrorList.js'
 import { Transaction } from '../model/Transaction.js'
 import { TransactionInitiationRequest } from '../model/TransactionInitiationRequest.js'
@@ -71,10 +72,11 @@ export class TransactionsApi {
      * Create a transaction request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {TransactionInitiationRequest} body Defines the actual payload of the request
-     * @return {Promise<Transaction>}
+     * @return {Promise<CreateTransactionResponse>}
      */
-  createTransactionWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
+  createTransactionWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
     const postBody = body
 
     // verify the required parameter 'destAccountDigitalSignature' is set
@@ -87,6 +89,11 @@ export class TransactionsApi {
       throw new Error("Missing the required parameter 'amountDigitalSignature' when calling createTransaction")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling createTransaction")
+    }
+
     // verify the required parameter 'body' is set
     if (body === undefined || body === null) {
       throw new Error("Missing the required parameter 'body' when calling createTransaction")
@@ -95,6 +102,7 @@ export class TransactionsApi {
     const pathParams = {
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
       destAccountDigitalSignature,
@@ -105,7 +113,7 @@ export class TransactionsApi {
 
     const contentTypes = ['application/json']
     const accepts = ['application/json']
-    const returnType = Transaction
+    const returnType = CreateTransactionResponse
 
     return this.apiClient.callApi('TransactionsApi-createTransaction',
       '/finances/transfers/wallet/2024-03-01/transactions', 'POST',
@@ -119,11 +127,12 @@ export class TransactionsApi {
      * Create a transaction request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {TransactionInitiationRequest} body Defines the actual payload of the request
-     * @return {Promise<Transaction>}
+     * @return {Promise<CreateTransactionResponse>}
      */
-  createTransaction (destAccountDigitalSignature, amountDigitalSignature, body) {
-    return this.createTransactionWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, body)
+  createTransaction (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
+    return this.createTransactionWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -133,9 +142,10 @@ export class TransactionsApi {
      * Find particular Amazon SW account transaction by Amazon transaction identifier
      * Returns a transaction
      * @param {String} transactionId ID of the Amazon SW transaction
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<Transaction>}
      */
-  getTransactionWithHttpInfo (transactionId) {
+  getTransactionWithHttpInfo (transactionId, marketplaceId) {
     const postBody = null
 
     // verify the required parameter 'transactionId' is set
@@ -143,10 +153,16 @@ export class TransactionsApi {
       throw new Error("Missing the required parameter 'transactionId' when calling getTransaction")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling getTransaction")
+    }
+
     const pathParams = {
       transactionId
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
     }
@@ -168,10 +184,11 @@ export class TransactionsApi {
      * Find particular Amazon SW account transaction by Amazon transaction identifier
      * Returns a transaction
      * @param {String} transactionId ID of the Amazon SW transaction
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<Transaction>}
      */
-  getTransaction (transactionId) {
-    return this.getTransactionWithHttpInfo(transactionId)
+  getTransaction (transactionId, marketplaceId) {
+    return this.getTransactionWithHttpInfo(transactionId, marketplaceId)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -181,11 +198,12 @@ export class TransactionsApi {
      * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
      * Retrieve a list of transactions for a given Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransactionListing>}
      */
-  listAccountTransactionsWithHttpInfo (accountId, opts) {
+  listAccountTransactionsWithHttpInfo (accountId, marketplaceId, opts) {
     opts = opts || {}
     const postBody = null
 
@@ -194,11 +212,17 @@ export class TransactionsApi {
       throw new Error("Missing the required parameter 'accountId' when calling listAccountTransactions")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling listAccountTransactions")
+    }
+
     const pathParams = {
     }
     const queryParams = {
       accountId,
-      nextPageToken: opts.nextPageToken
+      nextPageToken: opts.nextPageToken,
+      marketplaceId
     }
     const headerParams = {
     }
@@ -220,12 +244,13 @@ export class TransactionsApi {
      * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
      * Retrieve a list of transactions for a given Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransactionListing>}
      */
-  listAccountTransactions (accountId, opts) {
-    return this.listAccountTransactionsWithHttpInfo(accountId, opts)
+  listAccountTransactions (accountId, marketplaceId, opts) {
+    return this.listAccountTransactionsWithHttpInfo(accountId, marketplaceId, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })

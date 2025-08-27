@@ -30,8 +30,10 @@ import { DeliveryDocument } from './model/DeliveryDocument.js'
 import { DeliveryInformation } from './model/DeliveryInformation.js'
 import { DeliveryMessage } from './model/DeliveryMessage.js'
 import { DeliveryOffer } from './model/DeliveryOffer.js'
+import { DeliveryOffering } from './model/DeliveryOffering.js'
 import { DeliveryPolicy } from './model/DeliveryPolicy.js'
 import { DeliveryPreferences } from './model/DeliveryPreferences.js'
+import { DeliveryQuantity } from './model/DeliveryQuantity.js'
 import { DeliveryWindow } from './model/DeliveryWindow.js'
 import { Destination } from './model/Destination.js'
 import { DropOffLocation } from './model/DropOffLocation.js'
@@ -53,6 +55,9 @@ import { FulfillmentReturnItemStatus } from './model/FulfillmentReturnItemStatus
 import { FulfillmentShipment } from './model/FulfillmentShipment.js'
 import { FulfillmentShipmentItem } from './model/FulfillmentShipmentItem.js'
 import { FulfillmentShipmentPackage } from './model/FulfillmentShipmentPackage.js'
+import { GetDeliveryOfferingsRequest } from './model/GetDeliveryOfferingsRequest.js'
+import { GetDeliveryOfferingsResponse } from './model/GetDeliveryOfferingsResponse.js'
+import { GetDeliveryOfferingsResult } from './model/GetDeliveryOfferingsResult.js'
 import { GetDeliveryOffersProduct } from './model/GetDeliveryOffersProduct.js'
 import { GetDeliveryOffersRequest } from './model/GetDeliveryOffersRequest.js'
 import { GetDeliveryOffersResponse } from './model/GetDeliveryOffersResponse.js'
@@ -224,6 +229,12 @@ export {
   DeliveryOffer,
 
   /**
+     * The DeliveryOffering model constructor.
+     * @property {module:fulfillmentoutbound_v2020_07_01/model/DeliveryOffering}
+     */
+  DeliveryOffering,
+
+  /**
      * The DeliveryPolicy model constructor.
      * @property {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPolicy}
      */
@@ -234,6 +245,12 @@ export {
      * @property {module:fulfillmentoutbound_v2020_07_01/model/DeliveryPreferences}
      */
   DeliveryPreferences,
+
+  /**
+     * The DeliveryQuantity model constructor.
+     * @property {module:fulfillmentoutbound_v2020_07_01/model/DeliveryQuantity}
+     */
+  DeliveryQuantity,
 
   /**
      * The DeliveryWindow model constructor.
@@ -360,6 +377,24 @@ export {
      * @property {module:fulfillmentoutbound_v2020_07_01/model/FulfillmentShipmentPackage}
      */
   FulfillmentShipmentPackage,
+
+  /**
+     * The GetDeliveryOfferingsRequest model constructor.
+     * @property {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOfferingsRequest}
+     */
+  GetDeliveryOfferingsRequest,
+
+  /**
+     * The GetDeliveryOfferingsResponse model constructor.
+     * @property {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOfferingsResponse}
+     */
+  GetDeliveryOfferingsResponse,
+
+  /**
+     * The GetDeliveryOfferingsResult model constructor.
+     * @property {module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOfferingsResult}
+     */
+  GetDeliveryOfferingsResult,
 
   /**
      * The GetDeliveryOffersProduct model constructor.

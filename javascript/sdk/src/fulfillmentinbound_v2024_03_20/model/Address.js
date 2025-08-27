@@ -64,6 +64,7 @@ export class Address {
       if (data.hasOwnProperty('city')) { obj.city = ApiClient.convertToType(data.city, 'String') }
       if (data.hasOwnProperty('companyName')) { obj.companyName = ApiClient.convertToType(data.companyName, 'String') }
       if (data.hasOwnProperty('countryCode')) { obj.countryCode = ApiClient.convertToType(data.countryCode, 'String') }
+      if (data.hasOwnProperty('districtOrCounty')) { obj.districtOrCounty = ApiClient.convertToType(data.districtOrCounty, 'String') }
       if (data.hasOwnProperty('email')) { obj.email = ApiClient.convertToType(data.email, 'String') }
       if (data.hasOwnProperty('name')) { obj.name = ApiClient.convertToType(data.name, 'String') }
       if (data.hasOwnProperty('phoneNumber')) { obj.phoneNumber = ApiClient.convertToType(data.phoneNumber, 'String') }
@@ -108,6 +109,13 @@ Address.prototype.companyName = undefined
  * @type {String}
  */
 Address.prototype.countryCode = undefined
+
+/**
+ * The district or county.
+ * @member {String} districtOrCounty
+ * @type {String}
+ */
+Address.prototype.districtOrCounty = undefined
 
 /**
  * The email address.

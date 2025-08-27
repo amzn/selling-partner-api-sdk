@@ -90,7 +90,7 @@ GetFulfillmentPreviewRequest.prototype.address = undefined
 GetFulfillmentPreviewRequest.prototype.items = undefined
 
 /**
- * ShippingSpeedCategory List
+ * List of shipping speed categories.
  * @member {[ShippingSpeedCategory]} shippingSpeedCategories
  * @type {[ShippingSpeedCategory]}
  */
@@ -104,7 +104,7 @@ GetFulfillmentPreviewRequest.prototype.shippingSpeedCategories = undefined
 GetFulfillmentPreviewRequest.prototype.includeCODFulfillmentPreview = undefined
 
 /**
- * When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.
+ * When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` equal to `ScheduledDelivery`.
  * @member {Boolean} includeDeliveryWindows
  * @type {Boolean}
  */

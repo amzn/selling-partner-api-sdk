@@ -490,6 +490,18 @@ const mocksetPrepDetailsData = {
     headers: {}
   }
 };
+const mockupdateBoxIdentifiersData = {
+  request: {
+    'inboundPlanId': generateMockData('String'),
+    'shipmentId': generateMockData('String'),
+    'body': generateMockData('UpdateBoxIdentifiersRequest')
+  },
+  response: {
+    data: generateMockData('UpdateBoxIdentifiersResponse'),
+    statusCode: 202,
+    headers: {}
+  }
+};
 const mockupdateInboundPlanNameData = {
   request: {
     'inboundPlanId': generateMockData('String'),
@@ -2572,6 +2584,60 @@ describe('FbaInboundApi', () => {
           mocksetPrepDetailsData.request['body']
         ];
         await instance.setPrepDetails(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('updateBoxIdentifiers', () => {
+    it('should successfully call updateBoxIdentifiers', async () => {
+      instance.apiClient.callApi.resolves(mockupdateBoxIdentifiersData.response);
+
+      const params = [
+        mockupdateBoxIdentifiersData.request['inboundPlanId'],
+        mockupdateBoxIdentifiersData.request['shipmentId'],
+        mockupdateBoxIdentifiersData.request['body']
+      ];
+      const data = await instance.updateBoxIdentifiers(...params);
+
+      expect(data instanceof TheSellingPartnerApiForFbaInboundOperations.UpdateBoxIdentifiersResponse).to.be.true;
+      expect(data).to.equal(mockupdateBoxIdentifiersData.response.data);
+    });
+
+    it('should successfully call updateBoxIdentifiersWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockupdateBoxIdentifiersData.response);
+
+      const params = [
+        mockupdateBoxIdentifiersData.request['inboundPlanId'],
+        mockupdateBoxIdentifiersData.request['shipmentId'],
+        mockupdateBoxIdentifiersData.request['body']
+      ];
+      const response = await instance.updateBoxIdentifiersWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockupdateBoxIdentifiersData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+      expect(response.data).to.equal(mockupdateBoxIdentifiersData.response.data)
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockupdateBoxIdentifiersData.request['inboundPlanId'],
+          mockupdateBoxIdentifiersData.request['shipmentId'],
+          mockupdateBoxIdentifiersData.request['body']
+        ];
+        await instance.updateBoxIdentifiers(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;

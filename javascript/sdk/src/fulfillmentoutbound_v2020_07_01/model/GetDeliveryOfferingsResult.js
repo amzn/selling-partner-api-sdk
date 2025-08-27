@@ -12,29 +12,29 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
-import { ReasonCodeDetails } from './ReasonCodeDetails.js'
+import { DeliveryOffering } from './DeliveryOffering.js'
 
 /**
- * The ListReturnReasonCodesResult model module.
- * @module fulfillmentoutbound_v2020_07_01/model/ListReturnReasonCodesResult
+ * The GetDeliveryOfferingsResult model module.
+ * @module fulfillmentoutbound_v2020_07_01/model/GetDeliveryOfferingsResult
  * @version 2020-07-01
  */
-export class ListReturnReasonCodesResult {
+export class GetDeliveryOfferingsResult {
   /**
-   * Constructs a new <code>ListReturnReasonCodesResult</code>.
-   * The request for the &#x60;listReturnReasonCodes&#x60; operation.
-   * @alias module:fulfillmentoutbound_v2020_07_01/model/ListReturnReasonCodesResult
+   * Constructs a new <code>GetDeliveryOfferingsResult</code>.
+   * A list of delivery offerings, including offering expiration, earliest and latest date and time range, and the delivery offering policy.
+   * @alias module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOfferingsResult
    * @class
    */
   constructor () {
   }
 
   /**
-   * Constructs a <code>ListReturnReasonCodesResult</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>GetDeliveryOfferingsResult</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {ListReturnReasonCodesResult} obj Optional instance to populate.
-   * @return {ListReturnReasonCodesResult} The populated <code>ListReturnReasonCodesResult</code> instance.
+   * @param {GetDeliveryOfferingsResult} obj Optional instance to populate.
+   * @return {GetDeliveryOfferingsResult} The populated <code>GetDeliveryOfferingsResult</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -49,16 +49,16 @@ export class ListReturnReasonCodesResult {
           obj = Boolean(data)
           break
       }
-      obj = obj || new ListReturnReasonCodesResult()
-      if (data.hasOwnProperty('reasonCodeDetails')) { obj.reasonCodeDetails = ApiClient.convertToType(data.reasonCodeDetails, [ReasonCodeDetails]) }
+      obj = obj || new GetDeliveryOfferingsResult()
+      if (data.hasOwnProperty('deliveryOfferings')) { obj.deliveryOfferings = ApiClient.convertToType(data.deliveryOfferings, [DeliveryOffering]) }
     }
     return obj
   }
 }
 
 /**
- * An array of return reason code details.
- * @member {[ReasonCodeDetails]} reasonCodeDetails
- * @type {[ReasonCodeDetails]}
+ * An array of delivery offering information.
+ * @member {[DeliveryOffering]} deliveryOfferings
+ * @type {[DeliveryOffering]}
  */
-ListReturnReasonCodesResult.prototype.reasonCodeDetails = undefined
+GetDeliveryOfferingsResult.prototype.deliveryOfferings = undefined

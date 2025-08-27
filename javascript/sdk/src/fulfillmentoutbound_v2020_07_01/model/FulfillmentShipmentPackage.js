@@ -58,6 +58,7 @@ export class FulfillmentShipmentPackage {
       if (data.hasOwnProperty('packageNumber')) { obj.packageNumber = ApiClient.convertToType(data.packageNumber, 'Number') }
       if (data.hasOwnProperty('carrierCode')) { obj.carrierCode = ApiClient.convertToType(data.carrierCode, 'String') }
       if (data.hasOwnProperty('trackingNumber')) { obj.trackingNumber = ApiClient.convertToType(data.trackingNumber, 'String') }
+      if (data.hasOwnProperty('amazonFulfillmentTrackingNumber')) { obj.amazonFulfillmentTrackingNumber = ApiClient.convertToType(data.amazonFulfillmentTrackingNumber, 'String') }
       if (data.hasOwnProperty('estimatedArrivalDate')) { obj.estimatedArrivalDate = ApiClient.convertToType(data.estimatedArrivalDate, 'Date') }
       if (data.hasOwnProperty('lockerDetails')) { obj.lockerDetails = LockerDetails.constructFromObject(data.lockerDetails) }
       if (data.hasOwnProperty('deliveryInformation')) { obj.deliveryInformation = DeliveryInformation.constructFromObject(data.deliveryInformation) }
@@ -86,6 +87,13 @@ FulfillmentShipmentPackage.prototype.carrierCode = undefined
  * @type {String}
  */
 FulfillmentShipmentPackage.prototype.trackingNumber = undefined
+
+/**
+ * The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.
+ * @member {String} amazonFulfillmentTrackingNumber
+ * @type {String}
+ */
+FulfillmentShipmentPackage.prototype.amazonFulfillmentTrackingNumber = undefined
 
 /**
  * Date timestamp

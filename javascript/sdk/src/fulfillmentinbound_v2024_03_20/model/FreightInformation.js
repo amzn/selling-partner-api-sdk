@@ -22,7 +22,7 @@ import { Currency } from './Currency.js'
 export class FreightInformation {
   /**
    * Constructs a new <code>FreightInformation</code>.
-   * Freight information describes the skus being transported. Freight carrier options and quotes will only be returned if the freight information is provided.
+   * Freight information describes the SKUs that are in transit. Freight carrier options and quotes will only be returned if the freight information is provided.
    * @alias module:fulfillmentinbound_v2024_03_20/model/FreightInformation
    * @class
    */

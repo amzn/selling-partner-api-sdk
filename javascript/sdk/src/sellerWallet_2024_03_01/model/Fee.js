@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -28,7 +28,7 @@ export class Fee {
    * @class
    * @param feeId {String} Unique identifier assigned to the Fee.
    * @param feeType {FeeType}
-   * @param feeRateValue {Number} A decimal number such as amount or FX rate.
+   * @param feeRateValue {String} The value of the fee in percentage format.
    * @param feeAmount {Currency}
    */
   constructor (feeId, feeType, feeRateValue, feeAmount) {
@@ -61,7 +61,7 @@ export class Fee {
       obj = obj || new Fee()
       if (data.hasOwnProperty('feeId')) { obj.feeId = ApiClient.convertToType(data.feeId, 'String') }
       if (data.hasOwnProperty('feeType')) { obj.feeType = FeeType.constructFromObject(data.feeType) }
-      if (data.hasOwnProperty('feeRateValue')) { obj.feeRateValue = ApiClient.convertToType(data.feeRateValue, 'Number') }
+      if (data.hasOwnProperty('feeRateValue')) { obj.feeRateValue = ApiClient.convertToType(data.feeRateValue, 'String') }
       if (data.hasOwnProperty('feeAmount')) { obj.feeAmount = Currency.constructFromObject(data.feeAmount) }
     }
     return obj
@@ -82,9 +82,9 @@ Fee.prototype.feeId = undefined
 Fee.prototype.feeType = undefined
 
 /**
- * A decimal number such as amount or FX rate.
- * @member {Number} feeRateValue
- * @type {Number}
+ * The value of the fee in percentage format.
+ * @member {String} feeRateValue
+ * @type {String}
  */
 Fee.prototype.feeRateValue = undefined
 

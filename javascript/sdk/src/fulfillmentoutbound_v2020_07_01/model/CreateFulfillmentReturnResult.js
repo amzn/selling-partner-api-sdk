@@ -24,7 +24,7 @@ import { ReturnItem } from './ReturnItem.js'
 export class CreateFulfillmentReturnResult {
   /**
    * Constructs a new <code>CreateFulfillmentReturnResult</code>.
-   * The result for the createFulfillmentReturn operation.
+   * The result for the &#x60;createFulfillmentReturn&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentReturnResult
    * @class
    */

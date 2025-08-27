@@ -13,29 +13,29 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { Error } from './Error.js'
-import { GetDeliveryOffersResult } from './GetDeliveryOffersResult.js'
+import { GetDeliveryOfferingsResult } from './GetDeliveryOfferingsResult.js'
 
 /**
- * The GetDeliveryOffersResponse model module.
- * @module fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersResponse
+ * The GetDeliveryOfferingsResponse model module.
+ * @module fulfillmentoutbound_v2020_07_01/model/GetDeliveryOfferingsResponse
  * @version 2020-07-01
  */
-export class GetDeliveryOffersResponse {
+export class GetDeliveryOfferingsResponse {
   /**
-   * Constructs a new <code>GetDeliveryOffersResponse</code>.
-   * The response schema for the &#x60;getDeliveryOffers&#x60; operation.
-   * @alias module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersResponse
+   * Constructs a new <code>GetDeliveryOfferingsResponse</code>.
+   * The response schema for the &#x60;getDeliveryOfferings&#x60; operation.
+   * @alias module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOfferingsResponse
    * @class
    */
   constructor () {
   }
 
   /**
-   * Constructs a <code>GetDeliveryOffersResponse</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>GetDeliveryOfferingsResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {GetDeliveryOffersResponse} obj Optional instance to populate.
-   * @return {GetDeliveryOffersResponse} The populated <code>GetDeliveryOffersResponse</code> instance.
+   * @param {GetDeliveryOfferingsResponse} obj Optional instance to populate.
+   * @return {GetDeliveryOfferingsResponse} The populated <code>GetDeliveryOfferingsResponse</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -50,8 +50,8 @@ export class GetDeliveryOffersResponse {
           obj = Boolean(data)
           break
       }
-      obj = obj || new GetDeliveryOffersResponse()
-      if (data.hasOwnProperty('payload')) { obj.payload = GetDeliveryOffersResult.constructFromObject(data.payload) }
+      obj = obj || new GetDeliveryOfferingsResponse()
+      if (data.hasOwnProperty('payload')) { obj.payload = GetDeliveryOfferingsResult.constructFromObject(data.payload) }
       if (data.hasOwnProperty('errors')) { obj.errors = ApiClient.convertToType(data.errors, [Error]) }
     }
     return obj
@@ -59,14 +59,14 @@ export class GetDeliveryOffersResponse {
 }
 
 /**
- * @member {GetDeliveryOffersResult} payload
- * @type {GetDeliveryOffersResult}
+ * @member {GetDeliveryOfferingsResult} payload
+ * @type {GetDeliveryOfferingsResult}
  */
-GetDeliveryOffersResponse.prototype.payload = undefined
+GetDeliveryOfferingsResponse.prototype.payload = undefined
 
 /**
  * A list of error responses returned when a request is unsuccessful.
  * @member {[Error]} errors
  * @type {[Error]}
  */
-GetDeliveryOffersResponse.prototype.errors = undefined
+GetDeliveryOfferingsResponse.prototype.errors = undefined

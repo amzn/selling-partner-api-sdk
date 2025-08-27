@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -16,7 +16,7 @@ import sinon from 'sinon';
 import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'sellerWallet_2024_03_01', 'index.js');
-const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi = await import(modulePath);
+const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide = await import(modulePath);
 
 let instance;
 let sandbox;
@@ -43,7 +43,7 @@ function generateMockData(dataType, isArray = false) {
       return new Date().toISOString();
     default:
       try {
-        const ModelClass = TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi[dataType];
+        const ModelClass = TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide[dataType];
         if (ModelClass) {
           const instance = Object.create(ModelClass.prototype);
           return instance;
@@ -61,6 +61,7 @@ const mockcreateTransferScheduleData = {
   request: {
     'destAccountDigitalSignature': generateMockData('String'),
     'amountDigitalSignature': generateMockData('String'),
+    'marketplaceId': generateMockData('String'),
     'body': generateMockData('TransferScheduleRequest')
   },
   response: {
@@ -71,7 +72,8 @@ const mockcreateTransferScheduleData = {
 };
 const mockdeleteScheduleTransactionData = {
   request: {
-    'transferScheduleId': generateMockData('String')
+    'transferScheduleId': generateMockData('String'),
+    'marketplaceId': generateMockData('String')
   },
   response: {
     data: generateMockData('DeleteTransferSchedule'),
@@ -81,7 +83,8 @@ const mockdeleteScheduleTransactionData = {
 };
 const mockgetTransferScheduleData = {
   request: {
-    'transferScheduleId': generateMockData('String')
+    'transferScheduleId': generateMockData('String'),
+    'marketplaceId': generateMockData('String')
   },
   response: {
     data: generateMockData('TransferSchedule'),
@@ -92,6 +95,7 @@ const mockgetTransferScheduleData = {
 const mocklistTransferSchedulesData = {
   request: {
     'accountId': generateMockData('String'),
+    'marketplaceId': generateMockData('String'),
   },
   response: {
     data: generateMockData('TransferScheduleListing'),
@@ -103,6 +107,7 @@ const mockupdateTransferScheduleData = {
   request: {
     'destAccountDigitalSignature': generateMockData('String'),
     'amountDigitalSignature': generateMockData('String'),
+    'marketplaceId': generateMockData('String'),
     'body': generateMockData('TransferSchedule')
   },
   response: {
@@ -115,10 +120,10 @@ const mockupdateTransferScheduleData = {
 describe('TransferScheduleApi', () => {
   beforeEach(() => {
     sandbox = sinon.createSandbox();
-    const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
-    instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferScheduleApi(apiClientInstance);
+    instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferScheduleApi(apiClientInstance);
   });
 
   afterEach(() => {
@@ -132,11 +137,12 @@ describe('TransferScheduleApi', () => {
       const params = [
         mockcreateTransferScheduleData.request['destAccountDigitalSignature'],
         mockcreateTransferScheduleData.request['amountDigitalSignature'],
+        mockcreateTransferScheduleData.request['marketplaceId'],
         mockcreateTransferScheduleData.request['body']
       ];
       const data = await instance.createTransferSchedule(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferSchedule).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferSchedule).to.be.true;
       expect(data).to.equal(mockcreateTransferScheduleData.response.data);
     });
 
@@ -146,6 +152,7 @@ describe('TransferScheduleApi', () => {
       const params = [
         mockcreateTransferScheduleData.request['destAccountDigitalSignature'],
         mockcreateTransferScheduleData.request['amountDigitalSignature'],
+        mockcreateTransferScheduleData.request['marketplaceId'],
         mockcreateTransferScheduleData.request['body']
       ];
       const response = await instance.createTransferScheduleWithHttpInfo(...params);
@@ -169,6 +176,7 @@ describe('TransferScheduleApi', () => {
         const params = [
           mockcreateTransferScheduleData.request['destAccountDigitalSignature'],
           mockcreateTransferScheduleData.request['amountDigitalSignature'],
+          mockcreateTransferScheduleData.request['marketplaceId'],
           mockcreateTransferScheduleData.request['body']
         ];
         await instance.createTransferSchedule(...params);
@@ -184,11 +192,12 @@ describe('TransferScheduleApi', () => {
       instance.apiClient.callApi.resolves(mockdeleteScheduleTransactionData.response);
 
       const params = [
-        mockdeleteScheduleTransactionData.request['transferScheduleId']
+        mockdeleteScheduleTransactionData.request['transferScheduleId'],
+        mockdeleteScheduleTransactionData.request['marketplaceId']
       ];
       const data = await instance.deleteScheduleTransaction(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.DeleteTransferSchedule).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.DeleteTransferSchedule).to.be.true;
       expect(data).to.equal(mockdeleteScheduleTransactionData.response.data);
     });
 
@@ -196,7 +205,8 @@ describe('TransferScheduleApi', () => {
       instance.apiClient.callApi.resolves(mockdeleteScheduleTransactionData.response);
 
       const params = [
-        mockdeleteScheduleTransactionData.request['transferScheduleId']
+        mockdeleteScheduleTransactionData.request['transferScheduleId'],
+        mockdeleteScheduleTransactionData.request['marketplaceId']
       ];
       const response = await instance.deleteScheduleTransactionWithHttpInfo(...params);
 
@@ -217,7 +227,8 @@ describe('TransferScheduleApi', () => {
 
       try {
         const params = [
-          mockdeleteScheduleTransactionData.request['transferScheduleId']
+          mockdeleteScheduleTransactionData.request['transferScheduleId'],
+          mockdeleteScheduleTransactionData.request['marketplaceId']
         ];
         await instance.deleteScheduleTransaction(...params);
         throw new Error('Expected error to be thrown');
@@ -232,11 +243,12 @@ describe('TransferScheduleApi', () => {
       instance.apiClient.callApi.resolves(mockgetTransferScheduleData.response);
 
       const params = [
-        mockgetTransferScheduleData.request['transferScheduleId']
+        mockgetTransferScheduleData.request['transferScheduleId'],
+        mockgetTransferScheduleData.request['marketplaceId']
       ];
       const data = await instance.getTransferSchedule(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferSchedule).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferSchedule).to.be.true;
       expect(data).to.equal(mockgetTransferScheduleData.response.data);
     });
 
@@ -244,7 +256,8 @@ describe('TransferScheduleApi', () => {
       instance.apiClient.callApi.resolves(mockgetTransferScheduleData.response);
 
       const params = [
-        mockgetTransferScheduleData.request['transferScheduleId']
+        mockgetTransferScheduleData.request['transferScheduleId'],
+        mockgetTransferScheduleData.request['marketplaceId']
       ];
       const response = await instance.getTransferScheduleWithHttpInfo(...params);
 
@@ -265,7 +278,8 @@ describe('TransferScheduleApi', () => {
 
       try {
         const params = [
-          mockgetTransferScheduleData.request['transferScheduleId']
+          mockgetTransferScheduleData.request['transferScheduleId'],
+          mockgetTransferScheduleData.request['marketplaceId']
         ];
         await instance.getTransferSchedule(...params);
         throw new Error('Expected error to be thrown');
@@ -281,10 +295,11 @@ describe('TransferScheduleApi', () => {
 
       const params = [
         mocklistTransferSchedulesData.request['accountId'],
+        mocklistTransferSchedulesData.request['marketplaceId'],
       ];
       const data = await instance.listTransferSchedules(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferScheduleListing).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferScheduleListing).to.be.true;
       expect(data).to.equal(mocklistTransferSchedulesData.response.data);
     });
 
@@ -293,6 +308,7 @@ describe('TransferScheduleApi', () => {
 
       const params = [
         mocklistTransferSchedulesData.request['accountId'],
+        mocklistTransferSchedulesData.request['marketplaceId'],
       ];
       const response = await instance.listTransferSchedulesWithHttpInfo(...params);
 
@@ -314,6 +330,7 @@ describe('TransferScheduleApi', () => {
       try {
         const params = [
           mocklistTransferSchedulesData.request['accountId'],
+          mocklistTransferSchedulesData.request['marketplaceId'],
         ];
         await instance.listTransferSchedules(...params);
         throw new Error('Expected error to be thrown');
@@ -330,11 +347,12 @@ describe('TransferScheduleApi', () => {
       const params = [
         mockupdateTransferScheduleData.request['destAccountDigitalSignature'],
         mockupdateTransferScheduleData.request['amountDigitalSignature'],
+        mockupdateTransferScheduleData.request['marketplaceId'],
         mockupdateTransferScheduleData.request['body']
       ];
       const data = await instance.updateTransferSchedule(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferSchedule).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferSchedule).to.be.true;
       expect(data).to.equal(mockupdateTransferScheduleData.response.data);
     });
 
@@ -344,6 +362,7 @@ describe('TransferScheduleApi', () => {
       const params = [
         mockupdateTransferScheduleData.request['destAccountDigitalSignature'],
         mockupdateTransferScheduleData.request['amountDigitalSignature'],
+        mockupdateTransferScheduleData.request['marketplaceId'],
         mockupdateTransferScheduleData.request['body']
       ];
       const response = await instance.updateTransferScheduleWithHttpInfo(...params);
@@ -367,6 +386,7 @@ describe('TransferScheduleApi', () => {
         const params = [
           mockupdateTransferScheduleData.request['destAccountDigitalSignature'],
           mockupdateTransferScheduleData.request['amountDigitalSignature'],
+          mockupdateTransferScheduleData.request['marketplaceId'],
           mockupdateTransferScheduleData.request['body']
         ];
         await instance.updateTransferSchedule(...params);
@@ -380,13 +400,13 @@ describe('TransferScheduleApi', () => {
 
   describe('constructor', () => {
     it('should use default ApiClient when none provided', () => {
-      const defaultInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferScheduleApi();
-      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient.instance);
+      const defaultInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferScheduleApi();
+      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient.instance);
     });
 
     it('should use provided ApiClient', () => {
-      const customClient = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient();
-      const customInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.TransferScheduleApi(customClient);
+      const customClient = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient();
+      const customInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.TransferScheduleApi(customClient);
       expect(customInstance.apiClient).to.equal(customClient);
     });
   });

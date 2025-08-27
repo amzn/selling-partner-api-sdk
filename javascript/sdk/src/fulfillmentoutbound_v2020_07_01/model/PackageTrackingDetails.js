@@ -145,7 +145,7 @@ PackageTrackingDetails.prototype.shipToAddress = undefined
 PackageTrackingDetails.prototype.currentStatus = undefined
 
 /**
- * Description corresponding to the CurrentStatus value.
+ * Description corresponding to the `CurrentStatus` value.
  * @member {String} currentStatusDescription
  * @type {String}
  */

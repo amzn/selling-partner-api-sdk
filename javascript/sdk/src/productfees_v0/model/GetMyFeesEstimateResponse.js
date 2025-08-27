@@ -23,6 +23,7 @@ import { GetMyFeesEstimateResult } from './GetMyFeesEstimateResult.js'
 export class GetMyFeesEstimateResponse {
   /**
    * Constructs a new <code>GetMyFeesEstimateResponse</code>.
+   * The response object for the GetMyFeesEstimate operation.
    * @alias module:productfees_v0/model/GetMyFeesEstimateResponse
    * @class
    */

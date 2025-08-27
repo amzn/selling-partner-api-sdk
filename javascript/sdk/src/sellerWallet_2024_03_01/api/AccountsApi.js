@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -70,9 +70,10 @@ export class AccountsApi {
      * Find particular Amazon SW account by Amazon account identifier
      * Retrieve a Seller Wallet bank account by Amazon account identifier.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<BankAccount>}
      */
-  getAccountWithHttpInfo (accountId) {
+  getAccountWithHttpInfo (accountId, marketplaceId) {
     const postBody = null
 
     // verify the required parameter 'accountId' is set
@@ -80,10 +81,16 @@ export class AccountsApi {
       throw new Error("Missing the required parameter 'accountId' when calling getAccount")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling getAccount")
+    }
+
     const pathParams = {
       accountId
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
     }
@@ -105,10 +112,11 @@ export class AccountsApi {
      * Find particular Amazon SW account by Amazon account identifier
      * Retrieve a Seller Wallet bank account by Amazon account identifier.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<BankAccount>}
      */
-  getAccount (accountId) {
-    return this.getAccountWithHttpInfo(accountId)
+  getAccount (accountId, marketplaceId) {
+    return this.getAccountWithHttpInfo(accountId, marketplaceId)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -118,9 +126,10 @@ export class AccountsApi {
      * Find balance in particular Amazon SW account by Amazon account identifier
      * Retrieve the balance in a given Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<BalanceListing>}
      */
-  listAccountBalancesWithHttpInfo (accountId) {
+  listAccountBalancesWithHttpInfo (accountId, marketplaceId) {
     const postBody = null
 
     // verify the required parameter 'accountId' is set
@@ -128,10 +137,16 @@ export class AccountsApi {
       throw new Error("Missing the required parameter 'accountId' when calling listAccountBalances")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling listAccountBalances")
+    }
+
     const pathParams = {
       accountId
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
     }
@@ -153,10 +168,11 @@ export class AccountsApi {
      * Find balance in particular Amazon SW account by Amazon account identifier
      * Retrieve the balance in a given Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<BalanceListing>}
      */
-  listAccountBalances (accountId) {
-    return this.listAccountBalancesWithHttpInfo(accountId)
+  listAccountBalances (accountId, marketplaceId) {
+    return this.listAccountBalancesWithHttpInfo(accountId, marketplaceId)
       .then(function (response_and_data) {
         return response_and_data.data
       })
