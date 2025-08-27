@@ -59,11 +59,11 @@ public class ReturnItem {
     }
 
     /**
-     * An identifier assigned by the seller to the return item.
+     * An identifier the seller assigns to the return item.
      *
      * @return sellerReturnItemId
      */
-    @Schema(required = true, description = "An identifier assigned by the seller to the return item.")
+    @Schema(required = true, description = "An identifier the seller assigns to the return item.")
     public String getSellerReturnItemId() {
         return sellerReturnItemId;
     }

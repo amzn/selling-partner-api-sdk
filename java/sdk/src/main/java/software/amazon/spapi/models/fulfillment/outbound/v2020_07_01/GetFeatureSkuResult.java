@@ -107,16 +107,16 @@ public class GetFeatureSkuResult {
     }
 
     /**
-     * A list of one or more reasons that the seller SKU is ineligibile for the feature. Possible values: *
-     * &#x60;MERCHANT_NOT_ENROLLED&#x60; - The merchant isn&#x27;t enrolled for the feature. *
-     * &#x60;SKU_NOT_ELIGIBLE&#x60; - The SKU doesn&#x27;t reside in a warehouse that supports the feature. *
-     * &#x60;INVALID_SKU&#x60; - There is an issue with the SKU provided.
+     * A list of one or more reasons that the seller SKU is ineligible for the feature. Possible values: *
+     * &#x60;MERCHANT_NOT_ENROLLED&#x60;: The merchant isn&#x27;t enrolled for the feature. *
+     * &#x60;SKU_NOT_ELIGIBLE&#x60;: The SKU doesn&#x27;t reside in a warehouse that supports the feature. *
+     * &#x60;INVALID_SKU&#x60;: There is an issue with the SKU provided.
      *
      * @return ineligibleReasons
      */
     @Schema(
             description =
-                    "A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED` - The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE` - The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU` - There is an issue with the SKU provided.")
+                    "A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED`: The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE`: The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU`: There is an issue with the SKU provided.")
     public List<String> getIneligibleReasons() {
         return ineligibleReasons;
     }

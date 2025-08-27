@@ -16,9 +16,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/** List of shipping speed categories. */
-@Schema(description = "List of shipping speed categories.")
-public class ShippingSpeedCategoryList extends ArrayList<ShippingSpeedCategory> {
+/** An array of delivery offering information. */
+@Schema(description = "An array of delivery offering information.")
+public class DeliveryOfferingsList extends ArrayList<DeliveryOffering> {
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -39,7 +39,7 @@ public class ShippingSpeedCategoryList extends ArrayList<ShippingSpeedCategory> 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ShippingSpeedCategoryList {\n");
+        sb.append("class DeliveryOfferingsList {\n");
         sb.append("    ").append(toIndentedString(super.toString())).append("\n");
         sb.append("}");
         return sb.toString();

@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The request body schema for the getDeliveryOffers operation. */
-@Schema(description = "The request body schema for the getDeliveryOffers operation.")
+/** The request body schema for the &#x60;getDeliveryOffers&#x60; operation. */
+@Schema(description = "The request body schema for the `getDeliveryOffers` operation.")
 public class GetDeliveryOffersRequest {
     @SerializedName("product")
     private GetDeliveryOffersProduct product = null;

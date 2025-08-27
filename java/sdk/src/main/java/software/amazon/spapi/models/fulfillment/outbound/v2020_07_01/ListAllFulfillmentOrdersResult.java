@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** The request for the listAllFulfillmentOrders operation. */
-@Schema(description = "The request for the listAllFulfillmentOrders operation.")
+/** The request for the &#x60;listAllFulfillmentOrders&#x60; operation. */
+@Schema(description = "The request for the `listAllFulfillmentOrders` operation.")
 public class ListAllFulfillmentOrdersResult {
     @SerializedName("nextToken")
     private String nextToken = null;

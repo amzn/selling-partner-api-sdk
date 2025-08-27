@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The request for the listReturnReasonCodes operation. */
-@Schema(description = "The request for the listReturnReasonCodes operation.")
+/** The request for the &#x60;listReturnReasonCodes&#x60; operation. */
+@Schema(description = "The request for the `listReturnReasonCodes` operation.")
 public class ListReturnReasonCodesResult {
     @SerializedName("reasonCodeDetails")
     private ReasonCodeDetailsList reasonCodeDetails = null;

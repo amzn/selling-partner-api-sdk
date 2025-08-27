@@ -17,7 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-/** MoneyType */
+/** An object representing a monetary value with its currency information. */
+@Schema(description = "An object representing a monetary value with its currency information.")
 public class MoneyType {
     @SerializedName("CurrencyCode")
     private String currencyCode = null;

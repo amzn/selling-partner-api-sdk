@@ -84,6 +84,8 @@ import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.SetPackingIn
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsRequest;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.Shipment;
+import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateBoxIdentifiersRequest;
+import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateBoxIdentifiersResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateInboundPlanNameRequest;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateItemComplianceDetailsRequest;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateItemComplianceDetailsResponse;
@@ -262,6 +264,10 @@ public class FbaInboundApi {
 
     public final Bucket setPrepDetailsBucket = Bucket.builder()
             .addLimit(config.getLimit("FbaInboundApi-setPrepDetails"))
+            .build();
+
+    public final Bucket updateBoxIdentifiersBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaInboundApi-updateBoxIdentifiers"))
             .build();
 
     public final Bucket updateInboundPlanNameBucket = Bucket.builder()
@@ -576,7 +582,7 @@ public class FbaInboundApi {
     /**
      * Cancels a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -602,7 +608,7 @@ public class FbaInboundApi {
     /**
      * Cancels a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -627,7 +633,7 @@ public class FbaInboundApi {
     /**
      * Cancels a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -663,7 +669,7 @@ public class FbaInboundApi {
     /**
      * Cancels a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -686,7 +692,7 @@ public class FbaInboundApi {
     /**
      * (asynchronously) Cancels a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -712,7 +718,7 @@ public class FbaInboundApi {
     /**
      * (asynchronously) Cancels a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -3200,7 +3206,7 @@ public class FbaInboundApi {
     /**
      * Initiates the process of generating the appointment slots list. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -3229,7 +3235,7 @@ public class FbaInboundApi {
     /**
      * Initiates the process of generating the appointment slots list. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -3254,7 +3260,7 @@ public class FbaInboundApi {
     /**
      * Initiates the process of generating the appointment slots list. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -3294,7 +3300,7 @@ public class FbaInboundApi {
     /**
      * Initiates the process of generating the appointment slots list. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -3317,7 +3323,7 @@ public class FbaInboundApi {
     /**
      * (asynchronously) Initiates the process of generating the appointment slots list. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -3343,7 +3349,7 @@ public class FbaInboundApi {
     /**
      * (asynchronously) Initiates the process of generating the appointment slots list. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -4629,7 +4635,7 @@ public class FbaInboundApi {
     /**
      * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only
      * available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR,
-     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
@@ -4663,7 +4669,7 @@ public class FbaInboundApi {
     /**
      * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only
      * available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR,
-     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
@@ -4692,7 +4698,7 @@ public class FbaInboundApi {
     /**
      * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only
      * available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR,
-     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
@@ -4737,7 +4743,7 @@ public class FbaInboundApi {
     /**
      * Retrieves a list of available self-ship appointment slots used to drop off a shipment at a warehouse. Only
      * available in the following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR,
-     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The
+     * EG, SA, AE, IN. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
@@ -4765,7 +4771,7 @@ public class FbaInboundApi {
      * (asynchronously) Retrieves a list of available self-ship appointment slots used to drop off a shipment at a
      * warehouse. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -4797,7 +4803,7 @@ public class FbaInboundApi {
      * (asynchronously) Retrieves a list of available self-ship appointment slots used to drop off a shipment at a
      * warehouse. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -6799,13 +6805,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -6823,13 +6833,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -6846,13 +6860,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -6880,13 +6898,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -6901,13 +6923,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate
-     * (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
-     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
-     * table contains the default rate and burst values for this operation. Selling partners whose business demands
-     * require higher throughput may have higher rate and burst values than those shown here. For more information,
-     * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that
+     * contain certain characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -6923,13 +6949,17 @@ public class FbaInboundApi {
         return listItemComplianceDetailsAsync(mskus, marketplaceId, callback, null);
     }
     /**
-     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace. **Usage Plan:** | Rate
-     * (requests per second) | Burst | | ---- | ---- | | 2 | 6 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
-     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
-     * table contains the default rate and burst values for this operation. Selling partners whose business demands
-     * require higher throughput may have higher rate and burst values than those shown here. For more information,
-     * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) List the inbound compliance details for MSKUs in a given marketplace.\\n\\n**Note:** MSKUs that
+     * contain certain characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param mskus A list of merchant SKUs, a merchant-supplied identifier of a specific SKU. (required)
      * @param marketplaceId The Marketplace ID. For a list of possible values, refer to [Marketplace
@@ -8178,13 +8208,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8202,13 +8236,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8224,13 +8262,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8257,13 +8299,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate (requests per
-     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
-     * Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs that contain certain
+     * characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8278,13 +8324,17 @@ public class FbaInboundApi {
     }
 
     /**
-     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate
-     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
-     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
-     * table contains the default rate and burst values for this operation. Selling partners whose business demands
-     * require higher throughput may have higher rate and burst values than those shown here. For more information,
-     * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs
+     * that contain certain characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -8300,13 +8350,17 @@ public class FbaInboundApi {
         return listPrepDetailsAsync(marketplaceId, mskus, callback, null);
     }
     /**
-     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace. **Usage Plan:** | Rate
-     * (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header
-     * returns the usage plan rate limits that were applied to the requested operation, when available. The preceding
-     * table contains the default rate and burst values for this operation. Selling partners whose business demands
-     * require higher throughput may have higher rate and burst values than those shown here. For more information,
-     * refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Get preparation details for a list of MSKUs in a specified marketplace.\\n\\n**Note:** MSKUs
+     * that contain certain characters must be encoded. For more information, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).\\n\\nThe following characters must be
+     * double percent encoded:\\n\\n- &#x60;%&#x60;\\n- &#x60;+&#x60;\\n- &#x60;,&#x60;\\n\\n**Examples:** An MSKU value
+     * of &#x60;test%msku&#x60; is encoded as &#x60;test%2525msku&#x60;. An MSKU value of &#x60;test,msku&#x60; is
+     * encoded as &#x60;test%252Cmsku&#x60;.\\n\\n**Usage Plan:**\\n\\n| Rate (requests per second) | Burst |\\n| ---- |
+     * ---- |\\n| n | n |\\n\\nThe &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits
+     * that were applied to the requested operation, when available. The table above indicates the default rate and
+     * burst values for this operation. Selling partners whose business demands require higher throughput may see higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
+     * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace ID. For a list of possible values, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -9930,7 +9984,7 @@ public class FbaInboundApi {
     /**
      * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -9961,7 +10015,7 @@ public class FbaInboundApi {
     /**
      * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -9987,7 +10041,7 @@ public class FbaInboundApi {
     /**
      * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -10029,7 +10083,7 @@ public class FbaInboundApi {
     /**
      * Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the following
      * [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The &#x60;x-amzn-RateLimit-Limit&#x60;
+     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The &#x60;x-amzn-RateLimit-Limit&#x60;
      * response header returns the usage plan rate limits that were applied to the requested operation, when available.
      * The table above indicates the default rate and burst values for this operation. Selling partners whose business
      * demands require higher throughput may see higher rate and burst values than those shown here. For more
@@ -10053,7 +10107,7 @@ public class FbaInboundApi {
     /**
      * (asynchronously) Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the
      * following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
@@ -10081,7 +10135,7 @@ public class FbaInboundApi {
     /**
      * (asynchronously) Confirms or reschedules a self-ship appointment slot against a shipment. Only available in the
      * following [marketplaces](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids): MX, BR, EG, SA, AE, IN.
-     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 | The
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
      * requested operation, when available. The table above indicates the default rate and burst values for this
      * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
@@ -10570,6 +10624,272 @@ public class FbaInboundApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("setPrepDetails operation exceeds rate limit");
+    }
+    /**
+     * Build call for updateBoxIdentifiers
+     *
+     * @param body The body of the request to &#x60;updateBoxIdentifiers&#x60;. (required)
+     * @param inboundPlanId Identifier to an inbound plan. (required)
+     * @param shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call updateBoxIdentifiersCall(
+            UpdateBoxIdentifiersRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath =
+                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxIdentifiers"
+                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "PUT",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call updateBoxIdentifiersValidateBeforeCall(
+            UpdateBoxIdentifiersRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling updateBoxIdentifiers(Async)");
+        }
+        // verify the required parameter 'inboundPlanId' is set
+        if (inboundPlanId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'inboundPlanId' when calling updateBoxIdentifiers(Async)");
+        }
+        // verify the required parameter 'shipmentId' is set
+        if (shipmentId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'shipmentId' when calling updateBoxIdentifiers(Async)");
+        }
+
+        return updateBoxIdentifiersCall(body, inboundPlanId, shipmentId, progressRequestListener);
+    }
+
+    /**
+     * Update/Add custom identifier to the boxes within a shipment. These custom identifiers are provided by the clients
+     * and reflected on the box labels to identify boxes. One example of this custom identifier is the SSCC (Serial
+     * Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry standard to uniquely
+     * identify boxes. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateBoxIdentifiers&#x60;. (required)
+     * @param inboundPlanId Identifier to an inbound plan. (required)
+     * @param shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return UpdateBoxIdentifiersResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UpdateBoxIdentifiersResponse updateBoxIdentifiers(
+            UpdateBoxIdentifiersRequest body, String inboundPlanId, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<UpdateBoxIdentifiersResponse> resp =
+                updateBoxIdentifiersWithHttpInfo(body, inboundPlanId, shipmentId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Update/Add custom identifier to the boxes within a shipment. These custom identifiers are provided by the clients
+     * and reflected on the box labels to identify boxes. One example of this custom identifier is the SSCC (Serial
+     * Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry standard to uniquely
+     * identify boxes. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateBoxIdentifiers&#x60;. (required)
+     * @param inboundPlanId Identifier to an inbound plan. (required)
+     * @param shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @return UpdateBoxIdentifiersResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public UpdateBoxIdentifiersResponse updateBoxIdentifiers(
+            UpdateBoxIdentifiersRequest body, String inboundPlanId, String shipmentId)
+            throws ApiException, LWAException {
+        ApiResponse<UpdateBoxIdentifiersResponse> resp =
+                updateBoxIdentifiersWithHttpInfo(body, inboundPlanId, shipmentId, null);
+        return resp.getData();
+    }
+
+    /**
+     * Update/Add custom identifier to the boxes within a shipment. These custom identifiers are provided by the clients
+     * and reflected on the box labels to identify boxes. One example of this custom identifier is the SSCC (Serial
+     * Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry standard to uniquely
+     * identify boxes. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateBoxIdentifiers&#x60;. (required)
+     * @param inboundPlanId Identifier to an inbound plan. (required)
+     * @param shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;UpdateBoxIdentifiersResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UpdateBoxIdentifiersResponse> updateBoxIdentifiersWithHttpInfo(
+            UpdateBoxIdentifiersRequest body, String inboundPlanId, String shipmentId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = updateBoxIdentifiersValidateBeforeCall(body, inboundPlanId, shipmentId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-updateBoxIdentifiers");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateBoxIdentifiersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateBoxIdentifiersResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("updateBoxIdentifiers operation exceeds rate limit");
+    }
+
+    /**
+     * Update/Add custom identifier to the boxes within a shipment. These custom identifiers are provided by the clients
+     * and reflected on the box labels to identify boxes. One example of this custom identifier is the SSCC (Serial
+     * Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry standard to uniquely
+     * identify boxes. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n | n | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateBoxIdentifiers&#x60;. (required)
+     * @param inboundPlanId Identifier to an inbound plan. (required)
+     * @param shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @return ApiResponse&lt;UpdateBoxIdentifiersResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<UpdateBoxIdentifiersResponse> updateBoxIdentifiersWithHttpInfo(
+            UpdateBoxIdentifiersRequest body, String inboundPlanId, String shipmentId)
+            throws ApiException, LWAException {
+        return updateBoxIdentifiersWithHttpInfo(body, inboundPlanId, shipmentId, null);
+    }
+
+    /**
+     * (asynchronously) Update/Add custom identifier to the boxes within a shipment. These custom identifiers are
+     * provided by the clients and reflected on the box labels to identify boxes. One example of this custom identifier
+     * is the SSCC (Serial Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry
+     * standard to uniquely identify boxes. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n |
+     * n | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateBoxIdentifiers&#x60;. (required)
+     * @param inboundPlanId Identifier to an inbound plan. (required)
+     * @param shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateBoxIdentifiersAsync(
+            UpdateBoxIdentifiersRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<UpdateBoxIdentifiersResponse> callback)
+            throws ApiException, LWAException {
+        return updateBoxIdentifiersAsync(body, inboundPlanId, shipmentId, callback, null);
+    }
+    /**
+     * (asynchronously) Update/Add custom identifier to the boxes within a shipment. These custom identifiers are
+     * provided by the clients and reflected on the box labels to identify boxes. One example of this custom identifier
+     * is the SSCC (Serial Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry
+     * standard to uniquely identify boxes. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | n |
+     * n | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
+     * to the requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body The body of the request to &#x60;updateBoxIdentifiers&#x60;. (required)
+     * @param inboundPlanId Identifier to an inbound plan. (required)
+     * @param shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call updateBoxIdentifiersAsync(
+            UpdateBoxIdentifiersRequest body,
+            String inboundPlanId,
+            String shipmentId,
+            final ApiCallback<UpdateBoxIdentifiersResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call =
+                updateBoxIdentifiersValidateBeforeCall(body, inboundPlanId, shipmentId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaInboundApi-updateBoxIdentifiers");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || updateBoxIdentifiersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<UpdateBoxIdentifiersResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("updateBoxIdentifiers operation exceeds rate limit");
     }
     /**
      * Build call for updateInboundPlanName

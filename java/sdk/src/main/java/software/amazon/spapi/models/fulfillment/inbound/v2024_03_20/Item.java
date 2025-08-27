@@ -155,11 +155,11 @@ public class Item {
     }
 
     /**
-     * The merchant SKU, a merchant-supplied identifier of a specific SKU.
+     * The merchant-defined SKU ID.
      *
      * @return msku
      */
-    @Schema(required = true, description = "The merchant SKU, a merchant-supplied identifier of a specific SKU.")
+    @Schema(required = true, description = "The merchant-defined SKU ID.")
     public String getMsku() {
         return msku;
     }
@@ -198,7 +198,7 @@ public class Item {
     }
 
     /**
-     * The number of the specified MSKU. minimum: 1 maximum: 10000
+     * The number of the specified MSKU. minimum: 1 maximum: 500000
      *
      * @return quantity
      */

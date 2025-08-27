@@ -34,6 +34,9 @@ public class Address {
     @SerializedName("countryCode")
     private String countryCode = null;
 
+    @SerializedName("districtOrCounty")
+    private String districtOrCounty = null;
+
     @SerializedName("email")
     private String email = null;
 
@@ -142,6 +145,25 @@ public class Address {
 
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
+    }
+
+    public Address districtOrCounty(String districtOrCounty) {
+        this.districtOrCounty = districtOrCounty;
+        return this;
+    }
+
+    /**
+     * The district or county.
+     *
+     * @return districtOrCounty
+     */
+    @Schema(description = "The district or county.")
+    public String getDistrictOrCounty() {
+        return districtOrCounty;
+    }
+
+    public void setDistrictOrCounty(String districtOrCounty) {
+        this.districtOrCounty = districtOrCounty;
     }
 
     public Address email(String email) {
@@ -253,6 +275,7 @@ public class Address {
                 && Objects.equals(this.city, address.city)
                 && Objects.equals(this.companyName, address.companyName)
                 && Objects.equals(this.countryCode, address.countryCode)
+                && Objects.equals(this.districtOrCounty, address.districtOrCounty)
                 && Objects.equals(this.email, address.email)
                 && Objects.equals(this.name, address.name)
                 && Objects.equals(this.phoneNumber, address.phoneNumber)
@@ -268,6 +291,7 @@ public class Address {
                 city,
                 companyName,
                 countryCode,
+                districtOrCounty,
                 email,
                 name,
                 phoneNumber,
@@ -285,6 +309,9 @@ public class Address {
         sb.append("    city: ").append(toIndentedString(city)).append("\n");
         sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
         sb.append("    countryCode: ").append(toIndentedString(countryCode)).append("\n");
+        sb.append("    districtOrCounty: ")
+                .append(toIndentedString(districtOrCounty))
+                .append("\n");
         sb.append("    email: ").append(toIndentedString(email)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");

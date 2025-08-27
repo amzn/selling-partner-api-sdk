@@ -16,51 +16,34 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Localized messaging for a delivery offering. */
-@Schema(description = "Localized messaging for a delivery offering.")
-public class DeliveryMessage {
-    @SerializedName("text")
-    private String text = null;
+/**
+ * A list of delivery offerings, including offering expiration, earliest and latest date and time range, and the
+ * delivery offering policy.
+ */
+@Schema(
+        description =
+                "A list of delivery offerings, including offering expiration, earliest and latest date and time range, and the delivery offering policy.")
+public class GetDeliveryOfferingsResult {
+    @SerializedName("deliveryOfferings")
+    private DeliveryOfferingsList deliveryOfferings = null;
 
-    @SerializedName("locale")
-    private String locale = null;
-
-    public DeliveryMessage text(String text) {
-        this.text = text;
+    public GetDeliveryOfferingsResult deliveryOfferings(DeliveryOfferingsList deliveryOfferings) {
+        this.deliveryOfferings = deliveryOfferings;
         return this;
     }
 
     /**
-     * The message content for a delivery offering.
+     * Get deliveryOfferings
      *
-     * @return text
+     * @return deliveryOfferings
      */
-    @Schema(description = "The message content for a delivery offering.")
-    public String getText() {
-        return text;
+    @Schema(description = "")
+    public DeliveryOfferingsList getDeliveryOfferings() {
+        return deliveryOfferings;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public DeliveryMessage locale(String locale) {
-        this.locale = locale;
-        return this;
-    }
-
-    /**
-     * The locale for the message (e.g., &#x60;en_US&#x60;).
-     *
-     * @return locale
-     */
-    @Schema(description = "The locale for the message (e.g., `en_US`).")
-    public String getLocale() {
-        return locale;
-    }
-
-    public void setLocale(String locale) {
-        this.locale = locale;
+    public void setDeliveryOfferings(DeliveryOfferingsList deliveryOfferings) {
+        this.deliveryOfferings = deliveryOfferings;
     }
 
     @Override
@@ -71,22 +54,23 @@ public class DeliveryMessage {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        DeliveryMessage deliveryMessage = (DeliveryMessage) o;
-        return Objects.equals(this.text, deliveryMessage.text) && Objects.equals(this.locale, deliveryMessage.locale);
+        GetDeliveryOfferingsResult getDeliveryOfferingsResult = (GetDeliveryOfferingsResult) o;
+        return Objects.equals(this.deliveryOfferings, getDeliveryOfferingsResult.deliveryOfferings);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, locale);
+        return Objects.hash(deliveryOfferings);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class DeliveryMessage {\n");
+        sb.append("class GetDeliveryOfferingsResult {\n");
 
-        sb.append("    text: ").append(toIndentedString(text)).append("\n");
-        sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+        sb.append("    deliveryOfferings: ")
+                .append(toIndentedString(deliveryOfferings))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }

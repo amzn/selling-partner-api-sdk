@@ -29,6 +29,9 @@ public class FulfillmentShipmentPackage {
     @SerializedName("trackingNumber")
     private String trackingNumber = null;
 
+    @SerializedName("amazonFulfillmentTrackingNumber")
+    private String amazonFulfillmentTrackingNumber = null;
+
     @SerializedName("estimatedArrivalDate")
     private OffsetDateTime estimatedArrivalDate = null;
 
@@ -93,6 +96,27 @@ public class FulfillmentShipmentPackage {
 
     public void setTrackingNumber(String trackingNumber) {
         this.trackingNumber = trackingNumber;
+    }
+
+    public FulfillmentShipmentPackage amazonFulfillmentTrackingNumber(String amazonFulfillmentTrackingNumber) {
+        this.amazonFulfillmentTrackingNumber = amazonFulfillmentTrackingNumber;
+        return this;
+    }
+
+    /**
+     * The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.
+     *
+     * @return amazonFulfillmentTrackingNumber
+     */
+    @Schema(
+            description =
+                    "The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.")
+    public String getAmazonFulfillmentTrackingNumber() {
+        return amazonFulfillmentTrackingNumber;
+    }
+
+    public void setAmazonFulfillmentTrackingNumber(String amazonFulfillmentTrackingNumber) {
+        this.amazonFulfillmentTrackingNumber = amazonFulfillmentTrackingNumber;
     }
 
     public FulfillmentShipmentPackage estimatedArrivalDate(OffsetDateTime estimatedArrivalDate) {
@@ -164,6 +188,9 @@ public class FulfillmentShipmentPackage {
         return Objects.equals(this.packageNumber, fulfillmentShipmentPackage.packageNumber)
                 && Objects.equals(this.carrierCode, fulfillmentShipmentPackage.carrierCode)
                 && Objects.equals(this.trackingNumber, fulfillmentShipmentPackage.trackingNumber)
+                && Objects.equals(
+                        this.amazonFulfillmentTrackingNumber,
+                        fulfillmentShipmentPackage.amazonFulfillmentTrackingNumber)
                 && Objects.equals(this.estimatedArrivalDate, fulfillmentShipmentPackage.estimatedArrivalDate)
                 && Objects.equals(this.lockerDetails, fulfillmentShipmentPackage.lockerDetails)
                 && Objects.equals(this.deliveryInformation, fulfillmentShipmentPackage.deliveryInformation);
@@ -172,7 +199,13 @@ public class FulfillmentShipmentPackage {
     @Override
     public int hashCode() {
         return Objects.hash(
-                packageNumber, carrierCode, trackingNumber, estimatedArrivalDate, lockerDetails, deliveryInformation);
+                packageNumber,
+                carrierCode,
+                trackingNumber,
+                amazonFulfillmentTrackingNumber,
+                estimatedArrivalDate,
+                lockerDetails,
+                deliveryInformation);
     }
 
     @Override
@@ -184,6 +217,9 @@ public class FulfillmentShipmentPackage {
         sb.append("    carrierCode: ").append(toIndentedString(carrierCode)).append("\n");
         sb.append("    trackingNumber: ")
                 .append(toIndentedString(trackingNumber))
+                .append("\n");
+        sb.append("    amazonFulfillmentTrackingNumber: ")
+                .append(toIndentedString(amazonFulfillmentTrackingNumber))
                 .append("\n");
         sb.append("    estimatedArrivalDate: ")
                 .append(toIndentedString(estimatedArrivalDate))

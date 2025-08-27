@@ -20,8 +20,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
 /**
- * The &#x60;FulfillmentPolicy&#x60; value specified when you submitted the &#x60;createFulfillmentOrder&#x60;
- * operation.
+ * The &#x60;FulfillmentPolicy&#x60; value specified when you called the &#x60;createFulfillmentOrder&#x60; operation.
  */
 @JsonAdapter(FulfillmentPolicy.Adapter.class)
 public enum FulfillmentPolicy {

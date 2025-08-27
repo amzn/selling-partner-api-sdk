@@ -16,7 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Error */
+/** An object representing an error that occurred during the API operation. */
+@Schema(description = "An object representing an error that occurred during the API operation.")
 public class Error {
     @SerializedName("code")
     private String code = null;

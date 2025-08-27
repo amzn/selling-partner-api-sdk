@@ -148,13 +148,13 @@ public class GetFulfillmentPreviewRequest {
     /**
      * When true, returns the &#x60;ScheduledDeliveryInfo&#x60; response object, which contains the available delivery
      * windows for a Scheduled Delivery. The &#x60;ScheduledDeliveryInfo&#x60; response object can only be returned for
-     * fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; &#x3D; &#x60;ScheduledDelivery&#x60;.
+     * fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; equal to &#x60;ScheduledDelivery&#x60;.
      *
      * @return includeDeliveryWindows
      */
     @Schema(
             description =
-                    "When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` = `ScheduledDelivery`.")
+                    "When true, returns the `ScheduledDeliveryInfo` response object, which contains the available delivery windows for a Scheduled Delivery. The `ScheduledDeliveryInfo` response object can only be returned for fulfillment order previews with `ShippingSpeedCategories` equal to `ScheduledDelivery`.")
     public Boolean isIncludeDeliveryWindows() {
         return includeDeliveryWindows;
     }
