@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GetDeliveryOffersResponse.
+ * DeliveryQuantity.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * GetDeliveryOffersResponse Class Doc Comment.
+ * DeliveryQuantity Class Doc Comment.
  *
  * @category Class
  *
- * @description The response schema for the &#x60;getDeliveryOffers&#x60; operation.
+ * @description A quantity based on unit of measure.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,16 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class DeliveryQuantity implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
+
+    public const UNIT_OF_MEASURE_EACH = 'Each';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'GetDeliveryOffersResponse';
+    protected static string $openAPIModelName = 'DeliveryQuantity';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +63,8 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResult',
-        'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'];
+        'unit_of_measure' => 'string',
+        'amount' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +76,8 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'payload' => null,
-        'errors' => null];
+        'unit_of_measure' => null,
+        'amount' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +85,8 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'payload' => true,
-        'errors' => true,
+        'unit_of_measure' => false,
+        'amount' => false,
     ];
 
     /**
@@ -101,8 +103,8 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $attributeMap = [
-        'payload' => 'payload',
-        'errors' => 'errors',
+        'unit_of_measure' => 'unitOfMeasure',
+        'amount' => 'amount',
     ];
 
     /**
@@ -111,8 +113,8 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $setters = [
-        'payload' => 'setPayload',
-        'errors' => 'setErrors',
+        'unit_of_measure' => 'setUnitOfMeasure',
+        'amount' => 'setAmount',
     ];
 
     /**
@@ -121,8 +123,8 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $getters = [
-        'payload' => 'getPayload',
-        'errors' => 'getErrors',
+        'unit_of_measure' => 'getUnitOfMeasure',
+        'amount' => 'getAmount',
     ];
 
     /**
@@ -138,8 +140,8 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('payload', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('unit_of_measure', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
     }
 
     /**
@@ -221,13 +223,43 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getUnitOfMeasureAllowableValues(): array
+    {
+        return [
+            self::UNIT_OF_MEASURE_EACH,
+        ];
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties(): array
     {
-        return [];
+        $invalidProperties = [];
+
+        if (null === $this->container['unit_of_measure']) {
+            $invalidProperties[] = "'unit_of_measure' can't be null";
+        }
+        $allowedValues = $this->getUnitOfMeasureAllowableValues();
+        if (!is_null($this->container['unit_of_measure']) && !in_array($this->container['unit_of_measure'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'unit_of_measure', must be one of '%s'",
+                $this->container['unit_of_measure'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (null === $this->container['amount']) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -242,61 +274,57 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets payload.
+     * Gets unit_of_measure.
      */
-    public function getPayload(): ?GetDeliveryOffersResult
+    public function getUnitOfMeasure(): string
     {
-        return $this->container['payload'];
+        return $this->container['unit_of_measure'];
     }
 
     /**
-     * Sets payload.
+     * Sets unit_of_measure.
      *
-     * @param null|GetDeliveryOffersResult $payload payload
+     * @param string $unit_of_measure the unit of measure for the amount
      */
-    public function setPayload(?GetDeliveryOffersResult $payload): self
+    public function setUnitOfMeasure(string $unit_of_measure): self
     {
-        if (is_null($payload)) {
-            array_push($this->openAPINullablesSetToNull, 'payload');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('payload', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($unit_of_measure)) {
+            throw new \InvalidArgumentException('non-nullable unit_of_measure cannot be null');
         }
-        $this->container['payload'] = $payload;
+        $allowedValues = $this->getUnitOfMeasureAllowableValues();
+        if (!in_array($unit_of_measure, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'unit_of_measure', must be one of '%s'",
+                    $unit_of_measure,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['unit_of_measure'] = $unit_of_measure;
 
         return $this;
     }
 
     /**
-     * Gets errors.
+     * Gets amount.
      */
-    public function getErrors(): ?array
+    public function getAmount(): string
     {
-        return $this->container['errors'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets errors.
+     * Sets amount.
      *
-     * @param null|array $errors a list of error responses returned when a request is unsuccessful
+     * @param string $amount A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.
      */
-    public function setErrors(?array $errors): self
+    public function setAmount(string $amount): self
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
-        $this->container['errors'] = $errors;
+        $this->container['amount'] = $amount;
 
         return $this;
     }

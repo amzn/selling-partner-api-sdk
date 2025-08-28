@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -94,7 +94,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
      */
     protected static array $openAPINullables = [
         'account_id' => true,
-        'bank_account_holder_name' => false,
+        'bank_account_holder_name' => true,
         'bank_name' => false,
         'bank_account_number_format' => false,
         'bank_account_number_tail' => true,
@@ -264,9 +264,6 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if (null === $this->container['bank_account_holder_name']) {
-            $invalidProperties[] = "'bank_account_holder_name' can't be null";
-        }
         if (null === $this->container['bank_name']) {
             $invalidProperties[] = "'bank_name' can't be null";
         }
@@ -324,7 +321,7 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Gets bank_account_holder_name.
      */
-    public function getBankAccountHolderName(): string
+    public function getBankAccountHolderName(): ?string
     {
         return $this->container['bank_account_holder_name'];
     }
@@ -332,12 +329,19 @@ class TransactionAccount implements ModelInterface, \ArrayAccess, \JsonSerializa
     /**
      * Sets bank_account_holder_name.
      *
-     * @param string $bank_account_holder_name BankAccount holder's name
+     * @param null|string $bank_account_holder_name BankAccount holder's name
      */
-    public function setBankAccountHolderName(string $bank_account_holder_name): self
+    public function setBankAccountHolderName(?string $bank_account_holder_name): self
     {
         if (is_null($bank_account_holder_name)) {
-            throw new \InvalidArgumentException('non-nullable bank_account_holder_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bank_account_holder_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bank_account_holder_name', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bank_account_holder_name'] = $bank_account_holder_name;
 

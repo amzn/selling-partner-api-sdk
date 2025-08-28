@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -63,8 +63,9 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     protected static array $openAPITypes = [
         'source_account_id' => 'string',
         'destination_account_id' => 'string',
-        'description' => 'string',
         'destination_transaction_instrument' => '\SpApi\Model\sellerWallet\v2024_03_01\TransactionInstrumentDetails',
+        'transaction_description' => 'string',
+        'customer_payment_reference' => 'string',
         'destination_account_holder_address' => '\SpApi\Model\sellerWallet\v2024_03_01\AccountHolderAddress',
         'source_amount' => '\SpApi\Model\sellerWallet\v2024_03_01\Currency',
         'transfer_rate_details' => '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview',
@@ -82,8 +83,9 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     protected static array $openAPIFormats = [
         'source_account_id' => null,
         'destination_account_id' => null,
-        'description' => null,
         'destination_transaction_instrument' => null,
+        'transaction_description' => null,
+        'customer_payment_reference' => null,
         'destination_account_holder_address' => null,
         'source_amount' => null,
         'transfer_rate_details' => null,
@@ -97,8 +99,9 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     protected static array $openAPINullables = [
         'source_account_id' => false,
         'destination_account_id' => true,
-        'description' => false,
         'destination_transaction_instrument' => false,
+        'transaction_description' => true,
+        'customer_payment_reference' => true,
         'destination_account_holder_address' => true,
         'source_amount' => false,
         'transfer_rate_details' => true,
@@ -121,8 +124,9 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     protected static array $attributeMap = [
         'source_account_id' => 'sourceAccountId',
         'destination_account_id' => 'destinationAccountId',
-        'description' => 'description',
         'destination_transaction_instrument' => 'destinationTransactionInstrument',
+        'transaction_description' => 'transactionDescription',
+        'customer_payment_reference' => 'customerPaymentReference',
         'destination_account_holder_address' => 'destinationAccountHolderAddress',
         'source_amount' => 'sourceAmount',
         'transfer_rate_details' => 'transferRateDetails',
@@ -137,8 +141,9 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     protected static array $setters = [
         'source_account_id' => 'setSourceAccountId',
         'destination_account_id' => 'setDestinationAccountId',
-        'description' => 'setDescription',
         'destination_transaction_instrument' => 'setDestinationTransactionInstrument',
+        'transaction_description' => 'setTransactionDescription',
+        'customer_payment_reference' => 'setCustomerPaymentReference',
         'destination_account_holder_address' => 'setDestinationAccountHolderAddress',
         'source_amount' => 'setSourceAmount',
         'transfer_rate_details' => 'setTransferRateDetails',
@@ -153,8 +158,9 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     protected static array $getters = [
         'source_account_id' => 'getSourceAccountId',
         'destination_account_id' => 'getDestinationAccountId',
-        'description' => 'getDescription',
         'destination_transaction_instrument' => 'getDestinationTransactionInstrument',
+        'transaction_description' => 'getTransactionDescription',
+        'customer_payment_reference' => 'getCustomerPaymentReference',
         'destination_account_holder_address' => 'getDestinationAccountHolderAddress',
         'source_amount' => 'getSourceAmount',
         'transfer_rate_details' => 'getTransferRateDetails',
@@ -176,8 +182,9 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     {
         $this->setIfExists('source_account_id', $data ?? [], null);
         $this->setIfExists('destination_account_id', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('destination_transaction_instrument', $data ?? [], null);
+        $this->setIfExists('transaction_description', $data ?? [], null);
+        $this->setIfExists('customer_payment_reference', $data ?? [], null);
         $this->setIfExists('destination_account_holder_address', $data ?? [], null);
         $this->setIfExists('source_amount', $data ?? [], null);
         $this->setIfExists('transfer_rate_details', $data ?? [], null);
@@ -274,9 +281,6 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         if (null === $this->container['source_account_id']) {
             $invalidProperties[] = "'source_account_id' can't be null";
         }
-        if (null === $this->container['description']) {
-            $invalidProperties[] = "'description' can't be null";
-        }
         if (null === $this->container['destination_transaction_instrument']) {
             $invalidProperties[] = "'destination_transaction_instrument' can't be null";
         }
@@ -355,29 +359,6 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     }
 
     /**
-     * Gets description.
-     */
-    public function getDescription(): string
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description.
-     *
-     * @param string $description Optional field to specify description for the transaction
-     */
-    public function setDescription(string $description): self
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
      * Gets destination_transaction_instrument.
      */
     public function getDestinationTransactionInstrument(): TransactionInstrumentDetails
@@ -396,6 +377,66 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable destination_transaction_instrument cannot be null');
         }
         $this->container['destination_transaction_instrument'] = $destination_transaction_instrument;
+
+        return $this;
+    }
+
+    /**
+     * Gets transaction_description.
+     */
+    public function getTransactionDescription(): ?string
+    {
+        return $this->container['transaction_description'];
+    }
+
+    /**
+     * Sets transaction_description.
+     *
+     * @param null|string $transaction_description a description of the transaction
+     */
+    public function setTransactionDescription(?string $transaction_description): self
+    {
+        if (is_null($transaction_description)) {
+            array_push($this->openAPINullablesSetToNull, 'transaction_description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_description', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['transaction_description'] = $transaction_description;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_payment_reference.
+     */
+    public function getCustomerPaymentReference(): ?string
+    {
+        return $this->container['customer_payment_reference'];
+    }
+
+    /**
+     * Sets customer_payment_reference.
+     *
+     * @param null|string $customer_payment_reference If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.
+     */
+    public function setCustomerPaymentReference(?string $customer_payment_reference): self
+    {
+        if (is_null($customer_payment_reference)) {
+            array_push($this->openAPINullablesSetToNull, 'customer_payment_reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_payment_reference', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['customer_payment_reference'] = $customer_payment_reference;
 
         return $this;
     }

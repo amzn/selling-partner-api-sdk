@@ -642,7 +642,7 @@ class PackageTrackingDetails implements ModelInterface, \ArrayAccess, \JsonSeria
     /**
      * Sets current_status_description.
      *
-     * @param null|string $current_status_description description corresponding to the CurrentStatus value
+     * @param null|string $current_status_description description corresponding to the `CurrentStatus` value
      */
     public function setCurrentStatusDescription(?string $current_status_description): self
     {

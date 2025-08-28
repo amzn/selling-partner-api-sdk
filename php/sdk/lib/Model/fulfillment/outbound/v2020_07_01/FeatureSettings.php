@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description &#x60;FeatureSettings&#x60; allows users to apply fulfillment features to an order. To block an order from being shipped using Amazon Logistics (AMZL) and an AMZL tracking number, use &#x60;featureName&#x60; as &#x60;BLOCK_AMZL&#x60; and &#x60;featureFulfillmentPolicy&#x60; as &#x60;Required&#x60;. Blocking AMZL will incur an additional fee surcharge on your MCF orders and increase the risk of some of your orders being unfulfilled or delivered late if there are no alternative carriers available. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. To ship in non-Amazon branded packaging (blank boxes), use featureName &#x60;BLANK_BOX&#x60;.
+ * @description Feature settings allows you to apply fulfillment features to an order. To block an order from being shipped using Amazon Logistics (AMZL) and an AMZL tracking number, set &#x60;featureName&#x60; to &#x60;BLOCK_AMZL&#x60; and &#x60;featureFulfillmentPolicy&#x60; to &#x60;Required&#x60;. Blocking AMZL will incur an additional fee surcharge on your MCF orders and increase the risk of some of your orders being unfulfilled or delivered late if there are no alternative carriers available. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. To ship in non-Amazon branded packaging (blank boxes), set &#x60;featureName&#x60; to &#x60;BLANK_BOX&#x60;.
  *
  * @author   OpenAPI Generator team
  *

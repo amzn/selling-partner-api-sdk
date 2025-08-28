@@ -138,7 +138,7 @@ class FeesApi
      * @param string                   $asin
      *                                                      The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                                      body (required)
+     *                                                      The request body schema for the getMyFeesEstimates operation (required)
      * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -160,7 +160,7 @@ class FeesApi
      * @param string                   $asin
      *                                                      The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                                      (required)
+     *                                                      The request body schema for the getMyFeesEstimates operation (required)
      * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
@@ -250,7 +250,7 @@ class FeesApi
      * @param string                   $asin
      *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                       (required)
+     *                                       The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -273,7 +273,7 @@ class FeesApi
      * @param string                   $asin
      *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                       (required)
+     *                                       The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -337,7 +337,7 @@ class FeesApi
      * @param string                   $asin
      *                                       The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                       (required)
+     *                                       The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -436,7 +436,7 @@ class FeesApi
      * @param string                   $seller_sku
      *                                                      Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                                      body (required)
+     *                                                      The request body schema for the getMyFeesEstimates operation (required)
      * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -458,7 +458,7 @@ class FeesApi
      * @param string                   $seller_sku
      *                                                      Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                                      (required)
+     *                                                      The request body schema for the getMyFeesEstimates operation (required)
      * @param null|string              $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productFees\v0\GetMyFeesEstimateResponse, HTTP status code, HTTP response headers (array of strings)
@@ -548,7 +548,7 @@ class FeesApi
      * @param string                   $seller_sku
      *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                             (required)
+     *                                             The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -571,7 +571,7 @@ class FeesApi
      * @param string                   $seller_sku
      *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                             (required)
+     *                                             The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -635,7 +635,7 @@ class FeesApi
      * @param string                   $seller_sku
      *                                             Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#39;s SellerId, which is included with every operation that you submit. (required)
      * @param GetMyFeesEstimateRequest $body
-     *                                             (required)
+     *                                             The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -732,7 +732,7 @@ class FeesApi
      * Operation getMyFeesEstimates.
      *
      * @param FeesEstimateByIdRequest[] $body
-     *                                                       body (required)
+     *                                                       The request body schema for the getMyFeesEstimates operation (required)
      * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return FeesEstimateResult[]
@@ -753,7 +753,7 @@ class FeesApi
      * Operation getMyFeesEstimatesWithHttpInfo.
      *
      * @param FeesEstimateByIdRequest[] $body
-     *                                                       (required)
+     *                                                       The request body schema for the getMyFeesEstimates operation (required)
      * @param null|string               $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\productFees\v0\FeesEstimateResult[], HTTP status code, HTTP response headers (array of strings)
@@ -840,7 +840,7 @@ class FeesApi
      * Operation getMyFeesEstimatesAsync.
      *
      * @param FeesEstimateByIdRequest[] $body
-     *                                        (required)
+     *                                        The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -860,7 +860,7 @@ class FeesApi
      * Operation getMyFeesEstimatesAsyncWithHttpInfo.
      *
      * @param FeesEstimateByIdRequest[] $body
-     *                                        (required)
+     *                                        The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -921,7 +921,7 @@ class FeesApi
      * Create request for operation 'getMyFeesEstimates'.
      *
      * @param FeesEstimateByIdRequest[] $body
-     *                                        (required)
+     *                                        The request body schema for the getMyFeesEstimates operation (required)
      *
      * @throws \InvalidArgumentException
      */

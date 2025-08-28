@@ -243,8 +243,8 @@ class SpdTrackingItemInput implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (null === $this->container['tracking_id']) {
             $invalidProperties[] = "'tracking_id' can't be null";
         }
-        if (mb_strlen($this->container['tracking_id']) > 1024) {
-            $invalidProperties[] = "invalid value for 'tracking_id', the character length must be smaller than or equal to 1024.";
+        if (mb_strlen($this->container['tracking_id']) > 64) {
+            $invalidProperties[] = "invalid value for 'tracking_id', the character length must be smaller than or equal to 64.";
         }
 
         if (mb_strlen($this->container['tracking_id']) < 1) {
@@ -313,8 +313,8 @@ class SpdTrackingItemInput implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (is_null($tracking_id)) {
             throw new \InvalidArgumentException('non-nullable tracking_id cannot be null');
         }
-        if (mb_strlen($tracking_id) > 1024) {
-            throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItemInput., must be smaller than or equal to 1024.');
+        if (mb_strlen($tracking_id) > 64) {
+            throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItemInput., must be smaller than or equal to 64.');
         }
         if (mb_strlen($tracking_id) < 1) {
             throw new \InvalidArgumentException('invalid length for $tracking_id when calling SpdTrackingItemInput., must be bigger than or equal to 1.');

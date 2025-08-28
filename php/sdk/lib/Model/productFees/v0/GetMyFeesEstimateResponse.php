@@ -38,6 +38,8 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
+ * @description The response object for the GetMyFeesEstimate operation.
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

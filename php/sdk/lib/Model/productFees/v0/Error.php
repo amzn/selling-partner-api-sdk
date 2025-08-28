@@ -38,6 +38,8 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
+ * @description An object representing an error that occurred during the API operation.
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

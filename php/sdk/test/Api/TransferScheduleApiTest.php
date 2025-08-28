@@ -10,7 +10,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -93,6 +93,9 @@ class TransferScheduleApiTest extends BaseTestCase
     &quot;static&quot; : [ {
       &quot;request&quot; : {
         &quot;parameters&quot; : {
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
+          },
           &quot;body&quot; : {
             &quot;value&quot; : {
               &quot;sourceAccountId&quot; : &quot;amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI&quot;,
@@ -100,7 +103,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -108,7 +110,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -244,7 +247,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -252,7 +254,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -351,7 +354,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -359,7 +361,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -464,7 +467,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -472,7 +474,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -571,7 +574,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -579,7 +581,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -678,7 +681,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -686,7 +688,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;919&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926919&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926919&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -801,7 +804,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -809,7 +811,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -1003,7 +1006,6 @@ class TransferScheduleApiTest extends BaseTestCase
               &quot;sourceCurrencyCode&quot; : &quot;USD&quot;,
               &quot;destinationTransactionInstrument&quot; : {
                 &quot;bankAccount&quot; : {
-                  &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                   &quot;bankNumberFormat&quot; : &quot;IBAN&quot;,
                   &quot;bankAccountOwnershipType&quot; : &quot;SELF_ACCOUNT&quot;,
                   &quot;routingNumber&quot; : &quot;HBUKGB4B&quot;,
@@ -1011,7 +1013,8 @@ class TransferScheduleApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;EUR&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
+                &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
               &quot;transactionType&quot; : &quot;DEBIT&quot;,
               &quot;transferScheduleInformation&quot; : {
@@ -1111,6 +1114,9 @@ class TransferScheduleApiTest extends BaseTestCase
         &quot;parameters&quot; : {
           &quot;transferScheduleId&quot; : {
             &quot;value&quot; : &quot;transferScheduleIdCase200&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
@@ -1751,6 +1757,9 @@ class TransferScheduleApiTest extends BaseTestCase
         &quot;parameters&quot; : {
           &quot;transferScheduleId&quot; : {
             &quot;value&quot; : &quot;transferScheduleIdcase200&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
@@ -2028,8 +2037,8 @@ class TransferScheduleApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;errors&quot; : [ {
           &quot;code&quot; : &quot;NotFound&quot;,
-          &quot;message&quot; : &quot;Account not found.&quot;,
-          &quot;details&quot; : &quot;Account doesn&#39;t exists for InvalidAccountId&quot;
+          &quot;message&quot; : &quot;Transfer Schedule not found.&quot;,
+          &quot;details&quot; : &quot;Transfer schedule id doesn&#39;t exists for invalid TransferScheduleId&quot;
         } ]
       }
     } ]
@@ -2424,6 +2433,9 @@ class TransferScheduleApiTest extends BaseTestCase
         &quot;parameters&quot; : {
           &quot;accountId&quot; : {
             &quot;value&quot; : &quot;sourceAccountIdCase200&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
@@ -3098,6 +3110,9 @@ class TransferScheduleApiTest extends BaseTestCase
     &quot;static&quot; : [ {
       &quot;request&quot; : {
         &quot;parameters&quot; : {
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
+          },
           &quot;body&quot; : {
             &quot;value&quot; : {
               &quot;transferScheduleId&quot; : &quot;transferScheduleIdCase200&quot;,
@@ -3485,8 +3500,8 @@ class TransferScheduleApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;errors&quot; : [ {
           &quot;code&quot; : &quot;NotFound&quot;,
-          &quot;message&quot; : &quot;Account not found.&quot;,
-          &quot;details&quot; : &quot;Account doesn&#39;t exists for invalid SourceAccountId&quot;
+          &quot;message&quot; : &quot;Transfer Schedule not found.&quot;,
+          &quot;details&quot; : &quot;Transfer schedule id doesn&#39;t exists for invalid TransferScheduleId&quot;
         } ]
       }
     } ]
