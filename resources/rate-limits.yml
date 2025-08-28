@@ -393,6 +393,9 @@ FbaOutboundApi-getFeatureInventory:
 FbaOutboundApi-getFeatureSKU:
   - 2
   - 30
+FbaOutboundApi-deliveryOfferings:
+  - 5
+  - 30
 # Invoices API
 InvoicesApi-getInvoicesAttributes:
   - 1
