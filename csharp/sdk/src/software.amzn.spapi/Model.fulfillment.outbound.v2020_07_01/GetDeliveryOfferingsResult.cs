@@ -26,35 +26,26 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The request for the &#x60;listAllFulfillmentOrders&#x60; operation.
+    /// A list of delivery offerings, including offering expiration, earliest and latest date and time range, and the delivery offering policy.
     /// </summary>
-    [DataContract(Name = "ListAllFulfillmentOrdersResult")]
-    public partial class ListAllFulfillmentOrdersResult : IValidatableObject
+    [DataContract(Name = "GetDeliveryOfferingsResult")]
+    public partial class GetDeliveryOfferingsResult : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListAllFulfillmentOrdersResult" /> class.
+        /// Initializes a new instance of the <see cref="GetDeliveryOfferingsResult" /> class.
         /// </summary>
-        /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        /// <param name="fulfillmentOrders">An array of fulfillment order information..</param>
-        public ListAllFulfillmentOrdersResult(string nextToken = default(string), List<FulfillmentOrder> fulfillmentOrders = default(List<FulfillmentOrder>))
+        /// <param name="deliveryOfferings">An array of delivery offering information..</param>
+        public GetDeliveryOfferingsResult(List<DeliveryOffering> deliveryOfferings = default(List<DeliveryOffering>))
         {
-            this.NextToken = nextToken;
-            this.FulfillmentOrders = fulfillmentOrders;
+            this.DeliveryOfferings = deliveryOfferings;
         }
 
         /// <summary>
-        /// When present and not empty, pass this string token in the next request to return the next response page.
+        /// An array of delivery offering information.
         /// </summary>
-        /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
-        [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
-
-        /// <summary>
-        /// An array of fulfillment order information.
-        /// </summary>
-        /// <value>An array of fulfillment order information.</value>
-        [DataMember(Name = "fulfillmentOrders", EmitDefaultValue = false)]
-        public List<FulfillmentOrder> FulfillmentOrders { get; set; }
+        /// <value>An array of delivery offering information.</value>
+        [DataMember(Name = "deliveryOfferings", EmitDefaultValue = false)]
+        public List<DeliveryOffering> DeliveryOfferings { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +54,8 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListAllFulfillmentOrdersResult {\n");
-            sb.Append("  NextToken: ").Append(NextToken).Append("\n");
-            sb.Append("  FulfillmentOrders: ").Append(FulfillmentOrders).Append("\n");
+            sb.Append("class GetDeliveryOfferingsResult {\n");
+            sb.Append("  DeliveryOfferings: ").Append(DeliveryOfferings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

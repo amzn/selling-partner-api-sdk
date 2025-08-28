@@ -79,11 +79,11 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="FulfillmentShipment" /> class.
         /// </summary>
         /// <param name="amazonShipmentId">A shipment identifier assigned by Amazon. (required).</param>
-        /// <param name="fulfillmentCenterId">An identifier for the fulfillment center that the shipment will be sent from. (required).</param>
+        /// <param name="fulfillmentCenterId">An identifier for the fulfillment center from which the shipment is sent. (required).</param>
         /// <param name="fulfillmentShipmentStatus">The current status of the shipment. (required).</param>
         /// <param name="shippingDate">Date timestamp.</param>
         /// <param name="estimatedArrivalDate">Date timestamp.</param>
-        /// <param name="shippingNotes">Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren&#39;t available..</param>
+        /// <param name="shippingNotes">Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren&#39;t available..</param>
         /// <param name="fulfillmentShipmentItem">An array of fulfillment shipment item information. (required).</param>
         /// <param name="fulfillmentShipmentPackage">An array of fulfillment shipment package information..</param>
         public FulfillmentShipment(string amazonShipmentId = default(string), string fulfillmentCenterId = default(string), FulfillmentShipmentStatusEnum fulfillmentShipmentStatus = default(FulfillmentShipmentStatusEnum), DateTime shippingDate = default(DateTime), DateTime estimatedArrivalDate = default(DateTime), List<string> shippingNotes = default(List<string>), List<FulfillmentShipmentItem> fulfillmentShipmentItem = default(List<FulfillmentShipmentItem>), List<FulfillmentShipmentPackage> fulfillmentShipmentPackage = default(List<FulfillmentShipmentPackage>))
@@ -121,9 +121,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public string AmazonShipmentId { get; set; }
 
         /// <summary>
-        /// An identifier for the fulfillment center that the shipment will be sent from.
+        /// An identifier for the fulfillment center from which the shipment is sent.
         /// </summary>
-        /// <value>An identifier for the fulfillment center that the shipment will be sent from.</value>
+        /// <value>An identifier for the fulfillment center from which the shipment is sent.</value>
         [DataMember(Name = "fulfillmentCenterId", IsRequired = true, EmitDefaultValue = true)]
         public string FulfillmentCenterId { get; set; }
 
@@ -142,9 +142,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public DateTime EstimatedArrivalDate { get; set; }
 
         /// <summary>
-        /// Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren&#39;t available.
+        /// Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren&#39;t available.
         /// </summary>
-        /// <value>Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren&#39;t available.</value>
+        /// <value>Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren&#39;t available.</value>
         [DataMember(Name = "shippingNotes", EmitDefaultValue = false)]
         public List<string> ShippingNotes { get; set; }
 

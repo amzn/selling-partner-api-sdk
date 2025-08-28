@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.productFees.v0
 {
     /// <summary>
-    /// MoneyType
+    /// An object representing a monetary value with its currency information.
     /// </summary>
     [DataContract(Name = "MoneyType")]
     public partial class MoneyType : IValidatableObject
