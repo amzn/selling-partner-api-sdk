@@ -135,7 +135,6 @@ Feed.ProcessingStatusEnum = {
      */
   IN_QUEUE: 'IN_QUEUE'
 }
-
 /**
  * The processing status of the feed.
  * @member {String} processingStatus

@@ -80,7 +80,6 @@ LowestPricedOffersInput.OfferTypeEnum = {
      */
   Consumer: 'Consumer'
 }
-
 /**
  * The input parameter specifies the type of offers requested for `LowestPricedOffers`. This applies to `Consumer` and `Business` offers. `Consumer` is the default `offerType`.
  * @member {String} offerType

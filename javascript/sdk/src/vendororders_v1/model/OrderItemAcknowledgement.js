@@ -89,7 +89,6 @@ OrderItemAcknowledgement.AcknowledgementCodeEnum = {
      */
   Rejected: 'Rejected'
 }
-
 /**
  * This indicates the acknowledgement code.
  * @member {String} acknowledgementCode
@@ -142,7 +141,6 @@ OrderItemAcknowledgement.RejectionReasonEnum = {
      */
   ObsoleteProduct: 'ObsoleteProduct'
 }
-
 /**
  * Indicates the reason for rejection.
  * @member {String} rejectionReason

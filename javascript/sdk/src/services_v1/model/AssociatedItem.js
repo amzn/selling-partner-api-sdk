@@ -121,7 +121,6 @@ AssociatedItem.ItemStatusEnum = {
      */
   DELIVERED: 'DELIVERED'
 }
-
 /**
  * The status of the item.
  * @member {String} itemStatus

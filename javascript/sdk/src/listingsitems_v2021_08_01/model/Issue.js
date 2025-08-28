@@ -108,7 +108,6 @@ Issue.SeverityEnum = {
      */
   INFO: 'INFO'
 }
-
 /**
  * The severity of the issue.
  * @member {String} severity

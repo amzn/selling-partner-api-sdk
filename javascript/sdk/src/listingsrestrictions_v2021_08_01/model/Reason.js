@@ -92,7 +92,6 @@ Reason.ReasonCodeEnum = {
      */
   NOT_ELIGIBLE: 'NOT_ELIGIBLE'
 }
-
 /**
  * A code indicating why the listing is restricted.
  * @member {String} reasonCode

@@ -100,7 +100,6 @@ ItemRelationship.TypeEnum = {
      */
   PACKAGE_HIERARCHY: 'PACKAGE_HIERARCHY'
 }
-
 /**
  * The type of relationship.
  * @member {String} type

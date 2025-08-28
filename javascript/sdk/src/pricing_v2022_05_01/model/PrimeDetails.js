@@ -82,7 +82,6 @@ PrimeDetails.EligibilityEnum = {
      */
   NONE: 'NONE'
 }
-
 /**
  * Indicates whether the offer is an Amazon Prime offer.
  * @member {String} eligibility

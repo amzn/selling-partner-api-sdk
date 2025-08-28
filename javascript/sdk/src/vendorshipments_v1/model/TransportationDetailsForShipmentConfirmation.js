@@ -97,7 +97,6 @@ TransportationDetailsForShipmentConfirmation.TransportationModeEnum = {
      */
   Ocean: 'Ocean'
 }
-
 /**
  * The mode of transportation for this shipment.
  * @member {String} transportationMode

@@ -94,7 +94,6 @@ ItemOfferByMarketplace.OfferTypeEnum = {
      */
   B2B: 'B2B'
 }
-
 /**
  * Type of offer for the listings item.
  * @member {String} offerType

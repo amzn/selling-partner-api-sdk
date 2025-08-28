@@ -94,7 +94,6 @@ Transaction.StatusEnum = {
      */
   Success: 'Success'
 }
-
 /**
  * Current processing status of the transaction.
  * @member {String} status
