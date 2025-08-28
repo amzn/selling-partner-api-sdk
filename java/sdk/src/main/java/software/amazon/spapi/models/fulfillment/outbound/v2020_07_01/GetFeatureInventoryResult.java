@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-/** The payload for the &#x60;getEligibileInventory&#x60; operation. */
-@Schema(description = "The payload for the `getEligibileInventory` operation.")
+/** The payload for the &#x60;getEligibleInventory&#x60; operation. */
+@Schema(description = "The payload for the `getEligibleInventory` operation.")
 public class GetFeatureInventoryResult {
     @SerializedName("marketplaceId")
     private String marketplaceId = null;

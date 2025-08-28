@@ -16,7 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** GetMyFeesEstimateResponse */
+/** The response object for the GetMyFeesEstimate operation. */
+@Schema(description = "The response object for the GetMyFeesEstimate operation.")
 public class GetMyFeesEstimateResponse {
     @SerializedName("payload")
     private GetMyFeesEstimateResult payload = null;

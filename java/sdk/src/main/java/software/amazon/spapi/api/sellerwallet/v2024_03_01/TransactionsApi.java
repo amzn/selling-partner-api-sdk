@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -33,6 +33,7 @@ import software.amazon.spapi.Configuration;
 import software.amazon.spapi.Pair;
 import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
+import software.amazon.spapi.models.sellerwallet.v2024_03_01.CreateTransactionResponse;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.Transaction;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransactionInitiationRequest;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransactionListing;
@@ -66,6 +67,9 @@ public class TransactionsApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -75,6 +79,7 @@ public class TransactionsApi {
             TransactionInitiationRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -84,6 +89,8 @@ public class TransactionsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (destAccountDigitalSignature != null)
@@ -117,6 +124,7 @@ public class TransactionsApi {
             TransactionInitiationRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -133,9 +141,14 @@ public class TransactionsApi {
             throw new ApiException(
                     "Missing the required parameter 'amountDigitalSignature' when calling createTransaction(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling createTransaction(Async)");
+        }
 
         return createTransactionCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -145,19 +158,23 @@ public class TransactionsApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
-     * @return Transaction
+     * @return CreateTransactionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Transaction createTransaction(
+    public CreateTransactionResponse createTransaction(
             TransactionInitiationRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<Transaction> resp = createTransactionWithHttpInfo(
-                body, destAccountDigitalSignature, amountDigitalSignature, restrictedDataToken);
+        ApiResponse<CreateTransactionResponse> resp = createTransactionWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -168,15 +185,21 @@ public class TransactionsApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
-     * @return Transaction
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @return CreateTransactionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Transaction createTransaction(
-            TransactionInitiationRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
+    public CreateTransactionResponse createTransaction(
+            TransactionInitiationRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String marketplaceId)
             throws ApiException, LWAException {
-        ApiResponse<Transaction> resp =
-                createTransactionWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
+        ApiResponse<CreateTransactionResponse> resp = createTransactionWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
         return resp.getData();
     }
 
@@ -187,19 +210,23 @@ public class TransactionsApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
-     * @return ApiResponse&lt;Transaction&gt;
+     * @return ApiResponse&lt;CreateTransactionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Transaction> createTransactionWithHttpInfo(
+    public ApiResponse<CreateTransactionResponse> createTransactionWithHttpInfo(
             TransactionInitiationRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
-        okhttp3.Call call =
-                createTransactionValidateBeforeCall(body, destAccountDigitalSignature, amountDigitalSignature, null);
+        okhttp3.Call call = createTransactionValidateBeforeCall(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -208,7 +235,7 @@ public class TransactionsApi {
         }
 
         if (disableRateLimiting || createTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
+            Type localVarReturnType = new TypeToken<CreateTransactionResponse>() {}.getType();
             return apiClient.execute(call, localVarReturnType);
         } else throw new ApiException.RateLimitExceeded("createTransaction operation exceeds rate limit");
     }
@@ -220,14 +247,21 @@ public class TransactionsApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
-     * @return ApiResponse&lt;Transaction&gt;
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
+     * @return ApiResponse&lt;CreateTransactionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Transaction> createTransactionWithHttpInfo(
-            TransactionInitiationRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
+    public ApiResponse<CreateTransactionResponse> createTransactionWithHttpInfo(
+            TransactionInitiationRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String marketplaceId)
             throws ApiException, LWAException {
-        return createTransactionWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
+        return createTransactionWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
     }
 
     /**
@@ -237,6 +271,9 @@ public class TransactionsApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -246,9 +283,11 @@ public class TransactionsApi {
             TransactionInitiationRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
-            final ApiCallback<Transaction> callback)
+            String marketplaceId,
+            final ApiCallback<CreateTransactionResponse> callback)
             throws ApiException, LWAException {
-        return createTransactionAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
+        return createTransactionAsync(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, callback, null);
     }
     /**
      * Create a transaction request from Amazon SW account to another customer provided account (asynchronously) Create
@@ -257,6 +296,9 @@ public class TransactionsApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -267,7 +309,8 @@ public class TransactionsApi {
             TransactionInitiationRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
-            final ApiCallback<Transaction> callback,
+            String marketplaceId,
+            final ApiCallback<CreateTransactionResponse> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
 
@@ -278,7 +321,7 @@ public class TransactionsApi {
         }
 
         okhttp3.Call call = createTransactionValidateBeforeCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -287,7 +330,7 @@ public class TransactionsApi {
         }
 
         if (disableRateLimiting || createTransactionBucket.tryConsume(1)) {
-            Type localVarReturnType = new TypeToken<Transaction>() {}.getType();
+            Type localVarReturnType = new TypeToken<CreateTransactionResponse>() {}.getType();
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("createTransaction operation exceeds rate limit");
@@ -296,13 +339,18 @@ public class TransactionsApi {
      * Build call for getTransaction
      *
      * @param transactionId ID of the Amazon SW transaction (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getTransactionCall(
-            String transactionId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transactionId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -312,6 +360,8 @@ public class TransactionsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -338,28 +388,37 @@ public class TransactionsApi {
     }
 
     private okhttp3.Call getTransactionValidateBeforeCall(
-            String transactionId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transactionId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'transactionId' is set
         if (transactionId == null) {
             throw new ApiException("Missing the required parameter 'transactionId' when calling getTransaction(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException("Missing the required parameter 'marketplaceId' when calling getTransaction(Async)");
+        }
 
-        return getTransactionCall(transactionId, progressRequestListener);
+        return getTransactionCall(transactionId, marketplaceId, progressRequestListener);
     }
 
     /**
      * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
      * @param transactionId ID of the Amazon SW transaction (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return Transaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Transaction getTransaction(String transactionId, String restrictedDataToken)
+    public Transaction getTransaction(String transactionId, String marketplaceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<Transaction> resp = getTransactionWithHttpInfo(transactionId, restrictedDataToken);
+        ApiResponse<Transaction> resp = getTransactionWithHttpInfo(transactionId, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -367,12 +426,15 @@ public class TransactionsApi {
      * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
      * @param transactionId ID of the Amazon SW transaction (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return Transaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public Transaction getTransaction(String transactionId) throws ApiException, LWAException {
-        ApiResponse<Transaction> resp = getTransactionWithHttpInfo(transactionId, null);
+    public Transaction getTransaction(String transactionId, String marketplaceId) throws ApiException, LWAException {
+        ApiResponse<Transaction> resp = getTransactionWithHttpInfo(transactionId, marketplaceId, null);
         return resp.getData();
     }
 
@@ -380,14 +442,17 @@ public class TransactionsApi {
      * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
      * @param transactionId ID of the Amazon SW transaction (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;Transaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Transaction> getTransactionWithHttpInfo(String transactionId, String restrictedDataToken)
-            throws ApiException, LWAException {
-        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, null);
+    public ApiResponse<Transaction> getTransactionWithHttpInfo(
+            String transactionId, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -405,12 +470,16 @@ public class TransactionsApi {
      * Find particular Amazon SW account transaction by Amazon transaction identifier Returns a transaction
      *
      * @param transactionId ID of the Amazon SW transaction (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;Transaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<Transaction> getTransactionWithHttpInfo(String transactionId) throws ApiException, LWAException {
-        return getTransactionWithHttpInfo(transactionId, null);
+    public ApiResponse<Transaction> getTransactionWithHttpInfo(String transactionId, String marketplaceId)
+            throws ApiException, LWAException {
+        return getTransactionWithHttpInfo(transactionId, marketplaceId, null);
     }
 
     /**
@@ -418,20 +487,27 @@ public class TransactionsApi {
      * transaction
      *
      * @param transactionId ID of the Amazon SW transaction (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getTransactionAsync(String transactionId, final ApiCallback<Transaction> callback)
+    public okhttp3.Call getTransactionAsync(
+            String transactionId, String marketplaceId, final ApiCallback<Transaction> callback)
             throws ApiException, LWAException {
-        return getTransactionAsync(transactionId, callback, null);
+        return getTransactionAsync(transactionId, marketplaceId, callback, null);
     }
     /**
      * Find particular Amazon SW account transaction by Amazon transaction identifier (asynchronously) Returns a
      * transaction
      *
      * @param transactionId ID of the Amazon SW transaction (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -439,7 +515,10 @@ public class TransactionsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getTransactionAsync(
-            String transactionId, final ApiCallback<Transaction> callback, String restrictedDataToken)
+            String transactionId,
+            String marketplaceId,
+            final ApiCallback<Transaction> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -448,7 +527,7 @@ public class TransactionsApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, progressRequestListener);
+        okhttp3.Call call = getTransactionValidateBeforeCall(transactionId, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -466,6 +545,9 @@ public class TransactionsApi {
      * Build call for listAccountTransactions
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -474,6 +556,7 @@ public class TransactionsApi {
      */
     private okhttp3.Call listAccountTransactionsCall(
             String accountId,
+            String marketplaceId,
             String nextPageToken,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -487,6 +570,8 @@ public class TransactionsApi {
         if (accountId != null) localVarQueryParams.addAll(apiClient.parameterToPair("accountId", accountId));
         if (nextPageToken != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("nextPageToken", nextPageToken));
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -514,6 +599,7 @@ public class TransactionsApi {
 
     private okhttp3.Call listAccountTransactionsValidateBeforeCall(
             String accountId,
+            String marketplaceId,
             String nextPageToken,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -522,8 +608,13 @@ public class TransactionsApi {
             throw new ApiException(
                     "Missing the required parameter 'accountId' when calling listAccountTransactions(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling listAccountTransactions(Async)");
+        }
 
-        return listAccountTransactionsCall(accountId, nextPageToken, progressRequestListener);
+        return listAccountTransactionsCall(accountId, marketplaceId, nextPageToken, progressRequestListener);
     }
 
     /**
@@ -531,6 +622,9 @@ public class TransactionsApi {
      * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransactionListing
@@ -538,9 +632,10 @@ public class TransactionsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransactionListing listAccountTransactions(
-            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
+            String accountId, String marketplaceId, String nextPageToken, String restrictedDataToken)
+            throws ApiException, LWAException {
         ApiResponse<TransactionListing> resp =
-                listAccountTransactionsWithHttpInfo(accountId, nextPageToken, restrictedDataToken);
+                listAccountTransactionsWithHttpInfo(accountId, marketplaceId, nextPageToken, restrictedDataToken);
         return resp.getData();
     }
 
@@ -549,14 +644,18 @@ public class TransactionsApi {
      * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return TransactionListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public TransactionListing listAccountTransactions(String accountId, String nextPageToken)
+    public TransactionListing listAccountTransactions(String accountId, String marketplaceId, String nextPageToken)
             throws ApiException, LWAException {
-        ApiResponse<TransactionListing> resp = listAccountTransactionsWithHttpInfo(accountId, nextPageToken, null);
+        ApiResponse<TransactionListing> resp =
+                listAccountTransactionsWithHttpInfo(accountId, marketplaceId, nextPageToken, null);
         return resp.getData();
     }
 
@@ -565,6 +664,9 @@ public class TransactionsApi {
      * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransactionListing&gt;
@@ -572,8 +674,9 @@ public class TransactionsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<TransactionListing> listAccountTransactionsWithHttpInfo(
-            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = listAccountTransactionsValidateBeforeCall(accountId, nextPageToken, null);
+            String accountId, String marketplaceId, String nextPageToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listAccountTransactionsValidateBeforeCall(accountId, marketplaceId, nextPageToken, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -593,14 +696,17 @@ public class TransactionsApi {
      * Retrieve a list of transactions for a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return ApiResponse&lt;TransactionListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<TransactionListing> listAccountTransactionsWithHttpInfo(String accountId, String nextPageToken)
-            throws ApiException, LWAException {
-        return listAccountTransactionsWithHttpInfo(accountId, nextPageToken, null);
+    public ApiResponse<TransactionListing> listAccountTransactionsWithHttpInfo(
+            String accountId, String marketplaceId, String nextPageToken) throws ApiException, LWAException {
+        return listAccountTransactionsWithHttpInfo(accountId, marketplaceId, nextPageToken, null);
     }
 
     /**
@@ -608,6 +714,9 @@ public class TransactionsApi {
      * (asynchronously) Retrieve a list of transactions for a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -615,15 +724,21 @@ public class TransactionsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listAccountTransactionsAsync(
-            String accountId, String nextPageToken, final ApiCallback<TransactionListing> callback)
+            String accountId,
+            String marketplaceId,
+            String nextPageToken,
+            final ApiCallback<TransactionListing> callback)
             throws ApiException, LWAException {
-        return listAccountTransactionsAsync(accountId, nextPageToken, callback, null);
+        return listAccountTransactionsAsync(accountId, marketplaceId, nextPageToken, callback, null);
     }
     /**
      * The API will return all the transactions for a given Amazon SW account sorted by the transaction request date
      * (asynchronously) Retrieve a list of transactions for a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -633,6 +748,7 @@ public class TransactionsApi {
      */
     public okhttp3.Call listAccountTransactionsAsync(
             String accountId,
+            String marketplaceId,
             String nextPageToken,
             final ApiCallback<TransactionListing> callback,
             String restrictedDataToken)
@@ -644,8 +760,8 @@ public class TransactionsApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call =
-                listAccountTransactionsValidateBeforeCall(accountId, nextPageToken, progressRequestListener);
+        okhttp3.Call call = listAccountTransactionsValidateBeforeCall(
+                accountId, marketplaceId, nextPageToken, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

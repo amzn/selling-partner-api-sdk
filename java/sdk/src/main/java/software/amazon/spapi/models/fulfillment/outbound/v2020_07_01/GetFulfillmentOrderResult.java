@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The request for the getFulfillmentOrder operation. */
-@Schema(description = "The request for the getFulfillmentOrder operation.")
+/** The request for the &#x60;getFulfillmentOrder&#x60; operation. */
+@Schema(description = "The request for the `getFulfillmentOrder` operation.")
 public class GetFulfillmentOrderResult {
     @SerializedName("fulfillmentOrder")
     private FulfillmentOrder fulfillmentOrder = null;

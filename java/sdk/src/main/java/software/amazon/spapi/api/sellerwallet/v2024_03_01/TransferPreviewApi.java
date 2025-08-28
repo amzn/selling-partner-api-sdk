@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -64,6 +64,9 @@ public class TransferPreviewApi {
      *     transaction country. (required)
      * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
      *     the transfer preview. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -75,6 +78,7 @@ public class TransferPreviewApi {
             String destinationCountryCode,
             String destinationCurrencyCode,
             BigDecimal baseAmount,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
@@ -93,6 +97,8 @@ public class TransferPreviewApi {
         if (destinationCurrencyCode != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("destinationCurrencyCode", destinationCurrencyCode));
         if (baseAmount != null) localVarQueryParams.addAll(apiClient.parameterToPair("baseAmount", baseAmount));
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -124,6 +130,7 @@ public class TransferPreviewApi {
             String destinationCountryCode,
             String destinationCurrencyCode,
             BigDecimal baseAmount,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'sourceCountryCode' is set
@@ -151,6 +158,11 @@ public class TransferPreviewApi {
             throw new ApiException(
                     "Missing the required parameter 'baseAmount' when calling getTransferPreview(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling getTransferPreview(Async)");
+        }
 
         return getTransferPreviewCall(
                 sourceCountryCode,
@@ -158,6 +170,7 @@ public class TransferPreviewApi {
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
+                marketplaceId,
                 progressRequestListener);
     }
 
@@ -176,6 +189,9 @@ public class TransferPreviewApi {
      *     transaction country. (required)
      * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
      *     the transfer preview. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferRatePreview
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -187,6 +203,7 @@ public class TransferPreviewApi {
             String destinationCountryCode,
             String destinationCurrencyCode,
             BigDecimal baseAmount,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<TransferRatePreview> resp = getTransferPreviewWithHttpInfo(
@@ -195,6 +212,7 @@ public class TransferPreviewApi {
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
+                marketplaceId,
                 restrictedDataToken);
         return resp.getData();
     }
@@ -214,6 +232,9 @@ public class TransferPreviewApi {
      *     transaction country. (required)
      * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
      *     the transfer preview. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return TransferRatePreview
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -223,7 +244,8 @@ public class TransferPreviewApi {
             String sourceCurrencyCode,
             String destinationCountryCode,
             String destinationCurrencyCode,
-            BigDecimal baseAmount)
+            BigDecimal baseAmount,
+            String marketplaceId)
             throws ApiException, LWAException {
         ApiResponse<TransferRatePreview> resp = getTransferPreviewWithHttpInfo(
                 sourceCountryCode,
@@ -231,6 +253,7 @@ public class TransferPreviewApi {
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
+                marketplaceId,
                 null);
         return resp.getData();
     }
@@ -250,6 +273,9 @@ public class TransferPreviewApi {
      *     transaction country. (required)
      * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
      *     the transfer preview. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferRatePreview&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -261,6 +287,7 @@ public class TransferPreviewApi {
             String destinationCountryCode,
             String destinationCurrencyCode,
             BigDecimal baseAmount,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = getTransferPreviewValidateBeforeCall(
@@ -269,6 +296,7 @@ public class TransferPreviewApi {
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
+                marketplaceId,
                 null);
 
         if (restrictedDataToken != null) {
@@ -299,6 +327,9 @@ public class TransferPreviewApi {
      *     transaction country. (required)
      * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
      *     the transfer preview. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;TransferRatePreview&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -308,7 +339,8 @@ public class TransferPreviewApi {
             String sourceCurrencyCode,
             String destinationCountryCode,
             String destinationCurrencyCode,
-            BigDecimal baseAmount)
+            BigDecimal baseAmount,
+            String marketplaceId)
             throws ApiException, LWAException {
         return getTransferPreviewWithHttpInfo(
                 sourceCountryCode,
@@ -316,6 +348,7 @@ public class TransferPreviewApi {
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
+                marketplaceId,
                 null);
     }
 
@@ -334,6 +367,9 @@ public class TransferPreviewApi {
      *     transaction country. (required)
      * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
      *     the transfer preview. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -345,6 +381,7 @@ public class TransferPreviewApi {
             String destinationCountryCode,
             String destinationCurrencyCode,
             BigDecimal baseAmount,
+            String marketplaceId,
             final ApiCallback<TransferRatePreview> callback)
             throws ApiException, LWAException {
         return getTransferPreviewAsync(
@@ -353,6 +390,7 @@ public class TransferPreviewApi {
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
+                marketplaceId,
                 callback,
                 null);
     }
@@ -371,6 +409,9 @@ public class TransferPreviewApi {
      *     transaction country. (required)
      * @param baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get
      *     the transfer preview. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -383,6 +424,7 @@ public class TransferPreviewApi {
             String destinationCountryCode,
             String destinationCurrencyCode,
             BigDecimal baseAmount,
+            String marketplaceId,
             final ApiCallback<TransferRatePreview> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -399,6 +441,7 @@ public class TransferPreviewApi {
                 destinationCountryCode,
                 destinationCurrencyCode,
                 baseAmount,
+                marketplaceId,
                 progressRequestListener);
 
         if (restrictedDataToken != null) {

@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -28,11 +28,14 @@ public class TransactionInitiationRequest {
     @SerializedName("destinationAccountId")
     private String destinationAccountId = null;
 
-    @SerializedName("description")
-    private String description = null;
-
     @SerializedName("destinationTransactionInstrument")
     private TransactionInstrumentDetails destinationTransactionInstrument = null;
+
+    @SerializedName("transactionDescription")
+    private String transactionDescription = null;
+
+    @SerializedName("customerPaymentReference")
+    private String customerPaymentReference = null;
 
     @SerializedName("destinationAccountHolderAddress")
     private AccountHolderAddress destinationAccountHolderAddress = null;
@@ -92,28 +95,6 @@ public class TransactionInitiationRequest {
         this.destinationAccountId = destinationAccountId;
     }
 
-    public TransactionInitiationRequest description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * Optional field to specify description for the transaction
-     *
-     * @return description
-     */
-    @Schema(
-            example = "Payment to the delivery partner",
-            required = true,
-            description = "Optional field to specify description for the transaction ")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public TransactionInitiationRequest destinationTransactionInstrument(
             TransactionInstrumentDetails destinationTransactionInstrument) {
         this.destinationTransactionInstrument = destinationTransactionInstrument;
@@ -132,6 +113,49 @@ public class TransactionInitiationRequest {
 
     public void setDestinationTransactionInstrument(TransactionInstrumentDetails destinationTransactionInstrument) {
         this.destinationTransactionInstrument = destinationTransactionInstrument;
+    }
+
+    public TransactionInitiationRequest transactionDescription(String transactionDescription) {
+        this.transactionDescription = transactionDescription;
+        return this;
+    }
+
+    /**
+     * A description of the transaction.
+     *
+     * @return transactionDescription
+     */
+    @Schema(description = "A description of the transaction.")
+    public String getTransactionDescription() {
+        return transactionDescription;
+    }
+
+    public void setTransactionDescription(String transactionDescription) {
+        this.transactionDescription = transactionDescription;
+    }
+
+    public TransactionInitiationRequest customerPaymentReference(String customerPaymentReference) {
+        this.customerPaymentReference = customerPaymentReference;
+        return this;
+    }
+
+    /**
+     * If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be
+     * mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other
+     * than VAT-ID.
+     *
+     * @return customerPaymentReference
+     */
+    @Schema(
+            example = "BG999999999",
+            description =
+                    "If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.")
+    public String getCustomerPaymentReference() {
+        return customerPaymentReference;
+    }
+
+    public void setCustomerPaymentReference(String customerPaymentReference) {
+        this.customerPaymentReference = customerPaymentReference;
     }
 
     public TransactionInitiationRequest destinationAccountHolderAddress(
@@ -225,10 +249,11 @@ public class TransactionInitiationRequest {
         TransactionInitiationRequest transactionInitiationRequest = (TransactionInitiationRequest) o;
         return Objects.equals(this.sourceAccountId, transactionInitiationRequest.sourceAccountId)
                 && Objects.equals(this.destinationAccountId, transactionInitiationRequest.destinationAccountId)
-                && Objects.equals(this.description, transactionInitiationRequest.description)
                 && Objects.equals(
                         this.destinationTransactionInstrument,
                         transactionInitiationRequest.destinationTransactionInstrument)
+                && Objects.equals(this.transactionDescription, transactionInitiationRequest.transactionDescription)
+                && Objects.equals(this.customerPaymentReference, transactionInitiationRequest.customerPaymentReference)
                 && Objects.equals(
                         this.destinationAccountHolderAddress,
                         transactionInitiationRequest.destinationAccountHolderAddress)
@@ -242,8 +267,9 @@ public class TransactionInitiationRequest {
         return Objects.hash(
                 sourceAccountId,
                 destinationAccountId,
-                description,
                 destinationTransactionInstrument,
+                transactionDescription,
+                customerPaymentReference,
                 destinationAccountHolderAddress,
                 sourceAmount,
                 transferRateDetails,
@@ -261,9 +287,14 @@ public class TransactionInitiationRequest {
         sb.append("    destinationAccountId: ")
                 .append(toIndentedString(destinationAccountId))
                 .append("\n");
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
         sb.append("    destinationTransactionInstrument: ")
                 .append(toIndentedString(destinationTransactionInstrument))
+                .append("\n");
+        sb.append("    transactionDescription: ")
+                .append(toIndentedString(transactionDescription))
+                .append("\n");
+        sb.append("    customerPaymentReference: ")
+                .append(toIndentedString(customerPaymentReference))
                 .append("\n");
         sb.append("    destinationAccountHolderAddress: ")
                 .append(toIndentedString(destinationAccountHolderAddress))

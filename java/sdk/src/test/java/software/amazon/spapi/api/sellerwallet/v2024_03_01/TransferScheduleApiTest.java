@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -58,9 +58,10 @@ public class TransferScheduleApiTest {
         TransferScheduleRequest body = easyRandom.nextObject(TransferScheduleRequest.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<TransferSchedule> response =
-                api.createTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature);
+        ApiResponse<TransferSchedule> response = api.createTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -70,8 +71,10 @@ public class TransferScheduleApiTest {
     public void deleteScheduleTransactionTest() throws Exception {
         instructBackendMock("deleteScheduleTransaction", "200");
         String transferScheduleId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<DeleteTransferSchedule> response = api.deleteScheduleTransactionWithHttpInfo(transferScheduleId);
+        ApiResponse<DeleteTransferSchedule> response =
+                api.deleteScheduleTransactionWithHttpInfo(transferScheduleId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -81,8 +84,9 @@ public class TransferScheduleApiTest {
     public void getTransferScheduleTest() throws Exception {
         instructBackendMock("getTransferSchedule", "200");
         String transferScheduleId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<TransferSchedule> response = api.getTransferScheduleWithHttpInfo(transferScheduleId);
+        ApiResponse<TransferSchedule> response = api.getTransferScheduleWithHttpInfo(transferScheduleId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -92,8 +96,10 @@ public class TransferScheduleApiTest {
     public void listTransferSchedulesTest() throws Exception {
         instructBackendMock("listTransferSchedules", "200");
         String accountId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<TransferScheduleListing> response = api.listTransferSchedulesWithHttpInfo(accountId, null);
+        ApiResponse<TransferScheduleListing> response =
+                api.listTransferSchedulesWithHttpInfo(accountId, marketplaceId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -105,9 +111,10 @@ public class TransferScheduleApiTest {
         TransferSchedule body = easyRandom.nextObject(TransferSchedule.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<TransferSchedule> response =
-                api.updateTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature);
+        ApiResponse<TransferSchedule> response = api.updateTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

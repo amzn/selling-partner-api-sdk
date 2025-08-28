@@ -16,7 +16,13 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Points */
+/**
+ * The number of Amazon Points offered with the purchase of an item.The Amazon Points program is only available in
+ * Japan.
+ */
+@Schema(
+        description =
+                "The number of Amazon Points offered with the purchase of an item.The Amazon Points program is only available in Japan.")
 public class Points {
     @SerializedName("PointsNumber")
     private Integer pointsNumber = null;
@@ -30,11 +36,11 @@ public class Points {
     }
 
     /**
-     * Get pointsNumber
+     * The number of Amazon Points
      *
      * @return pointsNumber
      */
-    @Schema(description = "")
+    @Schema(description = "The number of Amazon Points")
     public Integer getPointsNumber() {
         return pointsNumber;
     }

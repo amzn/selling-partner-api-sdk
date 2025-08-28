@@ -64,7 +64,7 @@ public class FeesApi {
     /**
      * Build call for getMyFeesEstimateForASIN
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -144,7 +144,7 @@ public class FeesApi {
      * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetMyFeesEstimateResponse
@@ -175,7 +175,7 @@ public class FeesApi {
      * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @return GetMyFeesEstimateResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -204,7 +204,7 @@ public class FeesApi {
      * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetMyFeesEstimateResponse&gt;
@@ -244,7 +244,7 @@ public class FeesApi {
      * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @return ApiResponse&lt;GetMyFeesEstimateResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -272,7 +272,7 @@ public class FeesApi {
      * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -301,7 +301,7 @@ public class FeesApi {
      * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param asin The Amazon Standard Identification Number (ASIN) of the item. (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -339,7 +339,7 @@ public class FeesApi {
     /**
      * Build call for getMyFeesEstimateForSKU
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @param progressRequestListener Progress request listener
@@ -421,7 +421,7 @@ public class FeesApi {
      * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -456,7 +456,7 @@ public class FeesApi {
      * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @return GetMyFeesEstimateResponse
@@ -488,7 +488,7 @@ public class FeesApi {
      * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -532,7 +532,7 @@ public class FeesApi {
      * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @return ApiResponse&lt;GetMyFeesEstimateResponse&gt;
@@ -563,7 +563,7 @@ public class FeesApi {
      * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -595,7 +595,7 @@ public class FeesApi {
      * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller&#x27;s
      *     SellerId, which is included with every operation that you submit. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -634,7 +634,7 @@ public class FeesApi {
     /**
      * Build call for getMyFeesEstimates
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -695,7 +695,7 @@ public class FeesApi {
      * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetMyFeesEstimatesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -715,7 +715,7 @@ public class FeesApi {
      * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @return GetMyFeesEstimatesResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -734,7 +734,7 @@ public class FeesApi {
      * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetMyFeesEstimatesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -764,7 +764,7 @@ public class FeesApi {
      * rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the
      * Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @return ApiResponse&lt;GetMyFeesEstimatesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -782,7 +782,7 @@ public class FeesApi {
      * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
      * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -801,7 +801,7 @@ public class FeesApi {
      * throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and
      * Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body (required)
+     * @param body The request body schema for the getMyFeesEstimates operation (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call

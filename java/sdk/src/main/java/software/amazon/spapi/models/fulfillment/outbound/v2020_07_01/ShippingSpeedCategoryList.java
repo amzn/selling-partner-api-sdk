@@ -16,8 +16,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/** ShippingSpeedCategory List */
-@Schema(description = "ShippingSpeedCategory List")
+/** List of shipping speed categories. */
+@Schema(description = "List of shipping speed categories.")
 public class ShippingSpeedCategoryList extends ArrayList<ShippingSpeedCategory> {
 
     @Override

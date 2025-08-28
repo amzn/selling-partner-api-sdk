@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -14,7 +14,6 @@ package software.amazon.spapi.models.sellerwallet.v2024_03_01;
 
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -33,7 +32,7 @@ public class Fee {
     private FeeType feeType = null;
 
     @SerializedName("feeRateValue")
-    private BigDecimal feeRateValue = null;
+    private String feeRateValue = null;
 
     @SerializedName("feeAmount")
     private Currency feeAmount = null;
@@ -76,22 +75,22 @@ public class Fee {
         this.feeType = feeType;
     }
 
-    public Fee feeRateValue(BigDecimal feeRateValue) {
+    public Fee feeRateValue(String feeRateValue) {
         this.feeRateValue = feeRateValue;
         return this;
     }
 
     /**
-     * Get feeRateValue
+     * The value of the fee in percentage format.
      *
      * @return feeRateValue
      */
-    @Schema(required = true, description = "")
-    public BigDecimal getFeeRateValue() {
+    @Schema(required = true, description = "The value of the fee in percentage format.")
+    public String getFeeRateValue() {
         return feeRateValue;
     }
 
-    public void setFeeRateValue(BigDecimal feeRateValue) {
+    public void setFeeRateValue(String feeRateValue) {
         this.feeRateValue = feeRateValue;
     }
 

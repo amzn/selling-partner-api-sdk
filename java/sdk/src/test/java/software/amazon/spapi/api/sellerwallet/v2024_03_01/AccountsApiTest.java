@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -55,8 +55,9 @@ public class AccountsApiTest {
     public void getAccountTest() throws Exception {
         instructBackendMock("getAccount", "200");
         String accountId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<BankAccount> response = api.getAccountWithHttpInfo(accountId);
+        ApiResponse<BankAccount> response = api.getAccountWithHttpInfo(accountId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -66,8 +67,9 @@ public class AccountsApiTest {
     public void listAccountBalancesTest() throws Exception {
         instructBackendMock("listAccountBalances", "200");
         String accountId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<BalanceListing> response = api.listAccountBalancesWithHttpInfo(accountId);
+        ApiResponse<BalanceListing> response = api.listAccountBalancesWithHttpInfo(accountId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

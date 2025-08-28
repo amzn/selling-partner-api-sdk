@@ -142,7 +142,7 @@ public class ItemInput {
     }
 
     /**
-     * The number of units of the specified MSKU that will be shipped. minimum: 1 maximum: 10000
+     * The number of units of the specified MSKU that will be shipped. minimum: 1 maximum: 500000
      *
      * @return quantity
      */

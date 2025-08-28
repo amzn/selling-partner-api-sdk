@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The result for the createFulfillmentReturn operation. */
-@Schema(description = "The result for the createFulfillmentReturn operation.")
+/** The result for the &#x60;createFulfillmentReturn&#x60; operation. */
+@Schema(description = "The result for the `createFulfillmentReturn` operation.")
 public class CreateFulfillmentReturnResult {
     @SerializedName("returnItems")
     private ReturnItemList returnItems = null;

@@ -72,16 +72,16 @@ public class CreateFulfillmentOrderItem {
 
     /**
      * A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to
-     * disambiguate multiple fulfillment items that have the same &#x60;SellerSKU&#x60;. For example, the seller might
-     * assign different &#x60;SellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that share
-     * the same &#x60;SellerSKU&#x60; but have different &#x60;GiftMessage&#x60; values.
+     * disambiguate multiple fulfillment items that have the same &#x60;sellerSku&#x60; value. For example, the seller
+     * might assign different &#x60;sellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that
+     * share the same &#x60;sellerSku&#x60; value but have different &#x60;giftMessage&#x60; values.
      *
      * @return sellerFulfillmentOrderItemId
      */
     @Schema(
             required = true,
             description =
-                    "A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `SellerSKU`. For example, the seller might assign different `SellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `SellerSKU` but have different `GiftMessage` values.")
+                    "A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `sellerSku` value. For example, the seller might assign different `sellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `sellerSku` value but have different `giftMessage` values.")
     public String getSellerFulfillmentOrderItemId() {
         return sellerFulfillmentOrderItemId;
     }
