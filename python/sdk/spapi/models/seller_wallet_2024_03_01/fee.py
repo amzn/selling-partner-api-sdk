@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -10,7 +10,6 @@
 
     Do not edit the class manually.
 """  # noqa: E501
-
 
 import pprint
 import re  # noqa: F401
@@ -36,7 +35,7 @@ class Fee(object):
     swagger_types = {
         'fee_id': 'str',
         'fee_type': 'FeeType',
-        'fee_rate_value': 'float',
+        'fee_rate_value': 'str',
         'fee_amount': 'Currency',
     }
 
@@ -116,10 +115,10 @@ class Fee(object):
     def fee_rate_value(self):
         """Gets the fee_rate_value of this Fee.  # noqa: E501
 
-        A decimal number such as amount or FX rate.  # noqa: E501
+        The value of the fee in percentage format.  # noqa: E501
 
         :return: The fee_rate_value of this Fee.  # noqa: E501
-        :rtype: float
+        :rtype: str
         """
         return self._fee_rate_value
 
@@ -127,10 +126,10 @@ class Fee(object):
     def fee_rate_value(self, fee_rate_value):
         """Sets the fee_rate_value of this Fee.
 
-        A decimal number such as amount or FX rate.  # noqa: E501
+        The value of the fee in percentage format.  # noqa: E501
 
         :param fee_rate_value: The fee_rate_value of this Fee.  # noqa: E501
-        :type: float
+        :type: str
         """
         if self._configuration.client_side_validation and fee_rate_value is None:
             raise ValueError("Invalid value for `fee_rate_value`, must not be `None`")  # noqa: E501

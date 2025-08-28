@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -110,8 +109,8 @@ class SpdTrackingItemInput(object):
         if self._configuration.client_side_validation and tracking_id is None:
             raise ValueError("Invalid value for `tracking_id`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                tracking_id is not None and len(tracking_id) > 1024):
-            raise ValueError("Invalid value for `tracking_id`, length must be less than or equal to `1024`")  # noqa: E501
+                tracking_id is not None and len(tracking_id) > 64):
+            raise ValueError("Invalid value for `tracking_id`, length must be less than or equal to `64`")  # noqa: E501
         if (self._configuration.client_side_validation and
                 tracking_id is not None and len(tracking_id) < 1):
             raise ValueError("Invalid value for `tracking_id`, length must be greater than or equal to `1`")  # noqa: E501

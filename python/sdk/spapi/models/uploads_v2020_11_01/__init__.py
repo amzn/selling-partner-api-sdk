@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.uploads_v2020_11_01.create_upload_destination_response import CreateUploadDestinationResponse
 from spapi.models.uploads_v2020_11_01.error import Error

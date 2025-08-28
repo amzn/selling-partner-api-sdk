@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -10,7 +10,6 @@
 
     Do not edit the class manually.
 """  # noqa: E501
-
 
 from __future__ import absolute_import
 
@@ -36,49 +35,51 @@ class TransactionsApi(object):
         self.api_client = api_client
         self.classFileName = 'transactions_api'
 
-    def create_transaction(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
+    def create_transaction(self, dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs):  # noqa: E501
         """Create a transaction request from Amazon SW account to another customer provided account  # noqa: E501
 
         Create a transaction request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_transaction(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
+        >>> thread = api.create_transaction(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransactionInitiationRequest body: Defines the actual payload of the request (required)
-        :return: Transaction
+        :return: CreateTransactionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, body, **kwargs)  # noqa: E501
+            return self.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, body, **kwargs)  # noqa: E501
+            (data) = self.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs)  # noqa: E501
             return data
 
-    def create_transaction_with_http_info(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
+    def create_transaction_with_http_info(self, dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs):  # noqa: E501
         """Create a transaction request from Amazon SW account to another customer provided account  # noqa: E501
 
         Create a transaction request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
+        >>> thread = api.create_transaction_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransactionInitiationRequest body: Defines the actual payload of the request (required)
-        :return: Transaction
+        :return: CreateTransactionResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['dest_account_digital_signature', 'amount_digital_signature', 'body']  # noqa: E501
+        all_params = ['dest_account_digital_signature', 'amount_digital_signature', 'marketplace_id', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -101,6 +102,10 @@ class TransactionsApi(object):
         if self.api_client.client_side_validation and ('amount_digital_signature' not in params or
                                                        params['amount_digital_signature'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `amount_digital_signature` when calling `create_transaction`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `create_transaction`")  # noqa: E501
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in params or
                                                        params['body'] is None):  # noqa: E501
@@ -111,6 +116,8 @@ class TransactionsApi(object):
         path_params = {}
 
         query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
         if 'dest_account_digital_signature' in params:
@@ -143,7 +150,7 @@ class TransactionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Transaction',  # noqa: E501
+            response_type='CreateTransactionResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -151,45 +158,47 @@ class TransactionsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
-    def get_transaction(self, transaction_id, **kwargs):  # noqa: E501
+    def get_transaction(self, transaction_id, marketplace_id, **kwargs):  # noqa: E501
         """Find particular Amazon SW account transaction by Amazon transaction identifier  # noqa: E501
 
         Returns a transaction  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_transaction(transaction_id, async_req=True)
+        >>> thread = api.get_transaction(transaction_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str transaction_id: ID of the Amazon SW transaction (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_transaction_with_http_info(transaction_id, **kwargs)  # noqa: E501
+            return self.get_transaction_with_http_info(transaction_id, marketplace_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_transaction_with_http_info(transaction_id, **kwargs)  # noqa: E501
+            (data) = self.get_transaction_with_http_info(transaction_id, marketplace_id, **kwargs)  # noqa: E501
             return data
 
-    def get_transaction_with_http_info(self, transaction_id, **kwargs):  # noqa: E501
+    def get_transaction_with_http_info(self, transaction_id, marketplace_id, **kwargs):  # noqa: E501
         """Find particular Amazon SW account transaction by Amazon transaction identifier  # noqa: E501
 
         Returns a transaction  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_transaction_with_http_info(transaction_id, async_req=True)
+        >>> thread = api.get_transaction_with_http_info(transaction_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str transaction_id: ID of the Amazon SW transaction (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: Transaction
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['transaction_id']  # noqa: E501
+        all_params = ['transaction_id', 'marketplace_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -208,6 +217,10 @@ class TransactionsApi(object):
         if self.api_client.client_side_validation and ('transaction_id' not in params or
                                                        params['transaction_id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `transaction_id` when calling `get_transaction`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `get_transaction`")  # noqa: E501
 
         collection_formats = {}
 
@@ -216,6 +229,8 @@ class TransactionsApi(object):
             path_params['transactionId'] = params['transaction_id']  # noqa: E501
 
         query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
 
@@ -246,17 +261,18 @@ class TransactionsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
-    def list_account_transactions(self, account_id, **kwargs):  # noqa: E501
+    def list_account_transactions(self, account_id, marketplace_id, **kwargs):  # noqa: E501
         """The API will return all the transactions for a given Amazon SW account sorted by the transaction request date  # noqa: E501
 
         Retrieve a list of transactions for a given Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.list_account_transactions(account_id, async_req=True)
+        >>> thread = api.list_account_transactions(account_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str account_id: ID of the Amazon SW account (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransactionListing
                  If the method is called asynchronously,
@@ -264,29 +280,30 @@ class TransactionsApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.list_account_transactions_with_http_info(account_id, **kwargs)  # noqa: E501
+            return self.list_account_transactions_with_http_info(account_id, marketplace_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.list_account_transactions_with_http_info(account_id, **kwargs)  # noqa: E501
+            (data) = self.list_account_transactions_with_http_info(account_id, marketplace_id, **kwargs)  # noqa: E501
             return data
 
-    def list_account_transactions_with_http_info(self, account_id, **kwargs):  # noqa: E501
+    def list_account_transactions_with_http_info(self, account_id, marketplace_id, **kwargs):  # noqa: E501
         """The API will return all the transactions for a given Amazon SW account sorted by the transaction request date  # noqa: E501
 
         Retrieve a list of transactions for a given Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.list_account_transactions_with_http_info(account_id, async_req=True)
+        >>> thread = api.list_account_transactions_with_http_info(account_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str account_id: ID of the Amazon SW account (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransactionListing
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['account_id', 'next_page_token']  # noqa: E501
+        all_params = ['account_id', 'marketplace_id', 'next_page_token']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -305,6 +322,10 @@ class TransactionsApi(object):
         if self.api_client.client_side_validation and ('account_id' not in params or
                                                        params['account_id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `account_id` when calling `list_account_transactions`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `list_account_transactions`")  # noqa: E501
 
         collection_formats = {}
 
@@ -315,6 +336,8 @@ class TransactionsApi(object):
             query_params.append(('accountId', params['account_id']))  # noqa: E501
         if 'next_page_token' in params:
             query_params.append(('nextPageToken', params['next_page_token']))  # noqa: E501
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
 

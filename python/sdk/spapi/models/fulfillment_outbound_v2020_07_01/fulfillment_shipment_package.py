@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -37,6 +36,7 @@ class FulfillmentShipmentPackage(object):
         'package_number': 'int',
         'carrier_code': 'str',
         'tracking_number': 'str',
+        'amazon_fulfillment_tracking_number': 'str',
         'estimated_arrival_date': 'datetime',
         'locker_details': 'LockerDetails',
         'delivery_information': 'DeliveryInformation',
@@ -46,12 +46,13 @@ class FulfillmentShipmentPackage(object):
         'package_number': 'packageNumber',
         'carrier_code': 'carrierCode',
         'tracking_number': 'trackingNumber',
+        'amazon_fulfillment_tracking_number': 'amazonFulfillmentTrackingNumber',
         'estimated_arrival_date': 'estimatedArrivalDate',
         'locker_details': 'lockerDetails',
         'delivery_information': 'deliveryInformation',
     }
 
-    def __init__(self, package_number=None, carrier_code=None, tracking_number=None, estimated_arrival_date=None, locker_details=None, delivery_information=None, _configuration=None):  # noqa: E501
+    def __init__(self, package_number=None, carrier_code=None, tracking_number=None, amazon_fulfillment_tracking_number=None, estimated_arrival_date=None, locker_details=None, delivery_information=None, _configuration=None):  # noqa: E501
         """FulfillmentShipmentPackage - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -60,6 +61,7 @@ class FulfillmentShipmentPackage(object):
         self._package_number = None
         self._carrier_code = None
         self._tracking_number = None
+        self._amazon_fulfillment_tracking_number = None
         self._estimated_arrival_date = None
         self._locker_details = None
         self._delivery_information = None
@@ -69,6 +71,8 @@ class FulfillmentShipmentPackage(object):
         self.carrier_code = carrier_code
         if tracking_number is not None:
             self.tracking_number = tracking_number
+        if amazon_fulfillment_tracking_number is not None:
+            self.amazon_fulfillment_tracking_number = amazon_fulfillment_tracking_number
         if estimated_arrival_date is not None:
             self.estimated_arrival_date = estimated_arrival_date
         if locker_details is not None:
@@ -148,6 +152,29 @@ class FulfillmentShipmentPackage(object):
         """
 
         self._tracking_number = tracking_number
+
+    @property
+    def amazon_fulfillment_tracking_number(self):
+        """Gets the amazon_fulfillment_tracking_number of this FulfillmentShipmentPackage.  # noqa: E501
+
+        The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.  # noqa: E501
+
+        :return: The amazon_fulfillment_tracking_number of this FulfillmentShipmentPackage.  # noqa: E501
+        :rtype: str
+        """
+        return self._amazon_fulfillment_tracking_number
+
+    @amazon_fulfillment_tracking_number.setter
+    def amazon_fulfillment_tracking_number(self, amazon_fulfillment_tracking_number):
+        """Sets the amazon_fulfillment_tracking_number of this FulfillmentShipmentPackage.
+
+        The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.  # noqa: E501
+
+        :param amazon_fulfillment_tracking_number: The amazon_fulfillment_tracking_number of this FulfillmentShipmentPackage.  # noqa: E501
+        :type: str
+        """
+
+        self._amazon_fulfillment_tracking_number = amazon_fulfillment_tracking_number
 
     @property
     def estimated_arrival_date(self):

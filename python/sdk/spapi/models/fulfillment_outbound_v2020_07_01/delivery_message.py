@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -85,7 +84,7 @@ class DeliveryMessage(object):
     def locale(self):
         """Gets the locale of this DeliveryMessage.  # noqa: E501
 
-        The locale for the message (for example, en_US).  # noqa: E501
+        The locale for the message (e.g., `en_US`).  # noqa: E501
 
         :return: The locale of this DeliveryMessage.  # noqa: E501
         :rtype: str
@@ -96,7 +95,7 @@ class DeliveryMessage(object):
     def locale(self, locale):
         """Sets the locale of this DeliveryMessage.
 
-        The locale for the message (for example, en_US).  # noqa: E501
+        The locale for the message (e.g., `en_US`).  # noqa: E501
 
         :param locale: The locale of this DeliveryMessage.  # noqa: E501
         :type: str

@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -62,6 +61,7 @@ class Points(object):
     def points_number(self):
         """Gets the points_number of this Points.  # noqa: E501
 
+        The number of Amazon Points  # noqa: E501
 
         :return: The points_number of this Points.  # noqa: E501
         :rtype: int
@@ -72,6 +72,7 @@ class Points(object):
     def points_number(self, points_number):
         """Sets the points_number of this Points.
 
+        The number of Amazon Points  # noqa: E501
 
         :param points_number: The points_number of this Points.  # noqa: E501
         :type: int

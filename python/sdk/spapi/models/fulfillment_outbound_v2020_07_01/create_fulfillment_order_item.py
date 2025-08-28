@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -122,7 +121,7 @@ class CreateFulfillmentOrderItem(object):
     def seller_fulfillment_order_item_id(self):
         """Gets the seller_fulfillment_order_item_id of this CreateFulfillmentOrderItem.  # noqa: E501
 
-        A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `SellerSKU`. For example, the seller might assign different `SellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `SellerSKU` but have different `GiftMessage` values.  # noqa: E501
+        A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `sellerSku` value. For example, the seller might assign different `sellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `sellerSku` value but have different `giftMessage` values.  # noqa: E501
 
         :return: The seller_fulfillment_order_item_id of this CreateFulfillmentOrderItem.  # noqa: E501
         :rtype: str
@@ -133,7 +132,7 @@ class CreateFulfillmentOrderItem(object):
     def seller_fulfillment_order_item_id(self, seller_fulfillment_order_item_id):
         """Sets the seller_fulfillment_order_item_id of this CreateFulfillmentOrderItem.
 
-        A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `SellerSKU`. For example, the seller might assign different `SellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `SellerSKU` but have different `GiftMessage` values.  # noqa: E501
+        A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `sellerSku` value. For example, the seller might assign different `sellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `sellerSku` value but have different `giftMessage` values.  # noqa: E501
 
         :param seller_fulfillment_order_item_id: The seller_fulfillment_order_item_id of this CreateFulfillmentOrderItem.  # noqa: E501
         :type: str

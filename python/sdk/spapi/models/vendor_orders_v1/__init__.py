@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.vendor_orders_v1.acknowledgement_status_details import AcknowledgementStatusDetails
 from spapi.models.vendor_orders_v1.address import Address

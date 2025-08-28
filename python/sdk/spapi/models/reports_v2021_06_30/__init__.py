@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.reports_v2021_06_30.create_report_response import CreateReportResponse
 from spapi.models.reports_v2021_06_30.create_report_schedule_response import CreateReportScheduleResponse

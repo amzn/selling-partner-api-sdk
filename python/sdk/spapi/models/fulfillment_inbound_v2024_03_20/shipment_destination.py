@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -118,7 +117,7 @@ class ShipmentDestination(object):
     def warehouse_id(self):
         """Gets the warehouse_id of this ShipmentDestination.  # noqa: E501
 
-        The warehouse that the shipment should be sent to. Empty if the destination type is `AMAZON_OPTIMIZED`.  # noqa: E501
+        The warehouse that the shipment should be sent to. This can be empty if the destination type is `AMAZON_OPTIMIZED`.  # noqa: E501
 
         :return: The warehouse_id of this ShipmentDestination.  # noqa: E501
         :rtype: str
@@ -129,7 +128,7 @@ class ShipmentDestination(object):
     def warehouse_id(self, warehouse_id):
         """Sets the warehouse_id of this ShipmentDestination.
 
-        The warehouse that the shipment should be sent to. Empty if the destination type is `AMAZON_OPTIMIZED`.  # noqa: E501
+        The warehouse that the shipment should be sent to. This can be empty if the destination type is `AMAZON_OPTIMIZED`.  # noqa: E501
 
         :param warehouse_id: The warehouse_id of this ShipmentDestination.  # noqa: E501
         :type: str
