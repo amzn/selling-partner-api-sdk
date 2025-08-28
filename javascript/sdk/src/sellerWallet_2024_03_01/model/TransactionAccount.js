@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -25,13 +25,11 @@ export class TransactionAccount {
    * Details of the bank account involved in the transaction.
    * @alias module:sellerWallet_2024_03_01/model/TransactionAccount
    * @class
-   * @param bankAccountHolderName {String} BankAccount holder's name
    * @param bankName {String} The name of the bank
    * @param bankAccountNumberFormat {BankAccountNumberFormat}
    * @param bankAccountCurrency {String} The currency code in ISO 4217 format
    */
-  constructor (bankAccountHolderName, bankName, bankAccountNumberFormat, bankAccountCurrency) {
-    this.bankAccountHolderName = bankAccountHolderName
+  constructor (bankName, bankAccountNumberFormat, bankAccountCurrency) {
     this.bankName = bankName
     this.bankAccountNumberFormat = bankAccountNumberFormat
     this.bankAccountCurrency = bankAccountCurrency

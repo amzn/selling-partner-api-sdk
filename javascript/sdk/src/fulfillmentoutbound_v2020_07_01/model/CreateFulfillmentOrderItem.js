@@ -26,7 +26,7 @@ export class CreateFulfillmentOrderItem {
    * @alias module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderItem
    * @class
    * @param sellerSku {String} The seller SKU of the item.
-   * @param sellerFulfillmentOrderItemId {String} A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `SellerSKU`. For example, the seller might assign different `SellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `SellerSKU` but have different `GiftMessage` values.
+   * @param sellerFulfillmentOrderItemId {String} A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `sellerSku` value. For example, the seller might assign different `sellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `sellerSku` value but have different `giftMessage` values.
    * @param quantity {Number} The item quantity.
    */
   constructor (sellerSku, sellerFulfillmentOrderItemId, quantity) {
@@ -78,7 +78,7 @@ export class CreateFulfillmentOrderItem {
 CreateFulfillmentOrderItem.prototype.sellerSku = undefined
 
 /**
- * A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `SellerSKU`. For example, the seller might assign different `SellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `SellerSKU` but have different `GiftMessage` values.
+ * A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same `sellerSku` value. For example, the seller might assign different `sellerFulfillmentOrderItemId` values to two items in a fulfillment order that share the same `sellerSku` value but have different `giftMessage` values.
  * @member {String} sellerFulfillmentOrderItemId
  * @type {String}
  */

@@ -76,7 +76,7 @@ ReasonCodeDetails.prototype.returnReasonCode = undefined
 ReasonCodeDetails.prototype.description = undefined
 
 /**
- * A translation of the description. The translation is in the language specified in the Language request parameter.
+ * A translation of the description. The translation is in the language specified in the `language` request parameter.
  * @member {String} translatedDescription
  * @type {String}
  */

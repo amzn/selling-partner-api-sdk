@@ -28,7 +28,7 @@ export class Item {
    * @param asin {String} The Amazon Standard Identification Number (ASIN) of the item.
    * @param fnsku {String} A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
    * @param labelOwner {String} Specifies who will label the items. Options include `AMAZON`, `SELLER`, and `NONE`.
-   * @param msku {String} The merchant SKU, a merchant-supplied identifier of a specific SKU.
+   * @param msku {String} The merchant-defined SKU ID.
    * @param prepInstructions {[PrepInstruction]} Special preparations that are required for an item.
    * @param quantity {Number} The number of the specified MSKU.
    */
@@ -111,7 +111,7 @@ Item.prototype.labelOwner = undefined
 Item.prototype.manufacturingLotCode = undefined
 
 /**
- * The merchant SKU, a merchant-supplied identifier of a specific SKU.
+ * The merchant-defined SKU ID.
  * @member {String} msku
  * @type {String}
  */

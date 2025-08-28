@@ -27,7 +27,7 @@ import { ReturnItem } from './ReturnItem.js'
 export class GetFulfillmentOrderResult {
   /**
    * Constructs a new <code>GetFulfillmentOrderResult</code>.
-   * The request for the getFulfillmentOrder operation.
+   * The request for the &#x60;getFulfillmentOrder&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFulfillmentOrderResult
    * @class
    * @param fulfillmentOrder {FulfillmentOrder}

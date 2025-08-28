@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -70,9 +70,10 @@ export class TransferPreviewApi {
      * @param {String} destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166 standard format.
      * @param {String} destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country.
      * @param {Number} baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<TransferRatePreview>}
      */
-  getTransferPreviewWithHttpInfo (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {
+  getTransferPreviewWithHttpInfo (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount, marketplaceId) {
     const postBody = null
 
     // verify the required parameter 'sourceCountryCode' is set
@@ -100,6 +101,11 @@ export class TransferPreviewApi {
       throw new Error("Missing the required parameter 'baseAmount' when calling getTransferPreview")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling getTransferPreview")
+    }
+
     const pathParams = {
     }
     const queryParams = {
@@ -107,7 +113,8 @@ export class TransferPreviewApi {
       sourceCurrencyCode,
       destinationCountryCode,
       destinationCurrencyCode,
-      baseAmount
+      baseAmount,
+      marketplaceId
     }
     const headerParams = {
     }
@@ -133,10 +140,11 @@ export class TransferPreviewApi {
      * @param {String} destinationCountryCode Represents 2 character country code of destination transaction account in ISO 3166 standard format.
      * @param {String} destinationCurrencyCode Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country.
      * @param {Number} baseAmount Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<TransferRatePreview>}
      */
-  getTransferPreview (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount) {
-    return this.getTransferPreviewWithHttpInfo(sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount)
+  getTransferPreview (sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount, marketplaceId) {
+    return this.getTransferPreviewWithHttpInfo(sourceCountryCode, sourceCurrencyCode, destinationCountryCode, destinationCurrencyCode, baseAmount, marketplaceId)
       .then(function (response_and_data) {
         return response_and_data.data
       })

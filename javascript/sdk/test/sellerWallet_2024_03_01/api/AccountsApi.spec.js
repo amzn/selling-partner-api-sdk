@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -16,7 +16,7 @@ import sinon from 'sinon';
 import { join } from 'path';
 
 const modulePath = join(process.cwd(), 'src', 'sellerWallet_2024_03_01', 'index.js');
-const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi = await import(modulePath);
+const TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide = await import(modulePath);
 
 let instance;
 let sandbox;
@@ -43,7 +43,7 @@ function generateMockData(dataType, isArray = false) {
       return new Date().toISOString();
     default:
       try {
-        const ModelClass = TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi[dataType];
+        const ModelClass = TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide[dataType];
         if (ModelClass) {
           const instance = Object.create(ModelClass.prototype);
           return instance;
@@ -59,7 +59,8 @@ function generateMockData(dataType, isArray = false) {
 // Generate mock requests and responses for each operation
 const mockgetAccountData = {
   request: {
-    'accountId': generateMockData('String')
+    'accountId': generateMockData('String'),
+    'marketplaceId': generateMockData('String')
   },
   response: {
     data: generateMockData('BankAccount'),
@@ -69,7 +70,8 @@ const mockgetAccountData = {
 };
 const mocklistAccountBalancesData = {
   request: {
-    'accountId': generateMockData('String')
+    'accountId': generateMockData('String'),
+    'marketplaceId': generateMockData('String')
   },
   response: {
     data: generateMockData('BalanceListing'),
@@ -91,10 +93,10 @@ const mocklistAccountsData = {
 describe('AccountsApi', () => {
   beforeEach(() => {
     sandbox = sinon.createSandbox();
-    const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient(testEndpoint);
+    const apiClientInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient(testEndpoint);
     apiClientInstance.applyXAmzAccessTokenToRequest(testAccessToken);
     sandbox.stub(apiClientInstance, 'callApi');
-    instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.AccountsApi(apiClientInstance);
+    instance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.AccountsApi(apiClientInstance);
   });
 
   afterEach(() => {
@@ -106,11 +108,12 @@ describe('AccountsApi', () => {
       instance.apiClient.callApi.resolves(mockgetAccountData.response);
 
       const params = [
-        mockgetAccountData.request['accountId']
+        mockgetAccountData.request['accountId'],
+        mockgetAccountData.request['marketplaceId']
       ];
       const data = await instance.getAccount(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.BankAccount).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.BankAccount).to.be.true;
       expect(data).to.equal(mockgetAccountData.response.data);
     });
 
@@ -118,7 +121,8 @@ describe('AccountsApi', () => {
       instance.apiClient.callApi.resolves(mockgetAccountData.response);
 
       const params = [
-        mockgetAccountData.request['accountId']
+        mockgetAccountData.request['accountId'],
+        mockgetAccountData.request['marketplaceId']
       ];
       const response = await instance.getAccountWithHttpInfo(...params);
 
@@ -139,7 +143,8 @@ describe('AccountsApi', () => {
 
       try {
         const params = [
-          mockgetAccountData.request['accountId']
+          mockgetAccountData.request['accountId'],
+          mockgetAccountData.request['marketplaceId']
         ];
         await instance.getAccount(...params);
         throw new Error('Expected error to be thrown');
@@ -154,11 +159,12 @@ describe('AccountsApi', () => {
       instance.apiClient.callApi.resolves(mocklistAccountBalancesData.response);
 
       const params = [
-        mocklistAccountBalancesData.request['accountId']
+        mocklistAccountBalancesData.request['accountId'],
+        mocklistAccountBalancesData.request['marketplaceId']
       ];
       const data = await instance.listAccountBalances(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.BalanceListing).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.BalanceListing).to.be.true;
       expect(data).to.equal(mocklistAccountBalancesData.response.data);
     });
 
@@ -166,7 +172,8 @@ describe('AccountsApi', () => {
       instance.apiClient.callApi.resolves(mocklistAccountBalancesData.response);
 
       const params = [
-        mocklistAccountBalancesData.request['accountId']
+        mocklistAccountBalancesData.request['accountId'],
+        mocklistAccountBalancesData.request['marketplaceId']
       ];
       const response = await instance.listAccountBalancesWithHttpInfo(...params);
 
@@ -187,7 +194,8 @@ describe('AccountsApi', () => {
 
       try {
         const params = [
-          mocklistAccountBalancesData.request['accountId']
+          mocklistAccountBalancesData.request['accountId'],
+          mocklistAccountBalancesData.request['marketplaceId']
         ];
         await instance.listAccountBalances(...params);
         throw new Error('Expected error to be thrown');
@@ -206,7 +214,7 @@ describe('AccountsApi', () => {
       ];
       const data = await instance.listAccounts(...params);
 
-      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.BankAccountListing).to.be.true;
+      expect(data instanceof TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.BankAccountListing).to.be.true;
       expect(data).to.equal(mocklistAccountsData.response.data);
     });
 
@@ -248,13 +256,13 @@ describe('AccountsApi', () => {
 
   describe('constructor', () => {
     it('should use default ApiClient when none provided', () => {
-      const defaultInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.AccountsApi();
-      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient.instance);
+      const defaultInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.AccountsApi();
+      expect(defaultInstance.apiClient).to.equal(TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient.instance);
     });
 
     it('should use provided ApiClient', () => {
-      const customClient = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.ApiClient();
-      const customInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApi.AccountsApi(customClient);
+      const customClient = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.ApiClient();
+      const customInstance = new TheSellingPartnerApiForAmazonSellerWalletOpenBankingApiSpecForMoreInformationReferToTheSellerWalletOpenBankingApiUseCaseGuideDocSellerWalletOpenBankingApiV20240301UseCaseGuide.AccountsApi(customClient);
       expect(customInstance.apiClient).to.equal(customClient);
     });
   });

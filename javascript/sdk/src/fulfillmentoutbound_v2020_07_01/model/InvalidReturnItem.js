@@ -25,7 +25,7 @@ export class InvalidReturnItem {
    * An item that is invalid for return.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/InvalidReturnItem
    * @class
-   * @param sellerReturnItemId {String} An identifier assigned by the seller to the return item.
+   * @param sellerReturnItemId {String} An identifier the seller assigns to the return item.
    * @param sellerFulfillmentOrderItemId {String} The identifier assigned to the item by the seller when the fulfillment order was created.
    * @param invalidItemReason {InvalidItemReason}
    */
@@ -65,7 +65,7 @@ export class InvalidReturnItem {
 }
 
 /**
- * An identifier assigned by the seller to the return item.
+ * An identifier the seller assigns to the return item.
  * @member {String} sellerReturnItemId
  * @type {String}
  */

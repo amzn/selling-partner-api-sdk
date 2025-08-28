@@ -22,6 +22,7 @@ import { MoneyType } from './MoneyType.js'
 export class Points {
   /**
    * Constructs a new <code>Points</code>.
+   * The number of Amazon Points offered with the purchase of an item.The Amazon Points program is only available in Japan.
    * @alias module:productfees_v0/model/Points
    * @class
    */
@@ -57,6 +58,7 @@ export class Points {
 }
 
 /**
+ * The number of Amazon Points
  * @member {Number} pointsNumber
  * @type {Number}
  */

@@ -22,7 +22,7 @@ import { FeatureSku } from './FeatureSku.js'
 export class GetFeatureInventoryResult {
   /**
    * Constructs a new <code>GetFeatureInventoryResult</code>.
-   * The payload for the &#x60;getEligibileInventory&#x60; operation.
+   * The payload for the &#x60;getEligibleInventory&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetFeatureInventoryResult
    * @class
    * @param marketplaceId {String} The requested marketplace.

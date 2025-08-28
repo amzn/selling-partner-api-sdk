@@ -34,8 +34,8 @@ export class CreateFulfillmentOrderRequest {
    * The request body schema for the &#x60;createFulfillmentOrder&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/CreateFulfillmentOrderRequest
    * @class
-   * @param sellerFulfillmentOrderId {String} A fulfillment order identifier that the seller creates to track their fulfillment order. The `SellerFulfillmentOrderId` must be unique for each fulfillment order that a seller creates. If the seller's system already creates unique order identifiers, then these might be good values for them to use.
-   * @param displayableOrderId {String} A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of `DisplayableOrderId` should match the order identifier that the seller provides to the recipient. The seller can use the `SellerFulfillmentOrderId` for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.  The value must be an alpha-numeric or ISO 8859-1 compliant string from one to 40 characters in length. Cannot contain two spaces in a row. Leading and trailing white space is removed.
+   * @param sellerFulfillmentOrderId {String} A fulfillment order identifier that the seller creates to track their fulfillment order. The `sellerFulfillmentOrderId` must be unique for each fulfillment order that a seller creates. If the seller's system already creates unique order identifiers, then these might be good values for them to use.
+   * @param displayableOrderId {String} A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of `displayableOrderId` should match the order identifier that the seller provides to the recipient. The seller can use the SellerFulfillmentOrderId for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.  The value must be an alpha-numeric or ISO 8859-1 compliant string from one to 40 characters in length. Cannot contain two spaces in a row. Leading and trailing white space is removed.
    * @param displayableOrderDate {Date} Date timestamp
    * @param displayableOrderComment {String} Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.
    * @param shippingSpeedCategory {ShippingSpeedCategory}
@@ -103,14 +103,14 @@ export class CreateFulfillmentOrderRequest {
 CreateFulfillmentOrderRequest.prototype.marketplaceId = undefined
 
 /**
- * A fulfillment order identifier that the seller creates to track their fulfillment order. The `SellerFulfillmentOrderId` must be unique for each fulfillment order that a seller creates. If the seller's system already creates unique order identifiers, then these might be good values for them to use.
+ * A fulfillment order identifier that the seller creates to track their fulfillment order. The `sellerFulfillmentOrderId` must be unique for each fulfillment order that a seller creates. If the seller's system already creates unique order identifiers, then these might be good values for them to use.
  * @member {String} sellerFulfillmentOrderId
  * @type {String}
  */
 CreateFulfillmentOrderRequest.prototype.sellerFulfillmentOrderId = undefined
 
 /**
- * A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of `DisplayableOrderId` should match the order identifier that the seller provides to the recipient. The seller can use the `SellerFulfillmentOrderId` for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.  The value must be an alpha-numeric or ISO 8859-1 compliant string from one to 40 characters in length. Cannot contain two spaces in a row. Leading and trailing white space is removed.
+ * A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of `displayableOrderId` should match the order identifier that the seller provides to the recipient. The seller can use the SellerFulfillmentOrderId for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.  The value must be an alpha-numeric or ISO 8859-1 compliant string from one to 40 characters in length. Cannot contain two spaces in a row. Leading and trailing white space is removed.
  * @member {String} displayableOrderId
  * @type {String}
  */

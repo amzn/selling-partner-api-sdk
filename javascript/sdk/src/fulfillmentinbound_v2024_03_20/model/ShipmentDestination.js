@@ -74,7 +74,7 @@ ShipmentDestination.prototype.address = undefined
 ShipmentDestination.prototype.destinationType = undefined
 
 /**
- * The warehouse that the shipment should be sent to. Empty if the destination type is `AMAZON_OPTIMIZED`.
+ * The warehouse that the shipment should be sent to. This can be empty if the destination type is `AMAZON_OPTIMIZED`.
  * @member {String} warehouseId
  * @type {String}
  */

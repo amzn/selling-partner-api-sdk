@@ -19,6 +19,8 @@ import { AppointmentSlot } from './model/AppointmentSlot.js'
 import { AppointmentSlotTime } from './model/AppointmentSlotTime.js'
 import { Box } from './model/Box.js'
 import { BoxContentInformationSource } from './model/BoxContentInformationSource.js'
+import { BoxIdentifierInput } from './model/BoxIdentifierInput.js'
+import { BoxIdentifierType } from './model/BoxIdentifierType.js'
 import { BoxInput } from './model/BoxInput.js'
 import { BoxRequirements } from './model/BoxRequirements.js'
 import { BoxUpdateInput } from './model/BoxUpdateInput.js'
@@ -140,6 +142,8 @@ import { TransportationOption } from './model/TransportationOption.js'
 import { TransportationSelection } from './model/TransportationSelection.js'
 import { UnitOfMeasurement } from './model/UnitOfMeasurement.js'
 import { UnitOfWeight } from './model/UnitOfWeight.js'
+import { UpdateBoxIdentifiersRequest } from './model/UpdateBoxIdentifiersRequest.js'
+import { UpdateBoxIdentifiersResponse } from './model/UpdateBoxIdentifiersResponse.js'
 import { UpdateInboundPlanNameRequest } from './model/UpdateInboundPlanNameRequest.js'
 import { UpdateItemComplianceDetailsRequest } from './model/UpdateItemComplianceDetailsRequest.js'
 import { UpdateItemComplianceDetailsResponse } from './model/UpdateItemComplianceDetailsResponse.js'
@@ -208,6 +212,18 @@ export {
      * @property {module:fulfillmentinbound_v2024_03_20/model/BoxContentInformationSource}
      */
   BoxContentInformationSource,
+
+  /**
+     * The BoxIdentifierInput model constructor.
+     * @property {module:fulfillmentinbound_v2024_03_20/model/BoxIdentifierInput}
+     */
+  BoxIdentifierInput,
+
+  /**
+     * The BoxIdentifierType model constructor.
+     * @property {module:fulfillmentinbound_v2024_03_20/model/BoxIdentifierType}
+     */
+  BoxIdentifierType,
 
   /**
      * The BoxInput model constructor.
@@ -934,6 +950,18 @@ export {
      * @property {module:fulfillmentinbound_v2024_03_20/model/UnitOfWeight}
      */
   UnitOfWeight,
+
+  /**
+     * The UpdateBoxIdentifiersRequest model constructor.
+     * @property {module:fulfillmentinbound_v2024_03_20/model/UpdateBoxIdentifiersRequest}
+     */
+  UpdateBoxIdentifiersRequest,
+
+  /**
+     * The UpdateBoxIdentifiersResponse model constructor.
+     * @property {module:fulfillmentinbound_v2024_03_20/model/UpdateBoxIdentifiersResponse}
+     */
+  UpdateBoxIdentifiersResponse,
 
   /**
      * The UpdateInboundPlanNameRequest model constructor.

@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -29,14 +29,12 @@ export class TransactionInitiationRequest {
    * @alias module:sellerWallet_2024_03_01/model/TransactionInitiationRequest
    * @class
    * @param sourceAccountId {String} The unique identifier of the source Amazon SW bank account from where the money needs to be debited
-   * @param description {String} Optional field to specify description for the transaction
    * @param destinationTransactionInstrument {TransactionInstrumentDetails}
    * @param sourceAmount {Currency}
    * @param requestTime {Date} The transaction initiation request time in date-time format
    */
-  constructor (sourceAccountId, description, destinationTransactionInstrument, sourceAmount, requestTime) {
+  constructor (sourceAccountId, destinationTransactionInstrument, sourceAmount, requestTime) {
     this.sourceAccountId = sourceAccountId
-    this.description = description
     this.destinationTransactionInstrument = destinationTransactionInstrument
     this.sourceAmount = sourceAmount
     this.requestTime = requestTime
@@ -65,8 +63,9 @@ export class TransactionInitiationRequest {
       obj = obj || new TransactionInitiationRequest()
       if (data.hasOwnProperty('sourceAccountId')) { obj.sourceAccountId = ApiClient.convertToType(data.sourceAccountId, 'String') }
       if (data.hasOwnProperty('destinationAccountId')) { obj.destinationAccountId = ApiClient.convertToType(data.destinationAccountId, 'String') }
-      if (data.hasOwnProperty('description')) { obj.description = ApiClient.convertToType(data.description, 'String') }
       if (data.hasOwnProperty('destinationTransactionInstrument')) { obj.destinationTransactionInstrument = TransactionInstrumentDetails.constructFromObject(data.destinationTransactionInstrument) }
+      if (data.hasOwnProperty('transactionDescription')) { obj.transactionDescription = ApiClient.convertToType(data.transactionDescription, 'String') }
+      if (data.hasOwnProperty('customerPaymentReference')) { obj.customerPaymentReference = ApiClient.convertToType(data.customerPaymentReference, 'String') }
       if (data.hasOwnProperty('destinationAccountHolderAddress')) { obj.destinationAccountHolderAddress = AccountHolderAddress.constructFromObject(data.destinationAccountHolderAddress) }
       if (data.hasOwnProperty('sourceAmount')) { obj.sourceAmount = Currency.constructFromObject(data.sourceAmount) }
       if (data.hasOwnProperty('transferRateDetails')) { obj.transferRateDetails = TransferRatePreview.constructFromObject(data.transferRateDetails) }
@@ -91,17 +90,24 @@ TransactionInitiationRequest.prototype.sourceAccountId = undefined
 TransactionInitiationRequest.prototype.destinationAccountId = undefined
 
 /**
- * Optional field to specify description for the transaction
- * @member {String} description
- * @type {String}
- */
-TransactionInitiationRequest.prototype.description = undefined
-
-/**
  * @member {TransactionInstrumentDetails} destinationTransactionInstrument
  * @type {TransactionInstrumentDetails}
  */
 TransactionInitiationRequest.prototype.destinationTransactionInstrument = undefined
+
+/**
+ * A description of the transaction.
+ * @member {String} transactionDescription
+ * @type {String}
+ */
+TransactionInitiationRequest.prototype.transactionDescription = undefined
+
+/**
+ * If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.
+ * @member {String} customerPaymentReference
+ * @type {String}
+ */
+TransactionInitiationRequest.prototype.customerPaymentReference = undefined
 
 /**
  * @member {AccountHolderAddress} destinationAccountHolderAddress

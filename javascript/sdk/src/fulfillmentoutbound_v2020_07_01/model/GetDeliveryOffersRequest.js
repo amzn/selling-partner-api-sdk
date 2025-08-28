@@ -23,7 +23,7 @@ import { GetDeliveryOffersTerms } from './GetDeliveryOffersTerms.js'
 export class GetDeliveryOffersRequest {
   /**
    * Constructs a new <code>GetDeliveryOffersRequest</code>.
-   * The request body schema for the getDeliveryOffers operation.
+   * The request body schema for the &#x60;getDeliveryOffers&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/GetDeliveryOffersRequest
    * @class
    * @param product {GetDeliveryOffersProduct}

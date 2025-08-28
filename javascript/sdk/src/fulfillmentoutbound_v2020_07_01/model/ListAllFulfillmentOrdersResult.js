@@ -22,7 +22,7 @@ import { FulfillmentOrder } from './FulfillmentOrder.js'
 export class ListAllFulfillmentOrdersResult {
   /**
    * Constructs a new <code>ListAllFulfillmentOrdersResult</code>.
-   * The request for the listAllFulfillmentOrders operation.
+   * The request for the &#x60;listAllFulfillmentOrders&#x60; operation.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/ListAllFulfillmentOrdersResult
    * @class
    */

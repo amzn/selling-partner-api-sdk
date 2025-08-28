@@ -72,7 +72,7 @@ SpdTrackingItem.prototype.boxId = undefined
 SpdTrackingItem.prototype.trackingId = undefined
 
 /**
- * Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet 'VALIDATED', please verify the number and update if necessary. Possible values: `VALIDATED`, `NOT_VALIDATED`.
+ * Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet 'VALIDATED' or `NOT_SUPPORTED`, verify the number and update it if necessary. **Possible values:** `VALIDATED`, `NOT_VALIDATED`, `NOT_SUPPORTED` (Amazon is unable to find tracking information for the provided tracking ID).
  * @member {String} trackingNumberValidationStatus
  * @type {String}
  */

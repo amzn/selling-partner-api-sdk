@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -28,7 +28,6 @@ export class BankAccount {
    * Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not including account_links, short cut links to the account balance and transactions -&gt; since not mandatory
    * @alias module:sellerWallet_2024_03_01/model/BankAccount
    * @class
-   * @param accountHolderName {String} BankAccount holder's name (expected to be Amazon customer)
    * @param bankAccountNumberFormat {BankAccountNumberFormat}
    * @param bankAccountOwnershipType {BankAccountOwnershipType}
    * @param routingNumber {String} Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,
@@ -37,8 +36,7 @@ export class BankAccount {
    * @param accountCurrency {String} BankAccount currency code in ISO 4217 format
    * @param bankAccountNumberTail {String} Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
    */
-  constructor (accountHolderName, bankAccountNumberFormat, bankAccountOwnershipType, routingNumber, bankNumberFormat, accountCountryCode, accountCurrency, bankAccountNumberTail) {
-    this.accountHolderName = accountHolderName
+  constructor (bankAccountNumberFormat, bankAccountOwnershipType, routingNumber, bankNumberFormat, accountCountryCode, accountCurrency, bankAccountNumberTail) {
     this.bankAccountNumberFormat = bankAccountNumberFormat
     this.bankAccountOwnershipType = bankAccountOwnershipType
     this.routingNumber = routingNumber

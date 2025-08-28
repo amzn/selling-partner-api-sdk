@@ -1,5 +1,5 @@
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * The version of the OpenAPI document: 2024-03-01
@@ -74,10 +74,11 @@ export class TransferScheduleApi {
      * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {TransferScheduleRequest} body Defines the actual payload of the request
      * @return {Promise<TransferSchedule>}
      */
-  createTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
+  createTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
     const postBody = body
 
     // verify the required parameter 'destAccountDigitalSignature' is set
@@ -90,6 +91,11 @@ export class TransferScheduleApi {
       throw new Error("Missing the required parameter 'amountDigitalSignature' when calling createTransferSchedule")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling createTransferSchedule")
+    }
+
     // verify the required parameter 'body' is set
     if (body === undefined || body === null) {
       throw new Error("Missing the required parameter 'body' when calling createTransferSchedule")
@@ -98,6 +104,7 @@ export class TransferScheduleApi {
     const pathParams = {
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
       destAccountDigitalSignature,
@@ -122,23 +129,25 @@ export class TransferScheduleApi {
      * Create a transfer schedule request from a Seller Wallet account to another customer-provided account.
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {TransferScheduleRequest} body Defines the actual payload of the request
      * @return {Promise<TransferSchedule>}
      */
-  createTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, body) {
-    return this.createTransferScheduleWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, body)
+  createTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
+    return this.createTransferScheduleWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body)
       .then(function (response_and_data) {
         return response_and_data.data
       })
   }
 
   /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
-     * Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
-     * @param {String} transferScheduleId A unique reference id for a scheduled transfer
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.
+     * @param {String} transferScheduleId A unique reference ID for a scheduled transfer.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<DeleteTransferSchedule>}
      */
-  deleteScheduleTransactionWithHttpInfo (transferScheduleId) {
+  deleteScheduleTransactionWithHttpInfo (transferScheduleId, marketplaceId) {
     const postBody = null
 
     // verify the required parameter 'transferScheduleId' is set
@@ -146,10 +155,16 @@ export class TransferScheduleApi {
       throw new Error("Missing the required parameter 'transferScheduleId' when calling deleteScheduleTransaction")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling deleteScheduleTransaction")
+    }
+
     const pathParams = {
       transferScheduleId
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
     }
@@ -161,32 +176,34 @@ export class TransferScheduleApi {
     const returnType = DeleteTransferSchedule
 
     return this.apiClient.callApi('TransferScheduleApi-deleteScheduleTransaction',
-      '/finances/transfers/wallet/2024-03-01/transferSchedules', 'DELETE',
+      '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'DELETE',
       pathParams, queryParams, headerParams, formParams, postBody,
       contentTypes, accepts, returnType, this.getRateLimiter('TransferScheduleApi-deleteScheduleTransaction')
     )
   }
 
   /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
-     * Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
-     * @param {String} transferScheduleId A unique reference id for a scheduled transfer
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.
+     * @param {String} transferScheduleId A unique reference ID for a scheduled transfer.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<DeleteTransferSchedule>}
      */
-  deleteScheduleTransaction (transferScheduleId) {
-    return this.deleteScheduleTransactionWithHttpInfo(transferScheduleId)
+  deleteScheduleTransaction (transferScheduleId, marketplaceId) {
+    return this.deleteScheduleTransactionWithHttpInfo(transferScheduleId, marketplaceId)
       .then(function (response_and_data) {
         return response_and_data.data
       })
   }
 
   /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
-     * Find a particular Seller Wallet account transfer schedule.
-     * @param {String} transferScheduleId Schedule ID of the Amazon SW transfer
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * Find a particular Amazon Seller Wallet account transfer schedule.
+     * @param {String} transferScheduleId The schedule ID of the Amazon Seller Wallet transfer.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<TransferSchedule>}
      */
-  getTransferScheduleWithHttpInfo (transferScheduleId) {
+  getTransferScheduleWithHttpInfo (transferScheduleId, marketplaceId) {
     const postBody = null
 
     // verify the required parameter 'transferScheduleId' is set
@@ -194,10 +211,16 @@ export class TransferScheduleApi {
       throw new Error("Missing the required parameter 'transferScheduleId' when calling getTransferSchedule")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling getTransferSchedule")
+    }
+
     const pathParams = {
       transferScheduleId
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
     }
@@ -216,13 +239,14 @@ export class TransferScheduleApi {
   }
 
   /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier
-     * Find a particular Seller Wallet account transfer schedule.
-     * @param {String} transferScheduleId Schedule ID of the Amazon SW transfer
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * Find a particular Amazon Seller Wallet account transfer schedule.
+     * @param {String} transferScheduleId The schedule ID of the Amazon Seller Wallet transfer.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @return {Promise<TransferSchedule>}
      */
-  getTransferSchedule (transferScheduleId) {
-    return this.getTransferScheduleWithHttpInfo(transferScheduleId)
+  getTransferSchedule (transferScheduleId, marketplaceId) {
+    return this.getTransferScheduleWithHttpInfo(transferScheduleId, marketplaceId)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -232,11 +256,12 @@ export class TransferScheduleApi {
      * The API will return all the transfer schedules for a given Amazon SW account
      * Retrieve transfer schedules of a Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransferScheduleListing>}
      */
-  listTransferSchedulesWithHttpInfo (accountId, opts) {
+  listTransferSchedulesWithHttpInfo (accountId, marketplaceId, opts) {
     opts = opts || {}
     const postBody = null
 
@@ -245,10 +270,16 @@ export class TransferScheduleApi {
       throw new Error("Missing the required parameter 'accountId' when calling listTransferSchedules")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling listTransferSchedules")
+    }
+
     const pathParams = {
     }
     const queryParams = {
       accountId,
+      marketplaceId,
       nextPageToken: opts.nextPageToken
     }
     const headerParams = {
@@ -271,12 +302,13 @@ export class TransferScheduleApi {
      * The API will return all the transfer schedules for a given Amazon SW account
      * Retrieve transfer schedules of a Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {Object} opts Optional parameters
      * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
      * @return {Promise<TransferScheduleListing>}
      */
-  listTransferSchedules (accountId, opts) {
-    return this.listTransferSchedulesWithHttpInfo(accountId, opts)
+  listTransferSchedules (accountId, marketplaceId, opts) {
+    return this.listTransferSchedulesWithHttpInfo(accountId, marketplaceId, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -287,10 +319,11 @@ export class TransferScheduleApi {
      * Returns a transfer belonging to the updated scheduled transfer request
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {TransferSchedule} body Defines the actual payload of the scheduled transfer request that is to be updated.
      * @return {Promise<TransferSchedule>}
      */
-  updateTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, body) {
+  updateTransferScheduleWithHttpInfo (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
     const postBody = body
 
     // verify the required parameter 'destAccountDigitalSignature' is set
@@ -303,6 +336,11 @@ export class TransferScheduleApi {
       throw new Error("Missing the required parameter 'amountDigitalSignature' when calling updateTransferSchedule")
     }
 
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling updateTransferSchedule")
+    }
+
     // verify the required parameter 'body' is set
     if (body === undefined || body === null) {
       throw new Error("Missing the required parameter 'body' when calling updateTransferSchedule")
@@ -311,6 +349,7 @@ export class TransferScheduleApi {
     const pathParams = {
     }
     const queryParams = {
+      marketplaceId
     }
     const headerParams = {
       destAccountDigitalSignature,
@@ -335,11 +374,12 @@ export class TransferScheduleApi {
      * Returns a transfer belonging to the updated scheduled transfer request
      * @param {String} destAccountDigitalSignature Digital signature for the destination bank account details.
      * @param {String} amountDigitalSignature Digital signature for the source currency transaction amount.
+     * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
      * @param {TransferSchedule} body Defines the actual payload of the scheduled transfer request that is to be updated.
      * @return {Promise<TransferSchedule>}
      */
-  updateTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, body) {
-    return this.updateTransferScheduleWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, body)
+  updateTransferSchedule (destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body) {
+    return this.updateTransferScheduleWithHttpInfo(destAccountDigitalSignature, amountDigitalSignature, marketplaceId, body)
       .then(function (response_and_data) {
         return response_and_data.data
       })

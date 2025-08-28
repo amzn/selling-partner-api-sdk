@@ -21,6 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class MoneyType {
   /**
    * Constructs a new <code>MoneyType</code>.
+   * An object representing a monetary value with its currency information.
    * @alias module:productfees_v0/model/MoneyType
    * @class
    */

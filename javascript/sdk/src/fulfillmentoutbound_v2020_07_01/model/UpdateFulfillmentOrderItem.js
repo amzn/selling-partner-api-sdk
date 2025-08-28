@@ -25,7 +25,7 @@ export class UpdateFulfillmentOrderItem {
    * Item information for updating a fulfillment order.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/UpdateFulfillmentOrderItem
    * @class
-   * @param sellerFulfillmentOrderItemId {String} Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.
+   * @param sellerFulfillmentOrderItemId {String} Identifies the fulfillment order item to update. Created with a previous call to the `createFulfillmentOrder` operation.
    * @param quantity {Number} The item quantity.
    */
   constructor (sellerFulfillmentOrderItemId, quantity) {
@@ -77,7 +77,7 @@ export class UpdateFulfillmentOrderItem {
 UpdateFulfillmentOrderItem.prototype.sellerSku = undefined
 
 /**
- * Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.
+ * Identifies the fulfillment order item to update. Created with a previous call to the `createFulfillmentOrder` operation.
  * @member {String} sellerFulfillmentOrderItemId
  * @type {String}
  */
