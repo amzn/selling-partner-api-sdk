@@ -347,6 +347,9 @@ FbaInboundApi-setPrepDetails:
 FbaInboundApi-getInboundOperationStatus:
   - 5
   - 6
+FbaInboundApi-updateBoxIdentifiers:
+  - 2
+  - 2
 # FBA Outbound API
 FbaOutboundApi-getFulfillmentPreview:
   - 2
