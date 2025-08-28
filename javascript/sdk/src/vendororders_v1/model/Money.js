@@ -102,6 +102,7 @@ Money.UnitOfMeasureEnum = {
      */
   KILOGRAMS: 'KILOGRAMS'
 }
+
 /**
  * The unit of measure for prices of items sold by weight. If this field is absent, the item is sold by eaches.
  * @member {String} unitOfMeasure

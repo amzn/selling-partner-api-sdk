@@ -211,6 +211,7 @@ Measurement.UnitEnum = {
      */
   COUNT: 'COUNT'
 }
+
 /**
  * The unit of measure.
  * @member {String} unit

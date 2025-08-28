@@ -99,6 +99,7 @@ ListingsItemSubmissionResponse.StatusEnum = {
      */
   VALID: 'VALID'
 }
+
 /**
  * The status of the listings item submission.
  * @member {String} status

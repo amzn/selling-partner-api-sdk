@@ -118,6 +118,7 @@ ItemDetails.HandlingCodeEnum = {
      */
   HandleWithCare: 'HandleWithCare'
 }
+
 /**
  * Identification of the instructions on how specified item/carton/pallet should be handled.
  * @member {String} handlingCode

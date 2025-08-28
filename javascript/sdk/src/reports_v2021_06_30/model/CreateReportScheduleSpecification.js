@@ -201,6 +201,7 @@ CreateReportScheduleSpecification.PeriodEnum = {
      */
   P1M: 'P1M'
 }
+
 /**
  * One of a set of predefined <a href='https://developer-docs.amazon.com/sp-api/docs/iso-8601'>ISO 8601</a> periods that specifies how often a report should be created.
  * @member {String} period

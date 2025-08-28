@@ -97,6 +97,7 @@ ContainerIdentification.ContainerIdentificationTypeEnum = {
      */
   CID: 'CID'
 }
+
 /**
  * The container identification type.
  * @member {String} containerIdentificationType

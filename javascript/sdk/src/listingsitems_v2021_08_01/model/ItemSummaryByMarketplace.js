@@ -181,6 +181,7 @@ ItemSummaryByMarketplace.ConditionTypeEnum = {
      */
   club_club: 'club_club'
 }
+
 /**
  * Identifies the condition of the listings item.
  * @member {String} conditionType
@@ -207,6 +208,7 @@ ItemSummaryByMarketplace.StatusEnum = {
      */
   DISCOVERABLE: 'DISCOVERABLE'
 }
+
 /**
  * Statuses that apply to the listings item.
  * @member {[String]} status

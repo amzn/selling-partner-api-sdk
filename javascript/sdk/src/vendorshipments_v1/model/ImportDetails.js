@@ -106,6 +106,7 @@ ImportDetails.MethodOfPaymentEnum = {
      */
   PaidBySeller: 'PaidBySeller'
 }
+
 /**
  * This is used for import purchase orders only. If the recipient requests, this field will contain the shipment method of payment.
  * @member {String} methodOfPayment
@@ -177,6 +178,7 @@ ImportDetails.HandlingInstructionsEnum = {
      */
   HandleWithCare: 'HandleWithCare'
 }
+
 /**
  * Identification of the instructions on how specified item/carton/pallet should be handled.
  * @member {String} handlingInstructions

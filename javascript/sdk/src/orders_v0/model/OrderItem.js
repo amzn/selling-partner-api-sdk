@@ -341,6 +341,7 @@ OrderItem.DeemedResellerCategoryEnum = {
      */
   UOSS: 'UOSS'
 }
+
 /**
  * The category of deemed reseller. This applies to selling partners that are not based in the EU and is used to help them meet the VAT Deemed Reseller tax laws in the EU and UK.
  * @member {String} deemedResellerCategory

@@ -79,6 +79,7 @@ LabelData.LabelFormatEnum = {
      */
   PDF: 'PDF'
 }
+
 /**
  * The format of the label.
  * @member {String} labelFormat

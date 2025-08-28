@@ -101,6 +101,7 @@ OrderStatus.PurchaseOrderStatusEnum = {
      */
   CLOSED: 'CLOSED'
 }
+
 /**
  * The status of the buyer's purchase order for this order.
  * @member {String} purchaseOrderStatus

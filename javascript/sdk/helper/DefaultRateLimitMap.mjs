@@ -120,6 +120,7 @@ export const defaultRateLimitMap = {
   "FbaOutboundApi-getFeatures": [2, 30],
   "FbaOutboundApi-getFeatureInventory": [2, 30],
   "FbaOutboundApi-getFeatureSKU": [2, 30],
+  "FbaOutboundApi-deliveryOfferings": [5, 30],
   "InvoicesApi-getInvoicesAttributes": [1, 1],
   "InvoicesApi-getInvoicesDocument": [1, 1, 60],
   "InvoicesApi-createInvoicesExport": [1, 1, 60],

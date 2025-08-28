@@ -88,6 +88,7 @@ PackingSlip.ContentTypeEnum = {
      */
   'application/pdf': 'application/pdf'
 }
+
 /**
  * The format of the file such as PDF, JPEG etc.
  * @member {String} contentType

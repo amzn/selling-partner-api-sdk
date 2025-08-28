@@ -82,6 +82,7 @@ FeatureSettings.FeatureFulfillmentPolicyEnum = {
      */
   NotRequired: 'NotRequired'
 }
+
 /**
  * Specifies the policy to use when fulfilling an order.
  * @member {String} featureFulfillmentPolicy

@@ -92,6 +92,7 @@ RestrictedResource.MethodEnum = {
      */
   DELETE: 'DELETE'
 }
+
 /**
  * The HTTP method in the restricted resource.
  * @member {String} method

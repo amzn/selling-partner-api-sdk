@@ -109,6 +109,7 @@ Context.StoreNameEnum = {
      */
   AMAZON_HAUL: 'AMAZON_HAUL'
 }
+
 /**
  * The store name associated with the transaction.
  * @member {String} storeName

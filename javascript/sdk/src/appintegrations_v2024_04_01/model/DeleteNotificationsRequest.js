@@ -86,6 +86,7 @@ DeleteNotificationsRequest.DeletionReasonEnum = {
      */
   INCORRECT_RECIPIENT: 'INCORRECT_RECIPIENT'
 }
+
 /**
  * The unique identifier that maps each notification status to a reason code.
  * @member {String} deletionReason

@@ -69,6 +69,7 @@ TaxCollection.ModelEnum = {
      */
   MarketplaceFacilitator: 'MarketplaceFacilitator'
 }
+
 /**
  * The tax collection model applied to the item.
  * @member {String} model
@@ -89,6 +90,7 @@ TaxCollection.ResponsiblePartyEnum = {
      */
   'Amazon Services, Inc.': 'Amazon Services, Inc.'
 }
+
 /**
  * The party responsible for withholding the taxes and remitting them to the taxing authority.
  * @member {String} responsibleParty

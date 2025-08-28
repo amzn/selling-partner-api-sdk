@@ -82,6 +82,7 @@ Link.VerbEnum = {
      */
   GET: 'GET'
 }
+
 /**
  * The HTTP verb used to interact with the related resource.
  * @member {String} verb

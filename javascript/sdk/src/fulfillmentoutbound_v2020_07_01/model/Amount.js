@@ -73,6 +73,7 @@ Amount.UnitOfMeasureEnum = {
      */
   Eaches: 'Eaches'
 }
+
 /**
  * The unit of measure for the amount.
  * @member {String} unitOfMeasure

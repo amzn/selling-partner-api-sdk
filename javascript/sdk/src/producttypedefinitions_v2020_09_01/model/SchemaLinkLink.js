@@ -80,6 +80,7 @@ SchemaLinkLink.VerbEnum = {
      */
   GET: 'GET'
 }
+
 /**
  * HTTP method for the link operation.
  * @member {String} verb

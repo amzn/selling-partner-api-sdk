@@ -130,6 +130,7 @@ Account.BusinessTypeEnum = {
      */
   INDIVIDUAL: 'INDIVIDUAL'
 }
+
 /**
  * The type of business registered for the seller account.
  * @member {String} businessType
@@ -156,6 +157,7 @@ Account.SellingPlanEnum = {
      */
   INDIVIDUAL: 'INDIVIDUAL'
 }
+
 /**
  * The selling plan details.
  * @member {String} sellingPlan

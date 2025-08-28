@@ -99,6 +99,7 @@ RegulatedInformationField.FieldTypeEnum = {
      */
   FileAttachment: 'FileAttachment'
 }
+
 /**
  * The type of field.
  * @member {String} fieldType

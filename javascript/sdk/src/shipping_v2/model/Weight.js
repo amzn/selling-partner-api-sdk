@@ -91,6 +91,7 @@ Weight.UnitEnum = {
      */
   POUND: 'POUND'
 }
+
 /**
  * The unit of measurement.
  * @member {String} unit

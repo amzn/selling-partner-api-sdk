@@ -123,6 +123,7 @@ RelatedIdentifier.RelatedIdentifierNameEnum = {
      */
   SETTLEMENT_ID: 'SETTLEMENT_ID'
 }
+
 /**
  * Enumerated set of related business identifier names.
  * @member {String} relatedIdentifierName

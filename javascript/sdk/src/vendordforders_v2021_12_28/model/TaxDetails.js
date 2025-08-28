@@ -129,6 +129,7 @@ TaxDetails.TypeEnum = {
      */
   VAT: 'VAT'
 }
+
 /**
  * Tax type.
  * @member {String} type

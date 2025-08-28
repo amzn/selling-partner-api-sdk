@@ -91,6 +91,7 @@ OrderItemStatusAcknowledgementStatus.ConfirmationStatusEnum = {
      */
   UNCONFIRMED: 'UNCONFIRMED'
 }
+
 /**
  * Confirmation status of line item.
  * @member {String} confirmationStatus

@@ -133,6 +133,7 @@ ItemImage.VariantEnum = {
      */
   SWCH: 'SWCH'
 }
+
 /**
  * Variant of the image, such as `MAIN` or `PT01`.
  * @member {String} variant

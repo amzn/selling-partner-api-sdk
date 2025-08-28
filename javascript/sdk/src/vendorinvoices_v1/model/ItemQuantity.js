@@ -89,6 +89,7 @@ ItemQuantity.UnitOfMeasureEnum = {
      */
   Eaches: 'Eaches'
 }
+
 /**
  * Unit of measure for the quantity.
  * @member {String} unitOfMeasure

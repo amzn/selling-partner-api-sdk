@@ -119,6 +119,7 @@ Poa.PoaTypeEnum = {
      */
   POA_RECEIPT: 'POA_RECEIPT'
 }
+
 /**
  * The type of POA uploaded.
  * @member {String} poaType

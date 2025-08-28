@@ -106,6 +106,7 @@ Dimensions.UnitOfMeasureEnum = {
      */
   CM: 'CM'
 }
+
 /**
  * The unit of measure for dimensions.
  * @member {String} unitOfMeasure

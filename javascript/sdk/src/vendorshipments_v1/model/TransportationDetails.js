@@ -87,6 +87,7 @@ TransportationDetails.ShipModeEnum = {
      */
   SmallParcel: 'SmallParcel'
 }
+
 /**
  * The type of shipment.
  * @member {String} shipMode
@@ -119,6 +120,7 @@ TransportationDetails.TransportationModeEnum = {
      */
   Ocean: 'Ocean'
 }
+
 /**
  * The mode of transportation for this shipment.
  * @member {String} transportationMode

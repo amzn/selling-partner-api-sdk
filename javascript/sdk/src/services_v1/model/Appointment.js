@@ -95,6 +95,7 @@ Appointment.AppointmentStatusEnum = {
      */
   COMPLETED: 'COMPLETED'
 }
+
 /**
  * The status of the appointment.
  * @member {String} appointmentStatus
