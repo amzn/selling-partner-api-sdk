@@ -105,6 +105,7 @@ export const defaultRateLimitMap = {
   "FbaInboundApi-listPrepDetails": [2, 30],
   "FbaInboundApi-setPrepDetails": [2, 30],
   "FbaInboundApi-getInboundOperationStatus": [5, 6],
+  "FbaInboundApi-updateBoxIdentifiers": [2, 2],
   "FbaOutboundApi-getFulfillmentPreview": [2, 30],
   "FbaOutboundApi-deliveryOffers": [10, 30],
   "FbaOutboundApi-listAllFulfillmentOrders": [2, 30],

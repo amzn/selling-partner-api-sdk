@@ -92,7 +92,6 @@ PatchOperation.OpEnum = {
      */
   delete: 'delete'
 }
-
 /**
  * Type of JSON Patch operation. Supported JSON Patch operations include `add`, `replace`, `merge` and `delete`. Refer to <https://tools.ietf.org/html/rfc6902>.
  * @member {String} op

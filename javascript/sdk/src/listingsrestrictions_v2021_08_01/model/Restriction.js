@@ -152,7 +152,6 @@ Restriction.ConditionTypeEnum = {
      */
   club_club: 'club_club'
 }
-
 /**
  * The condition that applies to the restriction.
  * @member {String} conditionType

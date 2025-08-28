@@ -73,7 +73,6 @@ DeliveryQuantity.UnitOfMeasureEnum = {
      */
   Each: 'Each'
 }
-
 /**
  * The unit of measure for the amount.
  * @member {String} unitOfMeasure

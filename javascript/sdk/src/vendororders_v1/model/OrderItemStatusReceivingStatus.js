@@ -83,7 +83,6 @@ OrderItemStatusReceivingStatus.ReceiveStatusEnum = {
      */
   RECEIVED: 'RECEIVED'
 }
-
 /**
  * Receive status of the line item.
  * @member {String} receiveStatus

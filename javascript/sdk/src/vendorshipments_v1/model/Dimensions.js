@@ -118,7 +118,6 @@ Dimensions.UnitOfMeasureEnum = {
      */
   Yard: 'Yard'
 }
-
 /**
  * The unit of measure for dimensions.
  * @member {String} unitOfMeasure

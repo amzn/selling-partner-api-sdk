@@ -92,7 +92,6 @@ Containers.ContainerTypeEnum = {
      */
   pallet: 'pallet'
 }
-
 /**
  * The type of container.
  * @member {String} containerType

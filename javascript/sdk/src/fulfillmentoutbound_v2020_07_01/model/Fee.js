@@ -92,7 +92,6 @@ Fee.NameEnum = {
      */
   FBAFulfillmentCODFee: 'FBAFulfillmentCODFee'
 }
-
 /**
  * The type of fee.
  * @member {String} name

@@ -79,7 +79,6 @@ TaxRegistrationDetails.TaxRegistrationTypeEnum = {
      */
   GST: 'GST'
 }
-
 /**
  * The tax registration type for the entity.
  * @member {String} taxRegistrationType

@@ -98,7 +98,6 @@ ItemEligibilityPreview.ProgramEnum = {
      */
   COMMINGLING: 'COMMINGLING'
 }
-
 /**
  * The program for which eligibility was determined.
  * @member {String} program
@@ -354,7 +353,6 @@ ItemEligibilityPreview.IneligibilityReasonListEnum = {
      */
   UNKNOWN_INB_ERROR_CODE: 'UNKNOWN_INB_ERROR_CODE'
 }
-
 /**
  * Potential Ineligibility Reason Codes.
  * @member {[String]} ineligibilityReasonList
