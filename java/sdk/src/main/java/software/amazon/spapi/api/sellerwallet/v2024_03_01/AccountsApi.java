@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -63,13 +63,18 @@ public class AccountsApi {
      * Build call for getAccount
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getAccountCall(
-            String accountId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -79,6 +84,8 @@ public class AccountsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -105,14 +112,20 @@ public class AccountsApi {
     }
 
     private okhttp3.Call getAccountValidateBeforeCall(
-            String accountId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException("Missing the required parameter 'accountId' when calling getAccount(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException("Missing the required parameter 'marketplaceId' when calling getAccount(Async)");
+        }
 
-        return getAccountCall(accountId, progressRequestListener);
+        return getAccountCall(accountId, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -120,13 +133,17 @@ public class AccountsApi {
      * account identifier.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return BankAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public BankAccount getAccount(String accountId, String restrictedDataToken) throws ApiException, LWAException {
-        ApiResponse<BankAccount> resp = getAccountWithHttpInfo(accountId, restrictedDataToken);
+    public BankAccount getAccount(String accountId, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<BankAccount> resp = getAccountWithHttpInfo(accountId, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -135,12 +152,15 @@ public class AccountsApi {
      * account identifier.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return BankAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public BankAccount getAccount(String accountId) throws ApiException, LWAException {
-        ApiResponse<BankAccount> resp = getAccountWithHttpInfo(accountId, null);
+    public BankAccount getAccount(String accountId, String marketplaceId) throws ApiException, LWAException {
+        ApiResponse<BankAccount> resp = getAccountWithHttpInfo(accountId, marketplaceId, null);
         return resp.getData();
     }
 
@@ -149,14 +169,17 @@ public class AccountsApi {
      * account identifier.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;BankAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<BankAccount> getAccountWithHttpInfo(String accountId, String restrictedDataToken)
-            throws ApiException, LWAException {
-        okhttp3.Call call = getAccountValidateBeforeCall(accountId, null);
+    public ApiResponse<BankAccount> getAccountWithHttpInfo(
+            String accountId, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getAccountValidateBeforeCall(accountId, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -175,12 +198,16 @@ public class AccountsApi {
      * account identifier.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;BankAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<BankAccount> getAccountWithHttpInfo(String accountId) throws ApiException, LWAException {
-        return getAccountWithHttpInfo(accountId, null);
+    public ApiResponse<BankAccount> getAccountWithHttpInfo(String accountId, String marketplaceId)
+            throws ApiException, LWAException {
+        return getAccountWithHttpInfo(accountId, marketplaceId, null);
     }
 
     /**
@@ -188,20 +215,26 @@ public class AccountsApi {
      * account by Amazon account identifier.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call getAccountAsync(String accountId, final ApiCallback<BankAccount> callback)
+    public okhttp3.Call getAccountAsync(String accountId, String marketplaceId, final ApiCallback<BankAccount> callback)
             throws ApiException, LWAException {
-        return getAccountAsync(accountId, callback, null);
+        return getAccountAsync(accountId, marketplaceId, callback, null);
     }
     /**
      * Find particular Amazon SW account by Amazon account identifier (asynchronously) Retrieve a Seller Wallet bank
      * account by Amazon account identifier.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -209,7 +242,7 @@ public class AccountsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getAccountAsync(
-            String accountId, final ApiCallback<BankAccount> callback, String restrictedDataToken)
+            String accountId, String marketplaceId, final ApiCallback<BankAccount> callback, String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -218,7 +251,7 @@ public class AccountsApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getAccountValidateBeforeCall(accountId, progressRequestListener);
+        okhttp3.Call call = getAccountValidateBeforeCall(accountId, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -236,13 +269,18 @@ public class AccountsApi {
      * Build call for listAccountBalances
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call listAccountBalancesCall(
-            String accountId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -252,6 +290,8 @@ public class AccountsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -278,15 +318,22 @@ public class AccountsApi {
     }
 
     private okhttp3.Call listAccountBalancesValidateBeforeCall(
-            String accountId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String accountId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'accountId' is set
         if (accountId == null) {
             throw new ApiException(
                     "Missing the required parameter 'accountId' when calling listAccountBalances(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling listAccountBalances(Async)");
+        }
 
-        return listAccountBalancesCall(accountId, progressRequestListener);
+        return listAccountBalancesCall(accountId, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -294,14 +341,18 @@ public class AccountsApi {
      * Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return BalanceListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public BalanceListing listAccountBalances(String accountId, String restrictedDataToken)
+    public BalanceListing listAccountBalances(String accountId, String marketplaceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<BalanceListing> resp = listAccountBalancesWithHttpInfo(accountId, restrictedDataToken);
+        ApiResponse<BalanceListing> resp =
+                listAccountBalancesWithHttpInfo(accountId, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -310,12 +361,16 @@ public class AccountsApi {
      * Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return BalanceListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public BalanceListing listAccountBalances(String accountId) throws ApiException, LWAException {
-        ApiResponse<BalanceListing> resp = listAccountBalancesWithHttpInfo(accountId, null);
+    public BalanceListing listAccountBalances(String accountId, String marketplaceId)
+            throws ApiException, LWAException {
+        ApiResponse<BalanceListing> resp = listAccountBalancesWithHttpInfo(accountId, marketplaceId, null);
         return resp.getData();
     }
 
@@ -324,14 +379,17 @@ public class AccountsApi {
      * Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;BalanceListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<BalanceListing> listAccountBalancesWithHttpInfo(String accountId, String restrictedDataToken)
-            throws ApiException, LWAException {
-        okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, null);
+    public ApiResponse<BalanceListing> listAccountBalancesWithHttpInfo(
+            String accountId, String marketplaceId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -350,13 +408,16 @@ public class AccountsApi {
      * Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;BalanceListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<BalanceListing> listAccountBalancesWithHttpInfo(String accountId)
+    public ApiResponse<BalanceListing> listAccountBalancesWithHttpInfo(String accountId, String marketplaceId)
             throws ApiException, LWAException {
-        return listAccountBalancesWithHttpInfo(accountId, null);
+        return listAccountBalancesWithHttpInfo(accountId, marketplaceId, null);
     }
 
     /**
@@ -364,20 +425,27 @@ public class AccountsApi {
      * in a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public okhttp3.Call listAccountBalancesAsync(String accountId, final ApiCallback<BalanceListing> callback)
+    public okhttp3.Call listAccountBalancesAsync(
+            String accountId, String marketplaceId, final ApiCallback<BalanceListing> callback)
             throws ApiException, LWAException {
-        return listAccountBalancesAsync(accountId, callback, null);
+        return listAccountBalancesAsync(accountId, marketplaceId, callback, null);
     }
     /**
      * Find balance in particular Amazon SW account by Amazon account identifier (asynchronously) Retrieve the balance
      * in a given Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -385,7 +453,10 @@ public class AccountsApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listAccountBalancesAsync(
-            String accountId, final ApiCallback<BalanceListing> callback, String restrictedDataToken)
+            String accountId,
+            String marketplaceId,
+            final ApiCallback<BalanceListing> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -394,7 +465,7 @@ public class AccountsApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, progressRequestListener);
+        okhttp3.Call call = listAccountBalancesValidateBeforeCall(accountId, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

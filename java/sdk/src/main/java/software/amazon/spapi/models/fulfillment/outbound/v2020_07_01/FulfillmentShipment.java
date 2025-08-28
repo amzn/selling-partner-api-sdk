@@ -127,13 +127,11 @@ public class FulfillmentShipment {
     }
 
     /**
-     * An identifier for the fulfillment center that the shipment will be sent from.
+     * An identifier for the fulfillment center from which the shipment is sent.
      *
      * @return fulfillmentCenterId
      */
-    @Schema(
-            required = true,
-            description = "An identifier for the fulfillment center that the shipment will be sent from.")
+    @Schema(required = true, description = "An identifier for the fulfillment center from which the shipment is sent.")
     public String getFulfillmentCenterId() {
         return fulfillmentCenterId;
     }
@@ -213,14 +211,14 @@ public class FulfillmentShipment {
     }
 
     /**
-     * Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates
+     * Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates
      * aren&#x27;t available.
      *
      * @return shippingNotes
      */
     @Schema(
             description =
-                    "Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren't available.")
+                    "Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.")
     public List<String> getShippingNotes() {
         return shippingNotes;
     }

@@ -76,13 +76,14 @@ public class ShipmentDestination {
     }
 
     /**
-     * The warehouse that the shipment should be sent to. Empty if the destination type is &#x60;AMAZON_OPTIMIZED&#x60;.
+     * The warehouse that the shipment should be sent to. This can be empty if the destination type is
+     * &#x60;AMAZON_OPTIMIZED&#x60;.
      *
      * @return warehouseId
      */
     @Schema(
             description =
-                    "The warehouse that the shipment should be sent to. Empty if the destination type is `AMAZON_OPTIMIZED`.")
+                    "The warehouse that the shipment should be sent to. This can be empty if the destination type is `AMAZON_OPTIMIZED`.")
     public String getWarehouseId() {
         return warehouseId;
     }

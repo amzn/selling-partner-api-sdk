@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -30,6 +30,9 @@ public class TransactionInstrumentDetails {
 
     @SerializedName("bankAccountNumber")
     private String bankAccountNumber = null;
+
+    @SerializedName("accountHolderName")
+    private String accountHolderName = null;
 
     public TransactionInstrumentDetails bankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
@@ -75,6 +78,31 @@ public class TransactionInstrumentDetails {
         this.bankAccountNumber = bankAccountNumber;
     }
 
+    public TransactionInstrumentDetails accountHolderName(String accountHolderName) {
+        this.accountHolderName = accountHolderName;
+        return this;
+    }
+
+    /**
+     * The bank account holder&#x27;s name (expected to be an Amazon customer). **Note:** This field is encrypted before
+     * Amazon receives it, so should not be used to generate &#x60;destAccountDigitalSignature&#x60;, and should not be
+     * included in the request signature.
+     *
+     * @return accountHolderName
+     */
+    @Schema(
+            example = "John Doe",
+            required = true,
+            description =
+                    "The bank account holder's name (expected to be an Amazon customer).  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.")
+    public String getAccountHolderName() {
+        return accountHolderName;
+    }
+
+    public void setAccountHolderName(String accountHolderName) {
+        this.accountHolderName = accountHolderName;
+    }
+
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -85,12 +113,13 @@ public class TransactionInstrumentDetails {
         }
         TransactionInstrumentDetails transactionInstrumentDetails = (TransactionInstrumentDetails) o;
         return Objects.equals(this.bankAccount, transactionInstrumentDetails.bankAccount)
-                && Objects.equals(this.bankAccountNumber, transactionInstrumentDetails.bankAccountNumber);
+                && Objects.equals(this.bankAccountNumber, transactionInstrumentDetails.bankAccountNumber)
+                && Objects.equals(this.accountHolderName, transactionInstrumentDetails.accountHolderName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bankAccount, bankAccountNumber);
+        return Objects.hash(bankAccount, bankAccountNumber, accountHolderName);
     }
 
     @Override
@@ -101,6 +130,9 @@ public class TransactionInstrumentDetails {
         sb.append("    bankAccount: ").append(toIndentedString(bankAccount)).append("\n");
         sb.append("    bankAccountNumber: ")
                 .append(toIndentedString(bankAccountNumber))
+                .append("\n");
+        sb.append("    accountHolderName: ")
+                .append(toIndentedString(accountHolderName))
                 .append("\n");
         sb.append("}");
         return sb.toString();

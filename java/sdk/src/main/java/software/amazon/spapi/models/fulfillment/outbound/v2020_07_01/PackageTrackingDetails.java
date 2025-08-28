@@ -261,11 +261,11 @@ public class PackageTrackingDetails {
     }
 
     /**
-     * Description corresponding to the CurrentStatus value.
+     * Description corresponding to the &#x60;CurrentStatus&#x60; value.
      *
      * @return currentStatusDescription
      */
-    @Schema(description = "Description corresponding to the CurrentStatus value.")
+    @Schema(description = "Description corresponding to the `CurrentStatus` value.")
     public String getCurrentStatusDescription() {
         return currentStatusDescription;
     }

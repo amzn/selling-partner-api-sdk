@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
+import software.amazon.spapi.models.sellerwallet.v2024_03_01.CreateTransactionResponse;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.Transaction;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransactionInitiationRequest;
 import software.amazon.spapi.models.sellerwallet.v2024_03_01.TransactionListing;
@@ -57,9 +58,10 @@ public class TransactionsApiTest {
         TransactionInitiationRequest body = easyRandom.nextObject(TransactionInitiationRequest.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<Transaction> response =
-                api.createTransactionWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature);
+        ApiResponse<CreateTransactionResponse> response = api.createTransactionWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -69,8 +71,9 @@ public class TransactionsApiTest {
     public void getTransactionTest() throws Exception {
         instructBackendMock("getTransaction", "200");
         String transactionId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<Transaction> response = api.getTransactionWithHttpInfo(transactionId);
+        ApiResponse<Transaction> response = api.getTransactionWithHttpInfo(transactionId, marketplaceId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
@@ -80,8 +83,10 @@ public class TransactionsApiTest {
     public void listAccountTransactionsTest() throws Exception {
         instructBackendMock("listAccountTransactions", "200");
         String accountId = easyRandom.nextObject(String.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
 
-        ApiResponse<TransactionListing> response = api.listAccountTransactionsWithHttpInfo(accountId, null);
+        ApiResponse<TransactionListing> response =
+                api.listAccountTransactionsWithHttpInfo(accountId, marketplaceId, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

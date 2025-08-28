@@ -72,13 +72,14 @@ public class ReasonCodeDetails {
     }
 
     /**
-     * A translation of the description. The translation is in the language specified in the Language request parameter.
+     * A translation of the description. The translation is in the language specified in the &#x60;language&#x60;
+     * request parameter.
      *
      * @return translatedDescription
      */
     @Schema(
             description =
-                    "A translation of the description. The translation is in the language specified in the Language request parameter.")
+                    "A translation of the description. The translation is in the language specified in the `language` request parameter.")
     public String getTranslatedDescription() {
         return translatedDescription;
     }

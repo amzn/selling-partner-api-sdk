@@ -39,6 +39,8 @@ import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfi
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentOrderResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentReturnRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentReturnResponse;
+import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOfferingsRequest;
+import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOfferingsResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOffersRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOffersResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetFeatureInventoryResponse;
@@ -76,6 +78,10 @@ public class FbaOutboundApi {
 
     public final Bucket createFulfillmentReturnBucket = Bucket.builder()
             .addLimit(config.getLimit("FbaOutboundApi-createFulfillmentReturn"))
+            .build();
+
+    public final Bucket deliveryOfferingsBucket = Bucket.builder()
+            .addLimit(config.getLimit("FbaOutboundApi-deliveryOfferings"))
             .build();
 
     public final Bucket deliveryOffersBucket = Bucket.builder()
@@ -560,9 +566,9 @@ public class FbaOutboundApi {
     /**
      * Build call for createFulfillmentReturn
      *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
+     * @param body The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
+     * @param sellerFulfillmentOrderId An identifier the seller assigns to the fulfillment order at the time it was
+     *     created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -634,9 +640,9 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
+     * @param body The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
+     * @param sellerFulfillmentOrderId An identifier the seller assigns to the fulfillment order at the time it was
+     *     created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return CreateFulfillmentReturnResponse
@@ -659,9 +665,9 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
+     * @param body The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
+     * @param sellerFulfillmentOrderId An identifier the seller assigns to the fulfillment order at the time it was
+     *     created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @return CreateFulfillmentReturnResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -682,9 +688,9 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
+     * @param body The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
+     * @param sellerFulfillmentOrderId An identifier the seller assigns to the fulfillment order at the time it was
+     *     created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;CreateFulfillmentReturnResponse&gt;
@@ -717,9 +723,9 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
+     * @param body The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
+     * @param sellerFulfillmentOrderId An identifier the seller assigns to the fulfillment order at the time it was
+     *     created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @return ApiResponse&lt;CreateFulfillmentReturnResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -738,9 +744,9 @@ public class FbaOutboundApi {
      * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
      * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
+     * @param body The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
+     * @param sellerFulfillmentOrderId An identifier the seller assigns to the fulfillment order at the time it was
+     *     created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -762,9 +768,9 @@ public class FbaOutboundApi {
      * and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the
      * Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body CreateFulfillmentReturnRequest parameter (required)
-     * @param sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was
-     *     created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value
+     * @param body The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
+     * @param sellerFulfillmentOrderId An identifier the seller assigns to the fulfillment order at the time it was
+     *     created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value
      *     based on the buyer&#x27;s request to return items. (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -800,6 +806,213 @@ public class FbaOutboundApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("createFulfillmentReturn operation exceeds rate limit");
+    }
+    /**
+     * Build call for deliveryOfferings
+     *
+     * @param body GetDeliveryOfferingsRequest parameter (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call deliveryOfferingsCall(
+            GetDeliveryOfferingsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/fba/outbound/2020-07-01/deliveryOfferings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json", "payload"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call deliveryOfferingsValidateBeforeCall(
+            GetDeliveryOfferingsRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling deliveryOfferings(Async)");
+        }
+
+        return deliveryOfferingsCall(body, progressRequestListener);
+    }
+
+    /**
+     * Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetDeliveryOfferingsRequest parameter (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetDeliveryOfferingsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetDeliveryOfferingsResponse deliveryOfferings(GetDeliveryOfferingsRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetDeliveryOfferingsResponse> resp = deliveryOfferingsWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetDeliveryOfferingsRequest parameter (required)
+     * @return GetDeliveryOfferingsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetDeliveryOfferingsResponse deliveryOfferings(GetDeliveryOfferingsRequest body)
+            throws ApiException, LWAException {
+        ApiResponse<GetDeliveryOfferingsResponse> resp = deliveryOfferingsWithHttpInfo(body, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetDeliveryOfferingsRequest parameter (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetDeliveryOfferingsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetDeliveryOfferingsResponse> deliveryOfferingsWithHttpInfo(
+            GetDeliveryOfferingsRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = deliveryOfferingsValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaOutboundApi-deliveryOfferings");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || deliveryOfferingsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDeliveryOfferingsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("deliveryOfferings operation exceeds rate limit");
+    }
+
+    /**
+     * Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetDeliveryOfferingsRequest parameter (required)
+     * @return ApiResponse&lt;GetDeliveryOfferingsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetDeliveryOfferingsResponse> deliveryOfferingsWithHttpInfo(GetDeliveryOfferingsRequest body)
+            throws ApiException, LWAException {
+        return deliveryOfferingsWithHttpInfo(body, null);
+    }
+
+    /**
+     * (asynchronously) Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that
+     * you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetDeliveryOfferingsRequest parameter (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call deliveryOfferingsAsync(
+            GetDeliveryOfferingsRequest body, final ApiCallback<GetDeliveryOfferingsResponse> callback)
+            throws ApiException, LWAException {
+        return deliveryOfferingsAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that
+     * you specify. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body GetDeliveryOfferingsRequest parameter (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call deliveryOfferingsAsync(
+            GetDeliveryOfferingsRequest body,
+            final ApiCallback<GetDeliveryOfferingsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = deliveryOfferingsValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "FbaOutboundApi-deliveryOfferings");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || deliveryOfferingsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetDeliveryOfferingsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("deliveryOfferings operation exceeds rate limit");
     }
     /**
      * Build call for deliveryOffers
@@ -1014,10 +1227,10 @@ public class FbaOutboundApi {
      *     specified feature. (required)
      * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
      * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
+     *     response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *     &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1102,10 +1315,10 @@ public class FbaOutboundApi {
      *     specified feature. (required)
      * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
      * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
+     *     response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *     &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetFeatureInventoryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1136,10 +1349,10 @@ public class FbaOutboundApi {
      *     specified feature. (required)
      * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
      * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
+     *     response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *     &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @return GetFeatureInventoryResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1165,10 +1378,10 @@ public class FbaOutboundApi {
      *     specified feature. (required)
      * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
      * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
+     *     response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *     &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetFeatureInventoryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1210,10 +1423,10 @@ public class FbaOutboundApi {
      *     specified feature. (required)
      * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
      * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
+     *     response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *     &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @return ApiResponse&lt;GetFeatureInventoryResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1237,10 +1450,10 @@ public class FbaOutboundApi {
      *     specified feature. (required)
      * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
      * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
+     *     response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *     &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1268,10 +1481,10 @@ public class FbaOutboundApi {
      *     specified feature. (required)
      * @param featureName The name of the feature for which to return a list of eligible inventory. (required)
      * @param nextToken A string token returned in the response to your previous request that is used to return the next
-     *     response page. A value of null will return the first page. (optional)
+     *     response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param queryStartDate A date that you can use to select inventory that has been updated since a specified date.
      *     An update is defined as any change in feature-enabled inventory availability. The date must be in the format
-     *     yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *     &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1314,8 +1527,8 @@ public class FbaOutboundApi {
      *
      * @param marketplaceId The marketplace for which to return the count. (required)
      * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param sellerSku Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the
+     *     seller&#x27;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1386,21 +1599,22 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns the number of items with the sellerSKU you specify that can have orders fulfilled using the specified
-     * feature. Note that if the sellerSKU isn&#x27;t eligible, the response will contain an empty skuInfo object. The
-     * parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs
-     * when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
-     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
-     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns the number of items with the &#x60;sellerSku&#x60; you specify that can have orders fulfilled using the
+     * specified feature. Note that if the &#x60;sellerSku&#x60; isn&#x27;t eligible, the response will contain an empty
+     * &#x60;skuInfo&#x60; object. The parameters for this operation may contain special characters that require URL
+     * encoding. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return the count. (required)
      * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param sellerSku Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the
+     *     seller&#x27;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetFeatureSkuResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1415,21 +1629,22 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns the number of items with the sellerSKU you specify that can have orders fulfilled using the specified
-     * feature. Note that if the sellerSKU isn&#x27;t eligible, the response will contain an empty skuInfo object. The
-     * parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs
-     * when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
-     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
-     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns the number of items with the &#x60;sellerSku&#x60; you specify that can have orders fulfilled using the
+     * specified feature. Note that if the &#x60;sellerSku&#x60; isn&#x27;t eligible, the response will contain an empty
+     * &#x60;skuInfo&#x60; object. The parameters for this operation may contain special characters that require URL
+     * encoding. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return the count. (required)
      * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param sellerSku Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the
+     *     seller&#x27;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @return GetFeatureSkuResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1442,21 +1657,22 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns the number of items with the sellerSKU you specify that can have orders fulfilled using the specified
-     * feature. Note that if the sellerSKU isn&#x27;t eligible, the response will contain an empty skuInfo object. The
-     * parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs
-     * when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
-     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
-     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns the number of items with the &#x60;sellerSku&#x60; you specify that can have orders fulfilled using the
+     * specified feature. Note that if the &#x60;sellerSku&#x60; isn&#x27;t eligible, the response will contain an empty
+     * &#x60;skuInfo&#x60; object. The parameters for this operation may contain special characters that require URL
+     * encoding. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return the count. (required)
      * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param sellerSku Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the
+     *     seller&#x27;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetFeatureSkuResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1480,21 +1696,22 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns the number of items with the sellerSKU you specify that can have orders fulfilled using the specified
-     * feature. Note that if the sellerSKU isn&#x27;t eligible, the response will contain an empty skuInfo object. The
-     * parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs
-     * when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60;
-     * response header returns the usage plan rate limits that were applied to the requested operation, when available.
-     * The table above indicates the default rate and burst values for this operation. Selling partners whose business
-     * demands require higher throughput may have higher rate and burst values than those shown here. For more
-     * information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns the number of items with the &#x60;sellerSku&#x60; you specify that can have orders fulfilled using the
+     * specified feature. Note that if the &#x60;sellerSku&#x60; isn&#x27;t eligible, the response will contain an empty
+     * &#x60;skuInfo&#x60; object. The parameters for this operation may contain special characters that require URL
+     * encoding. To avoid errors with SKUs when encoding URLs, refer to [URL
+     * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
+     * Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return the count. (required)
      * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param sellerSku Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the
+     *     seller&#x27;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @return ApiResponse&lt;GetFeatureSkuResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1505,22 +1722,22 @@ public class FbaOutboundApi {
     }
 
     /**
-     * (asynchronously) Returns the number of items with the sellerSKU you specify that can have orders fulfilled using
-     * the specified feature. Note that if the sellerSKU isn&#x27;t eligible, the response will contain an empty skuInfo
-     * object. The parameters for this operation may contain special characters that require URL encoding. To avoid
-     * errors with SKUs when encoding URLs, refer to [URL
+     * (asynchronously) Returns the number of items with the &#x60;sellerSku&#x60; you specify that can have orders
+     * fulfilled using the specified feature. Note that if the &#x60;sellerSku&#x60; isn&#x27;t eligible, the response
+     * will contain an empty &#x60;skuInfo&#x60; object. The parameters for this operation may contain special
+     * characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL
      * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
      * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return the count. (required)
      * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param sellerSku Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the
+     *     seller&#x27;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1535,22 +1752,22 @@ public class FbaOutboundApi {
         return getFeatureSKUAsync(marketplaceId, featureName, sellerSku, callback, null);
     }
     /**
-     * (asynchronously) Returns the number of items with the sellerSKU you specify that can have orders fulfilled using
-     * the specified feature. Note that if the sellerSKU isn&#x27;t eligible, the response will contain an empty skuInfo
-     * object. The parameters for this operation may contain special characters that require URL encoding. To avoid
-     * errors with SKUs when encoding URLs, refer to [URL
+     * (asynchronously) Returns the number of items with the &#x60;sellerSku&#x60; you specify that can have orders
+     * fulfilled using the specified feature. Note that if the &#x60;sellerSku&#x60; isn&#x27;t eligible, the response
+     * will contain an empty &#x60;skuInfo&#x60; object. The parameters for this operation may contain special
+     * characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL
      * Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding). **Usage Plan:** | Rate (requests per
      * second) | Burst | | ---- | ---- | | 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
-     * usage plan rate limits that were applied to the requested operation, when available. The table above indicates
-     * the default rate and burst values for this operation. Selling partners whose business demands require higher
-     * throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table
+     * indicates the default rate and burst values for this operation. Selling partners whose business demands require
+     * higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage
      * Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
      * @param marketplaceId The marketplace for which to return the count. (required)
      * @param featureName The name of the feature. (required)
-     * @param sellerSku Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the
-     *     seller&#x27;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     * @param sellerSku Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the
+     *     seller&#x27;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -2234,15 +2451,19 @@ public class FbaOutboundApi {
     /**
      * Build call for getPackageTrackingDetails
      *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
+     * @param packageNumber The unencrypted package identifier. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getPackageTrackingDetailsCall(
-            Integer packageNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            Integer packageNumber,
+            String amazonFulfillmentTrackingNumber,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -2253,6 +2474,9 @@ public class FbaOutboundApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (packageNumber != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("packageNumber", packageNumber));
+        if (amazonFulfillmentTrackingNumber != null)
+            localVarQueryParams.addAll(
+                    apiClient.parameterToPair("amazonFulfillmentTrackingNumber", amazonFulfillmentTrackingNumber));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2279,15 +2503,12 @@ public class FbaOutboundApi {
     }
 
     private okhttp3.Call getPackageTrackingDetailsValidateBeforeCall(
-            Integer packageNumber, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            Integer packageNumber,
+            String amazonFulfillmentTrackingNumber,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
-        // verify the required parameter 'packageNumber' is set
-        if (packageNumber == null) {
-            throw new ApiException(
-                    "Missing the required parameter 'packageNumber' when calling getPackageTrackingDetails(Async)");
-        }
 
-        return getPackageTrackingDetailsCall(packageNumber, progressRequestListener);
+        return getPackageTrackingDetailsCall(packageNumber, amazonFulfillmentTrackingNumber, progressRequestListener);
     }
 
     /**
@@ -2299,17 +2520,20 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
+     * @param packageNumber The unencrypted package identifier. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return GetPackageTrackingDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public GetPackageTrackingDetailsResponse getPackageTrackingDetails(
-            Integer packageNumber, String restrictedDataToken) throws ApiException, LWAException {
-        ApiResponse<GetPackageTrackingDetailsResponse> resp =
-                getPackageTrackingDetailsWithHttpInfo(packageNumber, restrictedDataToken);
+            Integer packageNumber, String amazonFulfillmentTrackingNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GetPackageTrackingDetailsResponse> resp = getPackageTrackingDetailsWithHttpInfo(
+                packageNumber, amazonFulfillmentTrackingNumber, restrictedDataToken);
         return resp.getData();
     }
 
@@ -2322,16 +2546,18 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
+     * @param packageNumber The unencrypted package identifier. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
      * @return GetPackageTrackingDetailsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public GetPackageTrackingDetailsResponse getPackageTrackingDetails(Integer packageNumber)
-            throws ApiException, LWAException {
+    public GetPackageTrackingDetailsResponse getPackageTrackingDetails(
+            Integer packageNumber, String amazonFulfillmentTrackingNumber) throws ApiException, LWAException {
         ApiResponse<GetPackageTrackingDetailsResponse> resp =
-                getPackageTrackingDetailsWithHttpInfo(packageNumber, null);
+                getPackageTrackingDetailsWithHttpInfo(packageNumber, amazonFulfillmentTrackingNumber, null);
         return resp.getData();
     }
 
@@ -2344,16 +2570,20 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
+     * @param packageNumber The unencrypted package identifier. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;GetPackageTrackingDetailsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<GetPackageTrackingDetailsResponse> getPackageTrackingDetailsWithHttpInfo(
-            Integer packageNumber, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = getPackageTrackingDetailsValidateBeforeCall(packageNumber, null);
+            Integer packageNumber, String amazonFulfillmentTrackingNumber, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                getPackageTrackingDetailsValidateBeforeCall(packageNumber, amazonFulfillmentTrackingNumber, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2377,15 +2607,17 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
+     * @param packageNumber The unencrypted package identifier. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
      * @return ApiResponse&lt;GetPackageTrackingDetailsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<GetPackageTrackingDetailsResponse> getPackageTrackingDetailsWithHttpInfo(Integer packageNumber)
-            throws ApiException, LWAException {
-        return getPackageTrackingDetailsWithHttpInfo(packageNumber, null);
+    public ApiResponse<GetPackageTrackingDetailsResponse> getPackageTrackingDetailsWithHttpInfo(
+            Integer packageNumber, String amazonFulfillmentTrackingNumber) throws ApiException, LWAException {
+        return getPackageTrackingDetailsWithHttpInfo(packageNumber, amazonFulfillmentTrackingNumber, null);
     }
 
     /**
@@ -2397,17 +2629,21 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
+     * @param packageNumber The unencrypted package identifier. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getPackageTrackingDetailsAsync(
-            Integer packageNumber, final ApiCallback<GetPackageTrackingDetailsResponse> callback)
+            Integer packageNumber,
+            String amazonFulfillmentTrackingNumber,
+            final ApiCallback<GetPackageTrackingDetailsResponse> callback)
             throws ApiException, LWAException {
-        return getPackageTrackingDetailsAsync(packageNumber, callback, null);
+        return getPackageTrackingDetailsAsync(packageNumber, amazonFulfillmentTrackingNumber, callback, null);
     }
     /**
      * (asynchronously) Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel
@@ -2418,8 +2654,10 @@ public class FbaOutboundApi {
      * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param packageNumber The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60;
-     *     operation. (required)
+     * @param packageNumber The unencrypted package identifier. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the
+     *     &#x60;getFulfillmentOrder&#x60; operation. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -2428,6 +2666,7 @@ public class FbaOutboundApi {
      */
     public okhttp3.Call getPackageTrackingDetailsAsync(
             Integer packageNumber,
+            String amazonFulfillmentTrackingNumber,
             final ApiCallback<GetPackageTrackingDetailsResponse> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -2438,7 +2677,8 @@ public class FbaOutboundApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getPackageTrackingDetailsValidateBeforeCall(packageNumber, progressRequestListener);
+        okhttp3.Call call = getPackageTrackingDetailsValidateBeforeCall(
+                packageNumber, amazonFulfillmentTrackingNumber, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -2515,12 +2755,12 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the next
-     * token parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the
+     * &#x60;nextToken&#x60; parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      *
      * @param queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified
@@ -2541,12 +2781,12 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the next
-     * token parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the
+     * &#x60;nextToken&#x60; parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      *
      * @param queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified
@@ -2565,12 +2805,12 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the next
-     * token parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the
+     * &#x60;nextToken&#x60; parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      *
      * @param queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified
@@ -2601,12 +2841,12 @@ public class FbaOutboundApi {
     }
 
     /**
-     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the next
-     * token parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
+     * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the
+     * &#x60;nextToken&#x60; parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30
+     * | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      *
      * @param queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified
@@ -2624,12 +2864,12 @@ public class FbaOutboundApi {
 
     /**
      * (asynchronously) Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated
-     * by the next token parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
+     * by the &#x60;nextToken&#x60; parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      *
      * @param queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified
      *     time. An update is defined as any change in fulfillment order status, including the creation of a new
@@ -2649,12 +2889,12 @@ public class FbaOutboundApi {
     }
     /**
      * (asynchronously) Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated
-     * by the next token parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may have higher rate and burst
-     * values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
+     * by the &#x60;nextToken&#x60; parameter. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * 2 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
+     * applied to the requested operation, when available. The preceding table indicates the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput may see higher rate
+     * and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling
+     * Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      *
      * @param queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified
      *     time. An update is defined as any change in fulfillment order status, including the creation of a new
@@ -3237,7 +3477,7 @@ public class FbaOutboundApi {
     /**
      * Build call for updateFulfillmentOrder
      *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
+     * @param body The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param progressRequestListener Progress request listener
@@ -3311,7 +3551,7 @@ public class FbaOutboundApi {
      * [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
+     * @param body The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -3336,7 +3576,7 @@ public class FbaOutboundApi {
      * [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
+     * @param body The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @return UpdateFulfillmentOrderResponse
@@ -3359,7 +3599,7 @@ public class FbaOutboundApi {
      * [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
+     * @param body The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -3394,7 +3634,7 @@ public class FbaOutboundApi {
      * [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
+     * @param body The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @return ApiResponse&lt;UpdateFulfillmentOrderResponse&gt;
@@ -3415,7 +3655,7 @@ public class FbaOutboundApi {
      * information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
+     * @param body The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -3439,7 +3679,7 @@ public class FbaOutboundApi {
      * information, refer to [Usage Plans and Rate Limits in the Selling Partner
      * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      *
-     * @param body UpdateFulfillmentOrderRequest parameter (required)
+     * @param body The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was
      *     created. (required)
      * @param callback The callback to be executed when the API call finishes

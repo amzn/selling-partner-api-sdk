@@ -77,15 +77,17 @@ public class SpdTrackingItem {
     }
 
     /**
-     * Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not
-     * yet &#x27;VALIDATED&#x27;, please verify the number and update if necessary. Possible values:
-     * &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;.
+     * Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking
+     * IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have
+     * passed and the status is not yet &#x27;VALIDATED&#x27; or &#x60;NOT_SUPPORTED&#x60;, verify the number and update
+     * it if necessary. **Possible values:** &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;, &#x60;NOT_SUPPORTED&#x60;
+     * (Amazon is unable to find tracking information for the provided tracking ID).
      *
      * @return trackingNumberValidationStatus
      */
     @Schema(
             description =
-                    "Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet 'VALIDATED', please verify the number and update if necessary. Possible values: `VALIDATED`, `NOT_VALIDATED`.")
+                    "Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet 'VALIDATED' or `NOT_SUPPORTED`, verify the number and update it if necessary. **Possible values:** `VALIDATED`, `NOT_VALIDATED`, `NOT_SUPPORTED` (Amazon is unable to find tracking information for the provided tracking ID).")
     public String getTrackingNumberValidationStatus() {
         return trackingNumberValidationStatus;
     }

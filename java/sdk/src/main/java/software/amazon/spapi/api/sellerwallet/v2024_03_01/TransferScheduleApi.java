@@ -1,5 +1,5 @@
 /*
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
  * OpenAPI spec version: 2024-03-01
@@ -75,6 +75,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -84,6 +87,7 @@ public class TransferScheduleApi {
             TransferScheduleRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -93,6 +97,8 @@ public class TransferScheduleApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (destAccountDigitalSignature != null)
@@ -126,6 +132,7 @@ public class TransferScheduleApi {
             TransferScheduleRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -142,9 +149,14 @@ public class TransferScheduleApi {
             throw new ApiException(
                     "Missing the required parameter 'amountDigitalSignature' when calling createTransferSchedule(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling createTransferSchedule(Async)");
+        }
 
         return createTransferScheduleCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -154,6 +166,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -163,10 +178,11 @@ public class TransferScheduleApi {
             TransferScheduleRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<TransferSchedule> resp = createTransferScheduleWithHttpInfo(
-                body, destAccountDigitalSignature, amountDigitalSignature, restrictedDataToken);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -177,15 +193,21 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransferSchedule createTransferSchedule(
-            TransferScheduleRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
+            TransferScheduleRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String marketplaceId)
             throws ApiException, LWAException {
-        ApiResponse<TransferSchedule> resp =
-                createTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
+        ApiResponse<TransferSchedule> resp = createTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
         return resp.getData();
     }
 
@@ -196,6 +218,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -205,10 +230,11 @@ public class TransferScheduleApi {
             TransferScheduleRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = createTransferScheduleValidateBeforeCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, null);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -230,14 +256,21 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<TransferSchedule> createTransferScheduleWithHttpInfo(
-            TransferScheduleRequest body, String destAccountDigitalSignature, String amountDigitalSignature)
+            TransferScheduleRequest body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String marketplaceId)
             throws ApiException, LWAException {
-        return createTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
+        return createTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
     }
 
     /**
@@ -247,6 +280,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -256,9 +292,11 @@ public class TransferScheduleApi {
             TransferScheduleRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ApiCallback<TransferSchedule> callback)
             throws ApiException, LWAException {
-        return createTransferScheduleAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
+        return createTransferScheduleAsync(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, callback, null);
     }
     /**
      * Create a transfer schedule request from Amazon SW account to another customer provided account (asynchronously)
@@ -267,6 +305,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the request (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -277,6 +318,7 @@ public class TransferScheduleApi {
             TransferScheduleRequest body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ApiCallback<TransferSchedule> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -288,7 +330,7 @@ public class TransferScheduleApi {
         }
 
         okhttp3.Call call = createTransferScheduleValidateBeforeCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -306,24 +348,31 @@ public class TransferScheduleApi {
     /**
      * Build call for deleteScheduleTransaction
      *
-     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call deleteScheduleTransactionCall(
-            String transferScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules"
+        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
                 .replaceAll(
                         "\\{" + "transferScheduleId" + "\\}", apiClient.escapeString(transferScheduleId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -350,62 +399,84 @@ public class TransferScheduleApi {
     }
 
     private okhttp3.Call deleteScheduleTransactionValidateBeforeCall(
-            String transferScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'transferScheduleId' is set
         if (transferScheduleId == null) {
             throw new ApiException(
                     "Missing the required parameter 'transferScheduleId' when calling deleteScheduleTransaction(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling deleteScheduleTransaction(Async)");
+        }
 
-        return deleteScheduleTransactionCall(transferScheduleId, progressRequestListener);
+        return deleteScheduleTransactionCall(transferScheduleId, marketplaceId, progressRequestListener);
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
-     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
+     * customer-provided account.
      *
-     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return DeleteTransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public DeleteTransferSchedule deleteScheduleTransaction(String transferScheduleId, String restrictedDataToken)
+    public DeleteTransferSchedule deleteScheduleTransaction(
+            String transferScheduleId, String marketplaceId, String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<DeleteTransferSchedule> resp =
-                deleteScheduleTransactionWithHttpInfo(transferScheduleId, restrictedDataToken);
+                deleteScheduleTransactionWithHttpInfo(transferScheduleId, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
-     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
+     * customer-provided account.
      *
-     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return DeleteTransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public DeleteTransferSchedule deleteScheduleTransaction(String transferScheduleId)
+    public DeleteTransferSchedule deleteScheduleTransaction(String transferScheduleId, String marketplaceId)
             throws ApiException, LWAException {
-        ApiResponse<DeleteTransferSchedule> resp = deleteScheduleTransactionWithHttpInfo(transferScheduleId, null);
+        ApiResponse<DeleteTransferSchedule> resp =
+                deleteScheduleTransactionWithHttpInfo(transferScheduleId, marketplaceId, null);
         return resp.getData();
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
-     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
+     * customer-provided account.
      *
-     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;DeleteTransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<DeleteTransferSchedule> deleteScheduleTransactionWithHttpInfo(
-            String transferScheduleId, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = deleteScheduleTransactionValidateBeforeCall(transferScheduleId, null);
+            String transferScheduleId, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = deleteScheduleTransactionValidateBeforeCall(transferScheduleId, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -421,41 +492,51 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account Delete
-     * a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account Delete a transaction request that is scheduled from Amazon Seller Wallet account to another
+     * customer-provided account.
      *
-     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;DeleteTransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<DeleteTransferSchedule> deleteScheduleTransactionWithHttpInfo(String transferScheduleId)
-            throws ApiException, LWAException {
-        return deleteScheduleTransactionWithHttpInfo(transferScheduleId, null);
+    public ApiResponse<DeleteTransferSchedule> deleteScheduleTransactionWithHttpInfo(
+            String transferScheduleId, String marketplaceId) throws ApiException, LWAException {
+        return deleteScheduleTransactionWithHttpInfo(transferScheduleId, marketplaceId, null);
     }
 
     /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
-     * (asynchronously) Delete a transaction request that is scheduled from a Seller Wallet account to another
-     * customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account (asynchronously) Delete a transaction request that is scheduled from Amazon Seller Wallet account to
+     * another customer-provided account.
      *
-     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call deleteScheduleTransactionAsync(
-            String transferScheduleId, final ApiCallback<DeleteTransferSchedule> callback)
+            String transferScheduleId, String marketplaceId, final ApiCallback<DeleteTransferSchedule> callback)
             throws ApiException, LWAException {
-        return deleteScheduleTransactionAsync(transferScheduleId, callback, null);
+        return deleteScheduleTransactionAsync(transferScheduleId, marketplaceId, callback, null);
     }
     /**
-     * Delete a transaction request that is scheduled from Amazon SW account to another customer provided account
-     * (asynchronously) Delete a transaction request that is scheduled from a Seller Wallet account to another
-     * customer-provided account.
+     * Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided
+     * account (asynchronously) Delete a transaction request that is scheduled from Amazon Seller Wallet account to
+     * another customer-provided account.
      *
-     * @param transferScheduleId A unique reference id for a scheduled transfer (required)
+     * @param transferScheduleId A unique reference ID for a scheduled transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -463,7 +544,10 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call deleteScheduleTransactionAsync(
-            String transferScheduleId, final ApiCallback<DeleteTransferSchedule> callback, String restrictedDataToken)
+            String transferScheduleId,
+            String marketplaceId,
+            final ApiCallback<DeleteTransferSchedule> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -472,7 +556,8 @@ public class TransferScheduleApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = deleteScheduleTransactionValidateBeforeCall(transferScheduleId, progressRequestListener);
+        okhttp3.Call call =
+                deleteScheduleTransactionValidateBeforeCall(transferScheduleId, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -490,14 +575,19 @@ public class TransferScheduleApi {
     /**
      * Build call for getTransferSchedule
      *
-     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     private okhttp3.Call getTransferScheduleCall(
-            String transferScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = null;
 
@@ -508,6 +598,8 @@ public class TransferScheduleApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -534,60 +626,80 @@ public class TransferScheduleApi {
     }
 
     private okhttp3.Call getTransferScheduleValidateBeforeCall(
-            String transferScheduleId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            String transferScheduleId,
+            String marketplaceId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'transferScheduleId' is set
         if (transferScheduleId == null) {
             throw new ApiException(
                     "Missing the required parameter 'transferScheduleId' when calling getTransferSchedule(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling getTransferSchedule(Async)");
+        }
 
-        return getTransferScheduleCall(transferScheduleId, progressRequestListener);
+        return getTransferScheduleCall(transferScheduleId, marketplaceId, progressRequestListener);
     }
 
     /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
-     * Seller Wallet account transfer schedule.
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
+     * particular Amazon Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public TransferSchedule getTransferSchedule(String transferScheduleId, String restrictedDataToken)
+    public TransferSchedule getTransferSchedule(
+            String transferScheduleId, String marketplaceId, String restrictedDataToken)
             throws ApiException, LWAException {
-        ApiResponse<TransferSchedule> resp = getTransferScheduleWithHttpInfo(transferScheduleId, restrictedDataToken);
+        ApiResponse<TransferSchedule> resp =
+                getTransferScheduleWithHttpInfo(transferScheduleId, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
     /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
-     * Seller Wallet account transfer schedule.
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
+     * particular Amazon Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public TransferSchedule getTransferSchedule(String transferScheduleId) throws ApiException, LWAException {
-        ApiResponse<TransferSchedule> resp = getTransferScheduleWithHttpInfo(transferScheduleId, null);
+    public TransferSchedule getTransferSchedule(String transferScheduleId, String marketplaceId)
+            throws ApiException, LWAException {
+        ApiResponse<TransferSchedule> resp = getTransferScheduleWithHttpInfo(transferScheduleId, marketplaceId, null);
         return resp.getData();
     }
 
     /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
-     * Seller Wallet account transfer schedule.
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
+     * particular Amazon Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<TransferSchedule> getTransferScheduleWithHttpInfo(
-            String transferScheduleId, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = getTransferScheduleValidateBeforeCall(transferScheduleId, null);
+            String transferScheduleId, String marketplaceId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getTransferScheduleValidateBeforeCall(transferScheduleId, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -603,38 +715,48 @@ public class TransferScheduleApi {
     }
 
     /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier Find a particular
-     * Seller Wallet account transfer schedule.
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier Find a
+     * particular Amazon Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public ApiResponse<TransferSchedule> getTransferScheduleWithHttpInfo(String transferScheduleId)
-            throws ApiException, LWAException {
-        return getTransferScheduleWithHttpInfo(transferScheduleId, null);
+    public ApiResponse<TransferSchedule> getTransferScheduleWithHttpInfo(
+            String transferScheduleId, String marketplaceId) throws ApiException, LWAException {
+        return getTransferScheduleWithHttpInfo(transferScheduleId, marketplaceId, null);
     }
 
     /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier (asynchronously) Find
-     * a particular Seller Wallet account transfer schedule.
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * (asynchronously) Find a particular Amazon Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getTransferScheduleAsync(
-            String transferScheduleId, final ApiCallback<TransferSchedule> callback) throws ApiException, LWAException {
-        return getTransferScheduleAsync(transferScheduleId, callback, null);
+            String transferScheduleId, String marketplaceId, final ApiCallback<TransferSchedule> callback)
+            throws ApiException, LWAException {
+        return getTransferScheduleAsync(transferScheduleId, marketplaceId, callback, null);
     }
     /**
-     * Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier (asynchronously) Find
-     * a particular Seller Wallet account transfer schedule.
+     * Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier
+     * (asynchronously) Find a particular Amazon Seller Wallet account transfer schedule.
      *
-     * @param transferScheduleId Schedule ID of the Amazon SW transfer (required)
+     * @param transferScheduleId The schedule ID of the Amazon Seller Wallet transfer. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -642,7 +764,10 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call getTransferScheduleAsync(
-            String transferScheduleId, final ApiCallback<TransferSchedule> callback, String restrictedDataToken)
+            String transferScheduleId,
+            String marketplaceId,
+            final ApiCallback<TransferSchedule> callback,
+            String restrictedDataToken)
             throws ApiException, LWAException {
 
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -651,7 +776,8 @@ public class TransferScheduleApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = getTransferScheduleValidateBeforeCall(transferScheduleId, progressRequestListener);
+        okhttp3.Call call =
+                getTransferScheduleValidateBeforeCall(transferScheduleId, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -670,6 +796,9 @@ public class TransferScheduleApi {
      * Build call for listTransferSchedules
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -678,6 +807,7 @@ public class TransferScheduleApi {
      */
     private okhttp3.Call listTransferSchedulesCall(
             String accountId,
+            String marketplaceId,
             String nextPageToken,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -689,6 +819,8 @@ public class TransferScheduleApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (accountId != null) localVarQueryParams.addAll(apiClient.parameterToPair("accountId", accountId));
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
         if (nextPageToken != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("nextPageToken", nextPageToken));
 
@@ -718,6 +850,7 @@ public class TransferScheduleApi {
 
     private okhttp3.Call listTransferSchedulesValidateBeforeCall(
             String accountId,
+            String marketplaceId,
             String nextPageToken,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -726,8 +859,13 @@ public class TransferScheduleApi {
             throw new ApiException(
                     "Missing the required parameter 'accountId' when calling listTransferSchedules(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling listTransferSchedules(Async)");
+        }
 
-        return listTransferSchedulesCall(accountId, nextPageToken, progressRequestListener);
+        return listTransferSchedulesCall(accountId, marketplaceId, nextPageToken, progressRequestListener);
     }
 
     /**
@@ -735,6 +873,9 @@ public class TransferScheduleApi {
      * Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferScheduleListing
@@ -742,9 +883,10 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransferScheduleListing listTransferSchedules(
-            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
+            String accountId, String marketplaceId, String nextPageToken, String restrictedDataToken)
+            throws ApiException, LWAException {
         ApiResponse<TransferScheduleListing> resp =
-                listTransferSchedulesWithHttpInfo(accountId, nextPageToken, restrictedDataToken);
+                listTransferSchedulesWithHttpInfo(accountId, marketplaceId, nextPageToken, restrictedDataToken);
         return resp.getData();
     }
 
@@ -753,14 +895,18 @@ public class TransferScheduleApi {
      * Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return TransferScheduleListing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
-    public TransferScheduleListing listTransferSchedules(String accountId, String nextPageToken)
+    public TransferScheduleListing listTransferSchedules(String accountId, String marketplaceId, String nextPageToken)
             throws ApiException, LWAException {
-        ApiResponse<TransferScheduleListing> resp = listTransferSchedulesWithHttpInfo(accountId, nextPageToken, null);
+        ApiResponse<TransferScheduleListing> resp =
+                listTransferSchedulesWithHttpInfo(accountId, marketplaceId, nextPageToken, null);
         return resp.getData();
     }
 
@@ -769,6 +915,9 @@ public class TransferScheduleApi {
      * Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferScheduleListing&gt;
@@ -776,8 +925,9 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<TransferScheduleListing> listTransferSchedulesWithHttpInfo(
-            String accountId, String nextPageToken, String restrictedDataToken) throws ApiException, LWAException {
-        okhttp3.Call call = listTransferSchedulesValidateBeforeCall(accountId, nextPageToken, null);
+            String accountId, String marketplaceId, String nextPageToken, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listTransferSchedulesValidateBeforeCall(accountId, marketplaceId, nextPageToken, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -797,14 +947,17 @@ public class TransferScheduleApi {
      * Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @return ApiResponse&lt;TransferScheduleListing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<TransferScheduleListing> listTransferSchedulesWithHttpInfo(
-            String accountId, String nextPageToken) throws ApiException, LWAException {
-        return listTransferSchedulesWithHttpInfo(accountId, nextPageToken, null);
+            String accountId, String marketplaceId, String nextPageToken) throws ApiException, LWAException {
+        return listTransferSchedulesWithHttpInfo(accountId, marketplaceId, nextPageToken, null);
     }
 
     /**
@@ -812,6 +965,9 @@ public class TransferScheduleApi {
      * schedules of a Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -819,15 +975,21 @@ public class TransferScheduleApi {
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public okhttp3.Call listTransferSchedulesAsync(
-            String accountId, String nextPageToken, final ApiCallback<TransferScheduleListing> callback)
+            String accountId,
+            String marketplaceId,
+            String nextPageToken,
+            final ApiCallback<TransferScheduleListing> callback)
             throws ApiException, LWAException {
-        return listTransferSchedulesAsync(accountId, nextPageToken, callback, null);
+        return listTransferSchedulesAsync(accountId, marketplaceId, nextPageToken, callback, null);
     }
     /**
      * The API will return all the transfer schedules for a given Amazon SW account (asynchronously) Retrieve transfer
      * schedules of a Seller Wallet bank account.
      *
      * @param accountId ID of the Amazon SW account (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param nextPageToken Pagination token to retrieve a specific page of results. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
@@ -837,6 +999,7 @@ public class TransferScheduleApi {
      */
     public okhttp3.Call listTransferSchedulesAsync(
             String accountId,
+            String marketplaceId,
             String nextPageToken,
             final ApiCallback<TransferScheduleListing> callback,
             String restrictedDataToken)
@@ -848,7 +1011,8 @@ public class TransferScheduleApi {
             progressRequestListener = callback::onUploadProgress;
         }
 
-        okhttp3.Call call = listTransferSchedulesValidateBeforeCall(accountId, nextPageToken, progressRequestListener);
+        okhttp3.Call call = listTransferSchedulesValidateBeforeCall(
+                accountId, marketplaceId, nextPageToken, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -869,6 +1033,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -878,6 +1045,7 @@ public class TransferScheduleApi {
             TransferSchedule body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         Object localVarPostBody = body;
@@ -887,6 +1055,8 @@ public class TransferScheduleApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         if (destAccountDigitalSignature != null)
@@ -920,6 +1090,7 @@ public class TransferScheduleApi {
             TransferSchedule body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
         // verify the required parameter 'body' is set
@@ -936,9 +1107,14 @@ public class TransferScheduleApi {
             throw new ApiException(
                     "Missing the required parameter 'amountDigitalSignature' when calling updateTransferSchedule(Async)");
         }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling updateTransferSchedule(Async)");
+        }
 
         return updateTransferScheduleCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, progressRequestListener);
     }
 
     /**
@@ -949,6 +1125,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -958,10 +1137,11 @@ public class TransferScheduleApi {
             TransferSchedule body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<TransferSchedule> resp = updateTransferScheduleWithHttpInfo(
-                body, destAccountDigitalSignature, amountDigitalSignature, restrictedDataToken);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, restrictedDataToken);
         return resp.getData();
     }
 
@@ -973,15 +1153,21 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return TransferSchedule
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public TransferSchedule updateTransferSchedule(
-            TransferSchedule body, String destAccountDigitalSignature, String amountDigitalSignature)
+            TransferSchedule body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String marketplaceId)
             throws ApiException, LWAException {
-        ApiResponse<TransferSchedule> resp =
-                updateTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
+        ApiResponse<TransferSchedule> resp = updateTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
         return resp.getData();
     }
 
@@ -993,6 +1179,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1002,10 +1191,11 @@ public class TransferScheduleApi {
             TransferSchedule body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = updateTransferScheduleValidateBeforeCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, null);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -1028,14 +1218,21 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @return ApiResponse&lt;TransferSchedule&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
      */
     public ApiResponse<TransferSchedule> updateTransferScheduleWithHttpInfo(
-            TransferSchedule body, String destAccountDigitalSignature, String amountDigitalSignature)
+            TransferSchedule body,
+            String destAccountDigitalSignature,
+            String amountDigitalSignature,
+            String marketplaceId)
             throws ApiException, LWAException {
-        return updateTransferScheduleWithHttpInfo(body, destAccountDigitalSignature, amountDigitalSignature, null);
+        return updateTransferScheduleWithHttpInfo(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, null);
     }
 
     /**
@@ -1046,6 +1243,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1055,9 +1255,11 @@ public class TransferScheduleApi {
             TransferSchedule body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ApiCallback<TransferSchedule> callback)
             throws ApiException, LWAException {
-        return updateTransferScheduleAsync(body, destAccountDigitalSignature, amountDigitalSignature, callback, null);
+        return updateTransferScheduleAsync(
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, callback, null);
     }
     /**
      * Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference,
@@ -1067,6 +1269,9 @@ public class TransferScheduleApi {
      * @param body Defines the actual payload of the scheduled transfer request that is to be updated. (required)
      * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
      * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
+     *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
+     *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1077,6 +1282,7 @@ public class TransferScheduleApi {
             TransferSchedule body,
             String destAccountDigitalSignature,
             String amountDigitalSignature,
+            String marketplaceId,
             final ApiCallback<TransferSchedule> callback,
             String restrictedDataToken)
             throws ApiException, LWAException {
@@ -1088,7 +1294,7 @@ public class TransferScheduleApi {
         }
 
         okhttp3.Call call = updateTransferScheduleValidateBeforeCall(
-                body, destAccountDigitalSignature, amountDigitalSignature, progressRequestListener);
+                body, destAccountDigitalSignature, amountDigitalSignature, marketplaceId, progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

@@ -50,11 +50,11 @@ public class DeliveryMessage {
     }
 
     /**
-     * The locale for the message (for example, en_US).
+     * The locale for the message (e.g., &#x60;en_US&#x60;).
      *
      * @return locale
      */
-    @Schema(description = "The locale for the message (for example, en_US).")
+    @Schema(description = "The locale for the message (e.g., `en_US`).")
     public String getLocale() {
         return locale;
     }

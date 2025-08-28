@@ -78,6 +78,8 @@ import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.SetPackingIn
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsRequest;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.SetPrepDetailsResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.Shipment;
+import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateBoxIdentifiersRequest;
+import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateBoxIdentifiersResponse;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateInboundPlanNameRequest;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateItemComplianceDetailsRequest;
 import software.amazon.spapi.models.fulfillment.inbound.v2024_03_20.UpdateItemComplianceDetailsResponse;
@@ -608,6 +610,20 @@ public class FbaInboundApiTest {
         SetPrepDetailsRequest body = easyRandom.nextObject(SetPrepDetailsRequest.class);
 
         ApiResponse<SetPrepDetailsResponse> response = api.setPrepDetailsWithHttpInfo(body);
+
+        assertEquals(202, response.getStatusCode());
+        assertValidResponsePayload(202, response.getData());
+    }
+
+    @Test
+    public void updateBoxIdentifiersTest() throws Exception {
+        instructBackendMock("updateBoxIdentifiers", "202");
+        UpdateBoxIdentifiersRequest body = easyRandom.nextObject(UpdateBoxIdentifiersRequest.class);
+        String inboundPlanId = easyRandom.nextObject(String.class);
+        String shipmentId = easyRandom.nextObject(String.class);
+
+        ApiResponse<UpdateBoxIdentifiersResponse> response =
+                api.updateBoxIdentifiersWithHttpInfo(body, inboundPlanId, shipmentId);
 
         assertEquals(202, response.getStatusCode());
         assertValidResponsePayload(202, response.getData());
