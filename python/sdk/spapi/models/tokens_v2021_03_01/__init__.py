@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.tokens_v2021_03_01.create_restricted_data_token_request import CreateRestrictedDataTokenRequest
 from spapi.models.tokens_v2021_03_01.create_restricted_data_token_response import CreateRestrictedDataTokenResponse

@@ -34,18 +34,20 @@ class TestAccountsApi(unittest.TestCase):
 
     def test_get_account(self):
         account_id = self._get_random_value("str", None)
+        marketplace_id = self._get_random_value("str", None)
         
         self.instruct_backend_mock(self.to_camel_case("get_account"), "200")
-        response = self.api.get_account_with_http_info(account_id, )
+        response = self.api.get_account_with_http_info(account_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
     def test_list_account_balances(self):
         account_id = self._get_random_value("str", None)
+        marketplace_id = self._get_random_value("str", None)
         
         self.instruct_backend_mock(self.to_camel_case("list_account_balances"), "200")
-        response = self.api.list_account_balances_with_http_info(account_id, )
+        response = self.api.list_account_balances_with_http_info(account_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass

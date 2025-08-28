@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -83,8 +82,8 @@ class MskuPrepDetailInput(object):
         if self._configuration.client_side_validation and msku is None:
             raise ValueError("Invalid value for `msku`, must not be `None`")  # noqa: E501
         if (self._configuration.client_side_validation and
-                msku is not None and len(msku) > 40):
-            raise ValueError("Invalid value for `msku`, length must be less than or equal to `40`")  # noqa: E501
+                msku is not None and len(msku) > 255):
+            raise ValueError("Invalid value for `msku`, length must be less than or equal to `255`")  # noqa: E501
         if (self._configuration.client_side_validation and
                 msku is not None and len(msku) < 1):
             raise ValueError("Invalid value for `msku`, length must be greater than or equal to `1`")  # noqa: E501

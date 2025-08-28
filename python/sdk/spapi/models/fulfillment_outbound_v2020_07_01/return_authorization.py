@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -97,7 +96,7 @@ class ReturnAuthorization(object):
     def fulfillment_center_id(self):
         """Gets the fulfillment_center_id of this ReturnAuthorization.  # noqa: E501
 
-        An identifier for the Amazon fulfillment center that the return items should be sent to.  # noqa: E501
+        An identifier for the Amazon fulfillment center to which the return items should be sent.  # noqa: E501
 
         :return: The fulfillment_center_id of this ReturnAuthorization.  # noqa: E501
         :rtype: str
@@ -108,7 +107,7 @@ class ReturnAuthorization(object):
     def fulfillment_center_id(self, fulfillment_center_id):
         """Sets the fulfillment_center_id of this ReturnAuthorization.
 
-        An identifier for the Amazon fulfillment center that the return items should be sent to.  # noqa: E501
+        An identifier for the Amazon fulfillment center to which the return items should be sent.  # noqa: E501
 
         :param fulfillment_center_id: The fulfillment_center_id of this ReturnAuthorization.  # noqa: E501
         :type: str

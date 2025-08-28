@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -123,7 +122,7 @@ class UpdateFulfillmentOrderItem(object):
     def seller_fulfillment_order_item_id(self):
         """Gets the seller_fulfillment_order_item_id of this UpdateFulfillmentOrderItem.  # noqa: E501
 
-        Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.  # noqa: E501
+        Identifies the fulfillment order item to update. Created with a previous call to the `createFulfillmentOrder` operation.  # noqa: E501
 
         :return: The seller_fulfillment_order_item_id of this UpdateFulfillmentOrderItem.  # noqa: E501
         :rtype: str
@@ -134,7 +133,7 @@ class UpdateFulfillmentOrderItem(object):
     def seller_fulfillment_order_item_id(self, seller_fulfillment_order_item_id):
         """Sets the seller_fulfillment_order_item_id of this UpdateFulfillmentOrderItem.
 
-        Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.  # noqa: E501
+        Identifies the fulfillment order item to update. Created with a previous call to the `createFulfillmentOrder` operation.  # noqa: E501
 
         :param seller_fulfillment_order_item_id: The seller_fulfillment_order_item_id of this UpdateFulfillmentOrderItem.  # noqa: E501
         :type: str

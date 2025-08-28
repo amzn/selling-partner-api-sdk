@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -10,7 +10,6 @@
 
     Do not edit the class manually.
 """  # noqa: E501
-
 
 from __future__ import absolute_import
 
@@ -36,18 +35,19 @@ class TransferScheduleApi(object):
         self.api_client = api_client
         self.classFileName = 'transfer_schedule_api'
 
-    def create_transfer_schedule(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
+    def create_transfer_schedule(self, dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs):  # noqa: E501
         """Create a transfer schedule request from Amazon SW account to another customer provided account  # noqa: E501
 
         Create a transfer schedule request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_transfer_schedule(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
+        >>> thread = api.create_transfer_schedule(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransferScheduleRequest body: Defines the actual payload of the request (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
@@ -55,30 +55,31 @@ class TransferScheduleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, **kwargs)  # noqa: E501
+            return self.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs)  # noqa: E501
         else:
-            (data) = self.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, **kwargs)  # noqa: E501
+            (data) = self.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs)  # noqa: E501
             return data
 
-    def create_transfer_schedule_with_http_info(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
+    def create_transfer_schedule_with_http_info(self, dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs):  # noqa: E501
         """Create a transfer schedule request from Amazon SW account to another customer provided account  # noqa: E501
 
         Create a transfer schedule request from a Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
+        >>> thread = api.create_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransferScheduleRequest body: Defines the actual payload of the request (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['dest_account_digital_signature', 'amount_digital_signature', 'body']  # noqa: E501
+        all_params = ['dest_account_digital_signature', 'amount_digital_signature', 'marketplace_id', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -101,6 +102,10 @@ class TransferScheduleApi(object):
         if self.api_client.client_side_validation and ('amount_digital_signature' not in params or
                                                        params['amount_digital_signature'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `amount_digital_signature` when calling `create_transfer_schedule`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `create_transfer_schedule`")  # noqa: E501
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in params or
                                                        params['body'] is None):  # noqa: E501
@@ -111,6 +116,8 @@ class TransferScheduleApi(object):
         path_params = {}
 
         query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
         if 'dest_account_digital_signature' in params:
@@ -151,45 +158,47 @@ class TransferScheduleApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
-    def delete_schedule_transaction(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Delete a transaction request that is scheduled from Amazon SW account to another customer provided account  # noqa: E501
+    def delete_schedule_transaction(self, transfer_schedule_id, marketplace_id, **kwargs):  # noqa: E501
+        """Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
 
-        Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.  # noqa: E501
+        Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_schedule_transaction(transfer_schedule_id, async_req=True)
+        >>> thread = api.delete_schedule_transaction(transfer_schedule_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: A unique reference id for a scheduled transfer (required)
+        :param str transfer_schedule_id: A unique reference ID for a scheduled transfer. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: DeleteTransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.delete_schedule_transaction_with_http_info(transfer_schedule_id, **kwargs)  # noqa: E501
+            return self.delete_schedule_transaction_with_http_info(transfer_schedule_id, marketplace_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.delete_schedule_transaction_with_http_info(transfer_schedule_id, **kwargs)  # noqa: E501
+            (data) = self.delete_schedule_transaction_with_http_info(transfer_schedule_id, marketplace_id, **kwargs)  # noqa: E501
             return data
 
-    def delete_schedule_transaction_with_http_info(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Delete a transaction request that is scheduled from Amazon SW account to another customer provided account  # noqa: E501
+    def delete_schedule_transaction_with_http_info(self, transfer_schedule_id, marketplace_id, **kwargs):  # noqa: E501
+        """Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account  # noqa: E501
 
-        Delete a transaction request that is scheduled from a Seller Wallet account to another customer-provided account.  # noqa: E501
+        Delete a transaction request that is scheduled from Amazon Seller Wallet account to another customer-provided account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.delete_schedule_transaction_with_http_info(transfer_schedule_id, async_req=True)
+        >>> thread = api.delete_schedule_transaction_with_http_info(transfer_schedule_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: A unique reference id for a scheduled transfer (required)
+        :param str transfer_schedule_id: A unique reference ID for a scheduled transfer. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: DeleteTransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['transfer_schedule_id']  # noqa: E501
+        all_params = ['transfer_schedule_id', 'marketplace_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -208,6 +217,10 @@ class TransferScheduleApi(object):
         if self.api_client.client_side_validation and ('transfer_schedule_id' not in params or
                                                        params['transfer_schedule_id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `transfer_schedule_id` when calling `delete_schedule_transaction`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `delete_schedule_transaction`")  # noqa: E501
 
         collection_formats = {}
 
@@ -216,6 +229,8 @@ class TransferScheduleApi(object):
             path_params['transferScheduleId'] = params['transfer_schedule_id']  # noqa: E501
 
         query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
 
@@ -231,7 +246,7 @@ class TransferScheduleApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/finances/transfers/wallet/2024-03-01/transferSchedules', 'DELETE',
+            '/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -246,45 +261,47 @@ class TransferScheduleApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
-    def get_transfer_schedule(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
+    def get_transfer_schedule(self, transfer_schedule_id, marketplace_id, **kwargs):  # noqa: E501
+        """Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
 
-        Find a particular Seller Wallet account transfer schedule.  # noqa: E501
+        Find a particular Amazon Seller Wallet account transfer schedule.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_transfer_schedule(transfer_schedule_id, async_req=True)
+        >>> thread = api.get_transfer_schedule(transfer_schedule_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: Schedule ID of the Amazon SW transfer (required)
+        :param str transfer_schedule_id: The schedule ID of the Amazon Seller Wallet transfer. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_transfer_schedule_with_http_info(transfer_schedule_id, **kwargs)  # noqa: E501
+            return self.get_transfer_schedule_with_http_info(transfer_schedule_id, marketplace_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_transfer_schedule_with_http_info(transfer_schedule_id, **kwargs)  # noqa: E501
+            (data) = self.get_transfer_schedule_with_http_info(transfer_schedule_id, marketplace_id, **kwargs)  # noqa: E501
             return data
 
-    def get_transfer_schedule_with_http_info(self, transfer_schedule_id, **kwargs):  # noqa: E501
-        """Find particular Amazon SW account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
+    def get_transfer_schedule_with_http_info(self, transfer_schedule_id, marketplace_id, **kwargs):  # noqa: E501
+        """Find particular Amazon Seller Wallet account transfer schedule by Amazon transfer schedule identifier  # noqa: E501
 
-        Find a particular Seller Wallet account transfer schedule.  # noqa: E501
+        Find a particular Amazon Seller Wallet account transfer schedule.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_transfer_schedule_with_http_info(transfer_schedule_id, async_req=True)
+        >>> thread = api.get_transfer_schedule_with_http_info(transfer_schedule_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str transfer_schedule_id: Schedule ID of the Amazon SW transfer (required)
+        :param str transfer_schedule_id: The schedule ID of the Amazon Seller Wallet transfer. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['transfer_schedule_id']  # noqa: E501
+        all_params = ['transfer_schedule_id', 'marketplace_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -303,6 +320,10 @@ class TransferScheduleApi(object):
         if self.api_client.client_side_validation and ('transfer_schedule_id' not in params or
                                                        params['transfer_schedule_id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `transfer_schedule_id` when calling `get_transfer_schedule`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `get_transfer_schedule`")  # noqa: E501
 
         collection_formats = {}
 
@@ -311,6 +332,8 @@ class TransferScheduleApi(object):
             path_params['transferScheduleId'] = params['transfer_schedule_id']  # noqa: E501
 
         query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
 
@@ -341,17 +364,18 @@ class TransferScheduleApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
-    def list_transfer_schedules(self, account_id, **kwargs):  # noqa: E501
+    def list_transfer_schedules(self, account_id, marketplace_id, **kwargs):  # noqa: E501
         """The API will return all the transfer schedules for a given Amazon SW account  # noqa: E501
 
         Retrieve transfer schedules of a Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.list_transfer_schedules(account_id, async_req=True)
+        >>> thread = api.list_transfer_schedules(account_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str account_id: ID of the Amazon SW account (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransferScheduleListing
                  If the method is called asynchronously,
@@ -359,29 +383,30 @@ class TransferScheduleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.list_transfer_schedules_with_http_info(account_id, **kwargs)  # noqa: E501
+            return self.list_transfer_schedules_with_http_info(account_id, marketplace_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.list_transfer_schedules_with_http_info(account_id, **kwargs)  # noqa: E501
+            (data) = self.list_transfer_schedules_with_http_info(account_id, marketplace_id, **kwargs)  # noqa: E501
             return data
 
-    def list_transfer_schedules_with_http_info(self, account_id, **kwargs):  # noqa: E501
+    def list_transfer_schedules_with_http_info(self, account_id, marketplace_id, **kwargs):  # noqa: E501
         """The API will return all the transfer schedules for a given Amazon SW account  # noqa: E501
 
         Retrieve transfer schedules of a Seller Wallet bank account.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.list_transfer_schedules_with_http_info(account_id, async_req=True)
+        >>> thread = api.list_transfer_schedules_with_http_info(account_id, marketplace_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str account_id: ID of the Amazon SW account (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param str next_page_token: Pagination token to retrieve a specific page of results.
         :return: TransferScheduleListing
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['account_id', 'next_page_token']  # noqa: E501
+        all_params = ['account_id', 'marketplace_id', 'next_page_token']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -400,6 +425,10 @@ class TransferScheduleApi(object):
         if self.api_client.client_side_validation and ('account_id' not in params or
                                                        params['account_id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `account_id` when calling `list_transfer_schedules`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `list_transfer_schedules`")  # noqa: E501
 
         collection_formats = {}
 
@@ -408,6 +437,8 @@ class TransferScheduleApi(object):
         query_params = []
         if 'account_id' in params:
             query_params.append(('accountId', params['account_id']))  # noqa: E501
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
         if 'next_page_token' in params:
             query_params.append(('nextPageToken', params['next_page_token']))  # noqa: E501
 
@@ -440,18 +471,19 @@ class TransferScheduleApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats, api_models_module=self.api_models_module)
 
-    def update_transfer_schedule(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
+    def update_transfer_schedule(self, dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs):  # noqa: E501
         """Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.  # noqa: E501
 
         Returns a transfer belonging to the updated scheduled transfer request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_transfer_schedule(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
+        >>> thread = api.update_transfer_schedule(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransferSchedule body: Defines the actual payload of the scheduled transfer request that is to be updated.  (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
@@ -459,30 +491,31 @@ class TransferScheduleApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, **kwargs)  # noqa: E501
+            return self.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs)  # noqa: E501
         else:
-            (data) = self.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, **kwargs)  # noqa: E501
+            (data) = self.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs)  # noqa: E501
             return data
 
-    def update_transfer_schedule_with_http_info(self, dest_account_digital_signature, amount_digital_signature, body, **kwargs):  # noqa: E501
+    def update_transfer_schedule_with_http_info(self, dest_account_digital_signature, amount_digital_signature, marketplace_id, body, **kwargs):  # noqa: E501
         """Update a transfer schedule information. Only fields (i.e; transferScheduleInformation, paymentPreference, transferScheduleStatus) in the request body can be updated.  # noqa: E501
 
         Returns a transfer belonging to the updated scheduled transfer request  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, body, async_req=True)
+        >>> thread = api.update_transfer_schedule_with_http_info(dest_account_digital_signature, amount_digital_signature, marketplace_id, body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
         :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransferSchedule body: Defines the actual payload of the scheduled transfer request that is to be updated.  (required)
         :return: TransferSchedule
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['dest_account_digital_signature', 'amount_digital_signature', 'body']  # noqa: E501
+        all_params = ['dest_account_digital_signature', 'amount_digital_signature', 'marketplace_id', 'body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -505,6 +538,10 @@ class TransferScheduleApi(object):
         if self.api_client.client_side_validation and ('amount_digital_signature' not in params or
                                                        params['amount_digital_signature'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `amount_digital_signature` when calling `update_transfer_schedule`")  # noqa: E501
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `update_transfer_schedule`")  # noqa: E501
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in params or
                                                        params['body'] is None):  # noqa: E501
@@ -515,6 +552,8 @@ class TransferScheduleApi(object):
         path_params = {}
 
         query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
 
         header_params = {}
         if 'dest_account_digital_signature' in params:

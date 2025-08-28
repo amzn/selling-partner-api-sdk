@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -56,6 +55,7 @@ class GetMyFeesEstimatesErrorList(object):
     def errors(self):
         """Gets the errors of this GetMyFeesEstimatesErrorList.  # noqa: E501
 
+        A list of error responses returned when a request is unsuccessful.  # noqa: E501
 
         :return: The errors of this GetMyFeesEstimatesErrorList.  # noqa: E501
         :rtype: List[Error]
@@ -66,6 +66,7 @@ class GetMyFeesEstimatesErrorList(object):
     def errors(self, errors):
         """Sets the errors of this GetMyFeesEstimatesErrorList.
 
+        A list of error responses returned when a request is unsuccessful.  # noqa: E501
 
         :param errors: The errors of this GetMyFeesEstimatesErrorList.  # noqa: E501
         :type: List[Error]

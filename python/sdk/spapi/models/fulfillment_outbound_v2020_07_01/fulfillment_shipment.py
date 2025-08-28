@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -113,7 +112,7 @@ class FulfillmentShipment(object):
     def fulfillment_center_id(self):
         """Gets the fulfillment_center_id of this FulfillmentShipment.  # noqa: E501
 
-        An identifier for the fulfillment center that the shipment will be sent from.  # noqa: E501
+        An identifier for the fulfillment center from which the shipment is sent.  # noqa: E501
 
         :return: The fulfillment_center_id of this FulfillmentShipment.  # noqa: E501
         :rtype: str
@@ -124,7 +123,7 @@ class FulfillmentShipment(object):
     def fulfillment_center_id(self, fulfillment_center_id):
         """Sets the fulfillment_center_id of this FulfillmentShipment.
 
-        An identifier for the fulfillment center that the shipment will be sent from.  # noqa: E501
+        An identifier for the fulfillment center from which the shipment is sent.  # noqa: E501
 
         :param fulfillment_center_id: The fulfillment_center_id of this FulfillmentShipment.  # noqa: E501
         :type: str
@@ -216,7 +215,7 @@ class FulfillmentShipment(object):
     def shipping_notes(self):
         """Gets the shipping_notes of this FulfillmentShipment.  # noqa: E501
 
-        Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren't available.  # noqa: E501
+        Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.  # noqa: E501
 
         :return: The shipping_notes of this FulfillmentShipment.  # noqa: E501
         :rtype: List[str]
@@ -227,7 +226,7 @@ class FulfillmentShipment(object):
     def shipping_notes(self, shipping_notes):
         """Sets the shipping_notes of this FulfillmentShipment.
 
-        Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren't available.  # noqa: E501
+        Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.  # noqa: E501
 
         :param shipping_notes: The shipping_notes of this FulfillmentShipment.  # noqa: E501
         :type: List[str]

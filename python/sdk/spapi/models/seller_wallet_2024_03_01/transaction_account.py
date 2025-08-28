@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    The Selling Partner API for Amazon Seller Wallet Open Banking API
+    The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
 
     The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
 
@@ -10,7 +10,6 @@
 
     Do not edit the class manually.
 """  # noqa: E501
-
 
 import pprint
 import re  # noqa: F401
@@ -70,7 +69,8 @@ class TransactionAccount(object):
 
         if account_id is not None:
             self.account_id = account_id
-        self.bank_account_holder_name = bank_account_holder_name
+        if bank_account_holder_name is not None:
+            self.bank_account_holder_name = bank_account_holder_name
         self.bank_name = bank_name
         self.bank_account_number_format = bank_account_number_format
         if bank_account_number_tail is not None:
@@ -122,8 +122,6 @@ class TransactionAccount(object):
         :param bank_account_holder_name: The bank_account_holder_name of this TransactionAccount.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and bank_account_holder_name is None:
-            raise ValueError("Invalid value for `bank_account_holder_name`, must not be `None`")  # noqa: E501
 
         self._bank_account_holder_name = bank_account_holder_name
 

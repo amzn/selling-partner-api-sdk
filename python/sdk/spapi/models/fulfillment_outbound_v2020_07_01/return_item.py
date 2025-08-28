@@ -11,7 +11,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 import pprint
 import re  # noqa: F401
 
@@ -101,7 +100,7 @@ class ReturnItem(object):
     def seller_return_item_id(self):
         """Gets the seller_return_item_id of this ReturnItem.  # noqa: E501
 
-        An identifier assigned by the seller to the return item.  # noqa: E501
+        An identifier the seller assigns to the return item.  # noqa: E501
 
         :return: The seller_return_item_id of this ReturnItem.  # noqa: E501
         :rtype: str
@@ -112,7 +111,7 @@ class ReturnItem(object):
     def seller_return_item_id(self, seller_return_item_id):
         """Sets the seller_return_item_id of this ReturnItem.
 
-        An identifier assigned by the seller to the return item.  # noqa: E501
+        An identifier the seller assigns to the return item.  # noqa: E501
 
         :param seller_return_item_id: The seller_return_item_id of this ReturnItem.  # noqa: E501
         :type: str

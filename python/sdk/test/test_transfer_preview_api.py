@@ -38,9 +38,10 @@ class TestTransferPreviewApi(unittest.TestCase):
         destination_country_code = self._get_random_value("str", None)
         destination_currency_code = self._get_random_value("str", None)
         base_amount = self._get_random_value("float", None)
+        marketplace_id = self._get_random_value("str", None)
         
         self.instruct_backend_mock(self.to_camel_case("get_transfer_preview"), "200")
-        response = self.api.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, )
+        response = self.api.get_transfer_preview_with_http_info(source_country_code, source_currency_code, destination_country_code, destination_currency_code, base_amount, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
