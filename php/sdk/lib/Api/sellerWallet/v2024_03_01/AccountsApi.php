@@ -12,7 +12,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -138,6 +138,8 @@ class AccountsApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -145,9 +147,10 @@ class AccountsApi
      */
     public function getAccount(
         string $account_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): BankAccount {
-        list($response) = $this->getAccountWithHttpInfo($account_id, $restrictedDataToken);
+        list($response) = $this->getAccountWithHttpInfo($account_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -159,6 +162,8 @@ class AccountsApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\BankAccount, HTTP status code, HTTP response headers (array of strings)
@@ -168,9 +173,10 @@ class AccountsApi
      */
     public function getAccountWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getAccountRequest($account_id);
+        $request = $this->getAccountRequest($account_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-getAccount');
         } else {
@@ -247,14 +253,17 @@ class AccountsApi
      * Find particular Amazon SW account by Amazon account identifier
      *
      * @param string $account_id
-     *                           ID of the Amazon SW account (required)
+     *                               ID of the Amazon SW account (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getAccountAsync(
-        string $account_id
+        string $account_id,
+        string $marketplace_id
     ): PromiseInterface {
-        return $this->getAccountAsyncWithHttpInfo($account_id)
+        return $this->getAccountAsyncWithHttpInfo($account_id, $marketplace_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -269,16 +278,19 @@ class AccountsApi
      * Find particular Amazon SW account by Amazon account identifier
      *
      * @param string $account_id
-     *                           ID of the Amazon SW account (required)
+     *                               ID of the Amazon SW account (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getAccountAsyncWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BankAccount';
-        $request = $this->getAccountRequest($account_id);
+        $request = $this->getAccountRequest($account_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-getAccount');
         } else {
@@ -330,17 +342,26 @@ class AccountsApi
      * Create request for operation 'getAccount'.
      *
      * @param string $account_id
-     *                           ID of the Amazon SW account (required)
+     *                               ID of the Amazon SW account (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getAccountRequest(
-        string $account_id
+        string $account_id,
+        string $marketplace_id
     ): Request {
         // verify the required parameter 'account_id' is set
         if (null === $account_id || (is_array($account_id) && 0 === count($account_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $account_id when calling getAccount'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling getAccount'
             );
         }
 
@@ -350,6 +371,17 @@ class AccountsApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $account_id) {
@@ -417,6 +449,8 @@ class AccountsApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -424,9 +458,10 @@ class AccountsApi
      */
     public function listAccountBalances(
         string $account_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): BalanceListing {
-        list($response) = $this->listAccountBalancesWithHttpInfo($account_id, $restrictedDataToken);
+        list($response) = $this->listAccountBalancesWithHttpInfo($account_id, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -438,6 +473,8 @@ class AccountsApi
      *
      * @param string      $account_id
      *                                         ID of the Amazon SW account (required)
+     * @param string      $marketplace_id
+     *                                         The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\BalanceListing, HTTP status code, HTTP response headers (array of strings)
@@ -447,9 +484,10 @@ class AccountsApi
      */
     public function listAccountBalancesWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->listAccountBalancesRequest($account_id);
+        $request = $this->listAccountBalancesRequest($account_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-listAccountBalances');
         } else {
@@ -526,14 +564,17 @@ class AccountsApi
      * Find balance in particular Amazon SW account by Amazon account identifier
      *
      * @param string $account_id
-     *                           ID of the Amazon SW account (required)
+     *                               ID of the Amazon SW account (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function listAccountBalancesAsync(
-        string $account_id
+        string $account_id,
+        string $marketplace_id
     ): PromiseInterface {
-        return $this->listAccountBalancesAsyncWithHttpInfo($account_id)
+        return $this->listAccountBalancesAsyncWithHttpInfo($account_id, $marketplace_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -548,16 +589,19 @@ class AccountsApi
      * Find balance in particular Amazon SW account by Amazon account identifier
      *
      * @param string $account_id
-     *                           ID of the Amazon SW account (required)
+     *                               ID of the Amazon SW account (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function listAccountBalancesAsyncWithHttpInfo(
         string $account_id,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\BalanceListing';
-        $request = $this->listAccountBalancesRequest($account_id);
+        $request = $this->listAccountBalancesRequest($account_id, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'AccountsApi-listAccountBalances');
         } else {
@@ -609,17 +653,26 @@ class AccountsApi
      * Create request for operation 'listAccountBalances'.
      *
      * @param string $account_id
-     *                           ID of the Amazon SW account (required)
+     *                               ID of the Amazon SW account (required)
+     * @param string $marketplace_id
+     *                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
     public function listAccountBalancesRequest(
-        string $account_id
+        string $account_id,
+        string $marketplace_id
     ): Request {
         // verify the required parameter 'account_id' is set
         if (null === $account_id || (is_array($account_id) && 0 === count($account_id))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $account_id when calling listAccountBalances'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling listAccountBalances'
             );
         }
 
@@ -629,6 +682,17 @@ class AccountsApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
 
         // path params
         if (null !== $account_id) {

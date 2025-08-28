@@ -628,6 +628,7 @@ class TestHelper
         'testGetPackageTrackingDetails200', // Due to test execution order, it can not be passed
         'testSubmitFulfillmentOrderStatusUpdate200', // Due to test execution order, it can not be passed
         'testDeliveryOffers200', // Due to complexity, skip for now
+        'testDeliveryOfferings200', // Due to complexity, skip for now
         // EasyShip
         'testCreateScheduledPackage400', // Skip due to mandatory filed "slotId" is null in the sample
         'testCreateScheduledPackageBulk200', // packageDimensions.unit must be Cm (Maybe in JP?)

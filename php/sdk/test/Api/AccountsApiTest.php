@@ -10,7 +10,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -95,12 +95,14 @@ class AccountsApiTest extends BaseTestCase
         &quot;parameters&quot; : {
           &quot;accountId&quot; : {
             &quot;value&quot; : &quot;accountIdCase200&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
       &quot;response&quot; : {
         &quot;accountId&quot; : &quot;amzn1.account.AGUGL2EM3ZHYSRJWH2UCRPIM5JFQ&quot;,
-        &quot;accountHolderName&quot; : &quot;Jane Doe&quot;,
         &quot;bankAccountNumberFormat&quot; : &quot;BBAN&quot;,
         &quot;bankName&quot; : &quot;Amazon Seller Wallet&quot;,
         &quot;bankAccountOwnershipType&quot; : &quot;SELF&quot;,
@@ -747,6 +749,9 @@ class AccountsApiTest extends BaseTestCase
         &quot;parameters&quot; : {
           &quot;accountId&quot; : {
             &quot;value&quot; : &quot;accountIdCase200&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A1RKKUPIHCS9HS&quot;
           }
         }
       },
@@ -1409,7 +1414,6 @@ class AccountsApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;accounts&quot; : [ {
           &quot;accountId&quot; : &quot;amzn1.account.AGUGL2EM3ZHYSRJWH2UCRPIM5JFQ&quot;,
-          &quot;accountHolderName&quot; : &quot;John Doe&quot;,
           &quot;bankAccountNumberFormat&quot; : &quot;BBAN&quot;,
           &quot;bankName&quot; : &quot;Amazon Seller Wallet&quot;,
           &quot;bankAccountOwnershipType&quot; : &quot;SELF&quot;,

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GetDeliveryOffersResponse.
+ * GetDeliveryOfferingsResult.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * GetDeliveryOffersResponse Class Doc Comment.
+ * GetDeliveryOfferingsResult Class Doc Comment.
  *
  * @category Class
  *
- * @description The response schema for the &#x60;getDeliveryOffers&#x60; operation.
+ * @description A list of delivery offerings, including offering expiration, earliest and latest date and time range, and the delivery offering policy.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetDeliveryOfferingsResult implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'GetDeliveryOffersResponse';
+    protected static string $openAPIModelName = 'GetDeliveryOfferingsResult';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +61,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResult',
-        'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'];
+        'delivery_offerings' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryOffering[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +73,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'payload' => null,
-        'errors' => null];
+        'delivery_offerings' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +81,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'payload' => true,
-        'errors' => true,
+        'delivery_offerings' => true,
     ];
 
     /**
@@ -101,8 +98,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $attributeMap = [
-        'payload' => 'payload',
-        'errors' => 'errors',
+        'delivery_offerings' => 'deliveryOfferings',
     ];
 
     /**
@@ -111,8 +107,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $setters = [
-        'payload' => 'setPayload',
-        'errors' => 'setErrors',
+        'delivery_offerings' => 'setDeliveryOfferings',
     ];
 
     /**
@@ -121,8 +116,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $getters = [
-        'payload' => 'getPayload',
-        'errors' => 'getErrors',
+        'delivery_offerings' => 'getDeliveryOfferings',
     ];
 
     /**
@@ -138,8 +132,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('payload', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('delivery_offerings', $data ?? [], null);
     }
 
     /**
@@ -242,61 +235,31 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets payload.
+     * Gets delivery_offerings.
      */
-    public function getPayload(): ?GetDeliveryOffersResult
+    public function getDeliveryOfferings(): ?array
     {
-        return $this->container['payload'];
+        return $this->container['delivery_offerings'];
     }
 
     /**
-     * Sets payload.
+     * Sets delivery_offerings.
      *
-     * @param null|GetDeliveryOffersResult $payload payload
+     * @param null|array $delivery_offerings an array of delivery offering information
      */
-    public function setPayload(?GetDeliveryOffersResult $payload): self
+    public function setDeliveryOfferings(?array $delivery_offerings): self
     {
-        if (is_null($payload)) {
-            array_push($this->openAPINullablesSetToNull, 'payload');
+        if (is_null($delivery_offerings)) {
+            array_push($this->openAPINullablesSetToNull, 'delivery_offerings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('payload', $nullablesSetToNull);
+            $index = array_search('delivery_offerings', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['payload'] = $payload;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors.
-     */
-    public function getErrors(): ?array
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors.
-     *
-     * @param null|array $errors a list of error responses returned when a request is unsuccessful
-     */
-    public function setErrors(?array $errors): self
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
+        $this->container['delivery_offerings'] = $delivery_offerings;
 
         return $this;
     }

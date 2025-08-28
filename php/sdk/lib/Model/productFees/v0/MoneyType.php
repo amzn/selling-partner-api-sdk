@@ -38,6 +38,8 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
+ * @description An object representing a monetary value with its currency information.
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech

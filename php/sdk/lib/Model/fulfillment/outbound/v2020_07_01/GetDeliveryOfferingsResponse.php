@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GetDeliveryOffersResponse.
+ * GetDeliveryOfferingsResponse.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * GetDeliveryOffersResponse Class Doc Comment.
+ * GetDeliveryOfferingsResponse Class Doc Comment.
  *
  * @category Class
  *
- * @description The response schema for the &#x60;getDeliveryOffers&#x60; operation.
+ * @description The response schema for the &#x60;getDeliveryOfferings&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetDeliveryOfferingsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'GetDeliveryOffersResponse';
+    protected static string $openAPIModelName = 'GetDeliveryOfferingsResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,7 +61,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResult',
+        'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResult',
         'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'];
 
     /**
@@ -244,7 +244,7 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Gets payload.
      */
-    public function getPayload(): ?GetDeliveryOffersResult
+    public function getPayload(): ?GetDeliveryOfferingsResult
     {
         return $this->container['payload'];
     }
@@ -252,9 +252,9 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
     /**
      * Sets payload.
      *
-     * @param null|GetDeliveryOffersResult $payload payload
+     * @param null|GetDeliveryOfferingsResult $payload payload
      */
-    public function setPayload(?GetDeliveryOffersResult $payload): self
+    public function setPayload(?GetDeliveryOfferingsResult $payload): self
     {
         if (is_null($payload)) {
             array_push($this->openAPINullablesSetToNull, 'payload');

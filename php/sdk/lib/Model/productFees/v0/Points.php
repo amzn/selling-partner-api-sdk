@@ -38,6 +38,8 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
+ * @description The number of Amazon Points offered with the purchase of an item.The Amazon Points program is only available in Japan.
+ *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
@@ -250,7 +252,7 @@ class Points implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets points_number.
      *
-     * @param null|int $points_number points_number
+     * @param null|int $points_number The number of Amazon Points
      */
     public function setPointsNumber(?int $points_number): self
     {

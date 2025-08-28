@@ -275,8 +275,8 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (null === $this->container['msku']) {
             $invalidProperties[] = "'msku' can't be null";
         }
-        if (mb_strlen($this->container['msku']) > 40) {
-            $invalidProperties[] = "invalid value for 'msku', the character length must be smaller than or equal to 40.";
+        if (mb_strlen($this->container['msku']) > 255) {
+            $invalidProperties[] = "invalid value for 'msku', the character length must be smaller than or equal to 255.";
         }
 
         if (mb_strlen($this->container['msku']) < 1) {
@@ -289,8 +289,8 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (null === $this->container['quantity']) {
             $invalidProperties[] = "'quantity' can't be null";
         }
-        if ($this->container['quantity'] > 10000) {
-            $invalidProperties[] = "invalid value for 'quantity', must be smaller than or equal to 10000.";
+        if ($this->container['quantity'] > 500000) {
+            $invalidProperties[] = "invalid value for 'quantity', must be smaller than or equal to 500000.";
         }
 
         if ($this->container['quantity'] < 1) {
@@ -424,8 +424,8 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         if (is_null($msku)) {
             throw new \InvalidArgumentException('non-nullable msku cannot be null');
         }
-        if (mb_strlen($msku) > 40) {
-            throw new \InvalidArgumentException('invalid length for $msku when calling ItemInput., must be smaller than or equal to 40.');
+        if (mb_strlen($msku) > 255) {
+            throw new \InvalidArgumentException('invalid length for $msku when calling ItemInput., must be smaller than or equal to 255.');
         }
         if (mb_strlen($msku) < 1) {
             throw new \InvalidArgumentException('invalid length for $msku when calling ItemInput., must be bigger than or equal to 1.');
@@ -478,8 +478,8 @@ class ItemInput implements ModelInterface, \ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
 
-        if ($quantity > 10000) {
-            throw new \InvalidArgumentException('invalid value for $quantity when calling ItemInput., must be smaller than or equal to 10000.');
+        if ($quantity > 500000) {
+            throw new \InvalidArgumentException('invalid value for $quantity when calling ItemInput., must be smaller than or equal to 500000.');
         }
         if ($quantity < 1) {
             throw new \InvalidArgumentException('invalid value for $quantity when calling ItemInput., must be bigger than or equal to 1.');

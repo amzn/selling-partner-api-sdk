@@ -12,7 +12,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -138,6 +138,8 @@ class TransferPreviewApi
      *                                               Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float       $base_amount
      *                                               Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     * @param string      $marketplace_id
+     *                                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -149,9 +151,10 @@ class TransferPreviewApi
         string $destination_country_code,
         string $destination_currency_code,
         float $base_amount,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): TransferRatePreview {
-        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $restrictedDataToken);
+        list($response) = $this->getTransferPreviewWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $marketplace_id, $restrictedDataToken);
 
         return $response;
     }
@@ -171,6 +174,8 @@ class TransferPreviewApi
      *                                               Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float       $base_amount
      *                                               Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     * @param string      $marketplace_id
+     *                                               The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      * @param null|string $restrictedDataToken       Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview, HTTP status code, HTTP response headers (array of strings)
@@ -184,9 +189,10 @@ class TransferPreviewApi
         string $destination_country_code,
         string $destination_currency_code,
         float $base_amount,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
+        $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferPreviewApi-getTransferPreview');
         } else {
@@ -272,6 +278,8 @@ class TransferPreviewApi
      *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float  $base_amount
      *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     * @param string $marketplace_id
+     *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -280,9 +288,10 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        string $marketplace_id
     ): PromiseInterface {
-        return $this->getTransferPreviewAsyncWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount)
+        return $this->getTransferPreviewAsyncWithHttpInfo($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $marketplace_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -306,6 +315,8 @@ class TransferPreviewApi
      *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float  $base_amount
      *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     * @param string $marketplace_id
+     *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -315,10 +326,11 @@ class TransferPreviewApi
         string $destination_country_code,
         string $destination_currency_code,
         float $base_amount,
+        string $marketplace_id,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview';
-        $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount);
+        $request = $this->getTransferPreviewRequest($source_country_code, $source_currency_code, $destination_country_code, $destination_currency_code, $base_amount, $marketplace_id);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'TransferPreviewApi-getTransferPreview');
         } else {
@@ -379,6 +391,8 @@ class TransferPreviewApi
      *                                          Represents 3 letter currency code in ISO 4217 standard format of the destination transaction country. (required)
      * @param float  $base_amount
      *                                          Represents the base transaction amount without any markup fees, rates that will be used to get the transfer preview. (required)
+     * @param string $marketplace_id
+     *                                          The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -387,7 +401,8 @@ class TransferPreviewApi
         string $source_currency_code,
         string $destination_country_code,
         string $destination_currency_code,
-        float $base_amount
+        float $base_amount,
+        string $marketplace_id
     ): Request {
         // verify the required parameter 'source_country_code' is set
         if (null === $source_country_code || (is_array($source_country_code) && 0 === count($source_country_code))) {
@@ -417,6 +432,12 @@ class TransferPreviewApi
         if (null === $base_amount || (is_array($base_amount) && 0 === count($base_amount))) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $base_amount when calling getTransferPreview'
+            );
+        }
+        // verify the required parameter 'marketplace_id' is set
+        if (null === $marketplace_id || (is_array($marketplace_id) && 0 === count($marketplace_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $marketplace_id when calling getTransferPreview'
             );
         }
 
@@ -472,6 +493,16 @@ class TransferPreviewApi
             $base_amount,
             'baseAmount', // param base name
             'number', // openApiType
+            '', // style
+            false, // explode
+            true, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $marketplace_id,
+            'marketplaceId', // param base name
+            'string', // openApiType
             '', // style
             false, // explode
             true, // required
