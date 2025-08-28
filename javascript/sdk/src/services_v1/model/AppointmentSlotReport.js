@@ -78,6 +78,7 @@ AppointmentSlotReport.SchedulingTypeEnum = {
      */
   NON_REAL_TIME_SCHEDULING: 'NON_REAL_TIME_SCHEDULING'
 }
+
 /**
  * Defines the type of slots.
  * @member {String} schedulingType

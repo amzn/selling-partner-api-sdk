@@ -91,6 +91,7 @@ TotalWeight.UnitOfMeasureEnum = {
      */
   KILOGRAMS: 'KILOGRAMS'
 }
+
 /**
  * The unit of measure for items sold by weight.
  * @member {String} unitOfMeasure

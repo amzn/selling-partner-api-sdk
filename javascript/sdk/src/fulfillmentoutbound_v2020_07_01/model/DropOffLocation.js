@@ -113,6 +113,7 @@ DropOffLocation.TypeEnum = {
      */
   DO_NOT_LEAVE_UNATTENDED: 'DO_NOT_LEAVE_UNATTENDED'
 }
+
 /**
  * Specifies the preferred location to leave the package at the destination address.
  * @member {String} type

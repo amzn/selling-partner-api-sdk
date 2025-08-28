@@ -82,6 +82,7 @@ ServiceLocation.ServiceLocationTypeEnum = {
      */
   ONLINE: 'ONLINE'
 }
+
 /**
  * The location of the service job.
  * @member {String} serviceLocationType

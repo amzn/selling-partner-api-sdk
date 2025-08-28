@@ -81,6 +81,7 @@ ConfirmShipmentRequest.CodCollectionMethodEnum = {
      */
   DirectPayment: 'DirectPayment'
 }
+
 /**
  * The COD collection method (only supported in the JP marketplace).
  * @member {String} codCollectionMethod

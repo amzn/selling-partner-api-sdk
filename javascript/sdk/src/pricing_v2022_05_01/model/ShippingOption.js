@@ -74,6 +74,7 @@ ShippingOption.ShippingOptionTypeEnum = {
      */
   DEFAULT: 'DEFAULT'
 }
+
 /**
  * The type of shipping option.
  * @member {String} shippingOptionType

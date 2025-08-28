@@ -104,6 +104,7 @@ ServiceUploadDocument.ContentTypeEnum = {
      */
   PDF: 'PDF'
 }
+
 /**
  * The content type of the to-be-uploaded file
  * @member {String} contentType

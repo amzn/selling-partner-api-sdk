@@ -86,6 +86,7 @@ FeaturedOfferSegment.CustomerMembershipEnum = {
      */
   DEFAULT: 'DEFAULT'
 }
+
 /**
  * The customer membership type that makes up this segment
  * @member {String} customerMembership

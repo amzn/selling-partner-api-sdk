@@ -112,6 +112,7 @@ FulfillmentPreviewItem.ShippingWeightCalculationMethodEnum = {
      */
   Dimensional: 'Dimensional'
 }
+
 /**
  * The method used to calculate the estimated shipping weight.
  * @member {String} shippingWeightCalculationMethod

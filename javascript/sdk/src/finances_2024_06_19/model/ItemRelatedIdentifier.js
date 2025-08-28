@@ -87,6 +87,7 @@ ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum = {
      */
   TRANSACTION_ID: 'TRANSACTION_ID'
 }
+
 /**
  * Enumerated set of related item identifier names for the item.
  * @member {String} itemRelatedIdentifierName

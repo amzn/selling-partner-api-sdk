@@ -91,6 +91,7 @@ Volume.UnitOfMeasureEnum = {
      */
   CuY: 'CuY'
 }
+
 /**
  * The unit of measurement.
  * @member {String} unitOfMeasure

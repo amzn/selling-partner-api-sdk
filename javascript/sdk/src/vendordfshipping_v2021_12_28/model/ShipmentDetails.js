@@ -89,6 +89,7 @@ ShipmentDetails.ShipmentStatusEnum = {
      */
   FLOOR_DENIAL: 'FLOOR_DENIAL'
 }
+
 /**
  * The shipment status.
  * @member {String} shipmentStatus

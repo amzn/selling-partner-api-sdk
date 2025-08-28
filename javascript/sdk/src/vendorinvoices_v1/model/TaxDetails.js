@@ -154,6 +154,7 @@ TaxDetails.TaxTypeEnum = {
      */
   DomesticVAT: 'DomesticVAT'
 }
+
 /**
  * Type of the tax applied.
  * @member {String} taxType

@@ -120,6 +120,7 @@ Shipment.TransactionTypeEnum = {
      */
   Cancel: 'Cancel'
 }
+
 /**
  * Indicates the type of transportation request (for example, `New` or `Cancel`). Each `transactionType` has a unique set of operations and there are corresponding details to be populated for each operation.
  * @member {String} transactionType
@@ -172,6 +173,7 @@ Shipment.CurrentShipmentStatusEnum = {
      */
   Shipped: 'Shipped'
 }
+
 /**
  * Indicates the current shipment status.
  * @member {String} currentShipmentStatus
@@ -233,6 +235,7 @@ Shipment.ShipmentFreightTermEnum = {
      */
   Prepaid: 'Prepaid'
 }
+
 /**
  * Specifies if payment is Collect (WePay) or Prepaid (TheyPay). Required.
  * @member {String} shipmentFreightTerm

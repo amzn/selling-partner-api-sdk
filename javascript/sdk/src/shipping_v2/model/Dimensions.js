@@ -106,6 +106,7 @@ Dimensions.UnitEnum = {
      */
   CENTIMETER: 'CENTIMETER'
 }
+
 /**
  * The unit of measurement.
  * @member {String} unit

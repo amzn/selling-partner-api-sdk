@@ -106,6 +106,7 @@ Reservation.TypeEnum = {
      */
   TRAINING: 'TRAINING'
 }
+
 /**
  * Type of reservation.
  * @member {String} type

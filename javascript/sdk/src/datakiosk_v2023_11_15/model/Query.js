@@ -130,6 +130,7 @@ Query.ProcessingStatusEnum = {
      */
   IN_QUEUE: 'IN_QUEUE'
 }
+
 /**
  * The processing status of the query.
  * @member {String} processingStatus

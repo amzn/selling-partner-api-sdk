@@ -79,6 +79,7 @@ Duration.DurationUnitEnum = {
      */
   Months: 'Months'
 }
+
 /**
  * Unit for duration.
  * @member {String} durationUnit

@@ -107,6 +107,7 @@ AllowanceDetails.TypeEnum = {
      */
   Special: 'Special'
 }
+
 /**
  * Type of the allowance applied.
  * @member {String} type

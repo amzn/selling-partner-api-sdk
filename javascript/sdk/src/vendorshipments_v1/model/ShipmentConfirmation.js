@@ -118,6 +118,7 @@ ShipmentConfirmation.ShipmentConfirmationTypeEnum = {
      */
   Replace: 'Replace'
 }
+
 /**
  * Indicates if this shipment confirmation is the initial confirmation, or intended to replace an already posted shipment confirmation. If replacing an existing shipment confirmation, be sure to provide the identical shipmentIdentifier and sellingParty information as in the previous confirmation.
  * @member {String} shipmentConfirmationType
@@ -150,6 +151,7 @@ ShipmentConfirmation.ShipmentTypeEnum = {
      */
   SmallParcel: 'SmallParcel'
 }
+
 /**
  * The type of shipment.
  * @member {String} shipmentType
@@ -206,6 +208,7 @@ ShipmentConfirmation.ShipmentStructureEnum = {
      */
   MasterCase: 'MasterCase'
 }
+
 /**
  * Shipment hierarchical structure.
  * @member {String} shipmentStructure

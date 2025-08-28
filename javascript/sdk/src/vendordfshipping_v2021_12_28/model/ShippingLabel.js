@@ -109,6 +109,7 @@ ShippingLabel.LabelFormatEnum = {
      */
   ZPL: 'ZPL'
 }
+
 /**
  * Format of the label.
  * @member {String} labelFormat

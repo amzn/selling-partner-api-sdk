@@ -84,6 +84,7 @@ SubstitutionPreferences.SubstitutionTypeEnum = {
      */
   DO_NOT_SUBSTITUTE: 'DO_NOT_SUBSTITUTE'
 }
+
 /**
  * The type of substitution that these preferences represent.
  * @member {String} substitutionType

@@ -106,6 +106,7 @@ Invoice.InvoiceTypeEnum = {
      */
   CreditNote: 'CreditNote'
 }
+
 /**
  * Identifies the type of invoice.
  * @member {String} invoiceType

@@ -87,6 +87,7 @@ ShipmentStatusDetails.ShipmentStatusEnum = {
      */
   Shipped: 'Shipped'
 }
+
 /**
  * Current status of the shipment on whether it is picked up or scheduled.
  * @member {String} shipmentStatus

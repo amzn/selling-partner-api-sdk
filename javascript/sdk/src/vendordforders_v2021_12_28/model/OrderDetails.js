@@ -130,6 +130,7 @@ OrderDetails.OrderStatusEnum = {
      */
   CANCELLED: 'CANCELLED'
 }
+
 /**
  * Current status of the order.
  * @member {String} orderStatus

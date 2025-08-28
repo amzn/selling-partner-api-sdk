@@ -188,6 +188,7 @@ Address.AddressTypeEnum = {
      */
   Commercial: 'Commercial'
 }
+
 /**
  * The address type of the shipping address.
  * @member {String} addressType
