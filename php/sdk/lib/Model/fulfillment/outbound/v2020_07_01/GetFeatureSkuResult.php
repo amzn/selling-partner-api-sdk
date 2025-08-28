@@ -354,7 +354,7 @@ class GetFeatureSkuResult implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets ineligible_reasons.
      *
-     * @param null|array $ineligible_reasons A list of one or more reasons that the seller SKU is ineligibile for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED` - The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE` - The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU` - There is an issue with the SKU provided.
+     * @param null|array $ineligible_reasons A list of one or more reasons that the seller SKU is ineligible for the feature.  Possible values: * `MERCHANT_NOT_ENROLLED`: The merchant isn't enrolled for the feature. * `SKU_NOT_ELIGIBLE`: The SKU doesn't reside in a warehouse that supports the feature. * `INVALID_SKU`: There is an issue with the SKU provided.
      */
     public function setIneligibleReasons(?array $ineligible_reasons): self
     {

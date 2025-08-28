@@ -361,7 +361,7 @@ class FulfillmentShipment implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets fulfillment_center_id.
      *
-     * @param string $fulfillment_center_id an identifier for the fulfillment center that the shipment will be sent from
+     * @param string $fulfillment_center_id an identifier for the fulfillment center from which the shipment is sent
      */
     public function setFulfillmentCenterId(string $fulfillment_center_id): self
     {
@@ -477,7 +477,7 @@ class FulfillmentShipment implements ModelInterface, \ArrayAccess, \JsonSerializ
     /**
      * Sets shipping_notes.
      *
-     * @param null|array $shipping_notes Provides additional insight into shipment timeline. Primairly used to communicate that actual delivery dates aren't available.
+     * @param null|array $shipping_notes Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren't available.
      */
     public function setShippingNotes(?array $shipping_notes): self
     {

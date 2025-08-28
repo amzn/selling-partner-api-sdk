@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -62,7 +62,8 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static array $openAPITypes = [
         'bank_account' => '\SpApi\Model\sellerWallet\v2024_03_01\BankAccount',
-        'bank_account_number' => 'string'];
+        'bank_account_number' => 'string',
+        'account_holder_name' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -75,7 +76,8 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
      */
     protected static array $openAPIFormats = [
         'bank_account' => null,
-        'bank_account_number' => null];
+        'bank_account_number' => null,
+        'account_holder_name' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -85,6 +87,7 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
     protected static array $openAPINullables = [
         'bank_account' => false,
         'bank_account_number' => false,
+        'account_holder_name' => false,
     ];
 
     /**
@@ -103,6 +106,7 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
     protected static array $attributeMap = [
         'bank_account' => 'bankAccount',
         'bank_account_number' => 'bankAccountNumber',
+        'account_holder_name' => 'accountHolderName',
     ];
 
     /**
@@ -113,6 +117,7 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
     protected static array $setters = [
         'bank_account' => 'setBankAccount',
         'bank_account_number' => 'setBankAccountNumber',
+        'account_holder_name' => 'setAccountHolderName',
     ];
 
     /**
@@ -123,6 +128,7 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
     protected static array $getters = [
         'bank_account' => 'getBankAccount',
         'bank_account_number' => 'getBankAccountNumber',
+        'account_holder_name' => 'getAccountHolderName',
     ];
 
     /**
@@ -140,6 +146,7 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
     {
         $this->setIfExists('bank_account', $data ?? [], null);
         $this->setIfExists('bank_account_number', $data ?? [], null);
+        $this->setIfExists('account_holder_name', $data ?? [], null);
     }
 
     /**
@@ -235,6 +242,9 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
         if (null === $this->container['bank_account_number']) {
             $invalidProperties[] = "'bank_account_number' can't be null";
         }
+        if (null === $this->container['account_holder_name']) {
+            $invalidProperties[] = "'account_holder_name' can't be null";
+        }
 
         return $invalidProperties;
     }
@@ -292,6 +302,29 @@ class TransactionInstrumentDetails implements ModelInterface, \ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable bank_account_number cannot be null');
         }
         $this->container['bank_account_number'] = $bank_account_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_holder_name.
+     */
+    public function getAccountHolderName(): string
+    {
+        return $this->container['account_holder_name'];
+    }
+
+    /**
+     * Sets account_holder_name.
+     *
+     * @param string $account_holder_name The bank account holder's name (expected to be an Amazon customer).  **Note:** This field is encrypted before Amazon receives it, so should not be used to generate `destAccountDigitalSignature`, and should not be included in the request signature.
+     */
+    public function setAccountHolderName(string $account_holder_name): self
+    {
+        if (is_null($account_holder_name)) {
+            throw new \InvalidArgumentException('non-nullable account_holder_name cannot be null');
+        }
+        $this->container['account_holder_name'] = $account_holder_name;
 
         return $this;
     }

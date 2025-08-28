@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The payload for the &#x60;getEligibileInventory&#x60; operation.
+ * @description The payload for the &#x60;getEligibleInventory&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

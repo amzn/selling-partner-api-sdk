@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The result for the createFulfillmentReturn operation.
+ * @description The result for the &#x60;createFulfillmentReturn&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

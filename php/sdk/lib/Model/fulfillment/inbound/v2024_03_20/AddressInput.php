@@ -66,6 +66,7 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         'city' => 'string',
         'company_name' => 'string',
         'country_code' => 'string',
+        'district_or_county' => 'string',
         'email' => 'string',
         'name' => 'string',
         'phone_number' => 'string',
@@ -87,6 +88,7 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         'city' => null,
         'company_name' => null,
         'country_code' => null,
+        'district_or_county' => null,
         'email' => null,
         'name' => null,
         'phone_number' => null,
@@ -104,6 +106,7 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         'city' => false,
         'company_name' => true,
         'country_code' => false,
+        'district_or_county' => true,
         'email' => true,
         'name' => false,
         'phone_number' => false,
@@ -130,6 +133,7 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         'city' => 'city',
         'company_name' => 'companyName',
         'country_code' => 'countryCode',
+        'district_or_county' => 'districtOrCounty',
         'email' => 'email',
         'name' => 'name',
         'phone_number' => 'phoneNumber',
@@ -148,6 +152,7 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         'city' => 'setCity',
         'company_name' => 'setCompanyName',
         'country_code' => 'setCountryCode',
+        'district_or_county' => 'setDistrictOrCounty',
         'email' => 'setEmail',
         'name' => 'setName',
         'phone_number' => 'setPhoneNumber',
@@ -166,6 +171,7 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         'city' => 'getCity',
         'company_name' => 'getCompanyName',
         'country_code' => 'getCountryCode',
+        'district_or_county' => 'getDistrictOrCounty',
         'email' => 'getEmail',
         'name' => 'getName',
         'phone_number' => 'getPhoneNumber',
@@ -191,6 +197,7 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('city', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('country_code', $data ?? [], null);
+        $this->setIfExists('district_or_county', $data ?? [], null);
         $this->setIfExists('email', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
@@ -336,6 +343,14 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
 
         if (!preg_match('/^[A-Z]{2}$/', $this->container['country_code'])) {
             $invalidProperties[] = "invalid value for 'country_code', must be conform to the pattern /^[A-Z]{2}$/.";
+        }
+
+        if (!is_null($this->container['district_or_county']) && (mb_strlen($this->container['district_or_county']) > 50)) {
+            $invalidProperties[] = "invalid value for 'district_or_county', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['district_or_county']) && (mb_strlen($this->container['district_or_county']) < 1)) {
+            $invalidProperties[] = "invalid value for 'district_or_county', the character length must be bigger than or equal to 1.";
         }
 
         if (!is_null($this->container['email']) && (mb_strlen($this->container['email']) > 1024)) {
@@ -564,6 +579,43 @@ class AddressInput implements ModelInterface, \ArrayAccess, \JsonSerializable
         }
 
         $this->container['country_code'] = $country_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets district_or_county.
+     */
+    public function getDistrictOrCounty(): ?string
+    {
+        return $this->container['district_or_county'];
+    }
+
+    /**
+     * Sets district_or_county.
+     *
+     * @param null|string $district_or_county the district or county
+     */
+    public function setDistrictOrCounty(?string $district_or_county): self
+    {
+        if (is_null($district_or_county)) {
+            array_push($this->openAPINullablesSetToNull, 'district_or_county');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('district_or_county', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($district_or_county) && (mb_strlen($district_or_county) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $district_or_county when calling AddressInput., must be smaller than or equal to 50.');
+        }
+        if (!is_null($district_or_county) && (mb_strlen($district_or_county) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $district_or_county when calling AddressInput., must be bigger than or equal to 1.');
+        }
+
+        $this->container['district_or_county'] = $district_or_county;
 
         return $this;
     }

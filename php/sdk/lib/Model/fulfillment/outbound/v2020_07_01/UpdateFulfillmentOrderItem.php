@@ -358,7 +358,7 @@ class UpdateFulfillmentOrderItem implements ModelInterface, \ArrayAccess, \JsonS
     /**
      * Sets seller_fulfillment_order_item_id.
      *
-     * @param string $seller_fulfillment_order_item_id Identifies the fulfillment order item to update. Created with a previous call to the createFulfillmentOrder operation.
+     * @param string $seller_fulfillment_order_item_id Identifies the fulfillment order item to update. Created with a previous call to the `createFulfillmentOrder` operation.
      */
     public function setSellerFulfillmentOrderItemId(string $seller_fulfillment_order_item_id): self
     {

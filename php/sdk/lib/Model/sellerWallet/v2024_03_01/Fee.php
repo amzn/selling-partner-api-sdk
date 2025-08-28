@@ -13,7 +13,7 @@
  */
 
 /**
- * The Selling Partner API for Amazon Seller Wallet Open Banking API.
+ * The Selling Partner API for Amazon Seller Wallet Open Banking API Spec.  For more information, refer to the [Seller Wallet Open Banking API Use Case Guide](doc:seller-wallet-open-banking-api-v2024-03-01-use-case-guide).
  *
  * The Selling Partner API for Seller Wallet (Seller Wallet API) provides financial information that is relevant to a seller's Seller Wallet account. You can obtain financial events, balances, and transfer schedules for Seller Wallet accounts. You can also schedule and initiate transactions.
  *
@@ -63,7 +63,7 @@ class Fee implements ModelInterface, \ArrayAccess, \JsonSerializable
     protected static array $openAPITypes = [
         'fee_id' => 'string',
         'fee_type' => '\SpApi\Model\sellerWallet\v2024_03_01\FeeType',
-        'fee_rate_value' => 'float',
+        'fee_rate_value' => 'string',
         'fee_amount' => '\SpApi\Model\sellerWallet\v2024_03_01\Currency'];
 
     /**
@@ -319,7 +319,7 @@ class Fee implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets fee_rate_value.
      */
-    public function getFeeRateValue(): float
+    public function getFeeRateValue(): string
     {
         return $this->container['fee_rate_value'];
     }
@@ -327,9 +327,9 @@ class Fee implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets fee_rate_value.
      *
-     * @param float $fee_rate_value a decimal number such as amount or FX rate
+     * @param string $fee_rate_value the value of the fee in percentage format
      */
-    public function setFeeRateValue(float $fee_rate_value): self
+    public function setFeeRateValue(string $fee_rate_value): self
     {
         if (is_null($fee_rate_value)) {
             throw new \InvalidArgumentException('non-nullable fee_rate_value cannot be null');

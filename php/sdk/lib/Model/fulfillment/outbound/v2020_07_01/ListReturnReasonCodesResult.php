@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description The request for the listReturnReasonCodes operation.
+ * @description The request for the &#x60;listReturnReasonCodes&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *

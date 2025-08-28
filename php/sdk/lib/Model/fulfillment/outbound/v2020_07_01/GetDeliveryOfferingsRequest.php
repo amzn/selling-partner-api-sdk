@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GetDeliveryOffersResponse.
+ * GetDeliveryOfferingsRequest.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * GetDeliveryOffersResponse Class Doc Comment.
+ * GetDeliveryOfferingsRequest Class Doc Comment.
  *
  * @category Class
  *
- * @description The response schema for the &#x60;getDeliveryOffers&#x60; operation.
+ * @description The request body schema for the &#x60;getDeliveryOfferings&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetDeliveryOfferingsRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'GetDeliveryOffersResponse';
+    protected static string $openAPIModelName = 'GetDeliveryOfferingsRequest';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +61,10 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'payload' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResult',
-        'errors' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\Error[]'];
+        'destination_address' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\VariablePrecisionAddress',
+        'ship_from_country_code' => 'string',
+        'seller_sku' => 'string',
+        'quantity' => '\SpApi\Model\fulfillment\outbound\v2020_07_01\DeliveryQuantity'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +76,10 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'payload' => null,
-        'errors' => null];
+        'destination_address' => null,
+        'ship_from_country_code' => null,
+        'seller_sku' => null,
+        'quantity' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +87,10 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'payload' => true,
-        'errors' => true,
+        'destination_address' => false,
+        'ship_from_country_code' => false,
+        'seller_sku' => false,
+        'quantity' => true,
     ];
 
     /**
@@ -101,8 +107,10 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $attributeMap = [
-        'payload' => 'payload',
-        'errors' => 'errors',
+        'destination_address' => 'destinationAddress',
+        'ship_from_country_code' => 'shipFromCountryCode',
+        'seller_sku' => 'sellerSku',
+        'quantity' => 'quantity',
     ];
 
     /**
@@ -111,8 +119,10 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $setters = [
-        'payload' => 'setPayload',
-        'errors' => 'setErrors',
+        'destination_address' => 'setDestinationAddress',
+        'ship_from_country_code' => 'setShipFromCountryCode',
+        'seller_sku' => 'setSellerSku',
+        'quantity' => 'setQuantity',
     ];
 
     /**
@@ -121,8 +131,10 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static array $getters = [
-        'payload' => 'getPayload',
-        'errors' => 'getErrors',
+        'destination_address' => 'getDestinationAddress',
+        'ship_from_country_code' => 'getShipFromCountryCode',
+        'seller_sku' => 'getSellerSku',
+        'quantity' => 'getQuantity',
     ];
 
     /**
@@ -138,8 +150,10 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('payload', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('destination_address', $data ?? [], null);
+        $this->setIfExists('ship_from_country_code', $data ?? [], null);
+        $this->setIfExists('seller_sku', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
     }
 
     /**
@@ -227,7 +241,30 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
      */
     public function listInvalidProperties(): array
     {
-        return [];
+        $invalidProperties = [];
+
+        if (null === $this->container['destination_address']) {
+            $invalidProperties[] = "'destination_address' can't be null";
+        }
+        if (null === $this->container['ship_from_country_code']) {
+            $invalidProperties[] = "'ship_from_country_code' can't be null";
+        }
+        if (mb_strlen($this->container['ship_from_country_code']) > 2) {
+            $invalidProperties[] = "invalid value for 'ship_from_country_code', the character length must be smaller than or equal to 2.";
+        }
+
+        if (mb_strlen($this->container['ship_from_country_code']) < 2) {
+            $invalidProperties[] = "invalid value for 'ship_from_country_code', the character length must be bigger than or equal to 2.";
+        }
+
+        if (null === $this->container['seller_sku']) {
+            $invalidProperties[] = "'seller_sku' can't be null";
+        }
+        if (mb_strlen($this->container['seller_sku']) > 50) {
+            $invalidProperties[] = "invalid value for 'seller_sku', the character length must be smaller than or equal to 50.";
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -242,61 +279,111 @@ class GetDeliveryOffersResponse implements ModelInterface, \ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets payload.
+     * Gets destination_address.
      */
-    public function getPayload(): ?GetDeliveryOffersResult
+    public function getDestinationAddress(): VariablePrecisionAddress
     {
-        return $this->container['payload'];
+        return $this->container['destination_address'];
     }
 
     /**
-     * Sets payload.
+     * Sets destination_address.
      *
-     * @param null|GetDeliveryOffersResult $payload payload
+     * @param VariablePrecisionAddress $destination_address destination_address
      */
-    public function setPayload(?GetDeliveryOffersResult $payload): self
+    public function setDestinationAddress(VariablePrecisionAddress $destination_address): self
     {
-        if (is_null($payload)) {
-            array_push($this->openAPINullablesSetToNull, 'payload');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('payload', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($destination_address)) {
+            throw new \InvalidArgumentException('non-nullable destination_address cannot be null');
         }
-        $this->container['payload'] = $payload;
+        $this->container['destination_address'] = $destination_address;
 
         return $this;
     }
 
     /**
-     * Gets errors.
+     * Gets ship_from_country_code.
      */
-    public function getErrors(): ?array
+    public function getShipFromCountryCode(): string
     {
-        return $this->container['errors'];
+        return $this->container['ship_from_country_code'];
     }
 
     /**
-     * Sets errors.
+     * Sets ship_from_country_code.
      *
-     * @param null|array $errors a list of error responses returned when a request is unsuccessful
+     * @param string $ship_from_country_code The two digit country code the items should ship from. In ISO 3166-1 alpha-2 format.
      */
-    public function setErrors(?array $errors): self
+    public function setShipFromCountryCode(string $ship_from_country_code): self
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($ship_from_country_code)) {
+            throw new \InvalidArgumentException('non-nullable ship_from_country_code cannot be null');
+        }
+        if (mb_strlen($ship_from_country_code) > 2) {
+            throw new \InvalidArgumentException('invalid length for $ship_from_country_code when calling GetDeliveryOfferingsRequest., must be smaller than or equal to 2.');
+        }
+        if (mb_strlen($ship_from_country_code) < 2) {
+            throw new \InvalidArgumentException('invalid length for $ship_from_country_code when calling GetDeliveryOfferingsRequest., must be bigger than or equal to 2.');
+        }
+
+        $this->container['ship_from_country_code'] = $ship_from_country_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_sku.
+     */
+    public function getSellerSku(): string
+    {
+        return $this->container['seller_sku'];
+    }
+
+    /**
+     * Sets seller_sku.
+     *
+     * @param string $seller_sku the seller SKU of the item
+     */
+    public function setSellerSku(string $seller_sku): self
+    {
+        if (is_null($seller_sku)) {
+            throw new \InvalidArgumentException('non-nullable seller_sku cannot be null');
+        }
+        if (mb_strlen($seller_sku) > 50) {
+            throw new \InvalidArgumentException('invalid length for $seller_sku when calling GetDeliveryOfferingsRequest., must be smaller than or equal to 50.');
+        }
+
+        $this->container['seller_sku'] = $seller_sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity.
+     */
+    public function getQuantity(): ?DeliveryQuantity
+    {
+        return $this->container['quantity'];
+    }
+
+    /**
+     * Sets quantity.
+     *
+     * @param null|DeliveryQuantity $quantity quantity
+     */
+    public function setQuantity(?DeliveryQuantity $quantity): self
+    {
+        if (is_null($quantity)) {
+            array_push($this->openAPINullablesSetToNull, 'quantity');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('quantity', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }

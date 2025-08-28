@@ -46,6 +46,8 @@ use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderRequest;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentOrderResponse;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnRequest;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsRequest;
+use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResponse;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersRequest;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOffersResponse;
 use SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse;
@@ -80,6 +82,7 @@ class FbaOutboundApi
     public ?LimiterInterface $cancelFulfillmentOrderRateLimiter;
     public ?LimiterInterface $createFulfillmentOrderRateLimiter;
     public ?LimiterInterface $createFulfillmentReturnRateLimiter;
+    public ?LimiterInterface $deliveryOfferingsRateLimiter;
     public ?LimiterInterface $deliveryOffersRateLimiter;
     public ?LimiterInterface $getFeatureInventoryRateLimiter;
     public ?LimiterInterface $getFeatureSKURateLimiter;
@@ -127,6 +130,8 @@ class FbaOutboundApi
             $this->createFulfillmentOrderRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentOrder');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-createFulfillmentReturn'), $this->rateLimitStorage);
             $this->createFulfillmentReturnRateLimiter = $factory->create('FbaOutboundApi-createFulfillmentReturn');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-deliveryOfferings'), $this->rateLimitStorage);
+            $this->deliveryOfferingsRateLimiter = $factory->create('FbaOutboundApi-deliveryOfferings');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-deliveryOffers'), $this->rateLimitStorage);
             $this->deliveryOffersRateLimiter = $factory->create('FbaOutboundApi-deliveryOffers');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('FbaOutboundApi-getFeatureInventory'), $this->rateLimitStorage);
@@ -727,9 +732,9 @@ class FbaOutboundApi
      * Operation createFulfillmentReturn.
      *
      * @param string                         $seller_fulfillment_order_id
-     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     *                                                                    An identifier the seller assigns to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
      * @param CreateFulfillmentReturnRequest $body
-     *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     *                                                                    The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
      * @param null|string                    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -749,9 +754,9 @@ class FbaOutboundApi
      * Operation createFulfillmentReturnWithHttpInfo.
      *
      * @param string                         $seller_fulfillment_order_id
-     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     *                                                                    An identifier the seller assigns to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
      * @param CreateFulfillmentReturnRequest $body
-     *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     *                                                                    The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
      * @param null|string                    $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\CreateFulfillmentReturnResponse, HTTP status code, HTTP response headers (array of strings)
@@ -839,9 +844,9 @@ class FbaOutboundApi
      * Operation createFulfillmentReturnAsync.
      *
      * @param string                         $seller_fulfillment_order_id
-     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     *                                                                    An identifier the seller assigns to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
      * @param CreateFulfillmentReturnRequest $body
-     *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     *                                                                    The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -862,9 +867,9 @@ class FbaOutboundApi
      * Operation createFulfillmentReturnAsyncWithHttpInfo.
      *
      * @param string                         $seller_fulfillment_order_id
-     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     *                                                                    An identifier the seller assigns to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
      * @param CreateFulfillmentReturnRequest $body
-     *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     *                                                                    The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -926,9 +931,9 @@ class FbaOutboundApi
      * Create request for operation 'createFulfillmentReturn'.
      *
      * @param string                         $seller_fulfillment_order_id
-     *                                                                    An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;SellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
+     *                                                                    An identifier the seller assigns to the fulfillment order at the time it was created. The seller uses their own records to find the correct &#x60;sellerFulfillmentOrderId&#x60; value based on the buyer&#39;s request to return items. (required)
      * @param CreateFulfillmentReturnRequest $body
-     *                                                                    CreateFulfillmentReturnRequest parameter (required)
+     *                                                                    The request body of the &#x60;createFulfillmentReturn&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1015,6 +1020,274 @@ class FbaOutboundApi
 
         return new Request(
             'PUT',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deliveryOfferings.
+     *
+     * @param GetDeliveryOfferingsRequest $body
+     *                                                         GetDeliveryOfferingsRequest parameter (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function deliveryOfferings(
+        GetDeliveryOfferingsRequest $body,
+        ?string $restrictedDataToken = null
+    ): GetDeliveryOfferingsResponse {
+        list($response) = $this->deliveryOfferingsWithHttpInfo($body, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation deliveryOfferingsWithHttpInfo.
+     *
+     * @param GetDeliveryOfferingsRequest $body
+     *                                                         GetDeliveryOfferingsRequest parameter (required)
+     * @param null|string                 $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function deliveryOfferingsWithHttpInfo(
+        GetDeliveryOfferingsRequest $body,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->deliveryOfferingsRequest($body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-deliveryOfferings');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->deliveryOfferingsRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deliveryOfferingsAsync.
+     *
+     * @param GetDeliveryOfferingsRequest $body
+     *                                          GetDeliveryOfferingsRequest parameter (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function deliveryOfferingsAsync(
+        GetDeliveryOfferingsRequest $body
+    ): PromiseInterface {
+        return $this->deliveryOfferingsAsyncWithHttpInfo($body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation deliveryOfferingsAsyncWithHttpInfo.
+     *
+     * @param GetDeliveryOfferingsRequest $body
+     *                                          GetDeliveryOfferingsRequest parameter (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function deliveryOfferingsAsyncWithHttpInfo(
+        GetDeliveryOfferingsRequest $body,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetDeliveryOfferingsResponse';
+        $request = $this->deliveryOfferingsRequest($body);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-deliveryOfferings');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->deliveryOfferingsRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'deliveryOfferings'.
+     *
+     * @param GetDeliveryOfferingsRequest $body
+     *                                          GetDeliveryOfferingsRequest parameter (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function deliveryOfferingsRequest(
+        GetDeliveryOfferingsRequest $body
+    ): Request {
+        // verify the required parameter 'body' is set
+        if (null === $body || (is_array($body) && 0 === count($body))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling deliveryOfferings'
+            );
+        }
+
+        $resourcePath = '/fba/outbound/2020-07-01/deliveryOfferings';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'payload'],
+            'application/json',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'POST',
             $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1297,9 +1570,9 @@ class FbaOutboundApi
      * @param string         $feature_name
      *                                            The name of the feature for which to return a list of eligible inventory. (required)
      * @param null|string    $next_token
-     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param null|\DateTime $query_start_date
-     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1325,9 +1598,9 @@ class FbaOutboundApi
      * @param string         $feature_name
      *                                            The name of the feature for which to return a list of eligible inventory. (required)
      * @param null|string    $next_token
-     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     *                                            A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param null|\DateTime $query_start_date
-     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *                                            A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      * @param null|string    $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureInventoryResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1421,9 +1694,9 @@ class FbaOutboundApi
      * @param string         $feature_name
      *                                         The name of the feature for which to return a list of eligible inventory. (required)
      * @param null|string    $next_token
-     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param null|\DateTime $query_start_date
-     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1450,9 +1723,9 @@ class FbaOutboundApi
      * @param string         $feature_name
      *                                         The name of the feature for which to return a list of eligible inventory. (required)
      * @param null|string    $next_token
-     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param null|\DateTime $query_start_date
-     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1520,9 +1793,9 @@ class FbaOutboundApi
      * @param string         $feature_name
      *                                         The name of the feature for which to return a list of eligible inventory. (required)
      * @param null|string    $next_token
-     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page. (optional)
+     *                                         A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page. (optional)
      * @param null|\DateTime $query_start_date
-     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format yyyy-MM-ddTHH:mm:ss.sssZ (optional)
+     *                                         A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60; (optional)
      *
      * @throws \InvalidArgumentException
      */
@@ -1650,7 +1923,7 @@ class FbaOutboundApi
      * @param string      $feature_name
      *                                         The name of the feature. (required)
      * @param string      $seller_sku
-     *                                         Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     *                                         Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the seller&#39;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -1675,7 +1948,7 @@ class FbaOutboundApi
      * @param string      $feature_name
      *                                         The name of the feature. (required)
      * @param string      $seller_sku
-     *                                         Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     *                                         Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the seller&#39;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetFeatureSkuResponse, HTTP status code, HTTP response headers (array of strings)
@@ -1768,7 +2041,7 @@ class FbaOutboundApi
      * @param string $feature_name
      *                               The name of the feature. (required)
      * @param string $seller_sku
-     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     *                               Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the seller&#39;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1794,7 +2067,7 @@ class FbaOutboundApi
      * @param string $feature_name
      *                               The name of the feature. (required)
      * @param string $seller_sku
-     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     *                               Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the seller&#39;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -1861,7 +2134,7 @@ class FbaOutboundApi
      * @param string $feature_name
      *                               The name of the feature. (required)
      * @param string $seller_sku
-     *                               Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s &#x60;SellerId&#x60;, which is included with every operation that you submit. (required)
+     *                               Used to identify an item in the given marketplace. &#x60;sellerSku&#x60; is qualified by the seller&#39;s &#x60;sellerId&#x60;, which is included with every operation that you submit. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -2792,18 +3065,21 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetails.
      *
-     * @param int         $package_number
-     *                                         The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param null|int    $package_number
+     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param null|string $amazon_fulfillment_tracking_number
+     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetails(
-        int $package_number,
+        ?int $package_number = null,
+        ?string $amazon_fulfillment_tracking_number = null,
         ?string $restrictedDataToken = null
     ): GetPackageTrackingDetailsResponse {
-        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number, $restrictedDataToken);
+        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number, $amazon_fulfillment_tracking_number, $restrictedDataToken);
 
         return $response;
     }
@@ -2811,9 +3087,11 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetailsWithHttpInfo.
      *
-     * @param int         $package_number
-     *                                         The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
-     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param null|int    $package_number
+     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param null|string $amazon_fulfillment_tracking_number
+     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2821,10 +3099,11 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsWithHttpInfo(
-        int $package_number,
+        ?int $package_number = null,
+        ?string $amazon_fulfillment_tracking_number = null,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getPackageTrackingDetailsRequest($package_number);
+        $request = $this->getPackageTrackingDetailsRequest($package_number, $amazon_fulfillment_tracking_number);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
         } else {
@@ -2898,15 +3177,18 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetailsAsync.
      *
-     * @param int $package_number
-     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|int    $package_number
+     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param null|string $amazon_fulfillment_tracking_number
+     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsAsync(
-        int $package_number
+        ?int $package_number = null,
+        ?string $amazon_fulfillment_tracking_number = null
     ): PromiseInterface {
-        return $this->getPackageTrackingDetailsAsyncWithHttpInfo($package_number)
+        return $this->getPackageTrackingDetailsAsyncWithHttpInfo($package_number, $amazon_fulfillment_tracking_number)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2918,17 +3200,20 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetailsAsyncWithHttpInfo.
      *
-     * @param int $package_number
-     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|int    $package_number
+     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param null|string $amazon_fulfillment_tracking_number
+     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsAsyncWithHttpInfo(
-        int $package_number,
+        ?int $package_number = null,
+        ?string $amazon_fulfillment_tracking_number = null,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse';
-        $request = $this->getPackageTrackingDetailsRequest($package_number);
+        $request = $this->getPackageTrackingDetailsRequest($package_number, $amazon_fulfillment_tracking_number);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
         } else {
@@ -2979,21 +3264,17 @@ class FbaOutboundApi
     /**
      * Create request for operation 'getPackageTrackingDetails'.
      *
-     * @param int $package_number
-     *                            The unencrypted package identifier returned by the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|int    $package_number
+     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param null|string $amazon_fulfillment_tracking_number
+     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
      *
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsRequest(
-        int $package_number
+        ?int $package_number = null,
+        ?string $amazon_fulfillment_tracking_number = null
     ): Request {
-        // verify the required parameter 'package_number' is set
-        if (null === $package_number || (is_array($package_number) && 0 === count($package_number))) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $package_number when calling getPackageTrackingDetails'
-            );
-        }
-
         $resourcePath = '/fba/outbound/2020-07-01/tracking';
         $formParams = [];
         $queryParams = [];
@@ -3008,7 +3289,17 @@ class FbaOutboundApi
             'integer', // openApiType
             '', // style
             false, // explode
-            true, // required
+            false, // required
+            $this->config
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $amazon_fulfillment_tracking_number,
+            'amazonFulfillmentTrackingNumber', // param base name
+            'string', // openApiType
+            '', // style
+            false, // explode
+            false, // required
             $this->config
         ) ?? []);
 
@@ -4009,7 +4300,7 @@ class FbaOutboundApi
      * @param string                        $seller_fulfillment_order_id
      *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param UpdateFulfillmentOrderRequest $body
-     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     *                                                                   The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
@@ -4031,7 +4322,7 @@ class FbaOutboundApi
      * @param string                        $seller_fulfillment_order_id
      *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param UpdateFulfillmentOrderRequest $body
-     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     *                                                                   The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      * @param null|string                   $restrictedDataToken         Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\UpdateFulfillmentOrderResponse, HTTP status code, HTTP response headers (array of strings)
@@ -4121,7 +4412,7 @@ class FbaOutboundApi
      * @param string                        $seller_fulfillment_order_id
      *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param UpdateFulfillmentOrderRequest $body
-     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     *                                                                   The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -4144,7 +4435,7 @@ class FbaOutboundApi
      * @param string                        $seller_fulfillment_order_id
      *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param UpdateFulfillmentOrderRequest $body
-     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     *                                                                   The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
@@ -4208,7 +4499,7 @@ class FbaOutboundApi
      * @param string                        $seller_fulfillment_order_id
      *                                                                   The identifier assigned to the item by the seller when the fulfillment order was created. (required)
      * @param UpdateFulfillmentOrderRequest $body
-     *                                                                   UpdateFulfillmentOrderRequest parameter (required)
+     *                                                                   The request body of the &#x60;updateFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
