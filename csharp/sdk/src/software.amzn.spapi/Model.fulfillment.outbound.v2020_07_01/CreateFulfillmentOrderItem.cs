@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="CreateFulfillmentOrderItem" /> class.
         /// </summary>
         /// <param name="sellerSku">The seller SKU of the item. (required).</param>
-        /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same &#x60;SellerSKU&#x60;. For example, the seller might assign different &#x60;SellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that share the same &#x60;SellerSKU&#x60; but have different &#x60;GiftMessage&#x60; values. (required).</param>
+        /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same &#x60;sellerSku&#x60; value. For example, the seller might assign different &#x60;sellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that share the same &#x60;sellerSku&#x60; value but have different &#x60;giftMessage&#x60; values. (required).</param>
         /// <param name="quantity">The item quantity. (required).</param>
         /// <param name="giftMessage">A message to the gift recipient, if applicable..</param>
         /// <param name="displayableComment">Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip..</param>
@@ -79,9 +79,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public string SellerSku { get; set; }
 
         /// <summary>
-        /// A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same &#x60;SellerSKU&#x60;. For example, the seller might assign different &#x60;SellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that share the same &#x60;SellerSKU&#x60; but have different &#x60;GiftMessage&#x60; values.
+        /// A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same &#x60;sellerSku&#x60; value. For example, the seller might assign different &#x60;sellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that share the same &#x60;sellerSku&#x60; value but have different &#x60;giftMessage&#x60; values.
         /// </summary>
-        /// <value>A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same &#x60;SellerSKU&#x60;. For example, the seller might assign different &#x60;SellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that share the same &#x60;SellerSKU&#x60; but have different &#x60;GiftMessage&#x60; values.</value>
+        /// <value>A fulfillment order item identifier that the seller creates to track fulfillment order items. Used to disambiguate multiple fulfillment items that have the same &#x60;sellerSku&#x60; value. For example, the seller might assign different &#x60;sellerFulfillmentOrderItemId&#x60; values to two items in a fulfillment order that share the same &#x60;sellerSku&#x60; value but have different &#x60;giftMessage&#x60; values.</value>
         [DataMember(Name = "sellerFulfillmentOrderItemId", IsRequired = true, EmitDefaultValue = true)]
         public string SellerFulfillmentOrderItemId { get; set; }
 

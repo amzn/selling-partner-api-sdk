@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="boxId">The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box..</param>
         /// <param name="trackingId">The tracking ID associated with each box in a non-Amazon partnered Small Parcel Delivery (SPD) shipment..</param>
-        /// <param name="trackingNumberValidationStatus">Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet &#39;VALIDATED&#39;, please verify the number and update if necessary. Possible values: &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;..</param>
+        /// <param name="trackingNumberValidationStatus">Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet &#39;VALIDATED&#39; or &#x60;NOT_SUPPORTED&#x60;, verify the number and update it if necessary. **Possible values:** &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;, &#x60;NOT_SUPPORTED&#x60; (Amazon is unable to find tracking information for the provided tracking ID)..</param>
         public SpdTrackingItem(string boxId = default(string), string trackingId = default(string), string trackingNumberValidationStatus = default(string))
         {
             this.BoxId = boxId;
@@ -59,9 +59,9 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         public string TrackingId { get; set; }
 
         /// <summary>
-        /// Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet &#39;VALIDATED&#39;, please verify the number and update if necessary. Possible values: &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;.
+        /// Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet &#39;VALIDATED&#39; or &#x60;NOT_SUPPORTED&#x60;, verify the number and update it if necessary. **Possible values:** &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;, &#x60;NOT_SUPPORTED&#x60; (Amazon is unable to find tracking information for the provided tracking ID).
         /// </summary>
-        /// <value>Whether or not Amazon has validated the tracking number. If more than 24 hours have passed and the status is not yet &#39;VALIDATED&#39;, please verify the number and update if necessary. Possible values: &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;.</value>
+        /// <value>Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet &#39;VALIDATED&#39; or &#x60;NOT_SUPPORTED&#x60;, verify the number and update it if necessary. **Possible values:** &#x60;VALIDATED&#x60;, &#x60;NOT_VALIDATED&#x60;, &#x60;NOT_SUPPORTED&#x60; (Amazon is unable to find tracking information for the provided tracking ID).</value>
         [DataMember(Name = "trackingNumberValidationStatus", EmitDefaultValue = false)]
         public string TrackingNumberValidationStatus { get; set; }
 

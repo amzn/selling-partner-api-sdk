@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.productFees.v0
 {
     /// <summary>
-    /// GetMyFeesEstimateResponse
+    /// The response object for the GetMyFeesEstimate operation.
     /// </summary>
     [DataContract(Name = "GetMyFeesEstimateResponse")]
     public partial class GetMyFeesEstimateResponse : IValidatableObject

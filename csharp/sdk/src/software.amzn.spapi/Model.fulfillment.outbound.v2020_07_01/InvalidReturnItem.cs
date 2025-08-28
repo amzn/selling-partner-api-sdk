@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidReturnItem" /> class.
         /// </summary>
-        /// <param name="sellerReturnItemId">An identifier assigned by the seller to the return item. (required).</param>
+        /// <param name="sellerReturnItemId">An identifier the seller assigns to the return item. (required).</param>
         /// <param name="sellerFulfillmentOrderItemId">The identifier assigned to the item by the seller when the fulfillment order was created. (required).</param>
         /// <param name="invalidItemReason">invalidItemReason (required).</param>
         public InvalidReturnItem(string sellerReturnItemId = default(string), string sellerFulfillmentOrderItemId = default(string), InvalidItemReason invalidItemReason = default(InvalidItemReason))
@@ -65,9 +65,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         }
 
         /// <summary>
-        /// An identifier assigned by the seller to the return item.
+        /// An identifier the seller assigns to the return item.
         /// </summary>
-        /// <value>An identifier assigned by the seller to the return item.</value>
+        /// <value>An identifier the seller assigns to the return item.</value>
         [DataMember(Name = "sellerReturnItemId", IsRequired = true, EmitDefaultValue = true)]
         public string SellerReturnItemId { get; set; }
 

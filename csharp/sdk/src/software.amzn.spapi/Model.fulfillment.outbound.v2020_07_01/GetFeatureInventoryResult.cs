@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The payload for the &#x60;getEligibileInventory&#x60; operation.
+    /// The payload for the &#x60;getEligibleInventory&#x60; operation.
     /// </summary>
     [DataContract(Name = "GetFeatureInventoryResult")]
     public partial class GetFeatureInventoryResult : IValidatableObject

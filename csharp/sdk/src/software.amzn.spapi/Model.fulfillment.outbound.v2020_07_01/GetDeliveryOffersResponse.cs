@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The response schema for the getDeliveryOffers operation.
+    /// The response schema for the &#x60;getDeliveryOffers&#x60; operation.
     /// </summary>
     [DataContract(Name = "GetDeliveryOffersResponse")]
     public partial class GetDeliveryOffersResponse : IValidatableObject

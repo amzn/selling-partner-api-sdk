@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.productFees.v0
 {
     /// <summary>
-    /// Error
+    /// An object representing an error that occurred during the API operation.
     /// </summary>
     [DataContract(Name = "Error")]
     public partial class Error : IValidatableObject

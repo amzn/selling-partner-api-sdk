@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// The request for the listReturnReasonCodes operation.
+    /// The request for the &#x60;listReturnReasonCodes&#x60; operation.
     /// </summary>
     [DataContract(Name = "ListReturnReasonCodesResult")]
     public partial class ListReturnReasonCodesResult : IValidatableObject

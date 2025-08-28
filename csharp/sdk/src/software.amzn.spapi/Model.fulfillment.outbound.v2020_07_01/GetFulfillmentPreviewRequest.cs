@@ -42,9 +42,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="marketplaceId">The marketplace the fulfillment order is placed against..</param>
         /// <param name="address">address (required).</param>
         /// <param name="items">An array of fulfillment preview item information. (required).</param>
-        /// <param name="shippingSpeedCategories">ShippingSpeedCategory List.</param>
+        /// <param name="shippingSpeedCategories">List of shipping speed categories..</param>
         /// <param name="includeCODFulfillmentPreview">When true, returns all fulfillment order previews both for COD and not for COD. Otherwise, returns only fulfillment order previews that are not for COD..</param>
-        /// <param name="includeDeliveryWindows">When true, returns the &#x60;ScheduledDeliveryInfo&#x60; response object, which contains the available delivery windows for a Scheduled Delivery. The &#x60;ScheduledDeliveryInfo&#x60; response object can only be returned for fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; &#x3D; &#x60;ScheduledDelivery&#x60;..</param>
+        /// <param name="includeDeliveryWindows">When true, returns the &#x60;ScheduledDeliveryInfo&#x60; response object, which contains the available delivery windows for a Scheduled Delivery. The &#x60;ScheduledDeliveryInfo&#x60; response object can only be returned for fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; equal to &#x60;ScheduledDelivery&#x60;..</param>
         /// <param name="featureConstraints">A list of features and their fulfillment policies to apply to the order..</param>
         public GetFulfillmentPreviewRequest(string marketplaceId = default(string), Address address = default(Address), List<GetFulfillmentPreviewItem> items = default(List<GetFulfillmentPreviewItem>), List<ShippingSpeedCategory> shippingSpeedCategories = default(List<ShippingSpeedCategory>), bool includeCODFulfillmentPreview = default(bool), bool includeDeliveryWindows = default(bool), List<FeatureSettings> featureConstraints = default(List<FeatureSettings>))
         {
@@ -88,9 +88,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public List<GetFulfillmentPreviewItem> Items { get; set; }
 
         /// <summary>
-        /// ShippingSpeedCategory List
+        /// List of shipping speed categories.
         /// </summary>
-        /// <value>ShippingSpeedCategory List</value>
+        /// <value>List of shipping speed categories.</value>
         [DataMember(Name = "shippingSpeedCategories", EmitDefaultValue = false)]
         public List<ShippingSpeedCategory> ShippingSpeedCategories { get; set; }
 
@@ -102,9 +102,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         public bool IncludeCODFulfillmentPreview { get; set; }
 
         /// <summary>
-        /// When true, returns the &#x60;ScheduledDeliveryInfo&#x60; response object, which contains the available delivery windows for a Scheduled Delivery. The &#x60;ScheduledDeliveryInfo&#x60; response object can only be returned for fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; &#x3D; &#x60;ScheduledDelivery&#x60;.
+        /// When true, returns the &#x60;ScheduledDeliveryInfo&#x60; response object, which contains the available delivery windows for a Scheduled Delivery. The &#x60;ScheduledDeliveryInfo&#x60; response object can only be returned for fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; equal to &#x60;ScheduledDelivery&#x60;.
         /// </summary>
-        /// <value>When true, returns the &#x60;ScheduledDeliveryInfo&#x60; response object, which contains the available delivery windows for a Scheduled Delivery. The &#x60;ScheduledDeliveryInfo&#x60; response object can only be returned for fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; &#x3D; &#x60;ScheduledDelivery&#x60;.</value>
+        /// <value>When true, returns the &#x60;ScheduledDeliveryInfo&#x60; response object, which contains the available delivery windows for a Scheduled Delivery. The &#x60;ScheduledDeliveryInfo&#x60; response object can only be returned for fulfillment order previews with &#x60;ShippingSpeedCategories&#x60; equal to &#x60;ScheduledDelivery&#x60;.</value>
         [DataMember(Name = "includeDeliveryWindows", EmitDefaultValue = true)]
         public bool IncludeDeliveryWindows { get; set; }
 

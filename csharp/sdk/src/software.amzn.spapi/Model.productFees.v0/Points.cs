@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.productFees.v0
 {
     /// <summary>
-    /// Points
+    /// The number of Amazon Points offered with the purchase of an item.The Amazon Points program is only available in Japan.
     /// </summary>
     [DataContract(Name = "Points")]
     public partial class Points : IValidatableObject
@@ -34,7 +34,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="Points" /> class.
         /// </summary>
-        /// <param name="pointsNumber">pointsNumber.</param>
+        /// <param name="pointsNumber">The number of Amazon Points.</param>
         /// <param name="pointsMonetaryValue">pointsMonetaryValue.</param>
         public Points(int pointsNumber = default(int), MoneyType pointsMonetaryValue = default(MoneyType))
         {
@@ -43,8 +43,9 @@ namespace software.amzn.spapi.Model.productFees.v0
         }
 
         /// <summary>
-        /// Gets or Sets PointsNumber
+        /// The number of Amazon Points
         /// </summary>
+        /// <value>The number of Amazon Points</value>
         [DataMember(Name = "PointsNumber", EmitDefaultValue = false)]
         public int PointsNumber { get; set; }
 

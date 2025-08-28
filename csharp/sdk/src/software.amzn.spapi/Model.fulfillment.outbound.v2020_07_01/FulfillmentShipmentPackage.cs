@@ -42,10 +42,11 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="packageNumber">Identifies a package in a shipment. (required).</param>
         /// <param name="carrierCode">Identifies the carrier who will deliver the shipment to the recipient. (required).</param>
         /// <param name="trackingNumber">The tracking number, if provided, can be used to obtain tracking and delivery information..</param>
+        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information..</param>
         /// <param name="estimatedArrivalDate">Date timestamp.</param>
         /// <param name="lockerDetails">lockerDetails.</param>
         /// <param name="deliveryInformation">deliveryInformation.</param>
-        public FulfillmentShipmentPackage(int packageNumber = default(int), string carrierCode = default(string), string trackingNumber = default(string), DateTime estimatedArrivalDate = default(DateTime), LockerDetails lockerDetails = default(LockerDetails), DeliveryInformation deliveryInformation = default(DeliveryInformation))
+        public FulfillmentShipmentPackage(int packageNumber = default(int), string carrierCode = default(string), string trackingNumber = default(string), string amazonFulfillmentTrackingNumber = default(string), DateTime estimatedArrivalDate = default(DateTime), LockerDetails lockerDetails = default(LockerDetails), DeliveryInformation deliveryInformation = default(DeliveryInformation))
         {
             this.PackageNumber = packageNumber;
             // to ensure "carrierCode" is required (not null)
@@ -55,6 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             }
             this.CarrierCode = carrierCode;
             this.TrackingNumber = trackingNumber;
+            this.AmazonFulfillmentTrackingNumber = amazonFulfillmentTrackingNumber;
             this.EstimatedArrivalDate = estimatedArrivalDate;
             this.LockerDetails = lockerDetails;
             this.DeliveryInformation = deliveryInformation;
@@ -80,6 +82,13 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <value>The tracking number, if provided, can be used to obtain tracking and delivery information.</value>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = false)]
         public string TrackingNumber { get; set; }
+
+        /// <summary>
+        /// The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.
+        /// </summary>
+        /// <value>The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.</value>
+        [DataMember(Name = "amazonFulfillmentTrackingNumber", EmitDefaultValue = false)]
+        public string AmazonFulfillmentTrackingNumber { get; set; }
 
         /// <summary>
         /// Date timestamp
@@ -111,6 +120,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             sb.Append("  PackageNumber: ").Append(PackageNumber).Append("\n");
             sb.Append("  CarrierCode: ").Append(CarrierCode).Append("\n");
             sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
+            sb.Append("  AmazonFulfillmentTrackingNumber: ").Append(AmazonFulfillmentTrackingNumber).Append("\n");
             sb.Append("  EstimatedArrivalDate: ").Append(EstimatedArrivalDate).Append("\n");
             sb.Append("  LockerDetails: ").Append(LockerDetails).Append("\n");
             sb.Append("  DeliveryInformation: ").Append(DeliveryInformation).Append("\n");
