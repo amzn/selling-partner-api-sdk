@@ -15,6 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 import { Address } from './Address.js'
 import { BuyerTaxInfo } from './BuyerTaxInfo.js'
 import { MarketplaceTaxInfo } from './MarketplaceTaxInfo.js'
+import { PaymentInformation } from './PaymentInformation.js'
 import { ShipmentItem } from './ShipmentItem.js'
 
 /**
@@ -59,6 +60,7 @@ export class ShipmentDetail {
       if (data.hasOwnProperty('PurchaseDate')) { obj.purchaseDate = ApiClient.convertToType(data.PurchaseDate, 'Date') }
       if (data.hasOwnProperty('ShippingAddress')) { obj.shippingAddress = Address.constructFromObject(data.ShippingAddress) }
       if (data.hasOwnProperty('PaymentMethodDetails')) { obj.paymentMethodDetails = ApiClient.convertToType(data.PaymentMethodDetails, ['String']) }
+      if (data.hasOwnProperty('Payments')) { obj.payments = ApiClient.convertToType(data.Payments, [PaymentInformation]) }
       if (data.hasOwnProperty('MarketplaceId')) { obj.marketplaceId = ApiClient.convertToType(data.MarketplaceId, 'String') }
       if (data.hasOwnProperty('SellerId')) { obj.sellerId = ApiClient.convertToType(data.SellerId, 'String') }
       if (data.hasOwnProperty('BuyerName')) { obj.buyerName = ApiClient.convertToType(data.BuyerName, 'String') }
@@ -112,6 +114,13 @@ ShipmentDetail.prototype.shippingAddress = undefined
  * @type {[String]}
  */
 ShipmentDetail.prototype.paymentMethodDetails = undefined
+
+/**
+ * List of payment transactions
+ * @member {[PaymentInformation]} payments
+ * @type {[PaymentInformation]}
+ */
+ShipmentDetail.prototype.payments = undefined
 
 /**
  * The identifier for the marketplace where the order was placed.
