@@ -26,7 +26,7 @@ export class PaymentExecutionDetailItem {
    * @alias module:orders_v0/model/PaymentExecutionDetailItem
    * @class
    * @param payment {Money}
-   * @param paymentMethod {String} A sub-payment method for a COD order.  **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points * `Invoice`: Invoice
+   * @param paymentMethod {String} The sub-payment method for an order.   **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points  * `Invoice`: Invoice  * `CreditCard`: Credit card  * `Pix`: Pix  * `Other`: Other.
    */
   constructor (payment, paymentMethod) {
     this.payment = payment
@@ -56,6 +56,9 @@ export class PaymentExecutionDetailItem {
       obj = obj || new PaymentExecutionDetailItem()
       if (data.hasOwnProperty('Payment')) { obj.payment = Money.constructFromObject(data.Payment) }
       if (data.hasOwnProperty('PaymentMethod')) { obj.paymentMethod = ApiClient.convertToType(data.PaymentMethod, 'String') }
+      if (data.hasOwnProperty('AcquirerId')) { obj.acquirerId = ApiClient.convertToType(data.AcquirerId, 'String') }
+      if (data.hasOwnProperty('CardBrand')) { obj.cardBrand = ApiClient.convertToType(data.CardBrand, 'String') }
+      if (data.hasOwnProperty('AuthorizationCode')) { obj.authorizationCode = ApiClient.convertToType(data.AuthorizationCode, 'String') }
     }
     return obj
   }
@@ -68,8 +71,29 @@ export class PaymentExecutionDetailItem {
 PaymentExecutionDetailItem.prototype.payment = undefined
 
 /**
- * A sub-payment method for a COD order.  **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points * `Invoice`: Invoice
+ * The sub-payment method for an order.   **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points  * `Invoice`: Invoice  * `CreditCard`: Credit card  * `Pix`: Pix  * `Other`: Other.
  * @member {String} paymentMethod
  * @type {String}
  */
 PaymentExecutionDetailItem.prototype.paymentMethod = undefined
+
+/**
+ * The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.
+ * @member {String} acquirerId
+ * @type {String}
+ */
+PaymentExecutionDetailItem.prototype.acquirerId = undefined
+
+/**
+ * The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard`.
+ * @member {String} cardBrand
+ * @type {String}
+ */
+PaymentExecutionDetailItem.prototype.cardBrand = undefined
+
+/**
+ * The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.
+ * @member {String} authorizationCode
+ * @type {String}
+ */
+PaymentExecutionDetailItem.prototype.authorizationCode = undefined

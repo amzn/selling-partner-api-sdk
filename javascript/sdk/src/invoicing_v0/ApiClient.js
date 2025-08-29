@@ -204,9 +204,9 @@ export class ApiClient {
     /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default http://localhost
+         * @default https://sellingpartnerapi-na.amazon.com
          */
-    this.basePath = baseUrl ? baseUrl.replace(/\/+$/, '') : 'http://localhost'.replace(/\/+$/, '')
+    this.basePath = baseUrl ? baseUrl.replace(/\/+$/, '') : 'https://sellingpartnerapi-na.amazon.com'.replace(/\/+$/, '')
 
     /**
          * The authentication methods to be included for all API calls.

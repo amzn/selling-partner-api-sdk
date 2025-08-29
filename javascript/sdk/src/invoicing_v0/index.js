@@ -20,6 +20,8 @@ import { GetInvoiceStatusResponse } from './model/GetInvoiceStatusResponse.js'
 import { GetShipmentDetailsResponse } from './model/GetShipmentDetailsResponse.js'
 import { MarketplaceTaxInfo } from './model/MarketplaceTaxInfo.js'
 import { Money } from './model/Money.js'
+import { PaymentInformation } from './model/PaymentInformation.js'
+import { PaymentMethodEnum } from './model/PaymentMethodEnum.js'
 import { ShipmentDetail } from './model/ShipmentDetail.js'
 import { ShipmentInvoiceStatus } from './model/ShipmentInvoiceStatus.js'
 import { ShipmentInvoiceStatusInfo } from './model/ShipmentInvoiceStatusInfo.js'
@@ -90,6 +92,18 @@ export {
      * @property {module:invoicing_v0/model/Money}
      */
   Money,
+
+  /**
+     * The PaymentInformation model constructor.
+     * @property {module:invoicing_v0/model/PaymentInformation}
+     */
+  PaymentInformation,
+
+  /**
+     * The PaymentMethodEnum model constructor.
+     * @property {module:invoicing_v0/model/PaymentMethodEnum}
+     */
+  PaymentMethodEnum,
 
   /**
      * The ShipmentDetail model constructor.
