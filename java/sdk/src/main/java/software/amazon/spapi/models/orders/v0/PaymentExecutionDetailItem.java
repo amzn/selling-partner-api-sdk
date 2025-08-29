@@ -25,6 +25,15 @@ public class PaymentExecutionDetailItem {
     @SerializedName("PaymentMethod")
     private String paymentMethod = null;
 
+    @SerializedName("AcquirerId")
+    private String acquirerId = null;
+
+    @SerializedName("CardBrand")
+    private String cardBrand = null;
+
+    @SerializedName("AuthorizationCode")
+    private String authorizationCode = null;
+
     public PaymentExecutionDetailItem payment(Money payment) {
         this.payment = payment;
         return this;
@@ -50,21 +59,90 @@ public class PaymentExecutionDetailItem {
     }
 
     /**
-     * A sub-payment method for a COD order. **Possible values**: * &#x60;COD&#x60;: Cash on delivery * &#x60;GC&#x60;:
-     * Gift card * &#x60;PointsAccount&#x60;: Amazon Points * &#x60;Invoice&#x60;: Invoice
+     * The sub-payment method for an order. **Possible values**: * &#x60;COD&#x60;: Cash on delivery * &#x60;GC&#x60;:
+     * Gift card * &#x60;PointsAccount&#x60;: Amazon Points * &#x60;Invoice&#x60;: Invoice * &#x60;CreditCard&#x60;:
+     * Credit card * &#x60;Pix&#x60;: Pix * &#x60;Other&#x60;: Other.
      *
      * @return paymentMethod
      */
     @Schema(
             required = true,
             description =
-                    "A sub-payment method for a COD order.  **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points * `Invoice`: Invoice")
+                    "The sub-payment method for an order.   **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points  * `Invoice`: Invoice  * `CreditCard`: Credit card  * `Pix`: Pix  * `Other`: Other.")
     public String getPaymentMethod() {
         return paymentMethod;
     }
 
     public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
+    }
+
+    public PaymentExecutionDetailItem acquirerId(String acquirerId) {
+        this.acquirerId = acquirerId;
+        return this;
+    }
+
+    /**
+     * The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.
+     * **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the
+     * &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60; or &#x60;Pix&#x60;.
+     *
+     * @return acquirerId
+     */
+    @Schema(
+            description =
+                    "The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.")
+    public String getAcquirerId() {
+        return acquirerId;
+    }
+
+    public void setAcquirerId(String acquirerId) {
+        this.acquirerId = acquirerId;
+    }
+
+    public PaymentExecutionDetailItem cardBrand(String cardBrand) {
+        this.cardBrand = cardBrand;
+        return this;
+    }
+
+    /**
+     * The card network or brand used in the payment transaction (for example, Visa or Mastercard). **Note**: This
+     * attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is
+     * &#x60;CreditCard&#x60;.
+     *
+     * @return cardBrand
+     */
+    @Schema(
+            description =
+                    "The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard`.")
+    public String getCardBrand() {
+        return cardBrand;
+    }
+
+    public void setCardBrand(String cardBrand) {
+        this.cardBrand = cardBrand;
+    }
+
+    public PaymentExecutionDetailItem authorizationCode(String authorizationCode) {
+        this.authorizationCode = authorizationCode;
+        return this;
+    }
+
+    /**
+     * The unique code that confirms the payment authorization. **Note**: This attribute is only available for orders in
+     * the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60; or &#x60;Pix&#x60;.
+     *
+     * @return authorizationCode
+     */
+    @Schema(
+            description =
+                    "The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.")
+    public String getAuthorizationCode() {
+        return authorizationCode;
+    }
+
+    public void setAuthorizationCode(String authorizationCode) {
+        this.authorizationCode = authorizationCode;
     }
 
     @Override
@@ -77,12 +155,15 @@ public class PaymentExecutionDetailItem {
         }
         PaymentExecutionDetailItem paymentExecutionDetailItem = (PaymentExecutionDetailItem) o;
         return Objects.equals(this.payment, paymentExecutionDetailItem.payment)
-                && Objects.equals(this.paymentMethod, paymentExecutionDetailItem.paymentMethod);
+                && Objects.equals(this.paymentMethod, paymentExecutionDetailItem.paymentMethod)
+                && Objects.equals(this.acquirerId, paymentExecutionDetailItem.acquirerId)
+                && Objects.equals(this.cardBrand, paymentExecutionDetailItem.cardBrand)
+                && Objects.equals(this.authorizationCode, paymentExecutionDetailItem.authorizationCode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(payment, paymentMethod);
+        return Objects.hash(payment, paymentMethod, acquirerId, cardBrand, authorizationCode);
     }
 
     @Override
@@ -92,6 +173,11 @@ public class PaymentExecutionDetailItem {
 
         sb.append("    payment: ").append(toIndentedString(payment)).append("\n");
         sb.append("    paymentMethod: ").append(toIndentedString(paymentMethod)).append("\n");
+        sb.append("    acquirerId: ").append(toIndentedString(acquirerId)).append("\n");
+        sb.append("    cardBrand: ").append(toIndentedString(cardBrand)).append("\n");
+        sb.append("    authorizationCode: ")
+                .append(toIndentedString(authorizationCode))
+                .append("\n");
         sb.append("}");
         return sb.toString();
     }
