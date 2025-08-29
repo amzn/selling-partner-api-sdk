@@ -38,6 +38,9 @@ public class ShipmentDetail {
     @SerializedName("PaymentMethodDetails")
     private PaymentMethodDetailItemList paymentMethodDetails = null;
 
+    @SerializedName("Payments")
+    private PaymentInformationList payments = null;
+
     @SerializedName("MarketplaceId")
     private String marketplaceId = null;
 
@@ -174,6 +177,25 @@ public class ShipmentDetail {
 
     public void setPaymentMethodDetails(PaymentMethodDetailItemList paymentMethodDetails) {
         this.paymentMethodDetails = paymentMethodDetails;
+    }
+
+    public ShipmentDetail payments(PaymentInformationList payments) {
+        this.payments = payments;
+        return this;
+    }
+
+    /**
+     * Get payments
+     *
+     * @return payments
+     */
+    @Schema(description = "")
+    public PaymentInformationList getPayments() {
+        return payments;
+    }
+
+    public void setPayments(PaymentInformationList payments) {
+        this.payments = payments;
     }
 
     public ShipmentDetail marketplaceId(String marketplaceId) {
@@ -343,6 +365,7 @@ public class ShipmentDetail {
                 && Objects.equals(this.purchaseDate, shipmentDetail.purchaseDate)
                 && Objects.equals(this.shippingAddress, shipmentDetail.shippingAddress)
                 && Objects.equals(this.paymentMethodDetails, shipmentDetail.paymentMethodDetails)
+                && Objects.equals(this.payments, shipmentDetail.payments)
                 && Objects.equals(this.marketplaceId, shipmentDetail.marketplaceId)
                 && Objects.equals(this.sellerId, shipmentDetail.sellerId)
                 && Objects.equals(this.buyerName, shipmentDetail.buyerName)
@@ -362,6 +385,7 @@ public class ShipmentDetail {
                 purchaseDate,
                 shippingAddress,
                 paymentMethodDetails,
+                payments,
                 marketplaceId,
                 sellerId,
                 buyerName,
@@ -389,6 +413,7 @@ public class ShipmentDetail {
         sb.append("    paymentMethodDetails: ")
                 .append(toIndentedString(paymentMethodDetails))
                 .append("\n");
+        sb.append("    payments: ").append(toIndentedString(payments)).append("\n");
         sb.append("    marketplaceId: ").append(toIndentedString(marketplaceId)).append("\n");
         sb.append("    sellerId: ").append(toIndentedString(sellerId)).append("\n");
         sb.append("    buyerName: ").append(toIndentedString(buyerName)).append("\n");
