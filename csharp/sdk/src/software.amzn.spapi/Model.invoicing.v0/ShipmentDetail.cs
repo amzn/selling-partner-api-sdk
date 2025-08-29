@@ -40,6 +40,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="purchaseDate">The date and time when the order was created..</param>
         /// <param name="shippingAddress">shippingAddress.</param>
         /// <param name="paymentMethodDetails">The list of payment method details..</param>
+        /// <param name="payments">List of payment transactions.</param>
         /// <param name="marketplaceId">The identifier for the marketplace where the order was placed..</param>
         /// <param name="sellerId">The seller identifier..</param>
         /// <param name="buyerName">The name of the buyer..</param>
@@ -48,7 +49,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="marketplaceTaxInfo">marketplaceTaxInfo.</param>
         /// <param name="sellerDisplayName">The seller’s friendly name registered in the marketplace..</param>
         /// <param name="shipmentItems">A list of shipment items..</param>
-        public ShipmentDetail(string warehouseId = default(string), string amazonOrderId = default(string), string amazonShipmentId = default(string), DateTime purchaseDate = default(DateTime), Address shippingAddress = default(Address), List<string> paymentMethodDetails = default(List<string>), string marketplaceId = default(string), string sellerId = default(string), string buyerName = default(string), string buyerCounty = default(string), BuyerTaxInfo buyerTaxInfo = default(BuyerTaxInfo), MarketplaceTaxInfo marketplaceTaxInfo = default(MarketplaceTaxInfo), string sellerDisplayName = default(string), List<ShipmentItem> shipmentItems = default(List<ShipmentItem>))
+        public ShipmentDetail(string warehouseId = default(string), string amazonOrderId = default(string), string amazonShipmentId = default(string), DateTime purchaseDate = default(DateTime), Address shippingAddress = default(Address), List<string> paymentMethodDetails = default(List<string>), List<PaymentInformation> payments = default(List<PaymentInformation>), string marketplaceId = default(string), string sellerId = default(string), string buyerName = default(string), string buyerCounty = default(string), BuyerTaxInfo buyerTaxInfo = default(BuyerTaxInfo), MarketplaceTaxInfo marketplaceTaxInfo = default(MarketplaceTaxInfo), string sellerDisplayName = default(string), List<ShipmentItem> shipmentItems = default(List<ShipmentItem>))
         {
             this.WarehouseId = warehouseId;
             this.AmazonOrderId = amazonOrderId;
@@ -56,6 +57,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
             this.PurchaseDate = purchaseDate;
             this.ShippingAddress = shippingAddress;
             this.PaymentMethodDetails = paymentMethodDetails;
+            this.Payments = payments;
             this.MarketplaceId = marketplaceId;
             this.SellerId = sellerId;
             this.BuyerName = buyerName;
@@ -106,6 +108,13 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <value>The list of payment method details.</value>
         [DataMember(Name = "PaymentMethodDetails", EmitDefaultValue = false)]
         public List<string> PaymentMethodDetails { get; set; }
+
+        /// <summary>
+        /// List of payment transactions
+        /// </summary>
+        /// <value>List of payment transactions</value>
+        [DataMember(Name = "Payments", EmitDefaultValue = false)]
+        public List<PaymentInformation> Payments { get; set; }
 
         /// <summary>
         /// The identifier for the marketplace where the order was placed.
@@ -175,6 +184,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
             sb.Append("  PurchaseDate: ").Append(PurchaseDate).Append("\n");
             sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
             sb.Append("  PaymentMethodDetails: ").Append(PaymentMethodDetails).Append("\n");
+            sb.Append("  Payments: ").Append(Payments).Append("\n");
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  SellerId: ").Append(SellerId).Append("\n");
             sb.Append("  BuyerName: ").Append(BuyerName).Append("\n");
