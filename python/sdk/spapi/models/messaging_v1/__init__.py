@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.messaging_v1.attachment import Attachment
 from spapi.models.messaging_v1.create_amazon_motors_request import CreateAmazonMotorsRequest

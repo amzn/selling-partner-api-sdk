@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.shipment_invoicing_v0.address import Address
 from spapi.models.shipment_invoicing_v0.address_type_enum import AddressTypeEnum
@@ -21,6 +22,8 @@ from spapi.models.shipment_invoicing_v0.get_invoice_status_response import GetIn
 from spapi.models.shipment_invoicing_v0.get_shipment_details_response import GetShipmentDetailsResponse
 from spapi.models.shipment_invoicing_v0.marketplace_tax_info import MarketplaceTaxInfo
 from spapi.models.shipment_invoicing_v0.money import Money
+from spapi.models.shipment_invoicing_v0.payment_information import PaymentInformation
+from spapi.models.shipment_invoicing_v0.payment_method_enum import PaymentMethodEnum
 from spapi.models.shipment_invoicing_v0.shipment_detail import ShipmentDetail
 from spapi.models.shipment_invoicing_v0.shipment_invoice_status import ShipmentInvoiceStatus
 from spapi.models.shipment_invoicing_v0.shipment_invoice_status_info import ShipmentInvoiceStatusInfo

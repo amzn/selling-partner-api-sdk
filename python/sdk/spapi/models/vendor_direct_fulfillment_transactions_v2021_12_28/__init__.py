@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.vendor_direct_fulfillment_transactions_v2021_12_28.error import Error
 from spapi.models.vendor_direct_fulfillment_transactions_v2021_12_28.error_list import ErrorList

@@ -13,6 +13,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.shipping_v2.access_point import AccessPoint
 from spapi.models.shipping_v2.access_point_details import AccessPointDetails

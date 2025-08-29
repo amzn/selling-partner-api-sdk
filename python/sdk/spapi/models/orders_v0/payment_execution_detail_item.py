@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -35,14 +36,20 @@ class PaymentExecutionDetailItem(object):
     swagger_types = {
         'payment': 'Money',
         'payment_method': 'str',
+        'acquirer_id': 'str',
+        'card_brand': 'str',
+        'authorization_code': 'str',
     }
 
     attribute_map = {
         'payment': 'Payment',
         'payment_method': 'PaymentMethod',
+        'acquirer_id': 'AcquirerId',
+        'card_brand': 'CardBrand',
+        'authorization_code': 'AuthorizationCode',
     }
 
-    def __init__(self, payment=None, payment_method=None, _configuration=None):  # noqa: E501
+    def __init__(self, payment=None, payment_method=None, acquirer_id=None, card_brand=None, authorization_code=None, _configuration=None):  # noqa: E501
         """PaymentExecutionDetailItem - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -50,10 +57,19 @@ class PaymentExecutionDetailItem(object):
 
         self._payment = None
         self._payment_method = None
+        self._acquirer_id = None
+        self._card_brand = None
+        self._authorization_code = None
         self.discriminator = None
 
         self.payment = payment
         self.payment_method = payment_method
+        if acquirer_id is not None:
+            self.acquirer_id = acquirer_id
+        if card_brand is not None:
+            self.card_brand = card_brand
+        if authorization_code is not None:
+            self.authorization_code = authorization_code
 
     @property
     def payment(self):
@@ -82,7 +98,7 @@ class PaymentExecutionDetailItem(object):
     def payment_method(self):
         """Gets the payment_method of this PaymentExecutionDetailItem.  # noqa: E501
 
-        A sub-payment method for a COD order.  **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points * `Invoice`: Invoice  # noqa: E501
+        The sub-payment method for an order.   **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points  * `Invoice`: Invoice  * `CreditCard`: Credit card  * `Pix`: Pix  * `Other`: Other.  # noqa: E501
 
         :return: The payment_method of this PaymentExecutionDetailItem.  # noqa: E501
         :rtype: str
@@ -93,7 +109,7 @@ class PaymentExecutionDetailItem(object):
     def payment_method(self, payment_method):
         """Sets the payment_method of this PaymentExecutionDetailItem.
 
-        A sub-payment method for a COD order.  **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points * `Invoice`: Invoice  # noqa: E501
+        The sub-payment method for an order.   **Possible values**: * `COD`: Cash on delivery  * `GC`: Gift card  * `PointsAccount`: Amazon Points  * `Invoice`: Invoice  * `CreditCard`: Credit card  * `Pix`: Pix  * `Other`: Other.  # noqa: E501
 
         :param payment_method: The payment_method of this PaymentExecutionDetailItem.  # noqa: E501
         :type: str
@@ -102,6 +118,75 @@ class PaymentExecutionDetailItem(object):
             raise ValueError("Invalid value for `payment_method`, must not be `None`")  # noqa: E501
 
         self._payment_method = payment_method
+
+    @property
+    def acquirer_id(self):
+        """Gets the acquirer_id of this PaymentExecutionDetailItem.  # noqa: E501
+
+        The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.  # noqa: E501
+
+        :return: The acquirer_id of this PaymentExecutionDetailItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._acquirer_id
+
+    @acquirer_id.setter
+    def acquirer_id(self, acquirer_id):
+        """Sets the acquirer_id of this PaymentExecutionDetailItem.
+
+        The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.  # noqa: E501
+
+        :param acquirer_id: The acquirer_id of this PaymentExecutionDetailItem.  # noqa: E501
+        :type: str
+        """
+
+        self._acquirer_id = acquirer_id
+
+    @property
+    def card_brand(self):
+        """Gets the card_brand of this PaymentExecutionDetailItem.  # noqa: E501
+
+        The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard`.  # noqa: E501
+
+        :return: The card_brand of this PaymentExecutionDetailItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._card_brand
+
+    @card_brand.setter
+    def card_brand(self, card_brand):
+        """Sets the card_brand of this PaymentExecutionDetailItem.
+
+        The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard`.  # noqa: E501
+
+        :param card_brand: The card_brand of this PaymentExecutionDetailItem.  # noqa: E501
+        :type: str
+        """
+
+        self._card_brand = card_brand
+
+    @property
+    def authorization_code(self):
+        """Gets the authorization_code of this PaymentExecutionDetailItem.  # noqa: E501
+
+        The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.  # noqa: E501
+
+        :return: The authorization_code of this PaymentExecutionDetailItem.  # noqa: E501
+        :rtype: str
+        """
+        return self._authorization_code
+
+    @authorization_code.setter
+    def authorization_code(self, authorization_code):
+        """Sets the authorization_code of this PaymentExecutionDetailItem.
+
+        The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the `PaymentMethod` is `CreditCard` or `Pix`.  # noqa: E501
+
+        :param authorization_code: The authorization_code of this PaymentExecutionDetailItem.  # noqa: E501
+        :type: str
+        """
+
+        self._authorization_code = authorization_code
 
     def to_dict(self):
         """Returns the model properties as a dict"""

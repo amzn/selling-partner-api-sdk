@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.listings_restrictions_v2021_08_01.error import Error
 from spapi.models.listings_restrictions_v2021_08_01.link import Link

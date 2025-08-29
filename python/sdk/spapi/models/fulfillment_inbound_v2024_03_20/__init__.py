@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.fulfillment_inbound_v2024_03_20.address import Address
 from spapi.models.fulfillment_inbound_v2024_03_20.address_input import AddressInput

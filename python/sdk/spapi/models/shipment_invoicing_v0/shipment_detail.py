@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -39,6 +40,7 @@ class ShipmentDetail(object):
         'purchase_date': 'datetime',
         'shipping_address': 'Address',
         'payment_method_details': 'List[str]',
+        'payments': 'List[PaymentInformation]',
         'marketplace_id': 'str',
         'seller_id': 'str',
         'buyer_name': 'str',
@@ -56,6 +58,7 @@ class ShipmentDetail(object):
         'purchase_date': 'PurchaseDate',
         'shipping_address': 'ShippingAddress',
         'payment_method_details': 'PaymentMethodDetails',
+        'payments': 'Payments',
         'marketplace_id': 'MarketplaceId',
         'seller_id': 'SellerId',
         'buyer_name': 'BuyerName',
@@ -66,7 +69,7 @@ class ShipmentDetail(object):
         'shipment_items': 'ShipmentItems',
     }
 
-    def __init__(self, warehouse_id=None, amazon_order_id=None, amazon_shipment_id=None, purchase_date=None, shipping_address=None, payment_method_details=None, marketplace_id=None, seller_id=None, buyer_name=None, buyer_county=None, buyer_tax_info=None, marketplace_tax_info=None, seller_display_name=None, shipment_items=None, _configuration=None):  # noqa: E501
+    def __init__(self, warehouse_id=None, amazon_order_id=None, amazon_shipment_id=None, purchase_date=None, shipping_address=None, payment_method_details=None, payments=None, marketplace_id=None, seller_id=None, buyer_name=None, buyer_county=None, buyer_tax_info=None, marketplace_tax_info=None, seller_display_name=None, shipment_items=None, _configuration=None):  # noqa: E501
         """ShipmentDetail - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -78,6 +81,7 @@ class ShipmentDetail(object):
         self._purchase_date = None
         self._shipping_address = None
         self._payment_method_details = None
+        self._payments = None
         self._marketplace_id = None
         self._seller_id = None
         self._buyer_name = None
@@ -100,6 +104,8 @@ class ShipmentDetail(object):
             self.shipping_address = shipping_address
         if payment_method_details is not None:
             self.payment_method_details = payment_method_details
+        if payments is not None:
+            self.payments = payments
         if marketplace_id is not None:
             self.marketplace_id = marketplace_id
         if seller_id is not None:
@@ -252,6 +258,29 @@ class ShipmentDetail(object):
         """
 
         self._payment_method_details = payment_method_details
+
+    @property
+    def payments(self):
+        """Gets the payments of this ShipmentDetail.  # noqa: E501
+
+        List of payment transactions  # noqa: E501
+
+        :return: The payments of this ShipmentDetail.  # noqa: E501
+        :rtype: List[PaymentInformation]
+        """
+        return self._payments
+
+    @payments.setter
+    def payments(self, payments):
+        """Sets the payments of this ShipmentDetail.
+
+        List of payment transactions  # noqa: E501
+
+        :param payments: The payments of this ShipmentDetail.  # noqa: E501
+        :type: List[PaymentInformation]
+        """
+
+        self._payments = payments
 
     @property
     def marketplace_id(self):
