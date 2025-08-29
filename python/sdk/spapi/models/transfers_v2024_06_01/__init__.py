@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.transfers_v2024_06_01.assignment_type import AssignmentType
 from spapi.models.transfers_v2024_06_01.error import Error

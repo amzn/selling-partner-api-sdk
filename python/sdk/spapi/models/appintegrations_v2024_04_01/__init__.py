@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.appintegrations_v2024_04_01.create_notification_request import CreateNotificationRequest
 from spapi.models.appintegrations_v2024_04_01.create_notification_response import CreateNotificationResponse
