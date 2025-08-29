@@ -337,6 +337,16 @@ class ShipmentInvoiceApiTest extends BaseTestCase
             &quot;AddressType&quot; : &quot;Residential&quot;
           },
           &quot;PaymentMethodDetails&quot; : [ &quot;GiftCertificate&quot; ],
+          &quot;Payments&quot; : [ {
+            &quot;PaymentMethod&quot; : &quot;CreditCard&quot;,
+            &quot;AcquirerId&quot; : &quot;XX.XXX.XXX/0001-ZZ&quot;,
+            &quot;CardBrand&quot; : &quot;Visa&quot;,
+            &quot;PaymentValue&quot; : {
+              &quot;CurrencyCode&quot; : &quot;BRL&quot;,
+              &quot;Amount&quot; : &quot;100&quot;
+            },
+            &quot;AuthorizationCode&quot; : &quot;123456&quot;
+          } ],
           &quot;MarketplaceId&quot; : &quot;ATV943520DER&quot;,
           &quot;SellerId&quot; : &quot;TEST34509GOGM&quot;,
           &quot;BuyerName&quot; : &quot;1&quot;,

@@ -471,6 +471,15 @@ class OrdersV0ApiTest extends BaseTestCase
           &quot;NumberOfItemsUnshipped&quot; : 0,
           &quot;PaymentMethod&quot; : &quot;Other&quot;,
           &quot;PaymentMethodDetails&quot; : [ &quot;Invoice&quot; ],
+          &quot;PaymentExecutionDetail&quot; : [ {
+            &quot;Payment&quot; : {
+              &quot;CurrencyCode&quot; : &quot;BRL&quot;,
+              &quot;Amount&quot; : &quot;20.00&quot;
+            },
+            &quot;PaymentMethod&quot; : &quot;Pix&quot;,
+            &quot;AcquirerId&quot; : &quot;XX.XXX.XXX/0001-ZZ&quot;,
+            &quot;AuthorizationCode&quot; : &quot;123456&quot;
+          } ],
           &quot;IsReplacementOrder&quot; : false,
           &quot;MarketplaceId&quot; : &quot;A1PA6795UKMFR9&quot;,
           &quot;ShipmentServiceLevelCategory&quot; : &quot;Standard&quot;,

@@ -67,6 +67,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
         'purchase_date' => '\DateTime',
         'shipping_address' => '\SpApi\Model\invoicing\v0\Address',
         'payment_method_details' => 'string[]',
+        'payments' => '\SpApi\Model\invoicing\v0\PaymentInformation[]',
         'marketplace_id' => 'string',
         'seller_id' => 'string',
         'buyer_name' => 'string',
@@ -92,6 +93,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
         'purchase_date' => 'date-time',
         'shipping_address' => null,
         'payment_method_details' => null,
+        'payments' => null,
         'marketplace_id' => null,
         'seller_id' => null,
         'buyer_name' => null,
@@ -113,6 +115,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
         'purchase_date' => true,
         'shipping_address' => true,
         'payment_method_details' => true,
+        'payments' => true,
         'marketplace_id' => true,
         'seller_id' => true,
         'buyer_name' => true,
@@ -143,6 +146,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
         'purchase_date' => 'PurchaseDate',
         'shipping_address' => 'ShippingAddress',
         'payment_method_details' => 'PaymentMethodDetails',
+        'payments' => 'Payments',
         'marketplace_id' => 'MarketplaceId',
         'seller_id' => 'SellerId',
         'buyer_name' => 'BuyerName',
@@ -165,6 +169,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
         'purchase_date' => 'setPurchaseDate',
         'shipping_address' => 'setShippingAddress',
         'payment_method_details' => 'setPaymentMethodDetails',
+        'payments' => 'setPayments',
         'marketplace_id' => 'setMarketplaceId',
         'seller_id' => 'setSellerId',
         'buyer_name' => 'setBuyerName',
@@ -187,6 +192,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
         'purchase_date' => 'getPurchaseDate',
         'shipping_address' => 'getShippingAddress',
         'payment_method_details' => 'getPaymentMethodDetails',
+        'payments' => 'getPayments',
         'marketplace_id' => 'getMarketplaceId',
         'seller_id' => 'getSellerId',
         'buyer_name' => 'getBuyerName',
@@ -216,6 +222,7 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('purchase_date', $data ?? [], null);
         $this->setIfExists('shipping_address', $data ?? [], null);
         $this->setIfExists('payment_method_details', $data ?? [], null);
+        $this->setIfExists('payments', $data ?? [], null);
         $this->setIfExists('marketplace_id', $data ?? [], null);
         $this->setIfExists('seller_id', $data ?? [], null);
         $this->setIfExists('buyer_name', $data ?? [], null);
@@ -501,6 +508,36 @@ class ShipmentDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
             }
         }
         $this->container['payment_method_details'] = $payment_method_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets payments.
+     */
+    public function getPayments(): ?array
+    {
+        return $this->container['payments'];
+    }
+
+    /**
+     * Sets payments.
+     *
+     * @param null|array $payments List of payment transactions
+     */
+    public function setPayments(?array $payments): self
+    {
+        if (is_null($payments)) {
+            array_push($this->openAPINullablesSetToNull, 'payments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payments', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['payments'] = $payments;
 
         return $this;
     }
