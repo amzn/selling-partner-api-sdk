@@ -46,7 +46,7 @@ class ApiException extends \Exception
     /**
      * The HTTP body of the server response either as Json or string.
      */
-    protected null|\stdClass|string $responseBody;
+    protected \stdClass|string|null $responseBody;
 
     /**
      * The HTTP header of the server response.
@@ -58,7 +58,7 @@ class ApiException extends \Exception
     /**
      * The deserialized response object.
      */
-    protected null|\stdClass|string $responseObject;
+    protected \stdClass|string|null $responseObject;
 
     /**
      * Constructor.
@@ -73,7 +73,7 @@ class ApiException extends \Exception
         string $message = '',
         int $code = 0,
         $responseHeaders = [],
-        null|\stdClass|string $responseBody = null
+        \stdClass|string|null $responseBody = null
     ) {
         parent::__construct($message, $code);
         $this->responseHeaders = $responseHeaders;
@@ -95,7 +95,7 @@ class ApiException extends \Exception
      *
      * @return null|\stdClass|string HTTP body of the server response either as \stdClass or string
      */
-    public function getResponseBody(): null|\stdClass|string
+    public function getResponseBody(): \stdClass|string|null
     {
         return $this->responseBody;
     }
@@ -115,7 +115,7 @@ class ApiException extends \Exception
      *
      * @return null|\stdClass|string the deserialized response object
      */
-    public function getResponseObject(): null|\stdClass|string
+    public function getResponseObject(): \stdClass|string|null
     {
         return $this->responseObject;
     }
