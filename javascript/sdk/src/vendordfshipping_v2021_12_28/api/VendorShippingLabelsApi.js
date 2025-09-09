@@ -177,11 +177,11 @@ export class VendorShippingLabelsApi {
      * Returns a list of shipping labels created during the time frame that you specify. Use the &#x60;createdAfter&#x60; and &#x60;createdBefore&#x60; parameters to define the time frame. You must use both of these parameters. The date range to search must not be more than seven days.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {Date} createdAfter Shipping labels that became available after this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} createdBefore Shipping labels that became available before this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
-     * @param {Number} opts.limit The limit to the number of records returned.
-     * @param {String} opts.sortOrder The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (default to &#39;ASC&#39;)
-     * @param {String} opts.nextToken Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.shipFromPartyId] The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
+     * @param {Number} [opts.limit] The limit to the number of records returned.
+     * @param {String} [opts.sortOrder] The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (default to &#39;ASC&#39;)
+     * @param {String} [opts.nextToken] Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call.
      * @return {Promise<ShippingLabelList>}
      */
   getShippingLabelsWithHttpInfo (createdAfter, createdBefore, opts) {
@@ -229,11 +229,11 @@ export class VendorShippingLabelsApi {
      * Returns a list of shipping labels created during the time frame that you specify. Use the &#x60;createdAfter&#x60; and &#x60;createdBefore&#x60; parameters to define the time frame. You must use both of these parameters. The date range to search must not be more than seven days.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {Date} createdAfter Shipping labels that became available after this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} createdBefore Shipping labels that became available before this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
-     * @param {Number} opts.limit The limit to the number of records returned.
-     * @param {String} opts.sortOrder The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (default to &#39;ASC&#39;)
-     * @param {String} opts.nextToken Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.shipFromPartyId] The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
+     * @param {Number} [opts.limit] The limit to the number of records returned.
+     * @param {String} [opts.sortOrder] The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (default to &#39;ASC&#39;)
+     * @param {String} [opts.nextToken] Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call.
      * @return {Promise<ShippingLabelList>}
      */
   getShippingLabels (createdAfter, createdBefore, opts) {

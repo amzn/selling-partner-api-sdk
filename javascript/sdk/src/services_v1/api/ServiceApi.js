@@ -474,9 +474,9 @@ export class ServiceApi {
      * @param {String} asin ASIN associated with the service.
      * @param {String} storeId Store identifier defining the region scope to retrive appointment slots.
      * @param {[String]} marketplaceIds An identifier for the marketplace for which appointment slots are queried
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
-     * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+     * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
      * @return {Promise<GetAppointmentSlotsResponse>}
      */
   getAppointmentSlotsWithHttpInfo (asin, storeId, marketplaceIds, opts) {
@@ -528,9 +528,9 @@ export class ServiceApi {
      * @param {String} asin ASIN associated with the service.
      * @param {String} storeId Store identifier defining the region scope to retrive appointment slots.
      * @param {[String]} marketplaceIds An identifier for the marketplace for which appointment slots are queried
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
-     * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+     * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
      * @return {Promise<GetAppointmentSlotsResponse>}
      */
   getAppointmentSlots (asin, storeId, marketplaceIds, opts) {
@@ -544,9 +544,9 @@ export class ServiceApi {
      * Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId A service job identifier to retrive appointment slots for associated service.
      * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
-     * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+     * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
      * @return {Promise<GetAppointmentSlotsResponse>}
      */
   getAppointmmentSlotsByJobIdWithHttpInfo (serviceJobId, marketplaceIds, opts) {
@@ -591,9 +591,9 @@ export class ServiceApi {
      * Gets appointment slots for the service associated with the service job id specified.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} serviceJobId A service job identifier to retrive appointment slots for associated service.
      * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.startTime A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
-     * @param {String} opts.endTime A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.startTime] A time from which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;startTime&#x60; is provided, &#x60;endTime&#x60; should also be provided. Default value is as per business configuration.
+     * @param {String} [opts.endTime] A time up to which the appointment slots will be retrieved. The specified time must be in ISO 8601 format. If &#x60;endTime&#x60; is provided, &#x60;startTime&#x60; should also be provided. Default value is as per business configuration. Maximum range of appointment slots can be 90 days.
      * @return {Promise<GetAppointmentSlotsResponse>}
      */
   getAppointmmentSlotsByJobId (serviceJobId, marketplaceIds, opts) {
@@ -608,8 +608,8 @@ export class ServiceApi {
      * @param {String} resourceId Resource Identifier.
      * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {FixedSlotCapacityQuery} body Request body.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
      * @return {Promise<FixedSlotCapacity>}
      */
   getFixedSlotCapacityWithHttpInfo (resourceId, marketplaceIds, body, opts) {
@@ -659,8 +659,8 @@ export class ServiceApi {
      * @param {String} resourceId Resource Identifier.
      * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {FixedSlotCapacityQuery} body Request body.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
      * @return {Promise<FixedSlotCapacity>}
      */
   getFixedSlotCapacity (resourceId, marketplaceIds, body, opts) {
@@ -675,8 +675,8 @@ export class ServiceApi {
      * @param {String} resourceId Resource Identifier.
      * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {RangeSlotCapacityQuery} body Request body.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
      * @return {Promise<RangeSlotCapacity>}
      */
   getRangeSlotCapacityWithHttpInfo (resourceId, marketplaceIds, body, opts) {
@@ -726,8 +726,8 @@ export class ServiceApi {
      * @param {String} resourceId Resource Identifier.
      * @param {[String]} marketplaceIds An identifier for the marketplace in which the resource operates.
      * @param {RangeSlotCapacityQuery} body Request body.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken Next page token returned in the response of your previous request.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] Next page token returned in the response of your previous request.
      * @return {Promise<RangeSlotCapacity>}
      */
   getRangeSlotCapacity (resourceId, marketplaceIds, body, opts) {
@@ -786,22 +786,22 @@ export class ServiceApi {
   /**
      * Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {[String]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
-     * @param {Object} opts Optional parameters
-     * @param {[String]} opts.serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
-     * @param {[String]} opts.serviceJobStatus A list of one or more job status by which to filter the list of jobs.
-     * @param {String} opts.pageToken String returned in the response of your previous request.
-     * @param {Number} opts.pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (default to 20)
-     * @param {String} opts.sortField Sort fields on which you want to sort the output.
-     * @param {String} opts.sortOrder Sort order for the query you want to perform.
-     * @param {String} opts.createdAfter A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
-     * @param {String} opts.createdBefore A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format.
-     * @param {String} opts.lastUpdatedAfter A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
-     * @param {String} opts.lastUpdatedBefore A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format.
-     * @param {String} opts.scheduleStartDate A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
-     * @param {String} opts.scheduleEndDate A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
-     * @param {[String]} opts.asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
-     * @param {[String]} opts.requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
-     * @param {[String]} opts.storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+     * @param {Object} [opts] Optional parameters
+     * @param {[String]} [opts.serviceOrderIds] List of service order ids for the query you want to perform.Max values supported 20.
+     * @param {[String]} [opts.serviceJobStatus] A list of one or more job status by which to filter the list of jobs.
+     * @param {String} [opts.pageToken] String returned in the response of your previous request.
+     * @param {Number} [opts.pageSize] A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (default to 20)
+     * @param {String} [opts.sortField] Sort fields on which you want to sort the output.
+     * @param {String} [opts.sortOrder] Sort order for the query you want to perform.
+     * @param {String} [opts.createdAfter] A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+     * @param {String} [opts.createdBefore] A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format.
+     * @param {String} [opts.lastUpdatedAfter] A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+     * @param {String} [opts.lastUpdatedBefore] A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format.
+     * @param {String} [opts.scheduleStartDate] A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+     * @param {String} [opts.scheduleEndDate] A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+     * @param {[String]} [opts.asins] List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
+     * @param {[String]} [opts.requiredSkills] A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
+     * @param {[String]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
      * @return {Promise<GetServiceJobsResponse>}
      */
   getServiceJobsWithHttpInfo (marketplaceIds, opts) {
@@ -852,22 +852,22 @@ export class ServiceApi {
   /**
      * Gets service job details for the specified filter query.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 40 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {[String]} marketplaceIds Used to select jobs that were placed in the specified marketplaces.
-     * @param {Object} opts Optional parameters
-     * @param {[String]} opts.serviceOrderIds List of service order ids for the query you want to perform.Max values supported 20.
-     * @param {[String]} opts.serviceJobStatus A list of one or more job status by which to filter the list of jobs.
-     * @param {String} opts.pageToken String returned in the response of your previous request.
-     * @param {Number} opts.pageSize A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (default to 20)
-     * @param {String} opts.sortField Sort fields on which you want to sort the output.
-     * @param {String} opts.sortOrder Sort order for the query you want to perform.
-     * @param {String} opts.createdAfter A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
-     * @param {String} opts.createdBefore A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format.
-     * @param {String} opts.lastUpdatedAfter A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
-     * @param {String} opts.lastUpdatedBefore A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format.
-     * @param {String} opts.scheduleStartDate A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
-     * @param {String} opts.scheduleEndDate A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
-     * @param {[String]} opts.asins List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
-     * @param {[String]} opts.requiredSkills A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
-     * @param {[String]} opts.storeIds List of Amazon-defined identifiers for the region scope. Max values supported is 50.
+     * @param {Object} [opts] Optional parameters
+     * @param {[String]} [opts.serviceOrderIds] List of service order ids for the query you want to perform.Max values supported 20.
+     * @param {[String]} [opts.serviceJobStatus] A list of one or more job status by which to filter the list of jobs.
+     * @param {String} [opts.pageToken] String returned in the response of your previous request.
+     * @param {Number} [opts.pageSize] A non-negative integer that indicates the maximum number of jobs to return in the list, Value must be 1 - 20. Default 20. (default to 20)
+     * @param {String} [opts.sortField] Sort fields on which you want to sort the output.
+     * @param {String} [opts.sortOrder] Sort order for the query you want to perform.
+     * @param {String} [opts.createdAfter] A date used for selecting jobs created at or after a specified time. Must be in ISO 8601 format. Required if &#x60;LastUpdatedAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+     * @param {String} [opts.createdBefore] A date used for selecting jobs created at or before a specified time. Must be in ISO 8601 format.
+     * @param {String} [opts.lastUpdatedAfter] A date used for selecting jobs updated at or after a specified time. Must be in ISO 8601 format. Required if &#x60;createdAfter&#x60; is not specified. Specifying both &#x60;CreatedAfter&#x60; and &#x60;LastUpdatedAfter&#x60; returns an error.
+     * @param {String} [opts.lastUpdatedBefore] A date used for selecting jobs updated at or before a specified time. Must be in ISO 8601 format.
+     * @param {String} [opts.scheduleStartDate] A date used for filtering jobs schedules at or after a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+     * @param {String} [opts.scheduleEndDate] A date used for filtering jobs schedules at or before a specified time. Must be in ISO 8601 format. Schedule end date should not be earlier than schedule start date.
+     * @param {[String]} [opts.asins] List of Amazon Standard Identification Numbers (ASIN) of the items. Max values supported is 20.
+     * @param {[String]} [opts.requiredSkills] A defined set of related knowledge, skills, experience, tools, materials, and work processes common to service delivery for a set of products and/or service scenarios. Max values supported is 20.
+     * @param {[String]} [opts.storeIds] List of Amazon-defined identifiers for the region scope. Max values supported is 50.
      * @return {Promise<GetServiceJobsResponse>}
      */
   getServiceJobs (marketplaceIds, opts) {

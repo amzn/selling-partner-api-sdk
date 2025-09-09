@@ -312,8 +312,8 @@ export class AwdApi {
   /**
      * Retrieves an AWD inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      * @param {String} shipmentId ID for the shipment. A shipment contains the cases being inbounded.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.skuQuantities] If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
      * @return {Promise<InboundShipment>}
      */
   getInboundShipmentWithHttpInfo (shipmentId, opts) {
@@ -350,8 +350,8 @@ export class AwdApi {
   /**
      * Retrieves an AWD inbound shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
      * @param {String} shipmentId ID for the shipment. A shipment contains the cases being inbounded.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.skuQuantities If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.skuQuantities] If equal to &#x60;SHOW&#x60;, the response includes the shipment SKU quantity details.  Defaults to &#x60;HIDE&#x60;, in which case the response does not contain SKU quantities
      * @return {Promise<InboundShipment>}
      */
   getInboundShipment (shipmentId, opts) {
@@ -364,9 +364,9 @@ export class AwdApi {
   /**
      * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the label URL is available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId ID for the shipment.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
-     * @param {String} opts.formatType The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.pageType] Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
+     * @param {String} [opts.formatType] The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
      * @return {Promise<ShipmentLabels>}
      */
   getInboundShipmentLabelsWithHttpInfo (shipmentId, opts) {
@@ -404,9 +404,9 @@ export class AwdApi {
   /**
      * Retrieves the box labels for a shipment ID that you specify. This is an asynchronous operation. If the label status is &#x60;GENERATED&#x60;, then the label URL is available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId ID for the shipment.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.pageType Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
-     * @param {String} opts.formatType The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.pageType] Page type for the generated labels. The default is &#x60;PLAIN_PAPER&#x60;.
+     * @param {String} [opts.formatType] The format type of the output file that contains your labels. The default format type is &#x60;PDF&#x60;.
      * @return {Promise<ShipmentLabels>}
      */
   getInboundShipmentLabels (shipmentId, opts) {
@@ -418,14 +418,14 @@ export class AwdApi {
 
   /**
      * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT.
-     * @param {String} opts.sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
-     * @param {String} opts.shipmentStatus Filter by inbound shipment status.
-     * @param {Date} opts.updatedAfter List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
-     * @param {Date} opts.updatedBefore List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
-     * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
-     * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.sortBy] Field to sort results by. By default, the response will be sorted by UPDATED_AT.
+     * @param {String} [opts.sortOrder] Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
+     * @param {String} [opts.shipmentStatus] Filter by inbound shipment status.
+     * @param {Date} [opts.updatedAfter] List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
+     * @param {Date} [opts.updatedBefore] List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
+     * @param {Number} [opts.maxResults] Maximum number of results to return. (default to 25)
+     * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @return {Promise<ShipmentListing>}
      */
   listInboundShipmentsWithHttpInfo (opts) {
@@ -461,14 +461,14 @@ export class AwdApi {
 
   /**
      * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.sortBy Field to sort results by. By default, the response will be sorted by UPDATED_AT.
-     * @param {String} opts.sortOrder Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
-     * @param {String} opts.shipmentStatus Filter by inbound shipment status.
-     * @param {Date} opts.updatedAfter List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
-     * @param {Date} opts.updatedBefore List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
-     * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
-     * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.sortBy] Field to sort results by. By default, the response will be sorted by UPDATED_AT.
+     * @param {String} [opts.sortOrder] Sort the response in ASCENDING or DESCENDING order. By default, the response will be sorted in DESCENDING order.
+     * @param {String} [opts.shipmentStatus] Filter by inbound shipment status.
+     * @param {Date} [opts.updatedAfter] List the inbound shipments that were updated after a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
+     * @param {Date} [opts.updatedBefore] List the inbound shipments that were updated before a certain time (inclusive). The date must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
+     * @param {Number} [opts.maxResults] Maximum number of results to return. (default to 25)
+     * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
      * @return {Promise<ShipmentListing>}
      */
   listInboundShipments (opts) {
@@ -480,12 +480,12 @@ export class AwdApi {
 
   /**
      * Lists AWD inventory associated with a merchant with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.sku Filter by seller or merchant SKU for the item.
-     * @param {String} opts.sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
-     * @param {String} opts.details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
-     * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.sku] Filter by seller or merchant SKU for the item.
+     * @param {String} [opts.sortOrder] Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
+     * @param {String} [opts.details] Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
+     * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {Number} [opts.maxResults] Maximum number of results to return. (default to 25)
      * @return {Promise<InventoryListing>}
      */
   listInventoryWithHttpInfo (opts) {
@@ -519,12 +519,12 @@ export class AwdApi {
 
   /**
      * Lists AWD inventory associated with a merchant with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.sku Filter by seller or merchant SKU for the item.
-     * @param {String} opts.sortOrder Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
-     * @param {String} opts.details Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
-     * @param {String} opts.nextToken A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {Number} opts.maxResults Maximum number of results to return. (default to 25)
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.sku] Filter by seller or merchant SKU for the item.
+     * @param {String} [opts.sortOrder] Sort the response in &#x60;ASCENDING&#x60; or &#x60;DESCENDING&#x60; order.
+     * @param {String} [opts.details] Set to &#x60;SHOW&#x60; to return summaries with additional inventory details. Defaults to &#x60;HIDE,&#x60; which returns only inventory summary totals.
+     * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {Number} [opts.maxResults] Maximum number of results to return. (default to 25)
      * @return {Promise<InventoryListing>}
      */
   listInventory (opts) {

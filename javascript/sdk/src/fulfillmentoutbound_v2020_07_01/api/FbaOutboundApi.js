@@ -334,9 +334,9 @@ export class FbaOutboundApi {
      * Returns a list of inventory items that are eligible for the fulfillment feature you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
      * @param {String} marketplaceId The marketplace for which to return a list of the inventory that is eligible for the specified feature.
      * @param {String} featureName The name of the feature for which to return a list of eligible inventory.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextToken A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page.
-     * @param {Date} opts.queryStartDate A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextToken] A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page.
+     * @param {Date} [opts.queryStartDate] A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;
      * @return {Promise<GetFeatureInventoryResponse>}
      */
   getFeatureInventoryWithHttpInfo (marketplaceId, featureName, opts) {
@@ -381,9 +381,9 @@ export class FbaOutboundApi {
      * Returns a list of inventory items that are eligible for the fulfillment feature you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)..
      * @param {String} marketplaceId The marketplace for which to return a list of the inventory that is eligible for the specified feature.
      * @param {String} featureName The name of the feature for which to return a list of eligible inventory.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextToken A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page.
-     * @param {Date} opts.queryStartDate A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextToken] A string token returned in the response to your previous request that is used to return the next response page. A value of &#x60;null&#x60; will return the first page.
+     * @param {Date} [opts.queryStartDate] A date that you can use to select inventory that has been updated since a specified date. An update is defined as any change in feature-enabled inventory availability. The date must be in the format &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;
      * @return {Promise<GetFeatureInventoryResponse>}
      */
   getFeatureInventory (marketplaceId, featureName, opts) {
@@ -594,9 +594,9 @@ export class FbaOutboundApi {
 
   /**
      * Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.packageNumber The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
-     * @param {String} opts.amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
+     * @param {Object} [opts] Optional parameters
+     * @param {Number} [opts.packageNumber] The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
+     * @param {String} [opts.amazonFulfillmentTrackingNumber] The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
      * @return {Promise<GetPackageTrackingDetailsResponse>}
      */
   getPackageTrackingDetailsWithHttpInfo (opts) {
@@ -627,9 +627,9 @@ export class FbaOutboundApi {
 
   /**
      * Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.packageNumber The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
-     * @param {String} opts.amazonFulfillmentTrackingNumber The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
+     * @param {Object} [opts] Optional parameters
+     * @param {Number} [opts.packageNumber] The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
+     * @param {String} [opts.amazonFulfillmentTrackingNumber] The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.
      * @return {Promise<GetPackageTrackingDetailsResponse>}
      */
   getPackageTrackingDetails (opts) {
@@ -641,9 +641,9 @@ export class FbaOutboundApi {
 
   /**
      * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the &#x60;nextToken&#x60; parameter.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
-     * @param {Object} opts Optional parameters
-     * @param {Date} opts.queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order.
-     * @param {String} opts.nextToken A string token returned in the response to your previous request.
+     * @param {Object} [opts] Optional parameters
+     * @param {Date} [opts.queryStartDate] A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order.
+     * @param {String} [opts.nextToken] A string token returned in the response to your previous request.
      * @return {Promise<ListAllFulfillmentOrdersResponse>}
      */
   listAllFulfillmentOrdersWithHttpInfo (opts) {
@@ -674,9 +674,9 @@ export class FbaOutboundApi {
 
   /**
      * Returns a list of fulfillment orders fulfilled after (or at) a specified date-time, or indicated by the &#x60;nextToken&#x60; parameter.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)
-     * @param {Object} opts Optional parameters
-     * @param {Date} opts.queryStartDate A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order.
-     * @param {String} opts.nextToken A string token returned in the response to your previous request.
+     * @param {Object} [opts] Optional parameters
+     * @param {Date} [opts.queryStartDate] A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order.
+     * @param {String} [opts.nextToken] A string token returned in the response to your previous request.
      * @return {Promise<ListAllFulfillmentOrdersResponse>}
      */
   listAllFulfillmentOrders (opts) {
@@ -689,10 +689,10 @@ export class FbaOutboundApi {
   /**
      * Returns a list of return reason codes for a seller SKU in a given marketplace. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerSku The seller SKU for which return reason codes are required.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.marketplaceId The marketplace for which the seller wants return reason codes.
-     * @param {String} opts.sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes.
-     * @param {String} opts.language The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.marketplaceId] The marketplace for which the seller wants return reason codes.
+     * @param {String} [opts.sellerFulfillmentOrderId] The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes.
+     * @param {String} [opts.language] The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into.
      * @return {Promise<ListReturnReasonCodesResponse>}
      */
   listReturnReasonCodesWithHttpInfo (sellerSku, opts) {
@@ -731,10 +731,10 @@ export class FbaOutboundApi {
   /**
      * Returns a list of return reason codes for a seller SKU in a given marketplace. The parameters for this operation may contain special characters that require URL encoding. To avoid errors with SKUs when encoding URLs, refer to [URL Encoding](https://developer-docs.amazon.com/sp-api/docs/url-encoding).  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} sellerSku The seller SKU for which return reason codes are required.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.marketplaceId The marketplace for which the seller wants return reason codes.
-     * @param {String} opts.sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes.
-     * @param {String} opts.language The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.marketplaceId] The marketplace for which the seller wants return reason codes.
+     * @param {String} [opts.sellerFulfillmentOrderId] The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes.
+     * @param {String} [opts.language] The language that the &#x60;TranslatedDescription&#x60; property of the &#x60;ReasonCodeDetails&#x60; response object should be translated into.
      * @return {Promise<ListReturnReasonCodesResponse>}
      */
   listReturnReasonCodes (sellerSku, opts) {

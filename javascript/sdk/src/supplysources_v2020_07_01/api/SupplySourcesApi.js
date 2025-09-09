@@ -211,9 +211,9 @@ export class SupplySourcesApi {
 
   /**
      * The path to retrieve paginated supply sources.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken The pagination token to retrieve a specific page of results.
-     * @param {Number} opts.pageSize The number of supply sources to return per paginated request. (default to 10.0)
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] The pagination token to retrieve a specific page of results.
+     * @param {Number} [opts.pageSize] The number of supply sources to return per paginated request. (default to 10.0)
      * @return {Promise<GetSupplySourcesResponse>}
      */
   getSupplySourcesWithHttpInfo (opts) {
@@ -244,9 +244,9 @@ export class SupplySourcesApi {
 
   /**
      * The path to retrieve paginated supply sources.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken The pagination token to retrieve a specific page of results.
-     * @param {Number} opts.pageSize The number of supply sources to return per paginated request. (default to 10.0)
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] The pagination token to retrieve a specific page of results.
+     * @param {Number} [opts.pageSize] The number of supply sources to return per paginated request. (default to 10.0)
      * @return {Promise<GetSupplySourcesResponse>}
      */
   getSupplySources (opts) {
@@ -259,8 +259,8 @@ export class SupplySourcesApi {
   /**
      * Update the configuration and capabilities of a supply source.
      * @param {String} supplySourceId The unique identitier of a supply source.
-     * @param {Object} opts Optional parameters
-     * @param {UpdateSupplySourceRequest} opts.payload
+     * @param {Object} [opts] Optional parameters
+     * @param {UpdateSupplySourceRequest} [opts.payload]
      * @return {Promise<ErrorList>}
      */
   updateSupplySourceWithHttpInfo (supplySourceId, opts) {
@@ -296,8 +296,8 @@ export class SupplySourcesApi {
   /**
      * Update the configuration and capabilities of a supply source.
      * @param {String} supplySourceId The unique identitier of a supply source.
-     * @param {Object} opts Optional parameters
-     * @param {UpdateSupplySourceRequest} opts.payload
+     * @param {Object} [opts] Optional parameters
+     * @param {UpdateSupplySourceRequest} [opts.payload]
      * @return {Promise<ErrorList>}
      */
   updateSupplySource (supplySourceId, opts) {
@@ -310,8 +310,8 @@ export class SupplySourcesApi {
   /**
      * Update the status of a supply source.
      * @param {String} supplySourceId The unique identifier of a supply source.
-     * @param {Object} opts Optional parameters
-     * @param {UpdateSupplySourceStatusRequest} opts.payload
+     * @param {Object} [opts] Optional parameters
+     * @param {UpdateSupplySourceStatusRequest} [opts.payload]
      * @return {Promise<ErrorList>}
      */
   updateSupplySourceStatusWithHttpInfo (supplySourceId, opts) {
@@ -347,8 +347,8 @@ export class SupplySourcesApi {
   /**
      * Update the status of a supply source.
      * @param {String} supplySourceId The unique identifier of a supply source.
-     * @param {Object} opts Optional parameters
-     * @param {UpdateSupplySourceStatusRequest} opts.payload
+     * @param {Object} [opts] Optional parameters
+     * @param {UpdateSupplySourceStatusRequest} [opts.payload]
      * @return {Promise<ErrorList>}
      */
   updateSupplySourceStatus (supplySourceId, opts) {
