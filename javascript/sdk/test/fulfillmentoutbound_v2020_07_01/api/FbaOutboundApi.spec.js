@@ -88,16 +88,6 @@ const mockcreateFulfillmentReturnData = {
     headers: {}
   }
 };
-const mockdeliveryOfferingsData = {
-  request: {
-    'body': generateMockData('GetDeliveryOfferingsRequest')
-  },
-  response: {
-    data: generateMockData('GetDeliveryOfferingsResponse'),
-    statusCode: 200,
-    headers: {}
-  }
-};
 const mockdeliveryOffersData = {
   request: {
     'body': generateMockData('GetDeliveryOffersRequest')
@@ -365,54 +355,6 @@ describe('FbaOutboundApi', () => {
           mockcreateFulfillmentReturnData.request['body']
         ];
         await instance.createFulfillmentReturn(...params);
-        throw new Error('Expected error to be thrown');
-      } catch (error) {
-        expect(error).to.exist;
-        expect(error.statusCode).to.equal(400);
-      }
-    });
-  });
-  describe('deliveryOfferings', () => {
-    it('should successfully call deliveryOfferings', async () => {
-      instance.apiClient.callApi.resolves(mockdeliveryOfferingsData.response);
-
-      const params = [
-        mockdeliveryOfferingsData.request['body']
-      ];
-      const data = await instance.deliveryOfferings(...params);
-
-      expect(data instanceof SellingPartnerApisForFulfillmentOutbound.GetDeliveryOfferingsResponse).to.be.true;
-      expect(data).to.equal(mockdeliveryOfferingsData.response.data);
-    });
-
-    it('should successfully call deliveryOfferingsWithHttpInfo', async () => {
-      instance.apiClient.callApi.resolves(mockdeliveryOfferingsData.response);
-
-      const params = [
-        mockdeliveryOfferingsData.request['body']
-      ];
-      const response = await instance.deliveryOfferingsWithHttpInfo(...params);
-
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal(mockdeliveryOfferingsData.response.statusCode)
-      expect(response).to.have.property('headers');
-      expect(response).to.have.property('data');
-      expect(response.data).to.equal(mockdeliveryOfferingsData.response.data)
-    });
-
-    it('should handle API errors', async () => {
-      const errorResponse = {
-        errors: new Error('Expected error to be thrown'),
-        statusCode: 400,
-        headers: {}
-      };
-      instance.apiClient.callApi.rejects(errorResponse);
-
-      try {
-        const params = [
-          mockdeliveryOfferingsData.request['body']
-        ];
-        await instance.deliveryOfferings(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;

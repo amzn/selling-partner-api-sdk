@@ -17,8 +17,6 @@ import { CreateFulfillmentOrderRequest } from '../model/CreateFulfillmentOrderRe
 import { CreateFulfillmentOrderResponse } from '../model/CreateFulfillmentOrderResponse.js'
 import { CreateFulfillmentReturnRequest } from '../model/CreateFulfillmentReturnRequest.js'
 import { CreateFulfillmentReturnResponse } from '../model/CreateFulfillmentReturnResponse.js'
-import { GetDeliveryOfferingsRequest } from '../model/GetDeliveryOfferingsRequest.js'
-import { GetDeliveryOfferingsResponse } from '../model/GetDeliveryOfferingsResponse.js'
 import { GetDeliveryOffersRequest } from '../model/GetDeliveryOffersRequest.js'
 import { GetDeliveryOffersResponse } from '../model/GetDeliveryOffersResponse.js'
 import { GetFeatureInventoryResponse } from '../model/GetFeatureInventoryResponse.js'
@@ -68,7 +66,6 @@ export class FbaOutboundApi {
       'FbaOutboundApi-cancelFulfillmentOrder',
       'FbaOutboundApi-createFulfillmentOrder',
       'FbaOutboundApi-createFulfillmentReturn',
-      'FbaOutboundApi-deliveryOfferings',
       'FbaOutboundApi-deliveryOffers',
       'FbaOutboundApi-getFeatureInventory',
       'FbaOutboundApi-getFeatureSKU',
@@ -235,51 +232,6 @@ export class FbaOutboundApi {
      */
   createFulfillmentReturn (sellerFulfillmentOrderId, body) {
     return this.createFulfillmentReturnWithHttpInfo(sellerFulfillmentOrderId, body)
-      .then(function (response_and_data) {
-        return response_and_data.data
-      })
-  }
-
-  /**
-     * Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {GetDeliveryOfferingsRequest} body GetDeliveryOfferingsRequest parameter
-     * @return {Promise<GetDeliveryOfferingsResponse>}
-     */
-  deliveryOfferingsWithHttpInfo (body) {
-    const postBody = body
-
-    // verify the required parameter 'body' is set
-    if (body === undefined || body === null) {
-      throw new Error("Missing the required parameter 'body' when calling deliveryOfferings")
-    }
-
-    const pathParams = {
-    }
-    const queryParams = {
-    }
-    const headerParams = {
-    }
-    const formParams = {
-    }
-
-    const contentTypes = ['application/json']
-    const accepts = ['application/json', 'payload']
-    const returnType = GetDeliveryOfferingsResponse
-
-    return this.apiClient.callApi('FbaOutboundApi-deliveryOfferings',
-      '/fba/outbound/2020-07-01/deliveryOfferings', 'POST',
-      pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('FbaOutboundApi-deliveryOfferings')
-    )
-  }
-
-  /**
-     * Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {GetDeliveryOfferingsRequest} body GetDeliveryOfferingsRequest parameter
-     * @return {Promise<GetDeliveryOfferingsResponse>}
-     */
-  deliveryOfferings (body) {
-    return this.deliveryOfferingsWithHttpInfo(body)
       .then(function (response_and_data) {
         return response_and_data.data
       })
