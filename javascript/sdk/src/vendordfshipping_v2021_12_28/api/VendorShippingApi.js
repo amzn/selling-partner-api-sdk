@@ -122,11 +122,11 @@ export class VendorShippingApi {
      * Returns a list of packing slips for the purchase orders that match the criteria specified. Date range to search must not be more than 7 days.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {Date} createdAfter Packing slips that become available after this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} createdBefore Packing slips that became available before this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
-     * @param {Number} opts.limit The maximum number of records to return.
-     * @param {String} opts.sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
-     * @param {String} opts.nextToken Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.shipFromPartyId] The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
+     * @param {Number} [opts.limit] The maximum number of records to return.
+     * @param {String} [opts.sortOrder] The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
+     * @param {String} [opts.nextToken] Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call.
      * @return {Promise<PackingSlipList>}
      */
   getPackingSlipsWithHttpInfo (createdAfter, createdBefore, opts) {
@@ -174,11 +174,11 @@ export class VendorShippingApi {
      * Returns a list of packing slips for the purchase orders that match the criteria specified. Date range to search must not be more than 7 days.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values then those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      * @param {Date} createdAfter Packing slips that become available after this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @param {Date} createdBefore Packing slips that became available before this date and time will be included in the result. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.shipFromPartyId The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
-     * @param {Number} opts.limit The maximum number of records to return.
-     * @param {String} opts.sortOrder The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
-     * @param {String} opts.nextToken Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.shipFromPartyId] The vendor &#x60;warehouseId&#x60; for order fulfillment. If not specified, the result contains orders for all warehouses.
+     * @param {Number} [opts.limit] The maximum number of records to return.
+     * @param {String} [opts.sortOrder] The packing slip creation dates, which are sorted by ascending or descending order. (default to &#39;ASC&#39;)
+     * @param {String} [opts.nextToken] Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call.
      * @return {Promise<PackingSlipList>}
      */
   getPackingSlips (createdAfter, createdBefore, opts) {

@@ -257,8 +257,8 @@ export class TransferScheduleApi {
      * Retrieve transfer schedules of a Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] Pagination token to retrieve a specific page of results.
      * @return {Promise<TransferScheduleListing>}
      */
   listTransferSchedulesWithHttpInfo (accountId, marketplaceId, opts) {
@@ -303,8 +303,8 @@ export class TransferScheduleApi {
      * Retrieve transfer schedules of a Seller Wallet bank account.
      * @param {String} accountId ID of the Amazon SW account
      * @param {String} marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.nextPageToken Pagination token to retrieve a specific page of results.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.nextPageToken] Pagination token to retrieve a specific page of results.
      * @return {Promise<TransferScheduleListing>}
      */
   listTransferSchedules (accountId, marketplaceId, opts) {

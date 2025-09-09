@@ -66,9 +66,9 @@ export class VehiclesApi {
      * Get the latest collection of vehicles
      * @param {String} marketplaceId An identifier for the marketplace in which the resource operates.
      * @param {String} vehicleType An identifier for vehicle type.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.pageToken A token to fetch a certain page when there are multiple pages worth of results.
-     * @param {String} opts.updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.pageToken] A token to fetch a certain page when there are multiple pages worth of results.
+     * @param {String} [opts.updatedAfter] Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
      * @return {Promise<VehiclesResponse>}
      */
   getVehiclesWithHttpInfo (marketplaceId, vehicleType, opts) {
@@ -113,9 +113,9 @@ export class VehiclesApi {
      * Get the latest collection of vehicles
      * @param {String} marketplaceId An identifier for the marketplace in which the resource operates.
      * @param {String} vehicleType An identifier for vehicle type.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.pageToken A token to fetch a certain page when there are multiple pages worth of results.
-     * @param {String} opts.updatedAfter Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.pageToken] A token to fetch a certain page when there are multiple pages worth of results.
+     * @param {String} [opts.updatedAfter] Date in ISO 8601 format, if provided only vehicles which are modified/added to Amazon&#39;s catalog after this date will be returned.
      * @return {Promise<VehiclesResponse>}
      */
   getVehicles (marketplaceId, vehicleType, opts) {

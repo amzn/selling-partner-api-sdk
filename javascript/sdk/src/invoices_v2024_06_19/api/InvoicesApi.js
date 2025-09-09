@@ -177,20 +177,20 @@ export class InvoicesApi {
   /**
      * Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The response includes only the invoices that match the specified marketplace.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.transactionIdentifierName The name of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierId&#x60; field.Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionIdentifierName&#x60; options.
-     * @param {Number} opts.pageSize The maximum number of invoices you want to return in a single call.  Minimum: 1  Maximum: 200
-     * @param {Date} opts.dateEnd The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the current date-time.
-     * @param {String} opts.transactionType The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.
-     * @param {String} opts.transactionIdentifierId The ID of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierName&#x60; field.
-     * @param {Date} opts.dateStart The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
-     * @param {String} opts.series Return invoices with the specified series number.
-     * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {String} opts.sortOrder Sort the invoices in the response in ascending or descending order.
-     * @param {String} opts.invoiceType The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
-     * @param {[String]} opts.statuses A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
-     * @param {String} opts.externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice ID.
-     * @param {String} opts.sortBy The attribute by which you want to sort the invoices in the response.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.transactionIdentifierName] The name of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierId&#x60; field.Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionIdentifierName&#x60; options.
+     * @param {Number} [opts.pageSize] The maximum number of invoices you want to return in a single call.  Minimum: 1  Maximum: 200
+     * @param {Date} [opts.dateEnd] The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the current date-time.
+     * @param {String} [opts.transactionType] The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.
+     * @param {String} [opts.transactionIdentifierId] The ID of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierName&#x60; field.
+     * @param {Date} [opts.dateStart] The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
+     * @param {String} [opts.series] Return invoices with the specified series number.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {String} [opts.sortOrder] Sort the invoices in the response in ascending or descending order.
+     * @param {String} [opts.invoiceType] The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
+     * @param {[String]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
+     * @param {String} [opts.externalInvoiceId] Return invoices that match this external ID. This is typically the Government Invoice ID.
+     * @param {String} [opts.sortBy] The attribute by which you want to sort the invoices in the response.
      * @return {Promise<GetInvoicesResponse>}
      */
   getInvoicesWithHttpInfo (marketplaceId, opts) {
@@ -239,20 +239,20 @@ export class InvoicesApi {
   /**
      * Returns invoice details for the invoices that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The response includes only the invoices that match the specified marketplace.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.transactionIdentifierName The name of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierId&#x60; field.Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionIdentifierName&#x60; options.
-     * @param {Number} opts.pageSize The maximum number of invoices you want to return in a single call.  Minimum: 1  Maximum: 200
-     * @param {Date} opts.dateEnd The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the current date-time.
-     * @param {String} opts.transactionType The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.
-     * @param {String} opts.transactionIdentifierId The ID of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierName&#x60; field.
-     * @param {Date} opts.dateStart The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
-     * @param {String} opts.series Return invoices with the specified series number.
-     * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {String} opts.sortOrder Sort the invoices in the response in ascending or descending order.
-     * @param {String} opts.invoiceType The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
-     * @param {[String]} opts.statuses A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
-     * @param {String} opts.externalInvoiceId Return invoices that match this external ID. This is typically the Government Invoice ID.
-     * @param {String} opts.sortBy The attribute by which you want to sort the invoices in the response.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.transactionIdentifierName] The name of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierId&#x60; field.Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionIdentifierName&#x60; options.
+     * @param {Number} [opts.pageSize] The maximum number of invoices you want to return in a single call.  Minimum: 1  Maximum: 200
+     * @param {Date} [opts.dateEnd] The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the current date-time.
+     * @param {String} [opts.transactionType] The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.
+     * @param {String} [opts.transactionIdentifierId] The ID of the transaction identifier filter. If you provide a value for this field, you must also provide a value for the &#x60;transactionIdentifierName&#x60; field.
+     * @param {Date} [opts.dateStart] The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
+     * @param {String} [opts.series] Return invoices with the specified series number.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {String} [opts.sortOrder] Sort the invoices in the response in ascending or descending order.
+     * @param {String} [opts.invoiceType] The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
+     * @param {[String]} [opts.statuses] A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
+     * @param {String} [opts.externalInvoiceId] Return invoices that match this external ID. This is typically the Government Invoice ID.
+     * @param {String} [opts.sortBy] The attribute by which you want to sort the invoices in the response.
      * @return {Promise<GetInvoicesResponse>}
      */
   getInvoices (marketplaceId, opts) {
@@ -403,12 +403,12 @@ export class InvoicesApi {
   /**
      * Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The returned exports match the specified marketplace.
-     * @param {Object} opts Optional parameters
-     * @param {Date} opts.dateStart The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago.
-     * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {Number} opts.pageSize The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
-     * @param {Date} opts.dateEnd The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
-     * @param {String} opts.status Return exports matching the status specified.
+     * @param {Object} [opts] Optional parameters
+     * @param {Date} [opts.dateStart] The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {Number} [opts.pageSize] The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
+     * @param {Date} [opts.dateEnd] The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
+     * @param {String} [opts.status] Return exports matching the status specified.
      * @return {Promise<GetInvoicesExportsResponse>}
      */
   getInvoicesExportsWithHttpInfo (marketplaceId, opts) {
@@ -449,12 +449,12 @@ export class InvoicesApi {
   /**
      * Returns invoice exports details for exports that match the filters that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.1 | 20 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} marketplaceId The returned exports match the specified marketplace.
-     * @param {Object} opts Optional parameters
-     * @param {Date} opts.dateStart The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago.
-     * @param {String} opts.nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
-     * @param {Number} opts.pageSize The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
-     * @param {Date} opts.dateEnd The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
-     * @param {String} opts.status Return exports matching the status specified.
+     * @param {Object} [opts] Optional parameters
+     * @param {Date} [opts.dateStart] The earliest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 30 days ago.
+     * @param {String} [opts.nextToken] The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @param {Number} [opts.pageSize] The maximum number of invoices to return in a single call.  Minimum: 1  Maximum: 100
+     * @param {Date} [opts.dateEnd] The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request.
+     * @param {String} [opts.status] Return exports matching the status specified.
      * @return {Promise<GetInvoicesExportsResponse>}
      */
   getInvoicesExports (marketplaceId, opts) {
