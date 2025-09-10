@@ -77,7 +77,13 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/2024-06-01/paymentMethods";
+        String localVarPath;
+        if ("/finances/transfers/2024-06-01/paymentMethods"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/2024-06-01/paymentMethods";
+        } else {
+            localVarPath = "/finances/transfers/2024-06-01/paymentMethods";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -321,7 +327,12 @@ public class DefaultApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/2024-06-01/payouts";
+        String localVarPath;
+        if ("/finances/transfers/2024-06-01/payouts".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/2024-06-01/payouts";
+        } else {
+            localVarPath = "/finances/transfers/2024-06-01/payouts";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

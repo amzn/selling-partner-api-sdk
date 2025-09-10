@@ -61,7 +61,12 @@ public class ApplicationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/applications/2023-11-30/clientSecret";
+        String localVarPath;
+        if ("/applications/2023-11-30/clientSecret".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/applications/2023-11-30/clientSecret";
+        } else {
+            localVarPath = "/applications/2023-11-30/clientSecret";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

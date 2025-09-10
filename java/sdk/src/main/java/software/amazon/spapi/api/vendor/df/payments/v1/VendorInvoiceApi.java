@@ -66,7 +66,13 @@ public class VendorInvoiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/payments/v1/invoices";
+        String localVarPath;
+        if ("/vendor/directFulfillment/payments/v1/invoices"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/payments/v1/invoices";
+        } else {
+            localVarPath = "/vendor/directFulfillment/payments/v1/invoices";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

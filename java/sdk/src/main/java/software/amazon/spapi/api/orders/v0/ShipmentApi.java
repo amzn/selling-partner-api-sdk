@@ -66,8 +66,14 @@ public class ShipmentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/shipment"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/shipment".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/orders/v0/orders/{orderId}/shipment".replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/shipment"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -73,7 +73,13 @@ public class ProductPricingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/batches/products/pricing/2022-05-01/items/competitiveSummary";
+        String localVarPath;
+        if ("/batches/products/pricing/2022-05-01/items/competitiveSummary"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/batches/products/pricing/2022-05-01/items/competitiveSummary";
+        } else {
+            localVarPath = "/batches/products/pricing/2022-05-01/items/competitiveSummary";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -291,7 +297,13 @@ public class ProductPricingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice";
+        String localVarPath;
+        if ("/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice";
+        } else {
+            localVarPath = "/batches/products/pricing/2022-05-01/offer/featuredOfferExpectedPrice";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

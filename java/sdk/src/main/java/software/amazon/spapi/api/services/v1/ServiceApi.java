@@ -155,8 +155,15 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}/appointments"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -391,9 +398,17 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()))
-                .replaceAll("\\{" + "appointmentId" + "\\}", apiClient.escapeString(appointmentId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString())
+                    .replaceAll("\\{" + "appointmentId" + "\\}", appointmentId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/resources"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()))
+                    .replaceAll("\\{" + "appointmentId" + "\\}", apiClient.escapeString(appointmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -651,8 +666,14 @@ public class ServiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/service/v1/reservation/{reservationId}"
-                .replaceAll("\\{" + "reservationId" + "\\}", apiClient.escapeString(reservationId.toString()));
+        String localVarPath;
+        if ("/service/v1/reservation/{reservationId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/reservation/{reservationId}"
+                    .replaceAll("\\{" + "reservationId" + "\\}", reservationId.toString());
+        } else {
+            localVarPath = "/service/v1/reservation/{reservationId}"
+                    .replaceAll("\\{" + "reservationId" + "\\}", apiClient.escapeString(reservationId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -879,8 +900,15 @@ public class ServiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}/cancellations"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}/cancellations"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/cancellations"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/cancellations"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1115,8 +1143,15 @@ public class ServiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}/completions"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}/completions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/completions"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/completions"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1328,7 +1363,12 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/reservation";
+        String localVarPath;
+        if ("/service/v1/reservation".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/reservation";
+        } else {
+            localVarPath = "/service/v1/reservation";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1550,7 +1590,12 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/documents";
+        String localVarPath;
+        if ("/service/v1/documents".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/documents";
+        } else {
+            localVarPath = "/service/v1/documents";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1773,7 +1818,12 @@ public class ServiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/service/v1/appointmentSlots";
+        String localVarPath;
+        if ("/service/v1/appointmentSlots".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/appointmentSlots";
+        } else {
+            localVarPath = "/service/v1/appointmentSlots";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2081,8 +2131,15 @@ public class ServiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointmentSlots"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}/appointmentSlots"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointmentSlots"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointmentSlots"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2375,8 +2432,15 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceResources/{resourceId}/capacity/fixed"
-                .replaceAll("\\{" + "resourceId" + "\\}", apiClient.escapeString(resourceId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceResources/{resourceId}/capacity/fixed"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceResources/{resourceId}/capacity/fixed"
+                    .replaceAll("\\{" + "resourceId" + "\\}", resourceId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceResources/{resourceId}/capacity/fixed"
+                    .replaceAll("\\{" + "resourceId" + "\\}", apiClient.escapeString(resourceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2643,8 +2707,15 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceResources/{resourceId}/capacity/range"
-                .replaceAll("\\{" + "resourceId" + "\\}", apiClient.escapeString(resourceId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceResources/{resourceId}/capacity/range"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceResources/{resourceId}/capacity/range"
+                    .replaceAll("\\{" + "resourceId" + "\\}", resourceId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceResources/{resourceId}/capacity/range"
+                    .replaceAll("\\{" + "resourceId" + "\\}", apiClient.escapeString(resourceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2904,8 +2975,14 @@ public class ServiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3158,7 +3235,12 @@ public class ServiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs";
+        String localVarPath;
+        if ("/service/v1/serviceJobs".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs";
+        } else {
+            localVarPath = "/service/v1/serviceJobs";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3794,9 +3876,17 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()))
-                .replaceAll("\\{" + "appointmentId" + "\\}", apiClient.escapeString(appointmentId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString())
+                    .replaceAll("\\{" + "appointmentId" + "\\}", appointmentId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()))
+                    .replaceAll("\\{" + "appointmentId" + "\\}", apiClient.escapeString(appointmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4051,9 +4141,17 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment"
-                .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()))
-                .replaceAll("\\{" + "appointmentId" + "\\}", apiClient.escapeString(appointmentId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", serviceJobId.toString())
+                    .replaceAll("\\{" + "appointmentId" + "\\}", appointmentId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceJobs/{serviceJobId}/appointments/{appointmentId}/fulfillment"
+                    .replaceAll("\\{" + "serviceJobId" + "\\}", apiClient.escapeString(serviceJobId.toString()))
+                    .replaceAll("\\{" + "appointmentId" + "\\}", apiClient.escapeString(appointmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4316,8 +4414,14 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/reservation/{reservationId}"
-                .replaceAll("\\{" + "reservationId" + "\\}", apiClient.escapeString(reservationId.toString()));
+        String localVarPath;
+        if ("/service/v1/reservation/{reservationId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/reservation/{reservationId}"
+                    .replaceAll("\\{" + "reservationId" + "\\}", reservationId.toString());
+        } else {
+            localVarPath = "/service/v1/reservation/{reservationId}"
+                    .replaceAll("\\{" + "reservationId" + "\\}", apiClient.escapeString(reservationId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4568,8 +4672,15 @@ public class ServiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/service/v1/serviceResources/{resourceId}/schedules"
-                .replaceAll("\\{" + "resourceId" + "\\}", apiClient.escapeString(resourceId.toString()));
+        String localVarPath;
+        if ("/service/v1/serviceResources/{resourceId}/schedules"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/service/v1/serviceResources/{resourceId}/schedules"
+                    .replaceAll("\\{" + "resourceId" + "\\}", resourceId.toString());
+        } else {
+            localVarPath = "/service/v1/serviceResources/{resourceId}/schedules"
+                    .replaceAll("\\{" + "resourceId" + "\\}", apiClient.escapeString(resourceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

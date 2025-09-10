@@ -89,8 +89,13 @@ public class FeedsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/feeds/2021-06-30/feeds/{feedId}"
-                .replaceAll("\\{" + "feedId" + "\\}", apiClient.escapeString(feedId.toString()));
+        String localVarPath;
+        if ("/feeds/2021-06-30/feeds/{feedId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/feeds/2021-06-30/feeds/{feedId}".replaceAll("\\{" + "feedId" + "\\}", feedId.toString());
+        } else {
+            localVarPath = "/feeds/2021-06-30/feeds/{feedId}"
+                    .replaceAll("\\{" + "feedId" + "\\}", apiClient.escapeString(feedId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -309,7 +314,12 @@ public class FeedsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/feeds/2021-06-30/feeds";
+        String localVarPath;
+        if ("/feeds/2021-06-30/feeds".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/feeds/2021-06-30/feeds";
+        } else {
+            localVarPath = "/feeds/2021-06-30/feeds";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -549,7 +559,12 @@ public class FeedsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/feeds/2021-06-30/documents";
+        String localVarPath;
+        if ("/feeds/2021-06-30/documents".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/feeds/2021-06-30/documents";
+        } else {
+            localVarPath = "/feeds/2021-06-30/documents";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -772,8 +787,13 @@ public class FeedsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/feeds/2021-06-30/feeds/{feedId}"
-                .replaceAll("\\{" + "feedId" + "\\}", apiClient.escapeString(feedId.toString()));
+        String localVarPath;
+        if ("/feeds/2021-06-30/feeds/{feedId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/feeds/2021-06-30/feeds/{feedId}".replaceAll("\\{" + "feedId" + "\\}", feedId.toString());
+        } else {
+            localVarPath = "/feeds/2021-06-30/feeds/{feedId}"
+                    .replaceAll("\\{" + "feedId" + "\\}", apiClient.escapeString(feedId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -980,8 +1000,15 @@ public class FeedsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/feeds/2021-06-30/documents/{feedDocumentId}"
-                .replaceAll("\\{" + "feedDocumentId" + "\\}", apiClient.escapeString(feedDocumentId.toString()));
+        String localVarPath;
+        if ("/feeds/2021-06-30/documents/{feedDocumentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/feeds/2021-06-30/documents/{feedDocumentId}"
+                    .replaceAll("\\{" + "feedDocumentId" + "\\}", feedDocumentId.toString());
+        } else {
+            localVarPath = "/feeds/2021-06-30/documents/{feedDocumentId}"
+                    .replaceAll("\\{" + "feedDocumentId" + "\\}", apiClient.escapeString(feedDocumentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1207,7 +1234,12 @@ public class FeedsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/feeds/2021-06-30/feeds";
+        String localVarPath;
+        if ("/feeds/2021-06-30/feeds".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/feeds/2021-06-30/feeds";
+        } else {
+            localVarPath = "/feeds/2021-06-30/feeds";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

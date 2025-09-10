@@ -78,11 +78,12 @@ public class {{classname}} {
         Object {{localVariablePrefix}}localVarPostBody = {{#bodyParam}}{{paramName}}{{/bodyParam}}{{^bodyParam}}null{{/bodyParam}};
 
         // create path and map variables
-        if ({{path}}.equals("/uploads/2020-11-01/uploadDestinations/{resource}") {
-           String {{localVariablePrefix}}localVarPath = "{{{path}}}"{{#pathParams}}
+        String {{localVariablePrefix}}localVarPath;
+        if ("{{{path}}}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+           {{localVariablePrefix}}localVarPath = "{{{path}}}"{{#pathParams}}
                 .replaceAll("\\{" + "{{baseName}}" + "\\}", {{{paramName}}}.toString()){{/pathParams}};
         } else {
-           String {{localVariablePrefix}}localVarPath = "{{{path}}}"{{#pathParams}}
+           {{localVariablePrefix}}localVarPath = "{{{path}}}"{{#pathParams}}
                 .replaceAll("\\{" + "{{baseName}}" + "\\}", {{localVariablePrefix}}apiClient.escapeString({{{paramName}}}.toString())){{/pathParams}};
         }
 

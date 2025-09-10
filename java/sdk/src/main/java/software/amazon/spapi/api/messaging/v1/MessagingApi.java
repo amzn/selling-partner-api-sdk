@@ -137,8 +137,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmCustomizationDetails"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/confirmCustomizationDetails"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmCustomizationDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmCustomizationDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -412,8 +419,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/amazonMotors"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/amazonMotors"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/amazonMotors"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/amazonMotors"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -684,8 +698,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmDeliveryDetails"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/confirmDeliveryDetails"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmDeliveryDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmDeliveryDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -959,8 +980,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmOrderDetails"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/confirmOrderDetails"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmOrderDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmOrderDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1230,8 +1258,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmServiceDetails"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/confirmServiceDetails"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmServiceDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/confirmServiceDetails"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1505,8 +1540,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/digitalAccessKey"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/digitalAccessKey"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/digitalAccessKey"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/digitalAccessKey"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1779,8 +1821,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/legalDisclosure"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2053,8 +2102,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/unexpectedProblem"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/unexpectedProblem"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/unexpectedProblem"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/unexpectedProblem"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2327,8 +2383,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/warranty"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/warranty"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/warranty"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/warranty"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2590,8 +2653,15 @@ public class MessagingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/attributes"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/attributes"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/attributes"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/attributes"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2804,8 +2874,14 @@ public class MessagingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3064,8 +3140,15 @@ public class MessagingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/invoice"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/messaging/v1/orders/{amazonOrderId}/messages/invoice"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/invoice"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/messaging/v1/orders/{amazonOrderId}/messages/invoice"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

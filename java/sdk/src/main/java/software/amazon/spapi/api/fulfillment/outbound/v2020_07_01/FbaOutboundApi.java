@@ -138,10 +138,17 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel"
-                .replaceAll(
-                        "\\{" + "sellerFulfillmentOrderId" + "\\}",
-                        apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel"
+                    .replaceAll("\\{" + "sellerFulfillmentOrderId" + "\\}", sellerFulfillmentOrderId.toString());
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/cancel"
+                    .replaceAll(
+                            "\\{" + "sellerFulfillmentOrderId" + "\\}",
+                            apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -361,7 +368,12 @@ public class FbaOutboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders";
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders";
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -577,10 +589,17 @@ public class FbaOutboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/return"
-                .replaceAll(
-                        "\\{" + "sellerFulfillmentOrderId" + "\\}",
-                        apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/return"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/return"
+                    .replaceAll("\\{" + "sellerFulfillmentOrderId" + "\\}", sellerFulfillmentOrderId.toString());
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/return"
+                    .replaceAll(
+                            "\\{" + "sellerFulfillmentOrderId" + "\\}",
+                            apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -816,7 +835,12 @@ public class FbaOutboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/deliveryOffers";
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/deliveryOffers".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/deliveryOffers";
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/deliveryOffers";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1033,8 +1057,15 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/features/inventory/{featureName}"
-                .replaceAll("\\{" + "featureName" + "\\}", apiClient.escapeString(featureName.toString()));
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/features/inventory/{featureName}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/features/inventory/{featureName}"
+                    .replaceAll("\\{" + "featureName" + "\\}", featureName.toString());
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/features/inventory/{featureName}"
+                    .replaceAll("\\{" + "featureName" + "\\}", apiClient.escapeString(featureName.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1330,9 +1361,17 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/features/inventory/{featureName}/{sellerSku}"
-                .replaceAll("\\{" + "featureName" + "\\}", apiClient.escapeString(featureName.toString()))
-                .replaceAll("\\{" + "sellerSku" + "\\}", apiClient.escapeString(sellerSku.toString()));
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/features/inventory/{featureName}/{sellerSku}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/features/inventory/{featureName}/{sellerSku}"
+                    .replaceAll("\\{" + "featureName" + "\\}", featureName.toString())
+                    .replaceAll("\\{" + "sellerSku" + "\\}", sellerSku.toString());
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/features/inventory/{featureName}/{sellerSku}"
+                    .replaceAll("\\{" + "featureName" + "\\}", apiClient.escapeString(featureName.toString()))
+                    .replaceAll("\\{" + "sellerSku" + "\\}", apiClient.escapeString(sellerSku.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1605,7 +1644,12 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/features";
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/features".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/features";
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/features";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1818,10 +1862,17 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
-                .replaceAll(
-                        "\\{" + "sellerFulfillmentOrderId" + "\\}",
-                        apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
+                    .replaceAll("\\{" + "sellerFulfillmentOrderId" + "\\}", sellerFulfillmentOrderId.toString());
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
+                    .replaceAll(
+                            "\\{" + "sellerFulfillmentOrderId" + "\\}",
+                            apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2040,7 +2091,13 @@ public class FbaOutboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/preview";
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders/preview"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/preview";
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/preview";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2255,7 +2312,12 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/tracking";
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/tracking".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/tracking";
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/tracking";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2500,7 +2562,12 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders";
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders";
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2747,7 +2814,12 @@ public class FbaOutboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/returnReasonCodes";
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/returnReasonCodes".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/returnReasonCodes";
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/returnReasonCodes";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3044,10 +3116,17 @@ public class FbaOutboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/status"
-                .replaceAll(
-                        "\\{" + "sellerFulfillmentOrderId" + "\\}",
-                        apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/status"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/status"
+                    .replaceAll("\\{" + "sellerFulfillmentOrderId" + "\\}", sellerFulfillmentOrderId.toString());
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}/status"
+                    .replaceAll(
+                            "\\{" + "sellerFulfillmentOrderId" + "\\}",
+                            apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3280,10 +3359,17 @@ public class FbaOutboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
-                .replaceAll(
-                        "\\{" + "sellerFulfillmentOrderId" + "\\}",
-                        apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
+                    .replaceAll("\\{" + "sellerFulfillmentOrderId" + "\\}", sellerFulfillmentOrderId.toString());
+        } else {
+            localVarPath = "/fba/outbound/2020-07-01/fulfillmentOrders/{sellerFulfillmentOrderId}"
+                    .replaceAll(
+                            "\\{" + "sellerFulfillmentOrderId" + "\\}",
+                            apiClient.escapeString(sellerFulfillmentOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
