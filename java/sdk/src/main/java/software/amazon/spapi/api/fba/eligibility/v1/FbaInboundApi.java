@@ -71,7 +71,12 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/inbound/v1/eligibility/itemPreview";
+        String localVarPath;
+        if ("/fba/inbound/v1/eligibility/itemPreview".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/inbound/v1/eligibility/itemPreview";
+        } else {
+            localVarPath = "/fba/inbound/v1/eligibility/itemPreview";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

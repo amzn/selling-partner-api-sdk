@@ -79,8 +79,14 @@ public class FeesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/products/fees/v0/items/{Asin}/feesEstimate"
-                .replaceAll("\\{" + "Asin" + "\\}", apiClient.escapeString(asin.toString()));
+        String localVarPath;
+        if ("/products/fees/v0/items/{Asin}/feesEstimate".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/products/fees/v0/items/{Asin}/feesEstimate".replaceAll("\\{" + "Asin" + "\\}", asin.toString());
+        } else {
+            localVarPath = "/products/fees/v0/items/{Asin}/feesEstimate"
+                    .replaceAll("\\{" + "Asin" + "\\}", apiClient.escapeString(asin.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -355,8 +361,15 @@ public class FeesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/products/fees/v0/listings/{SellerSKU}/feesEstimate"
-                .replaceAll("\\{" + "SellerSKU" + "\\}", apiClient.escapeString(sellerSKU.toString()));
+        String localVarPath;
+        if ("/products/fees/v0/listings/{SellerSKU}/feesEstimate"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/products/fees/v0/listings/{SellerSKU}/feesEstimate"
+                    .replaceAll("\\{" + "SellerSKU" + "\\}", sellerSKU.toString());
+        } else {
+            localVarPath = "/products/fees/v0/listings/{SellerSKU}/feesEstimate"
+                    .replaceAll("\\{" + "SellerSKU" + "\\}", apiClient.escapeString(sellerSKU.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -647,7 +660,12 @@ public class FeesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/products/fees/v0/feesEstimate";
+        String localVarPath;
+        if ("/products/fees/v0/feesEstimate".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/products/fees/v0/feesEstimate";
+        } else {
+            localVarPath = "/products/fees/v0/feesEstimate";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -88,8 +88,14 @@ public class MerchantFulfillmentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/mfn/v0/shipments/{shipmentId}"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/mfn/v0/shipments/{shipmentId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/mfn/v0/shipments/{shipmentId}".replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/mfn/v0/shipments/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -291,7 +297,12 @@ public class MerchantFulfillmentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/mfn/v0/shipments";
+        String localVarPath;
+        if ("/mfn/v0/shipments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/mfn/v0/shipments";
+        } else {
+            localVarPath = "/mfn/v0/shipments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -492,7 +503,12 @@ public class MerchantFulfillmentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/mfn/v0/additionalSellerInputs";
+        String localVarPath;
+        if ("/mfn/v0/additionalSellerInputs".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/mfn/v0/additionalSellerInputs";
+        } else {
+            localVarPath = "/mfn/v0/additionalSellerInputs";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -705,7 +721,12 @@ public class MerchantFulfillmentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/mfn/v0/eligibleShippingServices";
+        String localVarPath;
+        if ("/mfn/v0/eligibleShippingServices".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/mfn/v0/eligibleShippingServices";
+        } else {
+            localVarPath = "/mfn/v0/eligibleShippingServices";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -917,8 +938,14 @@ public class MerchantFulfillmentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/mfn/v0/shipments/{shipmentId}"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/mfn/v0/shipments/{shipmentId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/mfn/v0/shipments/{shipmentId}".replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/mfn/v0/shipments/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

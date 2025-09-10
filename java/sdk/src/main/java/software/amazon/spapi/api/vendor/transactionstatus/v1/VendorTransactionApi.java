@@ -66,8 +66,15 @@ public class VendorTransactionApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/transactions/v1/transactions/{transactionId}"
-                .replaceAll("\\{" + "transactionId" + "\\}", apiClient.escapeString(transactionId.toString()));
+        String localVarPath;
+        if ("/vendor/transactions/v1/transactions/{transactionId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/transactions/v1/transactions/{transactionId}"
+                    .replaceAll("\\{" + "transactionId" + "\\}", transactionId.toString());
+        } else {
+            localVarPath = "/vendor/transactions/v1/transactions/{transactionId}"
+                    .replaceAll("\\{" + "transactionId" + "\\}", apiClient.escapeString(transactionId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

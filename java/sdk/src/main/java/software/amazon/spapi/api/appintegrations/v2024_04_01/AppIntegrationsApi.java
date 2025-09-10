@@ -76,7 +76,12 @@ public class AppIntegrationsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/appIntegrations/2024-04-01/notifications";
+        String localVarPath;
+        if ("/appIntegrations/2024-04-01/notifications".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/appIntegrations/2024-04-01/notifications";
+        } else {
+            localVarPath = "/appIntegrations/2024-04-01/notifications";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -281,7 +286,13 @@ public class AppIntegrationsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/appIntegrations/2024-04-01/notifications/deletion";
+        String localVarPath;
+        if ("/appIntegrations/2024-04-01/notifications/deletion"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/appIntegrations/2024-04-01/notifications/deletion";
+        } else {
+            localVarPath = "/appIntegrations/2024-04-01/notifications/deletion";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -483,8 +494,15 @@ public class AppIntegrationsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/appIntegrations/2024-04-01/notifications/{notificationId}/feedback"
-                .replaceAll("\\{" + "notificationId" + "\\}", apiClient.escapeString(notificationId.toString()));
+        String localVarPath;
+        if ("/appIntegrations/2024-04-01/notifications/{notificationId}/feedback"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/appIntegrations/2024-04-01/notifications/{notificationId}/feedback"
+                    .replaceAll("\\{" + "notificationId" + "\\}", notificationId.toString());
+        } else {
+            localVarPath = "/appIntegrations/2024-04-01/notifications/{notificationId}/feedback"
+                    .replaceAll("\\{" + "notificationId" + "\\}", apiClient.escapeString(notificationId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

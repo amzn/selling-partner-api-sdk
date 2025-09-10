@@ -105,8 +105,14 @@ public class ReportsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/reports/{reportId}"
-                .replaceAll("\\{" + "reportId" + "\\}", apiClient.escapeString(reportId.toString()));
+        String localVarPath;
+        if ("/reports/2021-06-30/reports/{reportId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/reports/{reportId}"
+                    .replaceAll("\\{" + "reportId" + "\\}", reportId.toString());
+        } else {
+            localVarPath = "/reports/2021-06-30/reports/{reportId}"
+                    .replaceAll("\\{" + "reportId" + "\\}", apiClient.escapeString(reportId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -316,8 +322,16 @@ public class ReportsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/schedules/{reportScheduleId}"
-                .replaceAll("\\{" + "reportScheduleId" + "\\}", apiClient.escapeString(reportScheduleId.toString()));
+        String localVarPath;
+        if ("/reports/2021-06-30/schedules/{reportScheduleId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/schedules/{reportScheduleId}"
+                    .replaceAll("\\{" + "reportScheduleId" + "\\}", reportScheduleId.toString());
+        } else {
+            localVarPath = "/reports/2021-06-30/schedules/{reportScheduleId}"
+                    .replaceAll(
+                            "\\{" + "reportScheduleId" + "\\}", apiClient.escapeString(reportScheduleId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -518,7 +532,12 @@ public class ReportsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/reports";
+        String localVarPath;
+        if ("/reports/2021-06-30/reports".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/reports";
+        } else {
+            localVarPath = "/reports/2021-06-30/reports";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -719,7 +738,12 @@ public class ReportsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/schedules";
+        String localVarPath;
+        if ("/reports/2021-06-30/schedules".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/schedules";
+        } else {
+            localVarPath = "/reports/2021-06-30/schedules";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -930,8 +954,14 @@ public class ReportsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/reports/{reportId}"
-                .replaceAll("\\{" + "reportId" + "\\}", apiClient.escapeString(reportId.toString()));
+        String localVarPath;
+        if ("/reports/2021-06-30/reports/{reportId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/reports/{reportId}"
+                    .replaceAll("\\{" + "reportId" + "\\}", reportId.toString());
+        } else {
+            localVarPath = "/reports/2021-06-30/reports/{reportId}"
+                    .replaceAll("\\{" + "reportId" + "\\}", apiClient.escapeString(reportId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1138,8 +1168,16 @@ public class ReportsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/documents/{reportDocumentId}"
-                .replaceAll("\\{" + "reportDocumentId" + "\\}", apiClient.escapeString(reportDocumentId.toString()));
+        String localVarPath;
+        if ("/reports/2021-06-30/documents/{reportDocumentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/documents/{reportDocumentId}"
+                    .replaceAll("\\{" + "reportDocumentId" + "\\}", reportDocumentId.toString());
+        } else {
+            localVarPath = "/reports/2021-06-30/documents/{reportDocumentId}"
+                    .replaceAll(
+                            "\\{" + "reportDocumentId" + "\\}", apiClient.escapeString(reportDocumentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1345,8 +1383,16 @@ public class ReportsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/schedules/{reportScheduleId}"
-                .replaceAll("\\{" + "reportScheduleId" + "\\}", apiClient.escapeString(reportScheduleId.toString()));
+        String localVarPath;
+        if ("/reports/2021-06-30/schedules/{reportScheduleId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/schedules/{reportScheduleId}"
+                    .replaceAll("\\{" + "reportScheduleId" + "\\}", reportScheduleId.toString());
+        } else {
+            localVarPath = "/reports/2021-06-30/schedules/{reportScheduleId}"
+                    .replaceAll(
+                            "\\{" + "reportScheduleId" + "\\}", apiClient.escapeString(reportScheduleId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1558,7 +1604,12 @@ public class ReportsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/schedules";
+        String localVarPath;
+        if ("/reports/2021-06-30/schedules".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/schedules";
+        } else {
+            localVarPath = "/reports/2021-06-30/schedules";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1796,7 +1847,12 @@ public class ReportsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/reports/2021-06-30/reports";
+        String localVarPath;
+        if ("/reports/2021-06-30/reports".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/reports/2021-06-30/reports";
+        } else {
+            localVarPath = "/reports/2021-06-30/reports";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

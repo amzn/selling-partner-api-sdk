@@ -92,8 +92,15 @@ public class SupplySourcesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
-                .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        String localVarPath;
+        if ("/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", supplySourceId.toString());
+        } else {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -264,7 +271,12 @@ public class SupplySourcesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/supplySources/2020-07-01/supplySources";
+        String localVarPath;
+        if ("/supplySources/2020-07-01/supplySources".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/supplySources/2020-07-01/supplySources";
+        } else {
+            localVarPath = "/supplySources/2020-07-01/supplySources";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -437,8 +449,15 @@ public class SupplySourcesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
-                .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        String localVarPath;
+        if ("/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", supplySourceId.toString());
+        } else {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -610,7 +629,12 @@ public class SupplySourcesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/supplySources/2020-07-01/supplySources";
+        String localVarPath;
+        if ("/supplySources/2020-07-01/supplySources".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/supplySources/2020-07-01/supplySources";
+        } else {
+            localVarPath = "/supplySources/2020-07-01/supplySources";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -794,8 +818,15 @@ public class SupplySourcesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
-                .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        String localVarPath;
+        if ("/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", supplySourceId.toString());
+        } else {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -983,8 +1014,15 @@ public class SupplySourcesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}/status"
-                .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        String localVarPath;
+        if ("/supplySources/2020-07-01/supplySources/{supplySourceId}/status"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}/status"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", supplySourceId.toString());
+        } else {
+            localVarPath = "/supplySources/2020-07-01/supplySources/{supplySourceId}/status"
+                    .replaceAll("\\{" + "supplySourceId" + "\\}", apiClient.escapeString(supplySourceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

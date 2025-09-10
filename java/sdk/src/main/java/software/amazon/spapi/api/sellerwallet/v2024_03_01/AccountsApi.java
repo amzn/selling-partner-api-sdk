@@ -79,8 +79,15 @@ public class AccountsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/accounts/{accountId}"
-                .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/accounts/{accountId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/accounts/{accountId}"
+                    .replaceAll("\\{" + "accountId" + "\\}", accountId.toString());
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/accounts/{accountId}"
+                    .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -285,8 +292,15 @@ public class AccountsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/accounts/{accountId}/balance"
-                .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/accounts/{accountId}/balance"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/accounts/{accountId}/balance"
+                    .replaceAll("\\{" + "accountId" + "\\}", accountId.toString());
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/accounts/{accountId}/balance"
+                    .replaceAll("\\{" + "accountId" + "\\}", apiClient.escapeString(accountId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -494,7 +508,13 @@ public class AccountsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/accounts";
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/accounts"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/accounts";
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/accounts";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

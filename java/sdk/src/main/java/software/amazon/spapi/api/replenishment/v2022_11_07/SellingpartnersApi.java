@@ -67,7 +67,13 @@ public class SellingpartnersApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/replenishment/2022-11-07/sellingPartners/metrics/search";
+        String localVarPath;
+        if ("/replenishment/2022-11-07/sellingPartners/metrics/search"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/replenishment/2022-11-07/sellingPartners/metrics/search";
+        } else {
+            localVarPath = "/replenishment/2022-11-07/sellingPartners/metrics/search";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

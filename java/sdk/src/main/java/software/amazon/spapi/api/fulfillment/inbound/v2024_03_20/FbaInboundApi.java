@@ -305,8 +305,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/cancellation"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/cancellation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/cancellation"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/cancellation"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -523,10 +530,20 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentCancellation"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentCancellation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentCancellation"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentCancellation"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -784,13 +801,24 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions/{deliveryWindowOptionId}/confirmation"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
-                        .replaceAll(
-                                "\\{" + "deliveryWindowOptionId" + "\\}",
-                                apiClient.escapeString(deliveryWindowOptionId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions/{deliveryWindowOptionId}/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions/{deliveryWindowOptionId}/confirmation"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString())
+                            .replaceAll("\\{" + "deliveryWindowOptionId" + "\\}", deliveryWindowOptionId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions/{deliveryWindowOptionId}/confirmation"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
+                            .replaceAll(
+                                    "\\{" + "deliveryWindowOptionId" + "\\}",
+                                    apiClient.escapeString(deliveryWindowOptionId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1065,11 +1093,22 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions/{packingOptionId}/confirmation"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll(
-                                "\\{" + "packingOptionId" + "\\}", apiClient.escapeString(packingOptionId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions/{packingOptionId}/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions/{packingOptionId}/confirmation"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "packingOptionId" + "\\}", packingOptionId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions/{packingOptionId}/confirmation"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll(
+                                    "\\{" + "packingOptionId" + "\\}",
+                                    apiClient.escapeString(packingOptionId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1299,12 +1338,22 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions/{placementOptionId}/confirmation"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll(
-                                "\\{" + "placementOptionId" + "\\}",
-                                apiClient.escapeString(placementOptionId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions/{placementOptionId}/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions/{placementOptionId}/confirmation"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "placementOptionId" + "\\}", placementOptionId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions/{placementOptionId}/confirmation"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll(
+                                    "\\{" + "placementOptionId" + "\\}",
+                                    apiClient.escapeString(placementOptionId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1545,13 +1594,24 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}/confirmation"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
-                        .replaceAll(
-                                "\\{" + "contentUpdatePreviewId" + "\\}",
-                                apiClient.escapeString(contentUpdatePreviewId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}/confirmation"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString())
+                            .replaceAll("\\{" + "contentUpdatePreviewId" + "\\}", contentUpdatePreviewId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}/confirmation"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
+                            .replaceAll(
+                                    "\\{" + "contentUpdatePreviewId" + "\\}",
+                                    apiClient.escapeString(contentUpdatePreviewId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1807,8 +1867,15 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions/confirmation"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions/confirmation"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions/confirmation"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2045,7 +2112,12 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2253,7 +2325,12 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/items/labels";
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/items/labels".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/items/labels";
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/items/labels";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2468,10 +2545,20 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2699,8 +2786,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2915,8 +3009,15 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3147,10 +3248,20 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3416,10 +3527,20 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3686,8 +3807,15 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3921,10 +4049,20 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryChallanDocument"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryChallanDocument"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryChallanDocument"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryChallanDocument"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4152,8 +4290,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/operations/{operationId}"
-                .replaceAll("\\{" + "operationId" + "\\}", apiClient.escapeString(operationId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/operations/{operationId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/operations/{operationId}"
+                    .replaceAll("\\{" + "operationId" + "\\}", operationId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/operations/{operationId}"
+                    .replaceAll("\\{" + "operationId" + "\\}", apiClient.escapeString(operationId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4361,8 +4506,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4575,10 +4727,20 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4872,9 +5034,17 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5101,13 +5271,24 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
-                        .replaceAll(
-                                "\\{" + "contentUpdatePreviewId" + "\\}",
-                                apiClient.escapeString(contentUpdatePreviewId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString())
+                            .replaceAll("\\{" + "contentUpdatePreviewId" + "\\}", contentUpdatePreviewId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews/{contentUpdatePreviewId}"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
+                            .replaceAll(
+                                    "\\{" + "contentUpdatePreviewId" + "\\}",
+                                    apiClient.escapeString(contentUpdatePreviewId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5371,10 +5552,20 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/deliveryWindowOptions"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5670,8 +5861,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/boxes"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/boxes"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/boxes"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/boxes"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -5929,8 +6127,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/items"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/items"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/items"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/items"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6189,8 +6394,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/pallets"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/pallets"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/pallets"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/pallets"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6465,7 +6677,12 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -6753,7 +6970,12 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/items/compliance";
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/items/compliance".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/items/compliance";
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/items/compliance";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7023,11 +7245,17 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/boxes"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll(
-                                "\\{" + "packingGroupId" + "\\}", apiClient.escapeString(packingGroupId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/boxes"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/boxes"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "packingGroupId" + "\\}", packingGroupId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/boxes"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "packingGroupId" + "\\}", apiClient.escapeString(packingGroupId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7326,11 +7554,17 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/items"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll(
-                                "\\{" + "packingGroupId" + "\\}", apiClient.escapeString(packingGroupId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/items"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/items"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "packingGroupId" + "\\}", packingGroupId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingGroups/{packingGroupId}/items"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "packingGroupId" + "\\}", apiClient.escapeString(packingGroupId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7627,8 +7861,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7893,8 +8134,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/placementOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8157,7 +8405,12 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/items/prepDetails".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8422,9 +8675,17 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxes"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxes"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxes"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxes"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -8706,10 +8967,20 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/contentUpdatePreviews"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9011,9 +9282,17 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/items"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/items"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/items"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/items"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9296,9 +9575,17 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/pallets"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/pallets"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/pallets"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/pallets"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9598,8 +9885,15 @@ public class FbaInboundApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/transportationOptions"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -9918,11 +10212,22 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots/{slotId}/schedule"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
-                        .replaceAll("\\{" + "slotId" + "\\}", apiClient.escapeString(slotId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots/{slotId}/schedule"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots/{slotId}/schedule"
+                            .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                            .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString())
+                            .replaceAll("\\{" + "slotId" + "\\}", slotId.toString());
+        } else {
+            localVarPath =
+                    "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/selfShipAppointmentSlots/{slotId}/schedule"
+                            .replaceAll(
+                                    "\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                            .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()))
+                            .replaceAll("\\{" + "slotId" + "\\}", apiClient.escapeString(slotId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10201,8 +10506,15 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingInformation"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingInformation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingInformation"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/packingInformation"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10436,7 +10748,12 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/items/prepDetails".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/items/prepDetails";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10645,10 +10962,17 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxIdentifiers"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxIdentifiers"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxIdentifiers"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/boxIdentifiers"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -10909,8 +11233,15 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/name"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/name"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/name"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/name"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11129,7 +11460,12 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/items/compliance";
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/items/compliance".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/items/compliance";
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/items/compliance";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11374,9 +11710,17 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/name"
-                .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/name"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/name"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/name"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11608,10 +11952,17 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/sourceAddress"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/sourceAddress"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/sourceAddress"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/sourceAddress"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -11883,10 +12234,17 @@ public class FbaInboundApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath =
-                "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/trackingDetails"
-                        .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
-                        .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/trackingDetails"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/trackingDetails"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", inboundPlanId.toString())
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/inbound/fba/2024-03-20/inboundPlans/{inboundPlanId}/shipments/{shipmentId}/trackingDetails"
+                    .replaceAll("\\{" + "inboundPlanId" + "\\}", apiClient.escapeString(inboundPlanId.toString()))
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -73,7 +73,12 @@ public class AutomotiveApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/catalog/2024-11-01/automotive/vehicles";
+        String localVarPath;
+        if ("/catalog/2024-11-01/automotive/vehicles".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/catalog/2024-11-01/automotive/vehicles";
+        } else {
+            localVarPath = "/catalog/2024-11-01/automotive/vehicles";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -69,8 +69,15 @@ public class UpdateInventoryApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items"
-                .replaceAll("\\{" + "warehouseId" + "\\}", apiClient.escapeString(warehouseId.toString()));
+        String localVarPath;
+        if ("/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items"
+                    .replaceAll("\\{" + "warehouseId" + "\\}", warehouseId.toString());
+        } else {
+            localVarPath = "/vendor/directFulfillment/inventory/v1/warehouses/{warehouseId}/items"
+                    .replaceAll("\\{" + "warehouseId" + "\\}", apiClient.escapeString(warehouseId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
