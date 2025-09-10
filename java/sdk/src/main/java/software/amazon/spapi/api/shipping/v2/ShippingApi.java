@@ -174,8 +174,14 @@ public class ShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/shipments/{shipmentId}/cancel"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/shipping/v2/shipments/{shipmentId}/cancel".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/shipments/{shipmentId}/cancel"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/shipping/v2/shipments/{shipmentId}/cancel"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -410,7 +416,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/claims";
+        String localVarPath;
+        if ("/shipping/v2/claims".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/claims";
+        } else {
+            localVarPath = "/shipping/v2/claims";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -643,7 +654,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/shipments/directPurchase";
+        String localVarPath;
+        if ("/shipping/v2/shipments/directPurchase".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/shipments/directPurchase";
+        } else {
+            localVarPath = "/shipping/v2/shipments/directPurchase";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -935,7 +951,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/collectionForms";
+        String localVarPath;
+        if ("/shipping/v2/collectionForms".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/collectionForms";
+        } else {
+            localVarPath = "/shipping/v2/collectionForms";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1199,7 +1220,12 @@ public class ShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/accessPoints";
+        String localVarPath;
+        if ("/shipping/v2/accessPoints".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/accessPoints";
+        } else {
+            localVarPath = "/shipping/v2/accessPoints";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1483,7 +1509,13 @@ public class ShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/shipments/additionalInputs/schema";
+        String localVarPath;
+        if ("/shipping/v2/shipments/additionalInputs/schema"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/shipments/additionalInputs/schema";
+        } else {
+            localVarPath = "/shipping/v2/shipments/additionalInputs/schema";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1751,7 +1783,12 @@ public class ShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/carrierAccountFormInputs";
+        String localVarPath;
+        if ("/shipping/v2/carrierAccountFormInputs".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/carrierAccountFormInputs";
+        } else {
+            localVarPath = "/shipping/v2/carrierAccountFormInputs";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1973,7 +2010,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/carrierAccounts";
+        String localVarPath;
+        if ("/shipping/v2/carrierAccounts".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/carrierAccounts";
+        } else {
+            localVarPath = "/shipping/v2/carrierAccounts";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2209,8 +2251,16 @@ public class ShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/collectionForms/{collectionFormId}"
-                .replaceAll("\\{" + "collectionFormId" + "\\}", apiClient.escapeString(collectionFormId.toString()));
+        String localVarPath;
+        if ("/shipping/v2/collectionForms/{collectionFormId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/collectionForms/{collectionFormId}"
+                    .replaceAll("\\{" + "collectionFormId" + "\\}", collectionFormId.toString());
+        } else {
+            localVarPath = "/shipping/v2/collectionForms/{collectionFormId}"
+                    .replaceAll(
+                            "\\{" + "collectionFormId" + "\\}", apiClient.escapeString(collectionFormId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2442,7 +2492,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/collectionForms/history";
+        String localVarPath;
+        if ("/shipping/v2/collectionForms/history".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/collectionForms/history";
+        } else {
+            localVarPath = "/shipping/v2/collectionForms/history";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2681,7 +2736,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/shipments/rates";
+        String localVarPath;
+        if ("/shipping/v2/shipments/rates".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/shipments/rates";
+        } else {
+            localVarPath = "/shipping/v2/shipments/rates";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2916,8 +2976,15 @@ public class ShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/shipments/{shipmentId}/documents"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/shipping/v2/shipments/{shipmentId}/documents"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/shipments/{shipmentId}/documents"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/shipping/v2/shipments/{shipmentId}/documents"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3237,7 +3304,12 @@ public class ShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/tracking";
+        String localVarPath;
+        if ("/shipping/v2/tracking".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/tracking";
+        } else {
+            localVarPath = "/shipping/v2/tracking";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3497,7 +3569,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/unmanifestedShipments";
+        String localVarPath;
+        if ("/shipping/v2/unmanifestedShipments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/unmanifestedShipments";
+        } else {
+            localVarPath = "/shipping/v2/unmanifestedShipments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -3740,8 +3817,14 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/carrierAccounts/{carrierId}"
-                .replaceAll("\\{" + "carrierId" + "\\}", apiClient.escapeString(carrierId.toString()));
+        String localVarPath;
+        if ("/shipping/v2/carrierAccounts/{carrierId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/carrierAccounts/{carrierId}"
+                    .replaceAll("\\{" + "carrierId" + "\\}", carrierId.toString());
+        } else {
+            localVarPath = "/shipping/v2/carrierAccounts/{carrierId}"
+                    .replaceAll("\\{" + "carrierId" + "\\}", apiClient.escapeString(carrierId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4000,8 +4083,14 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/carrierAccounts/{carrierId}"
-                .replaceAll("\\{" + "carrierId" + "\\}", apiClient.escapeString(carrierId.toString()));
+        String localVarPath;
+        if ("/shipping/v2/carrierAccounts/{carrierId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/carrierAccounts/{carrierId}"
+                    .replaceAll("\\{" + "carrierId" + "\\}", carrierId.toString());
+        } else {
+            localVarPath = "/shipping/v2/carrierAccounts/{carrierId}"
+                    .replaceAll("\\{" + "carrierId" + "\\}", apiClient.escapeString(carrierId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4253,7 +4342,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/oneClickShipment";
+        String localVarPath;
+        if ("/shipping/v2/oneClickShipment".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/oneClickShipment";
+        } else {
+            localVarPath = "/shipping/v2/oneClickShipment";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4490,7 +4584,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/shipments";
+        String localVarPath;
+        if ("/shipping/v2/shipments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/shipments";
+        } else {
+            localVarPath = "/shipping/v2/shipments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4770,7 +4869,12 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/ndrFeedback";
+        String localVarPath;
+        if ("/shipping/v2/ndrFeedback".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/ndrFeedback";
+        } else {
+            localVarPath = "/shipping/v2/ndrFeedback";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -4993,8 +5097,15 @@ public class ShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/shipping/v2/carrierAccounts/{carrierId}/unlink"
-                .replaceAll("\\{" + "carrierId" + "\\}", apiClient.escapeString(carrierId.toString()));
+        String localVarPath;
+        if ("/shipping/v2/carrierAccounts/{carrierId}/unlink"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/shipping/v2/carrierAccounts/{carrierId}/unlink"
+                    .replaceAll("\\{" + "carrierId" + "\\}", carrierId.toString());
+        } else {
+            localVarPath = "/shipping/v2/carrierAccounts/{carrierId}/unlink"
+                    .replaceAll("\\{" + "carrierId" + "\\}", apiClient.escapeString(carrierId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

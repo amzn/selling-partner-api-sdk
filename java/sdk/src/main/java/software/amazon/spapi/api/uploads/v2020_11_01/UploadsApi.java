@@ -81,8 +81,15 @@ public class UploadsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/uploads/2020-11-01/uploadDestinations/{resource}"
-                .replaceAll("\\{" + "resource" + "\\}", apiClient.escapeString(resource.toString()));
+        String localVarPath;
+        if ("/uploads/2020-11-01/uploadDestinations/{resource}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/uploads/2020-11-01/uploadDestinations/{resource}"
+                    .replaceAll("\\{" + "resource" + "\\}", resource.toString());
+        } else {
+            localVarPath = "/uploads/2020-11-01/uploadDestinations/{resource}"
+                    .replaceAll("\\{" + "resource" + "\\}", apiClient.escapeString(resource.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -84,7 +84,13 @@ public class TransferPreviewApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferPreview";
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transferPreview"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferPreview";
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferPreview";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

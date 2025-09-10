@@ -80,8 +80,13 @@ public class CatalogApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/catalog/2022-04-01/items/{asin}"
-                .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        String localVarPath;
+        if ("/catalog/2022-04-01/items/{asin}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/catalog/2022-04-01/items/{asin}".replaceAll("\\{" + "asin" + "\\}", asin.toString());
+        } else {
+            localVarPath = "/catalog/2022-04-01/items/{asin}"
+                    .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -389,7 +394,12 @@ public class CatalogApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/catalog/2022-04-01/items";
+        String localVarPath;
+        if ("/catalog/2022-04-01/items".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/catalog/2022-04-01/items";
+        } else {
+            localVarPath = "/catalog/2022-04-01/items";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

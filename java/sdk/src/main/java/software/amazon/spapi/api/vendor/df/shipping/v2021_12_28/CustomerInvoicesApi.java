@@ -71,9 +71,17 @@ public class CustomerInvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/customerInvoices/{purchaseOrderNumber}"
-                .replaceAll(
-                        "\\{" + "purchaseOrderNumber" + "\\}", apiClient.escapeString(purchaseOrderNumber.toString()));
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/customerInvoices/{purchaseOrderNumber}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/customerInvoices/{purchaseOrderNumber}"
+                    .replaceAll("\\{" + "purchaseOrderNumber" + "\\}", purchaseOrderNumber.toString());
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/customerInvoices/{purchaseOrderNumber}"
+                    .replaceAll(
+                            "\\{" + "purchaseOrderNumber" + "\\}",
+                            apiClient.escapeString(purchaseOrderNumber.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -295,7 +303,13 @@ public class CustomerInvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/customerInvoices";
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/customerInvoices"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/customerInvoices";
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/customerInvoices";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

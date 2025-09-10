@@ -93,7 +93,12 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/v0/financialEventGroups";
+        String localVarPath;
+        if ("/finances/v0/financialEventGroups".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/v0/financialEventGroups";
+        } else {
+            localVarPath = "/finances/v0/financialEventGroups";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -435,7 +440,12 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/v0/financialEvents";
+        String localVarPath;
+        if ("/finances/v0/financialEvents".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/v0/financialEvents";
+        } else {
+            localVarPath = "/finances/v0/financialEvents";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -755,8 +765,15 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/v0/financialEventGroups/{eventGroupId}/financialEvents"
-                .replaceAll("\\{" + "eventGroupId" + "\\}", apiClient.escapeString(eventGroupId.toString()));
+        String localVarPath;
+        if ("/finances/v0/financialEventGroups/{eventGroupId}/financialEvents"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/v0/financialEventGroups/{eventGroupId}/financialEvents"
+                    .replaceAll("\\{" + "eventGroupId" + "\\}", eventGroupId.toString());
+        } else {
+            localVarPath = "/finances/v0/financialEventGroups/{eventGroupId}/financialEvents"
+                    .replaceAll("\\{" + "eventGroupId" + "\\}", apiClient.escapeString(eventGroupId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1105,8 +1122,15 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/v0/orders/{orderId}/financialEvents"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/finances/v0/orders/{orderId}/financialEvents"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/v0/orders/{orderId}/financialEvents"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/finances/v0/orders/{orderId}/financialEvents"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

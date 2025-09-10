@@ -76,8 +76,15 @@ public class ShipmentInvoiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice/status"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice/status"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice/status"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice/status"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -279,8 +286,15 @@ public class ShipmentInvoiceApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/brazil/v0/shipments/{shipmentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -499,8 +513,15 @@ public class ShipmentInvoiceApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/fba/outbound/brazil/v0/shipments/{shipmentId}/invoice"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

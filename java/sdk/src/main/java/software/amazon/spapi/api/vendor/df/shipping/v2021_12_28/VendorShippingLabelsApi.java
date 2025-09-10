@@ -86,9 +86,17 @@ public class VendorShippingLabelsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
-                .replaceAll(
-                        "\\{" + "purchaseOrderNumber" + "\\}", apiClient.escapeString(purchaseOrderNumber.toString()));
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
+                    .replaceAll("\\{" + "purchaseOrderNumber" + "\\}", purchaseOrderNumber.toString());
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
+                    .replaceAll(
+                            "\\{" + "purchaseOrderNumber" + "\\}",
+                            apiClient.escapeString(purchaseOrderNumber.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -321,9 +329,17 @@ public class VendorShippingLabelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
-                .replaceAll(
-                        "\\{" + "purchaseOrderNumber" + "\\}", apiClient.escapeString(purchaseOrderNumber.toString()));
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
+                    .replaceAll("\\{" + "purchaseOrderNumber" + "\\}", purchaseOrderNumber.toString());
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels/{purchaseOrderNumber}"
+                    .replaceAll(
+                            "\\{" + "purchaseOrderNumber" + "\\}",
+                            apiClient.escapeString(purchaseOrderNumber.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -554,7 +570,13 @@ public class VendorShippingLabelsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels";
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/shippingLabels"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels";
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -912,7 +934,13 @@ public class VendorShippingLabelsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels";
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/shippingLabels"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels";
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shippingLabels";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

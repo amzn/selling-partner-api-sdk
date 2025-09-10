@@ -113,7 +113,12 @@ public class SalesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/sales/v1/orderMetrics";
+        String localVarPath;
+        if ("/sales/v1/orderMetrics".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/sales/v1/orderMetrics";
+        } else {
+            localVarPath = "/sales/v1/orderMetrics";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

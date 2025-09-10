@@ -93,8 +93,15 @@ public class DefinitionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/definitions/2020-09-01/productTypes/{productType}"
-                .replaceAll("\\{" + "productType" + "\\}", apiClient.escapeString(productType.toString()));
+        String localVarPath;
+        if ("/definitions/2020-09-01/productTypes/{productType}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/definitions/2020-09-01/productTypes/{productType}"
+                    .replaceAll("\\{" + "productType" + "\\}", productType.toString());
+        } else {
+            localVarPath = "/definitions/2020-09-01/productTypes/{productType}"
+                    .replaceAll("\\{" + "productType" + "\\}", apiClient.escapeString(productType.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -529,7 +536,12 @@ public class DefinitionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/definitions/2020-09-01/productTypes";
+        String localVarPath;
+        if ("/definitions/2020-09-01/productTypes".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/definitions/2020-09-01/productTypes";
+        } else {
+            localVarPath = "/definitions/2020-09-01/productTypes";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

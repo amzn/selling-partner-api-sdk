@@ -96,7 +96,12 @@ public class InvoicesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/tax/invoices/2024-06-19/exports";
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/exports".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/exports";
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/exports";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -299,8 +304,15 @@ public class InvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/tax/invoices/2024-06-19/invoices/{invoiceId}"
-                .replaceAll("\\{" + "invoiceId" + "\\}", apiClient.escapeString(invoiceId.toString()));
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/invoices/{invoiceId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/invoices/{invoiceId}"
+                    .replaceAll("\\{" + "invoiceId" + "\\}", invoiceId.toString());
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/invoices/{invoiceId}"
+                    .replaceAll("\\{" + "invoiceId" + "\\}", apiClient.escapeString(invoiceId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -578,7 +590,12 @@ public class InvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/tax/invoices/2024-06-19/invoices";
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/invoices".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/invoices";
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/invoices";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1192,7 +1209,12 @@ public class InvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/tax/invoices/2024-06-19/attributes";
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/attributes".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/attributes";
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/attributes";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1401,9 +1423,17 @@ public class InvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/tax/invoices/2024-06-19/documents/{invoicesDocumentId}"
-                .replaceAll(
-                        "\\{" + "invoicesDocumentId" + "\\}", apiClient.escapeString(invoicesDocumentId.toString()));
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/documents/{invoicesDocumentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/documents/{invoicesDocumentId}"
+                    .replaceAll("\\{" + "invoicesDocumentId" + "\\}", invoicesDocumentId.toString());
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/documents/{invoicesDocumentId}"
+                    .replaceAll(
+                            "\\{" + "invoicesDocumentId" + "\\}",
+                            apiClient.escapeString(invoicesDocumentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1619,8 +1649,14 @@ public class InvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/tax/invoices/2024-06-19/exports/{exportId}"
-                .replaceAll("\\{" + "exportId" + "\\}", apiClient.escapeString(exportId.toString()));
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/exports/{exportId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/exports/{exportId}"
+                    .replaceAll("\\{" + "exportId" + "\\}", exportId.toString());
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/exports/{exportId}"
+                    .replaceAll("\\{" + "exportId" + "\\}", apiClient.escapeString(exportId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1842,7 +1878,12 @@ public class InvoicesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/tax/invoices/2024-06-19/exports";
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/exports".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/exports";
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/exports";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

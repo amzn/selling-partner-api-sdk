@@ -86,7 +86,12 @@ public class FbaInventoryApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/inventory/v1/items/inventory";
+        String localVarPath;
+        if ("/fba/inventory/v1/items/inventory".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/inventory/v1/items/inventory";
+        } else {
+            localVarPath = "/fba/inventory/v1/items/inventory";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -294,7 +299,12 @@ public class FbaInventoryApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/fba/inventory/v1/items";
+        String localVarPath;
+        if ("/fba/inventory/v1/items".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/inventory/v1/items";
+        } else {
+            localVarPath = "/fba/inventory/v1/items";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -482,8 +492,14 @@ public class FbaInventoryApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/inventory/v1/items/{sellerSku}"
-                .replaceAll("\\{" + "sellerSku" + "\\}", apiClient.escapeString(sellerSku.toString()));
+        String localVarPath;
+        if ("/fba/inventory/v1/items/{sellerSku}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/fba/inventory/v1/items/{sellerSku}".replaceAll("\\{" + "sellerSku" + "\\}", sellerSku.toString());
+        } else {
+            localVarPath = "/fba/inventory/v1/items/{sellerSku}"
+                    .replaceAll("\\{" + "sellerSku" + "\\}", apiClient.escapeString(sellerSku.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -708,7 +724,12 @@ public class FbaInventoryApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/fba/inventory/v1/summaries";
+        String localVarPath;
+        if ("/fba/inventory/v1/summaries".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/fba/inventory/v1/summaries";
+        } else {
+            localVarPath = "/fba/inventory/v1/summaries";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

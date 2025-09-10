@@ -95,9 +95,16 @@ public class ListingsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
-                .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
-                .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        String localVarPath;
+        if ("/listings/2021-08-01/items/{sellerId}/{sku}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", sellerId.toString())
+                    .replaceAll("\\{" + "sku" + "\\}", sku.toString());
+        } else {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
+                    .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -377,9 +384,16 @@ public class ListingsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
-                .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
-                .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        String localVarPath;
+        if ("/listings/2021-08-01/items/{sellerId}/{sku}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", sellerId.toString())
+                    .replaceAll("\\{" + "sku" + "\\}", sku.toString());
+        } else {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
+                    .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -693,9 +707,16 @@ public class ListingsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
-                .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
-                .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        String localVarPath;
+        if ("/listings/2021-08-01/items/{sellerId}/{sku}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", sellerId.toString())
+                    .replaceAll("\\{" + "sku" + "\\}", sku.toString());
+        } else {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
+                    .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1056,9 +1077,16 @@ public class ListingsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
-                .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
-                .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        String localVarPath;
+        if ("/listings/2021-08-01/items/{sellerId}/{sku}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", sellerId.toString())
+                    .replaceAll("\\{" + "sku" + "\\}", sku.toString());
+        } else {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}/{sku}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()))
+                    .replaceAll("\\{" + "sku" + "\\}", apiClient.escapeString(sku.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1460,8 +1488,14 @@ public class ListingsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/listings/2021-08-01/items/{sellerId}"
-                .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()));
+        String localVarPath;
+        if ("/listings/2021-08-01/items/{sellerId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/listings/2021-08-01/items/{sellerId}".replaceAll("\\{" + "sellerId" + "\\}", sellerId.toString());
+        } else {
+            localVarPath = "/listings/2021-08-01/items/{sellerId}"
+                    .replaceAll("\\{" + "sellerId" + "\\}", apiClient.escapeString(sellerId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

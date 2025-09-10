@@ -86,7 +86,12 @@ public class DefaultApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/2024-06-19/transactions";
+        String localVarPath;
+        if ("/finances/2024-06-19/transactions".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/2024-06-19/transactions";
+        } else {
+            localVarPath = "/finances/2024-06-19/transactions";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

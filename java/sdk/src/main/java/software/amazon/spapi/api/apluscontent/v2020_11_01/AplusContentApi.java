@@ -116,7 +116,12 @@ public class AplusContentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments";
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments";
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -361,9 +366,17 @@ public class AplusContentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
-                .replaceAll(
-                        "\\{" + "contentReferenceKey" + "\\}", apiClient.escapeString(contentReferenceKey.toString()));
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
+                    .replaceAll("\\{" + "contentReferenceKey" + "\\}", contentReferenceKey.toString());
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
+                    .replaceAll(
+                            "\\{" + "contentReferenceKey" + "\\}",
+                            apiClient.escapeString(contentReferenceKey.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -649,9 +662,17 @@ public class AplusContentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
-                .replaceAll(
-                        "\\{" + "contentReferenceKey" + "\\}", apiClient.escapeString(contentReferenceKey.toString()));
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
+                    .replaceAll("\\{" + "contentReferenceKey" + "\\}", contentReferenceKey.toString());
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
+                    .replaceAll(
+                            "\\{" + "contentReferenceKey" + "\\}",
+                            apiClient.escapeString(contentReferenceKey.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -992,9 +1013,17 @@ public class AplusContentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions"
-                .replaceAll(
-                        "\\{" + "contentReferenceKey" + "\\}", apiClient.escapeString(contentReferenceKey.toString()));
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions"
+                    .replaceAll("\\{" + "contentReferenceKey" + "\\}", contentReferenceKey.toString());
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/approvalSubmissions"
+                    .replaceAll(
+                            "\\{" + "contentReferenceKey" + "\\}",
+                            apiClient.escapeString(contentReferenceKey.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1261,9 +1290,17 @@ public class AplusContentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
-                .replaceAll(
-                        "\\{" + "contentReferenceKey" + "\\}", apiClient.escapeString(contentReferenceKey.toString()));
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
+                    .replaceAll("\\{" + "contentReferenceKey" + "\\}", contentReferenceKey.toString());
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/asins"
+                    .replaceAll(
+                            "\\{" + "contentReferenceKey" + "\\}",
+                            apiClient.escapeString(contentReferenceKey.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1558,9 +1595,17 @@ public class AplusContentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions"
-                .replaceAll(
-                        "\\{" + "contentReferenceKey" + "\\}", apiClient.escapeString(contentReferenceKey.toString()));
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions"
+                    .replaceAll("\\{" + "contentReferenceKey" + "\\}", contentReferenceKey.toString());
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}/suspendSubmissions"
+                    .replaceAll(
+                            "\\{" + "contentReferenceKey" + "\\}",
+                            apiClient.escapeString(contentReferenceKey.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1830,7 +1875,12 @@ public class AplusContentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments";
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments";
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2088,7 +2138,12 @@ public class AplusContentApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentPublishRecords";
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentPublishRecords".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentPublishRecords";
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentPublishRecords";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2360,9 +2415,17 @@ public class AplusContentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
-                .replaceAll(
-                        "\\{" + "contentReferenceKey" + "\\}", apiClient.escapeString(contentReferenceKey.toString()));
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
+                    .replaceAll("\\{" + "contentReferenceKey" + "\\}", contentReferenceKey.toString());
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentDocuments/{contentReferenceKey}"
+                    .replaceAll(
+                            "\\{" + "contentReferenceKey" + "\\}",
+                            apiClient.escapeString(contentReferenceKey.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2641,7 +2704,12 @@ public class AplusContentApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/aplus/2020-11-01/contentAsinValidations";
+        String localVarPath;
+        if ("/aplus/2020-11-01/contentAsinValidations".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/aplus/2020-11-01/contentAsinValidations";
+        } else {
+            localVarPath = "/aplus/2020-11-01/contentAsinValidations";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -85,7 +85,13 @@ public class TransactionsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transactions";
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transactions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transactions";
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transactions";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -355,8 +361,15 @@ public class TransactionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transactions/{transactionId}"
-                .replaceAll("\\{" + "transactionId" + "\\}", apiClient.escapeString(transactionId.toString()));
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transactions/{transactionId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transactions/{transactionId}"
+                    .replaceAll("\\{" + "transactionId" + "\\}", transactionId.toString());
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transactions/{transactionId}"
+                    .replaceAll("\\{" + "transactionId" + "\\}", apiClient.escapeString(transactionId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -563,7 +576,13 @@ public class TransactionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transactions";
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transactions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transactions";
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transactions";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

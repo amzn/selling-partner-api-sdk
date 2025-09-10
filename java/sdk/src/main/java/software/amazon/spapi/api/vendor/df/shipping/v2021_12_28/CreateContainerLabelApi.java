@@ -66,7 +66,13 @@ public class CreateContainerLabelApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/containerLabel";
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/containerLabel"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/containerLabel";
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/containerLabel";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
