@@ -99,18 +99,6 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01.Test
         }
         
         /// <summary>
-        /// Test DeliveryOfferings
-        /// </summary>
-        [Fact]
-        public void DeliveryOfferingsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //GetDeliveryOfferingsRequest body = null;
-            //var response = instance.DeliveryOfferings(body);
-            //Assert.IsInstanceOf<GetDeliveryOfferingsResponse> (response, "response is GetDeliveryOfferingsResponse");
-        }
-        
-        /// <summary>
         /// Test DeliveryOffers
         /// </summary>
         [Fact]
