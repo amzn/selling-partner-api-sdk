@@ -113,8 +113,8 @@ export class ShippingApi {
   /**
      * Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<CancelShipmentResponse>}
      */
   cancelShipmentWithHttpInfo (shipmentId, opts) {
@@ -151,8 +151,8 @@ export class ShippingApi {
   /**
      * Cancels a purchased shipment. Returns an empty object if the shipment is successfully cancelled.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<CancelShipmentResponse>}
      */
   cancelShipment (shipmentId, opts) {
@@ -165,8 +165,8 @@ export class ShippingApi {
   /**
      * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {CreateClaimRequest} body Request body for the createClaim operation
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<CreateClaimResponse>}
      */
   createClaimWithHttpInfo (body, opts) {
@@ -202,8 +202,8 @@ export class ShippingApi {
   /**
      * This API will be used to create claim for single eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {CreateClaimRequest} body Request body for the createClaim operation
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<CreateClaimResponse>}
      */
   createClaim (body, opts) {
@@ -216,10 +216,10 @@ export class ShippingApi {
   /**
      * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {DirectPurchaseRequest} body DirectPurchaseRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznIdempotencyKey] A unique value which the server uses to recognize subsequent retries of the same request.
+     * @param {String} [opts.locale] The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<DirectPurchaseResponse>}
      */
   directPurchaseShipmentWithHttpInfo (body, opts) {
@@ -257,10 +257,10 @@ export class ShippingApi {
   /**
      * Purchases the shipping service for a shipment using the best fit service offering. Returns purchase related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {DirectPurchaseRequest} body DirectPurchaseRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.locale The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznIdempotencyKey] A unique value which the server uses to recognize subsequent retries of the same request.
+     * @param {String} [opts.locale] The IETF Language Tag. Note that this only supports the primary language subtag with one secondary language subtag (i.e. en-US, fr-CA). The secondary language subtag is almost always a regional designation. This does not support additional subtags beyond the primary and secondary language subtags.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<DirectPurchaseResponse>}
      */
   directPurchaseShipment (body, opts) {
@@ -273,9 +273,9 @@ export class ShippingApi {
   /**
      * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GenerateCollectionFormRequest} body GenerateCollectionFormRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznIdempotencyKey] A unique value which the server uses to recognize subsequent retries of the same request.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GenerateCollectionFormResponse>}
      */
   generateCollectionFormWithHttpInfo (body, opts) {
@@ -312,9 +312,9 @@ export class ShippingApi {
   /**
      * This API  Call to generate the collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GenerateCollectionFormRequest} body GenerateCollectionFormRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznIdempotencyKey] A unique value which the server uses to recognize subsequent retries of the same request.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GenerateCollectionFormResponse>}
      */
   generateCollectionForm (body, opts) {
@@ -329,8 +329,8 @@ export class ShippingApi {
      * @param {[String]} accessPointTypes Access point types
      * @param {String} countryCode Country code for access point
      * @param {String} postalCode postal code for access point
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetAccessPointsResponse>}
      */
   getAccessPointsWithHttpInfo (accessPointTypes, countryCode, postalCode, opts) {
@@ -381,8 +381,8 @@ export class ShippingApi {
      * @param {[String]} accessPointTypes Access point types
      * @param {String} countryCode Country code for access point
      * @param {String} postalCode postal code for access point
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetAccessPointsResponse>}
      */
   getAccessPoints (accessPointTypes, countryCode, postalCode, opts) {
@@ -396,8 +396,8 @@ export class ShippingApi {
      * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that additional inputs are required for the rate (shipping offering) that you want to purchase.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} requestToken The request token returned in the response to the getRates operation.
      * @param {String} rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates operation.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetAdditionalInputsResponse>}
      */
   getAdditionalInputsWithHttpInfo (requestToken, rateId, opts) {
@@ -441,8 +441,8 @@ export class ShippingApi {
      * Returns the JSON schema to use for providing additional inputs when needed to purchase a shipping offering. Call the getAdditionalInputs operation when the response to a previous call to the getRates operation indicates that additional inputs are required for the rate (shipping offering) that you want to purchase.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} requestToken The request token returned in the response to the getRates operation.
      * @param {String} rateId The rate identifier for the shipping offering (rate) returned in the response to the getRates operation.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetAdditionalInputsResponse>}
      */
   getAdditionalInputs (requestToken, rateId, opts) {
@@ -454,8 +454,8 @@ export class ShippingApi {
 
   /**
      * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCarrierAccountFormInputsResponse>}
      */
   getCarrierAccountFormInputsWithHttpInfo (opts) {
@@ -485,8 +485,8 @@ export class ShippingApi {
 
   /**
      * This API will return a list of input schema required to register a shipper account with the carrier.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCarrierAccountFormInputsResponse>}
      */
   getCarrierAccountFormInputs (opts) {
@@ -499,8 +499,8 @@ export class ShippingApi {
   /**
      * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetCarrierAccountsRequest} body GetCarrierAccountsRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCarrierAccountsResponse>}
      */
   getCarrierAccountsWithHttpInfo (body, opts) {
@@ -536,8 +536,8 @@ export class ShippingApi {
   /**
      * This API will return Get all carrier accounts for a merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetCarrierAccountsRequest} body GetCarrierAccountsRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCarrierAccountsResponse>}
      */
   getCarrierAccounts (body, opts) {
@@ -550,8 +550,8 @@ export class ShippingApi {
   /**
      * This API reprint a collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} collectionFormId collection form Id to reprint a collection.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCollectionFormResponse>}
      */
   getCollectionFormWithHttpInfo (collectionFormId, opts) {
@@ -588,8 +588,8 @@ export class ShippingApi {
   /**
      * This API reprint a collection form.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} collectionFormId collection form Id to reprint a collection.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCollectionFormResponse>}
      */
   getCollectionForm (collectionFormId, opts) {
@@ -602,8 +602,8 @@ export class ShippingApi {
   /**
      * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetCollectionFormHistoryRequest} body GetCollectionFormHistoryRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCollectionFormHistoryResponse>}
      */
   getCollectionFormHistoryWithHttpInfo (body, opts) {
@@ -639,8 +639,8 @@ export class ShippingApi {
   /**
      * This API Call to get the history of the previously generated collection forms.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetCollectionFormHistoryRequest} body GetCollectionFormHistoryRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetCollectionFormHistoryResponse>}
      */
   getCollectionFormHistory (body, opts) {
@@ -653,8 +653,8 @@ export class ShippingApi {
   /**
      * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetRatesRequest} body GetRatesRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetRatesResponse>}
      */
   getRatesWithHttpInfo (body, opts) {
@@ -690,8 +690,8 @@ export class ShippingApi {
   /**
      * Returns the available shipping service offerings.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetRatesRequest} body GetRatesRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetRatesResponse>}
      */
   getRates (body, opts) {
@@ -705,10 +705,10 @@ export class ShippingApi {
      * Returns the shipping documents associated with a package in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {String} packageClientReferenceId The package client reference identifier originally provided in the request body parameter for the getRates operation.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.format The file format of the document. Must be one of the supported formats returned by the getRates operation.
-     * @param {Number} opts.dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the supported resolutions returned in the response to the getRates operation.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.format] The file format of the document. Must be one of the supported formats returned by the getRates operation.
+     * @param {Number} [opts.dpi] The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the supported resolutions returned in the response to the getRates operation.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetShipmentDocumentsResponse>}
      */
   getShipmentDocumentsWithHttpInfo (shipmentId, packageClientReferenceId, opts) {
@@ -754,10 +754,10 @@ export class ShippingApi {
      * Returns the shipping documents associated with a package in a shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} shipmentId The shipment identifier originally returned by the purchaseShipment operation.
      * @param {String} packageClientReferenceId The package client reference identifier originally provided in the request body parameter for the getRates operation.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.format The file format of the document. Must be one of the supported formats returned by the getRates operation.
-     * @param {Number} opts.dpi The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the supported resolutions returned in the response to the getRates operation.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.format] The file format of the document. Must be one of the supported formats returned by the getRates operation.
+     * @param {Number} [opts.dpi] The resolution of the document (for example, 300 means 300 dots per inch). Must be one of the supported resolutions returned in the response to the getRates operation.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetShipmentDocumentsResponse>}
      */
   getShipmentDocuments (shipmentId, packageClientReferenceId, opts) {
@@ -771,8 +771,8 @@ export class ShippingApi {
      * Returns tracking information for a purchased shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
      * @param {String} carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetTrackingResponse>}
      */
   getTrackingWithHttpInfo (trackingId, carrierId, opts) {
@@ -816,8 +816,8 @@ export class ShippingApi {
      * Returns tracking information for a purchased shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} trackingId A carrier-generated tracking identifier originally returned by the purchaseShipment operation.
      * @param {String} carrierId A carrier identifier originally returned by the getRates operation for the selected rate.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetTrackingResponse>}
      */
   getTracking (trackingId, carrierId, opts) {
@@ -830,8 +830,8 @@ export class ShippingApi {
   /**
      * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetUnmanifestedShipmentsRequest} body GetUmanifestedShipmentsRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetUnmanifestedShipmentsResponse>}
      */
   getUnmanifestedShipmentsWithHttpInfo (body, opts) {
@@ -867,8 +867,8 @@ export class ShippingApi {
   /**
      * This API Get all unmanifested carriers with shipment locations. Any locations which has unmanifested shipments         with an eligible carrier for manifesting shall be returned.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {GetUnmanifestedShipmentsRequest} body GetUmanifestedShipmentsRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<GetUnmanifestedShipmentsResponse>}
      */
   getUnmanifestedShipments (body, opts) {
@@ -882,8 +882,8 @@ export class ShippingApi {
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<LinkCarrierAccountResponse>}
      */
   linkCarrierAccountWithHttpInfo (carrierId, body, opts) {
@@ -926,8 +926,8 @@ export class ShippingApi {
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<LinkCarrierAccountResponse>}
      */
   linkCarrierAccount (carrierId, body, opts) {
@@ -941,8 +941,8 @@ export class ShippingApi {
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<LinkCarrierAccountResponse>}
      */
   linkCarrierAccount_0WithHttpInfo (carrierId, body, opts) {
@@ -985,8 +985,8 @@ export class ShippingApi {
      * This API associates/links the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 5 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId An identifier for the carrier with which the seller&#39;s account is being linked.
      * @param {LinkCarrierAccountRequest} body LinkCarrierAccountRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<LinkCarrierAccountResponse>}
      */
   linkCarrierAccount_0 (carrierId, body, opts) {
@@ -999,8 +999,8 @@ export class ShippingApi {
   /**
      * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {OneClickShipmentRequest} body OneClickShipmentRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<OneClickShipmentResponse>}
      */
   oneClickShipmentWithHttpInfo (body, opts) {
@@ -1036,8 +1036,8 @@ export class ShippingApi {
   /**
      * Purchases a shipping service identifier and returns purchase-related details and documents.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {OneClickShipmentRequest} body OneClickShipmentRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<OneClickShipmentResponse>}
      */
   oneClickShipment (body, opts) {
@@ -1050,9 +1050,9 @@ export class ShippingApi {
   /**
      * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {PurchaseShipmentRequest} body PurchaseShipmentRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznIdempotencyKey] A unique value which the server uses to recognize subsequent retries of the same request.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<PurchaseShipmentResponse>}
      */
   purchaseShipmentWithHttpInfo (body, opts) {
@@ -1089,9 +1089,9 @@ export class ShippingApi {
   /**
      * Purchases a shipping service and returns purchase related details and documents.  Note: You must complete the purchase within 10 minutes of rate creation by the shipping service provider. If you make the request after the 10 minutes have expired, you will receive an error response with the error code equal to \&quot;TOKEN_EXPIRED\&quot;. If you receive this error response, you must get the rates for the shipment again.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {PurchaseShipmentRequest} body PurchaseShipmentRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznIdempotencyKey A unique value which the server uses to recognize subsequent retries of the same request.
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznIdempotencyKey] A unique value which the server uses to recognize subsequent retries of the same request.
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<PurchaseShipmentResponse>}
      */
   purchaseShipment (body, opts) {
@@ -1104,8 +1104,8 @@ export class ShippingApi {
   /**
      * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {SubmitNdrFeedbackRequest} body Request body for ndrFeedback operation
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<void>}
      */
   submitNdrFeedbackWithHttpInfo (body, opts) {
@@ -1141,8 +1141,8 @@ export class ShippingApi {
   /**
      * This API submits the NDR (Non-delivery Report) Feedback for any eligible shipment.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api).
      * @param {SubmitNdrFeedbackRequest} body Request body for ndrFeedback operation
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<void>}
      */
   submitNdrFeedback (body, opts) {
@@ -1156,8 +1156,8 @@ export class ShippingApi {
      * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId carrier Id to unlink with merchant.
      * @param {UnlinkCarrierAccountRequest} body UnlinkCarrierAccountRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<UnlinkCarrierAccountResponse>}
      */
   unlinkCarrierAccountWithHttpInfo (carrierId, body, opts) {
@@ -1200,8 +1200,8 @@ export class ShippingApi {
      * This API Unlink the specified carrier account with the merchant.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {String} carrierId carrier Id to unlink with merchant.
      * @param {UnlinkCarrierAccountRequest} body UnlinkCarrierAccountRequest body
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.xAmznShippingBusinessId Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
      * @return {Promise<UnlinkCarrierAccountResponse>}
      */
   unlinkCarrierAccount (carrierId, body, opts) {

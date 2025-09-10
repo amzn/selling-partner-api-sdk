@@ -67,9 +67,9 @@ export class ListingsApi {
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {String} sellerId A selling partner identifier, such as a merchant account.
      * @param {[String]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.conditionType The condition used to filter restrictions.
-     * @param {String} opts.reasonLocale A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.conditionType] The condition used to filter restrictions.
+     * @param {String} [opts.reasonLocale] A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      * @return {Promise<RestrictionList>}
      */
   getListingsRestrictionsWithHttpInfo (asin, sellerId, marketplaceIds, opts) {
@@ -121,9 +121,9 @@ export class ListingsApi {
      * @param {String} asin The Amazon Standard Identification Number (ASIN) of the item.
      * @param {String} sellerId A selling partner identifier, such as a merchant account.
      * @param {[String]} marketplaceIds A comma-delimited list of Amazon marketplace identifiers for the request.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.conditionType The condition used to filter restrictions.
-     * @param {String} opts.reasonLocale A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.conditionType] The condition used to filter restrictions.
+     * @param {String} [opts.reasonLocale] A locale for reason text localization. When not provided, the default language code of the first marketplace is used. Examples: \&quot;en_US\&quot;, \&quot;fr_CA\&quot;, \&quot;fr_FR\&quot;. Localized messages default to \&quot;en_US\&quot; when a localization is not available in the specified locale.
      * @return {Promise<RestrictionList>}
      */
   getListingsRestrictions (asin, sellerId, marketplaceIds, opts) {
