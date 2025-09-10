@@ -1,0 +1,34 @@
+/**
+ * The SpdTrackingItem model module.
+ * @module fulfillmentinbound_v2024_03_20/model/SpdTrackingItem
+ * @version 2024-03-20
+ */
+export class SpdTrackingItem {
+    /**
+     * Constructs a <code>SpdTrackingItem</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {SpdTrackingItem} obj Optional instance to populate.
+     * @return {SpdTrackingItem} The populated <code>SpdTrackingItem</code> instance.
+     */
+    static constructFromObject(data: any, obj: SpdTrackingItem): SpdTrackingItem;
+    /**
+     * The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.
+     * @member {String} boxId
+     * @type {String}
+     */
+    boxId: string;
+    /**
+     * The tracking ID associated with each box in a non-Amazon partnered Small Parcel Delivery (SPD) shipment.
+     * @member {String} trackingId
+     * @type {String}
+     */
+    trackingId: string;
+    /**
+     * Indicates whether Amazon has validated the tracking number. Because shipment validation is asynchronous, tracking IDs might not be validated immediately, and the status might change after a few hours. If more than 24 hours have passed and the status is not yet 'VALIDATED' or `NOT_SUPPORTED`, verify the number and update it if necessary. **Possible values:** `VALIDATED`, `NOT_VALIDATED`, `NOT_SUPPORTED` (Amazon is unable to find tracking information for the provided tracking ID).
+     * @member {String} trackingNumberValidationStatus
+     * @type {String}
+     */
+    trackingNumberValidationStatus: string;
+}
+//# sourceMappingURL=SpdTrackingItem.d.ts.map

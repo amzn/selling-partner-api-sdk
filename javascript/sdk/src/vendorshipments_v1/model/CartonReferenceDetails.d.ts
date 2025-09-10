@@ -1,0 +1,31 @@
+/**
+ * The CartonReferenceDetails model module.
+ * @module vendorshipments_v1/model/CartonReferenceDetails
+ * @version v1
+ */
+export class CartonReferenceDetails {
+    /**
+     * Constructs a <code>CartonReferenceDetails</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {CartonReferenceDetails} obj Optional instance to populate.
+     * @return {CartonReferenceDetails} The populated <code>CartonReferenceDetails</code> instance.
+     */
+    static constructFromObject(data: any, obj: CartonReferenceDetails): CartonReferenceDetails;
+    /**
+     * Constructs a new <code>CartonReferenceDetails</code>.
+     * Carton reference details.
+     * @alias module:vendorshipments_v1/model/CartonReferenceDetails
+     * @class
+     * @param cartonReferenceNumbers {[String]} Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the 'cartons' segment to refer to that carton's details here.
+     */
+    constructor(cartonReferenceNumbers: [string]);
+    cartonReferenceNumbers: [string];
+    /**
+     * Pallet level carton count is mandatory for single item pallet and optional for mixed item pallet.
+     * @member {Number} cartonCount
+     * @type {Number}
+     */
+    cartonCount: number;
+}
+//# sourceMappingURL=CartonReferenceDetails.d.ts.map

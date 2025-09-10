@@ -1,0 +1,32 @@
+/**
+ * The TransactionListing model module.
+ * @module sellerWallet_2024_03_01/model/TransactionListing
+ * @version 2024-03-01
+ */
+export class TransactionListing {
+    /**
+     * Constructs a <code>TransactionListing</code> from a plain JavaScript object, optionally creating a new instance.
+     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
+     * @param {Object} data The plain JavaScript object bearing properties of interest.
+     * @param {TransactionListing} obj Optional instance to populate.
+     * @return {TransactionListing} The populated <code>TransactionListing</code> instance.
+     */
+    static constructFromObject(data: any, obj: TransactionListing): TransactionListing;
+    /**
+     * Constructs a new <code>TransactionListing</code>.
+     * Struct that holds collection of transactions.
+     * @alias module:sellerWallet_2024_03_01/model/TransactionListing
+     * @class
+     * @param transactions {[Transaction]} Collection that holds Transaction
+     */
+    constructor(transactions: [Transaction]);
+    transactions: [Transaction];
+    /**
+     * If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100.
+     * @member {String} nextPageToken
+     * @type {String}
+     */
+    nextPageToken: string;
+}
+import { Transaction } from './Transaction.js';
+//# sourceMappingURL=TransactionListing.d.ts.map
