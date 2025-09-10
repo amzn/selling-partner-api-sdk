@@ -93,7 +93,13 @@ public class TransferScheduleApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transferSchedules"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -365,9 +371,17 @@ public class TransferScheduleApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
-                .replaceAll(
-                        "\\{" + "transferScheduleId" + "\\}", apiClient.escapeString(transferScheduleId.toString()));
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
+                    .replaceAll("\\{" + "transferScheduleId" + "\\}", transferScheduleId.toString());
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
+                    .replaceAll(
+                            "\\{" + "transferScheduleId" + "\\}",
+                            apiClient.escapeString(transferScheduleId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -592,9 +606,17 @@ public class TransferScheduleApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
-                .replaceAll(
-                        "\\{" + "transferScheduleId" + "\\}", apiClient.escapeString(transferScheduleId.toString()));
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
+                    .replaceAll("\\{" + "transferScheduleId" + "\\}", transferScheduleId.toString());
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules/{transferScheduleId}"
+                    .replaceAll(
+                            "\\{" + "transferScheduleId" + "\\}",
+                            apiClient.escapeString(transferScheduleId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -814,7 +836,13 @@ public class TransferScheduleApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transferSchedules"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1051,7 +1079,13 @@ public class TransferScheduleApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        String localVarPath;
+        if ("/finances/transfers/wallet/2024-03-01/transferSchedules"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        } else {
+            localVarPath = "/finances/transfers/wallet/2024-03-01/transferSchedules";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -67,7 +67,12 @@ public class SellersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/sellers/v1/account";
+        String localVarPath;
+        if ("/sellers/v1/account".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/sellers/v1/account";
+        } else {
+            localVarPath = "/sellers/v1/account";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -257,7 +262,12 @@ public class SellersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/sellers/v1/marketplaceParticipations";
+        String localVarPath;
+        if ("/sellers/v1/marketplaceParticipations".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/sellers/v1/marketplaceParticipations";
+        } else {
+            localVarPath = "/sellers/v1/marketplaceParticipations";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

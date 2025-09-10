@@ -82,9 +82,17 @@ public class VendorShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}"
-                .replaceAll(
-                        "\\{" + "purchaseOrderNumber" + "\\}", apiClient.escapeString(purchaseOrderNumber.toString()));
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}"
+                    .replaceAll("\\{" + "purchaseOrderNumber" + "\\}", purchaseOrderNumber.toString());
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/packingSlips/{purchaseOrderNumber}"
+                    .replaceAll(
+                            "\\{" + "purchaseOrderNumber" + "\\}",
+                            apiClient.escapeString(purchaseOrderNumber.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -306,7 +314,13 @@ public class VendorShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/packingSlips";
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/packingSlips"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/packingSlips";
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/packingSlips";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -646,7 +660,13 @@ public class VendorShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations";
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations";
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shipmentConfirmations";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -858,7 +878,13 @@ public class VendorShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates";
+        String localVarPath;
+        if ("/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates";
+        } else {
+            localVarPath = "/vendor/directFulfillment/shipping/2021-12-28/shipmentStatusUpdates";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

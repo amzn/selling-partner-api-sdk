@@ -109,8 +109,15 @@ public class AwdApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}/cancellation"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundOrders/{orderId}/cancellation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}/cancellation"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}/cancellation"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -305,7 +312,12 @@ public class AwdApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundEligibility";
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundEligibility".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundEligibility";
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundEligibility";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -508,8 +520,15 @@ public class AwdApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}/confirmation"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundOrders/{orderId}/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}/confirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}/confirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -705,7 +724,12 @@ public class AwdApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundOrders";
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundOrders";
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundOrders";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -911,8 +935,14 @@ public class AwdApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundOrders/{orderId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/awd/2024-05-09/inboundOrders/{orderId}".replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1112,8 +1142,15 @@ public class AwdApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundShipments/{shipmentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1340,8 +1377,15 @@ public class AwdApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/labels"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundShipments/{shipmentId}/labels"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/labels"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/labels"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1607,7 +1651,12 @@ public class AwdApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundShipments";
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundShipments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundShipments";
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundShipments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2002,7 +2051,12 @@ public class AwdApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inventory";
+        String localVarPath;
+        if ("/awd/2024-05-09/inventory".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inventory";
+        } else {
+            localVarPath = "/awd/2024-05-09/inventory";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2299,8 +2353,14 @@ public class AwdApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundOrders/{orderId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/awd/2024-05-09/inboundOrders/{orderId}".replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2518,8 +2578,15 @@ public class AwdApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/transport"
-                .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        String localVarPath;
+        if ("/awd/2024-05-09/inboundShipments/{shipmentId}/transport"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/transport"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/inboundShipments/{shipmentId}/transport"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

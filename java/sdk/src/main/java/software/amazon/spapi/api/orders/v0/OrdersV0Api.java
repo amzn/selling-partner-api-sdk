@@ -106,8 +106,15 @@ public class OrdersV0Api {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/shipmentConfirmation"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/shipmentConfirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/orders/v0/orders/{orderId}/shipmentConfirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/shipmentConfirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -311,8 +318,13 @@ public class OrdersV0Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/orders/v0/orders/{orderId}".replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -508,8 +520,14 @@ public class OrdersV0Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/address"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/address".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/orders/v0/orders/{orderId}/address".replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/address"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -707,8 +725,14 @@ public class OrdersV0Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/buyerInfo"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/buyerInfo".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/orders/v0/orders/{orderId}/buyerInfo".replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/buyerInfo"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -907,8 +931,14 @@ public class OrdersV0Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/orderItems"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/orderItems".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/orders/v0/orders/{orderId}/orderItems".replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/orderItems"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1154,8 +1184,15 @@ public class OrdersV0Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/orderItems/buyerInfo"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/orderItems/buyerInfo"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/orders/v0/orders/{orderId}/orderItems/buyerInfo"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/orderItems/buyerInfo"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1369,8 +1406,14 @@ public class OrdersV0Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/regulatedInfo"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/regulatedInfo".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/orders/v0/orders/{orderId}/regulatedInfo"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/regulatedInfo"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1685,7 +1728,12 @@ public class OrdersV0Api {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders";
+        String localVarPath;
+        if ("/orders/v0/orders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/orders/v0/orders";
+        } else {
+            localVarPath = "/orders/v0/orders";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -2819,8 +2867,14 @@ public class OrdersV0Api {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/orders/v0/orders/{orderId}/regulatedInfo"
-                .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/regulatedInfo".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/orders/v0/orders/{orderId}/regulatedInfo"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/regulatedInfo"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

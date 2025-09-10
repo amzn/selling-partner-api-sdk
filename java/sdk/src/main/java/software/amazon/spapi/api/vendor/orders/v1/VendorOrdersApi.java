@@ -83,9 +83,17 @@ public class VendorOrdersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}"
-                .replaceAll(
-                        "\\{" + "purchaseOrderNumber" + "\\}", apiClient.escapeString(purchaseOrderNumber.toString()));
+        String localVarPath;
+        if ("/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}"
+                    .replaceAll("\\{" + "purchaseOrderNumber" + "\\}", purchaseOrderNumber.toString());
+        } else {
+            localVarPath = "/vendor/orders/v1/purchaseOrders/{purchaseOrderNumber}"
+                    .replaceAll(
+                            "\\{" + "purchaseOrderNumber" + "\\}",
+                            apiClient.escapeString(purchaseOrderNumber.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -336,7 +344,12 @@ public class VendorOrdersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/orders/v1/purchaseOrders";
+        String localVarPath;
+        if ("/vendor/orders/v1/purchaseOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/orders/v1/purchaseOrders";
+        } else {
+            localVarPath = "/vendor/orders/v1/purchaseOrders";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -943,7 +956,12 @@ public class VendorOrdersApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/orders/v1/purchaseOrdersStatus";
+        String localVarPath;
+        if ("/vendor/orders/v1/purchaseOrdersStatus".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/orders/v1/purchaseOrdersStatus";
+        } else {
+            localVarPath = "/vendor/orders/v1/purchaseOrdersStatus";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1538,7 +1556,12 @@ public class VendorOrdersApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/orders/v1/acknowledgements";
+        String localVarPath;
+        if ("/vendor/orders/v1/acknowledgements".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/orders/v1/acknowledgements";
+        } else {
+            localVarPath = "/vendor/orders/v1/acknowledgements";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

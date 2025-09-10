@@ -102,7 +102,12 @@ public class NotificationsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/destinations";
+        String localVarPath;
+        if ("/notifications/v1/destinations".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/destinations";
+        } else {
+            localVarPath = "/notifications/v1/destinations";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -328,8 +333,16 @@ public class NotificationsApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/subscriptions/{notificationType}"
-                .replaceAll("\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        String localVarPath;
+        if ("/notifications/v1/subscriptions/{notificationType}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}"
+                    .replaceAll("\\{" + "notificationType" + "\\}", notificationType.toString());
+        } else {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}"
+                    .replaceAll(
+                            "\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -587,8 +600,15 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/destinations/{destinationId}"
-                .replaceAll("\\{" + "destinationId" + "\\}", apiClient.escapeString(destinationId.toString()));
+        String localVarPath;
+        if ("/notifications/v1/destinations/{destinationId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/destinations/{destinationId}"
+                    .replaceAll("\\{" + "destinationId" + "\\}", destinationId.toString());
+        } else {
+            localVarPath = "/notifications/v1/destinations/{destinationId}"
+                    .replaceAll("\\{" + "destinationId" + "\\}", apiClient.escapeString(destinationId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -809,9 +829,18 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
-                .replaceAll("\\{" + "subscriptionId" + "\\}", apiClient.escapeString(subscriptionId.toString()))
-                .replaceAll("\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        String localVarPath;
+        if ("/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
+                    .replaceAll("\\{" + "subscriptionId" + "\\}", subscriptionId.toString())
+                    .replaceAll("\\{" + "notificationType" + "\\}", notificationType.toString());
+        } else {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
+                    .replaceAll("\\{" + "subscriptionId" + "\\}", apiClient.escapeString(subscriptionId.toString()))
+                    .replaceAll(
+                            "\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1077,8 +1106,15 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/destinations/{destinationId}"
-                .replaceAll("\\{" + "destinationId" + "\\}", apiClient.escapeString(destinationId.toString()));
+        String localVarPath;
+        if ("/notifications/v1/destinations/{destinationId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/destinations/{destinationId}"
+                    .replaceAll("\\{" + "destinationId" + "\\}", destinationId.toString());
+        } else {
+            localVarPath = "/notifications/v1/destinations/{destinationId}"
+                    .replaceAll("\\{" + "destinationId" + "\\}", apiClient.escapeString(destinationId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1292,7 +1328,12 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/destinations";
+        String localVarPath;
+        if ("/notifications/v1/destinations".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/destinations";
+        } else {
+            localVarPath = "/notifications/v1/destinations";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1497,8 +1538,16 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/subscriptions/{notificationType}"
-                .replaceAll("\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        String localVarPath;
+        if ("/notifications/v1/subscriptions/{notificationType}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}"
+                    .replaceAll("\\{" + "notificationType" + "\\}", notificationType.toString());
+        } else {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}"
+                    .replaceAll(
+                            "\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1757,9 +1806,18 @@ public class NotificationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
-                .replaceAll("\\{" + "subscriptionId" + "\\}", apiClient.escapeString(subscriptionId.toString()))
-                .replaceAll("\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        String localVarPath;
+        if ("/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
+                    .replaceAll("\\{" + "subscriptionId" + "\\}", subscriptionId.toString())
+                    .replaceAll("\\{" + "notificationType" + "\\}", notificationType.toString());
+        } else {
+            localVarPath = "/notifications/v1/subscriptions/{notificationType}/{subscriptionId}"
+                    .replaceAll("\\{" + "subscriptionId" + "\\}", apiClient.escapeString(subscriptionId.toString()))
+                    .replaceAll(
+                            "\\{" + "notificationType" + "\\}", apiClient.escapeString(notificationType.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

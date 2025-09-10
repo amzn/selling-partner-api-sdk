@@ -89,7 +89,12 @@ public class EasyShipApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/easyShip/2022-03-23/package";
+        String localVarPath;
+        if ("/easyShip/2022-03-23/package".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/easyShip/2022-03-23/package";
+        } else {
+            localVarPath = "/easyShip/2022-03-23/package";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -347,7 +352,12 @@ public class EasyShipApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/easyShip/2022-03-23/packages/bulk";
+        String localVarPath;
+        if ("/easyShip/2022-03-23/packages/bulk".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/easyShip/2022-03-23/packages/bulk";
+        } else {
+            localVarPath = "/easyShip/2022-03-23/packages/bulk";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -635,7 +645,12 @@ public class EasyShipApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/easyShip/2022-03-23/package";
+        String localVarPath;
+        if ("/easyShip/2022-03-23/package".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/easyShip/2022-03-23/package";
+        } else {
+            localVarPath = "/easyShip/2022-03-23/package";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -870,7 +885,12 @@ public class EasyShipApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/easyShip/2022-03-23/timeSlot";
+        String localVarPath;
+        if ("/easyShip/2022-03-23/timeSlot".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/easyShip/2022-03-23/timeSlot";
+        } else {
+            localVarPath = "/easyShip/2022-03-23/timeSlot";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1104,7 +1124,12 @@ public class EasyShipApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/easyShip/2022-03-23/package";
+        String localVarPath;
+        if ("/easyShip/2022-03-23/package".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/easyShip/2022-03-23/package";
+        } else {
+            localVarPath = "/easyShip/2022-03-23/package";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

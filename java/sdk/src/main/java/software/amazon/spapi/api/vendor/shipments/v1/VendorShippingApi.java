@@ -164,7 +164,12 @@ public class VendorShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/shipping/v1/shipments";
+        String localVarPath;
+        if ("/vendor/shipping/v1/shipments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/shipping/v1/shipments";
+        } else {
+            localVarPath = "/vendor/shipping/v1/shipments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1135,7 +1140,12 @@ public class VendorShippingApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/vendor/shipping/v1/transportLabels";
+        String localVarPath;
+        if ("/vendor/shipping/v1/transportLabels".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/shipping/v1/transportLabels";
+        } else {
+            localVarPath = "/vendor/shipping/v1/transportLabels";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1554,7 +1564,12 @@ public class VendorShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/shipping/v1/shipmentConfirmations";
+        String localVarPath;
+        if ("/vendor/shipping/v1/shipmentConfirmations".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/shipping/v1/shipmentConfirmations";
+        } else {
+            localVarPath = "/vendor/shipping/v1/shipmentConfirmations";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1766,7 +1781,12 @@ public class VendorShippingApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/vendor/shipping/v1/shipments";
+        String localVarPath;
+        if ("/vendor/shipping/v1/shipments".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/shipping/v1/shipments";
+        } else {
+            localVarPath = "/vendor/shipping/v1/shipments";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

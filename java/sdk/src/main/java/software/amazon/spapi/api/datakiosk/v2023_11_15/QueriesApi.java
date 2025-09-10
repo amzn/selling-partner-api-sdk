@@ -82,8 +82,14 @@ public class QueriesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/dataKiosk/2023-11-15/queries/{queryId}"
-                .replaceAll("\\{" + "queryId" + "\\}", apiClient.escapeString(queryId.toString()));
+        String localVarPath;
+        if ("/dataKiosk/2023-11-15/queries/{queryId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/dataKiosk/2023-11-15/queries/{queryId}".replaceAll("\\{" + "queryId" + "\\}", queryId.toString());
+        } else {
+            localVarPath = "/dataKiosk/2023-11-15/queries/{queryId}"
+                    .replaceAll("\\{" + "queryId" + "\\}", apiClient.escapeString(queryId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -302,7 +308,12 @@ public class QueriesApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/dataKiosk/2023-11-15/queries";
+        String localVarPath;
+        if ("/dataKiosk/2023-11-15/queries".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/dataKiosk/2023-11-15/queries";
+        } else {
+            localVarPath = "/dataKiosk/2023-11-15/queries";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -525,8 +536,15 @@ public class QueriesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/dataKiosk/2023-11-15/documents/{documentId}"
-                .replaceAll("\\{" + "documentId" + "\\}", apiClient.escapeString(documentId.toString()));
+        String localVarPath;
+        if ("/dataKiosk/2023-11-15/documents/{documentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/dataKiosk/2023-11-15/documents/{documentId}"
+                    .replaceAll("\\{" + "documentId" + "\\}", documentId.toString());
+        } else {
+            localVarPath = "/dataKiosk/2023-11-15/documents/{documentId}"
+                    .replaceAll("\\{" + "documentId" + "\\}", apiClient.escapeString(documentId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -752,7 +770,12 @@ public class QueriesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/dataKiosk/2023-11-15/queries";
+        String localVarPath;
+        if ("/dataKiosk/2023-11-15/queries".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/dataKiosk/2023-11-15/queries";
+        } else {
+            localVarPath = "/dataKiosk/2023-11-15/queries";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1074,8 +1097,14 @@ public class QueriesApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/dataKiosk/2023-11-15/queries/{queryId}"
-                .replaceAll("\\{" + "queryId" + "\\}", apiClient.escapeString(queryId.toString()));
+        String localVarPath;
+        if ("/dataKiosk/2023-11-15/queries/{queryId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath =
+                    "/dataKiosk/2023-11-15/queries/{queryId}".replaceAll("\\{" + "queryId" + "\\}", queryId.toString());
+        } else {
+            localVarPath = "/dataKiosk/2023-11-15/queries/{queryId}"
+                    .replaceAll("\\{" + "queryId" + "\\}", apiClient.escapeString(queryId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

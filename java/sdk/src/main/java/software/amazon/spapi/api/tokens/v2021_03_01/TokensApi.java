@@ -67,7 +67,12 @@ public class TokensApi {
         Object localVarPostBody = body;
 
         // create path and map variables
-        String localVarPath = "/tokens/2021-03-01/restrictedDataToken";
+        String localVarPath;
+        if ("/tokens/2021-03-01/restrictedDataToken".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tokens/2021-03-01/restrictedDataToken";
+        } else {
+            localVarPath = "/tokens/2021-03-01/restrictedDataToken";
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

@@ -100,8 +100,15 @@ public class CustomerFeedbackApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/topics"
-                .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        String localVarPath;
+        if ("/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/topics"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/topics"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", browseNodeId.toString());
+        } else {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/topics"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -312,8 +319,15 @@ public class CustomerFeedbackApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/trends"
-                .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        String localVarPath;
+        if ("/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/trends"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/trends"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", browseNodeId.toString());
+        } else {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/returns/trends"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -526,8 +540,15 @@ public class CustomerFeedbackApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/topics"
-                .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        String localVarPath;
+        if ("/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/topics"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/topics"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", browseNodeId.toString());
+        } else {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/topics"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -757,8 +778,15 @@ public class CustomerFeedbackApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/trends"
-                .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        String localVarPath;
+        if ("/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/trends"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/trends"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", browseNodeId.toString());
+        } else {
+            localVarPath = "/customerFeedback/2024-06-01/browseNodes/{browseNodeId}/reviews/trends"
+                    .replaceAll("\\{" + "browseNodeId" + "\\}", apiClient.escapeString(browseNodeId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -971,8 +999,15 @@ public class CustomerFeedbackApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/customerFeedback/2024-06-01/items/{asin}/browseNode"
-                .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        String localVarPath;
+        if ("/customerFeedback/2024-06-01/items/{asin}/browseNode"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/customerFeedback/2024-06-01/items/{asin}/browseNode"
+                    .replaceAll("\\{" + "asin" + "\\}", asin.toString());
+        } else {
+            localVarPath = "/customerFeedback/2024-06-01/items/{asin}/browseNode"
+                    .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1188,8 +1223,15 @@ public class CustomerFeedbackApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/customerFeedback/2024-06-01/items/{asin}/reviews/topics"
-                .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        String localVarPath;
+        if ("/customerFeedback/2024-06-01/items/{asin}/reviews/topics"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/customerFeedback/2024-06-01/items/{asin}/reviews/topics"
+                    .replaceAll("\\{" + "asin" + "\\}", asin.toString());
+        } else {
+            localVarPath = "/customerFeedback/2024-06-01/items/{asin}/reviews/topics"
+                    .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1412,8 +1454,15 @@ public class CustomerFeedbackApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/customerFeedback/2024-06-01/items/{asin}/reviews/trends"
-                .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        String localVarPath;
+        if ("/customerFeedback/2024-06-01/items/{asin}/reviews/trends"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/customerFeedback/2024-06-01/items/{asin}/reviews/trends"
+                    .replaceAll("\\{" + "asin" + "\\}", asin.toString());
+        } else {
+            localVarPath = "/customerFeedback/2024-06-01/items/{asin}/reviews/trends"
+                    .replaceAll("\\{" + "asin" + "\\}", apiClient.escapeString(asin.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

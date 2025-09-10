@@ -75,8 +75,15 @@ public class SolicitationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/solicitations/v1/orders/{amazonOrderId}/solicitations/productReviewAndSellerFeedback"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -344,8 +351,14 @@ public class SolicitationsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/solicitations/v1/orders/{amazonOrderId}"
-                .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        String localVarPath;
+        if ("/solicitations/v1/orders/{amazonOrderId}".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/solicitations/v1/orders/{amazonOrderId}"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", amazonOrderId.toString());
+        } else {
+            localVarPath = "/solicitations/v1/orders/{amazonOrderId}"
+                    .replaceAll("\\{" + "amazonOrderId" + "\\}", apiClient.escapeString(amazonOrderId.toString()));
+        }
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
