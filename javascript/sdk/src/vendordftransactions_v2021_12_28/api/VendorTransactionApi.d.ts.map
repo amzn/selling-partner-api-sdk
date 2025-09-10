@@ -1,0 +1,1 @@
+{"version":3,"file":"VendorTransactionApi.d.ts","sourceRoot":"","sources":["VendorTransactionApi.js"],"names":[],"mappings":"AAoBA;;;;EAIE;AACF;IAIE;;;;;;QAMI;IACJ,wBAHY,SAAS,EAMpB;IAFC,eAAgD;IAIlD;;SAEK;IACL,wCAWC;IAED;;;SAGK;IACL,uCAEC;IAED;;;;SAIK;IACL,yDAFc,OAAO,CAAC,iBAAiB,CAAC,CA6BvC;IAED;;;;SAIK;IACL,6CAFc,OAAO,CAAC,iBAAiB,CAAC,CAOvC;;CACF;kCA9FiC,+BAA+B;0BAHvC,iBAAiB"}
