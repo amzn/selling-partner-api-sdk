@@ -34,6 +34,7 @@ jobs:
               ! -name 'package-lock.json' \
               ! -name 'README.md' \
               ! -name 'helper' \
+              ! -name 'tsconfig.json' \
               -exec rm -rf {} +
       - name: Create DefaultRateLimitMap.mjs file
         working-directory: ./selling-partner-api-sdk/javascript
@@ -102,6 +103,9 @@ jobs:
         working-directory: ./selling-partner-api-sdk/javascript/sdk
         continue-on-error: true
         run: npm install standard --global && standard "src/**/*.js" --fix
+      - name: Create TypeScript type files
+        working-directory: ./selling-partner-api-sdk/javascript/sdk
+        run:  npm install typescript --global && npx tsc
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
