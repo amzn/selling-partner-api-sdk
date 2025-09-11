@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.fba_inventory_v1.add_inventory_request import AddInventoryRequest
 from spapi.models.fba_inventory_v1.add_inventory_response import AddInventoryResponse

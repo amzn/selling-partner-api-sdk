@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.product_fees_v0.error import Error
 from spapi.models.product_fees_v0.fee_detail import FeeDetail

@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.invoices_v2024_06_19.attribute_option import AttributeOption
 from spapi.models.invoices_v2024_06_19.error import Error

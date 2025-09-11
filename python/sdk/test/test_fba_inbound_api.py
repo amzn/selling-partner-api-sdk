@@ -425,17 +425,6 @@ class TestFbaInboundApi(unittest.TestCase):
         self.assert_valid_response_payload(202, response[0])
         pass
 
-    def test_update_box_identifiers(self):
-        inbound_plan_id = self._get_random_value("str", "^[a-zA-Z0-9-]*$".replace("*$", "{"+ "38,38" + "}$"))
-        shipment_id = self._get_random_value("str", "^[a-zA-Z0-9-]*$".replace("*$", "{"+ "38,38" + "}$"))
-        body = self._get_random_value("UpdateBoxIdentifiersRequest", None)
-        
-        self.instruct_backend_mock(self.to_camel_case("update_box_identifiers"), "202")
-        response = self.api.update_box_identifiers_with_http_info(inbound_plan_id, shipment_id, body, )
-        self.assertEqual(202, response[1])
-        self.assert_valid_response_payload(202, response[0])
-        pass
-
     def test_update_inbound_plan_name(self):
         inbound_plan_id = self._get_random_value("str", "^[a-zA-Z0-9-]*$".replace("*$", "{"+ "38,38" + "}$"))
         body = self._get_random_value("UpdateInboundPlanNameRequest", None)
