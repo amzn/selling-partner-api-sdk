@@ -12,7 +12,7 @@ java {
     withSourcesJar()
 }
 
-group = 'software.amazon'
+group = 'software.amazon.spapi'
 version = findProperty("sdkVersion") ?: System.getenv("SDK_VERSION")
 
 publishing {
@@ -32,7 +32,7 @@ publishing {
             from components.java
 
             pom {
-                groupId = 'software.amazon'
+                groupId = 'software.amazon.spapi'
                 name = '{{artifactId}}'
                 description = 'The Selling Partner API SDK enables you to easily connect to and work with Amazon\'s REST-based SP-API.'
                 url = 'https://github.com/amzn/selling-partner-api-sdk'
