@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.seller_wallet_2024_03_01.account_holder_address import AccountHolderAddress
 from spapi.models.seller_wallet_2024_03_01.balance import Balance

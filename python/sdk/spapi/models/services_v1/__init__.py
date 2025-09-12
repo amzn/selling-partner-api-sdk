@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.services_v1.add_appointment_request import AddAppointmentRequest
 from spapi.models.services_v1.address import Address
