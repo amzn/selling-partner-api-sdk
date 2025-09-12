@@ -610,20 +610,6 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20.Test
         }
         
         /// <summary>
-        /// Test UpdateBoxIdentifiers
-        /// </summary>
-        [Fact]
-        public void UpdateBoxIdentifiersTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string inboundPlanId = null;
-            //string shipmentId = null;
-            //UpdateBoxIdentifiersRequest body = null;
-            //var response = instance.UpdateBoxIdentifiers(inboundPlanIdshipmentIdbody);
-            //Assert.IsInstanceOf<UpdateBoxIdentifiersResponse> (response, "response is UpdateBoxIdentifiersResponse");
-        }
-        
-        /// <summary>
         /// Test UpdateInboundPlanName
         /// </summary>
         [Fact]
