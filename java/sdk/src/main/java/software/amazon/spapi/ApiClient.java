@@ -60,6 +60,19 @@ public class ApiClient {
         setUserAgent("amazon-selling-partner-api-sdk/" + (version != null ? version : "undefined") + "/Java");
     }
 
+    /*
+     * Overloaded Constructor for ApiClient
+     */
+    public ApiClient(OkHttpClient httpClient) {
+        this.httpClient = httpClient;
+
+        json = new JSON();
+
+        // Set default User-Agent.
+        String version = this.getClass().getPackage().getImplementationVersion();
+        setUserAgent("amazon-selling-partner-api-sdk/" + (version != null ? version : "undefined") + "/Java");
+    }
+
     /**
      * Get base path
      *
