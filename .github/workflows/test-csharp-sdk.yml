@@ -1,0 +1,41 @@
+name: Test CSharp SDK
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: test csharp sdk
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+      - name: Install dependencies
+        working-directory: ./test
+        run: npm install
+      - name: Start backend mock
+        working-directory: ./test
+        run: node src/index.js &
+      - name: Run unit tests with report
+        working-directory: ./csharp/sdk
+        run: dotnet test --logger "trx;LogFileName=TestResults.trx"
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: ./csharp/sdk/src/software.amzn.spapi.Test/TestResults/TestResults.trx

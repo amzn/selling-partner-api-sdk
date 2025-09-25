@@ -23,6 +23,7 @@ using software.amzn.spapi.Client;
 using software.amzn.spapi.Api.sellers.v1;
 using software.amzn.spapi.Model.sellers.v1;
 using software.amzn.spapi.Model.awd.v2024_05_09;
+using Xunit.Abstractions;
 using HttpMethod = System.Net.Http.HttpMethod;
 
 namespace software.amzn.spapi.Test.Api.sellers.v1
@@ -30,9 +31,15 @@ namespace software.amzn.spapi.Test.Api.sellers.v1
     [Collection("TestCollection")]
     public class SellersApiTests
     {
+        private readonly ITestOutputHelper _testOutputHelper;
         private SellersApi api;
         private HttpClient httpClient;
         private Fixture fixture;
+
+        public SellersApiTests(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
 
         public void Init()
         {
@@ -80,10 +87,9 @@ namespace software.amzn.spapi.Test.Api.sellers.v1
             var url = "http://localhost:3000/response/" + FormatOperationId("GetMarketplaceParticipations") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetMarketplaceParticipations"));
             httpClient.Send(request);
-            
 
             var response = api.GetMarketplaceParticipationsWithHttpInfo();
-
+            
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
         }
