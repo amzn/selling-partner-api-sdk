@@ -2,14 +2,22 @@ name: Create CSharp SDK Release
 
 on:
   workflow_dispatch:
-  repository_dispatch:
-    types: [trigger-build]
+    inputs:
+      newVersionNumber:
+        type: string
+        description: New version number
+        required: true
+  workflow_call:
+    inputs:
+      newVersionNumber:
+        type: string
+        required: true
 
 env:
   SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
 
 jobs:
-  build:
+  release_csharp:
     runs-on: ubuntu-latest
 
     steps:
@@ -38,3 +46,9 @@ jobs:
       - name: PushNuget
         working-directory: ./csharp/sdk/src/software.amzn.spapi
         run: dotnet nuget push "**/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_TOKEN }} --skip-duplicate
+
+  tag_and_release:
+    needs: [ release_csharp ]
+    uses: ./.github/workflows/create-tag-release.yml
+    with:
+      tagName: "csharp-${{ github.event.inputs.newVersionNumber }}"

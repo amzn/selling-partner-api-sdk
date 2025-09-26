@@ -33,8 +33,14 @@ jobs:
     with:
       newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
 
+  release_csharp:
+    uses: ./.github/workflows/create-csharp-release.yml
+    secrets: inherit
+    with:
+      newVersionNumber: ${{ github.event.inputs.newVersionNumber }}
+
   tag_and_release:
-    needs: [release_java, release_php, release_javascript, release_python]
+    needs: [release_java, release_php, release_javascript, release_python, release_csharp]
     uses: ./.github/workflows/create-tag-release.yml
     secrets: inherit
     with:
