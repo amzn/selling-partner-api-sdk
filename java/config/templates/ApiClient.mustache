@@ -48,7 +48,6 @@ import com.amazon.SellingPartnerAPIAA.LWAException;
 public class ApiClient {
 
     private String basePath = "{{{basePath}}}";
-    private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
@@ -56,12 +55,25 @@ public class ApiClient {
     private JSON json;
 
     private LWAAuthorizationSigner lwaAuthorizationSigner;
+    private final Configuration config = Configuration.get();
 
-    /*
-     * Constructor for ApiClient
-     */
     public ApiClient() {
-        httpClient = new OkHttpClient();
+        httpClient = config.getOkHttpClient();
+
+        {{#useGzipFeature}}
+        // Enable gzip request compression
+        httpClient.interceptors().add(new GzipRequestInterceptor());
+        {{/useGzipFeature}}
+
+        json = new JSON();
+
+        // Set default User-Agent.
+        String version = this.getClass().getPackage().getImplementationVersion();
+        setUserAgent("amazon-selling-partner-api-sdk/" + (version != null ? version : "undefined") + "/Java");
+    }
+
+    public ApiClient(OkHttpClient httpClient) {
+        this.httpClient = httpClient;
 
         {{#useGzipFeature}}
         // Enable gzip request compression
@@ -195,15 +207,6 @@ public class ApiClient {
     public ApiClient addDefaultHeader(String key, String value) {
         defaultHeaderMap.put(key, value);
         return this;
-    }
-
-    /**
-     * Check that whether debugging is enabled for this API client.
-     *
-     * @return True if debugging is enabled, false otherwise.
-     */
-    public boolean isDebugging() {
-        return debugging;
     }
 
     /**

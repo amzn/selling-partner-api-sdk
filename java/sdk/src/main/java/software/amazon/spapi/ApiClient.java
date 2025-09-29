@@ -38,7 +38,6 @@ import org.threeten.bp.format.DateTimeFormatter;
 public class ApiClient {
 
     private String basePath = "https://sellingpartnerapi-na.amazon.com/";
-    private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
@@ -46,12 +45,20 @@ public class ApiClient {
     private JSON json;
 
     private LWAAuthorizationSigner lwaAuthorizationSigner;
+    private final Configuration config = Configuration.get();
 
-    /*
-     * Constructor for ApiClient
-     */
     public ApiClient() {
-        httpClient = new OkHttpClient();
+        httpClient = config.getOkHttpClient();
+
+        json = new JSON();
+
+        // Set default User-Agent.
+        String version = this.getClass().getPackage().getImplementationVersion();
+        setUserAgent("amazon-selling-partner-api-sdk/" + (version != null ? version : "undefined") + "/Java");
+    }
+
+    public ApiClient(OkHttpClient httpClient) {
+        this.httpClient = httpClient;
 
         json = new JSON();
 
@@ -166,15 +173,6 @@ public class ApiClient {
     public ApiClient addDefaultHeader(String key, String value) {
         defaultHeaderMap.put(key, value);
         return this;
-    }
-
-    /**
-     * Check that whether debugging is enabled for this API client.
-     *
-     * @return True if debugging is enabled, false otherwise.
-     */
-    public boolean isDebugging() {
-        return debugging;
     }
 
     /**

@@ -4,6 +4,7 @@ package {{invokerPackage}};
 
 import io.github.bucket4j.BandwidthBuilder.BandwidthBuilderBuildStage;
 import io.github.bucket4j.BandwidthBuilder.BandwidthBuilderCapacityStage;
+import okhttp3.OkHttpClient;
 import org.yaml.snakeyaml.Yaml;
 
 import java.time.Duration;
@@ -15,9 +16,15 @@ import java.util.function.Function;
 public class Configuration {
     private final Map<String, List<Integer>> rateLimitConfiguration =
             new Yaml().load(this.getClass().getClassLoader().getResourceAsStream("rate-limits.yml"));
+    private OkHttpClient okHttpClient;
     private static Configuration instance;
 
     private Configuration() {}
+
+    public OkHttpClient getOkHttpClient() {
+        if (okHttpClient == null) okHttpClient = new OkHttpClient();
+        return okHttpClient;
+    }
 
     public Function<BandwidthBuilderCapacityStage, BandwidthBuilderBuildStage> getLimit(String operation) {
         return limit ->
