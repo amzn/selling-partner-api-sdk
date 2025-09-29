@@ -18,14 +18,21 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import okhttp3.OkHttpClient;
 import org.yaml.snakeyaml.Yaml;
 
 public class Configuration {
     private final Map<String, List<Integer>> rateLimitConfiguration =
             new Yaml().load(this.getClass().getClassLoader().getResourceAsStream("rate-limits.yml"));
+    private OkHttpClient okHttpClient;
     private static Configuration instance;
 
     private Configuration() {}
+
+    public OkHttpClient getOkHttpClient() {
+        if (okHttpClient == null) okHttpClient = new OkHttpClient();
+        return okHttpClient;
+    }
 
     public Function<BandwidthBuilderCapacityStage, BandwidthBuilderBuildStage> getLimit(String operation) {
         return limit -> limit.capacity(getValue(operation, 1))
