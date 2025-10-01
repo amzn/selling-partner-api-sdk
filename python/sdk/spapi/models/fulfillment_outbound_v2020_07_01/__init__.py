@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.fulfillment_outbound_v2020_07_01.additional_location_info import AdditionalLocationInfo
 from spapi.models.fulfillment_outbound_v2020_07_01.address import Address

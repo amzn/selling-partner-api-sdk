@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.easyship_v2022_03_23.code import Code
 from spapi.models.easyship_v2022_03_23.create_scheduled_package_request import CreateScheduledPackageRequest

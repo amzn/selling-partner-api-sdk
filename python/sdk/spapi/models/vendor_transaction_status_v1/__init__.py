@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.vendor_transaction_status_v1.error import Error
 from spapi.models.vendor_transaction_status_v1.get_transaction_response import GetTransactionResponse

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -86,7 +87,8 @@ class Address(object):
             self.city = city
         if district_or_county is not None:
             self.district_or_county = district_or_county
-        self.state_or_region = state_or_region
+        if state_or_region is not None:
+            self.state_or_region = state_or_region
         self.postal_code = postal_code
         self.country_code = country_code
         if phone is not None:
@@ -254,8 +256,6 @@ class Address(object):
         :param state_or_region: The state_or_region of this Address.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and state_or_region is None:
-            raise ValueError("Invalid value for `state_or_region`, must not be `None`")  # noqa: E501
 
         self._state_or_region = state_or_region
 

@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -59,8 +60,10 @@ class ItemSearchResults(object):
         self.discriminator = None
 
         self.number_of_results = number_of_results
-        self.pagination = pagination
-        self.refinements = refinements
+        if pagination is not None:
+            self.pagination = pagination
+        if refinements is not None:
+            self.refinements = refinements
         self.items = items
 
     @property
@@ -106,8 +109,6 @@ class ItemSearchResults(object):
         :param pagination: The pagination of this ItemSearchResults.  # noqa: E501
         :type: Pagination
         """
-        if self._configuration.client_side_validation and pagination is None:
-            raise ValueError("Invalid value for `pagination`, must not be `None`")  # noqa: E501
 
         self._pagination = pagination
 
@@ -129,8 +130,6 @@ class ItemSearchResults(object):
         :param refinements: The refinements of this ItemSearchResults.  # noqa: E501
         :type: Refinements
         """
-        if self._configuration.client_side_validation and refinements is None:
-            raise ValueError("Invalid value for `refinements`, must not be `None`")  # noqa: E501
 
         self._refinements = refinements
 

@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.sellers_v1.account import Account
 from spapi.models.sellers_v1.address import Address

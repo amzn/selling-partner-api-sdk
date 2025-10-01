@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.product_pricing_v0.asin_identifier import ASINIdentifier
 from spapi.models.product_pricing_v0.batch_offers_request_params import BatchOffersRequestParams

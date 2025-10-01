@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -28,7 +29,7 @@ class UnitOfLength(object):
     """
     allowed enum values
     """
-    CM = 'Cm'
+    CM = 'cm'
 
     """
     Attributes:

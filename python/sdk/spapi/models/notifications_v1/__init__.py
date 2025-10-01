@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.notifications_v1.aggregation_filter import AggregationFilter
 from spapi.models.notifications_v1.aggregation_settings import AggregationSettings

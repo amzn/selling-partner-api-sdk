@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.catalogitems_v2022_04_01.brand_refinement import BrandRefinement
 from spapi.models.catalogitems_v2022_04_01.classification_refinement import ClassificationRefinement

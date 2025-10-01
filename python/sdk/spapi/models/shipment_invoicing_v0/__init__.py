@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.shipment_invoicing_v0.address import Address
 from spapi.models.shipment_invoicing_v0.address_type_enum import AddressTypeEnum

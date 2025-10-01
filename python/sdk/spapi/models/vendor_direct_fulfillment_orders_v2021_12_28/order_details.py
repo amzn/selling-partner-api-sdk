@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -42,6 +43,7 @@ class OrderDetails(object):
         'ship_from_party': 'PartyIdentification',
         'ship_to_party': 'Address',
         'bill_to_party': 'PartyIdentification',
+        'has_customizable_items': 'bool',
         'items': 'List[OrderItem]',
     }
 
@@ -55,10 +57,11 @@ class OrderDetails(object):
         'ship_from_party': 'shipFromParty',
         'ship_to_party': 'shipToParty',
         'bill_to_party': 'billToParty',
+        'has_customizable_items': 'hasCustomizableItems',
         'items': 'items',
     }
 
-    def __init__(self, customer_order_number=None, order_date=None, order_status=None, shipment_details=None, tax_total=None, selling_party=None, ship_from_party=None, ship_to_party=None, bill_to_party=None, items=None, _configuration=None):  # noqa: E501
+    def __init__(self, customer_order_number=None, order_date=None, order_status=None, shipment_details=None, tax_total=None, selling_party=None, ship_from_party=None, ship_to_party=None, bill_to_party=None, has_customizable_items=None, items=None, _configuration=None):  # noqa: E501
         """OrderDetails - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -73,6 +76,7 @@ class OrderDetails(object):
         self._ship_from_party = None
         self._ship_to_party = None
         self._bill_to_party = None
+        self._has_customizable_items = None
         self._items = None
         self.discriminator = None
 
@@ -87,6 +91,8 @@ class OrderDetails(object):
         self.ship_from_party = ship_from_party
         self.ship_to_party = ship_to_party
         self.bill_to_party = bill_to_party
+        if has_customizable_items is not None:
+            self.has_customizable_items = has_customizable_items
         self.items = items
 
     @property
@@ -304,6 +310,29 @@ class OrderDetails(object):
             raise ValueError("Invalid value for `bill_to_party`, must not be `None`")  # noqa: E501
 
         self._bill_to_party = bill_to_party
+
+    @property
+    def has_customizable_items(self):
+        """Gets the has_customizable_items of this OrderDetails.  # noqa: E501
+
+        When `true`, the order contains customizable items.  # noqa: E501
+
+        :return: The has_customizable_items of this OrderDetails.  # noqa: E501
+        :rtype: bool
+        """
+        return self._has_customizable_items
+
+    @has_customizable_items.setter
+    def has_customizable_items(self, has_customizable_items):
+        """Sets the has_customizable_items of this OrderDetails.
+
+        When `true`, the order contains customizable items.  # noqa: E501
+
+        :param has_customizable_items: The has_customizable_items of this OrderDetails.  # noqa: E501
+        :type: bool
+        """
+
+        self._has_customizable_items = has_customizable_items
 
     @property
     def items(self):

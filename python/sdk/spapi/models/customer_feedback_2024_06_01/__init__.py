@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.customer_feedback_2024_06_01.browse_node_all_occurrence import BrowseNodeAllOccurrence
 from spapi.models.customer_feedback_2024_06_01.browse_node_all_star_rating_impact import BrowseNodeAllStarRatingImpact

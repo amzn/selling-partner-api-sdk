@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -28,8 +29,8 @@ class HandoverMethod(object):
     """
     allowed enum values
     """
-    PICKUP = 'Pickup'
-    DROPOFF = 'Dropoff'
+    PICKUP = 'PICKUP'
+    DROPOFF = 'DROPOFF'
 
     """
     Attributes:

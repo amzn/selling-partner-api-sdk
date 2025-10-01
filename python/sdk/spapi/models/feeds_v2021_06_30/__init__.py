@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.feeds_v2021_06_30.create_feed_document_response import CreateFeedDocumentResponse
 from spapi.models.feeds_v2021_06_30.create_feed_document_specification import CreateFeedDocumentSpecification
