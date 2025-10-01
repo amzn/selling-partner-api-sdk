@@ -47,13 +47,15 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="earliestEstimatedDeliveryDate">Date-time formatted timestamp..</param>
         /// <param name="latestEstimatedDeliveryDate">Date-time formatted timestamp..</param>
         /// <param name="rate">rate (required).</param>
+        /// <param name="rateWithAdjustments">rateWithAdjustments (required).</param>
+        /// <param name="adjustmentItemList">List of adjustments..</param>
         /// <param name="shippingServiceOptions">shippingServiceOptions (required).</param>
         /// <param name="availableShippingServiceOptions">availableShippingServiceOptions.</param>
         /// <param name="availableLabelFormats">List of label formats..</param>
         /// <param name="availableFormatOptionsForLabel">The available label formats..</param>
         /// <param name="requiresAdditionalSellerInputs">When true, additional seller inputs are required. (required).</param>
         /// <param name="benefits">benefits.</param>
-        public ShippingService(string shippingServiceName = default(string), string carrierName = default(string), string shippingServiceId = default(string), string shippingServiceOfferId = default(string), DateTime shipDate = default(DateTime), DateTime earliestEstimatedDeliveryDate = default(DateTime), DateTime latestEstimatedDeliveryDate = default(DateTime), CurrencyAmount rate = default(CurrencyAmount), ShippingServiceOptions shippingServiceOptions = default(ShippingServiceOptions), AvailableShippingServiceOptions availableShippingServiceOptions = default(AvailableShippingServiceOptions), List<LabelFormat> availableLabelFormats = default(List<LabelFormat>), List<LabelFormatOption> availableFormatOptionsForLabel = default(List<LabelFormatOption>), bool requiresAdditionalSellerInputs = default(bool), Benefits benefits = default(Benefits))
+        public ShippingService(string shippingServiceName = default(string), string carrierName = default(string), string shippingServiceId = default(string), string shippingServiceOfferId = default(string), DateTime shipDate = default(DateTime), DateTime earliestEstimatedDeliveryDate = default(DateTime), DateTime latestEstimatedDeliveryDate = default(DateTime), CurrencyAmount rate = default(CurrencyAmount), CurrencyAmount rateWithAdjustments = default(CurrencyAmount), List<RateItem> adjustmentItemList = default(List<RateItem>), ShippingServiceOptions shippingServiceOptions = default(ShippingServiceOptions), AvailableShippingServiceOptions availableShippingServiceOptions = default(AvailableShippingServiceOptions), List<LabelFormat> availableLabelFormats = default(List<LabelFormat>), List<LabelFormatOption> availableFormatOptionsForLabel = default(List<LabelFormatOption>), bool requiresAdditionalSellerInputs = default(bool), Benefits benefits = default(Benefits))
         {
             // to ensure "shippingServiceName" is required (not null)
             if (shippingServiceName == null)
@@ -86,6 +88,12 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
                 throw new ArgumentNullException("rate is a required property for ShippingService and cannot be null");
             }
             this.Rate = rate;
+            // to ensure "rateWithAdjustments" is required (not null)
+            if (rateWithAdjustments == null)
+            {
+                throw new ArgumentNullException("rateWithAdjustments is a required property for ShippingService and cannot be null");
+            }
+            this.RateWithAdjustments = rateWithAdjustments;
             // to ensure "shippingServiceOptions" is required (not null)
             if (shippingServiceOptions == null)
             {
@@ -95,6 +103,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             this.RequiresAdditionalSellerInputs = requiresAdditionalSellerInputs;
             this.EarliestEstimatedDeliveryDate = earliestEstimatedDeliveryDate;
             this.LatestEstimatedDeliveryDate = latestEstimatedDeliveryDate;
+            this.AdjustmentItemList = adjustmentItemList;
             this.AvailableShippingServiceOptions = availableShippingServiceOptions;
             this.AvailableLabelFormats = availableLabelFormats;
             this.AvailableFormatOptionsForLabel = availableFormatOptionsForLabel;
@@ -157,6 +166,19 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         public CurrencyAmount Rate { get; set; }
 
         /// <summary>
+        /// Gets or Sets RateWithAdjustments
+        /// </summary>
+        [DataMember(Name = "RateWithAdjustments", IsRequired = true, EmitDefaultValue = true)]
+        public CurrencyAmount RateWithAdjustments { get; set; }
+
+        /// <summary>
+        /// List of adjustments.
+        /// </summary>
+        /// <value>List of adjustments.</value>
+        [DataMember(Name = "AdjustmentItemList", EmitDefaultValue = false)]
+        public List<RateItem> AdjustmentItemList { get; set; }
+
+        /// <summary>
         /// Gets or Sets ShippingServiceOptions
         /// </summary>
         [DataMember(Name = "ShippingServiceOptions", IsRequired = true, EmitDefaultValue = true)]
@@ -211,6 +233,8 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             sb.Append("  EarliestEstimatedDeliveryDate: ").Append(EarliestEstimatedDeliveryDate).Append("\n");
             sb.Append("  LatestEstimatedDeliveryDate: ").Append(LatestEstimatedDeliveryDate).Append("\n");
             sb.Append("  Rate: ").Append(Rate).Append("\n");
+            sb.Append("  RateWithAdjustments: ").Append(RateWithAdjustments).Append("\n");
+            sb.Append("  AdjustmentItemList: ").Append(AdjustmentItemList).Append("\n");
             sb.Append("  ShippingServiceOptions: ").Append(ShippingServiceOptions).Append("\n");
             sb.Append("  AvailableShippingServiceOptions: ").Append(AvailableShippingServiceOptions).Append("\n");
             sb.Append("  AvailableLabelFormats: ").Append(AvailableLabelFormats).Append("\n");

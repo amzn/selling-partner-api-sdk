@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <summary>
         /// Initializes a new instance of the <see cref="ErrorList" /> class.
         /// </summary>
-        /// <param name="errors">errors (required).</param>
+        /// <param name="errors">A list of error responses returned when a request is unsuccessful. (required).</param>
         public ErrorList(List<Error> errors = default(List<Error>))
         {
             // to ensure "errors" is required (not null)
@@ -51,8 +51,9 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         }
 
         /// <summary>
-        /// Gets or Sets Errors
+        /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
+        /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = true)]
         public List<Error> Errors { get; set; }
 

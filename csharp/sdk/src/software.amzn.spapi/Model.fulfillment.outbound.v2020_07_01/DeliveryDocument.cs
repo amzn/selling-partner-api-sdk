@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryDocument" /> class.
         /// </summary>
-        /// <param name="documentType">The delivery document type. Values are &#x60;SIGNATURE&#x60; and &#x60;DELIVERY_IMAGE&#x60;. (required).</param>
+        /// <param name="documentType">The delivery document type. The only possible value is &#x60;DELIVERY_IMAGE&#x60;. (required).</param>
         /// <param name="url">A URL that you can use to download the document. This URL has a &#x60;Content-Type&#x60; header. Note that the URL expires after one hour. To get a new URL, you must call the API again..</param>
         public DeliveryDocument(string documentType = default(string), string url = default(string))
         {
@@ -53,9 +53,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         }
 
         /// <summary>
-        /// The delivery document type. Values are &#x60;SIGNATURE&#x60; and &#x60;DELIVERY_IMAGE&#x60;.
+        /// The delivery document type. The only possible value is &#x60;DELIVERY_IMAGE&#x60;.
         /// </summary>
-        /// <value>The delivery document type. Values are &#x60;SIGNATURE&#x60; and &#x60;DELIVERY_IMAGE&#x60;.</value>
+        /// <value>The delivery document type. The only possible value is &#x60;DELIVERY_IMAGE&#x60;.</value>
         [DataMember(Name = "documentType", IsRequired = true, EmitDefaultValue = true)]
         public string DocumentType { get; set; }
 

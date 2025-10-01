@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="addressLine3">Additional address information, if required..</param>
         /// <param name="city">The city where the person, business, or institution is located. This property is required in all countries except Japan. It should not be used in Japan..</param>
         /// <param name="districtOrCounty">The district or county where the person, business, or institution is located..</param>
-        /// <param name="stateOrRegion">The state or region where the person, business or institution is located. (required).</param>
+        /// <param name="stateOrRegion">The state or region where the person, business or institution is located..</param>
         /// <param name="postalCode">The postal code of the address. (required).</param>
         /// <param name="countryCode">The two digit country code. In ISO 3166-1 alpha-2 format. (required).</param>
         /// <param name="phone">The phone number of the person, business, or institution located at the address..</param>
@@ -63,12 +63,6 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
                 throw new ArgumentNullException("addressLine1 is a required property for Address and cannot be null");
             }
             this.AddressLine1 = addressLine1;
-            // to ensure "stateOrRegion" is required (not null)
-            if (stateOrRegion == null)
-            {
-                throw new ArgumentNullException("stateOrRegion is a required property for Address and cannot be null");
-            }
-            this.StateOrRegion = stateOrRegion;
             // to ensure "postalCode" is required (not null)
             if (postalCode == null)
             {
@@ -85,6 +79,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             this.AddressLine3 = addressLine3;
             this.City = city;
             this.DistrictOrCounty = districtOrCounty;
+            this.StateOrRegion = stateOrRegion;
             this.Phone = phone;
         }
 
@@ -134,7 +129,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// The state or region where the person, business or institution is located.
         /// </summary>
         /// <value>The state or region where the person, business or institution is located.</value>
-        [DataMember(Name = "stateOrRegion", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "stateOrRegion", EmitDefaultValue = false)]
         public string StateOrRegion { get; set; }
 
         /// <summary>

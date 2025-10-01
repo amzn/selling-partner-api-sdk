@@ -33,9 +33,9 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
     public enum UnitOfLength
     {
         /// <summary>
-        /// Enum Cm for value: Cm
+        /// Enum Cm for value: cm
         /// </summary>
-        [EnumMember(Value = "Cm")]
+        [EnumMember(Value = "cm")]
         Cm = 1
     }
 
