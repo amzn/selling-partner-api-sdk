@@ -872,6 +872,14 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;Amount&quot; : 8.0,
                 &quot;CurrencyCode&quot; : &quot;USD&quot;
               },
+              &quot;Shipping&quot; : {
+                &quot;Amount&quot; : 0.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;LandedPrice&quot; : {
+                &quot;Amount&quot; : 8.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
               &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
             }, {
               &quot;condition&quot; : &quot;new&quot;,
@@ -879,6 +887,14 @@ class ProductPricingApiTest extends BaseTestCase
               &quot;quantityTier&quot; : 30,
               &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
               &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 7.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;Shipping&quot; : {
+                &quot;Amount&quot; : 0.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;LandedPrice&quot; : {
                 &quot;Amount&quot; : 7.0,
                 &quot;CurrencyCode&quot; : &quot;USD&quot;
               },
@@ -1299,7 +1315,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : true,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -1438,7 +1454,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : true,
                 &quot;IsFulfilledByAmazon&quot; : true
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -1854,7 +1870,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -2004,7 +2020,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -2151,7 +2167,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -2697,7 +2713,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -2862,7 +2878,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -3047,7 +3063,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : true
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -3150,7 +3166,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;IsBuyBoxWinner&quot; : true,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -3182,7 +3198,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;TotalOfferCount&quot; : 0
               },
               &quot;Offers&quot; : [ ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -3575,6 +3591,14 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;Amount&quot; : 8.0,
                 &quot;CurrencyCode&quot; : &quot;USD&quot;
               },
+              &quot;Shipping&quot; : {
+                &quot;Amount&quot; : 0.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;LandedPrice&quot; : {
+                &quot;Amount&quot; : 8.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
               &quot;sellerId&quot; : &quot;AXXXXXXXXXXXXX&quot;
             }, {
               &quot;condition&quot; : &quot;new&quot;,
@@ -3582,6 +3606,14 @@ class ProductPricingApiTest extends BaseTestCase
               &quot;quantityTier&quot; : 30,
               &quot;quantityDiscountType&quot; : &quot;QUANTITY_DISCOUNT&quot;,
               &quot;ListingPrice&quot; : {
+                &quot;Amount&quot; : 7.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;Shipping&quot; : {
+                &quot;Amount&quot; : 0.0,
+                &quot;CurrencyCode&quot; : &quot;USD&quot;
+              },
+              &quot;LandedPrice&quot; : {
                 &quot;Amount&quot; : 7.0,
                 &quot;CurrencyCode&quot; : &quot;USD&quot;
               },
@@ -4416,7 +4448,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;MyOffer&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -4583,7 +4615,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;MyOffer&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -5007,7 +5039,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;MyOffer&quot; : false,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -5159,7 +5191,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;MyOffer&quot; : true,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {
@@ -5306,7 +5338,7 @@ class ProductPricingApiTest extends BaseTestCase
                 &quot;MyOffer&quot; : true,
                 &quot;IsFulfilledByAmazon&quot; : false
               } ],
-              &quot;marketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;
+              &quot;MarketplaceID&quot; : &quot;ATVPDKIKX0DER&quot;
             }
           },
           &quot;headers&quot; : {

@@ -1490,6 +1490,7 @@ class OrdersV0ApiTest extends BaseTestCase
         &quot;payload&quot; : {
           &quot;AmazonOrderId&quot; : &quot;902-1845936-5435065&quot;,
           &quot;OrderItems&quot; : [ {
+            &quot;OrderItemId&quot; : &quot;68828574383266&quot;,
             &quot;BuyerCustomizedInfo&quot; : {
               &quot;CustomizedURL&quot; : &quot;https://zme-caps.amazon.com/t/bR6qHkzSOxuB/J8nbWhze0Bd3DkajkOdY-XQbWkFralegp2sr_QZiKEE/1&quot;
             },

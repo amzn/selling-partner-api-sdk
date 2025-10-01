@@ -101,16 +101,16 @@ class EasyShipApiTest extends BaseTestCase
                 &quot;length&quot; : 12.0,
                 &quot;width&quot; : 12.0,
                 &quot;height&quot; : 12.0,
-                &quot;unit&quot; : &quot;Cm&quot;
+                &quot;unit&quot; : &quot;cm&quot;
               },
               &quot;packageWeight&quot; : {
                 &quot;value&quot; : 23.0,
-                &quot;unit&quot; : &quot;G&quot;
+                &quot;unit&quot; : &quot;g&quot;
               },
               &quot;packageTimeSlot&quot; : {
                 &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-                &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
               }
             }
           }
@@ -125,16 +125,16 @@ class EasyShipApiTest extends BaseTestCase
           &quot;length&quot; : 12.0,
           &quot;width&quot; : 12.0,
           &quot;height&quot; : 12.0,
-          &quot;unit&quot; : &quot;Cm&quot;
+          &quot;unit&quot; : &quot;cm&quot;
         },
         &quot;packageWeight&quot; : {
           &quot;value&quot; : 23.0,
-          &quot;unit&quot; : &quot;G&quot;
+          &quot;unit&quot; : &quot;g&quot;
         },
         &quot;packageTimeSlot&quot; : {
           &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-          &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-          &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+          &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
         },
         &quot;packageStatus&quot; : &quot;ReadyForPickup&quot;
       }
@@ -214,8 +214,8 @@ class EasyShipApiTest extends BaseTestCase
               &quot;packageDetails&quot; : {
                 &quot;packageTimeSlot&quot; : {
                   &quot;slotId&quot; : &quot;&quot;,
-                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                  &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
                 }
               }
             }
@@ -237,8 +237,8 @@ class EasyShipApiTest extends BaseTestCase
               &quot;packageDetails&quot; : {
                 &quot;packageTimeSlot&quot; : {
                   &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                  &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
                 }
               }
             }
@@ -397,9 +397,9 @@ class EasyShipApiTest extends BaseTestCase
                   } ],
                   &quot;packageTimeSlot&quot; : {
                     &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-                    &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                    &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;,
-                    &quot;handoverMethod&quot; : &quot;Pickup&quot;
+                    &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                    &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;,
+                    &quot;handoverMethod&quot; : &quot;PICKUP&quot;
                   },
                   &quot;packageIdentifier&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
                 }
@@ -420,8 +420,15 @@ class EasyShipApiTest extends BaseTestCase
             &quot;packageId&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;
           },
           &quot;packageTimeSlot&quot; : {
-            &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-            &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+            &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
+            &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+            &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;,
+            &quot;handoverMethod&quot; : &quot;PICKUP&quot;
+          },
+          &quot;packageIdentifier&quot; : &quot;1ab0f06a-9149-87e0-aba9-7098117872d6&quot;,
+          &quot;invoice&quot; : {
+            &quot;invoiceNumber&quot; : &quot;IN-456&quot;,
+            &quot;invoiceDate&quot; : &quot;2022-03-09T10:00:00+09:00&quot;
           },
           &quot;packageDimensions&quot; : {
             &quot;length&quot; : 5.905511805,
@@ -434,6 +441,10 @@ class EasyShipApiTest extends BaseTestCase
             &quot;value&quot; : 11.466,
             &quot;unit&quot; : &quot;ounces&quot;
           },
+          &quot;packageItems&quot; : [ {
+            &quot;orderItemId&quot; : &quot;6195931986885&quot;,
+            &quot;orderItemSerialNumbers&quot; : [ &quot;ABCDE1234&quot;, &quot;56789FGHI&quot; ]
+          } ],
           &quot;packageStatus&quot; : &quot;ReadyForPickup&quot;,
           &quot;trackingDetails&quot; : {
             &quot;trackingId&quot; : &quot;1652969339691&quot;
@@ -444,8 +455,13 @@ class EasyShipApiTest extends BaseTestCase
             &quot;packageId&quot; : &quot;80c06e53-3d96-f13f-30ca-85b50b1cb4ce&quot;
           },
           &quot;packageTimeSlot&quot; : {
-            &quot;startTime&quot; : &quot;2022-05-21T06:08:52.036Z&quot;,
-            &quot;endTime&quot; : &quot;2022-05-21T10:08:52.036Z&quot;
+            &quot;slotId&quot; : &quot;AQef4K2CAAAAAGdIAEAAAAAA6kkAAAAAAAA&#x3D;&quot;,
+            &quot;startTime&quot; : &quot;2022-05-21T10:00:00+09:00&quot;,
+            &quot;endTime&quot; : &quot;2022-05-21T10:00:00+09:00&quot;
+          },
+          &quot;invoice&quot; : {
+            &quot;invoiceNumber&quot; : &quot;IN-456&quot;,
+            &quot;invoiceDate&quot; : &quot;2022-05-21T10:00:00+09:00&quot;
           },
           &quot;packageDimensions&quot; : {
             &quot;length&quot; : 5.905511805,
@@ -467,6 +483,7 @@ class EasyShipApiTest extends BaseTestCase
           &quot;amazonOrderId&quot; : &quot;951-9026094-1233333&quot;,
           &quot;error&quot; : {
             &quot;code&quot; : &quot;InvalidInput&quot;,
+            &quot;details&quot; : &quot;Couldn&#39;t find the order details for 951-9026094-1233333&quot;,
             &quot;message&quot; : &quot;Couldn&#39;t find the order details for 951-9026094-1233333&quot;
           }
         } ],
@@ -726,16 +743,16 @@ class EasyShipApiTest extends BaseTestCase
           &quot;length&quot; : 12.0,
           &quot;width&quot; : 12.0,
           &quot;height&quot; : 12.0,
-          &quot;unit&quot; : &quot;Cm&quot;
+          &quot;unit&quot; : &quot;cm&quot;
         },
         &quot;packageWeight&quot; : {
           &quot;value&quot; : 23.0,
-          &quot;unit&quot; : &quot;G&quot;
+          &quot;unit&quot; : &quot;g&quot;
         },
         &quot;packageTimeSlot&quot; : {
           &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-          &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-          &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+          &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
         },
         &quot;packageStatus&quot; : &quot;Scheduled&quot;
       }
@@ -961,12 +978,12 @@ class EasyShipApiTest extends BaseTestCase
               &quot;length&quot; : 15.0,
               &quot;width&quot; : 10.0,
               &quot;height&quot; : 12.0,
-              &quot;unit&quot; : &quot;Cm&quot;,
+              &quot;unit&quot; : &quot;cm&quot;,
               &quot;identifier&quot; : &quot;test&quot;
             },
             &quot;packageWeight&quot; : {
               &quot;value&quot; : 50.0,
-              &quot;unit&quot; : &quot;G&quot;
+              &quot;unit&quot; : &quot;g&quot;
             }
           }
         }
@@ -974,15 +991,15 @@ class EasyShipApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;amazonOrderId&quot; : &quot;931-2308757-7991048&quot;,
         &quot;timeSlots&quot; : [ {
-          &quot;handoverMethod&quot; : &quot;Pickup&quot;,
+          &quot;handoverMethod&quot; : &quot;PICKUP&quot;,
           &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-          &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-          &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+          &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
         }, {
-          &quot;handoverMethod&quot; : &quot;Pickup&quot;,
+          &quot;handoverMethod&quot; : &quot;PICKUP&quot;,
           &quot;slotId&quot; : &quot;AQef4K2CAAAAAGdIAEAAAAAA6kkAAAAAAAA&#x3D;&quot;,
-          &quot;startTime&quot; : &quot;2022-03-10T02:00:00Z&quot;,
-          &quot;endTime&quot; : &quot;2022-03-10T04:30:00Z&quot;
+          &quot;startTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;,
+          &quot;endTime&quot; : &quot;2022-03-10T11:00:00+09:00&quot;
         } ]
       }
     } ]
@@ -1063,11 +1080,11 @@ class EasyShipApiTest extends BaseTestCase
                 &quot;length&quot; : 15.0,
                 &quot;width&quot; : 10.0,
                 &quot;height&quot; : 12.0,
-                &quot;unit&quot; : &quot;Cm&quot;
+                &quot;unit&quot; : &quot;cm&quot;
               },
               &quot;packageWeight&quot; : {
                 &quot;value&quot; : 50.0,
-                &quot;unit&quot; : &quot;G&quot;
+                &quot;unit&quot; : &quot;g&quot;
               }
             }
           }
@@ -1091,11 +1108,11 @@ class EasyShipApiTest extends BaseTestCase
                 &quot;length&quot; : 15.0,
                 &quot;width&quot; : 10.0,
                 &quot;height&quot; : 12.0,
-                &quot;unit&quot; : &quot;Cm&quot;
+                &quot;unit&quot; : &quot;cm&quot;
               },
               &quot;packageWeight&quot; : {
                 &quot;value&quot; : 50.0,
-                &quot;unit&quot; : &quot;G&quot;
+                &quot;unit&quot; : &quot;g&quot;
               }
             }
           }
@@ -1250,8 +1267,8 @@ class EasyShipApiTest extends BaseTestCase
               },
               &quot;packageTimeSlot&quot; : {
                 &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-                &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
               }
             } ]
           }
@@ -1267,16 +1284,16 @@ class EasyShipApiTest extends BaseTestCase
             &quot;length&quot; : 12.0,
             &quot;width&quot; : 12.0,
             &quot;height&quot; : 12.0,
-            &quot;unit&quot; : &quot;Cm&quot;
+            &quot;unit&quot; : &quot;cm&quot;
           },
           &quot;packageWeight&quot; : {
             &quot;value&quot; : 23.0,
-            &quot;unit&quot; : &quot;G&quot;
+            &quot;unit&quot; : &quot;g&quot;
           },
           &quot;packageTimeSlot&quot; : {
             &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-            &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-            &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+            &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+            &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
           },
           &quot;packageIdentifier&quot; : &quot;Scheduled&quot;,
           &quot;packageStatus&quot; : &quot;ReadyForPickup&quot;
@@ -1362,8 +1379,8 @@ class EasyShipApiTest extends BaseTestCase
                 },
                 &quot;packageTimeSlot&quot; : {
                   &quot;slotId&quot; : &quot;&quot;,
-                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                  &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
                 }
               } ]
             }
@@ -1389,8 +1406,8 @@ class EasyShipApiTest extends BaseTestCase
                 },
                 &quot;packageTimeSlot&quot; : {
                   &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                  &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
                 }
               } ]
             }
@@ -1416,8 +1433,8 @@ class EasyShipApiTest extends BaseTestCase
                 },
                 &quot;packageTimeSlot&quot; : {
                   &quot;slotId&quot; : &quot;AQc48yxSAAAAADZG0qQAAAAA6kkAAAAAAAA&#x3D;&quot;,
-                  &quot;startTime&quot; : &quot;2022-03-09T23:30:00Z&quot;,
-                  &quot;endTime&quot; : &quot;2022-03-10T02:00:00Z&quot;
+                  &quot;startTime&quot; : &quot;2022-03-09T10:00:00+09:00&quot;,
+                  &quot;endTime&quot; : &quot;2022-03-10T10:00:00+09:00&quot;
                 }
               } ]
             }

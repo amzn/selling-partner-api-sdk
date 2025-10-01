@@ -69,6 +69,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
              'ship_from_party' => '\SpApi\Model\vendor\df\orders\v2021_12_28\PartyIdentification',
              'ship_to_party' => '\SpApi\Model\vendor\df\orders\v2021_12_28\Address',
              'bill_to_party' => '\SpApi\Model\vendor\df\orders\v2021_12_28\PartyIdentification',
+             'has_customizable_items' => 'bool',
              'items' => '\SpApi\Model\vendor\df\orders\v2021_12_28\OrderItem[]'    ];
 
     /**
@@ -88,6 +89,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             'ship_from_party' => null,
             'ship_to_party' => null,
             'bill_to_party' => null,
+            'has_customizable_items' => null,
             'items' => null    ];
 
     /**
@@ -105,6 +107,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'ship_from_party' => false,
         'ship_to_party' => false,
         'bill_to_party' => false,
+        'has_customizable_items' => true,
         'items' => false
     ];
 
@@ -203,6 +206,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
                 'ship_from_party' => 'shipFromParty',
                 'ship_to_party' => 'shipToParty',
                 'bill_to_party' => 'billToParty',
+                'has_customizable_items' => 'hasCustomizableItems',
                 'items' => 'items'
         
     ];
@@ -222,6 +226,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'ship_from_party' => 'setShipFromParty',
         'ship_to_party' => 'setShipToParty',
         'bill_to_party' => 'setBillToParty',
+        'has_customizable_items' => 'setHasCustomizableItems',
         'items' => 'setItems'
     ];
 
@@ -240,6 +245,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         'ship_from_party' => 'getShipFromParty',
         'ship_to_party' => 'getShipToParty',
         'bill_to_party' => 'getBillToParty',
+        'has_customizable_items' => 'getHasCustomizableItems',
         'items' => 'getItems'
     ];
 
@@ -328,6 +334,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('ship_from_party', $data ?? [], null);
         $this->setIfExists('ship_to_party', $data ?? [], null);
         $this->setIfExists('bill_to_party', $data ?? [], null);
+        $this->setIfExists('has_customizable_items', $data ?? [], null);
         $this->setIfExists('items', $data ?? [], null);
     }
 
@@ -669,6 +676,40 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable bill_to_party cannot be null');
         }
         $this->container['bill_to_party'] = $bill_to_party;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_customizable_items
+     *
+     * @return bool|null
+     */
+    public function getHasCustomizableItems(): ?bool
+    {
+        return $this->container['has_customizable_items'];
+    }
+
+    /**
+     * Sets has_customizable_items
+     *
+     * @param bool|null $has_customizable_items When `true`, the order contains customizable items.
+     *
+     * @return self
+     */
+    public function setHasCustomizableItems(?bool $has_customizable_items): self
+    {
+        if (is_null($has_customizable_items)) {
+            array_push($this->openAPINullablesSetToNull, 'has_customizable_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('has_customizable_items', $nullablesSetToNull);
+            if ($index !== false) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['has_customizable_items'] = $has_customizable_items;
 
         return $this;
     }

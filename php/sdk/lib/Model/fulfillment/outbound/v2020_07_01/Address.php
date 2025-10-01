@@ -105,7 +105,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         'address_line3' => true,
         'city' => true,
         'district_or_county' => true,
-        'state_or_region' => false,
+        'state_or_region' => true,
         'postal_code' => false,
         'country_code' => false,
         'phone' => true,
@@ -290,9 +290,6 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
         }
         if (null === $this->container['address_line1']) {
             $invalidProperties[] = "'address_line1' can't be null";
-        }
-        if (null === $this->container['state_or_region']) {
-            $invalidProperties[] = "'state_or_region' can't be null";
         }
         if (null === $this->container['postal_code']) {
             $invalidProperties[] = "'postal_code' can't be null";
@@ -484,7 +481,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets state_or_region.
      */
-    public function getStateOrRegion(): string
+    public function getStateOrRegion(): ?string
     {
         return $this->container['state_or_region'];
     }
@@ -492,12 +489,19 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets state_or_region.
      *
-     * @param string $state_or_region the state or region where the person, business or institution is located
+     * @param null|string $state_or_region the state or region where the person, business or institution is located
      */
-    public function setStateOrRegion(string $state_or_region): self
+    public function setStateOrRegion(?string $state_or_region): self
     {
         if (is_null($state_or_region)) {
-            throw new \InvalidArgumentException('non-nullable state_or_region cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'state_or_region');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('state_or_region', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['state_or_region'] = $state_or_region;
 

@@ -112,7 +112,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'name' => false,
+        'name' => true,
         'company_name' => true,
         'address_line1' => true,
         'address_line2' => true,
@@ -336,9 +336,6 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (null === $this->container['name']) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         $allowedValues = $this->getAddressTypeAllowableValues();
         if (!is_null($this->container['address_type']) && !in_array($this->container['address_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -365,7 +362,7 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets name.
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->container['name'];
     }
@@ -373,12 +370,19 @@ class Address implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets name.
      *
-     * @param string $name the name
+     * @param null|string $name the name
      */
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
