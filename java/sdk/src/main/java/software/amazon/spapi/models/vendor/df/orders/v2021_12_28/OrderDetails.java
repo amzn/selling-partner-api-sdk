@@ -104,6 +104,9 @@ public class OrderDetails {
     @SerializedName("billToParty")
     private PartyIdentification billToParty = null;
 
+    @SerializedName("hasCustomizableItems")
+    private Boolean hasCustomizableItems = null;
+
     @SerializedName("items")
     private List<OrderItem> items = new ArrayList<OrderItem>();
 
@@ -283,6 +286,25 @@ public class OrderDetails {
         this.billToParty = billToParty;
     }
 
+    public OrderDetails hasCustomizableItems(Boolean hasCustomizableItems) {
+        this.hasCustomizableItems = hasCustomizableItems;
+        return this;
+    }
+
+    /**
+     * When &#x60;true&#x60;, the order contains customizable items.
+     *
+     * @return hasCustomizableItems
+     */
+    @Schema(description = "When `true`, the order contains customizable items.")
+    public Boolean isHasCustomizableItems() {
+        return hasCustomizableItems;
+    }
+
+    public void setHasCustomizableItems(Boolean hasCustomizableItems) {
+        this.hasCustomizableItems = hasCustomizableItems;
+    }
+
     public OrderDetails items(List<OrderItem> items) {
         this.items = items;
         return this;
@@ -325,6 +347,7 @@ public class OrderDetails {
                 && Objects.equals(this.shipFromParty, orderDetails.shipFromParty)
                 && Objects.equals(this.shipToParty, orderDetails.shipToParty)
                 && Objects.equals(this.billToParty, orderDetails.billToParty)
+                && Objects.equals(this.hasCustomizableItems, orderDetails.hasCustomizableItems)
                 && Objects.equals(this.items, orderDetails.items);
     }
 
@@ -340,6 +363,7 @@ public class OrderDetails {
                 shipFromParty,
                 shipToParty,
                 billToParty,
+                hasCustomizableItems,
                 items);
     }
 
@@ -361,6 +385,9 @@ public class OrderDetails {
         sb.append("    shipFromParty: ").append(toIndentedString(shipFromParty)).append("\n");
         sb.append("    shipToParty: ").append(toIndentedString(shipToParty)).append("\n");
         sb.append("    billToParty: ").append(toIndentedString(billToParty)).append("\n");
+        sb.append("    hasCustomizableItems: ")
+                .append(toIndentedString(hasCustomizableItems))
+                .append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
         sb.append("}");
         return sb.toString();

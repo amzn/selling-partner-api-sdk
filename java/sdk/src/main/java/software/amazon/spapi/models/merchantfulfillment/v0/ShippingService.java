@@ -44,6 +44,12 @@ public class ShippingService {
     @SerializedName("Rate")
     private CurrencyAmount rate = null;
 
+    @SerializedName("RateWithAdjustments")
+    private CurrencyAmount rateWithAdjustments = null;
+
+    @SerializedName("AdjustmentItemList")
+    private AdjustmentItemList adjustmentItemList = null;
+
     @SerializedName("ShippingServiceOptions")
     private ShippingServiceOptions shippingServiceOptions = null;
 
@@ -218,6 +224,44 @@ public class ShippingService {
         this.rate = rate;
     }
 
+    public ShippingService rateWithAdjustments(CurrencyAmount rateWithAdjustments) {
+        this.rateWithAdjustments = rateWithAdjustments;
+        return this;
+    }
+
+    /**
+     * Get rateWithAdjustments
+     *
+     * @return rateWithAdjustments
+     */
+    @Schema(required = true, description = "")
+    public CurrencyAmount getRateWithAdjustments() {
+        return rateWithAdjustments;
+    }
+
+    public void setRateWithAdjustments(CurrencyAmount rateWithAdjustments) {
+        this.rateWithAdjustments = rateWithAdjustments;
+    }
+
+    public ShippingService adjustmentItemList(AdjustmentItemList adjustmentItemList) {
+        this.adjustmentItemList = adjustmentItemList;
+        return this;
+    }
+
+    /**
+     * Get adjustmentItemList
+     *
+     * @return adjustmentItemList
+     */
+    @Schema(description = "")
+    public AdjustmentItemList getAdjustmentItemList() {
+        return adjustmentItemList;
+    }
+
+    public void setAdjustmentItemList(AdjustmentItemList adjustmentItemList) {
+        this.adjustmentItemList = adjustmentItemList;
+    }
+
     public ShippingService shippingServiceOptions(ShippingServiceOptions shippingServiceOptions) {
         this.shippingServiceOptions = shippingServiceOptions;
         return this;
@@ -351,6 +395,8 @@ public class ShippingService {
                 && Objects.equals(this.earliestEstimatedDeliveryDate, shippingService.earliestEstimatedDeliveryDate)
                 && Objects.equals(this.latestEstimatedDeliveryDate, shippingService.latestEstimatedDeliveryDate)
                 && Objects.equals(this.rate, shippingService.rate)
+                && Objects.equals(this.rateWithAdjustments, shippingService.rateWithAdjustments)
+                && Objects.equals(this.adjustmentItemList, shippingService.adjustmentItemList)
                 && Objects.equals(this.shippingServiceOptions, shippingService.shippingServiceOptions)
                 && Objects.equals(this.availableShippingServiceOptions, shippingService.availableShippingServiceOptions)
                 && Objects.equals(this.availableLabelFormats, shippingService.availableLabelFormats)
@@ -370,6 +416,8 @@ public class ShippingService {
                 earliestEstimatedDeliveryDate,
                 latestEstimatedDeliveryDate,
                 rate,
+                rateWithAdjustments,
+                adjustmentItemList,
                 shippingServiceOptions,
                 availableShippingServiceOptions,
                 availableLabelFormats,
@@ -401,6 +449,12 @@ public class ShippingService {
                 .append(toIndentedString(latestEstimatedDeliveryDate))
                 .append("\n");
         sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
+        sb.append("    rateWithAdjustments: ")
+                .append(toIndentedString(rateWithAdjustments))
+                .append("\n");
+        sb.append("    adjustmentItemList: ")
+                .append(toIndentedString(adjustmentItemList))
+                .append("\n");
         sb.append("    shippingServiceOptions: ")
                 .append(toIndentedString(shippingServiceOptions))
                 .append("\n");

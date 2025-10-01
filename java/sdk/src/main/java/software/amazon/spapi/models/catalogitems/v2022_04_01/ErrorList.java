@@ -35,11 +35,11 @@ public class ErrorList {
     }
 
     /**
-     * Get errors
+     * A list of error responses returned when a request is unsuccessful.
      *
      * @return errors
      */
-    @Schema(required = true, description = "")
+    @Schema(required = true, description = "A list of error responses returned when a request is unsuccessful.")
     public List<Error> getErrors() {
         return errors;
     }

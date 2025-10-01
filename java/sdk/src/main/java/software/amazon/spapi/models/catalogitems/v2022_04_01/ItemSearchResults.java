@@ -69,7 +69,7 @@ public class ItemSearchResults {
      *
      * @return pagination
      */
-    @Schema(required = true, description = "")
+    @Schema(description = "")
     public Pagination getPagination() {
         return pagination;
     }
@@ -88,7 +88,7 @@ public class ItemSearchResults {
      *
      * @return refinements
      */
-    @Schema(required = true, description = "")
+    @Schema(description = "")
     public Refinements getRefinements() {
         return refinements;
     }

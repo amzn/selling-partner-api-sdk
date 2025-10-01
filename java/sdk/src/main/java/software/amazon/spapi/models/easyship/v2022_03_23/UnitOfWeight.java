@@ -22,10 +22,10 @@ import java.io.IOException;
 /** The unit of measurement used to measure the weight. */
 @JsonAdapter(UnitOfWeight.Adapter.class)
 public enum UnitOfWeight {
-    @SerializedName("Grams")
-    GRAMS("Grams"),
-    @SerializedName("G")
-    G("G");
+    @SerializedName("grams")
+    GRAMS("grams"),
+    @SerializedName("g")
+    G("g");
 
     private String value;
 
