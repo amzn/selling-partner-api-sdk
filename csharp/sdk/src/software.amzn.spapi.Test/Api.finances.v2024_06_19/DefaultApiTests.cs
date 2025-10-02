@@ -90,6 +90,8 @@ namespace software.amzn.spapi.Test.Api.finances.v2024_06_19
             if ("Api.finances.v2024_06_19".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
             if ("Api.finances.v2024_06_19".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
             if ("Api.finances.v2024_06_19".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
+            if ("Api.finances.v2024_06_19".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
+            if ("Api.finances.v2024_06_19".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
             return url;
         }
     }

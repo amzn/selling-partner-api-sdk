@@ -154,6 +154,8 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
             if ("Api.datakiosk.v2023_11_15".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
             if ("Api.datakiosk.v2023_11_15".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
             if ("Api.datakiosk.v2023_11_15".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
+            if ("Api.datakiosk.v2023_11_15".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
+            if ("Api.datakiosk.v2023_11_15".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
             return url;
         }
     }
