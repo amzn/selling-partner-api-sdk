@@ -91,7 +91,7 @@ for (const path of models) {
         ).forEach((operation) => {
         const operationId = operation.operationId.replace(/^./, operation.operationId[0].toLowerCase())
         try {
-            const successStatus = ["200", "201", "202", "204"]
+            const successStatus = ["200", "201", "202", "204", "207"]
             const successObjects = Object.keys(operation['responses']).filter((key) => successStatus.includes(key))
             if (Array.isArray(successObjects) && successObjects.length > 0) {
                 const request = JSON.stringify(operation['responses'][successObjects[0]]['x-amzn-api-sandbox']['static'][0]['request']['parameters']['body']['value'])
