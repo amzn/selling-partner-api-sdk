@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.replenishment_v2022_11_07.aggregation_frequency import AggregationFrequency
 from spapi.models.replenishment_v2022_11_07.auto_enrollment_preference import AutoEnrollmentPreference

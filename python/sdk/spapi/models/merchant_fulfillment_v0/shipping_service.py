@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -41,6 +42,8 @@ class ShippingService(object):
         'earliest_estimated_delivery_date': 'datetime',
         'latest_estimated_delivery_date': 'datetime',
         'rate': 'CurrencyAmount',
+        'rate_with_adjustments': 'CurrencyAmount',
+        'adjustment_item_list': 'List[RateItem]',
         'shipping_service_options': 'ShippingServiceOptions',
         'available_shipping_service_options': 'AvailableShippingServiceOptions',
         'available_label_formats': 'List[LabelFormat]',
@@ -58,6 +61,8 @@ class ShippingService(object):
         'earliest_estimated_delivery_date': 'EarliestEstimatedDeliveryDate',
         'latest_estimated_delivery_date': 'LatestEstimatedDeliveryDate',
         'rate': 'Rate',
+        'rate_with_adjustments': 'RateWithAdjustments',
+        'adjustment_item_list': 'AdjustmentItemList',
         'shipping_service_options': 'ShippingServiceOptions',
         'available_shipping_service_options': 'AvailableShippingServiceOptions',
         'available_label_formats': 'AvailableLabelFormats',
@@ -66,7 +71,7 @@ class ShippingService(object):
         'benefits': 'Benefits',
     }
 
-    def __init__(self, shipping_service_name=None, carrier_name=None, shipping_service_id=None, shipping_service_offer_id=None, ship_date=None, earliest_estimated_delivery_date=None, latest_estimated_delivery_date=None, rate=None, shipping_service_options=None, available_shipping_service_options=None, available_label_formats=None, available_format_options_for_label=None, requires_additional_seller_inputs=None, benefits=None, _configuration=None):  # noqa: E501
+    def __init__(self, shipping_service_name=None, carrier_name=None, shipping_service_id=None, shipping_service_offer_id=None, ship_date=None, earliest_estimated_delivery_date=None, latest_estimated_delivery_date=None, rate=None, rate_with_adjustments=None, adjustment_item_list=None, shipping_service_options=None, available_shipping_service_options=None, available_label_formats=None, available_format_options_for_label=None, requires_additional_seller_inputs=None, benefits=None, _configuration=None):  # noqa: E501
         """ShippingService - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -80,6 +85,8 @@ class ShippingService(object):
         self._earliest_estimated_delivery_date = None
         self._latest_estimated_delivery_date = None
         self._rate = None
+        self._rate_with_adjustments = None
+        self._adjustment_item_list = None
         self._shipping_service_options = None
         self._available_shipping_service_options = None
         self._available_label_formats = None
@@ -98,6 +105,9 @@ class ShippingService(object):
         if latest_estimated_delivery_date is not None:
             self.latest_estimated_delivery_date = latest_estimated_delivery_date
         self.rate = rate
+        self.rate_with_adjustments = rate_with_adjustments
+        if adjustment_item_list is not None:
+            self.adjustment_item_list = adjustment_item_list
         self.shipping_service_options = shipping_service_options
         if available_shipping_service_options is not None:
             self.available_shipping_service_options = available_shipping_service_options
@@ -302,6 +312,52 @@ class ShippingService(object):
             raise ValueError("Invalid value for `rate`, must not be `None`")  # noqa: E501
 
         self._rate = rate
+
+    @property
+    def rate_with_adjustments(self):
+        """Gets the rate_with_adjustments of this ShippingService.  # noqa: E501
+
+
+        :return: The rate_with_adjustments of this ShippingService.  # noqa: E501
+        :rtype: CurrencyAmount
+        """
+        return self._rate_with_adjustments
+
+    @rate_with_adjustments.setter
+    def rate_with_adjustments(self, rate_with_adjustments):
+        """Sets the rate_with_adjustments of this ShippingService.
+
+
+        :param rate_with_adjustments: The rate_with_adjustments of this ShippingService.  # noqa: E501
+        :type: CurrencyAmount
+        """
+        if self._configuration.client_side_validation and rate_with_adjustments is None:
+            raise ValueError("Invalid value for `rate_with_adjustments`, must not be `None`")  # noqa: E501
+
+        self._rate_with_adjustments = rate_with_adjustments
+
+    @property
+    def adjustment_item_list(self):
+        """Gets the adjustment_item_list of this ShippingService.  # noqa: E501
+
+        List of adjustments.  # noqa: E501
+
+        :return: The adjustment_item_list of this ShippingService.  # noqa: E501
+        :rtype: List[RateItem]
+        """
+        return self._adjustment_item_list
+
+    @adjustment_item_list.setter
+    def adjustment_item_list(self, adjustment_item_list):
+        """Sets the adjustment_item_list of this ShippingService.
+
+        List of adjustments.  # noqa: E501
+
+        :param adjustment_item_list: The adjustment_item_list of this ShippingService.  # noqa: E501
+        :type: List[RateItem]
+        """
+
+        self._adjustment_item_list = adjustment_item_list
 
     @property
     def shipping_service_options(self):

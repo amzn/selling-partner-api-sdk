@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.fba_eligibility_v1.error import Error
 from spapi.models.fba_eligibility_v1.get_item_eligibility_preview_response import GetItemEligibilityPreviewResponse

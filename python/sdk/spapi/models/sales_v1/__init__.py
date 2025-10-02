@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.sales_v1.error import Error
 from spapi.models.sales_v1.get_order_metrics_response import GetOrderMetricsResponse

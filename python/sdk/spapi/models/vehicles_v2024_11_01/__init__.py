@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.vehicles_v2024_11_01.engine_output import EngineOutput
 from spapi.models.vehicles_v2024_11_01.engine_output_unit import EngineOutputUnit

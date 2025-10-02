@@ -12,6 +12,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 # import models into model package
 from spapi.models.merchant_fulfillment_v0.additional_inputs import AdditionalInputs
 from spapi.models.merchant_fulfillment_v0.additional_seller_input import AdditionalSellerInput
@@ -55,6 +56,9 @@ from spapi.models.merchant_fulfillment_v0.length import Length
 from spapi.models.merchant_fulfillment_v0.liquid_volume import LiquidVolume
 from spapi.models.merchant_fulfillment_v0.package_dimensions import PackageDimensions
 from spapi.models.merchant_fulfillment_v0.predefined_package_dimensions import PredefinedPackageDimensions
+from spapi.models.merchant_fulfillment_v0.rate_item import RateItem
+from spapi.models.merchant_fulfillment_v0.rate_item_id import RateItemID
+from spapi.models.merchant_fulfillment_v0.rate_item_type import RateItemType
 from spapi.models.merchant_fulfillment_v0.rejected_shipping_service import RejectedShippingService
 from spapi.models.merchant_fulfillment_v0.seller_input_definition import SellerInputDefinition
 from spapi.models.merchant_fulfillment_v0.shipment import Shipment

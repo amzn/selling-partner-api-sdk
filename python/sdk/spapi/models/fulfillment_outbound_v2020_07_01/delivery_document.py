@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -60,7 +61,7 @@ class DeliveryDocument(object):
     def document_type(self):
         """Gets the document_type of this DeliveryDocument.  # noqa: E501
 
-        The delivery document type. Values are `SIGNATURE` and `DELIVERY_IMAGE`.  # noqa: E501
+        The delivery document type. The only possible value is `DELIVERY_IMAGE`.  # noqa: E501
 
         :return: The document_type of this DeliveryDocument.  # noqa: E501
         :rtype: str
@@ -71,7 +72,7 @@ class DeliveryDocument(object):
     def document_type(self, document_type):
         """Sets the document_type of this DeliveryDocument.
 
-        The delivery document type. Values are `SIGNATURE` and `DELIVERY_IMAGE`.  # noqa: E501
+        The delivery document type. The only possible value is `DELIVERY_IMAGE`.  # noqa: E501
 
         :param document_type: The document_type of this DeliveryDocument.  # noqa: E501
         :type: str

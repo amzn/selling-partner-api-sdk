@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -28,8 +29,8 @@ class UnitOfWeight(object):
     """
     allowed enum values
     """
-    GRAMS = 'Grams'
-    G = 'G'
+    GRAMS = 'grams'
+    G = 'g'
 
     """
     Attributes:

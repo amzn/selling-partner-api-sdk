@@ -11,6 +11,7 @@
     Do not edit the class manually.
 """  # noqa: E501
 
+
 import pprint
 import re  # noqa: F401
 
@@ -91,7 +92,8 @@ class Address(object):
         self._address_type = None
         self.discriminator = None
 
-        self.name = name
+        if name is not None:
+            self.name = name
         if company_name is not None:
             self.company_name = company_name
         if address_line1 is not None:
@@ -141,8 +143,6 @@ class Address(object):
         :param name: The name of this Address.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
