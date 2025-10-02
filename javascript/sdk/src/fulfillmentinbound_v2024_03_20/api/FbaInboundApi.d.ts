@@ -769,22 +769,6 @@ export class FbaInboundApi {
        */
     setPrepDetails(body: SetPrepDetailsRequest): Promise<SetPrepDetailsResponse>;
     /**
-       * Update/Add custom identifier to the boxes within a shipment. These custom identifiers are provided by the clients and reflected on the box labels to identify boxes. One example of this custom identifier is the SSCC (Serial Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry standard to uniquely identify boxes.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {String} inboundPlanId Identifier to an inbound plan.
-       * @param {String} shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded.
-       * @param {UpdateBoxIdentifiersRequest} body The body of the request to &#x60;updateBoxIdentifiers&#x60;.
-       * @return {Promise<UpdateBoxIdentifiersResponse>}
-       */
-    updateBoxIdentifiersWithHttpInfo(inboundPlanId: string, shipmentId: string, body: UpdateBoxIdentifiersRequest): Promise<UpdateBoxIdentifiersResponse>;
-    /**
-       * Update/Add custom identifier to the boxes within a shipment. These custom identifiers are provided by the clients and reflected on the box labels to identify boxes. One example of this custom identifier is the SSCC (Serial Shipping Container Codes) barcodes, with the encoding of GS1-128, which is an industry standard to uniquely identify boxes.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | n | n |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {String} inboundPlanId Identifier to an inbound plan.
-       * @param {String} shipmentId Identifier to a shipment. A shipment contains the boxes and units being inbounded.
-       * @param {UpdateBoxIdentifiersRequest} body The body of the request to &#x60;updateBoxIdentifiers&#x60;.
-       * @return {Promise<UpdateBoxIdentifiersResponse>}
-       */
-    updateBoxIdentifiers(inboundPlanId: string, shipmentId: string, body: UpdateBoxIdentifiersRequest): Promise<UpdateBoxIdentifiersResponse>;
-    /**
        * Updates the name of an existing inbound plan.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} inboundPlanId Identifier of an inbound plan.
        * @param {UpdateInboundPlanNameRequest} body The body of the request to &#x60;updateInboundPlanName&#x60;.
@@ -913,8 +897,6 @@ import { SetPackingInformationRequest } from '../model/SetPackingInformationRequ
 import { SetPackingInformationResponse } from '../model/SetPackingInformationResponse.js';
 import { SetPrepDetailsRequest } from '../model/SetPrepDetailsRequest.js';
 import { SetPrepDetailsResponse } from '../model/SetPrepDetailsResponse.js';
-import { UpdateBoxIdentifiersRequest } from '../model/UpdateBoxIdentifiersRequest.js';
-import { UpdateBoxIdentifiersResponse } from '../model/UpdateBoxIdentifiersResponse.js';
 import { UpdateInboundPlanNameRequest } from '../model/UpdateInboundPlanNameRequest.js';
 import { UpdateItemComplianceDetailsRequest } from '../model/UpdateItemComplianceDetailsRequest.js';
 import { UpdateItemComplianceDetailsResponse } from '../model/UpdateItemComplianceDetailsResponse.js';

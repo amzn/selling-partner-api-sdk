@@ -46,6 +46,12 @@ export class OrderDetails {
      * @type {TaxItemDetails}
      */
     taxTotal: TaxItemDetails;
+    /**
+     * When `true`, the order contains customizable items.
+     * @member {Boolean} hasCustomizableItems
+     * @type {Boolean}
+     */
+    hasCustomizableItems: boolean;
 }
 export namespace OrderDetails {
     namespace OrderStatusEnum {

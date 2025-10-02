@@ -25,10 +25,8 @@ export class Address {
    * The shipping address for the order.
    * @alias module:orders_v0/model/Address
    * @class
-   * @param name {String} The name.
    */
-  constructor (name) {
-    this.name = name
+  constructor () {
   }
 
   /**
