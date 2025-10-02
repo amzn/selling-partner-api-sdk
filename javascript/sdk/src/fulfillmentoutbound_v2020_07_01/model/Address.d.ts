@@ -19,14 +19,12 @@ export class Address {
      * @class
      * @param name {String} The name of the person, business or institution at the address.
      * @param addressLine1 {String} The first line of the address.
-     * @param stateOrRegion {String} The state or region where the person, business or institution is located.
      * @param postalCode {String} The postal code of the address.
      * @param countryCode {String} The two digit country code. In ISO 3166-1 alpha-2 format.
      */
-    constructor(name: string, addressLine1: string, stateOrRegion: string, postalCode: string, countryCode: string);
+    constructor(name: string, addressLine1: string, postalCode: string, countryCode: string);
     name: string;
     addressLine1: string;
-    stateOrRegion: string;
     postalCode: string;
     countryCode: string;
     /**
@@ -53,6 +51,12 @@ export class Address {
      * @type {String}
      */
     districtOrCounty: string;
+    /**
+     * The state or region where the person, business or institution is located.
+     * @member {String} stateOrRegion
+     * @type {String}
+     */
+    stateOrRegion: string;
     /**
      * The phone number of the person, business, or institution located at the address.
      * @member {String} phone

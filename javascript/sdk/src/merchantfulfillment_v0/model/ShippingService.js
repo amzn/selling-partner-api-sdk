@@ -17,6 +17,7 @@ import { Benefits } from './Benefits.js'
 import { CurrencyAmount } from './CurrencyAmount.js'
 import { LabelFormat } from './LabelFormat.js'
 import { LabelFormatOption } from './LabelFormatOption.js'
+import { RateItem } from './RateItem.js'
 import { ShippingServiceOptions } from './ShippingServiceOptions.js'
 
 /**
@@ -36,16 +37,18 @@ export class ShippingService {
    * @param shippingServiceOfferId {String} An Amazon-defined shipping service offer identifier.
    * @param shipDate {Date} Date-time formatted timestamp.
    * @param rate {CurrencyAmount}
+   * @param rateWithAdjustments {CurrencyAmount}
    * @param shippingServiceOptions {ShippingServiceOptions}
    * @param requiresAdditionalSellerInputs {Boolean} When true, additional seller inputs are required.
    */
-  constructor (shippingServiceName, carrierName, shippingServiceId, shippingServiceOfferId, shipDate, rate, shippingServiceOptions, requiresAdditionalSellerInputs) {
+  constructor (shippingServiceName, carrierName, shippingServiceId, shippingServiceOfferId, shipDate, rate, rateWithAdjustments, shippingServiceOptions, requiresAdditionalSellerInputs) {
     this.shippingServiceName = shippingServiceName
     this.carrierName = carrierName
     this.shippingServiceId = shippingServiceId
     this.shippingServiceOfferId = shippingServiceOfferId
     this.shipDate = shipDate
     this.rate = rate
+    this.rateWithAdjustments = rateWithAdjustments
     this.shippingServiceOptions = shippingServiceOptions
     this.requiresAdditionalSellerInputs = requiresAdditionalSellerInputs
   }
@@ -79,6 +82,8 @@ export class ShippingService {
       if (data.hasOwnProperty('EarliestEstimatedDeliveryDate')) { obj.earliestEstimatedDeliveryDate = ApiClient.convertToType(data.EarliestEstimatedDeliveryDate, 'Date') }
       if (data.hasOwnProperty('LatestEstimatedDeliveryDate')) { obj.latestEstimatedDeliveryDate = ApiClient.convertToType(data.LatestEstimatedDeliveryDate, 'Date') }
       if (data.hasOwnProperty('Rate')) { obj.rate = CurrencyAmount.constructFromObject(data.Rate) }
+      if (data.hasOwnProperty('RateWithAdjustments')) { obj.rateWithAdjustments = CurrencyAmount.constructFromObject(data.RateWithAdjustments) }
+      if (data.hasOwnProperty('AdjustmentItemList')) { obj.adjustmentItemList = ApiClient.convertToType(data.AdjustmentItemList, [RateItem]) }
       if (data.hasOwnProperty('ShippingServiceOptions')) { obj.shippingServiceOptions = ShippingServiceOptions.constructFromObject(data.ShippingServiceOptions) }
       if (data.hasOwnProperty('AvailableShippingServiceOptions')) { obj.availableShippingServiceOptions = AvailableShippingServiceOptions.constructFromObject(data.AvailableShippingServiceOptions) }
       if (data.hasOwnProperty('AvailableLabelFormats')) { obj.availableLabelFormats = ApiClient.convertToType(data.AvailableLabelFormats, [LabelFormat]) }
@@ -144,6 +149,19 @@ ShippingService.prototype.latestEstimatedDeliveryDate = undefined
  * @type {CurrencyAmount}
  */
 ShippingService.prototype.rate = undefined
+
+/**
+ * @member {CurrencyAmount} rateWithAdjustments
+ * @type {CurrencyAmount}
+ */
+ShippingService.prototype.rateWithAdjustments = undefined
+
+/**
+ * List of adjustments.
+ * @member {[RateItem]} adjustmentItemList
+ * @type {[RateItem]}
+ */
+ShippingService.prototype.adjustmentItemList = undefined
 
 /**
  * @member {ShippingServiceOptions} shippingServiceOptions

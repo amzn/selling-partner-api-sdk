@@ -24,7 +24,7 @@ export class DeliveryDocument {
    * A delivery document for a package.
    * @alias module:fulfillmentoutbound_v2020_07_01/model/DeliveryDocument
    * @class
-   * @param documentType {String} The delivery document type. Values are `SIGNATURE` and `DELIVERY_IMAGE`.
+   * @param documentType {String} The delivery document type. The only possible value is `DELIVERY_IMAGE`.
    */
   constructor (documentType) {
     this.documentType = documentType
@@ -59,7 +59,7 @@ export class DeliveryDocument {
 }
 
 /**
- * The delivery document type. Values are `SIGNATURE` and `DELIVERY_IMAGE`.
+ * The delivery document type. The only possible value is `DELIVERY_IMAGE`.
  * @member {String} documentType
  * @type {String}
  */

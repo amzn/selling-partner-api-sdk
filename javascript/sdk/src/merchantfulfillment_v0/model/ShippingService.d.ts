@@ -23,16 +23,18 @@ export class ShippingService {
      * @param shippingServiceOfferId {String} An Amazon-defined shipping service offer identifier.
      * @param shipDate {Date} Date-time formatted timestamp.
      * @param rate {CurrencyAmount}
+     * @param rateWithAdjustments {CurrencyAmount}
      * @param shippingServiceOptions {ShippingServiceOptions}
      * @param requiresAdditionalSellerInputs {Boolean} When true, additional seller inputs are required.
      */
-    constructor(shippingServiceName: string, carrierName: string, shippingServiceId: string, shippingServiceOfferId: string, shipDate: Date, rate: CurrencyAmount, shippingServiceOptions: ShippingServiceOptions, requiresAdditionalSellerInputs: boolean);
+    constructor(shippingServiceName: string, carrierName: string, shippingServiceId: string, shippingServiceOfferId: string, shipDate: Date, rate: CurrencyAmount, rateWithAdjustments: CurrencyAmount, shippingServiceOptions: ShippingServiceOptions, requiresAdditionalSellerInputs: boolean);
     shippingServiceName: string;
     carrierName: string;
     shippingServiceId: string;
     shippingServiceOfferId: string;
     shipDate: Date;
     rate: CurrencyAmount;
+    rateWithAdjustments: CurrencyAmount;
     shippingServiceOptions: ShippingServiceOptions;
     requiresAdditionalSellerInputs: boolean;
     /**
@@ -47,6 +49,12 @@ export class ShippingService {
      * @type {Date}
      */
     latestEstimatedDeliveryDate: Date;
+    /**
+     * List of adjustments.
+     * @member {[RateItem]} adjustmentItemList
+     * @type {[RateItem]}
+     */
+    adjustmentItemList: [RateItem];
     /**
      * @member {AvailableShippingServiceOptions} availableShippingServiceOptions
      * @type {AvailableShippingServiceOptions}
@@ -72,6 +80,7 @@ export class ShippingService {
 }
 import { CurrencyAmount } from './CurrencyAmount.js';
 import { ShippingServiceOptions } from './ShippingServiceOptions.js';
+import { RateItem } from './RateItem.js';
 import { AvailableShippingServiceOptions } from './AvailableShippingServiceOptions.js';
 import { LabelFormat } from './LabelFormat.js';
 import { LabelFormatOption } from './LabelFormatOption.js';

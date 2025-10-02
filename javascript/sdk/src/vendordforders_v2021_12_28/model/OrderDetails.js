@@ -79,6 +79,7 @@ export class OrderDetails {
       if (data.hasOwnProperty('shipFromParty')) { obj.shipFromParty = PartyIdentification.constructFromObject(data.shipFromParty) }
       if (data.hasOwnProperty('shipToParty')) { obj.shipToParty = Address.constructFromObject(data.shipToParty) }
       if (data.hasOwnProperty('billToParty')) { obj.billToParty = PartyIdentification.constructFromObject(data.billToParty) }
+      if (data.hasOwnProperty('hasCustomizableItems')) { obj.hasCustomizableItems = ApiClient.convertToType(data.hasCustomizableItems, 'Boolean') }
       if (data.hasOwnProperty('items')) { obj.items = ApiClient.convertToType(data.items, [OrderItem]) }
     }
     return obj
@@ -173,6 +174,13 @@ OrderDetails.prototype.shipToParty = undefined
  * @type {PartyIdentification}
  */
 OrderDetails.prototype.billToParty = undefined
+
+/**
+ * When `true`, the order contains customizable items.
+ * @member {Boolean} hasCustomizableItems
+ * @type {Boolean}
+ */
+OrderDetails.prototype.hasCustomizableItems = undefined
 
 /**
  * A list of items in this purchase order.

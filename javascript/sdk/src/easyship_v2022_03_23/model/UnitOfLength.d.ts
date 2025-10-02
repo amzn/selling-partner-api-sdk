@@ -11,9 +11,9 @@ export class UnitOfLength {
       */
     static constructFromObject(object: any): UnitOfLength;
     /**
-           * value: "Cm"
+           * value: "cm"
            * @const
            */
-    Cm: string;
+    cm: string;
 }
 //# sourceMappingURL=UnitOfLength.d.ts.map

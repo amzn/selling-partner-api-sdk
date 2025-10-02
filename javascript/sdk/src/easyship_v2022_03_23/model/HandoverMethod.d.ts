@@ -11,14 +11,14 @@ export class HandoverMethod {
       */
     static constructFromObject(object: any): HandoverMethod;
     /**
-           * value: "Pickup"
+           * value: "PICKUP"
            * @const
            */
-    Pickup: string;
+    PICKUP: string;
     /**
-           * value: "Dropoff"
+           * value: "DROPOFF"
            * @const
            */
-    Dropoff: string;
+    DROPOFF: string;
 }
 //# sourceMappingURL=HandoverMethod.d.ts.map
