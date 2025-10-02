@@ -22,10 +22,10 @@ import java.io.IOException;
 /** Identifies the method by which a seller will hand a package over to Amazon Logistics. */
 @JsonAdapter(HandoverMethod.Adapter.class)
 public enum HandoverMethod {
-    @SerializedName("Pickup")
-    PICKUP("Pickup"),
-    @SerializedName("Dropoff")
-    DROPOFF("Dropoff");
+    @SerializedName("PICKUP")
+    PICKUP("PICKUP"),
+    @SerializedName("DROPOFF")
+    DROPOFF("DROPOFF");
 
     private String value;
 

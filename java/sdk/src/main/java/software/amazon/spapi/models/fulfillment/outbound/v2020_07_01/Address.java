@@ -176,7 +176,7 @@ public class Address {
      *
      * @return stateOrRegion
      */
-    @Schema(required = true, description = "The state or region where the person, business or institution is located.")
+    @Schema(description = "The state or region where the person, business or institution is located.")
     public String getStateOrRegion() {
         return stateOrRegion;
     }

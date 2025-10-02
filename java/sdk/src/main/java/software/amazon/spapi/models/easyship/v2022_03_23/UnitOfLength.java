@@ -22,8 +22,8 @@ import java.io.IOException;
 /** The unit of measurement used to measure the length. */
 @JsonAdapter(UnitOfLength.Adapter.class)
 public enum UnitOfLength {
-    @SerializedName("Cm")
-    CM("Cm");
+    @SerializedName("cm")
+    CM("cm");
 
     private String value;
 

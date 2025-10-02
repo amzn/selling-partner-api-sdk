@@ -31,11 +31,11 @@ public class DeliveryDocument {
     }
 
     /**
-     * The delivery document type. Values are &#x60;SIGNATURE&#x60; and &#x60;DELIVERY_IMAGE&#x60;.
+     * The delivery document type. The only possible value is &#x60;DELIVERY_IMAGE&#x60;.
      *
      * @return documentType
      */
-    @Schema(required = true, description = "The delivery document type. Values are `SIGNATURE` and `DELIVERY_IMAGE`.")
+    @Schema(required = true, description = "The delivery document type. The only possible value is `DELIVERY_IMAGE`.")
     public String getDocumentType() {
         return documentType;
     }

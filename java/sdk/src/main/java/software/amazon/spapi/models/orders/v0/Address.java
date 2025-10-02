@@ -125,7 +125,7 @@ public class Address {
      *
      * @return name
      */
-    @Schema(required = true, description = "The name.")
+    @Schema(description = "The name.")
     public String getName() {
         return name;
     }
