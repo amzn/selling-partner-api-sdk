@@ -251,7 +251,7 @@ class ErrorList implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets errors.
      *
-     * @param array $errors errors
+     * @param array $errors a list of error responses returned when a request is unsuccessful
      */
     public function setErrors(array $errors): self
     {

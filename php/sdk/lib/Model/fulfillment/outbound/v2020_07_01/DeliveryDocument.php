@@ -258,7 +258,7 @@ class DeliveryDocument implements ModelInterface, \ArrayAccess, \JsonSerializabl
     /**
      * Sets document_type.
      *
-     * @param string $document_type The delivery document type. Values are `SIGNATURE` and `DELIVERY_IMAGE`.
+     * @param string $document_type The delivery document type. The only possible value is `DELIVERY_IMAGE`.
      */
     public function setDocumentType(string $document_type): self
     {

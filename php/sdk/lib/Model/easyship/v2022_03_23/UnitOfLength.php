@@ -46,7 +46,7 @@ class UnitOfLength
     /**
      * Possible values of this enum.
      */
-    public const CM = 'Cm';
+    public const CM = 'cm';
 
     /**
      * Gets allowable values of the enum.

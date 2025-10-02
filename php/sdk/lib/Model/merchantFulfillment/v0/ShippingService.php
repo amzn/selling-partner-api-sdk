@@ -69,6 +69,8 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         'earliest_estimated_delivery_date' => '\DateTime',
         'latest_estimated_delivery_date' => '\DateTime',
         'rate' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount',
+        'rate_with_adjustments' => '\SpApi\Model\merchantFulfillment\v0\CurrencyAmount',
+        'adjustment_item_list' => '\SpApi\Model\merchantFulfillment\v0\RateItem[]',
         'shipping_service_options' => '\SpApi\Model\merchantFulfillment\v0\ShippingServiceOptions',
         'available_shipping_service_options' => '\SpApi\Model\merchantFulfillment\v0\AvailableShippingServiceOptions',
         'available_label_formats' => '\SpApi\Model\merchantFulfillment\v0\LabelFormat[]',
@@ -94,6 +96,8 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         'earliest_estimated_delivery_date' => 'date-time',
         'latest_estimated_delivery_date' => 'date-time',
         'rate' => null,
+        'rate_with_adjustments' => null,
+        'adjustment_item_list' => null,
         'shipping_service_options' => null,
         'available_shipping_service_options' => null,
         'available_label_formats' => null,
@@ -115,6 +119,8 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         'earliest_estimated_delivery_date' => true,
         'latest_estimated_delivery_date' => true,
         'rate' => false,
+        'rate_with_adjustments' => false,
+        'adjustment_item_list' => true,
         'shipping_service_options' => false,
         'available_shipping_service_options' => true,
         'available_label_formats' => true,
@@ -145,6 +151,8 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         'earliest_estimated_delivery_date' => 'EarliestEstimatedDeliveryDate',
         'latest_estimated_delivery_date' => 'LatestEstimatedDeliveryDate',
         'rate' => 'Rate',
+        'rate_with_adjustments' => 'RateWithAdjustments',
+        'adjustment_item_list' => 'AdjustmentItemList',
         'shipping_service_options' => 'ShippingServiceOptions',
         'available_shipping_service_options' => 'AvailableShippingServiceOptions',
         'available_label_formats' => 'AvailableLabelFormats',
@@ -167,6 +175,8 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         'earliest_estimated_delivery_date' => 'setEarliestEstimatedDeliveryDate',
         'latest_estimated_delivery_date' => 'setLatestEstimatedDeliveryDate',
         'rate' => 'setRate',
+        'rate_with_adjustments' => 'setRateWithAdjustments',
+        'adjustment_item_list' => 'setAdjustmentItemList',
         'shipping_service_options' => 'setShippingServiceOptions',
         'available_shipping_service_options' => 'setAvailableShippingServiceOptions',
         'available_label_formats' => 'setAvailableLabelFormats',
@@ -189,6 +199,8 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         'earliest_estimated_delivery_date' => 'getEarliestEstimatedDeliveryDate',
         'latest_estimated_delivery_date' => 'getLatestEstimatedDeliveryDate',
         'rate' => 'getRate',
+        'rate_with_adjustments' => 'getRateWithAdjustments',
+        'adjustment_item_list' => 'getAdjustmentItemList',
         'shipping_service_options' => 'getShippingServiceOptions',
         'available_shipping_service_options' => 'getAvailableShippingServiceOptions',
         'available_label_formats' => 'getAvailableLabelFormats',
@@ -218,6 +230,8 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('earliest_estimated_delivery_date', $data ?? [], null);
         $this->setIfExists('latest_estimated_delivery_date', $data ?? [], null);
         $this->setIfExists('rate', $data ?? [], null);
+        $this->setIfExists('rate_with_adjustments', $data ?? [], null);
+        $this->setIfExists('adjustment_item_list', $data ?? [], null);
         $this->setIfExists('shipping_service_options', $data ?? [], null);
         $this->setIfExists('available_shipping_service_options', $data ?? [], null);
         $this->setIfExists('available_label_formats', $data ?? [], null);
@@ -330,6 +344,9 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
         }
         if (null === $this->container['rate']) {
             $invalidProperties[] = "'rate' can't be null";
+        }
+        if (null === $this->container['rate_with_adjustments']) {
+            $invalidProperties[] = "'rate_with_adjustments' can't be null";
         }
         if (null === $this->container['shipping_service_options']) {
             $invalidProperties[] = "'shipping_service_options' can't be null";
@@ -546,6 +563,59 @@ class ShippingService implements ModelInterface, \ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable rate cannot be null');
         }
         $this->container['rate'] = $rate;
+
+        return $this;
+    }
+
+    /**
+     * Gets rate_with_adjustments.
+     */
+    public function getRateWithAdjustments(): CurrencyAmount
+    {
+        return $this->container['rate_with_adjustments'];
+    }
+
+    /**
+     * Sets rate_with_adjustments.
+     *
+     * @param CurrencyAmount $rate_with_adjustments rate_with_adjustments
+     */
+    public function setRateWithAdjustments(CurrencyAmount $rate_with_adjustments): self
+    {
+        if (is_null($rate_with_adjustments)) {
+            throw new \InvalidArgumentException('non-nullable rate_with_adjustments cannot be null');
+        }
+        $this->container['rate_with_adjustments'] = $rate_with_adjustments;
+
+        return $this;
+    }
+
+    /**
+     * Gets adjustment_item_list.
+     */
+    public function getAdjustmentItemList(): ?array
+    {
+        return $this->container['adjustment_item_list'];
+    }
+
+    /**
+     * Sets adjustment_item_list.
+     *
+     * @param null|array $adjustment_item_list list of adjustments
+     */
+    public function setAdjustmentItemList(?array $adjustment_item_list): self
+    {
+        if (is_null($adjustment_item_list)) {
+            array_push($this->openAPINullablesSetToNull, 'adjustment_item_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adjustment_item_list', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['adjustment_item_list'] = $adjustment_item_list;
 
         return $this;
     }

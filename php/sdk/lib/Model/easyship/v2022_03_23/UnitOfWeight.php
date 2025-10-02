@@ -46,9 +46,9 @@ class UnitOfWeight
     /**
      * Possible values of this enum.
      */
-    public const GRAMS = 'Grams';
+    public const GRAMS = 'grams';
 
-    public const G = 'G';
+    public const G = 'g';
 
     /**
      * Gets allowable values of the enum.

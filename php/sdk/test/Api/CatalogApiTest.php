@@ -603,66 +603,6 @@ class CatalogApiTest extends BaseTestCase
             &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
             &quot;height&quot; : 281,
             &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT09&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
-            &quot;height&quot; : 375,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT10&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
-            &quot;height&quot; : 375,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT11&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
-            &quot;height&quot; : 375,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT12&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
-            &quot;height&quot; : 448,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT13&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
-            &quot;height&quot; : 314,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT14&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
-            &quot;height&quot; : 1097,
-            &quot;width&quot; : 1500
-          }, {
-            &quot;variant&quot; : &quot;PT14&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
-            &quot;height&quot; : 366,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT15&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
-            &quot;height&quot; : 500,
-            &quot;width&quot; : 175
-          }, {
-            &quot;variant&quot; : &quot;EEGL&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-            &quot;height&quot; : 1375,
-            &quot;width&quot; : 370
-          }, {
-            &quot;variant&quot; : &quot;EEGL&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-            &quot;height&quot; : 500,
-            &quot;width&quot; : 135
-          }, {
-            &quot;variant&quot; : &quot;EGUS&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-            &quot;height&quot; : 1375,
-            &quot;width&quot; : 370
-          }, {
-            &quot;variant&quot; : &quot;EGUS&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-            &quot;height&quot; : 500,
-            &quot;width&quot; : 135
           } ]
         } ],
         &quot;productTypes&quot; : [ {
@@ -903,66 +843,6 @@ class CatalogApiTest extends BaseTestCase
             &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
             &quot;height&quot; : 281,
             &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT09&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
-            &quot;height&quot; : 375,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT10&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
-            &quot;height&quot; : 375,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT11&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
-            &quot;height&quot; : 375,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT12&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
-            &quot;height&quot; : 448,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT13&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
-            &quot;height&quot; : 314,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT14&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
-            &quot;height&quot; : 1097,
-            &quot;width&quot; : 1500
-          }, {
-            &quot;variant&quot; : &quot;PT14&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
-            &quot;height&quot; : 366,
-            &quot;width&quot; : 500
-          }, {
-            &quot;variant&quot; : &quot;PT15&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
-            &quot;height&quot; : 500,
-            &quot;width&quot; : 175
-          }, {
-            &quot;variant&quot; : &quot;EEGL&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-            &quot;height&quot; : 1375,
-            &quot;width&quot; : 370
-          }, {
-            &quot;variant&quot; : &quot;EEGL&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-            &quot;height&quot; : 500,
-            &quot;width&quot; : 135
-          }, {
-            &quot;variant&quot; : &quot;EGUS&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-            &quot;height&quot; : 1375,
-            &quot;width&quot; : 370
-          }, {
-            &quot;variant&quot; : &quot;EGUS&quot;,
-            &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-            &quot;height&quot; : 500,
-            &quot;width&quot; : 135
           } ]
         } ],
         &quot;productTypes&quot; : [ {
@@ -1068,8 +948,87 @@ class CatalogApiTest extends BaseTestCase
      */
     public function testGetCatalogItem400()
     {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetCatalogItem400', 'CatalogApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;asin&quot; : {
+            &quot;value&quot; : &quot;&quot;
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;ATVPDKIKX0DER&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;classifications&quot;, &quot;dimensions&quot;, &quot;identifiers&quot;, &quot;images&quot;, &quot;productTypes&quot;, &quot;relationships&quot;, &quot;salesRanks&quot;, &quot;summaries&quot;, &quot;vendorDetails&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getCatalogItem'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getCatalogItemWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for getCatalogItem_403
@@ -1692,66 +1651,6 @@ class CatalogApiTest extends BaseTestCase
               &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
               &quot;height&quot; : 281,
               &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT09&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
-              &quot;height&quot; : 375,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT10&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
-              &quot;height&quot; : 375,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT11&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
-              &quot;height&quot; : 375,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT12&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
-              &quot;height&quot; : 448,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT13&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
-              &quot;height&quot; : 314,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT14&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
-              &quot;height&quot; : 1097,
-              &quot;width&quot; : 1500
-            }, {
-              &quot;variant&quot; : &quot;PT14&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
-              &quot;height&quot; : 366,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT15&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
-              &quot;height&quot; : 500,
-              &quot;width&quot; : 175
-            }, {
-              &quot;variant&quot; : &quot;EEGL&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-              &quot;height&quot; : 1375,
-              &quot;width&quot; : 370
-            }, {
-              &quot;variant&quot; : &quot;EEGL&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-              &quot;height&quot; : 500,
-              &quot;width&quot; : 135
-            }, {
-              &quot;variant&quot; : &quot;EGUS&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-              &quot;height&quot; : 1375,
-              &quot;width&quot; : 370
-            }, {
-              &quot;variant&quot; : &quot;EGUS&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-              &quot;height&quot; : 500,
-              &quot;width&quot; : 135
             } ]
           } ],
           &quot;productTypes&quot; : [ {
@@ -2010,66 +1909,6 @@ class CatalogApiTest extends BaseTestCase
               &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/31TxwfqvB5L.jpg&quot;,
               &quot;height&quot; : 281,
               &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT09&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41B5vgmp4IL.jpg&quot;,
-              &quot;height&quot; : 375,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT10&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/51S5IY3AV0L.jpg&quot;,
-              &quot;height&quot; : 375,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT11&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41-6bmPtUlL.jpg&quot;,
-              &quot;height&quot; : 375,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT12&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41s9Q6gWJ7L.jpg&quot;,
-              &quot;height&quot; : 448,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT13&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/519nG0mRzuL.jpg&quot;,
-              &quot;height&quot; : 314,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT14&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/71sHhrGMc7L.jpg&quot;,
-              &quot;height&quot; : 1097,
-              &quot;width&quot; : 1500
-            }, {
-              &quot;variant&quot; : &quot;PT14&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41CH6gKtU5L.jpg&quot;,
-              &quot;height&quot; : 366,
-              &quot;width&quot; : 500
-            }, {
-              &quot;variant&quot; : &quot;PT15&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/21-s7QYrTxL.jpg&quot;,
-              &quot;height&quot; : 500,
-              &quot;width&quot; : 175
-            }, {
-              &quot;variant&quot; : &quot;EEGL&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-              &quot;height&quot; : 1375,
-              &quot;width&quot; : 370
-            }, {
-              &quot;variant&quot; : &quot;EEGL&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-              &quot;height&quot; : 500,
-              &quot;width&quot; : 135
-            }, {
-              &quot;variant&quot; : &quot;EGUS&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/61i3dsKD09L.jpg&quot;,
-              &quot;height&quot; : 1375,
-              &quot;width&quot; : 370
-            }, {
-              &quot;variant&quot; : &quot;EGUS&quot;,
-              &quot;link&quot; : &quot;https://m.media-amazon.com/images/I/41E7ku-qdGL.jpg&quot;,
-              &quot;height&quot; : 500,
-              &quot;width&quot; : 135
             } ]
           } ],
           &quot;productTypes&quot; : [ {
@@ -2176,8 +2015,87 @@ class CatalogApiTest extends BaseTestCase
      */
     public function testSearchCatalogItems400()
     {
-        // Skip this test
-        $this->markTestSkipped('Skip test for this operation.');
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testSearchCatalogItems400', 'CatalogApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;keywords&quot; : {
+            &quot;value&quot; : [ &quot;samsung&quot;, &quot;tv&quot; ]
+          },
+          &quot;marketplaceIds&quot; : {
+            &quot;value&quot; : [ &quot;&quot; ]
+          },
+          &quot;includedData&quot; : {
+            &quot;value&quot; : [ &quot;classifications&quot;, &quot;dimensions&quot;, &quot;identifiers&quot;, &quot;images&quot;, &quot;productTypes&quot;, &quot;relationships&quot;, &quot;salesRanks&quot;, &quot;summaries&quot;, &quot;vendorDetails&quot; ]
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'searchCatalogItems'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('CatalogApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->searchCatalogItemsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
     }
     /**
      * Test case for searchCatalogItems_403

@@ -46,9 +46,9 @@ class HandoverMethod
     /**
      * Possible values of this enum.
      */
-    public const PICKUP = 'Pickup';
+    public const PICKUP = 'PICKUP';
 
-    public const DROPOFF = 'Dropoff';
+    public const DROPOFF = 'DROPOFF';
 
     /**
      * Gets allowable values of the enum.
