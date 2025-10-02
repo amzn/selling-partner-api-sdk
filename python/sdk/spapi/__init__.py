@@ -18,6 +18,10 @@ from spapi.api.catalogitems_v2022_04_01.catalog_api import CatalogApi
 from spapi.api.customer_feedback_2024_06_01.customer_feedback_api import CustomerFeedbackApi
 from spapi.api.datakiosk_v2023_11_15.queries_api import QueriesApi
 from spapi.api.easyship_v2022_03_23.easy_ship_api import EasyShipApi
+from spapi.api.external_fulfillment_inventory_v2024_09_11.batch_inventory_api import BatchInventoryApi
+from spapi.api.external_fulfillment_returns_v2024_09_11.return_retrieval_api import ReturnRetrievalApi
+from spapi.api.external_fulfillment_shipments_v2024_09_11.shipment_processing_api import ShipmentProcessingApi
+from spapi.api.external_fulfillment_shipments_v2024_09_11.shipment_retrieval_api import ShipmentRetrievalApi
 from spapi.api.fba_eligibility_v1.fba_inbound_eligibility_api import FbaInboundEligibilityApi
 from spapi.api.fba_inventory_v1.fba_inventory_api import FbaInventoryApi
 from spapi.api.feeds_v2021_06_30.feeds_api import FeedsApi

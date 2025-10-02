@@ -1,0 +1,1 @@
+{"packageShipLabelList":[{"packageId":"TEST_CASE_200_PACKAGE_ID","shipLabelMetadata":{"carrierName":"ATS","trackingId":"151958276037","pickupWindow":{"startTime":162132660,"endTime":162132660},"timeSlot":{"startTime":1612933142,"endTime":1612494142,"handoverMethod":"PICKUP"}},"fileData":{"url":"url"},"status":"SUCCESS"}]}

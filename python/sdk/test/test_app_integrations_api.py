@@ -68,6 +68,10 @@ class TestAppIntegrationsApi(unittest.TestCase):
             url += f"?qualifier=SellerWallet"
         if "seller_wallet" in "api.appintegrations_v2024_04_01" and response == "getTransaction":
             url += f"?qualifier=SellerWallet"
+        if "external_fulfillment" in "api.appintegrations_v2024_04_01" and response == "getShipment":
+                    url += f"?qualifier=ExternalFulfillment"
+        if "external_fulfillment" in "api.appintegrations_v2024_04_01" and response == "getShipments":
+                    url += f"?qualifier=ExternalFulfillment"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

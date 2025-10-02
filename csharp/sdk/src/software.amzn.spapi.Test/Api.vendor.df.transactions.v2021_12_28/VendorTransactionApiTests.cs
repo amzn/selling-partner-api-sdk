@@ -90,6 +90,8 @@ namespace software.amzn.spapi.Test.Api.vendor.df.transactions.v2021_12_28
             if ("Api.vendor.df.transactions.v2021_12_28".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
             if ("Api.vendor.df.transactions.v2021_12_28".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
             if ("Api.vendor.df.transactions.v2021_12_28".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
+            if ("Api.vendor.df.transactions.v2021_12_28".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
+            if ("Api.vendor.df.transactions.v2021_12_28".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
             return url;
         }
     }

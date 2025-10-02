@@ -50,7 +50,10 @@ const models = [
     "../../selling-partner-api-models/models/vendor-transaction-status-api-model/vendorTransactionStatus.json",
     "../../selling-partner-api-models/models/vehicles-api-model/vehicles_2024-11-01.json",
     "../../selling-partner-api-models/models/seller-wallet-api-model/sellerWallet_2024-03-01.json",
-    "../../selling-partner-api-models/models/customer-feedback-api-model/customerFeedback_2024-06-01.json"
+    "../../selling-partner-api-models/models/customer-feedback-api-model/customerFeedback_2024-06-01.json",
+    "../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentShipments_2024-09-11.json",
+    "../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentInventory_2024-09-11.json",
+    "../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentReturns_2024-09-11.json"
 ]
 
 for (const path of models) {
@@ -88,7 +91,7 @@ for (const path of models) {
         ).forEach((operation) => {
         const operationId = operation.operationId.replace(/^./, operation.operationId[0].toLowerCase())
         try {
-            const successStatus = ["200", "201", "202", "204"]
+            const successStatus = ["200", "201", "202", "204", "207"]
             const successObjects = Object.keys(operation['responses']).filter((key) => successStatus.includes(key))
             if (Array.isArray(successObjects) && successObjects.length > 0) {
                 const request = JSON.stringify(operation['responses'][successObjects[0]]['x-amzn-api-sandbox']['static'][0]['request']['parameters']['body']['value'])
