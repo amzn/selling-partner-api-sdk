@@ -87,8 +87,9 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// <param name="shipFromParty">shipFromParty (required).</param>
         /// <param name="shipToParty">shipToParty (required).</param>
         /// <param name="billToParty">billToParty (required).</param>
+        /// <param name="hasCustomizableItems">When &#x60;true&#x60;, the order contains customizable items..</param>
         /// <param name="items">A list of items in this purchase order. (required).</param>
-        public OrderDetails(string customerOrderNumber = default(string), DateTime orderDate = default(DateTime), OrderStatusEnum? orderStatus = default(OrderStatusEnum?), ShipmentDetails shipmentDetails = default(ShipmentDetails), TaxItemDetails taxTotal = default(TaxItemDetails), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), Address shipToParty = default(Address), PartyIdentification billToParty = default(PartyIdentification), List<OrderItem> items = default(List<OrderItem>))
+        public OrderDetails(string customerOrderNumber = default(string), DateTime orderDate = default(DateTime), OrderStatusEnum? orderStatus = default(OrderStatusEnum?), ShipmentDetails shipmentDetails = default(ShipmentDetails), TaxItemDetails taxTotal = default(TaxItemDetails), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), Address shipToParty = default(Address), PartyIdentification billToParty = default(PartyIdentification), bool hasCustomizableItems = default(bool), List<OrderItem> items = default(List<OrderItem>))
         {
             // to ensure "customerOrderNumber" is required (not null)
             if (customerOrderNumber == null)
@@ -135,6 +136,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             this.Items = items;
             this.OrderStatus = orderStatus;
             this.TaxTotal = taxTotal;
+            this.HasCustomizableItems = hasCustomizableItems;
         }
 
         /// <summary>
@@ -188,6 +190,13 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         public PartyIdentification BillToParty { get; set; }
 
         /// <summary>
+        /// When &#x60;true&#x60;, the order contains customizable items.
+        /// </summary>
+        /// <value>When &#x60;true&#x60;, the order contains customizable items.</value>
+        [DataMember(Name = "hasCustomizableItems", EmitDefaultValue = true)]
+        public bool HasCustomizableItems { get; set; }
+
+        /// <summary>
         /// A list of items in this purchase order.
         /// </summary>
         /// <value>A list of items in this purchase order.</value>
@@ -211,6 +220,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             sb.Append("  ShipFromParty: ").Append(ShipFromParty).Append("\n");
             sb.Append("  ShipToParty: ").Append(ShipToParty).Append("\n");
             sb.Append("  BillToParty: ").Append(BillToParty).Append("\n");
+            sb.Append("  HasCustomizableItems: ").Append(HasCustomizableItems).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

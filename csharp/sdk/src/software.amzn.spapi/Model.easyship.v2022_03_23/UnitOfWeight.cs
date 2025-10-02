@@ -33,15 +33,15 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
     public enum UnitOfWeight
     {
         /// <summary>
-        /// Enum Grams for value: Grams
+        /// Enum Grams for value: grams
         /// </summary>
-        [EnumMember(Value = "Grams")]
+        [EnumMember(Value = "grams")]
         Grams = 1,
 
         /// <summary>
-        /// Enum G for value: G
+        /// Enum G for value: g
         /// </summary>
-        [EnumMember(Value = "G")]
+        [EnumMember(Value = "g")]
         G = 2
     }
 

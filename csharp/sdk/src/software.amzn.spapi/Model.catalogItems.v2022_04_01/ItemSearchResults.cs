@@ -40,30 +40,20 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// Initializes a new instance of the <see cref="ItemSearchResults" /> class.
         /// </summary>
         /// <param name="numberOfResults">For searches that are based on &#x60;identifiers&#x60;, &#x60;numberOfResults&#x60; is the total number of Amazon catalog items found. For searches that are based on &#x60;keywords&#x60;, &#x60;numberOfResults&#x60; is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000. (required).</param>
-        /// <param name="pagination">pagination (required).</param>
-        /// <param name="refinements">refinements (required).</param>
+        /// <param name="pagination">pagination.</param>
+        /// <param name="refinements">refinements.</param>
         /// <param name="items">A list of items from the Amazon catalog. (required).</param>
         public ItemSearchResults(int numberOfResults = default(int), Pagination pagination = default(Pagination), Refinements refinements = default(Refinements), List<Item> items = default(List<Item>))
         {
             this.NumberOfResults = numberOfResults;
-            // to ensure "pagination" is required (not null)
-            if (pagination == null)
-            {
-                throw new ArgumentNullException("pagination is a required property for ItemSearchResults and cannot be null");
-            }
-            this.Pagination = pagination;
-            // to ensure "refinements" is required (not null)
-            if (refinements == null)
-            {
-                throw new ArgumentNullException("refinements is a required property for ItemSearchResults and cannot be null");
-            }
-            this.Refinements = refinements;
             // to ensure "items" is required (not null)
             if (items == null)
             {
                 throw new ArgumentNullException("items is a required property for ItemSearchResults and cannot be null");
             }
             this.Items = items;
+            this.Pagination = pagination;
+            this.Refinements = refinements;
         }
 
         /// <summary>
@@ -76,13 +66,13 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
-        [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "pagination", EmitDefaultValue = false)]
         public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets Refinements
         /// </summary>
-        [DataMember(Name = "refinements", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "refinements", EmitDefaultValue = false)]
         public Refinements Refinements { get; set; }
 
         /// <summary>

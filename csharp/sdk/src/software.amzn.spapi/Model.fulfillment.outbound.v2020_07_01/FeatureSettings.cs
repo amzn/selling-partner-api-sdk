@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
 {
     /// <summary>
-    /// Feature settings allows you to apply fulfillment features to an order. To block an order from being shipped using Amazon Logistics (AMZL) and an AMZL tracking number, set &#x60;featureName&#x60; to &#x60;BLOCK_AMZL&#x60; and &#x60;featureFulfillmentPolicy&#x60; to &#x60;Required&#x60;. Blocking AMZL will incur an additional fee surcharge on your MCF orders and increase the risk of some of your orders being unfulfilled or delivered late if there are no alternative carriers available. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. To ship in non-Amazon branded packaging (blank boxes), set &#x60;featureName&#x60; to &#x60;BLANK_BOX&#x60;.
+    /// Feature settings allows you to apply fulfillment features to an order. To block an order from being shipped using Amazon Logistics (AMZL) and an AMZL tracking number, set &#x60;featureName&#x60; to &#x60;BLOCK_AMZL&#x60; and &#x60;featureFulfillmentPolicy&#x60; to &#x60;Required&#x60;. Blocking AMZL will incur an additional fee surcharge on your MCF orders and increase the risk of some of your orders being unfulfilled or delivered late if there are no alternative carriers available. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. To ship in non-Amazon branded packaging (blank boxes), set &#x60;featureName&#x60; to &#x60;BLANK_BOX&#x60;. To require a signature from the recipient upon delivery, set &#x60;featureName&#x60; to &#x60;SIGNATURE_CONFIRMATION&#x60;. Note that using signature confirmation features will incur additional fees on MCF orders and are currently supported only in the US marketplace. To ensure all items in an order are delivered together, set &#x60;featureName&#x60; to &#x60;DELIVER_TOGETHER&#x60;.
     /// </summary>
     [DataContract(Name = "FeatureSettings")]
     public partial class FeatureSettings : IValidatableObject
@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureSettings" /> class.
         /// </summary>
-        /// <param name="featureName">The name of the feature..</param>
+        /// <param name="featureName">The name of the feature. Valid feature names are:  - &#x60;BLOCK_AMZL&#x60;: Blocks orders from being shipped using Amazon Logistics (AMZL).   - Note: Using this feature will incur additional fee surcharges on MCF orders and may increase the risk of unfulfilled or delayed deliveries if alternative carriers are unavailable. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. - &#x60;BLANK_BOX&#x60;: Ships orders in non-Amazon branded packaging (blank boxes). - &#x60;SIGNATURE_CONFIRMATION&#x60;: Requires a signature from the recipient upon delivery.    - Note: Using signature confirmation features will incur additional fees on MCF orders and are currently supported only in the US marketplace..</param>
         /// <param name="featureFulfillmentPolicy">Specifies the policy to use when fulfilling an order..</param>
         public FeatureSettings(string featureName = default(string), FeatureFulfillmentPolicyEnum? featureFulfillmentPolicy = default(FeatureFulfillmentPolicyEnum?))
         {
@@ -70,9 +70,9 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         }
 
         /// <summary>
-        /// The name of the feature.
+        /// The name of the feature. Valid feature names are:  - &#x60;BLOCK_AMZL&#x60;: Blocks orders from being shipped using Amazon Logistics (AMZL).   - Note: Using this feature will incur additional fee surcharges on MCF orders and may increase the risk of unfulfilled or delayed deliveries if alternative carriers are unavailable. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. - &#x60;BLANK_BOX&#x60;: Ships orders in non-Amazon branded packaging (blank boxes). - &#x60;SIGNATURE_CONFIRMATION&#x60;: Requires a signature from the recipient upon delivery.    - Note: Using signature confirmation features will incur additional fees on MCF orders and are currently supported only in the US marketplace.
         /// </summary>
-        /// <value>The name of the feature.</value>
+        /// <value>The name of the feature. Valid feature names are:  - &#x60;BLOCK_AMZL&#x60;: Blocks orders from being shipped using Amazon Logistics (AMZL).   - Note: Using this feature will incur additional fee surcharges on MCF orders and may increase the risk of unfulfilled or delayed deliveries if alternative carriers are unavailable. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. - &#x60;BLANK_BOX&#x60;: Ships orders in non-Amazon branded packaging (blank boxes). - &#x60;SIGNATURE_CONFIRMATION&#x60;: Requires a signature from the recipient upon delivery.    - Note: Using signature confirmation features will incur additional fees on MCF orders and are currently supported only in the US marketplace.</value>
         [DataMember(Name = "featureName", EmitDefaultValue = false)]
         public string FeatureName { get; set; }
 

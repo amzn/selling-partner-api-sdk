@@ -61,12 +61,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Address() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Address" /> class.
-        /// </summary>
-        /// <param name="name">The name. (required).</param>
+        /// <param name="name">The name..</param>
         /// <param name="companyName">The company name of the recipient.  **Note**: This attribute is only available for shipping address..</param>
         /// <param name="addressLine1">The street address..</param>
         /// <param name="addressLine2">Additional street address information, if required..</param>
@@ -83,11 +78,6 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="addressType">The address type of the shipping address..</param>
         public Address(string name = default(string), string companyName = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string county = default(string), string district = default(string), string stateOrRegion = default(string), string municipality = default(string), string postalCode = default(string), string countryCode = default(string), string phone = default(string), AddressExtendedFields extendedFields = default(AddressExtendedFields), AddressTypeEnum? addressType = default(AddressTypeEnum?))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for Address and cannot be null");
-            }
             this.Name = name;
             this.CompanyName = companyName;
             this.AddressLine1 = addressLine1;
@@ -109,7 +99,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// The name.
         /// </summary>
         /// <value>The name.</value>
-        [DataMember(Name = "Name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
