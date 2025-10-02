@@ -13,13 +13,10 @@ export class Address {
      */
     static constructFromObject(data: any, obj: Address): Address;
     /**
-     * Constructs a new <code>Address</code>.
-     * The shipping address for the order.
-     * @alias module:orders_v0/model/Address
-     * @class
-     * @param name {String} The name.
+     * The name.
+     * @member {String} name
+     * @type {String}
      */
-    constructor(name: string);
     name: string;
     /**
      * The company name of the recipient.  **Note**: This attribute is only available for shipping address.

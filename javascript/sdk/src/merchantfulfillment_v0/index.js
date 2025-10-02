@@ -54,6 +54,9 @@ import { Length } from './model/Length.js'
 import { LiquidVolume } from './model/LiquidVolume.js'
 import { PackageDimensions } from './model/PackageDimensions.js'
 import { PredefinedPackageDimensions } from './model/PredefinedPackageDimensions.js'
+import { RateItem } from './model/RateItem.js'
+import { RateItemID } from './model/RateItemID.js'
+import { RateItemType } from './model/RateItemType.js'
 import { RejectedShippingService } from './model/RejectedShippingService.js'
 import { SellerInputDefinition } from './model/SellerInputDefinition.js'
 import { Shipment } from './model/Shipment.js'
@@ -334,6 +337,24 @@ export {
      * @property {module:merchantfulfillment_v0/model/PredefinedPackageDimensions}
      */
   PredefinedPackageDimensions,
+
+  /**
+     * The RateItem model constructor.
+     * @property {module:merchantfulfillment_v0/model/RateItem}
+     */
+  RateItem,
+
+  /**
+     * The RateItemID model constructor.
+     * @property {module:merchantfulfillment_v0/model/RateItemID}
+     */
+  RateItemID,
+
+  /**
+     * The RateItemType model constructor.
+     * @property {module:merchantfulfillment_v0/model/RateItemType}
+     */
+  RateItemType,
 
   /**
      * The RejectedShippingService model constructor.

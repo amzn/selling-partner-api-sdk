@@ -18,17 +18,23 @@ export class ItemSearchResults {
      * @alias module:catalogitems_v2022_04_01/model/ItemSearchResults
      * @class
      * @param numberOfResults {Number} For searches that are based on `identifiers`, `numberOfResults` is the total number of Amazon catalog items found. For searches that are based on `keywords`, `numberOfResults` is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.
-     * @param pagination {Pagination}
-     * @param refinements {Refinements}
      * @param items {[Item]} A list of items from the Amazon catalog.
      */
-    constructor(numberOfResults: number, pagination: Pagination, refinements: Refinements, items: [Item]);
+    constructor(numberOfResults: number, items: [Item]);
     numberOfResults: number;
-    pagination: Pagination;
-    refinements: Refinements;
     items: [Item];
+    /**
+     * @member {Pagination} pagination
+     * @type {Pagination}
+     */
+    pagination: Pagination;
+    /**
+     * @member {Refinements} refinements
+     * @type {Refinements}
+     */
+    refinements: Refinements;
 }
+import { Item } from './Item.js';
 import { Pagination } from './Pagination.js';
 import { Refinements } from './Refinements.js';
-import { Item } from './Item.js';
 //# sourceMappingURL=ItemSearchResults.d.ts.map

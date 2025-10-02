@@ -20,16 +20,16 @@ import { ApiClient } from '../ApiClient.js'
 */
 export class HandoverMethod {
   /**
-         * value: "Pickup"
+         * value: "PICKUP"
          * @const
          */
-  'Pickup' = 'Pickup'
+  'PICKUP' = 'PICKUP'
 
   /**
-         * value: "Dropoff"
+         * value: "DROPOFF"
          * @const
          */
-  'Dropoff' = 'Dropoff'
+  'DROPOFF' = 'DROPOFF'
 
   /**
     * Returns a <code>HandoverMethod</code> enum value from a Javascript object name.

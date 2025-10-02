@@ -20,16 +20,16 @@ import { ApiClient } from '../ApiClient.js'
 */
 export class UnitOfWeight {
   /**
-         * value: "Grams"
+         * value: "grams"
          * @const
          */
-  'Grams' = 'Grams'
+  'grams' = 'grams'
 
   /**
-         * value: "G"
+         * value: "g"
          * @const
          */
-  'G' = 'G'
+  'g' = 'g'
 
   /**
     * Returns a <code>UnitOfWeight</code> enum value from a Javascript object name.

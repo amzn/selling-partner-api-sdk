@@ -26,14 +26,12 @@ export class Address {
    * @class
    * @param name {String} The name of the person, business or institution at the address.
    * @param addressLine1 {String} The first line of the address.
-   * @param stateOrRegion {String} The state or region where the person, business or institution is located.
    * @param postalCode {String} The postal code of the address.
    * @param countryCode {String} The two digit country code. In ISO 3166-1 alpha-2 format.
    */
-  constructor (name, addressLine1, stateOrRegion, postalCode, countryCode) {
+  constructor (name, addressLine1, postalCode, countryCode) {
     this.name = name
     this.addressLine1 = addressLine1
-    this.stateOrRegion = stateOrRegion
     this.postalCode = postalCode
     this.countryCode = countryCode
   }

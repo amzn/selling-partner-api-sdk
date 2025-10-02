@@ -20,10 +20,10 @@ import { ApiClient } from '../ApiClient.js'
 */
 export class UnitOfLength {
   /**
-         * value: "Cm"
+         * value: "cm"
          * @const
          */
-  'Cm' = 'Cm'
+  'cm' = 'cm'
 
   /**
     * Returns a <code>UnitOfLength</code> enum value from a Javascript object name.

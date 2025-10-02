@@ -11,14 +11,14 @@ export class UnitOfWeight {
       */
     static constructFromObject(object: any): UnitOfWeight;
     /**
-           * value: "Grams"
+           * value: "grams"
            * @const
            */
-    Grams: string;
+    grams: string;
     /**
-           * value: "G"
+           * value: "g"
            * @const
            */
-    G: string;
+    g: string;
 }
 //# sourceMappingURL=UnitOfWeight.d.ts.map

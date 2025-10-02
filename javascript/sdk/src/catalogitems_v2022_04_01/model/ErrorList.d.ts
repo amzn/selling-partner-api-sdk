@@ -17,7 +17,7 @@ export class ErrorList {
      * A list of error responses returned when a request is unsuccessful.
      * @alias module:catalogitems_v2022_04_01/model/ErrorList
      * @class
-     * @param errors {[Error]}
+     * @param errors {[Error]} A list of error responses returned when a request is unsuccessful.
      */
     constructor(errors: [Error]);
     errors: [Error];
