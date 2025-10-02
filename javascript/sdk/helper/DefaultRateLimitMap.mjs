@@ -302,6 +302,19 @@ export const defaultRateLimitMap = {
   "CustomerFeedbackApi-getItemReviewTrends": [1, 10],
   "CustomerFeedbackApi-getBrowseNodeReviewTrends": [1, 10],
   "CustomerFeedbackApi-getBrowseNodeReturnTopics": [1, 10],
-  "CustomerFeedbackApi-getBrowseNodeReturnTrends": [1, 10]
+  "CustomerFeedbackApi-getBrowseNodeReturnTrends": [1, 10],
+  "BatchInventoryApi-batchInventory": [50, 50],
+  "ReturnRetrievalApi-listReturns": [1, 1],
+  "ReturnRetrievalApi-getReturn": [1, 1],
+  "ShipmentRetrievalApi-getShipments": [1, 1],
+  "ShipmentRetrievalApi-getShipment": [1, 1],
+  "ShipmentProcessingApi-generateShipLabels": [1, 1],
+  "ShipmentProcessingApi-createPackages": [1, 1],
+  "ShipmentProcessingApi-updatePackage": [1, 1],
+  "ShipmentProcessingApi-updatePackageStatus": [1, 1],
+  "ShipmentProcessingApi-retrieveShippingOptions": [1, 1],
+  "ShipmentProcessingApi-generateInvoice": [1, 1],
+  "ShipmentProcessingApi-retrieveInvoice": [1, 1],
+  "ShipmentProcessingApi-processShipment": [1, 1]
 }
 
