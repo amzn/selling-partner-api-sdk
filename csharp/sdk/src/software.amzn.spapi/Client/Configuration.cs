@@ -126,7 +126,7 @@ namespace software.amzn.spapi.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "amazon-selling-partner-api-sdk/1.2.0/csharp";
+            UserAgent = "amazon-selling-partner-api-sdk/" + Version + "/csharp";
             BasePath = "https://sellingpartnerapi-na.amazon.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -196,7 +196,7 @@ namespace software.amzn.spapi.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.2.0/csharp"
+            string userAgent = "Swagger-Codegen/" + Version + "/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -479,7 +479,7 @@ namespace software.amzn.spapi.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2024-09-11\n";
-            report += "    SDK Package Version: 1.2.0\n";
+            report += "    SDK Package Version: " + Version + "\n";
 
             return report;
         }
