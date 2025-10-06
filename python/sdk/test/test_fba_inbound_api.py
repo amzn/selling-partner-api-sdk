@@ -486,6 +486,10 @@ class TestFbaInboundApi(unittest.TestCase):
             url += f"?qualifier=SellerWallet"
         if "seller_wallet" in "api.fulfillment_inbound_v2024_03_20" and response == "getTransaction":
             url += f"?qualifier=SellerWallet"
+        if "external_fulfillment" in "api.fulfillment_inbound_v2024_03_20" and response == "getShipment":
+                    url += f"?qualifier=ExternalFulfillment"
+        if "external_fulfillment" in "api.fulfillment_inbound_v2024_03_20" and response == "getShipments":
+                    url += f"?qualifier=ExternalFulfillment"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

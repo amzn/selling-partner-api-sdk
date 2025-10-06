@@ -53,6 +53,10 @@ class TestVendorDfTransactionApi(unittest.TestCase):
             url += f"?qualifier=SellerWallet"
         if "seller_wallet" in "api.vendor_direct_fulfillment_transactions_v2021_12_28" and response == "getTransaction":
             url += f"?qualifier=SellerWallet"
+        if "external_fulfillment" in "api.vendor_direct_fulfillment_transactions_v2021_12_28" and response == "getShipment":
+                    url += f"?qualifier=ExternalFulfillment"
+        if "external_fulfillment" in "api.vendor_direct_fulfillment_transactions_v2021_12_28" and response == "getShipments":
+                    url += f"?qualifier=ExternalFulfillment"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):
