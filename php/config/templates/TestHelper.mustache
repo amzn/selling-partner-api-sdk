@@ -685,6 +685,16 @@ class TestHelper
         'testGetVehicles0200', // returns 403
         'testGetVehicles0400', // returns 403
         'testGetVehicles200', // returns 403
-        'testGetVehicles400' // returns 403
+        'testGetVehicles400', // returns 403
+        // External Fulfillment APIs
+        'testListReturns503', // returns 500
+        'testCreatePackages204', // required body missing in model
+        'testCreatePackages400', // required body missing in model
+        'testGenerateShipLabels400', // required body missing in model
+        'testProcessShipment204', // required body missing in model
+        'testProcessShipment400', // required body missing in model
+        'testUpdatePackage204', // required body missing in model
+        'testUpdatePackage400', // required body missing in model
+        'testGetShipments200', // invalid enum in request
     ];
 }

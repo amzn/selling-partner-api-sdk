@@ -93,6 +93,7 @@ class BaseTestCase extends TestCase
             case 200:
             case 201:
             case 202:
+            case 207:
                 $this->assertEquals($responseParams, $response);
                 break;
 
