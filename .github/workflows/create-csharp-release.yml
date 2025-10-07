@@ -32,7 +32,7 @@ jobs:
         working-directory: ./csharp/sdk/src/software.amzn.spapi
         run: |
           sed -i "s/.*<\/Version>/    <Version>${{ github.event.inputs.newVersionNumber }}<\/Version>/" software.amzn.spapi.csproj
-          sed -i "s/public const string Version = \"0.0.0\";/public const string Version = \"${{ github.event.inputs.newVersionNumber }}\";/" client/Configuration.cs
+          sed -i "s/public const string Version = \"0.0.0\";/public const string Version = \"${{ github.event.inputs.newVersionNumber }}\";/" Client/Configuration.cs
 
       - name: Restore dependencies
         working-directory: ./csharp/sdk/src/software.amzn.spapi
