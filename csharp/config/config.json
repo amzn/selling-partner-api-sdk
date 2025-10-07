@@ -1,6 +1,6 @@
 {
     "packageName": "software.amzn.spapi",
-    "packageVersion": "1.2.0",
+    "packageVersion": "0.0.0",
     "targetFramework": "net7.0",
     "engineOptions": { "library": "Stubble" },
     "globalProperties": {
