@@ -6,22 +6,23 @@
     <AssemblyName>software.amzn.spapi</AssemblyName>
     <PackageId>software.amzn.spapi</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>OpenAPI</Authors>
-    <Company>OpenAPI</Company>
-    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
+    <Authors>Amazon Selling Partner Developer Services</Authors>
+    <Company>Amazon Inc.</Company>
+    <AssemblyTitle>Amazon Selling Partner API SDK for C#</AssemblyTitle>
     <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>software.amzn.spapi</RootNamespace>
-    <Version>1.2.0</Version>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\software.amzn.spapi.xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/GIT_USER_ID/GIT_REPO_ID.git</RepositoryUrl>
+    <Version>0.0.0</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://{{{https://github.com/amzn/selling-partner-api-sdk</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <PackageReleaseNotes>Latest release notes can be found here: https://github.com/amzn/selling-partner-api-sdk/releases/latest</PackageReleaseNotes>
     <Nullable>annotations</Nullable>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
     <PackageReference Include="JsonSubTypes" Version="2.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RestSharp" Version="112.0.0" />
