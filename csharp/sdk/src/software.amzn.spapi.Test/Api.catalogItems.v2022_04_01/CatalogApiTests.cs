@@ -100,7 +100,7 @@ namespace software.amzn.spapi.Test.Api.catalogItems.v2022_04_01
         }
 
         private static string FormatApiName(string apiName) {
-            return apiName.ToLower();
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
         private static string FormatOperationId(string operationId) {

@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.inventory.v2024_09_11
         }
 
         private static string FormatApiName(string apiName) {
-            return apiName.ToLower();
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
         private static string FormatOperationId(string operationId) {

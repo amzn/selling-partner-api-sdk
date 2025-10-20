@@ -149,7 +149,7 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         }
 
         private static string FormatApiName(string apiName) {
-            return apiName.ToLower();
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
         private static string FormatOperationId(string operationId) {

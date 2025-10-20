@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.vendor.invoices.v1
         }
 
         private static string FormatApiName(string apiName) {
-            return apiName.ToLower();
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
         private static string FormatOperationId(string operationId) {
