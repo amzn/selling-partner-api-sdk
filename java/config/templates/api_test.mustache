@@ -46,7 +46,7 @@ public class {{classname}}Test {
 {{#operations}}{{#operation}}
     @Test
     public void {{operationId}}Test() throws Exception {
-        instructBackendMock("{{operationId}}", "{{responses.0.code}}");
+        instructBackendMock("{{tags.0.name}}", "{{operationId}}", "{{responses.0.code}}");
         {{#allParams}}{{#required}}
         {{{dataType}}} {{paramName}} = {{#isListContainer}}easyRandom.objects({{baseType}}.class, 2).collect(Collectors.toList()){{/isListContainer}}{{^isListContainer}}easyRandom.nextObject({{{dataType}}}.class){{/isListContainer}};
         {{/required}}{{/allParams}}
@@ -61,9 +61,10 @@ public class {{classname}}Test {
 
 {{/operation}}{{/operations}}
 
-    private void instructBackendMock(String response, String code) throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-              .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+       basename = basename.replaceAll("/\"W| ", "").toLowerCase();
+       HttpRequest request = HttpRequest.newBuilder()
+              .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
               .POST(HttpRequest.BodyPublishers.noBody())
               .build();
 

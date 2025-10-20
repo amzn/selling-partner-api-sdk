@@ -70,12 +70,13 @@ for (const path of models) {
                 .map((operation) => operation[1])
         ).forEach((operation) => {
         const operationId = operation.operationId.replace(/^./, operation.operationId[0].toLowerCase())
+        const tag = operation.tags ? operation.tags[0].replace(/\W/g, "").toLowerCase() : "default"
         try {
             const successStatus = ["200", "201", "202"]
             const successObjects = Object.keys(operation['responses']).filter((key) => successStatus.includes(key))
             if (Array.isArray(successObjects) && successObjects.length > 0) {
                 const response = JSON.stringify(operation['responses'][successObjects[0]]['x-amzn-api-sandbox']['static'][0]['response'])
-                fs.writeFileSync(`res/responses/${operationId}Response.json`, response)
+                fs.writeFileSync(`res/responses/${tag}-${operationId}Response.json`, response)
             }
         } catch (e) {
             console.log(`Unable to write response file for operation ${operationId}`)
@@ -83,7 +84,7 @@ for (const path of models) {
     })
 
     // Requests
-    Object.values(content.paths)
+    /*Object.values(content.paths)
         .flatMap((path) =>
             Object.entries(path)
                 .filter((operation) => operations.includes(operation[0]))
@@ -100,5 +101,5 @@ for (const path of models) {
         } catch (e) {
             console.log(`Unable to write request file for operation ${operationId}`)
         }
-    })
+    })*/
 }

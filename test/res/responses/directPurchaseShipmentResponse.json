@@ -1,1 +1,0 @@
-{"payload": {"shipmentId":  "1234", "packageDocumentDetailList": [{"packageClientReferenceId": "1234", "packageDocuments": [{"type": "LABEL", "format": "PDF", "contents": "abcd"}]}]}}
