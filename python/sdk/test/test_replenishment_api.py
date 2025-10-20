@@ -58,24 +58,24 @@ class TestReplenishmentApi(unittest.TestCase):
 
 
     def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
-        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+        if api is "financesv0" or api is "financesv2024" or api is "transfers":
             api = "default"
-        if api is "vendorDfOrders":
+        if api is "vendordforders":
             api = "vendororders"
         if api is "replenishment":
             if response is "get_selling_partner_metrics":
                 api = "sellingpartners"
             else:
                 api = "offers"
-        if api is "productPricingV2022":
+        if api is "productpricingv2022":
             api = "productpricing"
-        if api is "vendorDfTransaction":
+        if api is "vendordftransaction":
             api = "vendortransaction"
-        if api is "vendorShipment":
+        if api is "vendorshipment":
             api = "vendorshipping"
-        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+        if api is "fbainboundv0" or api is "fbainboundeligibility":
             api = "fbainbound"
-        if api is "listingsRestrictions":
+        if api is "listingsrestrictions":
             api = "listings"
         url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
