@@ -53,7 +53,7 @@ public class AccountsApiTest {
 
     @Test
     public void getAccountTest() throws Exception {
-        instructBackendMock("getAccount", "200");
+        instructBackendMock("Accounts", "getAccount", "200");
         String accountId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -65,7 +65,7 @@ public class AccountsApiTest {
 
     @Test
     public void listAccountBalancesTest() throws Exception {
-        instructBackendMock("listAccountBalances", "200");
+        instructBackendMock("Accounts", "listAccountBalances", "200");
         String accountId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -77,7 +77,7 @@ public class AccountsApiTest {
 
     @Test
     public void listAccountsTest() throws Exception {
-        instructBackendMock("listAccounts", "200");
+        instructBackendMock("Accounts", "listAccounts", "200");
         String marketplaceId = easyRandom.nextObject(String.class);
 
         ApiResponse<BankAccountListing> response = api.listAccountsWithHttpInfo(marketplaceId);
@@ -86,9 +86,10 @@ public class AccountsApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W| ", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

@@ -51,7 +51,7 @@ public class DefaultApiTest {
 
     @Test
     public void listTransactionsTest() throws Exception {
-        instructBackendMock("listTransactions", "200");
+        instructBackendMock("default", "listTransactions", "200");
         OffsetDateTime postedAfter = easyRandom.nextObject(OffsetDateTime.class);
 
         ApiResponse<ListTransactionsResponse> response =
@@ -61,9 +61,10 @@ public class DefaultApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        basename = basename.replaceAll("/\"W| ", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 
