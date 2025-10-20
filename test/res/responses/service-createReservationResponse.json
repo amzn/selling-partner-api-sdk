@@ -1,1 +1,1 @@
-{"payload":{"reservation":{"reservationId":"457"}}}
+{"payload": {"reservation": {"reservationId": "457", "type": "APPOINTMENT", "availability": {"startTime": "2024-05-01T10:00:00Z", "endTime": "2024-05-01T11:00:00Z", "capacity": 1}}}}
