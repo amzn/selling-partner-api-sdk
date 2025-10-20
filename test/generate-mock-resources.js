@@ -79,6 +79,7 @@ for (const path of models) {
                 fs.writeFileSync(`res/responses/${tag}-${operationId}Response.json`, response)
             }
         } catch (e) {
+            console.log(e)
             console.log(`Unable to write response file for operation ${operationId}`)
         }
     })

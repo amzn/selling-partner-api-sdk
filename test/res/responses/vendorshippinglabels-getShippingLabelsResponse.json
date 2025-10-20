@@ -1,0 +1,1 @@
+{"shippingLabels": [{"purchaseOrderNumber": "abcd1234", "sellingParty": {"partyId": "123456789"}, "shipFromParty": {"partyId": "123456789"}, "labelFormat": "PNG", "labelData": [{"content":  "base64encoded"}]}]}

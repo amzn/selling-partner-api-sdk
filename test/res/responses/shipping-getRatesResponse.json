@@ -1,0 +1,1 @@
+{"payload":  {"requestToken": "1234", "rates":  [{"rateId": "1234", "carrierId": "1234", "carrierName": "DHL", "serviceId":  "1234", "serviceName": "abcd", "totalCharge": {"value": 7.99, "unit": "USD"}, "promise":  {}, "supportedDocumentSpecifications":  [], "availableValueAddedServiceGroups": [], "requiresAdditionalInputs":  false}], "ineligibleRates": []}}
