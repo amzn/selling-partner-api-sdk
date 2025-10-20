@@ -72,7 +72,7 @@ for (const path of models) {
         const operationId = operation.operationId.replace(/^./, operation.operationId[0].toLowerCase())
         const tag = operation.tags ? operation.tags[0].replace(/\W/g, "").toLowerCase() : "default"
         try {
-            const successStatus = ["200", "201", "202"]
+            const successStatus = ["200", "201", "202", "207"]
             const successObjects = Object.keys(operation['responses']).filter((key) => successStatus.includes(key))
             if (Array.isArray(successObjects) && successObjects.length > 0) {
                 const response = JSON.stringify(operation['responses'][successObjects[0]]['x-amzn-api-sandbox']['static'][0]['response'])
