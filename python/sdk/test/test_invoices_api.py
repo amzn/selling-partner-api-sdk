@@ -35,7 +35,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_create_invoices_export(self):
         body = self._get_random_value("ExportInvoicesRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_invoices_export"), "202")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("create_invoices_export"), "202")
         response = self.api.create_invoices_export_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
@@ -45,7 +45,7 @@ class TestInvoicesApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         invoice_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoice"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoice"), "200")
         response = self.api.get_invoice_with_http_info(marketplace_id, invoice_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices"), "200")
         response = self.api.get_invoices_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -63,7 +63,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_attributes(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_attributes"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_attributes"), "200")
         response = self.api.get_invoices_attributes_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -72,7 +72,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_document(self):
         invoices_document_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_document"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_document"), "200")
         response = self.api.get_invoices_document_with_http_info(invoices_document_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -81,7 +81,7 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_export(self):
         export_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_export"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_export"), "200")
         response = self.api.get_invoices_export_with_http_info(export_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -90,28 +90,34 @@ class TestInvoicesApi(unittest.TestCase):
     def test_get_invoices_exports(self):
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_invoices_exports"), "200")
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_invoices_exports"), "200")
         response = self.api.get_invoices_exports_with_http_info(marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.invoices_v2024_06_19" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.invoices_v2024_06_19" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.invoices_v2024_06_19" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.invoices_v2024_06_19" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.invoices_v2024_06_19" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.invoices_v2024_06_19" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+            api = "default"
+        if api is "vendorDfOrders":
+            api = "vendororders"
+        if api is "replenishment":
+            if response is "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api is "productPricingV2022":
+            api = "productpricing"
+        if api is "vendorDfTransaction":
+            api = "vendortransaction"
+        if api is "vendorShipment":
+            api = "vendorshipping"
+        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+            api = "fbainbound"
+        if api is "listingsRestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

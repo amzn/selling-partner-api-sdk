@@ -35,7 +35,7 @@ class TestVendorShippingApi(unittest.TestCase):
     def test_get_packing_slip(self):
         purchase_order_number = self._get_random_value("str", "^[a-zA-Z0-9]+$".replace("*$", "{"+ "0" + "}$"))
         
-        self.instruct_backend_mock(self.to_camel_case("get_packing_slip"), "200")
+        self.instruct_backend_mock("vendorShipping".casefold().replace(' ', ''), self.to_camel_case("get_packing_slip"), "200")
         response = self.api.get_packing_slip_with_http_info(purchase_order_number, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,7 +45,7 @@ class TestVendorShippingApi(unittest.TestCase):
         created_after = self._get_random_value("datetime", None)
         created_before = self._get_random_value("datetime", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_packing_slips"), "200")
+        self.instruct_backend_mock("vendorShipping".casefold().replace(' ', ''), self.to_camel_case("get_packing_slips"), "200")
         response = self.api.get_packing_slips_with_http_info(created_after, created_before, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestVendorShippingApi(unittest.TestCase):
     def test_submit_shipment_confirmations(self):
         body = self._get_random_value("SubmitShipmentConfirmationsRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("submit_shipment_confirmations"), "202")
+        self.instruct_backend_mock("vendorShipping".casefold().replace(' ', ''), self.to_camel_case("submit_shipment_confirmations"), "202")
         response = self.api.submit_shipment_confirmations_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
@@ -63,28 +63,34 @@ class TestVendorShippingApi(unittest.TestCase):
     def test_submit_shipment_status_updates(self):
         body = self._get_random_value("SubmitShipmentStatusUpdatesRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("submit_shipment_status_updates"), "202")
+        self.instruct_backend_mock("vendorShipping".casefold().replace(' ', ''), self.to_camel_case("submit_shipment_status_updates"), "202")
         response = self.api.submit_shipment_status_updates_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.vendor_direct_fulfillment_shipping_v2021_12_28" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+            api = "default"
+        if api is "vendorDfOrders":
+            api = "vendororders"
+        if api is "replenishment":
+            if response is "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api is "productPricingV2022":
+            api = "productpricing"
+        if api is "vendorDfTransaction":
+            api = "vendortransaction"
+        if api is "vendorShipment":
+            api = "vendorshipping"
+        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+            api = "fbainbound"
+        if api is "listingsRestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

@@ -35,7 +35,7 @@ class TestProductPricingV2022Api(unittest.TestCase):
     def test_get_competitive_summary(self):
         requests = self._get_random_value("CompetitiveSummaryBatchRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_competitive_summary"), "200")
+        self.instruct_backend_mock("productPricingV2022".casefold().replace(' ', ''), self.to_camel_case("get_competitive_summary"), "200")
         response = self.api.get_competitive_summary_with_http_info(requests, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,28 +44,34 @@ class TestProductPricingV2022Api(unittest.TestCase):
     def test_get_featured_offer_expected_price_batch(self):
         get_featured_offer_expected_price_batch_request_body = self._get_random_value("GetFeaturedOfferExpectedPriceBatchRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_featured_offer_expected_price_batch"), "200")
+        self.instruct_backend_mock("productPricingV2022".casefold().replace(' ', ''), self.to_camel_case("get_featured_offer_expected_price_batch"), "200")
         response = self.api.get_featured_offer_expected_price_batch_with_http_info(get_featured_offer_expected_price_batch_request_body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.product_pricing_v2022_05_01" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.product_pricing_v2022_05_01" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.product_pricing_v2022_05_01" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.product_pricing_v2022_05_01" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.product_pricing_v2022_05_01" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.product_pricing_v2022_05_01" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+            api = "default"
+        if api is "vendorDfOrders":
+            api = "vendororders"
+        if api is "replenishment":
+            if response is "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api is "productPricingV2022":
+            api = "productpricing"
+        if api is "vendorDfTransaction":
+            api = "vendortransaction"
+        if api is "vendorShipment":
+            api = "vendorshipping"
+        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+            api = "fbainbound"
+        if api is "listingsRestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

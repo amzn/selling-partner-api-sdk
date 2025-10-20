@@ -13,7 +13,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.external_fulfillment_shipments_v2024_09_11.address import Address
 from spapi.models.external_fulfillment_shipments_v2024_09_11.amount import Amount
