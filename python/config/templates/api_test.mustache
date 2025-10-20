@@ -36,7 +36,7 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
     def test_{{operationId}}(self):
         {{#allParams}}{{#required}}{{paramName}} = {{#isArray}}[self._get_random_value("{{{dataType}}}") for _ in range(1)]{{/isArray}}{{^isArray}}self._get_random_value("{{dataType}}", {{#pattern}}"{{{vendorExtensions.x-regex}}}".replace("*$", "{"+ "{{#minLength}}{{{minLength}}}{{/minLength}}{{^minLength}}0{{/minLength}}{{#maxLength}},{{{maxLength}}}{{/maxLength}}" + "}$"){{/pattern}}{{^pattern}}None{{/pattern}}){{/isArray}}
         {{/required}}{{/allParams}}
-        self.instruct_backend_mock(self.to_camel_case("{{operationId}}"), "{{responses.0.code}}")
+        self.instruct_backend_mock("{{tags.0.name}}".casefold().replace(' ', ''), self.to_camel_case("{{operationId}}"), "{{responses.0.code}}")
         response = self.api.{{operationId}}_with_http_info({{#allParams}}{{#required}}{{paramName}}, {{/required}}{{/allParams}})
         {{#returnType}}
         self.assertEqual({{responses.0.code}}, response[1])
@@ -47,21 +47,27 @@ class {{#operations}}Test{{classname}}(unittest.TestCase):
    {{/operation}}
 {{/operations}}
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "{{apiPackage}}" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "{{apiPackage}}" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "{{apiPackage}}" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "{{apiPackage}}" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "{{apiPackage}}" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "{{apiPackage}}" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+            api = "default"
+        if api is "vendorDfOrders":
+            api = "vendororders"
+        if api is "replenishment":
+            if response is "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api is "productPricingV2022":
+            api = "productpricing"
+        if api is "vendorDfTransaction":
+            api = "vendortransaction"
+        if api is "vendorShipment":
+            api = "vendorshipping"
+        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+            api = "fbainbound"
+        if api is "listingsRestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):
