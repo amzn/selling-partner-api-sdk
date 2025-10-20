@@ -55,8 +55,8 @@ namespace {{packageName}}.Test.{{apiPackage}}
         public void {{operationId}}Test()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("{{operationId}}") + "/code/{{responses.0.code}}";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "{{operationId}}"));
+            var url = "http://localhost:3000/response/" + FormatApiName("{{tags.0.name}}") + "-" + FormatOperationId("{{operationId}}") + "/code/{{responses.0.code}}";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             {{#allParams}}{{#required}}
             {{{dataType}}} {{paramName}} = fixture.Create<{{{dataType}}}>();
@@ -75,19 +75,13 @@ namespace {{packageName}}.Test.{{apiPackage}}
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("{{apiPackage}}".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("{{apiPackage}}".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("{{apiPackage}}".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("{{apiPackage}}".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("{{apiPackage}}".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("{{apiPackage}}".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }
