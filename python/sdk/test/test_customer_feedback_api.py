@@ -36,7 +36,7 @@ class TestCustomerFeedbackApi(unittest.TestCase):
         browse_node_id = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_browse_node_return_topics"), "200")
+        self.instruct_backend_mock("customerFeedback".casefold().replace(' ', ''), self.to_camel_case("get_browse_node_return_topics"), "200")
         response = self.api.get_browse_node_return_topics_with_http_info(browse_node_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -46,7 +46,7 @@ class TestCustomerFeedbackApi(unittest.TestCase):
         browse_node_id = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_browse_node_return_trends"), "200")
+        self.instruct_backend_mock("customerFeedback".casefold().replace(' ', ''), self.to_camel_case("get_browse_node_return_trends"), "200")
         response = self.api.get_browse_node_return_trends_with_http_info(browse_node_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -57,7 +57,7 @@ class TestCustomerFeedbackApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         sort_by = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_browse_node_review_topics"), "200")
+        self.instruct_backend_mock("customerFeedback".casefold().replace(' ', ''), self.to_camel_case("get_browse_node_review_topics"), "200")
         response = self.api.get_browse_node_review_topics_with_http_info(browse_node_id, marketplace_id, sort_by, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -67,7 +67,7 @@ class TestCustomerFeedbackApi(unittest.TestCase):
         browse_node_id = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_browse_node_review_trends"), "200")
+        self.instruct_backend_mock("customerFeedback".casefold().replace(' ', ''), self.to_camel_case("get_browse_node_review_trends"), "200")
         response = self.api.get_browse_node_review_trends_with_http_info(browse_node_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -77,7 +77,7 @@ class TestCustomerFeedbackApi(unittest.TestCase):
         asin = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_item_browse_node"), "200")
+        self.instruct_backend_mock("customerFeedback".casefold().replace(' ', ''), self.to_camel_case("get_item_browse_node"), "200")
         response = self.api.get_item_browse_node_with_http_info(asin, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -88,7 +88,7 @@ class TestCustomerFeedbackApi(unittest.TestCase):
         marketplace_id = self._get_random_value("str", None)
         sort_by = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_item_review_topics"), "200")
+        self.instruct_backend_mock("customerFeedback".casefold().replace(' ', ''), self.to_camel_case("get_item_review_topics"), "200")
         response = self.api.get_item_review_topics_with_http_info(asin, marketplace_id, sort_by, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -98,28 +98,34 @@ class TestCustomerFeedbackApi(unittest.TestCase):
         asin = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_item_review_trends"), "200")
+        self.instruct_backend_mock("customerFeedback".casefold().replace(' ', ''), self.to_camel_case("get_item_review_trends"), "200")
         response = self.api.get_item_review_trends_with_http_info(asin, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.customer_feedback_2024_06_01" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.customer_feedback_2024_06_01" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.customer_feedback_2024_06_01" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.customer_feedback_2024_06_01" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.customer_feedback_2024_06_01" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.customer_feedback_2024_06_01" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+            api = "default"
+        if api is "vendorDfOrders":
+            api = "vendororders"
+        if api is "replenishment":
+            if response is "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api is "productPricingV2022":
+            api = "productpricing"
+        if api is "vendorDfTransaction":
+            api = "vendortransaction"
+        if api is "vendorShipment":
+            api = "vendorshipping"
+        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+            api = "fbainbound"
+        if api is "listingsRestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

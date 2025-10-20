@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.fulfillment_inbound_v0.asin_prep_instructions import ASINPrepInstructions
 from spapi.models.fulfillment_inbound_v0.address import Address

@@ -35,14 +35,14 @@ class TestSupplySourcesApi(unittest.TestCase):
     def test_archive_supply_source(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("archive_supply_source"), "204")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("archive_supply_source"), "204")
         response = self.api.archive_supply_source_with_http_info(supply_source_id, )
         pass
 
     def test_create_supply_source(self):
         payload = self._get_random_value("CreateSupplySourceRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_supply_source"), "200")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("create_supply_source"), "200")
         response = self.api.create_supply_source_with_http_info(payload, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -51,7 +51,7 @@ class TestSupplySourcesApi(unittest.TestCase):
     def test_get_supply_source(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_supply_source"), "200")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("get_supply_source"), "200")
         response = self.api.get_supply_source_with_http_info(supply_source_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -59,7 +59,7 @@ class TestSupplySourcesApi(unittest.TestCase):
 
     def test_get_supply_sources(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_supply_sources"), "200")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("get_supply_sources"), "200")
         response = self.api.get_supply_sources_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -68,33 +68,39 @@ class TestSupplySourcesApi(unittest.TestCase):
     def test_update_supply_source(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("update_supply_source"), "204")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("update_supply_source"), "204")
         response = self.api.update_supply_source_with_http_info(supply_source_id, )
         pass
 
     def test_update_supply_source_status(self):
         supply_source_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("update_supply_source_status"), "204")
+        self.instruct_backend_mock("supplySources".casefold().replace(' ', ''), self.to_camel_case("update_supply_source_status"), "204")
         response = self.api.update_supply_source_status_with_http_info(supply_source_id, )
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.supply_sources_v2020_07_01" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.supply_sources_v2020_07_01" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.supply_sources_v2020_07_01" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.supply_sources_v2020_07_01" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.supply_sources_v2020_07_01" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.supply_sources_v2020_07_01" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+            api = "default"
+        if api is "vendorDfOrders":
+            api = "vendororders"
+        if api is "replenishment":
+            if response is "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api is "productPricingV2022":
+            api = "productpricing"
+        if api is "vendorDfTransaction":
+            api = "vendortransaction"
+        if api is "vendorShipment":
+            api = "vendorshipping"
+        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+            api = "fbainbound"
+        if api is "listingsRestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

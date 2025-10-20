@@ -35,7 +35,7 @@ class TestEasyShipApi(unittest.TestCase):
     def test_create_scheduled_package(self):
         create_scheduled_package_request = self._get_random_value("CreateScheduledPackageRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_scheduled_package"), "200")
+        self.instruct_backend_mock("easyShip".casefold().replace(' ', ''), self.to_camel_case("create_scheduled_package"), "200")
         response = self.api.create_scheduled_package_with_http_info(create_scheduled_package_request, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -44,7 +44,7 @@ class TestEasyShipApi(unittest.TestCase):
     def test_create_scheduled_package_bulk(self):
         create_scheduled_packages_request = self._get_random_value("CreateScheduledPackagesRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_scheduled_package_bulk"), "200")
+        self.instruct_backend_mock("easyShip".casefold().replace(' ', ''), self.to_camel_case("create_scheduled_package_bulk"), "200")
         response = self.api.create_scheduled_package_bulk_with_http_info(create_scheduled_packages_request, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestEasyShipApi(unittest.TestCase):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_scheduled_package"), "200")
+        self.instruct_backend_mock("easyShip".casefold().replace(' ', ''), self.to_camel_case("get_scheduled_package"), "200")
         response = self.api.get_scheduled_package_with_http_info(amazon_order_id, marketplace_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -62,7 +62,7 @@ class TestEasyShipApi(unittest.TestCase):
 
     def test_list_handover_slots(self):
         
-        self.instruct_backend_mock(self.to_camel_case("list_handover_slots"), "200")
+        self.instruct_backend_mock("easyShip".casefold().replace(' ', ''), self.to_camel_case("list_handover_slots"), "200")
         response = self.api.list_handover_slots_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -70,28 +70,34 @@ class TestEasyShipApi(unittest.TestCase):
 
     def test_update_scheduled_packages(self):
         
-        self.instruct_backend_mock(self.to_camel_case("update_scheduled_packages"), "200")
+        self.instruct_backend_mock("easyShip".casefold().replace(' ', ''), self.to_camel_case("update_scheduled_packages"), "200")
         response = self.api.update_scheduled_packages_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.easyship_v2022_03_23" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.easyship_v2022_03_23" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.easyship_v2022_03_23" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.easyship_v2022_03_23" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.easyship_v2022_03_23" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.easyship_v2022_03_23" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api is "financesV0" or api is "financesV2024" or api is "transfers":
+            api = "default"
+        if api is "vendorDfOrders":
+            api = "vendororders"
+        if api is "replenishment":
+            if response is "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api is "productPricingV2022":
+            api = "productpricing"
+        if api is "vendorDfTransaction":
+            api = "vendortransaction"
+        if api is "vendorShipment":
+            api = "vendorshipping"
+        if api is "fbaInboundV0" or api is "fbaInboundEligibility":
+            api = "fbainbound"
+        if api is "listingsRestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):
