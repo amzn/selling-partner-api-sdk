@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void CreateDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateDestination") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateDestination"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("CreateDestination") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateDestinationRequest body = fixture.Create<CreateDestinationRequest>();
@@ -79,8 +79,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void CreateSubscriptionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateSubscription") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateSubscription"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("CreateSubscription") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string notificationType = fixture.Create<string>();
@@ -98,8 +98,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void DeleteDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("DeleteDestination") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "DeleteDestination"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("DeleteDestination") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string destinationId = fixture.Create<string>();
@@ -115,8 +115,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void DeleteSubscriptionByIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("DeleteSubscriptionById") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "DeleteSubscriptionById"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("DeleteSubscriptionById") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string subscriptionId = fixture.Create<string>();
@@ -134,8 +134,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetDestination") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetDestination"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetDestination") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string destinationId = fixture.Create<string>();
@@ -151,8 +151,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetDestinationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetDestinations") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetDestinations"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetDestinations") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -166,8 +166,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetSubscriptionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetSubscription") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetSubscription"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetSubscription") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string notificationType = fixture.Create<string>();
@@ -183,8 +183,8 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetSubscriptionByIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetSubscriptionById") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetSubscriptionById"));
+            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetSubscriptionById") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string subscriptionId = fixture.Create<string>();
@@ -203,19 +203,13 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.notifications.v1".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.notifications.v1".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.notifications.v1".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.notifications.v1".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.notifications.v1".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.notifications.v1".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

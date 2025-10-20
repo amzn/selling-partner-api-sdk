@@ -63,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void CancelShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelShipment"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("CancelShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -80,8 +80,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void CreateClaimTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateClaim") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateClaim"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("CreateClaim") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateClaimRequest body = fixture.Create<CreateClaimRequest>();
@@ -97,8 +97,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void DirectPurchaseShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("DirectPurchaseShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "DirectPurchaseShipment"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("DirectPurchaseShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             DirectPurchaseRequest body = fixture.Create<DirectPurchaseRequest>();
@@ -114,8 +114,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GenerateCollectionFormTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GenerateCollectionForm") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GenerateCollectionForm"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GenerateCollectionForm") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GenerateCollectionFormRequest body = fixture.Create<GenerateCollectionFormRequest>();
@@ -131,8 +131,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetAccessPointsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetAccessPoints") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetAccessPoints"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetAccessPoints") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<string> accessPointTypes = fixture.Create<List<string>>();
@@ -152,8 +152,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetAdditionalInputsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetAdditionalInputs") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetAdditionalInputs"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetAdditionalInputs") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string requestToken = fixture.Create<string>();
@@ -171,8 +171,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCarrierAccountFormInputsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetCarrierAccountFormInputs") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetCarrierAccountFormInputs"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCarrierAccountFormInputs") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -186,8 +186,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCarrierAccountsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetCarrierAccounts") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetCarrierAccounts"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCarrierAccounts") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetCarrierAccountsRequest body = fixture.Create<GetCarrierAccountsRequest>();
@@ -203,8 +203,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCollectionFormTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetCollectionForm") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetCollectionForm"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCollectionForm") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string collectionFormId = fixture.Create<string>();
@@ -220,8 +220,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCollectionFormHistoryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetCollectionFormHistory") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetCollectionFormHistory"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCollectionFormHistory") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetCollectionFormHistoryRequest body = fixture.Create<GetCollectionFormHistoryRequest>();
@@ -237,8 +237,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetRatesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetRates") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetRates"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetRates") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetRatesRequest body = fixture.Create<GetRatesRequest>();
@@ -254,8 +254,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetShipmentDocumentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetShipmentDocuments") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetShipmentDocuments"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetShipmentDocuments") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -273,8 +273,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetTrackingTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetTracking") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetTracking"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetTracking") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string trackingId = fixture.Create<string>();
@@ -292,8 +292,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetUnmanifestedShipmentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetUnmanifestedShipments") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetUnmanifestedShipments"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetUnmanifestedShipments") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetUnmanifestedShipmentsRequest body = fixture.Create<GetUnmanifestedShipmentsRequest>();
@@ -309,8 +309,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void LinkCarrierAccountTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("LinkCarrierAccount") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "LinkCarrierAccount"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("LinkCarrierAccount") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string carrierId = fixture.Create<string>();
@@ -328,8 +328,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void LinkCarrierAccount_0Test()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("LinkCarrierAccount_0") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "LinkCarrierAccount_0"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("LinkCarrierAccount_0") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string carrierId = fixture.Create<string>();
@@ -347,8 +347,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void OneClickShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("OneClickShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "OneClickShipment"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("OneClickShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             OneClickShipmentRequest body = fixture.Create<OneClickShipmentRequest>();
@@ -364,8 +364,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void PurchaseShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("PurchaseShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "PurchaseShipment"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("PurchaseShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             PurchaseShipmentRequest body = fixture.Create<PurchaseShipmentRequest>();
@@ -381,8 +381,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void SubmitNdrFeedbackTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SubmitNdrFeedback") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SubmitNdrFeedback"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("SubmitNdrFeedback") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             SubmitNdrFeedbackRequest body = fixture.Create<SubmitNdrFeedbackRequest>();
@@ -396,8 +396,8 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void UnlinkCarrierAccountTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UnlinkCarrierAccount") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UnlinkCarrierAccount"));
+            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("UnlinkCarrierAccount") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string carrierId = fixture.Create<string>();
@@ -416,19 +416,13 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.shipping.v2".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.shipping.v2".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.shipping.v2".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.shipping.v2".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.shipping.v2".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.shipping.v2".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

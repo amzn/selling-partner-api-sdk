@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void CreateTransferScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateTransferSchedule") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateTransferSchedule"));
+            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("CreateTransferSchedule") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string destAccountDigitalSignature = fixture.Create<string>();
@@ -85,8 +85,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void DeleteScheduleTransactionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("DeleteScheduleTransaction") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "DeleteScheduleTransaction"));
+            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("DeleteScheduleTransaction") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string transferScheduleId = fixture.Create<string>();
@@ -104,8 +104,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void GetTransferScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetTransferSchedule") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetTransferSchedule"));
+            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("GetTransferSchedule") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string transferScheduleId = fixture.Create<string>();
@@ -123,8 +123,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void ListTransferSchedulesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListTransferSchedules") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListTransferSchedules"));
+            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("ListTransferSchedules") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string accountId = fixture.Create<string>();
@@ -142,8 +142,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void UpdateTransferScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateTransferSchedule") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateTransferSchedule"));
+            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("UpdateTransferSchedule") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string destAccountDigitalSignature = fixture.Create<string>();
@@ -166,19 +166,13 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.sellerWallet.v2024_03_01".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.sellerWallet.v2024_03_01".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.sellerWallet.v2024_03_01".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.sellerWallet.v2024_03_01".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.sellerWallet.v2024_03_01".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.sellerWallet.v2024_03_01".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

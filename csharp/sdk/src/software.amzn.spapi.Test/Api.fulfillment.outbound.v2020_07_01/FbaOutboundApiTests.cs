@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void CancelFulfillmentOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelFulfillmentOrder") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelFulfillmentOrder"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("CancelFulfillmentOrder") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerFulfillmentOrderId = fixture.Create<string>();
@@ -79,8 +79,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void CreateFulfillmentOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateFulfillmentOrder") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateFulfillmentOrder"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("CreateFulfillmentOrder") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateFulfillmentOrderRequest body = fixture.Create<CreateFulfillmentOrderRequest>();
@@ -96,8 +96,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void CreateFulfillmentReturnTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateFulfillmentReturn") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateFulfillmentReturn"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("CreateFulfillmentReturn") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerFulfillmentOrderId = fixture.Create<string>();
@@ -115,8 +115,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void DeliveryOffersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("DeliveryOffers") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "DeliveryOffers"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("DeliveryOffers") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetDeliveryOffersRequest body = fixture.Create<GetDeliveryOffersRequest>();
@@ -132,8 +132,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void GetFeatureInventoryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFeatureInventory") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFeatureInventory"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("GetFeatureInventory") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -151,8 +151,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void GetFeatureSKUTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFeatureSKU") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFeatureSKU"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("GetFeatureSKU") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -172,8 +172,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void GetFeaturesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFeatures") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFeatures"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("GetFeatures") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -189,8 +189,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void GetFulfillmentOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFulfillmentOrder") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFulfillmentOrder"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("GetFulfillmentOrder") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerFulfillmentOrderId = fixture.Create<string>();
@@ -206,8 +206,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void GetFulfillmentPreviewTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFulfillmentPreview") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFulfillmentPreview"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("GetFulfillmentPreview") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetFulfillmentPreviewRequest body = fixture.Create<GetFulfillmentPreviewRequest>();
@@ -223,8 +223,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void GetPackageTrackingDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetPackageTrackingDetails") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetPackageTrackingDetails"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("GetPackageTrackingDetails") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -238,8 +238,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void ListAllFulfillmentOrdersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListAllFulfillmentOrders") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListAllFulfillmentOrders"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("ListAllFulfillmentOrders") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -253,8 +253,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void ListReturnReasonCodesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListReturnReasonCodes") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListReturnReasonCodes"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("ListReturnReasonCodes") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerSku = fixture.Create<string>();
@@ -270,8 +270,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void SubmitFulfillmentOrderStatusUpdateTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SubmitFulfillmentOrderStatusUpdate") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SubmitFulfillmentOrderStatusUpdate"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("SubmitFulfillmentOrderStatusUpdate") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerFulfillmentOrderId = fixture.Create<string>();
@@ -289,8 +289,8 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         public void UpdateFulfillmentOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateFulfillmentOrder") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateFulfillmentOrder"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fbaOutbound") + "-" + FormatOperationId("UpdateFulfillmentOrder") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerFulfillmentOrderId = fixture.Create<string>();
@@ -309,19 +309,13 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.fulfillment.outbound.v2020_07_01".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.fulfillment.outbound.v2020_07_01".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.fulfillment.outbound.v2020_07_01".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.fulfillment.outbound.v2020_07_01".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.fulfillment.outbound.v2020_07_01".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.fulfillment.outbound.v2020_07_01".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

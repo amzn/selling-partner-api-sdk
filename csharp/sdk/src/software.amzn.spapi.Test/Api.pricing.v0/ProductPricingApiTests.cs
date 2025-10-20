@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetCompetitivePricingTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetCompetitivePricing") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetCompetitivePricing"));
+            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetCompetitivePricing") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -81,8 +81,8 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetItemOffersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetItemOffers") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetItemOffers"));
+            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetItemOffers") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -102,8 +102,8 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetItemOffersBatchTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetItemOffersBatch") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetItemOffersBatch"));
+            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetItemOffersBatch") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetItemOffersBatchRequest getItemOffersBatchRequestBody = fixture.Create<GetItemOffersBatchRequest>();
@@ -119,8 +119,8 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetListingOffersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetListingOffers") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetListingOffers"));
+            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetListingOffers") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -140,8 +140,8 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetListingOffersBatchTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetListingOffersBatch") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetListingOffersBatch"));
+            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetListingOffersBatch") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetListingOffersBatchRequest getListingOffersBatchRequestBody = fixture.Create<GetListingOffersBatchRequest>();
@@ -157,8 +157,8 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetPricingTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetPricing") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetPricing"));
+            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetPricing") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -177,19 +177,13 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.pricing.v0".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.pricing.v0".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.pricing.v0".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.pricing.v0".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.pricing.v0".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.pricing.v0".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

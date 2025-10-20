@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void CreateInvoicesExportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateInvoicesExport") + "/code/202";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateInvoicesExport"));
+            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("CreateInvoicesExport") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             ExportInvoicesRequest body = fixture.Create<ExportInvoicesRequest>();
@@ -79,8 +79,8 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoiceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInvoice") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInvoice"));
+            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoice") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -98,8 +98,8 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInvoices") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInvoices"));
+            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoices") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -115,8 +115,8 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesAttributesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInvoicesAttributes") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInvoicesAttributes"));
+            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesAttributes") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -132,8 +132,8 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInvoicesDocument") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInvoicesDocument"));
+            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string invoicesDocumentId = fixture.Create<string>();
@@ -149,8 +149,8 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesExportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInvoicesExport") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInvoicesExport"));
+            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesExport") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string exportId = fixture.Create<string>();
@@ -166,8 +166,8 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesExportsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInvoicesExports") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInvoicesExports"));
+            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesExports") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -184,19 +184,13 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.invoices.v2024_06_19".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.invoices.v2024_06_19".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.invoices.v2024_06_19".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.invoices.v2024_06_19".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.invoices.v2024_06_19".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.invoices.v2024_06_19".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }
