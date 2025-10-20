@@ -258,7 +258,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         }
 
         private static string FormatApiName(string apiName) {
-            return apiName.ToLower();
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
         private static string FormatOperationId(string operationId) {

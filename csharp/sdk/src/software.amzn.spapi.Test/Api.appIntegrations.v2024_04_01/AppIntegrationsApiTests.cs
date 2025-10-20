@@ -113,7 +113,7 @@ namespace software.amzn.spapi.Test.Api.appIntegrations.v2024_04_01
         }
 
         private static string FormatApiName(string apiName) {
-            return apiName.ToLower();
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
         private static string FormatOperationId(string operationId) {
