@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void CancelInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelInbound") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelInbound"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("CancelInbound") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -77,8 +77,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void CheckInboundEligibilityTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CheckInboundEligibility") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CheckInboundEligibility"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("CheckInboundEligibility") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             InboundPackages body = fixture.Create<InboundPackages>();
@@ -94,8 +94,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void ConfirmInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ConfirmInbound") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ConfirmInbound"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("ConfirmInbound") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -109,8 +109,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void CreateInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateInbound") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateInbound"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("CreateInbound") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             InboundOrderCreationData body = fixture.Create<InboundOrderCreationData>();
@@ -126,8 +126,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void GetInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInbound") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInbound"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("GetInbound") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -143,8 +143,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void GetInboundShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInboundShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInboundShipment"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("GetInboundShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -160,8 +160,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void GetInboundShipmentLabelsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInboundShipmentLabels") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInboundShipmentLabels"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("GetInboundShipmentLabels") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -177,8 +177,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void ListInboundShipmentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListInboundShipments") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListInboundShipments"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("ListInboundShipments") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -192,8 +192,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void ListInventoryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListInventory") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListInventory"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("ListInventory") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -207,8 +207,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void UpdateInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateInbound") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateInbound"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("UpdateInbound") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -224,8 +224,8 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void UpdateInboundShipmentTransportDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateInboundShipmentTransportDetails") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateInboundShipmentTransportDetails"));
+            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("UpdateInboundShipmentTransportDetails") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -242,19 +242,13 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.awd.v2024_05_09".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.awd.v2024_05_09".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.awd.v2024_05_09".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.awd.v2024_05_09".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.awd.v2024_05_09".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.awd.v2024_05_09".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void CreateContentDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateContentDocument") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateContentDocument"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("CreateContentDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -81,8 +81,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void GetContentDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetContentDocument") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetContentDocument"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("GetContentDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string contentReferenceKey = fixture.Create<string>();
@@ -102,8 +102,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void ListContentDocumentAsinRelationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListContentDocumentAsinRelations") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListContentDocumentAsinRelations"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("ListContentDocumentAsinRelations") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string contentReferenceKey = fixture.Create<string>();
@@ -121,8 +121,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void PostContentDocumentApprovalSubmissionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("PostContentDocumentApprovalSubmission") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "PostContentDocumentApprovalSubmission"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("PostContentDocumentApprovalSubmission") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string contentReferenceKey = fixture.Create<string>();
@@ -140,8 +140,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void PostContentDocumentAsinRelationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("PostContentDocumentAsinRelations") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "PostContentDocumentAsinRelations"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("PostContentDocumentAsinRelations") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string contentReferenceKey = fixture.Create<string>();
@@ -161,8 +161,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void PostContentDocumentSuspendSubmissionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("PostContentDocumentSuspendSubmission") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "PostContentDocumentSuspendSubmission"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("PostContentDocumentSuspendSubmission") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string contentReferenceKey = fixture.Create<string>();
@@ -180,8 +180,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void SearchContentDocumentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SearchContentDocuments") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SearchContentDocuments"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("SearchContentDocuments") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -197,8 +197,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void SearchContentPublishRecordsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SearchContentPublishRecords") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SearchContentPublishRecords"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("SearchContentPublishRecords") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -216,8 +216,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void UpdateContentDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateContentDocument") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateContentDocument"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("UpdateContentDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string contentReferenceKey = fixture.Create<string>();
@@ -237,8 +237,8 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void ValidateContentDocumentAsinRelationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ValidateContentDocumentAsinRelations") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ValidateContentDocumentAsinRelations"));
+            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("ValidateContentDocumentAsinRelations") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -257,19 +257,13 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.aplusContent.v2020_11_01".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.aplusContent.v2020_11_01".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.aplusContent.v2020_11_01".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.aplusContent.v2020_11_01".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.aplusContent.v2020_11_01".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.aplusContent.v2020_11_01".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

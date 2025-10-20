@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.vendor.orders.v1
         public void GetPurchaseOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetPurchaseOrder") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetPurchaseOrder"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorOrders") + "-" + FormatOperationId("GetPurchaseOrder") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string purchaseOrderNumber = fixture.Create<string>();
@@ -79,8 +79,8 @@ namespace software.amzn.spapi.Test.Api.vendor.orders.v1
         public void GetPurchaseOrdersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetPurchaseOrders") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetPurchaseOrders"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorOrders") + "-" + FormatOperationId("GetPurchaseOrders") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -94,8 +94,8 @@ namespace software.amzn.spapi.Test.Api.vendor.orders.v1
         public void GetPurchaseOrdersStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetPurchaseOrdersStatus") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetPurchaseOrdersStatus"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorOrders") + "-" + FormatOperationId("GetPurchaseOrdersStatus") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -109,8 +109,8 @@ namespace software.amzn.spapi.Test.Api.vendor.orders.v1
         public void SubmitAcknowledgementTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SubmitAcknowledgement") + "/code/202";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SubmitAcknowledgement"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorOrders") + "-" + FormatOperationId("SubmitAcknowledgement") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             SubmitAcknowledgementRequest body = fixture.Create<SubmitAcknowledgementRequest>();
@@ -127,19 +127,13 @@ namespace software.amzn.spapi.Test.Api.vendor.orders.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.vendor.orders.v1".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.vendor.orders.v1".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.vendor.orders.v1".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.vendor.orders.v1".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.vendor.orders.v1".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.vendor.orders.v1".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

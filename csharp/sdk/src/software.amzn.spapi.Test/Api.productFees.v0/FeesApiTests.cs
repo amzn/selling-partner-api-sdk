@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
         public void GetMyFeesEstimateForASINTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetMyFeesEstimateForASIN") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetMyFeesEstimateForASIN"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fees") + "-" + FormatOperationId("GetMyFeesEstimateForASIN") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string asin = fixture.Create<string>();
@@ -81,8 +81,8 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
         public void GetMyFeesEstimateForSKUTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetMyFeesEstimateForSKU") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetMyFeesEstimateForSKU"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fees") + "-" + FormatOperationId("GetMyFeesEstimateForSKU") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerSKU = fixture.Create<string>();
@@ -100,8 +100,8 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
         public void GetMyFeesEstimatesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetMyFeesEstimates") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetMyFeesEstimates"));
+            var url = "http://localhost:3000/response/" + FormatApiName("fees") + "-" + FormatOperationId("GetMyFeesEstimates") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<FeesEstimateByIdRequest> body = fixture.Create<List<FeesEstimateByIdRequest>>();
@@ -118,19 +118,13 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.productFees.v0".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.productFees.v0".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.productFees.v0".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.productFees.v0".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.productFees.v0".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.productFees.v0".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

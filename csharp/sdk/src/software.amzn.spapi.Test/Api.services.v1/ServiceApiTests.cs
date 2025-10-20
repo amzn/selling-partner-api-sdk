@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void AddAppointmentForServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("AddAppointmentForServiceJobByServiceJobId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "AddAppointmentForServiceJobByServiceJobId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("AddAppointmentForServiceJobByServiceJobId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -81,8 +81,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void AssignAppointmentResourcesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("AssignAppointmentResources") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "AssignAppointmentResources"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("AssignAppointmentResources") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -102,8 +102,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CancelReservationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelReservation") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelReservation"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CancelReservation") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string reservationId = fixture.Create<string>();
@@ -121,8 +121,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CancelServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelServiceJobByServiceJobId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelServiceJobByServiceJobId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CancelServiceJobByServiceJobId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -140,8 +140,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CompleteServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CompleteServiceJobByServiceJobId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CompleteServiceJobByServiceJobId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CompleteServiceJobByServiceJobId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -157,8 +157,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CreateReservationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateReservation") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateReservation"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CreateReservation") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<string> marketplaceIds = fixture.Create<List<string>>();
@@ -176,8 +176,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CreateServiceDocumentUploadDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateServiceDocumentUploadDestination") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateServiceDocumentUploadDestination"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CreateServiceDocumentUploadDestination") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             ServiceUploadDocument body = fixture.Create<ServiceUploadDocument>();
@@ -193,8 +193,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetAppointmentSlotsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetAppointmentSlots") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetAppointmentSlots"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetAppointmentSlots") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string asin = fixture.Create<string>();
@@ -214,8 +214,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetAppointmmentSlotsByJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetAppointmmentSlotsByJobId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetAppointmmentSlotsByJobId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetAppointmmentSlotsByJobId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -233,8 +233,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetFixedSlotCapacityTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFixedSlotCapacity") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFixedSlotCapacity"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetFixedSlotCapacity") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string resourceId = fixture.Create<string>();
@@ -254,8 +254,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetRangeSlotCapacityTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetRangeSlotCapacity") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetRangeSlotCapacity"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetRangeSlotCapacity") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string resourceId = fixture.Create<string>();
@@ -275,8 +275,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetServiceJobByServiceJobId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetServiceJobByServiceJobId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetServiceJobByServiceJobId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -292,8 +292,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetServiceJobsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetServiceJobs") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetServiceJobs"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetServiceJobs") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<string> marketplaceIds = fixture.Create<List<string>>();
@@ -309,8 +309,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void RescheduleAppointmentForServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("RescheduleAppointmentForServiceJobByServiceJobId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "RescheduleAppointmentForServiceJobByServiceJobId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("RescheduleAppointmentForServiceJobByServiceJobId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -330,8 +330,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void SetAppointmentFulfillmentDataTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SetAppointmentFulfillmentData") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SetAppointmentFulfillmentData"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("SetAppointmentFulfillmentData") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string serviceJobId = fixture.Create<string>();
@@ -351,8 +351,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void UpdateReservationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateReservation") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateReservation"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("UpdateReservation") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string reservationId = fixture.Create<string>();
@@ -372,8 +372,8 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void UpdateScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateSchedule") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateSchedule"));
+            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("UpdateSchedule") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string resourceId = fixture.Create<string>();
@@ -394,19 +394,13 @@ namespace software.amzn.spapi.Test.Api.services.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.services.v1".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.services.v1".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.services.v1".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.services.v1".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.services.v1".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.services.v1".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

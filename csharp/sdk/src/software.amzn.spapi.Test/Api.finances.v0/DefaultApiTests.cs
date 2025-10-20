@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventGroupsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListFinancialEventGroups") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListFinancialEventGroups"));
+            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEventGroups") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -77,8 +77,8 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListFinancialEvents") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListFinancialEvents"));
+            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEvents") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -92,8 +92,8 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventsByGroupIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListFinancialEventsByGroupId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListFinancialEventsByGroupId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEventsByGroupId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string eventGroupId = fixture.Create<string>();
@@ -109,8 +109,8 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventsByOrderIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListFinancialEventsByOrderId") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListFinancialEventsByOrderId"));
+            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEventsByOrderId") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -127,19 +127,13 @@ namespace software.amzn.spapi.Test.Api.finances.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.finances.v0".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.finances.v0".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.finances.v0".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.finances.v0".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.finances.v0".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.finances.v0".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

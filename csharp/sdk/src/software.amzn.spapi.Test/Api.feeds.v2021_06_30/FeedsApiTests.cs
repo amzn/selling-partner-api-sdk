@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void CancelFeedTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelFeed") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelFeed"));
+            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("CancelFeed") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string feedId = fixture.Create<string>();
@@ -77,8 +77,8 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void CreateFeedTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateFeed") + "/code/202";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateFeed"));
+            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("CreateFeed") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateFeedSpecification body = fixture.Create<CreateFeedSpecification>();
@@ -94,8 +94,8 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void CreateFeedDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateFeedDocument") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateFeedDocument"));
+            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("CreateFeedDocument") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateFeedDocumentSpecification body = fixture.Create<CreateFeedDocumentSpecification>();
@@ -111,8 +111,8 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void GetFeedTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFeed") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFeed"));
+            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("GetFeed") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string feedId = fixture.Create<string>();
@@ -128,8 +128,8 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void GetFeedDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFeedDocument") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFeedDocument"));
+            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("GetFeedDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string feedDocumentId = fixture.Create<string>();
@@ -145,8 +145,8 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void GetFeedsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetFeeds") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetFeeds"));
+            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("GetFeeds") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -161,19 +161,13 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.feeds.v2021_06_30".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.feeds.v2021_06_30".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.feeds.v2021_06_30".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.feeds.v2021_06_30".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.feeds.v2021_06_30".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.feeds.v2021_06_30".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

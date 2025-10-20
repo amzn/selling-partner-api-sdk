@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void ConfirmShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ConfirmShipment") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ConfirmShipment"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("ConfirmShipment") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -79,8 +79,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetOrder") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetOrder"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrder") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -96,8 +96,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderAddressTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetOrderAddress") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetOrderAddress"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderAddress") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -113,8 +113,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderBuyerInfoTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetOrderBuyerInfo") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetOrderBuyerInfo"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderBuyerInfo") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -130,8 +130,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderItemsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetOrderItems") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetOrderItems"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderItems") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -147,8 +147,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderItemsBuyerInfoTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetOrderItemsBuyerInfo") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetOrderItemsBuyerInfo"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderItemsBuyerInfo") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -164,8 +164,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderRegulatedInfoTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetOrderRegulatedInfo") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetOrderRegulatedInfo"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderRegulatedInfo") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -181,8 +181,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrdersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetOrders") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetOrders"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrders") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<string> marketplaceIds = fixture.Create<List<string>>();
@@ -198,8 +198,8 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void UpdateVerificationStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateVerificationStatus") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateVerificationStatus"));
+            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("UpdateVerificationStatus") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string orderId = fixture.Create<string>();
@@ -216,19 +216,13 @@ namespace software.amzn.spapi.Test.Api.orders.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.orders.v0".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.orders.v0".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.orders.v0".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.orders.v0".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.orders.v0".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.orders.v0".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

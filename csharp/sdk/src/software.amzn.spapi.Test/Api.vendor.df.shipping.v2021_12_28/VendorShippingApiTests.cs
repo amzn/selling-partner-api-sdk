@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void GetPackingSlipTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetPackingSlip") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetPackingSlip"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("GetPackingSlip") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string purchaseOrderNumber = fixture.Create<string>();
@@ -79,8 +79,8 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void GetPackingSlipsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetPackingSlips") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetPackingSlips"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("GetPackingSlips") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             DateTime createdAfter = fixture.Create<DateTime>();
@@ -98,8 +98,8 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void SubmitShipmentConfirmationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SubmitShipmentConfirmations") + "/code/202";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SubmitShipmentConfirmations"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("SubmitShipmentConfirmations") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             SubmitShipmentConfirmationsRequest body = fixture.Create<SubmitShipmentConfirmationsRequest>();
@@ -115,8 +115,8 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void SubmitShipmentStatusUpdatesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SubmitShipmentStatusUpdates") + "/code/202";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SubmitShipmentStatusUpdates"));
+            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("SubmitShipmentStatusUpdates") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             SubmitShipmentStatusUpdatesRequest body = fixture.Create<SubmitShipmentStatusUpdatesRequest>();
@@ -133,19 +133,13 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.vendor.df.shipping.v2021_12_28".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.vendor.df.shipping.v2021_12_28".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.vendor.df.shipping.v2021_12_28".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.vendor.df.shipping.v2021_12_28".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.vendor.df.shipping.v2021_12_28".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.vendor.df.shipping.v2021_12_28".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

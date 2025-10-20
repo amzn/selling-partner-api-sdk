@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void CancelQueryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelQuery") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelQuery"));
+            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("CancelQuery") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string queryId = fixture.Create<string>();
@@ -77,8 +77,8 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void CreateQueryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateQuery") + "/code/202";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateQuery"));
+            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("CreateQuery") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateQuerySpecification body = fixture.Create<CreateQuerySpecification>();
@@ -94,8 +94,8 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void GetDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetDocument") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetDocument"));
+            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("GetDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string documentId = fixture.Create<string>();
@@ -111,8 +111,8 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void GetQueriesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetQueries") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetQueries"));
+            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("GetQueries") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -126,8 +126,8 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void GetQueryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetQuery") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetQuery"));
+            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("GetQuery") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string queryId = fixture.Create<string>();
@@ -144,19 +144,13 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.datakiosk.v2023_11_15".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.datakiosk.v2023_11_15".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.datakiosk.v2023_11_15".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.datakiosk.v2023_11_15".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.datakiosk.v2023_11_15".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.datakiosk.v2023_11_15".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

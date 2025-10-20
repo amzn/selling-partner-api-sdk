@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Test.Api.productTypeDefinitions.v2020_09_01
         public void GetDefinitionsProductTypeTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetDefinitionsProductType") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetDefinitionsProductType"));
+            var url = "http://localhost:3000/response/" + FormatApiName("definitions") + "-" + FormatOperationId("GetDefinitionsProductType") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string productType = fixture.Create<string>();
@@ -81,8 +81,8 @@ namespace software.amzn.spapi.Test.Api.productTypeDefinitions.v2020_09_01
         public void SearchDefinitionsProductTypesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SearchDefinitionsProductTypes") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SearchDefinitionsProductTypes"));
+            var url = "http://localhost:3000/response/" + FormatApiName("definitions") + "-" + FormatOperationId("SearchDefinitionsProductTypes") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<string> marketplaceIds = fixture.Create<List<string>>();
@@ -99,19 +99,13 @@ namespace software.amzn.spapi.Test.Api.productTypeDefinitions.v2020_09_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string FormatApiName(string apiName) {
+            return apiName.ToLower();
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.productTypeDefinitions.v2020_09_01".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.productTypeDefinitions.v2020_09_01".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.productTypeDefinitions.v2020_09_01".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.productTypeDefinitions.v2020_09_01".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.productTypeDefinitions.v2020_09_01".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.productTypeDefinitions.v2020_09_01".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }
