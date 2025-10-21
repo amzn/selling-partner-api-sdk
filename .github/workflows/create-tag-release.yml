@@ -1,4 +1,6 @@
 name: Create Tag and GitHub Release
+permissions:
+  contents: write
 
 on:
   workflow_dispatch:

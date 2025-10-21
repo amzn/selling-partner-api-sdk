@@ -1,4 +1,6 @@
 name: Test Java SDK
+permissions:
+  contents: read
 
 on:
   pull_request:
