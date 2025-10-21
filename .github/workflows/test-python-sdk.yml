@@ -1,4 +1,6 @@
 name: Test Python SDK
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
