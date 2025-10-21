@@ -13,6 +13,9 @@ on:
         type: string
         required: true
 
+permissions:
+  contents: write
+
 jobs:
   release_javascript:
     runs-on: ubuntu-latest
