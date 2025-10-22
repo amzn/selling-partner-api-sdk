@@ -86,7 +86,6 @@ AdditionalDetails.TypeEnum = {
      */
   CartonCount: 'CartonCount'
 }
-
 /**
  * The type of the additional information provided by the selling party.
  * @member {String} type

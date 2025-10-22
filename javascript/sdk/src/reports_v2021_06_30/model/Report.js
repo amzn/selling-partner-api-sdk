@@ -159,7 +159,6 @@ Report.ProcessingStatusEnum = {
      */
   IN_QUEUE: 'IN_QUEUE'
 }
-
 /**
  * The processing status of the report.
  * @member {String} processingStatus

@@ -98,7 +98,6 @@ ItemEligibilityPreview.ProgramEnum = {
      */
   COMMINGLING: 'COMMINGLING'
 }
-
 /**
  * The program for which eligibility was determined.
  * @member {String} program
@@ -349,12 +348,17 @@ ItemEligibilityPreview.IneligibilityReasonListEnum = {
   FBA_INB_0197: 'FBA_INB_0197',
 
   /**
+     * value: "FBA_INB_0342"
+     * @const
+     */
+  FBA_INB_0342: 'FBA_INB_0342',
+
+  /**
      * value: "UNKNOWN_INB_ERROR_CODE"
      * @const
      */
   UNKNOWN_INB_ERROR_CODE: 'UNKNOWN_INB_ERROR_CODE'
 }
-
 /**
  * Potential Ineligibility Reason Codes.
  * @member {[String]} ineligibilityReasonList

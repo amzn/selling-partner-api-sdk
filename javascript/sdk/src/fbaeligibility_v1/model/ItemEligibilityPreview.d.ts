@@ -86,6 +86,7 @@ export namespace ItemEligibilityPreview {
         let FBA_INB_0103: string;
         let FBA_INB_0104: string;
         let FBA_INB_0197: string;
+        let FBA_INB_0342: string;
         let UNKNOWN_INB_ERROR_CODE: string;
     }
     /**

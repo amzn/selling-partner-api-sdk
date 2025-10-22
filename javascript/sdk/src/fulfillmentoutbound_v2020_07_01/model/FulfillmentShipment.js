@@ -117,7 +117,6 @@ FulfillmentShipment.FulfillmentShipmentStatusEnum = {
      */
   CANCELLED_BY_SELLER: 'CANCELLED_BY_SELLER'
 }
-
 /**
  * The current status of the shipment.
  * @member {String} fulfillmentShipmentStatus

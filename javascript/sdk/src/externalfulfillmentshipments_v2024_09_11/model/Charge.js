@@ -119,7 +119,6 @@ Charge.ChargeTypeEnum = {
      */
   OTHER: 'OTHER'
 }
-
 /**
  * The type of charge.
  * @member {String} chargeType

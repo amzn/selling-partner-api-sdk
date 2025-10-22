@@ -86,7 +86,6 @@ Stop.FunctionCodeEnum = {
      */
   PortOfLoading: 'PortOfLoading'
 }
-
 /**
  * Provide the function code.
  * @member {String} functionCode

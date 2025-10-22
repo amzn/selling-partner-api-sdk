@@ -129,7 +129,6 @@ ShipmentInformation.ShipModeEnum = {
      */
   LTL: 'LTL'
 }
-
 /**
  * Type of shipment whether it is Small Parcel
  * @member {String} shipMode

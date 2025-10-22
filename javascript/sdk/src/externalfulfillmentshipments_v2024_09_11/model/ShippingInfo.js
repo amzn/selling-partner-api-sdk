@@ -102,7 +102,6 @@ ShippingInfo.ShippingTypeEnum = {
      */
   SELF: 'SELF'
 }
-
 /**
  * The type of shipping that the seller uses to deliver a customer order.
  * @member {String} shippingType

@@ -101,7 +101,6 @@ PaymentTerms.TypeEnum = {
      */
   LetterofCredit: 'LetterofCredit'
 }
-
 /**
  * The payment term type for the invoice.
  * @member {String} type

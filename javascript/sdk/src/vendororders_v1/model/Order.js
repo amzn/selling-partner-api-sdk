@@ -94,7 +94,6 @@ Order.PurchaseOrderStateEnum = {
      */
   Closed: 'Closed'
 }
-
 /**
  * This field will contain the current state of the purchase order.
  * @member {String} purchaseOrderState

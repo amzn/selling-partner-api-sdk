@@ -76,7 +76,6 @@ EncryptionDetails.StandardEnum = {
      */
   AES: 'AES'
 }
-
 /**
  * The encryption standard required to encrypt or decrypt the document contents.
  * @member {String} standard

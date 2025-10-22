@@ -122,7 +122,6 @@ ProductTypeDefinition.RequirementsEnum = {
      */
   LISTING_OFFER_ONLY: 'LISTING_OFFER_ONLY'
 }
-
 /**
  * Name of the requirements set represented in this product type definition.
  * @member {String} requirements
@@ -149,7 +148,6 @@ ProductTypeDefinition.RequirementsEnforcedEnum = {
      */
   NOT_ENFORCED: 'NOT_ENFORCED'
 }
-
 /**
  * Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all of the required attributes being present (such as for partial updates).
  * @member {String} requirementsEnforced

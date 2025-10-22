@@ -87,7 +87,6 @@ Document.FormatEnum = {
      */
   PLAIN_TEXT: 'PLAIN_TEXT'
 }
-
 /**
  * The type of the file.
  * @member {String} format

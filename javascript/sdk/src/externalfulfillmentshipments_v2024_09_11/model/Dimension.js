@@ -86,7 +86,6 @@ Dimension.DimensionUnitEnum = {
      */
   M: 'M'
 }
-
 /**
  * The unit of measurement of the dimension.
  * @member {String} dimensionUnit

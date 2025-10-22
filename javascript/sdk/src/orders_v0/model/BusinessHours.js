@@ -106,7 +106,6 @@ BusinessHours.DayOfWeekEnum = {
      */
   SAT: 'SAT'
 }
-
 /**
  * Day of the week.
  * @member {String} dayOfWeek
