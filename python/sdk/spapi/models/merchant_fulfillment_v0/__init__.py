@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.merchant_fulfillment_v0.additional_inputs import AdditionalInputs
 from spapi.models.merchant_fulfillment_v0.additional_seller_input import AdditionalSellerInput

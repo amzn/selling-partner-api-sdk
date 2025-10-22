@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.listings_items_v2021_08_01.audience import Audience
 from spapi.models.listings_items_v2021_08_01.error import Error
