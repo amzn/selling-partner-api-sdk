@@ -168,6 +168,8 @@ public class ItemEligibilityPreview {
         FBA_INB_0104("FBA_INB_0104"),
         @SerializedName("FBA_INB_0197")
         FBA_INB_0197("FBA_INB_0197"),
+        @SerializedName("FBA_INB_0342")
+        FBA_INB_0342("FBA_INB_0342"),
         @SerializedName("UNKNOWN_INB_ERROR_CODE")
         UNKNOWN_INB_ERROR_CODE("UNKNOWN_INB_ERROR_CODE");
 
