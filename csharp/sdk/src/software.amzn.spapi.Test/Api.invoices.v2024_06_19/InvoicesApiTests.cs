@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void CreateInvoicesExportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("CreateInvoicesExport") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("CreateInvoicesExport") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoiceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoice") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetInvoice") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoices") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetInvoices") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -116,7 +116,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesAttributesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesAttributes") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetInvoicesAttributes") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -133,7 +133,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesDocument") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetInvoicesDocument") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -150,7 +150,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesExportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesExport") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetInvoicesExport") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -167,7 +167,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
         public void GetInvoicesExportsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("invoices") + "-" + FormatOperationId("GetInvoicesExports") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetInvoicesExports") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -185,7 +185,7 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

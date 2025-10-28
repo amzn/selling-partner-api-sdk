@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void CancelFeedTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("CancelFeed") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("feeds") + "-" + FormatOperationId("CancelFeed") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void CreateFeedTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("CreateFeed") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("feeds") + "-" + FormatOperationId("CreateFeed") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -95,7 +95,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void CreateFeedDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("CreateFeedDocument") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("feeds") + "-" + FormatOperationId("CreateFeedDocument") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void GetFeedTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("GetFeed") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("feeds") + "-" + FormatOperationId("GetFeed") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -129,7 +129,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void GetFeedDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("GetFeedDocument") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("feeds") + "-" + FormatOperationId("GetFeedDocument") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -146,7 +146,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
         public void GetFeedsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("feeds") + "-" + FormatOperationId("GetFeeds") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("feeds") + "-" + FormatOperationId("GetFeeds") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -162,7 +162,7 @@ namespace software.amzn.spapi.Test.Api.feeds.v2021_06_30
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

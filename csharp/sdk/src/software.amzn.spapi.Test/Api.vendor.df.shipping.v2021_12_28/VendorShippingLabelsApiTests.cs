@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void CreateShippingLabelsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShippingLabels") + "-" + FormatOperationId("CreateShippingLabels") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShippingLabels") + "-" + FormatOperationId("CreateShippingLabels") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void GetShippingLabelTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShippingLabels") + "-" + FormatOperationId("GetShippingLabel") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShippingLabels") + "-" + FormatOperationId("GetShippingLabel") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void GetShippingLabelsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShippingLabels") + "-" + FormatOperationId("GetShippingLabels") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShippingLabels") + "-" + FormatOperationId("GetShippingLabels") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -118,7 +118,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void SubmitShippingLabelRequestTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShippingLabels") + "-" + FormatOperationId("SubmitShippingLabelRequest") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShippingLabels") + "-" + FormatOperationId("SubmitShippingLabelRequest") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -136,7 +136,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

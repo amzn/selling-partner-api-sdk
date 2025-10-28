@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.listings.items.v2021_08_01
         public void DeleteListingsItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("listings") + "-" + FormatOperationId("DeleteListingsItem") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("listings") + "-" + FormatOperationId("DeleteListingsItem") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -84,7 +84,7 @@ namespace software.amzn.spapi.Test.Api.listings.items.v2021_08_01
         public void GetListingsItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("listings") + "-" + FormatOperationId("GetListingsItem") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("listings") + "-" + FormatOperationId("GetListingsItem") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Test.Api.listings.items.v2021_08_01
         public void PatchListingsItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("listings") + "-" + FormatOperationId("PatchListingsItem") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("listings") + "-" + FormatOperationId("PatchListingsItem") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -128,7 +128,7 @@ namespace software.amzn.spapi.Test.Api.listings.items.v2021_08_01
         public void PutListingsItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("listings") + "-" + FormatOperationId("PutListingsItem") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("listings") + "-" + FormatOperationId("PutListingsItem") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -151,7 +151,7 @@ namespace software.amzn.spapi.Test.Api.listings.items.v2021_08_01
         public void SearchListingsItemsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("listings") + "-" + FormatOperationId("SearchListingsItems") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("listings") + "-" + FormatOperationId("SearchListingsItems") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -171,7 +171,7 @@ namespace software.amzn.spapi.Test.Api.listings.items.v2021_08_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

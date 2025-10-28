@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void GetPackingSlipTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("GetPackingSlip") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShipping") + "-" + FormatOperationId("GetPackingSlip") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void GetPackingSlipsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("GetPackingSlips") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShipping") + "-" + FormatOperationId("GetPackingSlips") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void SubmitShipmentConfirmationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("SubmitShipmentConfirmations") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShipping") + "-" + FormatOperationId("SubmitShipmentConfirmations") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -116,7 +116,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void SubmitShipmentStatusUpdatesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorShipping") + "-" + FormatOperationId("SubmitShipmentStatusUpdates") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShipping") + "-" + FormatOperationId("SubmitShipmentStatusUpdates") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -134,7 +134,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

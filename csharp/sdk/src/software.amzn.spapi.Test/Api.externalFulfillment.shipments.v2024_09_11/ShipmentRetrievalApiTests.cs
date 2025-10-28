@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void GetShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentRetrieval") + "-" + FormatOperationId("GetShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentRetrieval") + "-" + FormatOperationId("GetShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void GetShipmentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentRetrieval") + "-" + FormatOperationId("GetShipments") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentRetrieval") + "-" + FormatOperationId("GetShipments") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

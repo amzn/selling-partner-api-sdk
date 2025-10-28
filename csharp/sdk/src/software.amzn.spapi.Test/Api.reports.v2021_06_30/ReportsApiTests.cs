@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CancelReportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("CancelReport") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CancelReport") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CancelReportScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("CancelReportSchedule") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CancelReportSchedule") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -93,7 +93,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CreateReportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("CreateReport") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CreateReport") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -110,7 +110,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CreateReportScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("CreateReportSchedule") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CreateReportSchedule") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -127,7 +127,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("GetReport") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReport") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -144,7 +144,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("GetReportDocument") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReportDocument") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -161,7 +161,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("GetReportSchedule") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReportSchedule") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -178,7 +178,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportSchedulesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("GetReportSchedules") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReportSchedules") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -195,7 +195,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("reports") + "-" + FormatOperationId("GetReports") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReports") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -211,7 +211,7 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

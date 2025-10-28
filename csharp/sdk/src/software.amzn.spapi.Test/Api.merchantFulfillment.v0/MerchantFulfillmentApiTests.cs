@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void CancelShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("merchantFulfillment") + "-" + FormatOperationId("CancelShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("CancelShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void CreateShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("merchantFulfillment") + "-" + FormatOperationId("CreateShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("CreateShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -97,7 +97,7 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void GetAdditionalSellerInputsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("merchantFulfillment") + "-" + FormatOperationId("GetAdditionalSellerInputs") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("GetAdditionalSellerInputs") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -114,7 +114,7 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void GetEligibleShipmentServicesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("merchantFulfillment") + "-" + FormatOperationId("GetEligibleShipmentServices") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("GetEligibleShipmentServices") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -131,7 +131,7 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void GetShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("merchantFulfillment") + "-" + FormatOperationId("GetShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("GetShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -149,7 +149,7 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

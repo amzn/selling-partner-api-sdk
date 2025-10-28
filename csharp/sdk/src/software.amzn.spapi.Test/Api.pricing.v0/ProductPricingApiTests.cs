@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetCompetitivePricingTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetCompetitivePricing") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetCompetitivePricing") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetItemOffersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetItemOffers") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetItemOffers") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -103,7 +103,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetItemOffersBatchTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetItemOffersBatch") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetItemOffersBatch") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -120,7 +120,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetListingOffersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetListingOffers") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetListingOffers") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -141,7 +141,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetListingOffersBatchTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetListingOffersBatch") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetListingOffersBatch") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -158,7 +158,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
         public void GetPricingTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetPricing") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetPricing") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -178,7 +178,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

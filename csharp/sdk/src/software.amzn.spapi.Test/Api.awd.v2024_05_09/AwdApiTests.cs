@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void CancelInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("CancelInbound") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("CancelInbound") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void CheckInboundEligibilityTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("CheckInboundEligibility") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("CheckInboundEligibility") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -95,7 +95,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void ConfirmInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("ConfirmInbound") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("ConfirmInbound") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -110,7 +110,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void CreateInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("CreateInbound") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("CreateInbound") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -127,7 +127,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void GetInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("GetInbound") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("GetInbound") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -144,7 +144,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void GetInboundShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("GetInboundShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("GetInboundShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -161,7 +161,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void GetInboundShipmentLabelsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("GetInboundShipmentLabels") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("GetInboundShipmentLabels") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -178,7 +178,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void ListInboundShipmentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("ListInboundShipments") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("ListInboundShipments") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -193,7 +193,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void ListInventoryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("ListInventory") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("ListInventory") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -208,7 +208,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void UpdateInboundTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("UpdateInbound") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("UpdateInbound") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -225,7 +225,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
         public void UpdateInboundShipmentTransportDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("awd") + "-" + FormatOperationId("UpdateInboundShipmentTransportDetails") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("awd") + "-" + FormatOperationId("UpdateInboundShipmentTransportDetails") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -243,7 +243,7 @@ namespace software.amzn.spapi.Test.Api.awd.v2024_05_09
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

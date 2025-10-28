@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void ConfirmCustomizationDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("ConfirmCustomizationDetails") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("ConfirmCustomizationDetails") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -84,7 +84,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateAmazonMotorsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateAmazonMotors") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateAmazonMotors") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateConfirmDeliveryDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateConfirmDeliveryDetails") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateConfirmDeliveryDetails") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -126,7 +126,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateConfirmOrderDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateConfirmOrderDetails") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateConfirmOrderDetails") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -147,7 +147,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateConfirmServiceDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateConfirmServiceDetails") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateConfirmServiceDetails") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -168,7 +168,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateDigitalAccessKeyTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateDigitalAccessKey") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateDigitalAccessKey") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -189,7 +189,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateLegalDisclosureTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateLegalDisclosure") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateLegalDisclosure") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -210,7 +210,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateUnexpectedProblemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateUnexpectedProblem") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateUnexpectedProblem") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -231,7 +231,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateWarrantyTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("CreateWarranty") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateWarranty") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -252,7 +252,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void GetAttributesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("GetAttributes") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("GetAttributes") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -271,7 +271,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void GetMessagingActionsForOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("GetMessagingActionsForOrder") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("GetMessagingActionsForOrder") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -290,7 +290,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void SendInvoiceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("messaging") + "-" + FormatOperationId("SendInvoice") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("SendInvoice") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -312,7 +312,7 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

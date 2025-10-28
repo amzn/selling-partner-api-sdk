@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void ArchiveSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("supplySources") + "-" + FormatOperationId("ArchiveSupplySource") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("ArchiveSupplySource") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void CreateSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("supplySources") + "-" + FormatOperationId("CreateSupplySource") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("CreateSupplySource") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -97,7 +97,7 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void GetSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("supplySources") + "-" + FormatOperationId("GetSupplySource") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("GetSupplySource") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -114,7 +114,7 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void GetSupplySourcesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("supplySources") + "-" + FormatOperationId("GetSupplySources") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("GetSupplySources") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -129,7 +129,7 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void UpdateSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("supplySources") + "-" + FormatOperationId("UpdateSupplySource") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("UpdateSupplySource") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -146,7 +146,7 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void UpdateSupplySourceStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("supplySources") + "-" + FormatOperationId("UpdateSupplySourceStatus") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("UpdateSupplySourceStatus") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -164,7 +164,7 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

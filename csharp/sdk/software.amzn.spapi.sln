@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "software.amzn.spapi", "src\software.amzn.spapi\software.amzn.spapi.csproj", "{C11CEDB6-245C-41CC-ACB5-A65B2BDF60D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "software.amzn.spapi", "src\software.amzn.spapi\software.amzn.spapi.csproj", "{A4D7153C-21CE-4A7B-BE30-98E40A4046AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "software.amzn.spapi.Test", "src\software.amzn.spapi.Test\software.amzn.spapi.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C11CEDB6-245C-41CC-ACB5-A65B2BDF60D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C11CEDB6-245C-41CC-ACB5-A65B2BDF60D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C11CEDB6-245C-41CC-ACB5-A65B2BDF60D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C11CEDB6-245C-41CC-ACB5-A65B2BDF60D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4D7153C-21CE-4A7B-BE30-98E40A4046AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4D7153C-21CE-4A7B-BE30-98E40A4046AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4D7153C-21CE-4A7B-BE30-98E40A4046AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4D7153C-21CE-4A7B-BE30-98E40A4046AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.vendor.invoices.v1
         public void SubmitInvoicesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorPayments") + "-" + FormatOperationId("SubmitInvoices") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorPayments") + "-" + FormatOperationId("SubmitInvoices") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.vendor.invoices.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

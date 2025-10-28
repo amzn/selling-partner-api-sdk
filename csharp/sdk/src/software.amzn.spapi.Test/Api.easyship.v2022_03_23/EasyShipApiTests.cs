@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void CreateScheduledPackageTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("easyShip") + "-" + FormatOperationId("CreateScheduledPackage") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("CreateScheduledPackage") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void CreateScheduledPackageBulkTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("easyShip") + "-" + FormatOperationId("CreateScheduledPackageBulk") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("CreateScheduledPackageBulk") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -97,7 +97,7 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void GetScheduledPackageTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("easyShip") + "-" + FormatOperationId("GetScheduledPackage") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("GetScheduledPackage") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -116,7 +116,7 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void ListHandoverSlotsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("easyShip") + "-" + FormatOperationId("ListHandoverSlots") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("ListHandoverSlots") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -131,7 +131,7 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void UpdateScheduledPackagesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("easyShip") + "-" + FormatOperationId("UpdateScheduledPackages") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("UpdateScheduledPackages") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -147,7 +147,7 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

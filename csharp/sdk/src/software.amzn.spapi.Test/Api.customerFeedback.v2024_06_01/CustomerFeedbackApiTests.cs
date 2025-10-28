@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
         public void GetBrowseNodeReturnTopicsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReturnTopics") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReturnTopics") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
         public void GetBrowseNodeReturnTrendsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReturnTrends") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReturnTrends") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -101,7 +101,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
         public void GetBrowseNodeReviewTopicsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReviewTopics") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReviewTopics") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
         public void GetBrowseNodeReviewTrendsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReviewTrends") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("customerFeedback") + "-" + FormatOperationId("GetBrowseNodeReviewTrends") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -141,7 +141,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
         public void GetItemBrowseNodeTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("customerFeedback") + "-" + FormatOperationId("GetItemBrowseNode") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("customerFeedback") + "-" + FormatOperationId("GetItemBrowseNode") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -160,7 +160,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
         public void GetItemReviewTopicsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("customerFeedback") + "-" + FormatOperationId("GetItemReviewTopics") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("customerFeedback") + "-" + FormatOperationId("GetItemReviewTopics") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -181,7 +181,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
         public void GetItemReviewTrendsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("customerFeedback") + "-" + FormatOperationId("GetItemReviewTrends") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("customerFeedback") + "-" + FormatOperationId("GetItemReviewTrends") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -201,7 +201,7 @@ namespace software.amzn.spapi.Test.Api.customerFeedback.v2024_06_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

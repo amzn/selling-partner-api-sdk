@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
         public void CreateContainerLabelTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("createContainerLabel") + "-" + FormatOperationId("CreateContainerLabel") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("createContainerLabel") + "-" + FormatOperationId("CreateContainerLabel") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.shipping.v2021_12_28
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

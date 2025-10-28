@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.replenishment.v2022_11_07
         public void ListOfferMetricsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("offers") + "-" + FormatOperationId("ListOfferMetrics") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("offers") + "-" + FormatOperationId("ListOfferMetrics") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Test.Api.replenishment.v2022_11_07
         public void ListOffersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("offers") + "-" + FormatOperationId("ListOffers") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("offers") + "-" + FormatOperationId("ListOffers") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -94,7 +94,7 @@ namespace software.amzn.spapi.Test.Api.replenishment.v2022_11_07
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

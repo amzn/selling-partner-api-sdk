@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.appIntegrations.v2024_04_01
         public void CreateNotificationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("appIntegrations") + "-" + FormatOperationId("CreateNotification") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("appIntegrations") + "-" + FormatOperationId("CreateNotification") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.appIntegrations.v2024_04_01
         public void DeleteNotificationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("appIntegrations") + "-" + FormatOperationId("DeleteNotifications") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("appIntegrations") + "-" + FormatOperationId("DeleteNotifications") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -95,7 +95,7 @@ namespace software.amzn.spapi.Test.Api.appIntegrations.v2024_04_01
         public void RecordActionFeedbackTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("appIntegrations") + "-" + FormatOperationId("RecordActionFeedback") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("appIntegrations") + "-" + FormatOperationId("RecordActionFeedback") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -113,7 +113,7 @@ namespace software.amzn.spapi.Test.Api.appIntegrations.v2024_04_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

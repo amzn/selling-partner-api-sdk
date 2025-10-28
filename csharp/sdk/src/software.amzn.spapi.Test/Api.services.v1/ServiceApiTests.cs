@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void AddAppointmentForServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("AddAppointmentForServiceJobByServiceJobId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("AddAppointmentForServiceJobByServiceJobId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void AssignAppointmentResourcesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("AssignAppointmentResources") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("AssignAppointmentResources") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -103,7 +103,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CancelReservationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CancelReservation") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("CancelReservation") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CancelServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CancelServiceJobByServiceJobId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("CancelServiceJobByServiceJobId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -141,7 +141,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CompleteServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CompleteServiceJobByServiceJobId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("CompleteServiceJobByServiceJobId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -158,7 +158,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CreateReservationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CreateReservation") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("CreateReservation") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -177,7 +177,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void CreateServiceDocumentUploadDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("CreateServiceDocumentUploadDestination") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("CreateServiceDocumentUploadDestination") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -194,7 +194,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetAppointmentSlotsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetAppointmentSlots") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("GetAppointmentSlots") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -215,7 +215,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetAppointmmentSlotsByJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetAppointmmentSlotsByJobId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("GetAppointmmentSlotsByJobId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -234,7 +234,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetFixedSlotCapacityTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetFixedSlotCapacity") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("GetFixedSlotCapacity") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -255,7 +255,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetRangeSlotCapacityTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetRangeSlotCapacity") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("GetRangeSlotCapacity") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -276,7 +276,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetServiceJobByServiceJobId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("GetServiceJobByServiceJobId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -293,7 +293,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void GetServiceJobsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("GetServiceJobs") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("GetServiceJobs") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -310,7 +310,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void RescheduleAppointmentForServiceJobByServiceJobIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("RescheduleAppointmentForServiceJobByServiceJobId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("RescheduleAppointmentForServiceJobByServiceJobId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -331,7 +331,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void SetAppointmentFulfillmentDataTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("SetAppointmentFulfillmentData") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("SetAppointmentFulfillmentData") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -352,7 +352,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void UpdateReservationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("UpdateReservation") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("UpdateReservation") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -373,7 +373,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
         public void UpdateScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("service") + "-" + FormatOperationId("UpdateSchedule") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("service") + "-" + FormatOperationId("UpdateSchedule") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -395,7 +395,7 @@ namespace software.amzn.spapi.Test.Api.services.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
