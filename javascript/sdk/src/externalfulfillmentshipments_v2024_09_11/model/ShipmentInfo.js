@@ -97,7 +97,6 @@ ShipmentInfo.ShipmentTypeEnum = {
      */
   REPLACEMENT: 'REPLACEMENT'
 }
-
 /**
  * The type of shipment.
  * @member {String} shipmentType
@@ -164,7 +163,6 @@ ShipmentInfo.ProcessingSourceEnum = {
      */
   INTERNAL_PLATFORM: 'INTERNAL_PLATFORM'
 }
-
 /**
  * The source of the order operation.
  * @member {String} processingSource

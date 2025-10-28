@@ -220,7 +220,6 @@ Shipment.StatusEnum = {
      */
   DELIVERED: 'DELIVERED'
 }
-
 /**
  * The current status of the shipment.
  * @member {String} status
@@ -319,7 +318,6 @@ Shipment.SubStatusEnum = {
      */
   DAMAGED: 'DAMAGED'
 }
-
 /**
  * The sub status of the shipment.
  * @member {String} subStatus

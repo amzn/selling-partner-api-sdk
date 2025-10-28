@@ -79,7 +79,6 @@ ClientReferenceDetail.ClientReferenceTypeEnum = {
      */
   IntegratorMerchantId: 'IntegratorMerchantId'
 }
-
 /**
  * Client Reference type.
  * @member {String} clientReferenceType

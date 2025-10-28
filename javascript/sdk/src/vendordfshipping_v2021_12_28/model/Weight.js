@@ -79,7 +79,6 @@ Weight.UnitOfMeasureEnum = {
      */
   LB: 'LB'
 }
-
 /**
  * The unit of measurement.
  * @member {String} unitOfMeasure

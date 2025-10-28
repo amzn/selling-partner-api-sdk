@@ -82,7 +82,6 @@ ChargeComponent.ChargeTypeEnum = {
      */
   DISCOUNT: 'DISCOUNT'
 }
-
 /**
  * The type of charge.
  * @member {String} chargeType

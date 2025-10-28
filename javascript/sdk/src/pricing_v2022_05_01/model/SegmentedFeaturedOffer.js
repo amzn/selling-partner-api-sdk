@@ -182,7 +182,6 @@ SegmentedFeaturedOffer.SubConditionEnum = {
      */
   Other: 'Other'
 }
-
 /**
  * The item subcondition of the offer.
  * @member {String} subCondition

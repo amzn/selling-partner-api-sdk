@@ -121,7 +121,6 @@ Tax.TypeEnum = {
      */
   TOTAL: 'TOTAL'
 }
-
 /**
  * The type of tax.
  * @member {String} type

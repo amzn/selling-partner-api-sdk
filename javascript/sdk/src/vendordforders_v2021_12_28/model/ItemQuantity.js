@@ -76,7 +76,6 @@ ItemQuantity.UnitOfMeasureEnum = {
      */
   Each: 'Each'
 }
-
 /**
  * Unit of measure for the acknowledged quantity.
  * @member {String} unitOfMeasure

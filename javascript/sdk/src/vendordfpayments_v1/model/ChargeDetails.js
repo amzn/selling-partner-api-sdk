@@ -112,7 +112,6 @@ ChargeDetails.TypeEnum = {
      */
   TAX_COLLECTED_AT_SOURCE: 'TAX_COLLECTED_AT_SOURCE'
 }
-
 /**
  * Type of charge applied.
  * @member {String} type

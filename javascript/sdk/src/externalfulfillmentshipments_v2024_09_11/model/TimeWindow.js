@@ -94,7 +94,6 @@ TimeWindow.HandoverMethodEnum = {
      */
   DROPOFF: 'DROPOFF'
 }
-
 /**
  * Whether the seller picks up from Amazon Logistics or drops off to Amazon Logistics.
  * @member {String} handoverMethod

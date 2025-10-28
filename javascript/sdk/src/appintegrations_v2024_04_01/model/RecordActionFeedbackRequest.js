@@ -70,7 +70,6 @@ RecordActionFeedbackRequest.FeedbackActionCodeEnum = {
      */
   SELLER_ACTION_COMPLETED: 'SELLER_ACTION_COMPLETED'
 }
-
 /**
  * The unique identifier for each notification status.
  * @member {String} feedbackActionCode
