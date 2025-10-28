@@ -84,7 +84,6 @@ LineItemWithReason.ReasonEnum = {
      */
   CUSTOMER_REQUESTED: 'CUSTOMER_REQUESTED'
 }
-
 /**
  * The reason for the rejection of the line item.
  * @member {String} reason

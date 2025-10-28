@@ -103,7 +103,6 @@ Cancellation.CancellationTypeEnum = {
      */
   SYSTEM_CANCELLED: 'SYSTEM_CANCELLED'
 }
-
 /**
  * The type of cancellation of the item in the shipment.
  * @member {String} cancellationType

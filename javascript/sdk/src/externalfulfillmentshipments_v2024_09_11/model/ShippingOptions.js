@@ -102,7 +102,6 @@ ShippingOptions.ShipByEnum = {
      */
   OTHER: 'OTHER'
 }
-
 /**
  * The shipper type.
  * @member {String} shipBy

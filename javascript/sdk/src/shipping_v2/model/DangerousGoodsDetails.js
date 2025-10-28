@@ -97,7 +97,6 @@ DangerousGoodsDetails.PackingGroupEnum = {
      */
   III: 'III'
 }
-
 /**
  * The specific packaging group of the item being shipped.
  * @member {String} packingGroup
@@ -190,7 +189,6 @@ DangerousGoodsDetails.PackingInstructionEnum = {
      */
   PI970_SECTION_II: 'PI970_SECTION_II'
 }
-
 /**
  * The specific packing instruction of the item being shipped.
  * @member {String} packingInstruction

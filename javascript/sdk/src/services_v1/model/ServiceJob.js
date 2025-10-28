@@ -139,7 +139,6 @@ ServiceJob.ServiceJobStatusEnum = {
      */
   PAYMENT_DECLINED: 'PAYMENT_DECLINED'
 }
-
 /**
  * The status of the service job.
  * @member {String} serviceJobStatus

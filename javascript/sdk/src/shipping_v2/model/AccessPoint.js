@@ -134,7 +134,6 @@ AccessPoint.AssistanceTypeEnum = {
      */
   SELF_ASSISTED: 'SELF_ASSISTED'
 }
-
 /**
  * Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED
  * @member {String} assistanceType

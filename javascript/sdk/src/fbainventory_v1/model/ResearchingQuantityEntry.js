@@ -85,7 +85,6 @@ ResearchingQuantityEntry.NameEnum = {
      */
   researchingQuantityInLongTerm: 'researchingQuantityInLongTerm'
 }
-
 /**
  * The duration of the research.
  * @member {String} name

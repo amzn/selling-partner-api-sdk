@@ -102,7 +102,6 @@ MarketplaceAttributes.CustomAttributesEnum = {
      */
   FASTTRACK: 'FASTTRACK'
 }
-
 /**
  * Marketplace channel-specific attribute value.
  * @member {[String]} customAttributes

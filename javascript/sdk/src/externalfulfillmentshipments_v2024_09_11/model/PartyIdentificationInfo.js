@@ -102,7 +102,6 @@ PartyIdentificationInfo.PartyTypeEnum = {
      */
   SELLING_PARTY: 'SELLING_PARTY'
 }
-
 /**
  * Assigned identification for the party. For example, a warehouse code or vendor code.
  * @member {String} partyType

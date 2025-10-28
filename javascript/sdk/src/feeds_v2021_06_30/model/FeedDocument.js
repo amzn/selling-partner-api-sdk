@@ -88,7 +88,6 @@ FeedDocument.CompressionAlgorithmEnum = {
      */
   GZIP: 'GZIP'
 }
-
 /**
  * If the feed document contents have been compressed, the compression algorithm used is returned in this property and you must decompress the feed when you download. Otherwise, you can download the feed directly. Refer to [Step 7. Download the feed processing report](doc:feeds-api-v2021-06-30-use-case-guide#step-7-download-the-feed-processing-report) in the use case guide, where sample code is provided.
  * @member {String} compressionAlgorithm

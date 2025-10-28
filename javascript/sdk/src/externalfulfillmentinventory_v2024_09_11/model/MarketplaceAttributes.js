@@ -81,7 +81,6 @@ MarketplaceAttributes.ChannelNameEnum = {
      */
   DF: 'DF'
 }
-
 /**
  * The name of the fulfillment channel in which to update inventory.
  * @member {String} channelName

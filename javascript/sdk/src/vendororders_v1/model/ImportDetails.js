@@ -102,7 +102,6 @@ ImportDetails.MethodOfPaymentEnum = {
      */
   PaidBySeller: 'PaidBySeller'
 }
-
 /**
  * If the recipient requests, contains the shipment method of payment. This is for import PO's only.
  * @member {String} methodOfPayment
@@ -183,7 +182,6 @@ ImportDetails.InternationalCommercialTermsEnum = {
      */
   DeliverDutyPaid: 'DeliverDutyPaid'
 }
-
 /**
  * Incoterms (International Commercial Terms) are used to divide transaction costs and responsibilities between buyer and seller and reflect state-of-the-art transportation practices. This is for import purchase orders only.
  * @member {String} internationalCommercialTerms
