@@ -143,9 +143,9 @@ public class ListingsApiTest {
     }
 
     private void instructBackendMock(String basename, String response, String code) throws Exception {
-        basename = basename.replaceAll("/\"W| ", "").toLowerCase();
+        String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + basename + "-" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 
