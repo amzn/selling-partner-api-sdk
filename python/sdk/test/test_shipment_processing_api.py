@@ -36,14 +36,14 @@ class TestShipmentProcessingApi(unittest.TestCase):
         shipment_id = self._get_random_value("str", None)
         body = self._get_random_value("Packages", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_packages"), "204")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("create_packages"), "204")
         response = self.api.create_packages_with_http_info(shipment_id, body, )
         pass
 
     def test_generate_invoice(self):
         shipment_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("generate_invoice"), "200")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("generate_invoice"), "200")
         response = self.api.generate_invoice_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -53,7 +53,7 @@ class TestShipmentProcessingApi(unittest.TestCase):
         shipment_id = self._get_random_value("str", None)
         operation = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("generate_ship_labels"), "200")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("generate_ship_labels"), "200")
         response = self.api.generate_ship_labels_with_http_info(shipment_id, operation, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -63,14 +63,14 @@ class TestShipmentProcessingApi(unittest.TestCase):
         shipment_id = self._get_random_value("str", None)
         operation = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("process_shipment"), "204")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("process_shipment"), "204")
         response = self.api.process_shipment_with_http_info(shipment_id, operation, )
         pass
 
     def test_retrieve_invoice(self):
         shipment_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("retrieve_invoice"), "200")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("retrieve_invoice"), "200")
         response = self.api.retrieve_invoice_with_http_info(shipment_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -80,7 +80,7 @@ class TestShipmentProcessingApi(unittest.TestCase):
         shipment_id = self._get_random_value("str", None)
         package_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("retrieve_shipping_options"), "200")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("retrieve_shipping_options"), "200")
         response = self.api.retrieve_shipping_options_with_http_info(shipment_id, package_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -91,7 +91,7 @@ class TestShipmentProcessingApi(unittest.TestCase):
         package_id = self._get_random_value("str", None)
         body = self._get_random_value("Package", None)
         
-        self.instruct_backend_mock(self.to_camel_case("update_package"), "204")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("update_package"), "204")
         response = self.api.update_package_with_http_info(shipment_id, package_id, body, )
         pass
 
@@ -99,26 +99,32 @@ class TestShipmentProcessingApi(unittest.TestCase):
         shipment_id = self._get_random_value("str", None)
         package_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("update_package_status"), "204")
+        self.instruct_backend_mock("shipmentProcessing".casefold().replace(' ', ''), self.to_camel_case("update_package_status"), "204")
         response = self.api.update_package_status_with_http_info(shipment_id, package_id, )
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.external_fulfillment_shipments_v2024_09_11" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.external_fulfillment_shipments_v2024_09_11" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.external_fulfillment_shipments_v2024_09_11" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.external_fulfillment_shipments_v2024_09_11" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.external_fulfillment_shipments_v2024_09_11" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.external_fulfillment_shipments_v2024_09_11" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api == "financesv0" or api == "financesv2024" or api == "transfers":
+            api = "default"
+        if api == "vendordforders":
+            api = "vendororders"
+        if api == "replenishment":
+            if response == "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api == "productpricingv2022":
+            api = "productpricing"
+        if api == "vendordftransaction":
+            api = "vendortransaction"
+        if api == "vendorshipment":
+            api = "vendorshipping"
+        if api == "fbainboundv0" or api == "fbainboundeligibility":
+            api = "fbainbound"
+        if api == "listingsrestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

@@ -35,28 +35,34 @@ class TestTokensApi(unittest.TestCase):
     def test_create_restricted_data_token(self):
         body = self._get_random_value("CreateRestrictedDataTokenRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_restricted_data_token"), "200")
+        self.instruct_backend_mock("tokens".casefold().replace(' ', ''), self.to_camel_case("create_restricted_data_token"), "200")
         response = self.api.create_restricted_data_token_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.tokens_v2021_03_01" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.tokens_v2021_03_01" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.tokens_v2021_03_01" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.tokens_v2021_03_01" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.tokens_v2021_03_01" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.tokens_v2021_03_01" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api == "financesv0" or api == "financesv2024" or api == "transfers":
+            api = "default"
+        if api == "vendordforders":
+            api = "vendororders"
+        if api == "replenishment":
+            if response == "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api == "productpricingv2022":
+            api = "productpricing"
+        if api == "vendordftransaction":
+            api = "vendortransaction"
+        if api == "vendorshipment":
+            api = "vendorshipping"
+        if api == "fbainboundv0" or api == "fbainboundeligibility":
+            api = "fbainbound"
+        if api == "listingsrestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

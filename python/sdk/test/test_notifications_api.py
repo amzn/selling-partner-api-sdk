@@ -35,7 +35,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_create_destination(self):
         body = self._get_random_value("CreateDestinationRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_destination"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("create_destination"), "200")
         response = self.api.create_destination_with_http_info(body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -45,7 +45,7 @@ class TestNotificationsApi(unittest.TestCase):
         notification_type = self._get_random_value("str", None)
         body = self._get_random_value("CreateSubscriptionRequest", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_subscription"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("create_subscription"), "200")
         response = self.api.create_subscription_with_http_info(notification_type, body, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -54,7 +54,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_delete_destination(self):
         destination_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("delete_destination"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("delete_destination"), "200")
         response = self.api.delete_destination_with_http_info(destination_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -64,7 +64,7 @@ class TestNotificationsApi(unittest.TestCase):
         subscription_id = self._get_random_value("str", None)
         notification_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("delete_subscription_by_id"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("delete_subscription_by_id"), "200")
         response = self.api.delete_subscription_by_id_with_http_info(subscription_id, notification_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -73,7 +73,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_get_destination(self):
         destination_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_destination"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_destination"), "200")
         response = self.api.get_destination_with_http_info(destination_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -81,7 +81,7 @@ class TestNotificationsApi(unittest.TestCase):
 
     def test_get_destinations(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_destinations"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_destinations"), "200")
         response = self.api.get_destinations_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -90,7 +90,7 @@ class TestNotificationsApi(unittest.TestCase):
     def test_get_subscription(self):
         notification_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_subscription"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_subscription"), "200")
         response = self.api.get_subscription_with_http_info(notification_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -100,28 +100,34 @@ class TestNotificationsApi(unittest.TestCase):
         subscription_id = self._get_random_value("str", None)
         notification_type = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_subscription_by_id"), "200")
+        self.instruct_backend_mock("notifications".casefold().replace(' ', ''), self.to_camel_case("get_subscription_by_id"), "200")
         response = self.api.get_subscription_by_id_with_http_info(subscription_id, notification_type, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.notifications_v1" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.notifications_v1" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.notifications_v1" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.notifications_v1" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.notifications_v1" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.notifications_v1" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api == "financesv0" or api == "financesv2024" or api == "transfers":
+            api = "default"
+        if api == "vendordforders":
+            api = "vendororders"
+        if api == "replenishment":
+            if response == "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api == "productpricingv2022":
+            api = "productpricing"
+        if api == "vendordftransaction":
+            api = "vendortransaction"
+        if api == "vendorshipment":
+            api = "vendorshipping"
+        if api == "fbainboundv0" or api == "fbainboundeligibility":
+            api = "fbainbound"
+        if api == "listingsrestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

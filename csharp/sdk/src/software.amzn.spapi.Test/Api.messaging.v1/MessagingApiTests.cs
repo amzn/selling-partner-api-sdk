@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void ConfirmCustomizationDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ConfirmCustomizationDetails") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ConfirmCustomizationDetails"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("ConfirmCustomizationDetails") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -83,8 +84,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateAmazonMotorsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateAmazonMotors") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateAmazonMotors"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateAmazonMotors") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -104,8 +105,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateConfirmDeliveryDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateConfirmDeliveryDetails") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateConfirmDeliveryDetails"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateConfirmDeliveryDetails") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -125,8 +126,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateConfirmOrderDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateConfirmOrderDetails") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateConfirmOrderDetails"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateConfirmOrderDetails") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -146,8 +147,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateConfirmServiceDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateConfirmServiceDetails") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateConfirmServiceDetails"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateConfirmServiceDetails") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -167,8 +168,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateDigitalAccessKeyTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateDigitalAccessKey") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateDigitalAccessKey"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateDigitalAccessKey") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -188,8 +189,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateLegalDisclosureTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateLegalDisclosure") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateLegalDisclosure"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateLegalDisclosure") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -209,8 +210,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateUnexpectedProblemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateUnexpectedProblem") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateUnexpectedProblem"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateUnexpectedProblem") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -230,8 +231,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void CreateWarrantyTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateWarranty") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateWarranty"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateWarranty") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -251,8 +252,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void GetAttributesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetAttributes") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetAttributes"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("GetAttributes") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -270,8 +271,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void GetMessagingActionsForOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetMessagingActionsForOrder") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetMessagingActionsForOrder"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("GetMessagingActionsForOrder") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -289,8 +290,8 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         public void SendInvoiceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SendInvoice") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SendInvoice"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("SendInvoice") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -311,19 +312,13 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.messaging.v1".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.messaging.v1".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.messaging.v1".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.messaging.v1".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.messaging.v1".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.messaging.v1".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

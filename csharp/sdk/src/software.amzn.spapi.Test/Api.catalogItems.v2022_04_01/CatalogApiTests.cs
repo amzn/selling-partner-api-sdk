@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.catalogItems.v2022_04_01
         public void GetCatalogItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetCatalogItem") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetCatalogItem"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("catalog") + "-" + FormatOperationId("GetCatalogItem") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string asin = fixture.Create<string>();
@@ -81,8 +82,8 @@ namespace software.amzn.spapi.Test.Api.catalogItems.v2022_04_01
         public void SearchCatalogItemsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SearchCatalogItems") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SearchCatalogItems"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("catalog") + "-" + FormatOperationId("SearchCatalogItems") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<string> marketplaceIds = fixture.Create<List<string>>();
@@ -99,19 +100,13 @@ namespace software.amzn.spapi.Test.Api.catalogItems.v2022_04_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.catalogItems.v2022_04_01".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.catalogItems.v2022_04_01".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.catalogItems.v2022_04_01".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.catalogItems.v2022_04_01".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.catalogItems.v2022_04_01".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.catalogItems.v2022_04_01".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

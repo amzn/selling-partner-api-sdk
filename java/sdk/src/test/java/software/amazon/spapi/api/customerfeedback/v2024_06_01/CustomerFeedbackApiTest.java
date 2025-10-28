@@ -57,7 +57,7 @@ public class CustomerFeedbackApiTest {
 
     @Test
     public void getBrowseNodeReturnTopicsTest() throws Exception {
-        instructBackendMock("getBrowseNodeReturnTopics", "200");
+        instructBackendMock("customerFeedback", "getBrowseNodeReturnTopics", "200");
         String browseNodeId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -70,7 +70,7 @@ public class CustomerFeedbackApiTest {
 
     @Test
     public void getBrowseNodeReturnTrendsTest() throws Exception {
-        instructBackendMock("getBrowseNodeReturnTrends", "200");
+        instructBackendMock("customerFeedback", "getBrowseNodeReturnTrends", "200");
         String browseNodeId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -83,7 +83,7 @@ public class CustomerFeedbackApiTest {
 
     @Test
     public void getBrowseNodeReviewTopicsTest() throws Exception {
-        instructBackendMock("getBrowseNodeReviewTopics", "200");
+        instructBackendMock("customerFeedback", "getBrowseNodeReviewTopics", "200");
         String browseNodeId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
         String sortBy = easyRandom.nextObject(String.class);
@@ -97,7 +97,7 @@ public class CustomerFeedbackApiTest {
 
     @Test
     public void getBrowseNodeReviewTrendsTest() throws Exception {
-        instructBackendMock("getBrowseNodeReviewTrends", "200");
+        instructBackendMock("customerFeedback", "getBrowseNodeReviewTrends", "200");
         String browseNodeId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -110,7 +110,7 @@ public class CustomerFeedbackApiTest {
 
     @Test
     public void getItemBrowseNodeTest() throws Exception {
-        instructBackendMock("getItemBrowseNode", "200");
+        instructBackendMock("customerFeedback", "getItemBrowseNode", "200");
         String asin = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -122,7 +122,7 @@ public class CustomerFeedbackApiTest {
 
     @Test
     public void getItemReviewTopicsTest() throws Exception {
-        instructBackendMock("getItemReviewTopics", "200");
+        instructBackendMock("customerFeedback", "getItemReviewTopics", "200");
         String asin = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
         String sortBy = easyRandom.nextObject(String.class);
@@ -136,7 +136,7 @@ public class CustomerFeedbackApiTest {
 
     @Test
     public void getItemReviewTrendsTest() throws Exception {
-        instructBackendMock("getItemReviewTrends", "200");
+        instructBackendMock("customerFeedback", "getItemReviewTrends", "200");
         String asin = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -146,9 +146,10 @@ public class CustomerFeedbackApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

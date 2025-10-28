@@ -16,12 +16,11 @@ app.post('/auth/o2/token', (req, res) => {
 app.post('/response/:name/code/:code', (req, res) => {
     app.locals.response = req.params.name
     app.locals.code = req.params.code
-    app.locals.qualifier = req.query.qualifier || ''
     res.status(204).send()
 })
 
 app.all('*', (req, res) => {
-    const path = './res/responses/' + app.locals.response + app.locals.qualifier + 'Response.json'
+    const path = './res/responses/' + app.locals.response + 'Response.json'
     if (fs.existsSync(path)) {
         const response = fs.readFileSync(path, {encoding: 'utf-8'})
         res.status(app.locals.code).json(JSON.parse(response))

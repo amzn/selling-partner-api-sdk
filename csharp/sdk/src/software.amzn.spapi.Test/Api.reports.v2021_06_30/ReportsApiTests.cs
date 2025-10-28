@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CancelReportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelReport") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelReport"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CancelReport") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string reportId = fixture.Create<string>();
@@ -77,8 +78,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CancelReportScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelReportSchedule") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelReportSchedule"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CancelReportSchedule") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string reportScheduleId = fixture.Create<string>();
@@ -92,8 +93,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CreateReportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateReport") + "/code/202";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateReport"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CreateReport") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateReportSpecification body = fixture.Create<CreateReportSpecification>();
@@ -109,8 +110,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void CreateReportScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateReportSchedule") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateReportSchedule"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("CreateReportSchedule") + "/code/201";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateReportScheduleSpecification body = fixture.Create<CreateReportScheduleSpecification>();
@@ -126,8 +127,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetReport") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetReport"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReport") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string reportId = fixture.Create<string>();
@@ -143,8 +144,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetReportDocument") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetReportDocument"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReportDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string reportDocumentId = fixture.Create<string>();
@@ -160,8 +161,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetReportSchedule") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetReportSchedule"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReportSchedule") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string reportScheduleId = fixture.Create<string>();
@@ -177,8 +178,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportSchedulesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetReportSchedules") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetReportSchedules"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReportSchedules") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             List<string> reportTypes = fixture.Create<List<string>>();
@@ -194,8 +195,8 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
         public void GetReportsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetReports") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetReports"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("reports") + "-" + FormatOperationId("GetReports") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -210,19 +211,13 @@ namespace software.amzn.spapi.Test.Api.reports.v2021_06_30
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.reports.v2021_06_30".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.reports.v2021_06_30".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.reports.v2021_06_30".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.reports.v2021_06_30".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.reports.v2021_06_30".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.reports.v2021_06_30".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

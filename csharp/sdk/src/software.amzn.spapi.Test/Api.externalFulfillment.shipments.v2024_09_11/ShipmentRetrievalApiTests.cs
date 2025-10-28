@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -63,8 +64,8 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void GetShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetShipment"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentRetrieval") + "-" + FormatOperationId("GetShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -80,8 +81,8 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void GetShipmentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetShipments") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetShipments"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentRetrieval") + "-" + FormatOperationId("GetShipments") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string status = fixture.Create<string>();
@@ -98,19 +99,13 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.externalFulfillment.shipments.v2024_09_11".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.externalFulfillment.shipments.v2024_09_11".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.externalFulfillment.shipments.v2024_09_11".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.externalFulfillment.shipments.v2024_09_11".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.externalFulfillment.shipments.v2024_09_11".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.externalFulfillment.shipments.v2024_09_11".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

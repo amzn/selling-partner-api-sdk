@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void GetAccountTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetAccount") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetAccount"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Accounts") + "-" + FormatOperationId("GetAccount") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string accountId = fixture.Create<string>();
@@ -81,8 +82,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void ListAccountBalancesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListAccountBalances") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListAccountBalances"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Accounts") + "-" + FormatOperationId("ListAccountBalances") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string accountId = fixture.Create<string>();
@@ -100,8 +101,8 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void ListAccountsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListAccounts") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListAccounts"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Accounts") + "-" + FormatOperationId("ListAccounts") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string marketplaceId = fixture.Create<string>();
@@ -118,19 +119,13 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.sellerWallet.v2024_03_01".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.sellerWallet.v2024_03_01".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.sellerWallet.v2024_03_01".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.sellerWallet.v2024_03_01".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.sellerWallet.v2024_03_01".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.sellerWallet.v2024_03_01".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

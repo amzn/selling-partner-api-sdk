@@ -50,16 +50,17 @@ public class ShipmentApiTest {
 
     @Test
     public void updateShipmentStatusTest() throws Exception {
-        instructBackendMock("updateShipmentStatus", "204");
+        instructBackendMock("shipment", "updateShipmentStatus", "204");
         UpdateShipmentStatusRequest body = easyRandom.nextObject(UpdateShipmentStatusRequest.class);
         String orderId = easyRandom.nextObject(String.class);
 
         api.updateShipmentStatusWithHttpInfo(body, orderId);
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 

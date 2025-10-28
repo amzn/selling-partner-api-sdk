@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void ArchiveSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ArchiveSupplySource") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ArchiveSupplySource"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("ArchiveSupplySource") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string supplySourceId = fixture.Create<string>();
@@ -79,8 +80,8 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void CreateSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateSupplySource") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateSupplySource"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("CreateSupplySource") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateSupplySourceRequest payload = fixture.Create<CreateSupplySourceRequest>();
@@ -96,8 +97,8 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void GetSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetSupplySource") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetSupplySource"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("GetSupplySource") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string supplySourceId = fixture.Create<string>();
@@ -113,8 +114,8 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void GetSupplySourcesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetSupplySources") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetSupplySources"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("GetSupplySources") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -128,8 +129,8 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void UpdateSupplySourceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateSupplySource") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateSupplySource"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("UpdateSupplySource") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string supplySourceId = fixture.Create<string>();
@@ -145,8 +146,8 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
         public void UpdateSupplySourceStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateSupplySourceStatus") + "/code/204";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateSupplySourceStatus"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("supplySources") + "-" + FormatOperationId("UpdateSupplySourceStatus") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string supplySourceId = fixture.Create<string>();
@@ -163,19 +164,13 @@ namespace software.amzn.spapi.Test.Api.supplySources.v2020_07_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.supplySources.v2020_07_01".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.supplySources.v2020_07_01".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.supplySources.v2020_07_01".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.supplySources.v2020_07_01".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.supplySources.v2020_07_01".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.supplySources.v2020_07_01".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

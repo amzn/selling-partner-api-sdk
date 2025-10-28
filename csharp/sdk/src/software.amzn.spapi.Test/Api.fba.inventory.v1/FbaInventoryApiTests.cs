@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.fba.inventory.v1
         public void AddInventoryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("AddInventory") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "AddInventory"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fbaInventory") + "-" + FormatOperationId("AddInventory") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string xAmznIdempotencyToken = fixture.Create<string>();
@@ -81,8 +82,8 @@ namespace software.amzn.spapi.Test.Api.fba.inventory.v1
         public void CreateInventoryItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateInventoryItem") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateInventoryItem"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fbaInventory") + "-" + FormatOperationId("CreateInventoryItem") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateInventoryItemRequest createInventoryItemRequestBody = fixture.Create<CreateInventoryItemRequest>();
@@ -98,8 +99,8 @@ namespace software.amzn.spapi.Test.Api.fba.inventory.v1
         public void DeleteInventoryItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("DeleteInventoryItem") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "DeleteInventoryItem"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fbaInventory") + "-" + FormatOperationId("DeleteInventoryItem") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string sellerSku = fixture.Create<string>();
@@ -117,8 +118,8 @@ namespace software.amzn.spapi.Test.Api.fba.inventory.v1
         public void GetInventorySummariesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInventorySummaries") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInventorySummaries"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fbaInventory") + "-" + FormatOperationId("GetInventorySummaries") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string granularityType = fixture.Create<string>();
@@ -139,19 +140,13 @@ namespace software.amzn.spapi.Test.Api.fba.inventory.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.fba.inventory.v1".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.fba.inventory.v1".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.fba.inventory.v1".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.fba.inventory.v1".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.fba.inventory.v1".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.fba.inventory.v1".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

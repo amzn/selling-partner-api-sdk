@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void CreateScheduledPackageTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateScheduledPackage") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateScheduledPackage"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("CreateScheduledPackage") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateScheduledPackageRequest createScheduledPackageRequest = fixture.Create<CreateScheduledPackageRequest>();
@@ -79,8 +80,8 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void CreateScheduledPackageBulkTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateScheduledPackageBulk") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateScheduledPackageBulk"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("CreateScheduledPackageBulk") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateScheduledPackagesRequest createScheduledPackagesRequest = fixture.Create<CreateScheduledPackagesRequest>();
@@ -96,8 +97,8 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void GetScheduledPackageTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetScheduledPackage") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetScheduledPackage"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("GetScheduledPackage") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string amazonOrderId = fixture.Create<string>();
@@ -115,8 +116,8 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void ListHandoverSlotsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("ListHandoverSlots") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "ListHandoverSlots"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("ListHandoverSlots") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -130,8 +131,8 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
         public void UpdateScheduledPackagesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("UpdateScheduledPackages") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "UpdateScheduledPackages"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("easyShip") + "-" + FormatOperationId("UpdateScheduledPackages") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
 
@@ -146,19 +147,13 @@ namespace software.amzn.spapi.Test.Api.easyship.v2022_03_23
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.easyship.v2022_03_23".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.easyship.v2022_03_23".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.easyship.v2022_03_23".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.easyship.v2022_03_23".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.easyship.v2022_03_23".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.easyship.v2022_03_23".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

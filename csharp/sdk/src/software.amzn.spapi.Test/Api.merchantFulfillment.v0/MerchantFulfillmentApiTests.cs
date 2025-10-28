@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void CancelShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CancelShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CancelShipment"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("CancelShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -79,8 +80,8 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void CreateShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("CreateShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "CreateShipment"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("CreateShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             CreateShipmentRequest body = fixture.Create<CreateShipmentRequest>();
@@ -96,8 +97,8 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void GetAdditionalSellerInputsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetAdditionalSellerInputs") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetAdditionalSellerInputs"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("GetAdditionalSellerInputs") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetAdditionalSellerInputsRequest body = fixture.Create<GetAdditionalSellerInputsRequest>();
@@ -113,8 +114,8 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void GetEligibleShipmentServicesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetEligibleShipmentServices") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetEligibleShipmentServices"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("GetEligibleShipmentServices") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             GetEligibleShipmentServicesRequest body = fixture.Create<GetEligibleShipmentServicesRequest>();
@@ -130,8 +131,8 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
         public void GetShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetShipment") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetShipment"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("merchantFulfillment") + "-" + FormatOperationId("GetShipment") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -148,19 +149,13 @@ namespace software.amzn.spapi.Test.Api.merchantFulfillment.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.merchantFulfillment.v0".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.merchantFulfillment.v0".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.merchantFulfillment.v0".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.merchantFulfillment.v0".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.merchantFulfillment.v0".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.merchantFulfillment.v0".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }
