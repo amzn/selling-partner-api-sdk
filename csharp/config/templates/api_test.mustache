@@ -56,7 +56,7 @@ namespace {{packageName}}.Test.{{apiPackage}}
         public void {{operationId}}Test()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("{{tags.0.name}}") + "-" + FormatOperationId("{{operationId}}") + "/code/{{responses.0.code}}";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("{{tags.0.name}}") + "-" + FormatOperationId("{{operationId}}") + "/code/{{responses.0.code}}";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             {{#allParams}}{{#required}}
@@ -76,7 +76,7 @@ namespace {{packageName}}.Test.{{apiPackage}}
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
