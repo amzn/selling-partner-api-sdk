@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void CancelShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("CancelShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("CancelShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void CreateClaimTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("CreateClaim") + "/code/201";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("CreateClaim") + "/code/201";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void DirectPurchaseShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("DirectPurchaseShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("DirectPurchaseShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -115,7 +115,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GenerateCollectionFormTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GenerateCollectionForm") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GenerateCollectionForm") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -132,7 +132,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetAccessPointsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetAccessPoints") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetAccessPoints") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -153,7 +153,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetAdditionalInputsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetAdditionalInputs") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetAdditionalInputs") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -172,7 +172,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCarrierAccountFormInputsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCarrierAccountFormInputs") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetCarrierAccountFormInputs") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -187,7 +187,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCarrierAccountsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCarrierAccounts") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetCarrierAccounts") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -204,7 +204,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCollectionFormTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCollectionForm") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetCollectionForm") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -221,7 +221,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetCollectionFormHistoryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetCollectionFormHistory") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetCollectionFormHistory") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -238,7 +238,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetRatesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetRates") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetRates") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -255,7 +255,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetShipmentDocumentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetShipmentDocuments") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetShipmentDocuments") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -274,7 +274,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetTrackingTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetTracking") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetTracking") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -293,7 +293,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void GetUnmanifestedShipmentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("GetUnmanifestedShipments") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("GetUnmanifestedShipments") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -310,7 +310,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void LinkCarrierAccountTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("LinkCarrierAccount") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("LinkCarrierAccount") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -329,7 +329,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void LinkCarrierAccount_0Test()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("LinkCarrierAccount_0") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("LinkCarrierAccount_0") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -348,7 +348,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void OneClickShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("OneClickShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("OneClickShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -365,7 +365,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void PurchaseShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("PurchaseShipment") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("PurchaseShipment") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -382,7 +382,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void SubmitNdrFeedbackTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("SubmitNdrFeedback") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("SubmitNdrFeedback") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -397,7 +397,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
         public void UnlinkCarrierAccountTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipping") + "-" + FormatOperationId("UnlinkCarrierAccount") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipping") + "-" + FormatOperationId("UnlinkCarrierAccount") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -417,7 +417,7 @@ namespace software.amzn.spapi.Test.Api.shipping.v2
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

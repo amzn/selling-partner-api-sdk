@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void CreateContentDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("CreateContentDocument") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("CreateContentDocument") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void GetContentDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("GetContentDocument") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("GetContentDocument") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -103,7 +103,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void ListContentDocumentAsinRelationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("ListContentDocumentAsinRelations") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("ListContentDocumentAsinRelations") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void PostContentDocumentApprovalSubmissionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("PostContentDocumentApprovalSubmission") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("PostContentDocumentApprovalSubmission") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -141,7 +141,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void PostContentDocumentAsinRelationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("PostContentDocumentAsinRelations") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("PostContentDocumentAsinRelations") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -162,7 +162,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void PostContentDocumentSuspendSubmissionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("PostContentDocumentSuspendSubmission") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("PostContentDocumentSuspendSubmission") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -181,7 +181,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void SearchContentDocumentsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("SearchContentDocuments") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("SearchContentDocuments") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -198,7 +198,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void SearchContentPublishRecordsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("SearchContentPublishRecords") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("SearchContentPublishRecords") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -217,7 +217,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void UpdateContentDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("UpdateContentDocument") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("UpdateContentDocument") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -238,7 +238,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
         public void ValidateContentDocumentAsinRelationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("aplusContent") + "-" + FormatOperationId("ValidateContentDocumentAsinRelations") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("aplusContent") + "-" + FormatOperationId("ValidateContentDocumentAsinRelations") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -258,7 +258,7 @@ namespace software.amzn.spapi.Test.Api.aplusContent.v2020_11_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

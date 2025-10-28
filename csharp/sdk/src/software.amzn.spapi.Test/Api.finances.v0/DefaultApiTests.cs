@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventGroupsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEventGroups") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListFinancialEventGroups") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEvents") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListFinancialEvents") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -93,7 +93,7 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventsByGroupIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEventsByGroupId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListFinancialEventsByGroupId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -110,7 +110,7 @@ namespace software.amzn.spapi.Test.Api.finances.v0
         public void ListFinancialEventsByOrderIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("ListFinancialEventsByOrderId") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("ListFinancialEventsByOrderId") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -128,7 +128,7 @@ namespace software.amzn.spapi.Test.Api.finances.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

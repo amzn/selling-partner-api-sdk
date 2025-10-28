@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
         public void GetMyFeesEstimateForASINTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("fees") + "-" + FormatOperationId("GetMyFeesEstimateForASIN") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fees") + "-" + FormatOperationId("GetMyFeesEstimateForASIN") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
         public void GetMyFeesEstimateForSKUTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("fees") + "-" + FormatOperationId("GetMyFeesEstimateForSKU") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fees") + "-" + FormatOperationId("GetMyFeesEstimateForSKU") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -101,7 +101,7 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
         public void GetMyFeesEstimatesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("fees") + "-" + FormatOperationId("GetMyFeesEstimates") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fees") + "-" + FormatOperationId("GetMyFeesEstimates") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -119,7 +119,7 @@ namespace software.amzn.spapi.Test.Api.productFees.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

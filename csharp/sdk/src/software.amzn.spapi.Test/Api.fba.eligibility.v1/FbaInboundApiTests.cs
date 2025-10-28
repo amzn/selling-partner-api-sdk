@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.fba.eligibility.v1
         public void GetItemEligibilityPreviewTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("fbaInbound") + "-" + FormatOperationId("GetItemEligibilityPreview") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fbaInbound") + "-" + FormatOperationId("GetItemEligibilityPreview") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -83,7 +83,7 @@ namespace software.amzn.spapi.Test.Api.fba.eligibility.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

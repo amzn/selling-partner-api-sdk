@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.catalogItems.v2022_04_01
         public void GetCatalogItemTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("catalog") + "-" + FormatOperationId("GetCatalogItem") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("catalog") + "-" + FormatOperationId("GetCatalogItem") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Test.Api.catalogItems.v2022_04_01
         public void SearchCatalogItemsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("catalog") + "-" + FormatOperationId("SearchCatalogItems") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("catalog") + "-" + FormatOperationId("SearchCatalogItems") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -100,7 +100,7 @@ namespace software.amzn.spapi.Test.Api.catalogItems.v2022_04_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v2022_05_01
         public void GetCompetitiveSummaryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetCompetitiveSummary") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetCompetitiveSummary") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v2022_05_01
         public void GetFeaturedOfferExpectedPriceBatchTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("productPricing") + "-" + FormatOperationId("GetFeaturedOfferExpectedPriceBatch") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("productPricing") + "-" + FormatOperationId("GetFeaturedOfferExpectedPriceBatch") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Test.Api.pricing.v2022_05_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

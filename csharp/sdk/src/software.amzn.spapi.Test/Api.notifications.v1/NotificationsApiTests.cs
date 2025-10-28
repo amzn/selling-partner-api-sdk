@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void CreateDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("CreateDestination") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("CreateDestination") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void CreateSubscriptionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("CreateSubscription") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("CreateSubscription") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void DeleteDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("DeleteDestination") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("DeleteDestination") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -116,7 +116,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void DeleteSubscriptionByIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("DeleteSubscriptionById") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("DeleteSubscriptionById") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -135,7 +135,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetDestinationTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetDestination") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("GetDestination") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -152,7 +152,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetDestinationsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetDestinations") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("GetDestinations") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -167,7 +167,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetSubscriptionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetSubscription") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("GetSubscription") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -184,7 +184,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
         public void GetSubscriptionByIdTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("notifications") + "-" + FormatOperationId("GetSubscriptionById") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("notifications") + "-" + FormatOperationId("GetSubscriptionById") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -204,7 +204,7 @@ namespace software.amzn.spapi.Test.Api.notifications.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

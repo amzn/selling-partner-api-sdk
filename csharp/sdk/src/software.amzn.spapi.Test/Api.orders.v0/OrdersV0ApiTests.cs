@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void ConfirmShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("ConfirmShipment") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("ConfirmShipment") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrder") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrder") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -97,7 +97,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderAddressTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderAddress") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrderAddress") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -114,7 +114,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderBuyerInfoTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderBuyerInfo") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrderBuyerInfo") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -131,7 +131,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderItemsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderItems") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrderItems") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -148,7 +148,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderItemsBuyerInfoTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderItemsBuyerInfo") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrderItemsBuyerInfo") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -165,7 +165,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrderRegulatedInfoTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrderRegulatedInfo") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrderRegulatedInfo") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -182,7 +182,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void GetOrdersTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("GetOrders") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrders") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -199,7 +199,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         public void UpdateVerificationStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("ordersV0") + "-" + FormatOperationId("UpdateVerificationStatus") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("UpdateVerificationStatus") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -217,7 +217,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.sales.v1
         public void GetOrderMetricsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("sales") + "-" + FormatOperationId("GetOrderMetrics") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("sales") + "-" + FormatOperationId("GetOrderMetrics") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -85,7 +85,7 @@ namespace software.amzn.spapi.Test.Api.sales.v1
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

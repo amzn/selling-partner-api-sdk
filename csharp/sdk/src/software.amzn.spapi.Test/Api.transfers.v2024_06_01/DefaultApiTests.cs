@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.transfers.v2024_06_01
         public void GetPaymentMethodsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("GetPaymentMethods") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("GetPaymentMethods") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Test.Api.transfers.v2024_06_01
         public void InitiatePayoutTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("default") + "-" + FormatOperationId("InitiatePayout") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("default") + "-" + FormatOperationId("InitiatePayout") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Test.Api.transfers.v2024_06_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

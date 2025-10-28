@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.transactions.v2021_12_28
         public void GetTransactionStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("vendorTransaction") + "-" + FormatOperationId("GetTransactionStatus") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorTransaction") + "-" + FormatOperationId("GetTransactionStatus") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.vendor.df.transactions.v2021_12_28
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

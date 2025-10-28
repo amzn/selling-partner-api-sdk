@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void CancelQueryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("CancelQuery") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("queries") + "-" + FormatOperationId("CancelQuery") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void CreateQueryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("CreateQuery") + "/code/202";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("queries") + "-" + FormatOperationId("CreateQuery") + "/code/202";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -95,7 +95,7 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void GetDocumentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("GetDocument") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("queries") + "-" + FormatOperationId("GetDocument") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void GetQueriesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("GetQueries") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("queries") + "-" + FormatOperationId("GetQueries") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -127,7 +127,7 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
         public void GetQueryTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("queries") + "-" + FormatOperationId("GetQuery") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("queries") + "-" + FormatOperationId("GetQuery") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -145,7 +145,7 @@ namespace software.amzn.spapi.Test.Api.datakiosk.v2023_11_15
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void CreatePackagesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("CreatePackages") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("CreatePackages") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void GenerateInvoiceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("GenerateInvoice") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("GenerateInvoice") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void GenerateShipLabelsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("GenerateShipLabels") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("GenerateShipLabels") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -117,7 +117,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void ProcessShipmentTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("ProcessShipment") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("ProcessShipment") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -134,7 +134,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void RetrieveInvoiceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("RetrieveInvoice") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("RetrieveInvoice") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -151,7 +151,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void RetrieveShippingOptionsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("RetrieveShippingOptions") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("RetrieveShippingOptions") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -170,7 +170,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void UpdatePackageTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("UpdatePackage") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("UpdatePackage") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -189,7 +189,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
         public void UpdatePackageStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("shipmentProcessing") + "-" + FormatOperationId("UpdatePackageStatus") + "/code/204";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentProcessing") + "-" + FormatOperationId("UpdatePackageStatus") + "/code/204";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -207,7 +207,7 @@ namespace software.amzn.spapi.Test.Api.externalFulfillment.shipments.v2024_09_11
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 

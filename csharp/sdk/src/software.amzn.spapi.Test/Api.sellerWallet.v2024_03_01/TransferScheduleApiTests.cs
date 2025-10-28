@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void CreateTransferScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("CreateTransferSchedule") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Transfer Schedule") + "-" + FormatOperationId("CreateTransferSchedule") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void DeleteScheduleTransactionTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("DeleteScheduleTransaction") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Transfer Schedule") + "-" + FormatOperationId("DeleteScheduleTransaction") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void GetTransferScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("GetTransferSchedule") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Transfer Schedule") + "-" + FormatOperationId("GetTransferSchedule") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -124,7 +124,7 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void ListTransferSchedulesTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("ListTransferSchedules") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Transfer Schedule") + "-" + FormatOperationId("ListTransferSchedules") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -143,7 +143,7 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
         public void UpdateTransferScheduleTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatApiName("Transfer Schedule") + "-" + FormatOperationId("UpdateTransferSchedule") + "/code/200";
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("Transfer Schedule") + "-" + FormatOperationId("UpdateTransferSchedule") + "/code/200";
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
@@ -167,7 +167,7 @@ namespace software.amzn.spapi.Test.Api.sellerWallet.v2024_03_01
             if(statusCode != 204) Assert.NotNull(body);
         }
 
-        private static string FormatApiName(string apiName) {
+        private static string ToLowerCaseAndCompress(string apiName) {
             return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
         }
 
