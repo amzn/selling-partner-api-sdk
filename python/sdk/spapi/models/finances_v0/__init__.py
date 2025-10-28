@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.finances_v0.adhoc_disbursement_event import AdhocDisbursementEvent
 from spapi.models.finances_v0.adjustment_event import AdjustmentEvent
