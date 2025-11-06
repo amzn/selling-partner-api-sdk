@@ -8,3 +8,8 @@ src/main/AndroidManifest.xml
 docs/**
 README.md
 src/main/java/software/amazon/spapi/auth/**
+build.gradle
+gradlew
+gradlew.bat
+settings.gradle
+gradle/**

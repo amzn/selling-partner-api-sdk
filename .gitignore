@@ -17,4 +17,5 @@ javascript/openapitools.json
 python/openapitools.json
 **/testreports/
 **/.openapi-generator/
-php/.idea
+**/.idea
+**/Folder.DotSettings.user
