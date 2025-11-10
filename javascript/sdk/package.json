@@ -4,6 +4,7 @@
   "license": "Apache License 2.0",
   "main": "./index.js",
   "type": "module",
+  "repository": "github:amzn/selling-partner-api-sdk",
   "scripts": {
     "test": "echo \"No test specified\" && exit 1"
   },
