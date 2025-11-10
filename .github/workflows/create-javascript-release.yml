@@ -26,6 +26,8 @@ jobs:
         with:
           node-version: '21'
           registry-url: 'https://registry.npmjs.org'
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Set version in package.json
         working-directory: javascript/sdk
         run: |
