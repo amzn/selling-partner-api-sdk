@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.product_pricing_v2022_05_01.batch_request import BatchRequest
 from spapi.models.product_pricing_v2022_05_01.batch_response import BatchResponse

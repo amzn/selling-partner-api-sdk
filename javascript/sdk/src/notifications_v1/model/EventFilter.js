@@ -113,7 +113,6 @@ EventFilter.EventFilterTypeEnum = {
      */
   ORDER_CHANGE: 'ORDER_CHANGE'
 }
-
 /**
  * An `eventFilterType` value that is supported by the specific `notificationType`. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an `eventFilterType` is supported.
  * @member {String} eventFilterType

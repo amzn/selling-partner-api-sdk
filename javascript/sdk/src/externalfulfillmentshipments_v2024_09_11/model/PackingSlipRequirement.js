@@ -75,7 +75,6 @@ PackingSlipRequirement.RequirementEnum = {
      */
   NOT_REQUIRED: 'NOT_REQUIRED'
 }
-
 /**
  * Whether the packing slip is required to be attached to the shipment.
  * @member {String} requirement
@@ -102,7 +101,6 @@ PackingSlipRequirement.StatusEnum = {
      */
   NOT_GENERATED: 'NOT_GENERATED'
 }
-
 /**
  * The status of the packing slip that is attached to the shipment.
  * @member {String} status

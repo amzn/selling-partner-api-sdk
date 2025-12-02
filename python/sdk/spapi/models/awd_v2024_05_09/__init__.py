@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.awd_v2024_05_09.address import Address
 from spapi.models.awd_v2024_05_09.carrier_code import CarrierCode

@@ -86,7 +86,6 @@ Weight.WeightUnitEnum = {
      */
   KG: 'KG'
 }
-
 /**
  * The unit of measurement of the weight.
  * @member {String} weightUnit

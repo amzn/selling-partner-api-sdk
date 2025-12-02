@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using AutoFixture;
 using RestSharp;
 using Xunit;
@@ -62,8 +63,8 @@ namespace software.amzn.spapi.Test.Api.invoicing.v0
         public void GetInvoiceStatusTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetInvoiceStatus") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetInvoiceStatus"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentInvoice") + "-" + FormatOperationId("GetInvoiceStatus") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -79,8 +80,8 @@ namespace software.amzn.spapi.Test.Api.invoicing.v0
         public void GetShipmentDetailsTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("GetShipmentDetails") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "GetShipmentDetails"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentInvoice") + "-" + FormatOperationId("GetShipmentDetails") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -96,8 +97,8 @@ namespace software.amzn.spapi.Test.Api.invoicing.v0
         public void SubmitInvoiceTest()
         {
             Init();
-            var url = "http://localhost:3000/response/" + FormatOperationId("SubmitInvoice") + "/code/200";
-            var request = new HttpRequestMessage(HttpMethod.Post, AppendQualifier(url, "SubmitInvoice"));
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("shipmentInvoice") + "-" + FormatOperationId("SubmitInvoice") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
             string shipmentId = fixture.Create<string>();
@@ -116,19 +117,13 @@ namespace software.amzn.spapi.Test.Api.invoicing.v0
             if(statusCode != 204) Assert.NotNull(body);
         }
 
+        private static string ToLowerCaseAndCompress(string apiName) {
+            return Regex.Replace(apiName.ToLower(), @"\s+", String.Empty);
+        }
+
         private static string FormatOperationId(string operationId) {
             operationId = string.IsNullOrEmpty(operationId) ? operationId : char.ToLower(operationId[0]) + operationId[1..];
             return operationId.Replace("_0", String.Empty);
-        }
-
-        private static string AppendQualifier(string url, string operationId) {
-            if ("Api.invoicing.v0".Contains("vendor") && operationId.Equals("GetOrder")) url += "?qualifier=Vendor";
-            if ("Api.invoicing.v0".Contains("fulfillment.inbound") && operationId.Equals("GetShipment")) url += "?qualifier=FbaInbound";
-            if ("Api.invoicing.v0".Contains("sellerWallet") && operationId.Equals("GetAccount")) url += "?qualifier=SellerWallet";
-            if ("Api.invoicing.v0".Contains("sellerWallet") && operationId.Equals("GetTransaction")) url += "?qualifier=SellerWallet";
-            if ("Api.invoicing.v0".Contains("externalFulfillment") && operationId.Equals("GetShipment")) url += "?qualifier=ExternalFulfillment";
-            if ("Api.invoicing.v0".Contains("externalFulfillment") && operationId.Equals("GetShipments")) url += "?qualifier=ExternalFulfillment";
-            return url;
         }
     }
 }

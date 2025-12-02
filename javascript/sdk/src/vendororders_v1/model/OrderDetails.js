@@ -129,7 +129,6 @@ OrderDetails.PurchaseOrderTypeEnum = {
      */
   RushOrder: 'RushOrder'
 }
-
 /**
  * Type of purchase order.
  * @member {String} purchaseOrderType
@@ -181,7 +180,6 @@ OrderDetails.PaymentMethodEnum = {
      */
   Prepaid: 'Prepaid'
 }
-
 /**
  * Payment method used.
  * @member {String} paymentMethod

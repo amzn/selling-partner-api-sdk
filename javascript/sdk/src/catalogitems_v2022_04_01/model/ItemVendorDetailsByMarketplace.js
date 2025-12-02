@@ -179,7 +179,6 @@ ItemVendorDetailsByMarketplace.ReplenishmentCategoryEnum = {
      */
   PLANNED_REPLENISHMENT: 'PLANNED_REPLENISHMENT'
 }
-
 /**
  * The replenishment category that is associated with an Amazon catalog item.
  * @member {String} replenishmentCategory

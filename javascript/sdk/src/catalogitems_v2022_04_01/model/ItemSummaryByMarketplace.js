@@ -157,7 +157,6 @@ ItemSummaryByMarketplace.ItemClassificationEnum = {
      */
   VARIATION_PARENT: 'VARIATION_PARENT'
 }
-
 /**
  * Classification type that is associated with the Amazon catalog item.
  * @member {String} itemClassification

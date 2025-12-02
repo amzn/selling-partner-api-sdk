@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.datakiosk_v2023_11_15.create_query_response import CreateQueryResponse
 from spapi.models.datakiosk_v2023_11_15.create_query_specification import CreateQuerySpecification

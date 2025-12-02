@@ -12,7 +12,6 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
 # import models into model package
 from spapi.models.applications_v2023_11_30.error import Error
 from spapi.models.applications_v2023_11_30.error_list import ErrorList

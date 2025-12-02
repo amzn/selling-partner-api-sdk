@@ -102,7 +102,6 @@ Error.ErrorLevelEnum = {
      */
   WARNING: 'WARNING'
 }
-
 /**
  * The type of error.
  * @member {String} errorLevel

@@ -75,7 +75,6 @@ InvoiceRequirement.RequirementEnum = {
      */
   NOT_REQUIRED: 'NOT_REQUIRED'
 }
-
 /**
  * Whether the invoice document is required to be attached to the shipment.
  * @member {String} requirement
@@ -108,7 +107,6 @@ InvoiceRequirement.StatusEnum = {
      */
   NOT_AVAILABLE: 'NOT_AVAILABLE'
 }
-
 /**
  * The status of the of the invoice document that is attached to the shipment.
  * @member {String} status

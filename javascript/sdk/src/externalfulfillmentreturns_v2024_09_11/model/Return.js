@@ -131,7 +131,6 @@ Return.ReturnTypeEnum = {
      */
   REJECT: 'REJECT'
 }
-
 /**
  * The type of return.
  * @member {String} returnType
@@ -164,7 +163,6 @@ Return.ReturnSubTypeEnum = {
      */
   EXCHANGE: 'EXCHANGE'
 }
-
 /**
  * The sub-type of return.
  * @member {String} returnSubType
@@ -276,7 +274,6 @@ Return.StatusEnum = {
      */
   CANCELLED: 'CANCELLED'
 }
-
 /**
  * The current status of the return.
  * @member {String} status
@@ -348,7 +345,6 @@ Return.PackageDeliveryModeEnum = {
      */
   WITHOUT_OTP: 'WITHOUT_OTP'
 }
-
 /**
  * The package delivery mode. This indicates whether the return was delivered to the seller with or without a one-time password (OTP).
  * @member {String} packageDeliveryMode

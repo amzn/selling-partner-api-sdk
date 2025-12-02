@@ -202,7 +202,6 @@ Order.OrderStatusEnum = {
      */
   PendingAvailability: 'PendingAvailability'
 }
-
 /**
  * The current order status.
  * @member {String} orderStatus
@@ -229,7 +228,6 @@ Order.FulfillmentChannelEnum = {
      */
   AFN: 'AFN'
 }
-
 /**
  * Whether the order was fulfilled by Amazon (`AFN`) or by the seller (`MFN`).
  * @member {String} fulfillmentChannel
@@ -310,7 +308,6 @@ Order.PaymentMethodEnum = {
      */
   Other: 'Other'
 }
-
 /**
  * The payment method for the order. This property is limited to COD and CVS payment methods. Unless you need the specific COD payment information provided by the `PaymentExecutionDetailItem` object, we recommend using the `PaymentMethodDetails` property to get payment method information.
  * @member {String} paymentMethod
@@ -389,7 +386,6 @@ Order.OrderTypeEnum = {
      */
   SourcingOnDemandOrder: 'SourcingOnDemandOrder'
 }
-
 /**
  * The order's type.
  * @member {String} orderType
@@ -520,7 +516,6 @@ Order.BuyerInvoicePreferenceEnum = {
      */
   BUSINESS: 'BUSINESS'
 }
-
 /**
  * The buyer's invoicing preference. Sellers can use this data to issue electronic invoices for orders in Turkey.  **Note**: This attribute is only available in the Turkey marketplace.
  * @member {String} buyerInvoicePreference

@@ -93,7 +93,6 @@ ListingsItemPutRequest.RequirementsEnum = {
      */
   LISTING_OFFER_ONLY: 'LISTING_OFFER_ONLY'
 }
-
 /**
  * The name of the requirements set for the provided data.
  * @member {String} requirements

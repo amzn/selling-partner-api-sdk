@@ -32,7 +32,7 @@ jobs:
         working-directory: ./selling-partner-api-sdk/java
         run: curl -O https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.63/swagger-codegen-cli-3.0.63.jar
       - name: Remove old sdk files
-        working-directory: ./selling-partner-api-sdk/java/sdk
+        working-directory: ./selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi
         run: rm -r *
       - name: Execute swagger codegen
         working-directory: ./selling-partner-api-sdk/java
@@ -90,8 +90,9 @@ jobs:
           java -jar swagger-codegen-cli-3.0.63.jar generate -i ../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentShipments_2024-09-11.json -l java -t config/templates -o sdk -c config/config.json --modelPackage software.amazon.spapi.models.externalfulfillment.shipments.v2024_09_11 --apiPackage software.amazon.spapi.api.externalfulfillment.shipments.v2024_09_11 && \
           java -jar swagger-codegen-cli-3.0.63.jar generate -i ../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentInventory_2024-09-11.json -l java -t config/templates -o sdk -c config/config.json --modelPackage software.amazon.spapi.models.externalfulfillment.inventory.v2024_09_11 --apiPackage software.amazon.spapi.api.externalfulfillment.inventory.v2024_09_11 && \
           java -jar swagger-codegen-cli-3.0.63.jar generate -i ../../selling-partner-api-models/models/external-fulfillment/externalFulfillmentReturns_2024-09-11.json -l java -t config/templates -o sdk -c config/config.json --modelPackage software.amazon.spapi.models.externalfulfillment.returns.v2024_09_11 --apiPackage software.amazon.spapi.api.externalfulfillment.returns.v2024_09_11
-      - name: Copy Auth&Auth lib
-        run: cp -R selling-partner-api-models/clients/sellingpartner-api-aa-java/src/com selling-partner-api-sdk/java/sdk/src/main/java
+      - name: Remove unused swagger leftovers
+        working-directory: ./selling-partner-api-sdk/java/sdk
+        run: rm -r .swagger-codegen
       - name: Copy rate limit configuration
         working-directory: ./selling-partner-api-sdk
         run: cp -R resources java/sdk/src/main

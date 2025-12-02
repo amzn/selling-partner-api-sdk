@@ -14,20 +14,20 @@ on:
         required: true
 
 permissions:
-  contents: write
+  id-token: write
 
 jobs:
   release_javascript:
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.JAVASCRIPT_NPM_AUTH_TOKEN }}
 
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '21'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Set version in package.json
         working-directory: javascript/sdk
         run: |

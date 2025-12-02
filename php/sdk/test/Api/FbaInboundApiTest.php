@@ -70,7 +70,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Success.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -163,7 +163,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -244,7 +244,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The request&#39;s Authorization header is not formatted correctly or does not contain a valid token.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -325,7 +325,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;403 can be caused for reasons like Access Denied, Unauthorized, Expired Token, Invalid Signature or Resource Not Found.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -400,7 +400,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The resource specified does not exist.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -481,7 +481,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;The frequency of requests was greater than allowed.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -562,7 +562,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Encountered an unexpected condition which prevented the server from fulfilling the request.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }
@@ -643,7 +643,7 @@ class FbaInboundApiTest extends BaseTestCase
   &quot;description&quot; : &quot;Temporary overloading or maintenance of the server.&quot;,
   &quot;headers&quot; : {
     &quot;x-amzn-RequestId&quot; : {
-      &quot;description&quot; : &quot;Unique request reference ID.&quot;,
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
       &quot;schema&quot; : {
         &quot;type&quot; : &quot;string&quot;
       }

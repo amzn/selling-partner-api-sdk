@@ -35,14 +35,14 @@ class TestQueriesApi(unittest.TestCase):
     def test_cancel_query(self):
         query_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("cancel_query"), "204")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("cancel_query"), "204")
         response = self.api.cancel_query_with_http_info(query_id, )
         pass
 
     def test_create_query(self):
         body = self._get_random_value("CreateQuerySpecification", None)
         
-        self.instruct_backend_mock(self.to_camel_case("create_query"), "202")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("create_query"), "202")
         response = self.api.create_query_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
@@ -51,7 +51,7 @@ class TestQueriesApi(unittest.TestCase):
     def test_get_document(self):
         document_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_document"), "200")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("get_document"), "200")
         response = self.api.get_document_with_http_info(document_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -59,7 +59,7 @@ class TestQueriesApi(unittest.TestCase):
 
     def test_get_queries(self):
         
-        self.instruct_backend_mock(self.to_camel_case("get_queries"), "200")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("get_queries"), "200")
         response = self.api.get_queries_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
@@ -68,28 +68,34 @@ class TestQueriesApi(unittest.TestCase):
     def test_get_query(self):
         query_id = self._get_random_value("str", None)
         
-        self.instruct_backend_mock(self.to_camel_case("get_query"), "200")
+        self.instruct_backend_mock("queries".casefold().replace(' ', ''), self.to_camel_case("get_query"), "200")
         response = self.api.get_query_with_http_info(query_id, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass
 
 
-    def instruct_backend_mock(self, response: str, code: str) -> None:
-        url = f"{self.mock_server_endpoint}/response/{response}/code/{code}"
-        ## handle same api operation name exceptions
-        if "vendor" in "api.datakiosk_v2023_11_15" and response == "getOrder":
-            url += f"?qualifier=Vendor"
-        if "fulfillment_inbound" in "api.datakiosk_v2023_11_15" and response == "getShipment":
-            url += f"?qualifier=FbaInbound"
-        if "seller_wallet" in "api.datakiosk_v2023_11_15" and response == "getAccount":
-            url += f"?qualifier=SellerWallet"
-        if "seller_wallet" in "api.datakiosk_v2023_11_15" and response == "getTransaction":
-            url += f"?qualifier=SellerWallet"
-        if "external_fulfillment" in "api.datakiosk_v2023_11_15" and response == "getShipment":
-                    url += f"?qualifier=ExternalFulfillment"
-        if "external_fulfillment" in "api.datakiosk_v2023_11_15" and response == "getShipments":
-                    url += f"?qualifier=ExternalFulfillment"
+    def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
+        if api == "financesv0" or api == "financesv2024" or api == "transfers":
+            api = "default"
+        if api == "vendordforders":
+            api = "vendororders"
+        if api == "replenishment":
+            if response == "get_selling_partner_metrics":
+                api = "sellingpartners"
+            else:
+                api = "offers"
+        if api == "productpricingv2022":
+            api = "productpricing"
+        if api == "vendordftransaction":
+            api = "vendortransaction"
+        if api == "vendorshipment":
+            api = "vendorshipping"
+        if api == "fbainboundv0" or api == "fbainboundeligibility":
+            api = "fbainbound"
+        if api == "listingsrestrictions":
+            api = "listings"
+        url = f"{self.mock_server_endpoint}/response/{api}-{response}/code/{code}"
         requests.post(url)
 
     def _get_random_value(self, data_type, pattern=None):

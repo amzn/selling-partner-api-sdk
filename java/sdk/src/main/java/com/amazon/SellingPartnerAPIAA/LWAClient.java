@@ -13,6 +13,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.apache.commons.lang3.EnumUtils;
+import software.amazon.spapi.Configuration;
 
 class LWAClient {
     private static final String ACCESS_TOKEN_KEY = "access_token";
@@ -33,7 +34,7 @@ class LWAClient {
     }
 
     LWAClient(String endpoint) {
-        okHttpClient = new OkHttpClient();
+        okHttpClient = Configuration.get().getOkHttpClient();
         this.endpoint = endpoint;
     }
 

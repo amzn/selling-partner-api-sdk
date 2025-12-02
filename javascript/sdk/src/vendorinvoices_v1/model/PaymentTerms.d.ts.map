@@ -1,1 +1,1 @@
-{"version":3,"file":"PaymentTerms.d.ts","sourceRoot":"","sources":["PaymentTerms.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,YAAY,GACX,YAAY,CAsBvB;IA+CH;;;;OAIG;IACH,aAA2B;IAE3B;;;;OAIG;IACH,wBAAsC;IAEtC;;;;OAIG;IACH,wBAAsC;IAEtC;;;;OAIG;IACH,mBAAiC;CAxEhC"}
+{"version":3,"file":"PaymentTerms.d.ts","sourceRoot":"","sources":["PaymentTerms.js"],"names":[],"mappings":"AAeA;;;;GAIG;AACH;IAUE;;;;;;OAMG;IACH,2CAHW,YAAY,GACX,YAAY,CAsBvB;IA8CH;;;;OAIG;IACH,aAA2B;IAE3B;;;;OAIG;IACH,wBAAsC;IAEtC;;;;OAIG;IACH,wBAAsC;IAEtC;;;;OAIG;IACH,mBAAiC;CAvEhC"}

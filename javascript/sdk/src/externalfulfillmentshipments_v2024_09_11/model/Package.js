@@ -154,7 +154,6 @@ Package.StatusEnum = {
      */
   CANCELLED: 'CANCELLED'
 }
-
 /**
  * The current status of the package.
  * @member {String} status
@@ -181,7 +180,6 @@ Package.PackageHandlingRequirementsEnum = {
      */
   FRAGILE: 'FRAGILE'
 }
-
 /**
  * Whether the package requires standard handling or extra care.
  * @member {String} packageHandlingRequirements

@@ -54,7 +54,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void createTransferScheduleTest() throws Exception {
-        instructBackendMock("createTransferSchedule", "200");
+        instructBackendMock("Transfer Schedule", "createTransferSchedule", "200");
         TransferScheduleRequest body = easyRandom.nextObject(TransferScheduleRequest.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);
@@ -69,7 +69,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void deleteScheduleTransactionTest() throws Exception {
-        instructBackendMock("deleteScheduleTransaction", "200");
+        instructBackendMock("Transfer Schedule", "deleteScheduleTransaction", "200");
         String transferScheduleId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -82,7 +82,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void getTransferScheduleTest() throws Exception {
-        instructBackendMock("getTransferSchedule", "200");
+        instructBackendMock("Transfer Schedule", "getTransferSchedule", "200");
         String transferScheduleId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -94,7 +94,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void listTransferSchedulesTest() throws Exception {
-        instructBackendMock("listTransferSchedules", "200");
+        instructBackendMock("Transfer Schedule", "listTransferSchedules", "200");
         String accountId = easyRandom.nextObject(String.class);
         String marketplaceId = easyRandom.nextObject(String.class);
 
@@ -107,7 +107,7 @@ public class TransferScheduleApiTest {
 
     @Test
     public void updateTransferScheduleTest() throws Exception {
-        instructBackendMock("updateTransferSchedule", "200");
+        instructBackendMock("Transfer Schedule", "updateTransferSchedule", "200");
         TransferSchedule body = easyRandom.nextObject(TransferSchedule.class);
         String destAccountDigitalSignature = easyRandom.nextObject(String.class);
         String amountDigitalSignature = easyRandom.nextObject(String.class);
@@ -120,9 +120,10 @@ public class TransferScheduleApiTest {
         assertValidResponsePayload(200, response.getData());
     }
 
-    private void instructBackendMock(String response, String code) throws Exception {
+    private void instructBackendMock(String basename, String response, String code) throws Exception {
+        String lowerCaseCompressedBasename = basename.replaceAll("/\"W| ", "").toLowerCase();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(endpoint + "/response/" + response + "/code/" + code))
+                .uri(new URI(endpoint + "/response/" + lowerCaseCompressedBasename + "-" + response + "/code/" + code))
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
 
