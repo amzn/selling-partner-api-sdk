@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class UnlinkCarrierAccountRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
+class UnlinkCarrierAccountRequest implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

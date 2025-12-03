@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateMarketplaceItemLabelsRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
+class CreateMarketplaceItemLabelsRequest implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

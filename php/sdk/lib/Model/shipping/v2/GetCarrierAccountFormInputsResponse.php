@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetCarrierAccountFormInputsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetCarrierAccountFormInputsResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
