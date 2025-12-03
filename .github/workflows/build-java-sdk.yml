@@ -5,6 +5,10 @@ on:
   repository_dispatch:
     types: [ trigger-build ]
 
+permissions:
+  pull-requests: write
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
