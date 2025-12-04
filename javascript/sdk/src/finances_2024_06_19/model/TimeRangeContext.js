@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class TimeRangeContext {
   /**
    * Constructs a new <code>TimeRangeContext</code>.
-   * Additional information related to time range for transaction.
+   * Additional information that is related to the time range of the transaction.
    * @alias module:finances_2024_06_19/model/TimeRangeContext
    * @class
    */
@@ -57,14 +57,14 @@ export class TimeRangeContext {
 }
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} startTime
  * @type {Date}
  */
 TimeRangeContext.prototype.startTime = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} endTime
  * @type {Date}
  */

@@ -24,13 +24,13 @@ export class Transaction {
      */
     relatedIdentifiers: [RelatedIdentifier];
     /**
-     * The type of transaction.  Possible values:  * Shipment
+     * The type of transaction.  **Possible value:** `Shipment`
      * @member {String} transactionType
      * @type {String}
      */
     transactionType: string;
     /**
-     * The unique identifier for the transaction.
+     * The unique identifier of the transaction.
      * @member {String} transactionId
      * @type {String}
      */
@@ -42,13 +42,13 @@ export class Transaction {
      */
     transactionStatus: string;
     /**
-     * Describes the reasons for the transaction.  Example: 'Order Payment','Refund Order'
+     * Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'
      * @member {String} description
      * @type {String}
      */
     description: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
@@ -64,13 +64,13 @@ export class Transaction {
      */
     marketplaceDetails: MarketplaceDetails;
     /**
-     * List of items in the transaction
+     * A list of items in the transaction.
      * @member {[Item]} items
      * @type {[Item]}
      */
     items: [Item];
     /**
-     * List of additional Information about the item.
+     * A list of additional information about the item.
      * @member {[Context]} contexts
      * @type {[Context]}
      */

@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  * 
@@ -59,7 +59,6 @@ function generateMockData(dataType, isArray = false) {
 // Generate mock requests and responses for each operation
 const mocklistTransactionsData = {
   request: {
-    'postedAfter': generateMockData('Date'),
   },
   response: {
     data: generateMockData('ListTransactionsResponse'),
@@ -86,7 +85,6 @@ describe('DefaultApi', () => {
       instance.apiClient.callApi.resolves(mocklistTransactionsData.response);
 
       const params = [
-        mocklistTransactionsData.request['postedAfter'],
       ];
       const data = await instance.listTransactions(...params);
 
@@ -98,7 +96,6 @@ describe('DefaultApi', () => {
       instance.apiClient.callApi.resolves(mocklistTransactionsData.response);
 
       const params = [
-        mocklistTransactionsData.request['postedAfter'],
       ];
       const response = await instance.listTransactionsWithHttpInfo(...params);
 
@@ -119,7 +116,6 @@ describe('DefaultApi', () => {
 
       try {
         const params = [
-          mocklistTransactionsData.request['postedAfter'],
         ];
         await instance.listTransactions(...params);
         throw new Error('Expected error to be thrown');

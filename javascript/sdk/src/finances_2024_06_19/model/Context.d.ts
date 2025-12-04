@@ -34,7 +34,7 @@ export class Context {
      */
     storeName: string;
     /**
-     * Order type of the transaction.
+     * The transaction's order type.
      * @member {String} orderType
      * @type {String}
      */
@@ -46,49 +46,49 @@ export class Context {
      */
     channel: string;
     /**
-     * Amazon Standard Identification Number (ASIN) of the item.
+     * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} asin
      * @type {String}
      */
     asin: string;
     /**
-     * Stock keeping unit (SKU) of the item.
+     * The Stock Keeping Unit (SKU) of the item.
      * @member {String} sku
      * @type {String}
      */
     sku: string;
     /**
-     * Quantity of the item shipped.
+     * The quantity of the item shipped.
      * @member {Number} quantityShipped
      * @type {Number}
      */
     quantityShipped: number;
     /**
-     * Fulfillment network of the item.
+     * The fulfillment network of the item.
      * @member {String} fulfillmentNetwork
      * @type {String}
      */
     fulfillmentNetwork: string;
     /**
-     * Type of payment made.
+     * The type of payment.
      * @member {String} paymentType
      * @type {String}
      */
     paymentType: string;
     /**
-     * Method of payment made.
+     * The method of payment.
      * @member {String} paymentMethod
      * @type {String}
      */
     paymentMethod: string;
     /**
-     * Reference number of payment made.
+     * The reference number of the payment.
      * @member {String} paymentReference
      * @type {String}
      */
     paymentReference: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} paymentDate
      * @type {Date}
      */
@@ -100,19 +100,19 @@ export class Context {
      */
     deferralReason: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} maturityDate
      * @type {Date}
      */
     maturityDate: Date;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} startTime
      * @type {Date}
      */
     startTime: Date;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} endTime
      * @type {Date}
      */

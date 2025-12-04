@@ -25,10 +25,46 @@ export class PackageItemDetails {
      */
     lotNumber: string;
     /**
+     * This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified.
+     * @member {String} lotNumberSourceReference
+     * @type {String}
+     */
+    lotNumberSourceReference: string;
+    /**
+     * The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.
+     * @member {String} lotNumberSourceType
+     * @type {String}
+     */
+    lotNumberSourceType: string;
+    /**
+     * The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated.
+     * @member {String} countryOfOrigin
+     * @type {String}
+     */
+    countryOfOrigin: string;
+    /**
+     * @member {RegulationReferences} regulationReferences
+     * @type {RegulationReferences}
+     */
+    regulationReferences: RegulationReferences;
+    /**
      * @member {Expiry} expiry
      * @type {Expiry}
      */
     expiry: Expiry;
 }
+export namespace PackageItemDetails {
+    namespace LotNumberSourceTypeEnum {
+        let GLN: string;
+        let FFRN: string;
+        let USDA_E: string;
+        let URL: string;
+    }
+    /**
+     * *
+     */
+    type LotNumberSourceTypeEnum = string;
+}
+import { RegulationReferences } from './RegulationReferences.js';
 import { Expiry } from './Expiry.js';
 //# sourceMappingURL=PackageItemDetails.d.ts.map

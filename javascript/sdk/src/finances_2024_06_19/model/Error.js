@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class Error {
   /**
    * Constructs a new <code>Error</code>.
-   * Error response returned when the request is unsuccessful.
+   * An error response returned when the request is unsuccessful.
    * @alias module:finances_2024_06_19/model/Error
    * @class
    * @param code {String} An error code that identifies the type of error that occurred.

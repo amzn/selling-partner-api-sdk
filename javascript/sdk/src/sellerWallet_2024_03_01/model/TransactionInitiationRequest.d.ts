@@ -46,10 +46,10 @@ export class TransactionInitiationRequest {
      */
     customerPaymentReference: string;
     /**
-     * @member {AccountHolderAddress} destinationAccountHolderAddress
-     * @type {AccountHolderAddress}
+     * @member {PayeeContactInformation} payeeContactInformation
+     * @type {PayeeContactInformation}
      */
-    destinationAccountHolderAddress: AccountHolderAddress;
+    payeeContactInformation: PayeeContactInformation;
     /**
      * @member {TransferRatePreview} transferRateDetails
      * @type {TransferRatePreview}
@@ -58,6 +58,6 @@ export class TransactionInitiationRequest {
 }
 import { TransactionInstrumentDetails } from './TransactionInstrumentDetails.js';
 import { Currency } from './Currency.js';
-import { AccountHolderAddress } from './AccountHolderAddress.js';
+import { PayeeContactInformation } from './PayeeContactInformation.js';
 import { TransferRatePreview } from './TransferRatePreview.js';
 //# sourceMappingURL=TransactionInitiationRequest.d.ts.map

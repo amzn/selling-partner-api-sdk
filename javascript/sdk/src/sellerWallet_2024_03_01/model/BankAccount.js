@@ -25,22 +25,16 @@ import { BankNumberFormat } from './BankNumberFormat.js'
 export class BankAccount {
   /**
    * Constructs a new <code>BankAccount</code>.
-   * Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not including account_links, short cut links to the account balance and transactions -&gt; since not mandatory
+   * Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.
    * @alias module:sellerWallet_2024_03_01/model/BankAccount
    * @class
-   * @param bankAccountNumberFormat {BankAccountNumberFormat}
    * @param bankAccountOwnershipType {BankAccountOwnershipType}
-   * @param routingNumber {String} Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,
-   * @param bankNumberFormat {BankNumberFormat}
    * @param accountCountryCode {String} The two digit country code, in ISO 3166 format.
    * @param accountCurrency {String} BankAccount currency code in ISO 4217 format
    * @param bankAccountNumberTail {String} Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0's
    */
-  constructor (bankAccountNumberFormat, bankAccountOwnershipType, routingNumber, bankNumberFormat, accountCountryCode, accountCurrency, bankAccountNumberTail) {
-    this.bankAccountNumberFormat = bankAccountNumberFormat
+  constructor (bankAccountOwnershipType, accountCountryCode, accountCurrency, bankAccountNumberTail) {
     this.bankAccountOwnershipType = bankAccountOwnershipType
-    this.routingNumber = routingNumber
-    this.bankNumberFormat = bankNumberFormat
     this.accountCountryCode = accountCountryCode
     this.accountCurrency = accountCurrency
     this.bankAccountNumberTail = bankAccountNumberTail
@@ -84,14 +78,14 @@ export class BankAccount {
 }
 
 /**
- * The unique identifier provided by Amazon to identify the account
+ * The unique bank account identifier provided by Amazon. To initiate a `SELF` transaction with Seller Wallet, you must choose `BANK_ACCOUNT` as the payment method type in the [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon Seller Wallet bank account identifier should match the `paymentMethodId` in the response. This field is required.
  * @member {String} accountId
  * @type {String}
  */
 BankAccount.prototype.accountId = undefined
 
 /**
- * BankAccount holder's name (expected to be Amazon customer)
+ * The bank account holder's name (expected to be an Amazon customer). There is a 50 character limit.
  * @member {String} accountHolderName
  * @type {String}
  */
@@ -104,7 +98,7 @@ BankAccount.prototype.accountHolderName = undefined
 BankAccount.prototype.bankAccountNumberFormat = undefined
 
 /**
- * The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet
+ * The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
  * @member {String} bankName
  * @type {String}
  */
@@ -117,7 +111,7 @@ BankAccount.prototype.bankName = undefined
 BankAccount.prototype.bankAccountOwnershipType = undefined
 
 /**
- * Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,
+ * Routing number for automated clearing house transfers for `THIRD_PARTY` transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
  * @member {String} routingNumber
  * @type {String}
  */

@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class PaymentsContext {
   /**
    * Constructs a new <code>PaymentsContext</code>.
-   * Additional information related to Payments related transactions.
+   * Additional information related to payments-related transactions.
    * @alias module:finances_2024_06_19/model/PaymentsContext
    * @class
    */
@@ -59,28 +59,28 @@ export class PaymentsContext {
 }
 
 /**
- * Type of payment made.
+ * The type of payment.
  * @member {String} paymentType
  * @type {String}
  */
 PaymentsContext.prototype.paymentType = undefined
 
 /**
- * Method of payment made.
+ * The method of payment.
  * @member {String} paymentMethod
  * @type {String}
  */
 PaymentsContext.prototype.paymentMethod = undefined
 
 /**
- * Reference number of payment made.
+ * The reference number of the payment.
  * @member {String} paymentReference
  * @type {String}
  */
 PaymentsContext.prototype.paymentReference = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} paymentDate
  * @type {Date}
  */

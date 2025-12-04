@@ -19,7 +19,7 @@ export class MarketplaceDetails {
      */
     marketplaceId: string;
     /**
-     * The name of the marketplace where the transaction occurred.   Example: 'Amazon.com','Amazon.in'
+     * The name of the marketplace where the transaction occurred. For example: `Amazon.com`,`Amazon.in`
      * @member {String} marketplaceName
      * @type {String}
      */

@@ -13,25 +13,25 @@ export class ProductContext {
      */
     static constructFromObject(data: any, obj: ProductContext): ProductContext;
     /**
-     * Amazon Standard Identification Number (ASIN) of the item.
+     * The Amazon Standard Identification Number (ASIN) of the item.
      * @member {String} asin
      * @type {String}
      */
     asin: string;
     /**
-     * Stock keeping unit (SKU) of the item.
+     * The Stock Keeping Unit (SKU) of the item.
      * @member {String} sku
      * @type {String}
      */
     sku: string;
     /**
-     * Quantity of the item shipped.
+     * The quantity of the item shipped.
      * @member {Number} quantityShipped
      * @type {Number}
      */
     quantityShipped: number;
     /**
-     * Fulfillment network of the item.
+     * The fulfillment network of the item.
      * @member {String} fulfillmentNetwork
      * @type {String}
      */

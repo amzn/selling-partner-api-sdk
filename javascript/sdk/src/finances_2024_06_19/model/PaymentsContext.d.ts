@@ -13,25 +13,25 @@ export class PaymentsContext {
      */
     static constructFromObject(data: any, obj: PaymentsContext): PaymentsContext;
     /**
-     * Type of payment made.
+     * The type of payment.
      * @member {String} paymentType
      * @type {String}
      */
     paymentType: string;
     /**
-     * Method of payment made.
+     * The method of payment.
      * @member {String} paymentMethod
      * @type {String}
      */
     paymentMethod: string;
     /**
-     * Reference number of payment made.
+     * The reference number of the payment.
      * @member {String} paymentReference
      * @type {String}
      */
     paymentReference: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} paymentDate
      * @type {Date}
      */

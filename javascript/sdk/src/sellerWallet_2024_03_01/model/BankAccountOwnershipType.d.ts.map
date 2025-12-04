@@ -1,1 +1,1 @@
-{"version":3,"file":"BankAccountOwnershipType.d.ts","sourceRoot":"","sources":["BankAccountOwnershipType.js"],"names":[],"mappings":"AAeA;;;;EAIE;AACF;IAmBE;;;;QAII;IACJ,yCAFa,wBAAwB,CAIpC;IAzBD;;;aAGS;IACT,oBAA6B;IAE7B;;;aAGS;IACT,aAAe;IAEf;;;aAGS;IACT,mBAA2B;CAU5B"}
+{"version":3,"file":"BankAccountOwnershipType.d.ts","sourceRoot":"","sources":["BankAccountOwnershipType.js"],"names":[],"mappings":"AAeA;;;;EAIE;AACF;IAaE;;;;QAII;IACJ,yCAFa,wBAAwB,CAIpC;IAnBD;;;aAGS;IACT,oBAA6B;IAE7B;;;aAGS;IACT,aAAe;CAUhB"}

@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class SellingPartnerMetadata {
   /**
    * Constructs a new <code>SellingPartnerMetadata</code>.
-   * Metadata describing the seller.
+   * Metadata that describes the seller.
    * @alias module:finances_2024_06_19/model/SellingPartnerMetadata
    * @class
    */
@@ -58,14 +58,14 @@ export class SellingPartnerMetadata {
 }
 
 /**
- * Unique seller identifier.
+ * A unique seller identifier.
  * @member {String} sellingPartnerId
  * @type {String}
  */
 SellingPartnerMetadata.prototype.sellingPartnerId = undefined
 
 /**
- * Account type of transaction.
+ * The type of account in the transaction.
  * @member {String} accountType
  * @type {String}
  */

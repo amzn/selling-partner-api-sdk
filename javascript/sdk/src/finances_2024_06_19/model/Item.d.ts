@@ -13,13 +13,13 @@ export class Item {
      */
     static constructFromObject(data: any, obj: Item): Item;
     /**
-     * Description of items in the transaction
+     * A description of the items in a transaction.
      * @member {String} description
      * @type {String}
      */
     description: string;
     /**
-     * Related Business identifiers of the item in Transaction.
+     * Related business identifiers of the item in the transaction.
      * @member {[ItemRelatedIdentifier]} relatedIdentifiers
      * @type {[ItemRelatedIdentifier]}
      */
@@ -36,7 +36,7 @@ export class Item {
      */
     breakdowns: [Breakdown];
     /**
-     * List of additional Information about the item.
+     * A list of additional information about the item.
      * @member {[Context]} contexts
      * @type {[Context]}
      */

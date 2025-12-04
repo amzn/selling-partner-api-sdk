@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -34,7 +34,7 @@ import { TransactionsPayload } from './model/TransactionsPayload.js'
 import { DefaultApi } from './api/DefaultApi.js'
 
 /**
-* The Selling Partner API for Finances helps you obtain financial information relevant to a seller&#39;s business. You can obtain financial events for a given order or date range without having to wait until a statement period closes..<br>
+* The Selling Partner API for Finances provides financial information relevant to a seller&#39;s business. You can obtain financial events for a given order or date range without having to wait until a statement period closes..<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * @module finances_2024_06_19/index
 * @version 2024-06-19

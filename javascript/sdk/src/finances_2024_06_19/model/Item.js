@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -25,7 +25,7 @@ import { ItemRelatedIdentifier } from './ItemRelatedIdentifier.js'
 export class Item {
   /**
    * Constructs a new <code>Item</code>.
-   * Additional information about the items in Transaction.
+   * Additional information about the items in a transaction.
    * @alias module:finances_2024_06_19/model/Item
    * @class
    */
@@ -64,14 +64,14 @@ export class Item {
 }
 
 /**
- * Description of items in the transaction
+ * A description of the items in a transaction.
  * @member {String} description
  * @type {String}
  */
 Item.prototype.description = undefined
 
 /**
- * Related Business identifiers of the item in Transaction.
+ * Related business identifiers of the item in the transaction.
  * @member {[ItemRelatedIdentifier]} relatedIdentifiers
  * @type {[ItemRelatedIdentifier]}
  */
@@ -91,7 +91,7 @@ Item.prototype.totalAmount = undefined
 Item.prototype.breakdowns = undefined
 
 /**
- * List of additional Information about the item.
+ * A list of additional information about the item.
  * @member {[Context]} contexts
  * @type {[Context]}
  */

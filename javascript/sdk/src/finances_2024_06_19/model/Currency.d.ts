@@ -19,7 +19,7 @@ export class Currency {
      */
     currencyCode: string;
     /**
-     * Fields with a schema type of BigDecimal are a signed decimal number (for example CurrencyAmount).
+     * A signed decimal number.
      * @member {Number} currencyAmount
      * @type {Number}
      */
