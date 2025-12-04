@@ -113,6 +113,23 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
         }
         
         [Fact]
+        public void DeliveryOfferingsTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("fbaOutbound") + "-" + FormatOperationId("DeliveryOfferings") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            GetDeliveryOfferingsRequest body = fixture.Create<GetDeliveryOfferingsRequest>();
+            
+
+            var response = api.DeliveryOfferingsWithHttpInfo(body);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
         public void DeliveryOffersTest()
         {
             Init();
@@ -228,8 +245,10 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
+            int packageNumber = fixture.Create<int>();
+            
 
-            var response = api.GetPackageTrackingDetailsWithHttpInfo(null, null);
+            var response = api.GetPackageTrackingDetailsWithHttpInfo(packageNumber);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);

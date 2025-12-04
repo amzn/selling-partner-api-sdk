@@ -90,6 +90,23 @@ namespace software.amzn.spapi.Test.Api.vendor.shipments.v1
         }
         
         [Fact]
+        public void SubmitShipmentConfirmationTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("vendorShipping") + "-" + FormatOperationId("SubmitShipmentConfirmation") + "/code/202";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            SubmitShipmentConfirmationRequest body = fixture.Create<SubmitShipmentConfirmationRequest>();
+            
+
+            var response = api.SubmitShipmentConfirmationWithHttpInfo(body);
+
+            Assert.Equal(202, (int) response.StatusCode);
+            AssertValidResponsePayload(202, response.Content);
+        }
+        
+        [Fact]
         public void SubmitShipmentConfirmationsTest()
         {
             Init();

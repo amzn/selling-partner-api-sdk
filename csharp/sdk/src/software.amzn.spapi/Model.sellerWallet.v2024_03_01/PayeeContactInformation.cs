@@ -26,19 +26,28 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Address for bank account verification of the Payee. For example, this can be a person or business mailing address 
+    /// The contact information of the payee. This field is required when the request &#x60;bankAccountOwnershipType&#x60; is &#x60;THIRD_PARTY&#x60;. The contact information is used for payee verification and registration purposes.
     /// </summary>
-    [DataContract(Name = "AccountHolderAddress")]
-    public partial class AccountHolderAddress : IValidatableObject
+    [DataContract(Name = "PayeeContactInformation")]
+    public partial class PayeeContactInformation : IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccountHolderAddress" /> class.
+        /// Gets or Sets PayeeEntityType
+        /// </summary>
+        [DataMember(Name = "payeeEntityType", IsRequired = true, EmitDefaultValue = true)]
+        public PayeeEntityType PayeeEntityType { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PayeeContactInformation" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected AccountHolderAddress() { }
+        protected PayeeContactInformation() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccountHolderAddress" /> class.
+        /// Initializes a new instance of the <see cref="PayeeContactInformation" /> class.
         /// </summary>
+        /// <param name="payeeFirstName">First name of the payee. There is a 50 character limit. (required).</param>
+        /// <param name="payeeMiddleName">Middle name of the payee. There is a 50 character limit..</param>
+        /// <param name="payeeLastName">Last name of the payee. There is a 50 character limit. (required).</param>
         /// <param name="addressLine1">Address Line 1 of the public address  (required).</param>
         /// <param name="addressLine2">Address Line 2 of the public address .</param>
         /// <param name="city">City name of the public address  (required).</param>
@@ -46,41 +55,100 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="postalCode">Postal code of the public address  (required).</param>
         /// <param name="country">Country name of the public address .</param>
         /// <param name="countryCode">The two digit country code, in ISO 3166 format.  (required).</param>
-        public AccountHolderAddress(string addressLine1 = default(string), string addressLine2 = default(string), string city = default(string), string state = default(string), string postalCode = default(string), string country = default(string), string countryCode = default(string))
+        /// <param name="emailAddress">Email address of the payee. (required).</param>
+        /// <param name="phoneNumber">Valid phone number of the payee. (required).</param>
+        /// <param name="payeeEntityType">payeeEntityType (required).</param>
+        public PayeeContactInformation(string payeeFirstName = default(string), string payeeMiddleName = default(string), string payeeLastName = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string city = default(string), string state = default(string), string postalCode = default(string), string country = default(string), string countryCode = default(string), string emailAddress = default(string), string phoneNumber = default(string), PayeeEntityType payeeEntityType = default(PayeeEntityType))
         {
+            // to ensure "payeeFirstName" is required (not null)
+            if (payeeFirstName == null)
+            {
+                throw new ArgumentNullException("payeeFirstName is a required property for PayeeContactInformation and cannot be null");
+            }
+            this.PayeeFirstName = payeeFirstName;
+            // to ensure "payeeLastName" is required (not null)
+            if (payeeLastName == null)
+            {
+                throw new ArgumentNullException("payeeLastName is a required property for PayeeContactInformation and cannot be null");
+            }
+            this.PayeeLastName = payeeLastName;
             // to ensure "addressLine1" is required (not null)
             if (addressLine1 == null)
             {
-                throw new ArgumentNullException("addressLine1 is a required property for AccountHolderAddress and cannot be null");
+                throw new ArgumentNullException("addressLine1 is a required property for PayeeContactInformation and cannot be null");
             }
             this.AddressLine1 = addressLine1;
             // to ensure "city" is required (not null)
             if (city == null)
             {
-                throw new ArgumentNullException("city is a required property for AccountHolderAddress and cannot be null");
+                throw new ArgumentNullException("city is a required property for PayeeContactInformation and cannot be null");
             }
             this.City = city;
             // to ensure "state" is required (not null)
             if (state == null)
             {
-                throw new ArgumentNullException("state is a required property for AccountHolderAddress and cannot be null");
+                throw new ArgumentNullException("state is a required property for PayeeContactInformation and cannot be null");
             }
             this.State = state;
             // to ensure "postalCode" is required (not null)
             if (postalCode == null)
             {
-                throw new ArgumentNullException("postalCode is a required property for AccountHolderAddress and cannot be null");
+                throw new ArgumentNullException("postalCode is a required property for PayeeContactInformation and cannot be null");
             }
             this.PostalCode = postalCode;
             // to ensure "countryCode" is required (not null)
             if (countryCode == null)
             {
-                throw new ArgumentNullException("countryCode is a required property for AccountHolderAddress and cannot be null");
+                throw new ArgumentNullException("countryCode is a required property for PayeeContactInformation and cannot be null");
             }
             this.CountryCode = countryCode;
+            // to ensure "emailAddress" is required (not null)
+            if (emailAddress == null)
+            {
+                throw new ArgumentNullException("emailAddress is a required property for PayeeContactInformation and cannot be null");
+            }
+            this.EmailAddress = emailAddress;
+            // to ensure "phoneNumber" is required (not null)
+            if (phoneNumber == null)
+            {
+                throw new ArgumentNullException("phoneNumber is a required property for PayeeContactInformation and cannot be null");
+            }
+            this.PhoneNumber = phoneNumber;
+            this.PayeeEntityType = payeeEntityType;
+            this.PayeeMiddleName = payeeMiddleName;
             this.AddressLine2 = addressLine2;
             this.Country = country;
         }
+
+        /// <summary>
+        /// First name of the payee. There is a 50 character limit.
+        /// </summary>
+        /// <value>First name of the payee. There is a 50 character limit.</value>
+        /*
+        <example>John</example>
+        */
+        [DataMember(Name = "payeeFirstName", IsRequired = true, EmitDefaultValue = true)]
+        public string PayeeFirstName { get; set; }
+
+        /// <summary>
+        /// Middle name of the payee. There is a 50 character limit.
+        /// </summary>
+        /// <value>Middle name of the payee. There is a 50 character limit.</value>
+        /*
+        <example>Henry</example>
+        */
+        [DataMember(Name = "payeeMiddleName", EmitDefaultValue = false)]
+        public string PayeeMiddleName { get; set; }
+
+        /// <summary>
+        /// Last name of the payee. There is a 50 character limit.
+        /// </summary>
+        /// <value>Last name of the payee. There is a 50 character limit.</value>
+        /*
+        <example>Doe</example>
+        */
+        [DataMember(Name = "payeeLastName", IsRequired = true, EmitDefaultValue = true)]
+        public string PayeeLastName { get; set; }
 
         /// <summary>
         /// Address Line 1 of the public address 
@@ -153,13 +221,36 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string CountryCode { get; set; }
 
         /// <summary>
+        /// Email address of the payee.
+        /// </summary>
+        /// <value>Email address of the payee.</value>
+        /*
+        <example>johndoe@gmail.com</example>
+        */
+        [DataMember(Name = "emailAddress", IsRequired = true, EmitDefaultValue = true)]
+        public string EmailAddress { get; set; }
+
+        /// <summary>
+        /// Valid phone number of the payee.
+        /// </summary>
+        /// <value>Valid phone number of the payee.</value>
+        /*
+        <example>1234567890</example>
+        */
+        [DataMember(Name = "phoneNumber", IsRequired = true, EmitDefaultValue = true)]
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class AccountHolderAddress {\n");
+            sb.Append("class PayeeContactInformation {\n");
+            sb.Append("  PayeeFirstName: ").Append(PayeeFirstName).Append("\n");
+            sb.Append("  PayeeMiddleName: ").Append(PayeeMiddleName).Append("\n");
+            sb.Append("  PayeeLastName: ").Append(PayeeLastName).Append("\n");
             sb.Append("  AddressLine1: ").Append(AddressLine1).Append("\n");
             sb.Append("  AddressLine2: ").Append(AddressLine2).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
@@ -167,6 +258,9 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             sb.Append("  PostalCode: ").Append(PostalCode).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
+            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
+            sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
+            sb.Append("  PayeeEntityType: ").Append(PayeeEntityType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
