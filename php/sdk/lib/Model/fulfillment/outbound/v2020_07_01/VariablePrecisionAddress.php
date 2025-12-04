@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class VariablePrecisionAddress implements ModelInterface, \ArrayAccess, \JsonSerializable
+class VariablePrecisionAddress implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

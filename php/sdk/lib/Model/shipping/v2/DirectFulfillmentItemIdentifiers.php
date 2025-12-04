@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class DirectFulfillmentItemIdentifiers implements ModelInterface, \ArrayAccess, \JsonSerializable
+class DirectFulfillmentItemIdentifiers implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

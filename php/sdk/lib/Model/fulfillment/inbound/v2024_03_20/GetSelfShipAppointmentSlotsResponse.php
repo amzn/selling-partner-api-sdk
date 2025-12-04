@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetSelfShipAppointmentSlotsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GetSelfShipAppointmentSlotsResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

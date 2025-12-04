@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
+class TransactionInitiationRequest implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -66,7 +66,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         'destination_transaction_instrument' => '\SpApi\Model\sellerWallet\v2024_03_01\TransactionInstrumentDetails',
         'transaction_description' => 'string',
         'customer_payment_reference' => 'string',
-        'destination_account_holder_address' => '\SpApi\Model\sellerWallet\v2024_03_01\AccountHolderAddress',
+        'payee_contact_information' => '\SpApi\Model\sellerWallet\v2024_03_01\PayeeContactInformation',
         'source_amount' => '\SpApi\Model\sellerWallet\v2024_03_01\Currency',
         'transfer_rate_details' => '\SpApi\Model\sellerWallet\v2024_03_01\TransferRatePreview',
         'request_time' => '\DateTime'];
@@ -86,7 +86,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         'destination_transaction_instrument' => null,
         'transaction_description' => null,
         'customer_payment_reference' => null,
-        'destination_account_holder_address' => null,
+        'payee_contact_information' => null,
         'source_amount' => null,
         'transfer_rate_details' => null,
         'request_time' => 'date-time'];
@@ -102,7 +102,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         'destination_transaction_instrument' => false,
         'transaction_description' => true,
         'customer_payment_reference' => true,
-        'destination_account_holder_address' => true,
+        'payee_contact_information' => true,
         'source_amount' => false,
         'transfer_rate_details' => true,
         'request_time' => false,
@@ -127,7 +127,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         'destination_transaction_instrument' => 'destinationTransactionInstrument',
         'transaction_description' => 'transactionDescription',
         'customer_payment_reference' => 'customerPaymentReference',
-        'destination_account_holder_address' => 'destinationAccountHolderAddress',
+        'payee_contact_information' => 'payeeContactInformation',
         'source_amount' => 'sourceAmount',
         'transfer_rate_details' => 'transferRateDetails',
         'request_time' => 'requestTime',
@@ -144,7 +144,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         'destination_transaction_instrument' => 'setDestinationTransactionInstrument',
         'transaction_description' => 'setTransactionDescription',
         'customer_payment_reference' => 'setCustomerPaymentReference',
-        'destination_account_holder_address' => 'setDestinationAccountHolderAddress',
+        'payee_contact_information' => 'setPayeeContactInformation',
         'source_amount' => 'setSourceAmount',
         'transfer_rate_details' => 'setTransferRateDetails',
         'request_time' => 'setRequestTime',
@@ -161,7 +161,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         'destination_transaction_instrument' => 'getDestinationTransactionInstrument',
         'transaction_description' => 'getTransactionDescription',
         'customer_payment_reference' => 'getCustomerPaymentReference',
-        'destination_account_holder_address' => 'getDestinationAccountHolderAddress',
+        'payee_contact_information' => 'getPayeeContactInformation',
         'source_amount' => 'getSourceAmount',
         'transfer_rate_details' => 'getTransferRateDetails',
         'request_time' => 'getRequestTime',
@@ -185,7 +185,7 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
         $this->setIfExists('destination_transaction_instrument', $data ?? [], null);
         $this->setIfExists('transaction_description', $data ?? [], null);
         $this->setIfExists('customer_payment_reference', $data ?? [], null);
-        $this->setIfExists('destination_account_holder_address', $data ?? [], null);
+        $this->setIfExists('payee_contact_information', $data ?? [], null);
         $this->setIfExists('source_amount', $data ?? [], null);
         $this->setIfExists('transfer_rate_details', $data ?? [], null);
         $this->setIfExists('request_time', $data ?? [], null);
@@ -442,31 +442,31 @@ class TransactionInitiationRequest implements ModelInterface, \ArrayAccess, \Jso
     }
 
     /**
-     * Gets destination_account_holder_address.
+     * Gets payee_contact_information.
      */
-    public function getDestinationAccountHolderAddress(): ?AccountHolderAddress
+    public function getPayeeContactInformation(): ?PayeeContactInformation
     {
-        return $this->container['destination_account_holder_address'];
+        return $this->container['payee_contact_information'];
     }
 
     /**
-     * Sets destination_account_holder_address.
+     * Sets payee_contact_information.
      *
-     * @param null|AccountHolderAddress $destination_account_holder_address destination_account_holder_address
+     * @param null|PayeeContactInformation $payee_contact_information payee_contact_information
      */
-    public function setDestinationAccountHolderAddress(?AccountHolderAddress $destination_account_holder_address): self
+    public function setPayeeContactInformation(?PayeeContactInformation $payee_contact_information): self
     {
-        if (is_null($destination_account_holder_address)) {
-            array_push($this->openAPINullablesSetToNull, 'destination_account_holder_address');
+        if (is_null($payee_contact_information)) {
+            array_push($this->openAPINullablesSetToNull, 'payee_contact_information');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('destination_account_holder_address', $nullablesSetToNull);
+            $index = array_search('payee_contact_information', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['destination_account_holder_address'] = $destination_account_holder_address;
+        $this->container['payee_contact_information'] = $payee_contact_information;
 
         return $this;
     }
