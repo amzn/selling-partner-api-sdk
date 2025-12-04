@@ -20,10 +20,5 @@ export class BankAccountOwnershipType {
            * @const
            */
     SELF: string;
-    /**
-           * value: "GOVERNMENT"
-           * @const
-           */
-    GOVERNMENT: string;
 }
 //# sourceMappingURL=BankAccountOwnershipType.d.ts.map

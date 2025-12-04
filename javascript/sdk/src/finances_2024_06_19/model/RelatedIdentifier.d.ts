@@ -13,13 +13,13 @@ export class RelatedIdentifier {
      */
     static constructFromObject(data: any, obj: RelatedIdentifier): RelatedIdentifier;
     /**
-     * Enumerated set of related business identifier names.
+     * An enumerated set of related business identifier names.
      * @member {String} relatedIdentifierName
      * @type {String}
      */
     relatedIdentifierName: string;
     /**
-     * Corresponding value of RelatedIdentifierName
+     * Corresponding value of `RelatedIdentifierName`.
      * @member {String} relatedIdentifierValue
      * @type {String}
      */

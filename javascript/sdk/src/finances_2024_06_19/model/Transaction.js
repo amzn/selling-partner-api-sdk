@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -28,7 +28,7 @@ import { SellingPartnerMetadata } from './SellingPartnerMetadata.js'
 export class Transaction {
   /**
    * Constructs a new <code>Transaction</code>.
-   * Contains all information related to the transaction.
+   * All the information related to a transaction.
    * @alias module:finances_2024_06_19/model/Transaction
    * @class
    */
@@ -87,14 +87,14 @@ Transaction.prototype.sellingPartnerMetadata = undefined
 Transaction.prototype.relatedIdentifiers = undefined
 
 /**
- * The type of transaction.  Possible values:  * Shipment
+ * The type of transaction.  **Possible value:** `Shipment`
  * @member {String} transactionType
  * @type {String}
  */
 Transaction.prototype.transactionType = undefined
 
 /**
- * The unique identifier for the transaction.
+ * The unique identifier of the transaction.
  * @member {String} transactionId
  * @type {String}
  */
@@ -108,14 +108,14 @@ Transaction.prototype.transactionId = undefined
 Transaction.prototype.transactionStatus = undefined
 
 /**
- * Describes the reasons for the transaction.  Example: 'Order Payment','Refund Order'
+ * Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'
  * @member {String} description
  * @type {String}
  */
 Transaction.prototype.description = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} postedDate
  * @type {Date}
  */
@@ -134,14 +134,14 @@ Transaction.prototype.totalAmount = undefined
 Transaction.prototype.marketplaceDetails = undefined
 
 /**
- * List of items in the transaction
+ * A list of items in the transaction.
  * @member {[Item]} items
  * @type {[Item]}
  */
 Transaction.prototype.items = undefined
 
 /**
- * List of additional Information about the item.
+ * A list of additional information about the item.
  * @member {[Context]} contexts
  * @type {[Context]}
  */

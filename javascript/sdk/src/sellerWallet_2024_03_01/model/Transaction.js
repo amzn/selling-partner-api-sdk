@@ -29,6 +29,7 @@ export class Transaction {
    * The current transaction status and related historical details.
    * @alias module:sellerWallet_2024_03_01/model/Transaction
    * @class
+   * @param accountId {String} The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.
    * @param transactionId {String} The unique identifier provided by Amazon to the transaction
    * @param transactionType {TransactionType}
    * @param transactionStatus {TransactionStatus}
@@ -36,12 +37,12 @@ export class Transaction {
    * @param lastUpdateDate {Date} The last update date on the transaction
    * @param transactionRequesterSource {String} The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
    * @param transactionDescription {String} A description of the transaction that the requester provides when they initiate the transaction.
-   * @param transactionSourceAccount {TransactionAccount}
    * @param transactionDestinationAccount {TransactionAccount}
    * @param transactionRequestAmount {Currency}
    * @param transferRateDetails {TransferRatePreview}
    */
-  constructor (transactionId, transactionType, transactionStatus, transactionRequestDate, lastUpdateDate, transactionRequesterSource, transactionDescription, transactionSourceAccount, transactionDestinationAccount, transactionRequestAmount, transferRateDetails) {
+  constructor (accountId, transactionId, transactionType, transactionStatus, transactionRequestDate, lastUpdateDate, transactionRequesterSource, transactionDescription, transactionDestinationAccount, transactionRequestAmount, transferRateDetails) {
+    this.accountId = accountId
     this.transactionId = transactionId
     this.transactionType = transactionType
     this.transactionStatus = transactionStatus
@@ -49,7 +50,6 @@ export class Transaction {
     this.lastUpdateDate = lastUpdateDate
     this.transactionRequesterSource = transactionRequesterSource
     this.transactionDescription = transactionDescription
-    this.transactionSourceAccount = transactionSourceAccount
     this.transactionDestinationAccount = transactionDestinationAccount
     this.transactionRequestAmount = transactionRequestAmount
     this.transferRateDetails = transferRateDetails
@@ -76,6 +76,7 @@ export class Transaction {
           break
       }
       obj = obj || new Transaction()
+      if (data.hasOwnProperty('accountId')) { obj.accountId = ApiClient.convertToType(data.accountId, 'String') }
       if (data.hasOwnProperty('transactionId')) { obj.transactionId = ApiClient.convertToType(data.transactionId, 'String') }
       if (data.hasOwnProperty('transactionType')) { obj.transactionType = TransactionType.constructFromObject(data.transactionType) }
       if (data.hasOwnProperty('transactionStatus')) { obj.transactionStatus = TransactionStatus.constructFromObject(data.transactionStatus) }
@@ -96,6 +97,13 @@ export class Transaction {
     return obj
   }
 }
+
+/**
+ * The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.
+ * @member {String} accountId
+ * @type {String}
+ */
+Transaction.prototype.accountId = undefined
 
 /**
  * The unique identifier provided by Amazon to the transaction

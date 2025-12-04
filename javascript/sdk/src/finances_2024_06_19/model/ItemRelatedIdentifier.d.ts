@@ -19,7 +19,7 @@ export class ItemRelatedIdentifier {
      */
     itemRelatedIdentifierName: string;
     /**
-     * Corresponding value of ItemRelatedIdentifierName
+     * Corresponding value to `ItemRelatedIdentifierName`.
      * @member {String} itemRelatedIdentifierValue
      * @type {String}
      */

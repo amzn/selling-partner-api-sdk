@@ -267,6 +267,7 @@ export const defaultRateLimitMap = {
   "VendorShippingLabelsApi-getShippingLabel": [10, 10],
   "VendorShippingLabelsApi-createShippingLabels": [10, 10],
   "VendorShippingApi-submitShipmentConfirmations": [10, 10],
+  "VendorShippingApi-submitShipmentConfirmation": [10, 10],
   "VendorShippingApi-submitShipmentStatusUpdates": [10, 10],
   "CustomerInvoicesApi-getCustomerInvoices": [10, 10],
   "CustomerInvoicesApi-getCustomerInvoice": [10, 10],

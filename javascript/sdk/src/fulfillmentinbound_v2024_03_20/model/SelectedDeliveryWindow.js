@@ -24,7 +24,7 @@ export class SelectedDeliveryWindow {
    * Selected delivery window attributes.
    * @alias module:fulfillmentinbound_v2024_03_20/model/SelectedDeliveryWindow
    * @class
-   * @param availabilityType {String} Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`
+   * @param availabilityType {String} The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`
    * @param deliveryWindowOptionId {String} Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered.
    * @param endDate {Date} The end timestamp of the window.
    * @param startDate {Date} The start timestamp of the window.
@@ -68,7 +68,7 @@ export class SelectedDeliveryWindow {
 }
 
 /**
- * Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`
+ * The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`
  * @member {String} availabilityType
  * @type {String}
  */

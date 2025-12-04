@@ -12,7 +12,6 @@
  */
 
 import { ApiClient } from './ApiClient.js'
-import { AccountHolderAddress } from './model/AccountHolderAddress.js'
 import { Balance } from './model/Balance.js'
 import { BalanceListing } from './model/BalanceListing.js'
 import { BalanceType } from './model/BalanceType.js'
@@ -30,6 +29,8 @@ import { ErrorList } from './model/ErrorList.js'
 import { Fee } from './model/Fee.js'
 import { FeeType } from './model/FeeType.js'
 import { FxRateDetails } from './model/FxRateDetails.js'
+import { PayeeContactInformation } from './model/PayeeContactInformation.js'
+import { PayeeEntityType } from './model/PayeeEntityType.js'
 import { PaymentPreference } from './model/PaymentPreference.js'
 import { PaymentPreferencePaymentType } from './model/PaymentPreferencePaymentType.js'
 import { RateDirection } from './model/RateDirection.js'
@@ -68,12 +69,6 @@ export {
      * @property {module:sellerWallet_2024_03_01/ApiClient}
      */
   ApiClient,
-
-  /**
-     * The AccountHolderAddress model constructor.
-     * @property {module:sellerWallet_2024_03_01/model/AccountHolderAddress}
-     */
-  AccountHolderAddress,
 
   /**
      * The Balance model constructor.
@@ -176,6 +171,18 @@ export {
      * @property {module:sellerWallet_2024_03_01/model/FxRateDetails}
      */
   FxRateDetails,
+
+  /**
+     * The PayeeContactInformation model constructor.
+     * @property {module:sellerWallet_2024_03_01/model/PayeeContactInformation}
+     */
+  PayeeContactInformation,
+
+  /**
+     * The PayeeEntityType model constructor.
+     * @property {module:sellerWallet_2024_03_01/model/PayeeEntityType}
+     */
+  PayeeEntityType,
 
   /**
      * The PaymentPreference model constructor.

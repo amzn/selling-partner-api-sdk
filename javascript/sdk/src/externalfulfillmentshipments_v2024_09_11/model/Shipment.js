@@ -90,6 +90,7 @@ export class Shipment {
       if (data.hasOwnProperty('charges')) { obj.charges = ApiClient.convertToType(data.charges, [Charge]) }
       if (data.hasOwnProperty('status')) { obj.status = ApiClient.convertToType(data.status, 'String') }
       if (data.hasOwnProperty('subStatus')) { obj.subStatus = ApiClient.convertToType(data.subStatus, 'String') }
+      if (data.hasOwnProperty('reason')) { obj.reason = ApiClient.convertToType(data.reason, 'String') }
       if (data.hasOwnProperty('lineItems')) { obj.lineItems = ApiClient.convertToType(data.lineItems, [ShipmentLineItem]) }
       if (data.hasOwnProperty('shippingInfo')) { obj.shippingInfo = ShippingInfo.constructFromObject(data.shippingInfo) }
       if (data.hasOwnProperty('packages')) { obj.packages = ApiClient.convertToType(data.packages, [Package]) }
@@ -324,6 +325,13 @@ Shipment.SubStatusEnum = {
  * @type {String}
  */
 Shipment.prototype.subStatus = undefined
+
+/**
+ * The reason for the sub-status.
+ * @member {String} reason
+ * @type {String}
+ */
+Shipment.prototype.reason = undefined
 
 /**
  * The line items in the shipment.

@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -124,14 +124,14 @@ RelatedIdentifier.RelatedIdentifierNameEnum = {
   SETTLEMENT_ID: 'SETTLEMENT_ID'
 }
 /**
- * Enumerated set of related business identifier names.
+ * An enumerated set of related business identifier names.
  * @member {String} relatedIdentifierName
  * @type {String}
  */
 RelatedIdentifier.prototype.relatedIdentifierName = undefined
 
 /**
- * Corresponding value of RelatedIdentifierName
+ * Corresponding value of `RelatedIdentifierName`.
  * @member {String} relatedIdentifierValue
  * @type {String}
  */

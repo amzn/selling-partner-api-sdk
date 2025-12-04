@@ -13,13 +13,13 @@ export class TransactionsPayload {
      */
     static constructFromObject(data: any, obj: TransactionsPayload): TransactionsPayload;
     /**
-     * When present and not empty, pass this string token in the next request to return the next response page.
+     * The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.
      * @member {String} nextToken
      * @type {String}
      */
     nextToken: string;
     /**
-     * Contains transactions within a given time period.
+     * A list of transactions within the specified time period.
      * @member {[Transaction]} transactions
      * @type {[Transaction]}
      */

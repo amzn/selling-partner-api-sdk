@@ -12,8 +12,8 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
-import { AccountHolderAddress } from './AccountHolderAddress.js'
 import { Currency } from './Currency.js'
+import { PayeeContactInformation } from './PayeeContactInformation.js'
 import { TransactionInstrumentDetails } from './TransactionInstrumentDetails.js'
 import { TransferRatePreview } from './TransferRatePreview.js'
 
@@ -66,7 +66,7 @@ export class TransactionInitiationRequest {
       if (data.hasOwnProperty('destinationTransactionInstrument')) { obj.destinationTransactionInstrument = TransactionInstrumentDetails.constructFromObject(data.destinationTransactionInstrument) }
       if (data.hasOwnProperty('transactionDescription')) { obj.transactionDescription = ApiClient.convertToType(data.transactionDescription, 'String') }
       if (data.hasOwnProperty('customerPaymentReference')) { obj.customerPaymentReference = ApiClient.convertToType(data.customerPaymentReference, 'String') }
-      if (data.hasOwnProperty('destinationAccountHolderAddress')) { obj.destinationAccountHolderAddress = AccountHolderAddress.constructFromObject(data.destinationAccountHolderAddress) }
+      if (data.hasOwnProperty('payeeContactInformation')) { obj.payeeContactInformation = PayeeContactInformation.constructFromObject(data.payeeContactInformation) }
       if (data.hasOwnProperty('sourceAmount')) { obj.sourceAmount = Currency.constructFromObject(data.sourceAmount) }
       if (data.hasOwnProperty('transferRateDetails')) { obj.transferRateDetails = TransferRatePreview.constructFromObject(data.transferRateDetails) }
       if (data.hasOwnProperty('requestTime')) { obj.requestTime = ApiClient.convertToType(data.requestTime, 'Date') }
@@ -110,10 +110,10 @@ TransactionInitiationRequest.prototype.transactionDescription = undefined
 TransactionInitiationRequest.prototype.customerPaymentReference = undefined
 
 /**
- * @member {AccountHolderAddress} destinationAccountHolderAddress
- * @type {AccountHolderAddress}
+ * @member {PayeeContactInformation} payeeContactInformation
+ * @type {PayeeContactInformation}
  */
-TransactionInitiationRequest.prototype.destinationAccountHolderAddress = undefined
+TransactionInitiationRequest.prototype.payeeContactInformation = undefined
 
 /**
  * @member {Currency} sourceAmount

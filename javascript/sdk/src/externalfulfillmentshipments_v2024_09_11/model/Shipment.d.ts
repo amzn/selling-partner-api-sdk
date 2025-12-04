@@ -59,6 +59,12 @@ export class Shipment {
      */
     subStatus: string;
     /**
+     * The reason for the sub-status.
+     * @member {String} reason
+     * @type {String}
+     */
+    reason: string;
+    /**
      * The list of packages in the shipment.
      * @member {[Package]} packages
      * @type {[Package]}

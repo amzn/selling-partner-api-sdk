@@ -1,5 +1,4 @@
 import { ApiClient } from './ApiClient.js';
-import { AccountHolderAddress } from './model/AccountHolderAddress.js';
 import { Balance } from './model/Balance.js';
 import { BalanceListing } from './model/BalanceListing.js';
 import { BalanceType } from './model/BalanceType.js';
@@ -17,6 +16,8 @@ import { ErrorList } from './model/ErrorList.js';
 import { Fee } from './model/Fee.js';
 import { FeeType } from './model/FeeType.js';
 import { FxRateDetails } from './model/FxRateDetails.js';
+import { PayeeContactInformation } from './model/PayeeContactInformation.js';
+import { PayeeEntityType } from './model/PayeeEntityType.js';
 import { PaymentPreference } from './model/PaymentPreference.js';
 import { PaymentPreferencePaymentType } from './model/PaymentPreferencePaymentType.js';
 import { RateDirection } from './model/RateDirection.js';
@@ -42,5 +43,5 @@ import { AccountsApi } from './api/AccountsApi.js';
 import { TransactionsApi } from './api/TransactionsApi.js';
 import { TransferPreviewApi } from './api/TransferPreviewApi.js';
 import { TransferScheduleApi } from './api/TransferScheduleApi.js';
-export { ApiClient, AccountHolderAddress, Balance, BalanceListing, BalanceType, BankAccount, BankAccountHolderStatus, BankAccountListing, BankAccountNumberFormat, BankAccountOwnershipType, BankNumberFormat, CreateTransactionResponse, Currency, DeleteTransferSchedule, Error, ErrorList, Fee, FeeType, FxRateDetails, PaymentPreference, PaymentPreferencePaymentType, RateDirection, RecurringFrequency, ScheduleExpression, ScheduleExpressionType, ScheduleTransferType, Transaction, TransactionAccount, TransactionInitiationRequest, TransactionInstrumentDetails, TransactionListing, TransactionStatus, TransactionType, TransferRatePreview, TransferSchedule, TransferScheduleFailures, TransferScheduleInformation, TransferScheduleListing, TransferScheduleRequest, TransferScheduleStatus, AccountsApi, TransactionsApi, TransferPreviewApi, TransferScheduleApi };
+export { ApiClient, Balance, BalanceListing, BalanceType, BankAccount, BankAccountHolderStatus, BankAccountListing, BankAccountNumberFormat, BankAccountOwnershipType, BankNumberFormat, CreateTransactionResponse, Currency, DeleteTransferSchedule, Error, ErrorList, Fee, FeeType, FxRateDetails, PayeeContactInformation, PayeeEntityType, PaymentPreference, PaymentPreferencePaymentType, RateDirection, RecurringFrequency, ScheduleExpression, ScheduleExpressionType, ScheduleTransferType, Transaction, TransactionAccount, TransactionInitiationRequest, TransactionInstrumentDetails, TransactionListing, TransactionStatus, TransactionType, TransferRatePreview, TransferSchedule, TransferScheduleFailures, TransferScheduleInformation, TransferScheduleListing, TransferScheduleRequest, TransferScheduleStatus, AccountsApi, TransactionsApi, TransferPreviewApi, TransferScheduleApi };
 //# sourceMappingURL=index.d.ts.map

@@ -13,13 +13,13 @@ export class TimeRangeContext {
      */
     static constructFromObject(data: any, obj: TimeRangeContext): TimeRangeContext;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} startTime
      * @type {Date}
      */
     startTime: Date;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} endTime
      * @type {Date}
      */
