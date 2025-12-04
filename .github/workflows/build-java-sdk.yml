@@ -28,8 +28,9 @@ jobs:
         working-directory: ./selling-partner-api-sdk/java
         run: curl -O https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.63/swagger-codegen-cli-3.0.63.jar
       - name: Remove old sdk files
-        working-directory: ./selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi
-        run: rm -r *
+        run: |
+          rm -r ./selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi/*
+          rm -r ./selling-partner-api-sdk/java/sdk/src/test/java/software/amazon/spapi/*
       - name: Execute swagger codegen
         working-directory: ./selling-partner-api-sdk/java
         run: |
