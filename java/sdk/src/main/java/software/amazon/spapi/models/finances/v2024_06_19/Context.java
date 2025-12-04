@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -161,11 +161,11 @@ public class Context {
     }
 
     /**
-     * Order type of the transaction.
+     * The transaction&#x27;s order type.
      *
      * @return orderType
      */
-    @Schema(description = "Order type of the transaction.")
+    @Schema(description = "The transaction's order type.")
     public String getOrderType() {
         return orderType;
     }
@@ -199,11 +199,11 @@ public class Context {
     }
 
     /**
-     * Amazon Standard Identification Number (ASIN) of the item.
+     * The Amazon Standard Identification Number (ASIN) of the item.
      *
      * @return asin
      */
-    @Schema(description = "Amazon Standard Identification Number (ASIN) of the item.")
+    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -218,11 +218,11 @@ public class Context {
     }
 
     /**
-     * Stock keeping unit (SKU) of the item.
+     * The Stock Keeping Unit (SKU) of the item.
      *
      * @return sku
      */
-    @Schema(description = "Stock keeping unit (SKU) of the item.")
+    @Schema(description = "The Stock Keeping Unit (SKU) of the item.")
     public String getSku() {
         return sku;
     }
@@ -237,11 +237,11 @@ public class Context {
     }
 
     /**
-     * Quantity of the item shipped.
+     * The quantity of the item shipped.
      *
      * @return quantityShipped
      */
-    @Schema(description = "Quantity of the item shipped.")
+    @Schema(description = "The quantity of the item shipped.")
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -256,11 +256,11 @@ public class Context {
     }
 
     /**
-     * Fulfillment network of the item.
+     * The fulfillment network of the item.
      *
      * @return fulfillmentNetwork
      */
-    @Schema(description = "Fulfillment network of the item.")
+    @Schema(description = "The fulfillment network of the item.")
     public String getFulfillmentNetwork() {
         return fulfillmentNetwork;
     }
@@ -275,11 +275,11 @@ public class Context {
     }
 
     /**
-     * Type of payment made.
+     * The type of payment.
      *
      * @return paymentType
      */
-    @Schema(description = "Type of payment made.")
+    @Schema(description = "The type of payment.")
     public String getPaymentType() {
         return paymentType;
     }
@@ -294,11 +294,11 @@ public class Context {
     }
 
     /**
-     * Method of payment made.
+     * The method of payment.
      *
      * @return paymentMethod
      */
-    @Schema(description = "Method of payment made.")
+    @Schema(description = "The method of payment.")
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -313,11 +313,11 @@ public class Context {
     }
 
     /**
-     * Reference number of payment made.
+     * The reference number of the payment.
      *
      * @return paymentReference
      */
-    @Schema(description = "Reference number of payment made.")
+    @Schema(description = "The reference number of the payment.")
     public String getPaymentReference() {
         return paymentReference;
     }

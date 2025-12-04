@@ -20,6 +20,9 @@ import org.threeten.bp.OffsetDateTime;
 /** The current transaction status and related historical details. */
 @Schema(description = "The current transaction status and related historical details.")
 public class Transaction {
+    @SerializedName("accountId")
+    private String accountId = null;
+
     @SerializedName("transactionId")
     private String transactionId = null;
 
@@ -67,6 +70,29 @@ public class Transaction {
 
     @SerializedName("transactionFailureReason")
     private String transactionFailureReason = null;
+
+    public Transaction accountId(String accountId) {
+        this.accountId = accountId;
+        return this;
+    }
+
+    /**
+     * The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.
+     *
+     * @return accountId
+     */
+    @Schema(
+            example = "amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI",
+            required = true,
+            description =
+                    "The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.")
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
 
     public Transaction transactionId(String transactionId) {
         this.transactionId = transactionId;
@@ -279,7 +305,7 @@ public class Transaction {
      *
      * @return transactionSourceAccount
      */
-    @Schema(required = true, description = "")
+    @Schema(description = "")
     public TransactionAccount getTransactionSourceAccount() {
         return transactionSourceAccount;
     }
@@ -394,7 +420,8 @@ public class Transaction {
             return false;
         }
         Transaction transaction = (Transaction) o;
-        return Objects.equals(this.transactionId, transaction.transactionId)
+        return Objects.equals(this.accountId, transaction.accountId)
+                && Objects.equals(this.transactionId, transaction.transactionId)
                 && Objects.equals(this.transactionType, transaction.transactionType)
                 && Objects.equals(this.transactionStatus, transaction.transactionStatus)
                 && Objects.equals(this.transactionRequestDate, transaction.transactionRequestDate)
@@ -415,6 +442,7 @@ public class Transaction {
     @Override
     public int hashCode() {
         return Objects.hash(
+                accountId,
                 transactionId,
                 transactionType,
                 transactionStatus,
@@ -438,6 +466,7 @@ public class Transaction {
         StringBuilder sb = new StringBuilder();
         sb.append("class Transaction {\n");
 
+        sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
         sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
         sb.append("    transactionType: ")
                 .append(toIndentedString(transactionType))

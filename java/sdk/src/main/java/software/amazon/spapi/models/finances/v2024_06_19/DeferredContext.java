@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Additional information related to Deferred transactions. */
-@Schema(description = "Additional information related to Deferred transactions.")
+/** Additional information related to deferred transactions. */
+@Schema(description = "Additional information related to deferred transactions.")
 public class DeferredContext {
     @SerializedName("deferralReason")
     private String deferralReason = null;

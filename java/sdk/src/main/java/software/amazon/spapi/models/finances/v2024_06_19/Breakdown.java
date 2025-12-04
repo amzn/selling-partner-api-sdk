@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -19,12 +19,12 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Breakdown provides details regarding the money movement under the financial transaction. Breakdowns get categorized
- * further into breakdown types, breakdown amounts, and further breakdowns into a hierarchical structure.
+ * Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown
+ * types, breakdown amounts, and further breakdowns.
  */
 @Schema(
         description =
-                "Breakdown provides details regarding the money movement under the financial transaction. Breakdowns get categorized further into breakdown types, breakdown amounts, and further breakdowns into a hierarchical structure.")
+                "Details about the movement of money in the financial transaction. Breakdowns are further categorized into breakdown types, breakdown amounts, and further breakdowns.")
 public class Breakdown {
     @SerializedName("breakdownType")
     private String breakdownType = null;

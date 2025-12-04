@@ -37,8 +37,8 @@ public class TransactionInitiationRequest {
     @SerializedName("customerPaymentReference")
     private String customerPaymentReference = null;
 
-    @SerializedName("destinationAccountHolderAddress")
-    private AccountHolderAddress destinationAccountHolderAddress = null;
+    @SerializedName("payeeContactInformation")
+    private PayeeContactInformation payeeContactInformation = null;
 
     @SerializedName("sourceAmount")
     private Currency sourceAmount = null;
@@ -158,24 +158,23 @@ public class TransactionInitiationRequest {
         this.customerPaymentReference = customerPaymentReference;
     }
 
-    public TransactionInitiationRequest destinationAccountHolderAddress(
-            AccountHolderAddress destinationAccountHolderAddress) {
-        this.destinationAccountHolderAddress = destinationAccountHolderAddress;
+    public TransactionInitiationRequest payeeContactInformation(PayeeContactInformation payeeContactInformation) {
+        this.payeeContactInformation = payeeContactInformation;
         return this;
     }
 
     /**
-     * Get destinationAccountHolderAddress
+     * Get payeeContactInformation
      *
-     * @return destinationAccountHolderAddress
+     * @return payeeContactInformation
      */
     @Schema(description = "")
-    public AccountHolderAddress getDestinationAccountHolderAddress() {
-        return destinationAccountHolderAddress;
+    public PayeeContactInformation getPayeeContactInformation() {
+        return payeeContactInformation;
     }
 
-    public void setDestinationAccountHolderAddress(AccountHolderAddress destinationAccountHolderAddress) {
-        this.destinationAccountHolderAddress = destinationAccountHolderAddress;
+    public void setPayeeContactInformation(PayeeContactInformation payeeContactInformation) {
+        this.payeeContactInformation = payeeContactInformation;
     }
 
     public TransactionInitiationRequest sourceAmount(Currency sourceAmount) {
@@ -254,9 +253,7 @@ public class TransactionInitiationRequest {
                         transactionInitiationRequest.destinationTransactionInstrument)
                 && Objects.equals(this.transactionDescription, transactionInitiationRequest.transactionDescription)
                 && Objects.equals(this.customerPaymentReference, transactionInitiationRequest.customerPaymentReference)
-                && Objects.equals(
-                        this.destinationAccountHolderAddress,
-                        transactionInitiationRequest.destinationAccountHolderAddress)
+                && Objects.equals(this.payeeContactInformation, transactionInitiationRequest.payeeContactInformation)
                 && Objects.equals(this.sourceAmount, transactionInitiationRequest.sourceAmount)
                 && Objects.equals(this.transferRateDetails, transactionInitiationRequest.transferRateDetails)
                 && Objects.equals(this.requestTime, transactionInitiationRequest.requestTime);
@@ -270,7 +267,7 @@ public class TransactionInitiationRequest {
                 destinationTransactionInstrument,
                 transactionDescription,
                 customerPaymentReference,
-                destinationAccountHolderAddress,
+                payeeContactInformation,
                 sourceAmount,
                 transferRateDetails,
                 requestTime);
@@ -296,8 +293,8 @@ public class TransactionInitiationRequest {
         sb.append("    customerPaymentReference: ")
                 .append(toIndentedString(customerPaymentReference))
                 .append("\n");
-        sb.append("    destinationAccountHolderAddress: ")
-                .append(toIndentedString(destinationAccountHolderAddress))
+        sb.append("    payeeContactInformation: ")
+                .append(toIndentedString(payeeContactInformation))
                 .append("\n");
         sb.append("    sourceAmount: ").append(toIndentedString(sourceAmount)).append("\n");
         sb.append("    transferRateDetails: ")

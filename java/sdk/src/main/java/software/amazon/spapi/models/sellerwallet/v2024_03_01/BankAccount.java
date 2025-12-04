@@ -17,12 +17,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
 /**
- * Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not
- * including account_links, short cut links to the account balance and transactions -&gt; since not mandatory
+ * Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer
+ * earns by selling items.
  */
 @Schema(
         description =
-                "Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not including account_links, short cut links to the account balance and transactions -> since not mandatory ")
+                "Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.")
 public class BankAccount {
     @SerializedName("accountId")
     private String accountId = null;
@@ -63,13 +63,18 @@ public class BankAccount {
     }
 
     /**
-     * The unique identifier provided by Amazon to identify the account
+     * The unique bank account identifier provided by Amazon. To initiate a &#x60;SELF&#x60; transaction with Seller
+     * Wallet, you must choose &#x60;BANK_ACCOUNT&#x60; as the payment method type in the
+     * [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon
+     * Seller Wallet bank account identifier should match the &#x60;paymentMethodId&#x60; in the response. This field is
+     * required.
      *
      * @return accountId
      */
     @Schema(
             example = "amzn1.account.AGUGL2EM3ZHYSRJWH2UCRPIM5JFQ",
-            description = "The unique identifier provided by Amazon to identify the account ")
+            description =
+                    "The unique bank account identifier provided by Amazon. To initiate a `SELF` transaction with Seller Wallet, you must choose `BANK_ACCOUNT` as the payment method type in the [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon Seller Wallet bank account identifier should match the `paymentMethodId` in the response. This field is required.")
     public String getAccountId() {
         return accountId;
     }
@@ -84,11 +89,14 @@ public class BankAccount {
     }
 
     /**
-     * BankAccount holder&#x27;s name (expected to be Amazon customer)
+     * The bank account holder&#x27;s name (expected to be an Amazon customer). There is a 50 character limit.
      *
      * @return accountHolderName
      */
-    @Schema(example = "John Doe", description = "BankAccount holder's name (expected to be Amazon customer) ")
+    @Schema(
+            example = "John Doe",
+            description =
+                    "The bank account holder's name (expected to be an Amazon customer). There is a 50 character limit.")
     public String getAccountHolderName() {
         return accountHolderName;
     }
@@ -107,7 +115,7 @@ public class BankAccount {
      *
      * @return bankAccountNumberFormat
      */
-    @Schema(required = true, description = "")
+    @Schema(description = "")
     public BankAccountNumberFormat getBankAccountNumberFormat() {
         return bankAccountNumberFormat;
     }
@@ -122,14 +130,13 @@ public class BankAccount {
     }
 
     /**
-     * The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet
+     * The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
      *
      * @return bankName
      */
     @Schema(
-            example = "Bank Of America",
-            description =
-                    "The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet ")
+            example = "DEUTSCHE BANK AG",
+            description = "The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.")
     public String getBankName() {
         return bankName;
     }
@@ -163,16 +170,15 @@ public class BankAccount {
     }
 
     /**
-     * Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be
-     * denoted by nine cosecutive 0&#x27;s,
+     * Routing number for automated clearing house transfers for &#x60;THIRD_PARTY&#x60; transaction requests. This
+     * value is nine consecutive zeros for Amazon Seller Wallet accounts.
      *
      * @return routingNumber
      */
     @Schema(
             example = "026009593",
-            required = true,
             description =
-                    "Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,  ")
+                    "Routing number for automated clearing house transfers for `THIRD_PARTY` transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.")
     public String getRoutingNumber() {
         return routingNumber;
     }
@@ -191,7 +197,7 @@ public class BankAccount {
      *
      * @return bankNumberFormat
      */
-    @Schema(required = true, description = "")
+    @Schema(description = "")
     public BankNumberFormat getBankNumberFormat() {
         return bankNumberFormat;
     }

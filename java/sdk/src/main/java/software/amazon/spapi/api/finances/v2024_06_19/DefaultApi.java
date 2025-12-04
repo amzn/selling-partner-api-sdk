@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -56,12 +56,13 @@ public class DefaultApi {
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
      *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more
-     *     than two minutes before the time of the request. (required)
-     * @param postedBefore A date used for selecting transactions posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no transactions are
-     *     returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now
-     *     minus two minutes. (optional)
+     *     than two minutes before the time of the request. This field is required if you do not specify a related
+     *     identifier. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
+     *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
      *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -69,7 +70,16 @@ public class DefaultApi {
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. **Note:**
+     *     FINANCIAL_EVENT_GROUP_ID is the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment.
+     *     While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot
+     *     be used for filtering purposes. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -80,6 +90,8 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
@@ -101,6 +113,10 @@ public class DefaultApi {
             localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
         if (transactionStatus != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("transactionStatus", transactionStatus));
+        if (relatedIdentifierName != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("relatedIdentifierName", relatedIdentifierName));
+        if (relatedIdentifierValue != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("relatedIdentifierValue", relatedIdentifierValue));
         if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
@@ -132,16 +148,21 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken,
             final ProgressRequestBody.ProgressRequestListener progressRequestListener)
             throws ApiException, LWAException {
-        // verify the required parameter 'postedAfter' is set
-        if (postedAfter == null) {
-            throw new ApiException("Missing the required parameter 'postedAfter' when calling listTransactions(Async)");
-        }
 
         return listTransactionsCall(
-                postedAfter, postedBefore, marketplaceId, transactionStatus, nextToken, progressRequestListener);
+                postedAfter,
+                postedBefore,
+                marketplaceId,
+                transactionStatus,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                nextToken,
+                progressRequestListener);
     }
 
     /**
@@ -155,12 +176,13 @@ public class DefaultApi {
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
      *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more
-     *     than two minutes before the time of the request. (required)
-     * @param postedBefore A date used for selecting transactions posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no transactions are
-     *     returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now
-     *     minus two minutes. (optional)
+     *     than two minutes before the time of the request. This field is required if you do not specify a related
+     *     identifier. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
+     *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
      *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -168,7 +190,16 @@ public class DefaultApi {
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. **Note:**
+     *     FINANCIAL_EVENT_GROUP_ID is the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment.
+     *     While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot
+     *     be used for filtering purposes. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListTransactionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -179,11 +210,20 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken,
             String restrictedDataToken)
             throws ApiException, LWAException {
         ApiResponse<ListTransactionsResponse> resp = listTransactionsWithHttpInfo(
-                postedAfter, postedBefore, marketplaceId, transactionStatus, nextToken, restrictedDataToken);
+                postedAfter,
+                postedBefore,
+                marketplaceId,
+                transactionStatus,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                nextToken,
+                restrictedDataToken);
         return resp.getData();
     }
 
@@ -198,12 +238,13 @@ public class DefaultApi {
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
      *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more
-     *     than two minutes before the time of the request. (required)
-     * @param postedBefore A date used for selecting transactions posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no transactions are
-     *     returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now
-     *     minus two minutes. (optional)
+     *     than two minutes before the time of the request. This field is required if you do not specify a related
+     *     identifier. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
+     *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
      *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -211,7 +252,16 @@ public class DefaultApi {
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. **Note:**
+     *     FINANCIAL_EVENT_GROUP_ID is the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment.
+     *     While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot
+     *     be used for filtering purposes. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ListTransactionsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -221,10 +271,19 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken)
             throws ApiException, LWAException {
         ApiResponse<ListTransactionsResponse> resp = listTransactionsWithHttpInfo(
-                postedAfter, postedBefore, marketplaceId, transactionStatus, nextToken, null);
+                postedAfter,
+                postedBefore,
+                marketplaceId,
+                transactionStatus,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                nextToken,
+                null);
         return resp.getData();
     }
 
@@ -239,12 +298,13 @@ public class DefaultApi {
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
      *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more
-     *     than two minutes before the time of the request. (required)
-     * @param postedBefore A date used for selecting transactions posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no transactions are
-     *     returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now
-     *     minus two minutes. (optional)
+     *     than two minutes before the time of the request. This field is required if you do not specify a related
+     *     identifier. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
+     *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
      *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -252,7 +312,16 @@ public class DefaultApi {
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. **Note:**
+     *     FINANCIAL_EVENT_GROUP_ID is the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment.
+     *     While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot
+     *     be used for filtering purposes. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListTransactionsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -263,11 +332,20 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken,
             String restrictedDataToken)
             throws ApiException, LWAException {
         okhttp3.Call call = listTransactionsValidateBeforeCall(
-                postedAfter, postedBefore, marketplaceId, transactionStatus, nextToken, null);
+                postedAfter,
+                postedBefore,
+                marketplaceId,
+                transactionStatus,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                nextToken,
+                null);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();
@@ -292,12 +370,13 @@ public class DefaultApi {
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
      *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more
-     *     than two minutes before the time of the request. (required)
-     * @param postedBefore A date used for selecting transactions posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no transactions are
-     *     returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now
-     *     minus two minutes. (optional)
+     *     than two minutes before the time of the request. This field is required if you do not specify a related
+     *     identifier. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
+     *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
      *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -305,7 +384,16 @@ public class DefaultApi {
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. **Note:**
+     *     FINANCIAL_EVENT_GROUP_ID is the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment.
+     *     While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot
+     *     be used for filtering purposes. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ApiResponse&lt;ListTransactionsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -315,10 +403,19 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken)
             throws ApiException, LWAException {
         return listTransactionsWithHttpInfo(
-                postedAfter, postedBefore, marketplaceId, transactionStatus, nextToken, null);
+                postedAfter,
+                postedBefore,
+                marketplaceId,
+                transactionStatus,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                nextToken,
+                null);
     }
 
     /**
@@ -332,12 +429,13 @@ public class DefaultApi {
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
      *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more
-     *     than two minutes before the time of the request. (required)
-     * @param postedBefore A date used for selecting transactions posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no transactions are
-     *     returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now
-     *     minus two minutes. (optional)
+     *     than two minutes before the time of the request. This field is required if you do not specify a related
+     *     identifier. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
+     *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
      *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -345,7 +443,16 @@ public class DefaultApi {
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. **Note:**
+     *     FINANCIAL_EVENT_GROUP_ID is the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment.
+     *     While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot
+     *     be used for filtering purposes. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -356,11 +463,21 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken,
             final ApiCallback<ListTransactionsResponse> callback)
             throws ApiException, LWAException {
         return listTransactionsAsync(
-                postedAfter, postedBefore, marketplaceId, transactionStatus, nextToken, callback, null);
+                postedAfter,
+                postedBefore,
+                marketplaceId,
+                transactionStatus,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                nextToken,
+                callback,
+                null);
     }
     /**
      * (asynchronously) Returns transactions for the given parameters. Financial events might not include orders from
@@ -373,12 +490,13 @@ public class DefaultApi {
      *
      * @param postedAfter The response includes financial events posted on or after this date. This date must be in [ISO
      *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be more
-     *     than two minutes before the time of the request. (required)
-     * @param postedBefore A date used for selecting transactions posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no transactions are
-     *     returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now
-     *     minus two minutes. (optional)
+     *     than two minutes before the time of the request. This field is required if you do not specify a related
+     *     identifier. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty.
+     *     **Default:** Two minutes before the time of the request. (optional)
      * @param marketplaceId The identifier of the marketplace from which you want to retrieve transactions. The
      *     marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer
      *     to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (optional)
@@ -386,7 +504,16 @@ public class DefaultApi {
      *     transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. *
      *     &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a
      *     deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param relatedIdentifierName The name of the &#x60;relatedIdentifier&#x60;. **Possible values:** *
+     *     &#x60;FINANCIAL_EVENT_GROUP_ID&#x60;: the financial event group ID associated with the transaction. **Note:**
+     *     FINANCIAL_EVENT_GROUP_ID is the only &#x60;relatedIdentifier&#x60; with filtering capabilities at the moment.
+     *     While other &#x60;relatedIdentifier&#x60; values will be included in the response when available, they cannot
+     *     be used for filtering purposes. (optional)
+     * @param relatedIdentifierValue The value of the &#x60;relatedIdentifier&#x60;. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -398,6 +525,8 @@ public class DefaultApi {
             OffsetDateTime postedBefore,
             String marketplaceId,
             String transactionStatus,
+            String relatedIdentifierName,
+            String relatedIdentifierValue,
             String nextToken,
             final ApiCallback<ListTransactionsResponse> callback,
             String restrictedDataToken)
@@ -410,7 +539,14 @@ public class DefaultApi {
         }
 
         okhttp3.Call call = listTransactionsValidateBeforeCall(
-                postedAfter, postedBefore, marketplaceId, transactionStatus, nextToken, progressRequestListener);
+                postedAfter,
+                postedBefore,
+                marketplaceId,
+                transactionStatus,
+                relatedIdentifierName,
+                relatedIdentifierValue,
+                nextToken,
+                progressRequestListener);
 
         if (restrictedDataToken != null) {
             okhttp3.Request request = call.request();

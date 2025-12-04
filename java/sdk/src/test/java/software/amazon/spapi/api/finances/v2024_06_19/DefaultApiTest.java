@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -52,10 +52,9 @@ public class DefaultApiTest {
     @Test
     public void listTransactionsTest() throws Exception {
         instructBackendMock("default", "listTransactions", "200");
-        OffsetDateTime postedAfter = easyRandom.nextObject(OffsetDateTime.class);
 
         ApiResponse<ListTransactionsResponse> response =
-                api.listTransactionsWithHttpInfo(postedAfter, null, null, null, null);
+                api.listTransactionsWithHttpInfo(null, null, null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

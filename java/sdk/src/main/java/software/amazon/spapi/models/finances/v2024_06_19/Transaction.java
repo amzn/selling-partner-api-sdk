@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Contains all information related to the transaction. */
-@Schema(description = "Contains all information related to the transaction.")
+/** All the information related to a transaction. */
+@Schema(description = "All the information related to a transaction.")
 public class Transaction {
     @SerializedName("sellingPartnerMetadata")
     private SellingPartnerMetadata sellingPartnerMetadata = null;
@@ -102,11 +102,11 @@ public class Transaction {
     }
 
     /**
-     * The type of transaction. Possible values: * Shipment
+     * The type of transaction. **Possible value:** &#x60;Shipment&#x60;
      *
      * @return transactionType
      */
-    @Schema(description = "The type of transaction.  Possible values:  * Shipment")
+    @Schema(description = "The type of transaction.  **Possible value:** `Shipment`")
     public String getTransactionType() {
         return transactionType;
     }
@@ -121,11 +121,11 @@ public class Transaction {
     }
 
     /**
-     * The unique identifier for the transaction.
+     * The unique identifier of the transaction.
      *
      * @return transactionId
      */
-    @Schema(description = "The unique identifier for the transaction.")
+    @Schema(description = "The unique identifier of the transaction.")
     public String getTransactionId() {
         return transactionId;
     }
@@ -164,11 +164,11 @@ public class Transaction {
     }
 
     /**
-     * Describes the reasons for the transaction. Example: &#x27;Order Payment&#x27;,&#x27;Refund Order&#x27;
+     * Describes the reasons for the transaction. **Example:** &#x27;Order Payment&#x27;, &#x27;Refund Order&#x27;
      *
      * @return description
      */
-    @Schema(description = "Describes the reasons for the transaction.  Example: 'Order Payment','Refund Order'")
+    @Schema(description = "Describes the reasons for the transaction.  **Example:** 'Order Payment', 'Refund Order'")
     public String getDescription() {
         return description;
     }
