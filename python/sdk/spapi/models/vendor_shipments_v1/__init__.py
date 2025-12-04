@@ -45,6 +45,7 @@ from spapi.models.vendor_shipments_v1.party_identification import PartyIdentific
 from spapi.models.vendor_shipments_v1.purchase_order_item_details import PurchaseOrderItemDetails
 from spapi.models.vendor_shipments_v1.purchase_order_items import PurchaseOrderItems
 from spapi.models.vendor_shipments_v1.purchase_orders import PurchaseOrders
+from spapi.models.vendor_shipments_v1.regulation_references import RegulationReferences
 from spapi.models.vendor_shipments_v1.route import Route
 from spapi.models.vendor_shipments_v1.shipment import Shipment
 from spapi.models.vendor_shipments_v1.shipment_confirmation import ShipmentConfirmation
@@ -53,6 +54,8 @@ from spapi.models.vendor_shipments_v1.shipment_information import ShipmentInform
 from spapi.models.vendor_shipments_v1.shipment_measurements import ShipmentMeasurements
 from spapi.models.vendor_shipments_v1.shipment_status_details import ShipmentStatusDetails
 from spapi.models.vendor_shipments_v1.stop import Stop
+from spapi.models.vendor_shipments_v1.submit_shipment_confirmation_request import SubmitShipmentConfirmationRequest
+from spapi.models.vendor_shipments_v1.submit_shipment_confirmation_response import SubmitShipmentConfirmationResponse
 from spapi.models.vendor_shipments_v1.submit_shipment_confirmations_request import SubmitShipmentConfirmationsRequest
 from spapi.models.vendor_shipments_v1.submit_shipment_confirmations_response import SubmitShipmentConfirmationsResponse
 from spapi.models.vendor_shipments_v1.submit_shipments import SubmitShipments

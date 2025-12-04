@@ -71,7 +71,7 @@ class DeliveryWindowOption(object):
     def availability_type(self):
         """Gets the availability_type of this DeliveryWindowOption.  # noqa: E501
 
-        Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`  # noqa: E501
+        The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`  # noqa: E501
 
         :return: The availability_type of this DeliveryWindowOption.  # noqa: E501
         :rtype: str
@@ -82,7 +82,7 @@ class DeliveryWindowOption(object):
     def availability_type(self, availability_type):
         """Sets the availability_type of this DeliveryWindowOption.
 
-        Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`  # noqa: E501
+        The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`  # noqa: E501
 
         :param availability_type: The availability_type of this DeliveryWindowOption.  # noqa: E501
         :type: str

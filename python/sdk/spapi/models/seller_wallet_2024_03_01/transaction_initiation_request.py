@@ -38,7 +38,7 @@ class TransactionInitiationRequest(object):
         'destination_transaction_instrument': 'TransactionInstrumentDetails',
         'transaction_description': 'str',
         'customer_payment_reference': 'str',
-        'destination_account_holder_address': 'AccountHolderAddress',
+        'payee_contact_information': 'PayeeContactInformation',
         'source_amount': 'Currency',
         'transfer_rate_details': 'TransferRatePreview',
         'request_time': 'datetime',
@@ -50,13 +50,13 @@ class TransactionInitiationRequest(object):
         'destination_transaction_instrument': 'destinationTransactionInstrument',
         'transaction_description': 'transactionDescription',
         'customer_payment_reference': 'customerPaymentReference',
-        'destination_account_holder_address': 'destinationAccountHolderAddress',
+        'payee_contact_information': 'payeeContactInformation',
         'source_amount': 'sourceAmount',
         'transfer_rate_details': 'transferRateDetails',
         'request_time': 'requestTime',
     }
 
-    def __init__(self, source_account_id=None, destination_account_id=None, destination_transaction_instrument=None, transaction_description=None, customer_payment_reference=None, destination_account_holder_address=None, source_amount=None, transfer_rate_details=None, request_time=None, _configuration=None):  # noqa: E501
+    def __init__(self, source_account_id=None, destination_account_id=None, destination_transaction_instrument=None, transaction_description=None, customer_payment_reference=None, payee_contact_information=None, source_amount=None, transfer_rate_details=None, request_time=None, _configuration=None):  # noqa: E501
         """TransactionInitiationRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -67,7 +67,7 @@ class TransactionInitiationRequest(object):
         self._destination_transaction_instrument = None
         self._transaction_description = None
         self._customer_payment_reference = None
-        self._destination_account_holder_address = None
+        self._payee_contact_information = None
         self._source_amount = None
         self._transfer_rate_details = None
         self._request_time = None
@@ -81,8 +81,8 @@ class TransactionInitiationRequest(object):
             self.transaction_description = transaction_description
         if customer_payment_reference is not None:
             self.customer_payment_reference = customer_payment_reference
-        if destination_account_holder_address is not None:
-            self.destination_account_holder_address = destination_account_holder_address
+        if payee_contact_information is not None:
+            self.payee_contact_information = payee_contact_information
         self.source_amount = source_amount
         if transfer_rate_details is not None:
             self.transfer_rate_details = transfer_rate_details
@@ -206,25 +206,25 @@ class TransactionInitiationRequest(object):
         self._customer_payment_reference = customer_payment_reference
 
     @property
-    def destination_account_holder_address(self):
-        """Gets the destination_account_holder_address of this TransactionInitiationRequest.  # noqa: E501
+    def payee_contact_information(self):
+        """Gets the payee_contact_information of this TransactionInitiationRequest.  # noqa: E501
 
 
-        :return: The destination_account_holder_address of this TransactionInitiationRequest.  # noqa: E501
-        :rtype: AccountHolderAddress
+        :return: The payee_contact_information of this TransactionInitiationRequest.  # noqa: E501
+        :rtype: PayeeContactInformation
         """
-        return self._destination_account_holder_address
+        return self._payee_contact_information
 
-    @destination_account_holder_address.setter
-    def destination_account_holder_address(self, destination_account_holder_address):
-        """Sets the destination_account_holder_address of this TransactionInitiationRequest.
+    @payee_contact_information.setter
+    def payee_contact_information(self, payee_contact_information):
+        """Sets the payee_contact_information of this TransactionInitiationRequest.
 
 
-        :param destination_account_holder_address: The destination_account_holder_address of this TransactionInitiationRequest.  # noqa: E501
-        :type: AccountHolderAddress
+        :param payee_contact_information: The payee_contact_information of this TransactionInitiationRequest.  # noqa: E501
+        :type: PayeeContactInformation
         """
 
-        self._destination_account_holder_address = destination_account_holder_address
+        self._payee_contact_information = payee_contact_information
 
     @property
     def source_amount(self):
