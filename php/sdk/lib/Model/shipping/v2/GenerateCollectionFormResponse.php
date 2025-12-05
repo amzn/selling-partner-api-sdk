@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GenerateCollectionFormResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class GenerateCollectionFormResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -891,6 +891,9 @@ VendorShippingLabelsApi-createShippingLabels:
 VendorShippingApi-submitShipmentConfirmations:
   - 10
   - 10
+VendorShippingApi-submitShipmentConfirmation:
+  - 10
+  - 10
 VendorShippingApi-submitShipmentStatusUpdates:
   - 10
   - 10

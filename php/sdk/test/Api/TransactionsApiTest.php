@@ -110,18 +110,21 @@ class TransactionsApiTest extends BaseTestCase
                   &quot;accountCurrency&quot; : &quot;GBP&quot;,
                   &quot;bankAccountNumberTail&quot; : &quot;819&quot;
                 },
-                &quot;accountHolderName&quot; : &quot;Joane Packaging Ltd&quot;,
+                &quot;accountHolderName&quot; : &quot;John Doe&quot;,
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;
               },
               &quot;transactionDescription&quot; : &quot;BG999999999&quot;,
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -134,6 +137,7 @@ class TransactionsApiTest extends BaseTestCase
       },
       &quot;response&quot; : {
         &quot;transaction&quot; : {
+          &quot;accountId&quot; : &quot;amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI&quot;,
           &quot;transactionId&quot; : &quot;amzn.transaction.ALNR19JCVWLN3E&quot;,
           &quot;transactionType&quot; : &quot;DEBIT&quot;,
           &quot;transactionStatus&quot; : &quot;IN_PROGRESS&quot;,
@@ -289,14 +293,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -395,14 +402,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -507,14 +517,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market Street&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -613,14 +626,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;City of Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -735,14 +751,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -841,14 +860,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -947,14 +969,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -1053,14 +1078,17 @@ class TransactionsApiTest extends BaseTestCase
                 &quot;bankAccountNumber&quot; : &quot;GB29RBOS60161331926819&quot;,
                 &quot;accountHolderName&quot; : &quot;John Doe&quot;
               },
-              &quot;destinationAccountHolderAddress&quot; : {
-                &quot;addressLine1&quot; : &quot;4 East Market St&quot;,
-                &quot;city&quot; : &quot;Edinburgh&quot;,
-                &quot;addressLine2&quot; : &quot;Unit 101&quot;,
-                &quot;state&quot; : &quot;Alba&quot;,
-                &quot;postalCode&quot; : &quot;EH88BG&quot;,
-                &quot;country&quot; : &quot;United Kingdom&quot;,
-                &quot;countryCode&quot; : &quot;UK&quot;
+              &quot;payeeContactInformation&quot; : {
+                &quot;payeeFirstName&quot; : &quot;John&quot;,
+                &quot;payeeLastName&quot; : &quot;Doe&quot;,
+                &quot;payeeEntityType&quot; : &quot;PERSON&quot;,
+                &quot;addressLine1&quot; : &quot;Avenue John F. Kennedy 38&quot;,
+                &quot;city&quot; : &quot;Luxembourg&quot;,
+                &quot;state&quot; : &quot;LUXEMBOURG&quot;,
+                &quot;postalCode&quot; : &quot;1855&quot;,
+                &quot;countryCode&quot; : &quot;LU&quot;,
+                &quot;emailAddress&quot; : &quot;johndoe@gmail.com&quot;,
+                &quot;phoneNumber&quot; : &quot;3450987121&quot;
               },
               &quot;sourceAmount&quot; : {
                 &quot;currencyCode&quot; : &quot;EUR&quot;,
@@ -1157,6 +1185,7 @@ class TransactionsApiTest extends BaseTestCase
         }
       },
       &quot;response&quot; : {
+        &quot;accountId&quot; : &quot;amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI&quot;,
         &quot;transactionId&quot; : &quot;amzn.transaction.AKJBNEFNL23R84V&quot;,
         &quot;transactionType&quot; : &quot;DEBIT&quot;,
         &quot;transactionStatus&quot; : &quot;IN_PROGRESS&quot;,
@@ -1866,6 +1895,7 @@ class TransactionsApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;nextPageToken&quot; : &quot;3493805734095308457308475&quot;,
         &quot;transactions&quot; : [ {
+          &quot;accountId&quot; : &quot;amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI&quot;,
           &quot;transactionId&quot; : &quot;amzn.transaction.AKJBNEFNL23R84V&quot;,
           &quot;transactionType&quot; : &quot;DEBIT&quot;,
           &quot;transactionStatus&quot; : &quot;IN_PROGRESS&quot;,

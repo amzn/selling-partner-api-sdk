@@ -442,6 +442,8 @@ class ShipmentRetrievalApiTest extends BaseTestCase
           &quot;chargeType&quot; : &quot;SHIPPING&quot;
         } ],
         &quot;status&quot; : &quot;ACCEPTED&quot;,
+        &quot;subStatus&quot; : &quot;OUT_FOR_DELIVERY&quot;,
+        &quot;reason&quot; : &quot;OutForDelivery&quot;,
         &quot;lineItems&quot; : [ {
           &quot;shipmentLineItemId&quot; : &quot;1&quot;,
           &quot;merchantSku&quot; : &quot;1002400773021&quot;,
@@ -1330,7 +1332,8 @@ class ShipmentRetrievalApiTest extends BaseTestCase
           }
         },
         &quot;status&quot; : &quot;CONFIRMED&quot;,
-        &quot;subStatus&quot; : &quot;PENDING_SCHEDULE&quot;
+        &quot;subStatus&quot; : &quot;OUT_FOR_DELIVERY&quot;,
+        &quot;reason&quot; : &quot;OutForDelivery&quot;
       }
     }, {
       &quot;request&quot; : {
@@ -1702,7 +1705,8 @@ class ShipmentRetrievalApiTest extends BaseTestCase
           }
         },
         &quot;status&quot; : &quot;CONFIRMED&quot;,
-        &quot;subStatus&quot; : &quot;PENDING_SCHEDULE&quot;
+        &quot;subStatus&quot; : &quot;OUT_FOR_DELIVERY&quot;,
+        &quot;reason&quot; : &quot;OutForDelivery&quot;
       }
     } ]
   }
@@ -2542,7 +2546,8 @@ class ShipmentRetrievalApiTest extends BaseTestCase
             }
           },
           &quot;status&quot; : &quot;CONFIRMED&quot;,
-          &quot;subStatus&quot; : &quot;PENDING_SCHEDULE&quot;
+          &quot;subStatus&quot; : &quot;OUT_FOR_DELIVERY&quot;,
+          &quot;reason&quot; : &quot;OutForDelivery&quot;
         }, {
           &quot;locationId&quot; : &quot;ABCD&quot;,
           &quot;marketplaceAttributes&quot; : {
@@ -3098,7 +3103,8 @@ class ShipmentRetrievalApiTest extends BaseTestCase
             }
           },
           &quot;status&quot; : &quot;CONFIRMED&quot;,
-          &quot;subStatus&quot; : &quot;PENDING_SCHEDULE&quot;
+          &quot;subStatus&quot; : &quot;OUT_FOR_DELIVERY&quot;,
+          &quot;reason&quot; : &quot;OutForDelivery&quot;
         } ]
       }
     }
@@ -3613,7 +3619,8 @@ class ShipmentRetrievalApiTest extends BaseTestCase
             }
           },
           &quot;status&quot; : &quot;CONFIRMED&quot;,
-          &quot;subStatus&quot; : &quot;PENDING_SCHEDULE&quot;
+          &quot;subStatus&quot; : &quot;OUT_FOR_DELIVERY&quot;,
+          &quot;reason&quot; : &quot;OutForDelivery&quot;
         }, {
           &quot;locationId&quot; : &quot;ABCD&quot;,
           &quot;marketplaceAttributes&quot; : {
@@ -3976,7 +3983,8 @@ class ShipmentRetrievalApiTest extends BaseTestCase
             }
           },
           &quot;status&quot; : &quot;CONFIRMED&quot;,
-          &quot;subStatus&quot; : &quot;PENDING_SCHEDULE&quot;
+          &quot;subStatus&quot; : &quot;OUT_FOR_DELIVERY&quot;,
+          &quot;reason&quot; : &quot;OutForDelivery&quot;
         } ]
       }
     } ]

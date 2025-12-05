@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ListPackingGroupBoxesResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
+class ListPackingGroupBoxesResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -50,8 +50,6 @@ class BankAccountOwnershipType
 
     public const SELF = 'SELF';
 
-    public const GOVERNMENT = 'GOVERNMENT';
-
     /**
      * Gets allowable values of the enum.
      *
@@ -62,7 +60,6 @@ class BankAccountOwnershipType
         return [
             self::THIRD_PARTY,
             self::SELF,
-            self::GOVERNMENT,
         ];
     }
 }

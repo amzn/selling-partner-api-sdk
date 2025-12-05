@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
+class Shipment implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -97,6 +97,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'charges' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\Charge[]',
         'status' => 'string',
         'sub_status' => 'string',
+        'reason' => 'string',
         'line_items' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\ShipmentLineItem[]',
         'shipping_info' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\ShippingInfo',
         'packages' => '\SpApi\Model\externalFulfillment\shipments\v2024_09_11\Package[]',
@@ -124,6 +125,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'charges' => null,
         'status' => null,
         'sub_status' => null,
+        'reason' => null,
         'line_items' => null,
         'shipping_info' => null,
         'packages' => null,
@@ -147,6 +149,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'charges' => false,
         'status' => false,
         'sub_status' => true,
+        'reason' => true,
         'line_items' => false,
         'shipping_info' => false,
         'packages' => true,
@@ -179,6 +182,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'charges' => 'charges',
         'status' => 'status',
         'sub_status' => 'subStatus',
+        'reason' => 'reason',
         'line_items' => 'lineItems',
         'shipping_info' => 'shippingInfo',
         'packages' => 'packages',
@@ -203,6 +207,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'charges' => 'setCharges',
         'status' => 'setStatus',
         'sub_status' => 'setSubStatus',
+        'reason' => 'setReason',
         'line_items' => 'setLineItems',
         'shipping_info' => 'setShippingInfo',
         'packages' => 'setPackages',
@@ -227,6 +232,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         'charges' => 'getCharges',
         'status' => 'getStatus',
         'sub_status' => 'getSubStatus',
+        'reason' => 'getReason',
         'line_items' => 'getLineItems',
         'shipping_info' => 'getShippingInfo',
         'packages' => 'getPackages',
@@ -258,6 +264,7 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
         $this->setIfExists('charges', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('sub_status', $data ?? [], null);
+        $this->setIfExists('reason', $data ?? [], null);
         $this->setIfExists('line_items', $data ?? [], null);
         $this->setIfExists('shipping_info', $data ?? [], null);
         $this->setIfExists('packages', $data ?? [], null);
@@ -748,6 +755,36 @@ class Shipment implements ModelInterface, \ArrayAccess, \JsonSerializable
             );
         }
         $this->container['sub_status'] = $sub_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason.
+     */
+    public function getReason(): ?string
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason.
+     *
+     * @param null|string $reason the reason for the sub-status
+     */
+    public function setReason(?string $reason): self
+    {
+        if (is_null($reason)) {
+            array_push($this->openAPINullablesSetToNull, 'reason');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('reason', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['reason'] = $reason;
 
         return $this;
     }
