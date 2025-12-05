@@ -33,6 +33,7 @@ class Transaction(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'account_id': 'str',
         'transaction_id': 'str',
         'transaction_type': 'TransactionType',
         'transaction_status': 'TransactionStatus',
@@ -52,6 +53,7 @@ class Transaction(object):
     }
 
     attribute_map = {
+        'account_id': 'accountId',
         'transaction_id': 'transactionId',
         'transaction_type': 'transactionType',
         'transaction_status': 'transactionStatus',
@@ -70,12 +72,13 @@ class Transaction(object):
         'transaction_failure_reason': 'transactionFailureReason',
     }
 
-    def __init__(self, transaction_id=None, transaction_type=None, transaction_status=None, transaction_request_date=None, expected_completion_date=None, transaction_actual_completion_date=None, last_update_date=None, requester_name=None, transaction_requester_source=None, transaction_description=None, transaction_source_account=None, transaction_destination_account=None, transaction_request_amount=None, transfer_rate_details=None, transaction_final_amount=None, transaction_failure_reason=None, _configuration=None):  # noqa: E501
+    def __init__(self, account_id=None, transaction_id=None, transaction_type=None, transaction_status=None, transaction_request_date=None, expected_completion_date=None, transaction_actual_completion_date=None, last_update_date=None, requester_name=None, transaction_requester_source=None, transaction_description=None, transaction_source_account=None, transaction_destination_account=None, transaction_request_amount=None, transfer_rate_details=None, transaction_final_amount=None, transaction_failure_reason=None, _configuration=None):  # noqa: E501
         """Transaction - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
+        self._account_id = None
         self._transaction_id = None
         self._transaction_type = None
         self._transaction_status = None
@@ -94,6 +97,7 @@ class Transaction(object):
         self._transaction_failure_reason = None
         self.discriminator = None
 
+        self.account_id = account_id
         self.transaction_id = transaction_id
         self.transaction_type = transaction_type
         self.transaction_status = transaction_status
@@ -107,7 +111,8 @@ class Transaction(object):
             self.requester_name = requester_name
         self.transaction_requester_source = transaction_requester_source
         self.transaction_description = transaction_description
-        self.transaction_source_account = transaction_source_account
+        if transaction_source_account is not None:
+            self.transaction_source_account = transaction_source_account
         self.transaction_destination_account = transaction_destination_account
         self.transaction_request_amount = transaction_request_amount
         self.transfer_rate_details = transfer_rate_details
@@ -115,6 +120,31 @@ class Transaction(object):
             self.transaction_final_amount = transaction_final_amount
         if transaction_failure_reason is not None:
             self.transaction_failure_reason = transaction_failure_reason
+
+    @property
+    def account_id(self):
+        """Gets the account_id of this Transaction.  # noqa: E501
+
+        The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.  # noqa: E501
+
+        :return: The account_id of this Transaction.  # noqa: E501
+        :rtype: str
+        """
+        return self._account_id
+
+    @account_id.setter
+    def account_id(self, account_id):
+        """Sets the account_id of this Transaction.
+
+        The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.  # noqa: E501
+
+        :param account_id: The account_id of this Transaction.  # noqa: E501
+        :type: str
+        """
+        if self._configuration.client_side_validation and account_id is None:
+            raise ValueError("Invalid value for `account_id`, must not be `None`")  # noqa: E501
+
+        self._account_id = account_id
 
     @property
     def transaction_id(self):
@@ -374,8 +404,6 @@ class Transaction(object):
         :param transaction_source_account: The transaction_source_account of this Transaction.  # noqa: E501
         :type: TransactionAccount
         """
-        if self._configuration.client_side_validation and transaction_source_account is None:
-            raise ValueError("Invalid value for `transaction_source_account`, must not be `None`")  # noqa: E501
 
         self._transaction_source_account = transaction_source_account
 

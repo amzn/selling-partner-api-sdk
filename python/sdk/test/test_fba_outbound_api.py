@@ -60,6 +60,15 @@ class TestFbaOutboundApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_delivery_offerings(self):
+        body = self._get_random_value("GetDeliveryOfferingsRequest", None)
+        
+        self.instruct_backend_mock("fbaOutbound".casefold().replace(' ', ''), self.to_camel_case("delivery_offerings"), "200")
+        response = self.api.delivery_offerings_with_http_info(body, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
     def test_delivery_offers(self):
         body = self._get_random_value("GetDeliveryOffersRequest", None)
         
@@ -118,9 +127,10 @@ class TestFbaOutboundApi(unittest.TestCase):
         pass
 
     def test_get_package_tracking_details(self):
+        package_number = self._get_random_value("int", None)
         
         self.instruct_backend_mock("fbaOutbound".casefold().replace(' ', ''), self.to_camel_case("get_package_tracking_details"), "200")
-        response = self.api.get_package_tracking_details_with_http_info()
+        response = self.api.get_package_tracking_details_with_http_info(package_number, )
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass

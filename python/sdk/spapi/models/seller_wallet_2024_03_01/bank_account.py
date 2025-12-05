@@ -83,12 +83,15 @@ class BankAccount(object):
             self.account_id = account_id
         if account_holder_name is not None:
             self.account_holder_name = account_holder_name
-        self.bank_account_number_format = bank_account_number_format
+        if bank_account_number_format is not None:
+            self.bank_account_number_format = bank_account_number_format
         if bank_name is not None:
             self.bank_name = bank_name
         self.bank_account_ownership_type = bank_account_ownership_type
-        self.routing_number = routing_number
-        self.bank_number_format = bank_number_format
+        if routing_number is not None:
+            self.routing_number = routing_number
+        if bank_number_format is not None:
+            self.bank_number_format = bank_number_format
         self.account_country_code = account_country_code
         self.account_currency = account_currency
         self.bank_account_number_tail = bank_account_number_tail
@@ -99,7 +102,7 @@ class BankAccount(object):
     def account_id(self):
         """Gets the account_id of this BankAccount.  # noqa: E501
 
-        The unique identifier provided by Amazon to identify the account   # noqa: E501
+        The unique bank account identifier provided by Amazon. To initiate a `SELF` transaction with Seller Wallet, you must choose `BANK_ACCOUNT` as the payment method type in the [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon Seller Wallet bank account identifier should match the `paymentMethodId` in the response. This field is required.  # noqa: E501
 
         :return: The account_id of this BankAccount.  # noqa: E501
         :rtype: str
@@ -110,7 +113,7 @@ class BankAccount(object):
     def account_id(self, account_id):
         """Sets the account_id of this BankAccount.
 
-        The unique identifier provided by Amazon to identify the account   # noqa: E501
+        The unique bank account identifier provided by Amazon. To initiate a `SELF` transaction with Seller Wallet, you must choose `BANK_ACCOUNT` as the payment method type in the [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon Seller Wallet bank account identifier should match the `paymentMethodId` in the response. This field is required.  # noqa: E501
 
         :param account_id: The account_id of this BankAccount.  # noqa: E501
         :type: str
@@ -122,7 +125,7 @@ class BankAccount(object):
     def account_holder_name(self):
         """Gets the account_holder_name of this BankAccount.  # noqa: E501
 
-        BankAccount holder's name (expected to be Amazon customer)   # noqa: E501
+        The bank account holder's name (expected to be an Amazon customer). There is a 50 character limit.  # noqa: E501
 
         :return: The account_holder_name of this BankAccount.  # noqa: E501
         :rtype: str
@@ -133,7 +136,7 @@ class BankAccount(object):
     def account_holder_name(self, account_holder_name):
         """Sets the account_holder_name of this BankAccount.
 
-        BankAccount holder's name (expected to be Amazon customer)   # noqa: E501
+        The bank account holder's name (expected to be an Amazon customer). There is a 50 character limit.  # noqa: E501
 
         :param account_holder_name: The account_holder_name of this BankAccount.  # noqa: E501
         :type: str
@@ -159,8 +162,6 @@ class BankAccount(object):
         :param bank_account_number_format: The bank_account_number_format of this BankAccount.  # noqa: E501
         :type: BankAccountNumberFormat
         """
-        if self._configuration.client_side_validation and bank_account_number_format is None:
-            raise ValueError("Invalid value for `bank_account_number_format`, must not be `None`")  # noqa: E501
 
         self._bank_account_number_format = bank_account_number_format
 
@@ -168,7 +169,7 @@ class BankAccount(object):
     def bank_name(self):
         """Gets the bank_name of this BankAccount.  # noqa: E501
 
-        The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet   # noqa: E501
+        The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.  # noqa: E501
 
         :return: The bank_name of this BankAccount.  # noqa: E501
         :rtype: str
@@ -179,7 +180,7 @@ class BankAccount(object):
     def bank_name(self, bank_name):
         """Sets the bank_name of this BankAccount.
 
-        The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet   # noqa: E501
+        The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.  # noqa: E501
 
         :param bank_name: The bank_name of this BankAccount.  # noqa: E501
         :type: str
@@ -214,7 +215,7 @@ class BankAccount(object):
     def routing_number(self):
         """Gets the routing_number of this BankAccount.  # noqa: E501
 
-        Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,    # noqa: E501
+        Routing number for automated clearing house transfers for `THIRD_PARTY` transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
 
         :return: The routing_number of this BankAccount.  # noqa: E501
         :rtype: str
@@ -225,13 +226,11 @@ class BankAccount(object):
     def routing_number(self, routing_number):
         """Sets the routing_number of this BankAccount.
 
-        Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,    # noqa: E501
+        Routing number for automated clearing house transfers for `THIRD_PARTY` transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.  # noqa: E501
 
         :param routing_number: The routing_number of this BankAccount.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and routing_number is None:
-            raise ValueError("Invalid value for `routing_number`, must not be `None`")  # noqa: E501
 
         self._routing_number = routing_number
 
@@ -253,8 +252,6 @@ class BankAccount(object):
         :param bank_number_format: The bank_number_format of this BankAccount.  # noqa: E501
         :type: BankNumberFormat
         """
-        if self._configuration.client_side_validation and bank_number_format is None:
-            raise ValueError("Invalid value for `bank_number_format`, must not be `None`")  # noqa: E501
 
         self._bank_number_format = bank_number_format
 
