@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -37,11 +37,11 @@ public class ProductContext {
     }
 
     /**
-     * Amazon Standard Identification Number (ASIN) of the item.
+     * The Amazon Standard Identification Number (ASIN) of the item.
      *
      * @return asin
      */
-    @Schema(description = "Amazon Standard Identification Number (ASIN) of the item.")
+    @Schema(description = "The Amazon Standard Identification Number (ASIN) of the item.")
     public String getAsin() {
         return asin;
     }
@@ -56,11 +56,11 @@ public class ProductContext {
     }
 
     /**
-     * Stock keeping unit (SKU) of the item.
+     * The Stock Keeping Unit (SKU) of the item.
      *
      * @return sku
      */
-    @Schema(description = "Stock keeping unit (SKU) of the item.")
+    @Schema(description = "The Stock Keeping Unit (SKU) of the item.")
     public String getSku() {
         return sku;
     }
@@ -75,11 +75,11 @@ public class ProductContext {
     }
 
     /**
-     * Quantity of the item shipped.
+     * The quantity of the item shipped.
      *
      * @return quantityShipped
      */
-    @Schema(description = "Quantity of the item shipped.")
+    @Schema(description = "The quantity of the item shipped.")
     public Integer getQuantityShipped() {
         return quantityShipped;
     }
@@ -94,11 +94,11 @@ public class ProductContext {
     }
 
     /**
-     * Fulfillment network of the item.
+     * The fulfillment network of the item.
      *
      * @return fulfillmentNetwork
      */
-    @Schema(description = "Fulfillment network of the item.")
+    @Schema(description = "The fulfillment network of the item.")
     public String getFulfillmentNetwork() {
         return fulfillmentNetwork;
     }

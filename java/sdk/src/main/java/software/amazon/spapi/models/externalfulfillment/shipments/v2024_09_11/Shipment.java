@@ -188,6 +188,9 @@ public class Shipment {
     @SerializedName("subStatus")
     private SubStatusEnum subStatus = null;
 
+    @SerializedName("reason")
+    private String reason = null;
+
     @SerializedName("lineItems")
     private List<ShipmentLineItem> lineItems = new ArrayList<ShipmentLineItem>();
 
@@ -400,6 +403,25 @@ public class Shipment {
         this.subStatus = subStatus;
     }
 
+    public Shipment reason(String reason) {
+        this.reason = reason;
+        return this;
+    }
+
+    /**
+     * The reason for the sub-status.
+     *
+     * @return reason
+     */
+    @Schema(description = "The reason for the sub-status.")
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
     public Shipment lineItems(List<ShipmentLineItem> lineItems) {
         this.lineItems = lineItems;
         return this;
@@ -546,6 +568,7 @@ public class Shipment {
                 && Objects.equals(this.charges, shipment.charges)
                 && Objects.equals(this.status, shipment.status)
                 && Objects.equals(this.subStatus, shipment.subStatus)
+                && Objects.equals(this.reason, shipment.reason)
                 && Objects.equals(this.lineItems, shipment.lineItems)
                 && Objects.equals(this.shippingInfo, shipment.shippingInfo)
                 && Objects.equals(this.packages, shipment.packages)
@@ -567,6 +590,7 @@ public class Shipment {
                 charges,
                 status,
                 subStatus,
+                reason,
                 lineItems,
                 shippingInfo,
                 packages,
@@ -594,6 +618,7 @@ public class Shipment {
         sb.append("    charges: ").append(toIndentedString(charges)).append("\n");
         sb.append("    status: ").append(toIndentedString(status)).append("\n");
         sb.append("    subStatus: ").append(toIndentedString(subStatus)).append("\n");
+        sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
         sb.append("    lineItems: ").append(toIndentedString(lineItems)).append("\n");
         sb.append("    shippingInfo: ").append(toIndentedString(shippingInfo)).append("\n");
         sb.append("    packages: ").append(toIndentedString(packages)).append("\n");

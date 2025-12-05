@@ -19,17 +19,19 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-/** Represents destination bank account&#x27;s ownership type. */
-@JsonAdapter(BankAccountOwnershipType.Adapter.class)
-public enum BankAccountOwnershipType {
-    @SerializedName("THIRD_PARTY")
-    THIRD_PARTY("THIRD_PARTY"),
-    @SerializedName("SELF")
-    SELF("SELF");
+/** The entity type of the transaction payee when the bank account ownership type is &#x60;THIRD_PARTY&#x60;. */
+@JsonAdapter(PayeeEntityType.Adapter.class)
+public enum PayeeEntityType {
+    @SerializedName("INDIVIDUAL")
+    INDIVIDUAL("INDIVIDUAL"),
+    @SerializedName("BUSINESS")
+    BUSINESS("BUSINESS"),
+    @SerializedName("TAX_AUTHORITY")
+    TAX_AUTHORITY("TAX_AUTHORITY");
 
     private String value;
 
-    BankAccountOwnershipType(String value) {
+    PayeeEntityType(String value) {
         this.value = value;
     }
 
@@ -42,8 +44,8 @@ public enum BankAccountOwnershipType {
         return String.valueOf(value);
     }
 
-    public static BankAccountOwnershipType fromValue(String input) {
-        for (BankAccountOwnershipType b : BankAccountOwnershipType.values()) {
+    public static PayeeEntityType fromValue(String input) {
+        for (PayeeEntityType b : PayeeEntityType.values()) {
             if (b.value.equals(input)) {
                 return b;
             }
@@ -51,16 +53,16 @@ public enum BankAccountOwnershipType {
         return null;
     }
 
-    public static class Adapter extends TypeAdapter<BankAccountOwnershipType> {
+    public static class Adapter extends TypeAdapter<PayeeEntityType> {
         @Override
-        public void write(final JsonWriter jsonWriter, final BankAccountOwnershipType enumeration) throws IOException {
+        public void write(final JsonWriter jsonWriter, final PayeeEntityType enumeration) throws IOException {
             jsonWriter.value(String.valueOf(enumeration.getValue()));
         }
 
         @Override
-        public BankAccountOwnershipType read(final JsonReader jsonReader) throws IOException {
+        public PayeeEntityType read(final JsonReader jsonReader) throws IOException {
             Object value = jsonReader.nextString();
-            return BankAccountOwnershipType.fromValue((String) (value));
+            return PayeeEntityType.fromValue((String) (value));
         }
     }
 }

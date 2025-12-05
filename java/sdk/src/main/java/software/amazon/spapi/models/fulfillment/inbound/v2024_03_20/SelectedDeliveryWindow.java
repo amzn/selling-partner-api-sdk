@@ -41,13 +41,15 @@ public class SelectedDeliveryWindow {
     }
 
     /**
-     * Identifies type of Delivery Window Availability. Values: &#x60;AVAILABLE&#x60;, &#x60;CONGESTED&#x60;
+     * The type of delivery window availability. Values: &#x60;AVAILABLE&#x60;, &#x60;BLOCKED&#x60;,
+     * &#x60;CONGESTED&#x60;, &#x60;DISCOUNTED&#x60;
      *
      * @return availabilityType
      */
     @Schema(
             required = true,
-            description = "Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`")
+            description =
+                    "The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`")
     public String getAvailabilityType() {
         return availabilityType;
     }

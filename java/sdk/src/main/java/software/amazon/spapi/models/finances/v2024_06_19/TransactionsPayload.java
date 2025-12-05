@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -31,13 +31,16 @@ public class TransactionsPayload {
     }
 
     /**
-     * When present and not empty, pass this string token in the next request to return the next response page.
+     * The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60;
+     * value. To get the next page of results, call the operation with this token and include the same arguments as the
+     * call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null.
+     * Note that this operation can return empty pages.
      *
      * @return nextToken
      */
     @Schema(
             description =
-                    "When present and not empty, pass this string token in the next request to return the next response page.")
+                    "The response includes `nextToken` when the number of results exceeds the specified `pageSize` value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until `nextToken` is null. Note that this operation can return empty pages.")
     public String getNextToken() {
         return nextToken;
     }

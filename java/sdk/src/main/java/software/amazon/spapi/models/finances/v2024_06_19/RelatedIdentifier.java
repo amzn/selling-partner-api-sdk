@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -24,7 +24,7 @@ import java.util.Objects;
 /** Related business identifier of the transaction. */
 @Schema(description = "Related business identifier of the transaction.")
 public class RelatedIdentifier {
-    /** Enumerated set of related business identifier names. */
+    /** An enumerated set of related business identifier names. */
     @JsonAdapter(RelatedIdentifierNameEnum.Adapter.class)
     public enum RelatedIdentifierNameEnum {
         @SerializedName("ORDER_ID")
@@ -99,11 +99,11 @@ public class RelatedIdentifier {
     }
 
     /**
-     * Enumerated set of related business identifier names.
+     * An enumerated set of related business identifier names.
      *
      * @return relatedIdentifierName
      */
-    @Schema(description = "Enumerated set of related business identifier names.")
+    @Schema(description = "An enumerated set of related business identifier names.")
     public RelatedIdentifierNameEnum getRelatedIdentifierName() {
         return relatedIdentifierName;
     }
@@ -118,11 +118,11 @@ public class RelatedIdentifier {
     }
 
     /**
-     * Corresponding value of RelatedIdentifierName
+     * Corresponding value of &#x60;RelatedIdentifierName&#x60;.
      *
      * @return relatedIdentifierValue
      */
-    @Schema(description = "Corresponding value of RelatedIdentifierName")
+    @Schema(description = "Corresponding value of `RelatedIdentifierName`.")
     public String getRelatedIdentifierValue() {
         return relatedIdentifierValue;
     }

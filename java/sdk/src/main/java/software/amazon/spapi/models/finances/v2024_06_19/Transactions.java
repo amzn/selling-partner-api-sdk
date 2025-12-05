@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -16,8 +16,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/** Contains transactions within a given time period. */
-@Schema(description = "Contains transactions within a given time period.")
+/** A list of transactions within the specified time period. */
+@Schema(description = "A list of transactions within the specified time period.")
 public class Transactions extends ArrayList<Transaction> {
 
     @Override

@@ -1,6 +1,6 @@
 /*
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * OpenAPI spec version: 2024-06-19
  *
@@ -17,8 +17,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 import org.threeten.bp.OffsetDateTime;
 
-/** Additional information related to Payments related transactions. */
-@Schema(description = "Additional information related to Payments related transactions.")
+/** Additional information related to payments-related transactions. */
+@Schema(description = "Additional information related to payments-related transactions.")
 public class PaymentsContext {
     @SerializedName("paymentType")
     private String paymentType = null;
@@ -38,11 +38,11 @@ public class PaymentsContext {
     }
 
     /**
-     * Type of payment made.
+     * The type of payment.
      *
      * @return paymentType
      */
-    @Schema(description = "Type of payment made.")
+    @Schema(description = "The type of payment.")
     public String getPaymentType() {
         return paymentType;
     }
@@ -57,11 +57,11 @@ public class PaymentsContext {
     }
 
     /**
-     * Method of payment made.
+     * The method of payment.
      *
      * @return paymentMethod
      */
-    @Schema(description = "Method of payment made.")
+    @Schema(description = "The method of payment.")
     public String getPaymentMethod() {
         return paymentMethod;
     }
@@ -76,11 +76,11 @@ public class PaymentsContext {
     }
 
     /**
-     * Reference number of payment made.
+     * The reference number of the payment.
      *
      * @return paymentReference
      */
-    @Schema(description = "Reference number of payment made.")
+    @Schema(description = "The reference number of the payment.")
     public String getPaymentReference() {
         return paymentReference;
     }
