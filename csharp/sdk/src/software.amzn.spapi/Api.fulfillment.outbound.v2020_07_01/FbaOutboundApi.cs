@@ -94,6 +94,27 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// 
         /// </summary>
         /// <remarks>
+        /// Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>GetDeliveryOfferingsResponse</returns>
+        GetDeliveryOfferingsResponse DeliveryOfferings (GetDeliveryOfferingsRequest body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>ApiResponse of GetDeliveryOfferingsResponse</returns>
+        ApiResponse<GetDeliveryOfferingsResponse> DeliveryOfferingsWithHttpInfo (GetDeliveryOfferingsRequest body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns delivery options that include an estimated delivery date and offer expiration, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -233,10 +254,9 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>GetPackageTrackingDetailsResponse</returns>
-        GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null);
+        GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int packageNumber);
 
         /// <summary>
         /// 
@@ -245,10 +265,9 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>ApiResponse of GetPackageTrackingDetailsResponse</returns>
-        ApiResponse<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsWithHttpInfo (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null);
+        ApiResponse<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsWithHttpInfo (int packageNumber);
         /// <summary>
         /// 
         /// </summary>
@@ -416,6 +435,27 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// 
         /// </summary>
         /// <remarks>
+        /// Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>Task of GetDeliveryOfferingsResponse</returns>
+        System.Threading.Tasks.Task<GetDeliveryOfferingsResponse> DeliveryOfferingsAsync (GetDeliveryOfferingsRequest body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>Task of ApiResponse (GetDeliveryOfferingsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetDeliveryOfferingsResponse>> DeliveryOfferingsAsyncWithHttpInfo (GetDeliveryOfferingsRequest body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns delivery options that include an estimated delivery date and offer expiration, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -555,10 +595,9 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of GetPackageTrackingDetailsResponse</returns>
-        System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null);
+        System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int packageNumber);
 
         /// <summary>
         /// 
@@ -567,10 +606,9 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of ApiResponse (GetPackageTrackingDetailsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null);
+        System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int packageNumber);
         /// <summary>
         /// 
         /// </summary>
@@ -1186,6 +1224,152 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
             return new ApiResponse<CreateFulfillmentReturnResponse>(localVarResponse.StatusCode,
                 ConvertHeadersToMultimap(localVarResponse),
                 (CreateFulfillmentReturnResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(CreateFulfillmentReturnResponse)));
+        }
+
+        /// <summary>
+        ///  Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>GetDeliveryOfferingsResponse</returns>
+        public GetDeliveryOfferingsResponse DeliveryOfferings (GetDeliveryOfferingsRequest body)
+        {
+             ApiResponse<GetDeliveryOfferingsResponse> localVarResponse = DeliveryOfferingsWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>ApiResponse of GetDeliveryOfferingsResponse</returns>
+        public ApiResponse< GetDeliveryOfferingsResponse > DeliveryOfferingsWithHttpInfo (GetDeliveryOfferingsRequest body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling FbaOutboundApi->DeliveryOfferings");
+
+            var localVarPath = "/fba/outbound/2020-07-01/deliveryOfferings";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "payload"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeliveryOfferings", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetDeliveryOfferingsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (GetDeliveryOfferingsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetDeliveryOfferingsResponse)));
+        }
+
+        /// <summary>
+        ///  Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>Task of GetDeliveryOfferingsResponse</returns>
+        public async System.Threading.Tasks.Task<GetDeliveryOfferingsResponse> DeliveryOfferingsAsync (GetDeliveryOfferingsRequest body)
+        {
+             ApiResponse<GetDeliveryOfferingsResponse> localVarResponse = await DeliveryOfferingsAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Returns fast delivery estimates for Product Detail and Collection pages, based on criteria that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">GetDeliveryOfferingsRequest parameter</param>
+        /// <returns>Task of ApiResponse (GetDeliveryOfferingsResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetDeliveryOfferingsResponse>> DeliveryOfferingsAsyncWithHttpInfo (GetDeliveryOfferingsRequest body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling FbaOutboundApi->DeliveryOfferings");
+
+            var localVarPath = "/fba/outbound/2020-07-01/deliveryOfferings";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "payload"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeliveryOfferings", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetDeliveryOfferingsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (GetDeliveryOfferingsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetDeliveryOfferingsResponse)));
         }
 
         /// <summary>
@@ -2052,12 +2236,11 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         ///  Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>GetPackageTrackingDetailsResponse</returns>
-        public GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null)
+        public GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int packageNumber)
         {
-             ApiResponse<GetPackageTrackingDetailsResponse> localVarResponse = GetPackageTrackingDetailsWithHttpInfo(packageNumber, amazonFulfillmentTrackingNumber);
+             ApiResponse<GetPackageTrackingDetailsResponse> localVarResponse = GetPackageTrackingDetailsWithHttpInfo(packageNumber);
              return localVarResponse.Data;
         }
 
@@ -2065,11 +2248,13 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         ///  Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>ApiResponse of GetPackageTrackingDetailsResponse</returns>
-        public ApiResponse< GetPackageTrackingDetailsResponse > GetPackageTrackingDetailsWithHttpInfo (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null)
+        public ApiResponse< GetPackageTrackingDetailsResponse > GetPackageTrackingDetailsWithHttpInfo (int packageNumber)
         {
+            // verify the required parameter 'packageNumber' is set
+            if (packageNumber == null)
+                throw new ApiException(400, "Missing required parameter 'packageNumber' when calling FbaOutboundApi->GetPackageTrackingDetails");
 
             var localVarPath = "/fba/outbound/2020-07-01/tracking";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2094,7 +2279,6 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (packageNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "packageNumber", packageNumber)); // query parameter
-            if (amazonFulfillmentTrackingNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "amazonFulfillmentTrackingNumber", amazonFulfillmentTrackingNumber)); // query parameter
 
 
             // make the HTTP request
@@ -2117,12 +2301,11 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         ///  Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of GetPackageTrackingDetailsResponse</returns>
-        public async System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null)
+        public async System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int packageNumber)
         {
-             ApiResponse<GetPackageTrackingDetailsResponse> localVarResponse = await GetPackageTrackingDetailsAsyncWithHttpInfo(packageNumber, amazonFulfillmentTrackingNumber);
+             ApiResponse<GetPackageTrackingDetailsResponse> localVarResponse = await GetPackageTrackingDetailsAsyncWithHttpInfo(packageNumber);
              return localVarResponse.Data;
 
         }
@@ -2131,11 +2314,13 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         ///  Returns delivery tracking information for a package in an outbound shipment for a Multi-Channel Fulfillment order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 2 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
-        /// <param name="amazonFulfillmentTrackingNumber">The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)</param>
+        /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of ApiResponse (GetPackageTrackingDetailsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int? packageNumber = null, string? amazonFulfillmentTrackingNumber = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int packageNumber)
         {
+            // verify the required parameter 'packageNumber' is set
+            if (packageNumber == null)
+                throw new ApiException(400, "Missing required parameter 'packageNumber' when calling FbaOutboundApi->GetPackageTrackingDetails");
 
             var localVarPath = "/fba/outbound/2020-07-01/tracking";
             var localVarPathParams = new Dictionary<String, String>();
@@ -2160,7 +2345,6 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (packageNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "packageNumber", packageNumber)); // query parameter
-            if (amazonFulfillmentTrackingNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "amazonFulfillmentTrackingNumber", amazonFulfillmentTrackingNumber)); // query parameter
 
 
             // make the HTTP request

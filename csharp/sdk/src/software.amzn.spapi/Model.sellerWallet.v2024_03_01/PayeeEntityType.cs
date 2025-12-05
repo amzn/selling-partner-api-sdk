@@ -26,23 +26,29 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
 {
     /// <summary>
-    /// Represents destination bank account&#39;s ownership type.
+    /// The entity type of the transaction payee when the bank account ownership type is &#x60;THIRD_PARTY&#x60;.
     /// </summary>
-    /// <value>Represents destination bank account&#39;s ownership type.</value>
+    /// <value>The entity type of the transaction payee when the bank account ownership type is &#x60;THIRD_PARTY&#x60;.</value>
     [JsonConverter(typeof(StringEnumConverter))]
-    public enum BankAccountOwnershipType
+    public enum PayeeEntityType
     {
         /// <summary>
-        /// Enum THIRDPARTY for value: THIRD_PARTY
+        /// Enum INDIVIDUAL for value: INDIVIDUAL
         /// </summary>
-        [EnumMember(Value = "THIRD_PARTY")]
-        THIRDPARTY = 1,
+        [EnumMember(Value = "INDIVIDUAL")]
+        INDIVIDUAL = 1,
 
         /// <summary>
-        /// Enum SELF for value: SELF
+        /// Enum BUSINESS for value: BUSINESS
         /// </summary>
-        [EnumMember(Value = "SELF")]
-        SELF = 2
+        [EnumMember(Value = "BUSINESS")]
+        BUSINESS = 2,
+
+        /// <summary>
+        /// Enum TAXAUTHORITY for value: TAX_AUTHORITY
+        /// </summary>
+        [EnumMember(Value = "TAX_AUTHORITY")]
+        TAXAUTHORITY = 3
     }
 
 }

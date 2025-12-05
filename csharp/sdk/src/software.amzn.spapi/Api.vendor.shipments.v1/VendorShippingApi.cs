@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -127,6 +127,27 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="sellerWarehouseCode">Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment. (optional)</param>
         /// <returns>ApiResponse of GetShipmentLabels</returns>
         ApiResponse<GetShipmentLabels> GetShipmentLabelsWithHttpInfo (long? limit = null, string? sortOrder = null, string? nextToken = null, DateTime? labelCreatedAfter = null, DateTime? labelCreatedBefore = null, string? buyerReferenceNumber = null, string? vendorShipmentIdentifier = null, string? sellerWarehouseCode = null);
+        /// <summary>
+        /// SubmitShipmentConfirmation
+        /// </summary>
+        /// <remarks>
+        /// Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>SubmitShipmentConfirmationResponse</returns>
+        SubmitShipmentConfirmationResponse SubmitShipmentConfirmation (SubmitShipmentConfirmationRequest body);
+
+        /// <summary>
+        /// SubmitShipmentConfirmation
+        /// </summary>
+        /// <remarks>
+        /// Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>ApiResponse of SubmitShipmentConfirmationResponse</returns>
+        ApiResponse<SubmitShipmentConfirmationResponse> SubmitShipmentConfirmationWithHttpInfo (SubmitShipmentConfirmationRequest body);
         /// <summary>
         /// SubmitShipmentConfirmations
         /// </summary>
@@ -190,7 +211,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -224,7 +245,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -273,6 +294,27 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="sellerWarehouseCode">Get Shipping labels based on vendor warehouse code. This value must be same as the &#x60;sellingParty.partyId&#x60; in the shipment. (optional)</param>
         /// <returns>Task of ApiResponse (GetShipmentLabels)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetShipmentLabels>> GetShipmentLabelsAsyncWithHttpInfo (long? limit = null, string? sortOrder = null, string? nextToken = null, DateTime? labelCreatedAfter = null, DateTime? labelCreatedBefore = null, string? buyerReferenceNumber = null, string? vendorShipmentIdentifier = null, string? sellerWarehouseCode = null);
+        /// <summary>
+        /// SubmitShipmentConfirmation
+        /// </summary>
+        /// <remarks>
+        /// Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>Task of SubmitShipmentConfirmationResponse</returns>
+        System.Threading.Tasks.Task<SubmitShipmentConfirmationResponse> SubmitShipmentConfirmationAsync (SubmitShipmentConfirmationRequest body);
+
+        /// <summary>
+        /// SubmitShipmentConfirmation
+        /// </summary>
+        /// <remarks>
+        /// Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>Task of ApiResponse (SubmitShipmentConfirmationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SubmitShipmentConfirmationResponse>> SubmitShipmentConfirmationAsyncWithHttpInfo (SubmitShipmentConfirmationRequest body);
         /// <summary>
         /// SubmitShipmentConfirmations
         /// </summary>
@@ -422,7 +464,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -457,7 +499,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -552,7 +594,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -588,7 +630,7 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
         /// <param name="shippedBefore">Get Shipment Details by passing Shipped Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shippedAfter">Get Shipment Details by passing Shipped Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="estimatedDeliveryBefore">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
-        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
+        /// <param name="estimatedDeliveryAfter">Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryBefore">Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="shipmentDeliveryAfter">Get Shipment Details by passing Shipment Delivery Date After. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
         /// <param name="requestedPickUpBefore">Get Shipment Details by passing Before Requested pickup date. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format. (optional)</param>
@@ -828,6 +870,150 @@ namespace software.amzn.spapi.Api.vendor.shipments.v1
             return new ApiResponse<GetShipmentLabels>(localVarResponse.StatusCode,
                 ConvertHeadersToMultimap(localVarResponse),
                 (GetShipmentLabels) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetShipmentLabels)));
+        }
+
+        /// <summary>
+        /// SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>SubmitShipmentConfirmationResponse</returns>
+        public SubmitShipmentConfirmationResponse SubmitShipmentConfirmation (SubmitShipmentConfirmationRequest body)
+        {
+             ApiResponse<SubmitShipmentConfirmationResponse> localVarResponse = SubmitShipmentConfirmationWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>ApiResponse of SubmitShipmentConfirmationResponse</returns>
+        public ApiResponse< SubmitShipmentConfirmationResponse > SubmitShipmentConfirmationWithHttpInfo (SubmitShipmentConfirmationRequest body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling VendorShippingApi->SubmitShipmentConfirmation");
+
+            var localVarPath = "/vendor/shipping/v1/shipmentConfirmation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SubmitShipmentConfirmation", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SubmitShipmentConfirmationResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (SubmitShipmentConfirmationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SubmitShipmentConfirmationResponse)));
+        }
+
+        /// <summary>
+        /// SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>Task of SubmitShipmentConfirmationResponse</returns>
+        public async System.Threading.Tasks.Task<SubmitShipmentConfirmationResponse> SubmitShipmentConfirmationAsync (SubmitShipmentConfirmationRequest body)
+        {
+             ApiResponse<SubmitShipmentConfirmationResponse> localVarResponse = await SubmitShipmentConfirmationAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">A request to submit shipment confirmation.</param>
+        /// <returns>Task of ApiResponse (SubmitShipmentConfirmationResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SubmitShipmentConfirmationResponse>> SubmitShipmentConfirmationAsyncWithHttpInfo (SubmitShipmentConfirmationRequest body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling VendorShippingApi->SubmitShipmentConfirmation");
+
+            var localVarPath = "/vendor/shipping/v1/shipmentConfirmation";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("POST"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SubmitShipmentConfirmation", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SubmitShipmentConfirmationResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (SubmitShipmentConfirmationResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SubmitShipmentConfirmationResponse)));
         }
 
         /// <summary>
