@@ -12,6 +12,9 @@ on:
         type: string
         required: true
 
+permissions:
+  contents: write
+
 jobs:
   tag_and_release:
     runs-on: ubuntu-latest
