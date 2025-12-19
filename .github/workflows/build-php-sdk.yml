@@ -27,10 +27,12 @@ jobs:
         working-directory: ./selling-partner-api-sdk/php
         run: curl -O https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.9.0/openapi-generator-cli-7.9.0.jar
       - name: Remove old sdk files
-        working-directory: ./selling-partner-api-sdk/php/sdk
-        run: rm -r *
-      - name: Copy Auth&Auth lib
-        run: cp -R selling-partner-api-models/clients/sellingpartner-api-aa-php/src selling-partner-api-sdk/php/sdk/src
+        working-directory: ./selling-partner-api-sdk/php
+        run: |
+          find sdk -mindepth 1 -maxdepth 1 \
+              ! -name 'src' \
+              ! -name '.*' \
+              -exec rm -rf {} +
       - name: Execute openapi codegen
         working-directory: ./selling-partner-api-sdk/php
         run: |
