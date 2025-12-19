@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class LabelDownloadURL implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class LabelDownloadURL implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

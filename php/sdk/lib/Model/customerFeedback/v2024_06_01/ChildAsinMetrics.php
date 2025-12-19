@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ChildAsinMetrics implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ChildAsinMetrics implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

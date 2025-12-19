@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class HttpResponseHeaders implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class HttpResponseHeaders implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

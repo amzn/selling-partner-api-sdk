@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class TransferRatePreview implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class TransferRatePreview implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

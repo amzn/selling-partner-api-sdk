@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CollectionFormsHistoryRecord implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CollectionFormsHistoryRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

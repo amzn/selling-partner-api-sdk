@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardThreeImageTextModule implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class StandardThreeImageTextModule implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

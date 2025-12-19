@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetFeatureSkuResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class GetFeatureSkuResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

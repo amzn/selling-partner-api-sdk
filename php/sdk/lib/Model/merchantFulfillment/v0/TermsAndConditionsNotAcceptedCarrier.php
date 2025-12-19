@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class TermsAndConditionsNotAcceptedCarrier implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class TermsAndConditionsNotAcceptedCarrier implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

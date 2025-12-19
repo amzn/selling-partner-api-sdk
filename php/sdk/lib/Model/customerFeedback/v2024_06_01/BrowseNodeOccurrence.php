@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class BrowseNodeOccurrence implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class BrowseNodeOccurrence implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

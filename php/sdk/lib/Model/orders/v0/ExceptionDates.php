@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ExceptionDates implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ExceptionDates implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

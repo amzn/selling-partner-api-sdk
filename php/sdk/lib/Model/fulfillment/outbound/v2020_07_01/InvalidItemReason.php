@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class InvalidItemReason implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class InvalidItemReason implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

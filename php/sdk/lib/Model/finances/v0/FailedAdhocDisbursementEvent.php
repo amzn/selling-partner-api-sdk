@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class FailedAdhocDisbursementEvent implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class FailedAdhocDisbursementEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

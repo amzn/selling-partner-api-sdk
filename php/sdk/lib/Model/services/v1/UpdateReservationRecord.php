@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateReservationRecord implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class UpdateReservationRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

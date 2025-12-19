@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CapacityReservationBillingEvent implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CapacityReservationBillingEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

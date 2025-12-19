@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetServiceJobsResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class GetServiceJobsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

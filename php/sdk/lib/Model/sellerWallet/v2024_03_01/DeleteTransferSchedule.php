@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class DeleteTransferSchedule implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class DeleteTransferSchedule implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

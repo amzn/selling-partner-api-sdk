@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class MskuQuantity implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class MskuQuantity implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

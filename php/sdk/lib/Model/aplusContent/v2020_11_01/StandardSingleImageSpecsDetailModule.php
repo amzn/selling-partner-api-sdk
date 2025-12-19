@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardSingleImageSpecsDetailModule implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class StandardSingleImageSpecsDetailModule implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

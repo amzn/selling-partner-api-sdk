@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateRestrictedDataTokenResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CreateRestrictedDataTokenResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

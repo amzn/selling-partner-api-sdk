@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class IneligibleRate implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class IneligibleRate implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

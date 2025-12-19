@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ChargeBreakup implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ChargeBreakup implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

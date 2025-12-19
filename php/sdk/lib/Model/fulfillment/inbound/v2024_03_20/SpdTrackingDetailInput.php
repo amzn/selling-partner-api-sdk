@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class SpdTrackingDetailInput implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class SpdTrackingDetailInput implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

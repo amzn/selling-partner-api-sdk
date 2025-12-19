@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetItemOffersBatchRequest implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class GetItemOffersBatchRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CarrierAppointment implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CarrierAppointment implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class SchemaLinkLink implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class SchemaLinkLink implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

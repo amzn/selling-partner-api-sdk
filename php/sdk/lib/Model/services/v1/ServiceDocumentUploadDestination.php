@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ServiceDocumentUploadDestination implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ServiceDocumentUploadDestination implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

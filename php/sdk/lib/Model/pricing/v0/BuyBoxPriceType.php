@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class BuyBoxPriceType implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class BuyBoxPriceType implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

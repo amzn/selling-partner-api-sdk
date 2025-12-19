@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class BrowseNodeStarRatingImpact implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class BrowseNodeStarRatingImpact implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

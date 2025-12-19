@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateAmazonMotorsRequest implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CreateAmazonMotorsRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

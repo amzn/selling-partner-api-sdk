@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class PayWithAmazonEvent implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class PayWithAmazonEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

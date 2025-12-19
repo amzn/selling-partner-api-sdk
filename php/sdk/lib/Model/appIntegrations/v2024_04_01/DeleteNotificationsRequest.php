@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class DeleteNotificationsRequest implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class DeleteNotificationsRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
