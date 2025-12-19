@@ -31,8 +31,6 @@ import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfi
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentOrderResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentReturnRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.CreateFulfillmentReturnResponse;
-import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOfferingsRequest;
-import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOfferingsResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOffersRequest;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetDeliveryOffersResponse;
 import software.amazon.spapi.models.fulfillment.outbound.v2020_07_01.GetFeatureInventoryResponse;
@@ -101,17 +99,6 @@ public class FbaOutboundApiTest {
 
         ApiResponse<CreateFulfillmentReturnResponse> response =
                 api.createFulfillmentReturnWithHttpInfo(body, sellerFulfillmentOrderId);
-
-        assertEquals(200, response.getStatusCode());
-        assertValidResponsePayload(200, response.getData());
-    }
-
-    @Test
-    public void deliveryOfferingsTest() throws Exception {
-        instructBackendMock("fbaOutbound", "deliveryOfferings", "200");
-        GetDeliveryOfferingsRequest body = easyRandom.nextObject(GetDeliveryOfferingsRequest.class);
-
-        ApiResponse<GetDeliveryOfferingsResponse> response = api.deliveryOfferingsWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
