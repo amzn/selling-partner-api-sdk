@@ -65,7 +65,7 @@ class LWAClient
         $retryDelay = 100000; // 100ms in microseconds
         $lastException = null;
 
-        for ($attempt = 0; $attempt <= $maxRetries; $attempt++) {
+        for ($attempt = 0; $attempt <= $maxRetries; ++$attempt) {
             try {
                 $lwaRequest = new Request('POST', $this->endpoint, $contentHeader, $requestBody);
 
@@ -87,23 +87,25 @@ class LWAClient
             } catch (BadResponseException $e) {
                 $lastException = $e;
                 $statusCode = $e->getResponse() ? $e->getResponse()->getStatusCode() : 0;
-                
+
                 // Don't retry on 4xx errors except 429 (rate limit)
-                if ($statusCode >= 400 && $statusCode < 500 && $statusCode !== 429) {
+                if ($statusCode >= 400 && $statusCode < 500 && 429 !== $statusCode) {
                     throw new \RuntimeException('Unsuccessful LWA token exchange', $e->getCode());
                 }
-                
+
                 // Retry on 5xx errors and 429
                 if ($attempt < $maxRetries) {
                     usleep($retryDelay * (2 ** $attempt)); // Exponential backoff
+
                     continue;
                 }
             } catch (GuzzleException $e) {
                 $lastException = $e;
-                
+
                 // Retry on network errors
                 if ($attempt < $maxRetries) {
                     usleep($retryDelay * (2 ** $attempt)); // Exponential backoff
+
                     continue;
                 }
             } catch (\Exception $e) {
@@ -113,7 +115,7 @@ class LWAClient
 
         // If we've exhausted all retries
         throw new \RuntimeException(
-            'Error getting LWA Access Token after ' . ($maxRetries + 1) . ' attempts',
+            'Error getting LWA Access Token after '.($maxRetries + 1).' attempts',
             $lastException ? $lastException->getCode() : 0
         );
     }
