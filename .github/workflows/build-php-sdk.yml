@@ -27,8 +27,11 @@ jobs:
         working-directory: ./selling-partner-api-sdk/php
         run: curl -O https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.9.0/openapi-generator-cli-7.9.0.jar
       - name: Remove old sdk files
-        working-directory: ./selling-partner-api-sdk/php/sdk
-        run: rm -r *
+        working-directory: ./selling-partner-api-sdk/php
+        run: |
+          find sdk -mindepth 1 -maxdepth 1 \
+              ! -name 'src' \
+              -exec rm -rf {} +
       - name: Execute openapi codegen
         working-directory: ./selling-partner-api-sdk/php
         run: |
