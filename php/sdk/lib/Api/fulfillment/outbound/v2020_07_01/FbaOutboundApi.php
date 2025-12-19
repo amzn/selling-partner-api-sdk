@@ -2792,21 +2792,18 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetails.
      *
-     * @param null|int    $package_number
-     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
-     * @param null|string $amazon_fulfillment_tracking_number
-     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
-     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param int         $package_number
+     *                                         The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @throws ApiException              on non-2xx response
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetails(
-        ?int $package_number = null,
-        ?string $amazon_fulfillment_tracking_number = null,
+        int $package_number,
         ?string $restrictedDataToken = null
     ): GetPackageTrackingDetailsResponse {
-        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number, $amazon_fulfillment_tracking_number, $restrictedDataToken);
+        list($response) = $this->getPackageTrackingDetailsWithHttpInfo($package_number, $restrictedDataToken);
 
         return $response;
     }
@@ -2814,11 +2811,9 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetailsWithHttpInfo.
      *
-     * @param null|int    $package_number
-     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
-     * @param null|string $amazon_fulfillment_tracking_number
-     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
-     * @param null|string $restrictedDataToken                Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     * @param int         $package_number
+     *                                         The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
      *
      * @return array of \SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse, HTTP status code, HTTP response headers (array of strings)
      *
@@ -2826,11 +2821,10 @@ class FbaOutboundApi
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsWithHttpInfo(
-        ?int $package_number = null,
-        ?string $amazon_fulfillment_tracking_number = null,
+        int $package_number,
         ?string $restrictedDataToken = null
     ): array {
-        $request = $this->getPackageTrackingDetailsRequest($package_number, $amazon_fulfillment_tracking_number);
+        $request = $this->getPackageTrackingDetailsRequest($package_number);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
         } else {
@@ -2904,18 +2898,15 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetailsAsync.
      *
-     * @param null|int    $package_number
-     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
-     * @param null|string $amazon_fulfillment_tracking_number
-     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param int $package_number
+     *                            The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsAsync(
-        ?int $package_number = null,
-        ?string $amazon_fulfillment_tracking_number = null
+        int $package_number
     ): PromiseInterface {
-        return $this->getPackageTrackingDetailsAsyncWithHttpInfo($package_number, $amazon_fulfillment_tracking_number)
+        return $this->getPackageTrackingDetailsAsyncWithHttpInfo($package_number)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2927,20 +2918,17 @@ class FbaOutboundApi
     /**
      * Operation getPackageTrackingDetailsAsyncWithHttpInfo.
      *
-     * @param null|int    $package_number
-     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
-     * @param null|string $amazon_fulfillment_tracking_number
-     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param int $package_number
+     *                            The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsAsyncWithHttpInfo(
-        ?int $package_number = null,
-        ?string $amazon_fulfillment_tracking_number = null,
+        int $package_number,
         ?string $restrictedDataToken = null
     ): PromiseInterface {
         $returnType = '\SpApi\Model\fulfillment\outbound\v2020_07_01\GetPackageTrackingDetailsResponse';
-        $request = $this->getPackageTrackingDetailsRequest($package_number, $amazon_fulfillment_tracking_number);
+        $request = $this->getPackageTrackingDetailsRequest($package_number);
         if (null !== $restrictedDataToken) {
             $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'FbaOutboundApi-getPackageTrackingDetails');
         } else {
@@ -2991,17 +2979,21 @@ class FbaOutboundApi
     /**
      * Create request for operation 'getPackageTrackingDetails'.
      *
-     * @param null|int    $package_number
-     *                                                        The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
-     * @param null|string $amazon_fulfillment_tracking_number
-     *                                                        The Amazon fulfillment tracking number. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (optional)
+     * @param int $package_number
+     *                            The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation. (required)
      *
      * @throws \InvalidArgumentException
      */
     public function getPackageTrackingDetailsRequest(
-        ?int $package_number = null,
-        ?string $amazon_fulfillment_tracking_number = null
+        int $package_number
     ): Request {
+        // verify the required parameter 'package_number' is set
+        if (null === $package_number || (is_array($package_number) && 0 === count($package_number))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $package_number when calling getPackageTrackingDetails'
+            );
+        }
+
         $resourcePath = '/fba/outbound/2020-07-01/tracking';
         $formParams = [];
         $queryParams = [];
@@ -3016,17 +3008,7 @@ class FbaOutboundApi
             'integer', // openApiType
             '', // style
             false, // explode
-            false, // required
-            $this->config
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $amazon_fulfillment_tracking_number,
-            'amazonFulfillmentTrackingNumber', // param base name
-            'string', // openApiType
-            '', // style
-            false, // explode
-            false, // required
+            true, // required
             $this->config
         ) ?? []);
 

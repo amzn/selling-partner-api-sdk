@@ -32,12 +32,6 @@ export class BankAccountOwnershipType {
   'SELF' = 'SELF'
 
   /**
-         * value: "GOVERNMENT"
-         * @const
-         */
-  'GOVERNMENT' = 'GOVERNMENT'
-
-  /**
     * Returns a <code>BankAccountOwnershipType</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {BankAccountOwnershipType} The enum <code>BankAccountOwnershipType</code> value.

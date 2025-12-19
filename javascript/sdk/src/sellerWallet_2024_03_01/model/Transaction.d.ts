@@ -17,6 +17,7 @@ export class Transaction {
      * The current transaction status and related historical details.
      * @alias module:sellerWallet_2024_03_01/model/Transaction
      * @class
+     * @param accountId {String} The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.
      * @param transactionId {String} The unique identifier provided by Amazon to the transaction
      * @param transactionType {TransactionType}
      * @param transactionStatus {TransactionStatus}
@@ -24,12 +25,12 @@ export class Transaction {
      * @param lastUpdateDate {Date} The last update date on the transaction
      * @param transactionRequesterSource {String} The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
      * @param transactionDescription {String} A description of the transaction that the requester provides when they initiate the transaction.
-     * @param transactionSourceAccount {TransactionAccount}
      * @param transactionDestinationAccount {TransactionAccount}
      * @param transactionRequestAmount {Currency}
      * @param transferRateDetails {TransferRatePreview}
      */
-    constructor(transactionId: string, transactionType: TransactionType, transactionStatus: TransactionStatus, transactionRequestDate: Date, lastUpdateDate: Date, transactionRequesterSource: string, transactionDescription: string, transactionSourceAccount: TransactionAccount, transactionDestinationAccount: TransactionAccount, transactionRequestAmount: Currency, transferRateDetails: TransferRatePreview);
+    constructor(accountId: string, transactionId: string, transactionType: TransactionType, transactionStatus: TransactionStatus, transactionRequestDate: Date, lastUpdateDate: Date, transactionRequesterSource: string, transactionDescription: string, transactionDestinationAccount: TransactionAccount, transactionRequestAmount: Currency, transferRateDetails: TransferRatePreview);
+    accountId: string;
     transactionId: string;
     transactionType: TransactionType;
     transactionStatus: TransactionStatus;
@@ -37,7 +38,6 @@ export class Transaction {
     lastUpdateDate: Date;
     transactionRequesterSource: string;
     transactionDescription: string;
-    transactionSourceAccount: TransactionAccount;
     transactionDestinationAccount: TransactionAccount;
     transactionRequestAmount: Currency;
     transferRateDetails: TransferRatePreview;
@@ -59,6 +59,11 @@ export class Transaction {
      * @type {String}
      */
     requesterName: string;
+    /**
+     * @member {TransactionAccount} transactionSourceAccount
+     * @type {TransactionAccount}
+     */
+    transactionSourceAccount: TransactionAccount;
     /**
      * @member {Currency} transactionFinalAmount
      * @type {Currency}

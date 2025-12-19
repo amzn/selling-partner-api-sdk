@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -95,7 +95,7 @@ ItemRelatedIdentifier.ItemRelatedIdentifierNameEnum = {
 ItemRelatedIdentifier.prototype.itemRelatedIdentifierName = undefined
 
 /**
- * Corresponding value of ItemRelatedIdentifierName
+ * Corresponding value to `ItemRelatedIdentifierName`.
  * @member {String} itemRelatedIdentifierValue
  * @type {String}
  */

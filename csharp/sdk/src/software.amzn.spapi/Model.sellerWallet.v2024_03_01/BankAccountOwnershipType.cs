@@ -42,13 +42,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Enum SELF for value: SELF
         /// </summary>
         [EnumMember(Value = "SELF")]
-        SELF = 2,
-
-        /// <summary>
-        /// Enum GOVERNMENT for value: GOVERNMENT
-        /// </summary>
-        [EnumMember(Value = "GOVERNMENT")]
-        GOVERNMENT = 3
+        SELF = 2
     }
 
 }

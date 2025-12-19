@@ -45,8 +45,8 @@ class TransactionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
-        :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str dest_account_digital_signature: Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+        :param str amount_digital_signature: Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
         :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransactionInitiationRequest body: Defines the actual payload of the request (required)
         :return: CreateTransactionResponse
@@ -70,8 +70,8 @@ class TransactionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str dest_account_digital_signature: Digital signature for the destination bank account details. (required)
-        :param str amount_digital_signature: Digital signature for the source currency transaction amount. (required)
+        :param str dest_account_digital_signature: Digital signature for the destination bank account details. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+        :param str amount_digital_signature: Digital signature for the source currency transaction amount. Sign in the order of the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party Provider Signature Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
         :param str marketplace_id: The marketplace for which items are returned. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
         :param TransactionInitiationRequest body: Defines the actual payload of the request (required)
         :return: CreateTransactionResponse

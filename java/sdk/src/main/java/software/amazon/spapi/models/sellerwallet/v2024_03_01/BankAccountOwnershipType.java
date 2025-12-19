@@ -25,9 +25,7 @@ public enum BankAccountOwnershipType {
     @SerializedName("THIRD_PARTY")
     THIRD_PARTY("THIRD_PARTY"),
     @SerializedName("SELF")
-    SELF("SELF"),
-    @SerializedName("GOVERNMENT")
-    GOVERNMENT("GOVERNMENT");
+    SELF("SELF");
 
     private String value;
 

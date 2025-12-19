@@ -13,6 +13,7 @@
 
 import { ApiClient } from '../ApiClient.js'
 import { Expiry } from './Expiry.js'
+import { RegulationReferences } from './RegulationReferences.js'
 
 /**
  * The PackageItemDetails model module.
@@ -52,6 +53,10 @@ export class PackageItemDetails {
       obj = obj || new PackageItemDetails()
       if (data.hasOwnProperty('purchaseOrderNumber')) { obj.purchaseOrderNumber = ApiClient.convertToType(data.purchaseOrderNumber, 'String') }
       if (data.hasOwnProperty('lotNumber')) { obj.lotNumber = ApiClient.convertToType(data.lotNumber, 'String') }
+      if (data.hasOwnProperty('lotNumberSourceReference')) { obj.lotNumberSourceReference = ApiClient.convertToType(data.lotNumberSourceReference, 'String') }
+      if (data.hasOwnProperty('lotNumberSourceType')) { obj.lotNumberSourceType = ApiClient.convertToType(data.lotNumberSourceType, 'String') }
+      if (data.hasOwnProperty('countryOfOrigin')) { obj.countryOfOrigin = ApiClient.convertToType(data.countryOfOrigin, 'String') }
+      if (data.hasOwnProperty('regulationReferences')) { obj.regulationReferences = RegulationReferences.constructFromObject(data.regulationReferences) }
       if (data.hasOwnProperty('expiry')) { obj.expiry = Expiry.constructFromObject(data.expiry) }
     }
     return obj
@@ -71,6 +76,64 @@ PackageItemDetails.prototype.purchaseOrderNumber = undefined
  * @type {String}
  */
 PackageItemDetails.prototype.lotNumber = undefined
+
+/**
+ * This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified.
+ * @member {String} lotNumberSourceReference
+ * @type {String}
+ */
+PackageItemDetails.prototype.lotNumberSourceReference = undefined
+
+/**
+ * Allowed values for the <code>lotNumberSourceType</code> property.
+ * @enum {String}
+ * @readonly
+ */
+PackageItemDetails.LotNumberSourceTypeEnum = {
+
+  /**
+     * value: "GLN"
+     * @const
+     */
+  GLN: 'GLN',
+
+  /**
+     * value: "FFRN"
+     * @const
+     */
+  FFRN: 'FFRN',
+
+  /**
+     * value: "USDA_E"
+     * @const
+     */
+  USDA_E: 'USDA_E',
+
+  /**
+     * value: "URL"
+     * @const
+     */
+  URL: 'URL'
+}
+/**
+ * The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.
+ * @member {String} lotNumberSourceType
+ * @type {String}
+ */
+PackageItemDetails.prototype.lotNumberSourceType = undefined
+
+/**
+ * The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated.
+ * @member {String} countryOfOrigin
+ * @type {String}
+ */
+PackageItemDetails.prototype.countryOfOrigin = undefined
+
+/**
+ * @member {RegulationReferences} regulationReferences
+ * @type {RegulationReferences}
+ */
+PackageItemDetails.prototype.regulationReferences = undefined
 
 /**
  * @member {Expiry} expiry

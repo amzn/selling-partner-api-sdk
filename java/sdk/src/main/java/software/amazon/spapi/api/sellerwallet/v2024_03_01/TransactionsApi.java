@@ -65,8 +65,13 @@ public class TransactionsApi {
      * Build call for createTransaction
      *
      * @param body Defines the actual payload of the request (required)
-     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
-     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. For more
+     *     information, refer to [Third-Party Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of
+     *     the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party
+     *     Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -162,8 +167,13 @@ public class TransactionsApi {
      * request from a Seller Wallet account to another customer-provided account.
      *
      * @param body Defines the actual payload of the request (required)
-     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
-     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. For more
+     *     information, refer to [Third-Party Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of
+     *     the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party
+     *     Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -189,8 +199,13 @@ public class TransactionsApi {
      * request from a Seller Wallet account to another customer-provided account.
      *
      * @param body Defines the actual payload of the request (required)
-     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
-     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. For more
+     *     information, refer to [Third-Party Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of
+     *     the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party
+     *     Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -214,8 +229,13 @@ public class TransactionsApi {
      * request from a Seller Wallet account to another customer-provided account.
      *
      * @param body Defines the actual payload of the request (required)
-     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
-     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. For more
+     *     information, refer to [Third-Party Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of
+     *     the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party
+     *     Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -251,8 +271,13 @@ public class TransactionsApi {
      * request from a Seller Wallet account to another customer-provided account.
      *
      * @param body Defines the actual payload of the request (required)
-     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
-     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. For more
+     *     information, refer to [Third-Party Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of
+     *     the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party
+     *     Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -275,8 +300,13 @@ public class TransactionsApi {
      * a transaction request from a Seller Wallet account to another customer-provided account.
      *
      * @param body Defines the actual payload of the request (required)
-     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
-     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. For more
+     *     information, refer to [Third-Party Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of
+     *     the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party
+     *     Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)
@@ -300,8 +330,13 @@ public class TransactionsApi {
      * a transaction request from a Seller Wallet account to another customer-provided account.
      *
      * @param body Defines the actual payload of the request (required)
-     * @param destAccountDigitalSignature Digital signature for the destination bank account details. (required)
-     * @param amountDigitalSignature Digital signature for the source currency transaction amount. (required)
+     * @param destAccountDigitalSignature Digital signature for the destination bank account details. For more
+     *     information, refer to [Third-Party Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
+     * @param amountDigitalSignature Digital signature for the source currency transaction amount. Sign in the order of
+     *     the request definitions. You can omit empty or optional fields. For more information, refer to [Third-Party
+     *     Provider Signature
+     *     Guidance](https://developer-docs.amazon.com/sp-api/docs/tpp-registration-signature-guidance). (required)
      * @param marketplaceId The marketplace for which items are returned. The marketplace ID is the globally unique
      *     identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace
      *     IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required)

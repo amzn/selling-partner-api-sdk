@@ -44,11 +44,11 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="destinationTransactionInstrument">destinationTransactionInstrument (required).</param>
         /// <param name="transactionDescription">A description of the transaction..</param>
         /// <param name="customerPaymentReference">If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID..</param>
-        /// <param name="destinationAccountHolderAddress">destinationAccountHolderAddress.</param>
+        /// <param name="payeeContactInformation">payeeContactInformation.</param>
         /// <param name="sourceAmount">sourceAmount (required).</param>
         /// <param name="transferRateDetails">transferRateDetails.</param>
         /// <param name="requestTime">The transaction initiation request time in date-time format  (required).</param>
-        public TransactionInitiationRequest(string sourceAccountId = default(string), string destinationAccountId = default(string), TransactionInstrumentDetails destinationTransactionInstrument = default(TransactionInstrumentDetails), string transactionDescription = default(string), string customerPaymentReference = default(string), AccountHolderAddress destinationAccountHolderAddress = default(AccountHolderAddress), Currency sourceAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), DateTime requestTime = default(DateTime))
+        public TransactionInitiationRequest(string sourceAccountId = default(string), string destinationAccountId = default(string), TransactionInstrumentDetails destinationTransactionInstrument = default(TransactionInstrumentDetails), string transactionDescription = default(string), string customerPaymentReference = default(string), PayeeContactInformation payeeContactInformation = default(PayeeContactInformation), Currency sourceAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), DateTime requestTime = default(DateTime))
         {
             // to ensure "sourceAccountId" is required (not null)
             if (sourceAccountId == null)
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             this.DestinationAccountId = destinationAccountId;
             this.TransactionDescription = transactionDescription;
             this.CustomerPaymentReference = customerPaymentReference;
-            this.DestinationAccountHolderAddress = destinationAccountHolderAddress;
+            this.PayeeContactInformation = payeeContactInformation;
             this.TransferRateDetails = transferRateDetails;
         }
 
@@ -120,10 +120,10 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         public string CustomerPaymentReference { get; set; }
 
         /// <summary>
-        /// Gets or Sets DestinationAccountHolderAddress
+        /// Gets or Sets PayeeContactInformation
         /// </summary>
-        [DataMember(Name = "destinationAccountHolderAddress", EmitDefaultValue = false)]
-        public AccountHolderAddress DestinationAccountHolderAddress { get; set; }
+        [DataMember(Name = "payeeContactInformation", EmitDefaultValue = false)]
+        public PayeeContactInformation PayeeContactInformation { get; set; }
 
         /// <summary>
         /// Gets or Sets SourceAmount
@@ -160,7 +160,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             sb.Append("  DestinationTransactionInstrument: ").Append(DestinationTransactionInstrument).Append("\n");
             sb.Append("  TransactionDescription: ").Append(TransactionDescription).Append("\n");
             sb.Append("  CustomerPaymentReference: ").Append(CustomerPaymentReference).Append("\n");
-            sb.Append("  DestinationAccountHolderAddress: ").Append(DestinationAccountHolderAddress).Append("\n");
+            sb.Append("  PayeeContactInformation: ").Append(PayeeContactInformation).Append("\n");
             sb.Append("  SourceAmount: ").Append(SourceAmount).Append("\n");
             sb.Append("  TransferRateDetails: ").Append(TransferRateDetails).Append("\n");
             sb.Append("  RequestTime: ").Append(RequestTime).Append("\n");

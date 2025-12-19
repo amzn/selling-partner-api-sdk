@@ -14,7 +14,7 @@ export class Error {
     static constructFromObject(data: any, obj: Error): Error;
     /**
      * Constructs a new <code>Error</code>.
-     * Error response returned when the request is unsuccessful.
+     * An error response returned when the request is unsuccessful.
      * @alias module:finances_2024_06_19/model/Error
      * @class
      * @param code {String} An error code that identifies the type of error that occurred.

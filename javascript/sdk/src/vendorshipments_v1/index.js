@@ -44,6 +44,7 @@ import { PartyIdentification } from './model/PartyIdentification.js'
 import { PurchaseOrderItemDetails } from './model/PurchaseOrderItemDetails.js'
 import { PurchaseOrderItems } from './model/PurchaseOrderItems.js'
 import { PurchaseOrders } from './model/PurchaseOrders.js'
+import { RegulationReferences } from './model/RegulationReferences.js'
 import { Route } from './model/Route.js'
 import { Shipment } from './model/Shipment.js'
 import { ShipmentConfirmation } from './model/ShipmentConfirmation.js'
@@ -52,6 +53,8 @@ import { ShipmentInformation } from './model/ShipmentInformation.js'
 import { ShipmentMeasurements } from './model/ShipmentMeasurements.js'
 import { ShipmentStatusDetails } from './model/ShipmentStatusDetails.js'
 import { Stop } from './model/Stop.js'
+import { SubmitShipmentConfirmationRequest } from './model/SubmitShipmentConfirmationRequest.js'
+import { SubmitShipmentConfirmationResponse } from './model/SubmitShipmentConfirmationResponse.js'
 import { SubmitShipmentConfirmationsRequest } from './model/SubmitShipmentConfirmationsRequest.js'
 import { SubmitShipmentConfirmationsResponse } from './model/SubmitShipmentConfirmationsResponse.js'
 import { SubmitShipments } from './model/SubmitShipments.js'
@@ -274,6 +277,12 @@ export {
   PurchaseOrders,
 
   /**
+     * The RegulationReferences model constructor.
+     * @property {module:vendorshipments_v1/model/RegulationReferences}
+     */
+  RegulationReferences,
+
+  /**
      * The Route model constructor.
      * @property {module:vendorshipments_v1/model/Route}
      */
@@ -320,6 +329,18 @@ export {
      * @property {module:vendorshipments_v1/model/Stop}
      */
   Stop,
+
+  /**
+     * The SubmitShipmentConfirmationRequest model constructor.
+     * @property {module:vendorshipments_v1/model/SubmitShipmentConfirmationRequest}
+     */
+  SubmitShipmentConfirmationRequest,
+
+  /**
+     * The SubmitShipmentConfirmationResponse model constructor.
+     * @property {module:vendorshipments_v1/model/SubmitShipmentConfirmationResponse}
+     */
+  SubmitShipmentConfirmationResponse,
 
   /**
      * The SubmitShipmentConfirmationsRequest model constructor.

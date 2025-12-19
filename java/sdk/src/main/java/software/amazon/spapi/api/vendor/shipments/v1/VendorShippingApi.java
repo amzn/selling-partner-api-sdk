@@ -36,6 +36,8 @@ import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentDetailsResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentLabels;
+import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationRequest;
+import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationsRequest;
 import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationsResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipments;
@@ -57,6 +59,10 @@ public class VendorShippingApi {
 
     public final Bucket getShipmentLabelsBucket = Bucket.builder()
             .addLimit(config.getLimit("VendorShippingApi-getShipmentLabels"))
+            .build();
+
+    public final Bucket submitShipmentConfirmationBucket = Bucket.builder()
+            .addLimit(config.getLimit("VendorShippingApi-submitShipmentConfirmation"))
             .build();
 
     public final Bucket submitShipmentConfirmationsBucket = Bucket.builder()
@@ -101,7 +107,7 @@ public class VendorShippingApi {
      * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
-     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
      * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
@@ -339,7 +345,7 @@ public class VendorShippingApi {
      * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
-     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
      * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
@@ -469,7 +475,7 @@ public class VendorShippingApi {
      * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
-     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
      * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
@@ -597,7 +603,7 @@ public class VendorShippingApi {
      * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
-     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
      * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
@@ -738,7 +744,7 @@ public class VendorShippingApi {
      * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
-     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
      * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
@@ -865,7 +871,7 @@ public class VendorShippingApi {
      * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
-     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
      * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
@@ -994,7 +1000,7 @@ public class VendorShippingApi {
      * @param estimatedDeliveryBefore Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
-     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date Before. Must be in &lt;a
+     * @param estimatedDeliveryAfter Get Shipment Details by passing Estimated Delivery Date After. Must be in &lt;a
      *     href&#x3D;&#x27;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#x27;&gt;ISO 8601&lt;/a&gt; format.
      *     (optional)
      * @param shipmentDeliveryBefore Get Shipment Details by passing Shipment Delivery Date Before. Must be in &lt;a
@@ -1547,6 +1553,224 @@ public class VendorShippingApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getShipmentLabels operation exceeds rate limit");
+    }
+    /**
+     * Build call for submitShipmentConfirmation
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call submitShipmentConfirmationCall(
+            SubmitShipmentConfirmationRequest body,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/vendor/shipping/v1/shipmentConfirmation".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/vendor/shipping/v1/shipmentConfirmation";
+        } else {
+            localVarPath = "/vendor/shipping/v1/shipmentConfirmation";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call submitShipmentConfirmationValidateBeforeCall(
+            SubmitShipmentConfirmationRequest body,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling submitShipmentConfirmation(Async)");
+        }
+
+        return submitShipmentConfirmationCall(body, progressRequestListener);
+    }
+
+    /**
+     * SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return SubmitShipmentConfirmationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SubmitShipmentConfirmationResponse submitShipmentConfirmation(
+            SubmitShipmentConfirmationRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<SubmitShipmentConfirmationResponse> resp =
+                submitShipmentConfirmationWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @return SubmitShipmentConfirmationResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public SubmitShipmentConfirmationResponse submitShipmentConfirmation(SubmitShipmentConfirmationRequest body)
+            throws ApiException, LWAException {
+        ApiResponse<SubmitShipmentConfirmationResponse> resp = submitShipmentConfirmationWithHttpInfo(body, null);
+        return resp.getData();
+    }
+
+    /**
+     * SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;SubmitShipmentConfirmationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SubmitShipmentConfirmationResponse> submitShipmentConfirmationWithHttpInfo(
+            SubmitShipmentConfirmationRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = submitShipmentConfirmationValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingApi-submitShipmentConfirmation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitShipmentConfirmationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitShipmentConfirmationResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("submitShipmentConfirmation operation exceeds rate limit");
+    }
+
+    /**
+     * SubmitShipmentConfirmation Submits one shipment confirmation for vendor orders and get response immediately.
+     * **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @return ApiResponse&lt;SubmitShipmentConfirmationResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<SubmitShipmentConfirmationResponse> submitShipmentConfirmationWithHttpInfo(
+            SubmitShipmentConfirmationRequest body) throws ApiException, LWAException {
+        return submitShipmentConfirmationWithHttpInfo(body, null);
+    }
+
+    /**
+     * SubmitShipmentConfirmation (asynchronously) Submits one shipment confirmation for vendor orders and get response
+     * immediately. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitShipmentConfirmationAsync(
+            SubmitShipmentConfirmationRequest body, final ApiCallback<SubmitShipmentConfirmationResponse> callback)
+            throws ApiException, LWAException {
+        return submitShipmentConfirmationAsync(body, callback, null);
+    }
+    /**
+     * SubmitShipmentConfirmation (asynchronously) Submits one shipment confirmation for vendor orders and get response
+     * immediately. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The table above indicates the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
+     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
+     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param body A request to submit shipment confirmation. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call submitShipmentConfirmationAsync(
+            SubmitShipmentConfirmationRequest body,
+            final ApiCallback<SubmitShipmentConfirmationResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = submitShipmentConfirmationValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "VendorShippingApi-submitShipmentConfirmation");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || submitShipmentConfirmationBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<SubmitShipmentConfirmationResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("submitShipmentConfirmation operation exceeds rate limit");
     }
     /**
      * Build call for submitShipmentConfirmations

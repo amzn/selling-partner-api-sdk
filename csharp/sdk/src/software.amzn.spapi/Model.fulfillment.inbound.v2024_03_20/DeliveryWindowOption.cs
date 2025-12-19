@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryWindowOption" /> class.
         /// </summary>
-        /// <param name="availabilityType">Identifies type of Delivery Window Availability. Values: &#x60;AVAILABLE&#x60;, &#x60;CONGESTED&#x60; (required).</param>
+        /// <param name="availabilityType">The type of delivery window availability. Values: &#x60;AVAILABLE&#x60;, &#x60;BLOCKED&#x60;, &#x60;CONGESTED&#x60;, &#x60;DISCOUNTED&#x60; (required).</param>
         /// <param name="deliveryWindowOptionId">Identifier of a delivery window option. A delivery window option represent one option for when a shipment is expected to be delivered. (required).</param>
         /// <param name="endDate">The time at which this delivery window option ends. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mmZ&#x60;. (required).</param>
         /// <param name="startDate">The time at which this delivery window option starts. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mmZ&#x60;. (required).</param>
@@ -64,9 +64,9 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         }
 
         /// <summary>
-        /// Identifies type of Delivery Window Availability. Values: &#x60;AVAILABLE&#x60;, &#x60;CONGESTED&#x60;
+        /// The type of delivery window availability. Values: &#x60;AVAILABLE&#x60;, &#x60;BLOCKED&#x60;, &#x60;CONGESTED&#x60;, &#x60;DISCOUNTED&#x60;
         /// </summary>
-        /// <value>Identifies type of Delivery Window Availability. Values: &#x60;AVAILABLE&#x60;, &#x60;CONGESTED&#x60;</value>
+        /// <value>The type of delivery window availability. Values: &#x60;AVAILABLE&#x60;, &#x60;BLOCKED&#x60;, &#x60;CONGESTED&#x60;, &#x60;DISCOUNTED&#x60;</value>
         [DataMember(Name = "availabilityType", IsRequired = true, EmitDefaultValue = true)]
         public string AvailabilityType { get; set; }
 

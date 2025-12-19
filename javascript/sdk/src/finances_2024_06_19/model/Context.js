@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -117,7 +117,7 @@ Context.StoreNameEnum = {
 Context.prototype.storeName = undefined
 
 /**
- * Order type of the transaction.
+ * The transaction's order type.
  * @member {String} orderType
  * @type {String}
  */
@@ -131,56 +131,56 @@ Context.prototype.orderType = undefined
 Context.prototype.channel = undefined
 
 /**
- * Amazon Standard Identification Number (ASIN) of the item.
+ * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
  * @type {String}
  */
 Context.prototype.asin = undefined
 
 /**
- * Stock keeping unit (SKU) of the item.
+ * The Stock Keeping Unit (SKU) of the item.
  * @member {String} sku
  * @type {String}
  */
 Context.prototype.sku = undefined
 
 /**
- * Quantity of the item shipped.
+ * The quantity of the item shipped.
  * @member {Number} quantityShipped
  * @type {Number}
  */
 Context.prototype.quantityShipped = undefined
 
 /**
- * Fulfillment network of the item.
+ * The fulfillment network of the item.
  * @member {String} fulfillmentNetwork
  * @type {String}
  */
 Context.prototype.fulfillmentNetwork = undefined
 
 /**
- * Type of payment made.
+ * The type of payment.
  * @member {String} paymentType
  * @type {String}
  */
 Context.prototype.paymentType = undefined
 
 /**
- * Method of payment made.
+ * The method of payment.
  * @member {String} paymentMethod
  * @type {String}
  */
 Context.prototype.paymentMethod = undefined
 
 /**
- * Reference number of payment made.
+ * The reference number of the payment.
  * @member {String} paymentReference
  * @type {String}
  */
 Context.prototype.paymentReference = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} paymentDate
  * @type {Date}
  */
@@ -194,21 +194,21 @@ Context.prototype.paymentDate = undefined
 Context.prototype.deferralReason = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} maturityDate
  * @type {Date}
  */
 Context.prototype.maturityDate = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} startTime
  * @type {Date}
  */
 Context.prototype.startTime = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} endTime
  * @type {Date}
  */
@@ -222,14 +222,14 @@ Context.prototype.contextType = undefined
 
 // Implement AmazonPayContext interface:
 /**
- * Store name related to transaction.
+ * The name of the store that is related to the transaction.
  * @member {String} storeName
  * @type {String}
  */
 AmazonPayContext.prototype.storeName = undefined
 
 /**
- * Order type of the transaction.
+ * The transaction's order type.
  * @member {String} orderType
  * @type {String}
  */
@@ -244,28 +244,28 @@ AmazonPayContext.prototype.channel = undefined
 
 // Implement ProductContext interface:
 /**
- * Amazon Standard Identification Number (ASIN) of the item.
+ * The Amazon Standard Identification Number (ASIN) of the item.
  * @member {String} asin
  * @type {String}
  */
 ProductContext.prototype.asin = undefined
 
 /**
- * Stock keeping unit (SKU) of the item.
+ * The Stock Keeping Unit (SKU) of the item.
  * @member {String} sku
  * @type {String}
  */
 ProductContext.prototype.sku = undefined
 
 /**
- * Quantity of the item shipped.
+ * The quantity of the item shipped.
  * @member {Number} quantityShipped
  * @type {Number}
  */
 ProductContext.prototype.quantityShipped = undefined
 
 /**
- * Fulfillment network of the item.
+ * The fulfillment network of the item.
  * @member {String} fulfillmentNetwork
  * @type {String}
  */
@@ -273,28 +273,28 @@ ProductContext.prototype.fulfillmentNetwork = undefined
 
 // Implement PaymentsContext interface:
 /**
- * Type of payment made.
+ * The type of payment.
  * @member {String} paymentType
  * @type {String}
  */
 PaymentsContext.prototype.paymentType = undefined
 
 /**
- * Method of payment made.
+ * The method of payment.
  * @member {String} paymentMethod
  * @type {String}
  */
 PaymentsContext.prototype.paymentMethod = undefined
 
 /**
- * Reference number of payment made.
+ * The reference number of the payment.
  * @member {String} paymentReference
  * @type {String}
  */
 PaymentsContext.prototype.paymentReference = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} paymentDate
  * @type {Date}
  */
@@ -309,7 +309,7 @@ PaymentsContext.prototype.paymentDate = undefined
 DeferredContext.prototype.deferralReason = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} maturityDate
  * @type {Date}
  */
@@ -325,14 +325,14 @@ BusinessContext.prototype.storeName = undefined
 
 // Implement TimeRangeContext interface:
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} startTime
  * @type {Date}
  */
 TimeRangeContext.prototype.startTime = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} endTime
  * @type {Date}
  */

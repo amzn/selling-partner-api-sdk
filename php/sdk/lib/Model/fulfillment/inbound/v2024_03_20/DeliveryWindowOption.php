@@ -303,7 +303,7 @@ class DeliveryWindowOption implements ModelInterface, \ArrayAccess, \JsonSeriali
     /**
      * Sets availability_type.
      *
-     * @param string $availability_type Identifies type of Delivery Window Availability. Values: `AVAILABLE`, `CONGESTED`
+     * @param string $availability_type The type of delivery window availability. Values: `AVAILABLE`, `BLOCKED`, `CONGESTED`, `DISCOUNTED`
      */
     public function setAvailabilityType(string $availability_type): self
     {

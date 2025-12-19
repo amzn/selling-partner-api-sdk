@@ -13,13 +13,13 @@ export class AmazonPayContext {
      */
     static constructFromObject(data: any, obj: AmazonPayContext): AmazonPayContext;
     /**
-     * Store name related to transaction.
+     * The name of the store that is related to the transaction.
      * @member {String} storeName
      * @type {String}
      */
     storeName: string;
     /**
-     * Order type of the transaction.
+     * The transaction's order type.
      * @member {String} orderType
      * @type {String}
      */

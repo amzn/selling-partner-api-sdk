@@ -13,13 +13,13 @@ export class SellingPartnerMetadata {
      */
     static constructFromObject(data: any, obj: SellingPartnerMetadata): SellingPartnerMetadata;
     /**
-     * Unique seller identifier.
+     * A unique seller identifier.
      * @member {String} sellingPartnerId
      * @type {String}
      */
     sellingPartnerId: string;
     /**
-     * Account type of transaction.
+     * The type of account in the transaction.
      * @member {String} accountType
      * @type {String}
      */

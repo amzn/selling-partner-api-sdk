@@ -13,7 +13,6 @@
 """  # noqa: E501
 
 # import models into model package
-from spapi.models.seller_wallet_2024_03_01.account_holder_address import AccountHolderAddress
 from spapi.models.seller_wallet_2024_03_01.balance import Balance
 from spapi.models.seller_wallet_2024_03_01.balance_listing import BalanceListing
 from spapi.models.seller_wallet_2024_03_01.balance_type import BalanceType
@@ -31,6 +30,8 @@ from spapi.models.seller_wallet_2024_03_01.error_list import ErrorList
 from spapi.models.seller_wallet_2024_03_01.fee import Fee
 from spapi.models.seller_wallet_2024_03_01.fee_type import FeeType
 from spapi.models.seller_wallet_2024_03_01.fx_rate_details import FxRateDetails
+from spapi.models.seller_wallet_2024_03_01.payee_contact_information import PayeeContactInformation
+from spapi.models.seller_wallet_2024_03_01.payee_entity_type import PayeeEntityType
 from spapi.models.seller_wallet_2024_03_01.payment_preference import PaymentPreference
 from spapi.models.seller_wallet_2024_03_01.payment_preference_payment_type import PaymentPreferencePaymentType
 from spapi.models.seller_wallet_2024_03_01.rate_direction import RateDirection

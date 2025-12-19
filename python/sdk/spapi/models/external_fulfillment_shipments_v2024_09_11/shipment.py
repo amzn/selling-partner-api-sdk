@@ -44,6 +44,7 @@ class Shipment(object):
         'charges': 'List[Charge]',
         'status': 'str',
         'sub_status': 'str',
+        'reason': 'str',
         'line_items': 'List[ShipmentLineItem]',
         'shipping_info': 'ShippingInfo',
         'packages': 'List[Package]',
@@ -63,6 +64,7 @@ class Shipment(object):
         'charges': 'charges',
         'status': 'status',
         'sub_status': 'subStatus',
+        'reason': 'reason',
         'line_items': 'lineItems',
         'shipping_info': 'shippingInfo',
         'packages': 'packages',
@@ -71,7 +73,7 @@ class Shipment(object):
         'earliest_pack_date_time': 'earliestPackDateTime',
     }
 
-    def __init__(self, id=None, location_id=None, marketplace_attributes=None, shipment_info=None, invoice_info=None, party_info_list=None, shipment_requirements=None, charges=None, status=None, sub_status=None, line_items=None, shipping_info=None, packages=None, creation_date_time=None, last_updated_date_time=None, earliest_pack_date_time=None, _configuration=None):  # noqa: E501
+    def __init__(self, id=None, location_id=None, marketplace_attributes=None, shipment_info=None, invoice_info=None, party_info_list=None, shipment_requirements=None, charges=None, status=None, sub_status=None, reason=None, line_items=None, shipping_info=None, packages=None, creation_date_time=None, last_updated_date_time=None, earliest_pack_date_time=None, _configuration=None):  # noqa: E501
         """Shipment - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -87,6 +89,7 @@ class Shipment(object):
         self._charges = None
         self._status = None
         self._sub_status = None
+        self._reason = None
         self._line_items = None
         self._shipping_info = None
         self._packages = None
@@ -108,6 +111,8 @@ class Shipment(object):
         self.status = status
         if sub_status is not None:
             self.sub_status = sub_status
+        if reason is not None:
+            self.reason = reason
         self.line_items = line_items
         self.shipping_info = shipping_info
         if packages is not None:
@@ -369,6 +374,29 @@ class Shipment(object):
             )
 
         self._sub_status = sub_status
+
+    @property
+    def reason(self):
+        """Gets the reason of this Shipment.  # noqa: E501
+
+        The reason for the sub-status.  # noqa: E501
+
+        :return: The reason of this Shipment.  # noqa: E501
+        :rtype: str
+        """
+        return self._reason
+
+    @reason.setter
+    def reason(self, reason):
+        """Sets the reason of this Shipment.
+
+        The reason for the sub-status.  # noqa: E501
+
+        :param reason: The reason of this Shipment.  # noqa: E501
+        :type: str
+        """
+
+        self._reason = reason
 
     @property
     def line_items(self):

@@ -30,7 +30,6 @@ class BankAccountOwnershipType(object):
     """
     THIRD_PARTY = 'THIRD_PARTY'
     SELF = 'SELF'
-    GOVERNMENT = 'GOVERNMENT'
 
     """
     Attributes:

@@ -51,6 +51,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Initializes a new instance of the <see cref="Transaction" /> class.
         /// </summary>
+        /// <param name="accountId">The unique identifier of the Amazon Seller Wallet bank account from which the money is debited. (required).</param>
         /// <param name="transactionId">The unique identifier provided by Amazon to the transaction  (required).</param>
         /// <param name="transactionType">transactionType (required).</param>
         /// <param name="transactionStatus">transactionStatus (required).</param>
@@ -61,14 +62,20 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="requesterName">Amazon SW customer who requested the transaction .</param>
         /// <param name="transactionRequesterSource">The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction. (required).</param>
         /// <param name="transactionDescription">A description of the transaction that the requester provides when they initiate the transaction. (required).</param>
-        /// <param name="transactionSourceAccount">transactionSourceAccount (required).</param>
+        /// <param name="transactionSourceAccount">transactionSourceAccount.</param>
         /// <param name="transactionDestinationAccount">transactionDestinationAccount (required).</param>
         /// <param name="transactionRequestAmount">transactionRequestAmount (required).</param>
         /// <param name="transferRateDetails">transferRateDetails (required).</param>
         /// <param name="transactionFinalAmount">transactionFinalAmount.</param>
         /// <param name="transactionFailureReason">Description in case the transaction fails before completion .</param>
-        public Transaction(string transactionId = default(string), TransactionType transactionType = default(TransactionType), TransactionStatus transactionStatus = default(TransactionStatus), DateTime transactionRequestDate = default(DateTime), DateTime expectedCompletionDate = default(DateTime), DateTime transactionActualCompletionDate = default(DateTime), DateTime lastUpdateDate = default(DateTime), string requesterName = default(string), string transactionRequesterSource = default(string), string transactionDescription = default(string), TransactionAccount transactionSourceAccount = default(TransactionAccount), TransactionAccount transactionDestinationAccount = default(TransactionAccount), Currency transactionRequestAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), Currency transactionFinalAmount = default(Currency), string transactionFailureReason = default(string))
+        public Transaction(string accountId = default(string), string transactionId = default(string), TransactionType transactionType = default(TransactionType), TransactionStatus transactionStatus = default(TransactionStatus), DateTime transactionRequestDate = default(DateTime), DateTime expectedCompletionDate = default(DateTime), DateTime transactionActualCompletionDate = default(DateTime), DateTime lastUpdateDate = default(DateTime), string requesterName = default(string), string transactionRequesterSource = default(string), string transactionDescription = default(string), TransactionAccount transactionSourceAccount = default(TransactionAccount), TransactionAccount transactionDestinationAccount = default(TransactionAccount), Currency transactionRequestAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), Currency transactionFinalAmount = default(Currency), string transactionFailureReason = default(string))
         {
+            // to ensure "accountId" is required (not null)
+            if (accountId == null)
+            {
+                throw new ArgumentNullException("accountId is a required property for Transaction and cannot be null");
+            }
+            this.AccountId = accountId;
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
             {
@@ -91,12 +98,6 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
                 throw new ArgumentNullException("transactionDescription is a required property for Transaction and cannot be null");
             }
             this.TransactionDescription = transactionDescription;
-            // to ensure "transactionSourceAccount" is required (not null)
-            if (transactionSourceAccount == null)
-            {
-                throw new ArgumentNullException("transactionSourceAccount is a required property for Transaction and cannot be null");
-            }
-            this.TransactionSourceAccount = transactionSourceAccount;
             // to ensure "transactionDestinationAccount" is required (not null)
             if (transactionDestinationAccount == null)
             {
@@ -118,9 +119,20 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             this.ExpectedCompletionDate = expectedCompletionDate;
             this.TransactionActualCompletionDate = transactionActualCompletionDate;
             this.RequesterName = requesterName;
+            this.TransactionSourceAccount = transactionSourceAccount;
             this.TransactionFinalAmount = transactionFinalAmount;
             this.TransactionFailureReason = transactionFailureReason;
         }
+
+        /// <summary>
+        /// The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.
+        /// </summary>
+        /// <value>The unique identifier of the Amazon Seller Wallet bank account from which the money is debited.</value>
+        /*
+        <example>amzn1.account.SMUGN2EN3ZHWSRJKH2KCJPII5JEI</example>
+        */
+        [DataMember(Name = "accountId", IsRequired = true, EmitDefaultValue = true)]
+        public string AccountId { get; set; }
 
         /// <summary>
         /// The unique identifier provided by Amazon to the transaction 
@@ -187,7 +199,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <summary>
         /// Gets or Sets TransactionSourceAccount
         /// </summary>
-        [DataMember(Name = "transactionSourceAccount", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "transactionSourceAccount", EmitDefaultValue = false)]
         public TransactionAccount TransactionSourceAccount { get; set; }
 
         /// <summary>
@@ -232,6 +244,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Transaction {\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
             sb.Append("  TransactionType: ").Append(TransactionType).Append("\n");
             sb.Append("  TransactionStatus: ").Append(TransactionStatus).Append("\n");

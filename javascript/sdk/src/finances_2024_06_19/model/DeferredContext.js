@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
+ * The Selling Partner API for Finances provides financial information relevant to a seller's business. You can obtain financial events for a given order or date range without having to wait until a statement period closes.
  *
  * The version of the OpenAPI document: 2024-06-19
  *
@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class DeferredContext {
   /**
    * Constructs a new <code>DeferredContext</code>.
-   * Additional information related to Deferred transactions.
+   * Additional information related to deferred transactions.
    * @alias module:finances_2024_06_19/model/DeferredContext
    * @class
    */
@@ -64,7 +64,7 @@ export class DeferredContext {
 DeferredContext.prototype.deferralReason = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} maturityDate
  * @type {Date}
  */

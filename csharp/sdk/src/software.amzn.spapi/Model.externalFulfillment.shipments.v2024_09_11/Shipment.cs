@@ -224,13 +224,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="charges">The charges associated with the shipment. (required).</param>
         /// <param name="status">The current status of the shipment. (required).</param>
         /// <param name="subStatus">The sub status of the shipment..</param>
+        /// <param name="reason">The reason for the sub-status..</param>
         /// <param name="lineItems">The line items in the shipment. (required).</param>
         /// <param name="shippingInfo">shippingInfo (required).</param>
         /// <param name="packages">The list of packages in the shipment..</param>
         /// <param name="creationDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="lastUpdatedDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="earliestPackDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
-        public Shipment(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), ShipmentInfo shipmentInfo = default(ShipmentInfo), InvoiceInfo invoiceInfo = default(InvoiceInfo), List<PartyIdentificationInfo> partyInfoList = default(List<PartyIdentificationInfo>), ShipmentRequirements shipmentRequirements = default(ShipmentRequirements), List<Charge> charges = default(List<Charge>), StatusEnum status = default(StatusEnum), SubStatusEnum? subStatus = default(SubStatusEnum?), List<ShipmentLineItem> lineItems = default(List<ShipmentLineItem>), ShippingInfo shippingInfo = default(ShippingInfo), List<Package> packages = default(List<Package>), string creationDateTime = default(string), string lastUpdatedDateTime = default(string), string earliestPackDateTime = default(string))
+        public Shipment(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), ShipmentInfo shipmentInfo = default(ShipmentInfo), InvoiceInfo invoiceInfo = default(InvoiceInfo), List<PartyIdentificationInfo> partyInfoList = default(List<PartyIdentificationInfo>), ShipmentRequirements shipmentRequirements = default(ShipmentRequirements), List<Charge> charges = default(List<Charge>), StatusEnum status = default(StatusEnum), SubStatusEnum? subStatus = default(SubStatusEnum?), string reason = default(string), List<ShipmentLineItem> lineItems = default(List<ShipmentLineItem>), ShippingInfo shippingInfo = default(ShippingInfo), List<Package> packages = default(List<Package>), string creationDateTime = default(string), string lastUpdatedDateTime = default(string), string earliestPackDateTime = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -296,6 +297,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             this.InvoiceInfo = invoiceInfo;
             this.PartyInfoList = partyInfoList;
             this.SubStatus = subStatus;
+            this.Reason = reason;
             this.Packages = packages;
             this.EarliestPackDateTime = earliestPackDateTime;
         }
@@ -351,6 +353,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <value>The charges associated with the shipment.</value>
         [DataMember(Name = "charges", IsRequired = true, EmitDefaultValue = true)]
         public List<Charge> Charges { get; set; }
+
+        /// <summary>
+        /// The reason for the sub-status.
+        /// </summary>
+        /// <value>The reason for the sub-status.</value>
+        [DataMember(Name = "reason", EmitDefaultValue = false)]
+        public string Reason { get; set; }
 
         /// <summary>
         /// The line items in the shipment.
@@ -411,6 +420,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             sb.Append("  Charges: ").Append(Charges).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  SubStatus: ").Append(SubStatus).Append("\n");
+            sb.Append("  Reason: ").Append(Reason).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
             sb.Append("  ShippingInfo: ").Append(ShippingInfo).Append("\n");
             sb.Append("  Packages: ").Append(Packages).Append("\n");
