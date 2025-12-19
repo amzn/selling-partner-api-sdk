@@ -29,8 +29,6 @@ jobs:
       - name: Remove old sdk files
         working-directory: ./selling-partner-api-sdk/php/sdk
         run: rm -r *
-      - name: Copy Auth&Auth lib
-        run: cp -R selling-partner-api-models/clients/sellingpartner-api-aa-php/src selling-partner-api-sdk/php/sdk/src
       - name: Execute openapi codegen
         working-directory: ./selling-partner-api-sdk/php
         run: |
