@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class AddInventoryResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class AddInventoryResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

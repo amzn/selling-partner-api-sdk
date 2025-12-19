@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ListInboundPlansResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ListInboundPlansResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

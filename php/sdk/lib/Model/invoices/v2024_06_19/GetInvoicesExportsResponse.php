@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetInvoicesExportsResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class GetInvoicesExportsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

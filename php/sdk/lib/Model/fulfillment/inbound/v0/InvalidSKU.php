@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class InvalidSKU implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class InvalidSKU implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

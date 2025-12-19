@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardCompanyLogoModule implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class StandardCompanyLogoModule implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

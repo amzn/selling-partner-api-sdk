@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class RecommendedPackageLineItem implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class RecommendedPackageLineItem implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

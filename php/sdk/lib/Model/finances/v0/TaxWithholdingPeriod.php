@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class TaxWithholdingPeriod implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class TaxWithholdingPeriod implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

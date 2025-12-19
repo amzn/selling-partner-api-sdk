@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CouponPaymentEvent implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CouponPaymentEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

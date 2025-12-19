@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ChannelDetails implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ChannelDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

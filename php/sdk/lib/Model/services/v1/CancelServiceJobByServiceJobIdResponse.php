@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CancelServiceJobByServiceJobIdResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CancelServiceJobByServiceJobIdResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

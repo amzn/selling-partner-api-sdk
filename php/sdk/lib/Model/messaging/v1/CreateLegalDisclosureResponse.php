@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateLegalDisclosureResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CreateLegalDisclosureResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

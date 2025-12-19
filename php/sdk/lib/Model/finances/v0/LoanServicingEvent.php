@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class LoanServicingEvent implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class LoanServicingEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

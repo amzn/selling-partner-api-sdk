@@ -44,7 +44,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class PostContentDocumentAsinRelationsRequest implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class PostContentDocumentAsinRelationsRequest implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardImageCaptionBlock implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class StandardImageCaptionBlock implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class PrescriptionDetail implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class PrescriptionDetail implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

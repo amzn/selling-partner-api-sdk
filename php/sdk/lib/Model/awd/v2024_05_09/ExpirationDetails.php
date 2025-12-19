@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpirationDetails implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ExpirationDetails implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

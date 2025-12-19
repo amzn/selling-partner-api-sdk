@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateUnexpectedProblemResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CreateUnexpectedProblemResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

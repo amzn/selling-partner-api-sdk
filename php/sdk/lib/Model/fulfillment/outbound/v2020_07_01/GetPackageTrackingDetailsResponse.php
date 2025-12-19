@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetPackageTrackingDetailsResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class GetPackageTrackingDetailsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

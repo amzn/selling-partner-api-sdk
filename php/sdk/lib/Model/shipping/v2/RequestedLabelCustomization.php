@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class RequestedLabelCustomization implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class RequestedLabelCustomization implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

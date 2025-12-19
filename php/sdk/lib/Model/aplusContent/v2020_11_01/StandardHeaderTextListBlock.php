@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardHeaderTextListBlock implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class StandardHeaderTextListBlock implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class FixedSlotCapacityErrors implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class FixedSlotCapacityErrors implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

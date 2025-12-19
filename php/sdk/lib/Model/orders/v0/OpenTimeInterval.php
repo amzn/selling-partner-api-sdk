@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class OpenTimeInterval implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class OpenTimeInterval implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

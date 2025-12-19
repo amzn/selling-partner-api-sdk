@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardTextPairBlock implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class StandardTextPairBlock implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

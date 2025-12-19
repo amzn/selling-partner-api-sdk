@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class DeleteSubscriptionByIdResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class DeleteSubscriptionByIdResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

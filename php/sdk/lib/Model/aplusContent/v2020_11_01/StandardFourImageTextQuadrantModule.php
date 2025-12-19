@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class StandardFourImageTextQuadrantModule implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class StandardFourImageTextQuadrantModule implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

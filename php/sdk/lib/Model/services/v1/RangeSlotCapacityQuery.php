@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class RangeSlotCapacityQuery implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class RangeSlotCapacityQuery implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

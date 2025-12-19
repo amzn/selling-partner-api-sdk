@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ThroughputCap implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ThroughputCap implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

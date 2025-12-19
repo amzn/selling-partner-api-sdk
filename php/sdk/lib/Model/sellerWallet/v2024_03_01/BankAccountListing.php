@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class BankAccountListing implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class BankAccountListing implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class BrowseNodeTrendMetrics implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class BrowseNodeTrendMetrics implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

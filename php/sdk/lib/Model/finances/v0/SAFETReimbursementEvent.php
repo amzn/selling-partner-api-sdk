@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class SAFETReimbursementEvent implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class SAFETReimbursementEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

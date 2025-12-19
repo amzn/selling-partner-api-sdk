@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ParkingWithAddressConfiguration implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ParkingWithAddressConfiguration implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

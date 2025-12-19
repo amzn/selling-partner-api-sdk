@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ContentMetadataRecord implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ContentMetadataRecord implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

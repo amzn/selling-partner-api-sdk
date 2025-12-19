@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class LabelDimensions implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class LabelDimensions implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

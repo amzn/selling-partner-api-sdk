@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class HttpStatusLine implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class HttpStatusLine implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class GetMyFeesEstimatesErrorList implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class GetMyFeesEstimatesErrorList implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

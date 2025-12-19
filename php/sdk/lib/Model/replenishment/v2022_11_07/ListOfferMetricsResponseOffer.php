@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ListOfferMetricsResponseOffer implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class ListReturnReasonCodesResult implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class ListReturnReasonCodesResult implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

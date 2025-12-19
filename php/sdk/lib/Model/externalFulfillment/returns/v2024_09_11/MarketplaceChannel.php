@@ -47,7 +47,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class MarketplaceChannel implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class MarketplaceChannel implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

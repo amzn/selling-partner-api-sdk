@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CancelInboundPlanResponse implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CancelInboundPlanResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomPlacementInput implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CustomPlacementInput implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

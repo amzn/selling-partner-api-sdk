@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class TimeRangeContext implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class TimeRangeContext implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class RentalTransactionEvent implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class RentalTransactionEvent implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 

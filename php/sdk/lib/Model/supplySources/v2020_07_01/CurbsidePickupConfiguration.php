@@ -46,7 +46,7 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class CurbsidePickupConfiguration implements \Stringable, ModelInterface, \ArrayAccess, \JsonSerializable
+class CurbsidePickupConfiguration implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
