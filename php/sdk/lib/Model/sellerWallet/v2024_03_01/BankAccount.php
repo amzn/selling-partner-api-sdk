@@ -38,7 +38,7 @@ use SpApi\ObjectSerializer;
  *
  * @category Class
  *
- * @description Details of an Amazon SW bank account, used to hold money earned by a SW customer by selling items. NOTE: Not including account_links, short cut links to the account balance and transactions -&gt; since not mandatory
+ * @description Details of an Amazon Seller Wallet bank account. This account is used to hold the money that a Seller Wallet customer earns by selling items.
  *
  * @author   OpenAPI Generator team
  *
@@ -103,11 +103,11 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'account_id' => true,
         'account_holder_name' => true,
-        'bank_account_number_format' => false,
+        'bank_account_number_format' => true,
         'bank_name' => true,
         'bank_account_ownership_type' => false,
-        'routing_number' => false,
-        'bank_number_format' => false,
+        'routing_number' => true,
+        'bank_number_format' => true,
         'account_country_code' => false,
         'account_currency' => false,
         'bank_account_number_tail' => false,
@@ -292,17 +292,8 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (null === $this->container['bank_account_number_format']) {
-            $invalidProperties[] = "'bank_account_number_format' can't be null";
-        }
         if (null === $this->container['bank_account_ownership_type']) {
             $invalidProperties[] = "'bank_account_ownership_type' can't be null";
-        }
-        if (null === $this->container['routing_number']) {
-            $invalidProperties[] = "'routing_number' can't be null";
-        }
-        if (null === $this->container['bank_number_format']) {
-            $invalidProperties[] = "'bank_number_format' can't be null";
         }
         if (null === $this->container['account_country_code']) {
             $invalidProperties[] = "'account_country_code' can't be null";
@@ -339,7 +330,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets account_id.
      *
-     * @param null|string $account_id The unique identifier provided by Amazon to identify the account
+     * @param null|string $account_id The unique bank account identifier provided by Amazon. To initiate a `SELF` transaction with Seller Wallet, you must choose `BANK_ACCOUNT` as the payment method type in the [getPaymentMethod](https://developer-docs.amazon.com/sp-api/reference/getpaymentmethods) request. Your Amazon Seller Wallet bank account identifier should match the `paymentMethodId` in the response. This field is required.
      */
     public function setAccountId(?string $account_id): self
     {
@@ -369,7 +360,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets account_holder_name.
      *
-     * @param null|string $account_holder_name BankAccount holder's name (expected to be Amazon customer)
+     * @param null|string $account_holder_name The bank account holder's name (expected to be an Amazon customer). There is a 50 character limit.
      */
     public function setAccountHolderName(?string $account_holder_name): self
     {
@@ -391,7 +382,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets bank_account_number_format.
      */
-    public function getBankAccountNumberFormat(): string
+    public function getBankAccountNumberFormat(): ?string
     {
         return $this->container['bank_account_number_format'];
     }
@@ -399,12 +390,19 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets bank_account_number_format.
      *
-     * @param string $bank_account_number_format bank_account_number_format
+     * @param null|string $bank_account_number_format bank_account_number_format
      */
-    public function setBankAccountNumberFormat(string $bank_account_number_format): self
+    public function setBankAccountNumberFormat(?string $bank_account_number_format): self
     {
         if (is_null($bank_account_number_format)) {
-            throw new \InvalidArgumentException('non-nullable bank_account_number_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bank_account_number_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bank_account_number_format', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bank_account_number_format'] = $bank_account_number_format;
 
@@ -422,7 +420,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets bank_name.
      *
-     * @param null|string $bank_name The name of the bank, for all Amazon Seller Wallet account the value will be Amazon Seller Wallet
+     * @param null|string $bank_name The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
      */
     public function setBankName(?string $bank_name): self
     {
@@ -467,7 +465,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets routing_number.
      */
-    public function getRoutingNumber(): string
+    public function getRoutingNumber(): ?string
     {
         return $this->container['routing_number'];
     }
@@ -475,12 +473,19 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets routing_number.
      *
-     * @param string $routing_number Routing number for automated clearing house transfers, for all Amazon Seller Wallet account the value will be denoted by nine cosecutive 0's,
+     * @param null|string $routing_number Routing number for automated clearing house transfers for `THIRD_PARTY` transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
      */
-    public function setRoutingNumber(string $routing_number): self
+    public function setRoutingNumber(?string $routing_number): self
     {
         if (is_null($routing_number)) {
-            throw new \InvalidArgumentException('non-nullable routing_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'routing_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('routing_number', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['routing_number'] = $routing_number;
 
@@ -490,7 +495,7 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets bank_number_format.
      */
-    public function getBankNumberFormat(): string
+    public function getBankNumberFormat(): ?string
     {
         return $this->container['bank_number_format'];
     }
@@ -498,12 +503,19 @@ class BankAccount implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets bank_number_format.
      *
-     * @param string $bank_number_format bank_number_format
+     * @param null|string $bank_number_format bank_number_format
      */
-    public function setBankNumberFormat(string $bank_number_format): self
+    public function setBankNumberFormat(?string $bank_number_format): self
     {
         if (is_null($bank_number_format)) {
-            throw new \InvalidArgumentException('non-nullable bank_number_format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bank_number_format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bank_number_format', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bank_number_format'] = $bank_number_format;
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * AccountHolderAddress.
+ * PayeeContactInformation.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * AccountHolderAddress Class Doc Comment.
+ * PayeeContactInformation Class Doc Comment.
  *
  * @category Class
  *
- * @description Address for bank account verification of the Payee. For example, this can be a person or business mailing address
+ * @description The contact information of the payee. This field is required when the request &#x60;bankAccountOwnershipType&#x60; is &#x60;THIRD_PARTY&#x60;. The contact information is used for payee verification and registration purposes.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSerializable
+class PayeeContactInformation implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'AccountHolderAddress';
+    protected static string $openAPIModelName = 'PayeeContactInformation';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,13 +61,19 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static array $openAPITypes = [
+        'payee_first_name' => 'string',
+        'payee_middle_name' => 'string',
+        'payee_last_name' => 'string',
         'address_line1' => 'string',
         'address_line2' => 'string',
         'city' => 'string',
         'state' => 'string',
         'postal_code' => 'string',
         'country' => 'string',
-        'country_code' => 'string'];
+        'country_code' => 'string',
+        'email_address' => 'string',
+        'phone_number' => 'string',
+        'payee_entity_type' => '\SpApi\Model\sellerWallet\v2024_03_01\PayeeEntityType'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -79,13 +85,19 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
+        'payee_first_name' => null,
+        'payee_middle_name' => null,
+        'payee_last_name' => null,
         'address_line1' => null,
         'address_line2' => null,
         'city' => null,
         'state' => null,
         'postal_code' => null,
         'country' => null,
-        'country_code' => null];
+        'country_code' => null,
+        'email_address' => null,
+        'phone_number' => null,
+        'payee_entity_type' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -93,6 +105,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
      * @var bool[]
      */
     protected static array $openAPINullables = [
+        'payee_first_name' => false,
+        'payee_middle_name' => true,
+        'payee_last_name' => false,
         'address_line1' => false,
         'address_line2' => true,
         'city' => false,
@@ -100,6 +115,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
         'postal_code' => false,
         'country' => true,
         'country_code' => false,
+        'email_address' => false,
+        'phone_number' => false,
+        'payee_entity_type' => false,
     ];
 
     /**
@@ -116,6 +134,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static array $attributeMap = [
+        'payee_first_name' => 'payeeFirstName',
+        'payee_middle_name' => 'payeeMiddleName',
+        'payee_last_name' => 'payeeLastName',
         'address_line1' => 'addressLine1',
         'address_line2' => 'addressLine2',
         'city' => 'city',
@@ -123,6 +144,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
         'postal_code' => 'postalCode',
         'country' => 'country',
         'country_code' => 'countryCode',
+        'email_address' => 'emailAddress',
+        'phone_number' => 'phoneNumber',
+        'payee_entity_type' => 'payeeEntityType',
     ];
 
     /**
@@ -131,6 +155,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static array $setters = [
+        'payee_first_name' => 'setPayeeFirstName',
+        'payee_middle_name' => 'setPayeeMiddleName',
+        'payee_last_name' => 'setPayeeLastName',
         'address_line1' => 'setAddressLine1',
         'address_line2' => 'setAddressLine2',
         'city' => 'setCity',
@@ -138,6 +165,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
         'postal_code' => 'setPostalCode',
         'country' => 'setCountry',
         'country_code' => 'setCountryCode',
+        'email_address' => 'setEmailAddress',
+        'phone_number' => 'setPhoneNumber',
+        'payee_entity_type' => 'setPayeeEntityType',
     ];
 
     /**
@@ -146,6 +176,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static array $getters = [
+        'payee_first_name' => 'getPayeeFirstName',
+        'payee_middle_name' => 'getPayeeMiddleName',
+        'payee_last_name' => 'getPayeeLastName',
         'address_line1' => 'getAddressLine1',
         'address_line2' => 'getAddressLine2',
         'city' => 'getCity',
@@ -153,6 +186,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
         'postal_code' => 'getPostalCode',
         'country' => 'getCountry',
         'country_code' => 'getCountryCode',
+        'email_address' => 'getEmailAddress',
+        'phone_number' => 'getPhoneNumber',
+        'payee_entity_type' => 'getPayeeEntityType',
     ];
 
     /**
@@ -168,6 +204,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('payee_first_name', $data ?? [], null);
+        $this->setIfExists('payee_middle_name', $data ?? [], null);
+        $this->setIfExists('payee_last_name', $data ?? [], null);
         $this->setIfExists('address_line1', $data ?? [], null);
         $this->setIfExists('address_line2', $data ?? [], null);
         $this->setIfExists('city', $data ?? [], null);
@@ -175,6 +214,9 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
         $this->setIfExists('postal_code', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('country_code', $data ?? [], null);
+        $this->setIfExists('email_address', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('payee_entity_type', $data ?? [], null);
     }
 
     /**
@@ -264,6 +306,12 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if (null === $this->container['payee_first_name']) {
+            $invalidProperties[] = "'payee_first_name' can't be null";
+        }
+        if (null === $this->container['payee_last_name']) {
+            $invalidProperties[] = "'payee_last_name' can't be null";
+        }
         if (null === $this->container['address_line1']) {
             $invalidProperties[] = "'address_line1' can't be null";
         }
@@ -279,6 +327,15 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
         if (null === $this->container['country_code']) {
             $invalidProperties[] = "'country_code' can't be null";
         }
+        if (null === $this->container['email_address']) {
+            $invalidProperties[] = "'email_address' can't be null";
+        }
+        if (null === $this->container['phone_number']) {
+            $invalidProperties[] = "'phone_number' can't be null";
+        }
+        if (null === $this->container['payee_entity_type']) {
+            $invalidProperties[] = "'payee_entity_type' can't be null";
+        }
 
         return $invalidProperties;
     }
@@ -292,6 +349,82 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
     public function valid(): bool
     {
         return 0 === count($this->listInvalidProperties());
+    }
+
+    /**
+     * Gets payee_first_name.
+     */
+    public function getPayeeFirstName(): string
+    {
+        return $this->container['payee_first_name'];
+    }
+
+    /**
+     * Sets payee_first_name.
+     *
+     * @param string $payee_first_name First name of the payee. There is a 50 character limit.
+     */
+    public function setPayeeFirstName(string $payee_first_name): self
+    {
+        if (is_null($payee_first_name)) {
+            throw new \InvalidArgumentException('non-nullable payee_first_name cannot be null');
+        }
+        $this->container['payee_first_name'] = $payee_first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets payee_middle_name.
+     */
+    public function getPayeeMiddleName(): ?string
+    {
+        return $this->container['payee_middle_name'];
+    }
+
+    /**
+     * Sets payee_middle_name.
+     *
+     * @param null|string $payee_middle_name Middle name of the payee. There is a 50 character limit.
+     */
+    public function setPayeeMiddleName(?string $payee_middle_name): self
+    {
+        if (is_null($payee_middle_name)) {
+            array_push($this->openAPINullablesSetToNull, 'payee_middle_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('payee_middle_name', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['payee_middle_name'] = $payee_middle_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets payee_last_name.
+     */
+    public function getPayeeLastName(): string
+    {
+        return $this->container['payee_last_name'];
+    }
+
+    /**
+     * Sets payee_last_name.
+     *
+     * @param string $payee_last_name Last name of the payee. There is a 50 character limit.
+     */
+    public function setPayeeLastName(string $payee_last_name): self
+    {
+        if (is_null($payee_last_name)) {
+            throw new \InvalidArgumentException('non-nullable payee_last_name cannot be null');
+        }
+        $this->container['payee_last_name'] = $payee_last_name;
+
+        return $this;
     }
 
     /**
@@ -465,6 +598,75 @@ class AccountHolderAddress implements ModelInterface, \ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable country_code cannot be null');
         }
         $this->container['country_code'] = $country_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets email_address.
+     */
+    public function getEmailAddress(): string
+    {
+        return $this->container['email_address'];
+    }
+
+    /**
+     * Sets email_address.
+     *
+     * @param string $email_address email address of the payee
+     */
+    public function setEmailAddress(string $email_address): self
+    {
+        if (is_null($email_address)) {
+            throw new \InvalidArgumentException('non-nullable email_address cannot be null');
+        }
+        $this->container['email_address'] = $email_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number.
+     */
+    public function getPhoneNumber(): string
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number.
+     *
+     * @param string $phone_number valid phone number of the payee
+     */
+    public function setPhoneNumber(string $phone_number): self
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+        $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets payee_entity_type.
+     */
+    public function getPayeeEntityType(): string
+    {
+        return $this->container['payee_entity_type'];
+    }
+
+    /**
+     * Sets payee_entity_type.
+     *
+     * @param string $payee_entity_type payee_entity_type
+     */
+    public function setPayeeEntityType(string $payee_entity_type): self
+    {
+        if (is_null($payee_entity_type)) {
+            throw new \InvalidArgumentException('non-nullable payee_entity_type cannot be null');
+        }
+        $this->container['payee_entity_type'] = $payee_entity_type;
 
         return $this;
     }

@@ -61,6 +61,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
+        'account_id' => 'string',
         'transaction_id' => 'string',
         'transaction_type' => '\SpApi\Model\sellerWallet\v2024_03_01\TransactionType',
         'transaction_status' => '\SpApi\Model\sellerWallet\v2024_03_01\TransactionStatus',
@@ -88,6 +89,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
+        'account_id' => null,
         'transaction_id' => null,
         'transaction_type' => null,
         'transaction_status' => null,
@@ -111,6 +113,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
+        'account_id' => false,
         'transaction_id' => false,
         'transaction_type' => false,
         'transaction_status' => false,
@@ -121,7 +124,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
         'requester_name' => true,
         'transaction_requester_source' => false,
         'transaction_description' => false,
-        'transaction_source_account' => false,
+        'transaction_source_account' => true,
         'transaction_destination_account' => false,
         'transaction_request_amount' => false,
         'transfer_rate_details' => false,
@@ -143,6 +146,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
+        'account_id' => 'accountId',
         'transaction_id' => 'transactionId',
         'transaction_type' => 'transactionType',
         'transaction_status' => 'transactionStatus',
@@ -167,6 +171,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
+        'account_id' => 'setAccountId',
         'transaction_id' => 'setTransactionId',
         'transaction_type' => 'setTransactionType',
         'transaction_status' => 'setTransactionStatus',
@@ -191,6 +196,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
+        'account_id' => 'getAccountId',
         'transaction_id' => 'getTransactionId',
         'transaction_type' => 'getTransactionType',
         'transaction_status' => 'getTransactionStatus',
@@ -222,6 +228,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('transaction_id', $data ?? [], null);
         $this->setIfExists('transaction_type', $data ?? [], null);
         $this->setIfExists('transaction_status', $data ?? [], null);
@@ -327,6 +334,9 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (null === $this->container['account_id']) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
         if (null === $this->container['transaction_id']) {
             $invalidProperties[] = "'transaction_id' can't be null";
         }
@@ -347,9 +357,6 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
         }
         if (null === $this->container['transaction_description']) {
             $invalidProperties[] = "'transaction_description' can't be null";
-        }
-        if (null === $this->container['transaction_source_account']) {
-            $invalidProperties[] = "'transaction_source_account' can't be null";
         }
         if (null === $this->container['transaction_destination_account']) {
             $invalidProperties[] = "'transaction_destination_account' can't be null";
@@ -373,6 +380,29 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     public function valid(): bool
     {
         return 0 === count($this->listInvalidProperties());
+    }
+
+    /**
+     * Gets account_id.
+     */
+    public function getAccountId(): string
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id.
+     *
+     * @param string $account_id the unique identifier of the Amazon Seller Wallet bank account from which the money is debited
+     */
+    public function setAccountId(string $account_id): self
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
     }
 
     /**
@@ -629,7 +659,7 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Gets transaction_source_account.
      */
-    public function getTransactionSourceAccount(): TransactionAccount
+    public function getTransactionSourceAccount(): ?TransactionAccount
     {
         return $this->container['transaction_source_account'];
     }
@@ -637,12 +667,19 @@ class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
     /**
      * Sets transaction_source_account.
      *
-     * @param TransactionAccount $transaction_source_account transaction_source_account
+     * @param null|TransactionAccount $transaction_source_account transaction_source_account
      */
-    public function setTransactionSourceAccount(TransactionAccount $transaction_source_account): self
+    public function setTransactionSourceAccount(?TransactionAccount $transaction_source_account): self
     {
         if (is_null($transaction_source_account)) {
-            throw new \InvalidArgumentException('non-nullable transaction_source_account cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'transaction_source_account');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('transaction_source_account', $nullablesSetToNull);
+            if (false !== $index) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['transaction_source_account'] = $transaction_source_account;
 

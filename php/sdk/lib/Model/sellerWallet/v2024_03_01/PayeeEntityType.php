@@ -1,7 +1,7 @@
 <?php
 
 /**
- * BankAccountOwnershipType.
+ * PayeeEntityType.
  *
  * PHP version 8.3
  *
@@ -31,24 +31,26 @@
 namespace SpApi\Model\sellerWallet\v2024_03_01;
 
 /**
- * BankAccountOwnershipType Class Doc Comment.
+ * PayeeEntityType Class Doc Comment.
  *
  * @category Class
  *
- * @description Represents destination bank account&#39;s ownership type.
+ * @description The entity type of the transaction payee when the bank account ownership type is &#x60;THIRD_PARTY&#x60;.
  *
  * @author   OpenAPI Generator team
  *
  * @see     https://openapi-generator.tech
  */
-class BankAccountOwnershipType
+class PayeeEntityType
 {
     /**
      * Possible values of this enum.
      */
-    public const THIRD_PARTY = 'THIRD_PARTY';
+    public const INDIVIDUAL = 'INDIVIDUAL';
 
-    public const SELF = 'SELF';
+    public const BUSINESS = 'BUSINESS';
+
+    public const TAX_AUTHORITY = 'TAX_AUTHORITY';
 
     /**
      * Gets allowable values of the enum.
@@ -58,8 +60,9 @@ class BankAccountOwnershipType
     public static function getAllowableEnumValues(): array
     {
         return [
-            self::THIRD_PARTY,
-            self::SELF,
+            self::INDIVIDUAL,
+            self::BUSINESS,
+            self::TAX_AUTHORITY,
         ];
     }
 }
