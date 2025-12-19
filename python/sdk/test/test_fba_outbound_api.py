@@ -60,15 +60,6 @@ class TestFbaOutboundApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
-    def test_delivery_offerings(self):
-        body = self._get_random_value("GetDeliveryOfferingsRequest", None)
-        
-        self.instruct_backend_mock("fbaOutbound".casefold().replace(' ', ''), self.to_camel_case("delivery_offerings"), "200")
-        response = self.api.delivery_offerings_with_http_info(body, )
-        self.assertEqual(200, response[1])
-        self.assert_valid_response_payload(200, response[0])
-        pass
-
     def test_delivery_offers(self):
         body = self._get_random_value("GetDeliveryOffersRequest", None)
         
