@@ -1,12 +1,12 @@
 name: Test CSharp SDK
 
-permissions:
-  contents: read
-
 on:
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: read
 
 jobs:
   build:
