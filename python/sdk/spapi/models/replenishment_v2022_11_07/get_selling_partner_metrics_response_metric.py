@@ -53,6 +53,17 @@ class GetSellingPartnerMetricsResponseMetric(object):
         'revenue_penetration_for10_percent_seller_funding': 'float',
         'revenue_penetration_for5_plus_percent_seller_funding': 'float',
         'share_of_coupon_subscriptions': 'float',
+        'non_subscriber_life_time_value_from_otp': 'float',
+        'lost_subscriber_life_time_value_from_otp': 'float',
+        'lost_subscriber_life_time_value_from_sns': 'float',
+        'growing_subscriber_life_time_value_from_otp': 'float',
+        'growing_subscriber_life_time_value_from_sns': 'float',
+        'established_subscriber_life_time_value_from_otp': 'float',
+        'established_subscriber_life_time_value_from_sns': 'float',
+        'signup_conversion_for0_percent_seller_funding': 'float',
+        'signup_conversion_for5_percent_seller_funding': 'float',
+        'signup_conversion_for10_percent_seller_funding': 'float',
+        'signup_conversion_for5_plus_percent_seller_funding': 'float',
         'time_interval': 'TimeInterval',
         'currency_code': 'str',
     }
@@ -78,11 +89,22 @@ class GetSellingPartnerMetricsResponseMetric(object):
         'revenue_penetration_for10_percent_seller_funding': 'revenuePenetrationFor10PercentSellerFunding',
         'revenue_penetration_for5_plus_percent_seller_funding': 'revenuePenetrationFor5PlusPercentSellerFunding',
         'share_of_coupon_subscriptions': 'shareOfCouponSubscriptions',
+        'non_subscriber_life_time_value_from_otp': 'nonSubscriberLifeTimeValueFromOTP',
+        'lost_subscriber_life_time_value_from_otp': 'lostSubscriberLifeTimeValueFromOTP',
+        'lost_subscriber_life_time_value_from_sns': 'lostSubscriberLifeTimeValueFromSNS',
+        'growing_subscriber_life_time_value_from_otp': 'growingSubscriberLifeTimeValueFromOTP',
+        'growing_subscriber_life_time_value_from_sns': 'growingSubscriberLifeTimeValueFromSNS',
+        'established_subscriber_life_time_value_from_otp': 'establishedSubscriberLifeTimeValueFromOTP',
+        'established_subscriber_life_time_value_from_sns': 'establishedSubscriberLifeTimeValueFromSNS',
+        'signup_conversion_for0_percent_seller_funding': 'signupConversionFor0PercentSellerFunding',
+        'signup_conversion_for5_percent_seller_funding': 'signupConversionFor5PercentSellerFunding',
+        'signup_conversion_for10_percent_seller_funding': 'signupConversionFor10PercentSellerFunding',
+        'signup_conversion_for5_plus_percent_seller_funding': 'signupConversionFor5PlusPercentSellerFunding',
         'time_interval': 'timeInterval',
         'currency_code': 'currencyCode',
     }
 
-    def __init__(self, not_delivered_due_to_oos=None, total_subscriptions_revenue=None, shipped_subscription_units=None, active_subscriptions=None, subscriber_average_revenue=None, non_subscriber_average_revenue=None, lost_revenue_due_to_oos=None, subscriber_average_reorders=None, non_subscriber_average_reorders=None, coupons_revenue_penetration=None, revenue_from_subscriptions_with_multiple_deliveries=None, revenue_from_active_subscriptions_with_single_delivery=None, revenue_from_cancelled_subscriptions_after_single_delivery=None, subscriber_retention_for30_days=None, subscriber_retention_for90_days=None, revenue_penetration_for0_percent_seller_funding=None, revenue_penetration_for5_percent_seller_funding=None, revenue_penetration_for10_percent_seller_funding=None, revenue_penetration_for5_plus_percent_seller_funding=None, share_of_coupon_subscriptions=None, time_interval=None, currency_code=None, _configuration=None):  # noqa: E501
+    def __init__(self, not_delivered_due_to_oos=None, total_subscriptions_revenue=None, shipped_subscription_units=None, active_subscriptions=None, subscriber_average_revenue=None, non_subscriber_average_revenue=None, lost_revenue_due_to_oos=None, subscriber_average_reorders=None, non_subscriber_average_reorders=None, coupons_revenue_penetration=None, revenue_from_subscriptions_with_multiple_deliveries=None, revenue_from_active_subscriptions_with_single_delivery=None, revenue_from_cancelled_subscriptions_after_single_delivery=None, subscriber_retention_for30_days=None, subscriber_retention_for90_days=None, revenue_penetration_for0_percent_seller_funding=None, revenue_penetration_for5_percent_seller_funding=None, revenue_penetration_for10_percent_seller_funding=None, revenue_penetration_for5_plus_percent_seller_funding=None, share_of_coupon_subscriptions=None, non_subscriber_life_time_value_from_otp=None, lost_subscriber_life_time_value_from_otp=None, lost_subscriber_life_time_value_from_sns=None, growing_subscriber_life_time_value_from_otp=None, growing_subscriber_life_time_value_from_sns=None, established_subscriber_life_time_value_from_otp=None, established_subscriber_life_time_value_from_sns=None, signup_conversion_for0_percent_seller_funding=None, signup_conversion_for5_percent_seller_funding=None, signup_conversion_for10_percent_seller_funding=None, signup_conversion_for5_plus_percent_seller_funding=None, time_interval=None, currency_code=None, _configuration=None):  # noqa: E501
         """GetSellingPartnerMetricsResponseMetric - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -108,6 +130,17 @@ class GetSellingPartnerMetricsResponseMetric(object):
         self._revenue_penetration_for10_percent_seller_funding = None
         self._revenue_penetration_for5_plus_percent_seller_funding = None
         self._share_of_coupon_subscriptions = None
+        self._non_subscriber_life_time_value_from_otp = None
+        self._lost_subscriber_life_time_value_from_otp = None
+        self._lost_subscriber_life_time_value_from_sns = None
+        self._growing_subscriber_life_time_value_from_otp = None
+        self._growing_subscriber_life_time_value_from_sns = None
+        self._established_subscriber_life_time_value_from_otp = None
+        self._established_subscriber_life_time_value_from_sns = None
+        self._signup_conversion_for0_percent_seller_funding = None
+        self._signup_conversion_for5_percent_seller_funding = None
+        self._signup_conversion_for10_percent_seller_funding = None
+        self._signup_conversion_for5_plus_percent_seller_funding = None
         self._time_interval = None
         self._currency_code = None
         self.discriminator = None
@@ -152,6 +185,28 @@ class GetSellingPartnerMetricsResponseMetric(object):
             self.revenue_penetration_for5_plus_percent_seller_funding = revenue_penetration_for5_plus_percent_seller_funding
         if share_of_coupon_subscriptions is not None:
             self.share_of_coupon_subscriptions = share_of_coupon_subscriptions
+        if non_subscriber_life_time_value_from_otp is not None:
+            self.non_subscriber_life_time_value_from_otp = non_subscriber_life_time_value_from_otp
+        if lost_subscriber_life_time_value_from_otp is not None:
+            self.lost_subscriber_life_time_value_from_otp = lost_subscriber_life_time_value_from_otp
+        if lost_subscriber_life_time_value_from_sns is not None:
+            self.lost_subscriber_life_time_value_from_sns = lost_subscriber_life_time_value_from_sns
+        if growing_subscriber_life_time_value_from_otp is not None:
+            self.growing_subscriber_life_time_value_from_otp = growing_subscriber_life_time_value_from_otp
+        if growing_subscriber_life_time_value_from_sns is not None:
+            self.growing_subscriber_life_time_value_from_sns = growing_subscriber_life_time_value_from_sns
+        if established_subscriber_life_time_value_from_otp is not None:
+            self.established_subscriber_life_time_value_from_otp = established_subscriber_life_time_value_from_otp
+        if established_subscriber_life_time_value_from_sns is not None:
+            self.established_subscriber_life_time_value_from_sns = established_subscriber_life_time_value_from_sns
+        if signup_conversion_for0_percent_seller_funding is not None:
+            self.signup_conversion_for0_percent_seller_funding = signup_conversion_for0_percent_seller_funding
+        if signup_conversion_for5_percent_seller_funding is not None:
+            self.signup_conversion_for5_percent_seller_funding = signup_conversion_for5_percent_seller_funding
+        if signup_conversion_for10_percent_seller_funding is not None:
+            self.signup_conversion_for10_percent_seller_funding = signup_conversion_for10_percent_seller_funding
+        if signup_conversion_for5_plus_percent_seller_funding is not None:
+            self.signup_conversion_for5_plus_percent_seller_funding = signup_conversion_for5_plus_percent_seller_funding
         if time_interval is not None:
             self.time_interval = time_interval
         if currency_code is not None:
@@ -161,7 +216,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def not_delivered_due_to_oos(self):
         """Gets the not_delivered_due_to_oos of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The not_delivered_due_to_oos of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -172,7 +227,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def not_delivered_due_to_oos(self, not_delivered_due_to_oos):
         """Sets the not_delivered_due_to_oos of this GetSellingPartnerMetricsResponseMetric.
 
-        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param not_delivered_due_to_oos: The not_delivered_due_to_oos of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -190,7 +245,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def total_subscriptions_revenue(self):
         """Gets the total_subscriptions_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The revenue generated from subscriptions over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.  # noqa: E501
+        The revenue generated from subscriptions over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The total_subscriptions_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -201,7 +256,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def total_subscriptions_revenue(self, total_subscriptions_revenue):
         """Sets the total_subscriptions_revenue of this GetSellingPartnerMetricsResponseMetric.
 
-        The revenue generated from subscriptions over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.  # noqa: E501
+        The revenue generated from subscriptions over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param total_subscriptions_revenue: The total_subscriptions_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -216,7 +271,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def shipped_subscription_units(self):
         """Gets the shipped_subscription_units of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The number of units shipped to the subscribers over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.  # noqa: E501
+        The number of units shipped to the subscribers over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The shipped_subscription_units of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -227,7 +282,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def shipped_subscription_units(self, shipped_subscription_units):
         """Sets the shipped_subscription_units of this GetSellingPartnerMetricsResponseMetric.
 
-        The number of units shipped to the subscribers over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.  # noqa: E501
+        The number of units shipped to the subscribers over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param shipped_subscription_units: The shipped_subscription_units of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -242,7 +297,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def active_subscriptions(self):
         """Gets the active_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The active_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -253,7 +308,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def active_subscriptions(self, active_subscriptions):
         """Sets the active_subscriptions of this GetSellingPartnerMetricsResponseMetric.
 
-        The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param active_subscriptions: The active_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -268,7 +323,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_average_revenue(self):
         """Gets the subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -279,7 +334,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_average_revenue(self, subscriber_average_revenue):
         """Sets the subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.
 
-        The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param subscriber_average_revenue: The subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -294,7 +349,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def non_subscriber_average_revenue(self):
         """Gets the non_subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The non_subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -305,7 +360,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def non_subscriber_average_revenue(self, non_subscriber_average_revenue):
         """Sets the non_subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.
 
-        The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param non_subscriber_average_revenue: The non_subscriber_average_revenue of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -320,7 +375,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def lost_revenue_due_to_oos(self):
         """Gets the lost_revenue_due_to_oos of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The lost_revenue_due_to_oos of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -331,7 +386,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def lost_revenue_due_to_oos(self, lost_revenue_due_to_oos):
         """Sets the lost_revenue_due_to_oos of this GetSellingPartnerMetricsResponseMetric.
 
-        The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param lost_revenue_due_to_oos: The lost_revenue_due_to_oos of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -346,7 +401,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_average_reorders(self):
         """Gets the subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The average reorders per subscriber of the program over a period of 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average reorders per subscriber of the program over a period of 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -357,7 +412,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_average_reorders(self, subscriber_average_reorders):
         """Sets the subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.
 
-        The average reorders per subscriber of the program over a period of 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average reorders per subscriber of the program over a period of 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param subscriber_average_reorders: The subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -372,7 +427,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def non_subscriber_average_reorders(self):
         """Gets the non_subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The non_subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -383,7 +438,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def non_subscriber_average_reorders(self, non_subscriber_average_reorders):
         """Sets the non_subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.
 
-        The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param non_subscriber_average_reorders: The non_subscriber_average_reorders of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -398,7 +453,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def coupons_revenue_penetration(self):
         """Gets the coupons_revenue_penetration of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The coupons_revenue_penetration of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -409,7 +464,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def coupons_revenue_penetration(self, coupons_revenue_penetration):
         """Sets the coupons_revenue_penetration of this GetSellingPartnerMetricsResponseMetric.
 
-        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param coupons_revenue_penetration: The coupons_revenue_penetration of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -427,7 +482,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_from_subscriptions_with_multiple_deliveries(self):
         """Gets the revenue_from_subscriptions_with_multiple_deliveries of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_from_subscriptions_with_multiple_deliveries of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -438,7 +493,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_from_subscriptions_with_multiple_deliveries(self, revenue_from_subscriptions_with_multiple_deliveries):
         """Sets the revenue_from_subscriptions_with_multiple_deliveries of this GetSellingPartnerMetricsResponseMetric.
 
-        The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param revenue_from_subscriptions_with_multiple_deliveries: The revenue_from_subscriptions_with_multiple_deliveries of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -453,7 +508,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_from_active_subscriptions_with_single_delivery(self):
         """Gets the revenue_from_active_subscriptions_with_single_delivery of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_from_active_subscriptions_with_single_delivery of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -464,7 +519,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_from_active_subscriptions_with_single_delivery(self, revenue_from_active_subscriptions_with_single_delivery):
         """Sets the revenue_from_active_subscriptions_with_single_delivery of this GetSellingPartnerMetricsResponseMetric.
 
-        The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param revenue_from_active_subscriptions_with_single_delivery: The revenue_from_active_subscriptions_with_single_delivery of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -479,7 +534,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_from_cancelled_subscriptions_after_single_delivery(self):
         """Gets the revenue_from_cancelled_subscriptions_after_single_delivery of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_from_cancelled_subscriptions_after_single_delivery of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -490,7 +545,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_from_cancelled_subscriptions_after_single_delivery(self, revenue_from_cancelled_subscriptions_after_single_delivery):
         """Sets the revenue_from_cancelled_subscriptions_after_single_delivery of this GetSellingPartnerMetricsResponseMetric.
 
-        The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param revenue_from_cancelled_subscriptions_after_single_delivery: The revenue_from_cancelled_subscriptions_after_single_delivery of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -505,7 +560,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_retention_for30_days(self):
         """Gets the subscriber_retention_for30_days of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The percentage of subscriptions retained after 30 days of subscription creation. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of subscriptions retained after 30 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The subscriber_retention_for30_days of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -516,7 +571,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_retention_for30_days(self, subscriber_retention_for30_days):
         """Sets the subscriber_retention_for30_days of this GetSellingPartnerMetricsResponseMetric.
 
-        The percentage of subscriptions retained after 30 days of subscription creation. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of subscriptions retained after 30 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param subscriber_retention_for30_days: The subscriber_retention_for30_days of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -534,7 +589,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_retention_for90_days(self):
         """Gets the subscriber_retention_for90_days of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The percentage of subscriptions retained after 90 days of subscription creation. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of subscriptions retained after 90 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The subscriber_retention_for90_days of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -545,7 +600,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def subscriber_retention_for90_days(self, subscriber_retention_for90_days):
         """Sets the subscriber_retention_for90_days of this GetSellingPartnerMetricsResponseMetric.
 
-        The percentage of subscriptions retained after 90 days of subscription creation. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of subscriptions retained after 90 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param subscriber_retention_for90_days: The subscriber_retention_for90_days of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -563,7 +618,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for0_percent_seller_funding(self):
         """Gets the revenue_penetration_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_penetration_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -574,7 +629,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for0_percent_seller_funding(self, revenue_penetration_for0_percent_seller_funding):
         """Sets the revenue_penetration_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param revenue_penetration_for0_percent_seller_funding: The revenue_penetration_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -592,7 +647,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for5_percent_seller_funding(self):
         """Gets the revenue_penetration_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_penetration_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -603,7 +658,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for5_percent_seller_funding(self, revenue_penetration_for5_percent_seller_funding):
         """Sets the revenue_penetration_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param revenue_penetration_for5_percent_seller_funding: The revenue_penetration_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -621,7 +676,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for10_percent_seller_funding(self):
         """Gets the revenue_penetration_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_penetration_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -632,7 +687,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for10_percent_seller_funding(self, revenue_penetration_for10_percent_seller_funding):
         """Sets the revenue_penetration_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param revenue_penetration_for10_percent_seller_funding: The revenue_penetration_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -650,7 +705,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for5_plus_percent_seller_funding(self):
         """Gets the revenue_penetration_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_penetration_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -661,7 +716,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def revenue_penetration_for5_plus_percent_seller_funding(self, revenue_penetration_for5_plus_percent_seller_funding):
         """Sets the revenue_penetration_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
 
-        [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param revenue_penetration_for5_plus_percent_seller_funding: The revenue_penetration_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -679,7 +734,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def share_of_coupon_subscriptions(self):
         """Gets the share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
 
-        The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :return: The share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :rtype: float
@@ -690,7 +745,7 @@ class GetSellingPartnerMetricsResponseMetric(object):
     def share_of_coupon_subscriptions(self, share_of_coupon_subscriptions):
         """Sets the share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.
 
-        The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.  # noqa: E501
 
         :param share_of_coupon_subscriptions: The share_of_coupon_subscriptions of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
         :type: float
@@ -703,6 +758,304 @@ class GetSellingPartnerMetricsResponseMetric(object):
             raise ValueError("Invalid value for `share_of_coupon_subscriptions`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._share_of_coupon_subscriptions = share_of_coupon_subscriptions
+
+    @property
+    def non_subscriber_life_time_value_from_otp(self):
+        """Gets the non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Total revenue from customers who have made purchases from your catalog but have never subscribed to any products  # noqa: E501
+
+        :return: The non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._non_subscriber_life_time_value_from_otp
+
+    @non_subscriber_life_time_value_from_otp.setter
+    def non_subscriber_life_time_value_from_otp(self, non_subscriber_life_time_value_from_otp):
+        """Sets the non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.
+
+        Total revenue from customers who have made purchases from your catalog but have never subscribed to any products  # noqa: E501
+
+        :param non_subscriber_life_time_value_from_otp: The non_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                non_subscriber_life_time_value_from_otp is not None and non_subscriber_life_time_value_from_otp < 0):  # noqa: E501
+            raise ValueError("Invalid value for `non_subscriber_life_time_value_from_otp`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._non_subscriber_life_time_value_from_otp = non_subscriber_life_time_value_from_otp
+
+    @property
+    def lost_subscriber_life_time_value_from_otp(self):
+        """Gets the lost_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.  # noqa: E501
+
+        :return: The lost_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._lost_subscriber_life_time_value_from_otp
+
+    @lost_subscriber_life_time_value_from_otp.setter
+    def lost_subscriber_life_time_value_from_otp(self, lost_subscriber_life_time_value_from_otp):
+        """Sets the lost_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.
+
+        Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.  # noqa: E501
+
+        :param lost_subscriber_life_time_value_from_otp: The lost_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                lost_subscriber_life_time_value_from_otp is not None and lost_subscriber_life_time_value_from_otp < 0):  # noqa: E501
+            raise ValueError("Invalid value for `lost_subscriber_life_time_value_from_otp`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._lost_subscriber_life_time_value_from_otp = lost_subscriber_life_time_value_from_otp
+
+    @property
+    def lost_subscriber_life_time_value_from_sns(self):
+        """Gets the lost_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Revenue from Subscribe & Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.  # noqa: E501
+
+        :return: The lost_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._lost_subscriber_life_time_value_from_sns
+
+    @lost_subscriber_life_time_value_from_sns.setter
+    def lost_subscriber_life_time_value_from_sns(self, lost_subscriber_life_time_value_from_sns):
+        """Sets the lost_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.
+
+        Revenue from Subscribe & Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.  # noqa: E501
+
+        :param lost_subscriber_life_time_value_from_sns: The lost_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                lost_subscriber_life_time_value_from_sns is not None and lost_subscriber_life_time_value_from_sns < 0):  # noqa: E501
+            raise ValueError("Invalid value for `lost_subscriber_life_time_value_from_sns`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._lost_subscriber_life_time_value_from_sns = lost_subscriber_life_time_value_from_sns
+
+    @property
+    def growing_subscriber_life_time_value_from_otp(self):
+        """Gets the growing_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.  # noqa: E501
+
+        :return: The growing_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._growing_subscriber_life_time_value_from_otp
+
+    @growing_subscriber_life_time_value_from_otp.setter
+    def growing_subscriber_life_time_value_from_otp(self, growing_subscriber_life_time_value_from_otp):
+        """Sets the growing_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.
+
+        Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.  # noqa: E501
+
+        :param growing_subscriber_life_time_value_from_otp: The growing_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                growing_subscriber_life_time_value_from_otp is not None and growing_subscriber_life_time_value_from_otp < 0):  # noqa: E501
+            raise ValueError("Invalid value for `growing_subscriber_life_time_value_from_otp`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._growing_subscriber_life_time_value_from_otp = growing_subscriber_life_time_value_from_otp
+
+    @property
+    def growing_subscriber_life_time_value_from_sns(self):
+        """Gets the growing_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Revenue from Subscribe & Save orders placed by customers who started their first subscription with your catalog within the past 12 months.  # noqa: E501
+
+        :return: The growing_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._growing_subscriber_life_time_value_from_sns
+
+    @growing_subscriber_life_time_value_from_sns.setter
+    def growing_subscriber_life_time_value_from_sns(self, growing_subscriber_life_time_value_from_sns):
+        """Sets the growing_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.
+
+        Revenue from Subscribe & Save orders placed by customers who started their first subscription with your catalog within the past 12 months.  # noqa: E501
+
+        :param growing_subscriber_life_time_value_from_sns: The growing_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                growing_subscriber_life_time_value_from_sns is not None and growing_subscriber_life_time_value_from_sns < 0):  # noqa: E501
+            raise ValueError("Invalid value for `growing_subscriber_life_time_value_from_sns`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._growing_subscriber_life_time_value_from_sns = growing_subscriber_life_time_value_from_sns
+
+    @property
+    def established_subscriber_life_time_value_from_otp(self):
+        """Gets the established_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.  # noqa: E501
+
+        :return: The established_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._established_subscriber_life_time_value_from_otp
+
+    @established_subscriber_life_time_value_from_otp.setter
+    def established_subscriber_life_time_value_from_otp(self, established_subscriber_life_time_value_from_otp):
+        """Sets the established_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.
+
+        Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.  # noqa: E501
+
+        :param established_subscriber_life_time_value_from_otp: The established_subscriber_life_time_value_from_otp of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                established_subscriber_life_time_value_from_otp is not None and established_subscriber_life_time_value_from_otp < 0):  # noqa: E501
+            raise ValueError("Invalid value for `established_subscriber_life_time_value_from_otp`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._established_subscriber_life_time_value_from_otp = established_subscriber_life_time_value_from_otp
+
+    @property
+    def established_subscriber_life_time_value_from_sns(self):
+        """Gets the established_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Revenue from Subscribe & Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.  # noqa: E501
+
+        :return: The established_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._established_subscriber_life_time_value_from_sns
+
+    @established_subscriber_life_time_value_from_sns.setter
+    def established_subscriber_life_time_value_from_sns(self, established_subscriber_life_time_value_from_sns):
+        """Sets the established_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.
+
+        Revenue from Subscribe & Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.  # noqa: E501
+
+        :param established_subscriber_life_time_value_from_sns: The established_subscriber_life_time_value_from_sns of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                established_subscriber_life_time_value_from_sns is not None and established_subscriber_life_time_value_from_sns < 0):  # noqa: E501
+            raise ValueError("Invalid value for `established_subscriber_life_time_value_from_sns`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._established_subscriber_life_time_value_from_sns = established_subscriber_life_time_value_from_sns
+
+    @property
+    def signup_conversion_for0_percent_seller_funding(self):
+        """Gets the signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :return: The signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._signup_conversion_for0_percent_seller_funding
+
+    @signup_conversion_for0_percent_seller_funding.setter
+    def signup_conversion_for0_percent_seller_funding(self, signup_conversion_for0_percent_seller_funding):
+        """Sets the signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
+
+        Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :param signup_conversion_for0_percent_seller_funding: The signup_conversion_for0_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                signup_conversion_for0_percent_seller_funding is not None and signup_conversion_for0_percent_seller_funding > 1E+2):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for0_percent_seller_funding`, must be a value less than or equal to `1E+2`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                signup_conversion_for0_percent_seller_funding is not None and signup_conversion_for0_percent_seller_funding < 0):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for0_percent_seller_funding`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._signup_conversion_for0_percent_seller_funding = signup_conversion_for0_percent_seller_funding
+
+    @property
+    def signup_conversion_for5_percent_seller_funding(self):
+        """Gets the signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :return: The signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._signup_conversion_for5_percent_seller_funding
+
+    @signup_conversion_for5_percent_seller_funding.setter
+    def signup_conversion_for5_percent_seller_funding(self, signup_conversion_for5_percent_seller_funding):
+        """Sets the signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
+
+        [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :param signup_conversion_for5_percent_seller_funding: The signup_conversion_for5_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                signup_conversion_for5_percent_seller_funding is not None and signup_conversion_for5_percent_seller_funding > 1E+2):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for5_percent_seller_funding`, must be a value less than or equal to `1E+2`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                signup_conversion_for5_percent_seller_funding is not None and signup_conversion_for5_percent_seller_funding < 0):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for5_percent_seller_funding`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._signup_conversion_for5_percent_seller_funding = signup_conversion_for5_percent_seller_funding
+
+    @property
+    def signup_conversion_for10_percent_seller_funding(self):
+        """Gets the signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :return: The signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._signup_conversion_for10_percent_seller_funding
+
+    @signup_conversion_for10_percent_seller_funding.setter
+    def signup_conversion_for10_percent_seller_funding(self, signup_conversion_for10_percent_seller_funding):
+        """Sets the signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
+
+        [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :param signup_conversion_for10_percent_seller_funding: The signup_conversion_for10_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                signup_conversion_for10_percent_seller_funding is not None and signup_conversion_for10_percent_seller_funding > 1E+2):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for10_percent_seller_funding`, must be a value less than or equal to `1E+2`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                signup_conversion_for10_percent_seller_funding is not None and signup_conversion_for10_percent_seller_funding < 0):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for10_percent_seller_funding`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._signup_conversion_for10_percent_seller_funding = signup_conversion_for10_percent_seller_funding
+
+    @property
+    def signup_conversion_for5_plus_percent_seller_funding(self):
+        """Gets the signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+
+        [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :return: The signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :rtype: float
+        """
+        return self._signup_conversion_for5_plus_percent_seller_funding
+
+    @signup_conversion_for5_plus_percent_seller_funding.setter
+    def signup_conversion_for5_plus_percent_seller_funding(self, signup_conversion_for5_plus_percent_seller_funding):
+        """Sets the signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.
+
+        [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months  # noqa: E501
+
+        :param signup_conversion_for5_plus_percent_seller_funding: The signup_conversion_for5_plus_percent_seller_funding of this GetSellingPartnerMetricsResponseMetric.  # noqa: E501
+        :type: float
+        """
+        if (self._configuration.client_side_validation and
+                signup_conversion_for5_plus_percent_seller_funding is not None and signup_conversion_for5_plus_percent_seller_funding > 1E+2):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for5_plus_percent_seller_funding`, must be a value less than or equal to `1E+2`")  # noqa: E501
+        if (self._configuration.client_side_validation and
+                signup_conversion_for5_plus_percent_seller_funding is not None and signup_conversion_for5_plus_percent_seller_funding < 0):  # noqa: E501
+            raise ValueError("Invalid value for `signup_conversion_for5_plus_percent_seller_funding`, must be a value greater than or equal to `0`")  # noqa: E501
+
+        self._signup_conversion_for5_plus_percent_seller_funding = signup_conversion_for5_plus_percent_seller_funding
 
     @property
     def time_interval(self):

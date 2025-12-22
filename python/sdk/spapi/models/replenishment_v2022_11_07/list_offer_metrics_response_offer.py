@@ -159,7 +159,7 @@ class ListOfferMetricsResponseOffer(object):
     def not_delivered_due_to_oos(self):
         """Gets the not_delivered_due_to_oos of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The not_delivered_due_to_oos of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -170,7 +170,7 @@ class ListOfferMetricsResponseOffer(object):
     def not_delivered_due_to_oos(self, not_delivered_due_to_oos):
         """Sets the not_delivered_due_to_oos of this ListOfferMetricsResponseOffer.
 
-        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param not_delivered_due_to_oos: The not_delivered_due_to_oos of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
@@ -188,7 +188,7 @@ class ListOfferMetricsResponseOffer(object):
     def total_subscriptions_revenue(self):
         """Gets the total_subscriptions_revenue of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The total_subscriptions_revenue of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -199,7 +199,7 @@ class ListOfferMetricsResponseOffer(object):
     def total_subscriptions_revenue(self, total_subscriptions_revenue):
         """Sets the total_subscriptions_revenue of this ListOfferMetricsResponseOffer.
 
-        The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param total_subscriptions_revenue: The total_subscriptions_revenue of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
@@ -214,7 +214,7 @@ class ListOfferMetricsResponseOffer(object):
     def shipped_subscription_units(self):
         """Gets the shipped_subscription_units of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The shipped_subscription_units of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -225,7 +225,7 @@ class ListOfferMetricsResponseOffer(object):
     def shipped_subscription_units(self, shipped_subscription_units):
         """Sets the shipped_subscription_units of this ListOfferMetricsResponseOffer.
 
-        The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param shipped_subscription_units: The shipped_subscription_units of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
@@ -240,7 +240,7 @@ class ListOfferMetricsResponseOffer(object):
     def active_subscriptions(self):
         """Gets the active_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The active_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -251,7 +251,7 @@ class ListOfferMetricsResponseOffer(object):
     def active_subscriptions(self, active_subscriptions):
         """Sets the active_subscriptions of this ListOfferMetricsResponseOffer.
 
-        The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param active_subscriptions: The active_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
@@ -266,7 +266,7 @@ class ListOfferMetricsResponseOffer(object):
     def revenue_penetration(self):
         """Gets the revenue_penetration of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The revenue_penetration of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -277,7 +277,7 @@ class ListOfferMetricsResponseOffer(object):
     def revenue_penetration(self, revenue_penetration):
         """Sets the revenue_penetration of this ListOfferMetricsResponseOffer.
 
-        The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param revenue_penetration: The revenue_penetration of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
@@ -295,7 +295,7 @@ class ListOfferMetricsResponseOffer(object):
     def lost_revenue_due_to_oos(self):
         """Gets the lost_revenue_due_to_oos of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The lost_revenue_due_to_oos of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -306,7 +306,7 @@ class ListOfferMetricsResponseOffer(object):
     def lost_revenue_due_to_oos(self, lost_revenue_due_to_oos):
         """Sets the lost_revenue_due_to_oos of this ListOfferMetricsResponseOffer.
 
-        The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param lost_revenue_due_to_oos: The lost_revenue_due_to_oos of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
@@ -321,7 +321,7 @@ class ListOfferMetricsResponseOffer(object):
     def coupons_revenue_penetration(self):
         """Gets the coupons_revenue_penetration of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The coupons_revenue_penetration of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -332,7 +332,7 @@ class ListOfferMetricsResponseOffer(object):
     def coupons_revenue_penetration(self, coupons_revenue_penetration):
         """Sets the coupons_revenue_penetration of this ListOfferMetricsResponseOffer.
 
-        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param coupons_revenue_penetration: The coupons_revenue_penetration of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
@@ -350,7 +350,7 @@ class ListOfferMetricsResponseOffer(object):
     def share_of_coupon_subscriptions(self):
         """Gets the share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
 
-        The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :return: The share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
         :rtype: float
@@ -361,7 +361,7 @@ class ListOfferMetricsResponseOffer(object):
     def share_of_coupon_subscriptions(self, share_of_coupon_subscriptions):
         """Sets the share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.
 
-        The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.  # noqa: E501
+        The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.  # noqa: E501
 
         :param share_of_coupon_subscriptions: The share_of_coupon_subscriptions of this ListOfferMetricsResponseOffer.  # noqa: E501
         :type: float
