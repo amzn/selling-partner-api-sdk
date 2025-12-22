@@ -102,7 +102,19 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Enum SHAREOFCOUPONSUBSCRIPTIONS for value: SHARE_OF_COUPON_SUBSCRIPTIONS
         /// </summary>
         [EnumMember(Value = "SHARE_OF_COUPON_SUBSCRIPTIONS")]
-        SHAREOFCOUPONSUBSCRIPTIONS = 12
+        SHAREOFCOUPONSUBSCRIPTIONS = 12,
+
+        /// <summary>
+        /// Enum SUBSCRIBERLIFETIMEVALUEBYCUSTOMERSEGMENT for value: SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT
+        /// </summary>
+        [EnumMember(Value = "SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT")]
+        SUBSCRIBERLIFETIMEVALUEBYCUSTOMERSEGMENT = 13,
+
+        /// <summary>
+        /// Enum SIGNUPCONVERSIONBYSELLERFUNDING for value: SIGNUP_CONVERSION_BY_SELLER_FUNDING
+        /// </summary>
+        [EnumMember(Value = "SIGNUP_CONVERSION_BY_SELLER_FUNDING")]
+        SIGNUPCONVERSIONBYSELLERFUNDING = 14
     }
 
 }
