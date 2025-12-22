@@ -31,6 +31,12 @@ jobs:
       - name: Download swagger codegen
         working-directory: ./selling-partner-api-sdk/java
         run: curl -O https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.63/swagger-codegen-cli-3.0.63.jar
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Setup quicktype
+        run: npm install -g quicktype
       - name: Remove old sdk files
         run: |
           rm -r ./selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi/*
@@ -94,6 +100,27 @@ jobs:
       - name: Remove unused swagger leftovers
         working-directory: ./selling-partner-api-sdk/java/sdk
         run: rm -r .swagger-codegen
+      - name: Execute quicktype
+        working-directory: ./selling-partner-api-models/schemas/notifications
+        run: |
+          find . -maxdepth 1 -not -name '.*' | while read file; do
+              sanitized_file="${file#./}"
+              name="${sanitized_file%.json}"
+              sanitized_name="${name//-/_}"
+              sanitized_name=$(echo "$sanitized_name" | tr '[:upper:]' '[:lower:]')
+              mkdir -p ../../../selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi/notifications/"$sanitized_name"
+              sed -i '/"title": "[^"]*"/d' "$sanitized_file"
+              quicktype -s schema "$sanitized_file" -o ../../../selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi/notifications/"$sanitized_name"/"$name"Wrapper.java --package software.amazon.spapi.notifications."$sanitized_name" --lombok
+              rm ../../../selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi/notifications/"$sanitized_name"/Converter.java
+              cd ../../../selling-partner-api-sdk/java/sdk/src/main/java/software/amazon/spapi/notifications/"$sanitized_name"
+              find . -maxdepth 1 -not -name '.*' | while read class; do
+                  sanitized_class="${class#./}"
+                  sed -i 's/import com\.fasterxml\.jackson\.annotation\.\*;/import com.google.gson.annotations.SerializedName;/g' "$sanitized_class"
+                  sed -i 's/@lombok\.Getter(onMethod_ = {@JsonProperty("\([^"]*\)")})/@SerializedName("\1")/g' "$sanitized_class"
+                  sed -i '/@lombok\.Setter(onMethod_ = {@JsonProperty("\([^"]*\)")})/d' "$sanitized_class"
+              done
+              cd ../../../../../../../../../../../selling-partner-api-models/schemas/notifications
+          done
       - name: Copy rate limit configuration
         working-directory: ./selling-partner-api-sdk
         run: cp -R resources java/sdk/src/main
