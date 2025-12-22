@@ -16,6 +16,9 @@ on:
 env:
   SDK_VERSION: ${{ github.event.inputs.newVersionNumber }}
 
+permissions:
+  contents: write
+
 jobs:
   release_java:
     runs-on: ubuntu-latest
