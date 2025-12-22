@@ -19,49 +19,49 @@ export class ListOfferMetricsResponseOffer {
      */
     asin: string;
     /**
-     * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
+     * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} notDeliveredDueToOOS
      * @type {Number}
      */
     notDeliveredDueToOOS: number;
     /**
-     * The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
+     * The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} totalSubscriptionsRevenue
      * @type {Number}
      */
     totalSubscriptionsRevenue: number;
     /**
-     * The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
+     * The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} shippedSubscriptionUnits
      * @type {Number}
      */
     shippedSubscriptionUnits: number;
     /**
-     * The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
+     * The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} activeSubscriptions
      * @type {Number}
      */
     activeSubscriptions: number;
     /**
-     * The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
+     * The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} revenuePenetration
      * @type {Number}
      */
     revenuePenetration: number;
     /**
-     * The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
+     * The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} lostRevenueDueToOOS
      * @type {Number}
      */
     lostRevenueDueToOOS: number;
     /**
-     * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
+     * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} couponsRevenuePenetration
      * @type {Number}
      */
     couponsRevenuePenetration: number;
     /**
-     * The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
+     * The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.
      * @member {Number} shareOfCouponSubscriptions
      * @type {Number}
      */
