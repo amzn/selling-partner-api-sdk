@@ -461,7 +461,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets not_delivered_due_to_oos.
      *
-     * @param null|float $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $not_delivered_due_to_oos The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setNotDeliveredDueToOos(?float $not_delivered_due_to_oos): self
     {
@@ -499,7 +499,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets total_subscriptions_revenue.
      *
-     * @param null|float $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $total_subscriptions_revenue The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setTotalSubscriptionsRevenue(?float $total_subscriptions_revenue): self
     {
@@ -534,7 +534,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets shipped_subscription_units.
      *
-     * @param null|float $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $shipped_subscription_units The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setShippedSubscriptionUnits(?float $shipped_subscription_units): self
     {
@@ -569,7 +569,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets active_subscriptions.
      *
-     * @param null|float $active_subscriptions The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $active_subscriptions The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setActiveSubscriptions(?float $active_subscriptions): self
     {
@@ -604,7 +604,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets revenue_penetration.
      *
-     * @param null|float $revenue_penetration The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $revenue_penetration The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setRevenuePenetration(?float $revenue_penetration): self
     {
@@ -642,7 +642,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets lost_revenue_due_to_oos.
      *
-     * @param null|float $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $lost_revenue_due_to_oos The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setLostRevenueDueToOos(?float $lost_revenue_due_to_oos): self
     {
@@ -677,7 +677,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets coupons_revenue_penetration.
      *
-     * @param null|float $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $coupons_revenue_penetration The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setCouponsRevenuePenetration(?float $coupons_revenue_penetration): self
     {
@@ -715,7 +715,7 @@ class ListOfferMetricsResponseOffer implements ModelInterface, \ArrayAccess, \Js
     /**
      * Sets share_of_coupon_subscriptions.
      *
-     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
+     * @param null|float $share_of_coupon_subscriptions The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.
      */
     public function setShareOfCouponSubscriptions(?float $share_of_coupon_subscriptions): self
     {
