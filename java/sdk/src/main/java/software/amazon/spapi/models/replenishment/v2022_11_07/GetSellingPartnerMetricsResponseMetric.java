@@ -80,6 +80,39 @@ public class GetSellingPartnerMetricsResponseMetric {
     @SerializedName("shareOfCouponSubscriptions")
     private Double shareOfCouponSubscriptions = null;
 
+    @SerializedName("nonSubscriberLifeTimeValueFromOTP")
+    private Double nonSubscriberLifeTimeValueFromOTP = null;
+
+    @SerializedName("lostSubscriberLifeTimeValueFromOTP")
+    private Double lostSubscriberLifeTimeValueFromOTP = null;
+
+    @SerializedName("lostSubscriberLifeTimeValueFromSNS")
+    private Double lostSubscriberLifeTimeValueFromSNS = null;
+
+    @SerializedName("growingSubscriberLifeTimeValueFromOTP")
+    private Double growingSubscriberLifeTimeValueFromOTP = null;
+
+    @SerializedName("growingSubscriberLifeTimeValueFromSNS")
+    private Double growingSubscriberLifeTimeValueFromSNS = null;
+
+    @SerializedName("establishedSubscriberLifeTimeValueFromOTP")
+    private Double establishedSubscriberLifeTimeValueFromOTP = null;
+
+    @SerializedName("establishedSubscriberLifeTimeValueFromSNS")
+    private Double establishedSubscriberLifeTimeValueFromSNS = null;
+
+    @SerializedName("signupConversionFor0PercentSellerFunding")
+    private Double signupConversionFor0PercentSellerFunding = null;
+
+    @SerializedName("signupConversionFor5PercentSellerFunding")
+    private Double signupConversionFor5PercentSellerFunding = null;
+
+    @SerializedName("signupConversionFor10PercentSellerFunding")
+    private Double signupConversionFor10PercentSellerFunding = null;
+
+    @SerializedName("signupConversionFor5PlusPercentSellerFunding")
+    private Double signupConversionFor5PlusPercentSellerFunding = null;
+
     @SerializedName("timeInterval")
     private TimeInterval timeInterval = null;
 
@@ -93,13 +126,13 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of items that were not shipped out of the total shipped units over a period of time due to being
-     * out of stock. Applicable to PERFORMANCE timePeriodType. minimum: 0 maximum: 100
+     * out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return notDeliveredDueToOOS
      */
     @Schema(
             description =
-                    "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getNotDeliveredDueToOOS() {
         return notDeliveredDueToOOS;
     }
@@ -114,14 +147,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The revenue generated from subscriptions over a period of time. Applicable for both the PERFORMANCE and FORECAST
-     * timePeriodType. minimum: 0
+     * The revenue generated from subscriptions over a period of time. Applicable for both the &#x60;PERFORMANCE&#x60;
+     * and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return totalSubscriptionsRevenue
      */
     @Schema(
             description =
-                    "The revenue generated from subscriptions over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.")
+                    "The revenue generated from subscriptions over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.")
     public Double getTotalSubscriptionsRevenue() {
         return totalSubscriptionsRevenue;
     }
@@ -136,14 +169,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The number of units shipped to the subscribers over a period of time. Applicable for both the PERFORMANCE and
-     * FORECAST timePeriodType. minimum: 0
+     * The number of units shipped to the subscribers over a period of time. Applicable for both the
+     * &#x60;PERFORMANCE&#x60; and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return shippedSubscriptionUnits
      */
     @Schema(
             description =
-                    "The number of units shipped to the subscribers over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.")
+                    "The number of units shipped to the subscribers over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.")
     public BigDecimal getShippedSubscriptionUnits() {
         return shippedSubscriptionUnits;
     }
@@ -158,14 +191,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
-     * minimum: 0
+     * The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return activeSubscriptions
      */
     @Schema(
             description =
-                    "The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.")
+                    "The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.")
     public BigDecimal getActiveSubscriptions() {
         return activeSubscriptions;
     }
@@ -181,13 +214,13 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for
-     * vendors. Applicable to PERFORMANCE timePeriodType. minimum: 0
+     * vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return subscriberAverageRevenue
      */
     @Schema(
             description =
-                    "The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.")
+                    "The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberAverageRevenue() {
         return subscriberAverageRevenue;
     }
@@ -203,13 +236,13 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months
-     * for vendors. Applicable to PERFORMANCE timePeriodType. minimum: 0
+     * for vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return nonSubscriberAverageRevenue
      */
     @Schema(
             description =
-                    "The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.")
+                    "The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getNonSubscriberAverageRevenue() {
         return nonSubscriberAverageRevenue;
     }
@@ -224,14 +257,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0
+     * The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return lostRevenueDueToOOS
      */
     @Schema(
             description =
-                    "The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.")
+                    "The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getLostRevenueDueToOOS() {
         return lostRevenueDueToOOS;
     }
@@ -246,14 +279,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The average reorders per subscriber of the program over a period of 12 months. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0
+     * The average reorders per subscriber of the program over a period of 12 months. Applicable to
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return subscriberAverageReorders
      */
     @Schema(
             description =
-                    "The average reorders per subscriber of the program over a period of 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "The average reorders per subscriber of the program over a period of 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberAverageReorders() {
         return subscriberAverageReorders;
     }
@@ -268,14 +301,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0
+     * The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return nonSubscriberAverageReorders
      */
     @Schema(
             description =
-                    "The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getNonSubscriberAverageReorders() {
         return nonSubscriberAverageReorders;
     }
@@ -290,14 +323,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0 maximum: 100
+     * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return couponsRevenuePenetration
      */
     @Schema(
             description =
-                    "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getCouponsRevenuePenetration() {
         return couponsRevenuePenetration;
     }
@@ -314,13 +347,13 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The subscription revenue generated from subscriptions with over two deliveries over the past 12 months.
-     * Applicable to PERFORMANCE timePeriodType. minimum: 0
+     * Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return revenueFromSubscriptionsWithMultipleDeliveries
      */
     @Schema(
             description =
-                    "The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenueFromSubscriptionsWithMultipleDeliveries() {
         return revenueFromSubscriptionsWithMultipleDeliveries;
     }
@@ -338,13 +371,13 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The subscription revenue generated from active subscriptions with one delivery over the past 12 months.
-     * Applicable to PERFORMANCE timePeriodType. minimum: 0
+     * Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return revenueFromActiveSubscriptionsWithSingleDelivery
      */
     @Schema(
             description =
-                    "The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenueFromActiveSubscriptionsWithSingleDelivery() {
         return revenueFromActiveSubscriptionsWithSingleDelivery;
     }
@@ -363,13 +396,13 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12
-     * months. Applicable to PERFORMANCE timePeriodType. minimum: 0
+     * months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return revenueFromCancelledSubscriptionsAfterSingleDelivery
      */
     @Schema(
             description =
-                    "The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenueFromCancelledSubscriptionsAfterSingleDelivery() {
         return revenueFromCancelledSubscriptionsAfterSingleDelivery;
     }
@@ -386,14 +419,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The percentage of subscriptions retained after 30 days of subscription creation. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0 maximum: 100
+     * The percentage of subscriptions retained after 30 days of subscription creation. Applicable to
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return subscriberRetentionFor30Days
      */
     @Schema(
             description =
-                    "The percentage of subscriptions retained after 30 days of subscription creation. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of subscriptions retained after 30 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberRetentionFor30Days() {
         return subscriberRetentionFor30Days;
     }
@@ -408,14 +441,14 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The percentage of subscriptions retained after 90 days of subscription creation. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0 maximum: 100
+     * The percentage of subscriptions retained after 90 days of subscription creation. Applicable to
+     * &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return subscriberRetentionFor90Days
      */
     @Schema(
             description =
-                    "The percentage of subscriptions retained after 90 days of subscription creation. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of subscriptions retained after 90 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getSubscriberRetentionFor90Days() {
         return subscriberRetentionFor90Days;
     }
@@ -432,13 +465,13 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12
-     * months. Applicable to PERFORMANCE timePeriodType. minimum: 0 maximum: 100
+     * months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return revenuePenetrationFor0PercentSellerFunding
      */
     @Schema(
             description =
-                    "The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor0PercentSellerFunding() {
         return revenuePenetrationFor0PercentSellerFunding;
     }
@@ -455,13 +488,14 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded
-     * discount over the last 12 months. Applicable to PERFORMANCE timePeriodType. minimum: 0 maximum: 100
+     * discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
+     * maximum: 100
      *
      * @return revenuePenetrationFor5PercentSellerFunding
      */
     @Schema(
             description =
-                    "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor5PercentSellerFunding() {
         return revenuePenetrationFor5PercentSellerFunding;
     }
@@ -478,13 +512,14 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded
-     * discount over the last 12 months. Applicable to PERFORMANCE timePeriodType. minimum: 0 maximum: 100
+     * discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;. minimum: 0
+     * maximum: 100
      *
      * @return revenuePenetrationFor10PercentSellerFunding
      */
     @Schema(
             description =
-                    "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor10PercentSellerFunding() {
         return revenuePenetrationFor10PercentSellerFunding;
     }
@@ -501,13 +536,14 @@ public class GetSellingPartnerMetricsResponseMetric {
 
     /**
      * [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above
-     * seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType. minimum: 0 maximum: 100
+     * seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
+     * minimum: 0 maximum: 100
      *
      * @return revenuePenetrationFor5PlusPercentSellerFunding
      */
     @Schema(
             description =
-                    "[Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.")
+                    "[Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getRevenuePenetrationFor5PlusPercentSellerFunding() {
         return revenuePenetrationFor5PlusPercentSellerFunding;
     }
@@ -523,20 +559,273 @@ public class GetSellingPartnerMetricsResponseMetric {
     }
 
     /**
-     * The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType. minimum:
-     * 0 maximum: 100
+     * The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return shareOfCouponSubscriptions
      */
     @Schema(
             description =
-                    "The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.")
     public Double getShareOfCouponSubscriptions() {
         return shareOfCouponSubscriptions;
     }
 
     public void setShareOfCouponSubscriptions(Double shareOfCouponSubscriptions) {
         this.shareOfCouponSubscriptions = shareOfCouponSubscriptions;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric nonSubscriberLifeTimeValueFromOTP(
+            Double nonSubscriberLifeTimeValueFromOTP) {
+        this.nonSubscriberLifeTimeValueFromOTP = nonSubscriberLifeTimeValueFromOTP;
+        return this;
+    }
+
+    /**
+     * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products
+     * minimum: 0
+     *
+     * @return nonSubscriberLifeTimeValueFromOTP
+     */
+    @Schema(
+            description =
+                    "Total revenue from customers who have made purchases from your catalog but have never subscribed to any products")
+    public Double getNonSubscriberLifeTimeValueFromOTP() {
+        return nonSubscriberLifeTimeValueFromOTP;
+    }
+
+    public void setNonSubscriberLifeTimeValueFromOTP(Double nonSubscriberLifeTimeValueFromOTP) {
+        this.nonSubscriberLifeTimeValueFromOTP = nonSubscriberLifeTimeValueFromOTP;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric lostSubscriberLifeTimeValueFromOTP(
+            Double lostSubscriberLifeTimeValueFromOTP) {
+        this.lostSubscriberLifeTimeValueFromOTP = lostSubscriberLifeTimeValueFromOTP;
+        return this;
+    }
+
+    /**
+     * Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have
+     * none active in your catalog. minimum: 0
+     *
+     * @return lostSubscriberLifeTimeValueFromOTP
+     */
+    @Schema(
+            description =
+                    "Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.")
+    public Double getLostSubscriberLifeTimeValueFromOTP() {
+        return lostSubscriberLifeTimeValueFromOTP;
+    }
+
+    public void setLostSubscriberLifeTimeValueFromOTP(Double lostSubscriberLifeTimeValueFromOTP) {
+        this.lostSubscriberLifeTimeValueFromOTP = lostSubscriberLifeTimeValueFromOTP;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric lostSubscriberLifeTimeValueFromSNS(
+            Double lostSubscriberLifeTimeValueFromSNS) {
+        this.lostSubscriberLifeTimeValueFromSNS = lostSubscriberLifeTimeValueFromSNS;
+        return this;
+    }
+
+    /**
+     * Revenue from Subscribe &amp; Save orders placed by customers who previously had subscriptions but currently have
+     * none active in your catalog. minimum: 0
+     *
+     * @return lostSubscriberLifeTimeValueFromSNS
+     */
+    @Schema(
+            description =
+                    "Revenue from Subscribe & Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.")
+    public Double getLostSubscriberLifeTimeValueFromSNS() {
+        return lostSubscriberLifeTimeValueFromSNS;
+    }
+
+    public void setLostSubscriberLifeTimeValueFromSNS(Double lostSubscriberLifeTimeValueFromSNS) {
+        this.lostSubscriberLifeTimeValueFromSNS = lostSubscriberLifeTimeValueFromSNS;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric growingSubscriberLifeTimeValueFromOTP(
+            Double growingSubscriberLifeTimeValueFromOTP) {
+        this.growingSubscriberLifeTimeValueFromOTP = growingSubscriberLifeTimeValueFromOTP;
+        return this;
+    }
+
+    /**
+     * Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog
+     * within the past 12 months. minimum: 0
+     *
+     * @return growingSubscriberLifeTimeValueFromOTP
+     */
+    @Schema(
+            description =
+                    "Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.")
+    public Double getGrowingSubscriberLifeTimeValueFromOTP() {
+        return growingSubscriberLifeTimeValueFromOTP;
+    }
+
+    public void setGrowingSubscriberLifeTimeValueFromOTP(Double growingSubscriberLifeTimeValueFromOTP) {
+        this.growingSubscriberLifeTimeValueFromOTP = growingSubscriberLifeTimeValueFromOTP;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric growingSubscriberLifeTimeValueFromSNS(
+            Double growingSubscriberLifeTimeValueFromSNS) {
+        this.growingSubscriberLifeTimeValueFromSNS = growingSubscriberLifeTimeValueFromSNS;
+        return this;
+    }
+
+    /**
+     * Revenue from Subscribe &amp; Save orders placed by customers who started their first subscription with your
+     * catalog within the past 12 months. minimum: 0
+     *
+     * @return growingSubscriberLifeTimeValueFromSNS
+     */
+    @Schema(
+            description =
+                    "Revenue from Subscribe & Save orders placed by customers who started their first subscription with your catalog within the past 12 months.")
+    public Double getGrowingSubscriberLifeTimeValueFromSNS() {
+        return growingSubscriberLifeTimeValueFromSNS;
+    }
+
+    public void setGrowingSubscriberLifeTimeValueFromSNS(Double growingSubscriberLifeTimeValueFromSNS) {
+        this.growingSubscriberLifeTimeValueFromSNS = growingSubscriberLifeTimeValueFromSNS;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric establishedSubscriberLifeTimeValueFromOTP(
+            Double establishedSubscriberLifeTimeValueFromOTP) {
+        this.establishedSubscriberLifeTimeValueFromOTP = establishedSubscriberLifeTimeValueFromOTP;
+        return this;
+    }
+
+    /**
+     * Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your
+     * catalog for more than 12 months. minimum: 0
+     *
+     * @return establishedSubscriberLifeTimeValueFromOTP
+     */
+    @Schema(
+            description =
+                    "Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.")
+    public Double getEstablishedSubscriberLifeTimeValueFromOTP() {
+        return establishedSubscriberLifeTimeValueFromOTP;
+    }
+
+    public void setEstablishedSubscriberLifeTimeValueFromOTP(Double establishedSubscriberLifeTimeValueFromOTP) {
+        this.establishedSubscriberLifeTimeValueFromOTP = establishedSubscriberLifeTimeValueFromOTP;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric establishedSubscriberLifeTimeValueFromSNS(
+            Double establishedSubscriberLifeTimeValueFromSNS) {
+        this.establishedSubscriberLifeTimeValueFromSNS = establishedSubscriberLifeTimeValueFromSNS;
+        return this;
+    }
+
+    /**
+     * Revenue from Subscribe &amp; Save orders placed by customers who have maintained an active subscription with your
+     * catalog for more than 12 months. minimum: 0
+     *
+     * @return establishedSubscriberLifeTimeValueFromSNS
+     */
+    @Schema(
+            description =
+                    "Revenue from Subscribe & Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.")
+    public Double getEstablishedSubscriberLifeTimeValueFromSNS() {
+        return establishedSubscriberLifeTimeValueFromSNS;
+    }
+
+    public void setEstablishedSubscriberLifeTimeValueFromSNS(Double establishedSubscriberLifeTimeValueFromSNS) {
+        this.establishedSubscriberLifeTimeValueFromSNS = establishedSubscriberLifeTimeValueFromSNS;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric signupConversionFor0PercentSellerFunding(
+            Double signupConversionFor0PercentSellerFunding) {
+        this.signupConversionFor0PercentSellerFunding = signupConversionFor0PercentSellerFunding;
+        return this;
+    }
+
+    /**
+     * Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new
+     * orders placed over the past 12 months minimum: 0 maximum: 100
+     *
+     * @return signupConversionFor0PercentSellerFunding
+     */
+    @Schema(
+            description =
+                    "Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months")
+    public Double getSignupConversionFor0PercentSellerFunding() {
+        return signupConversionFor0PercentSellerFunding;
+    }
+
+    public void setSignupConversionFor0PercentSellerFunding(Double signupConversionFor0PercentSellerFunding) {
+        this.signupConversionFor0PercentSellerFunding = signupConversionFor0PercentSellerFunding;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric signupConversionFor5PercentSellerFunding(
+            Double signupConversionFor5PercentSellerFunding) {
+        this.signupConversionFor5PercentSellerFunding = signupConversionFor5PercentSellerFunding;
+        return this;
+    }
+
+    /**
+     * [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of
+     * the total number of new orders placed over the past 12 months minimum: 0 maximum: 100
+     *
+     * @return signupConversionFor5PercentSellerFunding
+     */
+    @Schema(
+            description =
+                    "[Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months")
+    public Double getSignupConversionFor5PercentSellerFunding() {
+        return signupConversionFor5PercentSellerFunding;
+    }
+
+    public void setSignupConversionFor5PercentSellerFunding(Double signupConversionFor5PercentSellerFunding) {
+        this.signupConversionFor5PercentSellerFunding = signupConversionFor5PercentSellerFunding;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric signupConversionFor10PercentSellerFunding(
+            Double signupConversionFor10PercentSellerFunding) {
+        this.signupConversionFor10PercentSellerFunding = signupConversionFor10PercentSellerFunding;
+        return this;
+    }
+
+    /**
+     * [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out
+     * of the total number of new orders placed over the past 12 months minimum: 0 maximum: 100
+     *
+     * @return signupConversionFor10PercentSellerFunding
+     */
+    @Schema(
+            description =
+                    "[Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months")
+    public Double getSignupConversionFor10PercentSellerFunding() {
+        return signupConversionFor10PercentSellerFunding;
+    }
+
+    public void setSignupConversionFor10PercentSellerFunding(Double signupConversionFor10PercentSellerFunding) {
+        this.signupConversionFor10PercentSellerFunding = signupConversionFor10PercentSellerFunding;
+    }
+
+    public GetSellingPartnerMetricsResponseMetric signupConversionFor5PlusPercentSellerFunding(
+            Double signupConversionFor5PlusPercentSellerFunding) {
+        this.signupConversionFor5PlusPercentSellerFunding = signupConversionFor5PlusPercentSellerFunding;
+        return this;
+    }
+
+    /**
+     * [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded
+     * discount out of the total number of new orders placed over the past 12 months minimum: 0 maximum: 100
+     *
+     * @return signupConversionFor5PlusPercentSellerFunding
+     */
+    @Schema(
+            description =
+                    "[Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months")
+    public Double getSignupConversionFor5PlusPercentSellerFunding() {
+        return signupConversionFor5PlusPercentSellerFunding;
+    }
+
+    public void setSignupConversionFor5PlusPercentSellerFunding(Double signupConversionFor5PlusPercentSellerFunding) {
+        this.signupConversionFor5PlusPercentSellerFunding = signupConversionFor5PlusPercentSellerFunding;
     }
 
     public GetSellingPartnerMetricsResponseMetric timeInterval(TimeInterval timeInterval) {
@@ -639,6 +928,39 @@ public class GetSellingPartnerMetricsResponseMetric {
                 && Objects.equals(
                         this.shareOfCouponSubscriptions,
                         getSellingPartnerMetricsResponseMetric.shareOfCouponSubscriptions)
+                && Objects.equals(
+                        this.nonSubscriberLifeTimeValueFromOTP,
+                        getSellingPartnerMetricsResponseMetric.nonSubscriberLifeTimeValueFromOTP)
+                && Objects.equals(
+                        this.lostSubscriberLifeTimeValueFromOTP,
+                        getSellingPartnerMetricsResponseMetric.lostSubscriberLifeTimeValueFromOTP)
+                && Objects.equals(
+                        this.lostSubscriberLifeTimeValueFromSNS,
+                        getSellingPartnerMetricsResponseMetric.lostSubscriberLifeTimeValueFromSNS)
+                && Objects.equals(
+                        this.growingSubscriberLifeTimeValueFromOTP,
+                        getSellingPartnerMetricsResponseMetric.growingSubscriberLifeTimeValueFromOTP)
+                && Objects.equals(
+                        this.growingSubscriberLifeTimeValueFromSNS,
+                        getSellingPartnerMetricsResponseMetric.growingSubscriberLifeTimeValueFromSNS)
+                && Objects.equals(
+                        this.establishedSubscriberLifeTimeValueFromOTP,
+                        getSellingPartnerMetricsResponseMetric.establishedSubscriberLifeTimeValueFromOTP)
+                && Objects.equals(
+                        this.establishedSubscriberLifeTimeValueFromSNS,
+                        getSellingPartnerMetricsResponseMetric.establishedSubscriberLifeTimeValueFromSNS)
+                && Objects.equals(
+                        this.signupConversionFor0PercentSellerFunding,
+                        getSellingPartnerMetricsResponseMetric.signupConversionFor0PercentSellerFunding)
+                && Objects.equals(
+                        this.signupConversionFor5PercentSellerFunding,
+                        getSellingPartnerMetricsResponseMetric.signupConversionFor5PercentSellerFunding)
+                && Objects.equals(
+                        this.signupConversionFor10PercentSellerFunding,
+                        getSellingPartnerMetricsResponseMetric.signupConversionFor10PercentSellerFunding)
+                && Objects.equals(
+                        this.signupConversionFor5PlusPercentSellerFunding,
+                        getSellingPartnerMetricsResponseMetric.signupConversionFor5PlusPercentSellerFunding)
                 && Objects.equals(this.timeInterval, getSellingPartnerMetricsResponseMetric.timeInterval)
                 && Objects.equals(this.currencyCode, getSellingPartnerMetricsResponseMetric.currencyCode);
     }
@@ -666,6 +988,17 @@ public class GetSellingPartnerMetricsResponseMetric {
                 revenuePenetrationFor10PercentSellerFunding,
                 revenuePenetrationFor5PlusPercentSellerFunding,
                 shareOfCouponSubscriptions,
+                nonSubscriberLifeTimeValueFromOTP,
+                lostSubscriberLifeTimeValueFromOTP,
+                lostSubscriberLifeTimeValueFromSNS,
+                growingSubscriberLifeTimeValueFromOTP,
+                growingSubscriberLifeTimeValueFromSNS,
+                establishedSubscriberLifeTimeValueFromOTP,
+                establishedSubscriberLifeTimeValueFromSNS,
+                signupConversionFor0PercentSellerFunding,
+                signupConversionFor5PercentSellerFunding,
+                signupConversionFor10PercentSellerFunding,
+                signupConversionFor5PlusPercentSellerFunding,
                 timeInterval,
                 currencyCode);
     }
@@ -734,6 +1067,39 @@ public class GetSellingPartnerMetricsResponseMetric {
                 .append("\n");
         sb.append("    shareOfCouponSubscriptions: ")
                 .append(toIndentedString(shareOfCouponSubscriptions))
+                .append("\n");
+        sb.append("    nonSubscriberLifeTimeValueFromOTP: ")
+                .append(toIndentedString(nonSubscriberLifeTimeValueFromOTP))
+                .append("\n");
+        sb.append("    lostSubscriberLifeTimeValueFromOTP: ")
+                .append(toIndentedString(lostSubscriberLifeTimeValueFromOTP))
+                .append("\n");
+        sb.append("    lostSubscriberLifeTimeValueFromSNS: ")
+                .append(toIndentedString(lostSubscriberLifeTimeValueFromSNS))
+                .append("\n");
+        sb.append("    growingSubscriberLifeTimeValueFromOTP: ")
+                .append(toIndentedString(growingSubscriberLifeTimeValueFromOTP))
+                .append("\n");
+        sb.append("    growingSubscriberLifeTimeValueFromSNS: ")
+                .append(toIndentedString(growingSubscriberLifeTimeValueFromSNS))
+                .append("\n");
+        sb.append("    establishedSubscriberLifeTimeValueFromOTP: ")
+                .append(toIndentedString(establishedSubscriberLifeTimeValueFromOTP))
+                .append("\n");
+        sb.append("    establishedSubscriberLifeTimeValueFromSNS: ")
+                .append(toIndentedString(establishedSubscriberLifeTimeValueFromSNS))
+                .append("\n");
+        sb.append("    signupConversionFor0PercentSellerFunding: ")
+                .append(toIndentedString(signupConversionFor0PercentSellerFunding))
+                .append("\n");
+        sb.append("    signupConversionFor5PercentSellerFunding: ")
+                .append(toIndentedString(signupConversionFor5PercentSellerFunding))
+                .append("\n");
+        sb.append("    signupConversionFor10PercentSellerFunding: ")
+                .append(toIndentedString(signupConversionFor10PercentSellerFunding))
+                .append("\n");
+        sb.append("    signupConversionFor5PlusPercentSellerFunding: ")
+                .append(toIndentedString(signupConversionFor5PlusPercentSellerFunding))
                 .append("\n");
         sb.append("    timeInterval: ").append(toIndentedString(timeInterval)).append("\n");
         sb.append("    currencyCode: ").append(toIndentedString(currencyCode)).append("\n");

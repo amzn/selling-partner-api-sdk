@@ -97,13 +97,13 @@ public class ListOfferMetricsResponseOffer {
 
     /**
      * The percentage of items that were not shipped out of the total shipped units over a period of time due to being
-     * out of stock. Applicable to PERFORMANCE timePeriodType. minimum: 0 maximum: 100
+     * out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return notDeliveredDueToOOS
      */
     @Schema(
             description =
-                    "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.")
     public Double getNotDeliveredDueToOOS() {
         return notDeliveredDueToOOS;
     }
@@ -118,14 +118,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
-     * minimum: 0
+     * The revenue generated from subscriptions over a period of time. Applicable to &#x60;FORECAST&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return totalSubscriptionsRevenue
      */
     @Schema(
             description =
-                    "The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.")
+                    "The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.")
     public Double getTotalSubscriptionsRevenue() {
         return totalSubscriptionsRevenue;
     }
@@ -140,14 +140,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
-     * minimum: 0
+     * The number of units shipped to the subscribers over a period of time. Applicable to &#x60;FORECAST&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return shippedSubscriptionUnits
      */
     @Schema(
             description =
-                    "The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.")
+                    "The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.")
     public BigDecimal getShippedSubscriptionUnits() {
         return shippedSubscriptionUnits;
     }
@@ -162,14 +162,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
-     * minimum: 0
+     * The number of active subscriptions present at the end of the period. Applicable to &#x60;FORECAST&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return activeSubscriptions
      */
     @Schema(
             description =
-                    "The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.")
+                    "The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.")
     public BigDecimal getActiveSubscriptions() {
         return activeSubscriptions;
     }
@@ -184,14 +184,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
-     * minimum: 0 maximum: 100
+     * The percentage of total program revenue out of total product revenue. Applicable to &#x60;FORECAST&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return revenuePenetration
      */
     @Schema(
             description =
-                    "The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.")
     public Double getRevenuePenetration() {
         return revenuePenetration;
     }
@@ -206,14 +206,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0
+     * The revenue that would have been generated had there not been out of stock. Applicable to &#x60;FORECAST&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0
      *
      * @return lostRevenueDueToOOS
      */
     @Schema(
             description =
-                    "The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.")
+                    "The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.")
     public Double getLostRevenueDueToOOS() {
         return lostRevenueDueToOOS;
     }
@@ -228,14 +228,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE
-     * timePeriodType. minimum: 0 maximum: 100
+     * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to
+     * &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return couponsRevenuePenetration
      */
     @Schema(
             description =
-                    "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.")
     public Double getCouponsRevenuePenetration() {
         return couponsRevenuePenetration;
     }
@@ -250,14 +250,14 @@ public class ListOfferMetricsResponseOffer {
     }
 
     /**
-     * The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType. minimum:
-     * 0 maximum: 100
+     * The percentage of new subscriptions acquired through coupons. Applicable to &#x60;FORECAST&#x60;
+     * &#x60;timePeriodType&#x60;. minimum: 0 maximum: 100
      *
      * @return shareOfCouponSubscriptions
      */
     @Schema(
             description =
-                    "The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.")
+                    "The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.")
     public Double getShareOfCouponSubscriptions() {
         return shareOfCouponSubscriptions;
     }
