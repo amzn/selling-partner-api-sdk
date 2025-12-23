@@ -70,6 +70,17 @@ export class GetSellingPartnerMetricsResponseMetric {
       if (data.hasOwnProperty('revenuePenetrationFor10PercentSellerFunding')) { obj.revenuePenetrationFor10PercentSellerFunding = ApiClient.convertToType(data.revenuePenetrationFor10PercentSellerFunding, 'Number') }
       if (data.hasOwnProperty('revenuePenetrationFor5PlusPercentSellerFunding')) { obj.revenuePenetrationFor5PlusPercentSellerFunding = ApiClient.convertToType(data.revenuePenetrationFor5PlusPercentSellerFunding, 'Number') }
       if (data.hasOwnProperty('shareOfCouponSubscriptions')) { obj.shareOfCouponSubscriptions = ApiClient.convertToType(data.shareOfCouponSubscriptions, 'Number') }
+      if (data.hasOwnProperty('nonSubscriberLifeTimeValueFromOTP')) { obj.nonSubscriberLifeTimeValueFromOTP = ApiClient.convertToType(data.nonSubscriberLifeTimeValueFromOTP, 'Number') }
+      if (data.hasOwnProperty('lostSubscriberLifeTimeValueFromOTP')) { obj.lostSubscriberLifeTimeValueFromOTP = ApiClient.convertToType(data.lostSubscriberLifeTimeValueFromOTP, 'Number') }
+      if (data.hasOwnProperty('lostSubscriberLifeTimeValueFromSNS')) { obj.lostSubscriberLifeTimeValueFromSNS = ApiClient.convertToType(data.lostSubscriberLifeTimeValueFromSNS, 'Number') }
+      if (data.hasOwnProperty('growingSubscriberLifeTimeValueFromOTP')) { obj.growingSubscriberLifeTimeValueFromOTP = ApiClient.convertToType(data.growingSubscriberLifeTimeValueFromOTP, 'Number') }
+      if (data.hasOwnProperty('growingSubscriberLifeTimeValueFromSNS')) { obj.growingSubscriberLifeTimeValueFromSNS = ApiClient.convertToType(data.growingSubscriberLifeTimeValueFromSNS, 'Number') }
+      if (data.hasOwnProperty('establishedSubscriberLifeTimeValueFromOTP')) { obj.establishedSubscriberLifeTimeValueFromOTP = ApiClient.convertToType(data.establishedSubscriberLifeTimeValueFromOTP, 'Number') }
+      if (data.hasOwnProperty('establishedSubscriberLifeTimeValueFromSNS')) { obj.establishedSubscriberLifeTimeValueFromSNS = ApiClient.convertToType(data.establishedSubscriberLifeTimeValueFromSNS, 'Number') }
+      if (data.hasOwnProperty('signupConversionFor0PercentSellerFunding')) { obj.signupConversionFor0PercentSellerFunding = ApiClient.convertToType(data.signupConversionFor0PercentSellerFunding, 'Number') }
+      if (data.hasOwnProperty('signupConversionFor5PercentSellerFunding')) { obj.signupConversionFor5PercentSellerFunding = ApiClient.convertToType(data.signupConversionFor5PercentSellerFunding, 'Number') }
+      if (data.hasOwnProperty('signupConversionFor10PercentSellerFunding')) { obj.signupConversionFor10PercentSellerFunding = ApiClient.convertToType(data.signupConversionFor10PercentSellerFunding, 'Number') }
+      if (data.hasOwnProperty('signupConversionFor5PlusPercentSellerFunding')) { obj.signupConversionFor5PlusPercentSellerFunding = ApiClient.convertToType(data.signupConversionFor5PlusPercentSellerFunding, 'Number') }
       if (data.hasOwnProperty('timeInterval')) { obj.timeInterval = TimeInterval.constructFromObject(data.timeInterval) }
       if (data.hasOwnProperty('currencyCode')) { obj.currencyCode = ApiClient.convertToType(data.currencyCode, 'String') }
     }
@@ -78,144 +89,221 @@ export class GetSellingPartnerMetricsResponseMetric {
 }
 
 /**
- * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} notDeliveredDueToOOS
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.notDeliveredDueToOOS = undefined
 
 /**
- * The revenue generated from subscriptions over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.
+ * The revenue generated from subscriptions over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.
  * @member {Number} totalSubscriptionsRevenue
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.totalSubscriptionsRevenue = undefined
 
 /**
- * The number of units shipped to the subscribers over a period of time. Applicable for both the PERFORMANCE and FORECAST timePeriodType.
+ * The number of units shipped to the subscribers over a period of time. Applicable for both the `PERFORMANCE` and `FORECAST` `timePeriodType`.
  * @member {Number} shippedSubscriptionUnits
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.shippedSubscriptionUnits = undefined
 
 /**
- * The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
+ * The number of active subscriptions present at the end of the period. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} activeSubscriptions
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.activeSubscriptions = undefined
 
 /**
- * The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.
+ * The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} subscriberAverageRevenue
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.subscriberAverageRevenue = undefined
 
 /**
- * The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to PERFORMANCE timePeriodType.
+ * The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} nonSubscriberAverageRevenue
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.nonSubscriberAverageRevenue = undefined
 
 /**
- * The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
+ * The revenue that would have been generated had there not been out of stock. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} lostRevenueDueToOOS
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.lostRevenueDueToOOS = undefined
 
 /**
- * The average reorders per subscriber of the program over a period of 12 months. Applicable to PERFORMANCE timePeriodType.
+ * The average reorders per subscriber of the program over a period of 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} subscriberAverageReorders
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.subscriberAverageReorders = undefined
 
 /**
- * The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to PERFORMANCE timePeriodType.
+ * The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} nonSubscriberAverageReorders
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.nonSubscriberAverageReorders = undefined
 
 /**
- * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} couponsRevenuePenetration
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.couponsRevenuePenetration = undefined
 
 /**
- * The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to PERFORMANCE timePeriodType.
+ * The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenueFromSubscriptionsWithMultipleDeliveries
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.revenueFromSubscriptionsWithMultipleDeliveries = undefined
 
 /**
- * The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.
+ * The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenueFromActiveSubscriptionsWithSingleDelivery
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.revenueFromActiveSubscriptionsWithSingleDelivery = undefined
 
 /**
- * The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to PERFORMANCE timePeriodType.
+ * The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenueFromCancelledSubscriptionsAfterSingleDelivery
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.revenueFromCancelledSubscriptionsAfterSingleDelivery = undefined
 
 /**
- * The percentage of subscriptions retained after 30 days of subscription creation. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of subscriptions retained after 30 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} subscriberRetentionFor30Days
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.subscriberRetentionFor30Days = undefined
 
 /**
- * The percentage of subscriptions retained after 90 days of subscription creation. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of subscriptions retained after 90 days of subscription creation. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} subscriberRetentionFor90Days
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.subscriberRetentionFor90Days = undefined
 
 /**
- * The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenuePenetrationFor0PercentSellerFunding
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor0PercentSellerFunding = undefined
 
 /**
- * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+ * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenuePenetrationFor5PercentSellerFunding
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor5PercentSellerFunding = undefined
 
 /**
- * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+ * [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenuePenetrationFor10PercentSellerFunding
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor10PercentSellerFunding = undefined
 
 /**
- * [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to PERFORMANCE timePeriodType.
+ * [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} revenuePenetrationFor5PlusPercentSellerFunding
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.revenuePenetrationFor5PlusPercentSellerFunding = undefined
 
 /**
- * The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of new subscriptions acquired through coupons. Applicable to `PERFORMANCE` `timePeriodType`.
  * @member {Number} shareOfCouponSubscriptions
  * @type {Number}
  */
 GetSellingPartnerMetricsResponseMetric.prototype.shareOfCouponSubscriptions = undefined
+
+/**
+ * Total revenue from customers who have made purchases from your catalog but have never subscribed to any products
+ * @member {Number} nonSubscriberLifeTimeValueFromOTP
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.nonSubscriberLifeTimeValueFromOTP = undefined
+
+/**
+ * Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.
+ * @member {Number} lostSubscriberLifeTimeValueFromOTP
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.lostSubscriberLifeTimeValueFromOTP = undefined
+
+/**
+ * Revenue from Subscribe & Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.
+ * @member {Number} lostSubscriberLifeTimeValueFromSNS
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.lostSubscriberLifeTimeValueFromSNS = undefined
+
+/**
+ * Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.
+ * @member {Number} growingSubscriberLifeTimeValueFromOTP
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.growingSubscriberLifeTimeValueFromOTP = undefined
+
+/**
+ * Revenue from Subscribe & Save orders placed by customers who started their first subscription with your catalog within the past 12 months.
+ * @member {Number} growingSubscriberLifeTimeValueFromSNS
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.growingSubscriberLifeTimeValueFromSNS = undefined
+
+/**
+ * Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.
+ * @member {Number} establishedSubscriberLifeTimeValueFromOTP
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.establishedSubscriberLifeTimeValueFromOTP = undefined
+
+/**
+ * Revenue from Subscribe & Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.
+ * @member {Number} establishedSubscriberLifeTimeValueFromSNS
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.establishedSubscriberLifeTimeValueFromSNS = undefined
+
+/**
+ * Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months
+ * @member {Number} signupConversionFor0PercentSellerFunding
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor0PercentSellerFunding = undefined
+
+/**
+ * [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months
+ * @member {Number} signupConversionFor5PercentSellerFunding
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor5PercentSellerFunding = undefined
+
+/**
+ * [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months
+ * @member {Number} signupConversionFor10PercentSellerFunding
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor10PercentSellerFunding = undefined
+
+/**
+ * [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months
+ * @member {Number} signupConversionFor5PlusPercentSellerFunding
+ * @type {Number}
+ */
+GetSellingPartnerMetricsResponseMetric.prototype.signupConversionFor5PlusPercentSellerFunding = undefined
 
 /**
  * @member {TimeInterval} timeInterval

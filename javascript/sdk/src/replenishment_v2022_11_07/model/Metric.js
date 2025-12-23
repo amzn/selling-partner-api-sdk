@@ -92,6 +92,18 @@ export class Metric {
   'SHARE_OF_COUPON_SUBSCRIPTIONS' = 'SHARE_OF_COUPON_SUBSCRIPTIONS'
 
   /**
+         * value: "SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT"
+         * @const
+         */
+  'SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT' = 'SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT'
+
+  /**
+         * value: "SIGNUP_CONVERSION_BY_SELLER_FUNDING"
+         * @const
+         */
+  'SIGNUP_CONVERSION_BY_SELLER_FUNDING' = 'SIGNUP_CONVERSION_BY_SELLER_FUNDING'
+
+  /**
     * Returns a <code>Metric</code> enum value from a Javascript object name.
     * @param {Object} data The plain JavaScript object containing the name of the enum value.
     * @return {Metric} The enum <code>Metric</code> value.

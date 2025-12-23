@@ -80,56 +80,56 @@ export class ListOfferMetricsResponseOffer {
 ListOfferMetricsResponseOffer.prototype.asin = undefined
 
 /**
- * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} notDeliveredDueToOOS
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.notDeliveredDueToOOS = undefined
 
 /**
- * The revenue generated from subscriptions over a period of time. Applicable to PERFORMANCE timePeriodType.
+ * The revenue generated from subscriptions over a period of time. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} totalSubscriptionsRevenue
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.totalSubscriptionsRevenue = undefined
 
 /**
- * The number of units shipped to the subscribers over a period of time. Applicable to PERFORMANCE timePeriodType.
+ * The number of units shipped to the subscribers over a period of time. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} shippedSubscriptionUnits
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.shippedSubscriptionUnits = undefined
 
 /**
- * The number of active subscriptions present at the end of the period. Applicable to PERFORMANCE timePeriodType.
+ * The number of active subscriptions present at the end of the period. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} activeSubscriptions
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.activeSubscriptions = undefined
 
 /**
- * The percentage of total program revenue out of total product revenue. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of total program revenue out of total product revenue. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} revenuePenetration
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.revenuePenetration = undefined
 
 /**
- * The revenue that would have been generated had there not been out of stock. Applicable to PERFORMANCE timePeriodType.
+ * The revenue that would have been generated had there not been out of stock. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} lostRevenueDueToOOS
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.lostRevenueDueToOOS = undefined
 
 /**
- * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} couponsRevenuePenetration
  * @type {Number}
  */
 ListOfferMetricsResponseOffer.prototype.couponsRevenuePenetration = undefined
 
 /**
- * The percentage of new subscriptions acquired through coupons. Applicable to PERFORMANCE timePeriodType.
+ * The percentage of new subscriptions acquired through coupons. Applicable to `FORECAST` `timePeriodType`.
  * @member {Number} shareOfCouponSubscriptions
  * @type {Number}
  */

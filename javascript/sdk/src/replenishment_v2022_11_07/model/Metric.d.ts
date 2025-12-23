@@ -70,5 +70,15 @@ export class Metric {
            * @const
            */
     SHARE_OF_COUPON_SUBSCRIPTIONS: string;
+    /**
+           * value: "SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT"
+           * @const
+           */
+    SUBSCRIBER_LIFETIME_VALUE_BY_CUSTOMER_SEGMENT: string;
+    /**
+           * value: "SIGNUP_CONVERSION_BY_SELLER_FUNDING"
+           * @const
+           */
+    SIGNUP_CONVERSION_BY_SELLER_FUNDING: string;
 }
 //# sourceMappingURL=Metric.d.ts.map
