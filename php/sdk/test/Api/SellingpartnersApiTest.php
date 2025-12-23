@@ -108,10 +108,26 @@ class SellingpartnersApiTest extends BaseTestCase
           &quot;revenuePenetrationFor5PercentSellerFunding&quot; : 22.2,
           &quot;revenuePenetrationFor10PercentSellerFunding&quot; : 67.57,
           &quot;shareOfCouponSubscriptions&quot; : 17.32,
+          &quot;signupConversionFor0PercentSellerFunding&quot; : 11.7,
+          &quot;signupConversionFor5PercentSellerFunding&quot; : 7.3,
+          &quot;signupConversionFor10PercentSellerFunding&quot; : 3.9,
           &quot;currencyCode&quot; : &quot;USD&quot;,
           &quot;timeInterval&quot; : {
-            &quot;endDate&quot; : &quot;2023-05-09T22:36:56Z&quot;,
-            &quot;startDate&quot; : &quot;2022-05-09T22:36:56Z&quot;
+            &quot;endDate&quot; : &quot;2025-05-09T22:36:56Z&quot;,
+            &quot;startDate&quot; : &quot;2024-05-09T22:36:56Z&quot;
+          }
+        }, {
+          &quot;nonSubscriberLifeTimeValueFromOTP&quot; : 95.74,
+          &quot;lostSubscriberLifeTimeValueFromOTP&quot; : 119.1,
+          &quot;lostSubscriberLifeTimeValueFromSNS&quot; : 76.56,
+          &quot;growingSubscriberLifeTimeValueFromOTP&quot; : 113.31,
+          &quot;growingSubscriberLifeTimeValueFromSNS&quot; : 106.56,
+          &quot;establishedSubscriberLifeTimeValueFromOTP&quot; : 138.02,
+          &quot;establishedSubscriberLifeTimeValueFromSNS&quot; : 316.25,
+          &quot;currencyCode&quot; : &quot;USD&quot;,
+          &quot;timeInterval&quot; : {
+            &quot;endDate&quot; : &quot;2025-05-09T22:36:56Z&quot;,
+            &quot;startDate&quot; : &quot;2023-05-09T22:36:56Z&quot;
           }
         } ]
       }
@@ -157,10 +173,26 @@ class SellingpartnersApiTest extends BaseTestCase
           &quot;revenuePenetrationFor5PercentSellerFunding&quot; : 22.2,
           &quot;revenuePenetrationFor10PercentSellerFunding&quot; : 67.57,
           &quot;shareOfCouponSubscriptions&quot; : 17.32,
+          &quot;signupConversionFor0PercentSellerFunding&quot; : 11.7,
+          &quot;signupConversionFor5PercentSellerFunding&quot; : 7.3,
+          &quot;signupConversionFor10PercentSellerFunding&quot; : 3.9,
           &quot;currencyCode&quot; : &quot;USD&quot;,
           &quot;timeInterval&quot; : {
-            &quot;endDate&quot; : &quot;2023-05-09T22:36:56Z&quot;,
-            &quot;startDate&quot; : &quot;2022-05-09T22:36:56Z&quot;
+            &quot;endDate&quot; : &quot;2025-05-09T22:36:56Z&quot;,
+            &quot;startDate&quot; : &quot;2024-05-09T22:36:56Z&quot;
+          }
+        }, {
+          &quot;nonSubscriberLifeTimeValueFromOTP&quot; : 95.74,
+          &quot;lostSubscriberLifeTimeValueFromOTP&quot; : 119.1,
+          &quot;lostSubscriberLifeTimeValueFromSNS&quot; : 76.56,
+          &quot;growingSubscriberLifeTimeValueFromOTP&quot; : 113.31,
+          &quot;growingSubscriberLifeTimeValueFromSNS&quot; : 106.56,
+          &quot;establishedSubscriberLifeTimeValueFromOTP&quot; : 138.02,
+          &quot;establishedSubscriberLifeTimeValueFromSNS&quot; : 316.25,
+          &quot;currencyCode&quot; : &quot;USD&quot;,
+          &quot;timeInterval&quot; : {
+            &quot;endDate&quot; : &quot;2025-05-09T22:36:56Z&quot;,
+            &quot;startDate&quot; : &quot;2023-05-09T22:36:56Z&quot;
           }
         } ]
       }
