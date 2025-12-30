@@ -13,13 +13,13 @@ export class NetworkComminglingTransactionEvent {
      */
     static constructFromObject(data: any, obj: NetworkComminglingTransactionEvent): NetworkComminglingTransactionEvent;
     /**
-     * The type of network item swap.  Possible values:  * NetCo - A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * ComminglingVAT - A commingling VAT transaction. Available only in the UK, Spain, France, Germany, and Italy marketplaces.
+     * The type of network item swap.  Possible values:  * `NetCo`: A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * `ComminglingVAT`: A commingling VAT transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.
      * @member {String} transactionType
      * @type {String}
      */
     transactionType: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */

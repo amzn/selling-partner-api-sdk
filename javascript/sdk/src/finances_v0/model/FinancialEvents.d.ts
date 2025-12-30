@@ -37,6 +37,12 @@ export class FinancialEvents {
      */
     guaranteeClaimEventList: [ShipmentEvent];
     /**
+     * A list of EBT refund reimbursement events.
+     * @member {[EBTRefundReimbursementOnlyEvent]} eBTRefundReimbursementOnlyEventList
+     * @type {[EBTRefundReimbursementOnlyEvent]}
+     */
+    eBTRefundReimbursementOnlyEventList: [EBTRefundReimbursementOnlyEvent];
+    /**
      * A list of shipment event information.
      * @member {[ShipmentEvent]} chargebackEventList
      * @type {[ShipmentEvent]}
@@ -49,13 +55,13 @@ export class FinancialEvents {
      */
     payWithAmazonEventList: [PayWithAmazonEvent];
     /**
-     * A list of information about solution provider credits.
+     * A list of `SolutionProviderCreditEvent`.
      * @member {[SolutionProviderCreditEvent]} serviceProviderCreditEventList
      * @type {[SolutionProviderCreditEvent]}
      */
     serviceProviderCreditEventList: [SolutionProviderCreditEvent];
     /**
-     * A list of information about Retrocharge or RetrochargeReversal events.
+     * A list of information about `Retrocharge` or `RetrochargeReversal` events.
      * @member {[RetrochargeEvent]} retrochargeEventList
      * @type {[RetrochargeEvent]}
      */
@@ -103,7 +109,7 @@ export class FinancialEvents {
      */
     adjustmentEventList: [AdjustmentEvent];
     /**
-     * A list of SAFETReimbursementEvents.
+     * A list of `SAFETReimbursementEvent`.
      * @member {[SAFETReimbursementEvent]} sAFETReimbursementEventList
      * @type {[SAFETReimbursementEvent]}
      */
@@ -157,7 +163,7 @@ export class FinancialEvents {
      */
     removalShipmentEventList: [RemovalShipmentEvent];
     /**
-     * A comma-delimited list of Removal shipmentAdjustment details for FBA inventory.
+     * A comma-delimited list of `RemovalShipmentAdjustment` details for FBA inventory.
      * @member {[RemovalShipmentAdjustmentEvent]} removalShipmentAdjustmentEventList
      * @type {[RemovalShipmentAdjustmentEvent]}
      */
@@ -181,7 +187,7 @@ export class FinancialEvents {
      */
     adhocDisbursementEventList: [AdhocDisbursementEvent];
     /**
-     * A list of `TaxWithholding` events.
+     * A list of tax withholding events.
      * @member {[TaxWithholdingEvent]} taxWithholdingEventList
      * @type {[TaxWithholdingEvent]}
      */
@@ -193,7 +199,7 @@ export class FinancialEvents {
      */
     chargeRefundEventList: [ChargeRefundEvent];
     /**
-     * A list of `FailedAdhocDisbursementEvent`s.
+     * A list of `FailedAdhocDisbursementEvent`.
      * @member {[FailedAdhocDisbursementEvent]} failedAdhocDisbursementEventList
      * @type {[FailedAdhocDisbursementEvent]}
      */
@@ -212,6 +218,7 @@ export class FinancialEvents {
     capacityReservationBillingEventList: [CapacityReservationBillingEvent];
 }
 import { ShipmentEvent } from './ShipmentEvent.js';
+import { EBTRefundReimbursementOnlyEvent } from './EBTRefundReimbursementOnlyEvent.js';
 import { PayWithAmazonEvent } from './PayWithAmazonEvent.js';
 import { SolutionProviderCreditEvent } from './SolutionProviderCreditEvent.js';
 import { RetrochargeEvent } from './RetrochargeEvent.js';
