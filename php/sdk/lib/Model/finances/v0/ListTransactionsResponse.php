@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DirectPayment.
+ * ListTransactionsResponse.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * DirectPayment Class Doc Comment.
+ * ListTransactionsResponse Class Doc Comment.
  *
  * @category Class
  *
- * @description A payment made directly to a seller.
+ * @description The response schema for the &#x60;listTransactions&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
+class ListTransactionsResponse implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'DirectPayment';
+    protected static string $openAPIModelName = 'ListTransactionsResponse';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +61,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'direct_payment_type' => 'string',
-        'direct_payment_amount' => '\SpApi\Model\finances\v0\Currency'];
+        'payload' => '\SpApi\Model\finances\v0\ListTransactionsPayload',
+        'errors' => '\SpApi\Model\finances\v0\Error[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +74,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'direct_payment_type' => null,
-        'direct_payment_amount' => null];
+        'payload' => null,
+        'errors' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +83,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'direct_payment_type' => true,
-        'direct_payment_amount' => true,
+        'payload' => true,
+        'errors' => true,
     ];
 
     /**
@@ -101,8 +101,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'direct_payment_type' => 'DirectPaymentType',
-        'direct_payment_amount' => 'DirectPaymentAmount',
+        'payload' => 'payload',
+        'errors' => 'errors',
     ];
 
     /**
@@ -111,8 +111,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'direct_payment_type' => 'setDirectPaymentType',
-        'direct_payment_amount' => 'setDirectPaymentAmount',
+        'payload' => 'setPayload',
+        'errors' => 'setErrors',
     ];
 
     /**
@@ -121,8 +121,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'direct_payment_type' => 'getDirectPaymentType',
-        'direct_payment_amount' => 'getDirectPaymentAmount',
+        'payload' => 'getPayload',
+        'errors' => 'getErrors',
     ];
 
     /**
@@ -138,8 +138,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('direct_payment_type', $data ?? [], null);
-        $this->setIfExists('direct_payment_amount', $data ?? [], null);
+        $this->setIfExists('payload', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -242,61 +242,61 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets direct_payment_type.
+     * Gets payload.
      */
-    public function getDirectPaymentType(): ?string
+    public function getPayload(): ?ListTransactionsPayload
     {
-        return $this->container['direct_payment_type'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets direct_payment_type.
+     * Sets payload.
      *
-     * @param null|string $direct_payment_type The type of payment.  Possible values:  * `StoredValueCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a stored value card.  * `StoredValueCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a stored value card is refunded.  * `PrivateLabelCreditCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a private label credit card offered by Amazon.  * `PrivateLabelCreditCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a private label credit card offered by Amazon is refunded.  * `CollectOnDeliveryRevenue` - The COD amount that the seller collected directly from the buyer.  * `CollectOnDeliveryRefund` - The amount that Amazon refunds to the buyer if an order paid for by COD is refunded.
+     * @param null|ListTransactionsPayload $payload payload
      */
-    public function setDirectPaymentType(?string $direct_payment_type): self
+    public function setPayload(?ListTransactionsPayload $payload): self
     {
-        if (is_null($direct_payment_type)) {
-            array_push($this->openAPINullablesSetToNull, 'direct_payment_type');
+        if (is_null($payload)) {
+            array_push($this->openAPINullablesSetToNull, 'payload');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('direct_payment_type', $nullablesSetToNull);
+            $index = array_search('payload', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['direct_payment_type'] = $direct_payment_type;
+        $this->container['payload'] = $payload;
 
         return $this;
     }
 
     /**
-     * Gets direct_payment_amount.
+     * Gets errors.
      */
-    public function getDirectPaymentAmount(): ?Currency
+    public function getErrors(): ?array
     {
-        return $this->container['direct_payment_amount'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets direct_payment_amount.
+     * Sets errors.
      *
-     * @param null|Currency $direct_payment_amount direct_payment_amount
+     * @param null|array $errors a list of error responses returned when a request is unsuccessful
      */
-    public function setDirectPaymentAmount(?Currency $direct_payment_amount): self
+    public function setErrors(?array $errors): self
     {
-        if (is_null($direct_payment_amount)) {
-            array_push($this->openAPINullablesSetToNull, 'direct_payment_amount');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('direct_payment_amount', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['direct_payment_amount'] = $direct_payment_amount;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

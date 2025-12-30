@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DirectPayment.
+ * RelatedIdentifier.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * DirectPayment Class Doc Comment.
+ * RelatedIdentifier Class Doc Comment.
  *
  * @category Class
  *
- * @description A payment made directly to a seller.
+ * @description Related business identifier of the transaction.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,16 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
+class RelatedIdentifier implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
+
+    public const RELATED_IDENTIFIER_NAME_ORDER_ID = 'ORDER_ID';
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'DirectPayment';
+    protected static string $openAPIModelName = 'RelatedIdentifier';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +63,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'direct_payment_type' => 'string',
-        'direct_payment_amount' => '\SpApi\Model\finances\v0\Currency'];
+        'related_identifier_name' => 'string',
+        'related_identifier_value' => 'string'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +76,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'direct_payment_type' => null,
-        'direct_payment_amount' => null];
+        'related_identifier_name' => null,
+        'related_identifier_value' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +85,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'direct_payment_type' => true,
-        'direct_payment_amount' => true,
+        'related_identifier_name' => true,
+        'related_identifier_value' => true,
     ];
 
     /**
@@ -101,8 +103,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'direct_payment_type' => 'DirectPaymentType',
-        'direct_payment_amount' => 'DirectPaymentAmount',
+        'related_identifier_name' => 'RelatedIdentifierName',
+        'related_identifier_value' => 'RelatedIdentifierValue',
     ];
 
     /**
@@ -111,8 +113,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'direct_payment_type' => 'setDirectPaymentType',
-        'direct_payment_amount' => 'setDirectPaymentAmount',
+        'related_identifier_name' => 'setRelatedIdentifierName',
+        'related_identifier_value' => 'setRelatedIdentifierValue',
     ];
 
     /**
@@ -121,8 +123,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'direct_payment_type' => 'getDirectPaymentType',
-        'direct_payment_amount' => 'getDirectPaymentAmount',
+        'related_identifier_name' => 'getRelatedIdentifierName',
+        'related_identifier_value' => 'getRelatedIdentifierValue',
     ];
 
     /**
@@ -138,8 +140,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('direct_payment_type', $data ?? [], null);
-        $this->setIfExists('direct_payment_amount', $data ?? [], null);
+        $this->setIfExists('related_identifier_name', $data ?? [], null);
+        $this->setIfExists('related_identifier_value', $data ?? [], null);
     }
 
     /**
@@ -221,13 +223,36 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum.
+     *
+     * @return string[]
+     */
+    public function getRelatedIdentifierNameAllowableValues(): array
+    {
+        return [
+            self::RELATED_IDENTIFIER_NAME_ORDER_ID,
+        ];
+    }
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array invalid properties with reasons
      */
     public function listInvalidProperties(): array
     {
-        return [];
+        $invalidProperties = [];
+
+        $allowedValues = $this->getRelatedIdentifierNameAllowableValues();
+        if (!is_null($this->container['related_identifier_name']) && !in_array($this->container['related_identifier_name'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'related_identifier_name', must be one of '%s'",
+                $this->container['related_identifier_name'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        return $invalidProperties;
     }
 
     /**
@@ -242,61 +267,71 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets direct_payment_type.
+     * Gets related_identifier_name.
      */
-    public function getDirectPaymentType(): ?string
+    public function getRelatedIdentifierName(): ?string
     {
-        return $this->container['direct_payment_type'];
+        return $this->container['related_identifier_name'];
     }
 
     /**
-     * Sets direct_payment_type.
+     * Sets related_identifier_name.
      *
-     * @param null|string $direct_payment_type The type of payment.  Possible values:  * `StoredValueCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a stored value card.  * `StoredValueCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a stored value card is refunded.  * `PrivateLabelCreditCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a private label credit card offered by Amazon.  * `PrivateLabelCreditCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a private label credit card offered by Amazon is refunded.  * `CollectOnDeliveryRevenue` - The COD amount that the seller collected directly from the buyer.  * `CollectOnDeliveryRefund` - The amount that Amazon refunds to the buyer if an order paid for by COD is refunded.
+     * @param null|string $related_identifier_name enumerated set of related business identifier names
      */
-    public function setDirectPaymentType(?string $direct_payment_type): self
+    public function setRelatedIdentifierName(?string $related_identifier_name): self
     {
-        if (is_null($direct_payment_type)) {
-            array_push($this->openAPINullablesSetToNull, 'direct_payment_type');
+        if (is_null($related_identifier_name)) {
+            array_push($this->openAPINullablesSetToNull, 'related_identifier_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('direct_payment_type', $nullablesSetToNull);
+            $index = array_search('related_identifier_name', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['direct_payment_type'] = $direct_payment_type;
+        $allowedValues = $this->getRelatedIdentifierNameAllowableValues();
+        if (!is_null($related_identifier_name) && !in_array($related_identifier_name, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'related_identifier_name', must be one of '%s'",
+                    $related_identifier_name,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['related_identifier_name'] = $related_identifier_name;
 
         return $this;
     }
 
     /**
-     * Gets direct_payment_amount.
+     * Gets related_identifier_value.
      */
-    public function getDirectPaymentAmount(): ?Currency
+    public function getRelatedIdentifierValue(): ?string
     {
-        return $this->container['direct_payment_amount'];
+        return $this->container['related_identifier_value'];
     }
 
     /**
-     * Sets direct_payment_amount.
+     * Sets related_identifier_value.
      *
-     * @param null|Currency $direct_payment_amount direct_payment_amount
+     * @param null|string $related_identifier_value the corresponding value to `RelatedIdentifierName`
      */
-    public function setDirectPaymentAmount(?Currency $direct_payment_amount): self
+    public function setRelatedIdentifierValue(?string $related_identifier_value): self
     {
-        if (is_null($direct_payment_amount)) {
-            array_push($this->openAPINullablesSetToNull, 'direct_payment_amount');
+        if (is_null($related_identifier_value)) {
+            array_push($this->openAPINullablesSetToNull, 'related_identifier_value');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('direct_payment_amount', $nullablesSetToNull);
+            $index = array_search('related_identifier_value', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['direct_payment_amount'] = $direct_payment_amount;
+        $this->container['related_identifier_value'] = $related_identifier_value;
 
         return $this;
     }

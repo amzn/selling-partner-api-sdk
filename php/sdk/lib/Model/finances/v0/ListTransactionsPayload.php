@@ -1,7 +1,7 @@
 <?php
 
 /**
- * DirectPayment.
+ * ListTransactionsPayload.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * DirectPayment Class Doc Comment.
+ * ListTransactionsPayload Class Doc Comment.
  *
  * @category Class
  *
- * @description A payment made directly to a seller.
+ * @description The payload for the &#x60;listTransactions&#x60; operation.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
+class ListTransactionsPayload implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'DirectPayment';
+    protected static string $openAPIModelName = 'ListTransactionsPayload';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,8 +61,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'direct_payment_type' => 'string',
-        'direct_payment_amount' => '\SpApi\Model\finances\v0\Currency'];
+        'next_token' => 'string',
+        'transactions' => '\SpApi\Model\finances\v0\Transaction[]'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -74,8 +74,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'direct_payment_type' => null,
-        'direct_payment_amount' => null];
+        'next_token' => null,
+        'transactions' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -83,8 +83,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'direct_payment_type' => true,
-        'direct_payment_amount' => true,
+        'next_token' => true,
+        'transactions' => true,
     ];
 
     /**
@@ -101,8 +101,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'direct_payment_type' => 'DirectPaymentType',
-        'direct_payment_amount' => 'DirectPaymentAmount',
+        'next_token' => 'NextToken',
+        'transactions' => 'Transactions',
     ];
 
     /**
@@ -111,8 +111,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'direct_payment_type' => 'setDirectPaymentType',
-        'direct_payment_amount' => 'setDirectPaymentAmount',
+        'next_token' => 'setNextToken',
+        'transactions' => 'setTransactions',
     ];
 
     /**
@@ -121,8 +121,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'direct_payment_type' => 'getDirectPaymentType',
-        'direct_payment_amount' => 'getDirectPaymentAmount',
+        'next_token' => 'getNextToken',
+        'transactions' => 'getTransactions',
     ];
 
     /**
@@ -138,8 +138,8 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('direct_payment_type', $data ?? [], null);
-        $this->setIfExists('direct_payment_amount', $data ?? [], null);
+        $this->setIfExists('next_token', $data ?? [], null);
+        $this->setIfExists('transactions', $data ?? [], null);
     }
 
     /**
@@ -242,61 +242,61 @@ class DirectPayment implements ModelInterface, \ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets direct_payment_type.
+     * Gets next_token.
      */
-    public function getDirectPaymentType(): ?string
+    public function getNextToken(): ?string
     {
-        return $this->container['direct_payment_type'];
+        return $this->container['next_token'];
     }
 
     /**
-     * Sets direct_payment_type.
+     * Sets next_token.
      *
-     * @param null|string $direct_payment_type The type of payment.  Possible values:  * `StoredValueCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a stored value card.  * `StoredValueCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a stored value card is refunded.  * `PrivateLabelCreditCardRevenue` - The amount that is deducted from the seller's account because the seller received money through a private label credit card offered by Amazon.  * `PrivateLabelCreditCardRefund` - The amount that Amazon returns to the seller if the order that is purchased using a private label credit card offered by Amazon is refunded.  * `CollectOnDeliveryRevenue` - The COD amount that the seller collected directly from the buyer.  * `CollectOnDeliveryRefund` - The amount that Amazon refunds to the buyer if an order paid for by COD is refunded.
+     * @param null|string $next_token when present and not empty, pass this string token in the next request to return the next response page
      */
-    public function setDirectPaymentType(?string $direct_payment_type): self
+    public function setNextToken(?string $next_token): self
     {
-        if (is_null($direct_payment_type)) {
-            array_push($this->openAPINullablesSetToNull, 'direct_payment_type');
+        if (is_null($next_token)) {
+            array_push($this->openAPINullablesSetToNull, 'next_token');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('direct_payment_type', $nullablesSetToNull);
+            $index = array_search('next_token', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['direct_payment_type'] = $direct_payment_type;
+        $this->container['next_token'] = $next_token;
 
         return $this;
     }
 
     /**
-     * Gets direct_payment_amount.
+     * Gets transactions.
      */
-    public function getDirectPaymentAmount(): ?Currency
+    public function getTransactions(): ?array
     {
-        return $this->container['direct_payment_amount'];
+        return $this->container['transactions'];
     }
 
     /**
-     * Sets direct_payment_amount.
+     * Sets transactions.
      *
-     * @param null|Currency $direct_payment_amount direct_payment_amount
+     * @param null|array $transactions a list of transactions within a given time period
      */
-    public function setDirectPaymentAmount(?Currency $direct_payment_amount): self
+    public function setTransactions(?array $transactions): self
     {
-        if (is_null($direct_payment_amount)) {
-            array_push($this->openAPINullablesSetToNull, 'direct_payment_amount');
+        if (is_null($transactions)) {
+            array_push($this->openAPINullablesSetToNull, 'transactions');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('direct_payment_amount', $nullablesSetToNull);
+            $index = array_search('transactions', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['direct_payment_amount'] = $direct_payment_amount;
+        $this->container['transactions'] = $transactions;
 
         return $this;
     }
