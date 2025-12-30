@@ -26,35 +26,44 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v0
 {
     /// <summary>
-    /// The payload for the &#x60;listFinancialEventGroups&#x60; operation.
+    /// Metadata describing the seller.
     /// </summary>
-    [DataContract(Name = "ListFinancialEventGroupsPayload")]
-    public partial class ListFinancialEventGroupsPayload : IValidatableObject
+    [DataContract(Name = "SellingPartnerMetadata")]
+    public partial class SellingPartnerMetadata : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListFinancialEventGroupsPayload" /> class.
+        /// Initializes a new instance of the <see cref="SellingPartnerMetadata" /> class.
         /// </summary>
-        /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        /// <param name="financialEventGroupList">A list of financial event group information..</param>
-        public ListFinancialEventGroupsPayload(string nextToken = default(string), List<FinancialEventGroup> financialEventGroupList = default(List<FinancialEventGroup>))
+        /// <param name="sellingPartnerId">The unique seller identifier..</param>
+        /// <param name="accountType">The type of account in the transaction..</param>
+        /// <param name="marketplaceId">The identifier of the marketplace in which the transaction occurred..</param>
+        public SellingPartnerMetadata(string sellingPartnerId = default(string), string accountType = default(string), string marketplaceId = default(string))
         {
-            this.NextToken = nextToken;
-            this.FinancialEventGroupList = financialEventGroupList;
+            this.SellingPartnerId = sellingPartnerId;
+            this.AccountType = accountType;
+            this.MarketplaceId = marketplaceId;
         }
 
         /// <summary>
-        /// When present and not empty, pass this string token in the next request to return the next response page.
+        /// The unique seller identifier.
         /// </summary>
-        /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
-        [DataMember(Name = "NextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        /// <value>The unique seller identifier.</value>
+        [DataMember(Name = "SellingPartnerId", EmitDefaultValue = false)]
+        public string SellingPartnerId { get; set; }
 
         /// <summary>
-        /// A list of financial event group information.
+        /// The type of account in the transaction.
         /// </summary>
-        /// <value>A list of financial event group information.</value>
-        [DataMember(Name = "FinancialEventGroupList", EmitDefaultValue = false)]
-        public List<FinancialEventGroup> FinancialEventGroupList { get; set; }
+        /// <value>The type of account in the transaction.</value>
+        [DataMember(Name = "AccountType", EmitDefaultValue = false)]
+        public string AccountType { get; set; }
+
+        /// <summary>
+        /// The identifier of the marketplace in which the transaction occurred.
+        /// </summary>
+        /// <value>The identifier of the marketplace in which the transaction occurred.</value>
+        [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
+        public string MarketplaceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +72,10 @@ namespace software.amzn.spapi.Model.finances.v0
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListFinancialEventGroupsPayload {\n");
-            sb.Append("  NextToken: ").Append(NextToken).Append("\n");
-            sb.Append("  FinancialEventGroupList: ").Append(FinancialEventGroupList).Append("\n");
+            sb.Append("class SellingPartnerMetadata {\n");
+            sb.Append("  SellingPartnerId: ").Append(SellingPartnerId).Append("\n");
+            sb.Append("  AccountType: ").Append(AccountType).Append("\n");
+            sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
