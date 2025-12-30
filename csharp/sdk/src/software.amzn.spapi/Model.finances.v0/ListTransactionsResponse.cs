@@ -26,35 +26,34 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v0
 {
     /// <summary>
-    /// The payload for the &#x60;listFinancialEventGroups&#x60; operation.
+    /// The response schema for the &#x60;listTransactions&#x60; operation.
     /// </summary>
-    [DataContract(Name = "ListFinancialEventGroupsPayload")]
-    public partial class ListFinancialEventGroupsPayload : IValidatableObject
+    [DataContract(Name = "ListTransactionsResponse")]
+    public partial class ListTransactionsResponse : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListFinancialEventGroupsPayload" /> class.
+        /// Initializes a new instance of the <see cref="ListTransactionsResponse" /> class.
         /// </summary>
-        /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        /// <param name="financialEventGroupList">A list of financial event group information..</param>
-        public ListFinancialEventGroupsPayload(string nextToken = default(string), List<FinancialEventGroup> financialEventGroupList = default(List<FinancialEventGroup>))
+        /// <param name="payload">payload.</param>
+        /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
+        public ListTransactionsResponse(ListTransactionsPayload payload = default(ListTransactionsPayload), List<Error> errors = default(List<Error>))
         {
-            this.NextToken = nextToken;
-            this.FinancialEventGroupList = financialEventGroupList;
+            this.Payload = payload;
+            this.Errors = errors;
         }
 
         /// <summary>
-        /// When present and not empty, pass this string token in the next request to return the next response page.
+        /// Gets or Sets Payload
         /// </summary>
-        /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
-        [DataMember(Name = "NextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        [DataMember(Name = "payload", EmitDefaultValue = false)]
+        public ListTransactionsPayload Payload { get; set; }
 
         /// <summary>
-        /// A list of financial event group information.
+        /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
-        /// <value>A list of financial event group information.</value>
-        [DataMember(Name = "FinancialEventGroupList", EmitDefaultValue = false)]
-        public List<FinancialEventGroup> FinancialEventGroupList { get; set; }
+        /// <value>A list of error responses returned when a request is unsuccessful.</value>
+        [DataMember(Name = "errors", EmitDefaultValue = false)]
+        public List<Error> Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +62,9 @@ namespace software.amzn.spapi.Model.finances.v0
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListFinancialEventGroupsPayload {\n");
-            sb.Append("  NextToken: ").Append(NextToken).Append("\n");
-            sb.Append("  FinancialEventGroupList: ").Append(FinancialEventGroupList).Append("\n");
+            sb.Append("class ListTransactionsResponse {\n");
+            sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
