@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -36,6 +36,7 @@ import software.amazon.spapi.ProgressRequestBody;
 import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventGroupsResponse;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventsResponse;
+import software.amazon.spapi.models.finances.v0.ListTransactionsResponse;
 
 public class DefaultApi {
     private ApiClient apiClient;
@@ -64,20 +65,28 @@ public class DefaultApi {
             .addLimit(config.getLimit("DefaultApi-listFinancialEventsByOrderId"))
             .build();
 
+    public final Bucket listTransactionsBucket = Bucket.builder()
+            .addLimit(config.getLimit("DefaultApi-listTransactions"))
+            .build();
+
     /**
      * Build call for listFinancialEventGroups
      *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param maxResultsPerPage The maximum number of results per page. If the response exceeds the maximum number of
+     *     transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 10)
+     * @param financialEventGroupStartedBefore A date that selects financial event groups that opened before (but not
+     *     at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *     The date-time must be after &#x60;FinancialEventGroupStartedAfter&#x60; and more than two minutes before the
+     *     time of request. If &#x60;FinancialEventGroupStartedAfter&#x60; and
+     *     &#x60;FinancialEventGroupStartedBefore&#x60; are more than 180 days apart, no financial event groups are
+     *     returned. (optional)
+     * @param financialEventGroupStartedAfter A date that selects financial event groups that opened after (or at) a
+     *     specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
+     *     date-time must be more than two minutes before you submit the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -153,25 +162,29 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial event groups for a given date range. It may take up to 48 hours for orders to appear in your
+     * Returns financial event groups for a given date range. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param maxResultsPerPage The maximum number of results per page. If the response exceeds the maximum number of
+     *     transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 10)
+     * @param financialEventGroupStartedBefore A date that selects financial event groups that opened before (but not
+     *     at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *     The date-time must be after &#x60;FinancialEventGroupStartedAfter&#x60; and more than two minutes before the
+     *     time of request. If &#x60;FinancialEventGroupStartedAfter&#x60; and
+     *     &#x60;FinancialEventGroupStartedBefore&#x60; are more than 180 days apart, no financial event groups are
+     *     returned. (optional)
+     * @param financialEventGroupStartedAfter A date that selects financial event groups that opened after (or at) a
+     *     specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
+     *     date-time must be more than two minutes before you submit the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListFinancialEventGroupsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -194,25 +207,29 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial event groups for a given date range. It may take up to 48 hours for orders to appear in your
+     * Returns financial event groups for a given date range. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param maxResultsPerPage The maximum number of results per page. If the response exceeds the maximum number of
+     *     transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 10)
+     * @param financialEventGroupStartedBefore A date that selects financial event groups that opened before (but not
+     *     at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *     The date-time must be after &#x60;FinancialEventGroupStartedAfter&#x60; and more than two minutes before the
+     *     time of request. If &#x60;FinancialEventGroupStartedAfter&#x60; and
+     *     &#x60;FinancialEventGroupStartedBefore&#x60; are more than 180 days apart, no financial event groups are
+     *     returned. (optional)
+     * @param financialEventGroupStartedAfter A date that selects financial event groups that opened after (or at) a
+     *     specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
+     *     date-time must be more than two minutes before you submit the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ListFinancialEventGroupsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -229,25 +246,29 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial event groups for a given date range. It may take up to 48 hours for orders to appear in your
+     * Returns financial event groups for a given date range. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param maxResultsPerPage The maximum number of results per page. If the response exceeds the maximum number of
+     *     transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 10)
+     * @param financialEventGroupStartedBefore A date that selects financial event groups that opened before (but not
+     *     at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *     The date-time must be after &#x60;FinancialEventGroupStartedAfter&#x60; and more than two minutes before the
+     *     time of request. If &#x60;FinancialEventGroupStartedAfter&#x60; and
+     *     &#x60;FinancialEventGroupStartedBefore&#x60; are more than 180 days apart, no financial event groups are
+     *     returned. (optional)
+     * @param financialEventGroupStartedAfter A date that selects financial event groups that opened after (or at) a
+     *     specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
+     *     date-time must be more than two minutes before you submit the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListFinancialEventGroupsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -277,25 +298,29 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial event groups for a given date range. It may take up to 48 hours for orders to appear in your
+     * Returns financial event groups for a given date range. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param maxResultsPerPage The maximum number of results per page. If the response exceeds the maximum number of
+     *     transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 10)
+     * @param financialEventGroupStartedBefore A date that selects financial event groups that opened before (but not
+     *     at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *     The date-time must be after &#x60;FinancialEventGroupStartedAfter&#x60; and more than two minutes before the
+     *     time of request. If &#x60;FinancialEventGroupStartedAfter&#x60; and
+     *     &#x60;FinancialEventGroupStartedBefore&#x60; are more than 180 days apart, no financial event groups are
+     *     returned. (optional)
+     * @param financialEventGroupStartedAfter A date that selects financial event groups that opened after (or at) a
+     *     specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
+     *     date-time must be more than two minutes before you submit the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ApiResponse&lt;ListFinancialEventGroupsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -311,25 +336,29 @@ public class DefaultApi {
     }
 
     /**
-     * (asynchronously) Returns financial event groups for a given date range. It may take up to 48 hours for orders to
-     * appear in your financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
+     * (asynchronously) Returns financial event groups for a given date range. Orders from the last 48 hours might not
+     * be included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
      * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
-     * to the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param maxResultsPerPage The maximum number of results per page. If the response exceeds the maximum number of
+     *     transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 10)
+     * @param financialEventGroupStartedBefore A date that selects financial event groups that opened before (but not
+     *     at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *     The date-time must be after &#x60;FinancialEventGroupStartedAfter&#x60; and more than two minutes before the
+     *     time of request. If &#x60;FinancialEventGroupStartedAfter&#x60; and
+     *     &#x60;FinancialEventGroupStartedBefore&#x60; are more than 180 days apart, no financial event groups are
+     *     returned. (optional)
+     * @param financialEventGroupStartedAfter A date that selects financial event groups that opened after (or at) a
+     *     specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
+     *     date-time must be more than two minutes before you submit the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -351,25 +380,29 @@ public class DefaultApi {
                 null);
     }
     /**
-     * (asynchronously) Returns financial event groups for a given date range. It may take up to 48 hours for orders to
-     * appear in your financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
+     * (asynchronously) Returns financial event groups for a given date range. Orders from the last 48 hours might not
+     * be included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
      * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
-     * to the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * to the requested operation, when available. The preceding table contains the default rate and burst values for
+     * this operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
-     * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 10)
-     * @param financialEventGroupStartedBefore A date used for selecting financial event groups that opened before (but
-     *     not at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
-     *     format. The date-time must be later than FinancialEventGroupStartedAfter and no later than two minutes before
-     *     the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more
-     *     than 180 days apart, no financial event groups are returned. (optional)
-     * @param financialEventGroupStartedAfter A date used for selecting financial event groups that opened after (or at)
-     *     a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
-     *     date-time must be no later than two minutes before the request was submitted. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     * @param maxResultsPerPage The maximum number of results per page. If the response exceeds the maximum number of
+     *     transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 10)
+     * @param financialEventGroupStartedBefore A date that selects financial event groups that opened before (but not
+     *     at) a specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
+     *     The date-time must be after &#x60;FinancialEventGroupStartedAfter&#x60; and more than two minutes before the
+     *     time of request. If &#x60;FinancialEventGroupStartedAfter&#x60; and
+     *     &#x60;FinancialEventGroupStartedBefore&#x60; are more than 180 days apart, no financial event groups are
+     *     returned. (optional)
+     * @param financialEventGroupStartedAfter A date that selects financial event groups that opened after (or at) a
+     *     specified date and time, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. The
+     *     date-time must be more than two minutes before you submit the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -415,16 +448,20 @@ public class DefaultApi {
      * Build call for listFinancialEvents
      *
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -492,26 +529,30 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial events for the specified data range. It may take up to 48 hours for orders to appear in your
+     * Returns financial events for the specified data range. Orders from the last 48 hours might not be included in
      * financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up in responses
-     * until in they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListFinancialEventsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -530,26 +571,30 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial events for the specified data range. It may take up to 48 hours for orders to appear in your
+     * Returns financial events for the specified data range. Orders from the last 48 hours might not be included in
      * financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up in responses
-     * until in they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ListFinancialEventsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -563,26 +608,30 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial events for the specified data range. It may take up to 48 hours for orders to appear in your
+     * Returns financial events for the specified data range. Orders from the last 48 hours might not be included in
      * financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up in responses
-     * until in they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListFinancialEventsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -611,26 +660,30 @@ public class DefaultApi {
     }
 
     /**
-     * Returns financial events for the specified data range. It may take up to 48 hours for orders to appear in your
+     * Returns financial events for the specified data range. Orders from the last 48 hours might not be included in
      * financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up in responses
-     * until in they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
-     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
-     * the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ApiResponse&lt;ListFinancialEventsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -642,26 +695,30 @@ public class DefaultApi {
     }
 
     /**
-     * (asynchronously) Returns financial events for the specified data range. It may take up to 48 hours for orders to
-     * appear in your financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up
-     * in responses until in they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * (asynchronously) Returns financial events for the specified data range. Orders from the last 48 hours might not
+     * be included in financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up
+     * in responses until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
      * 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
-     * applied to the requested operation, when available. The table above indicates the default rate and burst values
-     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
-     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput can have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -677,26 +734,30 @@ public class DefaultApi {
         return listFinancialEventsAsync(maxResultsPerPage, postedAfter, postedBefore, nextToken, callback, null);
     }
     /**
-     * (asynchronously) Returns financial events for the specified data range. It may take up to 48 hours for orders to
-     * appear in your financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up
-     * in responses until in they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
+     * (asynchronously) Returns financial events for the specified data range. Orders from the last 48 hours might not
+     * be included in financial events. **Note:** in &#x60;ListFinancialEvents&#x60;, deferred events don&#x27;t show up
+     * in responses until they are released. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | |
      * 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were
-     * applied to the requested operation, when available. The table above indicates the default rate and burst values
-     * for this operation. Selling partners whose business demands require higher throughput may see higher rate and
-     * burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * applied to the requested operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput can have higher rate
+     * and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time must be no later than two minutes before the request was submitted, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in
-     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If PostedAfter and
-     *     PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter
-     *     parameter if you specify the PostedBefore parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -738,17 +799,20 @@ public class DefaultApi {
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -826,29 +890,31 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified financial event group. It may take up to 48 hours for orders to
-     * appear in your financial events. **Note:** This operation will only retrieve group&#x27;s data for the past two
-     * years. If a request is submitted for data spanning more than two years, an empty response is returned. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
+     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
+     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListFinancialEventsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -868,29 +934,31 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified financial event group. It may take up to 48 hours for orders to
-     * appear in your financial events. **Note:** This operation will only retrieve group&#x27;s data for the past two
-     * years. If a request is submitted for data spanning more than two years, an empty response is returned. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
+     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
+     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ListFinancialEventsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -908,29 +976,31 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified financial event group. It may take up to 48 hours for orders to
-     * appear in your financial events. **Note:** This operation will only retrieve group&#x27;s data for the past two
-     * years. If a request is submitted for data spanning more than two years, an empty response is returned. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
+     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
+     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListFinancialEventsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -961,29 +1031,31 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified financial event group. It may take up to 48 hours for orders to
-     * appear in your financial events. **Note:** This operation will only retrieve group&#x27;s data for the past two
-     * years. If a request is submitted for data spanning more than two years, an empty response is returned. **Usage
-     * Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * Returns all financial events for the specified financial event group. Orders from the last 48 hours might not be
+     * included in financial events. **Note:** This operation only retrieves a group&#x27;s data for the past two years.
+     * A request for data spanning more than two years produces an empty response. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the
+     * usage plan rate limits that were applied to the requested operation, when available. The preceding table contains
+     * the default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput can have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ApiResponse&lt;ListFinancialEventsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1000,29 +1072,32 @@ public class DefaultApi {
     }
 
     /**
-     * (asynchronously) Returns all financial events for the specified financial event group. It may take up to 48 hours
-     * for orders to appear in your financial events. **Note:** This operation will only retrieve group&#x27;s data for
-     * the past two years. If a request is submitted for data spanning more than two years, an empty response is
-     * returned. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Returns all financial events for the specified financial event group. Orders from the last 48
+     * hours might not be included in financial events. **Note:** This operation only retrieves a group&#x27;s data for
+     * the past two years. A request for data spanning more than two years produces an empty response. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput can have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1040,29 +1115,32 @@ public class DefaultApi {
                 eventGroupId, maxResultsPerPage, postedAfter, postedBefore, nextToken, callback, null);
     }
     /**
-     * (asynchronously) Returns all financial events for the specified financial event group. It may take up to 48 hours
-     * for orders to appear in your financial events. **Note:** This operation will only retrieve group&#x27;s data for
-     * the past two years. If a request is submitted for data spanning more than two years, an empty response is
-     * returned. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
-     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Returns all financial events for the specified financial event group. Orders from the last 48
+     * hours might not be included in financial events. **Note:** This operation only retrieves a group&#x27;s data for
+     * the past two years. A request for data spanning more than two years produces an empty response. **Usage Plan:** |
+     * Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header returns the usage plan rate limits that were applied to the requested operation, when available. The
+     * preceding table contains the default rate and burst values for this operation. Selling partners whose business
+     * demands require higher throughput can have higher rate and burst values than those shown here. For more
+     * information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param eventGroupId The identifier of the financial event group to which the events belong. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param postedAfter A date used for selecting financial events posted after (or at) a specified time. The
-     *     date-time **must** be more than two minutes before the time of the request, in [ISO
-     *     8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. (optional)
-     * @param postedBefore A date used for selecting financial events posted before (but not at) a specified time. The
-     *     date-time must be later than &#x60;PostedAfter&#x60; and no later than two minutes before the request was
-     *     submitted, in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. If
-     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, no financial events are
-     *     returned. You must specify the &#x60;PostedAfter&#x60; parameter if you specify the &#x60;PostedBefore&#x60;
-     *     parameter. Default: Now minus two minutes. (optional)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (optional)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1106,8 +1184,11 @@ public class DefaultApi {
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1178,18 +1259,21 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified order. It may take up to 48 hours for orders to appear in your
+     * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ListFinancialEventsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1204,18 +1288,21 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified order. It may take up to 48 hours for orders to appear in your
+     * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ListFinancialEventsResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1228,18 +1315,21 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified order. It may take up to 48 hours for orders to appear in your
+     * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return ApiResponse&lt;ListFinancialEventsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1264,18 +1354,21 @@ public class DefaultApi {
     }
 
     /**
-     * Returns all financial events for the specified order. It may take up to 48 hours for orders to appear in your
+     * Returns all financial events for the specified order. Orders from the last 48 hours might not be included in
      * financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The
      * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
-     * requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @return ApiResponse&lt;ListFinancialEventsResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws LWAException If calls to fetch LWA access token fails
@@ -1286,18 +1379,21 @@ public class DefaultApi {
     }
 
     /**
-     * (asynchronously) Returns all financial events for the specified order. It may take up to 48 hours for orders to
-     * appear in your financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
-     * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
-     * to the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Returns all financial events for the specified order. Orders from the last 48 hours might not be
+     * included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1312,18 +1408,21 @@ public class DefaultApi {
         return listFinancialEventsByOrderIdAsync(orderId, maxResultsPerPage, nextToken, callback, null);
     }
     /**
-     * (asynchronously) Returns all financial events for the specified order. It may take up to 48 hours for orders to
-     * appear in your financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 |
-     * 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied
-     * to the requested operation, when available. The table above indicates the default rate and burst values for this
-     * operation. Selling partners whose business demands require higher throughput may see higher rate and burst values
-     * than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner
-     * API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     * (asynchronously) Returns all financial events for the specified order. Orders from the last 48 hours might not be
+     * included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
      * @param maxResultsPerPage The maximum number of results to return per page. If the response exceeds the maximum
-     *     number of transactions or 10 MB, the API responds with &#x27;InvalidInput&#x27;. (optional, default to 100)
-     * @param nextToken A string token returned in the response of your previous request. (optional)
+     *     number of transactions or 10 MB, the response is &#x60;InvalidInput&#x60;. (optional, default to 100)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @param restrictedDataToken Restricted Data Token (optional)
      * @return The request call
@@ -1359,6 +1458,351 @@ public class DefaultApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("listFinancialEventsByOrderId operation exceeds rate limit");
+    }
+    /**
+     * Build call for listTransactions
+     *
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (required)
+     * @param marketplaceId The ID of the marketplace from which you want to retrieve transactions. (required)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call listTransactionsCall(
+            OffsetDateTime postedAfter,
+            String marketplaceId,
+            OffsetDateTime postedBefore,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/finances/v0/transactions".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/finances/v0/transactions";
+        } else {
+            localVarPath = "/finances/v0/transactions";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (postedAfter != null) localVarQueryParams.addAll(apiClient.parameterToPair("PostedAfter", postedAfter));
+        if (postedBefore != null) localVarQueryParams.addAll(apiClient.parameterToPair("PostedBefore", postedBefore));
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("MarketplaceId", marketplaceId));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("NextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call listTransactionsValidateBeforeCall(
+            OffsetDateTime postedAfter,
+            String marketplaceId,
+            OffsetDateTime postedBefore,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'postedAfter' is set
+        if (postedAfter == null) {
+            throw new ApiException("Missing the required parameter 'postedAfter' when calling listTransactions(Async)");
+        }
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling listTransactions(Async)");
+        }
+
+        return listTransactionsCall(postedAfter, marketplaceId, postedBefore, nextToken, progressRequestListener);
+    }
+
+    /**
+     * Returns transactions for the given parameters. Orders from the last 48 hours might not be included in financial
+     * events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (required)
+     * @param marketplaceId The ID of the marketplace from which you want to retrieve transactions. (required)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ListTransactionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListTransactionsResponse listTransactions(
+            OffsetDateTime postedAfter,
+            String marketplaceId,
+            OffsetDateTime postedBefore,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListTransactionsResponse> resp =
+                listTransactionsWithHttpInfo(postedAfter, marketplaceId, postedBefore, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns transactions for the given parameters. Orders from the last 48 hours might not be included in financial
+     * events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (required)
+     * @param marketplaceId The ID of the marketplace from which you want to retrieve transactions. (required)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @return ListTransactionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ListTransactionsResponse listTransactions(
+            OffsetDateTime postedAfter, String marketplaceId, OffsetDateTime postedBefore, String nextToken)
+            throws ApiException, LWAException {
+        ApiResponse<ListTransactionsResponse> resp =
+                listTransactionsWithHttpInfo(postedAfter, marketplaceId, postedBefore, nextToken, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns transactions for the given parameters. Orders from the last 48 hours might not be included in financial
+     * events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (required)
+     * @param marketplaceId The ID of the marketplace from which you want to retrieve transactions. (required)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ListTransactionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListTransactionsResponse> listTransactionsWithHttpInfo(
+            OffsetDateTime postedAfter,
+            String marketplaceId,
+            OffsetDateTime postedBefore,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call =
+                listTransactionsValidateBeforeCall(postedAfter, marketplaceId, postedBefore, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listTransactions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listTransactionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListTransactionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listTransactions operation exceeds rate limit");
+    }
+
+    /**
+     * Returns transactions for the given parameters. Orders from the last 48 hours might not be included in financial
+     * events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 | The
+     * &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the
+     * requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (required)
+     * @param marketplaceId The ID of the marketplace from which you want to retrieve transactions. (required)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @return ApiResponse&lt;ListTransactionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ListTransactionsResponse> listTransactionsWithHttpInfo(
+            OffsetDateTime postedAfter, String marketplaceId, OffsetDateTime postedBefore, String nextToken)
+            throws ApiException, LWAException {
+        return listTransactionsWithHttpInfo(postedAfter, marketplaceId, postedBefore, nextToken, null);
+    }
+
+    /**
+     * (asynchronously) Returns transactions for the given parameters. Orders from the last 48 hours might not be
+     * included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (required)
+     * @param marketplaceId The ID of the marketplace from which you want to retrieve transactions. (required)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listTransactionsAsync(
+            OffsetDateTime postedAfter,
+            String marketplaceId,
+            OffsetDateTime postedBefore,
+            String nextToken,
+            final ApiCallback<ListTransactionsResponse> callback)
+            throws ApiException, LWAException {
+        return listTransactionsAsync(postedAfter, marketplaceId, postedBefore, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Returns transactions for the given parameters. Orders from the last 48 hours might not be
+     * included in financial events. **Usage Plan:** | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 10 |
+     * The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to
+     * the requested operation, when available. The preceding table contains the default rate and burst values for this
+     * operation. Selling partners whose business demands require higher throughput can have higher rate and burst
+     * values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits).
+     *
+     * @param postedAfter The response includes financial events posted after (or on) this date. This date must be in
+     *     [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must be
+     *     more than two minutes before the time of the request. (required)
+     * @param marketplaceId The ID of the marketplace from which you want to retrieve transactions. (required)
+     * @param postedBefore The response includes financial events posted before (but not on) this date. This date must
+     *     be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The date-time must
+     *     be later than &#x60;PostedAfter&#x60; and more than two minutes before the request was submitted. If
+     *     &#x60;PostedAfter&#x60; and &#x60;PostedBefore&#x60; are more than 180 days apart, the response is empty. If
+     *     you include the &#x60;PostedBefore&#x60; parameter in your request, you must also specify the
+     *     &#x60;PostedAfter&#x60; parameter. **Default:** Two minutes before the time of the request. (optional)
+     * @param nextToken The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified
+     *     &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include
+     *     the same arguments as the call that produced the token. To get a complete list, call this operation until
+     *     &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listTransactionsAsync(
+            OffsetDateTime postedAfter,
+            String marketplaceId,
+            OffsetDateTime postedBefore,
+            String nextToken,
+            final ApiCallback<ListTransactionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = listTransactionsValidateBeforeCall(
+                postedAfter, marketplaceId, postedBefore, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "DefaultApi-listTransactions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listTransactionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ListTransactionsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listTransactions operation exceeds rate limit");
     }
 
     public static class Builder {

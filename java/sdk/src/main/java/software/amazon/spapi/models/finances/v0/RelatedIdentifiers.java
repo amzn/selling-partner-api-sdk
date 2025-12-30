@@ -16,9 +16,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/** A list of &#x60;TDSReimbursementEvent&#x60; items. */
-@Schema(description = "A list of `TDSReimbursementEvent` items.")
-public class TDSReimbursementEventList extends ArrayList<TDSReimbursementEvent> {
+/** Related business identifiers of the transaction. */
+@Schema(description = "Related business identifiers of the transaction.")
+public class RelatedIdentifiers extends ArrayList<RelatedIdentifier> {
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -39,7 +39,7 @@ public class TDSReimbursementEventList extends ArrayList<TDSReimbursementEvent> 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class TDSReimbursementEventList {\n");
+        sb.append("class RelatedIdentifiers {\n");
         sb.append("    ").append(toIndentedString(super.toString())).append("\n");
         sb.append("}");
         return sb.toString();

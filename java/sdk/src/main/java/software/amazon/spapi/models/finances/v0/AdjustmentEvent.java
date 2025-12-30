@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -41,24 +41,25 @@ public class AdjustmentEvent {
     }
 
     /**
-     * The type of adjustment. Possible values: * FBAInventoryReimbursement - An FBA inventory reimbursement to a
-     * seller&#x27;s account. This occurs if a seller&#x27;s inventory is damaged. * ReserveEvent - A reserve event that
-     * is generated at the time of a settlement period closing. This occurs when some money from a seller&#x27;s account
-     * is held back. * PostageBilling - The amount paid by a seller for shipping labels. * PostageRefund - The
-     * reimbursement of shipping labels purchased for orders that were canceled or refunded. *
-     * LostOrDamagedReimbursement - An Amazon Easy Ship reimbursement to a seller&#x27;s account for a package that we
-     * lost or damaged. * CanceledButPickedUpReimbursement - An Amazon Easy Ship reimbursement to a seller&#x27;s
-     * account. This occurs when a package is picked up and the order is subsequently canceled. This value is used only
-     * in the India marketplace. * ReimbursementClawback - An Amazon Easy Ship reimbursement clawback from a
-     * seller&#x27;s account. This occurs when a prior reimbursement is reversed. This value is used only in the India
-     * marketplace. * SellerRewards - An award credited to a seller&#x27;s account for their participation in an offer
-     * in the Seller Rewards program. Applies only to the India marketplace.
+     * The type of adjustment. Possible values: * &#x60;FBAInventoryReimbursement&#x60;: An FBA inventory reimbursement
+     * to a seller&#x27;s account. This occurs if a seller&#x27;s inventory is damaged. * &#x60;ReserveEvent&#x60;: A
+     * reserve event that is generated at the time a settlement period closes. This occurs when some money from a
+     * seller&#x27;s account is held back. * &#x60;PostageBilling&#x60;: The amount paid by a seller for shipping
+     * labels. * &#x60;PostageRefund&#x60;: The reimbursement of shipping labels purchased for orders that were canceled
+     * or refunded. * &#x60;LostOrDamagedReimbursement&#x60;: An Amazon Easy Ship reimbursement to a seller&#x27;s
+     * account for a package that we lost or damaged. * &#x60;CanceledButPickedUpReimbursement&#x60;: An Amazon Easy
+     * Ship reimbursement to a seller&#x27;s account. This occurs when a package is picked up and the order is
+     * subsequently canceled. This value is used only in the India marketplace. * &#x60;ReimbursementClawback&#x60;: An
+     * Amazon Easy Ship reimbursement clawback from a seller&#x27;s account. This occurs when a prior reimbursement is
+     * reversed. This value is used only in the India marketplace. * &#x60;SellerRewards&#x60;: An award credited to a
+     * seller&#x27;s account for their participation in an offer in the Seller Rewards program. Applies only to the
+     * India marketplace.
      *
      * @return adjustmentType
      */
     @Schema(
             description =
-                    "The type of adjustment.  Possible values:  * FBAInventoryReimbursement - An FBA inventory reimbursement to a seller's account. This occurs if a seller's inventory is damaged.  * ReserveEvent - A reserve event that is generated at the time of a settlement period closing. This occurs when some money from a seller's account is held back.  * PostageBilling - The amount paid by a seller for shipping labels.  * PostageRefund - The reimbursement of shipping labels purchased for orders that were canceled or refunded.  * LostOrDamagedReimbursement - An Amazon Easy Ship reimbursement to a seller's account for a package that we lost or damaged.  * CanceledButPickedUpReimbursement - An Amazon Easy Ship reimbursement to a seller's account. This occurs when a package is picked up and the order is subsequently canceled. This value is used only in the India marketplace.  * ReimbursementClawback - An Amazon Easy Ship reimbursement clawback from a seller's account. This occurs when a prior reimbursement is reversed. This value is used only in the India marketplace.  * SellerRewards - An award credited to a seller's account for their participation in an offer in the Seller Rewards program. Applies only to the India marketplace.")
+                    "The type of adjustment.  Possible values:  * `FBAInventoryReimbursement`: An FBA inventory reimbursement to a seller's account. This occurs if a seller's inventory is damaged. * `ReserveEvent`: A reserve event that is generated at the time a settlement period closes. This occurs when some money from a seller's account is held back. * `PostageBilling`: The amount paid by a seller for shipping labels. * `PostageRefund`: The reimbursement of shipping labels purchased for orders that were canceled or refunded. * `LostOrDamagedReimbursement`: An Amazon Easy Ship reimbursement to a seller's account for a package that we lost or damaged. * `CanceledButPickedUpReimbursement`: An Amazon Easy Ship reimbursement to a seller's account. This occurs when a package is picked up and the order is subsequently canceled. This value is used only in the India marketplace. * `ReimbursementClawback`: An Amazon Easy Ship reimbursement clawback from a seller's account. This occurs when a prior reimbursement is reversed. This value is used only in the India marketplace. * `SellerRewards`: An award credited to a seller's account for their participation in an offer in the Seller Rewards program. Applies only to the India marketplace.")
     public String getAdjustmentType() {
         return adjustmentType;
     }

@@ -16,16 +16,16 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The payload for the &#x60;listFinancialEvents&#x60; operation. */
-@Schema(description = "The payload for the `listFinancialEvents` operation.")
-public class ListFinancialEventsPayload {
+/** The payload for the &#x60;listTransactions&#x60; operation. */
+@Schema(description = "The payload for the `listTransactions` operation.")
+public class ListTransactionsPayload {
     @SerializedName("NextToken")
     private String nextToken = null;
 
-    @SerializedName("FinancialEvents")
-    private FinancialEvents financialEvents = null;
+    @SerializedName("Transactions")
+    private Transactions transactions = null;
 
-    public ListFinancialEventsPayload nextToken(String nextToken) {
+    public ListTransactionsPayload nextToken(String nextToken) {
         this.nextToken = nextToken;
         return this;
     }
@@ -46,23 +46,23 @@ public class ListFinancialEventsPayload {
         this.nextToken = nextToken;
     }
 
-    public ListFinancialEventsPayload financialEvents(FinancialEvents financialEvents) {
-        this.financialEvents = financialEvents;
+    public ListTransactionsPayload transactions(Transactions transactions) {
+        this.transactions = transactions;
         return this;
     }
 
     /**
-     * Get financialEvents
+     * Get transactions
      *
-     * @return financialEvents
+     * @return transactions
      */
     @Schema(description = "")
-    public FinancialEvents getFinancialEvents() {
-        return financialEvents;
+    public Transactions getTransactions() {
+        return transactions;
     }
 
-    public void setFinancialEvents(FinancialEvents financialEvents) {
-        this.financialEvents = financialEvents;
+    public void setTransactions(Transactions transactions) {
+        this.transactions = transactions;
     }
 
     @Override
@@ -73,25 +73,23 @@ public class ListFinancialEventsPayload {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ListFinancialEventsPayload listFinancialEventsPayload = (ListFinancialEventsPayload) o;
-        return Objects.equals(this.nextToken, listFinancialEventsPayload.nextToken)
-                && Objects.equals(this.financialEvents, listFinancialEventsPayload.financialEvents);
+        ListTransactionsPayload listTransactionsPayload = (ListTransactionsPayload) o;
+        return Objects.equals(this.nextToken, listTransactionsPayload.nextToken)
+                && Objects.equals(this.transactions, listTransactionsPayload.transactions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nextToken, financialEvents);
+        return Objects.hash(nextToken, transactions);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ListFinancialEventsPayload {\n");
+        sb.append("class ListTransactionsPayload {\n");
 
         sb.append("    nextToken: ").append(toIndentedString(nextToken)).append("\n");
-        sb.append("    financialEvents: ")
-                .append(toIndentedString(financialEvents))
-                .append("\n");
+        sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
         sb.append("}");
         return sb.toString();
     }

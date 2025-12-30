@@ -16,51 +16,51 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** The charge refund transaction. */
-@Schema(description = "The charge refund transaction.")
-public class ChargeRefundTransaction {
-    @SerializedName("ChargeAmount")
-    private Currency chargeAmount = null;
+/** The response schema for the &#x60;listTransactions&#x60; operation. */
+@Schema(description = "The response schema for the `listTransactions` operation.")
+public class ListTransactionsResponse {
+    @SerializedName("payload")
+    private ListTransactionsPayload payload = null;
 
-    @SerializedName("ChargeType")
-    private String chargeType = null;
+    @SerializedName("errors")
+    private ErrorList errors = null;
 
-    public ChargeRefundTransaction chargeAmount(Currency chargeAmount) {
-        this.chargeAmount = chargeAmount;
+    public ListTransactionsResponse payload(ListTransactionsPayload payload) {
+        this.payload = payload;
         return this;
     }
 
     /**
-     * Get chargeAmount
+     * Get payload
      *
-     * @return chargeAmount
+     * @return payload
      */
     @Schema(description = "")
-    public Currency getChargeAmount() {
-        return chargeAmount;
+    public ListTransactionsPayload getPayload() {
+        return payload;
     }
 
-    public void setChargeAmount(Currency chargeAmount) {
-        this.chargeAmount = chargeAmount;
+    public void setPayload(ListTransactionsPayload payload) {
+        this.payload = payload;
     }
 
-    public ChargeRefundTransaction chargeType(String chargeType) {
-        this.chargeType = chargeType;
+    public ListTransactionsResponse errors(ErrorList errors) {
+        this.errors = errors;
         return this;
     }
 
     /**
-     * The type of charge.
+     * Get errors
      *
-     * @return chargeType
+     * @return errors
      */
-    @Schema(description = "The type of charge.")
-    public String getChargeType() {
-        return chargeType;
+    @Schema(description = "")
+    public ErrorList getErrors() {
+        return errors;
     }
 
-    public void setChargeType(String chargeType) {
-        this.chargeType = chargeType;
+    public void setErrors(ErrorList errors) {
+        this.errors = errors;
     }
 
     @Override
@@ -71,23 +71,23 @@ public class ChargeRefundTransaction {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ChargeRefundTransaction chargeRefundTransaction = (ChargeRefundTransaction) o;
-        return Objects.equals(this.chargeAmount, chargeRefundTransaction.chargeAmount)
-                && Objects.equals(this.chargeType, chargeRefundTransaction.chargeType);
+        ListTransactionsResponse listTransactionsResponse = (ListTransactionsResponse) o;
+        return Objects.equals(this.payload, listTransactionsResponse.payload)
+                && Objects.equals(this.errors, listTransactionsResponse.errors);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chargeAmount, chargeType);
+        return Objects.hash(payload, errors);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ChargeRefundTransaction {\n");
+        sb.append("class ListTransactionsResponse {\n");
 
-        sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
-        sb.append("    chargeType: ").append(toIndentedString(chargeType)).append("\n");
+        sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
+        sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
         sb.append("}");
         return sb.toString();
     }

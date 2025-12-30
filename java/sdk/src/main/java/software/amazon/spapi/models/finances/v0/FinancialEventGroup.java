@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -79,13 +79,13 @@ public class FinancialEventGroup {
 
     /**
      * The processing status of the financial event group indicates whether the balance of the financial event group is
-     * settled. Possible values: * Open * Closed
+     * settled. Possible values: * &#x60;Open&#x60; * &#x60;Closed&#x60;
      *
      * @return processingStatus
      */
     @Schema(
             description =
-                    "The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * Open  * Closed")
+                    "The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * `Open` * `Closed`")
     public String getProcessingStatus() {
         return processingStatus;
     }

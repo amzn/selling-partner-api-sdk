@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -16,8 +16,8 @@ import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
 
-/** Contains all information related to a financial event. */
-@Schema(description = "Contains all information related to a financial event.")
+/** All the information that is related to a financial event. */
+@Schema(description = "All the information that is related to a financial event.")
 public class FinancialEvents {
     @SerializedName("ShipmentEventList")
     private ShipmentEventList shipmentEventList = null;
@@ -30,6 +30,9 @@ public class FinancialEvents {
 
     @SerializedName("GuaranteeClaimEventList")
     private ShipmentEventList guaranteeClaimEventList = null;
+
+    @SerializedName("EBTRefundReimbursementOnlyEventList")
+    private EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList = null;
 
     @SerializedName("ChargebackEventList")
     private ShipmentEventList chargebackEventList = null;
@@ -192,6 +195,27 @@ public class FinancialEvents {
 
     public void setGuaranteeClaimEventList(ShipmentEventList guaranteeClaimEventList) {
         this.guaranteeClaimEventList = guaranteeClaimEventList;
+    }
+
+    public FinancialEvents ebTRefundReimbursementOnlyEventList(
+            EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList) {
+        this.ebTRefundReimbursementOnlyEventList = ebTRefundReimbursementOnlyEventList;
+        return this;
+    }
+
+    /**
+     * Get ebTRefundReimbursementOnlyEventList
+     *
+     * @return ebTRefundReimbursementOnlyEventList
+     */
+    @Schema(description = "")
+    public EBTRefundReimbursementOnlyEventList getEbTRefundReimbursementOnlyEventList() {
+        return ebTRefundReimbursementOnlyEventList;
+    }
+
+    public void setEbTRefundReimbursementOnlyEventList(
+            EBTRefundReimbursementOnlyEventList ebTRefundReimbursementOnlyEventList) {
+        this.ebTRefundReimbursementOnlyEventList = ebTRefundReimbursementOnlyEventList;
     }
 
     public FinancialEvents chargebackEventList(ShipmentEventList chargebackEventList) {
@@ -771,6 +795,8 @@ public class FinancialEvents {
                 && Objects.equals(this.shipmentSettleEventList, financialEvents.shipmentSettleEventList)
                 && Objects.equals(this.refundEventList, financialEvents.refundEventList)
                 && Objects.equals(this.guaranteeClaimEventList, financialEvents.guaranteeClaimEventList)
+                && Objects.equals(
+                        this.ebTRefundReimbursementOnlyEventList, financialEvents.ebTRefundReimbursementOnlyEventList)
                 && Objects.equals(this.chargebackEventList, financialEvents.chargebackEventList)
                 && Objects.equals(this.payWithAmazonEventList, financialEvents.payWithAmazonEventList)
                 && Objects.equals(this.serviceProviderCreditEventList, financialEvents.serviceProviderCreditEventList)
@@ -819,6 +845,7 @@ public class FinancialEvents {
                 shipmentSettleEventList,
                 refundEventList,
                 guaranteeClaimEventList,
+                ebTRefundReimbursementOnlyEventList,
                 chargebackEventList,
                 payWithAmazonEventList,
                 serviceProviderCreditEventList,
@@ -866,6 +893,9 @@ public class FinancialEvents {
                 .append("\n");
         sb.append("    guaranteeClaimEventList: ")
                 .append(toIndentedString(guaranteeClaimEventList))
+                .append("\n");
+        sb.append("    ebTRefundReimbursementOnlyEventList: ")
+                .append(toIndentedString(ebTRefundReimbursementOnlyEventList))
                 .append("\n");
         sb.append("    chargebackEventList: ")
                 .append(toIndentedString(chargebackEventList))
