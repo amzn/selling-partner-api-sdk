@@ -66,6 +66,16 @@ class TestFinancesV0Api(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_list_transactions(self):
+        posted_after = self._get_random_value("datetime", None)
+        marketplace_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("financesV0".casefold().replace(' ', ''), self.to_camel_case("list_transactions"), "200")
+        response = self.api.list_transactions_with_http_info(posted_after, marketplace_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
 
     def instruct_backend_mock(self, api: str, response: str, code: str) -> None:
         if api == "financesv0" or api == "financesv2024" or api == "transfers":
