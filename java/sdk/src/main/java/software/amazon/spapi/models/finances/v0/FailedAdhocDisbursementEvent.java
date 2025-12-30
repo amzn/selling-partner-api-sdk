@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -47,11 +47,11 @@ public class FailedAdhocDisbursementEvent {
     }
 
     /**
-     * The type of fund transfer. Example \&quot;Refund\&quot;
+     * The type of fund transfer. For example, &#x60;Refund&#x60;.
      *
      * @return fundsTransfersType
      */
-    @Schema(description = "The type of fund transfer.   Example \"Refund\"")
+    @Schema(description = "The type of fund transfer. For example, `Refund`.")
     public String getFundsTransfersType() {
         return fundsTransfersType;
     }
@@ -104,11 +104,11 @@ public class FailedAdhocDisbursementEvent {
     }
 
     /**
-     * The type of payment for disbursement. Example &#x60;CREDIT_CARD&#x60;
+     * The type of payment for disbursement. For example, &#x60;CREDIT_CARD&#x60;.
      *
      * @return paymentDisbursementType
      */
-    @Schema(description = "The type of payment for disbursement.   Example `CREDIT_CARD`")
+    @Schema(description = "The type of payment for disbursement. For example, `CREDIT_CARD`.")
     public String getPaymentDisbursementType() {
         return paymentDisbursementType;
     }
@@ -123,11 +123,11 @@ public class FailedAdhocDisbursementEvent {
     }
 
     /**
-     * The status of the failed &#x60;AdhocDisbursement&#x60;. Example &#x60;HARD_DECLINED&#x60;
+     * The status of the failed &#x60;AdhocDisbursement&#x60;. For example, &#x60;HARD_DECLINED&#x60;.
      *
      * @return status
      */
-    @Schema(description = "The status of the failed `AdhocDisbursement`.   Example `HARD_DECLINED`")
+    @Schema(description = "The status of the failed `AdhocDisbursement`. For example, `HARD_DECLINED`.")
     public String getStatus() {
         return status;
     }

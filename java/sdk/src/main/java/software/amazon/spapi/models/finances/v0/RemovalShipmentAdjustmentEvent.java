@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -129,11 +129,11 @@ public class RemovalShipmentAdjustmentEvent {
     }
 
     /**
-     * The type of removal order. Possible values: * WHOLESALE_LIQUIDATION.
+     * The type of removal order. Possible values: * &#x60;WHOLESALE_LIQUIDATION&#x60;.
      *
      * @return transactionType
      */
-    @Schema(description = "The type of removal order.  Possible values:  * WHOLESALE_LIQUIDATION.")
+    @Schema(description = "The type of removal order.  Possible values:  * `WHOLESALE_LIQUIDATION`.")
     public String getTransactionType() {
         return transactionType;
     }
@@ -158,11 +158,11 @@ public class RemovalShipmentAdjustmentEvent {
     }
 
     /**
-     * A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.
+     * A comma-delimited list of &#x60;RemovalShipmentItemAdjustment&#x60; details for FBA inventory.
      *
      * @return removalShipmentItemAdjustmentList
      */
-    @Schema(description = "A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.")
+    @Schema(description = "A comma-delimited list of `RemovalShipmentItemAdjustment` details for FBA inventory.")
     public List<RemovalShipmentItemAdjustment> getRemovalShipmentItemAdjustmentList() {
         return removalShipmentItemAdjustmentList;
     }

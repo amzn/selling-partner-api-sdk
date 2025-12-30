@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -28,6 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventGroupsResponse;
 import software.amazon.spapi.models.finances.v0.ListFinancialEventsResponse;
+import software.amazon.spapi.models.finances.v0.ListTransactionsResponse;
 
 public class DefaultApiTest {
 
@@ -90,6 +91,19 @@ public class DefaultApiTest {
 
         ApiResponse<ListFinancialEventsResponse> response =
                 api.listFinancialEventsByOrderIdWithHttpInfo(orderId, null, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void listTransactionsTest() throws Exception {
+        instructBackendMock("default", "listTransactions", "200");
+        OffsetDateTime postedAfter = easyRandom.nextObject(OffsetDateTime.class);
+        String marketplaceId = easyRandom.nextObject(String.class);
+
+        ApiResponse<ListTransactionsResponse> response =
+                api.listTransactionsWithHttpInfo(postedAfter, marketplaceId, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

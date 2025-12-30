@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -50,15 +50,15 @@ public class NetworkComminglingTransactionEvent {
     }
 
     /**
-     * The type of network item swap. Possible values: * NetCo - A Fulfillment by Amazon inventory pooling transaction.
-     * Available only in the India marketplace. * ComminglingVAT - A commingling VAT transaction. Available only in the
-     * UK, Spain, France, Germany, and Italy marketplaces.
+     * The type of network item swap. Possible values: * &#x60;NetCo&#x60;: A Fulfillment by Amazon inventory pooling
+     * transaction. Available only in the India marketplace. * &#x60;ComminglingVAT&#x60;: A commingling VAT
+     * transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.
      *
      * @return transactionType
      */
     @Schema(
             description =
-                    "The type of network item swap.  Possible values:  * NetCo - A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * ComminglingVAT - A commingling VAT transaction. Available only in the UK, Spain, France, Germany, and Italy marketplaces.")
+                    "The type of network item swap.  Possible values:  * `NetCo`: A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * `ComminglingVAT`: A commingling VAT transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.")
     public String getTransactionType() {
         return transactionType;
     }

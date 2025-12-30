@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -63,13 +63,14 @@ public class ProductAdsPaymentEvent {
     }
 
     /**
-     * Indicates if the transaction is for a charge or a refund. Possible values: * charge - Charge * refund - Refund
+     * Indicates if the transaction is for a charge or a refund. Possible values: * &#x60;charge&#x60; *
+     * &#x60;refund&#x60;
      *
      * @return transactionType
      */
     @Schema(
             description =
-                    "Indicates if the transaction is for a charge or a refund.  Possible values:  * charge - Charge  * refund - Refund")
+                    "Indicates if the transaction is for a charge or a refund.  Possible values:  * `charge`  * `refund`")
     public String getTransactionType() {
         return transactionType;
     }
@@ -84,11 +85,11 @@ public class ProductAdsPaymentEvent {
     }
 
     /**
-     * Identifier for the invoice that the transaction appears in.
+     * The identifier for the invoice that includes the transaction.
      *
      * @return invoiceId
      */
-    @Schema(description = "Identifier for the invoice that the transaction appears in.")
+    @Schema(description = "The identifier for the invoice that includes the transaction.")
     public String getInvoiceId() {
         return invoiceId;
     }

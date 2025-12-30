@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -57,11 +57,11 @@ public class ChargeRefundEvent {
     }
 
     /**
-     * The reason given for a charge refund. Example: &#x60;SubscriptionFeeCorrection&#x60;
+     * The reason given for a charge refund. For example, &#x60;SubscriptionFeeCorrection&#x60;.
      *
      * @return reasonCode
      */
-    @Schema(description = "The reason given for a charge refund.  Example: `SubscriptionFeeCorrection`")
+    @Schema(description = "The reason given for a charge refund. For example, `SubscriptionFeeCorrection`.")
     public String getReasonCode() {
         return reasonCode;
     }
@@ -76,11 +76,11 @@ public class ChargeRefundEvent {
     }
 
     /**
-     * A description of the Reason Code. Example: &#x60;SubscriptionFeeCorrection&#x60;
+     * A description of the Reason Code. For example, &#x60;SubscriptionFeeCorrection&#x60;.
      *
      * @return reasonCodeDescription
      */
-    @Schema(description = "A description of the Reason Code.   Example: `SubscriptionFeeCorrection`")
+    @Schema(description = "A description of the Reason Code. For example, `SubscriptionFeeCorrection`.")
     public String getReasonCodeDescription() {
         return reasonCodeDescription;
     }

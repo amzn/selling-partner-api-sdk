@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -91,11 +91,11 @@ public class AffordabilityExpenseEvent {
     }
 
     /**
-     * An encrypted, Amazon-defined marketplace identifier.
+     * The Amazon-defined marketplace identifier.
      *
      * @return marketplaceId
      */
-    @Schema(description = "An encrypted, Amazon-defined marketplace identifier.")
+    @Schema(description = "The Amazon-defined marketplace identifier.")
     public String getMarketplaceId() {
         return marketplaceId;
     }
@@ -110,14 +110,14 @@ public class AffordabilityExpenseEvent {
     }
 
     /**
-     * Indicates the type of transaction. Possible values: * Charge - For an affordability promotion expense. * Refund -
-     * For an affordability promotion expense reversal.
+     * The type of transaction. Possible values: * &#x60;Charge&#x60;: an affordability promotion expense. *
+     * &#x60;Refund&#x60;: an affordability promotion expense reversal.
      *
      * @return transactionType
      */
     @Schema(
             description =
-                    "Indicates the type of transaction.   Possible values:  * Charge - For an affordability promotion expense.  * Refund - For an affordability promotion expense reversal.")
+                    "The type of transaction.   Possible values:  * `Charge`: an affordability promotion expense. * `Refund`: an affordability promotion expense reversal.")
     public String getTransactionType() {
         return transactionType;
     }
