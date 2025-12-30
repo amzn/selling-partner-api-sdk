@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * The version of the OpenAPI document: v0
  *
@@ -70,7 +70,7 @@ export class RemovalShipmentItemAdjustment {
 RemovalShipmentItemAdjustment.prototype.removalShipmentItemId = undefined
 
 /**
- * The tax collection model applied to the item.  Possible values:  * MarketplaceFacilitator - Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller.  * Standard - Tax is paid to the seller and not remitted to the taxing authority by Amazon.
+ * The tax collection model that is applied to the item.  Possible values:  * `MarketplaceFacilitator`: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * `Standard`: Tax is paid to the seller and not remitted to the taxing authority by Amazon.
  * @member {String} taxCollectionModel
  * @type {String}
  */
@@ -84,7 +84,7 @@ RemovalShipmentItemAdjustment.prototype.taxCollectionModel = undefined
 RemovalShipmentItemAdjustment.prototype.fulfillmentNetworkSKU = undefined
 
 /**
- * Adjusted quantity of removal shipmentItemAdjustment items.
+ * Adjusted quantity of `RemovalShipmentItemAdjustment` items.
  * @member {Number} adjustedQuantity
  * @type {Number}
  */

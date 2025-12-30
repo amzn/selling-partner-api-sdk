@@ -13,7 +13,7 @@ export class RemovalShipmentAdjustmentEvent {
      */
     static constructFromObject(data: any, obj: RemovalShipmentAdjustmentEvent): RemovalShipmentAdjustmentEvent;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
@@ -37,13 +37,13 @@ export class RemovalShipmentAdjustmentEvent {
      */
     orderId: string;
     /**
-     * The type of removal order.  Possible values:  * WHOLESALE_LIQUIDATION.
+     * The type of removal order.  Possible values:  * `WHOLESALE_LIQUIDATION`.
      * @member {String} transactionType
      * @type {String}
      */
     transactionType: string;
     /**
-     * A comma-delimited list of Removal shipmentItemAdjustment details for FBA inventory.
+     * A comma-delimited list of `RemovalShipmentItemAdjustment` details for FBA inventory.
      * @member {[RemovalShipmentItemAdjustment]} removalShipmentItemAdjustmentList
      * @type {[RemovalShipmentItemAdjustment]}
      */

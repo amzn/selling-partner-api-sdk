@@ -32,19 +32,19 @@ export class AffordabilityExpenseEvent {
      */
     amazonOrderId: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
     postedDate: Date;
     /**
-     * An encrypted, Amazon-defined marketplace identifier.
+     * The Amazon-defined marketplace identifier.
      * @member {String} marketplaceId
      * @type {String}
      */
     marketplaceId: string;
     /**
-     * Indicates the type of transaction.   Possible values:  * Charge - For an affordability promotion expense.  * Refund - For an affordability promotion expense reversal.
+     * The type of transaction.   Possible values:  * `Charge`: an affordability promotion expense. * `Refund`: an affordability promotion expense reversal.
      * @member {String} transactionType
      * @type {String}
      */

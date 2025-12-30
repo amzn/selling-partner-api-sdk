@@ -13,7 +13,7 @@ export class FailedAdhocDisbursementEvent {
      */
     static constructFromObject(data: any, obj: FailedAdhocDisbursementEvent): FailedAdhocDisbursementEvent;
     /**
-     * The type of fund transfer.   Example \"Refund\"
+     * The type of fund transfer. For example, `Refund`.
      * @member {String} fundsTransfersType
      * @type {String}
      */
@@ -31,13 +31,13 @@ export class FailedAdhocDisbursementEvent {
      */
     disbursementId: string;
     /**
-     * The type of payment for disbursement.   Example `CREDIT_CARD`
+     * The type of payment for disbursement. For example, `CREDIT_CARD`.
      * @member {String} paymentDisbursementType
      * @type {String}
      */
     paymentDisbursementType: string;
     /**
-     * The status of the failed `AdhocDisbursement`.   Example `HARD_DECLINED`
+     * The status of the failed `AdhocDisbursement`. For example, `HARD_DECLINED`.
      * @member {String} status
      * @type {String}
      */
@@ -48,7 +48,7 @@ export class FailedAdhocDisbursementEvent {
      */
     transferAmount: Currency;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */

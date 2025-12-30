@@ -13,13 +13,13 @@ export class ValueAddedServiceChargeEvent {
      */
     static constructFromObject(data: any, obj: ValueAddedServiceChargeEvent): ValueAddedServiceChargeEvent;
     /**
-     * Indicates the type of transaction.  Example: 'Other Support Service fees'
+     * The transaction type. For example, 'Other Support Service fees'
      * @member {String} transactionType
      * @type {String}
      */
     transactionType: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */

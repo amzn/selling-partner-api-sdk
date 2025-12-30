@@ -13,13 +13,13 @@ export class CapacityReservationBillingEvent {
      */
     static constructFromObject(data: any, obj: CapacityReservationBillingEvent): CapacityReservationBillingEvent;
     /**
-     * Indicates the type of transaction. For example, FBA Inventory Fee
+     * The transaction type. For example, FBA Inventory Fee.
      * @member {String} transactionType
      * @type {String}
      */
     transactionType: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */

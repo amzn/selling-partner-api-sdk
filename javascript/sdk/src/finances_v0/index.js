@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * The version of the OpenAPI document: v0
  *
@@ -26,6 +26,7 @@ import { Currency } from './model/Currency.js'
 import { DebtRecoveryEvent } from './model/DebtRecoveryEvent.js'
 import { DebtRecoveryItem } from './model/DebtRecoveryItem.js'
 import { DirectPayment } from './model/DirectPayment.js'
+import { EBTRefundReimbursementOnlyEvent } from './model/EBTRefundReimbursementOnlyEvent.js'
 import { Error } from './model/Error.js'
 import { FBALiquidationEvent } from './model/FBALiquidationEvent.js'
 import { FailedAdhocDisbursementEvent } from './model/FailedAdhocDisbursementEvent.js'
@@ -37,11 +38,14 @@ import { ListFinancialEventGroupsPayload } from './model/ListFinancialEventGroup
 import { ListFinancialEventGroupsResponse } from './model/ListFinancialEventGroupsResponse.js'
 import { ListFinancialEventsPayload } from './model/ListFinancialEventsPayload.js'
 import { ListFinancialEventsResponse } from './model/ListFinancialEventsResponse.js'
+import { ListTransactionsPayload } from './model/ListTransactionsPayload.js'
+import { ListTransactionsResponse } from './model/ListTransactionsResponse.js'
 import { LoanServicingEvent } from './model/LoanServicingEvent.js'
 import { NetworkComminglingTransactionEvent } from './model/NetworkComminglingTransactionEvent.js'
 import { PayWithAmazonEvent } from './model/PayWithAmazonEvent.js'
 import { ProductAdsPaymentEvent } from './model/ProductAdsPaymentEvent.js'
 import { Promotion } from './model/Promotion.js'
+import { RelatedIdentifier } from './model/RelatedIdentifier.js'
 import { RemovalShipmentAdjustmentEvent } from './model/RemovalShipmentAdjustmentEvent.js'
 import { RemovalShipmentEvent } from './model/RemovalShipmentEvent.js'
 import { RemovalShipmentItem } from './model/RemovalShipmentItem.js'
@@ -52,6 +56,7 @@ import { SAFETReimbursementEvent } from './model/SAFETReimbursementEvent.js'
 import { SAFETReimbursementItem } from './model/SAFETReimbursementItem.js'
 import { SellerDealPaymentEvent } from './model/SellerDealPaymentEvent.js'
 import { SellerReviewEnrollmentPaymentEvent } from './model/SellerReviewEnrollmentPaymentEvent.js'
+import { SellingPartnerMetadata } from './model/SellingPartnerMetadata.js'
 import { ServiceFeeEvent } from './model/ServiceFeeEvent.js'
 import { ShipmentEvent } from './model/ShipmentEvent.js'
 import { ShipmentItem } from './model/ShipmentItem.js'
@@ -60,12 +65,13 @@ import { TDSReimbursementEvent } from './model/TDSReimbursementEvent.js'
 import { TaxWithheldComponent } from './model/TaxWithheldComponent.js'
 import { TaxWithholdingEvent } from './model/TaxWithholdingEvent.js'
 import { TaxWithholdingPeriod } from './model/TaxWithholdingPeriod.js'
+import { Transaction } from './model/Transaction.js'
 import { TrialShipmentEvent } from './model/TrialShipmentEvent.js'
 import { ValueAddedServiceChargeEvent } from './model/ValueAddedServiceChargeEvent.js'
 import { DefaultApi } from './api/DefaultApi.js'
 
 /**
-* The Selling Partner API for Finances helps you obtain financial information relevant to a seller&#39;s business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range..<br>
+* The Selling Partner API for Finances provides financial information that is relevant to a seller&#39;s business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range. .<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * @module finances_v0/index
 * @version v0
@@ -162,6 +168,12 @@ export {
   DirectPayment,
 
   /**
+     * The EBTRefundReimbursementOnlyEvent model constructor.
+     * @property {module:finances_v0/model/EBTRefundReimbursementOnlyEvent}
+     */
+  EBTRefundReimbursementOnlyEvent,
+
+  /**
      * The Error model constructor.
      * @property {module:finances_v0/model/Error}
      */
@@ -228,6 +240,18 @@ export {
   ListFinancialEventsResponse,
 
   /**
+     * The ListTransactionsPayload model constructor.
+     * @property {module:finances_v0/model/ListTransactionsPayload}
+     */
+  ListTransactionsPayload,
+
+  /**
+     * The ListTransactionsResponse model constructor.
+     * @property {module:finances_v0/model/ListTransactionsResponse}
+     */
+  ListTransactionsResponse,
+
+  /**
      * The LoanServicingEvent model constructor.
      * @property {module:finances_v0/model/LoanServicingEvent}
      */
@@ -256,6 +280,12 @@ export {
      * @property {module:finances_v0/model/Promotion}
      */
   Promotion,
+
+  /**
+     * The RelatedIdentifier model constructor.
+     * @property {module:finances_v0/model/RelatedIdentifier}
+     */
+  RelatedIdentifier,
 
   /**
      * The RemovalShipmentAdjustmentEvent model constructor.
@@ -318,6 +348,12 @@ export {
   SellerReviewEnrollmentPaymentEvent,
 
   /**
+     * The SellingPartnerMetadata model constructor.
+     * @property {module:finances_v0/model/SellingPartnerMetadata}
+     */
+  SellingPartnerMetadata,
+
+  /**
      * The ServiceFeeEvent model constructor.
      * @property {module:finances_v0/model/ServiceFeeEvent}
      */
@@ -364,6 +400,12 @@ export {
      * @property {module:finances_v0/model/TaxWithholdingPeriod}
      */
   TaxWithholdingPeriod,
+
+  /**
+     * The Transaction model constructor.
+     * @property {module:finances_v0/model/Transaction}
+     */
+  Transaction,
 
   /**
      * The TrialShipmentEvent model constructor.

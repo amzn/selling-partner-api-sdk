@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * The version of the OpenAPI document: v0
  *
@@ -19,6 +19,7 @@ import { CapacityReservationBillingEvent } from './CapacityReservationBillingEve
 import { ChargeRefundEvent } from './ChargeRefundEvent.js'
 import { CouponPaymentEvent } from './CouponPaymentEvent.js'
 import { DebtRecoveryEvent } from './DebtRecoveryEvent.js'
+import { EBTRefundReimbursementOnlyEvent } from './EBTRefundReimbursementOnlyEvent.js'
 import { FBALiquidationEvent } from './FBALiquidationEvent.js'
 import { FailedAdhocDisbursementEvent } from './FailedAdhocDisbursementEvent.js'
 import { ImagingServicesFeeEvent } from './ImagingServicesFeeEvent.js'
@@ -49,7 +50,7 @@ import { ValueAddedServiceChargeEvent } from './ValueAddedServiceChargeEvent.js'
 export class FinancialEvents {
   /**
    * Constructs a new <code>FinancialEvents</code>.
-   * Contains all information related to a financial event.
+   * All the information that is related to a financial event.
    * @alias module:finances_v0/model/FinancialEvents
    * @class
    */
@@ -81,6 +82,7 @@ export class FinancialEvents {
       if (data.hasOwnProperty('ShipmentSettleEventList')) { obj.shipmentSettleEventList = ApiClient.convertToType(data.ShipmentSettleEventList, [ShipmentEvent]) }
       if (data.hasOwnProperty('RefundEventList')) { obj.refundEventList = ApiClient.convertToType(data.RefundEventList, [ShipmentEvent]) }
       if (data.hasOwnProperty('GuaranteeClaimEventList')) { obj.guaranteeClaimEventList = ApiClient.convertToType(data.GuaranteeClaimEventList, [ShipmentEvent]) }
+      if (data.hasOwnProperty('EBTRefundReimbursementOnlyEventList')) { obj.eBTRefundReimbursementOnlyEventList = ApiClient.convertToType(data.EBTRefundReimbursementOnlyEventList, [EBTRefundReimbursementOnlyEvent]) }
       if (data.hasOwnProperty('ChargebackEventList')) { obj.chargebackEventList = ApiClient.convertToType(data.ChargebackEventList, [ShipmentEvent]) }
       if (data.hasOwnProperty('PayWithAmazonEventList')) { obj.payWithAmazonEventList = ApiClient.convertToType(data.PayWithAmazonEventList, [PayWithAmazonEvent]) }
       if (data.hasOwnProperty('ServiceProviderCreditEventList')) { obj.serviceProviderCreditEventList = ApiClient.convertToType(data.ServiceProviderCreditEventList, [SolutionProviderCreditEvent]) }
@@ -144,6 +146,13 @@ FinancialEvents.prototype.refundEventList = undefined
 FinancialEvents.prototype.guaranteeClaimEventList = undefined
 
 /**
+ * A list of EBT refund reimbursement events.
+ * @member {[EBTRefundReimbursementOnlyEvent]} eBTRefundReimbursementOnlyEventList
+ * @type {[EBTRefundReimbursementOnlyEvent]}
+ */
+FinancialEvents.prototype.eBTRefundReimbursementOnlyEventList = undefined
+
+/**
  * A list of shipment event information.
  * @member {[ShipmentEvent]} chargebackEventList
  * @type {[ShipmentEvent]}
@@ -158,14 +167,14 @@ FinancialEvents.prototype.chargebackEventList = undefined
 FinancialEvents.prototype.payWithAmazonEventList = undefined
 
 /**
- * A list of information about solution provider credits.
+ * A list of `SolutionProviderCreditEvent`.
  * @member {[SolutionProviderCreditEvent]} serviceProviderCreditEventList
  * @type {[SolutionProviderCreditEvent]}
  */
 FinancialEvents.prototype.serviceProviderCreditEventList = undefined
 
 /**
- * A list of information about Retrocharge or RetrochargeReversal events.
+ * A list of information about `Retrocharge` or `RetrochargeReversal` events.
  * @member {[RetrochargeEvent]} retrochargeEventList
  * @type {[RetrochargeEvent]}
  */
@@ -221,7 +230,7 @@ FinancialEvents.prototype.loanServicingEventList = undefined
 FinancialEvents.prototype.adjustmentEventList = undefined
 
 /**
- * A list of SAFETReimbursementEvents.
+ * A list of `SAFETReimbursementEvent`.
  * @member {[SAFETReimbursementEvent]} sAFETReimbursementEventList
  * @type {[SAFETReimbursementEvent]}
  */
@@ -284,7 +293,7 @@ FinancialEvents.prototype.affordabilityExpenseReversalEventList = undefined
 FinancialEvents.prototype.removalShipmentEventList = undefined
 
 /**
- * A comma-delimited list of Removal shipmentAdjustment details for FBA inventory.
+ * A comma-delimited list of `RemovalShipmentAdjustment` details for FBA inventory.
  * @member {[RemovalShipmentAdjustmentEvent]} removalShipmentAdjustmentEventList
  * @type {[RemovalShipmentAdjustmentEvent]}
  */
@@ -312,7 +321,7 @@ FinancialEvents.prototype.tDSReimbursementEventList = undefined
 FinancialEvents.prototype.adhocDisbursementEventList = undefined
 
 /**
- * A list of `TaxWithholding` events.
+ * A list of tax withholding events.
  * @member {[TaxWithholdingEvent]} taxWithholdingEventList
  * @type {[TaxWithholdingEvent]}
  */
@@ -326,7 +335,7 @@ FinancialEvents.prototype.taxWithholdingEventList = undefined
 FinancialEvents.prototype.chargeRefundEventList = undefined
 
 /**
- * A list of `FailedAdhocDisbursementEvent`s.
+ * A list of `FailedAdhocDisbursementEvent`.
  * @member {[FailedAdhocDisbursementEvent]} failedAdhocDisbursementEventList
  * @type {[FailedAdhocDisbursementEvent]}
  */

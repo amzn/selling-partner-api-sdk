@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * The version of the OpenAPI document: v0
  *
@@ -74,7 +74,7 @@ export class PayWithAmazonEvent {
 PayWithAmazonEvent.prototype.sellerOrderId = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} transactionPostedDate
  * @type {Date}
  */
@@ -108,7 +108,7 @@ PayWithAmazonEvent.prototype.charge = undefined
 PayWithAmazonEvent.prototype.feeList = undefined
 
 /**
- * The type of payment.  Possible values:  * Sales
+ * The type of payment.  Possible values:  * `Sales`
  * @member {String} paymentAmountType
  * @type {String}
  */
@@ -122,14 +122,14 @@ PayWithAmazonEvent.prototype.paymentAmountType = undefined
 PayWithAmazonEvent.prototype.amountDescription = undefined
 
 /**
- * The fulfillment channel.  Possible values:  * AFN - Amazon Fulfillment Network (Fulfillment by Amazon)  * MFN - Merchant Fulfillment Network (self-fulfilled)
+ * The fulfillment channel.  Possible values:  * `AFN`: Amazon Fulfillment Network (Fulfillment by Amazon)  * `MFN`: Merchant Fulfillment Network (self-fulfilled)
  * @member {String} fulfillmentChannel
  * @type {String}
  */
 PayWithAmazonEvent.prototype.fulfillmentChannel = undefined
 
 /**
- * The store name where the event occurred.
+ * The name of the store where the event occurred.
  * @member {String} storeName
  * @type {String}
  */

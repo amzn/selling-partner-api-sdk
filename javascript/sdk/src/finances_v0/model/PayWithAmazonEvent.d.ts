@@ -19,7 +19,7 @@ export class PayWithAmazonEvent {
      */
     sellerOrderId: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} transactionPostedDate
      * @type {Date}
      */
@@ -48,7 +48,7 @@ export class PayWithAmazonEvent {
      */
     feeList: [FeeComponent];
     /**
-     * The type of payment.  Possible values:  * Sales
+     * The type of payment.  Possible values:  * `Sales`
      * @member {String} paymentAmountType
      * @type {String}
      */
@@ -60,13 +60,13 @@ export class PayWithAmazonEvent {
      */
     amountDescription: string;
     /**
-     * The fulfillment channel.  Possible values:  * AFN - Amazon Fulfillment Network (Fulfillment by Amazon)  * MFN - Merchant Fulfillment Network (self-fulfilled)
+     * The fulfillment channel.  Possible values:  * `AFN`: Amazon Fulfillment Network (Fulfillment by Amazon)  * `MFN`: Merchant Fulfillment Network (self-fulfilled)
      * @member {String} fulfillmentChannel
      * @type {String}
      */
     fulfillmentChannel: string;
     /**
-     * The store name where the event occurred.
+     * The name of the store where the event occurred.
      * @member {String} storeName
      * @type {String}
      */

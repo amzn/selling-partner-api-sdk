@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range. 
  *
  * The version of the OpenAPI document: v0
  * 
@@ -91,6 +91,17 @@ const mocklistFinancialEventsByOrderIdData = {
   },
   response: {
     data: generateMockData('ListFinancialEventsResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistTransactionsData = {
+  request: {
+    'postedAfter': generateMockData('Date'),
+    'marketplaceId': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('ListTransactionsResponse'),
     statusCode: 200,
     headers: {}
   }
@@ -288,6 +299,57 @@ describe('DefaultApi', () => {
           mocklistFinancialEventsByOrderIdData.request['orderId'],
         ];
         await instance.listFinancialEventsByOrderId(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listTransactions', () => {
+    it('should successfully call listTransactions', async () => {
+      instance.apiClient.callApi.resolves(mocklistTransactionsData.response);
+
+      const params = [
+        mocklistTransactionsData.request['postedAfter'],
+        mocklistTransactionsData.request['marketplaceId'],
+      ];
+      const data = await instance.listTransactions(...params);
+
+      expect(data instanceof SellingPartnerApiForFinances.ListTransactionsResponse).to.be.true;
+      expect(data).to.equal(mocklistTransactionsData.response.data);
+    });
+
+    it('should successfully call listTransactionsWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistTransactionsData.response);
+
+      const params = [
+        mocklistTransactionsData.request['postedAfter'],
+        mocklistTransactionsData.request['marketplaceId'],
+      ];
+      const response = await instance.listTransactionsWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistTransactionsData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+      expect(response.data).to.equal(mocklistTransactionsData.response.data)
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mocklistTransactionsData.request['postedAfter'],
+          mocklistTransactionsData.request['marketplaceId'],
+        ];
+        await instance.listTransactions(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;

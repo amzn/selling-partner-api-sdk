@@ -13,19 +13,19 @@ export class ChargeRefundEvent {
      */
     static constructFromObject(data: any, obj: ChargeRefundEvent): ChargeRefundEvent;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
     postedDate: Date;
     /**
-     * The reason given for a charge refund.  Example: `SubscriptionFeeCorrection`
+     * The reason given for a charge refund. For example, `SubscriptionFeeCorrection`.
      * @member {String} reasonCode
      * @type {String}
      */
     reasonCode: string;
     /**
-     * A description of the Reason Code.   Example: `SubscriptionFeeCorrection`
+     * A description of the Reason Code. For example, `SubscriptionFeeCorrection`.
      * @member {String} reasonCodeDescription
      * @type {String}
      */
