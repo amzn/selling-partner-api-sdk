@@ -1,7 +1,7 @@
 <?php
 
 /**
- * RemovalShipmentItemAdjustment.
+ * Transaction.
  *
  * PHP version 8.3
  *
@@ -34,11 +34,11 @@ use SpApi\Model\ModelInterface;
 use SpApi\ObjectSerializer;
 
 /**
- * RemovalShipmentItemAdjustment Class Doc Comment.
+ * Transaction Class Doc Comment.
  *
  * @category Class
  *
- * @description Item-level information for a removal shipment item adjustment.
+ * @description All the information related to the transaction.
  *
  * @author   OpenAPI Generator team
  *
@@ -46,14 +46,14 @@ use SpApi\ObjectSerializer;
  *
  * @implements \ArrayAccess<string, mixed>
  */
-class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \JsonSerializable
+class Transaction implements ModelInterface, \ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
      * The original name of the model.
      */
-    protected static string $openAPIModelName = 'RemovalShipmentItemAdjustment';
+    protected static string $openAPIModelName = 'Transaction';
 
     /**
      * Array of property to type mappings. Used for (de)serialization.
@@ -61,13 +61,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'removal_shipment_item_id' => 'string',
-        'tax_collection_model' => 'string',
-        'fulfillment_network_sku' => 'string',
-        'adjusted_quantity' => 'int',
-        'revenue_adjustment' => '\SpApi\Model\finances\v0\Currency',
-        'tax_amount_adjustment' => '\SpApi\Model\finances\v0\Currency',
-        'tax_withheld_adjustment' => '\SpApi\Model\finances\v0\Currency'];
+        'selling_partner_metadata' => '\SpApi\Model\finances\v0\SellingPartnerMetadata',
+        'related_identifiers' => '\SpApi\Model\finances\v0\RelatedIdentifier[]',
+        'transaction_type' => 'string',
+        'posted_date' => '\DateTime',
+        'total_amount' => '\SpApi\Model\finances\v0\Currency'];
 
     /**
      * Array of property to format mappings. Used for (de)serialization.
@@ -79,13 +77,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'removal_shipment_item_id' => null,
-        'tax_collection_model' => null,
-        'fulfillment_network_sku' => null,
-        'adjusted_quantity' => 'int32',
-        'revenue_adjustment' => null,
-        'tax_amount_adjustment' => null,
-        'tax_withheld_adjustment' => null];
+        'selling_partner_metadata' => null,
+        'related_identifiers' => null,
+        'transaction_type' => null,
+        'posted_date' => 'date-time',
+        'total_amount' => null];
 
     /**
      * Array of nullable properties. Used for (de)serialization.
@@ -93,13 +89,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'removal_shipment_item_id' => true,
-        'tax_collection_model' => true,
-        'fulfillment_network_sku' => true,
-        'adjusted_quantity' => true,
-        'revenue_adjustment' => true,
-        'tax_amount_adjustment' => true,
-        'tax_withheld_adjustment' => true,
+        'selling_partner_metadata' => true,
+        'related_identifiers' => true,
+        'transaction_type' => true,
+        'posted_date' => true,
+        'total_amount' => true,
     ];
 
     /**
@@ -116,13 +110,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
      * @var string[]
      */
     protected static array $attributeMap = [
-        'removal_shipment_item_id' => 'RemovalShipmentItemId',
-        'tax_collection_model' => 'TaxCollectionModel',
-        'fulfillment_network_sku' => 'FulfillmentNetworkSKU',
-        'adjusted_quantity' => 'AdjustedQuantity',
-        'revenue_adjustment' => 'RevenueAdjustment',
-        'tax_amount_adjustment' => 'TaxAmountAdjustment',
-        'tax_withheld_adjustment' => 'TaxWithheldAdjustment',
+        'selling_partner_metadata' => 'SellingPartnerMetadata',
+        'related_identifiers' => 'RelatedIdentifiers',
+        'transaction_type' => 'TransactionType',
+        'posted_date' => 'PostedDate',
+        'total_amount' => 'TotalAmount',
     ];
 
     /**
@@ -131,13 +123,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
      * @var string[]
      */
     protected static array $setters = [
-        'removal_shipment_item_id' => 'setRemovalShipmentItemId',
-        'tax_collection_model' => 'setTaxCollectionModel',
-        'fulfillment_network_sku' => 'setFulfillmentNetworkSku',
-        'adjusted_quantity' => 'setAdjustedQuantity',
-        'revenue_adjustment' => 'setRevenueAdjustment',
-        'tax_amount_adjustment' => 'setTaxAmountAdjustment',
-        'tax_withheld_adjustment' => 'setTaxWithheldAdjustment',
+        'selling_partner_metadata' => 'setSellingPartnerMetadata',
+        'related_identifiers' => 'setRelatedIdentifiers',
+        'transaction_type' => 'setTransactionType',
+        'posted_date' => 'setPostedDate',
+        'total_amount' => 'setTotalAmount',
     ];
 
     /**
@@ -146,13 +136,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
      * @var string[]
      */
     protected static array $getters = [
-        'removal_shipment_item_id' => 'getRemovalShipmentItemId',
-        'tax_collection_model' => 'getTaxCollectionModel',
-        'fulfillment_network_sku' => 'getFulfillmentNetworkSku',
-        'adjusted_quantity' => 'getAdjustedQuantity',
-        'revenue_adjustment' => 'getRevenueAdjustment',
-        'tax_amount_adjustment' => 'getTaxAmountAdjustment',
-        'tax_withheld_adjustment' => 'getTaxWithheldAdjustment',
+        'selling_partner_metadata' => 'getSellingPartnerMetadata',
+        'related_identifiers' => 'getRelatedIdentifiers',
+        'transaction_type' => 'getTransactionType',
+        'posted_date' => 'getPostedDate',
+        'total_amount' => 'getTotalAmount',
     ];
 
     /**
@@ -168,13 +156,11 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('removal_shipment_item_id', $data ?? [], null);
-        $this->setIfExists('tax_collection_model', $data ?? [], null);
-        $this->setIfExists('fulfillment_network_sku', $data ?? [], null);
-        $this->setIfExists('adjusted_quantity', $data ?? [], null);
-        $this->setIfExists('revenue_adjustment', $data ?? [], null);
-        $this->setIfExists('tax_amount_adjustment', $data ?? [], null);
-        $this->setIfExists('tax_withheld_adjustment', $data ?? [], null);
+        $this->setIfExists('selling_partner_metadata', $data ?? [], null);
+        $this->setIfExists('related_identifiers', $data ?? [], null);
+        $this->setIfExists('transaction_type', $data ?? [], null);
+        $this->setIfExists('posted_date', $data ?? [], null);
+        $this->setIfExists('total_amount', $data ?? [], null);
     }
 
     /**
@@ -277,211 +263,151 @@ class RemovalShipmentItemAdjustment implements ModelInterface, \ArrayAccess, \Js
     }
 
     /**
-     * Gets removal_shipment_item_id.
+     * Gets selling_partner_metadata.
      */
-    public function getRemovalShipmentItemId(): ?string
+    public function getSellingPartnerMetadata(): ?SellingPartnerMetadata
     {
-        return $this->container['removal_shipment_item_id'];
+        return $this->container['selling_partner_metadata'];
     }
 
     /**
-     * Sets removal_shipment_item_id.
+     * Sets selling_partner_metadata.
      *
-     * @param null|string $removal_shipment_item_id an identifier for an item in a removal shipment
+     * @param null|SellingPartnerMetadata $selling_partner_metadata selling_partner_metadata
      */
-    public function setRemovalShipmentItemId(?string $removal_shipment_item_id): self
+    public function setSellingPartnerMetadata(?SellingPartnerMetadata $selling_partner_metadata): self
     {
-        if (is_null($removal_shipment_item_id)) {
-            array_push($this->openAPINullablesSetToNull, 'removal_shipment_item_id');
+        if (is_null($selling_partner_metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'selling_partner_metadata');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('removal_shipment_item_id', $nullablesSetToNull);
+            $index = array_search('selling_partner_metadata', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['removal_shipment_item_id'] = $removal_shipment_item_id;
+        $this->container['selling_partner_metadata'] = $selling_partner_metadata;
 
         return $this;
     }
 
     /**
-     * Gets tax_collection_model.
+     * Gets related_identifiers.
      */
-    public function getTaxCollectionModel(): ?string
+    public function getRelatedIdentifiers(): ?array
     {
-        return $this->container['tax_collection_model'];
+        return $this->container['related_identifiers'];
     }
 
     /**
-     * Sets tax_collection_model.
+     * Sets related_identifiers.
      *
-     * @param null|string $tax_collection_model The tax collection model that is applied to the item.  Possible values:  * `MarketplaceFacilitator`: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * `Standard`: Tax is paid to the seller and not remitted to the taxing authority by Amazon.
+     * @param null|array $related_identifiers related business identifiers of the transaction
      */
-    public function setTaxCollectionModel(?string $tax_collection_model): self
+    public function setRelatedIdentifiers(?array $related_identifiers): self
     {
-        if (is_null($tax_collection_model)) {
-            array_push($this->openAPINullablesSetToNull, 'tax_collection_model');
+        if (is_null($related_identifiers)) {
+            array_push($this->openAPINullablesSetToNull, 'related_identifiers');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tax_collection_model', $nullablesSetToNull);
+            $index = array_search('related_identifiers', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['tax_collection_model'] = $tax_collection_model;
+        $this->container['related_identifiers'] = $related_identifiers;
 
         return $this;
     }
 
     /**
-     * Gets fulfillment_network_sku.
+     * Gets transaction_type.
      */
-    public function getFulfillmentNetworkSku(): ?string
+    public function getTransactionType(): ?string
     {
-        return $this->container['fulfillment_network_sku'];
+        return $this->container['transaction_type'];
     }
 
     /**
-     * Sets fulfillment_network_sku.
+     * Sets transaction_type.
      *
-     * @param null|string $fulfillment_network_sku the Amazon fulfillment network SKU for the item
+     * @param null|string $transaction_type The type of transaction.  Possible values:  * `Shipment`
      */
-    public function setFulfillmentNetworkSku(?string $fulfillment_network_sku): self
+    public function setTransactionType(?string $transaction_type): self
     {
-        if (is_null($fulfillment_network_sku)) {
-            array_push($this->openAPINullablesSetToNull, 'fulfillment_network_sku');
+        if (is_null($transaction_type)) {
+            array_push($this->openAPINullablesSetToNull, 'transaction_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fulfillment_network_sku', $nullablesSetToNull);
+            $index = array_search('transaction_type', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['fulfillment_network_sku'] = $fulfillment_network_sku;
+        $this->container['transaction_type'] = $transaction_type;
 
         return $this;
     }
 
     /**
-     * Gets adjusted_quantity.
+     * Gets posted_date.
      */
-    public function getAdjustedQuantity(): ?int
+    public function getPostedDate(): ?\DateTime
     {
-        return $this->container['adjusted_quantity'];
+        return $this->container['posted_date'];
     }
 
     /**
-     * Sets adjusted_quantity.
+     * Sets posted_date.
      *
-     * @param null|int $adjusted_quantity adjusted quantity of `RemovalShipmentItemAdjustment` items
+     * @param null|\DateTime $posted_date A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      */
-    public function setAdjustedQuantity(?int $adjusted_quantity): self
+    public function setPostedDate(?\DateTime $posted_date): self
     {
-        if (is_null($adjusted_quantity)) {
-            array_push($this->openAPINullablesSetToNull, 'adjusted_quantity');
+        if (is_null($posted_date)) {
+            array_push($this->openAPINullablesSetToNull, 'posted_date');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('adjusted_quantity', $nullablesSetToNull);
+            $index = array_search('posted_date', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['adjusted_quantity'] = $adjusted_quantity;
+        $this->container['posted_date'] = $posted_date;
 
         return $this;
     }
 
     /**
-     * Gets revenue_adjustment.
+     * Gets total_amount.
      */
-    public function getRevenueAdjustment(): ?Currency
+    public function getTotalAmount(): ?Currency
     {
-        return $this->container['revenue_adjustment'];
+        return $this->container['total_amount'];
     }
 
     /**
-     * Sets revenue_adjustment.
+     * Sets total_amount.
      *
-     * @param null|Currency $revenue_adjustment revenue_adjustment
+     * @param null|Currency $total_amount total_amount
      */
-    public function setRevenueAdjustment(?Currency $revenue_adjustment): self
+    public function setTotalAmount(?Currency $total_amount): self
     {
-        if (is_null($revenue_adjustment)) {
-            array_push($this->openAPINullablesSetToNull, 'revenue_adjustment');
+        if (is_null($total_amount)) {
+            array_push($this->openAPINullablesSetToNull, 'total_amount');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('revenue_adjustment', $nullablesSetToNull);
+            $index = array_search('total_amount', $nullablesSetToNull);
             if (false !== $index) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['revenue_adjustment'] = $revenue_adjustment;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax_amount_adjustment.
-     */
-    public function getTaxAmountAdjustment(): ?Currency
-    {
-        return $this->container['tax_amount_adjustment'];
-    }
-
-    /**
-     * Sets tax_amount_adjustment.
-     *
-     * @param null|Currency $tax_amount_adjustment tax_amount_adjustment
-     */
-    public function setTaxAmountAdjustment(?Currency $tax_amount_adjustment): self
-    {
-        if (is_null($tax_amount_adjustment)) {
-            array_push($this->openAPINullablesSetToNull, 'tax_amount_adjustment');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tax_amount_adjustment', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['tax_amount_adjustment'] = $tax_amount_adjustment;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax_withheld_adjustment.
-     */
-    public function getTaxWithheldAdjustment(): ?Currency
-    {
-        return $this->container['tax_withheld_adjustment'];
-    }
-
-    /**
-     * Sets tax_withheld_adjustment.
-     *
-     * @param null|Currency $tax_withheld_adjustment tax_withheld_adjustment
-     */
-    public function setTaxWithheldAdjustment(?Currency $tax_withheld_adjustment): self
-    {
-        if (is_null($tax_withheld_adjustment)) {
-            array_push($this->openAPINullablesSetToNull, 'tax_withheld_adjustment');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tax_withheld_adjustment', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['tax_withheld_adjustment'] = $tax_withheld_adjustment;
+        $this->container['total_amount'] = $total_amount;
 
         return $this;
     }
