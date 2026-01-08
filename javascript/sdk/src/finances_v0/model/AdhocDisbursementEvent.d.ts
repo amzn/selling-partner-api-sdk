@@ -13,13 +13,13 @@ export class AdhocDisbursementEvent {
      */
     static constructFromObject(data: any, obj: AdhocDisbursementEvent): AdhocDisbursementEvent;
     /**
-     * Indicates the type of transaction.  Example: \"Disbursed to Amazon Gift Card balance\"
+     * The type of transaction. For example, \"Disbursed to Amazon Gift Card balance\".
      * @member {String} transactionType
      * @type {String}
      */
     transactionType: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */

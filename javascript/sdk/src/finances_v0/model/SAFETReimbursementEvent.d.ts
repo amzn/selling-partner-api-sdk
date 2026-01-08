@@ -13,7 +13,7 @@ export class SAFETReimbursementEvent {
      */
     static constructFromObject(data: any, obj: SAFETReimbursementEvent): SAFETReimbursementEvent;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
@@ -36,7 +36,7 @@ export class SAFETReimbursementEvent {
      */
     reasonCode: string;
     /**
-     * A list of SAFETReimbursementItems.
+     * A list of `SAFETReimbursementItem`.
      * @member {[SAFETReimbursementItem]} sAFETReimbursementItemList
      * @type {[SAFETReimbursementItem]}
      */

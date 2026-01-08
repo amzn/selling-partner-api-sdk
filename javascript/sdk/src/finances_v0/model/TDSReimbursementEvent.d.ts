@@ -13,7 +13,7 @@ export class TDSReimbursementEvent {
      */
     static constructFromObject(data: any, obj: TDSReimbursementEvent): TDSReimbursementEvent;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */

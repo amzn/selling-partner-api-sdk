@@ -13,7 +13,7 @@ export class SellerDealPaymentEvent {
      */
     static constructFromObject(data: any, obj: SellerDealPaymentEvent): SellerDealPaymentEvent;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
@@ -31,13 +31,13 @@ export class SellerDealPaymentEvent {
      */
     dealDescription: string;
     /**
-     * The type of event: SellerDealComplete.
+     * The type of event: `SellerDealComplete`.
      * @member {String} eventType
      * @type {String}
      */
     eventType: string;
     /**
-     * The type of fee: RunLightningDealFee.
+     * The type of fee: `RunLightningDealFee`.
      * @member {String} feeType
      * @type {String}
      */

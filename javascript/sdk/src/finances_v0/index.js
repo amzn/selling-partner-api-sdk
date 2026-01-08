@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * The version of the OpenAPI document: v0
  *
@@ -26,6 +26,7 @@ import { Currency } from './model/Currency.js'
 import { DebtRecoveryEvent } from './model/DebtRecoveryEvent.js'
 import { DebtRecoveryItem } from './model/DebtRecoveryItem.js'
 import { DirectPayment } from './model/DirectPayment.js'
+import { EBTRefundReimbursementOnlyEvent } from './model/EBTRefundReimbursementOnlyEvent.js'
 import { Error } from './model/Error.js'
 import { FBALiquidationEvent } from './model/FBALiquidationEvent.js'
 import { FailedAdhocDisbursementEvent } from './model/FailedAdhocDisbursementEvent.js'
@@ -65,7 +66,7 @@ import { ValueAddedServiceChargeEvent } from './model/ValueAddedServiceChargeEve
 import { DefaultApi } from './api/DefaultApi.js'
 
 /**
-* The Selling Partner API for Finances helps you obtain financial information relevant to a seller&#39;s business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range..<br>
+* The Selling Partner API for Finances provides financial information that is relevant to a seller&#39;s business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range. .<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * @module finances_v0/index
 * @version v0
@@ -160,6 +161,12 @@ export {
      * @property {module:finances_v0/model/DirectPayment}
      */
   DirectPayment,
+
+  /**
+     * The EBTRefundReimbursementOnlyEvent model constructor.
+     * @property {module:finances_v0/model/EBTRefundReimbursementOnlyEvent}
+     */
+  EBTRefundReimbursementOnlyEvent,
 
   /**
      * The Error model constructor.

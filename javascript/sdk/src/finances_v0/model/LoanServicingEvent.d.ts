@@ -18,7 +18,7 @@ export class LoanServicingEvent {
      */
     loanAmount: Currency;
     /**
-     * The type of event.  Possible values:  * LoanAdvance  * LoanPayment  * LoanRefund
+     * The type of event.  Possible values:  * `LoanAdvance`  * `LoanPayment`  * `LoanRefund`
      * @member {String} sourceBusinessEventType
      * @type {String}
      */

@@ -13,19 +13,19 @@ export class ProductAdsPaymentEvent {
      */
     static constructFromObject(data: any, obj: ProductAdsPaymentEvent): ProductAdsPaymentEvent;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
     postedDate: Date;
     /**
-     * Indicates if the transaction is for a charge or a refund.  Possible values:  * charge - Charge  * refund - Refund
+     * Indicates if the transaction is for a charge or a refund.  Possible values:  * `charge`  * `refund`
      * @member {String} transactionType
      * @type {String}
      */
     transactionType: string;
     /**
-     * Identifier for the invoice that the transaction appears in.
+     * The identifier for the invoice that includes the transaction.
      * @member {String} invoiceId
      * @type {String}
      */

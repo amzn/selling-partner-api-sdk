@@ -19,7 +19,7 @@ export class RemovalShipmentItemAdjustment {
      */
     removalShipmentItemId: string;
     /**
-     * The tax collection model applied to the item.  Possible values:  * MarketplaceFacilitator - Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller.  * Standard - Tax is paid to the seller and not remitted to the taxing authority by Amazon.
+     * The tax collection model that is applied to the item.  Possible values:  * `MarketplaceFacilitator`: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * `Standard`: Tax is paid to the seller and not remitted to the taxing authority by Amazon.
      * @member {String} taxCollectionModel
      * @type {String}
      */
@@ -31,7 +31,7 @@ export class RemovalShipmentItemAdjustment {
      */
     fulfillmentNetworkSKU: string;
     /**
-     * Adjusted quantity of removal shipmentItemAdjustment items.
+     * Adjusted quantity of `RemovalShipmentItemAdjustment` items.
      * @member {Number} adjustedQuantity
      * @type {Number}
      */
