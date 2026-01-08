@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -75,21 +75,22 @@ public class RentalTransactionEvent {
     }
 
     /**
-     * The type of rental event. Possible values: * RentalCustomerPayment-Buyout - Transaction type that represents when
-     * the customer wants to buy out a rented item. * RentalCustomerPayment-Extension - Transaction type that represents
-     * when the customer wants to extend the rental period. * RentalCustomerRefund-Buyout - Transaction type that
-     * represents when the customer requests a refund for the buyout of the rented item. *
-     * RentalCustomerRefund-Extension - Transaction type that represents when the customer requests a refund over the
-     * extension on the rented item. * RentalHandlingFee - Transaction type that represents the fee that Amazon charges
-     * sellers who rent through Amazon. * RentalChargeFailureReimbursement - Transaction type that represents when
-     * Amazon sends money to the seller to compensate for a failed charge. * RentalLostItemReimbursement - Transaction
-     * type that represents when Amazon sends money to the seller to compensate for a lost item.
+     * The type of rental event. Possible values: * &#x60;RentalCustomerPayment-Buyout&#x60;: A transaction type that
+     * represents when the customer wants to buy out a rented item. * &#x60;RentalCustomerPayment-Extension&#x60;: A
+     * transaction type that represents when the customer wants to extend the rental period. *
+     * &#x60;RentalCustomerRefund-Buyout&#x60;: A transaction type that represents when the customer requests a refund
+     * for the buyout of the rented item. * &#x60;RentalCustomerRefund-Extension&#x60;: A transaction type that
+     * represents when the customer requests a refund over the extension on the rented item. *
+     * &#x60;RentalHandlingFee&#x60;: A transaction type that represents the fee that Amazon charges sellers who rent
+     * through Amazon. * &#x60;RentalChargeFailureReimbursement&#x60;: A transaction type that represents when Amazon
+     * sends money to the seller to compensate for a failed charge. * &#x60;RentalLostItemReimbursement&#x60;: A
+     * transaction type that represents when Amazon sends money to the seller to compensate for a lost item.
      *
      * @return rentalEventType
      */
     @Schema(
             description =
-                    "The type of rental event.  Possible values:  * RentalCustomerPayment-Buyout - Transaction type that represents when the customer wants to buy out a rented item.  * RentalCustomerPayment-Extension - Transaction type that represents when the customer wants to extend the rental period.  * RentalCustomerRefund-Buyout - Transaction type that represents when the customer requests a refund for the buyout of the rented item.  * RentalCustomerRefund-Extension - Transaction type that represents when the customer requests a refund over the extension on the rented item.  * RentalHandlingFee - Transaction type that represents the fee that Amazon charges sellers who rent through Amazon.  * RentalChargeFailureReimbursement - Transaction type that represents when Amazon sends money to the seller to compensate for a failed charge.  * RentalLostItemReimbursement - Transaction type that represents when Amazon sends money to the seller to compensate for a lost item.")
+                    "The type of rental event.  Possible values:  * `RentalCustomerPayment-Buyout`: A transaction type that represents when the customer wants to buy out a rented item.  * `RentalCustomerPayment-Extension`: A transaction type that represents when the customer wants to extend the rental period.  * `RentalCustomerRefund-Buyout`: A transaction type that represents when the customer requests a refund for the buyout of the rented item.  * `RentalCustomerRefund-Extension`: A transaction type that represents when the customer requests a refund over the extension on the rented item.  * `RentalHandlingFee`: A transaction type that represents the fee that Amazon charges sellers who rent through Amazon.  * `RentalChargeFailureReimbursement`: A transaction type that represents when Amazon sends money to the seller to compensate for a failed charge.  * `RentalLostItemReimbursement`: A transaction type that represents when Amazon sends money to the seller to compensate for a lost item.")
     public String getRentalEventType() {
         return rentalEventType;
     }
@@ -105,13 +106,13 @@ public class RentalTransactionEvent {
 
     /**
      * The number of days that the buyer extended an already rented item. This value is only returned for
-     * RentalCustomerPayment-Extension and RentalCustomerRefund-Extension events.
+     * &#x60;RentalCustomerPayment-Extension&#x60; and &#x60;RentalCustomerRefund-Extension&#x60; events.
      *
      * @return extensionLength
      */
     @Schema(
             description =
-                    "The number of days that the buyer extended an already rented item. This value is only returned for RentalCustomerPayment-Extension and RentalCustomerRefund-Extension events.")
+                    "The number of days that the buyer extended an already rented item. This value is only returned for `RentalCustomerPayment-Extension` and `RentalCustomerRefund-Extension` events.")
     public Integer getExtensionLength() {
         return extensionLength;
     }

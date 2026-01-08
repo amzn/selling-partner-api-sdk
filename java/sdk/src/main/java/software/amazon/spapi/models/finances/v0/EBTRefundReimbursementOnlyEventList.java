@@ -16,9 +16,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.Objects;
 
-/** A list of &#x60;TDSReimbursementEvent&#x60; items. */
-@Schema(description = "A list of `TDSReimbursementEvent` items.")
-public class TDSReimbursementEventList extends ArrayList<TDSReimbursementEvent> {
+/** A list of EBT refund reimbursement events. */
+@Schema(description = "A list of EBT refund reimbursement events.")
+public class EBTRefundReimbursementOnlyEventList extends ArrayList<EBTRefundReimbursementOnlyEvent> {
 
     @Override
     public boolean equals(java.lang.Object o) {
@@ -39,7 +39,7 @@ public class TDSReimbursementEventList extends ArrayList<TDSReimbursementEvent> 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class TDSReimbursementEventList {\n");
+        sb.append("class EBTRefundReimbursementOnlyEventList {\n");
         sb.append("    ").append(toIndentedString(super.toString())).append("\n");
         sb.append("}");
         return sb.toString();
