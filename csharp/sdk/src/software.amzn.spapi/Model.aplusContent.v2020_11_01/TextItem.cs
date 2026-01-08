@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="position">The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection. (required).</param>
         /// <param name="text">text (required).</param>
-        public TextItem(int position = default(int), TextComponent text = default(TextComponent))
+        public TextItem(int? position = default(int?), TextComponent text = default(TextComponent))
         {
+            // to ensure "position" is required (not null)
+            if (position == null)
+            {
+                throw new ArgumentNullException("position is a required property for TextItem and cannot be null");
+            }
             this.Position = position;
             // to ensure "text" is required (not null)
             if (text == null)
@@ -57,7 +62,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>The rank or index of this text item within the collection. Different items cannot occupy the same position within a single collection.</value>
         [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = true)]
-        public int Position { get; set; }
+        public int? Position { get; set; }
 
         /// <summary>
         /// Gets or Sets Text
@@ -95,14 +100,14 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Position (int) maximum
-            if (this.Position > (int)100)
+            // Position (int?) maximum
+            if (this.Position > (int?)100)
             {
                 yield return new ValidationResult("Invalid value for Position, must be a value less than or equal to 100.", new [] { "Position" });
             }
 
-            // Position (int) minimum
-            if (this.Position < (int)1)
+            // Position (int?) minimum
+            if (this.Position < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Position, must be a value greater than or equal to 1.", new [] { "Position" });
             }

@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="dimensions">dimensions.</param>
         /// <param name="weight">weight (required).</param>
         /// <param name="packedItems">A list of packed items. (required).</param>
-        public Container(ContainerTypeEnum containerType = default(ContainerTypeEnum), string containerIdentifier = default(string), string trackingNumber = default(string), string manifestId = default(string), string manifestDate = default(string), string shipMethod = default(string), string scacCode = default(string), string carrier = default(string), int containerSequenceNumber = default(int), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), List<PackedItem> packedItems = default(List<PackedItem>))
+        public Container(ContainerTypeEnum containerType = default(ContainerTypeEnum), string containerIdentifier = default(string), string trackingNumber = default(string), string manifestId = default(string), string manifestDate = default(string), string shipMethod = default(string), string scacCode = default(string), string carrier = default(string), int? containerSequenceNumber = default(int?), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), List<PackedItem> packedItems = default(List<PackedItem>))
         {
             this.ContainerType = containerType;
             // to ensure "containerIdentifier" is required (not null)
@@ -162,8 +162,8 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
         /// </summary>
         /// <value>An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.</value>
-        [DataMember(Name = "containerSequenceNumber", EmitDefaultValue = false)]
-        public int ContainerSequenceNumber { get; set; }
+        [DataMember(Name = "containerSequenceNumber", EmitDefaultValue = true)]
+        public int? ContainerSequenceNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions

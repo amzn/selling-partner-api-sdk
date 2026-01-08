@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="condition">Indicates the condition of the item. For example: New, Used, Collectible, Refurbished, or Club..</param>
         /// <param name="fulfillmentChannel">fulfillmentChannel.</param>
         /// <param name="offerCount">The number of offers in a fulfillment channel that meet a specific condition..</param>
-        public OfferCountType(string condition = default(string), FulfillmentChannelType? fulfillmentChannel = default(FulfillmentChannelType?), int offerCount = default(int))
+        public OfferCountType(string condition = default(string), FulfillmentChannelType? fulfillmentChannel = default(FulfillmentChannelType?), int? offerCount = default(int?))
         {
             this.Condition = condition;
             this.FulfillmentChannel = fulfillmentChannel;
@@ -61,8 +61,8 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// The number of offers in a fulfillment channel that meet a specific condition.
         /// </summary>
         /// <value>The number of offers in a fulfillment channel that meet a specific condition.</value>
-        [DataMember(Name = "OfferCount", EmitDefaultValue = false)]
-        public int OfferCount { get; set; }
+        [DataMember(Name = "OfferCount", EmitDefaultValue = true)]
+        public int? OfferCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="liquidVolume">liquidVolume.</param>
         /// <param name="isHazmat">When true, the item qualifies as hazardous materials (hazmat). Defaults to false..</param>
         /// <param name="dangerousGoodsDetails">dangerousGoodsDetails.</param>
-        public Item(string orderItemId = default(string), int quantity = default(int), Weight itemWeight = default(Weight), string itemDescription = default(string), List<string> transparencyCodeList = default(List<string>), List<AdditionalSellerInputs> itemLevelSellerInputsList = default(List<AdditionalSellerInputs>), LiquidVolume liquidVolume = default(LiquidVolume), bool isHazmat = default(bool), DangerousGoodsDetails dangerousGoodsDetails = default(DangerousGoodsDetails))
+        public Item(string orderItemId = default(string), int? quantity = default(int?), Weight itemWeight = default(Weight), string itemDescription = default(string), List<string> transparencyCodeList = default(List<string>), List<AdditionalSellerInputs> itemLevelSellerInputsList = default(List<AdditionalSellerInputs>), LiquidVolume liquidVolume = default(LiquidVolume), bool isHazmat = default(bool), DangerousGoodsDetails dangerousGoodsDetails = default(DangerousGoodsDetails))
         {
             // to ensure "orderItemId" is required (not null)
             if (orderItemId == null)
@@ -56,6 +56,11 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
                 throw new ArgumentNullException("orderItemId is a required property for Item and cannot be null");
             }
             this.OrderItemId = orderItemId;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for Item and cannot be null");
+            }
             this.Quantity = quantity;
             this.ItemWeight = itemWeight;
             this.ItemDescription = itemDescription;
@@ -78,7 +83,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The number of items.</value>
         [DataMember(Name = "Quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemWeight

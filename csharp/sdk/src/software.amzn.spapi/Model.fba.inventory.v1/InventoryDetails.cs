@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="reservedQuantity">reservedQuantity.</param>
         /// <param name="researchingQuantity">researchingQuantity.</param>
         /// <param name="unfulfillableQuantity">unfulfillableQuantity.</param>
-        public InventoryDetails(int fulfillableQuantity = default(int), int inboundWorkingQuantity = default(int), int inboundShippedQuantity = default(int), int inboundReceivingQuantity = default(int), ReservedQuantity reservedQuantity = default(ReservedQuantity), ResearchingQuantity researchingQuantity = default(ResearchingQuantity), UnfulfillableQuantity unfulfillableQuantity = default(UnfulfillableQuantity))
+        public InventoryDetails(int? fulfillableQuantity = default(int?), int? inboundWorkingQuantity = default(int?), int? inboundShippedQuantity = default(int?), int? inboundReceivingQuantity = default(int?), ReservedQuantity reservedQuantity = default(ReservedQuantity), ResearchingQuantity researchingQuantity = default(ResearchingQuantity), UnfulfillableQuantity unfulfillableQuantity = default(UnfulfillableQuantity))
         {
             this.FulfillableQuantity = fulfillableQuantity;
             this.InboundWorkingQuantity = inboundWorkingQuantity;
@@ -56,29 +56,29 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// The item quantity that can be picked, packed, and shipped.
         /// </summary>
         /// <value>The item quantity that can be picked, packed, and shipped.</value>
-        [DataMember(Name = "fulfillableQuantity", EmitDefaultValue = false)]
-        public int FulfillableQuantity { get; set; }
+        [DataMember(Name = "fulfillableQuantity", EmitDefaultValue = true)]
+        public int? FulfillableQuantity { get; set; }
 
         /// <summary>
         /// The number of units in an inbound shipment for which you have notified Amazon.
         /// </summary>
         /// <value>The number of units in an inbound shipment for which you have notified Amazon.</value>
-        [DataMember(Name = "inboundWorkingQuantity", EmitDefaultValue = false)]
-        public int InboundWorkingQuantity { get; set; }
+        [DataMember(Name = "inboundWorkingQuantity", EmitDefaultValue = true)]
+        public int? InboundWorkingQuantity { get; set; }
 
         /// <summary>
         /// The number of units in an inbound shipment that you have notified Amazon about and have provided a tracking number.
         /// </summary>
         /// <value>The number of units in an inbound shipment that you have notified Amazon about and have provided a tracking number.</value>
-        [DataMember(Name = "inboundShippedQuantity", EmitDefaultValue = false)]
-        public int InboundShippedQuantity { get; set; }
+        [DataMember(Name = "inboundShippedQuantity", EmitDefaultValue = true)]
+        public int? InboundShippedQuantity { get; set; }
 
         /// <summary>
         /// The number of units that have not yet been received at an Amazon fulfillment center for processing, but are part of an inbound shipment with some units that have already been received and processed.
         /// </summary>
         /// <value>The number of units that have not yet been received at an Amazon fulfillment center for processing, but are part of an inbound shipment with some units that have already been received and processed.</value>
-        [DataMember(Name = "inboundReceivingQuantity", EmitDefaultValue = false)]
-        public int InboundReceivingQuantity { get; set; }
+        [DataMember(Name = "inboundReceivingQuantity", EmitDefaultValue = true)]
+        public int? InboundReceivingQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ReservedQuantity

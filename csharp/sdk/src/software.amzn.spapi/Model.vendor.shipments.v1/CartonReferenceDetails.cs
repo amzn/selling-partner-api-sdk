@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <param name="cartonCount">Pallet level carton count is mandatory for single item pallet and optional for mixed item pallet..</param>
         /// <param name="cartonReferenceNumbers">Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the &#39;cartons&#39; segment to refer to that carton&#39;s details here. (required).</param>
-        public CartonReferenceDetails(int cartonCount = default(int), List<string> cartonReferenceNumbers = default(List<string>))
+        public CartonReferenceDetails(int? cartonCount = default(int?), List<string> cartonReferenceNumbers = default(List<string>))
         {
             // to ensure "cartonReferenceNumbers" is required (not null)
             if (cartonReferenceNumbers == null)
@@ -56,8 +56,8 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Pallet level carton count is mandatory for single item pallet and optional for mixed item pallet.
         /// </summary>
         /// <value>Pallet level carton count is mandatory for single item pallet and optional for mixed item pallet.</value>
-        [DataMember(Name = "cartonCount", EmitDefaultValue = false)]
-        public int CartonCount { get; set; }
+        [DataMember(Name = "cartonCount", EmitDefaultValue = true)]
+        public int? CartonCount { get; set; }
 
         /// <summary>
         /// Array of reference numbers for the carton that are part of this pallet/shipment. Please provide the cartonSequenceNumber from the &#39;cartons&#39; segment to refer to that carton&#39;s details here.

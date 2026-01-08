@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier that the seller created with a call to the &#x60;createFulfillmentOrder&#x60; operation. (required).</param>
         /// <param name="estimatedShippingWeight">estimatedShippingWeight.</param>
         /// <param name="shippingWeightCalculationMethod">The method used to calculate the estimated shipping weight..</param>
-        public FulfillmentPreviewItem(string sellerSku = default(string), int quantity = default(int), string sellerFulfillmentOrderItemId = default(string), Weight estimatedShippingWeight = default(Weight), ShippingWeightCalculationMethodEnum? shippingWeightCalculationMethod = default(ShippingWeightCalculationMethodEnum?))
+        public FulfillmentPreviewItem(string sellerSku = default(string), int? quantity = default(int?), string sellerFulfillmentOrderItemId = default(string), Weight estimatedShippingWeight = default(Weight), ShippingWeightCalculationMethodEnum? shippingWeightCalculationMethod = default(ShippingWeightCalculationMethodEnum?))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -79,6 +79,11 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
                 throw new ArgumentNullException("sellerSku is a required property for FulfillmentPreviewItem and cannot be null");
             }
             this.SellerSku = sellerSku;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for FulfillmentPreviewItem and cannot be null");
+            }
             this.Quantity = quantity;
             // to ensure "sellerFulfillmentOrderItemId" is required (not null)
             if (sellerFulfillmentOrderItemId == null)
@@ -102,7 +107,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// A fulfillment order item identifier that the seller created with a call to the &#x60;createFulfillmentOrder&#x60; operation.

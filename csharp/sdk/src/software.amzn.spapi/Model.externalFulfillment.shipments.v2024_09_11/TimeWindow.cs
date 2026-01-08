@@ -70,9 +70,19 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="startTime">The start time of the window. (required).</param>
         /// <param name="endTime">The end time of the window. (required).</param>
         /// <param name="handoverMethod">Whether the seller picks up from Amazon Logistics or drops off to Amazon Logistics..</param>
-        public TimeWindow(long startTime = default(long), long endTime = default(long), HandoverMethodEnum? handoverMethod = default(HandoverMethodEnum?))
+        public TimeWindow(long? startTime = default(long?), long? endTime = default(long?), HandoverMethodEnum? handoverMethod = default(HandoverMethodEnum?))
         {
+            // to ensure "startTime" is required (not null)
+            if (startTime == null)
+            {
+                throw new ArgumentNullException("startTime is a required property for TimeWindow and cannot be null");
+            }
             this.StartTime = startTime;
+            // to ensure "endTime" is required (not null)
+            if (endTime == null)
+            {
+                throw new ArgumentNullException("endTime is a required property for TimeWindow and cannot be null");
+            }
             this.EndTime = endTime;
             this.HandoverMethod = handoverMethod;
         }
@@ -82,14 +92,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The start time of the window.</value>
         [DataMember(Name = "startTime", IsRequired = true, EmitDefaultValue = true)]
-        public long StartTime { get; set; }
+        public long? StartTime { get; set; }
 
         /// <summary>
         /// The end time of the window.
         /// </summary>
         /// <value>The end time of the window.</value>
         [DataMember(Name = "endTime", IsRequired = true, EmitDefaultValue = true)]
-        public long EndTime { get; set; }
+        public long? EndTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

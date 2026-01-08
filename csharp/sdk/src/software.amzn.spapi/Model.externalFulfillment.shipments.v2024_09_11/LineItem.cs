@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="id">The identifier of the line item from the shipment that is being confirmed or rejected by the seller. (required).</param>
         /// <param name="quantity">The quantity of the line item..</param>
-        public LineItem(string id = default(string), int quantity = default(int))
+        public LineItem(string id = default(string), int? quantity = default(int?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -64,8 +64,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// The quantity of the line item.
         /// </summary>
         /// <value>The quantity of the line item.</value>
-        [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        [DataMember(Name = "quantity", EmitDefaultValue = true)]
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

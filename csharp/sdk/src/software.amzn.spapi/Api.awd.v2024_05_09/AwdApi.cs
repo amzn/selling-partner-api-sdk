@@ -193,7 +193,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ShipmentListing</returns>
-        ShipmentListing ListInboundShipments (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null);
+        ShipmentListing ListInboundShipments (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -210,7 +210,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of ShipmentListing</returns>
-        ApiResponse<ShipmentListing> ListInboundShipmentsWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null);
+        ApiResponse<ShipmentListing> ListInboundShipmentsWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -224,7 +224,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>InventoryListing</returns>
-        InventoryListing ListInventory (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null);
+        InventoryListing ListInventory (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null);
 
         /// <summary>
         /// 
@@ -239,7 +239,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>ApiResponse of InventoryListing</returns>
-        ApiResponse<InventoryListing> ListInventoryWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null);
+        ApiResponse<InventoryListing> ListInventoryWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null);
         /// <summary>
         /// 
         /// </summary>
@@ -456,7 +456,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ShipmentListing</returns>
-        System.Threading.Tasks.Task<ShipmentListing> ListInboundShipmentsAsync (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ShipmentListing> ListInboundShipmentsAsync (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -473,7 +473,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (ShipmentListing)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShipmentListing>> ListInboundShipmentsAsyncWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ShipmentListing>> ListInboundShipmentsAsyncWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -487,7 +487,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>Task of InventoryListing</returns>
-        System.Threading.Tasks.Task<InventoryListing> ListInventoryAsync (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null);
+        System.Threading.Tasks.Task<InventoryListing> ListInventoryAsync (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null);
 
         /// <summary>
         /// 
@@ -502,7 +502,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>Task of ApiResponse (InventoryListing)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InventoryListing>> ListInventoryAsyncWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null);
+        System.Threading.Tasks.Task<ApiResponse<InventoryListing>> ListInventoryAsyncWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1598,7 +1598,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ShipmentListing</returns>
-        public ShipmentListing ListInboundShipments (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null)
+        public ShipmentListing ListInboundShipments (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null)
         {
              ApiResponse<ShipmentListing> localVarResponse = ListInboundShipmentsWithHttpInfo(sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken);
              return localVarResponse.Data;
@@ -1616,7 +1616,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of ShipmentListing</returns>
-        public ApiResponse< ShipmentListing > ListInboundShipmentsWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null)
+        public ApiResponse< ShipmentListing > ListInboundShipmentsWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null)
         {
 
             var localVarPath = "/awd/2024-05-09/inboundShipments";
@@ -1677,7 +1677,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ShipmentListing</returns>
-        public async System.Threading.Tasks.Task<ShipmentListing> ListInboundShipmentsAsync (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ShipmentListing> ListInboundShipmentsAsync (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null)
         {
              ApiResponse<ShipmentListing> localVarResponse = await ListInboundShipmentsAsyncWithHttpInfo(sortBy, sortOrder, shipmentStatus, updatedAfter, updatedBefore, maxResults, nextToken);
              return localVarResponse.Data;
@@ -1696,7 +1696,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (ShipmentListing)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ShipmentListing>> ListInboundShipmentsAsyncWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int? maxResults = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ShipmentListing>> ListInboundShipmentsAsyncWithHttpInfo (string? sortBy = null, string? sortOrder = null, string? shipmentStatus = null, DateTime? updatedAfter = null, DateTime? updatedBefore = null, int?? maxResults = null, string? nextToken = null)
         {
 
             var localVarPath = "/awd/2024-05-09/inboundShipments";
@@ -1754,7 +1754,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>InventoryListing</returns>
-        public InventoryListing ListInventory (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null)
+        public InventoryListing ListInventory (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null)
         {
              ApiResponse<InventoryListing> localVarResponse = ListInventoryWithHttpInfo(sku, sortOrder, details, nextToken, maxResults);
              return localVarResponse.Data;
@@ -1770,7 +1770,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>ApiResponse of InventoryListing</returns>
-        public ApiResponse< InventoryListing > ListInventoryWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null)
+        public ApiResponse< InventoryListing > ListInventoryWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null)
         {
 
             var localVarPath = "/awd/2024-05-09/inventory";
@@ -1827,7 +1827,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>Task of InventoryListing</returns>
-        public async System.Threading.Tasks.Task<InventoryListing> ListInventoryAsync (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null)
+        public async System.Threading.Tasks.Task<InventoryListing> ListInventoryAsync (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null)
         {
              ApiResponse<InventoryListing> localVarResponse = await ListInventoryAsyncWithHttpInfo(sku, sortOrder, details, nextToken, maxResults);
              return localVarResponse.Data;
@@ -1844,7 +1844,7 @@ namespace software.amzn.spapi.Api.awd.v2024_05_09
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <param name="maxResults">Maximum number of results to return. (optional, default to 25)</param>
         /// <returns>Task of ApiResponse (InventoryListing)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InventoryListing>> ListInventoryAsyncWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int? maxResults = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InventoryListing>> ListInventoryAsyncWithHttpInfo (string? sku = null, string? sortOrder = null, string? details = null, string? nextToken = null, int?? maxResults = null)
         {
 
             var localVarPath = "/awd/2024-05-09/inventory";

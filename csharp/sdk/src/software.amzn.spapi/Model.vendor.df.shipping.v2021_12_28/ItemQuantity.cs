@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <param name="amount">Quantity of units shipped for a specific item at a shipment level. If the item is present only in certain packages or pallets within the shipment, please provide this at the appropriate package or pallet level. (required).</param>
         /// <param name="unitOfMeasure">Unit of measure for the shipped quantity. (required).</param>
-        public ItemQuantity(int amount = default(int), string unitOfMeasure = default(string))
+        public ItemQuantity(int? amount = default(int?), string unitOfMeasure = default(string))
         {
+            // to ensure "amount" is required (not null)
+            if (amount == null)
+            {
+                throw new ArgumentNullException("amount is a required property for ItemQuantity and cannot be null");
+            }
             this.Amount = amount;
             // to ensure "unitOfMeasure" is required (not null)
             if (unitOfMeasure == null)
@@ -57,7 +62,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>Quantity of units shipped for a specific item at a shipment level. If the item is present only in certain packages or pallets within the shipment, please provide this at the appropriate package or pallet level.</value>
         [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         /// <summary>
         /// Unit of measure for the shipped quantity.

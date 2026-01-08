@@ -248,7 +248,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// <param name="otpDetails">otpDetails.</param>
         /// <param name="packageDeliveryMode">The package delivery mode. This indicates whether the return was delivered to the seller with or without a one-time password (OTP)..</param>
         /// <param name="replanningDetails">replanningDetails.</param>
-        public Return(string id = default(string), string returnLocationId = default(string), string merchantSku = default(string), ReturnTypeEnum returnType = default(ReturnTypeEnum), ReturnSubTypeEnum? returnSubType = default(ReturnSubTypeEnum?), int numberOfUnits = default(int), StatusEnum status = default(StatusEnum), string fulfillmentLocationId = default(string), string creationDateTime = default(string), string lastUpdatedDateTime = default(string), ReturnMetadata returnMetadata = default(ReturnMetadata), ReturnShippingInfo returnShippingInfo = default(ReturnShippingInfo), MarketplaceChannelDetails marketplaceChannelDetails = default(MarketplaceChannelDetails), OtpDetails otpDetails = default(OtpDetails), PackageDeliveryModeEnum? packageDeliveryMode = default(PackageDeliveryModeEnum?), ReplanningDetails replanningDetails = default(ReplanningDetails))
+        public Return(string id = default(string), string returnLocationId = default(string), string merchantSku = default(string), ReturnTypeEnum returnType = default(ReturnTypeEnum), ReturnSubTypeEnum? returnSubType = default(ReturnSubTypeEnum?), int? numberOfUnits = default(int?), StatusEnum status = default(StatusEnum), string fulfillmentLocationId = default(string), string creationDateTime = default(string), string lastUpdatedDateTime = default(string), ReturnMetadata returnMetadata = default(ReturnMetadata), ReturnShippingInfo returnShippingInfo = default(ReturnShippingInfo), MarketplaceChannelDetails marketplaceChannelDetails = default(MarketplaceChannelDetails), OtpDetails otpDetails = default(OtpDetails), PackageDeliveryModeEnum? packageDeliveryMode = default(PackageDeliveryModeEnum?), ReplanningDetails replanningDetails = default(ReplanningDetails))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -323,8 +323,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// The total number of units in the return.
         /// </summary>
         /// <value>The total number of units in the return.</value>
-        [DataMember(Name = "numberOfUnits", EmitDefaultValue = false)]
-        public int NumberOfUnits { get; set; }
+        [DataMember(Name = "numberOfUnits", EmitDefaultValue = true)]
+        public int? NumberOfUnits { get; set; }
 
         /// <summary>
         /// The ID of the location that fulfilled the order.
@@ -421,8 +421,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // NumberOfUnits (int) minimum
-            if (this.NumberOfUnits < (int)1)
+            // NumberOfUnits (int?) minimum
+            if (this.NumberOfUnits < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for NumberOfUnits, must be a value greater than or equal to 1.", new [] { "NumberOfUnits" });
             }

@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="itemStatus">The status of the item..</param>
         /// <param name="brandName">The brand name of the item..</param>
         /// <param name="itemDelivery">itemDelivery.</param>
-        public AssociatedItem(string asin = default(string), string title = default(string), int quantity = default(int), string orderId = default(string), ItemStatusEnum? itemStatus = default(ItemStatusEnum?), string brandName = default(string), ItemDelivery itemDelivery = default(ItemDelivery))
+        public AssociatedItem(string asin = default(string), string title = default(string), int? quantity = default(int?), string orderId = default(string), ItemStatusEnum? itemStatus = default(ItemStatusEnum?), string brandName = default(string), ItemDelivery itemDelivery = default(ItemDelivery))
         {
             this.Asin = asin;
             this.Title = title;
@@ -109,8 +109,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// The total number of items included in the order.
         /// </summary>
         /// <value>The total number of items included in the order.</value>
-        [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        [DataMember(Name = "quantity", EmitDefaultValue = true)]
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.

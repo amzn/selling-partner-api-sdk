@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="headline">headline.</param>
         /// <param name="specificationList">The specification list. (required).</param>
         /// <param name="tableCount">The number of tables you want present. Features are evenly divided between the tables..</param>
-        public StandardTechSpecsModule(TextComponent headline = default(TextComponent), List<StandardTextPairBlock> specificationList = default(List<StandardTextPairBlock>), int tableCount = default(int))
+        public StandardTechSpecsModule(TextComponent headline = default(TextComponent), List<StandardTextPairBlock> specificationList = default(List<StandardTextPairBlock>), int? tableCount = default(int?))
         {
             // to ensure "specificationList" is required (not null)
             if (specificationList == null)
@@ -71,8 +71,8 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// The number of tables you want present. Features are evenly divided between the tables.
         /// </summary>
         /// <value>The number of tables you want present. Features are evenly divided between the tables.</value>
-        [DataMember(Name = "tableCount", EmitDefaultValue = false)]
-        public int TableCount { get; set; }
+        [DataMember(Name = "tableCount", EmitDefaultValue = true)]
+        public int? TableCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,14 +105,14 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // TableCount (int) maximum
-            if (this.TableCount > (int)2)
+            // TableCount (int?) maximum
+            if (this.TableCount > (int?)2)
             {
                 yield return new ValidationResult("Invalid value for TableCount, must be a value less than or equal to 2.", new [] { "TableCount" });
             }
 
-            // TableCount (int) minimum
-            if (this.TableCount < (int)1)
+            // TableCount (int?) minimum
+            if (this.TableCount < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for TableCount, must be a value greater than or equal to 1.", new [] { "TableCount" });
             }

@@ -44,8 +44,13 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="sku">The seller or merchant SKU. (required).</param>
         /// <param name="expiration">The expiration date for the SKU. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="prepDetails">prepDetails.</param>
-        public ProductQuantity(List<ProductAttribute> attributes = default(List<ProductAttribute>), int quantity = default(int), string sku = default(string), DateTime expiration = default(DateTime), PrepDetails prepDetails = default(PrepDetails))
+        public ProductQuantity(List<ProductAttribute> attributes = default(List<ProductAttribute>), int? quantity = default(int?), string sku = default(string), DateTime expiration = default(DateTime), PrepDetails prepDetails = default(PrepDetails))
         {
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for ProductQuantity and cannot be null");
+            }
             this.Quantity = quantity;
             // to ensure "sku" is required (not null)
             if (sku == null)
@@ -73,7 +78,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Product quantity.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// The seller or merchant SKU.

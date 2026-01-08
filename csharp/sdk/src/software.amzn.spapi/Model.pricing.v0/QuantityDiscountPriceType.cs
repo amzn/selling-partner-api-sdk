@@ -48,8 +48,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="quantityTier">Indicates at what quantity this price becomes active. (required).</param>
         /// <param name="quantityDiscountType">quantityDiscountType (required).</param>
         /// <param name="listingPrice">listingPrice (required).</param>
-        public QuantityDiscountPriceType(int quantityTier = default(int), QuantityDiscountType quantityDiscountType = default(QuantityDiscountType), MoneyType listingPrice = default(MoneyType))
+        public QuantityDiscountPriceType(int? quantityTier = default(int?), QuantityDiscountType quantityDiscountType = default(QuantityDiscountType), MoneyType listingPrice = default(MoneyType))
         {
+            // to ensure "quantityTier" is required (not null)
+            if (quantityTier == null)
+            {
+                throw new ArgumentNullException("quantityTier is a required property for QuantityDiscountPriceType and cannot be null");
+            }
             this.QuantityTier = quantityTier;
             this.QuantityDiscountType = quantityDiscountType;
             // to ensure "listingPrice" is required (not null)
@@ -65,7 +70,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>Indicates at what quantity this price becomes active.</value>
         [DataMember(Name = "quantityTier", IsRequired = true, EmitDefaultValue = true)]
-        public int QuantityTier { get; set; }
+        public int? QuantityTier { get; set; }
 
         /// <summary>
         /// Gets or Sets ListingPrice

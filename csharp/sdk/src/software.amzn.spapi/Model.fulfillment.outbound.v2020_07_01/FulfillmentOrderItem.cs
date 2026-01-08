@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="perUnitPrice">perUnitPrice.</param>
         /// <param name="perUnitTax">perUnitTax.</param>
         /// <param name="perUnitDeclaredValue">perUnitDeclaredValue.</param>
-        public FulfillmentOrderItem(string sellerSku = default(string), string sellerFulfillmentOrderItemId = default(string), int quantity = default(int), string giftMessage = default(string), string displayableComment = default(string), string fulfillmentNetworkSku = default(string), string orderItemDisposition = default(string), int cancelledQuantity = default(int), int unfulfillableQuantity = default(int), DateTime estimatedShipDate = default(DateTime), DateTime estimatedArrivalDate = default(DateTime), Money perUnitPrice = default(Money), Money perUnitTax = default(Money), Money perUnitDeclaredValue = default(Money))
+        public FulfillmentOrderItem(string sellerSku = default(string), string sellerFulfillmentOrderItemId = default(string), int? quantity = default(int?), string giftMessage = default(string), string displayableComment = default(string), string fulfillmentNetworkSku = default(string), string orderItemDisposition = default(string), int? cancelledQuantity = default(int?), int? unfulfillableQuantity = default(int?), DateTime estimatedShipDate = default(DateTime), DateTime estimatedArrivalDate = default(DateTime), Money perUnitPrice = default(Money), Money perUnitTax = default(Money), Money perUnitDeclaredValue = default(Money))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -67,8 +67,23 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
                 throw new ArgumentNullException("sellerFulfillmentOrderItemId is a required property for FulfillmentOrderItem and cannot be null");
             }
             this.SellerFulfillmentOrderItemId = sellerFulfillmentOrderItemId;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for FulfillmentOrderItem and cannot be null");
+            }
             this.Quantity = quantity;
+            // to ensure "cancelledQuantity" is required (not null)
+            if (cancelledQuantity == null)
+            {
+                throw new ArgumentNullException("cancelledQuantity is a required property for FulfillmentOrderItem and cannot be null");
+            }
             this.CancelledQuantity = cancelledQuantity;
+            // to ensure "unfulfillableQuantity" is required (not null)
+            if (unfulfillableQuantity == null)
+            {
+                throw new ArgumentNullException("unfulfillableQuantity is a required property for FulfillmentOrderItem and cannot be null");
+            }
             this.UnfulfillableQuantity = unfulfillableQuantity;
             this.GiftMessage = giftMessage;
             this.DisplayableComment = displayableComment;
@@ -100,7 +115,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// A message to the gift recipient, if applicable.
@@ -135,14 +150,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "cancelledQuantity", IsRequired = true, EmitDefaultValue = true)]
-        public int CancelledQuantity { get; set; }
+        public int? CancelledQuantity { get; set; }
 
         /// <summary>
         /// The item quantity.
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "unfulfillableQuantity", IsRequired = true, EmitDefaultValue = true)]
-        public int UnfulfillableQuantity { get; set; }
+        public int? UnfulfillableQuantity { get; set; }
 
         /// <summary>
         /// Date timestamp

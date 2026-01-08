@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="productCategoryId"> Identifies the item category from which the sales rank is taken. (required).</param>
         /// <param name="rank">The sales rank of the item within the item category. (required).</param>
-        public SalesRankType(string productCategoryId = default(string), int rank = default(int))
+        public SalesRankType(string productCategoryId = default(string), int? rank = default(int?))
         {
             // to ensure "productCategoryId" is required (not null)
             if (productCategoryId == null)
@@ -49,6 +49,11 @@ namespace software.amzn.spapi.Model.pricing.v0
                 throw new ArgumentNullException("productCategoryId is a required property for SalesRankType and cannot be null");
             }
             this.ProductCategoryId = productCategoryId;
+            // to ensure "rank" is required (not null)
+            if (rank == null)
+            {
+                throw new ArgumentNullException("rank is a required property for SalesRankType and cannot be null");
+            }
             this.Rank = rank;
         }
 
@@ -64,7 +69,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The sales rank of the item within the item category.</value>
         [DataMember(Name = "Rank", IsRequired = true, EmitDefaultValue = true)]
-        public int Rank { get; set; }
+        public int? Rank { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

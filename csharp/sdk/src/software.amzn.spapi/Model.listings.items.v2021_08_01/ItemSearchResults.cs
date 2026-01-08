@@ -42,8 +42,13 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="numberOfResults">The total number of selling partner listings items found for the search criteria (only results up to the page count limit is returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000. (required).</param>
         /// <param name="pagination">pagination.</param>
         /// <param name="items">A list of listings items. (required).</param>
-        public ItemSearchResults(int numberOfResults = default(int), Pagination pagination = default(Pagination), List<Item> items = default(List<Item>))
+        public ItemSearchResults(int? numberOfResults = default(int?), Pagination pagination = default(Pagination), List<Item> items = default(List<Item>))
         {
+            // to ensure "numberOfResults" is required (not null)
+            if (numberOfResults == null)
+            {
+                throw new ArgumentNullException("numberOfResults is a required property for ItemSearchResults and cannot be null");
+            }
             this.NumberOfResults = numberOfResults;
             // to ensure "items" is required (not null)
             if (items == null)
@@ -59,7 +64,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>The total number of selling partner listings items found for the search criteria (only results up to the page count limit is returned per request regardless of the number found).  Note: The maximum number of items (SKUs) that can be returned and paged through is 1000.</value>
         [DataMember(Name = "numberOfResults", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfResults { get; set; }
+        public int? NumberOfResults { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination

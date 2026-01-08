@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
         /// </summary>
         /// <param name="amount">Quantity of units available for a specific item..</param>
         /// <param name="unitOfMeasure">Unit of measure for the available quantity. (required).</param>
-        public ItemQuantity(int amount = default(int), string unitOfMeasure = default(string))
+        public ItemQuantity(int? amount = default(int?), string unitOfMeasure = default(string))
         {
             // to ensure "unitOfMeasure" is required (not null)
             if (unitOfMeasure == null)
@@ -56,8 +56,8 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
         /// Quantity of units available for a specific item.
         /// </summary>
         /// <value>Quantity of units available for a specific item.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public int Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public int? Amount { get; set; }
 
         /// <summary>
         /// Unit of measure for the available quantity.

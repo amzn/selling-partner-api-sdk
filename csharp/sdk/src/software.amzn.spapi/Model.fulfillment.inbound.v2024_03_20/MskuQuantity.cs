@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="msku">The merchant SKU, a merchant-supplied identifier for a specific SKU. (required).</param>
         /// <param name="quantity">A positive integer. (required).</param>
-        public MskuQuantity(string msku = default(string), int quantity = default(int))
+        public MskuQuantity(string msku = default(string), int? quantity = default(int?))
         {
             // to ensure "msku" is required (not null)
             if (msku == null)
@@ -49,6 +49,11 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
                 throw new ArgumentNullException("msku is a required property for MskuQuantity and cannot be null");
             }
             this.Msku = msku;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for MskuQuantity and cannot be null");
+            }
             this.Quantity = quantity;
         }
 
@@ -64,7 +69,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>A positive integer.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,14 +113,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
                 yield return new ValidationResult("Invalid value for Msku, length must be greater than 1.", new [] { "Msku" });
             }
 
-            // Quantity (int) maximum
-            if (this.Quantity > (int)10000)
+            // Quantity (int?) maximum
+            if (this.Quantity > (int?)10000)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value less than or equal to 10000.", new [] { "Quantity" });
             }
 
-            // Quantity (int) minimum
-            if (this.Quantity < (int)1)
+            // Quantity (int?) minimum
+            if (this.Quantity < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 1.", new [] { "Quantity" });
             }

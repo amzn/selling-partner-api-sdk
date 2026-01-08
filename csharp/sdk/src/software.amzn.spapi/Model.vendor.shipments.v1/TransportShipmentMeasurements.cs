@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="totalPalletNonStackable">Total number of Non Stackable Pallets present in the shipment..</param>
         /// <param name="shipmentWeight">shipmentWeight.</param>
         /// <param name="shipmentVolume">shipmentVolume.</param>
-        public TransportShipmentMeasurements(int totalCartonCount = default(int), int totalPalletStackable = default(int), int totalPalletNonStackable = default(int), Weight shipmentWeight = default(Weight), Volume shipmentVolume = default(Volume))
+        public TransportShipmentMeasurements(int? totalCartonCount = default(int?), int? totalPalletStackable = default(int?), int? totalPalletNonStackable = default(int?), Weight shipmentWeight = default(Weight), Volume shipmentVolume = default(Volume))
         {
             this.TotalCartonCount = totalCartonCount;
             this.TotalPalletStackable = totalPalletStackable;
@@ -52,22 +52,22 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Total number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.
         /// </summary>
         /// <value>Total number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.</value>
-        [DataMember(Name = "totalCartonCount", EmitDefaultValue = false)]
-        public int TotalCartonCount { get; set; }
+        [DataMember(Name = "totalCartonCount", EmitDefaultValue = true)]
+        public int? TotalCartonCount { get; set; }
 
         /// <summary>
         /// Total number of Stackable Pallets present in the shipment.
         /// </summary>
         /// <value>Total number of Stackable Pallets present in the shipment.</value>
-        [DataMember(Name = "totalPalletStackable", EmitDefaultValue = false)]
-        public int TotalPalletStackable { get; set; }
+        [DataMember(Name = "totalPalletStackable", EmitDefaultValue = true)]
+        public int? TotalPalletStackable { get; set; }
 
         /// <summary>
         /// Total number of Non Stackable Pallets present in the shipment.
         /// </summary>
         /// <value>Total number of Non Stackable Pallets present in the shipment.</value>
-        [DataMember(Name = "totalPalletNonStackable", EmitDefaultValue = false)]
-        public int TotalPalletNonStackable { get; set; }
+        [DataMember(Name = "totalPalletNonStackable", EmitDefaultValue = true)]
+        public int? TotalPalletNonStackable { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipmentWeight

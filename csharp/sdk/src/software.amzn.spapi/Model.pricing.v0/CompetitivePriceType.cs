@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="quantityDiscountType">quantityDiscountType.</param>
         /// <param name="sellerId">The seller identifier for the offer..</param>
         /// <param name="belongsToRequester"> Indicates whether or not the pricing information is for an offer listing that belongs to the requester. The requester is the seller associated with the SellerId that was submitted with the request. Possible values are: true and false..</param>
-        public CompetitivePriceType(string competitivePriceId = default(string), PriceType price = default(PriceType), string condition = default(string), string subcondition = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int quantityTier = default(int), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), string sellerId = default(string), bool belongsToRequester = default(bool))
+        public CompetitivePriceType(string competitivePriceId = default(string), PriceType price = default(PriceType), string condition = default(string), string subcondition = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int? quantityTier = default(int?), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), string sellerId = default(string), bool belongsToRequester = default(bool))
         {
             // to ensure "competitivePriceId" is required (not null)
             if (competitivePriceId == null)
@@ -114,8 +114,8 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Indicates at what quantity this price becomes active.
         /// </summary>
         /// <value>Indicates at what quantity this price becomes active.</value>
-        [DataMember(Name = "quantityTier", EmitDefaultValue = false)]
-        public int QuantityTier { get; set; }
+        [DataMember(Name = "quantityTier", EmitDefaultValue = true)]
+        public int? QuantityTier { get; set; }
 
         /// <summary>
         /// The seller identifier for the offer.

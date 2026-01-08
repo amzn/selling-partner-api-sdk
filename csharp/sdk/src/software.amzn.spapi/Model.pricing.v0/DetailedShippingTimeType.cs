@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="maximumHours">The maximum time, in hours, that the item will likely be shipped after the order has been placed..</param>
         /// <param name="availableDate">The date when the item will be available for shipping. Only displayed for items that are not currently available for shipping..</param>
         /// <param name="availabilityType">Indicates whether the item is available for shipping now, or on a known or an unknown date in the future. If known, the availableDate property indicates the date that the item will be available for shipping. Possible values: NOW, FUTURE_WITHOUT_DATE, FUTURE_WITH_DATE..</param>
-        public DetailedShippingTimeType(long minimumHours = default(long), long maximumHours = default(long), string availableDate = default(string), AvailabilityTypeEnum? availabilityType = default(AvailabilityTypeEnum?))
+        public DetailedShippingTimeType(long? minimumHours = default(long?), long? maximumHours = default(long?), string availableDate = default(string), AvailabilityTypeEnum? availabilityType = default(AvailabilityTypeEnum?))
         {
             this.MinimumHours = minimumHours;
             this.MaximumHours = maximumHours;
@@ -83,15 +83,15 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// The minimum time, in hours, that the item will likely be shipped after the order has been placed.
         /// </summary>
         /// <value>The minimum time, in hours, that the item will likely be shipped after the order has been placed.</value>
-        [DataMember(Name = "minimumHours", EmitDefaultValue = false)]
-        public long MinimumHours { get; set; }
+        [DataMember(Name = "minimumHours", EmitDefaultValue = true)]
+        public long? MinimumHours { get; set; }
 
         /// <summary>
         /// The maximum time, in hours, that the item will likely be shipped after the order has been placed.
         /// </summary>
         /// <value>The maximum time, in hours, that the item will likely be shipped after the order has been placed.</value>
-        [DataMember(Name = "maximumHours", EmitDefaultValue = false)]
-        public long MaximumHours { get; set; }
+        [DataMember(Name = "maximumHours", EmitDefaultValue = true)]
+        public long? MaximumHours { get; set; }
 
         /// <summary>
         /// The date when the item will be available for shipping. Only displayed for items that are not currently available for shipping.

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="productName">The localized language product title of the item within the specific marketplace..</param>
         /// <param name="totalQuantity">The total number of units in an inbound shipment or in Amazon fulfillment centers..</param>
         /// <param name="stores">A list of seller-enrolled stores that apply to this seller SKU..</param>
-        public InventorySummary(string asin = default(string), string fnSku = default(string), string sellerSku = default(string), string condition = default(string), InventoryDetails inventoryDetails = default(InventoryDetails), DateTime lastUpdatedTime = default(DateTime), string productName = default(string), int totalQuantity = default(int), List<string> stores = default(List<string>))
+        public InventorySummary(string asin = default(string), string fnSku = default(string), string sellerSku = default(string), string condition = default(string), InventoryDetails inventoryDetails = default(InventoryDetails), DateTime lastUpdatedTime = default(DateTime), string productName = default(string), int? totalQuantity = default(int?), List<string> stores = default(List<string>))
         {
             this.Asin = asin;
             this.FnSku = fnSku;
@@ -108,8 +108,8 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// The total number of units in an inbound shipment or in Amazon fulfillment centers.
         /// </summary>
         /// <value>The total number of units in an inbound shipment or in Amazon fulfillment centers.</value>
-        [DataMember(Name = "totalQuantity", EmitDefaultValue = false)]
-        public int TotalQuantity { get; set; }
+        [DataMember(Name = "totalQuantity", EmitDefaultValue = true)]
+        public int? TotalQuantity { get; set; }
 
         /// <summary>
         /// A list of seller-enrolled stores that apply to this seller SKU.

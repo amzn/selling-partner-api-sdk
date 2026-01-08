@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="items">The items and their quantity in the box. This must be empty if the box &#x60;contentInformationSource&#x60; is &#x60;BARCODE_2D&#x60; or &#x60;MANUAL_PROCESS&#x60;..</param>
         /// <param name="quantity">The number of containers where all other properties like weight or dimensions are identical. (required).</param>
         /// <param name="weight">weight (required).</param>
-        public BoxInput(BoxContentInformationSource contentInformationSource = default(BoxContentInformationSource), Dimensions dimensions = default(Dimensions), List<ItemInput> items = default(List<ItemInput>), int quantity = default(int), Weight weight = default(Weight))
+        public BoxInput(BoxContentInformationSource contentInformationSource = default(BoxContentInformationSource), Dimensions dimensions = default(Dimensions), List<ItemInput> items = default(List<ItemInput>), int? quantity = default(int?), Weight weight = default(Weight))
         {
             this.ContentInformationSource = contentInformationSource;
             // to ensure "dimensions" is required (not null)
@@ -59,6 +59,11 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
                 throw new ArgumentNullException("dimensions is a required property for BoxInput and cannot be null");
             }
             this.Dimensions = dimensions;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for BoxInput and cannot be null");
+            }
             this.Quantity = quantity;
             // to ensure "weight" is required (not null)
             if (weight == null)
@@ -87,7 +92,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The number of containers where all other properties like weight or dimensions are identical.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
@@ -128,14 +133,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Quantity (int) maximum
-            if (this.Quantity > (int)10000)
+            // Quantity (int?) maximum
+            if (this.Quantity > (int?)10000)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value less than or equal to 10000.", new [] { "Quantity" });
             }
 
-            // Quantity (int) minimum
-            if (this.Quantity < (int)1)
+            // Quantity (int?) minimum
+            if (this.Quantity < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 1.", new [] { "Quantity" });
             }

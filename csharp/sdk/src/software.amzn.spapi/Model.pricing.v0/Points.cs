@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="pointsNumber">The number of points..</param>
         /// <param name="pointsMonetaryValue">pointsMonetaryValue.</param>
-        public Points(int pointsNumber = default(int), MoneyType pointsMonetaryValue = default(MoneyType))
+        public Points(int? pointsNumber = default(int?), MoneyType pointsMonetaryValue = default(MoneyType))
         {
             this.PointsNumber = pointsNumber;
             this.PointsMonetaryValue = pointsMonetaryValue;
@@ -46,8 +46,8 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// The number of points.
         /// </summary>
         /// <value>The number of points.</value>
-        [DataMember(Name = "PointsNumber", EmitDefaultValue = false)]
-        public int PointsNumber { get; set; }
+        [DataMember(Name = "PointsNumber", EmitDefaultValue = true)]
+        public int? PointsNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets PointsMonetaryValue

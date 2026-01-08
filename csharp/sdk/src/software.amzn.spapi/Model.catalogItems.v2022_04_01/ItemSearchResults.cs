@@ -43,8 +43,13 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="pagination">pagination.</param>
         /// <param name="refinements">refinements.</param>
         /// <param name="items">A list of items from the Amazon catalog. (required).</param>
-        public ItemSearchResults(int numberOfResults = default(int), Pagination pagination = default(Pagination), Refinements refinements = default(Refinements), List<Item> items = default(List<Item>))
+        public ItemSearchResults(int? numberOfResults = default(int?), Pagination pagination = default(Pagination), Refinements refinements = default(Refinements), List<Item> items = default(List<Item>))
         {
+            // to ensure "numberOfResults" is required (not null)
+            if (numberOfResults == null)
+            {
+                throw new ArgumentNullException("numberOfResults is a required property for ItemSearchResults and cannot be null");
+            }
             this.NumberOfResults = numberOfResults;
             // to ensure "items" is required (not null)
             if (items == null)
@@ -61,7 +66,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>For searches that are based on &#x60;identifiers&#x60;, &#x60;numberOfResults&#x60; is the total number of Amazon catalog items found. For searches that are based on &#x60;keywords&#x60;, &#x60;numberOfResults&#x60; is the estimated total number of Amazon catalog items that are matched by the search query. Only results up to the page count limit are returned per request regardless of the number found.  **Note:** The maximum number of items (ASINs) that can be returned and paged through is 1,000.</value>
         [DataMember(Name = "numberOfResults", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfResults { get; set; }
+        public int? NumberOfResults { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination

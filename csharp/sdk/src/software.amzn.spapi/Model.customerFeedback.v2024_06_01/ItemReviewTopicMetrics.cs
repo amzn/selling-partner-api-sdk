@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// <param name="numberOfMentions">The number of times that reviews mention the topic. This value is &#x60;null&#x60; if reviews do not mention the topic frequently enough..</param>
         /// <param name="occurrencePercentage">The percentage of customer reviews that mention the topic. This value is &#x60;null&#x60; if reviews do not mention the topic frequently enough..</param>
         /// <param name="starRatingImpact">The effect of the topic on the star rating of the ASIN. This value can be positive or negative. This value is &#x60;null&#x60; if the topic does&#39;t affect the star rating of the ASIN..</param>
-        public ItemReviewTopicMetrics(int numberOfMentions = default(int), float occurrencePercentage = default(float), float starRatingImpact = default(float))
+        public ItemReviewTopicMetrics(int? numberOfMentions = default(int?), float occurrencePercentage = default(float), float starRatingImpact = default(float))
         {
             this.NumberOfMentions = numberOfMentions;
             this.OccurrencePercentage = occurrencePercentage;
@@ -48,8 +48,8 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// The number of times that reviews mention the topic. This value is &#x60;null&#x60; if reviews do not mention the topic frequently enough.
         /// </summary>
         /// <value>The number of times that reviews mention the topic. This value is &#x60;null&#x60; if reviews do not mention the topic frequently enough.</value>
-        [DataMember(Name = "numberOfMentions", EmitDefaultValue = false)]
-        public int NumberOfMentions { get; set; }
+        [DataMember(Name = "numberOfMentions", EmitDefaultValue = true)]
+        public int? NumberOfMentions { get; set; }
 
         /// <summary>
         /// The percentage of customer reviews that mention the topic. This value is &#x60;null&#x60; if reviews do not mention the topic frequently enough.

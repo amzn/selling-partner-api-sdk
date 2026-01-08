@@ -52,8 +52,13 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="invoiceDetails">invoiceDetails.</param>
         /// <param name="serialNumbers">A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon..</param>
         /// <param name="directFulfillmentItemIdentifiers">directFulfillmentItemIdentifiers.</param>
-        public Item(Currency itemValue = default(Currency), string description = default(string), string itemIdentifier = default(string), int quantity = default(int), Weight weight = default(Weight), LiquidVolume liquidVolume = default(LiquidVolume), bool isHazmat = default(bool), DangerousGoodsDetails dangerousGoodsDetails = default(DangerousGoodsDetails), string productType = default(string), InvoiceDetails invoiceDetails = default(InvoiceDetails), List<string> serialNumbers = default(List<string>), DirectFulfillmentItemIdentifiers directFulfillmentItemIdentifiers = default(DirectFulfillmentItemIdentifiers))
+        public Item(Currency itemValue = default(Currency), string description = default(string), string itemIdentifier = default(string), int? quantity = default(int?), Weight weight = default(Weight), LiquidVolume liquidVolume = default(LiquidVolume), bool isHazmat = default(bool), DangerousGoodsDetails dangerousGoodsDetails = default(DangerousGoodsDetails), string productType = default(string), InvoiceDetails invoiceDetails = default(InvoiceDetails), List<string> serialNumbers = default(List<string>), DirectFulfillmentItemIdentifiers directFulfillmentItemIdentifiers = default(DirectFulfillmentItemIdentifiers))
         {
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for Item and cannot be null");
+            }
             this.Quantity = quantity;
             this.ItemValue = itemValue;
             this.Description = description;
@@ -93,7 +98,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The number of units. This value is required.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight

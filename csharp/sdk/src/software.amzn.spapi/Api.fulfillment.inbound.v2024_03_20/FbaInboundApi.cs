@@ -449,7 +449,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>GetSelfShipAppointmentSlotsResponse</returns>
-        GetSelfShipAppointmentSlotsResponse GetSelfShipAppointmentSlots (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        GetSelfShipAppointmentSlotsResponse GetSelfShipAppointmentSlots (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -463,7 +463,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of GetSelfShipAppointmentSlotsResponse</returns>
-        ApiResponse<GetSelfShipAppointmentSlotsResponse> GetSelfShipAppointmentSlotsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<GetSelfShipAppointmentSlotsResponse> GetSelfShipAppointmentSlotsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -524,7 +524,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListDeliveryWindowOptionsResponse</returns>
-        ListDeliveryWindowOptionsResponse ListDeliveryWindowOptions (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ListDeliveryWindowOptionsResponse ListDeliveryWindowOptions (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -538,7 +538,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListDeliveryWindowOptionsResponse</returns>
-        ApiResponse<ListDeliveryWindowOptionsResponse> ListDeliveryWindowOptionsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListDeliveryWindowOptionsResponse> ListDeliveryWindowOptionsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -550,7 +550,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListInboundPlanBoxesResponse</returns>
-        ListInboundPlanBoxesResponse ListInboundPlanBoxes (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ListInboundPlanBoxesResponse ListInboundPlanBoxes (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -563,7 +563,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlanBoxesResponse</returns>
-        ApiResponse<ListInboundPlanBoxesResponse> ListInboundPlanBoxesWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListInboundPlanBoxesResponse> ListInboundPlanBoxesWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -575,7 +575,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListInboundPlanItemsResponse</returns>
-        ListInboundPlanItemsResponse ListInboundPlanItems (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ListInboundPlanItemsResponse ListInboundPlanItems (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -588,7 +588,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlanItemsResponse</returns>
-        ApiResponse<ListInboundPlanItemsResponse> ListInboundPlanItemsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListInboundPlanItemsResponse> ListInboundPlanItemsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -600,7 +600,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListInboundPlanPalletsResponse</returns>
-        ListInboundPlanPalletsResponse ListInboundPlanPallets (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ListInboundPlanPalletsResponse ListInboundPlanPallets (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -613,7 +613,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlanPalletsResponse</returns>
-        ApiResponse<ListInboundPlanPalletsResponse> ListInboundPlanPalletsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListInboundPlanPalletsResponse> ListInboundPlanPalletsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -627,7 +627,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>ListInboundPlansResponse</returns>
-        ListInboundPlansResponse ListInboundPlans (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
+        ListInboundPlansResponse ListInboundPlans (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
 
         /// <summary>
         /// 
@@ -642,7 +642,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlansResponse</returns>
-        ApiResponse<ListInboundPlansResponse> ListInboundPlansWithHttpInfo (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
+        ApiResponse<ListInboundPlansResponse> ListInboundPlansWithHttpInfo (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
         /// <summary>
         /// 
         /// </summary>
@@ -678,7 +678,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPackingGroupBoxesResponse</returns>
-        ListPackingGroupBoxesResponse ListPackingGroupBoxes (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        ListPackingGroupBoxesResponse ListPackingGroupBoxes (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -692,7 +692,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPackingGroupBoxesResponse</returns>
-        ApiResponse<ListPackingGroupBoxesResponse> ListPackingGroupBoxesWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListPackingGroupBoxesResponse> ListPackingGroupBoxesWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -705,7 +705,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPackingGroupItemsResponse</returns>
-        ListPackingGroupItemsResponse ListPackingGroupItems (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        ListPackingGroupItemsResponse ListPackingGroupItems (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -719,7 +719,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPackingGroupItemsResponse</returns>
-        ApiResponse<ListPackingGroupItemsResponse> ListPackingGroupItemsWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListPackingGroupItemsResponse> ListPackingGroupItemsWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -731,7 +731,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPackingOptionsResponse</returns>
-        ListPackingOptionsResponse ListPackingOptions (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ListPackingOptionsResponse ListPackingOptions (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -744,7 +744,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPackingOptionsResponse</returns>
-        ApiResponse<ListPackingOptionsResponse> ListPackingOptionsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListPackingOptionsResponse> ListPackingOptionsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -756,7 +756,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPlacementOptionsResponse</returns>
-        ListPlacementOptionsResponse ListPlacementOptions (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ListPlacementOptionsResponse ListPlacementOptions (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -769,7 +769,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPlacementOptionsResponse</returns>
-        ApiResponse<ListPlacementOptionsResponse> ListPlacementOptionsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListPlacementOptionsResponse> ListPlacementOptionsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -805,7 +805,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentBoxesResponse</returns>
-        ListShipmentBoxesResponse ListShipmentBoxes (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ListShipmentBoxesResponse ListShipmentBoxes (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -819,7 +819,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentBoxesResponse</returns>
-        ApiResponse<ListShipmentBoxesResponse> ListShipmentBoxesWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListShipmentBoxesResponse> ListShipmentBoxesWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -832,7 +832,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentContentUpdatePreviewsResponse</returns>
-        ListShipmentContentUpdatePreviewsResponse ListShipmentContentUpdatePreviews (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ListShipmentContentUpdatePreviewsResponse ListShipmentContentUpdatePreviews (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -846,7 +846,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentContentUpdatePreviewsResponse</returns>
-        ApiResponse<ListShipmentContentUpdatePreviewsResponse> ListShipmentContentUpdatePreviewsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListShipmentContentUpdatePreviewsResponse> ListShipmentContentUpdatePreviewsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -859,7 +859,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentItemsResponse</returns>
-        ListShipmentItemsResponse ListShipmentItems (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ListShipmentItemsResponse ListShipmentItems (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -873,7 +873,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentItemsResponse</returns>
-        ApiResponse<ListShipmentItemsResponse> ListShipmentItemsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListShipmentItemsResponse> ListShipmentItemsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -886,7 +886,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentPalletsResponse</returns>
-        ListShipmentPalletsResponse ListShipmentPallets (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ListShipmentPalletsResponse ListShipmentPallets (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -900,7 +900,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentPalletsResponse</returns>
-        ApiResponse<ListShipmentPalletsResponse> ListShipmentPalletsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        ApiResponse<ListShipmentPalletsResponse> ListShipmentPalletsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -914,7 +914,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>ListTransportationOptionsResponse</returns>
-        ListTransportationOptionsResponse ListTransportationOptions (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
+        ListTransportationOptionsResponse ListTransportationOptions (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
 
         /// <summary>
         /// 
@@ -929,7 +929,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>ApiResponse of ListTransportationOptionsResponse</returns>
-        ApiResponse<ListTransportationOptionsResponse> ListTransportationOptionsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
+        ApiResponse<ListTransportationOptionsResponse> ListTransportationOptionsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1548,7 +1548,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of GetSelfShipAppointmentSlotsResponse</returns>
-        System.Threading.Tasks.Task<GetSelfShipAppointmentSlotsResponse> GetSelfShipAppointmentSlotsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<GetSelfShipAppointmentSlotsResponse> GetSelfShipAppointmentSlotsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1562,7 +1562,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (GetSelfShipAppointmentSlotsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSelfShipAppointmentSlotsResponse>> GetSelfShipAppointmentSlotsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<GetSelfShipAppointmentSlotsResponse>> GetSelfShipAppointmentSlotsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1623,7 +1623,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListDeliveryWindowOptionsResponse</returns>
-        System.Threading.Tasks.Task<ListDeliveryWindowOptionsResponse> ListDeliveryWindowOptionsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListDeliveryWindowOptionsResponse> ListDeliveryWindowOptionsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1637,7 +1637,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListDeliveryWindowOptionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDeliveryWindowOptionsResponse>> ListDeliveryWindowOptionsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListDeliveryWindowOptionsResponse>> ListDeliveryWindowOptionsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1649,7 +1649,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListInboundPlanBoxesResponse</returns>
-        System.Threading.Tasks.Task<ListInboundPlanBoxesResponse> ListInboundPlanBoxesAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListInboundPlanBoxesResponse> ListInboundPlanBoxesAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1662,7 +1662,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlanBoxesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInboundPlanBoxesResponse>> ListInboundPlanBoxesAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListInboundPlanBoxesResponse>> ListInboundPlanBoxesAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1674,7 +1674,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListInboundPlanItemsResponse</returns>
-        System.Threading.Tasks.Task<ListInboundPlanItemsResponse> ListInboundPlanItemsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListInboundPlanItemsResponse> ListInboundPlanItemsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1687,7 +1687,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlanItemsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInboundPlanItemsResponse>> ListInboundPlanItemsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListInboundPlanItemsResponse>> ListInboundPlanItemsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1699,7 +1699,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListInboundPlanPalletsResponse</returns>
-        System.Threading.Tasks.Task<ListInboundPlanPalletsResponse> ListInboundPlanPalletsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListInboundPlanPalletsResponse> ListInboundPlanPalletsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1712,7 +1712,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlanPalletsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInboundPlanPalletsResponse>> ListInboundPlanPalletsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListInboundPlanPalletsResponse>> ListInboundPlanPalletsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1726,7 +1726,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>Task of ListInboundPlansResponse</returns>
-        System.Threading.Tasks.Task<ListInboundPlansResponse> ListInboundPlansAsync (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
+        System.Threading.Tasks.Task<ListInboundPlansResponse> ListInboundPlansAsync (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
 
         /// <summary>
         /// 
@@ -1741,7 +1741,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlansResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInboundPlansResponse>> ListInboundPlansAsyncWithHttpInfo (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
+        System.Threading.Tasks.Task<ApiResponse<ListInboundPlansResponse>> ListInboundPlansAsyncWithHttpInfo (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1777,7 +1777,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPackingGroupBoxesResponse</returns>
-        System.Threading.Tasks.Task<ListPackingGroupBoxesResponse> ListPackingGroupBoxesAsync (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListPackingGroupBoxesResponse> ListPackingGroupBoxesAsync (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1791,7 +1791,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPackingGroupBoxesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListPackingGroupBoxesResponse>> ListPackingGroupBoxesAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListPackingGroupBoxesResponse>> ListPackingGroupBoxesAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1804,7 +1804,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPackingGroupItemsResponse</returns>
-        System.Threading.Tasks.Task<ListPackingGroupItemsResponse> ListPackingGroupItemsAsync (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListPackingGroupItemsResponse> ListPackingGroupItemsAsync (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1818,7 +1818,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPackingGroupItemsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListPackingGroupItemsResponse>> ListPackingGroupItemsAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListPackingGroupItemsResponse>> ListPackingGroupItemsAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1830,7 +1830,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPackingOptionsResponse</returns>
-        System.Threading.Tasks.Task<ListPackingOptionsResponse> ListPackingOptionsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListPackingOptionsResponse> ListPackingOptionsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1843,7 +1843,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPackingOptionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListPackingOptionsResponse>> ListPackingOptionsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListPackingOptionsResponse>> ListPackingOptionsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1855,7 +1855,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPlacementOptionsResponse</returns>
-        System.Threading.Tasks.Task<ListPlacementOptionsResponse> ListPlacementOptionsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListPlacementOptionsResponse> ListPlacementOptionsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1868,7 +1868,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPlacementOptionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListPlacementOptionsResponse>> ListPlacementOptionsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListPlacementOptionsResponse>> ListPlacementOptionsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1904,7 +1904,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentBoxesResponse</returns>
-        System.Threading.Tasks.Task<ListShipmentBoxesResponse> ListShipmentBoxesAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListShipmentBoxesResponse> ListShipmentBoxesAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1918,7 +1918,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentBoxesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListShipmentBoxesResponse>> ListShipmentBoxesAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListShipmentBoxesResponse>> ListShipmentBoxesAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1931,7 +1931,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentContentUpdatePreviewsResponse</returns>
-        System.Threading.Tasks.Task<ListShipmentContentUpdatePreviewsResponse> ListShipmentContentUpdatePreviewsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListShipmentContentUpdatePreviewsResponse> ListShipmentContentUpdatePreviewsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1945,7 +1945,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentContentUpdatePreviewsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListShipmentContentUpdatePreviewsResponse>> ListShipmentContentUpdatePreviewsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListShipmentContentUpdatePreviewsResponse>> ListShipmentContentUpdatePreviewsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1958,7 +1958,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentItemsResponse</returns>
-        System.Threading.Tasks.Task<ListShipmentItemsResponse> ListShipmentItemsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListShipmentItemsResponse> ListShipmentItemsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1972,7 +1972,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentItemsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListShipmentItemsResponse>> ListShipmentItemsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListShipmentItemsResponse>> ListShipmentItemsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -1985,7 +1985,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentPalletsResponse</returns>
-        System.Threading.Tasks.Task<ListShipmentPalletsResponse> ListShipmentPalletsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ListShipmentPalletsResponse> ListShipmentPalletsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -1999,7 +1999,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentPalletsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListShipmentPalletsResponse>> ListShipmentPalletsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ListShipmentPalletsResponse>> ListShipmentPalletsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -2013,7 +2013,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>Task of ListTransportationOptionsResponse</returns>
-        System.Threading.Tasks.Task<ListTransportationOptionsResponse> ListTransportationOptionsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
+        System.Threading.Tasks.Task<ListTransportationOptionsResponse> ListTransportationOptionsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
 
         /// <summary>
         /// 
@@ -2028,7 +2028,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>Task of ApiResponse (ListTransportationOptionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTransportationOptionsResponse>> ListTransportationOptionsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
+        System.Threading.Tasks.Task<ApiResponse<ListTransportationOptionsResponse>> ListTransportationOptionsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null);
         /// <summary>
         /// 
         /// </summary>
@@ -4957,7 +4957,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>GetSelfShipAppointmentSlotsResponse</returns>
-        public GetSelfShipAppointmentSlotsResponse GetSelfShipAppointmentSlots (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public GetSelfShipAppointmentSlotsResponse GetSelfShipAppointmentSlots (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<GetSelfShipAppointmentSlotsResponse> localVarResponse = GetSelfShipAppointmentSlotsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -4972,7 +4972,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of GetSelfShipAppointmentSlotsResponse</returns>
-        public ApiResponse< GetSelfShipAppointmentSlotsResponse > GetSelfShipAppointmentSlotsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< GetSelfShipAppointmentSlotsResponse > GetSelfShipAppointmentSlotsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5033,7 +5033,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of GetSelfShipAppointmentSlotsResponse</returns>
-        public async System.Threading.Tasks.Task<GetSelfShipAppointmentSlotsResponse> GetSelfShipAppointmentSlotsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<GetSelfShipAppointmentSlotsResponse> GetSelfShipAppointmentSlotsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<GetSelfShipAppointmentSlotsResponse> localVarResponse = await GetSelfShipAppointmentSlotsAsyncWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5049,7 +5049,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of self ship appointment slots to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (GetSelfShipAppointmentSlotsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetSelfShipAppointmentSlotsResponse>> GetSelfShipAppointmentSlotsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetSelfShipAppointmentSlotsResponse>> GetSelfShipAppointmentSlotsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5401,7 +5401,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListDeliveryWindowOptionsResponse</returns>
-        public ListDeliveryWindowOptionsResponse ListDeliveryWindowOptions (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ListDeliveryWindowOptionsResponse ListDeliveryWindowOptions (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListDeliveryWindowOptionsResponse> localVarResponse = ListDeliveryWindowOptionsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5416,7 +5416,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListDeliveryWindowOptionsResponse</returns>
-        public ApiResponse< ListDeliveryWindowOptionsResponse > ListDeliveryWindowOptionsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListDeliveryWindowOptionsResponse > ListDeliveryWindowOptionsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5477,7 +5477,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListDeliveryWindowOptionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListDeliveryWindowOptionsResponse> ListDeliveryWindowOptionsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListDeliveryWindowOptionsResponse> ListDeliveryWindowOptionsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListDeliveryWindowOptionsResponse> localVarResponse = await ListDeliveryWindowOptionsAsyncWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5493,7 +5493,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of delivery window options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListDeliveryWindowOptionsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListDeliveryWindowOptionsResponse>> ListDeliveryWindowOptionsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListDeliveryWindowOptionsResponse>> ListDeliveryWindowOptionsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5552,7 +5552,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListInboundPlanBoxesResponse</returns>
-        public ListInboundPlanBoxesResponse ListInboundPlanBoxes (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ListInboundPlanBoxesResponse ListInboundPlanBoxes (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListInboundPlanBoxesResponse> localVarResponse = ListInboundPlanBoxesWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5566,7 +5566,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlanBoxesResponse</returns>
-        public ApiResponse< ListInboundPlanBoxesResponse > ListInboundPlanBoxesWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListInboundPlanBoxesResponse > ListInboundPlanBoxesWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5622,7 +5622,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListInboundPlanBoxesResponse</returns>
-        public async System.Threading.Tasks.Task<ListInboundPlanBoxesResponse> ListInboundPlanBoxesAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListInboundPlanBoxesResponse> ListInboundPlanBoxesAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListInboundPlanBoxesResponse> localVarResponse = await ListInboundPlanBoxesAsyncWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5637,7 +5637,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlanBoxesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlanBoxesResponse>> ListInboundPlanBoxesAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlanBoxesResponse>> ListInboundPlanBoxesAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5692,7 +5692,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListInboundPlanItemsResponse</returns>
-        public ListInboundPlanItemsResponse ListInboundPlanItems (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ListInboundPlanItemsResponse ListInboundPlanItems (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListInboundPlanItemsResponse> localVarResponse = ListInboundPlanItemsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5706,7 +5706,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlanItemsResponse</returns>
-        public ApiResponse< ListInboundPlanItemsResponse > ListInboundPlanItemsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListInboundPlanItemsResponse > ListInboundPlanItemsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5762,7 +5762,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListInboundPlanItemsResponse</returns>
-        public async System.Threading.Tasks.Task<ListInboundPlanItemsResponse> ListInboundPlanItemsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListInboundPlanItemsResponse> ListInboundPlanItemsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListInboundPlanItemsResponse> localVarResponse = await ListInboundPlanItemsAsyncWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5777,7 +5777,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlanItemsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlanItemsResponse>> ListInboundPlanItemsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlanItemsResponse>> ListInboundPlanItemsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5832,7 +5832,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListInboundPlanPalletsResponse</returns>
-        public ListInboundPlanPalletsResponse ListInboundPlanPallets (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ListInboundPlanPalletsResponse ListInboundPlanPallets (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListInboundPlanPalletsResponse> localVarResponse = ListInboundPlanPalletsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5846,7 +5846,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlanPalletsResponse</returns>
-        public ApiResponse< ListInboundPlanPalletsResponse > ListInboundPlanPalletsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListInboundPlanPalletsResponse > ListInboundPlanPalletsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5902,7 +5902,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListInboundPlanPalletsResponse</returns>
-        public async System.Threading.Tasks.Task<ListInboundPlanPalletsResponse> ListInboundPlanPalletsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListInboundPlanPalletsResponse> ListInboundPlanPalletsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListInboundPlanPalletsResponse> localVarResponse = await ListInboundPlanPalletsAsyncWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -5917,7 +5917,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlanPalletsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlanPalletsResponse>> ListInboundPlanPalletsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlanPalletsResponse>> ListInboundPlanPalletsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -5974,7 +5974,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>ListInboundPlansResponse</returns>
-        public ListInboundPlansResponse ListInboundPlans (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
+        public ListInboundPlansResponse ListInboundPlans (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
         {
              ApiResponse<ListInboundPlansResponse> localVarResponse = ListInboundPlansWithHttpInfo(pageSize, paginationToken, status, sortBy, sortOrder);
              return localVarResponse.Data;
@@ -5990,7 +5990,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>ApiResponse of ListInboundPlansResponse</returns>
-        public ApiResponse< ListInboundPlansResponse > ListInboundPlansWithHttpInfo (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
+        public ApiResponse< ListInboundPlansResponse > ListInboundPlansWithHttpInfo (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
         {
 
             var localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
@@ -6047,7 +6047,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>Task of ListInboundPlansResponse</returns>
-        public async System.Threading.Tasks.Task<ListInboundPlansResponse> ListInboundPlansAsync (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
+        public async System.Threading.Tasks.Task<ListInboundPlansResponse> ListInboundPlansAsync (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
         {
              ApiResponse<ListInboundPlansResponse> localVarResponse = await ListInboundPlansAsyncWithHttpInfo(pageSize, paginationToken, status, sortBy, sortOrder);
              return localVarResponse.Data;
@@ -6064,7 +6064,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="sortBy">Sort by field. (optional)</param>
         /// <param name="sortOrder">The sort order. (optional)</param>
         /// <returns>Task of ApiResponse (ListInboundPlansResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlansResponse>> ListInboundPlansAsyncWithHttpInfo (int? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListInboundPlansResponse>> ListInboundPlansAsyncWithHttpInfo (int?? pageSize = null, string? paginationToken = null, string? status = null, string? sortBy = null, string? sortOrder = null)
         {
 
             var localVarPath = "/inbound/fba/2024-03-20/inboundPlans";
@@ -6259,7 +6259,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPackingGroupBoxesResponse</returns>
-        public ListPackingGroupBoxesResponse ListPackingGroupBoxes (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public ListPackingGroupBoxesResponse ListPackingGroupBoxes (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPackingGroupBoxesResponse> localVarResponse = ListPackingGroupBoxesWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6274,7 +6274,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPackingGroupBoxesResponse</returns>
-        public ApiResponse< ListPackingGroupBoxesResponse > ListPackingGroupBoxesWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListPackingGroupBoxesResponse > ListPackingGroupBoxesWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6335,7 +6335,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPackingGroupBoxesResponse</returns>
-        public async System.Threading.Tasks.Task<ListPackingGroupBoxesResponse> ListPackingGroupBoxesAsync (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListPackingGroupBoxesResponse> ListPackingGroupBoxesAsync (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPackingGroupBoxesResponse> localVarResponse = await ListPackingGroupBoxesAsyncWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6351,7 +6351,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPackingGroupBoxesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListPackingGroupBoxesResponse>> ListPackingGroupBoxesAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListPackingGroupBoxesResponse>> ListPackingGroupBoxesAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6411,7 +6411,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPackingGroupItemsResponse</returns>
-        public ListPackingGroupItemsResponse ListPackingGroupItems (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public ListPackingGroupItemsResponse ListPackingGroupItems (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPackingGroupItemsResponse> localVarResponse = ListPackingGroupItemsWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6426,7 +6426,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPackingGroupItemsResponse</returns>
-        public ApiResponse< ListPackingGroupItemsResponse > ListPackingGroupItemsWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListPackingGroupItemsResponse > ListPackingGroupItemsWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6487,7 +6487,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPackingGroupItemsResponse</returns>
-        public async System.Threading.Tasks.Task<ListPackingGroupItemsResponse> ListPackingGroupItemsAsync (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListPackingGroupItemsResponse> ListPackingGroupItemsAsync (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPackingGroupItemsResponse> localVarResponse = await ListPackingGroupItemsAsyncWithHttpInfo(inboundPlanId, packingGroupId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6503,7 +6503,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing group items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPackingGroupItemsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListPackingGroupItemsResponse>> ListPackingGroupItemsAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListPackingGroupItemsResponse>> ListPackingGroupItemsAsyncWithHttpInfo (string inboundPlanId, string packingGroupId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6562,7 +6562,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPackingOptionsResponse</returns>
-        public ListPackingOptionsResponse ListPackingOptions (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ListPackingOptionsResponse ListPackingOptions (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPackingOptionsResponse> localVarResponse = ListPackingOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6576,7 +6576,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPackingOptionsResponse</returns>
-        public ApiResponse< ListPackingOptionsResponse > ListPackingOptionsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListPackingOptionsResponse > ListPackingOptionsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6632,7 +6632,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPackingOptionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListPackingOptionsResponse> ListPackingOptionsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListPackingOptionsResponse> ListPackingOptionsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPackingOptionsResponse> localVarResponse = await ListPackingOptionsAsyncWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6647,7 +6647,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of packing options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPackingOptionsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListPackingOptionsResponse>> ListPackingOptionsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListPackingOptionsResponse>> ListPackingOptionsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6702,7 +6702,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListPlacementOptionsResponse</returns>
-        public ListPlacementOptionsResponse ListPlacementOptions (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ListPlacementOptionsResponse ListPlacementOptions (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPlacementOptionsResponse> localVarResponse = ListPlacementOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6716,7 +6716,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListPlacementOptionsResponse</returns>
-        public ApiResponse< ListPlacementOptionsResponse > ListPlacementOptionsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListPlacementOptionsResponse > ListPlacementOptionsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6772,7 +6772,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListPlacementOptionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListPlacementOptionsResponse> ListPlacementOptionsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListPlacementOptionsResponse> ListPlacementOptionsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListPlacementOptionsResponse> localVarResponse = await ListPlacementOptionsAsyncWithHttpInfo(inboundPlanId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6787,7 +6787,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of placement options to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListPlacementOptionsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListPlacementOptionsResponse>> ListPlacementOptionsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListPlacementOptionsResponse>> ListPlacementOptionsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -6983,7 +6983,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentBoxesResponse</returns>
-        public ListShipmentBoxesResponse ListShipmentBoxes (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ListShipmentBoxesResponse ListShipmentBoxes (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentBoxesResponse> localVarResponse = ListShipmentBoxesWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -6998,7 +6998,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentBoxesResponse</returns>
-        public ApiResponse< ListShipmentBoxesResponse > ListShipmentBoxesWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListShipmentBoxesResponse > ListShipmentBoxesWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7059,7 +7059,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentBoxesResponse</returns>
-        public async System.Threading.Tasks.Task<ListShipmentBoxesResponse> ListShipmentBoxesAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListShipmentBoxesResponse> ListShipmentBoxesAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentBoxesResponse> localVarResponse = await ListShipmentBoxesAsyncWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -7075,7 +7075,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of boxes to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentBoxesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentBoxesResponse>> ListShipmentBoxesAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentBoxesResponse>> ListShipmentBoxesAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7135,7 +7135,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentContentUpdatePreviewsResponse</returns>
-        public ListShipmentContentUpdatePreviewsResponse ListShipmentContentUpdatePreviews (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ListShipmentContentUpdatePreviewsResponse ListShipmentContentUpdatePreviews (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentContentUpdatePreviewsResponse> localVarResponse = ListShipmentContentUpdatePreviewsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -7150,7 +7150,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentContentUpdatePreviewsResponse</returns>
-        public ApiResponse< ListShipmentContentUpdatePreviewsResponse > ListShipmentContentUpdatePreviewsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListShipmentContentUpdatePreviewsResponse > ListShipmentContentUpdatePreviewsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7211,7 +7211,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentContentUpdatePreviewsResponse</returns>
-        public async System.Threading.Tasks.Task<ListShipmentContentUpdatePreviewsResponse> ListShipmentContentUpdatePreviewsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListShipmentContentUpdatePreviewsResponse> ListShipmentContentUpdatePreviewsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentContentUpdatePreviewsResponse> localVarResponse = await ListShipmentContentUpdatePreviewsAsyncWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -7227,7 +7227,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of content update previews to return. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentContentUpdatePreviewsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentContentUpdatePreviewsResponse>> ListShipmentContentUpdatePreviewsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentContentUpdatePreviewsResponse>> ListShipmentContentUpdatePreviewsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7287,7 +7287,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentItemsResponse</returns>
-        public ListShipmentItemsResponse ListShipmentItems (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ListShipmentItemsResponse ListShipmentItems (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentItemsResponse> localVarResponse = ListShipmentItemsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -7302,7 +7302,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentItemsResponse</returns>
-        public ApiResponse< ListShipmentItemsResponse > ListShipmentItemsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListShipmentItemsResponse > ListShipmentItemsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7363,7 +7363,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentItemsResponse</returns>
-        public async System.Threading.Tasks.Task<ListShipmentItemsResponse> ListShipmentItemsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListShipmentItemsResponse> ListShipmentItemsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentItemsResponse> localVarResponse = await ListShipmentItemsAsyncWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -7379,7 +7379,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of items to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentItemsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentItemsResponse>> ListShipmentItemsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentItemsResponse>> ListShipmentItemsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7439,7 +7439,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ListShipmentPalletsResponse</returns>
-        public ListShipmentPalletsResponse ListShipmentPallets (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ListShipmentPalletsResponse ListShipmentPallets (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentPalletsResponse> localVarResponse = ListShipmentPalletsWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -7454,7 +7454,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>ApiResponse of ListShipmentPalletsResponse</returns>
-        public ApiResponse< ListShipmentPalletsResponse > ListShipmentPalletsWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public ApiResponse< ListShipmentPalletsResponse > ListShipmentPalletsWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7515,7 +7515,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ListShipmentPalletsResponse</returns>
-        public async System.Threading.Tasks.Task<ListShipmentPalletsResponse> ListShipmentPalletsAsync (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ListShipmentPalletsResponse> ListShipmentPalletsAsync (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
              ApiResponse<ListShipmentPalletsResponse> localVarResponse = await ListShipmentPalletsAsyncWithHttpInfo(inboundPlanId, shipmentId, pageSize, paginationToken);
              return localVarResponse.Data;
@@ -7531,7 +7531,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="pageSize">The number of pallets to return in the response matching the given query. (optional, default to 10)</param>
         /// <param name="paginationToken">A token to fetch a certain page when there are multiple pages worth of results. The value of this token is fetched from the &#x60;pagination&#x60; returned in the API response. In the absence of the token value from the query parameter the API returns the first page of the result. (optional)</param>
         /// <returns>Task of ApiResponse (ListShipmentPalletsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentPalletsResponse>> ListShipmentPalletsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int? pageSize = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListShipmentPalletsResponse>> ListShipmentPalletsAsyncWithHttpInfo (string inboundPlanId, string shipmentId, int?? pageSize = null, string? paginationToken = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7592,7 +7592,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>ListTransportationOptionsResponse</returns>
-        public ListTransportationOptionsResponse ListTransportationOptions (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
+        public ListTransportationOptionsResponse ListTransportationOptions (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
         {
              ApiResponse<ListTransportationOptionsResponse> localVarResponse = ListTransportationOptionsWithHttpInfo(inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId);
              return localVarResponse.Data;
@@ -7608,7 +7608,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>ApiResponse of ListTransportationOptionsResponse</returns>
-        public ApiResponse< ListTransportationOptionsResponse > ListTransportationOptionsWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
+        public ApiResponse< ListTransportationOptionsResponse > ListTransportationOptionsWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)
@@ -7668,7 +7668,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>Task of ListTransportationOptionsResponse</returns>
-        public async System.Threading.Tasks.Task<ListTransportationOptionsResponse> ListTransportationOptionsAsync (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
+        public async System.Threading.Tasks.Task<ListTransportationOptionsResponse> ListTransportationOptionsAsync (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
         {
              ApiResponse<ListTransportationOptionsResponse> localVarResponse = await ListTransportationOptionsAsyncWithHttpInfo(inboundPlanId, pageSize, paginationToken, placementOptionId, shipmentId);
              return localVarResponse.Data;
@@ -7685,7 +7685,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The placement option to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <param name="shipmentId">The shipment to get transportation options for. Either &#x60;placementOptionId&#x60; or &#x60;shipmentId&#x60; must be specified. (optional)</param>
         /// <returns>Task of ApiResponse (ListTransportationOptionsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListTransportationOptionsResponse>> ListTransportationOptionsAsyncWithHttpInfo (string inboundPlanId, int? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListTransportationOptionsResponse>> ListTransportationOptionsAsyncWithHttpInfo (string inboundPlanId, int?? pageSize = null, string? paginationToken = null, string? placementOptionId = null, string? shipmentId = null)
         {
             // verify the required parameter 'inboundPlanId' is set
             if (inboundPlanId == null)

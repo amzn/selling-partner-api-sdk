@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="link">The link, or URL, to the image. (required).</param>
         /// <param name="height">The height of the image in pixels. (required).</param>
         /// <param name="width">The width of the image in pixels. (required).</param>
-        public ItemImage(string link = default(string), int height = default(int), int width = default(int))
+        public ItemImage(string link = default(string), int? height = default(int?), int? width = default(int?))
         {
             // to ensure "link" is required (not null)
             if (link == null)
@@ -50,7 +50,17 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
                 throw new ArgumentNullException("link is a required property for ItemImage and cannot be null");
             }
             this.Link = link;
+            // to ensure "height" is required (not null)
+            if (height == null)
+            {
+                throw new ArgumentNullException("height is a required property for ItemImage and cannot be null");
+            }
             this.Height = height;
+            // to ensure "width" is required (not null)
+            if (width == null)
+            {
+                throw new ArgumentNullException("width is a required property for ItemImage and cannot be null");
+            }
             this.Width = width;
         }
 
@@ -66,14 +76,14 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>The height of the image in pixels.</value>
         [DataMember(Name = "height", IsRequired = true, EmitDefaultValue = true)]
-        public int Height { get; set; }
+        public int? Height { get; set; }
 
         /// <summary>
         /// The width of the image in pixels.
         /// </summary>
         /// <value>The width of the image in pixels.</value>
         [DataMember(Name = "width", IsRequired = true, EmitDefaultValue = true)]
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

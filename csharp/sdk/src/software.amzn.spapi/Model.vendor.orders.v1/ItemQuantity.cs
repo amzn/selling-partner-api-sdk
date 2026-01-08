@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="amount">Acknowledged quantity. This value should not be zero..</param>
         /// <param name="unitOfMeasure">Unit of measure for the acknowledged quantity..</param>
         /// <param name="unitSize">The case size, in the event that we ordered using cases..</param>
-        public ItemQuantity(int amount = default(int), UnitOfMeasureEnum? unitOfMeasure = default(UnitOfMeasureEnum?), int unitSize = default(int))
+        public ItemQuantity(int? amount = default(int?), UnitOfMeasureEnum? unitOfMeasure = default(UnitOfMeasureEnum?), int? unitSize = default(int?))
         {
             this.Amount = amount;
             this.UnitOfMeasure = unitOfMeasure;
@@ -75,15 +75,15 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Acknowledged quantity. This value should not be zero.
         /// </summary>
         /// <value>Acknowledged quantity. This value should not be zero.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public int Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public int? Amount { get; set; }
 
         /// <summary>
         /// The case size, in the event that we ordered using cases.
         /// </summary>
         /// <value>The case size, in the event that we ordered using cases.</value>
-        [DataMember(Name = "unitSize", EmitDefaultValue = false)]
-        public int UnitSize { get; set; }
+        [DataMember(Name = "unitSize", EmitDefaultValue = true)]
+        public int? UnitSize { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="msku">The merchant SKU, a merchant-supplied identifier of a specific SKU. (required).</param>
         /// <param name="prepOwner">prepOwner (required).</param>
         /// <param name="quantity">The number of units of the specified MSKU that will be shipped. (required).</param>
-        public ItemInput(string expiration = default(string), LabelOwner labelOwner = default(LabelOwner), string manufacturingLotCode = default(string), string msku = default(string), PrepOwner prepOwner = default(PrepOwner), int quantity = default(int))
+        public ItemInput(string expiration = default(string), LabelOwner labelOwner = default(LabelOwner), string manufacturingLotCode = default(string), string msku = default(string), PrepOwner prepOwner = default(PrepOwner), int? quantity = default(int?))
         {
             this.LabelOwner = labelOwner;
             // to ensure "msku" is required (not null)
@@ -67,6 +67,11 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             }
             this.Msku = msku;
             this.PrepOwner = prepOwner;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for ItemInput and cannot be null");
+            }
             this.Quantity = quantity;
             this.Expiration = expiration;
             this.ManufacturingLotCode = manufacturingLotCode;
@@ -98,7 +103,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The number of units of the specified MSKU that will be shipped.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -167,14 +172,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
                 yield return new ValidationResult("Invalid value for Msku, length must be greater than 1.", new [] { "Msku" });
             }
 
-            // Quantity (int) maximum
-            if (this.Quantity > (int)500000)
+            // Quantity (int?) maximum
+            if (this.Quantity > (int?)500000)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value less than or equal to 500000.", new [] { "Quantity" });
             }
 
-            // Quantity (int) minimum
-            if (this.Quantity < (int)1)
+            // Quantity (int?) minimum
+            if (this.Quantity < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 1.", new [] { "Quantity" });
             }

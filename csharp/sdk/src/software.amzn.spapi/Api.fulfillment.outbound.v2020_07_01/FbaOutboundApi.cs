@@ -235,7 +235,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>GetPackageTrackingDetailsResponse</returns>
-        GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int packageNumber);
+        GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int?? packageNumber);
 
         /// <summary>
         /// 
@@ -246,7 +246,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>ApiResponse of GetPackageTrackingDetailsResponse</returns>
-        ApiResponse<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsWithHttpInfo (int packageNumber);
+        ApiResponse<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsWithHttpInfo (int?? packageNumber);
         /// <summary>
         /// 
         /// </summary>
@@ -555,7 +555,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of GetPackageTrackingDetailsResponse</returns>
-        System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int packageNumber);
+        System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int?? packageNumber);
 
         /// <summary>
         /// 
@@ -566,7 +566,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of ApiResponse (GetPackageTrackingDetailsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int packageNumber);
+        System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int?? packageNumber);
         /// <summary>
         /// 
         /// </summary>
@@ -2050,7 +2050,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>GetPackageTrackingDetailsResponse</returns>
-        public GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int packageNumber)
+        public GetPackageTrackingDetailsResponse GetPackageTrackingDetails (int?? packageNumber)
         {
              ApiResponse<GetPackageTrackingDetailsResponse> localVarResponse = GetPackageTrackingDetailsWithHttpInfo(packageNumber);
              return localVarResponse.Data;
@@ -2062,7 +2062,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>ApiResponse of GetPackageTrackingDetailsResponse</returns>
-        public ApiResponse< GetPackageTrackingDetailsResponse > GetPackageTrackingDetailsWithHttpInfo (int packageNumber)
+        public ApiResponse< GetPackageTrackingDetailsResponse > GetPackageTrackingDetailsWithHttpInfo (int?? packageNumber)
         {
             // verify the required parameter 'packageNumber' is set
             if (packageNumber == null)
@@ -2115,7 +2115,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of GetPackageTrackingDetailsResponse</returns>
-        public async System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int packageNumber)
+        public async System.Threading.Tasks.Task<GetPackageTrackingDetailsResponse> GetPackageTrackingDetailsAsync (int?? packageNumber)
         {
              ApiResponse<GetPackageTrackingDetailsResponse> localVarResponse = await GetPackageTrackingDetailsAsyncWithHttpInfo(packageNumber);
              return localVarResponse.Data;
@@ -2128,7 +2128,7 @@ namespace software.amzn.spapi.Api.fulfillment.outbound.v2020_07_01
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="packageNumber">The unencrypted package identifier. You can obtain this value from the &#x60;getFulfillmentOrder&#x60; operation.</param>
         /// <returns>Task of ApiResponse (GetPackageTrackingDetailsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int packageNumber)
+        public async System.Threading.Tasks.Task<ApiResponse<GetPackageTrackingDetailsResponse>> GetPackageTrackingDetailsAsyncWithHttpInfo (int?? packageNumber)
         {
             // verify the required parameter 'packageNumber' is set
             if (packageNumber == null)

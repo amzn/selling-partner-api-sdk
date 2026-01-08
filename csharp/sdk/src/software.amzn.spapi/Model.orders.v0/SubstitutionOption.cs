@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="sellerSKU">The item&#39;s seller stock keeping unit (SKU)..</param>
         /// <param name="title">The item&#39;s title..</param>
         /// <param name="measurement">measurement.</param>
-        public SubstitutionOption(string aSIN = default(string), int quantityOrdered = default(int), string sellerSKU = default(string), string title = default(string), Measurement measurement = default(Measurement))
+        public SubstitutionOption(string aSIN = default(string), int? quantityOrdered = default(int?), string sellerSKU = default(string), string title = default(string), Measurement measurement = default(Measurement))
         {
             this.ASIN = aSIN;
             this.QuantityOrdered = quantityOrdered;
@@ -59,8 +59,8 @@ namespace software.amzn.spapi.Model.orders.v0
         /// The number of items to be picked for this substitution option. 
         /// </summary>
         /// <value>The number of items to be picked for this substitution option. </value>
-        [DataMember(Name = "QuantityOrdered", EmitDefaultValue = false)]
-        public int QuantityOrdered { get; set; }
+        [DataMember(Name = "QuantityOrdered", EmitDefaultValue = true)]
+        public int? QuantityOrdered { get; set; }
 
         /// <summary>
         /// The item&#39;s seller stock keeping unit (SKU).

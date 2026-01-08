@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="carrierId">The carrier identifier for the offering, provided by the carrier..</param>
         /// <param name="shipFromAddress">shipFromAddress.</param>
         /// <param name="dateRange">dateRange.</param>
-        public GetCollectionFormHistoryRequest(List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>), int maxResults = default(int), string carrierId = default(string), Address shipFromAddress = default(Address), DateRange dateRange = default(DateRange))
+        public GetCollectionFormHistoryRequest(List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>), int? maxResults = default(int?), string carrierId = default(string), Address shipFromAddress = default(Address), DateRange dateRange = default(DateRange))
         {
             this.ClientReferenceDetails = clientReferenceDetails;
             this.MaxResults = maxResults;
@@ -60,8 +60,8 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// max Number of Results for query .
         /// </summary>
         /// <value>max Number of Results for query .</value>
-        [DataMember(Name = "maxResults", EmitDefaultValue = false)]
-        public int MaxResults { get; set; }
+        [DataMember(Name = "maxResults", EmitDefaultValue = true)]
+        public int? MaxResults { get; set; }
 
         /// <summary>
         /// The carrier identifier for the offering, provided by the carrier.

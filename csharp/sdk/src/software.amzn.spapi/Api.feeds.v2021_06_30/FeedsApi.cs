@@ -145,7 +145,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>GetFeedsResponse</returns>
-        GetFeedsResponse GetFeeds (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        GetFeedsResponse GetFeeds (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -162,7 +162,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>ApiResponse of GetFeedsResponse</returns>
-        ApiResponse<GetFeedsResponse> GetFeedsWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        ApiResponse<GetFeedsResponse> GetFeedsWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -285,7 +285,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of GetFeedsResponse</returns>
-        System.Threading.Tasks.Task<GetFeedsResponse> GetFeedsAsync (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        System.Threading.Tasks.Task<GetFeedsResponse> GetFeedsAsync (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -302,7 +302,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of ApiResponse (GetFeedsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetFeedsResponse>> GetFeedsAsyncWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ApiResponse<GetFeedsResponse>> GetFeedsAsyncWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -1078,7 +1078,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>GetFeedsResponse</returns>
-        public GetFeedsResponse GetFeeds (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public GetFeedsResponse GetFeeds (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
              ApiResponse<GetFeedsResponse> localVarResponse = GetFeedsWithHttpInfo(feedTypes, marketplaceIds, pageSize, processingStatuses, createdSince, createdUntil, nextToken);
              return localVarResponse.Data;
@@ -1096,7 +1096,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>ApiResponse of GetFeedsResponse</returns>
-        public ApiResponse< GetFeedsResponse > GetFeedsWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public ApiResponse< GetFeedsResponse > GetFeedsWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
 
             var localVarPath = "/feeds/2021-06-30/feeds";
@@ -1157,7 +1157,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of GetFeedsResponse</returns>
-        public async System.Threading.Tasks.Task<GetFeedsResponse> GetFeedsAsync (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<GetFeedsResponse> GetFeedsAsync (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
              ApiResponse<GetFeedsResponse> localVarResponse = await GetFeedsAsyncWithHttpInfo(feedTypes, marketplaceIds, pageSize, processingStatuses, createdSince, createdUntil, nextToken);
              return localVarResponse.Data;
@@ -1176,7 +1176,7 @@ namespace software.amzn.spapi.Api.feeds.v2021_06_30
         /// <param name="createdUntil">The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of ApiResponse (GetFeedsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetFeedsResponse>> GetFeedsAsyncWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetFeedsResponse>> GetFeedsAsyncWithHttpInfo (List<string>? feedTypes = null, List<string>? marketplaceIds = null, int?? pageSize = null, List<string>? processingStatuses = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
 
             var localVarPath = "/feeds/2021-06-30/feeds";

@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="pieces">The number of pieces of a multi-piece item that are in this package. This is applicable only for items that are shipped in multiple pieces..</param>
         /// <param name="countryOfOrigin">A two-letter country code, as defined by the ISO-3166 alpha-2 standard..</param>
         /// <param name="itemValue">itemValue.</param>
-        public PackageLineItem(string packageLineItemId = default(string), int quantity = default(int), List<string> serialNumbers = default(List<string>), int pieces = default(int), string countryOfOrigin = default(string), Amount itemValue = default(Amount))
+        public PackageLineItem(string packageLineItemId = default(string), int? quantity = default(int?), List<string> serialNumbers = default(List<string>), int? pieces = default(int?), string countryOfOrigin = default(string), Amount itemValue = default(Amount))
         {
             // to ensure "packageLineItemId" is required (not null)
             if (packageLineItemId == null)
@@ -54,6 +54,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
                 throw new ArgumentNullException("packageLineItemId is a required property for PackageLineItem and cannot be null");
             }
             this.PackageLineItemId = packageLineItemId;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for PackageLineItem and cannot be null");
+            }
             this.Quantity = quantity;
             this.SerialNumbers = serialNumbers;
             this.Pieces = pieces;
@@ -73,7 +78,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The number of items of a particular line item of a shipment that are packed into the package.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// The list of serial numbers of items in the package, if required to be provided.
@@ -86,8 +91,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// The number of pieces of a multi-piece item that are in this package. This is applicable only for items that are shipped in multiple pieces.
         /// </summary>
         /// <value>The number of pieces of a multi-piece item that are in this package. This is applicable only for items that are shipped in multiple pieces.</value>
-        [DataMember(Name = "pieces", EmitDefaultValue = false)]
-        public int Pieces { get; set; }
+        [DataMember(Name = "pieces", EmitDefaultValue = true)]
+        public int? Pieces { get; set; }
 
         /// <summary>
         /// A two-letter country code, as defined by the ISO-3166 alpha-2 standard.
@@ -136,8 +141,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Pieces (int) minimum
-            if (this.Pieces < (int)1)
+            // Pieces (int?) minimum
+            if (this.Pieces < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Pieces, must be a value greater than or equal to 1.", new [] { "Pieces" });
             }

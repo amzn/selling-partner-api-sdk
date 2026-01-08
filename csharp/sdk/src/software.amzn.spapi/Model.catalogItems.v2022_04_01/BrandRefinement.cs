@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <param name="numberOfResults">The estimated number of results that would be returned if you refine your search by the specified &#x60;brandName&#x60;. (required).</param>
         /// <param name="brandName">The brand name that you can use to refine your search. (required).</param>
-        public BrandRefinement(int numberOfResults = default(int), string brandName = default(string))
+        public BrandRefinement(int? numberOfResults = default(int?), string brandName = default(string))
         {
+            // to ensure "numberOfResults" is required (not null)
+            if (numberOfResults == null)
+            {
+                throw new ArgumentNullException("numberOfResults is a required property for BrandRefinement and cannot be null");
+            }
             this.NumberOfResults = numberOfResults;
             // to ensure "brandName" is required (not null)
             if (brandName == null)
@@ -57,7 +62,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>The estimated number of results that would be returned if you refine your search by the specified &#x60;brandName&#x60;.</value>
         [DataMember(Name = "numberOfResults", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfResults { get; set; }
+        public int? NumberOfResults { get; set; }
 
         /// <summary>
         /// The brand name that you can use to refine your search.

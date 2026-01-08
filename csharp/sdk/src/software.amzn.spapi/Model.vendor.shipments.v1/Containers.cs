@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="block">Number of cartons per layer on the pallet..</param>
         /// <param name="innerContainersDetails">innerContainersDetails.</param>
         /// <param name="packedItems">A list of packed items..</param>
-        public Containers(ContainerTypeEnum containerType = default(ContainerTypeEnum), string containerSequenceNumber = default(string), List<ContainerIdentification> containerIdentifiers = default(List<ContainerIdentification>), string trackingNumber = default(string), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), int tier = default(int), int block = default(int), InnerContainersDetails innerContainersDetails = default(InnerContainersDetails), List<PackedItems> packedItems = default(List<PackedItems>))
+        public Containers(ContainerTypeEnum containerType = default(ContainerTypeEnum), string containerSequenceNumber = default(string), List<ContainerIdentification> containerIdentifiers = default(List<ContainerIdentification>), string trackingNumber = default(string), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), int? tier = default(int?), int? block = default(int?), InnerContainersDetails innerContainersDetails = default(InnerContainersDetails), List<PackedItems> packedItems = default(List<PackedItems>))
         {
             this.ContainerType = containerType;
             // to ensure "containerIdentifiers" is required (not null)
@@ -132,15 +132,15 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Number of layers per pallet.
         /// </summary>
         /// <value>Number of layers per pallet.</value>
-        [DataMember(Name = "tier", EmitDefaultValue = false)]
-        public int Tier { get; set; }
+        [DataMember(Name = "tier", EmitDefaultValue = true)]
+        public int? Tier { get; set; }
 
         /// <summary>
         /// Number of cartons per layer on the pallet.
         /// </summary>
         /// <value>Number of cartons per layer on the pallet.</value>
-        [DataMember(Name = "block", EmitDefaultValue = false)]
-        public int Block { get; set; }
+        [DataMember(Name = "block", EmitDefaultValue = true)]
+        public int? Block { get; set; }
 
         /// <summary>
         /// Gets or Sets InnerContainersDetails

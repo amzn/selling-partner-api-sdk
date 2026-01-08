@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="quantity">The item quantity. (required).</param>
         /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier created with a call to the &#x60;getFulfillmentPreview&#x60; operation. (required).</param>
         /// <param name="itemUnfulfillableReasons">String list.</param>
-        public UnfulfillablePreviewItem(string sellerSku = default(string), int quantity = default(int), string sellerFulfillmentOrderItemId = default(string), List<string> itemUnfulfillableReasons = default(List<string>))
+        public UnfulfillablePreviewItem(string sellerSku = default(string), int? quantity = default(int?), string sellerFulfillmentOrderItemId = default(string), List<string> itemUnfulfillableReasons = default(List<string>))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -51,6 +51,11 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
                 throw new ArgumentNullException("sellerSku is a required property for UnfulfillablePreviewItem and cannot be null");
             }
             this.SellerSku = sellerSku;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for UnfulfillablePreviewItem and cannot be null");
+            }
             this.Quantity = quantity;
             // to ensure "sellerFulfillmentOrderItemId" is required (not null)
             if (sellerFulfillmentOrderItemId == null)
@@ -73,7 +78,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// A fulfillment order item identifier created with a call to the &#x60;getFulfillmentPreview&#x60; operation.

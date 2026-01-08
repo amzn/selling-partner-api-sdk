@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// <param name="reservedQuantity">The number of items of the specified SKU created in any marketplace that are reserved for shipment and yet to be fulfilled..</param>
         /// <param name="marketplaceAttributes">marketplaceAttributes.</param>
         /// <param name="actionableErrors">Inventory operation errors that require seller action before retrying the inventory request..</param>
-        public InventoryResponseBody(int clientSequenceNumber = default(int), string locationId = default(string), string skuId = default(string), int sellableQuantity = default(int), int reservedQuantity = default(int), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), List<ActionableError> actionableErrors = default(List<ActionableError>))
+        public InventoryResponseBody(int? clientSequenceNumber = default(int?), string locationId = default(string), string skuId = default(string), int? sellableQuantity = default(int?), int? reservedQuantity = default(int?), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), List<ActionableError> actionableErrors = default(List<ActionableError>))
         {
             this.ClientSequenceNumber = clientSequenceNumber;
             this.LocationId = locationId;
@@ -59,8 +59,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /*
         <example>12345678</example>
         */
-        [DataMember(Name = "clientSequenceNumber", EmitDefaultValue = false)]
-        public int ClientSequenceNumber { get; set; }
+        [DataMember(Name = "clientSequenceNumber", EmitDefaultValue = true)]
+        public int? ClientSequenceNumber { get; set; }
 
         /// <summary>
         /// The location where inventory is updated or retrieved.
@@ -89,8 +89,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /*
         <example>5</example>
         */
-        [DataMember(Name = "sellableQuantity", EmitDefaultValue = false)]
-        public int SellableQuantity { get; set; }
+        [DataMember(Name = "sellableQuantity", EmitDefaultValue = true)]
+        public int? SellableQuantity { get; set; }
 
         /// <summary>
         /// The number of items of the specified SKU created in any marketplace that are reserved for shipment and yet to be fulfilled.
@@ -99,8 +99,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /*
         <example>2</example>
         */
-        [DataMember(Name = "reservedQuantity", EmitDefaultValue = false)]
-        public int ReservedQuantity { get; set; }
+        [DataMember(Name = "reservedQuantity", EmitDefaultValue = true)]
+        public int? ReservedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketplaceAttributes
@@ -150,14 +150,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // SellableQuantity (int) minimum
-            if (this.SellableQuantity < (int)0)
+            // SellableQuantity (int?) minimum
+            if (this.SellableQuantity < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for SellableQuantity, must be a value greater than or equal to 0.", new [] { "SellableQuantity" });
             }
 
-            // ReservedQuantity (int) minimum
-            if (this.ReservedQuantity < (int)0)
+            // ReservedQuantity (int?) minimum
+            if (this.ReservedQuantity < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for ReservedQuantity, must be a value greater than or equal to 0.", new [] { "ReservedQuantity" });
             }

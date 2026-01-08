@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="sku">The Stock Keeping Unit (SKU) of the item..</param>
         /// <param name="quantityShipped">The quantity of the item shipped..</param>
         /// <param name="fulfillmentNetwork">The fulfillment network of the item..</param>
-        public ProductContext(string asin = default(string), string sku = default(string), int quantityShipped = default(int), string fulfillmentNetwork = default(string))
+        public ProductContext(string asin = default(string), string sku = default(string), int? quantityShipped = default(int?), string fulfillmentNetwork = default(string))
         {
             this.Asin = asin;
             this.Sku = sku;
@@ -64,8 +64,8 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// The quantity of the item shipped.
         /// </summary>
         /// <value>The quantity of the item shipped.</value>
-        [DataMember(Name = "quantityShipped", EmitDefaultValue = false)]
-        public int QuantityShipped { get; set; }
+        [DataMember(Name = "quantityShipped", EmitDefaultValue = true)]
+        public int? QuantityShipped { get; set; }
 
         /// <summary>
         /// The fulfillment network of the item.

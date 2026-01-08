@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <param name="containerCount">Total containers as part of the shipment.</param>
         /// <param name="containerSequenceNumbers">Container sequence numbers that are involved in this shipment..</param>
-        public InnerContainersDetails(int containerCount = default(int), List<ContainerSequenceNumbers> containerSequenceNumbers = default(List<ContainerSequenceNumbers>))
+        public InnerContainersDetails(int? containerCount = default(int?), List<ContainerSequenceNumbers> containerSequenceNumbers = default(List<ContainerSequenceNumbers>))
         {
             this.ContainerCount = containerCount;
             this.ContainerSequenceNumbers = containerSequenceNumbers;
@@ -46,8 +46,8 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Total containers as part of the shipment
         /// </summary>
         /// <value>Total containers as part of the shipment</value>
-        [DataMember(Name = "containerCount", EmitDefaultValue = false)]
-        public int ContainerCount { get; set; }
+        [DataMember(Name = "containerCount", EmitDefaultValue = true)]
+        public int? ContainerCount { get; set; }
 
         /// <summary>
         /// Container sequence numbers that are involved in this shipment.

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="endTime">Denotes the time till when the resource is available in a day in ISO-8601 format. (required).</param>
         /// <param name="recurrence">recurrence.</param>
         /// <param name="capacity">Signifies the capacity of a resource which is available..</param>
-        public AvailabilityRecord(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), Recurrence recurrence = default(Recurrence), int capacity = default(int))
+        public AvailabilityRecord(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), Recurrence recurrence = default(Recurrence), int? capacity = default(int?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -75,8 +75,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// Signifies the capacity of a resource which is available.
         /// </summary>
         /// <value>Signifies the capacity of a resource which is available.</value>
-        [DataMember(Name = "capacity", EmitDefaultValue = false)]
-        public int Capacity { get; set; }
+        [DataMember(Name = "capacity", EmitDefaultValue = true)]
+        public int? Capacity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -110,8 +110,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Capacity (int) minimum
-            if (this.Capacity < (int)1)
+            // Capacity (int?) minimum
+            if (this.Capacity < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Capacity, must be a value greater than or equal to 1.", new [] { "Capacity" });
             }

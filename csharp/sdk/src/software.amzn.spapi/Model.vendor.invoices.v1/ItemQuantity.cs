@@ -70,8 +70,13 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="unitOfMeasure">Unit of measure for the quantity. (required).</param>
         /// <param name="unitSize">The case size, if the unit of measure value is Cases..</param>
         /// <param name="totalWeight">totalWeight.</param>
-        public ItemQuantity(int amount = default(int), UnitOfMeasureEnum unitOfMeasure = default(UnitOfMeasureEnum), int unitSize = default(int), TotalWeight totalWeight = default(TotalWeight))
+        public ItemQuantity(int? amount = default(int?), UnitOfMeasureEnum unitOfMeasure = default(UnitOfMeasureEnum), int? unitSize = default(int?), TotalWeight totalWeight = default(TotalWeight))
         {
+            // to ensure "amount" is required (not null)
+            if (amount == null)
+            {
+                throw new ArgumentNullException("amount is a required property for ItemQuantity and cannot be null");
+            }
             this.Amount = amount;
             this.UnitOfMeasure = unitOfMeasure;
             this.UnitSize = unitSize;
@@ -83,14 +88,14 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>Quantity of an item. This value should not be zero.</value>
         [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         /// <summary>
         /// The case size, if the unit of measure value is Cases.
         /// </summary>
         /// <value>The case size, if the unit of measure value is Cases.</value>
-        [DataMember(Name = "unitSize", EmitDefaultValue = false)]
-        public int UnitSize { get; set; }
+        [DataMember(Name = "unitSize", EmitDefaultValue = true)]
+        public int? UnitSize { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalWeight

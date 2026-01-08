@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="count">Number of cases or pallets with the same package configuration. (required).</param>
         /// <param name="distributionPackage">distributionPackage (required).</param>
-        public DistributionPackageQuantity(int count = default(int), DistributionPackage distributionPackage = default(DistributionPackage))
+        public DistributionPackageQuantity(int? count = default(int?), DistributionPackage distributionPackage = default(DistributionPackage))
         {
+            // to ensure "count" is required (not null)
+            if (count == null)
+            {
+                throw new ArgumentNullException("count is a required property for DistributionPackageQuantity and cannot be null");
+            }
             this.Count = count;
             // to ensure "distributionPackage" is required (not null)
             if (distributionPackage == null)
@@ -57,7 +62,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Number of cases or pallets with the same package configuration.</value>
         [DataMember(Name = "count", IsRequired = true, EmitDefaultValue = true)]
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         /// <summary>
         /// Gets or Sets DistributionPackage

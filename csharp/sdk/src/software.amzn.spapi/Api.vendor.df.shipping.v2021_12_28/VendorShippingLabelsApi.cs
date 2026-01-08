@@ -83,7 +83,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ShippingLabelList</returns>
-        ShippingLabelList GetShippingLabels (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        ShippingLabelList GetShippingLabels (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
 
         /// <summary>
         /// getShippingLabels
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ApiResponse of ShippingLabelList</returns>
-        ApiResponse<ShippingLabelList> GetShippingLabelsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        ApiResponse<ShippingLabelList> GetShippingLabelsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
         /// <summary>
         /// submitShippingLabelRequest
         /// </summary>
@@ -181,7 +181,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ShippingLabelList</returns>
-        System.Threading.Tasks.Task<ShippingLabelList> GetShippingLabelsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ShippingLabelList> GetShippingLabelsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
 
         /// <summary>
         /// getShippingLabels
@@ -197,7 +197,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ApiResponse (ShippingLabelList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShippingLabelList>> GetShippingLabelsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ShippingLabelList>> GetShippingLabelsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
         /// <summary>
         /// submitShippingLabelRequest
         /// </summary>
@@ -605,7 +605,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ShippingLabelList</returns>
-        public ShippingLabelList GetShippingLabels (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public ShippingLabelList GetShippingLabels (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
              ApiResponse<ShippingLabelList> localVarResponse = GetShippingLabelsWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
              return localVarResponse.Data;
@@ -622,7 +622,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ApiResponse of ShippingLabelList</returns>
-        public ApiResponse< ShippingLabelList > GetShippingLabelsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public ApiResponse< ShippingLabelList > GetShippingLabelsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)
@@ -689,7 +689,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ShippingLabelList</returns>
-        public async System.Threading.Tasks.Task<ShippingLabelList> GetShippingLabelsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ShippingLabelList> GetShippingLabelsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
              ApiResponse<ShippingLabelList> localVarResponse = await GetShippingLabelsAsyncWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
              return localVarResponse.Data;
@@ -707,7 +707,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The sort order creation date. You can choose between ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) sort order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more ship labels than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ApiResponse (ShippingLabelList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ShippingLabelList>> GetShippingLabelsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ShippingLabelList>> GetShippingLabelsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)

@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="shipping">shipping (required).</param>
         /// <param name="points">points.</param>
         /// <param name="sellerId">The seller identifier for the offer..</param>
-        public BuyBoxPriceType(string condition = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int quantityTier = default(int), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), MoneyType landedPrice = default(MoneyType), MoneyType listingPrice = default(MoneyType), MoneyType shipping = default(MoneyType), Points points = default(Points), string sellerId = default(string))
+        public BuyBoxPriceType(string condition = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int? quantityTier = default(int?), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), MoneyType landedPrice = default(MoneyType), MoneyType listingPrice = default(MoneyType), MoneyType shipping = default(MoneyType), Points points = default(Points), string sellerId = default(string))
         {
             // to ensure "condition" is required (not null)
             if (condition == null)
@@ -104,8 +104,8 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Indicates at what quantity this price becomes active.
         /// </summary>
         /// <value>Indicates at what quantity this price becomes active.</value>
-        [DataMember(Name = "quantityTier", EmitDefaultValue = false)]
-        public int QuantityTier { get; set; }
+        [DataMember(Name = "quantityTier", EmitDefaultValue = true)]
+        public int? QuantityTier { get; set; }
 
         /// <summary>
         /// Gets or Sets LandedPrice

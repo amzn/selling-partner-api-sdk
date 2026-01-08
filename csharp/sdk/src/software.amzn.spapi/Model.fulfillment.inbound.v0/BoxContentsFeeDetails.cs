@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="totalUnits">The item quantity..</param>
         /// <param name="feePerUnit">feePerUnit.</param>
         /// <param name="totalFee">totalFee.</param>
-        public BoxContentsFeeDetails(int totalUnits = default(int), Amount feePerUnit = default(Amount), Amount totalFee = default(Amount))
+        public BoxContentsFeeDetails(int? totalUnits = default(int?), Amount feePerUnit = default(Amount), Amount totalFee = default(Amount))
         {
             this.TotalUnits = totalUnits;
             this.FeePerUnit = feePerUnit;
@@ -48,8 +48,8 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// The item quantity.
         /// </summary>
         /// <value>The item quantity.</value>
-        [DataMember(Name = "TotalUnits", EmitDefaultValue = false)]
-        public int TotalUnits { get; set; }
+        [DataMember(Name = "TotalUnits", EmitDefaultValue = true)]
+        public int? TotalUnits { get; set; }
 
         /// <summary>
         /// Gets or Sets FeePerUnit

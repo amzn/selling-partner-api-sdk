@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.sales.v1
         /// <param name="orderCount">The number of orders based on the specified filters. (required).</param>
         /// <param name="averageUnitPrice">averageUnitPrice (required).</param>
         /// <param name="totalSales">totalSales (required).</param>
-        public OrderMetricsInterval(string interval = default(string), int unitCount = default(int), int orderItemCount = default(int), int orderCount = default(int), Money averageUnitPrice = default(Money), Money totalSales = default(Money))
+        public OrderMetricsInterval(string interval = default(string), int? unitCount = default(int?), int? orderItemCount = default(int?), int? orderCount = default(int?), Money averageUnitPrice = default(Money), Money totalSales = default(Money))
         {
             // to ensure "interval" is required (not null)
             if (interval == null)
@@ -53,8 +53,23 @@ namespace software.amzn.spapi.Model.sales.v1
                 throw new ArgumentNullException("interval is a required property for OrderMetricsInterval and cannot be null");
             }
             this.Interval = interval;
+            // to ensure "unitCount" is required (not null)
+            if (unitCount == null)
+            {
+                throw new ArgumentNullException("unitCount is a required property for OrderMetricsInterval and cannot be null");
+            }
             this.UnitCount = unitCount;
+            // to ensure "orderItemCount" is required (not null)
+            if (orderItemCount == null)
+            {
+                throw new ArgumentNullException("orderItemCount is a required property for OrderMetricsInterval and cannot be null");
+            }
             this.OrderItemCount = orderItemCount;
+            // to ensure "orderCount" is required (not null)
+            if (orderCount == null)
+            {
+                throw new ArgumentNullException("orderCount is a required property for OrderMetricsInterval and cannot be null");
+            }
             this.OrderCount = orderCount;
             // to ensure "averageUnitPrice" is required (not null)
             if (averageUnitPrice == null)
@@ -82,21 +97,21 @@ namespace software.amzn.spapi.Model.sales.v1
         /// </summary>
         /// <value>The number of units in orders based on the specified filters.</value>
         [DataMember(Name = "unitCount", IsRequired = true, EmitDefaultValue = true)]
-        public int UnitCount { get; set; }
+        public int? UnitCount { get; set; }
 
         /// <summary>
         /// The number of order items based on the specified filters.
         /// </summary>
         /// <value>The number of order items based on the specified filters.</value>
         [DataMember(Name = "orderItemCount", IsRequired = true, EmitDefaultValue = true)]
-        public int OrderItemCount { get; set; }
+        public int? OrderItemCount { get; set; }
 
         /// <summary>
         /// The number of orders based on the specified filters.
         /// </summary>
         /// <value>The number of orders based on the specified filters.</value>
         [DataMember(Name = "orderCount", IsRequired = true, EmitDefaultValue = true)]
-        public int OrderCount { get; set; }
+        public int? OrderCount { get; set; }
 
         /// <summary>
         /// Gets or Sets AverageUnitPrice

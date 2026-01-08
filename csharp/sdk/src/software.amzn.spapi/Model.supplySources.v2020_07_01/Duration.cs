@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="value">An unsigned integer that can be only positive or zero..</param>
         /// <param name="timeUnit">timeUnit.</param>
-        public Duration(int value = default(int), TimeUnit? timeUnit = default(TimeUnit?))
+        public Duration(int? value = default(int?), TimeUnit? timeUnit = default(TimeUnit?))
         {
             this.Value = value;
             this.TimeUnit = timeUnit;
@@ -52,8 +52,8 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// An unsigned integer that can be only positive or zero.
         /// </summary>
         /// <value>An unsigned integer that can be only positive or zero.</value>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public int Value { get; set; }
+        [DataMember(Name = "value", EmitDefaultValue = true)]
+        public int? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,8 +85,8 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Value (int) minimum
-            if (this.Value < (int)0)
+            // Value (int?) minimum
+            if (this.Value < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for Value, must be a value greater than or equal to 0.", new [] { "Value" });
             }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="startTime">Time window start time in ISO 8601 format..</param>
         /// <param name="endTime">Time window end time in ISO 8601 format..</param>
         /// <param name="capacity">Number of resources for which a slot can be reserved..</param>
-        public AppointmentSlot(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), int capacity = default(int))
+        public AppointmentSlot(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), int? capacity = default(int?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// Number of resources for which a slot can be reserved.
         /// </summary>
         /// <value>Number of resources for which a slot can be reserved.</value>
-        [DataMember(Name = "capacity", EmitDefaultValue = false)]
-        public int Capacity { get; set; }
+        [DataMember(Name = "capacity", EmitDefaultValue = true)]
+        public int? Capacity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -96,8 +96,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Capacity (int) minimum
-            if (this.Capacity < (int)0)
+            // Capacity (int?) minimum
+            if (this.Capacity < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for Capacity, must be a value greater than or equal to 0.", new [] { "Capacity" });
             }

@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="value">The dimension value. (required).</param>
         /// <param name="units">The unit of measurement. (required).</param>
-        public IntegerWithUnits(int value = default(int), string units = default(string))
+        public IntegerWithUnits(int? value = default(int?), string units = default(string))
         {
+            // to ensure "value" is required (not null)
+            if (value == null)
+            {
+                throw new ArgumentNullException("value is a required property for IntegerWithUnits and cannot be null");
+            }
             this.Value = value;
             // to ensure "units" is required (not null)
             if (units == null)
@@ -57,7 +62,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>The dimension value.</value>
         [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         /// <summary>
         /// The unit of measurement.

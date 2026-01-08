@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="perUnitDeclaredValue">perUnitDeclaredValue.</param>
         /// <param name="perUnitPrice">perUnitPrice.</param>
         /// <param name="perUnitTax">perUnitTax.</param>
-        public UpdateFulfillmentOrderItem(string sellerSku = default(string), string sellerFulfillmentOrderItemId = default(string), int quantity = default(int), string giftMessage = default(string), string displayableComment = default(string), string fulfillmentNetworkSku = default(string), string orderItemDisposition = default(string), Money perUnitDeclaredValue = default(Money), Money perUnitPrice = default(Money), Money perUnitTax = default(Money))
+        public UpdateFulfillmentOrderItem(string sellerSku = default(string), string sellerFulfillmentOrderItemId = default(string), int? quantity = default(int?), string giftMessage = default(string), string displayableComment = default(string), string fulfillmentNetworkSku = default(string), string orderItemDisposition = default(string), Money perUnitDeclaredValue = default(Money), Money perUnitPrice = default(Money), Money perUnitTax = default(Money))
         {
             // to ensure "sellerFulfillmentOrderItemId" is required (not null)
             if (sellerFulfillmentOrderItemId == null)
@@ -57,6 +57,11 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
                 throw new ArgumentNullException("sellerFulfillmentOrderItemId is a required property for UpdateFulfillmentOrderItem and cannot be null");
             }
             this.SellerFulfillmentOrderItemId = sellerFulfillmentOrderItemId;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for UpdateFulfillmentOrderItem and cannot be null");
+            }
             this.Quantity = quantity;
             this.SellerSku = sellerSku;
             this.GiftMessage = giftMessage;
@@ -87,7 +92,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// A message to the gift recipient, if applicable.

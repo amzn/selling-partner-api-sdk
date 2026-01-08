@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ShipmentsResponse</returns>
-        ShipmentsResponse GetShipments (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null);
+        ShipmentsResponse GetShipments (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of ShipmentsResponse</returns>
-        ApiResponse<ShipmentsResponse> GetShipmentsWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null);
+        ApiResponse<ShipmentsResponse> GetShipmentsWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -121,7 +121,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ShipmentsResponse</returns>
-        System.Threading.Tasks.Task<ShipmentsResponse> GetShipmentsAsync (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ShipmentsResponse> GetShipmentsAsync (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -139,7 +139,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (ShipmentsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ShipmentsResponse>> GetShipmentsAsyncWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ShipmentsResponse>> GetShipmentsAsyncWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -372,7 +372,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ShipmentsResponse</returns>
-        public ShipmentsResponse GetShipments (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null)
+        public ShipmentsResponse GetShipments (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null)
         {
              ApiResponse<ShipmentsResponse> localVarResponse = GetShipmentsWithHttpInfo(status, locationId, marketplaceId, channelName, lastUpdatedAfter, lastUpdatedBefore, maxResults, paginationToken);
              return localVarResponse.Data;
@@ -391,7 +391,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of ShipmentsResponse</returns>
-        public ApiResponse< ShipmentsResponse > GetShipmentsWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null)
+        public ApiResponse< ShipmentsResponse > GetShipmentsWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null)
         {
             // verify the required parameter 'status' is set
             if (status == null)
@@ -457,7 +457,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ShipmentsResponse</returns>
-        public async System.Threading.Tasks.Task<ShipmentsResponse> GetShipmentsAsync (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ShipmentsResponse> GetShipmentsAsync (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null)
         {
              ApiResponse<ShipmentsResponse> localVarResponse = await GetShipmentsAsyncWithHttpInfo(status, locationId, marketplaceId, channelName, lastUpdatedAfter, lastUpdatedBefore, maxResults, paginationToken);
              return localVarResponse.Data;
@@ -477,7 +477,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.shipments.v2024_09_11
         /// <param name="maxResults">The maximum number of shipments to include in the response. (optional)</param>
         /// <param name="paginationToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (ShipmentsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ShipmentsResponse>> GetShipmentsAsyncWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int? maxResults = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ShipmentsResponse>> GetShipmentsAsyncWithHttpInfo (string status, string? locationId = null, string? marketplaceId = null, string? channelName = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, int?? maxResults = null, string? paginationToken = null)
         {
             // verify the required parameter 'status' is set
             if (status == null)

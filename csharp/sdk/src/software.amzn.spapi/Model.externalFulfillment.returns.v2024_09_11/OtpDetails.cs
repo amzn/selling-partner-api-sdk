@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// </summary>
         /// <param name="otp">One-time password to validate the return delivered to the seller. (required).</param>
         /// <param name="validTill">The UNIX timestamp of when the verification code expires. (required).</param>
-        public OtpDetails(string otp = default(string), int validTill = default(int))
+        public OtpDetails(string otp = default(string), int? validTill = default(int?))
         {
             // to ensure "otp" is required (not null)
             if (otp == null)
@@ -50,6 +50,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
                 throw new ArgumentNullException("otp is a required property for OtpDetails and cannot be null");
             }
             this.Otp = otp;
+            // to ensure "validTill" is required (not null)
+            if (validTill == null)
+            {
+                throw new ArgumentNullException("validTill is a required property for OtpDetails and cannot be null");
+            }
             this.ValidTill = validTill;
         }
 
@@ -65,7 +70,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// </summary>
         /// <value>The UNIX timestamp of when the verification code expires.</value>
         [DataMember(Name = "validTill", IsRequired = true, EmitDefaultValue = true)]
-        public int ValidTill { get; set; }
+        public int? ValidTill { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

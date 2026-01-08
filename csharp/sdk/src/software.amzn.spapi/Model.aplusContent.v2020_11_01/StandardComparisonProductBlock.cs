@@ -45,8 +45,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="asin">The Amazon Standard Identification Number (ASIN)..</param>
         /// <param name="highlight">When true, indicates that this content block is visually highlighted..</param>
         /// <param name="metrics">Comparison metrics for the product..</param>
-        public StandardComparisonProductBlock(int position = default(int), ImageComponent image = default(ImageComponent), string title = default(string), string asin = default(string), bool highlight = default(bool), List<PlainTextItem> metrics = default(List<PlainTextItem>))
+        public StandardComparisonProductBlock(int? position = default(int?), ImageComponent image = default(ImageComponent), string title = default(string), string asin = default(string), bool highlight = default(bool), List<PlainTextItem> metrics = default(List<PlainTextItem>))
         {
+            // to ensure "position" is required (not null)
+            if (position == null)
+            {
+                throw new ArgumentNullException("position is a required property for StandardComparisonProductBlock and cannot be null");
+            }
             this.Position = position;
             this.Image = image;
             this.Title = title;
@@ -60,7 +65,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>The rank or index of this comparison product block within the module. Different blocks cannot occupy the same position within a single module.</value>
         [DataMember(Name = "position", IsRequired = true, EmitDefaultValue = true)]
-        public int Position { get; set; }
+        public int? Position { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
@@ -130,14 +135,14 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Position (int) maximum
-            if (this.Position > (int)6)
+            // Position (int?) maximum
+            if (this.Position > (int?)6)
             {
                 yield return new ValidationResult("Invalid value for Position, must be a value less than or equal to 6.", new [] { "Position" });
             }
 
-            // Position (int) minimum
-            if (this.Position < (int)1)
+            // Position (int?) minimum
+            if (this.Position < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Position, must be a value greater than or equal to 1.", new [] { "Position" });
             }

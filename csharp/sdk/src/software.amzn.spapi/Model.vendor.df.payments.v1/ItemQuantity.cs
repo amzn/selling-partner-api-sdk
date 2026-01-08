@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <param name="amount">Quantity of units available for a specific item. (required).</param>
         /// <param name="unitOfMeasure">Unit of measure for the available quantity. (required).</param>
-        public ItemQuantity(int amount = default(int), string unitOfMeasure = default(string))
+        public ItemQuantity(int? amount = default(int?), string unitOfMeasure = default(string))
         {
+            // to ensure "amount" is required (not null)
+            if (amount == null)
+            {
+                throw new ArgumentNullException("amount is a required property for ItemQuantity and cannot be null");
+            }
             this.Amount = amount;
             // to ensure "unitOfMeasure" is required (not null)
             if (unitOfMeasure == null)
@@ -57,7 +62,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>Quantity of units available for a specific item.</value>
         [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         /// <summary>
         /// Unit of measure for the available quantity.

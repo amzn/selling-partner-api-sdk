@@ -46,8 +46,13 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="estimatedArrivalDate">Date timestamp.</param>
         /// <param name="lockerDetails">lockerDetails.</param>
         /// <param name="deliveryInformation">deliveryInformation.</param>
-        public FulfillmentShipmentPackage(int packageNumber = default(int), string carrierCode = default(string), string trackingNumber = default(string), string amazonFulfillmentTrackingNumber = default(string), DateTime estimatedArrivalDate = default(DateTime), LockerDetails lockerDetails = default(LockerDetails), DeliveryInformation deliveryInformation = default(DeliveryInformation))
+        public FulfillmentShipmentPackage(int? packageNumber = default(int?), string carrierCode = default(string), string trackingNumber = default(string), string amazonFulfillmentTrackingNumber = default(string), DateTime estimatedArrivalDate = default(DateTime), LockerDetails lockerDetails = default(LockerDetails), DeliveryInformation deliveryInformation = default(DeliveryInformation))
         {
+            // to ensure "packageNumber" is required (not null)
+            if (packageNumber == null)
+            {
+                throw new ArgumentNullException("packageNumber is a required property for FulfillmentShipmentPackage and cannot be null");
+            }
             this.PackageNumber = packageNumber;
             // to ensure "carrierCode" is required (not null)
             if (carrierCode == null)
@@ -67,7 +72,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Identifies a package in a shipment.</value>
         [DataMember(Name = "packageNumber", IsRequired = true, EmitDefaultValue = true)]
-        public int PackageNumber { get; set; }
+        public int? PackageNumber { get; set; }
 
         /// <summary>
         /// Identifies the carrier who will deliver the shipment to the recipient.

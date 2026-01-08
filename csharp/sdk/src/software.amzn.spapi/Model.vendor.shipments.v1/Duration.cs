@@ -68,9 +68,14 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <param name="durationUnit">Unit for duration. (required).</param>
         /// <param name="durationValue">Value for the duration in terms of the durationUnit. (required).</param>
-        public Duration(DurationUnitEnum durationUnit = default(DurationUnitEnum), int durationValue = default(int))
+        public Duration(DurationUnitEnum durationUnit = default(DurationUnitEnum), int? durationValue = default(int?))
         {
             this.DurationUnit = durationUnit;
+            // to ensure "durationValue" is required (not null)
+            if (durationValue == null)
+            {
+                throw new ArgumentNullException("durationValue is a required property for Duration and cannot be null");
+            }
             this.DurationValue = durationValue;
         }
 
@@ -79,7 +84,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Value for the duration in terms of the durationUnit.</value>
         [DataMember(Name = "durationValue", IsRequired = true, EmitDefaultValue = true)]
-        public int DurationValue { get; set; }
+        public int? DurationValue { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <param name="asin">The child ASIN of the requested item. (required).</param>
         /// <param name="numberOfMentions">The number of times reviews of the child ASIN mention the topic. (required).</param>
-        public ChildAsinMentionMetrics(string asin = default(string), int numberOfMentions = default(int))
+        public ChildAsinMentionMetrics(string asin = default(string), int? numberOfMentions = default(int?))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -49,6 +49,11 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
                 throw new ArgumentNullException("asin is a required property for ChildAsinMentionMetrics and cannot be null");
             }
             this.Asin = asin;
+            // to ensure "numberOfMentions" is required (not null)
+            if (numberOfMentions == null)
+            {
+                throw new ArgumentNullException("numberOfMentions is a required property for ChildAsinMentionMetrics and cannot be null");
+            }
             this.NumberOfMentions = numberOfMentions;
         }
 
@@ -64,7 +69,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <value>The number of times reviews of the child ASIN mention the topic.</value>
         [DataMember(Name = "numberOfMentions", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfMentions { get; set; }
+        public int? NumberOfMentions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

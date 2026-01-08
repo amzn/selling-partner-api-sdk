@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="parkingSpotIdentificationType">parkingSpotIdentificationType.</param>
         /// <param name="numberOfParkingSpots">An unsigned integer that can be only positive or zero..</param>
         /// <param name="address">address.</param>
-        public ParkingWithAddressConfiguration(ParkingCostType? parkingCostType = default(ParkingCostType?), ParkingSpotIdentificationType? parkingSpotIdentificationType = default(ParkingSpotIdentificationType?), int numberOfParkingSpots = default(int), Address address = default(Address))
+        public ParkingWithAddressConfiguration(ParkingCostType? parkingCostType = default(ParkingCostType?), ParkingSpotIdentificationType? parkingSpotIdentificationType = default(ParkingSpotIdentificationType?), int? numberOfParkingSpots = default(int?), Address address = default(Address))
         {
             this.ParkingCostType = parkingCostType;
             this.ParkingSpotIdentificationType = parkingSpotIdentificationType;
@@ -62,8 +62,8 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// An unsigned integer that can be only positive or zero.
         /// </summary>
         /// <value>An unsigned integer that can be only positive or zero.</value>
-        [DataMember(Name = "numberOfParkingSpots", EmitDefaultValue = false)]
-        public int NumberOfParkingSpots { get; set; }
+        [DataMember(Name = "numberOfParkingSpots", EmitDefaultValue = true)]
+        public int? NumberOfParkingSpots { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
@@ -103,8 +103,8 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // NumberOfParkingSpots (int) minimum
-            if (this.NumberOfParkingSpots < (int)0)
+            // NumberOfParkingSpots (int?) minimum
+            if (this.NumberOfParkingSpots < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for NumberOfParkingSpots, must be a value greater than or equal to 0.", new [] { "NumberOfParkingSpots" });
             }

@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="count">The number of offer listings. (required).</param>
         /// <param name="condition">The condition of the item. (required).</param>
-        public OfferListingCountType(int count = default(int), string condition = default(string))
+        public OfferListingCountType(int? count = default(int?), string condition = default(string))
         {
+            // to ensure "count" is required (not null)
+            if (count == null)
+            {
+                throw new ArgumentNullException("count is a required property for OfferListingCountType and cannot be null");
+            }
             this.Count = count;
             // to ensure "condition" is required (not null)
             if (condition == null)
@@ -57,7 +62,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The number of offer listings.</value>
         [DataMember(Name = "Count", IsRequired = true, EmitDefaultValue = true)]
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
         /// <summary>
         /// The condition of the item.

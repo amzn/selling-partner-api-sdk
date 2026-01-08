@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="quantityInCase">The item quantity..</param>
         /// <param name="releaseDate">Type containing date in string format.</param>
         /// <param name="prepDetailsList">A list of preparation instructions and who is responsible for that preparation..</param>
-        public InboundShipmentItem(string shipmentId = default(string), string sellerSKU = default(string), string fulfillmentNetworkSKU = default(string), int quantityShipped = default(int), int quantityReceived = default(int), int quantityInCase = default(int), DateOnly releaseDate = default(DateOnly), List<PrepDetails> prepDetailsList = default(List<PrepDetails>))
+        public InboundShipmentItem(string shipmentId = default(string), string sellerSKU = default(string), string fulfillmentNetworkSKU = default(string), int? quantityShipped = default(int?), int? quantityReceived = default(int?), int? quantityInCase = default(int?), DateOnly releaseDate = default(DateOnly), List<PrepDetails> prepDetailsList = default(List<PrepDetails>))
         {
             // to ensure "sellerSKU" is required (not null)
             if (sellerSKU == null)
@@ -55,6 +55,11 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
                 throw new ArgumentNullException("sellerSKU is a required property for InboundShipmentItem and cannot be null");
             }
             this.SellerSKU = sellerSKU;
+            // to ensure "quantityShipped" is required (not null)
+            if (quantityShipped == null)
+            {
+                throw new ArgumentNullException("quantityShipped is a required property for InboundShipmentItem and cannot be null");
+            }
             this.QuantityShipped = quantityShipped;
             this.ShipmentId = shipmentId;
             this.FulfillmentNetworkSKU = fulfillmentNetworkSKU;
@@ -90,21 +95,21 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "QuantityShipped", IsRequired = true, EmitDefaultValue = true)]
-        public int QuantityShipped { get; set; }
+        public int? QuantityShipped { get; set; }
 
         /// <summary>
         /// The item quantity.
         /// </summary>
         /// <value>The item quantity.</value>
-        [DataMember(Name = "QuantityReceived", EmitDefaultValue = false)]
-        public int QuantityReceived { get; set; }
+        [DataMember(Name = "QuantityReceived", EmitDefaultValue = true)]
+        public int? QuantityReceived { get; set; }
 
         /// <summary>
         /// The item quantity.
         /// </summary>
         /// <value>The item quantity.</value>
-        [DataMember(Name = "QuantityInCase", EmitDefaultValue = false)]
-        public int QuantityInCase { get; set; }
+        [DataMember(Name = "QuantityInCase", EmitDefaultValue = true)]
+        public int? QuantityInCase { get; set; }
 
         /// <summary>
         /// Type containing date in string format

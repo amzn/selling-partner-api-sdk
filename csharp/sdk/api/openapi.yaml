@@ -185,6 +185,7 @@ paths:
         schema:
           format: int64
           maximum: 100
+          nullable: true
           type: integer
       - description: "A token that you use to retrieve the next page of results. The\
           \ response includes `nextToken` when there are multiple pages of results.\
@@ -1659,6 +1660,7 @@ components:
           description: The total number of units in the return.
           format: int32
           minimum: 1
+          nullable: true
           type: integer
         status:
           description: The current status of the return.
@@ -1782,6 +1784,7 @@ components:
           type: string
         validTill:
           description: The UNIX timestamp of when the verification code expires.
+          nullable: true
           type: integer
       required:
       - otp

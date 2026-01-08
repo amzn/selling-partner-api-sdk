@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="amount">Acknowledged quantity. This value should not be zero..</param>
         /// <param name="unitOfMeasure">Unit of measure for the acknowledged quantity..</param>
-        public ItemQuantity(int amount = default(int), UnitOfMeasureEnum? unitOfMeasure = default(UnitOfMeasureEnum?))
+        public ItemQuantity(int? amount = default(int?), UnitOfMeasureEnum? unitOfMeasure = default(UnitOfMeasureEnum?))
         {
             this.Amount = amount;
             this.UnitOfMeasure = unitOfMeasure;
@@ -67,8 +67,8 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Acknowledged quantity. This value should not be zero.
         /// </summary>
         /// <value>Acknowledged quantity. This value should not be zero.</value>
-        [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public int Amount { get; set; }
+        [DataMember(Name = "amount", EmitDefaultValue = true)]
+        public int? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

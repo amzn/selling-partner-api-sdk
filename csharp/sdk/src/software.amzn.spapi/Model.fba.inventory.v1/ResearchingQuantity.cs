@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <param name="totalResearchingQuantity">The total number of units currently being researched in Amazon&#39;s fulfillment network..</param>
         /// <param name="researchingQuantityBreakdown">A list of quantity details for items currently being researched..</param>
-        public ResearchingQuantity(int totalResearchingQuantity = default(int), List<ResearchingQuantityEntry> researchingQuantityBreakdown = default(List<ResearchingQuantityEntry>))
+        public ResearchingQuantity(int? totalResearchingQuantity = default(int?), List<ResearchingQuantityEntry> researchingQuantityBreakdown = default(List<ResearchingQuantityEntry>))
         {
             this.TotalResearchingQuantity = totalResearchingQuantity;
             this.ResearchingQuantityBreakdown = researchingQuantityBreakdown;
@@ -46,8 +46,8 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// The total number of units currently being researched in Amazon&#39;s fulfillment network.
         /// </summary>
         /// <value>The total number of units currently being researched in Amazon&#39;s fulfillment network.</value>
-        [DataMember(Name = "totalResearchingQuantity", EmitDefaultValue = false)]
-        public int TotalResearchingQuantity { get; set; }
+        [DataMember(Name = "totalResearchingQuantity", EmitDefaultValue = true)]
+        public int? TotalResearchingQuantity { get; set; }
 
         /// <summary>
         /// A list of quantity details for items currently being researched.

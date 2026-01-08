@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>PackingSlipList</returns>
-        PackingSlipList GetPackingSlips (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        PackingSlipList GetPackingSlips (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
 
         /// <summary>
         /// getPackingSlips
@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ApiResponse of PackingSlipList</returns>
-        ApiResponse<PackingSlipList> GetPackingSlipsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        ApiResponse<PackingSlipList> GetPackingSlipsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
         /// <summary>
         /// submitShipmentConfirmations
         /// </summary>
@@ -156,7 +156,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of PackingSlipList</returns>
-        System.Threading.Tasks.Task<PackingSlipList> GetPackingSlipsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        System.Threading.Tasks.Task<PackingSlipList> GetPackingSlipsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
 
         /// <summary>
         /// getPackingSlips
@@ -172,7 +172,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ApiResponse (PackingSlipList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PackingSlipList>> GetPackingSlipsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ApiResponse<PackingSlipList>> GetPackingSlipsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
         /// <summary>
         /// submitShipmentConfirmations
         /// </summary>
@@ -445,7 +445,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>PackingSlipList</returns>
-        public PackingSlipList GetPackingSlips (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public PackingSlipList GetPackingSlips (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
              ApiResponse<PackingSlipList> localVarResponse = GetPackingSlipsWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
              return localVarResponse.Data;
@@ -462,7 +462,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ApiResponse of PackingSlipList</returns>
-        public ApiResponse< PackingSlipList > GetPackingSlipsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public ApiResponse< PackingSlipList > GetPackingSlipsWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)
@@ -527,7 +527,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of PackingSlipList</returns>
-        public async System.Threading.Tasks.Task<PackingSlipList> GetPackingSlipsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<PackingSlipList> GetPackingSlipsAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
              ApiResponse<PackingSlipList> localVarResponse = await GetPackingSlipsAsyncWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
              return localVarResponse.Data;
@@ -545,7 +545,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">The packing slip creation dates, which are sorted by ascending or descending order. (optional, default to ASC)</param>
         /// <param name="nextToken">Used for pagination when there are more packing slips than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ApiResponse (PackingSlipList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PackingSlipList>> GetPackingSlipsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<PackingSlipList>> GetPackingSlipsAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)

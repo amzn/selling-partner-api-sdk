@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="offset">The starting value of this decorator within the content string. Use zero (&#x60;0&#x60;) for the first value..</param>
         /// <param name="length">The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters..</param>
         /// <param name="depth">The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths..</param>
-        public Decorator(DecoratorType? type = default(DecoratorType?), int offset = default(int), int length = default(int), int depth = default(int))
+        public Decorator(DecoratorType? type = default(DecoratorType?), int? offset = default(int?), int? length = default(int?), int? depth = default(int?))
         {
             this.Type = type;
             this.Offset = offset;
@@ -56,22 +56,22 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// The starting value of this decorator within the content string. Use zero (&#x60;0&#x60;) for the first value.
         /// </summary>
         /// <value>The starting value of this decorator within the content string. Use zero (&#x60;0&#x60;) for the first value.</value>
-        [DataMember(Name = "offset", EmitDefaultValue = false)]
-        public int Offset { get; set; }
+        [DataMember(Name = "offset", EmitDefaultValue = true)]
+        public int? Offset { get; set; }
 
         /// <summary>
         /// The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters.
         /// </summary>
         /// <value>The number of content characters to alter with this decorator. Decorators, such as line breaks, can have zero length and fit between characters.</value>
-        [DataMember(Name = "length", EmitDefaultValue = false)]
-        public int Length { get; set; }
+        [DataMember(Name = "length", EmitDefaultValue = true)]
+        public int? Length { get; set; }
 
         /// <summary>
         /// The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths.
         /// </summary>
         /// <value>The relative intensity or variation of this decorator. Decorators, such as bullet-points, can have multiple indentation depths.</value>
-        [DataMember(Name = "depth", EmitDefaultValue = false)]
-        public int Depth { get; set; }
+        [DataMember(Name = "depth", EmitDefaultValue = true)]
+        public int? Depth { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,38 +105,38 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Offset (int) maximum
-            if (this.Offset > (int)10000)
+            // Offset (int?) maximum
+            if (this.Offset > (int?)10000)
             {
                 yield return new ValidationResult("Invalid value for Offset, must be a value less than or equal to 10000.", new [] { "Offset" });
             }
 
-            // Offset (int) minimum
-            if (this.Offset < (int)0)
+            // Offset (int?) minimum
+            if (this.Offset < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for Offset, must be a value greater than or equal to 0.", new [] { "Offset" });
             }
 
-            // Length (int) maximum
-            if (this.Length > (int)10000)
+            // Length (int?) maximum
+            if (this.Length > (int?)10000)
             {
                 yield return new ValidationResult("Invalid value for Length, must be a value less than or equal to 10000.", new [] { "Length" });
             }
 
-            // Length (int) minimum
-            if (this.Length < (int)0)
+            // Length (int?) minimum
+            if (this.Length < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for Length, must be a value greater than or equal to 0.", new [] { "Length" });
             }
 
-            // Depth (int) maximum
-            if (this.Depth > (int)100)
+            // Depth (int?) maximum
+            if (this.Depth > (int?)100)
             {
                 yield return new ValidationResult("Invalid value for Depth, must be a value less than or equal to 100.", new [] { "Depth" });
             }
 
-            // Depth (int) minimum
-            if (this.Depth < (int)0)
+            // Depth (int?) minimum
+            if (this.Depth < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for Depth, must be a value greater than or equal to 0.", new [] { "Depth" });
             }

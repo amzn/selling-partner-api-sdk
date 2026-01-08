@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>CustomerInvoiceList</returns>
-        CustomerInvoiceList GetCustomerInvoices (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        CustomerInvoiceList GetCustomerInvoices (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
 
         /// <summary>
         /// getCustomerInvoices
@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ApiResponse of CustomerInvoiceList</returns>
-        ApiResponse<CustomerInvoiceList> GetCustomerInvoicesWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        ApiResponse<CustomerInvoiceList> GetCustomerInvoicesWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -114,7 +114,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of CustomerInvoiceList</returns>
-        System.Threading.Tasks.Task<CustomerInvoiceList> GetCustomerInvoicesAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        System.Threading.Tasks.Task<CustomerInvoiceList> GetCustomerInvoicesAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
 
         /// <summary>
         /// getCustomerInvoices
@@ -130,7 +130,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ApiResponse (CustomerInvoiceList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CustomerInvoiceList>> GetCustomerInvoicesAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ApiResponse<CustomerInvoiceList>> GetCustomerInvoicesAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -361,7 +361,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>CustomerInvoiceList</returns>
-        public CustomerInvoiceList GetCustomerInvoices (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public CustomerInvoiceList GetCustomerInvoices (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
              ApiResponse<CustomerInvoiceList> localVarResponse = GetCustomerInvoicesWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
              return localVarResponse.Data;
@@ -378,7 +378,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>ApiResponse of CustomerInvoiceList</returns>
-        public ApiResponse< CustomerInvoiceList > GetCustomerInvoicesWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public ApiResponse< CustomerInvoiceList > GetCustomerInvoicesWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)
@@ -444,7 +444,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of CustomerInvoiceList</returns>
-        public async System.Threading.Tasks.Task<CustomerInvoiceList> GetCustomerInvoicesAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<CustomerInvoiceList> GetCustomerInvoicesAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
              ApiResponse<CustomerInvoiceList> localVarResponse = await GetCustomerInvoicesAsyncWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, limit, sortOrder, nextToken);
              return localVarResponse.Data;
@@ -462,7 +462,7 @@ namespace software.amzn.spapi.Api.vendor.df.shipping.v2021_12_28
         /// <param name="sortOrder">Sort ASC or DESC by order creation date. (optional)</param>
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <returns>Task of ApiResponse (CustomerInvoiceList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CustomerInvoiceList>> GetCustomerInvoicesAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int? limit = null, string? sortOrder = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<CustomerInvoiceList>> GetCustomerInvoicesAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, int?? limit = null, string? sortOrder = null, string? nextToken = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="orderItemId">The order item&#39;s unique identifier. (required).</param>
         /// <param name="quantity">The item&#39;s quantity. (required).</param>
         /// <param name="transparencyCodes">A list of order items..</param>
-        public ConfirmShipmentOrderItem(string orderItemId = default(string), int quantity = default(int), List<string> transparencyCodes = default(List<string>))
+        public ConfirmShipmentOrderItem(string orderItemId = default(string), int? quantity = default(int?), List<string> transparencyCodes = default(List<string>))
         {
             // to ensure "orderItemId" is required (not null)
             if (orderItemId == null)
@@ -50,6 +50,11 @@ namespace software.amzn.spapi.Model.orders.v0
                 throw new ArgumentNullException("orderItemId is a required property for ConfirmShipmentOrderItem and cannot be null");
             }
             this.OrderItemId = orderItemId;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for ConfirmShipmentOrderItem and cannot be null");
+            }
             this.Quantity = quantity;
             this.TransparencyCodes = transparencyCodes;
         }
@@ -66,7 +71,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The item&#39;s quantity.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// A list of order items.

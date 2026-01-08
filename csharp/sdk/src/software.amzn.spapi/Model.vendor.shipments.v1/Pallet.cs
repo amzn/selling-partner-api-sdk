@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="weight">weight.</param>
         /// <param name="cartonReferenceDetails">cartonReferenceDetails.</param>
         /// <param name="items">A list of container item details..</param>
-        public Pallet(List<ContainerIdentification> palletIdentifiers = default(List<ContainerIdentification>), int tier = default(int), int block = default(int), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), CartonReferenceDetails cartonReferenceDetails = default(CartonReferenceDetails), List<ContainerItem> items = default(List<ContainerItem>))
+        public Pallet(List<ContainerIdentification> palletIdentifiers = default(List<ContainerIdentification>), int? tier = default(int?), int? block = default(int?), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), CartonReferenceDetails cartonReferenceDetails = default(CartonReferenceDetails), List<ContainerItem> items = default(List<ContainerItem>))
         {
             // to ensure "palletIdentifiers" is required (not null)
             if (palletIdentifiers == null)
@@ -73,15 +73,15 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Number of layers per pallet. Only applicable to container type Pallet.
         /// </summary>
         /// <value>Number of layers per pallet. Only applicable to container type Pallet.</value>
-        [DataMember(Name = "tier", EmitDefaultValue = false)]
-        public int Tier { get; set; }
+        [DataMember(Name = "tier", EmitDefaultValue = true)]
+        public int? Tier { get; set; }
 
         /// <summary>
         /// Number of cartons per layer on the pallet. Only applicable to container type Pallet.
         /// </summary>
         /// <value>Number of cartons per layer on the pallet. Only applicable to container type Pallet.</value>
-        [DataMember(Name = "block", EmitDefaultValue = false)]
-        public int Block { get; set; }
+        [DataMember(Name = "block", EmitDefaultValue = true)]
+        public int? Block { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions

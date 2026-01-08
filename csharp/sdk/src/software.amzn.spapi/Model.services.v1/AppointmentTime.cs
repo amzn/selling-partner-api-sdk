@@ -41,9 +41,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="startTime">The date and time of the start of the appointment window in ISO 8601 format. (required).</param>
         /// <param name="durationInMinutes">The duration of the appointment window, in minutes. (required).</param>
-        public AppointmentTime(DateTime startTime = default(DateTime), int durationInMinutes = default(int))
+        public AppointmentTime(DateTime startTime = default(DateTime), int? durationInMinutes = default(int?))
         {
             this.StartTime = startTime;
+            // to ensure "durationInMinutes" is required (not null)
+            if (durationInMinutes == null)
+            {
+                throw new ArgumentNullException("durationInMinutes is a required property for AppointmentTime and cannot be null");
+            }
             this.DurationInMinutes = durationInMinutes;
         }
 
@@ -59,7 +64,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The duration of the appointment window, in minutes.</value>
         [DataMember(Name = "durationInMinutes", IsRequired = true, EmitDefaultValue = true)]
-        public int DurationInMinutes { get; set; }
+        public int? DurationInMinutes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,8 +96,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // DurationInMinutes (int) minimum
-            if (this.DurationInMinutes < (int)1)
+            // DurationInMinutes (int?) minimum
+            if (this.DurationInMinutes < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for DurationInMinutes, must be a value greater than or equal to 1.", new [] { "DurationInMinutes" });
             }

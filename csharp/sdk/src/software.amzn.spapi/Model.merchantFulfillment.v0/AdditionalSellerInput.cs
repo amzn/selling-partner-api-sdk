@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="valueAsWeight">valueAsWeight.</param>
         /// <param name="valueAsDimension">valueAsDimension.</param>
         /// <param name="valueAsCurrency">valueAsCurrency.</param>
-        public AdditionalSellerInput(string dataType = default(string), string valueAsString = default(string), bool valueAsBoolean = default(bool), int valueAsInteger = default(int), DateTime valueAsTimestamp = default(DateTime), Address valueAsAddress = default(Address), Weight valueAsWeight = default(Weight), Length valueAsDimension = default(Length), CurrencyAmount valueAsCurrency = default(CurrencyAmount))
+        public AdditionalSellerInput(string dataType = default(string), string valueAsString = default(string), bool valueAsBoolean = default(bool), int? valueAsInteger = default(int?), DateTime valueAsTimestamp = default(DateTime), Address valueAsAddress = default(Address), Weight valueAsWeight = default(Weight), Length valueAsDimension = default(Length), CurrencyAmount valueAsCurrency = default(CurrencyAmount))
         {
             this.DataType = dataType;
             this.ValueAsString = valueAsString;
@@ -81,8 +81,8 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// The value when the data type is integer.
         /// </summary>
         /// <value>The value when the data type is integer.</value>
-        [DataMember(Name = "ValueAsInteger", EmitDefaultValue = false)]
-        public int ValueAsInteger { get; set; }
+        [DataMember(Name = "ValueAsInteger", EmitDefaultValue = true)]
+        public int? ValueAsInteger { get; set; }
 
         /// <summary>
         /// Date-time formatted timestamp.

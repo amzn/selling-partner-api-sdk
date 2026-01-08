@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="masterTrackingId">Unique Id with  which  the shipment can be tracked for Small Parcels..</param>
         /// <param name="totalLabelCount">Number of Labels that are created as part of this shipment..</param>
         /// <param name="shipMode">Type of shipment whether it is Small Parcel.</param>
-        public ShipmentInformation(VendorDetails vendorDetails = default(VendorDetails), string buyerReferenceNumber = default(string), PartyIdentification shipToParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), string warehouseId = default(string), string masterTrackingId = default(string), int totalLabelCount = default(int), ShipModeEnum? shipMode = default(ShipModeEnum?))
+        public ShipmentInformation(VendorDetails vendorDetails = default(VendorDetails), string buyerReferenceNumber = default(string), PartyIdentification shipToParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), string warehouseId = default(string), string masterTrackingId = default(string), int? totalLabelCount = default(int?), ShipModeEnum? shipMode = default(ShipModeEnum?))
         {
             this.VendorDetails = vendorDetails;
             this.BuyerReferenceNumber = buyerReferenceNumber;
@@ -124,8 +124,8 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Number of Labels that are created as part of this shipment.
         /// </summary>
         /// <value>Number of Labels that are created as part of this shipment.</value>
-        [DataMember(Name = "totalLabelCount", EmitDefaultValue = false)]
-        public int TotalLabelCount { get; set; }
+        [DataMember(Name = "totalLabelCount", EmitDefaultValue = true)]
+        public int? TotalLabelCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

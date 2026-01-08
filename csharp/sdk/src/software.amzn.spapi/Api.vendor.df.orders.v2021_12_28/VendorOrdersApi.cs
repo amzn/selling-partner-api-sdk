@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>OrderList</returns>
-        OrderList GetOrders (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
+        OrderList GetOrders (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
 
         /// <summary>
         /// 
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>ApiResponse of OrderList</returns>
-        ApiResponse<OrderList> GetOrdersWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
+        ApiResponse<OrderList> GetOrdersWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
         /// <summary>
         /// 
         /// </summary>
@@ -141,7 +141,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>Task of OrderList</returns>
-        System.Threading.Tasks.Task<OrderList> GetOrdersAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
+        System.Threading.Tasks.Task<OrderList> GetOrdersAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
 
         /// <summary>
         /// 
@@ -159,7 +159,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>Task of ApiResponse (OrderList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<OrderList>> GetOrdersAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
+        System.Threading.Tasks.Task<ApiResponse<OrderList>> GetOrdersAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null);
         /// <summary>
         /// 
         /// </summary>
@@ -413,7 +413,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>OrderList</returns>
-        public OrderList GetOrders (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
+        public OrderList GetOrders (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
         {
              ApiResponse<OrderList> localVarResponse = GetOrdersWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, status, limit, sortOrder, nextToken, includeDetails);
              return localVarResponse.Data;
@@ -432,7 +432,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>ApiResponse of OrderList</returns>
-        public ApiResponse< OrderList > GetOrdersWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
+        public ApiResponse< OrderList > GetOrdersWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)
@@ -503,7 +503,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>Task of OrderList</returns>
-        public async System.Threading.Tasks.Task<OrderList> GetOrdersAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
+        public async System.Threading.Tasks.Task<OrderList> GetOrdersAsync (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
         {
              ApiResponse<OrderList> localVarResponse = await GetOrdersAsyncWithHttpInfo(createdAfter, createdBefore, shipFromPartyId, status, limit, sortOrder, nextToken, includeDetails);
              return localVarResponse.Data;
@@ -523,7 +523,7 @@ namespace software.amzn.spapi.Api.vendor.df.orders.v2021_12_28
         /// <param name="nextToken">Used for pagination when there are more orders than the specified result size limit. The token value is returned in the previous API call. (optional)</param>
         /// <param name="includeDetails">When true, returns the complete purchase order details. Otherwise, only purchase order numbers are returned. (optional, default to &quot;true&quot;)</param>
         /// <returns>Task of ApiResponse (OrderList)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<OrderList>> GetOrdersAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
+        public async System.Threading.Tasks.Task<ApiResponse<OrderList>> GetOrdersAsyncWithHttpInfo (DateTime createdAfter, DateTime createdBefore, string? shipFromPartyId = null, string? status = null, long?? limit = null, string? sortOrder = null, string? nextToken = null, bool? includeDetails = null)
         {
             // verify the required parameter 'createdAfter' is set
             if (createdAfter == null)

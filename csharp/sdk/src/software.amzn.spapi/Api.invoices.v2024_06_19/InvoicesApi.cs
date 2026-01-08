@@ -91,7 +91,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>GetInvoicesResponse</returns>
-        GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
 
         /// <summary>
         /// 
@@ -115,7 +115,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesResponse</returns>
-        ApiResponse<GetInvoicesResponse> GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        ApiResponse<GetInvoicesResponse> GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
         /// <summary>
         /// 
         /// </summary>
@@ -193,7 +193,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>GetInvoicesExportsResponse</returns>
-        GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null);
 
         /// <summary>
         /// 
@@ -209,7 +209,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>ApiResponse of GetInvoicesExportsResponse</returns>
-        ApiResponse<GetInvoicesExportsResponse> GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        ApiResponse<GetInvoicesExportsResponse> GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -278,7 +278,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>Task of GetInvoicesResponse</returns>
-        System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
 
         /// <summary>
         /// 
@@ -302,7 +302,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null);
         /// <summary>
         /// 
         /// </summary>
@@ -380,7 +380,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>Task of GetInvoicesExportsResponse</returns>
-        System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null);
 
         /// <summary>
         /// 
@@ -396,7 +396,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesExportsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null);
+        System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null);
         #endregion Asynchronous Operations
     }
 
@@ -791,7 +791,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>GetInvoicesResponse</returns>
-        public GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public GetInvoicesResponse GetInvoices (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
         {
              ApiResponse<GetInvoicesResponse> localVarResponse = GetInvoicesWithHttpInfo(marketplaceId, transactionIdentifierName, pageSize, dateEnd, transactionType, transactionIdentifierId, dateStart, series, nextToken, sortOrder, invoiceType, statuses, externalInvoiceId, sortBy);
              return localVarResponse.Data;
@@ -816,7 +816,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>ApiResponse of GetInvoicesResponse</returns>
-        public ApiResponse< GetInvoicesResponse > GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public ApiResponse< GetInvoicesResponse > GetInvoicesWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -894,7 +894,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>Task of GetInvoicesResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public async System.Threading.Tasks.Task<GetInvoicesResponse> GetInvoicesAsync (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
         {
              ApiResponse<GetInvoicesResponse> localVarResponse = await GetInvoicesAsyncWithHttpInfo(marketplaceId, transactionIdentifierName, pageSize, dateEnd, transactionType, transactionIdentifierId, dateStart, series, nextToken, sortOrder, invoiceType, statuses, externalInvoiceId, sortBy);
              return localVarResponse.Data;
@@ -920,7 +920,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="externalInvoiceId">Return invoices that match this external ID. This is typically the Government Invoice ID. (optional)</param>
         /// <param name="sortBy">The attribute by which you want to sort the invoices in the response. (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesResponse>> GetInvoicesAsyncWithHttpInfo (string marketplaceId, string? transactionIdentifierName = null, int?? pageSize = null, DateTime? dateEnd = null, string? transactionType = null, string? transactionIdentifierId = null, DateTime? dateStart = null, string? series = null, string? nextToken = null, string? sortOrder = null, string? invoiceType = null, List<string>? statuses = null, string? externalInvoiceId = null, string? sortBy = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1373,7 +1373,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>GetInvoicesExportsResponse</returns>
-        public GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public GetInvoicesExportsResponse GetInvoicesExports (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null)
         {
              ApiResponse<GetInvoicesExportsResponse> localVarResponse = GetInvoicesExportsWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status);
              return localVarResponse.Data;
@@ -1390,7 +1390,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>ApiResponse of GetInvoicesExportsResponse</returns>
-        public ApiResponse< GetInvoicesExportsResponse > GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public ApiResponse< GetInvoicesExportsResponse > GetInvoicesExportsWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)
@@ -1452,7 +1452,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>Task of GetInvoicesExportsResponse</returns>
-        public async System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public async System.Threading.Tasks.Task<GetInvoicesExportsResponse> GetInvoicesExportsAsync (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null)
         {
              ApiResponse<GetInvoicesExportsResponse> localVarResponse = await GetInvoicesExportsAsyncWithHttpInfo(marketplaceId, dateStart, nextToken, pageSize, dateEnd, status);
              return localVarResponse.Data;
@@ -1470,7 +1470,7 @@ namespace software.amzn.spapi.Api.invoices.v2024_06_19
         /// <param name="dateEnd">The latest export creation date and time for exports that you want to include in the response. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default value is the time of the request. (optional)</param>
         /// <param name="status">Return exports matching the status specified.  (optional)</param>
         /// <returns>Task of ApiResponse (GetInvoicesExportsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int? pageSize = null, DateTime? dateEnd = null, string? status = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetInvoicesExportsResponse>> GetInvoicesExportsAsyncWithHttpInfo (string marketplaceId, DateTime? dateStart = null, string? nextToken = null, int?? pageSize = null, DateTime? dateEnd = null, string? status = null)
         {
             // verify the required parameter 'marketplaceId' is set
             if (marketplaceId == null)

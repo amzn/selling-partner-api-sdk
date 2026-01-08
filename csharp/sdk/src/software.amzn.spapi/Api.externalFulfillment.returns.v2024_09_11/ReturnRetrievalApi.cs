@@ -67,7 +67,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ReturnsResponse</returns>
-        ReturnsResponse ListReturns (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null);
+        ReturnsResponse ListReturns (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -89,7 +89,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of ReturnsResponse</returns>
-        ApiResponse<ReturnsResponse> ListReturnsWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null);
+        ApiResponse<ReturnsResponse> ListReturnsWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -133,7 +133,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ReturnsResponse</returns>
-        System.Threading.Tasks.Task<ReturnsResponse> ListReturnsAsync (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ReturnsResponse> ListReturnsAsync (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -155,7 +155,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (ReturnsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ReturnsResponse>> ListReturnsAsyncWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ApiResponse<ReturnsResponse>> ListReturnsAsyncWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -392,7 +392,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ReturnsResponse</returns>
-        public ReturnsResponse ListReturns (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null)
+        public ReturnsResponse ListReturns (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null)
         {
              ApiResponse<ReturnsResponse> localVarResponse = ListReturnsWithHttpInfo(returnLocationId, rmaId, status, reverseTrackingId, createdSince, createdUntil, lastUpdatedSince, lastUpdatedUntil, lastUpdatedAfter, lastUpdatedBefore, maxResults, nextToken);
              return localVarResponse.Data;
@@ -415,7 +415,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>ApiResponse of ReturnsResponse</returns>
-        public ApiResponse< ReturnsResponse > ListReturnsWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null)
+        public ApiResponse< ReturnsResponse > ListReturnsWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null)
         {
 
             var localVarPath = "/externalFulfillment/2024-09-11/returns";
@@ -486,7 +486,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ReturnsResponse</returns>
-        public async System.Threading.Tasks.Task<ReturnsResponse> ListReturnsAsync (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ReturnsResponse> ListReturnsAsync (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null)
         {
              ApiResponse<ReturnsResponse> localVarResponse = await ListReturnsAsyncWithHttpInfo(returnLocationId, rmaId, status, reverseTrackingId, createdSince, createdUntil, lastUpdatedSince, lastUpdatedUntil, lastUpdatedAfter, lastUpdatedBefore, maxResults, nextToken);
              return localVarResponse.Data;
@@ -510,7 +510,7 @@ namespace software.amzn.spapi.Api.externalFulfillment.returns.v2024_09_11
         /// <param name="maxResults">The number of return items you want to include in the response.  **Default:** 10  **Maximum:** 100 (optional)</param>
         /// <param name="nextToken">A token that you use to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when there are multiple pages of results. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages. (optional)</param>
         /// <returns>Task of ApiResponse (ReturnsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ReturnsResponse>> ListReturnsAsyncWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long? maxResults = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ReturnsResponse>> ListReturnsAsyncWithHttpInfo (string? returnLocationId = null, string? rmaId = null, string? status = null, string? reverseTrackingId = null, string? createdSince = null, string? createdUntil = null, string? lastUpdatedSince = null, string? lastUpdatedUntil = null, string? lastUpdatedAfter = null, string? lastUpdatedBefore = null, long?? maxResults = null, string? nextToken = null)
         {
 
             var localVarPath = "/externalFulfillment/2024-09-11/returns";

@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="tradeInEligible">When true, the Amazon catalog item is eligible for trade-in..</param>
         /// <param name="websiteDisplayGroup">The identifier of the website display group that is associated with the Amazon catalog item..</param>
         /// <param name="websiteDisplayGroupName">The display name of the website display group that is associated with the Amazon catalog item..</param>
-        public ItemSummaryByMarketplace(string marketplaceId = default(string), bool adultProduct = default(bool), bool autographed = default(bool), string brand = default(string), ItemBrowseClassification browseClassification = default(ItemBrowseClassification), string color = default(string), List<ItemContributor> contributors = default(List<ItemContributor>), ItemClassificationEnum? itemClassification = default(ItemClassificationEnum?), string itemName = default(string), string manufacturer = default(string), bool memorabilia = default(bool), string modelNumber = default(string), int packageQuantity = default(int), string partNumber = default(string), DateOnly releaseDate = default(DateOnly), string size = default(string), string style = default(string), bool tradeInEligible = default(bool), string websiteDisplayGroup = default(string), string websiteDisplayGroupName = default(string))
+        public ItemSummaryByMarketplace(string marketplaceId = default(string), bool adultProduct = default(bool), bool autographed = default(bool), string brand = default(string), ItemBrowseClassification browseClassification = default(ItemBrowseClassification), string color = default(string), List<ItemContributor> contributors = default(List<ItemContributor>), ItemClassificationEnum? itemClassification = default(ItemClassificationEnum?), string itemName = default(string), string manufacturer = default(string), bool memorabilia = default(bool), string modelNumber = default(string), int? packageQuantity = default(int?), string partNumber = default(string), DateOnly releaseDate = default(DateOnly), string size = default(string), string style = default(string), bool tradeInEligible = default(bool), string websiteDisplayGroup = default(string), string websiteDisplayGroupName = default(string))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -207,8 +207,8 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// The quantity of the Amazon catalog item within one package.
         /// </summary>
         /// <value>The quantity of the Amazon catalog item within one package.</value>
-        [DataMember(Name = "packageQuantity", EmitDefaultValue = false)]
-        public int PackageQuantity { get; set; }
+        [DataMember(Name = "packageQuantity", EmitDefaultValue = true)]
+        public int? PackageQuantity { get; set; }
 
         /// <summary>
         /// The part number that is associated with the Amazon catalog item.

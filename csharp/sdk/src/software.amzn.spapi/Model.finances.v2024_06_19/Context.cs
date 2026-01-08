@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="startTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="endTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="contextType">contextType (required).</param>
-        public Context(StoreNameEnum? storeName = default(StoreNameEnum?), string orderType = default(string), string channel = default(string), string asin = default(string), string sku = default(string), int quantityShipped = default(int), string fulfillmentNetwork = default(string), string paymentType = default(string), string paymentMethod = default(string), string paymentReference = default(string), DateTime paymentDate = default(DateTime), string deferralReason = default(string), DateTime maturityDate = default(DateTime), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), string contextType = default(string))
+        public Context(StoreNameEnum? storeName = default(StoreNameEnum?), string orderType = default(string), string channel = default(string), string asin = default(string), string sku = default(string), int? quantityShipped = default(int?), string fulfillmentNetwork = default(string), string paymentType = default(string), string paymentMethod = default(string), string paymentReference = default(string), DateTime paymentDate = default(DateTime), string deferralReason = default(string), DateTime maturityDate = default(DateTime), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), string contextType = default(string))
         {
             // to ensure "contextType" is required (not null)
             if (contextType == null)
@@ -133,8 +133,8 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// The quantity of the item shipped.
         /// </summary>
         /// <value>The quantity of the item shipped.</value>
-        [DataMember(Name = "quantityShipped", EmitDefaultValue = false)]
-        public int QuantityShipped { get; set; }
+        [DataMember(Name = "quantityShipped", EmitDefaultValue = true)]
+        public int? QuantityShipped { get; set; }
 
         /// <summary>
         /// The fulfillment network of the item.

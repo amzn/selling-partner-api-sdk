@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <param name="numberOfMentions">The number of times that reviews mention the subtopic. (required).</param>
         /// <param name="occurrencePercentage">The percentage of reviews that mention the subtopic. (required).</param>
-        public ItemReviewSubtopicMetrics(int numberOfMentions = default(int), float occurrencePercentage = default(float))
+        public ItemReviewSubtopicMetrics(int? numberOfMentions = default(int?), float occurrencePercentage = default(float))
         {
+            // to ensure "numberOfMentions" is required (not null)
+            if (numberOfMentions == null)
+            {
+                throw new ArgumentNullException("numberOfMentions is a required property for ItemReviewSubtopicMetrics and cannot be null");
+            }
             this.NumberOfMentions = numberOfMentions;
             this.OccurrencePercentage = occurrencePercentage;
         }
@@ -52,7 +57,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <value>The number of times that reviews mention the subtopic.</value>
         [DataMember(Name = "numberOfMentions", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfMentions { get; set; }
+        public int? NumberOfMentions { get; set; }
 
         /// <summary>
         /// The percentage of reviews that mention the subtopic.

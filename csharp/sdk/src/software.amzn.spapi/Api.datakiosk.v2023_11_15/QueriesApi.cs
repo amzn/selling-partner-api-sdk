@@ -101,7 +101,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>GetQueriesResponse</returns>
-        GetQueriesResponse GetQueries (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
+        GetQueriesResponse GetQueries (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -116,7 +116,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>ApiResponse of GetQueriesResponse</returns>
-        ApiResponse<GetQueriesResponse> GetQueriesWithHttpInfo (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
+        ApiResponse<GetQueriesResponse> GetQueriesWithHttpInfo (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -216,7 +216,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>Task of GetQueriesResponse</returns>
-        System.Threading.Tasks.Task<GetQueriesResponse> GetQueriesAsync (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<GetQueriesResponse> GetQueriesAsync (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
 
         /// <summary>
         /// 
@@ -231,7 +231,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>Task of ApiResponse (GetQueriesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetQueriesResponse>> GetQueriesAsyncWithHttpInfo (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
+        System.Threading.Tasks.Task<ApiResponse<GetQueriesResponse>> GetQueriesAsyncWithHttpInfo (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null);
         /// <summary>
         /// 
         /// </summary>
@@ -754,7 +754,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>GetQueriesResponse</returns>
-        public GetQueriesResponse GetQueries (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
+        public GetQueriesResponse GetQueries (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
         {
              ApiResponse<GetQueriesResponse> localVarResponse = GetQueriesWithHttpInfo(processingStatuses, pageSize, createdSince, createdUntil, paginationToken);
              return localVarResponse.Data;
@@ -770,7 +770,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>ApiResponse of GetQueriesResponse</returns>
-        public ApiResponse< GetQueriesResponse > GetQueriesWithHttpInfo (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
+        public ApiResponse< GetQueriesResponse > GetQueriesWithHttpInfo (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
         {
 
             var localVarPath = "/dataKiosk/2023-11-15/queries";
@@ -827,7 +827,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>Task of GetQueriesResponse</returns>
-        public async System.Threading.Tasks.Task<GetQueriesResponse> GetQueriesAsync (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<GetQueriesResponse> GetQueriesAsync (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
         {
              ApiResponse<GetQueriesResponse> localVarResponse = await GetQueriesAsyncWithHttpInfo(processingStatuses, pageSize, createdSince, createdUntil, paginationToken);
              return localVarResponse.Data;
@@ -844,7 +844,7 @@ namespace software.amzn.spapi.Api.datakiosk.v2023_11_15
         /// <param name="createdUntil">The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the &#x60;getQueries&#x60; request. (optional)</param>
         /// <param name="paginationToken">A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the &#x60;pagination.nextToken&#x60; field returned in the &#x60;GetQueriesResponse&#x60; object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of &#x60;pageSize&#x60; which can be modified between calls to &#x60;getQueries&#x60;. In the absence of this token value, &#x60;getQueries&#x60; returns the first page of results. (optional)</param>
         /// <returns>Task of ApiResponse (GetQueriesResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetQueriesResponse>> GetQueriesAsyncWithHttpInfo (List<string>? processingStatuses = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetQueriesResponse>> GetQueriesAsyncWithHttpInfo (List<string>? processingStatuses = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? paginationToken = null)
         {
 
             var localVarPath = "/dataKiosk/2023-11-15/queries";

@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="carrierCode">Unique identification of the carrier..</param>
         /// <param name="trackingId">Tracking Id for the transportation..</param>
         /// <param name="label">The base-64 encoded string that represents the shipment label..</param>
-        public LabelData(int labelSequenceNumber = default(int), LabelFormatEnum? labelFormat = default(LabelFormatEnum?), string carrierCode = default(string), string trackingId = default(string), string label = default(string))
+        public LabelData(int? labelSequenceNumber = default(int?), LabelFormatEnum? labelFormat = default(LabelFormatEnum?), string carrierCode = default(string), string trackingId = default(string), string label = default(string))
         {
             this.LabelSequenceNumber = labelSequenceNumber;
             this.LabelFormat = labelFormat;
@@ -73,8 +73,8 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// A sequential number assigned to each label within a shipment.
         /// </summary>
         /// <value>A sequential number assigned to each label within a shipment.</value>
-        [DataMember(Name = "labelSequenceNumber", EmitDefaultValue = false)]
-        public int LabelSequenceNumber { get; set; }
+        [DataMember(Name = "labelSequenceNumber", EmitDefaultValue = true)]
+        public int? LabelSequenceNumber { get; set; }
 
         /// <summary>
         /// Unique identification of the carrier.

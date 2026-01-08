@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="quantity">The item quantity. (required).</param>
         /// <param name="perUnitDeclaredValue">perUnitDeclaredValue.</param>
         /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier that the seller creates to track items in the fulfillment preview. (required).</param>
-        public GetFulfillmentPreviewItem(string sellerSku = default(string), int quantity = default(int), Money perUnitDeclaredValue = default(Money), string sellerFulfillmentOrderItemId = default(string))
+        public GetFulfillmentPreviewItem(string sellerSku = default(string), int? quantity = default(int?), Money perUnitDeclaredValue = default(Money), string sellerFulfillmentOrderItemId = default(string))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -51,6 +51,11 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
                 throw new ArgumentNullException("sellerSku is a required property for GetFulfillmentPreviewItem and cannot be null");
             }
             this.SellerSku = sellerSku;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for GetFulfillmentPreviewItem and cannot be null");
+            }
             this.Quantity = quantity;
             // to ensure "sellerFulfillmentOrderItemId" is required (not null)
             if (sellerFulfillmentOrderItemId == null)
@@ -73,7 +78,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets PerUnitDeclaredValue

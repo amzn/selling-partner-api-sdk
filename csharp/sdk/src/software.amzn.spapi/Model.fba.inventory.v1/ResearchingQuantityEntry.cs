@@ -74,9 +74,14 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <param name="name">The duration of the research. (required).</param>
         /// <param name="quantity">The number of units. (required).</param>
-        public ResearchingQuantityEntry(NameEnum name = default(NameEnum), int quantity = default(int))
+        public ResearchingQuantityEntry(NameEnum name = default(NameEnum), int? quantity = default(int?))
         {
             this.Name = name;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for ResearchingQuantityEntry and cannot be null");
+            }
             this.Quantity = quantity;
         }
 
@@ -85,7 +90,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>The number of units.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

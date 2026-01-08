@@ -57,8 +57,13 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="taxDetails">Individual tax details per line item..</param>
         /// <param name="chargeDetails">Individual charge details per line item..</param>
         /// <param name="allowanceDetails">Individual allowance details per line item..</param>
-        public InvoiceItem(int itemSequenceNumber = default(int), string amazonProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), NetCostUnitOfMeasure? netCostUnitOfMeasure = default(NetCostUnitOfMeasure?), string purchaseOrderNumber = default(string), string hsnCode = default(string), CreditNoteDetails creditNoteDetails = default(CreditNoteDetails), List<TaxDetails> taxDetails = default(List<TaxDetails>), List<ChargeDetails> chargeDetails = default(List<ChargeDetails>), List<AllowanceDetails> allowanceDetails = default(List<AllowanceDetails>))
+        public InvoiceItem(int? itemSequenceNumber = default(int?), string amazonProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), NetCostUnitOfMeasure? netCostUnitOfMeasure = default(NetCostUnitOfMeasure?), string purchaseOrderNumber = default(string), string hsnCode = default(string), CreditNoteDetails creditNoteDetails = default(CreditNoteDetails), List<TaxDetails> taxDetails = default(List<TaxDetails>), List<ChargeDetails> chargeDetails = default(List<ChargeDetails>), List<AllowanceDetails> allowanceDetails = default(List<AllowanceDetails>))
         {
+            // to ensure "itemSequenceNumber" is required (not null)
+            if (itemSequenceNumber == null)
+            {
+                throw new ArgumentNullException("itemSequenceNumber is a required property for InvoiceItem and cannot be null");
+            }
             this.ItemSequenceNumber = itemSequenceNumber;
             // to ensure "invoicedQuantity" is required (not null)
             if (invoicedQuantity == null)
@@ -88,7 +93,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>Unique number related to this line item.</value>
         [DataMember(Name = "itemSequenceNumber", IsRequired = true, EmitDefaultValue = true)]
-        public int ItemSequenceNumber { get; set; }
+        public int? ItemSequenceNumber { get; set; }
 
         /// <summary>
         /// Amazon Standard Identification Number (ASIN) of an item.

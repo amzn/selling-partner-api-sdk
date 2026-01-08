@@ -40,8 +40,13 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// Initializes a new instance of the <see cref="Points" /> class.
         /// </summary>
         /// <param name="pointsNumber">pointsNumber (required).</param>
-        public Points(int pointsNumber = default(int))
+        public Points(int? pointsNumber = default(int?))
         {
+            // to ensure "pointsNumber" is required (not null)
+            if (pointsNumber == null)
+            {
+                throw new ArgumentNullException("pointsNumber is a required property for Points and cannot be null");
+            }
             this.PointsNumber = pointsNumber;
         }
 
@@ -49,7 +54,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// Gets or Sets PointsNumber
         /// </summary>
         [DataMember(Name = "pointsNumber", IsRequired = true, EmitDefaultValue = true)]
-        public int PointsNumber { get; set; }
+        public int? PointsNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="availableCapacity">Available capacity corresponding to the slot. This capacity represents the capacity available for allocation to reservations..</param>
         /// <param name="encumberedCapacity">Encumbered capacity corresponding to the slot. This capacity represents the capacity allocated for Amazon Jobs/Appointments/Orders..</param>
         /// <param name="reservedCapacity">Reserved capacity corresponding to the slot. This capacity represents the capacity made unavailable due to events like Breaks/Leaves/Lunch..</param>
-        public FixedSlot(DateTime startDateTime = default(DateTime), int scheduledCapacity = default(int), int availableCapacity = default(int), int encumberedCapacity = default(int), int reservedCapacity = default(int))
+        public FixedSlot(DateTime startDateTime = default(DateTime), int? scheduledCapacity = default(int?), int? availableCapacity = default(int?), int? encumberedCapacity = default(int?), int? reservedCapacity = default(int?))
         {
             this.StartDateTime = startDateTime;
             this.ScheduledCapacity = scheduledCapacity;
@@ -59,29 +59,29 @@ namespace software.amzn.spapi.Model.services.v1
         /// Scheduled capacity corresponding to the slot. This capacity represents the originally allocated capacity as per resource schedule.
         /// </summary>
         /// <value>Scheduled capacity corresponding to the slot. This capacity represents the originally allocated capacity as per resource schedule.</value>
-        [DataMember(Name = "scheduledCapacity", EmitDefaultValue = false)]
-        public int ScheduledCapacity { get; set; }
+        [DataMember(Name = "scheduledCapacity", EmitDefaultValue = true)]
+        public int? ScheduledCapacity { get; set; }
 
         /// <summary>
         /// Available capacity corresponding to the slot. This capacity represents the capacity available for allocation to reservations.
         /// </summary>
         /// <value>Available capacity corresponding to the slot. This capacity represents the capacity available for allocation to reservations.</value>
-        [DataMember(Name = "availableCapacity", EmitDefaultValue = false)]
-        public int AvailableCapacity { get; set; }
+        [DataMember(Name = "availableCapacity", EmitDefaultValue = true)]
+        public int? AvailableCapacity { get; set; }
 
         /// <summary>
         /// Encumbered capacity corresponding to the slot. This capacity represents the capacity allocated for Amazon Jobs/Appointments/Orders.
         /// </summary>
         /// <value>Encumbered capacity corresponding to the slot. This capacity represents the capacity allocated for Amazon Jobs/Appointments/Orders.</value>
-        [DataMember(Name = "encumberedCapacity", EmitDefaultValue = false)]
-        public int EncumberedCapacity { get; set; }
+        [DataMember(Name = "encumberedCapacity", EmitDefaultValue = true)]
+        public int? EncumberedCapacity { get; set; }
 
         /// <summary>
         /// Reserved capacity corresponding to the slot. This capacity represents the capacity made unavailable due to events like Breaks/Leaves/Lunch.
         /// </summary>
         /// <value>Reserved capacity corresponding to the slot. This capacity represents the capacity made unavailable due to events like Breaks/Leaves/Lunch.</value>
-        [DataMember(Name = "reservedCapacity", EmitDefaultValue = false)]
-        public int ReservedCapacity { get; set; }
+        [DataMember(Name = "reservedCapacity", EmitDefaultValue = true)]
+        public int? ReservedCapacity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

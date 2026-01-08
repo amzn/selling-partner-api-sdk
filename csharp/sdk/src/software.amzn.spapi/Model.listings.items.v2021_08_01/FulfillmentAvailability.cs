@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <param name="fulfillmentChannelCode">Designates which fulfillment network is used. (required).</param>
         /// <param name="quantity">The quantity of the item you are making available for sale..</param>
-        public FulfillmentAvailability(string fulfillmentChannelCode = default(string), int quantity = default(int))
+        public FulfillmentAvailability(string fulfillmentChannelCode = default(string), int? quantity = default(int?))
         {
             // to ensure "fulfillmentChannelCode" is required (not null)
             if (fulfillmentChannelCode == null)
@@ -63,8 +63,8 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// The quantity of the item you are making available for sale.
         /// </summary>
         /// <value>The quantity of the item you are making available for sale.</value>
-        [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        [DataMember(Name = "quantity", EmitDefaultValue = true)]
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -96,8 +96,8 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Quantity (int) minimum
-            if (this.Quantity < (int)0)
+            // Quantity (int?) minimum
+            if (this.Quantity < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 0.", new [] { "Quantity" });
             }

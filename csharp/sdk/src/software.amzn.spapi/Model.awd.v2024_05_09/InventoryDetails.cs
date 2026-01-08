@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="availableDistributableQuantity">Quantity that is available for downstream channel replenishment..</param>
         /// <param name="replenishmentQuantity">Quantity that is in transit from AWD and has not yet been received at FBA..</param>
         /// <param name="reservedDistributableQuantity">Quantity that is reserved for a downstream channel replenishment order that is being prepared for shipment..</param>
-        public InventoryDetails(long availableDistributableQuantity = default(long), long replenishmentQuantity = default(long), long reservedDistributableQuantity = default(long))
+        public InventoryDetails(long? availableDistributableQuantity = default(long?), long? replenishmentQuantity = default(long?), long? reservedDistributableQuantity = default(long?))
         {
             this.AvailableDistributableQuantity = availableDistributableQuantity;
             this.ReplenishmentQuantity = replenishmentQuantity;
@@ -48,22 +48,22 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Quantity that is available for downstream channel replenishment.
         /// </summary>
         /// <value>Quantity that is available for downstream channel replenishment.</value>
-        [DataMember(Name = "availableDistributableQuantity", EmitDefaultValue = false)]
-        public long AvailableDistributableQuantity { get; set; }
+        [DataMember(Name = "availableDistributableQuantity", EmitDefaultValue = true)]
+        public long? AvailableDistributableQuantity { get; set; }
 
         /// <summary>
         /// Quantity that is in transit from AWD and has not yet been received at FBA.
         /// </summary>
         /// <value>Quantity that is in transit from AWD and has not yet been received at FBA.</value>
-        [DataMember(Name = "replenishmentQuantity", EmitDefaultValue = false)]
-        public long ReplenishmentQuantity { get; set; }
+        [DataMember(Name = "replenishmentQuantity", EmitDefaultValue = true)]
+        public long? ReplenishmentQuantity { get; set; }
 
         /// <summary>
         /// Quantity that is reserved for a downstream channel replenishment order that is being prepared for shipment.
         /// </summary>
         /// <value>Quantity that is reserved for a downstream channel replenishment order that is being prepared for shipment.</value>
-        [DataMember(Name = "reservedDistributableQuantity", EmitDefaultValue = false)]
-        public long ReservedDistributableQuantity { get; set; }
+        [DataMember(Name = "reservedDistributableQuantity", EmitDefaultValue = true)]
+        public long? ReservedDistributableQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="title">Name of the sales rank. (required).</param>
         /// <param name="link">Corresponding Amazon retail website URL for the sales category..</param>
         /// <param name="rank">Sales rank. (required).</param>
-        public ItemClassificationSalesRank(string classificationId = default(string), string title = default(string), string link = default(string), int rank = default(int))
+        public ItemClassificationSalesRank(string classificationId = default(string), string title = default(string), string link = default(string), int? rank = default(int?))
         {
             // to ensure "classificationId" is required (not null)
             if (classificationId == null)
@@ -57,6 +57,11 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
                 throw new ArgumentNullException("title is a required property for ItemClassificationSalesRank and cannot be null");
             }
             this.Title = title;
+            // to ensure "rank" is required (not null)
+            if (rank == null)
+            {
+                throw new ArgumentNullException("rank is a required property for ItemClassificationSalesRank and cannot be null");
+            }
             this.Rank = rank;
             this.Link = link;
         }
@@ -87,7 +92,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Sales rank.</value>
         [DataMember(Name = "rank", IsRequired = true, EmitDefaultValue = true)]
-        public int Rank { get; set; }
+        public int? Rank { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

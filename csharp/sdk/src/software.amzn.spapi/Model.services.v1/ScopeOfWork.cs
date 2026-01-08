@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="title">The title of the service job..</param>
         /// <param name="quantity">The number of service jobs..</param>
         /// <param name="requiredSkills">A list of skills required to perform the job..</param>
-        public ScopeOfWork(string asin = default(string), string title = default(string), int quantity = default(int), List<string> requiredSkills = default(List<string>))
+        public ScopeOfWork(string asin = default(string), string title = default(string), int? quantity = default(int?), List<string> requiredSkills = default(List<string>))
         {
             this.Asin = asin;
             this.Title = title;
@@ -64,8 +64,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// The number of service jobs.
         /// </summary>
         /// <value>The number of service jobs.</value>
-        [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        [DataMember(Name = "quantity", EmitDefaultValue = true)]
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// A list of skills required to perform the job.

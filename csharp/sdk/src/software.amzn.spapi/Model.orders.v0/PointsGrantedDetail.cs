@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="pointsNumber">The number of Amazon Points granted with the purchase of an item..</param>
         /// <param name="pointsMonetaryValue">pointsMonetaryValue.</param>
-        public PointsGrantedDetail(int pointsNumber = default(int), Money pointsMonetaryValue = default(Money))
+        public PointsGrantedDetail(int? pointsNumber = default(int?), Money pointsMonetaryValue = default(Money))
         {
             this.PointsNumber = pointsNumber;
             this.PointsMonetaryValue = pointsMonetaryValue;
@@ -46,8 +46,8 @@ namespace software.amzn.spapi.Model.orders.v0
         /// The number of Amazon Points granted with the purchase of an item.
         /// </summary>
         /// <value>The number of Amazon Points granted with the purchase of an item.</value>
-        [DataMember(Name = "PointsNumber", EmitDefaultValue = false)]
-        public int PointsNumber { get; set; }
+        [DataMember(Name = "PointsNumber", EmitDefaultValue = true)]
+        public int? PointsNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets PointsMonetaryValue

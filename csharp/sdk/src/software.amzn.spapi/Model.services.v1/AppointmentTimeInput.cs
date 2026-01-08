@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="startTime">The date, time in UTC for the start time of an appointment in ISO 8601 format. (required).</param>
         /// <param name="durationInMinutes">The duration of an appointment in minutes..</param>
-        public AppointmentTimeInput(DateTime startTime = default(DateTime), int durationInMinutes = default(int))
+        public AppointmentTimeInput(DateTime startTime = default(DateTime), int? durationInMinutes = default(int?))
         {
             this.StartTime = startTime;
             this.DurationInMinutes = durationInMinutes;
@@ -58,8 +58,8 @@ namespace software.amzn.spapi.Model.services.v1
         /// The duration of an appointment in minutes.
         /// </summary>
         /// <value>The duration of an appointment in minutes.</value>
-        [DataMember(Name = "durationInMinutes", EmitDefaultValue = false)]
-        public int DurationInMinutes { get; set; }
+        [DataMember(Name = "durationInMinutes", EmitDefaultValue = true)]
+        public int? DurationInMinutes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

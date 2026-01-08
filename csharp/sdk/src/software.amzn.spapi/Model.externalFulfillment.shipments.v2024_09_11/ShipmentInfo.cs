@@ -117,9 +117,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="orderStatesEligibleForRejection">A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible..</param>
         /// <param name="orderPlacedTimestamp">The timestamp of when the order was placed, in UTC.</param>
         /// <param name="processingSource">The source of the order operation..</param>
-        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo originalShipmentInfo = default(ReplacedShipmentInfo), int numberOfUnits = default(int), Priority priority = default(Priority), string buyerOrderId = default(string), List<string> orderStatesEligibleForRejection = default(List<string>), string orderPlacedTimestamp = default(string), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?))
+        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo originalShipmentInfo = default(ReplacedShipmentInfo), int? numberOfUnits = default(int?), Priority priority = default(Priority), string buyerOrderId = default(string), List<string> orderStatesEligibleForRejection = default(List<string>), string orderPlacedTimestamp = default(string), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?))
         {
             this.ShipmentType = shipmentType;
+            // to ensure "numberOfUnits" is required (not null)
+            if (numberOfUnits == null)
+            {
+                throw new ArgumentNullException("numberOfUnits is a required property for ShipmentInfo and cannot be null");
+            }
             this.NumberOfUnits = numberOfUnits;
             this.Priority = priority;
             // to ensure "buyerOrderId" is required (not null)
@@ -145,7 +150,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>Total number of units in the shipment.</value>
         [DataMember(Name = "numberOfUnits", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfUnits { get; set; }
+        public int? NumberOfUnits { get; set; }
 
         /// <summary>
         /// The buyer&#39;s order ID.
@@ -204,8 +209,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // NumberOfUnits (int) minimum
-            if (this.NumberOfUnits < (int)1)
+            // NumberOfUnits (int?) minimum
+            if (this.NumberOfUnits < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for NumberOfUnits, must be a value greater than or equal to 1.", new [] { "NumberOfUnits" });
             }

@@ -66,8 +66,13 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="signedForBy">The name of the person who signed for the package..</param>
         /// <param name="additionalLocationInfo">additionalLocationInfo.</param>
         /// <param name="trackingEvents">An array of tracking event information..</param>
-        public PackageTrackingDetails(int packageNumber = default(int), string trackingNumber = default(string), string customerTrackingLink = default(string), string carrierCode = default(string), string carrierPhoneNumber = default(string), string carrierURL = default(string), DateTime shipDate = default(DateTime), DateTime estimatedArrivalDate = default(DateTime), TrackingAddress shipToAddress = default(TrackingAddress), CurrentStatus? currentStatus = default(CurrentStatus?), string currentStatusDescription = default(string), DateRange deliveryWindow = default(DateRange), string signedForBy = default(string), AdditionalLocationInfo? additionalLocationInfo = default(AdditionalLocationInfo?), List<TrackingEvent> trackingEvents = default(List<TrackingEvent>))
+        public PackageTrackingDetails(int? packageNumber = default(int?), string trackingNumber = default(string), string customerTrackingLink = default(string), string carrierCode = default(string), string carrierPhoneNumber = default(string), string carrierURL = default(string), DateTime shipDate = default(DateTime), DateTime estimatedArrivalDate = default(DateTime), TrackingAddress shipToAddress = default(TrackingAddress), CurrentStatus? currentStatus = default(CurrentStatus?), string currentStatusDescription = default(string), DateRange deliveryWindow = default(DateRange), string signedForBy = default(string), AdditionalLocationInfo? additionalLocationInfo = default(AdditionalLocationInfo?), List<TrackingEvent> trackingEvents = default(List<TrackingEvent>))
         {
+            // to ensure "packageNumber" is required (not null)
+            if (packageNumber == null)
+            {
+                throw new ArgumentNullException("packageNumber is a required property for PackageTrackingDetails and cannot be null");
+            }
             this.PackageNumber = packageNumber;
             this.TrackingNumber = trackingNumber;
             this.CustomerTrackingLink = customerTrackingLink;
@@ -90,7 +95,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The package identifier.</value>
         [DataMember(Name = "packageNumber", IsRequired = true, EmitDefaultValue = true)]
-        public int PackageNumber { get; set; }
+        public int? PackageNumber { get; set; }
 
         /// <summary>
         /// The tracking number for the package.

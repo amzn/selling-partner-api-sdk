@@ -80,8 +80,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="cancelledTimestamp">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="cancellationType">The type of cancellation of the item in the shipment. (required).</param>
         /// <param name="cancellationReason">The reason for the cancellation of the shipment..</param>
-        public Cancellation(int cancelledQuantity = default(int), string cancelledTimestamp = default(string), CancellationTypeEnum cancellationType = default(CancellationTypeEnum), string cancellationReason = default(string))
+        public Cancellation(int? cancelledQuantity = default(int?), string cancelledTimestamp = default(string), CancellationTypeEnum cancellationType = default(CancellationTypeEnum), string cancellationReason = default(string))
         {
+            // to ensure "cancelledQuantity" is required (not null)
+            if (cancelledQuantity == null)
+            {
+                throw new ArgumentNullException("cancelledQuantity is a required property for Cancellation and cannot be null");
+            }
             this.CancelledQuantity = cancelledQuantity;
             // to ensure "cancelledTimestamp" is required (not null)
             if (cancelledTimestamp == null)
@@ -98,7 +103,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The number of items of this particular item which have been cancelled.</value>
         [DataMember(Name = "cancelledQuantity", IsRequired = true, EmitDefaultValue = true)]
-        public int CancelledQuantity { get; set; }
+        public int? CancelledQuantity { get; set; }
 
         /// <summary>
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
@@ -146,8 +151,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // CancelledQuantity (int) minimum
-            if (this.CancelledQuantity < (int)1)
+            // CancelledQuantity (int?) minimum
+            if (this.CancelledQuantity < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for CancelledQuantity, must be a value greater than or equal to 1.", new [] { "CancelledQuantity" });
             }

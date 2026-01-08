@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="quantity">The number of containers where all other properties like weight or dimensions are identical..</param>
         /// <param name="templateName">Template name of the box..</param>
         /// <param name="weight">weight.</param>
-        public Box(string boxId = default(string), BoxContentInformationSource? contentInformationSource = default(BoxContentInformationSource?), Region destinationRegion = default(Region), Dimensions dimensions = default(Dimensions), string externalContainerIdentifier = default(string), string externalContainerIdentifierType = default(string), List<Item> items = default(List<Item>), string packageId = default(string), int quantity = default(int), string templateName = default(string), Weight weight = default(Weight))
+        public Box(string boxId = default(string), BoxContentInformationSource? contentInformationSource = default(BoxContentInformationSource?), Region destinationRegion = default(Region), Dimensions dimensions = default(Dimensions), string externalContainerIdentifier = default(string), string externalContainerIdentifierType = default(string), List<Item> items = default(List<Item>), string packageId = default(string), int? quantity = default(int?), string templateName = default(string), Weight weight = default(Weight))
         {
             // to ensure "packageId" is required (not null)
             if (packageId == null)
@@ -127,8 +127,8 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// The number of containers where all other properties like weight or dimensions are identical.
         /// </summary>
         /// <value>The number of containers where all other properties like weight or dimensions are identical.</value>
-        [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        [DataMember(Name = "quantity", EmitDefaultValue = true)]
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Template name of the box.
@@ -239,14 +239,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
                 }
             }
 
-            // Quantity (int) maximum
-            if (this.Quantity > (int)10000)
+            // Quantity (int?) maximum
+            if (this.Quantity > (int?)10000)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value less than or equal to 10000.", new [] { "Quantity" });
             }
 
-            // Quantity (int) minimum
-            if (this.Quantity < (int)1)
+            // Quantity (int?) minimum
+            if (this.Quantity < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for Quantity, must be a value greater than or equal to 1.", new [] { "Quantity" });
             }

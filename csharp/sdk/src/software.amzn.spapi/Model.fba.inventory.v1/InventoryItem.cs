@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="sellerSku">The seller SKU of the item. (required).</param>
         /// <param name="marketplaceId">The marketplaceId. (required).</param>
         /// <param name="quantity">The quantity of item to add. (required).</param>
-        public InventoryItem(string sellerSku = default(string), string marketplaceId = default(string), int quantity = default(int))
+        public InventoryItem(string sellerSku = default(string), string marketplaceId = default(string), int? quantity = default(int?))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -56,6 +56,11 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
                 throw new ArgumentNullException("marketplaceId is a required property for InventoryItem and cannot be null");
             }
             this.MarketplaceId = marketplaceId;
+            // to ensure "quantity" is required (not null)
+            if (quantity == null)
+            {
+                throw new ArgumentNullException("quantity is a required property for InventoryItem and cannot be null");
+            }
             this.Quantity = quantity;
         }
 
@@ -78,7 +83,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>The quantity of item to add.</value>
         [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

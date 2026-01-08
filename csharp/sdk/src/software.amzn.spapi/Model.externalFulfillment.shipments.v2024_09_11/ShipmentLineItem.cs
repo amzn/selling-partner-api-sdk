@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="itemValue">itemValue.</param>
         /// <param name="complianceAttributes">complianceAttributes (required).</param>
         /// <param name="customAttributes">A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon..</param>
-        public ShipmentLineItem(string shipmentLineItemId = default(string), string merchantSku = default(string), int numberOfUnits = default(int), List<string> serialNumbers = default(List<string>), PieceType? pieceType = default(PieceType?), List<string> hazmatLabels = default(List<string>), GiftAttributes giftAttributes = default(GiftAttributes), List<Charge> charges = default(List<Charge>), List<Cancellation> cancellations = default(List<Cancellation>), string hsnCode = default(string), string recommendedCountryOfOrigin = default(string), string countryOfOrigin = default(string), string recommendedCurrencyCode = default(string), Amount itemValue = default(Amount), ComplianceAttributes complianceAttributes = default(ComplianceAttributes), List<CustomAttribute> customAttributes = default(List<CustomAttribute>))
+        public ShipmentLineItem(string shipmentLineItemId = default(string), string merchantSku = default(string), int? numberOfUnits = default(int?), List<string> serialNumbers = default(List<string>), PieceType? pieceType = default(PieceType?), List<string> hazmatLabels = default(List<string>), GiftAttributes giftAttributes = default(GiftAttributes), List<Charge> charges = default(List<Charge>), List<Cancellation> cancellations = default(List<Cancellation>), string hsnCode = default(string), string recommendedCountryOfOrigin = default(string), string countryOfOrigin = default(string), string recommendedCurrencyCode = default(string), Amount itemValue = default(Amount), ComplianceAttributes complianceAttributes = default(ComplianceAttributes), List<CustomAttribute> customAttributes = default(List<CustomAttribute>))
         {
             // to ensure "shipmentLineItemId" is required (not null)
             if (shipmentLineItemId == null)
@@ -76,6 +76,11 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
                 throw new ArgumentNullException("merchantSku is a required property for ShipmentLineItem and cannot be null");
             }
             this.MerchantSku = merchantSku;
+            // to ensure "numberOfUnits" is required (not null)
+            if (numberOfUnits == null)
+            {
+                throw new ArgumentNullException("numberOfUnits is a required property for ShipmentLineItem and cannot be null");
+            }
             this.NumberOfUnits = numberOfUnits;
             // to ensure "charges" is required (not null)
             if (charges == null)
@@ -121,7 +126,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The number of items of the SKU in this line item.</value>
         [DataMember(Name = "numberOfUnits", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfUnits { get; set; }
+        public int? NumberOfUnits { get; set; }
 
         /// <summary>
         /// The serial numbers for each item in this line item.
@@ -248,8 +253,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // NumberOfUnits (int) minimum
-            if (this.NumberOfUnits < (int)1)
+            // NumberOfUnits (int?) minimum
+            if (this.NumberOfUnits < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for NumberOfUnits, must be a value greater than or equal to 1.", new [] { "NumberOfUnits" });
             }

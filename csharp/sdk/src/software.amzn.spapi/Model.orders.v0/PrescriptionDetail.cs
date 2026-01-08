@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="refillsRemaining">The number of refills remaining for the prescription used to verify the regulated product. If a prescription originally had 10 total refills, this value must be &#x60;10&#x60; for the first order, &#x60;9&#x60; for the second order, and &#x60;0&#x60; for the eleventh order. If a prescription originally had no refills, this value must be 0. (required).</param>
         /// <param name="clinicId">The identifier for the clinic which provided the prescription used to verify the regulated product. (required).</param>
         /// <param name="usageInstructions">The instructions for the prescription as provided by the approver of the regulated product. (required).</param>
-        public PrescriptionDetail(string prescriptionId = default(string), DateTime expirationDate = default(DateTime), int writtenQuantity = default(int), int totalRefillsAuthorized = default(int), int refillsRemaining = default(int), string clinicId = default(string), string usageInstructions = default(string))
+        public PrescriptionDetail(string prescriptionId = default(string), DateTime expirationDate = default(DateTime), int? writtenQuantity = default(int?), int? totalRefillsAuthorized = default(int?), int? refillsRemaining = default(int?), string clinicId = default(string), string usageInstructions = default(string))
         {
             // to ensure "prescriptionId" is required (not null)
             if (prescriptionId == null)
@@ -55,8 +55,23 @@ namespace software.amzn.spapi.Model.orders.v0
             }
             this.PrescriptionId = prescriptionId;
             this.ExpirationDate = expirationDate;
+            // to ensure "writtenQuantity" is required (not null)
+            if (writtenQuantity == null)
+            {
+                throw new ArgumentNullException("writtenQuantity is a required property for PrescriptionDetail and cannot be null");
+            }
             this.WrittenQuantity = writtenQuantity;
+            // to ensure "totalRefillsAuthorized" is required (not null)
+            if (totalRefillsAuthorized == null)
+            {
+                throw new ArgumentNullException("totalRefillsAuthorized is a required property for PrescriptionDetail and cannot be null");
+            }
             this.TotalRefillsAuthorized = totalRefillsAuthorized;
+            // to ensure "refillsRemaining" is required (not null)
+            if (refillsRemaining == null)
+            {
+                throw new ArgumentNullException("refillsRemaining is a required property for PrescriptionDetail and cannot be null");
+            }
             this.RefillsRemaining = refillsRemaining;
             // to ensure "clinicId" is required (not null)
             if (clinicId == null)
@@ -91,21 +106,21 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The number of units in each fill as provided in the prescription.</value>
         [DataMember(Name = "writtenQuantity", IsRequired = true, EmitDefaultValue = true)]
-        public int WrittenQuantity { get; set; }
+        public int? WrittenQuantity { get; set; }
 
         /// <summary>
         /// The total number of refills written in the original prescription used to verify the regulated product. If a prescription originally had no refills, this value must be 0.
         /// </summary>
         /// <value>The total number of refills written in the original prescription used to verify the regulated product. If a prescription originally had no refills, this value must be 0.</value>
         [DataMember(Name = "totalRefillsAuthorized", IsRequired = true, EmitDefaultValue = true)]
-        public int TotalRefillsAuthorized { get; set; }
+        public int? TotalRefillsAuthorized { get; set; }
 
         /// <summary>
         /// The number of refills remaining for the prescription used to verify the regulated product. If a prescription originally had 10 total refills, this value must be &#x60;10&#x60; for the first order, &#x60;9&#x60; for the second order, and &#x60;0&#x60; for the eleventh order. If a prescription originally had no refills, this value must be 0.
         /// </summary>
         /// <value>The number of refills remaining for the prescription used to verify the regulated product. If a prescription originally had 10 total refills, this value must be &#x60;10&#x60; for the first order, &#x60;9&#x60; for the second order, and &#x60;0&#x60; for the eleventh order. If a prescription originally had no refills, this value must be 0.</value>
         [DataMember(Name = "refillsRemaining", IsRequired = true, EmitDefaultValue = true)]
-        public int RefillsRemaining { get; set; }
+        public int? RefillsRemaining { get; set; }
 
         /// <summary>
         /// The identifier for the clinic which provided the prescription used to verify the regulated product.
@@ -156,20 +171,20 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // WrittenQuantity (int) minimum
-            if (this.WrittenQuantity < (int)1)
+            // WrittenQuantity (int?) minimum
+            if (this.WrittenQuantity < (int?)1)
             {
                 yield return new ValidationResult("Invalid value for WrittenQuantity, must be a value greater than or equal to 1.", new [] { "WrittenQuantity" });
             }
 
-            // TotalRefillsAuthorized (int) minimum
-            if (this.TotalRefillsAuthorized < (int)0)
+            // TotalRefillsAuthorized (int?) minimum
+            if (this.TotalRefillsAuthorized < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for TotalRefillsAuthorized, must be a value greater than or equal to 0.", new [] { "TotalRefillsAuthorized" });
             }
 
-            // RefillsRemaining (int) minimum
-            if (this.RefillsRemaining < (int)0)
+            // RefillsRemaining (int?) minimum
+            if (this.RefillsRemaining < (int?)0)
             {
                 yield return new ValidationResult("Invalid value for RefillsRemaining, must be a value greater than or equal to 0.", new [] { "RefillsRemaining" });
             }

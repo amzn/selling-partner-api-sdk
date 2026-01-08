@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>GetLabelsResponse</returns>
-        GetLabelsResponse GetLabels (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null);
+        GetLabelsResponse GetLabels (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null);
 
         /// <summary>
         /// 
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>ApiResponse of GetLabelsResponse</returns>
-        ApiResponse<GetLabelsResponse> GetLabelsWithHttpInfo (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null);
+        ApiResponse<GetLabelsResponse> GetLabelsWithHttpInfo (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null);
         /// <summary>
         /// 
         /// </summary>
@@ -230,7 +230,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>Task of GetLabelsResponse</returns>
-        System.Threading.Tasks.Task<GetLabelsResponse> GetLabelsAsync (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null);
+        System.Threading.Tasks.Task<GetLabelsResponse> GetLabelsAsync (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null);
 
         /// <summary>
         /// 
@@ -248,7 +248,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>Task of ApiResponse (GetLabelsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetLabelsResponse>> GetLabelsAsyncWithHttpInfo (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null);
+        System.Threading.Tasks.Task<ApiResponse<GetLabelsResponse>> GetLabelsAsyncWithHttpInfo (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null);
         /// <summary>
         /// 
         /// </summary>
@@ -591,7 +591,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>GetLabelsResponse</returns>
-        public GetLabelsResponse GetLabels (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null)
+        public GetLabelsResponse GetLabels (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null)
         {
              ApiResponse<GetLabelsResponse> localVarResponse = GetLabelsWithHttpInfo(shipmentId, pageType, labelType, numberOfPackages, packageLabelsToPrint, numberOfPallets, pageSize, pageStartIndex);
              return localVarResponse.Data;
@@ -610,7 +610,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>ApiResponse of GetLabelsResponse</returns>
-        public ApiResponse< GetLabelsResponse > GetLabelsWithHttpInfo (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null)
+        public ApiResponse< GetLabelsResponse > GetLabelsWithHttpInfo (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null)
         {
             // verify the required parameter 'shipmentId' is set
             if (shipmentId == null)
@@ -682,7 +682,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>Task of GetLabelsResponse</returns>
-        public async System.Threading.Tasks.Task<GetLabelsResponse> GetLabelsAsync (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null)
+        public async System.Threading.Tasks.Task<GetLabelsResponse> GetLabelsAsync (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null)
         {
              ApiResponse<GetLabelsResponse> localVarResponse = await GetLabelsAsyncWithHttpInfo(shipmentId, pageType, labelType, numberOfPackages, packageLabelsToPrint, numberOfPallets, pageSize, pageStartIndex);
              return localVarResponse.Data;
@@ -702,7 +702,7 @@ namespace software.amzn.spapi.Api.fulfillment.inbound.v0
         /// <param name="pageSize">The page size for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. Max value:1000. (optional)</param>
         /// <param name="pageStartIndex">The page start index for paginating through the total packages&#39; labels. This is a required parameter for Non-Partnered LTL Shipments. (optional)</param>
         /// <returns>Task of ApiResponse (GetLabelsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetLabelsResponse>> GetLabelsAsyncWithHttpInfo (string shipmentId, string pageType, string labelType, int? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int? numberOfPallets = null, int? pageSize = null, int? pageStartIndex = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetLabelsResponse>> GetLabelsAsyncWithHttpInfo (string shipmentId, string pageType, string labelType, int?? numberOfPackages = null, List<string>? packageLabelsToPrint = null, int?? numberOfPallets = null, int?? pageSize = null, int?? pageStartIndex = null)
         {
             // verify the required parameter 'shipmentId' is set
             if (shipmentId == null)

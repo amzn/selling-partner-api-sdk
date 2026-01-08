@@ -41,8 +41,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="sellerPositiveFeedbackRating">The percentage of positive feedback for the seller in the past 365 days..</param>
         /// <param name="feedbackCount">The number of ratings received about the seller. (required).</param>
-        public SellerFeedbackType(double sellerPositiveFeedbackRating = default(double), long feedbackCount = default(long))
+        public SellerFeedbackType(double sellerPositiveFeedbackRating = default(double), long? feedbackCount = default(long?))
         {
+            // to ensure "feedbackCount" is required (not null)
+            if (feedbackCount == null)
+            {
+                throw new ArgumentNullException("feedbackCount is a required property for SellerFeedbackType and cannot be null");
+            }
             this.FeedbackCount = feedbackCount;
             this.SellerPositiveFeedbackRating = sellerPositiveFeedbackRating;
         }
@@ -59,7 +64,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The number of ratings received about the seller.</value>
         [DataMember(Name = "FeedbackCount", IsRequired = true, EmitDefaultValue = true)]
-        public long FeedbackCount { get; set; }
+        public long? FeedbackCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

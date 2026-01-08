@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>ItemSearchResults</returns>
-        ItemSearchResults SearchCatalogItems (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
+        ItemSearchResults SearchCatalogItems (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
 
         /// <summary>
         /// 
@@ -94,7 +94,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>ApiResponse of ItemSearchResults</returns>
-        ApiResponse<ItemSearchResults> SearchCatalogItemsWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
+        ApiResponse<ItemSearchResults> SearchCatalogItemsWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -144,7 +144,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>Task of ItemSearchResults</returns>
-        System.Threading.Tasks.Task<ItemSearchResults> SearchCatalogItemsAsync (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
+        System.Threading.Tasks.Task<ItemSearchResults> SearchCatalogItemsAsync (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
 
         /// <summary>
         /// 
@@ -166,7 +166,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>Task of ApiResponse (ItemSearchResults)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ItemSearchResults>> SearchCatalogItemsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
+        System.Threading.Tasks.Task<ApiResponse<ItemSearchResults>> SearchCatalogItemsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null);
         #endregion Asynchronous Operations
     }
 
@@ -427,7 +427,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>ItemSearchResults</returns>
-        public ItemSearchResults SearchCatalogItems (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
+        public ItemSearchResults SearchCatalogItems (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
         {
              ApiResponse<ItemSearchResults> localVarResponse = SearchCatalogItemsWithHttpInfo(marketplaceIds, identifiers, identifiersType, includedData, locale, sellerId, keywords, brandNames, classificationIds, pageSize, pageToken, keywordsLocale);
              return localVarResponse.Data;
@@ -450,7 +450,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>ApiResponse of ItemSearchResults</returns>
-        public ApiResponse< ItemSearchResults > SearchCatalogItemsWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
+        public ApiResponse< ItemSearchResults > SearchCatalogItemsWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
         {
             // verify the required parameter 'marketplaceIds' is set
             if (marketplaceIds == null)
@@ -524,7 +524,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>Task of ItemSearchResults</returns>
-        public async System.Threading.Tasks.Task<ItemSearchResults> SearchCatalogItemsAsync (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
+        public async System.Threading.Tasks.Task<ItemSearchResults> SearchCatalogItemsAsync (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
         {
              ApiResponse<ItemSearchResults> localVarResponse = await SearchCatalogItemsAsyncWithHttpInfo(marketplaceIds, identifiers, identifiersType, includedData, locale, sellerId, keywords, brandNames, classificationIds, pageSize, pageToken, keywordsLocale);
              return localVarResponse.Data;
@@ -548,7 +548,7 @@ namespace software.amzn.spapi.Api.catalogItems.v2022_04_01
         /// <param name="pageToken">A token that you can use to fetch a specific page when there are multiple pages of results. (optional)</param>
         /// <param name="keywordsLocale">The language of the keywords that are included in queries based on &#x60;keywords&#x60;. Defaults to the primary locale of the marketplace. **Note:** Cannot be used with &#x60;identifiers&#x60;. (optional)</param>
         /// <returns>Task of ApiResponse (ItemSearchResults)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ItemSearchResults>> SearchCatalogItemsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ItemSearchResults>> SearchCatalogItemsAsyncWithHttpInfo (List<string> marketplaceIds, List<string>? identifiers = null, string? identifiersType = null, List<string>? includedData = null, string? locale = null, string? sellerId = null, List<string>? keywords = null, List<string>? brandNames = null, List<string>? classificationIds = null, int?? pageSize = null, string? pageToken = null, string? keywordsLocale = null)
         {
             // verify the required parameter 'marketplaceIds' is set
             if (marketplaceIds == null)

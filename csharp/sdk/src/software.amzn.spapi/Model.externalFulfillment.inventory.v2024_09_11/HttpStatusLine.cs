@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// </summary>
         /// <param name="statusCode">The HTTP response status code..</param>
         /// <param name="reasonPhrase">The HTTP response reason phrase..</param>
-        public HttpStatusLine(int statusCode = default(int), string reasonPhrase = default(string))
+        public HttpStatusLine(int? statusCode = default(int?), string reasonPhrase = default(string))
         {
             this.StatusCode = statusCode;
             this.ReasonPhrase = reasonPhrase;
@@ -46,8 +46,8 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// The HTTP response status code.
         /// </summary>
         /// <value>The HTTP response status code.</value>
-        [DataMember(Name = "statusCode", EmitDefaultValue = false)]
-        public int StatusCode { get; set; }
+        [DataMember(Name = "statusCode", EmitDefaultValue = true)]
+        public int? StatusCode { get; set; }
 
         /// <summary>
         /// The HTTP response reason phrase.
@@ -86,14 +86,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // StatusCode (int) maximum
-            if (this.StatusCode > (int)599)
+            // StatusCode (int?) maximum
+            if (this.StatusCode > (int?)599)
             {
                 yield return new ValidationResult("Invalid value for StatusCode, must be a value less than or equal to 599.", new [] { "StatusCode" });
             }
 
-            // StatusCode (int) minimum
-            if (this.StatusCode < (int)100)
+            // StatusCode (int?) minimum
+            if (this.StatusCode < (int?)100)
             {
                 yield return new ValidationResult("Invalid value for StatusCode, must be a value greater than or equal to 100.", new [] { "StatusCode" });
             }

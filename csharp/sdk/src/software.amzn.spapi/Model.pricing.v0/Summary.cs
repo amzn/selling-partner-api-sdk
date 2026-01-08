@@ -49,8 +49,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="salesRankings">A list of sales rank information for the item, by category..</param>
         /// <param name="buyBoxEligibleOffers">A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels..</param>
         /// <param name="offersAvailableTime">When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing..</param>
-        public Summary(int totalOfferCount = default(int), List<OfferCountType> numberOfOffers = default(List<OfferCountType>), List<LowestPriceType> lowestPrices = default(List<LowestPriceType>), List<BuyBoxPriceType> buyBoxPrices = default(List<BuyBoxPriceType>), MoneyType listPrice = default(MoneyType), MoneyType competitivePriceThreshold = default(MoneyType), MoneyType suggestedLowerPricePlusShipping = default(MoneyType), List<SalesRankType> salesRankings = default(List<SalesRankType>), List<OfferCountType> buyBoxEligibleOffers = default(List<OfferCountType>), DateTime offersAvailableTime = default(DateTime))
+        public Summary(int? totalOfferCount = default(int?), List<OfferCountType> numberOfOffers = default(List<OfferCountType>), List<LowestPriceType> lowestPrices = default(List<LowestPriceType>), List<BuyBoxPriceType> buyBoxPrices = default(List<BuyBoxPriceType>), MoneyType listPrice = default(MoneyType), MoneyType competitivePriceThreshold = default(MoneyType), MoneyType suggestedLowerPricePlusShipping = default(MoneyType), List<SalesRankType> salesRankings = default(List<SalesRankType>), List<OfferCountType> buyBoxEligibleOffers = default(List<OfferCountType>), DateTime offersAvailableTime = default(DateTime))
         {
+            // to ensure "totalOfferCount" is required (not null)
+            if (totalOfferCount == null)
+            {
+                throw new ArgumentNullException("totalOfferCount is a required property for Summary and cannot be null");
+            }
             this.TotalOfferCount = totalOfferCount;
             this.NumberOfOffers = numberOfOffers;
             this.LowestPrices = lowestPrices;
@@ -68,7 +73,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The number of unique offers contained in NumberOfOffers.</value>
         [DataMember(Name = "TotalOfferCount", IsRequired = true, EmitDefaultValue = true)]
-        public int TotalOfferCount { get; set; }
+        public int? TotalOfferCount { get; set; }
 
         /// <summary>
         /// A list that contains the total number of offers information for given conditions and fulfillment channels.

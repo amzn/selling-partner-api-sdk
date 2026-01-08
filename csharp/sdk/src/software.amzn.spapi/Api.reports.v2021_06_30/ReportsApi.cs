@@ -208,7 +208,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>GetReportsResponse</returns>
-        GetReportsResponse GetReports (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        GetReportsResponse GetReports (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -225,7 +225,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>ApiResponse of GetReportsResponse</returns>
-        ApiResponse<GetReportsResponse> GetReportsWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        ApiResponse<GetReportsResponse> GetReportsWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -411,7 +411,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of GetReportsResponse</returns>
-        System.Threading.Tasks.Task<GetReportsResponse> GetReportsAsync (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        System.Threading.Tasks.Task<GetReportsResponse> GetReportsAsync (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
 
         /// <summary>
         /// 
@@ -428,7 +428,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of ApiResponse (GetReportsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetReportsResponse>> GetReportsAsyncWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
+        System.Threading.Tasks.Task<ApiResponse<GetReportsResponse>> GetReportsAsyncWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null);
         #endregion Asynchronous Operations
     }
 
@@ -1588,7 +1588,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>GetReportsResponse</returns>
-        public GetReportsResponse GetReports (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public GetReportsResponse GetReports (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
              ApiResponse<GetReportsResponse> localVarResponse = GetReportsWithHttpInfo(reportTypes, processingStatuses, marketplaceIds, pageSize, createdSince, createdUntil, nextToken);
              return localVarResponse.Data;
@@ -1606,7 +1606,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>ApiResponse of GetReportsResponse</returns>
-        public ApiResponse< GetReportsResponse > GetReportsWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public ApiResponse< GetReportsResponse > GetReportsWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
 
             var localVarPath = "/reports/2021-06-30/reports";
@@ -1667,7 +1667,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of GetReportsResponse</returns>
-        public async System.Threading.Tasks.Task<GetReportsResponse> GetReportsAsync (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<GetReportsResponse> GetReportsAsync (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
              ApiResponse<GetReportsResponse> localVarResponse = await GetReportsAsyncWithHttpInfo(reportTypes, processingStatuses, marketplaceIds, pageSize, createdSince, createdUntil, nextToken);
              return localVarResponse.Data;
@@ -1686,7 +1686,7 @@ namespace software.amzn.spapi.Api.reports.v2021_06_30
         /// <param name="createdUntil">The latest report creation date and time for reports to include in the response, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format. The default is now. (optional)</param>
         /// <param name="nextToken">A string token returned in the response to your previous request. &#x60;nextToken&#x60; is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getReports&#x60; operation and include this token as the only parameter. Specifying &#x60;nextToken&#x60; with any other parameters will cause the request to fail. (optional)</param>
         /// <returns>Task of ApiResponse (GetReportsResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GetReportsResponse>> GetReportsAsyncWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
+        public async System.Threading.Tasks.Task<ApiResponse<GetReportsResponse>> GetReportsAsyncWithHttpInfo (List<string>? reportTypes = null, List<string>? processingStatuses = null, List<string>? marketplaceIds = null, int?? pageSize = null, DateTime? createdSince = null, DateTime? createdUntil = null, string? nextToken = null)
         {
 
             var localVarPath = "/reports/2021-06-30/reports";

@@ -42,8 +42,13 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="numberOfResults">The estimated number of results that would be returned if you refine your search by the specified &#x60;classificationId&#x60;. (required).</param>
         /// <param name="displayName">Display name for the classification. (required).</param>
         /// <param name="classificationId">The identifier of the classification that you can use to refine your search. (required).</param>
-        public ClassificationRefinement(int numberOfResults = default(int), string displayName = default(string), string classificationId = default(string))
+        public ClassificationRefinement(int? numberOfResults = default(int?), string displayName = default(string), string classificationId = default(string))
         {
+            // to ensure "numberOfResults" is required (not null)
+            if (numberOfResults == null)
+            {
+                throw new ArgumentNullException("numberOfResults is a required property for ClassificationRefinement and cannot be null");
+            }
             this.NumberOfResults = numberOfResults;
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -64,7 +69,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>The estimated number of results that would be returned if you refine your search by the specified &#x60;classificationId&#x60;.</value>
         [DataMember(Name = "numberOfResults", IsRequired = true, EmitDefaultValue = true)]
-        public int NumberOfResults { get; set; }
+        public int? NumberOfResults { get; set; }
 
         /// <summary>
         /// Display name for the classification.

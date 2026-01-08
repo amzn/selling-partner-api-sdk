@@ -228,7 +228,7 @@ namespace software.amzn.spapi.Test.Api.fulfillment.outbound.v2020_07_01
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             httpClient.Send(request);
             
-            int packageNumber = fixture.Create<int>();
+            int? packageNumber = fixture.Create<int?>();
             
 
             var response = api.GetPackageTrackingDetailsWithHttpInfo(packageNumber);
