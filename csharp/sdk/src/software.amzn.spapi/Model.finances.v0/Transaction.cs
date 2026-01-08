@@ -26,30 +26,45 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v0
 {
     /// <summary>
-    /// An event related to a capacity reservation billing charge.
+    /// All the information related to the transaction.
     /// </summary>
-    [DataContract(Name = "CapacityReservationBillingEvent")]
-    public partial class CapacityReservationBillingEvent : IValidatableObject
+    [DataContract(Name = "Transaction")]
+    public partial class Transaction : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CapacityReservationBillingEvent" /> class.
+        /// Initializes a new instance of the <see cref="Transaction" /> class.
         /// </summary>
-        /// <param name="transactionType">The transaction type. For example, FBA Inventory Fee..</param>
+        /// <param name="sellingPartnerMetadata">sellingPartnerMetadata.</param>
+        /// <param name="relatedIdentifiers">Related business identifiers of the transaction..</param>
+        /// <param name="transactionType">The type of transaction.  Possible values:  * &#x60;Shipment&#x60;.</param>
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        /// <param name="description">A short description of the capacity reservation billing event..</param>
-        /// <param name="transactionAmount">transactionAmount.</param>
-        public CapacityReservationBillingEvent(string transactionType = default(string), DateTime postedDate = default(DateTime), string description = default(string), Currency transactionAmount = default(Currency))
+        /// <param name="totalAmount">totalAmount.</param>
+        public Transaction(SellingPartnerMetadata sellingPartnerMetadata = default(SellingPartnerMetadata), List<RelatedIdentifier> relatedIdentifiers = default(List<RelatedIdentifier>), string transactionType = default(string), DateTime postedDate = default(DateTime), Currency totalAmount = default(Currency))
         {
+            this.SellingPartnerMetadata = sellingPartnerMetadata;
+            this.RelatedIdentifiers = relatedIdentifiers;
             this.TransactionType = transactionType;
             this.PostedDate = postedDate;
-            this.Description = description;
-            this.TransactionAmount = transactionAmount;
+            this.TotalAmount = totalAmount;
         }
 
         /// <summary>
-        /// The transaction type. For example, FBA Inventory Fee.
+        /// Gets or Sets SellingPartnerMetadata
         /// </summary>
-        /// <value>The transaction type. For example, FBA Inventory Fee.</value>
+        [DataMember(Name = "SellingPartnerMetadata", EmitDefaultValue = false)]
+        public SellingPartnerMetadata SellingPartnerMetadata { get; set; }
+
+        /// <summary>
+        /// Related business identifiers of the transaction.
+        /// </summary>
+        /// <value>Related business identifiers of the transaction.</value>
+        [DataMember(Name = "RelatedIdentifiers", EmitDefaultValue = false)]
+        public List<RelatedIdentifier> RelatedIdentifiers { get; set; }
+
+        /// <summary>
+        /// The type of transaction.  Possible values:  * &#x60;Shipment&#x60;
+        /// </summary>
+        /// <value>The type of transaction.  Possible values:  * &#x60;Shipment&#x60;</value>
         [DataMember(Name = "TransactionType", EmitDefaultValue = false)]
         public string TransactionType { get; set; }
 
@@ -61,17 +76,10 @@ namespace software.amzn.spapi.Model.finances.v0
         public DateTime PostedDate { get; set; }
 
         /// <summary>
-        /// A short description of the capacity reservation billing event.
+        /// Gets or Sets TotalAmount
         /// </summary>
-        /// <value>A short description of the capacity reservation billing event.</value>
-        [DataMember(Name = "Description", EmitDefaultValue = false)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TransactionAmount
-        /// </summary>
-        [DataMember(Name = "TransactionAmount", EmitDefaultValue = false)]
-        public Currency TransactionAmount { get; set; }
+        [DataMember(Name = "TotalAmount", EmitDefaultValue = false)]
+        public Currency TotalAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,11 +88,12 @@ namespace software.amzn.spapi.Model.finances.v0
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CapacityReservationBillingEvent {\n");
+            sb.Append("class Transaction {\n");
+            sb.Append("  SellingPartnerMetadata: ").Append(SellingPartnerMetadata).Append("\n");
+            sb.Append("  RelatedIdentifiers: ").Append(RelatedIdentifiers).Append("\n");
             sb.Append("  TransactionType: ").Append(TransactionType).Append("\n");
             sb.Append("  PostedDate: ").Append(PostedDate).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  TransactionAmount: ").Append(TransactionAmount).Append("\n");
+            sb.Append("  TotalAmount: ").Append(TotalAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -26,35 +26,49 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v0
 {
     /// <summary>
-    /// The payload for the &#x60;listFinancialEventGroups&#x60; operation.
+    /// Related business identifier of the transaction.
     /// </summary>
-    [DataContract(Name = "ListFinancialEventGroupsPayload")]
-    public partial class ListFinancialEventGroupsPayload : IValidatableObject
+    [DataContract(Name = "RelatedIdentifier")]
+    public partial class RelatedIdentifier : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListFinancialEventGroupsPayload" /> class.
+        /// Enumerated set of related business identifier names.
         /// </summary>
-        /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        /// <param name="financialEventGroupList">A list of financial event group information..</param>
-        public ListFinancialEventGroupsPayload(string nextToken = default(string), List<FinancialEventGroup> financialEventGroupList = default(List<FinancialEventGroup>))
+        /// <value>Enumerated set of related business identifier names.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum RelatedIdentifierNameEnum
         {
-            this.NextToken = nextToken;
-            this.FinancialEventGroupList = financialEventGroupList;
+            /// <summary>
+            /// Enum ORDERID for value: ORDER_ID
+            /// </summary>
+            [EnumMember(Value = "ORDER_ID")]
+            ORDERID = 1
+        }
+
+
+        /// <summary>
+        /// Enumerated set of related business identifier names.
+        /// </summary>
+        /// <value>Enumerated set of related business identifier names.</value>
+        [DataMember(Name = "RelatedIdentifierName", EmitDefaultValue = false)]
+        public RelatedIdentifierNameEnum? RelatedIdentifierName { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RelatedIdentifier" /> class.
+        /// </summary>
+        /// <param name="relatedIdentifierName">Enumerated set of related business identifier names..</param>
+        /// <param name="relatedIdentifierValue">The corresponding value to &#x60;RelatedIdentifierName&#x60;..</param>
+        public RelatedIdentifier(RelatedIdentifierNameEnum? relatedIdentifierName = default(RelatedIdentifierNameEnum?), string relatedIdentifierValue = default(string))
+        {
+            this.RelatedIdentifierName = relatedIdentifierName;
+            this.RelatedIdentifierValue = relatedIdentifierValue;
         }
 
         /// <summary>
-        /// When present and not empty, pass this string token in the next request to return the next response page.
+        /// The corresponding value to &#x60;RelatedIdentifierName&#x60;.
         /// </summary>
-        /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
-        [DataMember(Name = "NextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
-
-        /// <summary>
-        /// A list of financial event group information.
-        /// </summary>
-        /// <value>A list of financial event group information.</value>
-        [DataMember(Name = "FinancialEventGroupList", EmitDefaultValue = false)]
-        public List<FinancialEventGroup> FinancialEventGroupList { get; set; }
+        /// <value>The corresponding value to &#x60;RelatedIdentifierName&#x60;.</value>
+        [DataMember(Name = "RelatedIdentifierValue", EmitDefaultValue = false)]
+        public string RelatedIdentifierValue { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +77,9 @@ namespace software.amzn.spapi.Model.finances.v0
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListFinancialEventGroupsPayload {\n");
-            sb.Append("  NextToken: ").Append(NextToken).Append("\n");
-            sb.Append("  FinancialEventGroupList: ").Append(FinancialEventGroupList).Append("\n");
+            sb.Append("class RelatedIdentifier {\n");
+            sb.Append("  RelatedIdentifierName: ").Append(RelatedIdentifierName).Append("\n");
+            sb.Append("  RelatedIdentifierValue: ").Append(RelatedIdentifierValue).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -26,20 +26,20 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v0
 {
     /// <summary>
-    /// The payload for the &#x60;listFinancialEventGroups&#x60; operation.
+    /// The payload for the &#x60;listTransactions&#x60; operation.
     /// </summary>
-    [DataContract(Name = "ListFinancialEventGroupsPayload")]
-    public partial class ListFinancialEventGroupsPayload : IValidatableObject
+    [DataContract(Name = "ListTransactionsPayload")]
+    public partial class ListTransactionsPayload : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListFinancialEventGroupsPayload" /> class.
+        /// Initializes a new instance of the <see cref="ListTransactionsPayload" /> class.
         /// </summary>
         /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        /// <param name="financialEventGroupList">A list of financial event group information..</param>
-        public ListFinancialEventGroupsPayload(string nextToken = default(string), List<FinancialEventGroup> financialEventGroupList = default(List<FinancialEventGroup>))
+        /// <param name="transactions">A list of transactions within a given time period..</param>
+        public ListTransactionsPayload(string nextToken = default(string), List<Transaction> transactions = default(List<Transaction>))
         {
             this.NextToken = nextToken;
-            this.FinancialEventGroupList = financialEventGroupList;
+            this.Transactions = transactions;
         }
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace software.amzn.spapi.Model.finances.v0
         public string NextToken { get; set; }
 
         /// <summary>
-        /// A list of financial event group information.
+        /// A list of transactions within a given time period.
         /// </summary>
-        /// <value>A list of financial event group information.</value>
-        [DataMember(Name = "FinancialEventGroupList", EmitDefaultValue = false)]
-        public List<FinancialEventGroup> FinancialEventGroupList { get; set; }
+        /// <value>A list of transactions within a given time period.</value>
+        [DataMember(Name = "Transactions", EmitDefaultValue = false)]
+        public List<Transaction> Transactions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,9 +63,9 @@ namespace software.amzn.spapi.Model.finances.v0
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListFinancialEventGroupsPayload {\n");
+            sb.Append("class ListTransactionsPayload {\n");
             sb.Append("  NextToken: ").Append(NextToken).Append("\n");
-            sb.Append("  FinancialEventGroupList: ").Append(FinancialEventGroupList).Append("\n");
+            sb.Append("  Transactions: ").Append(Transactions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

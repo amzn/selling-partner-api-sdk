@@ -26,32 +26,30 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.finances.v0
 {
     /// <summary>
-    /// An event related to a capacity reservation billing charge.
+    /// An EBT refund reimbursement event.
     /// </summary>
-    [DataContract(Name = "CapacityReservationBillingEvent")]
-    public partial class CapacityReservationBillingEvent : IValidatableObject
+    [DataContract(Name = "EBTRefundReimbursementOnlyEvent")]
+    public partial class EBTRefundReimbursementOnlyEvent : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CapacityReservationBillingEvent" /> class.
+        /// Initializes a new instance of the <see cref="EBTRefundReimbursementOnlyEvent" /> class.
         /// </summary>
-        /// <param name="transactionType">The transaction type. For example, FBA Inventory Fee..</param>
+        /// <param name="orderId">The identifier of an order..</param>
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        /// <param name="description">A short description of the capacity reservation billing event..</param>
-        /// <param name="transactionAmount">transactionAmount.</param>
-        public CapacityReservationBillingEvent(string transactionType = default(string), DateTime postedDate = default(DateTime), string description = default(string), Currency transactionAmount = default(Currency))
+        /// <param name="amount">amount.</param>
+        public EBTRefundReimbursementOnlyEvent(string orderId = default(string), DateTime postedDate = default(DateTime), Currency amount = default(Currency))
         {
-            this.TransactionType = transactionType;
+            this.OrderId = orderId;
             this.PostedDate = postedDate;
-            this.Description = description;
-            this.TransactionAmount = transactionAmount;
+            this.Amount = amount;
         }
 
         /// <summary>
-        /// The transaction type. For example, FBA Inventory Fee.
+        /// The identifier of an order.
         /// </summary>
-        /// <value>The transaction type. For example, FBA Inventory Fee.</value>
-        [DataMember(Name = "TransactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        /// <value>The identifier of an order.</value>
+        [DataMember(Name = "OrderId", EmitDefaultValue = false)]
+        public string OrderId { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
@@ -61,17 +59,10 @@ namespace software.amzn.spapi.Model.finances.v0
         public DateTime PostedDate { get; set; }
 
         /// <summary>
-        /// A short description of the capacity reservation billing event.
+        /// Gets or Sets Amount
         /// </summary>
-        /// <value>A short description of the capacity reservation billing event.</value>
-        [DataMember(Name = "Description", EmitDefaultValue = false)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TransactionAmount
-        /// </summary>
-        [DataMember(Name = "TransactionAmount", EmitDefaultValue = false)]
-        public Currency TransactionAmount { get; set; }
+        [DataMember(Name = "Amount", EmitDefaultValue = false)]
+        public Currency Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,11 +71,10 @@ namespace software.amzn.spapi.Model.finances.v0
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CapacityReservationBillingEvent {\n");
-            sb.Append("  TransactionType: ").Append(TransactionType).Append("\n");
+            sb.Append("class EBTRefundReimbursementOnlyEvent {\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  PostedDate: ").Append(PostedDate).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  TransactionAmount: ").Append(TransactionAmount).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
