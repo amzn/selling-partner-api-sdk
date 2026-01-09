@@ -38,11 +38,9 @@ from spapi.models.vendor_shipments_v1.location import Location
 from spapi.models.vendor_shipments_v1.money import Money
 from spapi.models.vendor_shipments_v1.package_item_details import PackageItemDetails
 from spapi.models.vendor_shipments_v1.packed_items import PackedItems
-from spapi.models.vendor_shipments_v1.packed_quantity import PackedQuantity
 from spapi.models.vendor_shipments_v1.pagination import Pagination
 from spapi.models.vendor_shipments_v1.pallet import Pallet
 from spapi.models.vendor_shipments_v1.party_identification import PartyIdentification
-from spapi.models.vendor_shipments_v1.purchase_order_item_details import PurchaseOrderItemDetails
 from spapi.models.vendor_shipments_v1.purchase_order_items import PurchaseOrderItems
 from spapi.models.vendor_shipments_v1.purchase_orders import PurchaseOrders
 from spapi.models.vendor_shipments_v1.regulation_references import RegulationReferences
