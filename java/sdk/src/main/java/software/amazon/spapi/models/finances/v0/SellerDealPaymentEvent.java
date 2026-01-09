@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -107,11 +107,11 @@ public class SellerDealPaymentEvent {
     }
 
     /**
-     * The type of event: SellerDealComplete.
+     * The type of event: &#x60;SellerDealComplete&#x60;.
      *
      * @return eventType
      */
-    @Schema(description = "The type of event: SellerDealComplete.")
+    @Schema(description = "The type of event: `SellerDealComplete`.")
     public String getEventType() {
         return eventType;
     }
@@ -126,11 +126,11 @@ public class SellerDealPaymentEvent {
     }
 
     /**
-     * The type of fee: RunLightningDealFee.
+     * The type of fee: &#x60;RunLightningDealFee&#x60;.
      *
      * @return feeType
      */
-    @Schema(description = "The type of fee: RunLightningDealFee.")
+    @Schema(description = "The type of fee: `RunLightningDealFee`.")
     public String getFeeType() {
         return feeType;
     }

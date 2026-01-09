@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -170,11 +170,11 @@ public class PayWithAmazonEvent {
     }
 
     /**
-     * The type of payment. Possible values: * Sales
+     * The type of payment. Possible values: * &#x60;Sales&#x60;
      *
      * @return paymentAmountType
      */
-    @Schema(description = "The type of payment.  Possible values:  * Sales")
+    @Schema(description = "The type of payment.  Possible values:  * `Sales`")
     public String getPaymentAmountType() {
         return paymentAmountType;
     }
@@ -208,14 +208,14 @@ public class PayWithAmazonEvent {
     }
 
     /**
-     * The fulfillment channel. Possible values: * AFN - Amazon Fulfillment Network (Fulfillment by Amazon) * MFN -
-     * Merchant Fulfillment Network (self-fulfilled)
+     * The fulfillment channel. Possible values: * &#x60;AFN&#x60;: Amazon Fulfillment Network (Fulfillment by Amazon) *
+     * &#x60;MFN&#x60;: Merchant Fulfillment Network (self-fulfilled)
      *
      * @return fulfillmentChannel
      */
     @Schema(
             description =
-                    "The fulfillment channel.  Possible values:  * AFN - Amazon Fulfillment Network (Fulfillment by Amazon)  * MFN - Merchant Fulfillment Network (self-fulfilled)")
+                    "The fulfillment channel.  Possible values:  * `AFN`: Amazon Fulfillment Network (Fulfillment by Amazon)  * `MFN`: Merchant Fulfillment Network (self-fulfilled)")
     public String getFulfillmentChannel() {
         return fulfillmentChannel;
     }
@@ -230,11 +230,11 @@ public class PayWithAmazonEvent {
     }
 
     /**
-     * The store name where the event occurred.
+     * The name of the store where the event occurred.
      *
      * @return storeName
      */
-    @Schema(description = "The store name where the event occurred.")
+    @Schema(description = "The name of the store where the event occurred.")
     public String getStoreName() {
         return storeName;
     }

@@ -1,6 +1,6 @@
 /*
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * OpenAPI spec version: v0
  *
@@ -47,11 +47,11 @@ public class RetrochargeEvent {
     }
 
     /**
-     * The type of event. Possible values: * Retrocharge * RetrochargeReversal
+     * The type of event. Possible values: * &#x60;Retrocharge&#x60; * &#x60;RetrochargeReversal&#x60;
      *
      * @return retrochargeEventType
      */
-    @Schema(description = "The type of event.  Possible values:  * Retrocharge  * RetrochargeReversal")
+    @Schema(description = "The type of event.  Possible values:  * `Retrocharge`  * `RetrochargeReversal`")
     public String getRetrochargeEventType() {
         return retrochargeEventType;
     }

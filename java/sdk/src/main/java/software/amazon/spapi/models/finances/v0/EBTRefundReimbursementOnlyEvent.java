@@ -15,58 +15,59 @@ package software.amazon.spapi.models.finances.v0;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Objects;
+import org.threeten.bp.OffsetDateTime;
 
-/** A payment instrument. */
-@Schema(description = "A payment instrument.")
-public class ChargeInstrument {
-    @SerializedName("Description")
-    private String description = null;
+/** An EBT refund reimbursement event. */
+@Schema(description = "An EBT refund reimbursement event.")
+public class EBTRefundReimbursementOnlyEvent {
+    @SerializedName("OrderId")
+    private String orderId = null;
 
-    @SerializedName("Tail")
-    private String tail = null;
+    @SerializedName("PostedDate")
+    private OffsetDateTime postedDate = null;
 
     @SerializedName("Amount")
     private Currency amount = null;
 
-    public ChargeInstrument description(String description) {
-        this.description = description;
+    public EBTRefundReimbursementOnlyEvent orderId(String orderId) {
+        this.orderId = orderId;
         return this;
     }
 
     /**
-     * A short description of the charge instrument.
+     * The identifier of an order.
      *
-     * @return description
+     * @return orderId
      */
-    @Schema(description = "A short description of the charge instrument.")
-    public String getDescription() {
-        return description;
+    @Schema(description = "The identifier of an order.")
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
-    public ChargeInstrument tail(String tail) {
-        this.tail = tail;
+    public EBTRefundReimbursementOnlyEvent postedDate(OffsetDateTime postedDate) {
+        this.postedDate = postedDate;
         return this;
     }
 
     /**
-     * The account tail (trailing digits) of the charge instrument.
+     * Get postedDate
      *
-     * @return tail
+     * @return postedDate
      */
-    @Schema(description = "The account tail (trailing digits) of the charge instrument.")
-    public String getTail() {
-        return tail;
+    @Schema(description = "")
+    public OffsetDateTime getPostedDate() {
+        return postedDate;
     }
 
-    public void setTail(String tail) {
-        this.tail = tail;
+    public void setPostedDate(OffsetDateTime postedDate) {
+        this.postedDate = postedDate;
     }
 
-    public ChargeInstrument amount(Currency amount) {
+    public EBTRefundReimbursementOnlyEvent amount(Currency amount) {
         this.amount = amount;
         return this;
     }
@@ -93,24 +94,24 @@ public class ChargeInstrument {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ChargeInstrument chargeInstrument = (ChargeInstrument) o;
-        return Objects.equals(this.description, chargeInstrument.description)
-                && Objects.equals(this.tail, chargeInstrument.tail)
-                && Objects.equals(this.amount, chargeInstrument.amount);
+        EBTRefundReimbursementOnlyEvent ebTRefundReimbursementOnlyEvent = (EBTRefundReimbursementOnlyEvent) o;
+        return Objects.equals(this.orderId, ebTRefundReimbursementOnlyEvent.orderId)
+                && Objects.equals(this.postedDate, ebTRefundReimbursementOnlyEvent.postedDate)
+                && Objects.equals(this.amount, ebTRefundReimbursementOnlyEvent.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(description, tail, amount);
+        return Objects.hash(orderId, postedDate, amount);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class ChargeInstrument {\n");
+        sb.append("class EBTRefundReimbursementOnlyEvent {\n");
 
-        sb.append("    description: ").append(toIndentedString(description)).append("\n");
-        sb.append("    tail: ").append(toIndentedString(tail)).append("\n");
+        sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
+        sb.append("    postedDate: ").append(toIndentedString(postedDate)).append("\n");
         sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
         sb.append("}");
         return sb.toString();
