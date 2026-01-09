@@ -13,7 +13,7 @@ export class DebtRecoveryEvent {
      */
     static constructFromObject(data: any, obj: DebtRecoveryEvent): DebtRecoveryEvent;
     /**
-     * The debt recovery type.  Possible values:  * DebtPayment  * DebtPaymentFailure  * DebtAdjustment
+     * The debt recovery type.  Possible values:  * `DebtPayment` * `DebtPaymentFailure` * `DebtAdjustment`
      * @member {String} debtRecoveryType
      * @type {String}
      */

@@ -19,7 +19,7 @@ export class FinancialEventGroup {
      */
     financialEventGroupId: string;
     /**
-     * The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * Open  * Closed
+     * The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * `Open` * `Closed`
      * @member {String} processingStatus
      * @type {String}
      */
@@ -41,7 +41,7 @@ export class FinancialEventGroup {
      */
     convertedTotal: Currency;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} fundTransferDate
      * @type {Date}
      */
@@ -64,13 +64,13 @@ export class FinancialEventGroup {
      */
     beginningBalance: Currency;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} financialEventGroupStart
      * @type {Date}
      */
     financialEventGroupStart: Date;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} financialEventGroupEnd
      * @type {Date}
      */

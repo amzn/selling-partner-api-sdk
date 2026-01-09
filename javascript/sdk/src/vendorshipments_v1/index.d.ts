@@ -24,11 +24,9 @@ import { Location } from './model/Location.js';
 import { Money } from './model/Money.js';
 import { PackageItemDetails } from './model/PackageItemDetails.js';
 import { PackedItems } from './model/PackedItems.js';
-import { PackedQuantity } from './model/PackedQuantity.js';
 import { Pagination } from './model/Pagination.js';
 import { Pallet } from './model/Pallet.js';
 import { PartyIdentification } from './model/PartyIdentification.js';
-import { PurchaseOrderItemDetails } from './model/PurchaseOrderItemDetails.js';
 import { PurchaseOrderItems } from './model/PurchaseOrderItems.js';
 import { PurchaseOrders } from './model/PurchaseOrders.js';
 import { RegulationReferences } from './model/RegulationReferences.js';
@@ -57,5 +55,5 @@ import { VendorDetails } from './model/VendorDetails.js';
 import { Volume } from './model/Volume.js';
 import { Weight } from './model/Weight.js';
 import { VendorShippingApi } from './api/VendorShippingApi.js';
-export { ApiClient, Address, CarrierDetails, Carton, CartonReferenceDetails, CollectFreightPickupDetails, ContainerIdentification, ContainerItem, ContainerSequenceNumbers, Containers, Dimensions, Duration, Error, Expiry, GetShipmentDetailsResponse, GetShipmentLabels, ImportDetails, InnerContainersDetails, Item, ItemDetails, ItemQuantity, LabelData, Location, Money, PackageItemDetails, PackedItems, PackedQuantity, Pagination, Pallet, PartyIdentification, PurchaseOrderItemDetails, PurchaseOrderItems, PurchaseOrders, RegulationReferences, Route, Shipment, ShipmentConfirmation, ShipmentDetails, ShipmentInformation, ShipmentMeasurements, ShipmentStatusDetails, Stop, SubmitShipmentConfirmationRequest, SubmitShipmentConfirmationResponse, SubmitShipmentConfirmationsRequest, SubmitShipmentConfirmationsResponse, SubmitShipments, TaxRegistrationDetails, TotalWeight, TransactionReference, TransportLabel, TransportShipmentMeasurements, TransportationDetails, TransportationDetailsForShipmentConfirmation, TransportationLabels, VendorDetails, Volume, Weight, VendorShippingApi };
+export { ApiClient, Address, CarrierDetails, Carton, CartonReferenceDetails, CollectFreightPickupDetails, ContainerIdentification, ContainerItem, ContainerSequenceNumbers, Containers, Dimensions, Duration, Error, Expiry, GetShipmentDetailsResponse, GetShipmentLabels, ImportDetails, InnerContainersDetails, Item, ItemDetails, ItemQuantity, LabelData, Location, Money, PackageItemDetails, PackedItems, Pagination, Pallet, PartyIdentification, PurchaseOrderItems, PurchaseOrders, RegulationReferences, Route, Shipment, ShipmentConfirmation, ShipmentDetails, ShipmentInformation, ShipmentMeasurements, ShipmentStatusDetails, Stop, SubmitShipmentConfirmationRequest, SubmitShipmentConfirmationResponse, SubmitShipmentConfirmationsRequest, SubmitShipmentConfirmationsResponse, SubmitShipments, TaxRegistrationDetails, TotalWeight, TransactionReference, TransportLabel, TransportShipmentMeasurements, TransportationDetails, TransportationDetailsForShipmentConfirmation, TransportationLabels, VendorDetails, Volume, Weight, VendorShippingApi };
 //# sourceMappingURL=index.d.ts.map

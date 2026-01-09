@@ -15,26 +15,26 @@ import { ApiClient } from '../ApiClient.js'
 import { Currency } from './Currency.js'
 
 /**
- * The TDSReimbursementEvent model module.
- * @module finances_v0/model/TDSReimbursementEvent
+ * The EBTRefundReimbursementOnlyEvent model module.
+ * @module finances_v0/model/EBTRefundReimbursementOnlyEvent
  * @version v0
  */
-export class TDSReimbursementEvent {
+export class EBTRefundReimbursementOnlyEvent {
   /**
-   * Constructs a new <code>TDSReimbursementEvent</code>.
-   * An event related to a Tax-Deducted-at-Source (TDS) reimbursement.
-   * @alias module:finances_v0/model/TDSReimbursementEvent
+   * Constructs a new <code>EBTRefundReimbursementOnlyEvent</code>.
+   * An EBT refund reimbursement event.
+   * @alias module:finances_v0/model/EBTRefundReimbursementOnlyEvent
    * @class
    */
   constructor () {
   }
 
   /**
-   * Constructs a <code>TDSReimbursementEvent</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>EBTRefundReimbursementOnlyEvent</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {TDSReimbursementEvent} obj Optional instance to populate.
-   * @return {TDSReimbursementEvent} The populated <code>TDSReimbursementEvent</code> instance.
+   * @param {EBTRefundReimbursementOnlyEvent} obj Optional instance to populate.
+   * @return {EBTRefundReimbursementOnlyEvent} The populated <code>EBTRefundReimbursementOnlyEvent</code> instance.
    */
   static constructFromObject (data, obj) {
     if (data) {
@@ -49,31 +49,31 @@ export class TDSReimbursementEvent {
           obj = Boolean(data)
           break
       }
-      obj = obj || new TDSReimbursementEvent()
+      obj = obj || new EBTRefundReimbursementOnlyEvent()
+      if (data.hasOwnProperty('OrderId')) { obj.orderId = ApiClient.convertToType(data.OrderId, 'String') }
       if (data.hasOwnProperty('PostedDate')) { obj.postedDate = ApiClient.convertToType(data.PostedDate, 'Date') }
-      if (data.hasOwnProperty('TDSOrderId')) { obj.tDSOrderId = ApiClient.convertToType(data.TDSOrderId, 'String') }
-      if (data.hasOwnProperty('ReimbursedAmount')) { obj.reimbursedAmount = Currency.constructFromObject(data.ReimbursedAmount) }
+      if (data.hasOwnProperty('Amount')) { obj.amount = Currency.constructFromObject(data.Amount) }
     }
     return obj
   }
 }
 
 /**
+ * The identifier of an order.
+ * @member {String} orderId
+ * @type {String}
+ */
+EBTRefundReimbursementOnlyEvent.prototype.orderId = undefined
+
+/**
  * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} postedDate
  * @type {Date}
  */
-TDSReimbursementEvent.prototype.postedDate = undefined
+EBTRefundReimbursementOnlyEvent.prototype.postedDate = undefined
 
 /**
- * The Tax-Deducted-at-Source (TDS) identifier.
- * @member {String} tDSOrderId
- * @type {String}
- */
-TDSReimbursementEvent.prototype.tDSOrderId = undefined
-
-/**
- * @member {Currency} reimbursedAmount
+ * @member {Currency} amount
  * @type {Currency}
  */
-TDSReimbursementEvent.prototype.reimbursedAmount = undefined
+EBTRefundReimbursementOnlyEvent.prototype.amount = undefined

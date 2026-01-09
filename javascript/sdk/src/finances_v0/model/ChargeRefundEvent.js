@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * The version of the OpenAPI document: v0
  *
@@ -60,21 +60,21 @@ export class ChargeRefundEvent {
 }
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} postedDate
  * @type {Date}
  */
 ChargeRefundEvent.prototype.postedDate = undefined
 
 /**
- * The reason given for a charge refund.  Example: `SubscriptionFeeCorrection`
+ * The reason given for a charge refund. For example, `SubscriptionFeeCorrection`.
  * @member {String} reasonCode
  * @type {String}
  */
 ChargeRefundEvent.prototype.reasonCode = undefined
 
 /**
- * A description of the Reason Code.   Example: `SubscriptionFeeCorrection`
+ * A description of the Reason Code. For example, `SubscriptionFeeCorrection`.
  * @member {String} reasonCodeDescription
  * @type {String}
  */

@@ -1,6 +1,6 @@
 /**
  * Selling Partner API for Finances
- * The Selling Partner API for Finances helps you obtain financial information relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
+ * The Selling Partner API for Finances provides financial information that is relevant to a seller's business. You can obtain financial events for a given order, financial event group, or date range without having to wait until a statement period closes. You can also obtain financial event groups for a given date range.
  *
  * The version of the OpenAPI document: v0
  *
@@ -64,14 +64,14 @@ export class NetworkComminglingTransactionEvent {
 }
 
 /**
- * The type of network item swap.  Possible values:  * NetCo - A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * ComminglingVAT - A commingling VAT transaction. Available only in the UK, Spain, France, Germany, and Italy marketplaces.
+ * The type of network item swap.  Possible values:  * `NetCo`: A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * `ComminglingVAT`: A commingling VAT transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.
  * @member {String} transactionType
  * @type {String}
  */
 NetworkComminglingTransactionEvent.prototype.transactionType = undefined
 
 /**
- * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+ * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
  * @member {Date} postedDate
  * @type {Date}
  */

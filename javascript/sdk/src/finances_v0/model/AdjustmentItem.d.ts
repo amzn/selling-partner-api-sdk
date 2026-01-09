@@ -13,7 +13,7 @@ export class AdjustmentItem {
      */
     static constructFromObject(data: any, obj: AdjustmentItem): AdjustmentItem;
     /**
-     * Represents the number of units in the seller's inventory when the AdustmentType is FBAInventoryReimbursement.
+     * Represents the number of units in the seller's inventory when the `AdjustmentType` is `FBAInventoryReimbursement`.
      * @member {String} quantity
      * @type {String}
      */

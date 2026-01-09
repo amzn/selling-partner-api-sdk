@@ -13,7 +13,7 @@ export class RetrochargeEvent {
      */
     static constructFromObject(data: any, obj: RetrochargeEvent): RetrochargeEvent;
     /**
-     * The type of event.  Possible values:  * Retrocharge  * RetrochargeReversal
+     * The type of event.  Possible values:  * `Retrocharge`  * `RetrochargeReversal`
      * @member {String} retrochargeEventType
      * @type {String}
      */
@@ -25,7 +25,7 @@ export class RetrochargeEvent {
      */
     amazonOrderId: string;
     /**
-     * Fields with a schema type of date are in ISO 8601 date time format (for example GroupBeginDate).
+     * A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
      * @member {Date} postedDate
      * @type {Date}
      */
