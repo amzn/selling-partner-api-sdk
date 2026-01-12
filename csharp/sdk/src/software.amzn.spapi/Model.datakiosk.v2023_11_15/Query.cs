@@ -93,7 +93,7 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
         /// <param name="dataDocumentId">The data document identifier. This identifier is only present when there is data available as a result of the query. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the &#x60;getDocument&#x60; operation to get the information required to retrieve the data document&#39;s contents..</param>
         /// <param name="errorDocumentId">The error document identifier. This identifier is only present when an error occurs during query processing. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the &#x60;getDocument&#x60; operation to get the information required to retrieve the error document&#39;s contents..</param>
         /// <param name="pagination">pagination.</param>
-        public Query(string queryId = default(string), string varQuery = default(string), DateTime createdTime = default(DateTime), ProcessingStatusEnum processingStatus = default(ProcessingStatusEnum), DateTime processingStartTime = default(DateTime), DateTime processingEndTime = default(DateTime), string dataDocumentId = default(string), string errorDocumentId = default(string), QueryPagination pagination = default(QueryPagination))
+        public Query(string queryId = default(string), string varQuery = default(string), DateTime createdTime = default(DateTime), ProcessingStatusEnum processingStatus = default(ProcessingStatusEnum), DateTime? processingStartTime = default(DateTime?), DateTime? processingEndTime = default(DateTime?), string? dataDocumentId = default(string?), string? errorDocumentId = default(string?), QueryPagination? pagination = default(QueryPagination?))
         {
             // to ensure "queryId" is required (not null)
             if (queryId == null)
@@ -142,34 +142,34 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
         /// </summary>
         /// <value>The date and time when the query processing started, in ISO 8601 date time format.</value>
         [DataMember(Name = "processingStartTime", EmitDefaultValue = false)]
-        public DateTime ProcessingStartTime { get; set; }
+        public DateTime? ProcessingStartTime { get; set; }
 
         /// <summary>
         /// The date and time when the query processing completed, in ISO 8601 date time format.
         /// </summary>
         /// <value>The date and time when the query processing completed, in ISO 8601 date time format.</value>
         [DataMember(Name = "processingEndTime", EmitDefaultValue = false)]
-        public DateTime ProcessingEndTime { get; set; }
+        public DateTime? ProcessingEndTime { get; set; }
 
         /// <summary>
         /// The data document identifier. This identifier is only present when there is data available as a result of the query. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the &#x60;getDocument&#x60; operation to get the information required to retrieve the data document&#39;s contents.
         /// </summary>
         /// <value>The data document identifier. This identifier is only present when there is data available as a result of the query. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the &#x60;getDocument&#x60; operation to get the information required to retrieve the data document&#39;s contents.</value>
         [DataMember(Name = "dataDocumentId", EmitDefaultValue = false)]
-        public string DataDocumentId { get; set; }
+        public string? DataDocumentId { get; set; }
 
         /// <summary>
         /// The error document identifier. This identifier is only present when an error occurs during query processing. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the &#x60;getDocument&#x60; operation to get the information required to retrieve the error document&#39;s contents.
         /// </summary>
         /// <value>The error document identifier. This identifier is only present when an error occurs during query processing. This identifier is unique only in combination with a selling partner account ID. Pass this identifier into the &#x60;getDocument&#x60; operation to get the information required to retrieve the error document&#39;s contents.</value>
         [DataMember(Name = "errorDocumentId", EmitDefaultValue = false)]
-        public string ErrorDocumentId { get; set; }
+        public string? ErrorDocumentId { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public QueryPagination Pagination { get; set; }
+        public QueryPagination? Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -211,5 +211,4 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
             yield break;
         }
     }
-
 }

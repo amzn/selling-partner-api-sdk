@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="contactInformation">contactInformation.</param>
         /// <param name="shipmentId">Shipment ID that the transportation Option is for. (required).</param>
         /// <param name="transportationOptionId">Transportation option being selected for the provided shipment. (required).</param>
-        public TransportationSelection(ContactInformation contactInformation = default(ContactInformation), string shipmentId = default(string), string transportationOptionId = default(string))
+        public TransportationSelection(ContactInformation? contactInformation = default(ContactInformation?), string shipmentId = default(string), string transportationOptionId = default(string))
         {
             // to ensure "shipmentId" is required (not null)
             if (shipmentId == null)
@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets ContactInformation
         /// </summary>
         [DataMember(Name = "contactInformation", EmitDefaultValue = false)]
-        public ContactInformation ContactInformation { get; set; }
+        public ContactInformation? ContactInformation { get; set; }
 
         /// <summary>
         /// Shipment ID that the transportation Option is for.
@@ -155,5 +155,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

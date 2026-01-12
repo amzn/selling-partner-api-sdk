@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="length">length.</param>
         /// <param name="weight">weight.</param>
         /// <param name="width">width.</param>
-        public Dimensions(Dimension height = default(Dimension), Dimension length = default(Dimension), Dimension weight = default(Dimension), Dimension width = default(Dimension))
+        public Dimensions(Dimension? height = default(Dimension?), Dimension? length = default(Dimension?), Dimension? weight = default(Dimension?), Dimension? width = default(Dimension?))
         {
             this.Height = height;
             this.Length = length;
@@ -50,25 +50,25 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// Gets or Sets Height
         /// </summary>
         [DataMember(Name = "height", EmitDefaultValue = false)]
-        public Dimension Height { get; set; }
+        public Dimension? Height { get; set; }
 
         /// <summary>
         /// Gets or Sets Length
         /// </summary>
         [DataMember(Name = "length", EmitDefaultValue = false)]
-        public Dimension Length { get; set; }
+        public Dimension? Length { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Dimension Weight { get; set; }
+        public Dimension? Weight { get; set; }
 
         /// <summary>
         /// Gets or Sets Width
         /// </summary>
         [DataMember(Name = "width", EmitDefaultValue = false)]
-        public Dimension Width { get; set; }
+        public Dimension? Width { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,5 +105,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

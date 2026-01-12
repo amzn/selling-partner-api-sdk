@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="streetNumber">The house, building, or property number associated with the location&#39;s street address..</param>
         /// <param name="complement">The floor number/unit number in the building/private house number..</param>
         /// <param name="neighborhood">The neighborhood. This value is only used in some countries (such as Brazil)..</param>
-        public AddressExtendedFields(string streetName = default(string), string streetNumber = default(string), string complement = default(string), string neighborhood = default(string))
+        public AddressExtendedFields(string? streetName = default(string?), string? streetNumber = default(string?), string? complement = default(string?), string? neighborhood = default(string?))
         {
             this.StreetName = streetName;
             this.StreetNumber = streetNumber;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The street name.</value>
         [DataMember(Name = "StreetName", EmitDefaultValue = false)]
-        public string StreetName { get; set; }
+        public string? StreetName { get; set; }
 
         /// <summary>
         /// The house, building, or property number associated with the location&#39;s street address.
         /// </summary>
         /// <value>The house, building, or property number associated with the location&#39;s street address.</value>
         [DataMember(Name = "StreetNumber", EmitDefaultValue = false)]
-        public string StreetNumber { get; set; }
+        public string? StreetNumber { get; set; }
 
         /// <summary>
         /// The floor number/unit number in the building/private house number.
         /// </summary>
         /// <value>The floor number/unit number in the building/private house number.</value>
         [DataMember(Name = "Complement", EmitDefaultValue = false)]
-        public string Complement { get; set; }
+        public string? Complement { get; set; }
 
         /// <summary>
         /// The neighborhood. This value is only used in some countries (such as Brazil).
         /// </summary>
         /// <value>The neighborhood. This value is only used in some countries (such as Brazil).</value>
         [DataMember(Name = "Neighborhood", EmitDefaultValue = false)]
-        public string Neighborhood { get; set; }
+        public string? Neighborhood { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

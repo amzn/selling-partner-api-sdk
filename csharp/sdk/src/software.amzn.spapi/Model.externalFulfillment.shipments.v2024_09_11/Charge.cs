@@ -90,7 +90,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="chargeType">The type of charge. (required).</param>
         /// <param name="totalCharge">totalCharge (required).</param>
         /// <param name="totalTax">totalTax (required).</param>
-        public Charge(ChargeBreakup baseCharge = default(ChargeBreakup), List<Tax> taxBreakup = default(List<Tax>), ChargeTypeEnum chargeType = default(ChargeTypeEnum), ChargeBreakup totalCharge = default(ChargeBreakup), Tax totalTax = default(Tax))
+        public Charge(ChargeBreakup baseCharge = default(ChargeBreakup), List<Tax>? taxBreakup = default(List<Tax>?), ChargeTypeEnum chargeType = default(ChargeTypeEnum), ChargeBreakup totalCharge = default(ChargeBreakup), Tax totalTax = default(Tax))
         {
             // to ensure "baseCharge" is required (not null)
             if (baseCharge == null)
@@ -125,7 +125,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The tax charge details.</value>
         [DataMember(Name = "taxBreakup", EmitDefaultValue = false)]
-        public List<Tax> TaxBreakup { get; set; }
+        public List<Tax>? TaxBreakup { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalCharge
@@ -175,5 +175,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

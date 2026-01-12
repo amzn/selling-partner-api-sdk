@@ -102,5 +102,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

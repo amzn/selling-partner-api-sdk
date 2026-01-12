@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="GetUnmanifestedShipmentsResponse" /> class.
         /// </summary>
         /// <param name="unmanifestedCarrierInformationList">A list of UnmanifestedCarrierInformation.</param>
-        public GetUnmanifestedShipmentsResponse(List<UnmanifestedCarrierInformation> unmanifestedCarrierInformationList = default(List<UnmanifestedCarrierInformation>))
+        public GetUnmanifestedShipmentsResponse(List<UnmanifestedCarrierInformation>? unmanifestedCarrierInformationList = default(List<UnmanifestedCarrierInformation>?))
         {
             this.UnmanifestedCarrierInformationList = unmanifestedCarrierInformationList;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of UnmanifestedCarrierInformation</value>
         [DataMember(Name = "unmanifestedCarrierInformationList", EmitDefaultValue = false)]
-        public List<UnmanifestedCarrierInformation> UnmanifestedCarrierInformationList { get; set; }
+        public List<UnmanifestedCarrierInformation>? UnmanifestedCarrierInformationList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

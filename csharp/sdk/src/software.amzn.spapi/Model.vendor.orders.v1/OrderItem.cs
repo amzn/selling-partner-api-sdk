@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="isBackOrderAllowed">When true, we will accept backorder confirmations for this item. (required).</param>
         /// <param name="netCost">netCost.</param>
         /// <param name="listPrice">listPrice.</param>
-        public OrderItem(string itemSequenceNumber = default(string), string amazonProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity orderedQuantity = default(ItemQuantity), bool isBackOrderAllowed = default(bool), Money netCost = default(Money), Money listPrice = default(Money))
+        public OrderItem(string itemSequenceNumber = default(string), string? amazonProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity orderedQuantity = default(ItemQuantity), bool isBackOrderAllowed = default(bool), Money? netCost = default(Money?), Money? listPrice = default(Money?))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -79,14 +79,14 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>Amazon Standard Identification Number (ASIN) of an item.</value>
         [DataMember(Name = "amazonProductIdentifier", EmitDefaultValue = false)]
-        public string AmazonProductIdentifier { get; set; }
+        public string? AmazonProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item.
         /// </summary>
         /// <value>The vendor selected product identification of the item.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderedQuantity
@@ -105,13 +105,13 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets NetCost
         /// </summary>
         [DataMember(Name = "netCost", EmitDefaultValue = false)]
-        public Money NetCost { get; set; }
+        public Money? NetCost { get; set; }
 
         /// <summary>
         /// Gets or Sets ListPrice
         /// </summary>
         [DataMember(Name = "listPrice", EmitDefaultValue = false)]
-        public Money ListPrice { get; set; }
+        public Money? ListPrice { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -151,5 +151,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

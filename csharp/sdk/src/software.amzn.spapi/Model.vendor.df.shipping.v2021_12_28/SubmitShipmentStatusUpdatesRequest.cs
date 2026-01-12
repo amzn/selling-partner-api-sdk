@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Initializes a new instance of the <see cref="SubmitShipmentStatusUpdatesRequest" /> class.
         /// </summary>
         /// <param name="shipmentStatusUpdates">Contains a list of one or more &#x60;ShipmentStatusUpdate&#x60; objects. Each &#x60;ShipmentStatusUpdate&#x60; object represents an update to the status of a specific shipment..</param>
-        public SubmitShipmentStatusUpdatesRequest(List<ShipmentStatusUpdate> shipmentStatusUpdates = default(List<ShipmentStatusUpdate>))
+        public SubmitShipmentStatusUpdatesRequest(List<ShipmentStatusUpdate>? shipmentStatusUpdates = default(List<ShipmentStatusUpdate>?))
         {
             this.ShipmentStatusUpdates = shipmentStatusUpdates;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>Contains a list of one or more &#x60;ShipmentStatusUpdate&#x60; objects. Each &#x60;ShipmentStatusUpdate&#x60; object represents an update to the status of a specific shipment.</value>
         [DataMember(Name = "shipmentStatusUpdates", EmitDefaultValue = false)]
-        public List<ShipmentStatusUpdate> ShipmentStatusUpdates { get; set; }
+        public List<ShipmentStatusUpdate>? ShipmentStatusUpdates { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

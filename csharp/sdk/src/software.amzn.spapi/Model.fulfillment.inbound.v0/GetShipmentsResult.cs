@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <param name="shipmentData">A list of inbound shipment information..</param>
         /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
-        public GetShipmentsResult(List<InboundShipmentInfo> shipmentData = default(List<InboundShipmentInfo>), string nextToken = default(string))
+        public GetShipmentsResult(List<InboundShipmentInfo>? shipmentData = default(List<InboundShipmentInfo>?), string? nextToken = default(string?))
         {
             this.ShipmentData = shipmentData;
             this.NextToken = nextToken;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>A list of inbound shipment information.</value>
         [DataMember(Name = "ShipmentData", EmitDefaultValue = false)]
-        public List<InboundShipmentInfo> ShipmentData { get; set; }
+        public List<InboundShipmentInfo>? ShipmentData { get; set; }
 
         /// <summary>
         /// When present and not empty, pass this string token in the next request to return the next response page.
         /// </summary>
         /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
         [DataMember(Name = "NextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

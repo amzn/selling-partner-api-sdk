@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="parkingCostType">parkingCostType.</param>
         /// <param name="parkingSpotIdentificationType">parkingSpotIdentificationType.</param>
         /// <param name="numberOfParkingSpots">An unsigned integer that can be only positive or zero..</param>
-        public ParkingConfiguration(ParkingCostType? parkingCostType = default(ParkingCostType?), ParkingSpotIdentificationType? parkingSpotIdentificationType = default(ParkingSpotIdentificationType?), int numberOfParkingSpots = default(int))
+        public ParkingConfiguration(ParkingCostType? parkingCostType = default(ParkingCostType?), ParkingSpotIdentificationType? parkingSpotIdentificationType = default(ParkingSpotIdentificationType?), int? numberOfParkingSpots = default(int?))
         {
             this.ParkingCostType = parkingCostType;
             this.ParkingSpotIdentificationType = parkingSpotIdentificationType;
@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>An unsigned integer that can be only positive or zero.</value>
         [DataMember(Name = "numberOfParkingSpots", EmitDefaultValue = false)]
-        public int NumberOfParkingSpots { get; set; }
+        public int? NumberOfParkingSpots { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,5 +103,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

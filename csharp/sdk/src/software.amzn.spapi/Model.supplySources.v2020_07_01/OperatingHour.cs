@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="startTime">The opening time, ISO 8601 formatted timestamp without date, HH:mm..</param>
         /// <param name="endTime">The closing time, ISO 8601 formatted timestamp without date, HH:mm..</param>
-        public OperatingHour(string startTime = default(string), string endTime = default(string))
+        public OperatingHour(string? startTime = default(string?), string? endTime = default(string?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>The opening time, ISO 8601 formatted timestamp without date, HH:mm.</value>
         [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public string StartTime { get; set; }
+        public string? StartTime { get; set; }
 
         /// <summary>
         /// The closing time, ISO 8601 formatted timestamp without date, HH:mm.
         /// </summary>
         /// <value>The closing time, ISO 8601 formatted timestamp without date, HH:mm.</value>
         [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public string EndTime { get; set; }
+        public string? EndTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

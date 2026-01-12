@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Initializes a new instance of the <see cref="Segment" /> class.
         /// </summary>
         /// <param name="segmentDetails">segmentDetails.</param>
-        public Segment(SegmentDetails segmentDetails = default(SegmentDetails))
+        public Segment(SegmentDetails? segmentDetails = default(SegmentDetails?))
         {
             this.SegmentDetails = segmentDetails;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets SegmentDetails
         /// </summary>
         [DataMember(Name = "segmentDetails", EmitDefaultValue = false)]
-        public SegmentDetails SegmentDetails { get; set; }
+        public SegmentDetails? SegmentDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

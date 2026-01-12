@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="RequestedLabelCustomization" /> class.
         /// </summary>
         /// <param name="requestAttributes">Specify the type of attributes to be added on a label..</param>
-        public RequestedLabelCustomization(List<LabelAttribute> requestAttributes = default(List<LabelAttribute>))
+        public RequestedLabelCustomization(List<LabelAttribute>? requestAttributes = default(List<LabelAttribute>?))
         {
             this.RequestAttributes = requestAttributes;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Specify the type of attributes to be added on a label.</value>
         [DataMember(Name = "requestAttributes", EmitDefaultValue = false)]
-        public List<LabelAttribute> RequestAttributes { get; set; }
+        public List<LabelAttribute>? RequestAttributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

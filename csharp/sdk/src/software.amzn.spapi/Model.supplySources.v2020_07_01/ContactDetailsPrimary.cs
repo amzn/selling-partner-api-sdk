@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="email">The email address to which email messages are delivered..</param>
         /// <param name="phone">The phone number of the person, business or institution..</param>
-        public ContactDetailsPrimary(string email = default(string), string phone = default(string))
+        public ContactDetailsPrimary(string? email = default(string?), string? phone = default(string?))
         {
             this.Email = email;
             this.Phone = phone;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>The email address to which email messages are delivered.</value>
         [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// The phone number of the person, business or institution.
         /// </summary>
         /// <value>The phone number of the person, business or institution.</value>
         [DataMember(Name = "phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

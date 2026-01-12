@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="date">The timestamp that the API request was received.  For more information, consult [RFC 2616 Section 14](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)..</param>
         /// <param name="xAmznRequestId">Unique request reference identifier..</param>
-        public HttpResponseHeaders(string date = default(string), string xAmznRequestId = default(string))
+        public HttpResponseHeaders(string? date = default(string?), string? xAmznRequestId = default(string?))
         {
             this.Date = date;
             this.XAmznRequestId = xAmznRequestId;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The timestamp that the API request was received.  For more information, consult [RFC 2616 Section 14](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</value>
         [DataMember(Name = "Date", EmitDefaultValue = false)]
-        public string Date { get; set; }
+        public string? Date { get; set; }
 
         /// <summary>
         /// Unique request reference identifier.
         /// </summary>
         /// <value>Unique request reference identifier.</value>
         [DataMember(Name = "x-amzn-RequestId", EmitDefaultValue = false)]
-        public string XAmznRequestId { get; set; }
+        public string? XAmznRequestId { get; set; }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// Initializes a new instance of the <see cref="SubmitInvoiceRequest" /> class.
         /// </summary>
         /// <param name="invoices">An array of invoice details to be submitted..</param>
-        public SubmitInvoiceRequest(List<InvoiceDetail> invoices = default(List<InvoiceDetail>))
+        public SubmitInvoiceRequest(List<InvoiceDetail>? invoices = default(List<InvoiceDetail>?))
         {
             this.Invoices = invoices;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>An array of invoice details to be submitted.</value>
         [DataMember(Name = "invoices", EmitDefaultValue = false)]
-        public List<InvoiceDetail> Invoices { get; set; }
+        public List<InvoiceDetail>? Invoices { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             yield break;
         }
     }
-
 }

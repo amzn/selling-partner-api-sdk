@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="purchaseOrderNumber">The purchase order number for this order. Formatting Notes: 8-character alpha-numeric code. (required).</param>
         /// <param name="purchaseOrderState">This field will contain the current state of the purchase order. (required).</param>
         /// <param name="orderDetails">orderDetails.</param>
-        public Order(string purchaseOrderNumber = default(string), PurchaseOrderStateEnum purchaseOrderState = default(PurchaseOrderStateEnum), OrderDetails orderDetails = default(OrderDetails))
+        public Order(string purchaseOrderNumber = default(string), PurchaseOrderStateEnum purchaseOrderState = default(PurchaseOrderStateEnum), OrderDetails? orderDetails = default(OrderDetails?))
         {
             // to ensure "purchaseOrderNumber" is required (not null)
             if (purchaseOrderNumber == null)
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets OrderDetails
         /// </summary>
         [DataMember(Name = "orderDetails", EmitDefaultValue = false)]
-        public OrderDetails OrderDetails { get; set; }
+        public OrderDetails? OrderDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -134,5 +134,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

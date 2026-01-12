@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="name">The name of the buyer..</param>
         /// <param name="phone">The phone number of the buyer..</param>
         /// <param name="isPrimeMember">When true, the service is for an Amazon Prime buyer..</param>
-        public Buyer(string buyerId = default(string), string name = default(string), string phone = default(string), bool isPrimeMember = default(bool))
+        public Buyer(string? buyerId = default(string?), string? name = default(string?), string? phone = default(string?), bool? isPrimeMember = default(bool?))
         {
             this.BuyerId = buyerId;
             this.Name = name;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The identifier of the buyer.</value>
         [DataMember(Name = "buyerId", EmitDefaultValue = false)]
-        public string BuyerId { get; set; }
+        public string? BuyerId { get; set; }
 
         /// <summary>
         /// The name of the buyer.
         /// </summary>
         /// <value>The name of the buyer.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The phone number of the buyer.
         /// </summary>
         /// <value>The phone number of the buyer.</value>
         [DataMember(Name = "phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// When true, the service is for an Amazon Prime buyer.
         /// </summary>
         /// <value>When true, the service is for an Amazon Prime buyer.</value>
         [DataMember(Name = "isPrimeMember", EmitDefaultValue = true)]
-        public bool IsPrimeMember { get; set; }
+        public bool? IsPrimeMember { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

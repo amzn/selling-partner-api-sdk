@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <param name="startTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="endTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public TimeRangeContext(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime))
+        public TimeRangeContext(DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="orderId">The order item&#39;s order identifier, in 3-7-7 format..</param>
         /// <param name="orderItemId">An Amazon-defined item identifier for the associated item..</param>
         /// <param name="associationType">associationType.</param>
-        public AssociatedItem(string orderId = default(string), string orderItemId = default(string), AssociationType? associationType = default(AssociationType?))
+        public AssociatedItem(string? orderId = default(string?), string? orderItemId = default(string?), AssociationType? associationType = default(AssociationType?))
         {
             this.OrderId = orderId;
             this.OrderItemId = orderItemId;
@@ -55,14 +55,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The order item&#39;s order identifier, in 3-7-7 format.</value>
         [DataMember(Name = "OrderId", EmitDefaultValue = false)]
-        public string OrderId { get; set; }
+        public string? OrderId { get; set; }
 
         /// <summary>
         /// An Amazon-defined item identifier for the associated item.
         /// </summary>
         /// <value>An Amazon-defined item identifier for the associated item.</value>
         [DataMember(Name = "OrderItemId", EmitDefaultValue = false)]
-        public string OrderItemId { get; set; }
+        public string? OrderItemId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

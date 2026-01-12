@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="payload">The payload for the &#x60;getPricing&#x60; and &#x60;getCompetitivePricing&#x60; operations..</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetPricingResponse(List<Price> payload = default(List<Price>), List<Error> errors = default(List<Error>))
+        public GetPricingResponse(List<Price>? payload = default(List<Price>?), List<Error>? errors = default(List<Error>?))
         {
             this.Payload = payload;
             this.Errors = errors;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The payload for the &#x60;getPricing&#x60; and &#x60;getCompetitivePricing&#x60; operations.</value>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public List<Price> Payload { get; set; }
+        public List<Price>? Payload { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

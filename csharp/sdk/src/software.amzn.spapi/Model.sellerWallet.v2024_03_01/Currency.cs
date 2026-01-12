@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <param name="currencyCode">The three-digit currency code in ISO 4217 format..</param>
         /// <param name="currencyAmount">A decimal number such as amount or FX rate..</param>
-        public Currency(string currencyCode = default(string), decimal currencyAmount = default(decimal))
+        public Currency(string? currencyCode = default(string?), decimal? currencyAmount = default(decimal?))
         {
             this.CurrencyCode = currencyCode;
             this.CurrencyAmount = currencyAmount;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <value>The three-digit currency code in ISO 4217 format.</value>
         [DataMember(Name = "currencyCode", EmitDefaultValue = false)]
-        public string CurrencyCode { get; set; }
+        public string? CurrencyCode { get; set; }
 
         /// <summary>
         /// A decimal number such as amount or FX rate.
         /// </summary>
         /// <value>A decimal number such as amount or FX rate.</value>
         [DataMember(Name = "currencyAmount", EmitDefaultValue = false)]
-        public decimal CurrencyAmount { get; set; }
+        public decimal? CurrencyAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

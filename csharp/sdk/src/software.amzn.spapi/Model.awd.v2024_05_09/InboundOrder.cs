@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="packagesToInbound">List of packages to be inbounded. (required).</param>
         /// <param name="preferences">preferences.</param>
         /// <param name="updatedAt">Date when this order was last updated..</param>
-        public InboundOrder(DateTime createdAt = default(DateTime), DestinationDetails destinationDetails = default(DestinationDetails), string externalReferenceId = default(string), string orderId = default(string), InboundStatus orderStatus = default(InboundStatus), Address originAddress = default(Address), List<DistributionPackageQuantity> packagesToInbound = default(List<DistributionPackageQuantity>), InboundPreferences preferences = default(InboundPreferences), DateTime updatedAt = default(DateTime))
+        public InboundOrder(DateTime createdAt = default(DateTime), DestinationDetails? destinationDetails = default(DestinationDetails?), string? externalReferenceId = default(string?), string orderId = default(string), InboundStatus orderStatus = default(InboundStatus), Address originAddress = default(Address), List<DistributionPackageQuantity> packagesToInbound = default(List<DistributionPackageQuantity>), InboundPreferences? preferences = default(InboundPreferences?), DateTime? updatedAt = default(DateTime?))
         {
             this.CreatedAt = createdAt;
             // to ensure "orderId" is required (not null)
@@ -93,7 +93,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets DestinationDetails
         /// </summary>
         [DataMember(Name = "destinationDetails", EmitDefaultValue = false)]
-        public DestinationDetails DestinationDetails { get; set; }
+        public DestinationDetails? DestinationDetails { get; set; }
 
         /// <summary>
         /// Reference ID that can be used to correlate the order with partner resources.
@@ -103,7 +103,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestReferenceId</example>
         */
         [DataMember(Name = "externalReferenceId", EmitDefaultValue = false)]
-        public string ExternalReferenceId { get; set; }
+        public string? ExternalReferenceId { get; set; }
 
         /// <summary>
         /// Inbound order ID.
@@ -129,14 +129,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets Preferences
         /// </summary>
         [DataMember(Name = "preferences", EmitDefaultValue = false)]
-        public InboundPreferences Preferences { get; set; }
+        public InboundPreferences? Preferences { get; set; }
 
         /// <summary>
         /// Date when this order was last updated.
         /// </summary>
         /// <value>Date when this order was last updated.</value>
         [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -178,5 +178,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// <param name="name">The full name of the seller&#39;s primary contact. (required).</param>
         /// <param name="address">address (required).</param>
         /// <param name="nonLatinName">The non-Latin script version of the primary contact&#39;s name, if applicable..</param>
-        public PrimaryContact(string name = default(string), Address address = default(Address), string nonLatinName = default(string))
+        public PrimaryContact(string name = default(string), Address address = default(Address), string? nonLatinName = default(string?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// </summary>
         /// <value>The non-Latin script version of the primary contact&#39;s name, if applicable.</value>
         [DataMember(Name = "nonLatinName", EmitDefaultValue = false)]
-        public string NonLatinName { get; set; }
+        public string? NonLatinName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.sellers.v1
             yield break;
         }
     }
-
 }

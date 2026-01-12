@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="assignedTechnicians">A list of technicians assigned to the service job..</param>
         /// <param name="rescheduledAppointmentId">The appointment identifier..</param>
         /// <param name="poa">poa.</param>
-        public Appointment(string appointmentId = default(string), AppointmentStatusEnum? appointmentStatus = default(AppointmentStatusEnum?), AppointmentTime appointmentTime = default(AppointmentTime), List<Technician> assignedTechnicians = default(List<Technician>), string rescheduledAppointmentId = default(string), Poa poa = default(Poa))
+        public Appointment(string? appointmentId = default(string?), AppointmentStatusEnum? appointmentStatus = default(AppointmentStatusEnum?), AppointmentTime? appointmentTime = default(AppointmentTime?), List<Technician>? assignedTechnicians = default(List<Technician>?), string? rescheduledAppointmentId = default(string?), Poa? poa = default(Poa?))
         {
             this.AppointmentId = appointmentId;
             this.AppointmentStatus = appointmentStatus;
@@ -88,33 +88,33 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The appointment identifier.</value>
         [DataMember(Name = "appointmentId", EmitDefaultValue = false)]
-        public string AppointmentId { get; set; }
+        public string? AppointmentId { get; set; }
 
         /// <summary>
         /// Gets or Sets AppointmentTime
         /// </summary>
         [DataMember(Name = "appointmentTime", EmitDefaultValue = false)]
-        public AppointmentTime AppointmentTime { get; set; }
+        public AppointmentTime? AppointmentTime { get; set; }
 
         /// <summary>
         /// A list of technicians assigned to the service job.
         /// </summary>
         /// <value>A list of technicians assigned to the service job.</value>
         [DataMember(Name = "assignedTechnicians", EmitDefaultValue = false)]
-        public List<Technician> AssignedTechnicians { get; set; }
+        public List<Technician>? AssignedTechnicians { get; set; }
 
         /// <summary>
         /// The appointment identifier.
         /// </summary>
         /// <value>The appointment identifier.</value>
         [DataMember(Name = "rescheduledAppointmentId", EmitDefaultValue = false)]
-        public string RescheduledAppointmentId { get; set; }
+        public string? RescheduledAppointmentId { get; set; }
 
         /// <summary>
         /// Gets or Sets Poa
         /// </summary>
         [DataMember(Name = "poa", EmitDefaultValue = false)]
-        public Poa Poa { get; set; }
+        public Poa? Poa { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,5 +177,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

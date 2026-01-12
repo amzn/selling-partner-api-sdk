@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="requestToken">A unique token generated to identify a getRates operation. (required).</param>
         /// <param name="rates">A list of eligible shipping service offerings. (required).</param>
         /// <param name="ineligibleRates">A list of ineligible shipping service offerings..</param>
-        public GetRatesResult(string requestToken = default(string), List<Rate> rates = default(List<Rate>), List<IneligibleRate> ineligibleRates = default(List<IneligibleRate>))
+        public GetRatesResult(string requestToken = default(string), List<Rate> rates = default(List<Rate>), List<IneligibleRate>? ineligibleRates = default(List<IneligibleRate>?))
         {
             // to ensure "requestToken" is required (not null)
             if (requestToken == null)
@@ -79,7 +79,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of ineligible shipping service offerings.</value>
         [DataMember(Name = "ineligibleRates", EmitDefaultValue = false)]
-        public List<IneligibleRate> IneligibleRates { get; set; }
+        public List<IneligibleRate>? IneligibleRates { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -115,5 +115,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

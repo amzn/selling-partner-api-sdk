@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="marketplaceId">The marketplace in which the event took place..</param>
         /// <param name="taxExclusiveAmount">taxExclusiveAmount.</param>
         /// <param name="taxAmount">taxAmount.</param>
-        public NetworkComminglingTransactionEvent(string transactionType = default(string), DateTime postedDate = default(DateTime), string netCoTransactionID = default(string), string swapReason = default(string), string aSIN = default(string), string marketplaceId = default(string), Currency taxExclusiveAmount = default(Currency), Currency taxAmount = default(Currency))
+        public NetworkComminglingTransactionEvent(string? transactionType = default(string?), DateTime? postedDate = default(DateTime?), string? netCoTransactionID = default(string?), string? swapReason = default(string?), string? aSIN = default(string?), string? marketplaceId = default(string?), Currency? taxExclusiveAmount = default(Currency?), Currency? taxAmount = default(Currency?))
         {
             this.TransactionType = transactionType;
             this.PostedDate = postedDate;
@@ -59,54 +59,54 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The type of network item swap.  Possible values:  * &#x60;NetCo&#x60;: A Fulfillment by Amazon inventory pooling transaction. Available only in the India marketplace.  * &#x60;ComminglingVAT&#x60;: A commingling VAT transaction. Available only in the Spain, UK, France, Germany, and Italy marketplaces.</value>
         [DataMember(Name = "TransactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The identifier for the network item swap.
         /// </summary>
         /// <value>The identifier for the network item swap.</value>
         [DataMember(Name = "NetCoTransactionID", EmitDefaultValue = false)]
-        public string NetCoTransactionID { get; set; }
+        public string? NetCoTransactionID { get; set; }
 
         /// <summary>
         /// The reason for the network item swap.
         /// </summary>
         /// <value>The reason for the network item swap.</value>
         [DataMember(Name = "SwapReason", EmitDefaultValue = false)]
-        public string SwapReason { get; set; }
+        public string? SwapReason { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the swapped item.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the swapped item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// The marketplace in which the event took place.
         /// </summary>
         /// <value>The marketplace in which the event took place.</value>
         [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxExclusiveAmount
         /// </summary>
         [DataMember(Name = "TaxExclusiveAmount", EmitDefaultValue = false)]
-        public Currency TaxExclusiveAmount { get; set; }
+        public Currency? TaxExclusiveAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
         /// </summary>
         [DataMember(Name = "TaxAmount", EmitDefaultValue = false)]
-        public Currency TaxAmount { get; set; }
+        public Currency? TaxAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -147,5 +147,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

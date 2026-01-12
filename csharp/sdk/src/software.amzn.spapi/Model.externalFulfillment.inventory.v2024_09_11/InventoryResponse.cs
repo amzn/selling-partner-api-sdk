@@ -102,5 +102,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

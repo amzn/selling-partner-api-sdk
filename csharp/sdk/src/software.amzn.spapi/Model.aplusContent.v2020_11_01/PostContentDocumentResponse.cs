@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="warnings">A set of messages to the user, such as warnings or comments..</param>
         /// <param name="contentReferenceKey">A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required).</param>
-        public PostContentDocumentResponse(List<Error> warnings = default(List<Error>), string contentReferenceKey = default(string))
+        public PostContentDocumentResponse(List<Error>? warnings = default(List<Error>?), string contentReferenceKey = default(string))
         {
             // to ensure "contentReferenceKey" is required (not null)
             if (contentReferenceKey == null)
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>A set of messages to the user, such as warnings or comments.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Error> Warnings { get; set; }
+        public List<Error>? Warnings { get; set; }
 
         /// <summary>
         /// A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
@@ -105,5 +105,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

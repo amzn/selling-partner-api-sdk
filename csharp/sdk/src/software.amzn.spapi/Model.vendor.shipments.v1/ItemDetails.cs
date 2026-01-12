@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="expiry">expiry.</param>
         /// <param name="maximumRetailPrice">maximumRetailPrice.</param>
         /// <param name="handlingCode">Identification of the instructions on how specified item/carton/pallet should be handled..</param>
-        public ItemDetails(string purchaseOrderNumber = default(string), string lotNumber = default(string), Expiry expiry = default(Expiry), Money maximumRetailPrice = default(Money), HandlingCodeEnum? handlingCode = default(HandlingCodeEnum?))
+        public ItemDetails(string? purchaseOrderNumber = default(string?), string? lotNumber = default(string?), Expiry? expiry = default(Expiry?), Money? maximumRetailPrice = default(Money?), HandlingCodeEnum? handlingCode = default(HandlingCodeEnum?))
         {
             this.PurchaseOrderNumber = purchaseOrderNumber;
             this.LotNumber = lotNumber;
@@ -92,26 +92,26 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.</value>
         [DataMember(Name = "purchaseOrderNumber", EmitDefaultValue = false)]
-        public string PurchaseOrderNumber { get; set; }
+        public string? PurchaseOrderNumber { get; set; }
 
         /// <summary>
         /// The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.
         /// </summary>
         /// <value>The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.</value>
         [DataMember(Name = "lotNumber", EmitDefaultValue = false)]
-        public string LotNumber { get; set; }
+        public string? LotNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets Expiry
         /// </summary>
         [DataMember(Name = "expiry", EmitDefaultValue = false)]
-        public Expiry Expiry { get; set; }
+        public Expiry? Expiry { get; set; }
 
         /// <summary>
         /// Gets or Sets MaximumRetailPrice
         /// </summary>
         [DataMember(Name = "maximumRetailPrice", EmitDefaultValue = false)]
-        public Money MaximumRetailPrice { get; set; }
+        public Money? MaximumRetailPrice { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -149,5 +149,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

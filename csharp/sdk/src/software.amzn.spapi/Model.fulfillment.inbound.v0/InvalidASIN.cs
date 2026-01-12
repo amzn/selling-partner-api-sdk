@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <param name="aSIN">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="errorReason">errorReason.</param>
-        public InvalidASIN(string aSIN = default(string), ErrorReason? errorReason = default(ErrorReason?))
+        public InvalidASIN(string? aSIN = default(string?), ErrorReason? errorReason = default(ErrorReason?))
         {
             this.ASIN = aSIN;
             this.ErrorReason = errorReason;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

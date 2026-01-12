@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="CancelShipmentResponse" /> class.
         /// </summary>
         /// <param name="payload">The payload for the cancelShipment operation..</param>
-        public CancelShipmentResponse(Dictionary<string, Object> payload = default(Dictionary<string, Object>))
+        public CancelShipmentResponse(Dictionary<string, Object>? payload = default(Dictionary<string, Object>?))
         {
             this.Payload = payload;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The payload for the cancelShipment operation.</value>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Payload { get; set; }
+        public Dictionary<string, Object>? Payload { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

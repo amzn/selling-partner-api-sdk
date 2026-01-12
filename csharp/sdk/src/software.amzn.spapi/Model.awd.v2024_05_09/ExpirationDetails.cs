@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="expiration">The expiration date of the SKU..</param>
         /// <param name="onhandQuantity">The quantity that is present in AWD..</param>
-        public ExpirationDetails(DateTime expiration = default(DateTime), long onhandQuantity = default(long))
+        public ExpirationDetails(DateTime? expiration = default(DateTime?), long? onhandQuantity = default(long?))
         {
             this.Expiration = expiration;
             this.OnhandQuantity = onhandQuantity;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>The expiration date of the SKU.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public DateTime Expiration { get; set; }
+        public DateTime? Expiration { get; set; }
 
         /// <summary>
         /// The quantity that is present in AWD.
         /// </summary>
         /// <value>The quantity that is present in AWD.</value>
         [DataMember(Name = "onhandQuantity", EmitDefaultValue = false)]
-        public long OnhandQuantity { get; set; }
+        public long? OnhandQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

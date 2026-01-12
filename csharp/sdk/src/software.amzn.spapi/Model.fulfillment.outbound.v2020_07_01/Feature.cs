@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="featureName">The feature name. (required).</param>
         /// <param name="featureDescription">The feature description. (required).</param>
         /// <param name="sellerEligible">When true, indicates that the seller is eligible to use the feature..</param>
-        public Feature(string featureName = default(string), string featureDescription = default(string), bool sellerEligible = default(bool))
+        public Feature(string featureName = default(string), string featureDescription = default(string), bool? sellerEligible = default(bool?))
         {
             // to ensure "featureName" is required (not null)
             if (featureName == null)
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>When true, indicates that the seller is eligible to use the feature.</value>
         [DataMember(Name = "sellerEligible", EmitDefaultValue = true)]
-        public bool SellerEligible { get; set; }
+        public bool? SellerEligible { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

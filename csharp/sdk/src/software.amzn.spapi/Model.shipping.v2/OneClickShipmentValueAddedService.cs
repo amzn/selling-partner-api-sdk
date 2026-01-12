@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="id">The identifier of the selected value-added service. (required).</param>
         /// <param name="amount">amount.</param>
-        public OneClickShipmentValueAddedService(string id = default(string), Currency amount = default(Currency))
+        public OneClickShipmentValueAddedService(string id = default(string), Currency? amount = default(Currency?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public Currency Amount { get; set; }
+        public Currency? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

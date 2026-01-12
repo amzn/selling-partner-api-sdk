@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="statusDateTime">The date and time when the shipment status was updated. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00. (required).</param>
         /// <param name="statusLocationAddress">statusLocationAddress (required).</param>
         /// <param name="shipmentSchedule">shipmentSchedule.</param>
-        public StatusUpdateDetails(string trackingNumber = default(string), string statusCode = default(string), string reasonCode = default(string), DateTime statusDateTime = default(DateTime), Address statusLocationAddress = default(Address), ShipmentSchedule shipmentSchedule = default(ShipmentSchedule))
+        public StatusUpdateDetails(string trackingNumber = default(string), string statusCode = default(string), string reasonCode = default(string), DateTime statusDateTime = default(DateTime), Address statusLocationAddress = default(Address), ShipmentSchedule? shipmentSchedule = default(ShipmentSchedule?))
         {
             // to ensure "trackingNumber" is required (not null)
             if (trackingNumber == null)
@@ -113,7 +113,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Gets or Sets ShipmentSchedule
         /// </summary>
         [DataMember(Name = "shipmentSchedule", EmitDefaultValue = false)]
-        public ShipmentSchedule ShipmentSchedule { get; set; }
+        public ShipmentSchedule? ShipmentSchedule { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -152,5 +152,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

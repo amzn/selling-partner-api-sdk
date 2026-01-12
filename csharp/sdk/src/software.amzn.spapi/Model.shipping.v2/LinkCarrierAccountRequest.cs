@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="carrierAccountType">CarrierAccountType  associated with account. (required).</param>
         /// <param name="carrierAccountAttributes">A list of all attributes required by the carrier in order to successfully link the merchant&#39;s account (required).</param>
         /// <param name="encryptedCarrierAccountAttributes">A list of all attributes required by the carrier in order to successfully link the merchant&#39;s account.</param>
-        public LinkCarrierAccountRequest(List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>), string carrierAccountType = default(string), List<CarrierAccountAttribute> carrierAccountAttributes = default(List<CarrierAccountAttribute>), List<CarrierAccountAttribute> encryptedCarrierAccountAttributes = default(List<CarrierAccountAttribute>))
+        public LinkCarrierAccountRequest(List<ClientReferenceDetail>? clientReferenceDetails = default(List<ClientReferenceDetail>?), string carrierAccountType = default(string), List<CarrierAccountAttribute> carrierAccountAttributes = default(List<CarrierAccountAttribute>), List<CarrierAccountAttribute>? encryptedCarrierAccountAttributes = default(List<CarrierAccountAttribute>?))
         {
             // to ensure "carrierAccountType" is required (not null)
             if (carrierAccountType == null)
@@ -67,7 +67,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail</value>
         [DataMember(Name = "clientReferenceDetails", EmitDefaultValue = false)]
-        public List<ClientReferenceDetail> ClientReferenceDetails { get; set; }
+        public List<ClientReferenceDetail>? ClientReferenceDetails { get; set; }
 
         /// <summary>
         /// CarrierAccountType  associated with account.
@@ -88,7 +88,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of all attributes required by the carrier in order to successfully link the merchant&#39;s account</value>
         [DataMember(Name = "encryptedCarrierAccountAttributes", EmitDefaultValue = false)]
-        public List<CarrierAccountAttribute> EncryptedCarrierAccountAttributes { get; set; }
+        public List<CarrierAccountAttribute>? EncryptedCarrierAccountAttributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -125,5 +125,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

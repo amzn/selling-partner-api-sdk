@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
             yield break;
         }
     }
-
 }

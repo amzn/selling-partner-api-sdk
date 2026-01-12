@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="payload">payload.</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetEligibleShipmentServicesResponse(GetEligibleShipmentServicesResult payload = default(GetEligibleShipmentServicesResult), List<Error> errors = default(List<Error>))
+        public GetEligibleShipmentServicesResponse(GetEligibleShipmentServicesResult? payload = default(GetEligibleShipmentServicesResult?), List<Error>? errors = default(List<Error>?))
         {
             this.Payload = payload;
             this.Errors = errors;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets Payload
         /// </summary>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public GetEligibleShipmentServicesResult Payload { get; set; }
+        public GetEligibleShipmentServicesResult? Payload { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

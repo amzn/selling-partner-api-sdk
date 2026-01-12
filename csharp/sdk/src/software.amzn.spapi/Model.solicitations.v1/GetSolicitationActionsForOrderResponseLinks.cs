@@ -103,5 +103,4 @@ namespace software.amzn.spapi.Model.solicitations.v1
             yield break;
         }
     }
-
 }

@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="block">Number of cartons per layer on the pallet..</param>
         /// <param name="innerContainersDetails">innerContainersDetails.</param>
         /// <param name="packedItems">A list of packed items..</param>
-        public Containers(ContainerTypeEnum containerType = default(ContainerTypeEnum), string containerSequenceNumber = default(string), List<ContainerIdentification> containerIdentifiers = default(List<ContainerIdentification>), string trackingNumber = default(string), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), int tier = default(int), int block = default(int), InnerContainersDetails innerContainersDetails = default(InnerContainersDetails), List<PackedItems> packedItems = default(List<PackedItems>))
+        public Containers(ContainerTypeEnum containerType = default(ContainerTypeEnum), string? containerSequenceNumber = default(string?), List<ContainerIdentification> containerIdentifiers = default(List<ContainerIdentification>), string? trackingNumber = default(string?), Dimensions? dimensions = default(Dimensions?), Weight? weight = default(Weight?), int? tier = default(int?), int? block = default(int?), InnerContainersDetails? innerContainersDetails = default(InnerContainersDetails?), List<PackedItems>? packedItems = default(List<PackedItems>?))
         {
             this.ContainerType = containerType;
             // to ensure "containerIdentifiers" is required (not null)
@@ -100,7 +100,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.</value>
         [DataMember(Name = "containerSequenceNumber", EmitDefaultValue = false)]
-        public string ContainerSequenceNumber { get; set; }
+        public string? ContainerSequenceNumber { get; set; }
 
         /// <summary>
         /// A list of carton identifiers.
@@ -114,46 +114,46 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>The tracking number used for identifying the shipment.</value>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = false)]
-        public string TrackingNumber { get; set; }
+        public string? TrackingNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public Dimensions Dimensions { get; set; }
+        public Dimensions? Dimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// Number of layers per pallet.
         /// </summary>
         /// <value>Number of layers per pallet.</value>
         [DataMember(Name = "tier", EmitDefaultValue = false)]
-        public int Tier { get; set; }
+        public int? Tier { get; set; }
 
         /// <summary>
         /// Number of cartons per layer on the pallet.
         /// </summary>
         /// <value>Number of cartons per layer on the pallet.</value>
         [DataMember(Name = "block", EmitDefaultValue = false)]
-        public int Block { get; set; }
+        public int? Block { get; set; }
 
         /// <summary>
         /// Gets or Sets InnerContainersDetails
         /// </summary>
         [DataMember(Name = "innerContainersDetails", EmitDefaultValue = false)]
-        public InnerContainersDetails InnerContainersDetails { get; set; }
+        public InnerContainersDetails? InnerContainersDetails { get; set; }
 
         /// <summary>
         /// A list of packed items.
         /// </summary>
         /// <value>A list of packed items.</value>
         [DataMember(Name = "packedItems", EmitDefaultValue = false)]
-        public List<PackedItems> PackedItems { get; set; }
+        public List<PackedItems>? PackedItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -196,5 +196,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

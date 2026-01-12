@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="invoiceDetails">invoiceDetails.</param>
         /// <param name="serialNumbers">A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon..</param>
         /// <param name="directFulfillmentItemIdentifiers">directFulfillmentItemIdentifiers.</param>
-        public Item(Currency itemValue = default(Currency), string description = default(string), string itemIdentifier = default(string), int quantity = default(int), Weight weight = default(Weight), LiquidVolume liquidVolume = default(LiquidVolume), bool isHazmat = default(bool), DangerousGoodsDetails dangerousGoodsDetails = default(DangerousGoodsDetails), string productType = default(string), InvoiceDetails invoiceDetails = default(InvoiceDetails), List<string> serialNumbers = default(List<string>), DirectFulfillmentItemIdentifiers directFulfillmentItemIdentifiers = default(DirectFulfillmentItemIdentifiers))
+        public Item(Currency? itemValue = default(Currency?), string? description = default(string?), string? itemIdentifier = default(string?), int quantity = default(int), Weight? weight = default(Weight?), LiquidVolume? liquidVolume = default(LiquidVolume?), bool? isHazmat = default(bool?), DangerousGoodsDetails? dangerousGoodsDetails = default(DangerousGoodsDetails?), string? productType = default(string?), InvoiceDetails? invoiceDetails = default(InvoiceDetails?), List<string>? serialNumbers = default(List<string>?), DirectFulfillmentItemIdentifiers? directFulfillmentItemIdentifiers = default(DirectFulfillmentItemIdentifiers?))
         {
             this.Quantity = quantity;
             this.ItemValue = itemValue;
@@ -72,21 +72,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ItemValue
         /// </summary>
         [DataMember(Name = "itemValue", EmitDefaultValue = false)]
-        public Currency ItemValue { get; set; }
+        public Currency? ItemValue { get; set; }
 
         /// <summary>
         /// The product description of the item.
         /// </summary>
         /// <value>The product description of the item.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// A unique identifier for an item provided by the client.
         /// </summary>
         /// <value>A unique identifier for an item provided by the client.</value>
         [DataMember(Name = "itemIdentifier", EmitDefaultValue = false)]
-        public string ItemIdentifier { get; set; }
+        public string? ItemIdentifier { get; set; }
 
         /// <summary>
         /// The number of units. This value is required.
@@ -99,52 +99,52 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// Gets or Sets LiquidVolume
         /// </summary>
         [DataMember(Name = "liquidVolume", EmitDefaultValue = false)]
-        public LiquidVolume LiquidVolume { get; set; }
+        public LiquidVolume? LiquidVolume { get; set; }
 
         /// <summary>
         /// When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
         /// </summary>
         /// <value>When true, the item qualifies as hazardous materials (hazmat). Defaults to false.</value>
         [DataMember(Name = "isHazmat", EmitDefaultValue = true)]
-        public bool IsHazmat { get; set; }
+        public bool? IsHazmat { get; set; }
 
         /// <summary>
         /// Gets or Sets DangerousGoodsDetails
         /// </summary>
         [DataMember(Name = "dangerousGoodsDetails", EmitDefaultValue = false)]
-        public DangerousGoodsDetails DangerousGoodsDetails { get; set; }
+        public DangerousGoodsDetails? DangerousGoodsDetails { get; set; }
 
         /// <summary>
         /// The product type of the item.
         /// </summary>
         /// <value>The product type of the item.</value>
         [DataMember(Name = "productType", EmitDefaultValue = false)]
-        public string ProductType { get; set; }
+        public string? ProductType { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoiceDetails
         /// </summary>
         [DataMember(Name = "invoiceDetails", EmitDefaultValue = false)]
-        public InvoiceDetails InvoiceDetails { get; set; }
+        public InvoiceDetails? InvoiceDetails { get; set; }
 
         /// <summary>
         /// A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon.
         /// </summary>
         /// <value>A list of unique serial numbers in an Amazon package that can be used to guarantee non-fraudulent items. The number of serial numbers in the list must be less than or equal to the quantity of items being shipped. Only applicable when channel source is Amazon.</value>
         [DataMember(Name = "serialNumbers", EmitDefaultValue = false)]
-        public List<string> SerialNumbers { get; set; }
+        public List<string>? SerialNumbers { get; set; }
 
         /// <summary>
         /// Gets or Sets DirectFulfillmentItemIdentifiers
         /// </summary>
         [DataMember(Name = "directFulfillmentItemIdentifiers", EmitDefaultValue = false)]
-        public DirectFulfillmentItemIdentifiers DirectFulfillmentItemIdentifiers { get; set; }
+        public DirectFulfillmentItemIdentifiers? DirectFulfillmentItemIdentifiers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -189,5 +189,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

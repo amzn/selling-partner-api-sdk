@@ -83,7 +83,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="partyType">Assigned identification for the party. For example, a warehouse code or vendor code. (required).</param>
         /// <param name="address">address.</param>
         /// <param name="taxInfo">taxInfo.</param>
-        public PartyIdentificationInfo(string partyId = default(string), PartyTypeEnum partyType = default(PartyTypeEnum), Address address = default(Address), TaxRegistrationInfo taxInfo = default(TaxRegistrationInfo))
+        public PartyIdentificationInfo(string partyId = default(string), PartyTypeEnum partyType = default(PartyTypeEnum), Address? address = default(Address?), TaxRegistrationInfo? taxInfo = default(TaxRegistrationInfo?))
         {
             // to ensure "partyId" is required (not null)
             if (partyId == null)
@@ -107,13 +107,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxInfo
         /// </summary>
         [DataMember(Name = "taxInfo", EmitDefaultValue = false)]
-        public TaxRegistrationInfo TaxInfo { get; set; }
+        public TaxRegistrationInfo? TaxInfo { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -150,5 +150,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="prepGuidance">prepGuidance.</param>
         /// <param name="prepInstructionList">A list of preparation instructions to help with item sourcing decisions..</param>
         /// <param name="amazonPrepFeesDetailsList">A list of preparation instructions and fees for Amazon to prep goods for shipment..</param>
-        public SKUPrepInstructions(string sellerSKU = default(string), string aSIN = default(string), BarcodeInstruction? barcodeInstruction = default(BarcodeInstruction?), PrepGuidance? prepGuidance = default(PrepGuidance?), List<PrepInstruction> prepInstructionList = default(List<PrepInstruction>), List<AmazonPrepFeesDetails> amazonPrepFeesDetailsList = default(List<AmazonPrepFeesDetails>))
+        public SKUPrepInstructions(string? sellerSKU = default(string?), string? aSIN = default(string?), BarcodeInstruction? barcodeInstruction = default(BarcodeInstruction?), PrepGuidance? prepGuidance = default(PrepGuidance?), List<PrepInstruction>? prepInstructionList = default(List<PrepInstruction>?), List<AmazonPrepFeesDetails>? amazonPrepFeesDetailsList = default(List<AmazonPrepFeesDetails>?))
         {
             this.SellerSKU = sellerSKU;
             this.ASIN = aSIN;
@@ -67,28 +67,28 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>The seller SKU of the item.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// A list of preparation instructions to help with item sourcing decisions.
         /// </summary>
         /// <value>A list of preparation instructions to help with item sourcing decisions.</value>
         [DataMember(Name = "PrepInstructionList", EmitDefaultValue = false)]
-        public List<PrepInstruction> PrepInstructionList { get; set; }
+        public List<PrepInstruction>? PrepInstructionList { get; set; }
 
         /// <summary>
         /// A list of preparation instructions and fees for Amazon to prep goods for shipment.
         /// </summary>
         /// <value>A list of preparation instructions and fees for Amazon to prep goods for shipment.</value>
         [DataMember(Name = "AmazonPrepFeesDetailsList", EmitDefaultValue = false)]
-        public List<AmazonPrepFeesDetails> AmazonPrepFeesDetailsList { get; set; }
+        public List<AmazonPrepFeesDetails>? AmazonPrepFeesDetailsList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -127,5 +127,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

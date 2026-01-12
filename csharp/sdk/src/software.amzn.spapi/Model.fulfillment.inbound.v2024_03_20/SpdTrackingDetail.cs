@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Initializes a new instance of the <see cref="SpdTrackingDetail" /> class.
         /// </summary>
         /// <param name="spdTrackingItems">List of Small Parcel Delivery (SPD) tracking items..</param>
-        public SpdTrackingDetail(List<SpdTrackingItem> spdTrackingItems = default(List<SpdTrackingItem>))
+        public SpdTrackingDetail(List<SpdTrackingItem>? spdTrackingItems = default(List<SpdTrackingItem>?))
         {
             this.SpdTrackingItems = spdTrackingItems;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>List of Small Parcel Delivery (SPD) tracking items.</value>
         [DataMember(Name = "spdTrackingItems", EmitDefaultValue = false)]
-        public List<SpdTrackingItem> SpdTrackingItems { get; set; }
+        public List<SpdTrackingItem>? SpdTrackingItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

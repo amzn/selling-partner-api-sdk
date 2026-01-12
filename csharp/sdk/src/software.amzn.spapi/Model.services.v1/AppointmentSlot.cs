@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="startTime">Time window start time in ISO 8601 format..</param>
         /// <param name="endTime">Time window end time in ISO 8601 format..</param>
         /// <param name="capacity">Number of resources for which a slot can be reserved..</param>
-        public AppointmentSlot(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), int capacity = default(int))
+        public AppointmentSlot(DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), int? capacity = default(int?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Time window start time in ISO 8601 format.</value>
         [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Time window end time in ISO 8601 format.
         /// </summary>
         /// <value>Time window end time in ISO 8601 format.</value>
         [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Number of resources for which a slot can be reserved.
         /// </summary>
         /// <value>Number of resources for which a slot can be reserved.</value>
         [DataMember(Name = "capacity", EmitDefaultValue = false)]
-        public int Capacity { get; set; }
+        public int? Capacity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,5 +105,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

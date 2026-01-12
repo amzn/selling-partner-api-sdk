@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="description">A short description of the capacity reservation billing event..</param>
         /// <param name="transactionAmount">transactionAmount.</param>
-        public CapacityReservationBillingEvent(string transactionType = default(string), DateTime postedDate = default(DateTime), string description = default(string), Currency transactionAmount = default(Currency))
+        public CapacityReservationBillingEvent(string? transactionType = default(string?), DateTime? postedDate = default(DateTime?), string? description = default(string?), Currency? transactionAmount = default(Currency?))
         {
             this.TransactionType = transactionType;
             this.PostedDate = postedDate;
@@ -51,27 +51,27 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The transaction type. For example, FBA Inventory Fee.</value>
         [DataMember(Name = "TransactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// A short description of the capacity reservation billing event.
         /// </summary>
         /// <value>A short description of the capacity reservation billing event.</value>
         [DataMember(Name = "Description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Gets or Sets TransactionAmount
         /// </summary>
         [DataMember(Name = "TransactionAmount", EmitDefaultValue = false)]
-        public Currency TransactionAmount { get; set; }
+        public Currency? TransactionAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

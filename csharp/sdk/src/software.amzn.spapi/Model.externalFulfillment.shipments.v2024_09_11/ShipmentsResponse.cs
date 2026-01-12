@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="shipments">A list of shipments..</param>
         /// <param name="pagination">pagination.</param>
-        public ShipmentsResponse(List<Shipment> shipments = default(List<Shipment>), Pagination pagination = default(Pagination))
+        public ShipmentsResponse(List<Shipment>? shipments = default(List<Shipment>?), Pagination? pagination = default(Pagination?))
         {
             this.Shipments = shipments;
             this.Pagination = pagination;
@@ -48,13 +48,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A list of shipments.</value>
         [DataMember(Name = "shipments", EmitDefaultValue = false)]
-        public List<Shipment> Shipments { get; set; }
+        public List<Shipment>? Shipments { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

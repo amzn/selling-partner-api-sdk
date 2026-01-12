@@ -68,7 +68,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="transferRateDetails">transferRateDetails (required).</param>
         /// <param name="transactionFinalAmount">transactionFinalAmount.</param>
         /// <param name="transactionFailureReason">Description in case the transaction fails before completion .</param>
-        public Transaction(string accountId = default(string), string transactionId = default(string), TransactionType transactionType = default(TransactionType), TransactionStatus transactionStatus = default(TransactionStatus), DateTime transactionRequestDate = default(DateTime), DateTime expectedCompletionDate = default(DateTime), DateTime transactionActualCompletionDate = default(DateTime), DateTime lastUpdateDate = default(DateTime), string requesterName = default(string), string transactionRequesterSource = default(string), string transactionDescription = default(string), TransactionAccount transactionSourceAccount = default(TransactionAccount), TransactionAccount transactionDestinationAccount = default(TransactionAccount), Currency transactionRequestAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), Currency transactionFinalAmount = default(Currency), string transactionFailureReason = default(string))
+        public Transaction(string accountId = default(string), string transactionId = default(string), TransactionType transactionType = default(TransactionType), TransactionStatus transactionStatus = default(TransactionStatus), DateTime transactionRequestDate = default(DateTime), DateTime? expectedCompletionDate = default(DateTime?), DateTime? transactionActualCompletionDate = default(DateTime?), DateTime lastUpdateDate = default(DateTime), string? requesterName = default(string?), string transactionRequesterSource = default(string), string transactionDescription = default(string), TransactionAccount? transactionSourceAccount = default(TransactionAccount?), TransactionAccount transactionDestinationAccount = default(TransactionAccount), Currency transactionRequestAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), Currency? transactionFinalAmount = default(Currency?), string? transactionFailureReason = default(string?))
         {
             // to ensure "accountId" is required (not null)
             if (accountId == null)
@@ -156,14 +156,14 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>2023-09-26T02:32:59.787Z</example>
         */
         [DataMember(Name = "expectedCompletionDate", EmitDefaultValue = false)]
-        public DateTime ExpectedCompletionDate { get; set; }
+        public DateTime? ExpectedCompletionDate { get; set; }
 
         /// <summary>
         /// Transaction completion date 
         /// </summary>
         /// <value>Transaction completion date </value>
         [DataMember(Name = "transactionActualCompletionDate", EmitDefaultValue = false)]
-        public DateTime TransactionActualCompletionDate { get; set; }
+        public DateTime? TransactionActualCompletionDate { get; set; }
 
         /// <summary>
         /// The last update date on the transaction 
@@ -180,7 +180,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>TPPOrgId</example>
         */
         [DataMember(Name = "requesterName", EmitDefaultValue = false)]
-        public string RequesterName { get; set; }
+        public string? RequesterName { get; set; }
 
         /// <summary>
         /// The transaction initiation source. This value is either the Amazon portal or PISP name that the customer used to start the transaction.
@@ -200,7 +200,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Gets or Sets TransactionSourceAccount
         /// </summary>
         [DataMember(Name = "transactionSourceAccount", EmitDefaultValue = false)]
-        public TransactionAccount TransactionSourceAccount { get; set; }
+        public TransactionAccount? TransactionSourceAccount { get; set; }
 
         /// <summary>
         /// Gets or Sets TransactionDestinationAccount
@@ -224,7 +224,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Gets or Sets TransactionFinalAmount
         /// </summary>
         [DataMember(Name = "transactionFinalAmount", EmitDefaultValue = false)]
-        public Currency TransactionFinalAmount { get; set; }
+        public Currency? TransactionFinalAmount { get; set; }
 
         /// <summary>
         /// Description in case the transaction fails before completion 
@@ -234,7 +234,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>Insufficient Balance</example>
         */
         [DataMember(Name = "transactionFailureReason", EmitDefaultValue = false)]
-        public string TransactionFailureReason { get; set; }
+        public string? TransactionFailureReason { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -284,5 +284,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

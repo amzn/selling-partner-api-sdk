@@ -89,7 +89,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="discountPercent">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. &lt;br&gt;**Pattern** : &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;..</param>
         /// <param name="discountDueDays">The number of calendar days from the Base date (Invoice date) until the discount is no longer valid..</param>
         /// <param name="netDueDays">The number of calendar days from the base date (invoice date) until the total amount on the invoice is due..</param>
-        public PaymentTerms(TypeEnum? type = default(TypeEnum?), string discountPercent = default(string), decimal discountDueDays = default(decimal), decimal netDueDays = default(decimal))
+        public PaymentTerms(TypeEnum? type = default(TypeEnum?), string? discountPercent = default(string?), decimal? discountDueDays = default(decimal?), decimal? netDueDays = default(decimal?))
         {
             this.Type = type;
             this.DiscountPercent = discountPercent;
@@ -102,21 +102,21 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. &lt;br&gt;**Pattern** : &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;.</value>
         [DataMember(Name = "discountPercent", EmitDefaultValue = false)]
-        public string DiscountPercent { get; set; }
+        public string? DiscountPercent { get; set; }
 
         /// <summary>
         /// The number of calendar days from the Base date (Invoice date) until the discount is no longer valid.
         /// </summary>
         /// <value>The number of calendar days from the Base date (Invoice date) until the discount is no longer valid.</value>
         [DataMember(Name = "discountDueDays", EmitDefaultValue = false)]
-        public decimal DiscountDueDays { get; set; }
+        public decimal? DiscountDueDays { get; set; }
 
         /// <summary>
         /// The number of calendar days from the base date (invoice date) until the total amount on the invoice is due.
         /// </summary>
         /// <value>The number of calendar days from the base date (invoice date) until the total amount on the invoice is due.</value>
         [DataMember(Name = "netDueDays", EmitDefaultValue = false)]
-        public decimal NetDueDays { get; set; }
+        public decimal? NetDueDays { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -153,5 +153,4 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             yield break;
         }
     }
-
 }

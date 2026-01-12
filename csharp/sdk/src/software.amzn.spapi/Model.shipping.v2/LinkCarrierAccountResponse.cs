@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="registrationStatus">registrationStatus.</param>
         /// <param name="accountId">Identifier for the seller&#39;s carrier account..</param>
-        public LinkCarrierAccountResponse(AccountStatus? registrationStatus = default(AccountStatus?), string accountId = default(string))
+        public LinkCarrierAccountResponse(AccountStatus? registrationStatus = default(AccountStatus?), string? accountId = default(string?))
         {
             this.RegistrationStatus = registrationStatus;
             this.AccountId = accountId;
@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Identifier for the seller&#39;s carrier account.</value>
         [DataMember(Name = "accountId", EmitDefaultValue = false)]
-        public string AccountId { get; set; }
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

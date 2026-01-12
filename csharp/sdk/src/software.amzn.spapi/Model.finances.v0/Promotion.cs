@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="promotionType">The type of promotion..</param>
         /// <param name="promotionId">The seller-specified identifier for the promotion..</param>
         /// <param name="promotionAmount">promotionAmount.</param>
-        public Promotion(string promotionType = default(string), string promotionId = default(string), Currency promotionAmount = default(Currency))
+        public Promotion(string? promotionType = default(string?), string? promotionId = default(string?), Currency? promotionAmount = default(Currency?))
         {
             this.PromotionType = promotionType;
             this.PromotionId = promotionId;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The type of promotion.</value>
         [DataMember(Name = "PromotionType", EmitDefaultValue = false)]
-        public string PromotionType { get; set; }
+        public string? PromotionType { get; set; }
 
         /// <summary>
         /// The seller-specified identifier for the promotion.
         /// </summary>
         /// <value>The seller-specified identifier for the promotion.</value>
         [DataMember(Name = "PromotionId", EmitDefaultValue = false)]
-        public string PromotionId { get; set; }
+        public string? PromotionId { get; set; }
 
         /// <summary>
         /// Gets or Sets PromotionAmount
         /// </summary>
         [DataMember(Name = "PromotionAmount", EmitDefaultValue = false)]
-        public Currency PromotionAmount { get; set; }
+        public Currency? PromotionAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

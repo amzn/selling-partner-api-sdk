@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="baseAmount">baseAmount.</param>
         /// <param name="withheldAmount">withheldAmount.</param>
         /// <param name="taxWithholdingPeriod">taxWithholdingPeriod.</param>
-        public TaxWithholdingEvent(DateTime postedDate = default(DateTime), Currency baseAmount = default(Currency), Currency withheldAmount = default(Currency), TaxWithholdingPeriod taxWithholdingPeriod = default(TaxWithholdingPeriod))
+        public TaxWithholdingEvent(DateTime? postedDate = default(DateTime?), Currency? baseAmount = default(Currency?), Currency? withheldAmount = default(Currency?), TaxWithholdingPeriod? taxWithholdingPeriod = default(TaxWithholdingPeriod?))
         {
             this.PostedDate = postedDate;
             this.BaseAmount = baseAmount;
@@ -51,25 +51,25 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// Gets or Sets BaseAmount
         /// </summary>
         [DataMember(Name = "BaseAmount", EmitDefaultValue = false)]
-        public Currency BaseAmount { get; set; }
+        public Currency? BaseAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets WithheldAmount
         /// </summary>
         [DataMember(Name = "WithheldAmount", EmitDefaultValue = false)]
-        public Currency WithheldAmount { get; set; }
+        public Currency? WithheldAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxWithholdingPeriod
         /// </summary>
         [DataMember(Name = "TaxWithholdingPeriod", EmitDefaultValue = false)]
-        public TaxWithholdingPeriod TaxWithholdingPeriod { get; set; }
+        public TaxWithholdingPeriod? TaxWithholdingPeriod { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

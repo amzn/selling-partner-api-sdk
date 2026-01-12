@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <param name="description">The description of the attribute value..</param>
         /// <param name="value">The possible values for the attribute option..</param>
-        public AttributeOption(string description = default(string), string value = default(string))
+        public AttributeOption(string? description = default(string?), string? value = default(string?))
         {
             this.Description = description;
             this.Value = value;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>The description of the attribute value.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// The possible values for the attribute option.
         /// </summary>
         /// <value>The possible values for the attribute option.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

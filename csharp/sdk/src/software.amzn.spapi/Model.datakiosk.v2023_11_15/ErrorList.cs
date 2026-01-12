@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
             yield break;
         }
     }
-
 }

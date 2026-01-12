@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="address">address.</param>
         /// <param name="partyId">Assigned identification for the party. (required).</param>
         /// <param name="taxRegistrationDetails">Tax registration details of the entity..</param>
-        public PartyIdentification(Address address = default(Address), string partyId = default(string), List<TaxRegistrationDetails> taxRegistrationDetails = default(List<TaxRegistrationDetails>))
+        public PartyIdentification(Address? address = default(Address?), string partyId = default(string), List<TaxRegistrationDetails>? taxRegistrationDetails = default(List<TaxRegistrationDetails>?))
         {
             // to ensure "partyId" is required (not null)
             if (partyId == null)
@@ -58,7 +58,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Assigned identification for the party.
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Tax registration details of the entity.</value>
         [DataMember(Name = "taxRegistrationDetails", EmitDefaultValue = false)]
-        public List<TaxRegistrationDetails> TaxRegistrationDetails { get; set; }
+        public List<TaxRegistrationDetails>? TaxRegistrationDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

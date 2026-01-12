@@ -59,7 +59,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="transferScheduleInformation">transferScheduleInformation (required).</param>
         /// <param name="paymentPreference">paymentPreference.</param>
         /// <param name="transferScheduleFailures">Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons.  (required).</param>
-        public TransferSchedule(string transferScheduleId = default(string), TransactionType transactionType = default(TransactionType), TransactionAccount transactionSourceAccount = default(TransactionAccount), TransactionAccount transactionDestinationAccount = default(TransactionAccount), TransferScheduleStatus transferScheduleStatus = default(TransferScheduleStatus), TransferScheduleInformation transferScheduleInformation = default(TransferScheduleInformation), PaymentPreference paymentPreference = default(PaymentPreference), List<TransferScheduleFailures> transferScheduleFailures = default(List<TransferScheduleFailures>))
+        public TransferSchedule(string transferScheduleId = default(string), TransactionType transactionType = default(TransactionType), TransactionAccount? transactionSourceAccount = default(TransactionAccount?), TransactionAccount transactionDestinationAccount = default(TransactionAccount), TransferScheduleStatus transferScheduleStatus = default(TransferScheduleStatus), TransferScheduleInformation transferScheduleInformation = default(TransferScheduleInformation), PaymentPreference? paymentPreference = default(PaymentPreference?), List<TransferScheduleFailures> transferScheduleFailures = default(List<TransferScheduleFailures>))
         {
             // to ensure "transferScheduleId" is required (not null)
             if (transferScheduleId == null)
@@ -102,7 +102,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Gets or Sets TransactionSourceAccount
         /// </summary>
         [DataMember(Name = "transactionSourceAccount", EmitDefaultValue = false)]
-        public TransactionAccount TransactionSourceAccount { get; set; }
+        public TransactionAccount? TransactionSourceAccount { get; set; }
 
         /// <summary>
         /// Gets or Sets TransactionDestinationAccount
@@ -120,7 +120,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Gets or Sets PaymentPreference
         /// </summary>
         [DataMember(Name = "paymentPreference", EmitDefaultValue = false)]
-        public PaymentPreference PaymentPreference { get; set; }
+        public PaymentPreference? PaymentPreference { get; set; }
 
         /// <summary>
         /// Collection that holds Transfer Schedules that has been cancelled or failed due to certain reasons. 
@@ -168,5 +168,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="boxPackingMethods">The box content information sources that are allowed..</param>
         /// <param name="boxRequirements">boxRequirements.</param>
         /// <param name="shippingRequirements">A list of supported shipping requirements for this packing configuration..</param>
-        public PackingConfiguration(List<BoxContentInformationSource> boxPackingMethods = default(List<BoxContentInformationSource>), BoxRequirements boxRequirements = default(BoxRequirements), List<ShippingRequirements> shippingRequirements = default(List<ShippingRequirements>))
+        public PackingConfiguration(List<BoxContentInformationSource>? boxPackingMethods = default(List<BoxContentInformationSource>?), BoxRequirements? boxRequirements = default(BoxRequirements?), List<ShippingRequirements>? shippingRequirements = default(List<ShippingRequirements>?))
         {
             this.BoxPackingMethods = boxPackingMethods;
             this.BoxRequirements = boxRequirements;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The box content information sources that are allowed.</value>
         [DataMember(Name = "boxPackingMethods", EmitDefaultValue = false)]
-        public List<BoxContentInformationSource> BoxPackingMethods { get; set; }
+        public List<BoxContentInformationSource>? BoxPackingMethods { get; set; }
 
         /// <summary>
         /// Gets or Sets BoxRequirements
         /// </summary>
         [DataMember(Name = "boxRequirements", EmitDefaultValue = false)]
-        public BoxRequirements BoxRequirements { get; set; }
+        public BoxRequirements? BoxRequirements { get; set; }
 
         /// <summary>
         /// A list of supported shipping requirements for this packing configuration.
         /// </summary>
         /// <value>A list of supported shipping requirements for this packing configuration.</value>
         [DataMember(Name = "shippingRequirements", EmitDefaultValue = false)]
-        public List<ShippingRequirements> ShippingRequirements { get; set; }
+        public List<ShippingRequirements>? ShippingRequirements { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

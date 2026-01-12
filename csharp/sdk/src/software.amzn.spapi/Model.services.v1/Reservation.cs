@@ -87,7 +87,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="reservationId">Unique identifier for a reservation. If present, it is treated as an update reservation request and will update the corresponding reservation. Otherwise, it is treated as a new create reservation request..</param>
         /// <param name="type">Type of reservation. (required).</param>
         /// <param name="availability">availability (required).</param>
-        public Reservation(string reservationId = default(string), TypeEnum type = default(TypeEnum), AvailabilityRecord availability = default(AvailabilityRecord))
+        public Reservation(string? reservationId = default(string?), TypeEnum type = default(TypeEnum), AvailabilityRecord availability = default(AvailabilityRecord))
         {
             this.Type = type;
             // to ensure "availability" is required (not null)
@@ -104,7 +104,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Unique identifier for a reservation. If present, it is treated as an update reservation request and will update the corresponding reservation. Otherwise, it is treated as a new create reservation request.</value>
         [DataMember(Name = "reservationId", EmitDefaultValue = false)]
-        public string ReservationId { get; set; }
+        public string? ReservationId { get; set; }
 
         /// <summary>
         /// Gets or Sets Availability
@@ -146,5 +146,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

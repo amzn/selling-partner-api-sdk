@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="startDateTime">Start date time of slot in ISO 8601 format with precision of seconds..</param>
         /// <param name="endDateTime">End date time of slot in ISO 8601 format with precision of seconds..</param>
         /// <param name="capacity">Capacity of the slot..</param>
-        public RangeSlot(DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime), int capacity = default(int))
+        public RangeSlot(DateTime? startDateTime = default(DateTime?), DateTime? endDateTime = default(DateTime?), int? capacity = default(int?))
         {
             this.StartDateTime = startDateTime;
             this.EndDateTime = endDateTime;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Start date time of slot in ISO 8601 format with precision of seconds.</value>
         [DataMember(Name = "startDateTime", EmitDefaultValue = false)]
-        public DateTime StartDateTime { get; set; }
+        public DateTime? StartDateTime { get; set; }
 
         /// <summary>
         /// End date time of slot in ISO 8601 format with precision of seconds.
         /// </summary>
         /// <value>End date time of slot in ISO 8601 format with precision of seconds.</value>
         [DataMember(Name = "endDateTime", EmitDefaultValue = false)]
-        public DateTime EndDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
 
         /// <summary>
         /// Capacity of the slot.
         /// </summary>
         /// <value>Capacity of the slot.</value>
         [DataMember(Name = "capacity", EmitDefaultValue = false)]
-        public int Capacity { get; set; }
+        public int? Capacity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

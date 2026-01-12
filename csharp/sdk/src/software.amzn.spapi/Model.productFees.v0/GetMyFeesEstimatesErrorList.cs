@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

@@ -135,7 +135,7 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         /// <param name="marketplaceId">A marketplace identifier. Identifies the Amazon marketplace where the restriction is enforced. (required).</param>
         /// <param name="conditionType">The condition that applies to the restriction..</param>
         /// <param name="reasons">A list of reasons for the restriction..</param>
-        public Restriction(string marketplaceId = default(string), ConditionTypeEnum? conditionType = default(ConditionTypeEnum?), List<Reason> reasons = default(List<Reason>))
+        public Restriction(string marketplaceId = default(string), ConditionTypeEnum? conditionType = default(ConditionTypeEnum?), List<Reason>? reasons = default(List<Reason>?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -159,7 +159,7 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         /// </summary>
         /// <value>A list of reasons for the restriction.</value>
         [DataMember(Name = "reasons", EmitDefaultValue = false)]
-        public List<Reason> Reasons { get; set; }
+        public List<Reason>? Reasons { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -195,5 +195,4 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
             yield break;
         }
     }
-
 }

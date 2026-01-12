@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
         /// Initializes a new instance of the <see cref="SubmitInventoryUpdateRequest" /> class.
         /// </summary>
         /// <param name="inventory">inventory.</param>
-        public SubmitInventoryUpdateRequest(InventoryUpdate inventory = default(InventoryUpdate))
+        public SubmitInventoryUpdateRequest(InventoryUpdate? inventory = default(InventoryUpdate?))
         {
             this.Inventory = inventory;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
         /// Gets or Sets Inventory
         /// </summary>
         [DataMember(Name = "inventory", EmitDefaultValue = false)]
-        public InventoryUpdate Inventory { get; set; }
+        public InventoryUpdate? Inventory { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
             yield break;
         }
     }
-
 }

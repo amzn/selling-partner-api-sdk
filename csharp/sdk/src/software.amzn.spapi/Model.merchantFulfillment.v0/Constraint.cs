@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="validationRegEx">A regular expression..</param>
         /// <param name="validationString">A validation string. (required).</param>
-        public Constraint(string validationRegEx = default(string), string validationString = default(string))
+        public Constraint(string? validationRegEx = default(string?), string validationString = default(string))
         {
             // to ensure "validationString" is required (not null)
             if (validationString == null)
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A regular expression.</value>
         [DataMember(Name = "ValidationRegEx", EmitDefaultValue = false)]
-        public string ValidationRegEx { get; set; }
+        public string? ValidationRegEx { get; set; }
 
         /// <summary>
         /// A validation string.
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

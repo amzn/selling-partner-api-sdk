@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="valueAsWeight">valueAsWeight.</param>
         /// <param name="valueAsDimension">valueAsDimension.</param>
         /// <param name="valueAsCurrency">valueAsCurrency.</param>
-        public AdditionalSellerInput(string dataType = default(string), string valueAsString = default(string), bool valueAsBoolean = default(bool), int valueAsInteger = default(int), DateTime valueAsTimestamp = default(DateTime), Address valueAsAddress = default(Address), Weight valueAsWeight = default(Weight), Length valueAsDimension = default(Length), CurrencyAmount valueAsCurrency = default(CurrencyAmount))
+        public AdditionalSellerInput(string? dataType = default(string?), string? valueAsString = default(string?), bool? valueAsBoolean = default(bool?), int? valueAsInteger = default(int?), DateTime? valueAsTimestamp = default(DateTime?), Address? valueAsAddress = default(Address?), Weight? valueAsWeight = default(Weight?), Length? valueAsDimension = default(Length?), CurrencyAmount? valueAsCurrency = default(CurrencyAmount?))
         {
             this.DataType = dataType;
             this.ValueAsString = valueAsString;
@@ -61,59 +61,59 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The data type of the additional information.</value>
         [DataMember(Name = "DataType", EmitDefaultValue = false)]
-        public string DataType { get; set; }
+        public string? DataType { get; set; }
 
         /// <summary>
         /// The value when the data type is string.
         /// </summary>
         /// <value>The value when the data type is string.</value>
         [DataMember(Name = "ValueAsString", EmitDefaultValue = false)]
-        public string ValueAsString { get; set; }
+        public string? ValueAsString { get; set; }
 
         /// <summary>
         /// The value when the data type is boolean.
         /// </summary>
         /// <value>The value when the data type is boolean.</value>
         [DataMember(Name = "ValueAsBoolean", EmitDefaultValue = true)]
-        public bool ValueAsBoolean { get; set; }
+        public bool? ValueAsBoolean { get; set; }
 
         /// <summary>
         /// The value when the data type is integer.
         /// </summary>
         /// <value>The value when the data type is integer.</value>
         [DataMember(Name = "ValueAsInteger", EmitDefaultValue = false)]
-        public int ValueAsInteger { get; set; }
+        public int? ValueAsInteger { get; set; }
 
         /// <summary>
         /// Date-time formatted timestamp.
         /// </summary>
         /// <value>Date-time formatted timestamp.</value>
         [DataMember(Name = "ValueAsTimestamp", EmitDefaultValue = false)]
-        public DateTime ValueAsTimestamp { get; set; }
+        public DateTime? ValueAsTimestamp { get; set; }
 
         /// <summary>
         /// Gets or Sets ValueAsAddress
         /// </summary>
         [DataMember(Name = "ValueAsAddress", EmitDefaultValue = false)]
-        public Address ValueAsAddress { get; set; }
+        public Address? ValueAsAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets ValueAsWeight
         /// </summary>
         [DataMember(Name = "ValueAsWeight", EmitDefaultValue = false)]
-        public Weight ValueAsWeight { get; set; }
+        public Weight? ValueAsWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets ValueAsDimension
         /// </summary>
         [DataMember(Name = "ValueAsDimension", EmitDefaultValue = false)]
-        public Length ValueAsDimension { get; set; }
+        public Length? ValueAsDimension { get; set; }
 
         /// <summary>
         /// Gets or Sets ValueAsCurrency
         /// </summary>
         [DataMember(Name = "ValueAsCurrency", EmitDefaultValue = false)]
-        public CurrencyAmount ValueAsCurrency { get; set; }
+        public CurrencyAmount? ValueAsCurrency { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -155,5 +155,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Initializes a new instance of the <see cref="OfferProgramConfigurationPromotionsDiscountFunding" /> class.
         /// </summary>
         /// <param name="percentage">The percentage discount on the offer..</param>
-        public OfferProgramConfigurationPromotionsDiscountFunding(decimal percentage = default(decimal))
+        public OfferProgramConfigurationPromotionsDiscountFunding(decimal? percentage = default(decimal?))
         {
             this.Percentage = percentage;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>The percentage discount on the offer.</value>
         [DataMember(Name = "percentage", EmitDefaultValue = false)]
-        public decimal Percentage { get; set; }
+        public decimal? Percentage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,5 +91,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

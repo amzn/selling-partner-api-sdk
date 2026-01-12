@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <param name="glanceViewWeightPercentage">The glance view weighted percentage for this segment, which is the glance views for this segment as a percentage of total glance views across all segments for the ASIN. A higher percentage indicates that more Amazon customers receive this offer as the Featured Offer..</param>
         /// <param name="sampleLocation">sampleLocation.</param>
-        public SegmentDetails(decimal glanceViewWeightPercentage = default(decimal), SampleLocation sampleLocation = default(SampleLocation))
+        public SegmentDetails(decimal? glanceViewWeightPercentage = default(decimal?), SampleLocation? sampleLocation = default(SampleLocation?))
         {
             this.GlanceViewWeightPercentage = glanceViewWeightPercentage;
             this.SampleLocation = sampleLocation;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>The glance view weighted percentage for this segment, which is the glance views for this segment as a percentage of total glance views across all segments for the ASIN. A higher percentage indicates that more Amazon customers receive this offer as the Featured Offer.</value>
         [DataMember(Name = "glanceViewWeightPercentage", EmitDefaultValue = false)]
-        public decimal GlanceViewWeightPercentage { get; set; }
+        public decimal? GlanceViewWeightPercentage { get; set; }
 
         /// <summary>
         /// Gets or Sets SampleLocation
         /// </summary>
         [DataMember(Name = "sampleLocation", EmitDefaultValue = false)]
-        public SampleLocation SampleLocation { get; set; }
+        public SampleLocation? SampleLocation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

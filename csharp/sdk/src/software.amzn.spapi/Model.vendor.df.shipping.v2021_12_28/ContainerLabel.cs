@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="containerTrackingNumber">The container (pallet) tracking identifier from the shipping carrier..</param>
         /// <param name="content">The container label content encoded into a Base64 string. (required).</param>
         /// <param name="format">format (required).</param>
-        public ContainerLabel(string containerTrackingNumber = default(string), string content = default(string), ContainerLabelFormat format = default(ContainerLabelFormat))
+        public ContainerLabel(string? containerTrackingNumber = default(string?), string content = default(string), ContainerLabelFormat format = default(ContainerLabelFormat))
         {
             // to ensure "content" is required (not null)
             if (content == null)
@@ -65,7 +65,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>The container (pallet) tracking identifier from the shipping carrier.</value>
         [DataMember(Name = "containerTrackingNumber", EmitDefaultValue = false)]
-        public string ContainerTrackingNumber { get; set; }
+        public string? ContainerTrackingNumber { get; set; }
 
         /// <summary>
         /// The container label content encoded into a Base64 string.
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

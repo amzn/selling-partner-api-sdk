@@ -65,7 +65,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="startTime">Start Time from which the appointment slots are generated in ISO 8601 format..</param>
         /// <param name="endTime">End Time up to which the appointment slots are generated in ISO 8601 format..</param>
         /// <param name="appointmentSlots">A list of time windows along with associated capacity in which the service can be performed..</param>
-        public AppointmentSlotReport(SchedulingTypeEnum? schedulingType = default(SchedulingTypeEnum?), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), List<AppointmentSlot> appointmentSlots = default(List<AppointmentSlot>))
+        public AppointmentSlotReport(SchedulingTypeEnum? schedulingType = default(SchedulingTypeEnum?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), List<AppointmentSlot>? appointmentSlots = default(List<AppointmentSlot>?))
         {
             this.SchedulingType = schedulingType;
             this.StartTime = startTime;
@@ -78,21 +78,21 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Start Time from which the appointment slots are generated in ISO 8601 format.</value>
         [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// End Time up to which the appointment slots are generated in ISO 8601 format.
         /// </summary>
         /// <value>End Time up to which the appointment slots are generated in ISO 8601 format.</value>
         [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// A list of time windows along with associated capacity in which the service can be performed.
         /// </summary>
         /// <value>A list of time windows along with associated capacity in which the service can be performed.</value>
         [DataMember(Name = "appointmentSlots", EmitDefaultValue = false)]
-        public List<AppointmentSlot> AppointmentSlots { get; set; }
+        public List<AppointmentSlot>? AppointmentSlots { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -129,5 +129,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

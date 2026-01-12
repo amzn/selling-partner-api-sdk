@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="status">The status of the failed &#x60;AdhocDisbursement&#x60;. For example, &#x60;HARD_DECLINED&#x60;..</param>
         /// <param name="transferAmount">transferAmount.</param>
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public FailedAdhocDisbursementEvent(string fundsTransfersType = default(string), string transferId = default(string), string disbursementId = default(string), string paymentDisbursementType = default(string), string status = default(string), Currency transferAmount = default(Currency), DateTime postedDate = default(DateTime))
+        public FailedAdhocDisbursementEvent(string? fundsTransfersType = default(string?), string? transferId = default(string?), string? disbursementId = default(string?), string? paymentDisbursementType = default(string?), string? status = default(string?), Currency? transferAmount = default(Currency?), DateTime? postedDate = default(DateTime?))
         {
             this.FundsTransfersType = fundsTransfersType;
             this.TransferId = transferId;
@@ -57,48 +57,48 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The type of fund transfer. For example, &#x60;Refund&#x60;.</value>
         [DataMember(Name = "FundsTransfersType", EmitDefaultValue = false)]
-        public string FundsTransfersType { get; set; }
+        public string? FundsTransfersType { get; set; }
 
         /// <summary>
         /// The transfer identifier.
         /// </summary>
         /// <value>The transfer identifier.</value>
         [DataMember(Name = "TransferId", EmitDefaultValue = false)]
-        public string TransferId { get; set; }
+        public string? TransferId { get; set; }
 
         /// <summary>
         /// The disbursement identifier.
         /// </summary>
         /// <value>The disbursement identifier.</value>
         [DataMember(Name = "DisbursementId", EmitDefaultValue = false)]
-        public string DisbursementId { get; set; }
+        public string? DisbursementId { get; set; }
 
         /// <summary>
         /// The type of payment for disbursement. For example, &#x60;CREDIT_CARD&#x60;.
         /// </summary>
         /// <value>The type of payment for disbursement. For example, &#x60;CREDIT_CARD&#x60;.</value>
         [DataMember(Name = "PaymentDisbursementType", EmitDefaultValue = false)]
-        public string PaymentDisbursementType { get; set; }
+        public string? PaymentDisbursementType { get; set; }
 
         /// <summary>
         /// The status of the failed &#x60;AdhocDisbursement&#x60;. For example, &#x60;HARD_DECLINED&#x60;.
         /// </summary>
         /// <value>The status of the failed &#x60;AdhocDisbursement&#x60;. For example, &#x60;HARD_DECLINED&#x60;.</value>
         [DataMember(Name = "Status", EmitDefaultValue = false)]
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// Gets or Sets TransferAmount
         /// </summary>
         [DataMember(Name = "TransferAmount", EmitDefaultValue = false)]
-        public Currency TransferAmount { get; set; }
+        public Currency? TransferAmount { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -138,5 +138,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

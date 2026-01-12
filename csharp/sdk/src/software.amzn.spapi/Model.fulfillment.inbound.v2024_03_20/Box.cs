@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="quantity">The number of containers where all other properties like weight or dimensions are identical..</param>
         /// <param name="templateName">Template name of the box..</param>
         /// <param name="weight">weight.</param>
-        public Box(string boxId = default(string), BoxContentInformationSource? contentInformationSource = default(BoxContentInformationSource?), Region destinationRegion = default(Region), Dimensions dimensions = default(Dimensions), string externalContainerIdentifier = default(string), string externalContainerIdentifierType = default(string), List<Item> items = default(List<Item>), string packageId = default(string), int quantity = default(int), string templateName = default(string), Weight weight = default(Weight))
+        public Box(string? boxId = default(string?), BoxContentInformationSource? contentInformationSource = default(BoxContentInformationSource?), Region? destinationRegion = default(Region?), Dimensions? dimensions = default(Dimensions?), string? externalContainerIdentifier = default(string?), string? externalContainerIdentifierType = default(string?), List<Item>? items = default(List<Item>?), string packageId = default(string), int? quantity = default(int?), string? templateName = default(string?), Weight? weight = default(Weight?))
         {
             // to ensure "packageId" is required (not null)
             if (packageId == null)
@@ -81,40 +81,40 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The ID provided by Amazon that identifies a given box. This ID is comprised of the external shipment ID (which is generated after transportation has been confirmed) and the index of the box.</value>
         [DataMember(Name = "boxId", EmitDefaultValue = false)]
-        public string BoxId { get; set; }
+        public string? BoxId { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationRegion
         /// </summary>
         [DataMember(Name = "destinationRegion", EmitDefaultValue = false)]
-        public Region DestinationRegion { get; set; }
+        public Region? DestinationRegion { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public Dimensions Dimensions { get; set; }
+        public Dimensions? Dimensions { get; set; }
 
         /// <summary>
         /// The external identifier for this container / box.
         /// </summary>
         /// <value>The external identifier for this container / box.</value>
         [DataMember(Name = "externalContainerIdentifier", EmitDefaultValue = false)]
-        public string ExternalContainerIdentifier { get; set; }
+        public string? ExternalContainerIdentifier { get; set; }
 
         /// <summary>
         /// Type of the external identifier used. Can be: &#x60;AMAZON&#x60;, &#x60;SSCC&#x60;.
         /// </summary>
         /// <value>Type of the external identifier used. Can be: &#x60;AMAZON&#x60;, &#x60;SSCC&#x60;.</value>
         [DataMember(Name = "externalContainerIdentifierType", EmitDefaultValue = false)]
-        public string ExternalContainerIdentifierType { get; set; }
+        public string? ExternalContainerIdentifierType { get; set; }
 
         /// <summary>
         /// Items contained within the box.
         /// </summary>
         /// <value>Items contained within the box.</value>
         [DataMember(Name = "items", EmitDefaultValue = false)]
-        public List<Item> Items { get; set; }
+        public List<Item>? Items { get; set; }
 
         /// <summary>
         /// Primary key to uniquely identify a Package (Box or Pallet).
@@ -128,20 +128,20 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The number of containers where all other properties like weight or dimensions are identical.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Template name of the box.
         /// </summary>
         /// <value>Template name of the box.</value>
         [DataMember(Name = "templateName", EmitDefaultValue = false)]
-        public string TemplateName { get; set; }
+        public string? TemplateName { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -266,5 +266,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

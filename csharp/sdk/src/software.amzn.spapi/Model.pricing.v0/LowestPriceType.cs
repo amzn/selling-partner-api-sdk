@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="listingPrice">listingPrice (required).</param>
         /// <param name="shipping">shipping.</param>
         /// <param name="points">points.</param>
-        public LowestPriceType(string condition = default(string), string fulfillmentChannel = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int quantityTier = default(int), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), MoneyType landedPrice = default(MoneyType), MoneyType listingPrice = default(MoneyType), MoneyType shipping = default(MoneyType), Points points = default(Points))
+        public LowestPriceType(string condition = default(string), string fulfillmentChannel = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int? quantityTier = default(int?), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), MoneyType? landedPrice = default(MoneyType?), MoneyType listingPrice = default(MoneyType), MoneyType? shipping = default(MoneyType?), Points? points = default(Points?))
         {
             // to ensure "condition" is required (not null)
             if (condition == null)
@@ -107,13 +107,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>Indicates at what quantity this price becomes active.</value>
         [DataMember(Name = "quantityTier", EmitDefaultValue = false)]
-        public int QuantityTier { get; set; }
+        public int? QuantityTier { get; set; }
 
         /// <summary>
         /// Gets or Sets LandedPrice
         /// </summary>
         [DataMember(Name = "LandedPrice", EmitDefaultValue = false)]
-        public MoneyType LandedPrice { get; set; }
+        public MoneyType? LandedPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets ListingPrice
@@ -125,13 +125,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets Shipping
         /// </summary>
         [DataMember(Name = "Shipping", EmitDefaultValue = false)]
-        public MoneyType Shipping { get; set; }
+        public MoneyType? Shipping { get; set; }
 
         /// <summary>
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "Points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -173,5 +173,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

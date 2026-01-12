@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="pallets">List of pallet configuration inputs..</param>
         /// <param name="readyToShipWindow">readyToShipWindow (required).</param>
         /// <param name="shipmentId">Identifier of a shipment. A shipment contains the boxes and units being inbounded. (required).</param>
-        public ShipmentTransportationConfiguration(ContactInformation contactInformation = default(ContactInformation), FreightInformation freightInformation = default(FreightInformation), List<PalletInput> pallets = default(List<PalletInput>), WindowInput readyToShipWindow = default(WindowInput), string shipmentId = default(string))
+        public ShipmentTransportationConfiguration(ContactInformation? contactInformation = default(ContactInformation?), FreightInformation? freightInformation = default(FreightInformation?), List<PalletInput>? pallets = default(List<PalletInput>?), WindowInput readyToShipWindow = default(WindowInput), string shipmentId = default(string))
         {
             // to ensure "readyToShipWindow" is required (not null)
             if (readyToShipWindow == null)
@@ -67,20 +67,20 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets ContactInformation
         /// </summary>
         [DataMember(Name = "contactInformation", EmitDefaultValue = false)]
-        public ContactInformation ContactInformation { get; set; }
+        public ContactInformation? ContactInformation { get; set; }
 
         /// <summary>
         /// Gets or Sets FreightInformation
         /// </summary>
         [DataMember(Name = "freightInformation", EmitDefaultValue = false)]
-        public FreightInformation FreightInformation { get; set; }
+        public FreightInformation? FreightInformation { get; set; }
 
         /// <summary>
         /// List of pallet configuration inputs.
         /// </summary>
         /// <value>List of pallet configuration inputs.</value>
         [DataMember(Name = "pallets", EmitDefaultValue = false)]
-        public List<PalletInput> Pallets { get; set; }
+        public List<PalletInput>? Pallets { get; set; }
 
         /// <summary>
         /// Gets or Sets ReadyToShipWindow
@@ -152,5 +152,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

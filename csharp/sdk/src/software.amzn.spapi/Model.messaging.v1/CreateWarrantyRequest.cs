@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// <param name="attachments">Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation..</param>
         /// <param name="coverageStartDate">The start date of the warranty coverage to include in the message to the buyer..</param>
         /// <param name="coverageEndDate">The end date of the warranty coverage to include in the message to the buyer..</param>
-        public CreateWarrantyRequest(List<Attachment> attachments = default(List<Attachment>), DateTime coverageStartDate = default(DateTime), DateTime coverageEndDate = default(DateTime))
+        public CreateWarrantyRequest(List<Attachment>? attachments = default(List<Attachment>?), DateTime? coverageStartDate = default(DateTime?), DateTime? coverageEndDate = default(DateTime?))
         {
             this.Attachments = attachments;
             this.CoverageStartDate = coverageStartDate;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation.</value>
         [DataMember(Name = "attachments", EmitDefaultValue = false)]
-        public List<Attachment> Attachments { get; set; }
+        public List<Attachment>? Attachments { get; set; }
 
         /// <summary>
         /// The start date of the warranty coverage to include in the message to the buyer.
         /// </summary>
         /// <value>The start date of the warranty coverage to include in the message to the buyer.</value>
         [DataMember(Name = "coverageStartDate", EmitDefaultValue = false)]
-        public DateTime CoverageStartDate { get; set; }
+        public DateTime? CoverageStartDate { get; set; }
 
         /// <summary>
         /// The end date of the warranty coverage to include in the message to the buyer.
         /// </summary>
         /// <value>The end date of the warranty coverage to include in the message to the buyer.</value>
         [DataMember(Name = "coverageEndDate", EmitDefaultValue = false)]
-        public DateTime CoverageEndDate { get; set; }
+        public DateTime? CoverageEndDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

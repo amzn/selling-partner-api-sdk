@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// <param name="pickupDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
         /// <param name="forwardTrackingInfo">forwardTrackingInfo.</param>
         /// <param name="reverseTrackingInfo">reverseTrackingInfo.</param>
-        public ReturnShippingInfo(string deliveryDateTime = default(string), string pickupDateTime = default(string), TrackingInfo forwardTrackingInfo = default(TrackingInfo), TrackingInfo reverseTrackingInfo = default(TrackingInfo))
+        public ReturnShippingInfo(string? deliveryDateTime = default(string?), string? pickupDateTime = default(string?), TrackingInfo? forwardTrackingInfo = default(TrackingInfo?), TrackingInfo? reverseTrackingInfo = default(TrackingInfo?))
         {
             this.DeliveryDateTime = deliveryDateTime;
             this.PickupDateTime = pickupDateTime;
@@ -52,26 +52,26 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "deliveryDateTime", EmitDefaultValue = false)]
-        public string DeliveryDateTime { get; set; }
+        public string? DeliveryDateTime { get; set; }
 
         /// <summary>
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "pickupDateTime", EmitDefaultValue = false)]
-        public string PickupDateTime { get; set; }
+        public string? PickupDateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets ForwardTrackingInfo
         /// </summary>
         [DataMember(Name = "forwardTrackingInfo", EmitDefaultValue = false)]
-        public TrackingInfo ForwardTrackingInfo { get; set; }
+        public TrackingInfo? ForwardTrackingInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets ReverseTrackingInfo
         /// </summary>
         [DataMember(Name = "reverseTrackingInfo", EmitDefaultValue = false)]
-        public TrackingInfo ReverseTrackingInfo { get; set; }
+        public TrackingInfo? ReverseTrackingInfo { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
             yield break;
         }
     }
-
 }

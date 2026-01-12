@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="pagination">pagination.</param>
         /// <param name="refinements">refinements.</param>
         /// <param name="items">A list of items from the Amazon catalog. (required).</param>
-        public ItemSearchResults(int numberOfResults = default(int), Pagination pagination = default(Pagination), Refinements refinements = default(Refinements), List<Item> items = default(List<Item>))
+        public ItemSearchResults(int numberOfResults = default(int), Pagination? pagination = default(Pagination?), Refinements? refinements = default(Refinements?), List<Item> items = default(List<Item>))
         {
             this.NumberOfResults = numberOfResults;
             // to ensure "items" is required (not null)
@@ -67,13 +67,13 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets Refinements
         /// </summary>
         [DataMember(Name = "refinements", EmitDefaultValue = false)]
-        public Refinements Refinements { get; set; }
+        public Refinements? Refinements { get; set; }
 
         /// <summary>
         /// A list of items from the Amazon catalog.
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

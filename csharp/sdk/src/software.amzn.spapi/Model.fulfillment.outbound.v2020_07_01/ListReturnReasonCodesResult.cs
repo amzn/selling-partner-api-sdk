@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="ListReturnReasonCodesResult" /> class.
         /// </summary>
         /// <param name="reasonCodeDetails">An array of return reason code details..</param>
-        public ListReturnReasonCodesResult(List<ReasonCodeDetails> reasonCodeDetails = default(List<ReasonCodeDetails>))
+        public ListReturnReasonCodesResult(List<ReasonCodeDetails>? reasonCodeDetails = default(List<ReasonCodeDetails>?))
         {
             this.ReasonCodeDetails = reasonCodeDetails;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of return reason code details.</value>
         [DataMember(Name = "reasonCodeDetails", EmitDefaultValue = false)]
-        public List<ReasonCodeDetails> ReasonCodeDetails { get; set; }
+        public List<ReasonCodeDetails>? ReasonCodeDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

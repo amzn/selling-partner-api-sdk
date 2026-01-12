@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="downloadType">The type of download. Possible values: &#x60;URL&#x60;. (required).</param>
         /// <param name="expiration">The URI&#39;s expiration time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;..</param>
         /// <param name="uri">Uniform resource identifier to identify where the document is located. (required).</param>
-        public DocumentDownload(string downloadType = default(string), DateTime expiration = default(DateTime), string uri = default(string))
+        public DocumentDownload(string downloadType = default(string), DateTime? expiration = default(DateTime?), string uri = default(string))
         {
             // to ensure "downloadType" is required (not null)
             if (downloadType == null)
@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The URI&#39;s expiration time. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public DateTime Expiration { get; set; }
+        public DateTime? Expiration { get; set; }
 
         /// <summary>
         /// Uniform resource identifier to identify where the document is located.
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

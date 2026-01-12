@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="clientReferenceDetails">Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail.</param>
         /// <param name="accountId">Identifier for the seller&#39;s carrier account..</param>
-        public UnlinkCarrierAccountRequest(List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>), string accountId = default(string))
+        public UnlinkCarrierAccountRequest(List<ClientReferenceDetail>? clientReferenceDetails = default(List<ClientReferenceDetail>?), string? accountId = default(string?))
         {
             this.ClientReferenceDetails = clientReferenceDetails;
             this.AccountId = accountId;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail</value>
         [DataMember(Name = "clientReferenceDetails", EmitDefaultValue = false)]
-        public List<ClientReferenceDetail> ClientReferenceDetails { get; set; }
+        public List<ClientReferenceDetail>? ClientReferenceDetails { get; set; }
 
         /// <summary>
         /// Identifier for the seller&#39;s carrier account.
         /// </summary>
         /// <value>Identifier for the seller&#39;s carrier account.</value>
         [DataMember(Name = "accountId", EmitDefaultValue = false)]
-        public string AccountId { get; set; }
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

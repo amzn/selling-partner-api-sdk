@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="originalRemovalOrderId">The identifier for the original removal order..</param>
         /// <param name="liquidationProceedsAmount">liquidationProceedsAmount.</param>
         /// <param name="liquidationFeeAmount">liquidationFeeAmount.</param>
-        public FBALiquidationEvent(DateTime postedDate = default(DateTime), string originalRemovalOrderId = default(string), Currency liquidationProceedsAmount = default(Currency), Currency liquidationFeeAmount = default(Currency))
+        public FBALiquidationEvent(DateTime? postedDate = default(DateTime?), string? originalRemovalOrderId = default(string?), Currency? liquidationProceedsAmount = default(Currency?), Currency? liquidationFeeAmount = default(Currency?))
         {
             this.PostedDate = postedDate;
             this.OriginalRemovalOrderId = originalRemovalOrderId;
@@ -51,26 +51,26 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The identifier for the original removal order.
         /// </summary>
         /// <value>The identifier for the original removal order.</value>
         [DataMember(Name = "OriginalRemovalOrderId", EmitDefaultValue = false)]
-        public string OriginalRemovalOrderId { get; set; }
+        public string? OriginalRemovalOrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets LiquidationProceedsAmount
         /// </summary>
         [DataMember(Name = "LiquidationProceedsAmount", EmitDefaultValue = false)]
-        public Currency LiquidationProceedsAmount { get; set; }
+        public Currency? LiquidationProceedsAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets LiquidationFeeAmount
         /// </summary>
         [DataMember(Name = "LiquidationFeeAmount", EmitDefaultValue = false)]
-        public Currency LiquidationFeeAmount { get; set; }
+        public Currency? LiquidationFeeAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

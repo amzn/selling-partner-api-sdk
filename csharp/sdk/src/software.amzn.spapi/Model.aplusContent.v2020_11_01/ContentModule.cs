@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="standardTechSpecs">standardTechSpecs.</param>
         /// <param name="standardText">standardText.</param>
         /// <param name="standardThreeImageText">standardThreeImageText.</param>
-        public ContentModule(ContentModuleType contentModuleType = default(ContentModuleType), StandardCompanyLogoModule standardCompanyLogo = default(StandardCompanyLogoModule), StandardComparisonTableModule standardComparisonTable = default(StandardComparisonTableModule), StandardFourImageTextModule standardFourImageText = default(StandardFourImageTextModule), StandardFourImageTextQuadrantModule standardFourImageTextQuadrant = default(StandardFourImageTextQuadrantModule), StandardHeaderImageTextModule standardHeaderImageText = default(StandardHeaderImageTextModule), StandardImageSidebarModule standardImageSidebar = default(StandardImageSidebarModule), StandardImageTextOverlayModule standardImageTextOverlay = default(StandardImageTextOverlayModule), StandardMultipleImageTextModule standardMultipleImageText = default(StandardMultipleImageTextModule), StandardProductDescriptionModule standardProductDescription = default(StandardProductDescriptionModule), StandardSingleImageHighlightsModule standardSingleImageHighlights = default(StandardSingleImageHighlightsModule), StandardSingleImageSpecsDetailModule standardSingleImageSpecsDetail = default(StandardSingleImageSpecsDetailModule), StandardSingleSideImageModule standardSingleSideImage = default(StandardSingleSideImageModule), StandardTechSpecsModule standardTechSpecs = default(StandardTechSpecsModule), StandardTextModule standardText = default(StandardTextModule), StandardThreeImageTextModule standardThreeImageText = default(StandardThreeImageTextModule))
+        public ContentModule(ContentModuleType contentModuleType = default(ContentModuleType), StandardCompanyLogoModule? standardCompanyLogo = default(StandardCompanyLogoModule?), StandardComparisonTableModule? standardComparisonTable = default(StandardComparisonTableModule?), StandardFourImageTextModule? standardFourImageText = default(StandardFourImageTextModule?), StandardFourImageTextQuadrantModule? standardFourImageTextQuadrant = default(StandardFourImageTextQuadrantModule?), StandardHeaderImageTextModule? standardHeaderImageText = default(StandardHeaderImageTextModule?), StandardImageSidebarModule? standardImageSidebar = default(StandardImageSidebarModule?), StandardImageTextOverlayModule? standardImageTextOverlay = default(StandardImageTextOverlayModule?), StandardMultipleImageTextModule? standardMultipleImageText = default(StandardMultipleImageTextModule?), StandardProductDescriptionModule? standardProductDescription = default(StandardProductDescriptionModule?), StandardSingleImageHighlightsModule? standardSingleImageHighlights = default(StandardSingleImageHighlightsModule?), StandardSingleImageSpecsDetailModule? standardSingleImageSpecsDetail = default(StandardSingleImageSpecsDetailModule?), StandardSingleSideImageModule? standardSingleSideImage = default(StandardSingleSideImageModule?), StandardTechSpecsModule? standardTechSpecs = default(StandardTechSpecsModule?), StandardTextModule? standardText = default(StandardTextModule?), StandardThreeImageTextModule? standardThreeImageText = default(StandardThreeImageTextModule?))
         {
             this.ContentModuleType = contentModuleType;
             this.StandardCompanyLogo = standardCompanyLogo;
@@ -85,91 +85,91 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets StandardCompanyLogo
         /// </summary>
         [DataMember(Name = "standardCompanyLogo", EmitDefaultValue = false)]
-        public StandardCompanyLogoModule StandardCompanyLogo { get; set; }
+        public StandardCompanyLogoModule? StandardCompanyLogo { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardComparisonTable
         /// </summary>
         [DataMember(Name = "standardComparisonTable", EmitDefaultValue = false)]
-        public StandardComparisonTableModule StandardComparisonTable { get; set; }
+        public StandardComparisonTableModule? StandardComparisonTable { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardFourImageText
         /// </summary>
         [DataMember(Name = "standardFourImageText", EmitDefaultValue = false)]
-        public StandardFourImageTextModule StandardFourImageText { get; set; }
+        public StandardFourImageTextModule? StandardFourImageText { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardFourImageTextQuadrant
         /// </summary>
         [DataMember(Name = "standardFourImageTextQuadrant", EmitDefaultValue = false)]
-        public StandardFourImageTextQuadrantModule StandardFourImageTextQuadrant { get; set; }
+        public StandardFourImageTextQuadrantModule? StandardFourImageTextQuadrant { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardHeaderImageText
         /// </summary>
         [DataMember(Name = "standardHeaderImageText", EmitDefaultValue = false)]
-        public StandardHeaderImageTextModule StandardHeaderImageText { get; set; }
+        public StandardHeaderImageTextModule? StandardHeaderImageText { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardImageSidebar
         /// </summary>
         [DataMember(Name = "standardImageSidebar", EmitDefaultValue = false)]
-        public StandardImageSidebarModule StandardImageSidebar { get; set; }
+        public StandardImageSidebarModule? StandardImageSidebar { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardImageTextOverlay
         /// </summary>
         [DataMember(Name = "standardImageTextOverlay", EmitDefaultValue = false)]
-        public StandardImageTextOverlayModule StandardImageTextOverlay { get; set; }
+        public StandardImageTextOverlayModule? StandardImageTextOverlay { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardMultipleImageText
         /// </summary>
         [DataMember(Name = "standardMultipleImageText", EmitDefaultValue = false)]
-        public StandardMultipleImageTextModule StandardMultipleImageText { get; set; }
+        public StandardMultipleImageTextModule? StandardMultipleImageText { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardProductDescription
         /// </summary>
         [DataMember(Name = "standardProductDescription", EmitDefaultValue = false)]
-        public StandardProductDescriptionModule StandardProductDescription { get; set; }
+        public StandardProductDescriptionModule? StandardProductDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardSingleImageHighlights
         /// </summary>
         [DataMember(Name = "standardSingleImageHighlights", EmitDefaultValue = false)]
-        public StandardSingleImageHighlightsModule StandardSingleImageHighlights { get; set; }
+        public StandardSingleImageHighlightsModule? StandardSingleImageHighlights { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardSingleImageSpecsDetail
         /// </summary>
         [DataMember(Name = "standardSingleImageSpecsDetail", EmitDefaultValue = false)]
-        public StandardSingleImageSpecsDetailModule StandardSingleImageSpecsDetail { get; set; }
+        public StandardSingleImageSpecsDetailModule? StandardSingleImageSpecsDetail { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardSingleSideImage
         /// </summary>
         [DataMember(Name = "standardSingleSideImage", EmitDefaultValue = false)]
-        public StandardSingleSideImageModule StandardSingleSideImage { get; set; }
+        public StandardSingleSideImageModule? StandardSingleSideImage { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardTechSpecs
         /// </summary>
         [DataMember(Name = "standardTechSpecs", EmitDefaultValue = false)]
-        public StandardTechSpecsModule StandardTechSpecs { get; set; }
+        public StandardTechSpecsModule? StandardTechSpecs { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardText
         /// </summary>
         [DataMember(Name = "standardText", EmitDefaultValue = false)]
-        public StandardTextModule StandardText { get; set; }
+        public StandardTextModule? StandardText { get; set; }
 
         /// <summary>
         /// Gets or Sets StandardThreeImageText
         /// </summary>
         [DataMember(Name = "standardThreeImageText", EmitDefaultValue = false)]
-        public StandardThreeImageTextModule StandardThreeImageText { get; set; }
+        public StandardThreeImageTextModule? StandardThreeImageText { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -218,5 +218,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

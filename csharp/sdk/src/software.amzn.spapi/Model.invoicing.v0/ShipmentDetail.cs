@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="marketplaceTaxInfo">marketplaceTaxInfo.</param>
         /// <param name="sellerDisplayName">The seller’s friendly name registered in the marketplace..</param>
         /// <param name="shipmentItems">A list of shipment items..</param>
-        public ShipmentDetail(string warehouseId = default(string), string amazonOrderId = default(string), string amazonShipmentId = default(string), DateTime purchaseDate = default(DateTime), Address shippingAddress = default(Address), List<string> paymentMethodDetails = default(List<string>), List<PaymentInformation> payments = default(List<PaymentInformation>), string marketplaceId = default(string), string sellerId = default(string), string buyerName = default(string), string buyerCounty = default(string), BuyerTaxInfo buyerTaxInfo = default(BuyerTaxInfo), MarketplaceTaxInfo marketplaceTaxInfo = default(MarketplaceTaxInfo), string sellerDisplayName = default(string), List<ShipmentItem> shipmentItems = default(List<ShipmentItem>))
+        public ShipmentDetail(string? warehouseId = default(string?), string? amazonOrderId = default(string?), string? amazonShipmentId = default(string?), DateTime? purchaseDate = default(DateTime?), Address? shippingAddress = default(Address?), List<string>? paymentMethodDetails = default(List<string>?), List<PaymentInformation>? payments = default(List<PaymentInformation>?), string? marketplaceId = default(string?), string? sellerId = default(string?), string? buyerName = default(string?), string? buyerCounty = default(string?), BuyerTaxInfo? buyerTaxInfo = default(BuyerTaxInfo?), MarketplaceTaxInfo? marketplaceTaxInfo = default(MarketplaceTaxInfo?), string? sellerDisplayName = default(string?), List<ShipmentItem>? shipmentItems = default(List<ShipmentItem>?))
         {
             this.WarehouseId = warehouseId;
             this.AmazonOrderId = amazonOrderId;
@@ -73,102 +73,102 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <value>The Amazon-defined identifier for the warehouse.</value>
         [DataMember(Name = "WarehouseId", EmitDefaultValue = false)]
-        public string WarehouseId { get; set; }
+        public string? WarehouseId { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier for the order.
         /// </summary>
         /// <value>The Amazon-defined identifier for the order.</value>
         [DataMember(Name = "AmazonOrderId", EmitDefaultValue = false)]
-        public string AmazonOrderId { get; set; }
+        public string? AmazonOrderId { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier for the shipment.
         /// </summary>
         /// <value>The Amazon-defined identifier for the shipment.</value>
         [DataMember(Name = "AmazonShipmentId", EmitDefaultValue = false)]
-        public string AmazonShipmentId { get; set; }
+        public string? AmazonShipmentId { get; set; }
 
         /// <summary>
         /// The date and time when the order was created.
         /// </summary>
         /// <value>The date and time when the order was created.</value>
         [DataMember(Name = "PurchaseDate", EmitDefaultValue = false)]
-        public DateTime PurchaseDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
         [DataMember(Name = "ShippingAddress", EmitDefaultValue = false)]
-        public Address ShippingAddress { get; set; }
+        public Address? ShippingAddress { get; set; }
 
         /// <summary>
         /// The list of payment method details.
         /// </summary>
         /// <value>The list of payment method details.</value>
         [DataMember(Name = "PaymentMethodDetails", EmitDefaultValue = false)]
-        public List<string> PaymentMethodDetails { get; set; }
+        public List<string>? PaymentMethodDetails { get; set; }
 
         /// <summary>
         /// List of payment transactions
         /// </summary>
         /// <value>List of payment transactions</value>
         [DataMember(Name = "Payments", EmitDefaultValue = false)]
-        public List<PaymentInformation> Payments { get; set; }
+        public List<PaymentInformation>? Payments { get; set; }
 
         /// <summary>
         /// The identifier for the marketplace where the order was placed.
         /// </summary>
         /// <value>The identifier for the marketplace where the order was placed.</value>
         [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// The seller identifier.
         /// </summary>
         /// <value>The seller identifier.</value>
         [DataMember(Name = "SellerId", EmitDefaultValue = false)]
-        public string SellerId { get; set; }
+        public string? SellerId { get; set; }
 
         /// <summary>
         /// The name of the buyer.
         /// </summary>
         /// <value>The name of the buyer.</value>
         [DataMember(Name = "BuyerName", EmitDefaultValue = false)]
-        public string BuyerName { get; set; }
+        public string? BuyerName { get; set; }
 
         /// <summary>
         /// The county of the buyer.
         /// </summary>
         /// <value>The county of the buyer.</value>
         [DataMember(Name = "BuyerCounty", EmitDefaultValue = false)]
-        public string BuyerCounty { get; set; }
+        public string? BuyerCounty { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerTaxInfo
         /// </summary>
         [DataMember(Name = "BuyerTaxInfo", EmitDefaultValue = false)]
-        public BuyerTaxInfo BuyerTaxInfo { get; set; }
+        public BuyerTaxInfo? BuyerTaxInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketplaceTaxInfo
         /// </summary>
         [DataMember(Name = "MarketplaceTaxInfo", EmitDefaultValue = false)]
-        public MarketplaceTaxInfo MarketplaceTaxInfo { get; set; }
+        public MarketplaceTaxInfo? MarketplaceTaxInfo { get; set; }
 
         /// <summary>
         /// The seller’s friendly name registered in the marketplace.
         /// </summary>
         /// <value>The seller’s friendly name registered in the marketplace.</value>
         [DataMember(Name = "SellerDisplayName", EmitDefaultValue = false)]
-        public string SellerDisplayName { get; set; }
+        public string? SellerDisplayName { get; set; }
 
         /// <summary>
         /// A list of shipment items.
         /// </summary>
         /// <value>A list of shipment items.</value>
         [DataMember(Name = "ShipmentItems", EmitDefaultValue = false)]
-        public List<ShipmentItem> ShipmentItems { get; set; }
+        public List<ShipmentItem>? ShipmentItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -216,5 +216,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

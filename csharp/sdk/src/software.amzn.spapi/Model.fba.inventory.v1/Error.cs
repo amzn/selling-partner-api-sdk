@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="code">An error code that identifies the type of error that occurred. (required).</param>
         /// <param name="message">A message that describes the error condition in a human-readable form..</param>
         /// <param name="details">Additional information that can help the caller understand or fix the issue..</param>
-        public Error(string code = default(string), string message = default(string), string details = default(string))
+        public Error(string code = default(string), string? message = default(string?), string? details = default(string?))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -66,14 +66,14 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>A message that describes the error condition in a human-readable form.</value>
         [DataMember(Name = "message", EmitDefaultValue = false)]
-        public string Message { get; set; }
+        public string? Message { get; set; }
 
         /// <summary>
         /// Additional information that can help the caller understand or fix the issue.
         /// </summary>
         /// <value>Additional information that can help the caller understand or fix the issue.</value>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public string Details { get; set; }
+        public string? Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

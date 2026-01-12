@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="baseValue">baseValue.</param>
         /// <param name="taxValue">taxValue.</param>
         /// <param name="transactionValue">transactionValue.</param>
-        public ProductAdsPaymentEvent(DateTime postedDate = default(DateTime), string transactionType = default(string), string invoiceId = default(string), Currency baseValue = default(Currency), Currency taxValue = default(Currency), Currency transactionValue = default(Currency))
+        public ProductAdsPaymentEvent(DateTime? postedDate = default(DateTime?), string? transactionType = default(string?), string? invoiceId = default(string?), Currency? baseValue = default(Currency?), Currency? taxValue = default(Currency?), Currency? transactionValue = default(Currency?))
         {
             this.PostedDate = postedDate;
             this.TransactionType = transactionType;
@@ -55,39 +55,39 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "postedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// Indicates if the transaction is for a charge or a refund.  Possible values:  * &#x60;charge&#x60;  * &#x60;refund&#x60;
         /// </summary>
         /// <value>Indicates if the transaction is for a charge or a refund.  Possible values:  * &#x60;charge&#x60;  * &#x60;refund&#x60;</value>
         [DataMember(Name = "transactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// The identifier for the invoice that includes the transaction.
         /// </summary>
         /// <value>The identifier for the invoice that includes the transaction.</value>
         [DataMember(Name = "invoiceId", EmitDefaultValue = false)]
-        public string InvoiceId { get; set; }
+        public string? InvoiceId { get; set; }
 
         /// <summary>
         /// Gets or Sets BaseValue
         /// </summary>
         [DataMember(Name = "baseValue", EmitDefaultValue = false)]
-        public Currency BaseValue { get; set; }
+        public Currency? BaseValue { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxValue
         /// </summary>
         [DataMember(Name = "taxValue", EmitDefaultValue = false)]
-        public Currency TaxValue { get; set; }
+        public Currency? TaxValue { get; set; }
 
         /// <summary>
         /// Gets or Sets TransactionValue
         /// </summary>
         [DataMember(Name = "transactionValue", EmitDefaultValue = false)]
-        public Currency TransactionValue { get; set; }
+        public Currency? TransactionValue { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -126,5 +126,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

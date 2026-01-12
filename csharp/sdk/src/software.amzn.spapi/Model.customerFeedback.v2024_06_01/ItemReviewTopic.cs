@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// <param name="childAsinMetrics">childAsinMetrics.</param>
         /// <param name="reviewSnippets">A list of up to three snippets from reviews that contain the topic. This value is &#x60;null&#x60; if there aren&#39;t enough review snippets for the topic..</param>
         /// <param name="subtopics">A list of up to five top subtopics for the topic. The percentage of customer reviews that mention the subtopic determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are no subtopics..</param>
-        public ItemReviewTopic(string topic = default(string), ItemReviewTopicMetrics asinMetrics = default(ItemReviewTopicMetrics), ItemReviewTopicMetrics parentAsinMetrics = default(ItemReviewTopicMetrics), ItemReviewBrowseNodeMetrics browseNodeMetrics = default(ItemReviewBrowseNodeMetrics), ChildAsinMetrics childAsinMetrics = default(ChildAsinMetrics), List<string> reviewSnippets = default(List<string>), List<ItemReviewSubtopic> subtopics = default(List<ItemReviewSubtopic>))
+        public ItemReviewTopic(string topic = default(string), ItemReviewTopicMetrics asinMetrics = default(ItemReviewTopicMetrics), ItemReviewTopicMetrics? parentAsinMetrics = default(ItemReviewTopicMetrics?), ItemReviewBrowseNodeMetrics? browseNodeMetrics = default(ItemReviewBrowseNodeMetrics?), ChildAsinMetrics? childAsinMetrics = default(ChildAsinMetrics?), List<string>? reviewSnippets = default(List<string>?), List<ItemReviewSubtopic>? subtopics = default(List<ItemReviewSubtopic>?))
         {
             // to ensure "topic" is required (not null)
             if (topic == null)
@@ -84,33 +84,33 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// Gets or Sets ParentAsinMetrics
         /// </summary>
         [DataMember(Name = "parentAsinMetrics", EmitDefaultValue = false)]
-        public ItemReviewTopicMetrics ParentAsinMetrics { get; set; }
+        public ItemReviewTopicMetrics? ParentAsinMetrics { get; set; }
 
         /// <summary>
         /// Gets or Sets BrowseNodeMetrics
         /// </summary>
         [DataMember(Name = "browseNodeMetrics", EmitDefaultValue = false)]
-        public ItemReviewBrowseNodeMetrics BrowseNodeMetrics { get; set; }
+        public ItemReviewBrowseNodeMetrics? BrowseNodeMetrics { get; set; }
 
         /// <summary>
         /// Gets or Sets ChildAsinMetrics
         /// </summary>
         [DataMember(Name = "childAsinMetrics", EmitDefaultValue = false)]
-        public ChildAsinMetrics ChildAsinMetrics { get; set; }
+        public ChildAsinMetrics? ChildAsinMetrics { get; set; }
 
         /// <summary>
         /// A list of up to three snippets from reviews that contain the topic. This value is &#x60;null&#x60; if there aren&#39;t enough review snippets for the topic.
         /// </summary>
         /// <value>A list of up to three snippets from reviews that contain the topic. This value is &#x60;null&#x60; if there aren&#39;t enough review snippets for the topic.</value>
         [DataMember(Name = "reviewSnippets", EmitDefaultValue = false)]
-        public List<string> ReviewSnippets { get; set; }
+        public List<string>? ReviewSnippets { get; set; }
 
         /// <summary>
         /// A list of up to five top subtopics for the topic. The percentage of customer reviews that mention the subtopic determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are no subtopics.
         /// </summary>
         /// <value>A list of up to five top subtopics for the topic. The percentage of customer reviews that mention the subtopic determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are no subtopics.</value>
         [DataMember(Name = "subtopics", EmitDefaultValue = false)]
-        public List<ItemReviewSubtopic> Subtopics { get; set; }
+        public List<ItemReviewSubtopic>? Subtopics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -150,5 +150,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

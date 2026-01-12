@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Initializes a new instance of the <see cref="GetSellingPartnerMetricsResponse" /> class.
         /// </summary>
         /// <param name="metrics">A list of metrics data for the selling partner..</param>
-        public GetSellingPartnerMetricsResponse(List<GetSellingPartnerMetricsResponseMetric> metrics = default(List<GetSellingPartnerMetricsResponseMetric>))
+        public GetSellingPartnerMetricsResponse(List<GetSellingPartnerMetricsResponseMetric>? metrics = default(List<GetSellingPartnerMetricsResponseMetric>?))
         {
             this.Metrics = metrics;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>A list of metrics data for the selling partner.</value>
         [DataMember(Name = "metrics", EmitDefaultValue = false)]
-        public List<GetSellingPartnerMetricsResponseMetric> Metrics { get; set; }
+        public List<GetSellingPartnerMetricsResponseMetric>? Metrics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

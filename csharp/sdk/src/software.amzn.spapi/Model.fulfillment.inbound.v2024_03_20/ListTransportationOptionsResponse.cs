@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="transportationOptions">Transportation options generated for the placement option. (required).</param>
-        public ListTransportationOptionsResponse(Pagination pagination = default(Pagination), List<TransportationOption> transportationOptions = default(List<TransportationOption>))
+        public ListTransportationOptionsResponse(Pagination? pagination = default(Pagination?), List<TransportationOption> transportationOptions = default(List<TransportationOption>))
         {
             // to ensure "transportationOptions" is required (not null)
             if (transportationOptions == null)
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Transportation options generated for the placement option.
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

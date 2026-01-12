@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="asin">The Amazon Standard Identification Number (ASIN)..</param>
         /// <param name="highlight">When true, indicates that this content block is visually highlighted..</param>
         /// <param name="metrics">Comparison metrics for the product..</param>
-        public StandardComparisonProductBlock(int position = default(int), ImageComponent image = default(ImageComponent), string title = default(string), string asin = default(string), bool highlight = default(bool), List<PlainTextItem> metrics = default(List<PlainTextItem>))
+        public StandardComparisonProductBlock(int position = default(int), ImageComponent? image = default(ImageComponent?), string? title = default(string?), string? asin = default(string?), bool? highlight = default(bool?), List<PlainTextItem>? metrics = default(List<PlainTextItem>?))
         {
             this.Position = position;
             this.Image = image;
@@ -66,35 +66,35 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Image
         /// </summary>
         [DataMember(Name = "image", EmitDefaultValue = false)]
-        public ImageComponent Image { get; set; }
+        public ImageComponent? Image { get; set; }
 
         /// <summary>
         /// The comparison product title.
         /// </summary>
         /// <value>The comparison product title.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN).
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN).</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// When true, indicates that this content block is visually highlighted.
         /// </summary>
         /// <value>When true, indicates that this content block is visually highlighted.</value>
         [DataMember(Name = "highlight", EmitDefaultValue = true)]
-        public bool Highlight { get; set; }
+        public bool? Highlight { get; set; }
 
         /// <summary>
         /// Comparison metrics for the product.
         /// </summary>
         /// <value>Comparison metrics for the product.</value>
         [DataMember(Name = "metrics", EmitDefaultValue = false)]
-        public List<PlainTextItem> Metrics { get; set; }
+        public List<PlainTextItem>? Metrics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -163,5 +163,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

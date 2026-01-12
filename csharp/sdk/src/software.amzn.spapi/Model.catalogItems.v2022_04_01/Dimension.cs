@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <param name="unit">Unit of measurement for the dimension value..</param>
         /// <param name="value">Numeric value of the dimension..</param>
-        public Dimension(string unit = default(string), decimal value = default(decimal))
+        public Dimension(string? unit = default(string?), decimal? value = default(decimal?))
         {
             this.Unit = unit;
             this.Value = value;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Unit of measurement for the dimension value.</value>
         [DataMember(Name = "unit", EmitDefaultValue = false)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
 
         /// <summary>
         /// Numeric value of the dimension.
         /// </summary>
         /// <value>Numeric value of the dimension.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public decimal Value { get; set; }
+        public decimal? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

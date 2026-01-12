@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="payload">Contains the &#x60;UpdateScheduleRecords&#x60; for which the error/warning has occurred..</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public UpdateScheduleResponse(List<UpdateScheduleRecord> payload = default(List<UpdateScheduleRecord>), List<Error> errors = default(List<Error>))
+        public UpdateScheduleResponse(List<UpdateScheduleRecord>? payload = default(List<UpdateScheduleRecord>?), List<Error>? errors = default(List<Error>?))
         {
             this.Payload = payload;
             this.Errors = errors;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Contains the &#x60;UpdateScheduleRecords&#x60; for which the error/warning has occurred.</value>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public List<UpdateScheduleRecord> Payload { get; set; }
+        public List<UpdateScheduleRecord>? Payload { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

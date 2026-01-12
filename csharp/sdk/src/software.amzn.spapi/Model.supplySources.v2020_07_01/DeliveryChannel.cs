@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="isSupported">isSupported.</param>
         /// <param name="operationalConfiguration">operationalConfiguration.</param>
-        public DeliveryChannel(bool isSupported = default(bool), OperationalConfiguration operationalConfiguration = default(OperationalConfiguration))
+        public DeliveryChannel(bool? isSupported = default(bool?), OperationalConfiguration? operationalConfiguration = default(OperationalConfiguration?))
         {
             this.IsSupported = isSupported;
             this.OperationalConfiguration = operationalConfiguration;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets IsSupported
         /// </summary>
         [DataMember(Name = "isSupported", EmitDefaultValue = true)]
-        public bool IsSupported { get; set; }
+        public bool? IsSupported { get; set; }
 
         /// <summary>
         /// Gets or Sets OperationalConfiguration
         /// </summary>
         [DataMember(Name = "operationalConfiguration", EmitDefaultValue = false)]
-        public OperationalConfiguration OperationalConfiguration { get; set; }
+        public OperationalConfiguration? OperationalConfiguration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
         /// <param name="lastProcessedDate">The date on which the vehicle was last updated, in ISO-8601 date/time format..</param>
         /// <param name="status">status.</param>
         /// <param name="identifiers">Identifiers that can be used to identify the vehicle uniquely (required).</param>
-        public Vehicle(string make = default(string), string model = default(string), string variantName = default(string), string bodyStyle = default(string), string driveType = default(string), string energy = default(string), List<EngineOutput> engineOutput = default(List<EngineOutput>), MonthAndYear manufacturingStartDate = default(MonthAndYear), MonthAndYear manufacturingStopDate = default(MonthAndYear), string lastProcessedDate = default(string), VehicleStatusInCatalog? status = default(VehicleStatusInCatalog?), List<VehicleIdentifiers> identifiers = default(List<VehicleIdentifiers>))
+        public Vehicle(string make = default(string), string model = default(string), string? variantName = default(string?), string? bodyStyle = default(string?), string? driveType = default(string?), string? energy = default(string?), List<EngineOutput>? engineOutput = default(List<EngineOutput>?), MonthAndYear? manufacturingStartDate = default(MonthAndYear?), MonthAndYear? manufacturingStopDate = default(MonthAndYear?), string? lastProcessedDate = default(string?), VehicleStatusInCatalog? status = default(VehicleStatusInCatalog?), List<VehicleIdentifiers> identifiers = default(List<VehicleIdentifiers>))
         {
             // to ensure "make" is required (not null)
             if (make == null)
@@ -107,54 +107,54 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
         /// </summary>
         /// <value>Name of the vehicle variant.</value>
         [DataMember(Name = "variantName", EmitDefaultValue = false)]
-        public string VariantName { get; set; }
+        public string? VariantName { get; set; }
 
         /// <summary>
         /// Body style of vehicle (example: Hatchback, Cabriolet).
         /// </summary>
         /// <value>Body style of vehicle (example: Hatchback, Cabriolet).</value>
         [DataMember(Name = "bodyStyle", EmitDefaultValue = false)]
-        public string BodyStyle { get; set; }
+        public string? BodyStyle { get; set; }
 
         /// <summary>
         /// Drive type of vehicle(example: Rear wheel drive).
         /// </summary>
         /// <value>Drive type of vehicle(example: Rear wheel drive).</value>
         [DataMember(Name = "driveType", EmitDefaultValue = false)]
-        public string DriveType { get; set; }
+        public string? DriveType { get; set; }
 
         /// <summary>
         /// Energy Source for the vehicle(example: Petrol)
         /// </summary>
         /// <value>Energy Source for the vehicle(example: Petrol)</value>
         [DataMember(Name = "energy", EmitDefaultValue = false)]
-        public string Energy { get; set; }
+        public string? Energy { get; set; }
 
         /// <summary>
         /// Engine output of vehicle.
         /// </summary>
         /// <value>Engine output of vehicle.</value>
         [DataMember(Name = "engineOutput", EmitDefaultValue = false)]
-        public List<EngineOutput> EngineOutput { get; set; }
+        public List<EngineOutput>? EngineOutput { get; set; }
 
         /// <summary>
         /// Gets or Sets ManufacturingStartDate
         /// </summary>
         [DataMember(Name = "manufacturingStartDate", EmitDefaultValue = false)]
-        public MonthAndYear ManufacturingStartDate { get; set; }
+        public MonthAndYear? ManufacturingStartDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ManufacturingStopDate
         /// </summary>
         [DataMember(Name = "manufacturingStopDate", EmitDefaultValue = false)]
-        public MonthAndYear ManufacturingStopDate { get; set; }
+        public MonthAndYear? ManufacturingStopDate { get; set; }
 
         /// <summary>
         /// The date on which the vehicle was last updated, in ISO-8601 date/time format.
         /// </summary>
         /// <value>The date on which the vehicle was last updated, in ISO-8601 date/time format.</value>
         [DataMember(Name = "lastProcessedDate", EmitDefaultValue = false)]
-        public string LastProcessedDate { get; set; }
+        public string? LastProcessedDate { get; set; }
 
         /// <summary>
         /// Identifiers that can be used to identify the vehicle uniquely
@@ -206,5 +206,4 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
             yield break;
         }
     }
-
 }

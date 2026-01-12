@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="GetDeliveryOffersResult" /> class.
         /// </summary>
         /// <param name="deliveryOffers">An array of delivery offer information..</param>
-        public GetDeliveryOffersResult(List<DeliveryOffer> deliveryOffers = default(List<DeliveryOffer>))
+        public GetDeliveryOffersResult(List<DeliveryOffer>? deliveryOffers = default(List<DeliveryOffer>?))
         {
             this.DeliveryOffers = deliveryOffers;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of delivery offer information.</value>
         [DataMember(Name = "deliveryOffers", EmitDefaultValue = false)]
-        public List<DeliveryOffer> DeliveryOffers { get; set; }
+        public List<DeliveryOffer>? DeliveryOffers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

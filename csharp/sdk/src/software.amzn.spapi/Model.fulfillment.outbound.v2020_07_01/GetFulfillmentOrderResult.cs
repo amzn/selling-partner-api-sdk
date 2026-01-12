@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="returnItems">An array of items that Amazon accepted for return. Returns empty if no items were accepted for return. (required).</param>
         /// <param name="returnAuthorizations">An array of return authorization information. (required).</param>
         /// <param name="paymentInformation">An array of various payment attributes related to this fulfillment order..</param>
-        public GetFulfillmentOrderResult(FulfillmentOrder fulfillmentOrder = default(FulfillmentOrder), List<FulfillmentOrderItem> fulfillmentOrderItems = default(List<FulfillmentOrderItem>), List<FulfillmentShipment> fulfillmentShipments = default(List<FulfillmentShipment>), List<ReturnItem> returnItems = default(List<ReturnItem>), List<ReturnAuthorization> returnAuthorizations = default(List<ReturnAuthorization>), List<PaymentInformation> paymentInformation = default(List<PaymentInformation>))
+        public GetFulfillmentOrderResult(FulfillmentOrder fulfillmentOrder = default(FulfillmentOrder), List<FulfillmentOrderItem> fulfillmentOrderItems = default(List<FulfillmentOrderItem>), List<FulfillmentShipment>? fulfillmentShipments = default(List<FulfillmentShipment>?), List<ReturnItem> returnItems = default(List<ReturnItem>), List<ReturnAuthorization> returnAuthorizations = default(List<ReturnAuthorization>), List<PaymentInformation>? paymentInformation = default(List<PaymentInformation>?))
         {
             // to ensure "fulfillmentOrder" is required (not null)
             if (fulfillmentOrder == null)
@@ -93,7 +93,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of fulfillment shipment information.</value>
         [DataMember(Name = "fulfillmentShipments", EmitDefaultValue = false)]
-        public List<FulfillmentShipment> FulfillmentShipments { get; set; }
+        public List<FulfillmentShipment>? FulfillmentShipments { get; set; }
 
         /// <summary>
         /// An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.
@@ -114,7 +114,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of various payment attributes related to this fulfillment order.</value>
         [DataMember(Name = "paymentInformation", EmitDefaultValue = false)]
-        public List<PaymentInformation> PaymentInformation { get; set; }
+        public List<PaymentInformation>? PaymentInformation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -153,5 +153,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

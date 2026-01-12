@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <param name="name">The type of tax..</param>
         /// <param name="value">The entity&#39;s tax identifier..</param>
-        public TaxClassification(string name = default(string), string value = default(string))
+        public TaxClassification(string? name = default(string?), string? value = default(string?))
         {
             this.Name = name;
             this.Value = value;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <value>The type of tax.</value>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The entity&#39;s tax identifier.
         /// </summary>
         /// <value>The entity&#39;s tax identifier.</value>
         [DataMember(Name = "Value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

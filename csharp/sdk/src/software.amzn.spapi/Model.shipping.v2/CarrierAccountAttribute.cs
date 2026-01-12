@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="attributeName">Attribute Name ..</param>
         /// <param name="propertyGroup">Property Group..</param>
         /// <param name="value">Value ..</param>
-        public CarrierAccountAttribute(string attributeName = default(string), string propertyGroup = default(string), string value = default(string))
+        public CarrierAccountAttribute(string? attributeName = default(string?), string? propertyGroup = default(string?), string? value = default(string?))
         {
             this.AttributeName = attributeName;
             this.PropertyGroup = propertyGroup;
@@ -50,21 +50,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Attribute Name .</value>
         [DataMember(Name = "attributeName", EmitDefaultValue = false)]
-        public string AttributeName { get; set; }
+        public string? AttributeName { get; set; }
 
         /// <summary>
         /// Property Group.
         /// </summary>
         /// <value>Property Group.</value>
         [DataMember(Name = "propertyGroup", EmitDefaultValue = false)]
-        public string PropertyGroup { get; set; }
+        public string? PropertyGroup { get; set; }
 
         /// <summary>
         /// Value .
         /// </summary>
         /// <value>Value .</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

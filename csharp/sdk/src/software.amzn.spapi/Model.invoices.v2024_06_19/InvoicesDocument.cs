@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <param name="invoicesDocumentId">The identifier of the export document..</param>
         /// <param name="invoicesDocumentUrl">A pre-signed URL that you can use to download the invoices document in zip format. This URL expires after 30 seconds..</param>
-        public InvoicesDocument(string invoicesDocumentId = default(string), string invoicesDocumentUrl = default(string))
+        public InvoicesDocument(string? invoicesDocumentId = default(string?), string? invoicesDocumentUrl = default(string?))
         {
             this.InvoicesDocumentId = invoicesDocumentId;
             this.InvoicesDocumentUrl = invoicesDocumentUrl;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>The identifier of the export document.</value>
         [DataMember(Name = "invoicesDocumentId", EmitDefaultValue = false)]
-        public string InvoicesDocumentId { get; set; }
+        public string? InvoicesDocumentId { get; set; }
 
         /// <summary>
         /// A pre-signed URL that you can use to download the invoices document in zip format. This URL expires after 30 seconds.
         /// </summary>
         /// <value>A pre-signed URL that you can use to download the invoices document in zip format. This URL expires after 30 seconds.</value>
         [DataMember(Name = "invoicesDocumentUrl", EmitDefaultValue = false)]
-        public string InvoicesDocumentUrl { get; set; }
+        public string? InvoicesDocumentUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

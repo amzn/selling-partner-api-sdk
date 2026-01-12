@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="email">The email address..</param>
         /// <param name="name">The contact&#39;s name. (required).</param>
         /// <param name="phoneNumber">The phone number. (required).</param>
-        public ContactInformation(string email = default(string), string name = default(string), string phoneNumber = default(string))
+        public ContactInformation(string? email = default(string?), string name = default(string), string phoneNumber = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The email address.</value>
         [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// The contact&#39;s name.
@@ -150,5 +150,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

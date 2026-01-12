@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="providerStoreName">The store name where the payment event occurred..</param>
         /// <param name="transactionAmount">transactionAmount.</param>
         /// <param name="transactionCreationDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public SolutionProviderCreditEvent(string providerTransactionType = default(string), string sellerOrderId = default(string), string marketplaceId = default(string), string marketplaceCountryCode = default(string), string sellerId = default(string), string sellerStoreName = default(string), string providerId = default(string), string providerStoreName = default(string), Currency transactionAmount = default(Currency), DateTime transactionCreationDate = default(DateTime))
+        public SolutionProviderCreditEvent(string? providerTransactionType = default(string?), string? sellerOrderId = default(string?), string? marketplaceId = default(string?), string? marketplaceCountryCode = default(string?), string? sellerId = default(string?), string? sellerStoreName = default(string?), string? providerId = default(string?), string? providerStoreName = default(string?), Currency? transactionAmount = default(Currency?), DateTime? transactionCreationDate = default(DateTime?))
         {
             this.ProviderTransactionType = providerTransactionType;
             this.SellerOrderId = sellerOrderId;
@@ -63,69 +63,69 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The transaction type.</value>
         [DataMember(Name = "ProviderTransactionType", EmitDefaultValue = false)]
-        public string ProviderTransactionType { get; set; }
+        public string? ProviderTransactionType { get; set; }
 
         /// <summary>
         /// A seller-defined identifier for an order.
         /// </summary>
         /// <value>A seller-defined identifier for an order.</value>
         [DataMember(Name = "SellerOrderId", EmitDefaultValue = false)]
-        public string SellerOrderId { get; set; }
+        public string? SellerOrderId { get; set; }
 
         /// <summary>
         /// The identifier of the marketplace where the order was placed.
         /// </summary>
         /// <value>The identifier of the marketplace where the order was placed.</value>
         [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// The two-letter country code of the country associated with the marketplace where the order was placed.
         /// </summary>
         /// <value>The two-letter country code of the country associated with the marketplace where the order was placed.</value>
         [DataMember(Name = "MarketplaceCountryCode", EmitDefaultValue = false)]
-        public string MarketplaceCountryCode { get; set; }
+        public string? MarketplaceCountryCode { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier of the seller.
         /// </summary>
         /// <value>The Amazon-defined identifier of the seller.</value>
         [DataMember(Name = "SellerId", EmitDefaultValue = false)]
-        public string SellerId { get; set; }
+        public string? SellerId { get; set; }
 
         /// <summary>
         /// The store name where the payment event occurred.
         /// </summary>
         /// <value>The store name where the payment event occurred.</value>
         [DataMember(Name = "SellerStoreName", EmitDefaultValue = false)]
-        public string SellerStoreName { get; set; }
+        public string? SellerStoreName { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier of the solution provider.
         /// </summary>
         /// <value>The Amazon-defined identifier of the solution provider.</value>
         [DataMember(Name = "ProviderId", EmitDefaultValue = false)]
-        public string ProviderId { get; set; }
+        public string? ProviderId { get; set; }
 
         /// <summary>
         /// The store name where the payment event occurred.
         /// </summary>
         /// <value>The store name where the payment event occurred.</value>
         [DataMember(Name = "ProviderStoreName", EmitDefaultValue = false)]
-        public string ProviderStoreName { get; set; }
+        public string? ProviderStoreName { get; set; }
 
         /// <summary>
         /// Gets or Sets TransactionAmount
         /// </summary>
         [DataMember(Name = "TransactionAmount", EmitDefaultValue = false)]
-        public Currency TransactionAmount { get; set; }
+        public Currency? TransactionAmount { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "TransactionCreationDate", EmitDefaultValue = false)]
-        public DateTime TransactionCreationDate { get; set; }
+        public DateTime? TransactionCreationDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -168,5 +168,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

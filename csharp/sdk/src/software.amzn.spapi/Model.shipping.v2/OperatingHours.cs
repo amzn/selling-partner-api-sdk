@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="closingTime">closingTime.</param>
         /// <param name="openingTime">openingTime.</param>
         /// <param name="midDayClosures">midDayClosures operating hours array.</param>
-        public OperatingHours(TimeOfDay closingTime = default(TimeOfDay), TimeOfDay openingTime = default(TimeOfDay), List<TimeOfDay> midDayClosures = default(List<TimeOfDay>))
+        public OperatingHours(TimeOfDay? closingTime = default(TimeOfDay?), TimeOfDay? openingTime = default(TimeOfDay?), List<TimeOfDay>? midDayClosures = default(List<TimeOfDay>?))
         {
             this.ClosingTime = closingTime;
             this.OpeningTime = openingTime;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ClosingTime
         /// </summary>
         [DataMember(Name = "closingTime", EmitDefaultValue = false)]
-        public TimeOfDay ClosingTime { get; set; }
+        public TimeOfDay? ClosingTime { get; set; }
 
         /// <summary>
         /// Gets or Sets OpeningTime
         /// </summary>
         [DataMember(Name = "openingTime", EmitDefaultValue = false)]
-        public TimeOfDay OpeningTime { get; set; }
+        public TimeOfDay? OpeningTime { get; set; }
 
         /// <summary>
         /// midDayClosures operating hours array
         /// </summary>
         /// <value>midDayClosures operating hours array</value>
         [DataMember(Name = "midDayClosures", EmitDefaultValue = false)]
-        public List<TimeOfDay> MidDayClosures { get; set; }
+        public List<TimeOfDay>? MidDayClosures { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

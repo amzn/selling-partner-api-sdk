@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Initializes a new instance of the <see cref="PostContentDocumentAsinRelationsResponse" /> class.
         /// </summary>
         /// <param name="warnings">A set of messages to the user, such as warnings or comments..</param>
-        public PostContentDocumentAsinRelationsResponse(List<Error> warnings = default(List<Error>))
+        public PostContentDocumentAsinRelationsResponse(List<Error>? warnings = default(List<Error>?))
         {
             this.Warnings = warnings;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>A set of messages to the user, such as warnings or comments.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Error> Warnings { get; set; }
+        public List<Error>? Warnings { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

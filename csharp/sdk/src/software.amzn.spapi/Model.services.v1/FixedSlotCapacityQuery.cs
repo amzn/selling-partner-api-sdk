@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="slotDuration">Size in which slots are being requested. This value should be a multiple of 5 and fall in the range: 5 &lt;&#x3D; &#x60;slotDuration&#x60; &lt;&#x3D; 360..</param>
         /// <param name="startDateTime">Start date time from which the capacity slots are being requested in ISO 8601 format. (required).</param>
         /// <param name="endDateTime">End date time up to which the capacity slots are being requested in ISO 8601 format. (required).</param>
-        public FixedSlotCapacityQuery(List<CapacityType> capacityTypes = default(List<CapacityType>), decimal slotDuration = default(decimal), DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime))
+        public FixedSlotCapacityQuery(List<CapacityType>? capacityTypes = default(List<CapacityType>?), decimal? slotDuration = default(decimal?), DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime))
         {
             this.StartDateTime = startDateTime;
             this.EndDateTime = endDateTime;
@@ -56,14 +56,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>An array of capacity types which are being requested. Default value is &#x60;[SCHEDULED_CAPACITY]&#x60;.</value>
         [DataMember(Name = "capacityTypes", EmitDefaultValue = false)]
-        public List<CapacityType> CapacityTypes { get; set; }
+        public List<CapacityType>? CapacityTypes { get; set; }
 
         /// <summary>
         /// Size in which slots are being requested. This value should be a multiple of 5 and fall in the range: 5 &lt;&#x3D; &#x60;slotDuration&#x60; &lt;&#x3D; 360.
         /// </summary>
         /// <value>Size in which slots are being requested. This value should be a multiple of 5 and fall in the range: 5 &lt;&#x3D; &#x60;slotDuration&#x60; &lt;&#x3D; 360.</value>
         [DataMember(Name = "slotDuration", EmitDefaultValue = false)]
-        public decimal SlotDuration { get; set; }
+        public decimal? SlotDuration { get; set; }
 
         /// <summary>
         /// Start date time from which the capacity slots are being requested in ISO 8601 format.
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

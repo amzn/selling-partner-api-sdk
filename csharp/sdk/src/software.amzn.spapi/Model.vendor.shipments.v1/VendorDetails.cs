@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <param name="sellingParty">sellingParty.</param>
         /// <param name="vendorShipmentIdentifier">Unique vendor shipment id which is not used in last 365 days.</param>
-        public VendorDetails(PartyIdentification sellingParty = default(PartyIdentification), string vendorShipmentIdentifier = default(string))
+        public VendorDetails(PartyIdentification? sellingParty = default(PartyIdentification?), string? vendorShipmentIdentifier = default(string?))
         {
             this.SellingParty = sellingParty;
             this.VendorShipmentIdentifier = vendorShipmentIdentifier;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets SellingParty
         /// </summary>
         [DataMember(Name = "sellingParty", EmitDefaultValue = false)]
-        public PartyIdentification SellingParty { get; set; }
+        public PartyIdentification? SellingParty { get; set; }
 
         /// <summary>
         /// Unique vendor shipment id which is not used in last 365 days
         /// </summary>
         /// <value>Unique vendor shipment id which is not used in last 365 days</value>
         [DataMember(Name = "vendorShipmentIdentifier", EmitDefaultValue = false)]
-        public string VendorShipmentIdentifier { get; set; }
+        public string? VendorShipmentIdentifier { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <param name="name">The transaction identifier name. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionIdentifierName&#x60; options..</param>
         /// <param name="id">The transaction identifier..</param>
-        public TransactionIdentifier(string name = default(string), string id = default(string))
+        public TransactionIdentifier(string? name = default(string?), string? id = default(string?))
         {
             this.Name = name;
             this.Id = id;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>The transaction identifier name. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionIdentifierName&#x60; options.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The transaction identifier.
         /// </summary>
         /// <value>The transaction identifier.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

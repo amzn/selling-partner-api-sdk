@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="orderItems">A list of order items. (required).</param>
         /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
         /// <param name="amazonOrderId">An Amazon-defined order identifier, in 3-7-7 format. (required).</param>
-        public OrderItemsList(List<OrderItem> orderItems = default(List<OrderItem>), string nextToken = default(string), string amazonOrderId = default(string))
+        public OrderItemsList(List<OrderItem> orderItems = default(List<OrderItem>), string? nextToken = default(string?), string amazonOrderId = default(string))
         {
             // to ensure "orderItems" is required (not null)
             if (orderItems == null)
@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
         [DataMember(Name = "NextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// An Amazon-defined order identifier, in 3-7-7 format.
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

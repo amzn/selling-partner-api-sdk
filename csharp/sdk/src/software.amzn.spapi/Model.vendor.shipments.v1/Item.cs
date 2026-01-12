@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="vendorProductIdentifier">The vendor selected product identification of the item. Should be the same as was sent in the purchase order..</param>
         /// <param name="shippedQuantity">shippedQuantity (required).</param>
         /// <param name="itemDetails">itemDetails.</param>
-        public Item(string itemSequenceNumber = default(string), string amazonProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity shippedQuantity = default(ItemQuantity), ItemDetails itemDetails = default(ItemDetails))
+        public Item(string itemSequenceNumber = default(string), string? amazonProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity shippedQuantity = default(ItemQuantity), ItemDetails? itemDetails = default(ItemDetails?))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -75,14 +75,14 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Buyer Standard Identification Number (ASIN) of an item.</value>
         [DataMember(Name = "amazonProductIdentifier", EmitDefaultValue = false)]
-        public string AmazonProductIdentifier { get; set; }
+        public string? AmazonProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item. Should be the same as was sent in the purchase order.
         /// </summary>
         /// <value>The vendor selected product identification of the item. Should be the same as was sent in the purchase order.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippedQuantity
@@ -94,7 +94,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets ItemDetails
         /// </summary>
         [DataMember(Name = "itemDetails", EmitDefaultValue = false)]
-        public ItemDetails ItemDetails { get; set; }
+        public ItemDetails? ItemDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,5 +132,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

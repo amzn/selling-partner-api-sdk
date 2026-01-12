@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="startTime">The date, time in UTC of the fulfillment start time in ISO 8601 format..</param>
         /// <param name="endTime">The date, time in UTC of the fulfillment end time in ISO 8601 format..</param>
-        public FulfillmentTime(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime))
+        public FulfillmentTime(DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The date, time in UTC of the fulfillment start time in ISO 8601 format.</value>
         [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// The date, time in UTC of the fulfillment end time in ISO 8601 format.
         /// </summary>
         /// <value>The date, time in UTC of the fulfillment end time in ISO 8601 format.</value>
         [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

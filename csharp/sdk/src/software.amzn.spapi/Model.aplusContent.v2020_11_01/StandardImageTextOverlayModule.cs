@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="overlayColorType">overlayColorType (required).</param>
         /// <param name="block">block.</param>
-        public StandardImageTextOverlayModule(ColorType overlayColorType = default(ColorType), StandardImageTextBlock block = default(StandardImageTextBlock))
+        public StandardImageTextOverlayModule(ColorType overlayColorType = default(ColorType), StandardImageTextBlock? block = default(StandardImageTextBlock?))
         {
             this.OverlayColorType = overlayColorType;
             this.Block = block;
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Block
         /// </summary>
         [DataMember(Name = "block", EmitDefaultValue = false)]
-        public StandardImageTextBlock Block { get; set; }
+        public StandardImageTextBlock? Block { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,5 +92,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

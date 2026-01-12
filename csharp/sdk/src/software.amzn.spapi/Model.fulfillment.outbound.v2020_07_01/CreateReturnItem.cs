@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="amazonShipmentId">The identifier for the shipment that is associated with the return item. (required).</param>
         /// <param name="returnReasonCode">The return reason code assigned to the return item by the seller. (required).</param>
         /// <param name="returnComment">An optional comment about the return item..</param>
-        public CreateReturnItem(string sellerReturnItemId = default(string), string sellerFulfillmentOrderItemId = default(string), string amazonShipmentId = default(string), string returnReasonCode = default(string), string returnComment = default(string))
+        public CreateReturnItem(string sellerReturnItemId = default(string), string sellerFulfillmentOrderItemId = default(string), string amazonShipmentId = default(string), string returnReasonCode = default(string), string? returnComment = default(string?))
         {
             // to ensure "sellerReturnItemId" is required (not null)
             if (sellerReturnItemId == null)
@@ -106,7 +106,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An optional comment about the return item.</value>
         [DataMember(Name = "returnComment", EmitDefaultValue = false)]
-        public string ReturnComment { get; set; }
+        public string? ReturnComment { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -156,5 +156,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

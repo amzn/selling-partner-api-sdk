@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="competitivePrices">A list of competitive pricing information. (required).</param>
         /// <param name="numberOfOfferListings">The number of active offer listings for the item that was submitted. The listing count is returned by condition, one for each listing condition value that is returned. (required).</param>
         /// <param name="tradeInValue">tradeInValue.</param>
-        public CompetitivePricingType(List<CompetitivePriceType> competitivePrices = default(List<CompetitivePriceType>), List<OfferListingCountType> numberOfOfferListings = default(List<OfferListingCountType>), MoneyType tradeInValue = default(MoneyType))
+        public CompetitivePricingType(List<CompetitivePriceType> competitivePrices = default(List<CompetitivePriceType>), List<OfferListingCountType> numberOfOfferListings = default(List<OfferListingCountType>), MoneyType? tradeInValue = default(MoneyType?))
         {
             // to ensure "competitivePrices" is required (not null)
             if (competitivePrices == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets TradeInValue
         /// </summary>
         [DataMember(Name = "TradeInValue", EmitDefaultValue = false)]
-        public MoneyType TradeInValue { get; set; }
+        public MoneyType? TradeInValue { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

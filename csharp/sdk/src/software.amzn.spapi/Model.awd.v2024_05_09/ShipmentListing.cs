@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="nextToken">A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages..</param>
         /// <param name="shipments">List of inbound shipment summaries..</param>
-        public ShipmentListing(string nextToken = default(string), List<InboundShipmentSummary> shipments = default(List<InboundShipmentSummary>))
+        public ShipmentListing(string? nextToken = default(string?), List<InboundShipmentSummary>? shipments = default(List<InboundShipmentSummary>?))
         {
             this.NextToken = nextToken;
             this.Shipments = shipments;
@@ -50,14 +50,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>SampleToken</example>
         */
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// List of inbound shipment summaries.
         /// </summary>
         /// <value>List of inbound shipment summaries.</value>
         [DataMember(Name = "shipments", EmitDefaultValue = false)]
-        public List<InboundShipmentSummary> Shipments { get; set; }
+        public List<InboundShipmentSummary>? Shipments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,5 +92,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

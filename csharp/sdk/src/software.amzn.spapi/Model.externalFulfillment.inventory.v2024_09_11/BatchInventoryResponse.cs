@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// Initializes a new instance of the <see cref="BatchInventoryResponse" /> class.
         /// </summary>
         /// <param name="responses">A list of inventory request responses..</param>
-        public BatchInventoryResponse(List<InventoryResponse> responses = default(List<InventoryResponse>))
+        public BatchInventoryResponse(List<InventoryResponse>? responses = default(List<InventoryResponse>?))
         {
             this.Responses = responses;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// </summary>
         /// <value>A list of inventory request responses.</value>
         [DataMember(Name = "responses", EmitDefaultValue = false)]
-        public List<InventoryResponse> Responses { get; set; }
+        public List<InventoryResponse>? Responses { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

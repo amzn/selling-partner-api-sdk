@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="startTime">startTime.</param>
         /// <param name="endTime">endTime.</param>
-        public OpenInterval(OpenTimeInterval startTime = default(OpenTimeInterval), OpenTimeInterval endTime = default(OpenTimeInterval))
+        public OpenInterval(OpenTimeInterval? startTime = default(OpenTimeInterval?), OpenTimeInterval? endTime = default(OpenTimeInterval?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Gets or Sets StartTime
         /// </summary>
         [DataMember(Name = "StartTime", EmitDefaultValue = false)]
-        public OpenTimeInterval StartTime { get; set; }
+        public OpenTimeInterval? StartTime { get; set; }
 
         /// <summary>
         /// Gets or Sets EndTime
         /// </summary>
         [DataMember(Name = "EndTime", EmitDefaultValue = false)]
-        public OpenTimeInterval EndTime { get; set; }
+        public OpenTimeInterval? EndTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

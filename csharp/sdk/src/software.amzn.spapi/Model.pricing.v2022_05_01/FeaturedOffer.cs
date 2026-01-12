@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="offerIdentifier">offerIdentifier (required).</param>
         /// <param name="condition">condition.</param>
         /// <param name="price">price.</param>
-        public FeaturedOffer(OfferIdentifier offerIdentifier = default(OfferIdentifier), Condition? condition = default(Condition?), Price price = default(Price))
+        public FeaturedOffer(OfferIdentifier offerIdentifier = default(OfferIdentifier), Condition? condition = default(Condition?), Price? price = default(Price?))
         {
             // to ensure "offerIdentifier" is required (not null)
             if (offerIdentifier == null)
@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets Price
         /// </summary>
         [DataMember(Name = "price", EmitDefaultValue = false)]
-        public Price Price { get; set; }
+        public Price? Price { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="tradeInEligible">When true, the Amazon catalog item is eligible for trade-in..</param>
         /// <param name="websiteDisplayGroup">The identifier of the website display group that is associated with the Amazon catalog item..</param>
         /// <param name="websiteDisplayGroupName">The display name of the website display group that is associated with the Amazon catalog item..</param>
-        public ItemSummaryByMarketplace(string marketplaceId = default(string), bool adultProduct = default(bool), bool autographed = default(bool), string brand = default(string), ItemBrowseClassification browseClassification = default(ItemBrowseClassification), string color = default(string), List<ItemContributor> contributors = default(List<ItemContributor>), ItemClassificationEnum? itemClassification = default(ItemClassificationEnum?), string itemName = default(string), string manufacturer = default(string), bool memorabilia = default(bool), string modelNumber = default(string), int packageQuantity = default(int), string partNumber = default(string), DateOnly releaseDate = default(DateOnly), string size = default(string), string style = default(string), bool tradeInEligible = default(bool), string websiteDisplayGroup = default(string), string websiteDisplayGroupName = default(string))
+        public ItemSummaryByMarketplace(string marketplaceId = default(string), bool? adultProduct = default(bool?), bool? autographed = default(bool?), string? brand = default(string?), ItemBrowseClassification? browseClassification = default(ItemBrowseClassification?), string? color = default(string?), List<ItemContributor>? contributors = default(List<ItemContributor>?), ItemClassificationEnum? itemClassification = default(ItemClassificationEnum?), string? itemName = default(string?), string? manufacturer = default(string?), bool? memorabilia = default(bool?), string? modelNumber = default(string?), int? packageQuantity = default(int?), string? partNumber = default(string?), DateOnly? releaseDate = default(DateOnly?), string? size = default(string?), string? style = default(string?), bool? tradeInEligible = default(bool?), string? websiteDisplayGroup = default(string?), string? websiteDisplayGroupName = default(string?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -139,125 +139,125 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>When &#x60;true&#x60;, the Amazon catalog item is intended for an adult audience or is sexual in nature.</value>
         [DataMember(Name = "adultProduct", EmitDefaultValue = true)]
-        public bool AdultProduct { get; set; }
+        public bool? AdultProduct { get; set; }
 
         /// <summary>
         /// When &#x60;true&#x60;, the Amazon catalog item is autographed.
         /// </summary>
         /// <value>When &#x60;true&#x60;, the Amazon catalog item is autographed.</value>
         [DataMember(Name = "autographed", EmitDefaultValue = true)]
-        public bool Autographed { get; set; }
+        public bool? Autographed { get; set; }
 
         /// <summary>
         /// Name of the brand that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>Name of the brand that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "brand", EmitDefaultValue = false)]
-        public string Brand { get; set; }
+        public string? Brand { get; set; }
 
         /// <summary>
         /// Gets or Sets BrowseClassification
         /// </summary>
         [DataMember(Name = "browseClassification", EmitDefaultValue = false)]
-        public ItemBrowseClassification BrowseClassification { get; set; }
+        public ItemBrowseClassification? BrowseClassification { get; set; }
 
         /// <summary>
         /// The color that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The color that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "color", EmitDefaultValue = false)]
-        public string Color { get; set; }
+        public string? Color { get; set; }
 
         /// <summary>
         /// Individual contributors to the creation of the item, such as the authors or actors.
         /// </summary>
         /// <value>Individual contributors to the creation of the item, such as the authors or actors.</value>
         [DataMember(Name = "contributors", EmitDefaultValue = false)]
-        public List<ItemContributor> Contributors { get; set; }
+        public List<ItemContributor>? Contributors { get; set; }
 
         /// <summary>
         /// The name that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The name that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "itemName", EmitDefaultValue = false)]
-        public string ItemName { get; set; }
+        public string? ItemName { get; set; }
 
         /// <summary>
         /// The name of the manufacturer that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The name of the manufacturer that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "manufacturer", EmitDefaultValue = false)]
-        public string Manufacturer { get; set; }
+        public string? Manufacturer { get; set; }
 
         /// <summary>
         /// When true, the item is classified as memorabilia.
         /// </summary>
         /// <value>When true, the item is classified as memorabilia.</value>
         [DataMember(Name = "memorabilia", EmitDefaultValue = true)]
-        public bool Memorabilia { get; set; }
+        public bool? Memorabilia { get; set; }
 
         /// <summary>
         /// The model number that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The model number that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "modelNumber", EmitDefaultValue = false)]
-        public string ModelNumber { get; set; }
+        public string? ModelNumber { get; set; }
 
         /// <summary>
         /// The quantity of the Amazon catalog item within one package.
         /// </summary>
         /// <value>The quantity of the Amazon catalog item within one package.</value>
         [DataMember(Name = "packageQuantity", EmitDefaultValue = false)]
-        public int PackageQuantity { get; set; }
+        public int? PackageQuantity { get; set; }
 
         /// <summary>
         /// The part number that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The part number that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "partNumber", EmitDefaultValue = false)]
-        public string PartNumber { get; set; }
+        public string? PartNumber { get; set; }
 
         /// <summary>
         /// The earliest date on which the Amazon catalog item can be shipped to customers.
         /// </summary>
         /// <value>The earliest date on which the Amazon catalog item can be shipped to customers.</value>
         [DataMember(Name = "releaseDate", EmitDefaultValue = false)]
-        public DateOnly ReleaseDate { get; set; }
+        public DateOnly? ReleaseDate { get; set; }
 
         /// <summary>
         /// The name of the size of the Amazon catalog item.
         /// </summary>
         /// <value>The name of the size of the Amazon catalog item.</value>
         [DataMember(Name = "size", EmitDefaultValue = false)]
-        public string Size { get; set; }
+        public string? Size { get; set; }
 
         /// <summary>
         /// The name of the style that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The name of the style that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "style", EmitDefaultValue = false)]
-        public string Style { get; set; }
+        public string? Style { get; set; }
 
         /// <summary>
         /// When true, the Amazon catalog item is eligible for trade-in.
         /// </summary>
         /// <value>When true, the Amazon catalog item is eligible for trade-in.</value>
         [DataMember(Name = "tradeInEligible", EmitDefaultValue = true)]
-        public bool TradeInEligible { get; set; }
+        public bool? TradeInEligible { get; set; }
 
         /// <summary>
         /// The identifier of the website display group that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The identifier of the website display group that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "websiteDisplayGroup", EmitDefaultValue = false)]
-        public string WebsiteDisplayGroup { get; set; }
+        public string? WebsiteDisplayGroup { get; set; }
 
         /// <summary>
         /// The display name of the website display group that is associated with the Amazon catalog item.
         /// </summary>
         /// <value>The display name of the website display group that is associated with the Amazon catalog item.</value>
         [DataMember(Name = "websiteDisplayGroupName", EmitDefaultValue = false)]
-        public string WebsiteDisplayGroupName { get; set; }
+        public string? WebsiteDisplayGroupName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -310,5 +310,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

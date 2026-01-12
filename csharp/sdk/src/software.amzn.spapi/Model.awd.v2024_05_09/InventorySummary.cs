@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="sku">The seller or merchant SKU. (required).</param>
         /// <param name="totalInboundQuantity">Total quantity that is in-transit from the seller and has not yet been received at an AWD Distribution Center.</param>
         /// <param name="totalOnhandQuantity">Total quantity that is present in AWD distribution centers..</param>
-        public InventorySummary(List<ExpirationDetails> expirationDetails = default(List<ExpirationDetails>), InventoryDetails inventoryDetails = default(InventoryDetails), string sku = default(string), long totalInboundQuantity = default(long), long totalOnhandQuantity = default(long))
+        public InventorySummary(List<ExpirationDetails>? expirationDetails = default(List<ExpirationDetails>?), InventoryDetails? inventoryDetails = default(InventoryDetails?), string sku = default(string), long? totalInboundQuantity = default(long?), long? totalOnhandQuantity = default(long?))
         {
             // to ensure "sku" is required (not null)
             if (sku == null)
@@ -63,13 +63,13 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>The expiration details of the inventory. This object will only appear if the &#x60;details&#x60; parameter in the request is set to &#x60;SHOW&#x60;.</value>
         [DataMember(Name = "expirationDetails", EmitDefaultValue = false)]
-        public List<ExpirationDetails> ExpirationDetails { get; set; }
+        public List<ExpirationDetails>? ExpirationDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets InventoryDetails
         /// </summary>
         [DataMember(Name = "inventoryDetails", EmitDefaultValue = false)]
-        public InventoryDetails InventoryDetails { get; set; }
+        public InventoryDetails? InventoryDetails { get; set; }
 
         /// <summary>
         /// The seller or merchant SKU.
@@ -83,14 +83,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Total quantity that is in-transit from the seller and has not yet been received at an AWD Distribution Center</value>
         [DataMember(Name = "totalInboundQuantity", EmitDefaultValue = false)]
-        public long TotalInboundQuantity { get; set; }
+        public long? TotalInboundQuantity { get; set; }
 
         /// <summary>
         /// Total quantity that is present in AWD distribution centers.
         /// </summary>
         /// <value>Total quantity that is present in AWD distribution centers.</value>
         [DataMember(Name = "totalOnhandQuantity", EmitDefaultValue = false)]
-        public long TotalOnhandQuantity { get; set; }
+        public long? TotalOnhandQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -128,5 +128,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

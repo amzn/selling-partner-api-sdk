@@ -142,7 +142,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="taxRate">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. &lt;br&gt;**Pattern** : &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;..</param>
         /// <param name="taxAmount">taxAmount (required).</param>
         /// <param name="taxableAmount">taxableAmount.</param>
-        public TaxDetails(TaxTypeEnum taxType = default(TaxTypeEnum), string taxRate = default(string), Money taxAmount = default(Money), Money taxableAmount = default(Money))
+        public TaxDetails(TaxTypeEnum taxType = default(TaxTypeEnum), string? taxRate = default(string?), Money taxAmount = default(Money), Money? taxableAmount = default(Money?))
         {
             this.TaxType = taxType;
             // to ensure "taxAmount" is required (not null)
@@ -160,7 +160,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation. &lt;br&gt;**Pattern** : &#x60;^-?(0|([1-9]\\d*))(\\.\\d+)?([eE][+-]?\\d+)?$&#x60;.</value>
         [DataMember(Name = "taxRate", EmitDefaultValue = false)]
-        public string TaxRate { get; set; }
+        public string? TaxRate { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
@@ -172,7 +172,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// Gets or Sets TaxableAmount
         /// </summary>
         [DataMember(Name = "taxableAmount", EmitDefaultValue = false)]
-        public Money TaxableAmount { get; set; }
+        public Money? TaxableAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -209,5 +209,4 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             yield break;
         }
     }
-
 }

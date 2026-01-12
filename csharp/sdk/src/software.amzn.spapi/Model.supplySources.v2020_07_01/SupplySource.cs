@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="capabilities">capabilities.</param>
         /// <param name="createdAt">A date and time in the rfc3339 format..</param>
         /// <param name="updatedAt">A date and time in the rfc3339 format..</param>
-        public SupplySource(string supplySourceId = default(string), string supplySourceCode = default(string), string alias = default(string), SupplySourceStatusReadOnly? status = default(SupplySourceStatusReadOnly?), Address address = default(Address), SupplySourceConfiguration varConfiguration = default(SupplySourceConfiguration), SupplySourceCapabilities capabilities = default(SupplySourceCapabilities), string createdAt = default(string), string updatedAt = default(string))
+        public SupplySource(string? supplySourceId = default(string?), string? supplySourceCode = default(string?), string? alias = default(string?), SupplySourceStatusReadOnly? status = default(SupplySourceStatusReadOnly?), Address? address = default(Address?), SupplySourceConfiguration? varConfiguration = default(SupplySourceConfiguration?), SupplySourceCapabilities? capabilities = default(SupplySourceCapabilities?), string? createdAt = default(string?), string? updatedAt = default(string?))
         {
             this.SupplySourceId = supplySourceId;
             this.SupplySourceCode = supplySourceCode;
@@ -67,53 +67,53 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>An Amazon generated unique supply source ID.</value>
         [DataMember(Name = "supplySourceId", EmitDefaultValue = false)]
-        public string SupplySourceId { get; set; }
+        public string? SupplySourceId { get; set; }
 
         /// <summary>
         /// The seller-provided unique supply source code.
         /// </summary>
         /// <value>The seller-provided unique supply source code.</value>
         [DataMember(Name = "supplySourceCode", EmitDefaultValue = false)]
-        public string SupplySourceCode { get; set; }
+        public string? SupplySourceCode { get; set; }
 
         /// <summary>
         /// The custom alias for this supply source
         /// </summary>
         /// <value>The custom alias for this supply source</value>
         [DataMember(Name = "alias", EmitDefaultValue = false)]
-        public string Alias { get; set; }
+        public string? Alias { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Gets or Sets VarConfiguration
         /// </summary>
         [DataMember(Name = "configuration", EmitDefaultValue = false)]
-        public SupplySourceConfiguration VarConfiguration { get; set; }
+        public SupplySourceConfiguration? VarConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets Capabilities
         /// </summary>
         [DataMember(Name = "capabilities", EmitDefaultValue = false)]
-        public SupplySourceCapabilities Capabilities { get; set; }
+        public SupplySourceCapabilities? Capabilities { get; set; }
 
         /// <summary>
         /// A date and time in the rfc3339 format.
         /// </summary>
         /// <value>A date and time in the rfc3339 format.</value>
         [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public string CreatedAt { get; set; }
+        public string? CreatedAt { get; set; }
 
         /// <summary>
         /// A date and time in the rfc3339 format.
         /// </summary>
         /// <value>A date and time in the rfc3339 format.</value>
         [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public string UpdatedAt { get; set; }
+        public string? UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -155,5 +155,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

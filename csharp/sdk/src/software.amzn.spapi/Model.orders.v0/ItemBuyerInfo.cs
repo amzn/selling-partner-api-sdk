@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="giftWrapTax">giftWrapTax.</param>
         /// <param name="giftMessageText">A gift message provided by the buyer.  **Note**: This attribute is only available for MFN (fulfilled by seller) orders..</param>
         /// <param name="giftWrapLevel">The gift wrap level specified by the buyer..</param>
-        public ItemBuyerInfo(BuyerCustomizedInfoDetail buyerCustomizedInfo = default(BuyerCustomizedInfoDetail), Money giftWrapPrice = default(Money), Money giftWrapTax = default(Money), string giftMessageText = default(string), string giftWrapLevel = default(string))
+        public ItemBuyerInfo(BuyerCustomizedInfoDetail? buyerCustomizedInfo = default(BuyerCustomizedInfoDetail?), Money? giftWrapPrice = default(Money?), Money? giftWrapTax = default(Money?), string? giftMessageText = default(string?), string? giftWrapLevel = default(string?))
         {
             this.BuyerCustomizedInfo = buyerCustomizedInfo;
             this.GiftWrapPrice = giftWrapPrice;
@@ -52,33 +52,33 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Gets or Sets BuyerCustomizedInfo
         /// </summary>
         [DataMember(Name = "BuyerCustomizedInfo", EmitDefaultValue = false)]
-        public BuyerCustomizedInfoDetail BuyerCustomizedInfo { get; set; }
+        public BuyerCustomizedInfoDetail? BuyerCustomizedInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets GiftWrapPrice
         /// </summary>
         [DataMember(Name = "GiftWrapPrice", EmitDefaultValue = false)]
-        public Money GiftWrapPrice { get; set; }
+        public Money? GiftWrapPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets GiftWrapTax
         /// </summary>
         [DataMember(Name = "GiftWrapTax", EmitDefaultValue = false)]
-        public Money GiftWrapTax { get; set; }
+        public Money? GiftWrapTax { get; set; }
 
         /// <summary>
         /// A gift message provided by the buyer.  **Note**: This attribute is only available for MFN (fulfilled by seller) orders.
         /// </summary>
         /// <value>A gift message provided by the buyer.  **Note**: This attribute is only available for MFN (fulfilled by seller) orders.</value>
         [DataMember(Name = "GiftMessageText", EmitDefaultValue = false)]
-        public string GiftMessageText { get; set; }
+        public string? GiftMessageText { get; set; }
 
         /// <summary>
         /// The gift wrap level specified by the buyer.
         /// </summary>
         /// <value>The gift wrap level specified by the buyer.</value>
         [DataMember(Name = "GiftWrapLevel", EmitDefaultValue = false)]
-        public string GiftWrapLevel { get; set; }
+        public string? GiftWrapLevel { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,5 +116,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

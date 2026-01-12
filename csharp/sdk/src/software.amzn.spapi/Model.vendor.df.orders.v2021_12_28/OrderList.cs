@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="orders">Represents a purchase order within the OrderList..</param>
-        public OrderList(Pagination pagination = default(Pagination), List<Order> orders = default(List<Order>))
+        public OrderList(Pagination? pagination = default(Pagination?), List<Order>? orders = default(List<Order>?))
         {
             this.Pagination = pagination;
             this.Orders = orders;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Represents a purchase order within the OrderList.
         /// </summary>
         /// <value>Represents a purchase order within the OrderList.</value>
         [DataMember(Name = "orders", EmitDefaultValue = false)]
-        public List<Order> Orders { get; set; }
+        public List<Order>? Orders { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="promotionAdjustmentList">A list of promotions..</param>
         /// <param name="costOfPointsGranted">costOfPointsGranted.</param>
         /// <param name="costOfPointsReturned">costOfPointsReturned.</param>
-        public ShipmentItem(string sellerSKU = default(string), string orderItemId = default(string), string orderAdjustmentItemId = default(string), int quantityShipped = default(int), List<ChargeComponent> itemChargeList = default(List<ChargeComponent>), List<ChargeComponent> itemChargeAdjustmentList = default(List<ChargeComponent>), List<FeeComponent> itemFeeList = default(List<FeeComponent>), List<FeeComponent> itemFeeAdjustmentList = default(List<FeeComponent>), List<TaxWithheldComponent> itemTaxWithheldList = default(List<TaxWithheldComponent>), List<Promotion> promotionList = default(List<Promotion>), List<Promotion> promotionAdjustmentList = default(List<Promotion>), Currency costOfPointsGranted = default(Currency), Currency costOfPointsReturned = default(Currency))
+        public ShipmentItem(string? sellerSKU = default(string?), string? orderItemId = default(string?), string? orderAdjustmentItemId = default(string?), int? quantityShipped = default(int?), List<ChargeComponent>? itemChargeList = default(List<ChargeComponent>?), List<ChargeComponent>? itemChargeAdjustmentList = default(List<ChargeComponent>?), List<FeeComponent>? itemFeeList = default(List<FeeComponent>?), List<FeeComponent>? itemFeeAdjustmentList = default(List<FeeComponent>?), List<TaxWithheldComponent>? itemTaxWithheldList = default(List<TaxWithheldComponent>?), List<Promotion>? promotionList = default(List<Promotion>?), List<Promotion>? promotionAdjustmentList = default(List<Promotion>?), Currency? costOfPointsGranted = default(Currency?), Currency? costOfPointsReturned = default(Currency?))
         {
             this.SellerSKU = sellerSKU;
             this.OrderItemId = orderItemId;
@@ -69,89 +69,89 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// An Amazon-defined order item identifier.
         /// </summary>
         /// <value>An Amazon-defined order item identifier.</value>
         [DataMember(Name = "OrderItemId", EmitDefaultValue = false)]
-        public string OrderItemId { get; set; }
+        public string? OrderItemId { get; set; }
 
         /// <summary>
         /// An Amazon-defined order adjustment identifier defined for refunds, guarantee claims, and chargeback events.
         /// </summary>
         /// <value>An Amazon-defined order adjustment identifier defined for refunds, guarantee claims, and chargeback events.</value>
         [DataMember(Name = "OrderAdjustmentItemId", EmitDefaultValue = false)]
-        public string OrderAdjustmentItemId { get; set; }
+        public string? OrderAdjustmentItemId { get; set; }
 
         /// <summary>
         /// The number of items shipped.
         /// </summary>
         /// <value>The number of items shipped.</value>
         [DataMember(Name = "QuantityShipped", EmitDefaultValue = false)]
-        public int QuantityShipped { get; set; }
+        public int? QuantityShipped { get; set; }
 
         /// <summary>
         /// A list of charge information on the seller&#39;s account.
         /// </summary>
         /// <value>A list of charge information on the seller&#39;s account.</value>
         [DataMember(Name = "ItemChargeList", EmitDefaultValue = false)]
-        public List<ChargeComponent> ItemChargeList { get; set; }
+        public List<ChargeComponent>? ItemChargeList { get; set; }
 
         /// <summary>
         /// A list of charge information on the seller&#39;s account.
         /// </summary>
         /// <value>A list of charge information on the seller&#39;s account.</value>
         [DataMember(Name = "ItemChargeAdjustmentList", EmitDefaultValue = false)]
-        public List<ChargeComponent> ItemChargeAdjustmentList { get; set; }
+        public List<ChargeComponent>? ItemChargeAdjustmentList { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "ItemFeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> ItemFeeList { get; set; }
+        public List<FeeComponent>? ItemFeeList { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "ItemFeeAdjustmentList", EmitDefaultValue = false)]
-        public List<FeeComponent> ItemFeeAdjustmentList { get; set; }
+        public List<FeeComponent>? ItemFeeAdjustmentList { get; set; }
 
         /// <summary>
         /// A list of information about taxes withheld.
         /// </summary>
         /// <value>A list of information about taxes withheld.</value>
         [DataMember(Name = "ItemTaxWithheldList", EmitDefaultValue = false)]
-        public List<TaxWithheldComponent> ItemTaxWithheldList { get; set; }
+        public List<TaxWithheldComponent>? ItemTaxWithheldList { get; set; }
 
         /// <summary>
         /// A list of promotions.
         /// </summary>
         /// <value>A list of promotions.</value>
         [DataMember(Name = "PromotionList", EmitDefaultValue = false)]
-        public List<Promotion> PromotionList { get; set; }
+        public List<Promotion>? PromotionList { get; set; }
 
         /// <summary>
         /// A list of promotions.
         /// </summary>
         /// <value>A list of promotions.</value>
         [DataMember(Name = "PromotionAdjustmentList", EmitDefaultValue = false)]
-        public List<Promotion> PromotionAdjustmentList { get; set; }
+        public List<Promotion>? PromotionAdjustmentList { get; set; }
 
         /// <summary>
         /// Gets or Sets CostOfPointsGranted
         /// </summary>
         [DataMember(Name = "CostOfPointsGranted", EmitDefaultValue = false)]
-        public Currency CostOfPointsGranted { get; set; }
+        public Currency? CostOfPointsGranted { get; set; }
 
         /// <summary>
         /// Gets or Sets CostOfPointsReturned
         /// </summary>
         [DataMember(Name = "CostOfPointsReturned", EmitDefaultValue = false)]
-        public Currency CostOfPointsReturned { get; set; }
+        public Currency? CostOfPointsReturned { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -197,5 +197,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

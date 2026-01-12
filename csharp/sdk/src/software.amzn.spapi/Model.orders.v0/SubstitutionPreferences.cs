@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="substitutionType">The type of substitution that these preferences represent. (required).</param>
         /// <param name="substitutionOptions">A collection of substitution options..</param>
-        public SubstitutionPreferences(SubstitutionTypeEnum substitutionType = default(SubstitutionTypeEnum), List<SubstitutionOption> substitutionOptions = default(List<SubstitutionOption>))
+        public SubstitutionPreferences(SubstitutionTypeEnum substitutionType = default(SubstitutionTypeEnum), List<SubstitutionOption>? substitutionOptions = default(List<SubstitutionOption>?))
         {
             this.SubstitutionType = substitutionType;
             this.SubstitutionOptions = substitutionOptions;
@@ -85,7 +85,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>A collection of substitution options.</value>
         [DataMember(Name = "SubstitutionOptions", EmitDefaultValue = false)]
-        public List<SubstitutionOption> SubstitutionOptions { get; set; }
+        public List<SubstitutionOption>? SubstitutionOptions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,5 +120,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

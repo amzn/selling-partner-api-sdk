@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// <param name="stateOrProvinceCode">The state or province code..</param>
         /// <param name="city">The city..</param>
         /// <param name="postalCode">The postal code..</param>
-        public Address(string addressLine1 = default(string), string addressLine2 = default(string), string countryCode = default(string), string stateOrProvinceCode = default(string), string city = default(string), string postalCode = default(string))
+        public Address(string addressLine1 = default(string), string? addressLine2 = default(string?), string countryCode = default(string), string? stateOrProvinceCode = default(string?), string? city = default(string?), string? postalCode = default(string?))
         {
             // to ensure "addressLine1" is required (not null)
             if (addressLine1 == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// </summary>
         /// <value>Additional street address information.</value>
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// The country code in two-character ISO 3166-1 alpha-2 format.
@@ -91,21 +91,21 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// </summary>
         /// <value>The state or province code.</value>
         [DataMember(Name = "stateOrProvinceCode", EmitDefaultValue = false)]
-        public string StateOrProvinceCode { get; set; }
+        public string? StateOrProvinceCode { get; set; }
 
         /// <summary>
         /// The city.
         /// </summary>
         /// <value>The city.</value>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// The postal code.
         /// </summary>
         /// <value>The postal code.</value>
         [DataMember(Name = "postalCode", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,5 +144,4 @@ namespace software.amzn.spapi.Model.sellers.v1
             yield break;
         }
     }
-
 }

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="items">Items included in this plan. (required).</param>
         /// <param name="name">Name for the Inbound Plan. If one isn&#39;t provided, a default name will be provided..</param>
         /// <param name="sourceAddress">sourceAddress (required).</param>
-        public CreateInboundPlanRequest(List<string> destinationMarketplaces = default(List<string>), List<ItemInput> items = default(List<ItemInput>), string name = default(string), AddressInput sourceAddress = default(AddressInput))
+        public CreateInboundPlanRequest(List<string> destinationMarketplaces = default(List<string>), List<ItemInput> items = default(List<ItemInput>), string? name = default(string?), AddressInput sourceAddress = default(AddressInput))
         {
             // to ensure "destinationMarketplaces" is required (not null)
             if (destinationMarketplaces == null)
@@ -85,7 +85,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>Name for the Inbound Plan. If one isn&#39;t provided, a default name will be provided.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Gets or Sets SourceAddress
@@ -140,5 +140,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

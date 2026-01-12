@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="items">A list of items in the transaction..</param>
         /// <param name="contexts">A list of additional information about the item..</param>
         /// <param name="breakdowns">A list of breakdowns that detail how the total amount is calculated for the transaction..</param>
-        public Transaction(SellingPartnerMetadata sellingPartnerMetadata = default(SellingPartnerMetadata), List<RelatedIdentifier> relatedIdentifiers = default(List<RelatedIdentifier>), string transactionType = default(string), string transactionId = default(string), string transactionStatus = default(string), string description = default(string), DateTime postedDate = default(DateTime), Currency totalAmount = default(Currency), MarketplaceDetails marketplaceDetails = default(MarketplaceDetails), List<Item> items = default(List<Item>), List<Context> contexts = default(List<Context>), List<Breakdown> breakdowns = default(List<Breakdown>))
+        public Transaction(SellingPartnerMetadata? sellingPartnerMetadata = default(SellingPartnerMetadata?), List<RelatedIdentifier>? relatedIdentifiers = default(List<RelatedIdentifier>?), string? transactionType = default(string?), string? transactionId = default(string?), string? transactionStatus = default(string?), string? description = default(string?), DateTime? postedDate = default(DateTime?), Currency? totalAmount = default(Currency?), MarketplaceDetails? marketplaceDetails = default(MarketplaceDetails?), List<Item>? items = default(List<Item>?), List<Context>? contexts = default(List<Context>?), List<Breakdown>? breakdowns = default(List<Breakdown>?))
         {
             this.SellingPartnerMetadata = sellingPartnerMetadata;
             this.RelatedIdentifiers = relatedIdentifiers;
@@ -66,82 +66,82 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// Gets or Sets SellingPartnerMetadata
         /// </summary>
         [DataMember(Name = "sellingPartnerMetadata", EmitDefaultValue = false)]
-        public SellingPartnerMetadata SellingPartnerMetadata { get; set; }
+        public SellingPartnerMetadata? SellingPartnerMetadata { get; set; }
 
         /// <summary>
         /// Related business identifiers of the transaction.
         /// </summary>
         /// <value>Related business identifiers of the transaction.</value>
         [DataMember(Name = "relatedIdentifiers", EmitDefaultValue = false)]
-        public List<RelatedIdentifier> RelatedIdentifiers { get; set; }
+        public List<RelatedIdentifier>? RelatedIdentifiers { get; set; }
 
         /// <summary>
         /// The type of transaction.  **Possible value:** &#x60;Shipment&#x60;
         /// </summary>
         /// <value>The type of transaction.  **Possible value:** &#x60;Shipment&#x60;</value>
         [DataMember(Name = "transactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// The unique identifier of the transaction.
         /// </summary>
         /// <value>The unique identifier of the transaction.</value>
         [DataMember(Name = "transactionId", EmitDefaultValue = false)]
-        public string TransactionId { get; set; }
+        public string? TransactionId { get; set; }
 
         /// <summary>
         /// The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released.
         /// </summary>
         /// <value>The status of the transaction.  **Possible values:**  * &#x60;DEFERRED&#x60;: the transaction is currently deferred. * &#x60;RELEASED&#x60;: the transaction is currently released. * &#x60;DEFERRED_RELEASED&#x60;: the transaction was deferred in the past, but is now released. The status of a deferred transaction is updated to &#x60;DEFERRED_RELEASED&#x60; when the transaction is released.</value>
         [DataMember(Name = "transactionStatus", EmitDefaultValue = false)]
-        public string TransactionStatus { get; set; }
+        public string? TransactionStatus { get; set; }
 
         /// <summary>
         /// Describes the reasons for the transaction.  **Example:** &#39;Order Payment&#39;, &#39;Refund Order&#39;
         /// </summary>
         /// <value>Describes the reasons for the transaction.  **Example:** &#39;Order Payment&#39;, &#39;Refund Order&#39;</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "postedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "totalAmount", EmitDefaultValue = false)]
-        public Currency TotalAmount { get; set; }
+        public Currency? TotalAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketplaceDetails
         /// </summary>
         [DataMember(Name = "marketplaceDetails", EmitDefaultValue = false)]
-        public MarketplaceDetails MarketplaceDetails { get; set; }
+        public MarketplaceDetails? MarketplaceDetails { get; set; }
 
         /// <summary>
         /// A list of items in the transaction.
         /// </summary>
         /// <value>A list of items in the transaction.</value>
         [DataMember(Name = "items", EmitDefaultValue = false)]
-        public List<Item> Items { get; set; }
+        public List<Item>? Items { get; set; }
 
         /// <summary>
         /// A list of additional information about the item.
         /// </summary>
         /// <value>A list of additional information about the item.</value>
         [DataMember(Name = "contexts", EmitDefaultValue = false)]
-        public List<Context> Contexts { get; set; }
+        public List<Context>? Contexts { get; set; }
 
         /// <summary>
         /// A list of breakdowns that detail how the total amount is calculated for the transaction.
         /// </summary>
         /// <value>A list of breakdowns that detail how the total amount is calculated for the transaction.</value>
         [DataMember(Name = "breakdowns", EmitDefaultValue = false)]
-        public List<Breakdown> Breakdowns { get; set; }
+        public List<Breakdown>? Breakdowns { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -186,5 +186,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

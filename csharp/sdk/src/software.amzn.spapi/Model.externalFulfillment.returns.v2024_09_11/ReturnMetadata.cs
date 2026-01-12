@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// <param name="rmaId">The RMA ID of the return..</param>
         /// <param name="fulfillmentOrderId">The SmartConnect ID of the fulfillment order for which the return was placed..</param>
         /// <param name="invoiceInformation">invoiceInformation.</param>
-        public ReturnMetadata(string returnReason = default(string), string rmaId = default(string), string fulfillmentOrderId = default(string), InvoiceInformation invoiceInformation = default(InvoiceInformation))
+        public ReturnMetadata(string returnReason = default(string), string? rmaId = default(string?), string? fulfillmentOrderId = default(string?), InvoiceInformation? invoiceInformation = default(InvoiceInformation?))
         {
             // to ensure "returnReason" is required (not null)
             if (returnReason == null)
@@ -69,20 +69,20 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// </summary>
         /// <value>The RMA ID of the return.</value>
         [DataMember(Name = "rmaId", EmitDefaultValue = false)]
-        public string RmaId { get; set; }
+        public string? RmaId { get; set; }
 
         /// <summary>
         /// The SmartConnect ID of the fulfillment order for which the return was placed.
         /// </summary>
         /// <value>The SmartConnect ID of the fulfillment order for which the return was placed.</value>
         [DataMember(Name = "fulfillmentOrderId", EmitDefaultValue = false)]
-        public string FulfillmentOrderId { get; set; }
+        public string? FulfillmentOrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoiceInformation
         /// </summary>
         [DataMember(Name = "invoiceInformation", EmitDefaultValue = false)]
-        public InvoiceInformation InvoiceInformation { get; set; }
+        public InvoiceInformation? InvoiceInformation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,5 +119,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
             yield break;
         }
     }
-
 }

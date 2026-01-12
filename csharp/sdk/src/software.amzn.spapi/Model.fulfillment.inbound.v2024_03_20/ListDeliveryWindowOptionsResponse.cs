@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="deliveryWindowOptions">Delivery window options generated for the placement option. (required).</param>
         /// <param name="pagination">pagination.</param>
-        public ListDeliveryWindowOptionsResponse(List<DeliveryWindowOption> deliveryWindowOptions = default(List<DeliveryWindowOption>), Pagination pagination = default(Pagination))
+        public ListDeliveryWindowOptionsResponse(List<DeliveryWindowOption> deliveryWindowOptions = default(List<DeliveryWindowOption>), Pagination? pagination = default(Pagination?))
         {
             // to ensure "deliveryWindowOptions" is required (not null)
             if (deliveryWindowOptions == null)
@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

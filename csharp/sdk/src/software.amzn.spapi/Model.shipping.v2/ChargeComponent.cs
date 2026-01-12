@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="amount">amount.</param>
         /// <param name="chargeType">The type of charge..</param>
-        public ChargeComponent(Currency amount = default(Currency), ChargeTypeEnum? chargeType = default(ChargeTypeEnum?))
+        public ChargeComponent(Currency? amount = default(Currency?), ChargeTypeEnum? chargeType = default(ChargeTypeEnum?))
         {
             this.Amount = amount;
             this.ChargeType = chargeType;
@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public Currency Amount { get; set; }
+        public Currency? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

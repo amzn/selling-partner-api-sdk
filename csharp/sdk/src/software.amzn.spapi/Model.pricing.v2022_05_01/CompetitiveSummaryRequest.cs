@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="lowestPricedOffersInputs">The list of &#x60;lowestPricedOffersInput&#x60; parameters that are used to build &#x60;lowestPricedOffers&#x60; in the response. This attribute is only valid if &#x60;lowestPricedOffers&#x60; is requested in &#x60;includedData&#x60;.</param>
         /// <param name="method">method (required).</param>
         /// <param name="uri">The URI associated with the individual APIs that are called as part of the batch request. (required).</param>
-        public CompetitiveSummaryRequest(string asin = default(string), string marketplaceId = default(string), List<CompetitiveSummaryIncludedData> includedData = default(List<CompetitiveSummaryIncludedData>), List<LowestPricedOffersInput> lowestPricedOffersInputs = default(List<LowestPricedOffersInput>), HttpMethod method = default(HttpMethod), string uri = default(string))
+        public CompetitiveSummaryRequest(string asin = default(string), string marketplaceId = default(string), List<CompetitiveSummaryIncludedData> includedData = default(List<CompetitiveSummaryIncludedData>), List<LowestPricedOffersInput>? lowestPricedOffersInputs = default(List<LowestPricedOffersInput>?), HttpMethod method = default(HttpMethod), string uri = default(string))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -107,7 +107,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>The list of &#x60;lowestPricedOffersInput&#x60; parameters that are used to build &#x60;lowestPricedOffers&#x60; in the response. This attribute is only valid if &#x60;lowestPricedOffers&#x60; is requested in &#x60;includedData&#x60;</value>
         [DataMember(Name = "lowestPricedOffersInputs", EmitDefaultValue = false)]
-        public List<LowestPricedOffersInput> LowestPricedOffersInputs { get; set; }
+        public List<LowestPricedOffersInput>? LowestPricedOffersInputs { get; set; }
 
         /// <summary>
         /// The URI associated with the individual APIs that are called as part of the batch request.
@@ -165,5 +165,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

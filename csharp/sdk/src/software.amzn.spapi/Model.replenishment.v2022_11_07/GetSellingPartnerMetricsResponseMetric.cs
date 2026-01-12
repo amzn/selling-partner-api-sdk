@@ -67,7 +67,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="signupConversionFor5PlusPercentSellerFunding">[Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months.</param>
         /// <param name="timeInterval">timeInterval.</param>
         /// <param name="currencyCode">The currency code in ISO 4217 format..</param>
-        public GetSellingPartnerMetricsResponseMetric(double notDeliveredDueToOOS = default(double), double totalSubscriptionsRevenue = default(double), decimal shippedSubscriptionUnits = default(decimal), decimal activeSubscriptions = default(decimal), double subscriberAverageRevenue = default(double), double nonSubscriberAverageRevenue = default(double), double lostRevenueDueToOOS = default(double), double subscriberAverageReorders = default(double), double nonSubscriberAverageReorders = default(double), double couponsRevenuePenetration = default(double), double revenueFromSubscriptionsWithMultipleDeliveries = default(double), double revenueFromActiveSubscriptionsWithSingleDelivery = default(double), double revenueFromCancelledSubscriptionsAfterSingleDelivery = default(double), double subscriberRetentionFor30Days = default(double), double subscriberRetentionFor90Days = default(double), double revenuePenetrationFor0PercentSellerFunding = default(double), double revenuePenetrationFor5PercentSellerFunding = default(double), double revenuePenetrationFor10PercentSellerFunding = default(double), double revenuePenetrationFor5PlusPercentSellerFunding = default(double), double shareOfCouponSubscriptions = default(double), double nonSubscriberLifeTimeValueFromOTP = default(double), double lostSubscriberLifeTimeValueFromOTP = default(double), double lostSubscriberLifeTimeValueFromSNS = default(double), double growingSubscriberLifeTimeValueFromOTP = default(double), double growingSubscriberLifeTimeValueFromSNS = default(double), double establishedSubscriberLifeTimeValueFromOTP = default(double), double establishedSubscriberLifeTimeValueFromSNS = default(double), double signupConversionFor0PercentSellerFunding = default(double), double signupConversionFor5PercentSellerFunding = default(double), double signupConversionFor10PercentSellerFunding = default(double), double signupConversionFor5PlusPercentSellerFunding = default(double), TimeInterval timeInterval = default(TimeInterval), string currencyCode = default(string))
+        public GetSellingPartnerMetricsResponseMetric(double? notDeliveredDueToOOS = default(double?), double? totalSubscriptionsRevenue = default(double?), decimal? shippedSubscriptionUnits = default(decimal?), decimal? activeSubscriptions = default(decimal?), double? subscriberAverageRevenue = default(double?), double? nonSubscriberAverageRevenue = default(double?), double? lostRevenueDueToOOS = default(double?), double? subscriberAverageReorders = default(double?), double? nonSubscriberAverageReorders = default(double?), double? couponsRevenuePenetration = default(double?), double? revenueFromSubscriptionsWithMultipleDeliveries = default(double?), double? revenueFromActiveSubscriptionsWithSingleDelivery = default(double?), double? revenueFromCancelledSubscriptionsAfterSingleDelivery = default(double?), double? subscriberRetentionFor30Days = default(double?), double? subscriberRetentionFor90Days = default(double?), double? revenuePenetrationFor0PercentSellerFunding = default(double?), double? revenuePenetrationFor5PercentSellerFunding = default(double?), double? revenuePenetrationFor10PercentSellerFunding = default(double?), double? revenuePenetrationFor5PlusPercentSellerFunding = default(double?), double? shareOfCouponSubscriptions = default(double?), double? nonSubscriberLifeTimeValueFromOTP = default(double?), double? lostSubscriberLifeTimeValueFromOTP = default(double?), double? lostSubscriberLifeTimeValueFromSNS = default(double?), double? growingSubscriberLifeTimeValueFromOTP = default(double?), double? growingSubscriberLifeTimeValueFromSNS = default(double?), double? establishedSubscriberLifeTimeValueFromOTP = default(double?), double? establishedSubscriberLifeTimeValueFromSNS = default(double?), double? signupConversionFor0PercentSellerFunding = default(double?), double? signupConversionFor5PercentSellerFunding = default(double?), double? signupConversionFor10PercentSellerFunding = default(double?), double? signupConversionFor5PlusPercentSellerFunding = default(double?), TimeInterval? timeInterval = default(TimeInterval?), string? currencyCode = default(string?))
         {
             this.NotDeliveredDueToOOS = notDeliveredDueToOOS;
             this.TotalSubscriptionsRevenue = totalSubscriptionsRevenue;
@@ -109,230 +109,230 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "notDeliveredDueToOOS", EmitDefaultValue = false)]
-        public double NotDeliveredDueToOOS { get; set; }
+        public double? NotDeliveredDueToOOS { get; set; }
 
         /// <summary>
         /// The revenue generated from subscriptions over a period of time. Applicable for both the &#x60;PERFORMANCE&#x60; and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The revenue generated from subscriptions over a period of time. Applicable for both the &#x60;PERFORMANCE&#x60; and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "totalSubscriptionsRevenue", EmitDefaultValue = false)]
-        public double TotalSubscriptionsRevenue { get; set; }
+        public double? TotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
         /// The number of units shipped to the subscribers over a period of time. Applicable for both the &#x60;PERFORMANCE&#x60; and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The number of units shipped to the subscribers over a period of time. Applicable for both the &#x60;PERFORMANCE&#x60; and &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "shippedSubscriptionUnits", EmitDefaultValue = false)]
-        public decimal ShippedSubscriptionUnits { get; set; }
+        public decimal? ShippedSubscriptionUnits { get; set; }
 
         /// <summary>
         /// The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The number of active subscriptions present at the end of the period. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "activeSubscriptions", EmitDefaultValue = false)]
-        public decimal ActiveSubscriptions { get; set; }
+        public decimal? ActiveSubscriptions { get; set; }
 
         /// <summary>
         /// The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The average revenue per subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "subscriberAverageRevenue", EmitDefaultValue = false)]
-        public double SubscriberAverageRevenue { get; set; }
+        public double? SubscriberAverageRevenue { get; set; }
 
         /// <summary>
         /// The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The average revenue per non-subscriber of the program over a period of past 12 months for sellers and 6 months for vendors. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "nonSubscriberAverageRevenue", EmitDefaultValue = false)]
-        public double NonSubscriberAverageRevenue { get; set; }
+        public double? NonSubscriberAverageRevenue { get; set; }
 
         /// <summary>
         /// The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The revenue that would have been generated had there not been out of stock. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "lostRevenueDueToOOS", EmitDefaultValue = false)]
-        public double LostRevenueDueToOOS { get; set; }
+        public double? LostRevenueDueToOOS { get; set; }
 
         /// <summary>
         /// The average reorders per subscriber of the program over a period of 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The average reorders per subscriber of the program over a period of 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "subscriberAverageReorders", EmitDefaultValue = false)]
-        public double SubscriberAverageReorders { get; set; }
+        public double? SubscriberAverageReorders { get; set; }
 
         /// <summary>
         /// The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The average reorders per non-subscriber of the program over a period of past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "nonSubscriberAverageReorders", EmitDefaultValue = false)]
-        public double NonSubscriberAverageReorders { get; set; }
+        public double? NonSubscriberAverageReorders { get; set; }
 
         /// <summary>
         /// The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "couponsRevenuePenetration", EmitDefaultValue = false)]
-        public double CouponsRevenuePenetration { get; set; }
+        public double? CouponsRevenuePenetration { get; set; }
 
         /// <summary>
         /// The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The subscription revenue generated from subscriptions with over two deliveries over the past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenueFromSubscriptionsWithMultipleDeliveries", EmitDefaultValue = false)]
-        public double RevenueFromSubscriptionsWithMultipleDeliveries { get; set; }
+        public double? RevenueFromSubscriptionsWithMultipleDeliveries { get; set; }
 
         /// <summary>
         /// The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The subscription revenue generated from active subscriptions with one delivery over the past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenueFromActiveSubscriptionsWithSingleDelivery", EmitDefaultValue = false)]
-        public double RevenueFromActiveSubscriptionsWithSingleDelivery { get; set; }
+        public double? RevenueFromActiveSubscriptionsWithSingleDelivery { get; set; }
 
         /// <summary>
         /// The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The subscription revenue generated from subscriptions which are cancelled after one delivery over the past 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenueFromCancelledSubscriptionsAfterSingleDelivery", EmitDefaultValue = false)]
-        public double RevenueFromCancelledSubscriptionsAfterSingleDelivery { get; set; }
+        public double? RevenueFromCancelledSubscriptionsAfterSingleDelivery { get; set; }
 
         /// <summary>
         /// The percentage of subscriptions retained after 30 days of subscription creation. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of subscriptions retained after 30 days of subscription creation. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "subscriberRetentionFor30Days", EmitDefaultValue = false)]
-        public double SubscriberRetentionFor30Days { get; set; }
+        public double? SubscriberRetentionFor30Days { get; set; }
 
         /// <summary>
         /// The percentage of subscriptions retained after 90 days of subscription creation. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of subscriptions retained after 90 days of subscription creation. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "subscriberRetentionFor90Days", EmitDefaultValue = false)]
-        public double SubscriberRetentionFor90Days { get; set; }
+        public double? SubscriberRetentionFor90Days { get; set; }
 
         /// <summary>
         /// The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of subscription revenue generated by offers with 0% seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenuePenetrationFor0PercentSellerFunding", EmitDefaultValue = false)]
-        public double RevenuePenetrationFor0PercentSellerFunding { get; set; }
+        public double? RevenuePenetrationFor0PercentSellerFunding { get; set; }
 
         /// <summary>
         /// [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 5% seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenuePenetrationFor5PercentSellerFunding", EmitDefaultValue = false)]
-        public double RevenuePenetrationFor5PercentSellerFunding { get; set; }
+        public double? RevenuePenetrationFor5PercentSellerFunding { get; set; }
 
         /// <summary>
         /// [Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>[Applicable only for Sellers] The percentage of subscription revenue generated by offers with 10% seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenuePenetrationFor10PercentSellerFunding", EmitDefaultValue = false)]
-        public double RevenuePenetrationFor10PercentSellerFunding { get; set; }
+        public double? RevenuePenetrationFor10PercentSellerFunding { get; set; }
 
         /// <summary>
         /// [Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>[Applicable only for vendors] The percentage of subscription revenue generated by offers with 5% or above seller-funded discount over the last 12 months. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenuePenetrationFor5PlusPercentSellerFunding", EmitDefaultValue = false)]
-        public double RevenuePenetrationFor5PlusPercentSellerFunding { get; set; }
+        public double? RevenuePenetrationFor5PlusPercentSellerFunding { get; set; }
 
         /// <summary>
         /// The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of new subscriptions acquired through coupons. Applicable to &#x60;PERFORMANCE&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "shareOfCouponSubscriptions", EmitDefaultValue = false)]
-        public double ShareOfCouponSubscriptions { get; set; }
+        public double? ShareOfCouponSubscriptions { get; set; }
 
         /// <summary>
         /// Total revenue from customers who have made purchases from your catalog but have never subscribed to any products
         /// </summary>
         /// <value>Total revenue from customers who have made purchases from your catalog but have never subscribed to any products</value>
         [DataMember(Name = "nonSubscriberLifeTimeValueFromOTP", EmitDefaultValue = false)]
-        public double NonSubscriberLifeTimeValueFromOTP { get; set; }
+        public double? NonSubscriberLifeTimeValueFromOTP { get; set; }
 
         /// <summary>
         /// Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.
         /// </summary>
         /// <value>Revenue from one-time purchase orders placed by customers who previously had subscriptions but currently have none active in your catalog.</value>
         [DataMember(Name = "lostSubscriberLifeTimeValueFromOTP", EmitDefaultValue = false)]
-        public double LostSubscriberLifeTimeValueFromOTP { get; set; }
+        public double? LostSubscriberLifeTimeValueFromOTP { get; set; }
 
         /// <summary>
         /// Revenue from Subscribe &amp; Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.
         /// </summary>
         /// <value>Revenue from Subscribe &amp; Save orders placed by customers who previously had subscriptions but currently have none active in your catalog.</value>
         [DataMember(Name = "lostSubscriberLifeTimeValueFromSNS", EmitDefaultValue = false)]
-        public double LostSubscriberLifeTimeValueFromSNS { get; set; }
+        public double? LostSubscriberLifeTimeValueFromSNS { get; set; }
 
         /// <summary>
         /// Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.
         /// </summary>
         /// <value>Revenue from one-time purchase orders placed by customers who started their first subscription with your catalog within the past 12 months.</value>
         [DataMember(Name = "growingSubscriberLifeTimeValueFromOTP", EmitDefaultValue = false)]
-        public double GrowingSubscriberLifeTimeValueFromOTP { get; set; }
+        public double? GrowingSubscriberLifeTimeValueFromOTP { get; set; }
 
         /// <summary>
         /// Revenue from Subscribe &amp; Save orders placed by customers who started their first subscription with your catalog within the past 12 months.
         /// </summary>
         /// <value>Revenue from Subscribe &amp; Save orders placed by customers who started their first subscription with your catalog within the past 12 months.</value>
         [DataMember(Name = "growingSubscriberLifeTimeValueFromSNS", EmitDefaultValue = false)]
-        public double GrowingSubscriberLifeTimeValueFromSNS { get; set; }
+        public double? GrowingSubscriberLifeTimeValueFromSNS { get; set; }
 
         /// <summary>
         /// Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.
         /// </summary>
         /// <value>Revenue from one-time purchase orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.</value>
         [DataMember(Name = "establishedSubscriberLifeTimeValueFromOTP", EmitDefaultValue = false)]
-        public double EstablishedSubscriberLifeTimeValueFromOTP { get; set; }
+        public double? EstablishedSubscriberLifeTimeValueFromOTP { get; set; }
 
         /// <summary>
         /// Revenue from Subscribe &amp; Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.
         /// </summary>
         /// <value>Revenue from Subscribe &amp; Save orders placed by customers who have maintained an active subscription with your catalog for more than 12 months.</value>
         [DataMember(Name = "establishedSubscriberLifeTimeValueFromSNS", EmitDefaultValue = false)]
-        public double EstablishedSubscriberLifeTimeValueFromSNS { get; set; }
+        public double? EstablishedSubscriberLifeTimeValueFromSNS { get; set; }
 
         /// <summary>
         /// Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months
         /// </summary>
         /// <value>Percentage of subscriptions created by offers with 0% seller-funded discount out of the total number of new orders placed over the past 12 months</value>
         [DataMember(Name = "signupConversionFor0PercentSellerFunding", EmitDefaultValue = false)]
-        public double SignupConversionFor0PercentSellerFunding { get; set; }
+        public double? SignupConversionFor0PercentSellerFunding { get; set; }
 
         /// <summary>
         /// [Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months
         /// </summary>
         /// <value>[Applicable only for Sellers] Percentage of subscriptions created by offers with 5% seller-funded discount out of the total number of new orders placed over the past 12 months</value>
         [DataMember(Name = "signupConversionFor5PercentSellerFunding", EmitDefaultValue = false)]
-        public double SignupConversionFor5PercentSellerFunding { get; set; }
+        public double? SignupConversionFor5PercentSellerFunding { get; set; }
 
         /// <summary>
         /// [Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months
         /// </summary>
         /// <value>[Applicable only for Sellers] Percentage of subscriptions created by offers with 10% seller-funded discount out of the total number of new orders placed over the past 12 months</value>
         [DataMember(Name = "signupConversionFor10PercentSellerFunding", EmitDefaultValue = false)]
-        public double SignupConversionFor10PercentSellerFunding { get; set; }
+        public double? SignupConversionFor10PercentSellerFunding { get; set; }
 
         /// <summary>
         /// [Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months
         /// </summary>
         /// <value>[Applicable only for Vendors] Percentage of subscriptions created by offers with 5% or above seller-funded discount out of the total number of new orders placed over the past 12 months</value>
         [DataMember(Name = "signupConversionFor5PlusPercentSellerFunding", EmitDefaultValue = false)]
-        public double SignupConversionFor5PlusPercentSellerFunding { get; set; }
+        public double? SignupConversionFor5PlusPercentSellerFunding { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeInterval
         /// </summary>
         [DataMember(Name = "timeInterval", EmitDefaultValue = false)]
-        public TimeInterval TimeInterval { get; set; }
+        public TimeInterval? TimeInterval { get; set; }
 
         /// <summary>
         /// The currency code in ISO 4217 format.
         /// </summary>
         /// <value>The currency code in ISO 4217 format.</value>
         [DataMember(Name = "currencyCode", EmitDefaultValue = false)]
-        public string CurrencyCode { get; set; }
+        public string? CurrencyCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -662,5 +662,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

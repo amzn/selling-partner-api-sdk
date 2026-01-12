@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="sku">The seller SKU of the item. This will only be present for the target offer, which belongs to the requesting seller..</param>
         /// <param name="asin">The ASIN of the item. (required).</param>
         /// <param name="fulfillmentType">fulfillmentType.</param>
-        public OfferIdentifier(string marketplaceId = default(string), string sellerId = default(string), string sku = default(string), string asin = default(string), FulfillmentType? fulfillmentType = default(FulfillmentType?))
+        public OfferIdentifier(string marketplaceId = default(string), string? sellerId = default(string?), string? sku = default(string?), string asin = default(string), FulfillmentType? fulfillmentType = default(FulfillmentType?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -81,14 +81,14 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>The seller identifier for the offer.</value>
         [DataMember(Name = "sellerId", EmitDefaultValue = false)]
-        public string SellerId { get; set; }
+        public string? SellerId { get; set; }
 
         /// <summary>
         /// The seller SKU of the item. This will only be present for the target offer, which belongs to the requesting seller.
         /// </summary>
         /// <value>The seller SKU of the item. This will only be present for the target offer, which belongs to the requesting seller.</value>
         [DataMember(Name = "sku", EmitDefaultValue = false)]
-        public string Sku { get; set; }
+        public string? Sku { get; set; }
 
         /// <summary>
         /// The ASIN of the item.
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

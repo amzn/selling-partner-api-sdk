@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <param name="value">Name of the audience an offer is applicable to.   Common values:   * &#39;ALL&#39; - Standard offer audience for buyers on Amazon retail websites.   * &#39;B2B&#39; - Offer audience for Amazon Business website buyers..</param>
         /// <param name="displayName">Localized display name for the audience..</param>
-        public Audience(string value = default(string), string displayName = default(string))
+        public Audience(string? value = default(string?), string? displayName = default(string?))
         {
             this.Value = value;
             this.DisplayName = displayName;
@@ -50,14 +50,14 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         <example>ALL</example>
         */
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Localized display name for the audience.
         /// </summary>
         /// <value>Localized display name for the audience.</value>
         [DataMember(Name = "displayName", EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,5 +92,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="label">label.</param>
         /// <param name="description">description.</param>
-        public StandardTextPairBlock(TextComponent label = default(TextComponent), TextComponent description = default(TextComponent))
+        public StandardTextPairBlock(TextComponent? label = default(TextComponent?), TextComponent? description = default(TextComponent?))
         {
             this.Label = label;
             this.Description = description;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Label
         /// </summary>
         [DataMember(Name = "label", EmitDefaultValue = false)]
-        public TextComponent Label { get; set; }
+        public TextComponent? Label { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public TextComponent Description { get; set; }
+        public TextComponent? Description { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

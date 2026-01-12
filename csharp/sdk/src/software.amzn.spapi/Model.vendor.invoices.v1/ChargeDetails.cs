@@ -124,7 +124,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="description">Description of the charge..</param>
         /// <param name="chargeAmount">chargeAmount (required).</param>
         /// <param name="taxDetails">Tax amount details applied on this charge..</param>
-        public ChargeDetails(TypeEnum type = default(TypeEnum), string description = default(string), Money chargeAmount = default(Money), List<TaxDetails> taxDetails = default(List<TaxDetails>))
+        public ChargeDetails(TypeEnum type = default(TypeEnum), string? description = default(string?), Money chargeAmount = default(Money), List<TaxDetails>? taxDetails = default(List<TaxDetails>?))
         {
             this.Type = type;
             // to ensure "chargeAmount" is required (not null)
@@ -142,7 +142,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>Description of the charge.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Gets or Sets ChargeAmount
@@ -155,7 +155,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>Tax amount details applied on this charge.</value>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public List<TaxDetails> TaxDetails { get; set; }
+        public List<TaxDetails>? TaxDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -192,5 +192,4 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             yield break;
         }
     }
-
 }

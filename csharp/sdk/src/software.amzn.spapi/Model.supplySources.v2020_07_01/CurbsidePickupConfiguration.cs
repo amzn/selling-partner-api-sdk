@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="isSupported">When true, curbside pickup is supported by the supply source..</param>
         /// <param name="operationalConfiguration">operationalConfiguration.</param>
         /// <param name="parkingWithAddressConfiguration">parkingWithAddressConfiguration.</param>
-        public CurbsidePickupConfiguration(bool isSupported = default(bool), OperationalConfiguration operationalConfiguration = default(OperationalConfiguration), ParkingWithAddressConfiguration parkingWithAddressConfiguration = default(ParkingWithAddressConfiguration))
+        public CurbsidePickupConfiguration(bool? isSupported = default(bool?), OperationalConfiguration? operationalConfiguration = default(OperationalConfiguration?), ParkingWithAddressConfiguration? parkingWithAddressConfiguration = default(ParkingWithAddressConfiguration?))
         {
             this.IsSupported = isSupported;
             this.OperationalConfiguration = operationalConfiguration;
@@ -49,19 +49,19 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>When true, curbside pickup is supported by the supply source.</value>
         [DataMember(Name = "isSupported", EmitDefaultValue = true)]
-        public bool IsSupported { get; set; }
+        public bool? IsSupported { get; set; }
 
         /// <summary>
         /// Gets or Sets OperationalConfiguration
         /// </summary>
         [DataMember(Name = "operationalConfiguration", EmitDefaultValue = false)]
-        public OperationalConfiguration OperationalConfiguration { get; set; }
+        public OperationalConfiguration? OperationalConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets ParkingWithAddressConfiguration
         /// </summary>
         [DataMember(Name = "parkingWithAddressConfiguration", EmitDefaultValue = false)]
-        public ParkingWithAddressConfiguration ParkingWithAddressConfiguration { get; set; }
+        public ParkingWithAddressConfiguration? ParkingWithAddressConfiguration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

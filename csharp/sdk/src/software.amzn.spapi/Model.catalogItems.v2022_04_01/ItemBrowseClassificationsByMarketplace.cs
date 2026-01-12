@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <param name="marketplaceId">Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required).</param>
         /// <param name="classifications">Classifications (browse nodes) that are associated with the item in the Amazon catalog..</param>
-        public ItemBrowseClassificationsByMarketplace(string marketplaceId = default(string), List<ItemBrowseClassification> classifications = default(List<ItemBrowseClassification>))
+        public ItemBrowseClassificationsByMarketplace(string marketplaceId = default(string), List<ItemBrowseClassification>? classifications = default(List<ItemBrowseClassification>?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Classifications (browse nodes) that are associated with the item in the Amazon catalog.</value>
         [DataMember(Name = "classifications", EmitDefaultValue = false)]
-        public List<ItemBrowseClassification> Classifications { get; set; }
+        public List<ItemBrowseClassification>? Classifications { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

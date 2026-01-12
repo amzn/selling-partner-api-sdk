@@ -58,7 +58,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="emailAddress">Email address of the payee. (required).</param>
         /// <param name="phoneNumber">Valid phone number of the payee. (required).</param>
         /// <param name="payeeEntityType">payeeEntityType (required).</param>
-        public PayeeContactInformation(string payeeFirstName = default(string), string payeeMiddleName = default(string), string payeeLastName = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string city = default(string), string state = default(string), string postalCode = default(string), string country = default(string), string countryCode = default(string), string emailAddress = default(string), string phoneNumber = default(string), PayeeEntityType payeeEntityType = default(PayeeEntityType))
+        public PayeeContactInformation(string payeeFirstName = default(string), string? payeeMiddleName = default(string?), string payeeLastName = default(string), string addressLine1 = default(string), string? addressLine2 = default(string?), string city = default(string), string state = default(string), string postalCode = default(string), string? country = default(string?), string countryCode = default(string), string emailAddress = default(string), string phoneNumber = default(string), PayeeEntityType payeeEntityType = default(PayeeEntityType))
         {
             // to ensure "payeeFirstName" is required (not null)
             if (payeeFirstName == null)
@@ -138,7 +138,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>Henry</example>
         */
         [DataMember(Name = "payeeMiddleName", EmitDefaultValue = false)]
-        public string PayeeMiddleName { get; set; }
+        public string? PayeeMiddleName { get; set; }
 
         /// <summary>
         /// Last name of the payee. There is a 50 character limit.
@@ -168,7 +168,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>Unit 415</example>
         */
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// City name of the public address 
@@ -208,7 +208,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>United States</example>
         */
         [DataMember(Name = "country", EmitDefaultValue = false)]
-        public string Country { get; set; }
+        public string? Country { get; set; }
 
         /// <summary>
         /// The two digit country code, in ISO 3166 format. 
@@ -284,5 +284,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

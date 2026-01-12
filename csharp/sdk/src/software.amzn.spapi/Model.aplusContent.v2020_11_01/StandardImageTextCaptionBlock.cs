@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="block">block.</param>
         /// <param name="caption">caption.</param>
-        public StandardImageTextCaptionBlock(StandardImageTextBlock block = default(StandardImageTextBlock), TextComponent caption = default(TextComponent))
+        public StandardImageTextCaptionBlock(StandardImageTextBlock? block = default(StandardImageTextBlock?), TextComponent? caption = default(TextComponent?))
         {
             this.Block = block;
             this.Caption = caption;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Block
         /// </summary>
         [DataMember(Name = "block", EmitDefaultValue = false)]
-        public StandardImageTextBlock Block { get; set; }
+        public StandardImageTextBlock? Block { get; set; }
 
         /// <summary>
         /// Gets or Sets Caption
         /// </summary>
         [DataMember(Name = "caption", EmitDefaultValue = false)]
-        public TextComponent Caption { get; set; }
+        public TextComponent? Caption { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

@@ -152,7 +152,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="shippingOptions">A list of shipping options associated with this offer.</param>
         /// <param name="points">points.</param>
         /// <param name="primeDetails">primeDetails.</param>
-        public Offer(string sellerId = default(string), Condition condition = default(Condition), SubConditionEnum? subCondition = default(SubConditionEnum?), FulfillmentType fulfillmentType = default(FulfillmentType), MoneyType listingPrice = default(MoneyType), List<ShippingOption> shippingOptions = default(List<ShippingOption>), Points points = default(Points), PrimeDetails primeDetails = default(PrimeDetails))
+        public Offer(string sellerId = default(string), Condition condition = default(Condition), SubConditionEnum? subCondition = default(SubConditionEnum?), FulfillmentType fulfillmentType = default(FulfillmentType), MoneyType listingPrice = default(MoneyType), List<ShippingOption>? shippingOptions = default(List<ShippingOption>?), Points? points = default(Points?), PrimeDetails? primeDetails = default(PrimeDetails?))
         {
             // to ensure "sellerId" is required (not null)
             if (sellerId == null)
@@ -192,19 +192,19 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>A list of shipping options associated with this offer</value>
         [DataMember(Name = "shippingOptions", EmitDefaultValue = false)]
-        public List<ShippingOption> ShippingOptions { get; set; }
+        public List<ShippingOption>? ShippingOptions { get; set; }
 
         /// <summary>
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// Gets or Sets PrimeDetails
         /// </summary>
         [DataMember(Name = "primeDetails", EmitDefaultValue = false)]
-        public PrimeDetails PrimeDetails { get; set; }
+        public PrimeDetails? PrimeDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -245,5 +245,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

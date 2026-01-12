@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="featureName">The name of the feature. Valid feature names are:  - &#x60;BLOCK_AMZL&#x60;: Blocks orders from being shipped using Amazon Logistics (AMZL).   - Note: Using this feature will incur additional fee surcharges on MCF orders and may increase the risk of unfulfilled or delayed deliveries if alternative carriers are unavailable. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. - &#x60;BLANK_BOX&#x60;: Ships orders in non-Amazon branded packaging (blank boxes). - &#x60;SIGNATURE_CONFIRMATION&#x60;: Requires a signature from the recipient upon delivery.    - Note: Using signature confirmation features will incur additional fees on MCF orders and are currently supported only in the US marketplace..</param>
         /// <param name="featureFulfillmentPolicy">Specifies the policy to use when fulfilling an order..</param>
-        public FeatureSettings(string featureName = default(string), FeatureFulfillmentPolicyEnum? featureFulfillmentPolicy = default(FeatureFulfillmentPolicyEnum?))
+        public FeatureSettings(string? featureName = default(string?), FeatureFulfillmentPolicyEnum? featureFulfillmentPolicy = default(FeatureFulfillmentPolicyEnum?))
         {
             this.FeatureName = featureName;
             this.FeatureFulfillmentPolicy = featureFulfillmentPolicy;
@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The name of the feature. Valid feature names are:  - &#x60;BLOCK_AMZL&#x60;: Blocks orders from being shipped using Amazon Logistics (AMZL).   - Note: Using this feature will incur additional fee surcharges on MCF orders and may increase the risk of unfulfilled or delayed deliveries if alternative carriers are unavailable. Using &#x60;BLOCK_AMZL&#x60; in an order request will take precedence over your Seller Central account setting. - &#x60;BLANK_BOX&#x60;: Ships orders in non-Amazon branded packaging (blank boxes). - &#x60;SIGNATURE_CONFIRMATION&#x60;: Requires a signature from the recipient upon delivery.    - Note: Using signature confirmation features will incur additional fees on MCF orders and are currently supported only in the US marketplace.</value>
         [DataMember(Name = "featureName", EmitDefaultValue = false)]
-        public string FeatureName { get; set; }
+        public string? FeatureName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

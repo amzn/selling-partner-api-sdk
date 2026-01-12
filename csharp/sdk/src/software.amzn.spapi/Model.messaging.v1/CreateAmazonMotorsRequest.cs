@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// Initializes a new instance of the <see cref="CreateAmazonMotorsRequest" /> class.
         /// </summary>
         /// <param name="attachments">Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation..</param>
-        public CreateAmazonMotorsRequest(List<Attachment> attachments = default(List<Attachment>))
+        public CreateAmazonMotorsRequest(List<Attachment>? attachments = default(List<Attachment>?))
         {
             this.Attachments = attachments;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>Attachments to include in the message to the buyer. If any text is included in the attachment, the text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation.</value>
         [DataMember(Name = "attachments", EmitDefaultValue = false)]
-        public List<Attachment> Attachments { get; set; }
+        public List<Attachment>? Attachments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

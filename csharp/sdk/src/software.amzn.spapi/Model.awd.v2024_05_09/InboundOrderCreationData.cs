@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="originAddress">originAddress (required).</param>
         /// <param name="packagesToInbound">List of packages to be inbounded. (required).</param>
         /// <param name="preferences">preferences.</param>
-        public InboundOrderCreationData(string externalReferenceId = default(string), Address originAddress = default(Address), List<DistributionPackageQuantity> packagesToInbound = default(List<DistributionPackageQuantity>), InboundPreferences preferences = default(InboundPreferences))
+        public InboundOrderCreationData(string? externalReferenceId = default(string?), Address originAddress = default(Address), List<DistributionPackageQuantity> packagesToInbound = default(List<DistributionPackageQuantity>), InboundPreferences? preferences = default(InboundPreferences?))
         {
             // to ensure "originAddress" is required (not null)
             if (originAddress == null)
@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestReferenceId</example>
         */
         [DataMember(Name = "externalReferenceId", EmitDefaultValue = false)]
-        public string ExternalReferenceId { get; set; }
+        public string? ExternalReferenceId { get; set; }
 
         /// <summary>
         /// Gets or Sets OriginAddress
@@ -91,7 +91,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets Preferences
         /// </summary>
         [DataMember(Name = "preferences", EmitDefaultValue = false)]
-        public InboundPreferences Preferences { get; set; }
+        public InboundPreferences? Preferences { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -128,5 +128,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

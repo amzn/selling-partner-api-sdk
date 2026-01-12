@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// </summary>
         /// <param name="sqs">sqs.</param>
         /// <param name="eventBridge">eventBridge.</param>
-        public DestinationResourceSpecification(SqsResource sqs = default(SqsResource), EventBridgeResourceSpecification eventBridge = default(EventBridgeResourceSpecification))
+        public DestinationResourceSpecification(SqsResource? sqs = default(SqsResource?), EventBridgeResourceSpecification? eventBridge = default(EventBridgeResourceSpecification?))
         {
             this.Sqs = sqs;
             this.EventBridge = eventBridge;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Gets or Sets Sqs
         /// </summary>
         [DataMember(Name = "sqs", EmitDefaultValue = false)]
-        public SqsResource Sqs { get; set; }
+        public SqsResource? Sqs { get; set; }
 
         /// <summary>
         /// Gets or Sets EventBridge
         /// </summary>
         [DataMember(Name = "eventBridge", EmitDefaultValue = false)]
-        public EventBridgeResourceSpecification EventBridge { get; set; }
+        public EventBridgeResourceSpecification? EventBridge { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.notifications.v1
             yield break;
         }
     }
-
 }

@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="shipmentVolume">shipmentVolume.</param>
         /// <param name="cartonCount">Number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments..</param>
         /// <param name="palletCount">Number of pallets present in the shipment. Provide the palletCount only for palletized shipments..</param>
-        public ShipmentMeasurements(Weight grossShipmentWeight = default(Weight), Volume shipmentVolume = default(Volume), int cartonCount = default(int), int palletCount = default(int))
+        public ShipmentMeasurements(Weight? grossShipmentWeight = default(Weight?), Volume? shipmentVolume = default(Volume?), int? cartonCount = default(int?), int? palletCount = default(int?))
         {
             this.GrossShipmentWeight = grossShipmentWeight;
             this.ShipmentVolume = shipmentVolume;
@@ -50,27 +50,27 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets GrossShipmentWeight
         /// </summary>
         [DataMember(Name = "grossShipmentWeight", EmitDefaultValue = false)]
-        public Weight GrossShipmentWeight { get; set; }
+        public Weight? GrossShipmentWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipmentVolume
         /// </summary>
         [DataMember(Name = "shipmentVolume", EmitDefaultValue = false)]
-        public Volume ShipmentVolume { get; set; }
+        public Volume? ShipmentVolume { get; set; }
 
         /// <summary>
         /// Number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.
         /// </summary>
         /// <value>Number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.</value>
         [DataMember(Name = "cartonCount", EmitDefaultValue = false)]
-        public int CartonCount { get; set; }
+        public int? CartonCount { get; set; }
 
         /// <summary>
         /// Number of pallets present in the shipment. Provide the palletCount only for palletized shipments.
         /// </summary>
         /// <value>Number of pallets present in the shipment. Provide the palletCount only for palletized shipments.</value>
         [DataMember(Name = "palletCount", EmitDefaultValue = false)]
-        public int PalletCount { get; set; }
+        public int? PalletCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

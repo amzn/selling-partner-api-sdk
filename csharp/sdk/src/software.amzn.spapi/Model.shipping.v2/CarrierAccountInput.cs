@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="isConfidential">is value is Confidential ..</param>
         /// <param name="isHidden">is value is hidden ..</param>
         /// <param name="validationMetadata">A list of ValidationMetadata.</param>
-        public CarrierAccountInput(string descriptionLocalizationKey = default(string), string name = default(string), string groupName = default(string), InputType? inputType = default(InputType?), bool isMandatory = default(bool), bool isConfidential = default(bool), bool isHidden = default(bool), List<ValidationMetadata> validationMetadata = default(List<ValidationMetadata>))
+        public CarrierAccountInput(string? descriptionLocalizationKey = default(string?), string? name = default(string?), string? groupName = default(string?), InputType? inputType = default(InputType?), bool? isMandatory = default(bool?), bool? isConfidential = default(bool?), bool? isHidden = default(bool?), List<ValidationMetadata>? validationMetadata = default(List<ValidationMetadata>?))
         {
             this.DescriptionLocalizationKey = descriptionLocalizationKey;
             this.Name = name;
@@ -66,49 +66,49 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>descriptionLocalizationKey value .</value>
         [DataMember(Name = "descriptionLocalizationKey", EmitDefaultValue = false)]
-        public string DescriptionLocalizationKey { get; set; }
+        public string? DescriptionLocalizationKey { get; set; }
 
         /// <summary>
         /// name value .
         /// </summary>
         /// <value>name value .</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// groupName value .
         /// </summary>
         /// <value>groupName value .</value>
         [DataMember(Name = "groupName", EmitDefaultValue = false)]
-        public string GroupName { get; set; }
+        public string? GroupName { get; set; }
 
         /// <summary>
         /// mandatory or not  value .
         /// </summary>
         /// <value>mandatory or not  value .</value>
         [DataMember(Name = "isMandatory", EmitDefaultValue = true)]
-        public bool IsMandatory { get; set; }
+        public bool? IsMandatory { get; set; }
 
         /// <summary>
         /// is value is Confidential .
         /// </summary>
         /// <value>is value is Confidential .</value>
         [DataMember(Name = "isConfidential", EmitDefaultValue = true)]
-        public bool IsConfidential { get; set; }
+        public bool? IsConfidential { get; set; }
 
         /// <summary>
         /// is value is hidden .
         /// </summary>
         /// <value>is value is hidden .</value>
         [DataMember(Name = "isHidden", EmitDefaultValue = true)]
-        public bool IsHidden { get; set; }
+        public bool? IsHidden { get; set; }
 
         /// <summary>
         /// A list of ValidationMetadata
         /// </summary>
         /// <value>A list of ValidationMetadata</value>
         [DataMember(Name = "validationMetadata", EmitDefaultValue = false)]
-        public List<ValidationMetadata> ValidationMetadata { get; set; }
+        public List<ValidationMetadata>? ValidationMetadata { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -149,5 +149,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

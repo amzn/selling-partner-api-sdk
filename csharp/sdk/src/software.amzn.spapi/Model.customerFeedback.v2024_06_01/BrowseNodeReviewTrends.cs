@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <param name="positiveTopics">The trends of the most positive review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there aren&#39;t enough positive reviews for the requested browse node.  **Max length:** 10.</param>
         /// <param name="negativeTopics">The trends of the most negative review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there aren&#39;t enough positive reviews for the requested browse node.  **Max length:** 10.</param>
-        public BrowseNodeReviewTrends(List<BrowseNodeReviewTrend> positiveTopics = default(List<BrowseNodeReviewTrend>), List<BrowseNodeReviewTrend> negativeTopics = default(List<BrowseNodeReviewTrend>))
+        public BrowseNodeReviewTrends(List<BrowseNodeReviewTrend>? positiveTopics = default(List<BrowseNodeReviewTrend>?), List<BrowseNodeReviewTrend>? negativeTopics = default(List<BrowseNodeReviewTrend>?))
         {
             this.PositiveTopics = positiveTopics;
             this.NegativeTopics = negativeTopics;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <value>The trends of the most positive review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there aren&#39;t enough positive reviews for the requested browse node.  **Max length:** 10</value>
         [DataMember(Name = "positiveTopics", EmitDefaultValue = false)]
-        public List<BrowseNodeReviewTrend> PositiveTopics { get; set; }
+        public List<BrowseNodeReviewTrend>? PositiveTopics { get; set; }
 
         /// <summary>
         /// The trends of the most negative review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there aren&#39;t enough positive reviews for the requested browse node.  **Max length:** 10
         /// </summary>
         /// <value>The trends of the most negative review topics. The percentage of reviews that contain the topic across all products in the requested browse node determine the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there aren&#39;t enough positive reviews for the requested browse node.  **Max length:** 10</value>
         [DataMember(Name = "negativeTopics", EmitDefaultValue = false)]
-        public List<BrowseNodeReviewTrend> NegativeTopics { get; set; }
+        public List<BrowseNodeReviewTrend>? NegativeTopics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

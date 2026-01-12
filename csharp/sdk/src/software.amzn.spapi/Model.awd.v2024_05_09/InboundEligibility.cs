@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="packagesToInbound">Details on SKU eligibility for each inbound package. (required).</param>
         /// <param name="previewedAt">Timestamp when the eligibility check is performed. (required).</param>
         /// <param name="status">status (required).</param>
-        public InboundEligibility(List<OrderIneligibilityReason> ineligibilityReasons = default(List<OrderIneligibilityReason>), List<SkuEligibility> packagesToInbound = default(List<SkuEligibility>), DateTime previewedAt = default(DateTime), InboundEligibilityStatus status = default(InboundEligibilityStatus))
+        public InboundEligibility(List<OrderIneligibilityReason>? ineligibilityReasons = default(List<OrderIneligibilityReason>?), List<SkuEligibility> packagesToInbound = default(List<SkuEligibility>), DateTime previewedAt = default(DateTime), InboundEligibilityStatus status = default(InboundEligibilityStatus))
         {
             // to ensure "packagesToInbound" is required (not null)
             if (packagesToInbound == null)
@@ -67,7 +67,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>If there are order level eligibility issues, then this list will contain those error codes and descriptions.</value>
         [DataMember(Name = "ineligibilityReasons", EmitDefaultValue = false)]
-        public List<OrderIneligibilityReason> IneligibilityReasons { get; set; }
+        public List<OrderIneligibilityReason>? IneligibilityReasons { get; set; }
 
         /// <summary>
         /// Details on SKU eligibility for each inbound package.
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

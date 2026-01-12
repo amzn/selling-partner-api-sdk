@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="referenceId">A unique identifier for every shipment rejection..</param>
         /// <param name="lineItems">Details about the line items from the shipment that are being confirmed or rejected by the seller. (required).</param>
-        public ShipmentAcknowledgementRequest(string referenceId = default(string), List<LineItemWithReason> lineItems = default(List<LineItemWithReason>))
+        public ShipmentAcknowledgementRequest(string? referenceId = default(string?), List<LineItemWithReason> lineItems = default(List<LineItemWithReason>))
         {
             // to ensure "lineItems" is required (not null)
             if (lineItems == null)
@@ -58,7 +58,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A unique identifier for every shipment rejection.</value>
         [DataMember(Name = "referenceId", EmitDefaultValue = false)]
-        public string ReferenceId { get; set; }
+        public string? ReferenceId { get; set; }
 
         /// <summary>
         /// Details about the line items from the shipment that are being confirmed or rejected by the seller.
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

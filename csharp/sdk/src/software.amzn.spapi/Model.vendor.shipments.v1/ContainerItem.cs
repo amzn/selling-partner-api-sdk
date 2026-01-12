@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="itemReference">The reference number for the item. Please provide the itemSequenceNumber from the &#39;items&#39; segment to refer to that item&#39;s details here. (required).</param>
         /// <param name="shippedQuantity">shippedQuantity (required).</param>
         /// <param name="itemDetails">itemDetails.</param>
-        public ContainerItem(string itemReference = default(string), ItemQuantity shippedQuantity = default(ItemQuantity), ItemDetails itemDetails = default(ItemDetails))
+        public ContainerItem(string itemReference = default(string), ItemQuantity shippedQuantity = default(ItemQuantity), ItemDetails? itemDetails = default(ItemDetails?))
         {
             // to ensure "itemReference" is required (not null)
             if (itemReference == null)
@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets ItemDetails
         /// </summary>
         [DataMember(Name = "itemDetails", EmitDefaultValue = false)]
-        public ItemDetails ItemDetails { get; set; }
+        public ItemDetails? ItemDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,5 +112,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

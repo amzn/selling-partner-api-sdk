@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="customTextForLabel">Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support &#x60;CustomTextForLabel&#x60;..</param>
         /// <param name="standardIdForLabel">standardIdForLabel.</param>
-        public LabelCustomization(string customTextForLabel = default(string), StandardIdForLabel? standardIdForLabel = default(StandardIdForLabel?))
+        public LabelCustomization(string? customTextForLabel = default(string?), StandardIdForLabel? standardIdForLabel = default(StandardIdForLabel?))
         {
             this.CustomTextForLabel = customTextForLabel;
             this.StandardIdForLabel = standardIdForLabel;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support &#x60;CustomTextForLabel&#x60;.</value>
         [DataMember(Name = "CustomTextForLabel", EmitDefaultValue = false)]
-        public string CustomTextForLabel { get; set; }
+        public string? CustomTextForLabel { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,5 +94,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

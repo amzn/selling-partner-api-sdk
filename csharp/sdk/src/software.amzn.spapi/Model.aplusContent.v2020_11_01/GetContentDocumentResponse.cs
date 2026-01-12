@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="warnings">A set of messages to the user, such as warnings or comments..</param>
         /// <param name="contentRecord">contentRecord (required).</param>
-        public GetContentDocumentResponse(List<Error> warnings = default(List<Error>), ContentRecord contentRecord = default(ContentRecord))
+        public GetContentDocumentResponse(List<Error>? warnings = default(List<Error>?), ContentRecord contentRecord = default(ContentRecord))
         {
             // to ensure "contentRecord" is required (not null)
             if (contentRecord == null)
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>A set of messages to the user, such as warnings or comments.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Error> Warnings { get; set; }
+        public List<Error>? Warnings { get; set; }
 
         /// <summary>
         /// Gets or Sets ContentRecord
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

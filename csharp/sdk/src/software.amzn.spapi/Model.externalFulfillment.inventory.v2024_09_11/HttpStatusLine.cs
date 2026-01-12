@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// </summary>
         /// <param name="statusCode">The HTTP response status code..</param>
         /// <param name="reasonPhrase">The HTTP response reason phrase..</param>
-        public HttpStatusLine(int statusCode = default(int), string reasonPhrase = default(string))
+        public HttpStatusLine(int? statusCode = default(int?), string? reasonPhrase = default(string?))
         {
             this.StatusCode = statusCode;
             this.ReasonPhrase = reasonPhrase;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// </summary>
         /// <value>The HTTP response status code.</value>
         [DataMember(Name = "statusCode", EmitDefaultValue = false)]
-        public int StatusCode { get; set; }
+        public int? StatusCode { get; set; }
 
         /// <summary>
         /// The HTTP response reason phrase.
         /// </summary>
         /// <value>The HTTP response reason phrase.</value>
         [DataMember(Name = "reasonPhrase", EmitDefaultValue = false)]
-        public string ReasonPhrase { get; set; }
+        public string? ReasonPhrase { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,5 +101,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

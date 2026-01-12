@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="msku">The merchant-defined SKU ID. (required).</param>
         /// <param name="prepInstructions">Special preparations that are required for an item. (required).</param>
         /// <param name="quantity">The number of the specified MSKU. (required).</param>
-        public Item(string asin = default(string), string expiration = default(string), string fnsku = default(string), string labelOwner = default(string), string manufacturingLotCode = default(string), string msku = default(string), List<PrepInstruction> prepInstructions = default(List<PrepInstruction>), int quantity = default(int))
+        public Item(string asin = default(string), string? expiration = default(string?), string fnsku = default(string), string labelOwner = default(string), string? manufacturingLotCode = default(string?), string msku = default(string), List<PrepInstruction> prepInstructions = default(List<PrepInstruction>), int quantity = default(int))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -96,7 +96,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern&#x60;YYYY-MM-DD&#x60;. The same MSKU with different expiration dates cannot go into the same box.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public string Expiration { get; set; }
+        public string? Expiration { get; set; }
 
         /// <summary>
         /// A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
@@ -117,7 +117,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The manufacturing lot code.</value>
         [DataMember(Name = "manufacturingLotCode", EmitDefaultValue = false)]
-        public string ManufacturingLotCode { get; set; }
+        public string? ManufacturingLotCode { get; set; }
 
         /// <summary>
         /// The merchant-defined SKU ID.
@@ -260,5 +260,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

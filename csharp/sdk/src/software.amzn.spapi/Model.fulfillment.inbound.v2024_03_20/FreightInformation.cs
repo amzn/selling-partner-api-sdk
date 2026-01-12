@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="declaredValue">declaredValue.</param>
         /// <param name="freightClass">Freight class.  Possible values: &#x60;NONE&#x60;, &#x60;FC_50&#x60;, &#x60;FC_55&#x60;, &#x60;FC_60&#x60;, &#x60;FC_65&#x60;, &#x60;FC_70&#x60;, &#x60;FC_77_5&#x60;, &#x60;FC_85&#x60;, &#x60;FC_92_5&#x60;, &#x60;FC_100&#x60;, &#x60;FC_110&#x60;, &#x60;FC_125&#x60;, &#x60;FC_150&#x60;, &#x60;FC_175&#x60;, &#x60;FC_200&#x60;, &#x60;FC_250&#x60;, &#x60;FC_300&#x60;, &#x60;FC_400&#x60;, &#x60;FC_500&#x60;..</param>
-        public FreightInformation(Currency declaredValue = default(Currency), string freightClass = default(string))
+        public FreightInformation(Currency? declaredValue = default(Currency?), string? freightClass = default(string?))
         {
             this.DeclaredValue = declaredValue;
             this.FreightClass = freightClass;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets DeclaredValue
         /// </summary>
         [DataMember(Name = "declaredValue", EmitDefaultValue = false)]
-        public Currency DeclaredValue { get; set; }
+        public Currency? DeclaredValue { get; set; }
 
         /// <summary>
         /// Freight class.  Possible values: &#x60;NONE&#x60;, &#x60;FC_50&#x60;, &#x60;FC_55&#x60;, &#x60;FC_60&#x60;, &#x60;FC_65&#x60;, &#x60;FC_70&#x60;, &#x60;FC_77_5&#x60;, &#x60;FC_85&#x60;, &#x60;FC_92_5&#x60;, &#x60;FC_100&#x60;, &#x60;FC_110&#x60;, &#x60;FC_125&#x60;, &#x60;FC_150&#x60;, &#x60;FC_175&#x60;, &#x60;FC_200&#x60;, &#x60;FC_250&#x60;, &#x60;FC_300&#x60;, &#x60;FC_400&#x60;, &#x60;FC_500&#x60;.
         /// </summary>
         /// <value>Freight class.  Possible values: &#x60;NONE&#x60;, &#x60;FC_50&#x60;, &#x60;FC_55&#x60;, &#x60;FC_60&#x60;, &#x60;FC_65&#x60;, &#x60;FC_70&#x60;, &#x60;FC_77_5&#x60;, &#x60;FC_85&#x60;, &#x60;FC_92_5&#x60;, &#x60;FC_100&#x60;, &#x60;FC_110&#x60;, &#x60;FC_125&#x60;, &#x60;FC_150&#x60;, &#x60;FC_175&#x60;, &#x60;FC_200&#x60;, &#x60;FC_250&#x60;, &#x60;FC_300&#x60;, &#x60;FC_400&#x60;, &#x60;FC_500&#x60;.</value>
         [DataMember(Name = "freightClass", EmitDefaultValue = false)]
-        public string FreightClass { get; set; }
+        public string? FreightClass { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

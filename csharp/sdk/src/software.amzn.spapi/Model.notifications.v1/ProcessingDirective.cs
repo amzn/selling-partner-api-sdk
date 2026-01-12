@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Initializes a new instance of the <see cref="ProcessingDirective" /> class.
         /// </summary>
         /// <param name="eventFilter">eventFilter.</param>
-        public ProcessingDirective(EventFilter eventFilter = default(EventFilter))
+        public ProcessingDirective(EventFilter? eventFilter = default(EventFilter?))
         {
             this.EventFilter = eventFilter;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Gets or Sets EventFilter
         /// </summary>
         [DataMember(Name = "eventFilter", EmitDefaultValue = false)]
-        public EventFilter EventFilter { get; set; }
+        public EventFilter? EventFilter { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.notifications.v1
             yield break;
         }
     }
-
 }

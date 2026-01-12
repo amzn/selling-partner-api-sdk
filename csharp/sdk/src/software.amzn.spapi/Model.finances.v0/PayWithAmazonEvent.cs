@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="amountDescription">A short description of this payment event..</param>
         /// <param name="fulfillmentChannel">The fulfillment channel.  Possible values:  * &#x60;AFN&#x60;: Amazon Fulfillment Network (Fulfillment by Amazon)  * &#x60;MFN&#x60;: Merchant Fulfillment Network (self-fulfilled).</param>
         /// <param name="storeName">The name of the store where the event occurred..</param>
-        public PayWithAmazonEvent(string sellerOrderId = default(string), DateTime transactionPostedDate = default(DateTime), string businessObjectType = default(string), string salesChannel = default(string), ChargeComponent charge = default(ChargeComponent), List<FeeComponent> feeList = default(List<FeeComponent>), string paymentAmountType = default(string), string amountDescription = default(string), string fulfillmentChannel = default(string), string storeName = default(string))
+        public PayWithAmazonEvent(string? sellerOrderId = default(string?), DateTime? transactionPostedDate = default(DateTime?), string? businessObjectType = default(string?), string? salesChannel = default(string?), ChargeComponent? charge = default(ChargeComponent?), List<FeeComponent>? feeList = default(List<FeeComponent>?), string? paymentAmountType = default(string?), string? amountDescription = default(string?), string? fulfillmentChannel = default(string?), string? storeName = default(string?))
         {
             this.SellerOrderId = sellerOrderId;
             this.TransactionPostedDate = transactionPostedDate;
@@ -63,69 +63,69 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>An order identifier that is specified by the seller.</value>
         [DataMember(Name = "SellerOrderId", EmitDefaultValue = false)]
-        public string SellerOrderId { get; set; }
+        public string? SellerOrderId { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "TransactionPostedDate", EmitDefaultValue = false)]
-        public DateTime TransactionPostedDate { get; set; }
+        public DateTime? TransactionPostedDate { get; set; }
 
         /// <summary>
         /// The type of business object.
         /// </summary>
         /// <value>The type of business object.</value>
         [DataMember(Name = "BusinessObjectType", EmitDefaultValue = false)]
-        public string BusinessObjectType { get; set; }
+        public string? BusinessObjectType { get; set; }
 
         /// <summary>
         /// The sales channel for the transaction.
         /// </summary>
         /// <value>The sales channel for the transaction.</value>
         [DataMember(Name = "SalesChannel", EmitDefaultValue = false)]
-        public string SalesChannel { get; set; }
+        public string? SalesChannel { get; set; }
 
         /// <summary>
         /// Gets or Sets Charge
         /// </summary>
         [DataMember(Name = "Charge", EmitDefaultValue = false)]
-        public ChargeComponent Charge { get; set; }
+        public ChargeComponent? Charge { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "FeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> FeeList { get; set; }
+        public List<FeeComponent>? FeeList { get; set; }
 
         /// <summary>
         /// The type of payment.  Possible values:  * &#x60;Sales&#x60;
         /// </summary>
         /// <value>The type of payment.  Possible values:  * &#x60;Sales&#x60;</value>
         [DataMember(Name = "PaymentAmountType", EmitDefaultValue = false)]
-        public string PaymentAmountType { get; set; }
+        public string? PaymentAmountType { get; set; }
 
         /// <summary>
         /// A short description of this payment event.
         /// </summary>
         /// <value>A short description of this payment event.</value>
         [DataMember(Name = "AmountDescription", EmitDefaultValue = false)]
-        public string AmountDescription { get; set; }
+        public string? AmountDescription { get; set; }
 
         /// <summary>
         /// The fulfillment channel.  Possible values:  * &#x60;AFN&#x60;: Amazon Fulfillment Network (Fulfillment by Amazon)  * &#x60;MFN&#x60;: Merchant Fulfillment Network (self-fulfilled)
         /// </summary>
         /// <value>The fulfillment channel.  Possible values:  * &#x60;AFN&#x60;: Amazon Fulfillment Network (Fulfillment by Amazon)  * &#x60;MFN&#x60;: Merchant Fulfillment Network (self-fulfilled)</value>
         [DataMember(Name = "FulfillmentChannel", EmitDefaultValue = false)]
-        public string FulfillmentChannel { get; set; }
+        public string? FulfillmentChannel { get; set; }
 
         /// <summary>
         /// The name of the store where the event occurred.
         /// </summary>
         /// <value>The name of the store where the event occurred.</value>
         [DataMember(Name = "StoreName", EmitDefaultValue = false)]
-        public string StoreName { get; set; }
+        public string? StoreName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -168,5 +168,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="rateItemList">A list of RateItem.</param>
         /// <param name="paymentType">paymentType.</param>
         /// <param name="benefits">benefits.</param>
-        public Rate(string rateId = default(string), string carrierId = default(string), string carrierName = default(string), string serviceId = default(string), string serviceName = default(string), Weight billedWeight = default(Weight), Currency totalCharge = default(Currency), Promise promise = default(Promise), List<SupportedDocumentSpecification> supportedDocumentSpecifications = default(List<SupportedDocumentSpecification>), List<AvailableValueAddedServiceGroup> availableValueAddedServiceGroups = default(List<AvailableValueAddedServiceGroup>), bool requiresAdditionalInputs = default(bool), List<RateItem> rateItemList = default(List<RateItem>), PaymentType? paymentType = default(PaymentType?), Benefits benefits = default(Benefits))
+        public Rate(string rateId = default(string), string carrierId = default(string), string carrierName = default(string), string serviceId = default(string), string serviceName = default(string), Weight? billedWeight = default(Weight?), Currency totalCharge = default(Currency), Promise promise = default(Promise), List<SupportedDocumentSpecification> supportedDocumentSpecifications = default(List<SupportedDocumentSpecification>), List<AvailableValueAddedServiceGroup>? availableValueAddedServiceGroups = default(List<AvailableValueAddedServiceGroup>?), bool requiresAdditionalInputs = default(bool), List<RateItem>? rateItemList = default(List<RateItem>?), PaymentType? paymentType = default(PaymentType?), Benefits? benefits = default(Benefits?))
         {
             // to ensure "rateId" is required (not null)
             if (rateId == null)
@@ -157,7 +157,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets BilledWeight
         /// </summary>
         [DataMember(Name = "billedWeight", EmitDefaultValue = false)]
-        public Weight BilledWeight { get; set; }
+        public Weight? BilledWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalCharge
@@ -183,7 +183,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of value-added services available for a shipping service offering.</value>
         [DataMember(Name = "availableValueAddedServiceGroups", EmitDefaultValue = false)]
-        public List<AvailableValueAddedServiceGroup> AvailableValueAddedServiceGroups { get; set; }
+        public List<AvailableValueAddedServiceGroup>? AvailableValueAddedServiceGroups { get; set; }
 
         /// <summary>
         /// When true, indicates that additional inputs are required to purchase this shipment service. You must then call the getAdditionalInputs operation to return the JSON schema to use when providing the additional inputs to the purchaseShipment operation.
@@ -197,13 +197,13 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of RateItem</value>
         [DataMember(Name = "rateItemList", EmitDefaultValue = false)]
-        public List<RateItem> RateItemList { get; set; }
+        public List<RateItem>? RateItemList { get; set; }
 
         /// <summary>
         /// Gets or Sets Benefits
         /// </summary>
         [DataMember(Name = "benefits", EmitDefaultValue = false)]
-        public Benefits Benefits { get; set; }
+        public Benefits? Benefits { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -250,5 +250,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="acquirerId">The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60; or &#x60;Pix&#x60;..</param>
         /// <param name="cardBrand">The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60;..</param>
         /// <param name="authorizationCode">The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60; or &#x60;Pix&#x60;..</param>
-        public PaymentExecutionDetailItem(Money payment = default(Money), string paymentMethod = default(string), string acquirerId = default(string), string cardBrand = default(string), string authorizationCode = default(string))
+        public PaymentExecutionDetailItem(Money payment = default(Money), string paymentMethod = default(string), string? acquirerId = default(string?), string? cardBrand = default(string?), string? authorizationCode = default(string?))
         {
             // to ensure "payment" is required (not null)
             if (payment == null)
@@ -81,21 +81,21 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The Brazilian Taxpayer Identifier (CNPJ) of the payment processor or acquiring bank that authorizes the payment.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60; or &#x60;Pix&#x60;.</value>
         [DataMember(Name = "AcquirerId", EmitDefaultValue = false)]
-        public string AcquirerId { get; set; }
+        public string? AcquirerId { get; set; }
 
         /// <summary>
         /// The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60;.
         /// </summary>
         /// <value>The card network or brand used in the payment transaction (for example, Visa or Mastercard).   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60;.</value>
         [DataMember(Name = "CardBrand", EmitDefaultValue = false)]
-        public string CardBrand { get; set; }
+        public string? CardBrand { get; set; }
 
         /// <summary>
         /// The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60; or &#x60;Pix&#x60;.
         /// </summary>
         /// <value>The unique code that confirms the payment authorization.   **Note**: This attribute is only available for orders in the Brazil (BR) marketplace when the &#x60;PaymentMethod&#x60; is &#x60;CreditCard&#x60; or &#x60;Pix&#x60;.</value>
         [DataMember(Name = "AuthorizationCode", EmitDefaultValue = false)]
-        public string AuthorizationCode { get; set; }
+        public string? AuthorizationCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

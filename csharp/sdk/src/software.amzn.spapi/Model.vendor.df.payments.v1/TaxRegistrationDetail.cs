@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <param name="taxRegistrationNumber">Tax registration number for the entity. For example, VAT ID, Consumption Tax ID. (required).</param>
         /// <param name="taxRegistrationAddress">taxRegistrationAddress.</param>
         /// <param name="taxRegistrationMessage">Tax registration message that can be used for additional tax related details..</param>
-        public TaxRegistrationDetail(TaxRegistrationTypeEnum? taxRegistrationType = default(TaxRegistrationTypeEnum?), string taxRegistrationNumber = default(string), Address taxRegistrationAddress = default(Address), string taxRegistrationMessage = default(string))
+        public TaxRegistrationDetail(TaxRegistrationTypeEnum? taxRegistrationType = default(TaxRegistrationTypeEnum?), string taxRegistrationNumber = default(string), Address? taxRegistrationAddress = default(Address?), string? taxRegistrationMessage = default(string?))
         {
             // to ensure "taxRegistrationNumber" is required (not null)
             if (taxRegistrationNumber == null)
@@ -94,14 +94,14 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// Gets or Sets TaxRegistrationAddress
         /// </summary>
         [DataMember(Name = "taxRegistrationAddress", EmitDefaultValue = false)]
-        public Address TaxRegistrationAddress { get; set; }
+        public Address? TaxRegistrationAddress { get; set; }
 
         /// <summary>
         /// Tax registration message that can be used for additional tax related details.
         /// </summary>
         /// <value>Tax registration message that can be used for additional tax related details.</value>
         [DataMember(Name = "taxRegistrationMessage", EmitDefaultValue = false)]
-        public string TaxRegistrationMessage { get; set; }
+        public string? TaxRegistrationMessage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -138,5 +138,4 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             yield break;
         }
     }
-
 }

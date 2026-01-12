@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="taxRegistrationNumber">Tax registration number for the party. For example, VAT ID. (required).</param>
         /// <param name="taxRegistrationAddress">taxRegistrationAddress.</param>
         /// <param name="taxRegistrationMessages">Tax registration message that can be used for additional tax related details..</param>
-        public TaxRegistrationDetails(TaxRegistrationTypeEnum? taxRegistrationType = default(TaxRegistrationTypeEnum?), string taxRegistrationNumber = default(string), Address taxRegistrationAddress = default(Address), string taxRegistrationMessages = default(string))
+        public TaxRegistrationDetails(TaxRegistrationTypeEnum? taxRegistrationType = default(TaxRegistrationTypeEnum?), string taxRegistrationNumber = default(string), Address? taxRegistrationAddress = default(Address?), string? taxRegistrationMessages = default(string?))
         {
             // to ensure "taxRegistrationNumber" is required (not null)
             if (taxRegistrationNumber == null)
@@ -94,14 +94,14 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Gets or Sets TaxRegistrationAddress
         /// </summary>
         [DataMember(Name = "taxRegistrationAddress", EmitDefaultValue = false)]
-        public Address TaxRegistrationAddress { get; set; }
+        public Address? TaxRegistrationAddress { get; set; }
 
         /// <summary>
         /// Tax registration message that can be used for additional tax related details.
         /// </summary>
         /// <value>Tax registration message that can be used for additional tax related details.</value>
         [DataMember(Name = "taxRegistrationMessages", EmitDefaultValue = false)]
-        public string TaxRegistrationMessages { get; set; }
+        public string? TaxRegistrationMessages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -138,5 +138,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

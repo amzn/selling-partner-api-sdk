@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="ValueAddedServiceDetails" /> class.
         /// </summary>
         /// <param name="collectOnDelivery">collectOnDelivery.</param>
-        public ValueAddedServiceDetails(CollectOnDelivery collectOnDelivery = default(CollectOnDelivery))
+        public ValueAddedServiceDetails(CollectOnDelivery? collectOnDelivery = default(CollectOnDelivery?))
         {
             this.CollectOnDelivery = collectOnDelivery;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets CollectOnDelivery
         /// </summary>
         [DataMember(Name = "collectOnDelivery", EmitDefaultValue = false)]
-        public CollectOnDelivery CollectOnDelivery { get; set; }
+        public CollectOnDelivery? CollectOnDelivery { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

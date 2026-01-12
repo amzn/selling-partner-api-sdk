@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="collectionFormsHistoryRecordList">A list of CollectionFormsHistoryRecord.</param>
         /// <param name="lastRefreshedDate">Last Refereshed Date of collection.</param>
-        public GetCollectionFormHistoryResponse(List<CollectionFormsHistoryRecord> collectionFormsHistoryRecordList = default(List<CollectionFormsHistoryRecord>), string lastRefreshedDate = default(string))
+        public GetCollectionFormHistoryResponse(List<CollectionFormsHistoryRecord>? collectionFormsHistoryRecordList = default(List<CollectionFormsHistoryRecord>?), string? lastRefreshedDate = default(string?))
         {
             this.CollectionFormsHistoryRecordList = collectionFormsHistoryRecordList;
             this.LastRefreshedDate = lastRefreshedDate;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of CollectionFormsHistoryRecord</value>
         [DataMember(Name = "collectionFormsHistoryRecordList", EmitDefaultValue = false)]
-        public List<CollectionFormsHistoryRecord> CollectionFormsHistoryRecordList { get; set; }
+        public List<CollectionFormsHistoryRecord>? CollectionFormsHistoryRecordList { get; set; }
 
         /// <summary>
         /// Last Refereshed Date of collection
         /// </summary>
         /// <value>Last Refereshed Date of collection</value>
         [DataMember(Name = "lastRefreshedDate", EmitDefaultValue = false)]
-        public string LastRefreshedDate { get; set; }
+        public string? LastRefreshedDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="vendorProductIdentifier">The vendor selected product identification of the item. Should be the same as was sent in the purchase order..</param>
         /// <param name="shippedQuantity">shippedQuantity (required).</param>
         /// <param name="maximumRetailPrice">maximumRetailPrice.</param>
-        public PurchaseOrderItems(string itemSequenceNumber = default(string), string buyerProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity shippedQuantity = default(ItemQuantity), Money maximumRetailPrice = default(Money))
+        public PurchaseOrderItems(string itemSequenceNumber = default(string), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity shippedQuantity = default(ItemQuantity), Money? maximumRetailPrice = default(Money?))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -75,14 +75,14 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Amazon Standard Identification Number (ASIN) for a SKU</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item. Should be the same as was sent in the purchase order.
         /// </summary>
         /// <value>The vendor selected product identification of the item. Should be the same as was sent in the purchase order.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippedQuantity
@@ -94,7 +94,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets MaximumRetailPrice
         /// </summary>
         [DataMember(Name = "maximumRetailPrice", EmitDefaultValue = false)]
-        public Money MaximumRetailPrice { get; set; }
+        public Money? MaximumRetailPrice { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,5 +132,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

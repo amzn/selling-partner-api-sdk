@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.vendor.transactionStatus.v1
         /// <param name="transactionId">The unique identifier returned in the &#39;transactionId&#39; field in response to the post request of a specific transaction. (required).</param>
         /// <param name="status">Current processing status of the transaction. (required).</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public Transaction(string transactionId = default(string), StatusEnum status = default(StatusEnum), List<Error> errors = default(List<Error>))
+        public Transaction(string transactionId = default(string), StatusEnum status = default(StatusEnum), List<Error>? errors = default(List<Error>?))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Model.vendor.transactionStatus.v1
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.vendor.transactionStatus.v1
             yield break;
         }
     }
-
 }

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="endTime">Denotes the time till when the resource is available in a day in ISO-8601 format. (required).</param>
         /// <param name="recurrence">recurrence.</param>
         /// <param name="capacity">Signifies the capacity of a resource which is available..</param>
-        public AvailabilityRecord(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), Recurrence recurrence = default(Recurrence), int capacity = default(int))
+        public AvailabilityRecord(DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), Recurrence? recurrence = default(Recurrence?), int? capacity = default(int?))
         {
             this.StartTime = startTime;
             this.EndTime = endTime;
@@ -69,14 +69,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// Gets or Sets Recurrence
         /// </summary>
         [DataMember(Name = "recurrence", EmitDefaultValue = false)]
-        public Recurrence Recurrence { get; set; }
+        public Recurrence? Recurrence { get; set; }
 
         /// <summary>
         /// Signifies the capacity of a resource which is available.
         /// </summary>
         /// <value>Signifies the capacity of a resource which is available.</value>
         [DataMember(Name = "capacity", EmitDefaultValue = false)]
-        public int Capacity { get; set; }
+        public int? Capacity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,5 +119,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

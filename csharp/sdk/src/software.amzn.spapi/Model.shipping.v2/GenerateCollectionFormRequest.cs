@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="clientReferenceDetails">Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail.</param>
         /// <param name="carrierId">The carrier identifier for the offering, provided by the carrier. (required).</param>
         /// <param name="shipFromAddress">shipFromAddress.</param>
-        public GenerateCollectionFormRequest(List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>), string carrierId = default(string), Address shipFromAddress = default(Address))
+        public GenerateCollectionFormRequest(List<ClientReferenceDetail>? clientReferenceDetails = default(List<ClientReferenceDetail>?), string carrierId = default(string), Address? shipFromAddress = default(Address?))
         {
             // to ensure "carrierId" is required (not null)
             if (carrierId == null)
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail</value>
         [DataMember(Name = "clientReferenceDetails", EmitDefaultValue = false)]
-        public List<ClientReferenceDetail> ClientReferenceDetails { get; set; }
+        public List<ClientReferenceDetail>? ClientReferenceDetails { get; set; }
 
         /// <summary>
         /// The carrier identifier for the offering, provided by the carrier.
@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ShipFromAddress
         /// </summary>
         [DataMember(Name = "shipFromAddress", EmitDefaultValue = false)]
-        public Address ShipFromAddress { get; set; }
+        public Address? ShipFromAddress { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

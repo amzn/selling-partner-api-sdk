@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="benefit">benefit (required).</param>
         /// <param name="reasonCodes">List of reasons (eg. LATE_DELIVERY_RISK, etc.) indicating why a benefit is excluded for a shipping offer..</param>
-        public ExcludedBenefit(string benefit = default(string), List<string> reasonCodes = default(List<string>))
+        public ExcludedBenefit(string benefit = default(string), List<string>? reasonCodes = default(List<string>?))
         {
             // to ensure "benefit" is required (not null)
             if (benefit == null)
@@ -65,7 +65,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>List of reasons (eg. LATE_DELIVERY_RISK, etc.) indicating why a benefit is excluded for a shipping offer.</value>
         [DataMember(Name = "reasonCodes", EmitDefaultValue = false)]
-        public List<string> ReasonCodes { get; set; }
+        public List<string>? ReasonCodes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

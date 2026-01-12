@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="trackingId">The shipment tracking identifier provided by the carrier..</param>
         /// <param name="createdDate">Date-time formatted timestamp. (required).</param>
         /// <param name="lastUpdatedDate">Date-time formatted timestamp..</param>
-        public Shipment(string shipmentId = default(string), string amazonOrderId = default(string), string sellerOrderId = default(string), List<Item> itemList = default(List<Item>), Address shipFromAddress = default(Address), Address shipToAddress = default(Address), PackageDimensions packageDimensions = default(PackageDimensions), Weight weight = default(Weight), CurrencyAmount insurance = default(CurrencyAmount), ShippingService shippingService = default(ShippingService), Label label = default(Label), ShipmentStatus status = default(ShipmentStatus), string trackingId = default(string), DateTime createdDate = default(DateTime), DateTime lastUpdatedDate = default(DateTime))
+        public Shipment(string shipmentId = default(string), string amazonOrderId = default(string), string? sellerOrderId = default(string?), List<Item> itemList = default(List<Item>), Address shipFromAddress = default(Address), Address shipToAddress = default(Address), PackageDimensions packageDimensions = default(PackageDimensions), Weight weight = default(Weight), CurrencyAmount insurance = default(CurrencyAmount), ShippingService shippingService = default(ShippingService), Label label = default(Label), ShipmentStatus status = default(ShipmentStatus), string? trackingId = default(string?), DateTime createdDate = default(DateTime), DateTime? lastUpdatedDate = default(DateTime?))
         {
             // to ensure "shipmentId" is required (not null)
             if (shipmentId == null)
@@ -148,7 +148,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A seller-defined order identifier.</value>
         [DataMember(Name = "SellerOrderId", EmitDefaultValue = false)]
-        public string SellerOrderId { get; set; }
+        public string? SellerOrderId { get; set; }
 
         /// <summary>
         /// The list of items you want to include in a shipment.
@@ -204,7 +204,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The shipment tracking identifier provided by the carrier.</value>
         [DataMember(Name = "TrackingId", EmitDefaultValue = false)]
-        public string TrackingId { get; set; }
+        public string? TrackingId { get; set; }
 
         /// <summary>
         /// Date-time formatted timestamp.
@@ -218,7 +218,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>Date-time formatted timestamp.</value>
         [DataMember(Name = "LastUpdatedDate", EmitDefaultValue = false)]
-        public DateTime LastUpdatedDate { get; set; }
+        public DateTime? LastUpdatedDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -272,5 +272,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.solicitations.v1
         /// Initializes a new instance of the <see cref="GetSolicitationActionResponseEmbedded" /> class.
         /// </summary>
         /// <param name="schema">schema.</param>
-        public GetSolicitationActionResponseEmbedded(GetSchemaResponse schema = default(GetSchemaResponse))
+        public GetSolicitationActionResponseEmbedded(GetSchemaResponse? schema = default(GetSchemaResponse?))
         {
             this.Schema = schema;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.solicitations.v1
         /// Gets or Sets Schema
         /// </summary>
         [DataMember(Name = "schema", EmitDefaultValue = false)]
-        public GetSchemaResponse Schema { get; set; }
+        public GetSchemaResponse? Schema { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.solicitations.v1
             yield break;
         }
     }
-
 }

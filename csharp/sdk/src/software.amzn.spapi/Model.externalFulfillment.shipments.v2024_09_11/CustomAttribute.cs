@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="key">The key of the custom attribute. Must be unique..</param>
         /// <param name="type">type.</param>
         /// <param name="value">The value of the custom attribute..</param>
-        public CustomAttribute(string key = default(string), CustomAttributeType? type = default(CustomAttributeType?), string value = default(string))
+        public CustomAttribute(string? key = default(string?), CustomAttributeType? type = default(CustomAttributeType?), string? value = default(string?))
         {
             this.Key = key;
             this.Type = type;
@@ -56,14 +56,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The key of the custom attribute. Must be unique.</value>
         [DataMember(Name = "key", EmitDefaultValue = false)]
-        public string Key { get; set; }
+        public string? Key { get; set; }
 
         /// <summary>
         /// The value of the custom attribute.
         /// </summary>
         /// <value>The value of the custom attribute.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

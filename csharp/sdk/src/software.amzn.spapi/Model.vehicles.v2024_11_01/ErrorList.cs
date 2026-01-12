@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
             yield break;
         }
     }
-
 }

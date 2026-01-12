@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="accountId">Identifier for the seller&#39;s carrier account..</param>
         /// <param name="carrierId">The carrier identifier for the offering, provided by the carrier..</param>
-        public ActiveAccount(string accountId = default(string), string carrierId = default(string))
+        public ActiveAccount(string? accountId = default(string?), string? carrierId = default(string?))
         {
             this.AccountId = accountId;
             this.CarrierId = carrierId;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Identifier for the seller&#39;s carrier account.</value>
         [DataMember(Name = "accountId", EmitDefaultValue = false)]
-        public string AccountId { get; set; }
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The carrier identifier for the offering, provided by the carrier.
         /// </summary>
         /// <value>The carrier identifier for the offering, provided by the carrier.</value>
         [DataMember(Name = "carrierId", EmitDefaultValue = false)]
-        public string CarrierId { get; set; }
+        public string? CarrierId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

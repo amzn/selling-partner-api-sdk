@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="contentSubType">The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time..</param>
         /// <param name="locale">The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn&#39;t support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$ (required).</param>
         /// <param name="contentModuleList">A list of A+ Content modules. (required).</param>
-        public ContentDocument(string name = default(string), ContentType contentType = default(ContentType), string contentSubType = default(string), string locale = default(string), List<ContentModule> contentModuleList = default(List<ContentModule>))
+        public ContentDocument(string name = default(string), ContentType contentType = default(ContentType), string? contentSubType = default(string?), string locale = default(string), List<ContentModule> contentModuleList = default(List<ContentModule>))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time.</value>
         [DataMember(Name = "contentSubType", EmitDefaultValue = false)]
-        public string ContentSubType { get; set; }
+        public string? ContentSubType { get; set; }
 
         /// <summary>
         /// The IETF language tag, which supports the primary language subtag and one secondary language subtag. The secondary language subtag is usually a regional designation. This doesn&#39;t support subtags other than the primary and secondary subtags. **Pattern:** ^[a-z]{2,}-[A-Z0-9]{2,}$
@@ -162,5 +162,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

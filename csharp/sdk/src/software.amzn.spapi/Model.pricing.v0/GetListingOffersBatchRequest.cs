@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Initializes a new instance of the <see cref="GetListingOffersBatchRequest" /> class.
         /// </summary>
         /// <param name="requests">A list of &#x60;getListingOffers&#x60; batched requests to run..</param>
-        public GetListingOffersBatchRequest(List<ListingOffersRequest> requests = default(List<ListingOffersRequest>))
+        public GetListingOffersBatchRequest(List<ListingOffersRequest>? requests = default(List<ListingOffersRequest>?))
         {
             this.Requests = requests;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>A list of &#x60;getListingOffers&#x60; batched requests to run.</value>
         [DataMember(Name = "requests", EmitDefaultValue = false)]
-        public List<ListingOffersRequest> Requests { get; set; }
+        public List<ListingOffersRequest>? Requests { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

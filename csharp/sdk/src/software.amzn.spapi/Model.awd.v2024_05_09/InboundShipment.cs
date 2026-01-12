@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="trackingId">Carrier-unique tracking ID for this shipment..</param>
         /// <param name="updatedAt">Timestamp when the shipment was updated. The date is returned in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format..</param>
         /// <param name="warehouseReferenceId">An AWD-provided reference ID that you can use to interact with the warehouse. For example, a carrier appointment booking..</param>
-        public InboundShipment(CarrierCode carrierCode = default(CarrierCode), DateTime createdAt = default(DateTime), Address destinationAddress = default(Address), string externalReferenceId = default(string), string orderId = default(string), Address originAddress = default(Address), List<InventoryQuantity> receivedQuantity = default(List<InventoryQuantity>), DateTime shipBy = default(DateTime), List<DistributionPackageQuantity> shipmentContainerQuantities = default(List<DistributionPackageQuantity>), string shipmentId = default(string), List<SkuQuantity> shipmentSkuQuantities = default(List<SkuQuantity>), string destinationRegion = default(string), InboundShipmentStatus shipmentStatus = default(InboundShipmentStatus), string trackingId = default(string), DateTime updatedAt = default(DateTime), string warehouseReferenceId = default(string))
+        public InboundShipment(CarrierCode? carrierCode = default(CarrierCode?), DateTime? createdAt = default(DateTime?), Address destinationAddress = default(Address), string? externalReferenceId = default(string?), string orderId = default(string), Address originAddress = default(Address), List<InventoryQuantity>? receivedQuantity = default(List<InventoryQuantity>?), DateTime? shipBy = default(DateTime?), List<DistributionPackageQuantity> shipmentContainerQuantities = default(List<DistributionPackageQuantity>), string shipmentId = default(string), List<SkuQuantity>? shipmentSkuQuantities = default(List<SkuQuantity>?), string? destinationRegion = default(string?), InboundShipmentStatus shipmentStatus = default(InboundShipmentStatus), string? trackingId = default(string?), DateTime? updatedAt = default(DateTime?), string? warehouseReferenceId = default(string?))
         {
             // to ensure "destinationAddress" is required (not null)
             if (destinationAddress == null)
@@ -110,14 +110,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets CarrierCode
         /// </summary>
         [DataMember(Name = "carrierCode", EmitDefaultValue = false)]
-        public CarrierCode CarrierCode { get; set; }
+        public CarrierCode? CarrierCode { get; set; }
 
         /// <summary>
         /// Timestamp when the shipment was created. The date is returned in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
         /// </summary>
         /// <value>Timestamp when the shipment was created. The date is returned in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.</value>
         [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationAddress
@@ -133,7 +133,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestReferenceId</example>
         */
         [DataMember(Name = "externalReferenceId", EmitDefaultValue = false)]
-        public string ExternalReferenceId { get; set; }
+        public string? ExternalReferenceId { get; set; }
 
         /// <summary>
         /// The AWD inbound order ID that this inbound shipment belongs to.
@@ -153,14 +153,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Quantity received (at the receiving end) as part of this shipment.</value>
         [DataMember(Name = "receivedQuantity", EmitDefaultValue = false)]
-        public List<InventoryQuantity> ReceivedQuantity { get; set; }
+        public List<InventoryQuantity>? ReceivedQuantity { get; set; }
 
         /// <summary>
         /// Timestamp when the shipment will be shipped.
         /// </summary>
         /// <value>Timestamp when the shipment will be shipped.</value>
         [DataMember(Name = "shipBy", EmitDefaultValue = false)]
-        public DateTime ShipBy { get; set; }
+        public DateTime? ShipBy { get; set; }
 
         /// <summary>
         /// Packages that are part of this shipment.
@@ -181,7 +181,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Quantity details at SKU level for the shipment. This attribute will only appear if the skuQuantities parameter in the request is set to SHOW.</value>
         [DataMember(Name = "shipmentSkuQuantities", EmitDefaultValue = false)]
-        public List<SkuQuantity> ShipmentSkuQuantities { get; set; }
+        public List<SkuQuantity>? ShipmentSkuQuantities { get; set; }
 
         /// <summary>
         /// Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
@@ -191,21 +191,21 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>us-west</example>
         */
         [DataMember(Name = "destinationRegion", EmitDefaultValue = false)]
-        public string DestinationRegion { get; set; }
+        public string? DestinationRegion { get; set; }
 
         /// <summary>
         /// Carrier-unique tracking ID for this shipment.
         /// </summary>
         /// <value>Carrier-unique tracking ID for this shipment.</value>
         [DataMember(Name = "trackingId", EmitDefaultValue = false)]
-        public string TrackingId { get; set; }
+        public string? TrackingId { get; set; }
 
         /// <summary>
         /// Timestamp when the shipment was updated. The date is returned in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.
         /// </summary>
         /// <value>Timestamp when the shipment was updated. The date is returned in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; format.</value>
         [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// An AWD-provided reference ID that you can use to interact with the warehouse. For example, a carrier appointment booking.
@@ -215,7 +215,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestWarehouseReferenceId</example>
         */
         [DataMember(Name = "warehouseReferenceId", EmitDefaultValue = false)]
-        public string WarehouseReferenceId { get; set; }
+        public string? WarehouseReferenceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -282,5 +282,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

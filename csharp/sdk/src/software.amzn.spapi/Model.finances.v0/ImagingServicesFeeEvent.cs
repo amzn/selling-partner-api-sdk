@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="aSIN">The Amazon Standard Identification Number (ASIN) of the item for which the imaging service was requested..</param>
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="feeList">A list of fee component information..</param>
-        public ImagingServicesFeeEvent(string imagingRequestBillingItemID = default(string), string aSIN = default(string), DateTime postedDate = default(DateTime), List<FeeComponent> feeList = default(List<FeeComponent>))
+        public ImagingServicesFeeEvent(string? imagingRequestBillingItemID = default(string?), string? aSIN = default(string?), DateTime? postedDate = default(DateTime?), List<FeeComponent>? feeList = default(List<FeeComponent>?))
         {
             this.ImagingRequestBillingItemID = imagingRequestBillingItemID;
             this.ASIN = aSIN;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The identifier for the imaging services request.</value>
         [DataMember(Name = "ImagingRequestBillingItemID", EmitDefaultValue = false)]
-        public string ImagingRequestBillingItemID { get; set; }
+        public string? ImagingRequestBillingItemID { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item for which the imaging service was requested.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item for which the imaging service was requested.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "FeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> FeeList { get; set; }
+        public List<FeeComponent>? FeeList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

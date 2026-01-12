@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="base64EncodedContent">Base64 document Value of Collection..</param>
         /// <param name="documentFormat">Collection Document format is PDF..</param>
-        public CollectionsFormDocument(string base64EncodedContent = default(string), string documentFormat = default(string))
+        public CollectionsFormDocument(string? base64EncodedContent = default(string?), string? documentFormat = default(string?))
         {
             this.Base64EncodedContent = base64EncodedContent;
             this.DocumentFormat = documentFormat;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Base64 document Value of Collection.</value>
         [DataMember(Name = "base64EncodedContent", EmitDefaultValue = false)]
-        public string Base64EncodedContent { get; set; }
+        public string? Base64EncodedContent { get; set; }
 
         /// <summary>
         /// Collection Document format is PDF.
         /// </summary>
         /// <value>Collection Document format is PDF.</value>
         [DataMember(Name = "documentFormat", EmitDefaultValue = false)]
-        public string DocumentFormat { get; set; }
+        public string? DocumentFormat { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

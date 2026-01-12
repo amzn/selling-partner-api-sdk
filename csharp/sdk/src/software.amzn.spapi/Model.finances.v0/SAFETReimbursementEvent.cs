@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="reimbursedAmount">reimbursedAmount.</param>
         /// <param name="reasonCode">Indicates why the seller was reimbursed..</param>
         /// <param name="sAFETReimbursementItemList">A list of &#x60;SAFETReimbursementItem&#x60;..</param>
-        public SAFETReimbursementEvent(DateTime postedDate = default(DateTime), string sAFETClaimId = default(string), Currency reimbursedAmount = default(Currency), string reasonCode = default(string), List<SAFETReimbursementItem> sAFETReimbursementItemList = default(List<SAFETReimbursementItem>))
+        public SAFETReimbursementEvent(DateTime? postedDate = default(DateTime?), string? sAFETClaimId = default(string?), Currency? reimbursedAmount = default(Currency?), string? reasonCode = default(string?), List<SAFETReimbursementItem>? sAFETReimbursementItemList = default(List<SAFETReimbursementItem>?))
         {
             this.PostedDate = postedDate;
             this.SAFETClaimId = sAFETClaimId;
@@ -53,34 +53,34 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// A SAFE-T claim identifier.
         /// </summary>
         /// <value>A SAFE-T claim identifier.</value>
         [DataMember(Name = "SAFETClaimId", EmitDefaultValue = false)]
-        public string SAFETClaimId { get; set; }
+        public string? SAFETClaimId { get; set; }
 
         /// <summary>
         /// Gets or Sets ReimbursedAmount
         /// </summary>
         [DataMember(Name = "ReimbursedAmount", EmitDefaultValue = false)]
-        public Currency ReimbursedAmount { get; set; }
+        public Currency? ReimbursedAmount { get; set; }
 
         /// <summary>
         /// Indicates why the seller was reimbursed.
         /// </summary>
         /// <value>Indicates why the seller was reimbursed.</value>
         [DataMember(Name = "ReasonCode", EmitDefaultValue = false)]
-        public string ReasonCode { get; set; }
+        public string? ReasonCode { get; set; }
 
         /// <summary>
         /// A list of &#x60;SAFETReimbursementItem&#x60;.
         /// </summary>
         /// <value>A list of &#x60;SAFETReimbursementItem&#x60;.</value>
         [DataMember(Name = "SAFETReimbursementItemList", EmitDefaultValue = false)]
-        public List<SAFETReimbursementItem> SAFETReimbursementItemList { get; set; }
+        public List<SAFETReimbursementItem>? SAFETReimbursementItemList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

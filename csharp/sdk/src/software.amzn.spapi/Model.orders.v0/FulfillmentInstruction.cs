@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Initializes a new instance of the <see cref="FulfillmentInstruction" /> class.
         /// </summary>
         /// <param name="fulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled..</param>
-        public FulfillmentInstruction(string fulfillmentSupplySourceId = default(string))
+        public FulfillmentInstruction(string? fulfillmentSupplySourceId = default(string?))
         {
             this.FulfillmentSupplySourceId = fulfillmentSupplySourceId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The &#x60;sourceId&#x60; of the location from where you want the order fulfilled.</value>
         [DataMember(Name = "FulfillmentSupplySourceId", EmitDefaultValue = false)]
-        public string FulfillmentSupplySourceId { get; set; }
+        public string? FulfillmentSupplySourceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

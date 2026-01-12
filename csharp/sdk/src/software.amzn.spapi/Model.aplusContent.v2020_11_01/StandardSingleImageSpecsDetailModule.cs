@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="specificationHeadline">specificationHeadline.</param>
         /// <param name="specificationListBlock">specificationListBlock.</param>
         /// <param name="specificationTextBlock">specificationTextBlock.</param>
-        public StandardSingleImageSpecsDetailModule(TextComponent headline = default(TextComponent), ImageComponent image = default(ImageComponent), TextComponent descriptionHeadline = default(TextComponent), StandardTextBlock descriptionBlock1 = default(StandardTextBlock), StandardTextBlock descriptionBlock2 = default(StandardTextBlock), TextComponent specificationHeadline = default(TextComponent), StandardHeaderTextListBlock specificationListBlock = default(StandardHeaderTextListBlock), StandardTextBlock specificationTextBlock = default(StandardTextBlock))
+        public StandardSingleImageSpecsDetailModule(TextComponent? headline = default(TextComponent?), ImageComponent? image = default(ImageComponent?), TextComponent? descriptionHeadline = default(TextComponent?), StandardTextBlock? descriptionBlock1 = default(StandardTextBlock?), StandardTextBlock? descriptionBlock2 = default(StandardTextBlock?), TextComponent? specificationHeadline = default(TextComponent?), StandardHeaderTextListBlock? specificationListBlock = default(StandardHeaderTextListBlock?), StandardTextBlock? specificationTextBlock = default(StandardTextBlock?))
         {
             this.Headline = headline;
             this.Image = image;
@@ -58,49 +58,49 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Headline
         /// </summary>
         [DataMember(Name = "headline", EmitDefaultValue = false)]
-        public TextComponent Headline { get; set; }
+        public TextComponent? Headline { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
         [DataMember(Name = "image", EmitDefaultValue = false)]
-        public ImageComponent Image { get; set; }
+        public ImageComponent? Image { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptionHeadline
         /// </summary>
         [DataMember(Name = "descriptionHeadline", EmitDefaultValue = false)]
-        public TextComponent DescriptionHeadline { get; set; }
+        public TextComponent? DescriptionHeadline { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptionBlock1
         /// </summary>
         [DataMember(Name = "descriptionBlock1", EmitDefaultValue = false)]
-        public StandardTextBlock DescriptionBlock1 { get; set; }
+        public StandardTextBlock? DescriptionBlock1 { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptionBlock2
         /// </summary>
         [DataMember(Name = "descriptionBlock2", EmitDefaultValue = false)]
-        public StandardTextBlock DescriptionBlock2 { get; set; }
+        public StandardTextBlock? DescriptionBlock2 { get; set; }
 
         /// <summary>
         /// Gets or Sets SpecificationHeadline
         /// </summary>
         [DataMember(Name = "specificationHeadline", EmitDefaultValue = false)]
-        public TextComponent SpecificationHeadline { get; set; }
+        public TextComponent? SpecificationHeadline { get; set; }
 
         /// <summary>
         /// Gets or Sets SpecificationListBlock
         /// </summary>
         [DataMember(Name = "specificationListBlock", EmitDefaultValue = false)]
-        public StandardHeaderTextListBlock SpecificationListBlock { get; set; }
+        public StandardHeaderTextListBlock? SpecificationListBlock { get; set; }
 
         /// <summary>
         /// Gets or Sets SpecificationTextBlock
         /// </summary>
         [DataMember(Name = "specificationTextBlock", EmitDefaultValue = false)]
-        public StandardTextBlock SpecificationTextBlock { get; set; }
+        public StandardTextBlock? SpecificationTextBlock { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -141,5 +141,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

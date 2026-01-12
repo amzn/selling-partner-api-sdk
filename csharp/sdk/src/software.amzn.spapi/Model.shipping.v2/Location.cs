@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="city">The city or town where the person, business or institution is located..</param>
         /// <param name="countryCode">The two digit country code. Follows ISO 3166-1 alpha-2 format..</param>
         /// <param name="postalCode">The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation..</param>
-        public Location(string stateOrRegion = default(string), string city = default(string), string countryCode = default(string), string postalCode = default(string))
+        public Location(string? stateOrRegion = default(string?), string? city = default(string?), string? countryCode = default(string?), string? postalCode = default(string?))
         {
             this.StateOrRegion = stateOrRegion;
             this.City = city;
@@ -52,28 +52,28 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The state, county or region where the person, business or institution is located.</value>
         [DataMember(Name = "stateOrRegion", EmitDefaultValue = false)]
-        public string StateOrRegion { get; set; }
+        public string? StateOrRegion { get; set; }
 
         /// <summary>
         /// The city or town where the person, business or institution is located.
         /// </summary>
         /// <value>The city or town where the person, business or institution is located.</value>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// The two digit country code. Follows ISO 3166-1 alpha-2 format.
         /// </summary>
         /// <value>The two digit country code. Follows ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
         /// </summary>
         /// <value>The postal code of that address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.</value>
         [DataMember(Name = "postalCode", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -110,5 +110,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

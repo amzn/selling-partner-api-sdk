@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="stateOrProvinceCode">The state or province code.  If state or province codes are used in your marketplace, it is recommended that you include one with your request. This helps Amazon to select the most appropriate Amazon fulfillment center for your inbound shipment plan. (required).</param>
         /// <param name="countryCode">The country code in two-character ISO 3166-1 alpha-2 format. (required).</param>
         /// <param name="postalCode">The postal code.  If postal codes are used in your marketplace, we recommended that you include one with your request. This helps Amazon select the most appropriate Amazon fulfillment center for the inbound shipment plan. (required).</param>
-        public Address(string name = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string districtOrCounty = default(string), string city = default(string), string stateOrProvinceCode = default(string), string countryCode = default(string), string postalCode = default(string))
+        public Address(string name = default(string), string addressLine1 = default(string), string? addressLine2 = default(string?), string? districtOrCounty = default(string?), string city = default(string), string stateOrProvinceCode = default(string), string countryCode = default(string), string postalCode = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -108,14 +108,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>Additional street address information, if required.</value>
         [DataMember(Name = "AddressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// The district or county.
         /// </summary>
         /// <value>The district or county.</value>
         [DataMember(Name = "DistrictOrCounty", EmitDefaultValue = false)]
-        public string DistrictOrCounty { get; set; }
+        public string? DistrictOrCounty { get; set; }
 
         /// <summary>
         /// The city.
@@ -220,5 +220,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

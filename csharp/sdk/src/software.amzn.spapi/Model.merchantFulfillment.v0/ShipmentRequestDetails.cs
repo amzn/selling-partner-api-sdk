@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="shipDate">Date-time formatted timestamp..</param>
         /// <param name="shippingServiceOptions">shippingServiceOptions (required).</param>
         /// <param name="labelCustomization">labelCustomization.</param>
-        public ShipmentRequestDetails(string amazonOrderId = default(string), string sellerOrderId = default(string), List<Item> itemList = default(List<Item>), Address shipFromAddress = default(Address), PackageDimensions packageDimensions = default(PackageDimensions), Weight weight = default(Weight), DateTime mustArriveByDate = default(DateTime), DateTime shipDate = default(DateTime), ShippingServiceOptions shippingServiceOptions = default(ShippingServiceOptions), LabelCustomization labelCustomization = default(LabelCustomization))
+        public ShipmentRequestDetails(string amazonOrderId = default(string), string? sellerOrderId = default(string?), List<Item> itemList = default(List<Item>), Address shipFromAddress = default(Address), PackageDimensions packageDimensions = default(PackageDimensions), Weight weight = default(Weight), DateTime? mustArriveByDate = default(DateTime?), DateTime? shipDate = default(DateTime?), ShippingServiceOptions shippingServiceOptions = default(ShippingServiceOptions), LabelCustomization? labelCustomization = default(LabelCustomization?))
         {
             // to ensure "amazonOrderId" is required (not null)
             if (amazonOrderId == null)
@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A seller-defined order identifier.</value>
         [DataMember(Name = "SellerOrderId", EmitDefaultValue = false)]
-        public string SellerOrderId { get; set; }
+        public string? SellerOrderId { get; set; }
 
         /// <summary>
         /// The list of items you want to include in a shipment.
@@ -137,14 +137,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>Date-time formatted timestamp.</value>
         [DataMember(Name = "MustArriveByDate", EmitDefaultValue = false)]
-        public DateTime MustArriveByDate { get; set; }
+        public DateTime? MustArriveByDate { get; set; }
 
         /// <summary>
         /// Date-time formatted timestamp.
         /// </summary>
         /// <value>Date-time formatted timestamp.</value>
         [DataMember(Name = "ShipDate", EmitDefaultValue = false)]
-        public DateTime ShipDate { get; set; }
+        public DateTime? ShipDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingServiceOptions
@@ -156,7 +156,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets LabelCustomization
         /// </summary>
         [DataMember(Name = "LabelCustomization", EmitDefaultValue = false)]
-        public LabelCustomization LabelCustomization { get; set; }
+        public LabelCustomization? LabelCustomization { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -205,5 +205,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

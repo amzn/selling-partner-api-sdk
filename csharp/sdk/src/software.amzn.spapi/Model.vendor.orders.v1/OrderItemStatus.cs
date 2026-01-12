@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="orderedQuantity">orderedQuantity.</param>
         /// <param name="acknowledgementStatus">acknowledgementStatus.</param>
         /// <param name="receivingStatus">receivingStatus.</param>
-        public OrderItemStatus(string itemSequenceNumber = default(string), string buyerProductIdentifier = default(string), string vendorProductIdentifier = default(string), Money netCost = default(Money), Money listPrice = default(Money), OrderItemStatusOrderedQuantity orderedQuantity = default(OrderItemStatusOrderedQuantity), OrderItemStatusAcknowledgementStatus acknowledgementStatus = default(OrderItemStatusAcknowledgementStatus), OrderItemStatusReceivingStatus receivingStatus = default(OrderItemStatusReceivingStatus))
+        public OrderItemStatus(string itemSequenceNumber = default(string), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), Money? netCost = default(Money?), Money? listPrice = default(Money?), OrderItemStatusOrderedQuantity? orderedQuantity = default(OrderItemStatusOrderedQuantity?), OrderItemStatusAcknowledgementStatus? acknowledgementStatus = default(OrderItemStatusAcknowledgementStatus?), OrderItemStatusReceivingStatus? receivingStatus = default(OrderItemStatusReceivingStatus?))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -76,44 +76,44 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>Buyer&#39;s Standard Identification Number (ASIN) of an item.</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item.
         /// </summary>
         /// <value>The vendor selected product identification of the item.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets NetCost
         /// </summary>
         [DataMember(Name = "netCost", EmitDefaultValue = false)]
-        public Money NetCost { get; set; }
+        public Money? NetCost { get; set; }
 
         /// <summary>
         /// Gets or Sets ListPrice
         /// </summary>
         [DataMember(Name = "listPrice", EmitDefaultValue = false)]
-        public Money ListPrice { get; set; }
+        public Money? ListPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderedQuantity
         /// </summary>
         [DataMember(Name = "orderedQuantity", EmitDefaultValue = false)]
-        public OrderItemStatusOrderedQuantity OrderedQuantity { get; set; }
+        public OrderItemStatusOrderedQuantity? OrderedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets AcknowledgementStatus
         /// </summary>
         [DataMember(Name = "acknowledgementStatus", EmitDefaultValue = false)]
-        public OrderItemStatusAcknowledgementStatus AcknowledgementStatus { get; set; }
+        public OrderItemStatusAcknowledgementStatus? AcknowledgementStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets ReceivingStatus
         /// </summary>
         [DataMember(Name = "receivingStatus", EmitDefaultValue = false)]
-        public OrderItemStatusReceivingStatus ReceivingStatus { get; set; }
+        public OrderItemStatusReceivingStatus? ReceivingStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,5 +154,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

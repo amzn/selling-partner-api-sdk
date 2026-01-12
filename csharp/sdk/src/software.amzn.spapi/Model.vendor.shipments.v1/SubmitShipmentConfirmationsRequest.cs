@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Initializes a new instance of the <see cref="SubmitShipmentConfirmationsRequest" /> class.
         /// </summary>
         /// <param name="shipmentConfirmations">A list of one or more shipment confirmations..</param>
-        public SubmitShipmentConfirmationsRequest(List<ShipmentConfirmation> shipmentConfirmations = default(List<ShipmentConfirmation>))
+        public SubmitShipmentConfirmationsRequest(List<ShipmentConfirmation>? shipmentConfirmations = default(List<ShipmentConfirmation>?))
         {
             this.ShipmentConfirmations = shipmentConfirmations;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>A list of one or more shipment confirmations.</value>
         [DataMember(Name = "shipmentConfirmations", EmitDefaultValue = false)]
-        public List<ShipmentConfirmation> ShipmentConfirmations { get; set; }
+        public List<ShipmentConfirmation>? ShipmentConfirmations { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

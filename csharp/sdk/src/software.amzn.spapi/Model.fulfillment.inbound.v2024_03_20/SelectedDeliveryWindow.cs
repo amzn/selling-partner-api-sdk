@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="editableUntil">The timestamp at which this Window can no longer be edited..</param>
         /// <param name="endDate">The end timestamp of the window. (required).</param>
         /// <param name="startDate">The start timestamp of the window. (required).</param>
-        public SelectedDeliveryWindow(string availabilityType = default(string), string deliveryWindowOptionId = default(string), DateTime editableUntil = default(DateTime), DateTime endDate = default(DateTime), DateTime startDate = default(DateTime))
+        public SelectedDeliveryWindow(string availabilityType = default(string), string deliveryWindowOptionId = default(string), DateTime? editableUntil = default(DateTime?), DateTime endDate = default(DateTime), DateTime startDate = default(DateTime))
         {
             // to ensure "availabilityType" is required (not null)
             if (availabilityType == null)
@@ -82,7 +82,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The timestamp at which this Window can no longer be edited.</value>
         [DataMember(Name = "editableUntil", EmitDefaultValue = false)]
-        public DateTime EditableUntil { get; set; }
+        public DateTime? EditableUntil { get; set; }
 
         /// <summary>
         /// The end timestamp of the window.
@@ -155,5 +155,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

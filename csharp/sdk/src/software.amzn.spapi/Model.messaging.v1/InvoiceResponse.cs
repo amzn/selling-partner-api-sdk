@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// Initializes a new instance of the <see cref="InvoiceResponse" /> class.
         /// </summary>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public InvoiceResponse(List<Error> errors = default(List<Error>))
+        public InvoiceResponse(List<Error>? errors = default(List<Error>?))
         {
             this.Errors = errors;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

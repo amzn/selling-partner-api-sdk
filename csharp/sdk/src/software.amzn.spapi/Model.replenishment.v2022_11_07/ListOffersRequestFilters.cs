@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="preferences">preferences.</param>
         /// <param name="promotions">promotions.</param>
         /// <param name="programTypes">A list of replenishment program types. (required).</param>
-        public ListOffersRequestFilters(string marketplaceId = default(string), List<string> skus = default(List<string>), List<string> asins = default(List<string>), List<EligibilityStatus> eligibilities = default(List<EligibilityStatus>), Preference preferences = default(Preference), Promotion promotions = default(Promotion), List<ProgramType> programTypes = default(List<ProgramType>))
+        public ListOffersRequestFilters(string marketplaceId = default(string), List<string>? skus = default(List<string>?), List<string>? asins = default(List<string>?), List<EligibilityStatus>? eligibilities = default(List<EligibilityStatus>?), Preference? preferences = default(Preference?), Promotion? promotions = default(Promotion?), List<ProgramType> programTypes = default(List<ProgramType>))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -79,33 +79,33 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>A list of SKUs to filter. This filter is only supported for sellers and not for vendors.</value>
         [DataMember(Name = "skus", EmitDefaultValue = false)]
-        public List<string> Skus { get; set; }
+        public List<string>? Skus { get; set; }
 
         /// <summary>
         /// A list of Amazon Standard Identification Numbers (ASINs).
         /// </summary>
         /// <value>A list of Amazon Standard Identification Numbers (ASINs).</value>
         [DataMember(Name = "asins", EmitDefaultValue = false)]
-        public List<string> Asins { get; set; }
+        public List<string>? Asins { get; set; }
 
         /// <summary>
         /// A list of eligibilities associated with an offer.
         /// </summary>
         /// <value>A list of eligibilities associated with an offer.</value>
         [DataMember(Name = "eligibilities", EmitDefaultValue = false)]
-        public List<EligibilityStatus> Eligibilities { get; set; }
+        public List<EligibilityStatus>? Eligibilities { get; set; }
 
         /// <summary>
         /// Gets or Sets Preferences
         /// </summary>
         [DataMember(Name = "preferences", EmitDefaultValue = false)]
-        public Preference Preferences { get; set; }
+        public Preference? Preferences { get; set; }
 
         /// <summary>
         /// Gets or Sets Promotions
         /// </summary>
         [DataMember(Name = "promotions", EmitDefaultValue = false)]
-        public Promotion Promotions { get; set; }
+        public Promotion? Promotions { get; set; }
 
         /// <summary>
         /// A list of replenishment program types.
@@ -152,5 +152,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

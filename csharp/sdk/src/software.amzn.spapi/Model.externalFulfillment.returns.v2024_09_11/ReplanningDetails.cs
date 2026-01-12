@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// Initializes a new instance of the <see cref="ReplanningDetails" /> class.
         /// </summary>
         /// <param name="previousTrackingInfo">A list of all the previous tracking information for the return..</param>
-        public ReplanningDetails(List<TrackingInfo> previousTrackingInfo = default(List<TrackingInfo>))
+        public ReplanningDetails(List<TrackingInfo>? previousTrackingInfo = default(List<TrackingInfo>?))
         {
             this.PreviousTrackingInfo = previousTrackingInfo;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// </summary>
         /// <value>A list of all the previous tracking information for the return.</value>
         [DataMember(Name = "previousTrackingInfo", EmitDefaultValue = false)]
-        public List<TrackingInfo> PreviousTrackingInfo { get; set; }
+        public List<TrackingInfo>? PreviousTrackingInfo { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
             yield break;
         }
     }
-
 }

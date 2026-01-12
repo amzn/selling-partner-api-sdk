@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="cardBrand">Credit card brand (if payment method is CreditCard).</param>
         /// <param name="paymentValue">paymentValue.</param>
         /// <param name="authorizationCode">Authorization code for this payment.</param>
-        public PaymentInformation(PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?), string acquirerId = default(string), string cardBrand = default(string), Money paymentValue = default(Money), string authorizationCode = default(string))
+        public PaymentInformation(PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?), string? acquirerId = default(string?), string? cardBrand = default(string?), Money? paymentValue = default(Money?), string? authorizationCode = default(string?))
         {
             this.PaymentMethod = paymentMethod;
             this.AcquirerId = acquirerId;
@@ -59,27 +59,27 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <value>Government ID of acquirer</value>
         [DataMember(Name = "AcquirerId", EmitDefaultValue = false)]
-        public string AcquirerId { get; set; }
+        public string? AcquirerId { get; set; }
 
         /// <summary>
         /// Credit card brand (if payment method is CreditCard)
         /// </summary>
         /// <value>Credit card brand (if payment method is CreditCard)</value>
         [DataMember(Name = "CardBrand", EmitDefaultValue = false)]
-        public string CardBrand { get; set; }
+        public string? CardBrand { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentValue
         /// </summary>
         [DataMember(Name = "PaymentValue", EmitDefaultValue = false)]
-        public Money PaymentValue { get; set; }
+        public Money? PaymentValue { get; set; }
 
         /// <summary>
         /// Authorization code for this payment
         /// </summary>
         /// <value>Authorization code for this payment</value>
         [DataMember(Name = "AuthorizationCode", EmitDefaultValue = false)]
-        public string AuthorizationCode { get; set; }
+        public string? AuthorizationCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

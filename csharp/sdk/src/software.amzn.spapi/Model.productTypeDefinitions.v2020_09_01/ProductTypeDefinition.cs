@@ -109,7 +109,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// <param name="productType">The name of the Amazon product type that this product type definition applies to. (required).</param>
         /// <param name="displayName">Human-readable and localized description of the Amazon product type. (required).</param>
         /// <param name="productTypeVersion">productTypeVersion (required).</param>
-        public ProductTypeDefinition(SchemaLink metaSchema = default(SchemaLink), SchemaLink schema = default(SchemaLink), RequirementsEnum requirements = default(RequirementsEnum), RequirementsEnforcedEnum requirementsEnforced = default(RequirementsEnforcedEnum), Dictionary<string, PropertyGroup> propertyGroups = default(Dictionary<string, PropertyGroup>), string locale = default(string), List<string> marketplaceIds = default(List<string>), string productType = default(string), string displayName = default(string), ProductTypeVersion productTypeVersion = default(ProductTypeVersion))
+        public ProductTypeDefinition(SchemaLink? metaSchema = default(SchemaLink?), SchemaLink schema = default(SchemaLink), RequirementsEnum requirements = default(RequirementsEnum), RequirementsEnforcedEnum requirementsEnforced = default(RequirementsEnforcedEnum), Dictionary<string, PropertyGroup> propertyGroups = default(Dictionary<string, PropertyGroup>), string locale = default(string), List<string> marketplaceIds = default(List<string>), string productType = default(string), string displayName = default(string), ProductTypeVersion productTypeVersion = default(ProductTypeVersion))
         {
             // to ensure "schema" is required (not null)
             if (schema == null)
@@ -162,7 +162,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// Gets or Sets MetaSchema
         /// </summary>
         [DataMember(Name = "metaSchema", EmitDefaultValue = false)]
-        public SchemaLink MetaSchema { get; set; }
+        public SchemaLink? MetaSchema { get; set; }
 
         /// <summary>
         /// Gets or Sets Schema
@@ -252,5 +252,4 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
             yield break;
         }
     }
-
 }

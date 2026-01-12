@@ -107,7 +107,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="shipmentDeliveryDate">Date on which shipment will be delivered from Vendor to Buyer.</param>
         /// <param name="carrierDetails">carrierDetails.</param>
         /// <param name="billOfLadingNumber">The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field..</param>
-        public TransportationDetails(ShipModeEnum? shipMode = default(ShipModeEnum?), TransportationModeEnum? transportationMode = default(TransportationModeEnum?), DateTime shippedDate = default(DateTime), DateTime estimatedDeliveryDate = default(DateTime), DateTime shipmentDeliveryDate = default(DateTime), CarrierDetails carrierDetails = default(CarrierDetails), string billOfLadingNumber = default(string))
+        public TransportationDetails(ShipModeEnum? shipMode = default(ShipModeEnum?), TransportationModeEnum? transportationMode = default(TransportationModeEnum?), DateTime? shippedDate = default(DateTime?), DateTime? estimatedDeliveryDate = default(DateTime?), DateTime? shipmentDeliveryDate = default(DateTime?), CarrierDetails? carrierDetails = default(CarrierDetails?), string? billOfLadingNumber = default(string?))
         {
             this.ShipMode = shipMode;
             this.TransportationMode = transportationMode;
@@ -123,34 +123,34 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Date when shipment is performed by the Vendor to Buyer</value>
         [DataMember(Name = "shippedDate", EmitDefaultValue = false)]
-        public DateTime ShippedDate { get; set; }
+        public DateTime? ShippedDate { get; set; }
 
         /// <summary>
         /// Estimated Date on which shipment will be delivered from Vendor to Buyer
         /// </summary>
         /// <value>Estimated Date on which shipment will be delivered from Vendor to Buyer</value>
         [DataMember(Name = "estimatedDeliveryDate", EmitDefaultValue = false)]
-        public DateTime EstimatedDeliveryDate { get; set; }
+        public DateTime? EstimatedDeliveryDate { get; set; }
 
         /// <summary>
         /// Date on which shipment will be delivered from Vendor to Buyer
         /// </summary>
         /// <value>Date on which shipment will be delivered from Vendor to Buyer</value>
         [DataMember(Name = "shipmentDeliveryDate", EmitDefaultValue = false)]
-        public DateTime ShipmentDeliveryDate { get; set; }
+        public DateTime? ShipmentDeliveryDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CarrierDetails
         /// </summary>
         [DataMember(Name = "carrierDetails", EmitDefaultValue = false)]
-        public CarrierDetails CarrierDetails { get; set; }
+        public CarrierDetails? CarrierDetails { get; set; }
 
         /// <summary>
         /// The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field.
         /// </summary>
         /// <value>The Bill of Lading (BOL) number is a unique number assigned to each shipment of goods by the vendor or shipper during the creation of the Bill of Lading. This number must be unique for every shipment and cannot be a date/time or single character. The BOL numer is mandatory in Shipment Confirmation message for FTL and LTL shipments, and must match the paper BOL provided with the shipment. Instead of BOL, an alternative reference number (like Delivery Note Number) for the shipment can also be sent in this field.</value>
         [DataMember(Name = "billOfLadingNumber", EmitDefaultValue = false)]
-        public string BillOfLadingNumber { get; set; }
+        public string? BillOfLadingNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -190,5 +190,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

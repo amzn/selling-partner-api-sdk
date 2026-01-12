@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="CreateFulfillmentOrderResponse" /> class.
         /// </summary>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public CreateFulfillmentOrderResponse(List<Error> errors = default(List<Error>))
+        public CreateFulfillmentOrderResponse(List<Error>? errors = default(List<Error>?))
         {
             this.Errors = errors;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

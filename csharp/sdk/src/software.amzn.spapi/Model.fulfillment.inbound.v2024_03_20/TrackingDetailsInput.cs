@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="ltlTrackingDetail">ltlTrackingDetail.</param>
         /// <param name="spdTrackingDetail">spdTrackingDetail.</param>
-        public TrackingDetailsInput(LtlTrackingDetailInput ltlTrackingDetail = default(LtlTrackingDetailInput), SpdTrackingDetailInput spdTrackingDetail = default(SpdTrackingDetailInput))
+        public TrackingDetailsInput(LtlTrackingDetailInput? ltlTrackingDetail = default(LtlTrackingDetailInput?), SpdTrackingDetailInput? spdTrackingDetail = default(SpdTrackingDetailInput?))
         {
             this.LtlTrackingDetail = ltlTrackingDetail;
             this.SpdTrackingDetail = spdTrackingDetail;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets LtlTrackingDetail
         /// </summary>
         [DataMember(Name = "ltlTrackingDetail", EmitDefaultValue = false)]
-        public LtlTrackingDetailInput LtlTrackingDetail { get; set; }
+        public LtlTrackingDetailInput? LtlTrackingDetail { get; set; }
 
         /// <summary>
         /// Gets or Sets SpdTrackingDetail
         /// </summary>
         [DataMember(Name = "spdTrackingDetail", EmitDefaultValue = false)]
-        public SpdTrackingDetailInput SpdTrackingDetail { get; set; }
+        public SpdTrackingDetailInput? SpdTrackingDetail { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

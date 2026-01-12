@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="fulfillmentTime">fulfillmentTime.</param>
         /// <param name="appointmentResources">List of resources that performs or performed job appointment fulfillment..</param>
         /// <param name="fulfillmentDocuments">List of documents captured during service appointment fulfillment..</param>
-        public SetAppointmentFulfillmentDataRequest(DateTimeRange estimatedArrivalTime = default(DateTimeRange), FulfillmentTime fulfillmentTime = default(FulfillmentTime), List<AppointmentResource> appointmentResources = default(List<AppointmentResource>), List<FulfillmentDocument> fulfillmentDocuments = default(List<FulfillmentDocument>))
+        public SetAppointmentFulfillmentDataRequest(DateTimeRange? estimatedArrivalTime = default(DateTimeRange?), FulfillmentTime? fulfillmentTime = default(FulfillmentTime?), List<AppointmentResource>? appointmentResources = default(List<AppointmentResource>?), List<FulfillmentDocument>? fulfillmentDocuments = default(List<FulfillmentDocument>?))
         {
             this.EstimatedArrivalTime = estimatedArrivalTime;
             this.FulfillmentTime = fulfillmentTime;
@@ -50,27 +50,27 @@ namespace software.amzn.spapi.Model.services.v1
         /// Gets or Sets EstimatedArrivalTime
         /// </summary>
         [DataMember(Name = "estimatedArrivalTime", EmitDefaultValue = false)]
-        public DateTimeRange EstimatedArrivalTime { get; set; }
+        public DateTimeRange? EstimatedArrivalTime { get; set; }
 
         /// <summary>
         /// Gets or Sets FulfillmentTime
         /// </summary>
         [DataMember(Name = "fulfillmentTime", EmitDefaultValue = false)]
-        public FulfillmentTime FulfillmentTime { get; set; }
+        public FulfillmentTime? FulfillmentTime { get; set; }
 
         /// <summary>
         /// List of resources that performs or performed job appointment fulfillment.
         /// </summary>
         /// <value>List of resources that performs or performed job appointment fulfillment.</value>
         [DataMember(Name = "appointmentResources", EmitDefaultValue = false)]
-        public List<AppointmentResource> AppointmentResources { get; set; }
+        public List<AppointmentResource>? AppointmentResources { get; set; }
 
         /// <summary>
         /// List of documents captured during service appointment fulfillment.
         /// </summary>
         /// <value>List of documents captured during service appointment fulfillment.</value>
         [DataMember(Name = "fulfillmentDocuments", EmitDefaultValue = false)]
-        public List<FulfillmentDocument> FulfillmentDocuments { get; set; }
+        public List<FulfillmentDocument>? FulfillmentDocuments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

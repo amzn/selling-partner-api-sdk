@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <param name="marketplaceId">Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids)..</param>
         /// <param name="productType">Name of the product type that is associated with the Amazon catalog item..</param>
-        public ItemProductTypeByMarketplace(string marketplaceId = default(string), string productType = default(string))
+        public ItemProductTypeByMarketplace(string? marketplaceId = default(string?), string? productType = default(string?))
         {
             this.MarketplaceId = marketplaceId;
             this.ProductType = productType;
@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Name of the product type that is associated with the Amazon catalog item.
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         <example>LUGGAGE</example>
         */
         [DataMember(Name = "productType", EmitDefaultValue = false)]
-        public string ProductType { get; set; }
+        public string? ProductType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,5 +92,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

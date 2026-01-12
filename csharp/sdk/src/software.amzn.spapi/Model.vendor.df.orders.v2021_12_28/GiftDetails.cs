@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="giftMessage">Gift message to be printed in shipment..</param>
         /// <param name="giftWrapId">Gift wrap identifier for the gift wrapping, if any..</param>
-        public GiftDetails(string giftMessage = default(string), string giftWrapId = default(string))
+        public GiftDetails(string? giftMessage = default(string?), string? giftWrapId = default(string?))
         {
             this.GiftMessage = giftMessage;
             this.GiftWrapId = giftWrapId;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>Gift message to be printed in shipment.</value>
         [DataMember(Name = "giftMessage", EmitDefaultValue = false)]
-        public string GiftMessage { get; set; }
+        public string? GiftMessage { get; set; }
 
         /// <summary>
         /// Gift wrap identifier for the gift wrapping, if any.
         /// </summary>
         /// <value>Gift wrap identifier for the gift wrapping, if any.</value>
         [DataMember(Name = "giftWrapId", EmitDefaultValue = false)]
-        public string GiftWrapId { get; set; }
+        public string? GiftWrapId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

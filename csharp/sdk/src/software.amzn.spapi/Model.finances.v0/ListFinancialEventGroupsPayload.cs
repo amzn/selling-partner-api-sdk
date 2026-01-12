@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
         /// <param name="financialEventGroupList">A list of financial event group information..</param>
-        public ListFinancialEventGroupsPayload(string nextToken = default(string), List<FinancialEventGroup> financialEventGroupList = default(List<FinancialEventGroup>))
+        public ListFinancialEventGroupsPayload(string? nextToken = default(string?), List<FinancialEventGroup>? financialEventGroupList = default(List<FinancialEventGroup>?))
         {
             this.NextToken = nextToken;
             this.FinancialEventGroupList = financialEventGroupList;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
         [DataMember(Name = "NextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// A list of financial event group information.
         /// </summary>
         /// <value>A list of financial event group information.</value>
         [DataMember(Name = "FinancialEventGroupList", EmitDefaultValue = false)]
-        public List<FinancialEventGroup> FinancialEventGroupList { get; set; }
+        public List<FinancialEventGroup>? FinancialEventGroupList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

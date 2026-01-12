@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="GetCarrierAccountFormInputsResponse" /> class.
         /// </summary>
         /// <param name="linkableCarriersList">A list of LinkableCarrier.</param>
-        public GetCarrierAccountFormInputsResponse(List<LinkableCarrier> linkableCarriersList = default(List<LinkableCarrier>))
+        public GetCarrierAccountFormInputsResponse(List<LinkableCarrier>? linkableCarriersList = default(List<LinkableCarrier>?))
         {
             this.LinkableCarriersList = linkableCarriersList;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of LinkableCarrier</value>
         [DataMember(Name = "linkableCarriersList", EmitDefaultValue = false)]
-        public List<LinkableCarrier> LinkableCarriersList { get; set; }
+        public List<LinkableCarrier>? LinkableCarriersList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

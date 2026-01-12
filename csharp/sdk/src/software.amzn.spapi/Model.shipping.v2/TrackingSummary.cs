@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="status">status.</param>
         /// <param name="trackingDetailCodes">trackingDetailCodes.</param>
-        public TrackingSummary(Status? status = default(Status?), TrackingDetailCodes trackingDetailCodes = default(TrackingDetailCodes))
+        public TrackingSummary(Status? status = default(Status?), TrackingDetailCodes? trackingDetailCodes = default(TrackingDetailCodes?))
         {
             this.Status = status;
             this.TrackingDetailCodes = trackingDetailCodes;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets TrackingDetailCodes
         /// </summary>
         [DataMember(Name = "trackingDetailCodes", EmitDefaultValue = false)]
-        public TrackingDetailCodes TrackingDetailCodes { get; set; }
+        public TrackingDetailCodes? TrackingDetailCodes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

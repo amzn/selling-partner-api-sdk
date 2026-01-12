@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <param name="occurrencePercentage">occurrencePercentage.</param>
         /// <param name="starRatingImpact">starRatingImpact.</param>
-        public BrowseNodeReviewTopicMetrics(BrowseNodeAllOccurrence occurrencePercentage = default(BrowseNodeAllOccurrence), BrowseNodeAllStarRatingImpact starRatingImpact = default(BrowseNodeAllStarRatingImpact))
+        public BrowseNodeReviewTopicMetrics(BrowseNodeAllOccurrence? occurrencePercentage = default(BrowseNodeAllOccurrence?), BrowseNodeAllStarRatingImpact? starRatingImpact = default(BrowseNodeAllStarRatingImpact?))
         {
             this.OccurrencePercentage = occurrencePercentage;
             this.StarRatingImpact = starRatingImpact;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// Gets or Sets OccurrencePercentage
         /// </summary>
         [DataMember(Name = "occurrencePercentage", EmitDefaultValue = false)]
-        public BrowseNodeAllOccurrence OccurrencePercentage { get; set; }
+        public BrowseNodeAllOccurrence? OccurrencePercentage { get; set; }
 
         /// <summary>
         /// Gets or Sets StarRatingImpact
         /// </summary>
         [DataMember(Name = "starRatingImpact", EmitDefaultValue = false)]
-        public BrowseNodeAllStarRatingImpact StarRatingImpact { get; set; }
+        public BrowseNodeAllStarRatingImpact? StarRatingImpact { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

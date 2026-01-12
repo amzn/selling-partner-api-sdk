@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Initializes a new instance of the <see cref="BuyerCustomizedInfoDetail" /> class.
         /// </summary>
         /// <param name="customizedUrl">A [Base 64](https://datatracker.ietf.org/doc/html/rfc4648#section-4) encoded URL using the UTF-8 character set. The URL provides the location of the zip file that specifies the types of customizations or configurations allowed by the vendor, along with types and ranges for the attributes of their products..</param>
-        public BuyerCustomizedInfoDetail(string customizedUrl = default(string))
+        public BuyerCustomizedInfoDetail(string? customizedUrl = default(string?))
         {
             this.CustomizedUrl = customizedUrl;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>A [Base 64](https://datatracker.ietf.org/doc/html/rfc4648#section-4) encoded URL using the UTF-8 character set. The URL provides the location of the zip file that specifies the types of customizations or configurations allowed by the vendor, along with types and ranges for the attributes of their products.</value>
         [DataMember(Name = "customizedUrl", EmitDefaultValue = false)]
-        public string CustomizedUrl { get; set; }
+        public string? CustomizedUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

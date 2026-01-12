@@ -103,5 +103,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

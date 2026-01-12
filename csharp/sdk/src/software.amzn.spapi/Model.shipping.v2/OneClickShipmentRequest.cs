@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="serviceSelection">serviceSelection (required).</param>
         /// <param name="shipperInstruction">shipperInstruction.</param>
         /// <param name="destinationAccessPointDetails">destinationAccessPointDetails.</param>
-        public OneClickShipmentRequest(Address shipTo = default(Address), Address shipFrom = default(Address), Address returnTo = default(Address), DateTime shipDate = default(DateTime), GoodsOwner goodsOwner = default(GoodsOwner), List<Package> packages = default(List<Package>), List<OneClickShipmentValueAddedService> valueAddedServicesDetails = default(List<OneClickShipmentValueAddedService>), List<TaxDetail> taxDetails = default(List<TaxDetail>), ChannelDetails channelDetails = default(ChannelDetails), RequestedDocumentSpecification labelSpecifications = default(RequestedDocumentSpecification), ServiceSelection serviceSelection = default(ServiceSelection), ShipperInstruction shipperInstruction = default(ShipperInstruction), AccessPointDetails destinationAccessPointDetails = default(AccessPointDetails))
+        public OneClickShipmentRequest(Address? shipTo = default(Address?), Address shipFrom = default(Address), Address? returnTo = default(Address?), DateTime? shipDate = default(DateTime?), GoodsOwner? goodsOwner = default(GoodsOwner?), List<Package> packages = default(List<Package>), List<OneClickShipmentValueAddedService>? valueAddedServicesDetails = default(List<OneClickShipmentValueAddedService>?), List<TaxDetail>? taxDetails = default(List<TaxDetail>?), ChannelDetails channelDetails = default(ChannelDetails), RequestedDocumentSpecification labelSpecifications = default(RequestedDocumentSpecification), ServiceSelection serviceSelection = default(ServiceSelection), ShipperInstruction? shipperInstruction = default(ShipperInstruction?), AccessPointDetails? destinationAccessPointDetails = default(AccessPointDetails?))
         {
             // to ensure "shipFrom" is required (not null)
             if (shipFrom == null)
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ShipTo
         /// </summary>
         [DataMember(Name = "shipTo", EmitDefaultValue = false)]
-        public Address ShipTo { get; set; }
+        public Address? ShipTo { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipFrom
@@ -111,20 +111,20 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ReturnTo
         /// </summary>
         [DataMember(Name = "returnTo", EmitDefaultValue = false)]
-        public Address ReturnTo { get; set; }
+        public Address? ReturnTo { get; set; }
 
         /// <summary>
         /// The ship date and time (the requested pickup). This defaults to the current date and time.
         /// </summary>
         /// <value>The ship date and time (the requested pickup). This defaults to the current date and time.</value>
         [DataMember(Name = "shipDate", EmitDefaultValue = false)]
-        public DateTime ShipDate { get; set; }
+        public DateTime? ShipDate { get; set; }
 
         /// <summary>
         /// Gets or Sets GoodsOwner
         /// </summary>
         [DataMember(Name = "goodsOwner", EmitDefaultValue = false)]
-        public GoodsOwner GoodsOwner { get; set; }
+        public GoodsOwner? GoodsOwner { get; set; }
 
         /// <summary>
         /// A list of packages to be shipped through a shipping service offering.
@@ -138,14 +138,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The value-added services to be added to a shipping service purchase.</value>
         [DataMember(Name = "valueAddedServicesDetails", EmitDefaultValue = false)]
-        public List<OneClickShipmentValueAddedService> ValueAddedServicesDetails { get; set; }
+        public List<OneClickShipmentValueAddedService>? ValueAddedServicesDetails { get; set; }
 
         /// <summary>
         /// A list of tax detail information.
         /// </summary>
         /// <value>A list of tax detail information.</value>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public List<TaxDetail> TaxDetails { get; set; }
+        public List<TaxDetail>? TaxDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets ChannelDetails
@@ -169,13 +169,13 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ShipperInstruction
         /// </summary>
         [DataMember(Name = "shipperInstruction", EmitDefaultValue = false)]
-        public ShipperInstruction ShipperInstruction { get; set; }
+        public ShipperInstruction? ShipperInstruction { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationAccessPointDetails
         /// </summary>
         [DataMember(Name = "destinationAccessPointDetails", EmitDefaultValue = false)]
-        public AccessPointDetails DestinationAccessPointDetails { get; set; }
+        public AccessPointDetails? DestinationAccessPointDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -221,5 +221,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

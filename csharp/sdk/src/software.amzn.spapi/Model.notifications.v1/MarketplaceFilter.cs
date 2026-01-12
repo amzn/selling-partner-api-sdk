@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Initializes a new instance of the <see cref="MarketplaceFilter" /> class.
         /// </summary>
         /// <param name="marketplaceIds">A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list..</param>
-        public MarketplaceFilter(List<string> marketplaceIds = default(List<string>))
+        public MarketplaceFilter(List<string>? marketplaceIds = default(List<string>?))
         {
             this.MarketplaceIds = marketplaceIds;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// </summary>
         /// <value>A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.</value>
         [DataMember(Name = "marketplaceIds", EmitDefaultValue = false)]
-        public List<string> MarketplaceIds { get; set; }
+        public List<string>? MarketplaceIds { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.notifications.v1
             yield break;
         }
     }
-
 }

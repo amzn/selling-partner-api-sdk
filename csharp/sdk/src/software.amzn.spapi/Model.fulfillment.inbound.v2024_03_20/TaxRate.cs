@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="cessRate">Rate of cess tax..</param>
         /// <param name="gstRate">Rate of gst tax..</param>
         /// <param name="taxType">Type of tax. Possible values: &#x60;CGST&#x60;, &#x60;SGST&#x60;, &#x60;IGST&#x60;, &#x60;TOTAL_TAX&#x60;..</param>
-        public TaxRate(decimal cessRate = default(decimal), decimal gstRate = default(decimal), string taxType = default(string))
+        public TaxRate(decimal? cessRate = default(decimal?), decimal? gstRate = default(decimal?), string? taxType = default(string?))
         {
             this.CessRate = cessRate;
             this.GstRate = gstRate;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>Rate of cess tax.</value>
         [DataMember(Name = "cessRate", EmitDefaultValue = false)]
-        public decimal CessRate { get; set; }
+        public decimal? CessRate { get; set; }
 
         /// <summary>
         /// Rate of gst tax.
         /// </summary>
         /// <value>Rate of gst tax.</value>
         [DataMember(Name = "gstRate", EmitDefaultValue = false)]
-        public decimal GstRate { get; set; }
+        public decimal? GstRate { get; set; }
 
         /// <summary>
         /// Type of tax. Possible values: &#x60;CGST&#x60;, &#x60;SGST&#x60;, &#x60;IGST&#x60;, &#x60;TOTAL_TAX&#x60;.
         /// </summary>
         /// <value>Type of tax. Possible values: &#x60;CGST&#x60;, &#x60;SGST&#x60;, &#x60;IGST&#x60;, &#x60;TOTAL_TAX&#x60;.</value>
         [DataMember(Name = "taxType", EmitDefaultValue = false)]
-        public string TaxType { get; set; }
+        public string? TaxType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Initializes a new instance of the <see cref="SubmitShipments" /> class.
         /// </summary>
         /// <param name="shipments">A list of one or more shipments with underlying details..</param>
-        public SubmitShipments(List<Shipment> shipments = default(List<Shipment>))
+        public SubmitShipments(List<Shipment>? shipments = default(List<Shipment>?))
         {
             this.Shipments = shipments;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>A list of one or more shipments with underlying details.</value>
         [DataMember(Name = "shipments", EmitDefaultValue = false)]
-        public List<Shipment> Shipments { get; set; }
+        public List<Shipment>? Shipments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

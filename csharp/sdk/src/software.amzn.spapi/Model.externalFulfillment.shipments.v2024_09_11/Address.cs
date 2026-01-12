@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="copyEmails">The email cc addresses of the contact associated with the address..</param>
         /// <param name="phoneNumber">The phone number of the person, business, or institution located at the address..</param>
         /// <param name="addressType">The type of address..</param>
-        public Address(string name = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string district = default(string), string municipality = default(string), string state = default(string), string city = default(string), string countryCode = default(string), string postalCode = default(string), string email = default(string), List<string> copyEmails = default(List<string>), string phoneNumber = default(string), string addressType = default(string))
+        public Address(string? name = default(string?), string? addressLine1 = default(string?), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? district = default(string?), string? municipality = default(string?), string? state = default(string?), string? city = default(string?), string? countryCode = default(string?), string postalCode = default(string), string? email = default(string?), List<string>? copyEmails = default(List<string>?), string? phoneNumber = default(string?), string? addressType = default(string?))
         {
             // to ensure "postalCode" is required (not null)
             if (postalCode == null)
@@ -82,63 +82,63 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The name of the person, business or institution at that address.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The first line of the address.
         /// </summary>
         /// <value>The first line of the address.</value>
         [DataMember(Name = "addressLine1", EmitDefaultValue = false)]
-        public string AddressLine1 { get; set; }
+        public string? AddressLine1 { get; set; }
 
         /// <summary>
         /// Additional address information, if required.
         /// </summary>
         /// <value>Additional address information, if required.</value>
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Additional address information, if required.
         /// </summary>
         /// <value>Additional address information, if required.</value>
         [DataMember(Name = "addressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// The district or state where the person, business, or institution is located.
         /// </summary>
         /// <value>The district or state where the person, business, or institution is located.</value>
         [DataMember(Name = "district", EmitDefaultValue = false)]
-        public string District { get; set; }
+        public string? District { get; set; }
 
         /// <summary>
         /// The municiplaity where the person, business, or institution is located.
         /// </summary>
         /// <value>The municiplaity where the person, business, or institution is located.</value>
         [DataMember(Name = "municipality", EmitDefaultValue = false)]
-        public string Municipality { get; set; }
+        public string? Municipality { get; set; }
 
         /// <summary>
         /// The state or region where the person, business, or institution is located.
         /// </summary>
         /// <value>The state or region where the person, business, or institution is located.</value>
         [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
+        public string? State { get; set; }
 
         /// <summary>
         /// The city where the person, business, or institution is located.
         /// </summary>
         /// <value>The city where the person, business, or institution is located.</value>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// The two digit country code. In ISO 3166-1 alpha-2 format.
         /// </summary>
         /// <value>The two digit country code. In ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// The postal code of the address. It contains a series of letters or digits or both, sometimes including spaces or punctuation.
@@ -152,28 +152,28 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The email address of the contact associated with the address.</value>
         [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// The email cc addresses of the contact associated with the address.
         /// </summary>
         /// <value>The email cc addresses of the contact associated with the address.</value>
         [DataMember(Name = "copyEmails", EmitDefaultValue = false)]
-        public List<string> CopyEmails { get; set; }
+        public List<string>? CopyEmails { get; set; }
 
         /// <summary>
         /// The phone number of the person, business, or institution located at the address.
         /// </summary>
         /// <value>The phone number of the person, business, or institution located at the address.</value>
         [DataMember(Name = "phoneNumber", EmitDefaultValue = false)]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         /// <summary>
         /// The type of address.
         /// </summary>
         /// <value>The type of address.</value>
         [DataMember(Name = "addressType", EmitDefaultValue = false)]
-        public string AddressType { get; set; }
+        public string? AddressType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -334,5 +334,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

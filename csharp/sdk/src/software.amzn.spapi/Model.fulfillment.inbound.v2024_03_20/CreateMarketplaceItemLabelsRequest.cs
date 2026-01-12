@@ -58,7 +58,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="mskuQuantities">Represents the quantity of an MSKU to print item labels for. (required).</param>
         /// <param name="pageType">pageType.</param>
         /// <param name="width">The width of the item label..</param>
-        public CreateMarketplaceItemLabelsRequest(decimal height = default(decimal), LabelPrintType labelType = default(LabelPrintType), string localeCode = @"en_US", string marketplaceId = default(string), List<MskuQuantity> mskuQuantities = default(List<MskuQuantity>), ItemLabelPageType? pageType = default(ItemLabelPageType?), decimal width = default(decimal))
+        public CreateMarketplaceItemLabelsRequest(decimal? height = default(decimal?), LabelPrintType labelType = default(LabelPrintType), string? localeCode = @"en_US", string marketplaceId = default(string), List<MskuQuantity> mskuQuantities = default(List<MskuQuantity>), ItemLabelPageType? pageType = default(ItemLabelPageType?), decimal? width = default(decimal?))
         {
             this.LabelType = labelType;
             // to ensure "marketplaceId" is required (not null)
@@ -85,14 +85,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The height of the item label.</value>
         [DataMember(Name = "height", EmitDefaultValue = false)]
-        public decimal Height { get; set; }
+        public decimal? Height { get; set; }
 
         /// <summary>
         /// The locale code constructed from ISO 639 language code and ISO 3166-1 alpha-2 standard of country codes separated by an underscore character.
         /// </summary>
         /// <value>The locale code constructed from ISO 639 language code and ISO 3166-1 alpha-2 standard of country codes separated by an underscore character.</value>
         [DataMember(Name = "localeCode", EmitDefaultValue = false)]
-        public string LocaleCode { get; set; }
+        public string? LocaleCode { get; set; }
 
         /// <summary>
         /// The Marketplace ID. For a list of possible values, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
@@ -113,7 +113,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The width of the item label.</value>
         [DataMember(Name = "width", EmitDefaultValue = false)]
-        public decimal Width { get; set; }
+        public decimal? Width { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -198,5 +198,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

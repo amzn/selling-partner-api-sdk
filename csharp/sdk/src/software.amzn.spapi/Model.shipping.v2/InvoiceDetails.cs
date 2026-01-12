@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="invoiceNumber">The invoice number of the item..</param>
         /// <param name="invoiceDate">The invoice date of the item in ISO 8061 format..</param>
-        public InvoiceDetails(string invoiceNumber = default(string), DateTime invoiceDate = default(DateTime))
+        public InvoiceDetails(string? invoiceNumber = default(string?), DateTime? invoiceDate = default(DateTime?))
         {
             this.InvoiceNumber = invoiceNumber;
             this.InvoiceDate = invoiceDate;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The invoice number of the item.</value>
         [DataMember(Name = "invoiceNumber", EmitDefaultValue = false)]
-        public string InvoiceNumber { get; set; }
+        public string? InvoiceNumber { get; set; }
 
         /// <summary>
         /// The invoice date of the item in ISO 8061 format.
         /// </summary>
         /// <value>The invoice date of the item in ISO 8061 format.</value>
         [DataMember(Name = "invoiceDate", EmitDefaultValue = false)]
-        public DateTime InvoiceDate { get; set; }
+        public DateTime? InvoiceDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

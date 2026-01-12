@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="next90DayShippedSubscriptionUnits">The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType..</param>
         /// <param name="timeInterval">timeInterval.</param>
         /// <param name="currencyCode">The currency code in ISO 4217 format..</param>
-        public ListOfferMetricsResponseOffer(string asin = default(string), double notDeliveredDueToOOS = default(double), double totalSubscriptionsRevenue = default(double), decimal shippedSubscriptionUnits = default(decimal), decimal activeSubscriptions = default(decimal), double revenuePenetration = default(double), double lostRevenueDueToOOS = default(double), double couponsRevenuePenetration = default(double), double shareOfCouponSubscriptions = default(double), double next30DayTotalSubscriptionsRevenue = default(double), double next60DayTotalSubscriptionsRevenue = default(double), double next90DayTotalSubscriptionsRevenue = default(double), decimal next30DayShippedSubscriptionUnits = default(decimal), decimal next60DayShippedSubscriptionUnits = default(decimal), decimal next90DayShippedSubscriptionUnits = default(decimal), TimeInterval timeInterval = default(TimeInterval), string currencyCode = default(string))
+        public ListOfferMetricsResponseOffer(string? asin = default(string?), double? notDeliveredDueToOOS = default(double?), double? totalSubscriptionsRevenue = default(double?), decimal? shippedSubscriptionUnits = default(decimal?), decimal? activeSubscriptions = default(decimal?), double? revenuePenetration = default(double?), double? lostRevenueDueToOOS = default(double?), double? couponsRevenuePenetration = default(double?), double? shareOfCouponSubscriptions = default(double?), double? next30DayTotalSubscriptionsRevenue = default(double?), double? next60DayTotalSubscriptionsRevenue = default(double?), double? next90DayTotalSubscriptionsRevenue = default(double?), decimal? next30DayShippedSubscriptionUnits = default(decimal?), decimal? next60DayShippedSubscriptionUnits = default(decimal?), decimal? next90DayShippedSubscriptionUnits = default(decimal?), TimeInterval? timeInterval = default(TimeInterval?), string? currencyCode = default(string?))
         {
             this.Asin = asin;
             this.NotDeliveredDueToOOS = notDeliveredDueToOOS;
@@ -77,118 +77,118 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN).</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of items that were not shipped out of the total shipped units over a period of time due to being out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "notDeliveredDueToOOS", EmitDefaultValue = false)]
-        public double NotDeliveredDueToOOS { get; set; }
+        public double? NotDeliveredDueToOOS { get; set; }
 
         /// <summary>
         /// The revenue generated from subscriptions over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The revenue generated from subscriptions over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "totalSubscriptionsRevenue", EmitDefaultValue = false)]
-        public double TotalSubscriptionsRevenue { get; set; }
+        public double? TotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
         /// The number of units shipped to the subscribers over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The number of units shipped to the subscribers over a period of time. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "shippedSubscriptionUnits", EmitDefaultValue = false)]
-        public decimal ShippedSubscriptionUnits { get; set; }
+        public decimal? ShippedSubscriptionUnits { get; set; }
 
         /// <summary>
         /// The number of active subscriptions present at the end of the period. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The number of active subscriptions present at the end of the period. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "activeSubscriptions", EmitDefaultValue = false)]
-        public decimal ActiveSubscriptions { get; set; }
+        public decimal? ActiveSubscriptions { get; set; }
 
         /// <summary>
         /// The percentage of total program revenue out of total product revenue. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of total program revenue out of total product revenue. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "revenuePenetration", EmitDefaultValue = false)]
-        public double RevenuePenetration { get; set; }
+        public double? RevenuePenetration { get; set; }
 
         /// <summary>
         /// The revenue that would have been generated had there not been out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The revenue that would have been generated had there not been out of stock. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "lostRevenueDueToOOS", EmitDefaultValue = false)]
-        public double LostRevenueDueToOOS { get; set; }
+        public double? LostRevenueDueToOOS { get; set; }
 
         /// <summary>
         /// The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of revenue from ASINs with coupons out of total revenue from all ASINs. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "couponsRevenuePenetration", EmitDefaultValue = false)]
-        public double CouponsRevenuePenetration { get; set; }
+        public double? CouponsRevenuePenetration { get; set; }
 
         /// <summary>
         /// The percentage of new subscriptions acquired through coupons. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.
         /// </summary>
         /// <value>The percentage of new subscriptions acquired through coupons. Applicable to &#x60;FORECAST&#x60; &#x60;timePeriodType&#x60;.</value>
         [DataMember(Name = "shareOfCouponSubscriptions", EmitDefaultValue = false)]
-        public double ShareOfCouponSubscriptions { get; set; }
+        public double? ShareOfCouponSubscriptions { get; set; }
 
         /// <summary>
         /// The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.
         /// </summary>
         /// <value>The forecasted total subscription revenue for the next 30 days. Applicable to FORECAST timePeriodType.</value>
         [DataMember(Name = "next30DayTotalSubscriptionsRevenue", EmitDefaultValue = false)]
-        public double Next30DayTotalSubscriptionsRevenue { get; set; }
+        public double? Next30DayTotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
         /// The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.
         /// </summary>
         /// <value>The forecasted total subscription revenue for the next 60 days. Applicable to FORECAST timePeriodType.</value>
         [DataMember(Name = "next60DayTotalSubscriptionsRevenue", EmitDefaultValue = false)]
-        public double Next60DayTotalSubscriptionsRevenue { get; set; }
+        public double? Next60DayTotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
         /// The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.
         /// </summary>
         /// <value>The forecasted total subscription revenue for the next 90 days. Applicable to FORECAST timePeriodType.</value>
         [DataMember(Name = "next90DayTotalSubscriptionsRevenue", EmitDefaultValue = false)]
-        public double Next90DayTotalSubscriptionsRevenue { get; set; }
+        public double? Next90DayTotalSubscriptionsRevenue { get; set; }
 
         /// <summary>
         /// The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.
         /// </summary>
         /// <value>The forecasted shipped subscription units for the next 30 days. Applicable to FORECAST timePeriodType.</value>
         [DataMember(Name = "next30DayShippedSubscriptionUnits", EmitDefaultValue = false)]
-        public decimal Next30DayShippedSubscriptionUnits { get; set; }
+        public decimal? Next30DayShippedSubscriptionUnits { get; set; }
 
         /// <summary>
         /// The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.
         /// </summary>
         /// <value>The forecasted shipped subscription units for the next 60 days. Applicable to FORECAST timePeriodType.</value>
         [DataMember(Name = "next60DayShippedSubscriptionUnits", EmitDefaultValue = false)]
-        public decimal Next60DayShippedSubscriptionUnits { get; set; }
+        public decimal? Next60DayShippedSubscriptionUnits { get; set; }
 
         /// <summary>
         /// The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.
         /// </summary>
         /// <value>The forecasted shipped subscription units for the next 90 days. Applicable to FORECAST timePeriodType.</value>
         [DataMember(Name = "next90DayShippedSubscriptionUnits", EmitDefaultValue = false)]
-        public decimal Next90DayShippedSubscriptionUnits { get; set; }
+        public decimal? Next90DayShippedSubscriptionUnits { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeInterval
         /// </summary>
         [DataMember(Name = "timeInterval", EmitDefaultValue = false)]
-        public TimeInterval TimeInterval { get; set; }
+        public TimeInterval? TimeInterval { get; set; }
 
         /// <summary>
         /// The currency code in ISO 4217 format.
         /// </summary>
         /// <value>The currency code in ISO 4217 format.</value>
         [DataMember(Name = "currencyCode", EmitDefaultValue = false)]
-        public string CurrencyCode { get; set; }
+        public string? CurrencyCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -346,5 +346,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

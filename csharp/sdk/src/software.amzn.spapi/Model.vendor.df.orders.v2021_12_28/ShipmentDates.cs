@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="requiredShipDate">Time by which the vendor is required to ship the order. (required).</param>
         /// <param name="promisedDeliveryDate">Delivery date promised to the Amazon customer..</param>
-        public ShipmentDates(DateTime requiredShipDate = default(DateTime), DateTime promisedDeliveryDate = default(DateTime))
+        public ShipmentDates(DateTime requiredShipDate = default(DateTime), DateTime? promisedDeliveryDate = default(DateTime?))
         {
             this.RequiredShipDate = requiredShipDate;
             this.PromisedDeliveryDate = promisedDeliveryDate;
@@ -59,7 +59,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>Delivery date promised to the Amazon customer.</value>
         [DataMember(Name = "promisedDeliveryDate", EmitDefaultValue = false)]
-        public DateTime PromisedDeliveryDate { get; set; }
+        public DateTime? PromisedDeliveryDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,5 +94,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="deliveryAddress">deliveryAddress.</param>
         /// <param name="ipAddress">An IP Address..</param>
-        public Destination(VariablePrecisionAddress deliveryAddress = default(VariablePrecisionAddress), string ipAddress = default(string))
+        public Destination(VariablePrecisionAddress? deliveryAddress = default(VariablePrecisionAddress?), string? ipAddress = default(string?))
         {
             this.DeliveryAddress = deliveryAddress;
             this.IpAddress = ipAddress;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets DeliveryAddress
         /// </summary>
         [DataMember(Name = "deliveryAddress", EmitDefaultValue = false)]
-        public VariablePrecisionAddress DeliveryAddress { get; set; }
+        public VariablePrecisionAddress? DeliveryAddress { get; set; }
 
         /// <summary>
         /// An IP Address.
         /// </summary>
         /// <value>An IP Address.</value>
         [DataMember(Name = "ipAddress", EmitDefaultValue = false)]
-        public string IpAddress { get; set; }
+        public string? IpAddress { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

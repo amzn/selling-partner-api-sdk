@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="rateItemType">rateItemType.</param>
         /// <param name="rateItemCharge">rateItemCharge.</param>
         /// <param name="rateItemNameLocalization">Used for the localization..</param>
-        public RateItem(RateItemID? rateItemID = default(RateItemID?), RateItemType? rateItemType = default(RateItemType?), Currency rateItemCharge = default(Currency), string rateItemNameLocalization = default(string))
+        public RateItem(RateItemID? rateItemID = default(RateItemID?), RateItemType? rateItemType = default(RateItemType?), Currency? rateItemCharge = default(Currency?), string? rateItemNameLocalization = default(string?))
         {
             this.RateItemID = rateItemID;
             this.RateItemType = rateItemType;
@@ -63,14 +63,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets RateItemCharge
         /// </summary>
         [DataMember(Name = "rateItemCharge", EmitDefaultValue = false)]
-        public Currency RateItemCharge { get; set; }
+        public Currency? RateItemCharge { get; set; }
 
         /// <summary>
         /// Used for the localization.
         /// </summary>
         /// <value>Used for the localization.</value>
         [DataMember(Name = "rateItemNameLocalization", EmitDefaultValue = false)]
-        public string RateItemNameLocalization { get; set; }
+        public string? RateItemNameLocalization { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

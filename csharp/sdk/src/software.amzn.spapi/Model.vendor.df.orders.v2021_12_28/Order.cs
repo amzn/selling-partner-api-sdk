@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="purchaseOrderNumber">The purchase order number for this order. Formatting Notes: alpha-numeric code. (required).</param>
         /// <param name="orderDetails">orderDetails.</param>
-        public Order(string purchaseOrderNumber = default(string), OrderDetails orderDetails = default(OrderDetails))
+        public Order(string purchaseOrderNumber = default(string), OrderDetails? orderDetails = default(OrderDetails?))
         {
             // to ensure "purchaseOrderNumber" is required (not null)
             if (purchaseOrderNumber == null)
@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Gets or Sets OrderDetails
         /// </summary>
         [DataMember(Name = "orderDetails", EmitDefaultValue = false)]
-        public OrderDetails OrderDetails { get; set; }
+        public OrderDetails? OrderDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

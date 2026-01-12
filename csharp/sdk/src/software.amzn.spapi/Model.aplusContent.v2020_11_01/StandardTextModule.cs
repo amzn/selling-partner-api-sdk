@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="headline">headline.</param>
         /// <param name="body">body (required).</param>
-        public StandardTextModule(TextComponent headline = default(TextComponent), ParagraphComponent body = default(ParagraphComponent))
+        public StandardTextModule(TextComponent? headline = default(TextComponent?), ParagraphComponent body = default(ParagraphComponent))
         {
             // to ensure "body" is required (not null)
             if (body == null)
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Headline
         /// </summary>
         [DataMember(Name = "headline", EmitDefaultValue = false)]
-        public TextComponent Headline { get; set; }
+        public TextComponent? Headline { get; set; }
 
         /// <summary>
         /// Gets or Sets Body
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

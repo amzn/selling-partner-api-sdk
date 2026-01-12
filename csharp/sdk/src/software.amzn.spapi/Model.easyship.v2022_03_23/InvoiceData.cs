@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <param name="invoiceNumber">A string of up to 255 characters. (required).</param>
         /// <param name="invoiceDate">A datetime value in ISO 8601 format..</param>
-        public InvoiceData(string invoiceNumber = default(string), DateTime invoiceDate = default(DateTime))
+        public InvoiceData(string invoiceNumber = default(string), DateTime? invoiceDate = default(DateTime?))
         {
             // to ensure "invoiceNumber" is required (not null)
             if (invoiceNumber == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>A datetime value in ISO 8601 format.</value>
         [DataMember(Name = "invoiceDate", EmitDefaultValue = false)]
-        public DateTime InvoiceDate { get; set; }
+        public DateTime? InvoiceDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="resourceId">Resource Identifier..</param>
         /// <param name="capacities">Array of range capacities where each entry is for a specific capacity type..</param>
         /// <param name="nextPageToken">Next page token, if there are more pages..</param>
-        public RangeSlotCapacity(string resourceId = default(string), List<RangeCapacity> capacities = default(List<RangeCapacity>), string nextPageToken = default(string))
+        public RangeSlotCapacity(string? resourceId = default(string?), List<RangeCapacity>? capacities = default(List<RangeCapacity>?), string? nextPageToken = default(string?))
         {
             this.ResourceId = resourceId;
             this.Capacities = capacities;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Resource Identifier.</value>
         [DataMember(Name = "resourceId", EmitDefaultValue = false)]
-        public string ResourceId { get; set; }
+        public string? ResourceId { get; set; }
 
         /// <summary>
         /// Array of range capacities where each entry is for a specific capacity type.
         /// </summary>
         /// <value>Array of range capacities where each entry is for a specific capacity type.</value>
         [DataMember(Name = "capacities", EmitDefaultValue = false)]
-        public List<RangeCapacity> Capacities { get; set; }
+        public List<RangeCapacity>? Capacities { get; set; }
 
         /// <summary>
         /// Next page token, if there are more pages.
         /// </summary>
         /// <value>Next page token, if there are more pages.</value>
         [DataMember(Name = "nextPageToken", EmitDefaultValue = false)]
-        public string NextPageToken { get; set; }
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

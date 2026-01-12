@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.appIntegrations.v2024_04_01
         /// Initializes a new instance of the <see cref="CreateNotificationResponse" /> class.
         /// </summary>
         /// <param name="notificationId">The unique identifier assigned to each notification..</param>
-        public CreateNotificationResponse(string notificationId = default(string))
+        public CreateNotificationResponse(string? notificationId = default(string?))
         {
             this.NotificationId = notificationId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.appIntegrations.v2024_04_01
         /// </summary>
         /// <value>The unique identifier assigned to each notification.</value>
         [DataMember(Name = "notificationId", EmitDefaultValue = false)]
-        public string NotificationId { get; set; }
+        public string? NotificationId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.appIntegrations.v2024_04_01
             yield break;
         }
     }
-
 }

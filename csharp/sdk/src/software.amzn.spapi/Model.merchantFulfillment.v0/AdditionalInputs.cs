@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="additionalInputFieldName">The field name..</param>
         /// <param name="sellerInputDefinition">sellerInputDefinition.</param>
-        public AdditionalInputs(string additionalInputFieldName = default(string), SellerInputDefinition sellerInputDefinition = default(SellerInputDefinition))
+        public AdditionalInputs(string? additionalInputFieldName = default(string?), SellerInputDefinition? sellerInputDefinition = default(SellerInputDefinition?))
         {
             this.AdditionalInputFieldName = additionalInputFieldName;
             this.SellerInputDefinition = sellerInputDefinition;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The field name.</value>
         [DataMember(Name = "AdditionalInputFieldName", EmitDefaultValue = false)]
-        public string AdditionalInputFieldName { get; set; }
+        public string? AdditionalInputFieldName { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerInputDefinition
         /// </summary>
         [DataMember(Name = "SellerInputDefinition", EmitDefaultValue = false)]
-        public SellerInputDefinition SellerInputDefinition { get; set; }
+        public SellerInputDefinition? SellerInputDefinition { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

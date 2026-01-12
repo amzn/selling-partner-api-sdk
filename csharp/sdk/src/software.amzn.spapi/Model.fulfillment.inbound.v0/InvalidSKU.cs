@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <param name="sellerSKU">The seller SKU of the item..</param>
         /// <param name="errorReason">errorReason.</param>
-        public InvalidSKU(string sellerSKU = default(string), ErrorReason? errorReason = default(ErrorReason?))
+        public InvalidSKU(string? sellerSKU = default(string?), ErrorReason? errorReason = default(ErrorReason?))
         {
             this.SellerSKU = sellerSKU;
             this.ErrorReason = errorReason;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>The seller SKU of the item.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

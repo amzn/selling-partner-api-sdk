@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="identifier">identifier (required).</param>
         /// <param name="summary">summary (required).</param>
         /// <param name="offers">A list of offer details. The list is the same length as the TotalOfferCount in the Summary or 20, whichever is less. (required).</param>
-        public GetOffersResult(string marketplaceID = default(string), string aSIN = default(string), string sKU = default(string), ConditionType itemCondition = default(ConditionType), string status = default(string), ItemIdentifier identifier = default(ItemIdentifier), Summary summary = default(Summary), List<OfferDetail> offers = default(List<OfferDetail>))
+        public GetOffersResult(string marketplaceID = default(string), string? aSIN = default(string?), string? sKU = default(string?), ConditionType itemCondition = default(ConditionType), string status = default(string), ItemIdentifier identifier = default(ItemIdentifier), Summary summary = default(Summary), List<OfferDetail> offers = default(List<OfferDetail>))
         {
             // to ensure "marketplaceID" is required (not null)
             if (marketplaceID == null)
@@ -102,14 +102,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// The stock keeping unit (SKU) of the item.
         /// </summary>
         /// <value>The stock keeping unit (SKU) of the item.</value>
         [DataMember(Name = "SKU", EmitDefaultValue = false)]
-        public string SKU { get; set; }
+        public string? SKU { get; set; }
 
         /// <summary>
         /// The status of the operation.
@@ -176,5 +176,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="shippingMode">Mode of shipment transportation that this option will provide.  Possible values: &#x60;GROUND_SMALL_PARCEL&#x60;, &#x60;FREIGHT_LTL&#x60;, &#x60;FREIGHT_FTL_PALLET&#x60;, &#x60;FREIGHT_FTL_NONPALLET&#x60;, &#x60;OCEAN_LCL&#x60;, &#x60;OCEAN_FCL&#x60;, &#x60;AIR_SMALL_PARCEL&#x60;, &#x60;AIR_SMALL_PARCEL_EXPRESS&#x60;. (required).</param>
         /// <param name="shippingSolution">Shipping program for the option. Possible values: &#x60;AMAZON_PARTNERED_CARRIER&#x60;, &#x60;USE_YOUR_OWN_CARRIER&#x60;. (required).</param>
         /// <param name="transportationOptionId">Identifier of a transportation option. A transportation option represent one option for how to send a shipment. (required).</param>
-        public TransportationOption(Carrier carrier = default(Carrier), CarrierAppointment carrierAppointment = default(CarrierAppointment), List<string> preconditions = default(List<string>), Quote quote = default(Quote), string shipmentId = default(string), string shippingMode = default(string), string shippingSolution = default(string), string transportationOptionId = default(string))
+        public TransportationOption(Carrier carrier = default(Carrier), CarrierAppointment? carrierAppointment = default(CarrierAppointment?), List<string> preconditions = default(List<string>), Quote? quote = default(Quote?), string shipmentId = default(string), string shippingMode = default(string), string shippingSolution = default(string), string transportationOptionId = default(string))
         {
             // to ensure "carrier" is required (not null)
             if (carrier == null)
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets CarrierAppointment
         /// </summary>
         [DataMember(Name = "carrierAppointment", EmitDefaultValue = false)]
-        public CarrierAppointment CarrierAppointment { get; set; }
+        public CarrierAppointment? CarrierAppointment { get; set; }
 
         /// <summary>
         /// Identifies a list of preconditions for confirming the transportation option.
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Quote
         /// </summary>
         [DataMember(Name = "quote", EmitDefaultValue = false)]
-        public Quote Quote { get; set; }
+        public Quote? Quote { get; set; }
 
         /// <summary>
         /// Identifier of a shipment. A shipment contains the boxes and units being inbounded.
@@ -247,5 +247,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

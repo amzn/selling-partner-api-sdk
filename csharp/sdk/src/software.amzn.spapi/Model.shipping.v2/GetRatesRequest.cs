@@ -59,7 +59,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="shipmentType">shipmentType.</param>
         /// <param name="destinationAccessPointDetails">destinationAccessPointDetails.</param>
         /// <param name="carrierAccounts">A list of CarrierAccounts.</param>
-        public GetRatesRequest(Address shipTo = default(Address), Address shipFrom = default(Address), Address returnTo = default(Address), DateTime shipDate = default(DateTime), ShipperInstruction shipperInstruction = default(ShipperInstruction), List<Package> packages = default(List<Package>), ValueAddedServiceDetails valueAddedServices = default(ValueAddedServiceDetails), List<TaxDetail> taxDetails = default(List<TaxDetail>), ChannelDetails channelDetails = default(ChannelDetails), List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>), ShipmentType? shipmentType = default(ShipmentType?), AccessPointDetails destinationAccessPointDetails = default(AccessPointDetails), List<CarrierAccount> carrierAccounts = default(List<CarrierAccount>))
+        public GetRatesRequest(Address? shipTo = default(Address?), Address shipFrom = default(Address), Address? returnTo = default(Address?), DateTime? shipDate = default(DateTime?), ShipperInstruction? shipperInstruction = default(ShipperInstruction?), List<Package> packages = default(List<Package>), ValueAddedServiceDetails? valueAddedServices = default(ValueAddedServiceDetails?), List<TaxDetail>? taxDetails = default(List<TaxDetail>?), ChannelDetails channelDetails = default(ChannelDetails), List<ClientReferenceDetail>? clientReferenceDetails = default(List<ClientReferenceDetail>?), ShipmentType? shipmentType = default(ShipmentType?), AccessPointDetails? destinationAccessPointDetails = default(AccessPointDetails?), List<CarrierAccount>? carrierAccounts = default(List<CarrierAccount>?))
         {
             // to ensure "shipFrom" is required (not null)
             if (shipFrom == null)
@@ -95,7 +95,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ShipTo
         /// </summary>
         [DataMember(Name = "shipTo", EmitDefaultValue = false)]
-        public Address ShipTo { get; set; }
+        public Address? ShipTo { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipFrom
@@ -107,20 +107,20 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ReturnTo
         /// </summary>
         [DataMember(Name = "returnTo", EmitDefaultValue = false)]
-        public Address ReturnTo { get; set; }
+        public Address? ReturnTo { get; set; }
 
         /// <summary>
         /// The ship date and time (the requested pickup). This defaults to the current date and time.
         /// </summary>
         /// <value>The ship date and time (the requested pickup). This defaults to the current date and time.</value>
         [DataMember(Name = "shipDate", EmitDefaultValue = false)]
-        public DateTime ShipDate { get; set; }
+        public DateTime? ShipDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipperInstruction
         /// </summary>
         [DataMember(Name = "shipperInstruction", EmitDefaultValue = false)]
-        public ShipperInstruction ShipperInstruction { get; set; }
+        public ShipperInstruction? ShipperInstruction { get; set; }
 
         /// <summary>
         /// A list of packages to be shipped through a shipping service offering.
@@ -133,14 +133,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ValueAddedServices
         /// </summary>
         [DataMember(Name = "valueAddedServices", EmitDefaultValue = false)]
-        public ValueAddedServiceDetails ValueAddedServices { get; set; }
+        public ValueAddedServiceDetails? ValueAddedServices { get; set; }
 
         /// <summary>
         /// A list of tax detail information.
         /// </summary>
         /// <value>A list of tax detail information.</value>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public List<TaxDetail> TaxDetails { get; set; }
+        public List<TaxDetail>? TaxDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets ChannelDetails
@@ -153,20 +153,20 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail</value>
         [DataMember(Name = "clientReferenceDetails", EmitDefaultValue = false)]
-        public List<ClientReferenceDetail> ClientReferenceDetails { get; set; }
+        public List<ClientReferenceDetail>? ClientReferenceDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationAccessPointDetails
         /// </summary>
         [DataMember(Name = "destinationAccessPointDetails", EmitDefaultValue = false)]
-        public AccessPointDetails DestinationAccessPointDetails { get; set; }
+        public AccessPointDetails? DestinationAccessPointDetails { get; set; }
 
         /// <summary>
         /// A list of CarrierAccounts
         /// </summary>
         /// <value>A list of CarrierAccounts</value>
         [DataMember(Name = "carrierAccounts", EmitDefaultValue = false)]
-        public List<CarrierAccount> CarrierAccounts { get; set; }
+        public List<CarrierAccount>? CarrierAccounts { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -212,5 +212,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

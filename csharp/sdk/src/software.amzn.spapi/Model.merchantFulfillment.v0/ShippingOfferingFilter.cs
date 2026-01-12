@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="includeComplexShippingOptions">When true, include complex shipping options..</param>
         /// <param name="carrierWillPickUp">carrierWillPickUp.</param>
         /// <param name="deliveryExperience">deliveryExperience.</param>
-        public ShippingOfferingFilter(bool includePackingSlipWithLabel = default(bool), bool includeComplexShippingOptions = default(bool), CarrierWillPickUpOption? carrierWillPickUp = default(CarrierWillPickUpOption?), DeliveryExperienceOption? deliveryExperience = default(DeliveryExperienceOption?))
+        public ShippingOfferingFilter(bool? includePackingSlipWithLabel = default(bool?), bool? includeComplexShippingOptions = default(bool?), CarrierWillPickUpOption? carrierWillPickUp = default(CarrierWillPickUpOption?), DeliveryExperienceOption? deliveryExperience = default(DeliveryExperienceOption?))
         {
             this.IncludePackingSlipWithLabel = includePackingSlipWithLabel;
             this.IncludeComplexShippingOptions = includeComplexShippingOptions;
@@ -63,14 +63,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>When true, include a packing slip with the label.</value>
         [DataMember(Name = "IncludePackingSlipWithLabel", EmitDefaultValue = true)]
-        public bool IncludePackingSlipWithLabel { get; set; }
+        public bool? IncludePackingSlipWithLabel { get; set; }
 
         /// <summary>
         /// When true, include complex shipping options.
         /// </summary>
         /// <value>When true, include complex shipping options.</value>
         [DataMember(Name = "IncludeComplexShippingOptions", EmitDefaultValue = true)]
-        public bool IncludeComplexShippingOptions { get; set; }
+        public bool? IncludeComplexShippingOptions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

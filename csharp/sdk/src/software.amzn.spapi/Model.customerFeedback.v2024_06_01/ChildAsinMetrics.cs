@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <param name="mostMentions">mostMentions.</param>
         /// <param name="leastMentions">leastMentions.</param>
-        public ChildAsinMetrics(ChildAsinMentionMetrics mostMentions = default(ChildAsinMentionMetrics), ChildAsinMentionMetrics leastMentions = default(ChildAsinMentionMetrics))
+        public ChildAsinMetrics(ChildAsinMentionMetrics? mostMentions = default(ChildAsinMentionMetrics?), ChildAsinMentionMetrics? leastMentions = default(ChildAsinMentionMetrics?))
         {
             this.MostMentions = mostMentions;
             this.LeastMentions = leastMentions;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// Gets or Sets MostMentions
         /// </summary>
         [DataMember(Name = "mostMentions", EmitDefaultValue = false)]
-        public ChildAsinMentionMetrics MostMentions { get; set; }
+        public ChildAsinMentionMetrics? MostMentions { get; set; }
 
         /// <summary>
         /// Gets or Sets LeastMentions
         /// </summary>
         [DataMember(Name = "leastMentions", EmitDefaultValue = false)]
-        public ChildAsinMentionMetrics LeastMentions { get; set; }
+        public ChildAsinMentionMetrics? LeastMentions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

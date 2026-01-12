@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="op">Type of JSON Patch operation. Supported JSON Patch operations include &#x60;add&#x60;, &#x60;replace&#x60;, &#x60;merge&#x60; and &#x60;delete&#x60;. Refer to &lt;https://tools.ietf.org/html/rfc6902&gt;. (required).</param>
         /// <param name="path">JSON Pointer path of the element to patch. Refer to [JavaScript Object Notation (JSON) Patch](https://tools.ietf.org/html/rfc6902) for more information. (required).</param>
         /// <param name="value">JSON value to &#x60;add&#x60;, &#x60;replace&#x60;, &#x60;merge&#x60; or &#x60;delete&#x60;..</param>
-        public PatchOperation(OpEnum op = default(OpEnum), string path = default(string), List<Dictionary<string, Object>> value = default(List<Dictionary<string, Object>>))
+        public PatchOperation(OpEnum op = default(OpEnum), string path = default(string), List<Dictionary<string, Object>>? value = default(List<Dictionary<string, Object>>?))
         {
             this.Op = op;
             // to ensure "path" is required (not null)
@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>JSON value to &#x60;add&#x60;, &#x60;replace&#x60;, &#x60;merge&#x60; or &#x60;delete&#x60;.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public List<Dictionary<string, Object>> Value { get; set; }
+        public List<Dictionary<string, Object>>? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -141,5 +141,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

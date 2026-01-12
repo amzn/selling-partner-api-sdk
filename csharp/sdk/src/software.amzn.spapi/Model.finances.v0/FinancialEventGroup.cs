@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="beginningBalance">beginningBalance.</param>
         /// <param name="financialEventGroupStart">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="financialEventGroupEnd">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public FinancialEventGroup(string financialEventGroupId = default(string), string processingStatus = default(string), string fundTransferStatus = default(string), Currency originalTotal = default(Currency), Currency convertedTotal = default(Currency), DateTime fundTransferDate = default(DateTime), string traceId = default(string), string accountTail = default(string), Currency beginningBalance = default(Currency), DateTime financialEventGroupStart = default(DateTime), DateTime financialEventGroupEnd = default(DateTime))
+        public FinancialEventGroup(string? financialEventGroupId = default(string?), string? processingStatus = default(string?), string? fundTransferStatus = default(string?), Currency? originalTotal = default(Currency?), Currency? convertedTotal = default(Currency?), DateTime? fundTransferDate = default(DateTime?), string? traceId = default(string?), string? accountTail = default(string?), Currency? beginningBalance = default(Currency?), DateTime? financialEventGroupStart = default(DateTime?), DateTime? financialEventGroupEnd = default(DateTime?))
         {
             this.FinancialEventGroupId = financialEventGroupId;
             this.ProcessingStatus = processingStatus;
@@ -65,74 +65,74 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A unique identifier for the financial event group.</value>
         [DataMember(Name = "FinancialEventGroupId", EmitDefaultValue = false)]
-        public string FinancialEventGroupId { get; set; }
+        public string? FinancialEventGroupId { get; set; }
 
         /// <summary>
         /// The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * &#x60;Open&#x60; * &#x60;Closed&#x60;
         /// </summary>
         /// <value>The processing status of the financial event group indicates whether the balance of the financial event group is settled.  Possible values:  * &#x60;Open&#x60; * &#x60;Closed&#x60;</value>
         [DataMember(Name = "ProcessingStatus", EmitDefaultValue = false)]
-        public string ProcessingStatus { get; set; }
+        public string? ProcessingStatus { get; set; }
 
         /// <summary>
         /// The status of the fund transfer.
         /// </summary>
         /// <value>The status of the fund transfer.</value>
         [DataMember(Name = "FundTransferStatus", EmitDefaultValue = false)]
-        public string FundTransferStatus { get; set; }
+        public string? FundTransferStatus { get; set; }
 
         /// <summary>
         /// Gets or Sets OriginalTotal
         /// </summary>
         [DataMember(Name = "OriginalTotal", EmitDefaultValue = false)]
-        public Currency OriginalTotal { get; set; }
+        public Currency? OriginalTotal { get; set; }
 
         /// <summary>
         /// Gets or Sets ConvertedTotal
         /// </summary>
         [DataMember(Name = "ConvertedTotal", EmitDefaultValue = false)]
-        public Currency ConvertedTotal { get; set; }
+        public Currency? ConvertedTotal { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "FundTransferDate", EmitDefaultValue = false)]
-        public DateTime FundTransferDate { get; set; }
+        public DateTime? FundTransferDate { get; set; }
 
         /// <summary>
         /// The trace identifier used by sellers to look up transactions externally.
         /// </summary>
         /// <value>The trace identifier used by sellers to look up transactions externally.</value>
         [DataMember(Name = "TraceId", EmitDefaultValue = false)]
-        public string TraceId { get; set; }
+        public string? TraceId { get; set; }
 
         /// <summary>
         /// The account tail of the payment instrument.
         /// </summary>
         /// <value>The account tail of the payment instrument.</value>
         [DataMember(Name = "AccountTail", EmitDefaultValue = false)]
-        public string AccountTail { get; set; }
+        public string? AccountTail { get; set; }
 
         /// <summary>
         /// Gets or Sets BeginningBalance
         /// </summary>
         [DataMember(Name = "BeginningBalance", EmitDefaultValue = false)]
-        public Currency BeginningBalance { get; set; }
+        public Currency? BeginningBalance { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "FinancialEventGroupStart", EmitDefaultValue = false)]
-        public DateTime FinancialEventGroupStart { get; set; }
+        public DateTime? FinancialEventGroupStart { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "FinancialEventGroupEnd", EmitDefaultValue = false)]
-        public DateTime FinancialEventGroupEnd { get; set; }
+        public DateTime? FinancialEventGroupEnd { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -176,5 +176,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }
