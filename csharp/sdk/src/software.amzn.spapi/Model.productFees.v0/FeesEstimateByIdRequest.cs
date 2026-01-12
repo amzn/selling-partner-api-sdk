@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <param name="feesEstimateRequest">feesEstimateRequest.</param>
         /// <param name="idType">idType (required).</param>
         /// <param name="idValue">The item identifier. (required).</param>
-        public FeesEstimateByIdRequest(FeesEstimateRequest feesEstimateRequest = default(FeesEstimateRequest), IdType idType = default(IdType), string idValue = default(string))
+        public FeesEstimateByIdRequest(FeesEstimateRequest? feesEstimateRequest = default(FeesEstimateRequest?), IdType idType = default(IdType), string idValue = default(string))
         {
             this.IdType = idType;
             // to ensure "idValue" is required (not null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// Gets or Sets FeesEstimateRequest
         /// </summary>
         [DataMember(Name = "FeesEstimateRequest", EmitDefaultValue = false)]
-        public FeesEstimateRequest FeesEstimateRequest { get; set; }
+        public FeesEstimateRequest? FeesEstimateRequest { get; set; }
 
         /// <summary>
         /// The item identifier.
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

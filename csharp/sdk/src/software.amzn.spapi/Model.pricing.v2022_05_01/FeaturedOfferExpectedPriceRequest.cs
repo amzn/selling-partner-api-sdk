@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="marketplaceId">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required).</param>
         /// <param name="sku">The seller SKU of the item. (required).</param>
         /// <param name="segment">segment.</param>
-        public FeaturedOfferExpectedPriceRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, Object> body = default(Dictionary<string, Object>), Dictionary<string, string> headers = default(Dictionary<string, string>), string marketplaceId = default(string), string sku = default(string), Segment segment = default(Segment))
+        public FeaturedOfferExpectedPriceRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, Object>? body = default(Dictionary<string, Object>?), Dictionary<string, string>? headers = default(Dictionary<string, string>?), string marketplaceId = default(string), string sku = default(string), Segment? segment = default(Segment?))
         {
             // to ensure "uri" is required (not null)
             if (uri == null)
@@ -90,14 +90,14 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>Additional HTTP body information that is associated with an individual request within a batch.</value>
         [DataMember(Name = "body", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Body { get; set; }
+        public Dictionary<string, Object>? Body { get; set; }
 
         /// <summary>
         /// A mapping of additional HTTP headers to send or receive for an individual request within a batch.
         /// </summary>
         /// <value>A mapping of additional HTTP headers to send or receive for an individual request within a batch.</value>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public Dictionary<string, string> Headers { get; set; }
+        public Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
@@ -117,7 +117,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets Segment
         /// </summary>
         [DataMember(Name = "segment", EmitDefaultValue = false)]
-        public Segment Segment { get; set; }
+        public Segment? Segment { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -157,5 +157,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

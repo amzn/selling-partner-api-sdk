@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="offerProgramConfiguration">offerProgramConfiguration.</param>
         /// <param name="programType">programType.</param>
         /// <param name="vendorCodes">A list of vendor codes associated with the offer..</param>
-        public ListOffersResponseOffer(string sku = default(string), string asin = default(string), string marketplaceId = default(string), EligibilityStatus? eligibility = default(EligibilityStatus?), OfferProgramConfiguration offerProgramConfiguration = default(OfferProgramConfiguration), ProgramType? programType = default(ProgramType?), List<string> vendorCodes = default(List<string>))
+        public ListOffersResponseOffer(string? sku = default(string?), string? asin = default(string?), string? marketplaceId = default(string?), EligibilityStatus? eligibility = default(EligibilityStatus?), OfferProgramConfiguration? offerProgramConfiguration = default(OfferProgramConfiguration?), ProgramType? programType = default(ProgramType?), List<string>? vendorCodes = default(List<string>?))
         {
             this.Sku = sku;
             this.Asin = asin;
@@ -69,34 +69,34 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>The SKU. This property is only supported for sellers and not for vendors.</value>
         [DataMember(Name = "sku", EmitDefaultValue = false)]
-        public string Sku { get; set; }
+        public string? Sku { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN).
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN).</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.
         /// </summary>
         /// <value>The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets OfferProgramConfiguration
         /// </summary>
         [DataMember(Name = "offerProgramConfiguration", EmitDefaultValue = false)]
-        public OfferProgramConfiguration OfferProgramConfiguration { get; set; }
+        public OfferProgramConfiguration? OfferProgramConfiguration { get; set; }
 
         /// <summary>
         /// A list of vendor codes associated with the offer.
         /// </summary>
         /// <value>A list of vendor codes associated with the offer.</value>
         [DataMember(Name = "vendorCodes", EmitDefaultValue = false)]
-        public List<string> VendorCodes { get; set; }
+        public List<string>? VendorCodes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,5 +136,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

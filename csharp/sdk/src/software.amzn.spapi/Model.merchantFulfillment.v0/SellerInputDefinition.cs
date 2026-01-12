@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="inputTarget">inputTarget.</param>
         /// <param name="storedValue">storedValue (required).</param>
         /// <param name="restrictedSetValues">The set of fixed values in an additional seller input..</param>
-        public SellerInputDefinition(bool isRequired = default(bool), string dataType = default(string), List<Constraint> constraints = default(List<Constraint>), string inputDisplayText = default(string), InputTargetType? inputTarget = default(InputTargetType?), AdditionalSellerInput storedValue = default(AdditionalSellerInput), List<string> restrictedSetValues = default(List<string>))
+        public SellerInputDefinition(bool isRequired = default(bool), string dataType = default(string), List<Constraint> constraints = default(List<Constraint>), string inputDisplayText = default(string), InputTargetType? inputTarget = default(InputTargetType?), AdditionalSellerInput storedValue = default(AdditionalSellerInput), List<string>? restrictedSetValues = default(List<string>?))
         {
             this.IsRequired = isRequired;
             // to ensure "dataType" is required (not null)
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The set of fixed values in an additional seller input.</value>
         [DataMember(Name = "RestrictedSetValues", EmitDefaultValue = false)]
-        public List<string> RestrictedSetValues { get; set; }
+        public List<string>? RestrictedSetValues { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -162,5 +162,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

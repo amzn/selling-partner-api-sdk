@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="nextPageToken">A generated string used to pass information to your next request. If &#x60;nextPageToken&#x60; is returned, pass the value of &#x60;nextPageToken&#x60; to the &#x60;pageToken&#x60; to get next results..</param>
         /// <param name="previousPageToken">A generated string used to pass information to your next request. If &#x60;previousPageToken&#x60; is returned, pass the value of &#x60;previousPageToken&#x60; to the &#x60;pageToken&#x60; to get previous page results..</param>
         /// <param name="jobs">List of job details for the given input..</param>
-        public JobListing(int totalResultSize = default(int), string nextPageToken = default(string), string previousPageToken = default(string), List<ServiceJob> jobs = default(List<ServiceJob>))
+        public JobListing(int? totalResultSize = default(int?), string? nextPageToken = default(string?), string? previousPageToken = default(string?), List<ServiceJob>? jobs = default(List<ServiceJob>?))
         {
             this.TotalResultSize = totalResultSize;
             this.NextPageToken = nextPageToken;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Total result size of the query result.</value>
         [DataMember(Name = "totalResultSize", EmitDefaultValue = false)]
-        public int TotalResultSize { get; set; }
+        public int? TotalResultSize { get; set; }
 
         /// <summary>
         /// A generated string used to pass information to your next request. If &#x60;nextPageToken&#x60; is returned, pass the value of &#x60;nextPageToken&#x60; to the &#x60;pageToken&#x60; to get next results.
         /// </summary>
         /// <value>A generated string used to pass information to your next request. If &#x60;nextPageToken&#x60; is returned, pass the value of &#x60;nextPageToken&#x60; to the &#x60;pageToken&#x60; to get next results.</value>
         [DataMember(Name = "nextPageToken", EmitDefaultValue = false)]
-        public string NextPageToken { get; set; }
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// A generated string used to pass information to your next request. If &#x60;previousPageToken&#x60; is returned, pass the value of &#x60;previousPageToken&#x60; to the &#x60;pageToken&#x60; to get previous page results.
         /// </summary>
         /// <value>A generated string used to pass information to your next request. If &#x60;previousPageToken&#x60; is returned, pass the value of &#x60;previousPageToken&#x60; to the &#x60;pageToken&#x60; to get previous page results.</value>
         [DataMember(Name = "previousPageToken", EmitDefaultValue = false)]
-        public string PreviousPageToken { get; set; }
+        public string? PreviousPageToken { get; set; }
 
         /// <summary>
         /// List of job details for the given input.
         /// </summary>
         /// <value>List of job details for the given input.</value>
         [DataMember(Name = "jobs", EmitDefaultValue = false)]
-        public List<ServiceJob> Jobs { get; set; }
+        public List<ServiceJob>? Jobs { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         /// <param name="verb">The HTTP verb used to interact with the related resource. (required).</param>
         /// <param name="title">The title of the related resource..</param>
         /// <param name="type">The media type of the related resource..</param>
-        public Link(string resource = default(string), VerbEnum verb = default(VerbEnum), string title = default(string), string type = default(string))
+        public Link(string resource = default(string), VerbEnum verb = default(VerbEnum), string? title = default(string?), string? type = default(string?))
         {
             // to ensure "resource" is required (not null)
             if (resource == null)
@@ -89,14 +89,14 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         /// </summary>
         /// <value>The title of the related resource.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The media type of the related resource.
         /// </summary>
         /// <value>The media type of the related resource.</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
             yield break;
         }
     }
-
 }

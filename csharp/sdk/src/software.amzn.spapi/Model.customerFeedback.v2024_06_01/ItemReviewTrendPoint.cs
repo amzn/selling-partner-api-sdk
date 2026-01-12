@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// <param name="asinMetrics">asinMetrics (required).</param>
         /// <param name="parentAsinMetrics">parentAsinMetrics.</param>
         /// <param name="browseNodeMetrics">browseNodeMetrics.</param>
-        public ItemReviewTrendPoint(DateRange dateRange = default(DateRange), ReviewTrendMetrics asinMetrics = default(ReviewTrendMetrics), ReviewTrendMetrics parentAsinMetrics = default(ReviewTrendMetrics), BrowseNodeTrendMetrics browseNodeMetrics = default(BrowseNodeTrendMetrics))
+        public ItemReviewTrendPoint(DateRange dateRange = default(DateRange), ReviewTrendMetrics asinMetrics = default(ReviewTrendMetrics), ReviewTrendMetrics? parentAsinMetrics = default(ReviewTrendMetrics?), BrowseNodeTrendMetrics? browseNodeMetrics = default(BrowseNodeTrendMetrics?))
         {
             // to ensure "dateRange" is required (not null)
             if (dateRange == null)
@@ -77,13 +77,13 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// Gets or Sets ParentAsinMetrics
         /// </summary>
         [DataMember(Name = "parentAsinMetrics", EmitDefaultValue = false)]
-        public ReviewTrendMetrics ParentAsinMetrics { get; set; }
+        public ReviewTrendMetrics? ParentAsinMetrics { get; set; }
 
         /// <summary>
         /// Gets or Sets BrowseNodeMetrics
         /// </summary>
         [DataMember(Name = "browseNodeMetrics", EmitDefaultValue = false)]
-        public BrowseNodeTrendMetrics BrowseNodeMetrics { get; set; }
+        public BrowseNodeTrendMetrics? BrowseNodeMetrics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,5 +120,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

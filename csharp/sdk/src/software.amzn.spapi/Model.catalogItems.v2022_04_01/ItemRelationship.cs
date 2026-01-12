@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="parentAsins">ASINs of the related items that are parents of this item..</param>
         /// <param name="variationTheme">variationTheme.</param>
         /// <param name="type">Type of relationship. (required).</param>
-        public ItemRelationship(List<string> childAsins = default(List<string>), List<string> parentAsins = default(List<string>), ItemVariationTheme variationTheme = default(ItemVariationTheme), TypeEnum type = default(TypeEnum))
+        public ItemRelationship(List<string>? childAsins = default(List<string>?), List<string>? parentAsins = default(List<string>?), ItemVariationTheme? variationTheme = default(ItemVariationTheme?), TypeEnum type = default(TypeEnum))
         {
             this.Type = type;
             this.ChildAsins = childAsins;
@@ -86,20 +86,20 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>ASINs of the related items that are children of this item.</value>
         [DataMember(Name = "childAsins", EmitDefaultValue = false)]
-        public List<string> ChildAsins { get; set; }
+        public List<string>? ChildAsins { get; set; }
 
         /// <summary>
         /// ASINs of the related items that are parents of this item.
         /// </summary>
         /// <value>ASINs of the related items that are parents of this item.</value>
         [DataMember(Name = "parentAsins", EmitDefaultValue = false)]
-        public List<string> ParentAsins { get; set; }
+        public List<string>? ParentAsins { get; set; }
 
         /// <summary>
         /// Gets or Sets VariationTheme
         /// </summary>
         [DataMember(Name = "variationTheme", EmitDefaultValue = false)]
-        public ItemVariationTheme VariationTheme { get; set; }
+        public ItemVariationTheme? VariationTheme { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,5 +136,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="reservation">reservation.</param>
         /// <param name="warnings">A list of warnings returned in the sucessful execution response of an API request..</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public UpdateReservationRecord(Reservation reservation = default(Reservation), List<Warning> warnings = default(List<Warning>), List<Error> errors = default(List<Error>))
+        public UpdateReservationRecord(Reservation? reservation = default(Reservation?), List<Warning>? warnings = default(List<Warning>?), List<Error>? errors = default(List<Error>?))
         {
             this.Reservation = reservation;
             this.Warnings = warnings;
@@ -48,21 +48,21 @@ namespace software.amzn.spapi.Model.services.v1
         /// Gets or Sets Reservation
         /// </summary>
         [DataMember(Name = "reservation", EmitDefaultValue = false)]
-        public Reservation Reservation { get; set; }
+        public Reservation? Reservation { get; set; }
 
         /// <summary>
         /// A list of warnings returned in the sucessful execution response of an API request.
         /// </summary>
         /// <value>A list of warnings returned in the sucessful execution response of an API request.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Warning> Warnings { get; set; }
+        public List<Warning>? Warnings { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

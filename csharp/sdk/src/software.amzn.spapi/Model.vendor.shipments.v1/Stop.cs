@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="locationIdentification">locationIdentification.</param>
         /// <param name="arrivalTime">Date and time of the arrival of the cargo..</param>
         /// <param name="departureTime">Date and time of the departure of the cargo..</param>
-        public Stop(FunctionCodeEnum functionCode = default(FunctionCodeEnum), Location locationIdentification = default(Location), DateTime arrivalTime = default(DateTime), DateTime departureTime = default(DateTime))
+        public Stop(FunctionCodeEnum functionCode = default(FunctionCodeEnum), Location? locationIdentification = default(Location?), DateTime? arrivalTime = default(DateTime?), DateTime? departureTime = default(DateTime?))
         {
             this.FunctionCode = functionCode;
             this.LocationIdentification = locationIdentification;
@@ -88,21 +88,21 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets LocationIdentification
         /// </summary>
         [DataMember(Name = "locationIdentification", EmitDefaultValue = false)]
-        public Location LocationIdentification { get; set; }
+        public Location? LocationIdentification { get; set; }
 
         /// <summary>
         /// Date and time of the arrival of the cargo.
         /// </summary>
         /// <value>Date and time of the arrival of the cargo.</value>
         [DataMember(Name = "arrivalTime", EmitDefaultValue = false)]
-        public DateTime ArrivalTime { get; set; }
+        public DateTime? ArrivalTime { get; set; }
 
         /// <summary>
         /// Date and time of the departure of the cargo.
         /// </summary>
         /// <value>Date and time of the departure of the cargo.</value>
         [DataMember(Name = "departureTime", EmitDefaultValue = false)]
-        public DateTime DepartureTime { get; set; }
+        public DateTime? DepartureTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -139,5 +139,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

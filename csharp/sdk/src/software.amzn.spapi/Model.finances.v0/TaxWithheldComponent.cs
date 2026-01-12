@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="taxCollectionModel">The tax collection model applied to the item.  Possible values:  * &#x60;MarketplaceFacilitator&#x60;: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * &#x60;Standard&#x60;: Tax is paid to the seller and not remitted to the taxing authority by Amazon..</param>
         /// <param name="taxesWithheld">A list of charge information on the seller&#39;s account..</param>
-        public TaxWithheldComponent(string taxCollectionModel = default(string), List<ChargeComponent> taxesWithheld = default(List<ChargeComponent>))
+        public TaxWithheldComponent(string? taxCollectionModel = default(string?), List<ChargeComponent>? taxesWithheld = default(List<ChargeComponent>?))
         {
             this.TaxCollectionModel = taxCollectionModel;
             this.TaxesWithheld = taxesWithheld;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The tax collection model applied to the item.  Possible values:  * &#x60;MarketplaceFacilitator&#x60;: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * &#x60;Standard&#x60;: Tax is paid to the seller and not remitted to the taxing authority by Amazon.</value>
         [DataMember(Name = "TaxCollectionModel", EmitDefaultValue = false)]
-        public string TaxCollectionModel { get; set; }
+        public string? TaxCollectionModel { get; set; }
 
         /// <summary>
         /// A list of charge information on the seller&#39;s account.
         /// </summary>
         /// <value>A list of charge information on the seller&#39;s account.</value>
         [DataMember(Name = "TaxesWithheld", EmitDefaultValue = false)]
-        public List<ChargeComponent> TaxesWithheld { get; set; }
+        public List<ChargeComponent>? TaxesWithheld { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

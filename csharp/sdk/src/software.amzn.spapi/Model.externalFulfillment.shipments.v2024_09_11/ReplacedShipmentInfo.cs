@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="locationId">The original shipment&#39;s location ID. (required).</param>
         /// <param name="marketplaceAttributes">marketplaceAttributes (required).</param>
         /// <param name="originalLineItems">The line items from the original shipment that corresponds to this shipment..</param>
-        public ReplacedShipmentInfo(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), List<OriginalLineItem> originalLineItems = default(List<OriginalLineItem>))
+        public ReplacedShipmentInfo(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), List<OriginalLineItem>? originalLineItems = default(List<OriginalLineItem>?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The line items from the original shipment that corresponds to this shipment.</value>
         [DataMember(Name = "originalLineItems", EmitDefaultValue = false)]
-        public List<OriginalLineItem> OriginalLineItems { get; set; }
+        public List<OriginalLineItem>? OriginalLineItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

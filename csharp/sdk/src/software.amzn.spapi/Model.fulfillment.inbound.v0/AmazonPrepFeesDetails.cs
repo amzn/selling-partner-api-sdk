@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <param name="prepInstruction">prepInstruction.</param>
         /// <param name="feePerUnit">feePerUnit.</param>
-        public AmazonPrepFeesDetails(PrepInstruction? prepInstruction = default(PrepInstruction?), Amount feePerUnit = default(Amount))
+        public AmazonPrepFeesDetails(PrepInstruction? prepInstruction = default(PrepInstruction?), Amount? feePerUnit = default(Amount?))
         {
             this.PrepInstruction = prepInstruction;
             this.FeePerUnit = feePerUnit;
@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// Gets or Sets FeePerUnit
         /// </summary>
         [DataMember(Name = "FeePerUnit", EmitDefaultValue = false)]
-        public Amount FeePerUnit { get; set; }
+        public Amount? FeePerUnit { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

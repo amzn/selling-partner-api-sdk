@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="GenerateCollectionFormResponse" /> class.
         /// </summary>
         /// <param name="collectionsFormDocument">collectionsFormDocument.</param>
-        public GenerateCollectionFormResponse(CollectionsFormDocument collectionsFormDocument = default(CollectionsFormDocument))
+        public GenerateCollectionFormResponse(CollectionsFormDocument? collectionsFormDocument = default(CollectionsFormDocument?))
         {
             this.CollectionsFormDocument = collectionsFormDocument;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets CollectionsFormDocument
         /// </summary>
         [DataMember(Name = "collectionsFormDocument", EmitDefaultValue = false)]
-        public CollectionsFormDocument CollectionsFormDocument { get; set; }
+        public CollectionsFormDocument? CollectionsFormDocument { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

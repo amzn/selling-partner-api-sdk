@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Initializes a new instance of the <see cref="TaxItemDetails" /> class.
         /// </summary>
         /// <param name="taxLineItem">A list of tax line items..</param>
-        public TaxItemDetails(List<TaxDetails> taxLineItem = default(List<TaxDetails>))
+        public TaxItemDetails(List<TaxDetails>? taxLineItem = default(List<TaxDetails>?))
         {
             this.TaxLineItem = taxLineItem;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>A list of tax line items.</value>
         [DataMember(Name = "taxLineItem", EmitDefaultValue = false)]
-        public List<TaxDetails> TaxLineItem { get; set; }
+        public List<TaxDetails>? TaxLineItem { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

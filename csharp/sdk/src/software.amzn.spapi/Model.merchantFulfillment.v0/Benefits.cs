@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="includedBenefits">A list of included benefits..</param>
         /// <param name="excludedBenefits">A list of excluded benefits. Refer to the &#x60;ExcludeBenefit&#x60; object for further documentation..</param>
-        public Benefits(List<string> includedBenefits = default(List<string>), List<ExcludedBenefit> excludedBenefits = default(List<ExcludedBenefit>))
+        public Benefits(List<string>? includedBenefits = default(List<string>?), List<ExcludedBenefit>? excludedBenefits = default(List<ExcludedBenefit>?))
         {
             this.IncludedBenefits = includedBenefits;
             this.ExcludedBenefits = excludedBenefits;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A list of included benefits.</value>
         [DataMember(Name = "IncludedBenefits", EmitDefaultValue = false)]
-        public List<string> IncludedBenefits { get; set; }
+        public List<string>? IncludedBenefits { get; set; }
 
         /// <summary>
         /// A list of excluded benefits. Refer to the &#x60;ExcludeBenefit&#x60; object for further documentation.
         /// </summary>
         /// <value>A list of excluded benefits. Refer to the &#x60;ExcludeBenefit&#x60; object for further documentation.</value>
         [DataMember(Name = "ExcludedBenefits", EmitDefaultValue = false)]
-        public List<ExcludedBenefit> ExcludedBenefits { get; set; }
+        public List<ExcludedBenefit>? ExcludedBenefits { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="carrierId">The carrier identifier for the offering, provided by the carrier..</param>
         /// <param name="linkableAccountTypes">A list of LinkableAccountType.</param>
-        public LinkableCarrier(string carrierId = default(string), List<LinkableAccountType> linkableAccountTypes = default(List<LinkableAccountType>))
+        public LinkableCarrier(string? carrierId = default(string?), List<LinkableAccountType>? linkableAccountTypes = default(List<LinkableAccountType>?))
         {
             this.CarrierId = carrierId;
             this.LinkableAccountTypes = linkableAccountTypes;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The carrier identifier for the offering, provided by the carrier.</value>
         [DataMember(Name = "carrierId", EmitDefaultValue = false)]
-        public string CarrierId { get; set; }
+        public string? CarrierId { get; set; }
 
         /// <summary>
         /// A list of LinkableAccountType
         /// </summary>
         /// <value>A list of LinkableAccountType</value>
         [DataMember(Name = "linkableAccountTypes", EmitDefaultValue = false)]
-        public List<LinkableAccountType> LinkableAccountTypes { get; set; }
+        public List<LinkableAccountType>? LinkableAccountTypes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

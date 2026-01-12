@@ -231,7 +231,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="creationDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="lastUpdatedDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="earliestPackDateTime">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format..</param>
-        public Shipment(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), ShipmentInfo shipmentInfo = default(ShipmentInfo), InvoiceInfo invoiceInfo = default(InvoiceInfo), List<PartyIdentificationInfo> partyInfoList = default(List<PartyIdentificationInfo>), ShipmentRequirements shipmentRequirements = default(ShipmentRequirements), List<Charge> charges = default(List<Charge>), StatusEnum status = default(StatusEnum), SubStatusEnum? subStatus = default(SubStatusEnum?), string reason = default(string), List<ShipmentLineItem> lineItems = default(List<ShipmentLineItem>), ShippingInfo shippingInfo = default(ShippingInfo), List<Package> packages = default(List<Package>), string creationDateTime = default(string), string lastUpdatedDateTime = default(string), string earliestPackDateTime = default(string))
+        public Shipment(string id = default(string), string locationId = default(string), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), ShipmentInfo shipmentInfo = default(ShipmentInfo), InvoiceInfo? invoiceInfo = default(InvoiceInfo?), List<PartyIdentificationInfo>? partyInfoList = default(List<PartyIdentificationInfo>?), ShipmentRequirements shipmentRequirements = default(ShipmentRequirements), List<Charge> charges = default(List<Charge>), StatusEnum status = default(StatusEnum), SubStatusEnum? subStatus = default(SubStatusEnum?), string? reason = default(string?), List<ShipmentLineItem> lineItems = default(List<ShipmentLineItem>), ShippingInfo shippingInfo = default(ShippingInfo), List<Package>? packages = default(List<Package>?), string creationDateTime = default(string), string lastUpdatedDateTime = default(string), string? earliestPackDateTime = default(string?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -332,14 +332,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Gets or Sets InvoiceInfo
         /// </summary>
         [DataMember(Name = "invoiceInfo", EmitDefaultValue = false)]
-        public InvoiceInfo InvoiceInfo { get; set; }
+        public InvoiceInfo? InvoiceInfo { get; set; }
 
         /// <summary>
         /// All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.
         /// </summary>
         /// <value>All involved party identification and metadata for the vendor, buyer, and seller. Applicable for direct-fulfillment sellers.</value>
         [DataMember(Name = "partyInfoList", EmitDefaultValue = false)]
-        public List<PartyIdentificationInfo> PartyInfoList { get; set; }
+        public List<PartyIdentificationInfo>? PartyInfoList { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipmentRequirements
@@ -359,7 +359,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The reason for the sub-status.</value>
         [DataMember(Name = "reason", EmitDefaultValue = false)]
-        public string Reason { get; set; }
+        public string? Reason { get; set; }
 
         /// <summary>
         /// The line items in the shipment.
@@ -379,7 +379,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The list of packages in the shipment.</value>
         [DataMember(Name = "packages", EmitDefaultValue = false)]
-        public List<Package> Packages { get; set; }
+        public List<Package>? Packages { get; set; }
 
         /// <summary>
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
@@ -400,7 +400,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.</value>
         [DataMember(Name = "earliestPackDateTime", EmitDefaultValue = false)]
-        public string EarliestPackDateTime { get; set; }
+        public string? EarliestPackDateTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -450,5 +450,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

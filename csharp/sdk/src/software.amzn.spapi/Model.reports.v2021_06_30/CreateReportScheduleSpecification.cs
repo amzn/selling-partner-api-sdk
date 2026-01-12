@@ -167,7 +167,7 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// <param name="reportOptions">Additional information passed to reports. This varies by report type..</param>
         /// <param name="period">One of a set of predefined &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; periods that specifies how often a report should be created. (required).</param>
         /// <param name="nextReportCreationTime">The date and time when the schedule will create its next report, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format..</param>
-        public CreateReportScheduleSpecification(string reportType = default(string), List<string> marketplaceIds = default(List<string>), Dictionary<string, string> reportOptions = default(Dictionary<string, string>), PeriodEnum period = default(PeriodEnum), DateTime nextReportCreationTime = default(DateTime))
+        public CreateReportScheduleSpecification(string reportType = default(string), List<string> marketplaceIds = default(List<string>), Dictionary<string, string>? reportOptions = default(Dictionary<string, string>?), PeriodEnum period = default(PeriodEnum), DateTime? nextReportCreationTime = default(DateTime?))
         {
             // to ensure "reportType" is required (not null)
             if (reportType == null)
@@ -205,14 +205,14 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// </summary>
         /// <value>Additional information passed to reports. This varies by report type.</value>
         [DataMember(Name = "reportOptions", EmitDefaultValue = false)]
-        public Dictionary<string, string> ReportOptions { get; set; }
+        public Dictionary<string, string>? ReportOptions { get; set; }
 
         /// <summary>
         /// The date and time when the schedule will create its next report, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format.
         /// </summary>
         /// <value>The date and time when the schedule will create its next report, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format.</value>
         [DataMember(Name = "nextReportCreationTime", EmitDefaultValue = false)]
-        public DateTime NextReportCreationTime { get; set; }
+        public DateTime? NextReportCreationTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -250,5 +250,4 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
             yield break;
         }
     }
-
 }

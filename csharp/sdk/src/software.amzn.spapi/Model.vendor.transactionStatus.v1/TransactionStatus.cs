@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.transactionStatus.v1
         /// Initializes a new instance of the <see cref="TransactionStatus" /> class.
         /// </summary>
         /// <param name="varTransactionStatus">varTransactionStatus.</param>
-        public TransactionStatus(Transaction varTransactionStatus = default(Transaction))
+        public TransactionStatus(Transaction? varTransactionStatus = default(Transaction?))
         {
             this.VarTransactionStatus = varTransactionStatus;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.vendor.transactionStatus.v1
         /// Gets or Sets VarTransactionStatus
         /// </summary>
         [DataMember(Name = "transactionStatus", EmitDefaultValue = false)]
-        public Transaction VarTransactionStatus { get; set; }
+        public Transaction? VarTransactionStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.vendor.transactionStatus.v1
             yield break;
         }
     }
-
 }

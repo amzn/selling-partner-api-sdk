@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             yield break;
         }
     }
-
 }

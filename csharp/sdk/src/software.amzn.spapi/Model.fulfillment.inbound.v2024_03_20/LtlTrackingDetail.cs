@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="billOfLadingNumber">The number of the carrier shipment acknowledgement document..</param>
         /// <param name="freightBillNumber">The number associated with the freight bill..</param>
-        public LtlTrackingDetail(string billOfLadingNumber = default(string), List<string> freightBillNumber = default(List<string>))
+        public LtlTrackingDetail(string? billOfLadingNumber = default(string?), List<string>? freightBillNumber = default(List<string>?))
         {
             this.BillOfLadingNumber = billOfLadingNumber;
             this.FreightBillNumber = freightBillNumber;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The number of the carrier shipment acknowledgement document.</value>
         [DataMember(Name = "billOfLadingNumber", EmitDefaultValue = false)]
-        public string BillOfLadingNumber { get; set; }
+        public string? BillOfLadingNumber { get; set; }
 
         /// <summary>
         /// The number associated with the freight bill.
         /// </summary>
         /// <value>The number associated with the freight bill.</value>
         [DataMember(Name = "freightBillNumber", EmitDefaultValue = false)]
-        public List<string> FreightBillNumber { get; set; }
+        public List<string>? FreightBillNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,5 +101,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

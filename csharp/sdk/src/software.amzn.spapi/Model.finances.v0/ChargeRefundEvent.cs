@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="reasonCode">The reason given for a charge refund. For example, &#x60;SubscriptionFeeCorrection&#x60;..</param>
         /// <param name="reasonCodeDescription">A description of the Reason Code. For example, &#x60;SubscriptionFeeCorrection&#x60;..</param>
         /// <param name="chargeRefundTransactions">A list of &#x60;ChargeRefund&#x60; transactions.</param>
-        public ChargeRefundEvent(DateTime postedDate = default(DateTime), string reasonCode = default(string), string reasonCodeDescription = default(string), List<ChargeRefundTransaction> chargeRefundTransactions = default(List<ChargeRefundTransaction>))
+        public ChargeRefundEvent(DateTime? postedDate = default(DateTime?), string? reasonCode = default(string?), string? reasonCodeDescription = default(string?), List<ChargeRefundTransaction>? chargeRefundTransactions = default(List<ChargeRefundTransaction>?))
         {
             this.PostedDate = postedDate;
             this.ReasonCode = reasonCode;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The reason given for a charge refund. For example, &#x60;SubscriptionFeeCorrection&#x60;.
         /// </summary>
         /// <value>The reason given for a charge refund. For example, &#x60;SubscriptionFeeCorrection&#x60;.</value>
         [DataMember(Name = "ReasonCode", EmitDefaultValue = false)]
-        public string ReasonCode { get; set; }
+        public string? ReasonCode { get; set; }
 
         /// <summary>
         /// A description of the Reason Code. For example, &#x60;SubscriptionFeeCorrection&#x60;.
         /// </summary>
         /// <value>A description of the Reason Code. For example, &#x60;SubscriptionFeeCorrection&#x60;.</value>
         [DataMember(Name = "ReasonCodeDescription", EmitDefaultValue = false)]
-        public string ReasonCodeDescription { get; set; }
+        public string? ReasonCodeDescription { get; set; }
 
         /// <summary>
         /// A list of &#x60;ChargeRefund&#x60; transactions
         /// </summary>
         /// <value>A list of &#x60;ChargeRefund&#x60; transactions</value>
         [DataMember(Name = "ChargeRefundTransactions", EmitDefaultValue = false)]
-        public List<ChargeRefundTransaction> ChargeRefundTransactions { get; set; }
+        public List<ChargeRefundTransaction>? ChargeRefundTransactions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

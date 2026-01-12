@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="msku">The merchant SKU, a merchant-supplied identifier of a specific SKU. (required).</param>
         /// <param name="prepOwner">prepOwner (required).</param>
         /// <param name="quantity">The number of units of the specified MSKU that will be shipped. (required).</param>
-        public ItemInput(string expiration = default(string), LabelOwner labelOwner = default(LabelOwner), string manufacturingLotCode = default(string), string msku = default(string), PrepOwner prepOwner = default(PrepOwner), int quantity = default(int))
+        public ItemInput(string? expiration = default(string?), LabelOwner labelOwner = default(LabelOwner), string? manufacturingLotCode = default(string?), string msku = default(string), PrepOwner prepOwner = default(PrepOwner), int quantity = default(int))
         {
             this.LabelOwner = labelOwner;
             // to ensure "msku" is required (not null)
@@ -77,14 +77,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The expiration date of the MSKU. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;YYYY-MM-DD&#x60;. Items with the same MSKU but different expiration dates cannot go into the same box.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public string Expiration { get; set; }
+        public string? Expiration { get; set; }
 
         /// <summary>
         /// The manufacturing lot code.
         /// </summary>
         /// <value>The manufacturing lot code.</value>
         [DataMember(Name = "manufacturingLotCode", EmitDefaultValue = false)]
-        public string ManufacturingLotCode { get; set; }
+        public string? ManufacturingLotCode { get; set; }
 
         /// <summary>
         /// The merchant SKU, a merchant-supplied identifier of a specific SKU.
@@ -182,5 +182,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

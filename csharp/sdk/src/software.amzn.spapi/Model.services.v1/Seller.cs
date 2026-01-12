@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// Initializes a new instance of the <see cref="Seller" /> class.
         /// </summary>
         /// <param name="sellerId">The identifier of the seller of the service job..</param>
-        public Seller(string sellerId = default(string))
+        public Seller(string? sellerId = default(string?))
         {
             this.SellerId = sellerId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The identifier of the seller of the service job.</value>
         [DataMember(Name = "sellerId", EmitDefaultValue = false)]
-        public string SellerId { get; set; }
+        public string? SellerId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

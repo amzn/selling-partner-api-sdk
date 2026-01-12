@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="shipments">A list of one or more shipments with underlying details..</param>
-        public ShipmentDetails(Pagination pagination = default(Pagination), List<Shipment> shipments = default(List<Shipment>))
+        public ShipmentDetails(Pagination? pagination = default(Pagination?), List<Shipment>? shipments = default(List<Shipment>?))
         {
             this.Pagination = pagination;
             this.Shipments = shipments;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// A list of one or more shipments with underlying details.
         /// </summary>
         /// <value>A list of one or more shipments with underlying details.</value>
         [DataMember(Name = "shipments", EmitDefaultValue = false)]
-        public List<Shipment> Shipments { get; set; }
+        public List<Shipment>? Shipments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="itemCondition">The item condition for the offer listing. Possible values: New, Used, Collectible, Refurbished, or Club. (required).</param>
         /// <param name="itemSubCondition">The item subcondition for the offer listing. Possible values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other. (required).</param>
         /// <param name="sellerSKU">The seller stock keeping unit (SKU) of the item. (required).</param>
-        public OfferType(OfferCustomerType? varOfferType = default(OfferCustomerType?), PriceType buyingPrice = default(PriceType), MoneyType regularPrice = default(MoneyType), MoneyType businessPrice = default(MoneyType), List<QuantityDiscountPriceType> quantityDiscountPrices = default(List<QuantityDiscountPriceType>), string fulfillmentChannel = default(string), string itemCondition = default(string), string itemSubCondition = default(string), string sellerSKU = default(string))
+        public OfferType(OfferCustomerType? varOfferType = default(OfferCustomerType?), PriceType buyingPrice = default(PriceType), MoneyType regularPrice = default(MoneyType), MoneyType? businessPrice = default(MoneyType?), List<QuantityDiscountPriceType>? quantityDiscountPrices = default(List<QuantityDiscountPriceType>?), string fulfillmentChannel = default(string), string itemCondition = default(string), string itemSubCondition = default(string), string sellerSKU = default(string))
         {
             // to ensure "buyingPrice" is required (not null)
             if (buyingPrice == null)
@@ -113,14 +113,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets BusinessPrice
         /// </summary>
         [DataMember(Name = "businessPrice", EmitDefaultValue = false)]
-        public MoneyType BusinessPrice { get; set; }
+        public MoneyType? BusinessPrice { get; set; }
 
         /// <summary>
         /// List of &#x60;QuantityDiscountPrice&#x60; that contains item&#39;s pricing information when buy in bulk.
         /// </summary>
         /// <value>List of &#x60;QuantityDiscountPrice&#x60; that contains item&#39;s pricing information when buy in bulk.</value>
         [DataMember(Name = "quantityDiscountPrices", EmitDefaultValue = false)]
-        public List<QuantityDiscountPriceType> QuantityDiscountPrices { get; set; }
+        public List<QuantityDiscountPriceType>? QuantityDiscountPrices { get; set; }
 
         /// <summary>
         /// The fulfillment channel for the offer listing. Possible values:  * Amazon - Fulfilled by Amazon. * Merchant - Fulfilled by the seller.
@@ -190,5 +190,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

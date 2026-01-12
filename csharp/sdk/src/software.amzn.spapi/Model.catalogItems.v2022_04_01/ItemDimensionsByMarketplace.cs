@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="marketplaceId">Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required).</param>
         /// <param name="item">item.</param>
         /// <param name="package">package.</param>
-        public ItemDimensionsByMarketplace(string marketplaceId = default(string), Dimensions item = default(Dimensions), Dimensions package = default(Dimensions))
+        public ItemDimensionsByMarketplace(string marketplaceId = default(string), Dimensions? item = default(Dimensions?), Dimensions? package = default(Dimensions?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -65,13 +65,13 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// Gets or Sets Item
         /// </summary>
         [DataMember(Name = "item", EmitDefaultValue = false)]
-        public Dimensions Item { get; set; }
+        public Dimensions? Item { get; set; }
 
         /// <summary>
         /// Gets or Sets Package
         /// </summary>
         [DataMember(Name = "package", EmitDefaultValue = false)]
-        public Dimensions Package { get; set; }
+        public Dimensions? Package { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

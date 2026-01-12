@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Initializes a new instance of the <see cref="Preference" /> class.
         /// </summary>
         /// <param name="autoEnrollment">Filters the results to only include offers with the auto-enrollment preference specified..</param>
-        public Preference(List<AutoEnrollmentPreference> autoEnrollment = default(List<AutoEnrollmentPreference>))
+        public Preference(List<AutoEnrollmentPreference>? autoEnrollment = default(List<AutoEnrollmentPreference>?))
         {
             this.AutoEnrollment = autoEnrollment;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>Filters the results to only include offers with the auto-enrollment preference specified.</value>
         [DataMember(Name = "autoEnrollment", EmitDefaultValue = false)]
-        public List<AutoEnrollmentPreference> AutoEnrollment { get; set; }
+        public List<AutoEnrollmentPreference>? AutoEnrollment { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="rentalInitialValue">rentalInitialValue.</param>
         /// <param name="rentalReimbursement">rentalReimbursement.</param>
         /// <param name="rentalTaxWithheldList">A list of information about taxes withheld..</param>
-        public RentalTransactionEvent(string amazonOrderId = default(string), string rentalEventType = default(string), int extensionLength = default(int), DateTime postedDate = default(DateTime), List<ChargeComponent> rentalChargeList = default(List<ChargeComponent>), List<FeeComponent> rentalFeeList = default(List<FeeComponent>), string marketplaceName = default(string), Currency rentalInitialValue = default(Currency), Currency rentalReimbursement = default(Currency), List<TaxWithheldComponent> rentalTaxWithheldList = default(List<TaxWithheldComponent>))
+        public RentalTransactionEvent(string? amazonOrderId = default(string?), string? rentalEventType = default(string?), int? extensionLength = default(int?), DateTime? postedDate = default(DateTime?), List<ChargeComponent>? rentalChargeList = default(List<ChargeComponent>?), List<FeeComponent>? rentalFeeList = default(List<FeeComponent>?), string? marketplaceName = default(string?), Currency? rentalInitialValue = default(Currency?), Currency? rentalReimbursement = default(Currency?), List<TaxWithheldComponent>? rentalTaxWithheldList = default(List<TaxWithheldComponent>?))
         {
             this.AmazonOrderId = amazonOrderId;
             this.RentalEventType = rentalEventType;
@@ -63,68 +63,68 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>An Amazon-defined identifier for an order.</value>
         [DataMember(Name = "AmazonOrderId", EmitDefaultValue = false)]
-        public string AmazonOrderId { get; set; }
+        public string? AmazonOrderId { get; set; }
 
         /// <summary>
         /// The type of rental event.  Possible values:  * &#x60;RentalCustomerPayment-Buyout&#x60;: A transaction type that represents when the customer wants to buy out a rented item.  * &#x60;RentalCustomerPayment-Extension&#x60;: A transaction type that represents when the customer wants to extend the rental period.  * &#x60;RentalCustomerRefund-Buyout&#x60;: A transaction type that represents when the customer requests a refund for the buyout of the rented item.  * &#x60;RentalCustomerRefund-Extension&#x60;: A transaction type that represents when the customer requests a refund over the extension on the rented item.  * &#x60;RentalHandlingFee&#x60;: A transaction type that represents the fee that Amazon charges sellers who rent through Amazon.  * &#x60;RentalChargeFailureReimbursement&#x60;: A transaction type that represents when Amazon sends money to the seller to compensate for a failed charge.  * &#x60;RentalLostItemReimbursement&#x60;: A transaction type that represents when Amazon sends money to the seller to compensate for a lost item.
         /// </summary>
         /// <value>The type of rental event.  Possible values:  * &#x60;RentalCustomerPayment-Buyout&#x60;: A transaction type that represents when the customer wants to buy out a rented item.  * &#x60;RentalCustomerPayment-Extension&#x60;: A transaction type that represents when the customer wants to extend the rental period.  * &#x60;RentalCustomerRefund-Buyout&#x60;: A transaction type that represents when the customer requests a refund for the buyout of the rented item.  * &#x60;RentalCustomerRefund-Extension&#x60;: A transaction type that represents when the customer requests a refund over the extension on the rented item.  * &#x60;RentalHandlingFee&#x60;: A transaction type that represents the fee that Amazon charges sellers who rent through Amazon.  * &#x60;RentalChargeFailureReimbursement&#x60;: A transaction type that represents when Amazon sends money to the seller to compensate for a failed charge.  * &#x60;RentalLostItemReimbursement&#x60;: A transaction type that represents when Amazon sends money to the seller to compensate for a lost item.</value>
         [DataMember(Name = "RentalEventType", EmitDefaultValue = false)]
-        public string RentalEventType { get; set; }
+        public string? RentalEventType { get; set; }
 
         /// <summary>
         /// The number of days that the buyer extended an already rented item. This value is only returned for &#x60;RentalCustomerPayment-Extension&#x60; and &#x60;RentalCustomerRefund-Extension&#x60; events.
         /// </summary>
         /// <value>The number of days that the buyer extended an already rented item. This value is only returned for &#x60;RentalCustomerPayment-Extension&#x60; and &#x60;RentalCustomerRefund-Extension&#x60; events.</value>
         [DataMember(Name = "ExtensionLength", EmitDefaultValue = false)]
-        public int ExtensionLength { get; set; }
+        public int? ExtensionLength { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// A list of charge information on the seller&#39;s account.
         /// </summary>
         /// <value>A list of charge information on the seller&#39;s account.</value>
         [DataMember(Name = "RentalChargeList", EmitDefaultValue = false)]
-        public List<ChargeComponent> RentalChargeList { get; set; }
+        public List<ChargeComponent>? RentalChargeList { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "RentalFeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> RentalFeeList { get; set; }
+        public List<FeeComponent>? RentalFeeList { get; set; }
 
         /// <summary>
         /// The name of the marketplace.
         /// </summary>
         /// <value>The name of the marketplace.</value>
         [DataMember(Name = "MarketplaceName", EmitDefaultValue = false)]
-        public string MarketplaceName { get; set; }
+        public string? MarketplaceName { get; set; }
 
         /// <summary>
         /// Gets or Sets RentalInitialValue
         /// </summary>
         [DataMember(Name = "RentalInitialValue", EmitDefaultValue = false)]
-        public Currency RentalInitialValue { get; set; }
+        public Currency? RentalInitialValue { get; set; }
 
         /// <summary>
         /// Gets or Sets RentalReimbursement
         /// </summary>
         [DataMember(Name = "RentalReimbursement", EmitDefaultValue = false)]
-        public Currency RentalReimbursement { get; set; }
+        public Currency? RentalReimbursement { get; set; }
 
         /// <summary>
         /// A list of information about taxes withheld.
         /// </summary>
         /// <value>A list of information about taxes withheld.</value>
         [DataMember(Name = "RentalTaxWithheldList", EmitDefaultValue = false)]
-        public List<TaxWithheldComponent> RentalTaxWithheldList { get; set; }
+        public List<TaxWithheldComponent>? RentalTaxWithheldList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -167,5 +167,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

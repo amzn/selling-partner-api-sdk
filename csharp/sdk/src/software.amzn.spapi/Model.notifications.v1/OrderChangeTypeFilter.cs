@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Initializes a new instance of the <see cref="OrderChangeTypeFilter" /> class.
         /// </summary>
         /// <param name="orderChangeTypes">A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list..</param>
-        public OrderChangeTypeFilter(List<OrderChangeTypeEnum> orderChangeTypes = default(List<OrderChangeTypeEnum>))
+        public OrderChangeTypeFilter(List<OrderChangeTypeEnum>? orderChangeTypes = default(List<OrderChangeTypeEnum>?))
         {
             this.OrderChangeTypes = orderChangeTypes;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// </summary>
         /// <value>A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.</value>
         [DataMember(Name = "orderChangeTypes", EmitDefaultValue = false)]
-        public List<OrderChangeTypeEnum> OrderChangeTypes { get; set; }
+        public List<OrderChangeTypeEnum>? OrderChangeTypes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.notifications.v1
             yield break;
         }
     }
-
 }

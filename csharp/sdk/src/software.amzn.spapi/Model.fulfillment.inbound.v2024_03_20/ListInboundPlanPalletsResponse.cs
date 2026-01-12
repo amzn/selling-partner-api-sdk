@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="pallets">The pallets in an inbound plan. (required).</param>
-        public ListInboundPlanPalletsResponse(Pagination pagination = default(Pagination), List<Pallet> pallets = default(List<Pallet>))
+        public ListInboundPlanPalletsResponse(Pagination? pagination = default(Pagination?), List<Pallet> pallets = default(List<Pallet>))
         {
             // to ensure "pallets" is required (not null)
             if (pallets == null)
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// The pallets in an inbound plan.
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

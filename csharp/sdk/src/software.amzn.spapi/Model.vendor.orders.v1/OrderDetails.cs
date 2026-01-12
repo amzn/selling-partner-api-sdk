@@ -131,7 +131,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="shipWindow">Defines a date time interval according to ISO8601. Interval is separated by double hyphen (- -)..</param>
         /// <param name="deliveryWindow">Defines a date time interval according to ISO8601. Interval is separated by double hyphen (- -)..</param>
         /// <param name="items">A list of items in this purchase order. (required).</param>
-        public OrderDetails(DateTime purchaseOrderDate = default(DateTime), DateTime purchaseOrderChangedDate = default(DateTime), DateTime purchaseOrderStateChangedDate = default(DateTime), PurchaseOrderTypeEnum? purchaseOrderType = default(PurchaseOrderTypeEnum?), ImportDetails importDetails = default(ImportDetails), string dealCode = default(string), PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?), PartyIdentification buyingParty = default(PartyIdentification), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipToParty = default(PartyIdentification), PartyIdentification billToParty = default(PartyIdentification), string shipWindow = default(string), string deliveryWindow = default(string), List<OrderItem> items = default(List<OrderItem>))
+        public OrderDetails(DateTime purchaseOrderDate = default(DateTime), DateTime? purchaseOrderChangedDate = default(DateTime?), DateTime purchaseOrderStateChangedDate = default(DateTime), PurchaseOrderTypeEnum? purchaseOrderType = default(PurchaseOrderTypeEnum?), ImportDetails? importDetails = default(ImportDetails?), string? dealCode = default(string?), PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?), PartyIdentification? buyingParty = default(PartyIdentification?), PartyIdentification? sellingParty = default(PartyIdentification?), PartyIdentification? shipToParty = default(PartyIdentification?), PartyIdentification? billToParty = default(PartyIdentification?), string? shipWindow = default(string?), string? deliveryWindow = default(string?), List<OrderItem> items = default(List<OrderItem>))
         {
             this.PurchaseOrderDate = purchaseOrderDate;
             this.PurchaseOrderStateChangedDate = purchaseOrderStateChangedDate;
@@ -166,7 +166,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>The date when purchase order was last changed by Amazon after the order was placed. This date will be greater than &#39;purchaseOrderDate&#39;. This means the PO data was changed on that date and vendors are required to fulfill the  updated PO. The PO changes can be related to Item Quantity, Ship to Location, Ship Window etc. This field will not be present in orders that have not changed after creation. Must be in ISO-8601 date/time format.</value>
         [DataMember(Name = "purchaseOrderChangedDate", EmitDefaultValue = false)]
-        public DateTime PurchaseOrderChangedDate { get; set; }
+        public DateTime? PurchaseOrderChangedDate { get; set; }
 
         /// <summary>
         /// The date when current purchase order state was changed. Current purchase order state is available in the field &#39;purchaseOrderState&#39;. Must be in ISO-8601 date/time format.
@@ -179,52 +179,52 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets ImportDetails
         /// </summary>
         [DataMember(Name = "importDetails", EmitDefaultValue = false)]
-        public ImportDetails ImportDetails { get; set; }
+        public ImportDetails? ImportDetails { get; set; }
 
         /// <summary>
         /// If requested by the recipient, this field will contain a promotional/deal number. The discount code line is optional. It is used to obtain a price discount on items on the order.
         /// </summary>
         /// <value>If requested by the recipient, this field will contain a promotional/deal number. The discount code line is optional. It is used to obtain a price discount on items on the order.</value>
         [DataMember(Name = "dealCode", EmitDefaultValue = false)]
-        public string DealCode { get; set; }
+        public string? DealCode { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyingParty
         /// </summary>
         [DataMember(Name = "buyingParty", EmitDefaultValue = false)]
-        public PartyIdentification BuyingParty { get; set; }
+        public PartyIdentification? BuyingParty { get; set; }
 
         /// <summary>
         /// Gets or Sets SellingParty
         /// </summary>
         [DataMember(Name = "sellingParty", EmitDefaultValue = false)]
-        public PartyIdentification SellingParty { get; set; }
+        public PartyIdentification? SellingParty { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipToParty
         /// </summary>
         [DataMember(Name = "shipToParty", EmitDefaultValue = false)]
-        public PartyIdentification ShipToParty { get; set; }
+        public PartyIdentification? ShipToParty { get; set; }
 
         /// <summary>
         /// Gets or Sets BillToParty
         /// </summary>
         [DataMember(Name = "billToParty", EmitDefaultValue = false)]
-        public PartyIdentification BillToParty { get; set; }
+        public PartyIdentification? BillToParty { get; set; }
 
         /// <summary>
         /// Defines a date time interval according to ISO8601. Interval is separated by double hyphen (- -).
         /// </summary>
         /// <value>Defines a date time interval according to ISO8601. Interval is separated by double hyphen (- -).</value>
         [DataMember(Name = "shipWindow", EmitDefaultValue = false)]
-        public string ShipWindow { get; set; }
+        public string? ShipWindow { get; set; }
 
         /// <summary>
         /// Defines a date time interval according to ISO8601. Interval is separated by double hyphen (- -).
         /// </summary>
         /// <value>Defines a date time interval according to ISO8601. Interval is separated by double hyphen (- -).</value>
         [DataMember(Name = "deliveryWindow", EmitDefaultValue = false)]
-        public string DeliveryWindow { get; set; }
+        public string? DeliveryWindow { get; set; }
 
         /// <summary>
         /// A list of items in this purchase order.
@@ -278,5 +278,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

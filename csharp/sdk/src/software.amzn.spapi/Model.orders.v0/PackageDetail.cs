@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="shipDate">The shipping date for the package. Must be in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date/time format. (required).</param>
         /// <param name="shipFromSupplySourceId">The unique identifier for the supply source..</param>
         /// <param name="orderItems">A list of order items. (required).</param>
-        public PackageDetail(string packageReferenceId = default(string), string carrierCode = default(string), string carrierName = default(string), string shippingMethod = default(string), string trackingNumber = default(string), DateTime shipDate = default(DateTime), string shipFromSupplySourceId = default(string), List<ConfirmShipmentOrderItem> orderItems = default(List<ConfirmShipmentOrderItem>))
+        public PackageDetail(string packageReferenceId = default(string), string carrierCode = default(string), string? carrierName = default(string?), string? shippingMethod = default(string?), string trackingNumber = default(string), DateTime shipDate = default(DateTime), string? shipFromSupplySourceId = default(string?), List<ConfirmShipmentOrderItem> orderItems = default(List<ConfirmShipmentOrderItem>))
         {
             // to ensure "packageReferenceId" is required (not null)
             if (packageReferenceId == null)
@@ -98,14 +98,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>Carrier name that will deliver the package. Required when &#x60;carrierCode&#x60; is \&quot;Other\&quot; </value>
         [DataMember(Name = "carrierName", EmitDefaultValue = false)]
-        public string CarrierName { get; set; }
+        public string? CarrierName { get; set; }
 
         /// <summary>
         /// Ship method to be used for shipping the order.
         /// </summary>
         /// <value>Ship method to be used for shipping the order.</value>
         [DataMember(Name = "shippingMethod", EmitDefaultValue = false)]
-        public string ShippingMethod { get; set; }
+        public string? ShippingMethod { get; set; }
 
         /// <summary>
         /// The tracking number used to obtain tracking and delivery information.
@@ -126,7 +126,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The unique identifier for the supply source.</value>
         [DataMember(Name = "shipFromSupplySourceId", EmitDefaultValue = false)]
-        public string ShipFromSupplySourceId { get; set; }
+        public string? ShipFromSupplySourceId { get; set; }
 
         /// <summary>
         /// A list of order items.
@@ -174,5 +174,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

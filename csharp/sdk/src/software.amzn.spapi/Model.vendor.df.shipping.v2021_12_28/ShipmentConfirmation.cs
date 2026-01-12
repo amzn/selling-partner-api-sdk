@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="shipFromParty">shipFromParty (required).</param>
         /// <param name="items">Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package. (required).</param>
         /// <param name="containers">Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package..</param>
-        public ShipmentConfirmation(string purchaseOrderNumber = default(string), ShipmentDetails shipmentDetails = default(ShipmentDetails), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), List<Item> items = default(List<Item>), List<Container> containers = default(List<Container>))
+        public ShipmentConfirmation(string purchaseOrderNumber = default(string), ShipmentDetails shipmentDetails = default(ShipmentDetails), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), List<Item> items = default(List<Item>), List<Container>? containers = default(List<Container>?))
         {
             // to ensure "purchaseOrderNumber" is required (not null)
             if (purchaseOrderNumber == null)
@@ -117,7 +117,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>Provide the details of the items in this shipment. If any of the item details field is common at a package or a pallet level, then provide them at the corresponding package.</value>
         [DataMember(Name = "containers", EmitDefaultValue = false)]
-        public List<Container> Containers { get; set; }
+        public List<Container>? Containers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -165,5 +165,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

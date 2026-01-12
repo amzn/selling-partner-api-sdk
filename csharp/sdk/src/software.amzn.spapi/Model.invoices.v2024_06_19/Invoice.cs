@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <param name="status">The invoice status classification. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options..</param>
         /// <param name="transactionIds">List with identifiers for the transactions associated to the invoice..</param>
         /// <param name="transactionType">Classification of the transaction that originated this invoice. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options..</param>
-        public Invoice(DateTime date = default(DateTime), string errorCode = default(string), string externalInvoiceId = default(string), string govResponse = default(string), string id = default(string), string invoiceType = default(string), string series = default(string), string status = default(string), List<TransactionIdentifier> transactionIds = default(List<TransactionIdentifier>), string transactionType = default(string))
+        public Invoice(DateTime? date = default(DateTime?), string? errorCode = default(string?), string? externalInvoiceId = default(string?), string? govResponse = default(string?), string? id = default(string?), string? invoiceType = default(string?), string? series = default(string?), string? status = default(string?), List<TransactionIdentifier>? transactionIds = default(List<TransactionIdentifier>?), string? transactionType = default(string?))
         {
             this.Date = date;
             this.ErrorCode = errorCode;
@@ -63,70 +63,70 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>The date and time the invoice is issued. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "date", EmitDefaultValue = false)]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         /// <summary>
         /// If the invoice is in an error state, this attribute displays the error code.
         /// </summary>
         /// <value>If the invoice is in an error state, this attribute displays the error code.</value>
         [DataMember(Name = "errorCode", EmitDefaultValue = false)]
-        public string ErrorCode { get; set; }
+        public string? ErrorCode { get; set; }
 
         /// <summary>
         /// The invoice identifier that is used by an external party. This is typically the government agency that authorized the invoice.
         /// </summary>
         /// <value>The invoice identifier that is used by an external party. This is typically the government agency that authorized the invoice.</value>
         [DataMember(Name = "externalInvoiceId", EmitDefaultValue = false)]
-        public string ExternalInvoiceId { get; set; }
+        public string? ExternalInvoiceId { get; set; }
 
         /// <summary>
         /// The response message from the government authority when there is an error during invoice issuance.
         /// </summary>
         /// <value>The response message from the government authority when there is an error during invoice issuance.</value>
         [DataMember(Name = "govResponse", EmitDefaultValue = false)]
-        public string GovResponse { get; set; }
+        public string? GovResponse { get; set; }
 
         /// <summary>
         /// The invoice identifier.
         /// </summary>
         /// <value>The invoice identifier.</value>
         [DataMember(Name = "id", EmitDefaultValue = false)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// The classification of the invoice type. This varies across marketplaces. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
         /// </summary>
         /// <value>The classification of the invoice type. This varies across marketplaces. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.</value>
         [DataMember(Name = "invoiceType", EmitDefaultValue = false)]
-        public string InvoiceType { get; set; }
+        public string? InvoiceType { get; set; }
 
         /// <summary>
         /// Use this identifier in conjunction with &#x60;externalInvoiceId&#x60; to identify invoices from the same seller.
         /// </summary>
         /// <value>Use this identifier in conjunction with &#x60;externalInvoiceId&#x60; to identify invoices from the same seller.</value>
         [DataMember(Name = "series", EmitDefaultValue = false)]
-        public string Series { get; set; }
+        public string? Series { get; set; }
 
         /// <summary>
         /// The invoice status classification. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.
         /// </summary>
         /// <value>The invoice status classification. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.</value>
         [DataMember(Name = "status", EmitDefaultValue = false)]
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// List with identifiers for the transactions associated to the invoice.
         /// </summary>
         /// <value>List with identifiers for the transactions associated to the invoice.</value>
         [DataMember(Name = "transactionIds", EmitDefaultValue = false)]
-        public List<TransactionIdentifier> TransactionIds { get; set; }
+        public List<TransactionIdentifier>? TransactionIds { get; set; }
 
         /// <summary>
         /// Classification of the transaction that originated this invoice. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.
         /// </summary>
         /// <value>Classification of the transaction that originated this invoice. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.</value>
         [DataMember(Name = "transactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -169,5 +169,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

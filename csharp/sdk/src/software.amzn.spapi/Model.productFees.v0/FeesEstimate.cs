@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <param name="timeOfFeesEstimation">The time at which the fees were estimated. This defaults to the time the request is made. (required).</param>
         /// <param name="totalFeesEstimate">totalFeesEstimate.</param>
         /// <param name="feeDetailList">A list of other fees that contribute to a given fee..</param>
-        public FeesEstimate(DateTime timeOfFeesEstimation = default(DateTime), MoneyType totalFeesEstimate = default(MoneyType), List<FeeDetail> feeDetailList = default(List<FeeDetail>))
+        public FeesEstimate(DateTime timeOfFeesEstimation = default(DateTime), MoneyType? totalFeesEstimate = default(MoneyType?), List<FeeDetail>? feeDetailList = default(List<FeeDetail>?))
         {
             this.TimeOfFeesEstimation = timeOfFeesEstimation;
             this.TotalFeesEstimate = totalFeesEstimate;
@@ -60,14 +60,14 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// Gets or Sets TotalFeesEstimate
         /// </summary>
         [DataMember(Name = "TotalFeesEstimate", EmitDefaultValue = false)]
-        public MoneyType TotalFeesEstimate { get; set; }
+        public MoneyType? TotalFeesEstimate { get; set; }
 
         /// <summary>
         /// A list of other fees that contribute to a given fee.
         /// </summary>
         /// <value>A list of other fees that contribute to a given fee.</value>
         [DataMember(Name = "FeeDetailList", EmitDefaultValue = false)]
-        public List<FeeDetail> FeeDetailList { get; set; }
+        public List<FeeDetail>? FeeDetailList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -103,5 +103,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

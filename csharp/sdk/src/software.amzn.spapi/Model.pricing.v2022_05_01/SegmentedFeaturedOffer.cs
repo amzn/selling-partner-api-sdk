@@ -153,7 +153,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="points">points.</param>
         /// <param name="primeDetails">primeDetails.</param>
         /// <param name="featuredOfferSegments">The list of segment information in which the offer is featured. (required).</param>
-        public SegmentedFeaturedOffer(string sellerId = default(string), Condition condition = default(Condition), SubConditionEnum? subCondition = default(SubConditionEnum?), FulfillmentType fulfillmentType = default(FulfillmentType), MoneyType listingPrice = default(MoneyType), List<ShippingOption> shippingOptions = default(List<ShippingOption>), Points points = default(Points), PrimeDetails primeDetails = default(PrimeDetails), List<FeaturedOfferSegment> featuredOfferSegments = default(List<FeaturedOfferSegment>))
+        public SegmentedFeaturedOffer(string sellerId = default(string), Condition condition = default(Condition), SubConditionEnum? subCondition = default(SubConditionEnum?), FulfillmentType fulfillmentType = default(FulfillmentType), MoneyType listingPrice = default(MoneyType), List<ShippingOption>? shippingOptions = default(List<ShippingOption>?), Points? points = default(Points?), PrimeDetails? primeDetails = default(PrimeDetails?), List<FeaturedOfferSegment> featuredOfferSegments = default(List<FeaturedOfferSegment>))
         {
             // to ensure "sellerId" is required (not null)
             if (sellerId == null)
@@ -199,19 +199,19 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>A list of shipping options associated with this offer</value>
         [DataMember(Name = "shippingOptions", EmitDefaultValue = false)]
-        public List<ShippingOption> ShippingOptions { get; set; }
+        public List<ShippingOption>? ShippingOptions { get; set; }
 
         /// <summary>
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// Gets or Sets PrimeDetails
         /// </summary>
         [DataMember(Name = "primeDetails", EmitDefaultValue = false)]
-        public PrimeDetails PrimeDetails { get; set; }
+        public PrimeDetails? PrimeDetails { get; set; }
 
         /// <summary>
         /// The list of segment information in which the offer is featured.
@@ -260,5 +260,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

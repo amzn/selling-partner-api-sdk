@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.uploads.v2020_11_01
         /// <param name="uploadDestinationId">The unique identifier for the upload destination..</param>
         /// <param name="url">The URL for the upload destination..</param>
         /// <param name="headers">The headers to include in the upload request..</param>
-        public UploadDestination(string uploadDestinationId = default(string), string url = default(string), Object headers = default(Object))
+        public UploadDestination(string? uploadDestinationId = default(string?), string? url = default(string?), Object? headers = default(Object?))
         {
             this.UploadDestinationId = uploadDestinationId;
             this.Url = url;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.uploads.v2020_11_01
         /// </summary>
         /// <value>The unique identifier for the upload destination.</value>
         [DataMember(Name = "uploadDestinationId", EmitDefaultValue = false)]
-        public string UploadDestinationId { get; set; }
+        public string? UploadDestinationId { get; set; }
 
         /// <summary>
         /// The URL for the upload destination.
         /// </summary>
         /// <value>The URL for the upload destination.</value>
         [DataMember(Name = "url", EmitDefaultValue = false)]
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         /// <summary>
         /// The headers to include in the upload request.
         /// </summary>
         /// <value>The headers to include in the upload request.</value>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public Object Headers { get; set; }
+        public Object? Headers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.uploads.v2020_11_01
             yield break;
         }
     }
-
 }

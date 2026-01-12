@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <param name="feePromotion">feePromotion.</param>
         /// <param name="taxAmount">taxAmount.</param>
         /// <param name="finalFee">finalFee (required).</param>
-        public IncludedFeeDetail(string feeType = default(string), MoneyType feeAmount = default(MoneyType), MoneyType feePromotion = default(MoneyType), MoneyType taxAmount = default(MoneyType), MoneyType finalFee = default(MoneyType))
+        public IncludedFeeDetail(string feeType = default(string), MoneyType feeAmount = default(MoneyType), MoneyType? feePromotion = default(MoneyType?), MoneyType? taxAmount = default(MoneyType?), MoneyType finalFee = default(MoneyType))
         {
             // to ensure "feeType" is required (not null)
             if (feeType == null)
@@ -85,13 +85,13 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// Gets or Sets FeePromotion
         /// </summary>
         [DataMember(Name = "FeePromotion", EmitDefaultValue = false)]
-        public MoneyType FeePromotion { get; set; }
+        public MoneyType? FeePromotion { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
         /// </summary>
         [DataMember(Name = "TaxAmount", EmitDefaultValue = false)]
-        public MoneyType TaxAmount { get; set; }
+        public MoneyType? TaxAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets FinalFee
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

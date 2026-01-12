@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="sellerSKU">The seller stock keeping unit (SKU) of the item..</param>
         /// <param name="aSIN">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="product">product.</param>
-        public Price(string status = default(string), string sellerSKU = default(string), string aSIN = default(string), Product product = default(Product))
+        public Price(string status = default(string), string? sellerSKU = default(string?), string? aSIN = default(string?), Product? product = default(Product?))
         {
             // to ensure "status" is required (not null)
             if (status == null)
@@ -68,20 +68,20 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The seller stock keeping unit (SKU) of the item.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// Gets or Sets Product
         /// </summary>
         [DataMember(Name = "Product", EmitDefaultValue = false)]
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

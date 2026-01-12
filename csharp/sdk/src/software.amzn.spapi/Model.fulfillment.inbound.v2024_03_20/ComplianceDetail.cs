@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="fnsku">The Fulfillment Network SKU, which identifies a real fulfillable item with catalog data and condition..</param>
         /// <param name="msku">The merchant SKU, a merchant-supplied identifier for a specific SKU..</param>
         /// <param name="taxDetails">taxDetails.</param>
-        public ComplianceDetail(string asin = default(string), string fnsku = default(string), string msku = default(string), TaxDetails taxDetails = default(TaxDetails))
+        public ComplianceDetail(string? asin = default(string?), string? fnsku = default(string?), string? msku = default(string?), TaxDetails? taxDetails = default(TaxDetails?))
         {
             this.Asin = asin;
             this.Fnsku = fnsku;
@@ -51,27 +51,27 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The Amazon Standard Identification Number, which identifies the detail page identifier.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The Fulfillment Network SKU, which identifies a real fulfillable item with catalog data and condition.
         /// </summary>
         /// <value>The Fulfillment Network SKU, which identifies a real fulfillable item with catalog data and condition.</value>
         [DataMember(Name = "fnsku", EmitDefaultValue = false)]
-        public string Fnsku { get; set; }
+        public string? Fnsku { get; set; }
 
         /// <summary>
         /// The merchant SKU, a merchant-supplied identifier for a specific SKU.
         /// </summary>
         /// <value>The merchant SKU, a merchant-supplied identifier for a specific SKU.</value>
         [DataMember(Name = "msku", EmitDefaultValue = false)]
-        public string Msku { get; set; }
+        public string? Msku { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxDetails
         /// </summary>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public TaxDetails TaxDetails { get; set; }
+        public TaxDetails? TaxDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,5 +144,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="countryCode">The country code..</param>
         /// <param name="phone">The phone number..</param>
         /// <param name="addressType">addressType.</param>
-        public Address(string name = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string county = default(string), string district = default(string), string stateOrRegion = default(string), string postalCode = default(string), string countryCode = default(string), string phone = default(string), AddressTypeEnum? addressType = default(AddressTypeEnum?))
+        public Address(string? name = default(string?), string? addressLine1 = default(string?), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? city = default(string?), string? county = default(string?), string? district = default(string?), string? stateOrRegion = default(string?), string? postalCode = default(string?), string? countryCode = default(string?), string? phone = default(string?), AddressTypeEnum? addressType = default(AddressTypeEnum?))
         {
             this.Name = name;
             this.AddressLine1 = addressLine1;
@@ -73,77 +73,77 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <value>The name.</value>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The street address.
         /// </summary>
         /// <value>The street address.</value>
         [DataMember(Name = "AddressLine1", EmitDefaultValue = false)]
-        public string AddressLine1 { get; set; }
+        public string? AddressLine1 { get; set; }
 
         /// <summary>
         /// Additional street address information, if required.
         /// </summary>
         /// <value>Additional street address information, if required.</value>
         [DataMember(Name = "AddressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Additional street address information, if required.
         /// </summary>
         /// <value>Additional street address information, if required.</value>
         [DataMember(Name = "AddressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// The city.
         /// </summary>
         /// <value>The city.</value>
         [DataMember(Name = "City", EmitDefaultValue = false)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// The county.
         /// </summary>
         /// <value>The county.</value>
         [DataMember(Name = "County", EmitDefaultValue = false)]
-        public string County { get; set; }
+        public string? County { get; set; }
 
         /// <summary>
         /// The district.
         /// </summary>
         /// <value>The district.</value>
         [DataMember(Name = "District", EmitDefaultValue = false)]
-        public string District { get; set; }
+        public string? District { get; set; }
 
         /// <summary>
         /// The state or region.
         /// </summary>
         /// <value>The state or region.</value>
         [DataMember(Name = "StateOrRegion", EmitDefaultValue = false)]
-        public string StateOrRegion { get; set; }
+        public string? StateOrRegion { get; set; }
 
         /// <summary>
         /// The postal code.
         /// </summary>
         /// <value>The postal code.</value>
         [DataMember(Name = "PostalCode", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
         /// <summary>
         /// The country code.
         /// </summary>
         /// <value>The country code.</value>
         [DataMember(Name = "CountryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// The phone number.
         /// </summary>
         /// <value>The phone number.</value>
         [DataMember(Name = "Phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -188,5 +188,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

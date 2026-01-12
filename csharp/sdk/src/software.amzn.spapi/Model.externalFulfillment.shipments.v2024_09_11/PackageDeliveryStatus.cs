@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="status">status.</param>
         /// <param name="subStatus">subStatus.</param>
         /// <param name="reason">The reason for the sub-status..</param>
-        public PackageDeliveryStatus(PackageStatus? status = default(PackageStatus?), PackageSubStatus? subStatus = default(PackageSubStatus?), string reason = default(string))
+        public PackageDeliveryStatus(PackageStatus? status = default(PackageStatus?), PackageSubStatus? subStatus = default(PackageSubStatus?), string? reason = default(string?))
         {
             this.Status = status;
             this.SubStatus = subStatus;
@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The reason for the sub-status.</value>
         [DataMember(Name = "reason", EmitDefaultValue = false)]
-        public string Reason { get; set; }
+        public string? Reason { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -104,5 +104,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

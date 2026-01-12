@@ -106,7 +106,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="measurement">measurement.</param>
         /// <param name="shippingConstraints">shippingConstraints.</param>
         /// <param name="amazonPrograms">amazonPrograms.</param>
-        public OrderItem(string aSIN = default(string), string sellerSKU = default(string), string orderItemId = default(string), List<AssociatedItem> associatedItems = default(List<AssociatedItem>), string title = default(string), int quantityOrdered = default(int), int quantityShipped = default(int), ProductInfoDetail productInfo = default(ProductInfoDetail), PointsGrantedDetail pointsGranted = default(PointsGrantedDetail), Money itemPrice = default(Money), Money shippingPrice = default(Money), Money itemTax = default(Money), Money shippingTax = default(Money), Money shippingDiscount = default(Money), Money shippingDiscountTax = default(Money), Money promotionDiscount = default(Money), Money promotionDiscountTax = default(Money), List<string> promotionIds = default(List<string>), Money cODFee = default(Money), Money cODFeeDiscount = default(Money), string isGift = default(string), string conditionNote = default(string), string conditionId = default(string), string conditionSubtypeId = default(string), string scheduledDeliveryStartDate = default(string), string scheduledDeliveryEndDate = default(string), string priceDesignation = default(string), TaxCollection taxCollection = default(TaxCollection), bool serialNumberRequired = default(bool), bool isTransparency = default(bool), string iossNumber = default(string), string storeChainStoreId = default(string), DeemedResellerCategoryEnum? deemedResellerCategory = default(DeemedResellerCategoryEnum?), ItemBuyerInfo buyerInfo = default(ItemBuyerInfo), BuyerRequestedCancel buyerRequestedCancel = default(BuyerRequestedCancel), List<string> serialNumbers = default(List<string>), SubstitutionPreferences substitutionPreferences = default(SubstitutionPreferences), Measurement measurement = default(Measurement), ShippingConstraints shippingConstraints = default(ShippingConstraints), AmazonPrograms amazonPrograms = default(AmazonPrograms))
+        public OrderItem(string aSIN = default(string), string? sellerSKU = default(string?), string orderItemId = default(string), List<AssociatedItem>? associatedItems = default(List<AssociatedItem>?), string? title = default(string?), int quantityOrdered = default(int), int? quantityShipped = default(int?), ProductInfoDetail? productInfo = default(ProductInfoDetail?), PointsGrantedDetail? pointsGranted = default(PointsGrantedDetail?), Money? itemPrice = default(Money?), Money? shippingPrice = default(Money?), Money? itemTax = default(Money?), Money? shippingTax = default(Money?), Money? shippingDiscount = default(Money?), Money? shippingDiscountTax = default(Money?), Money? promotionDiscount = default(Money?), Money? promotionDiscountTax = default(Money?), List<string>? promotionIds = default(List<string>?), Money? cODFee = default(Money?), Money? cODFeeDiscount = default(Money?), string? isGift = default(string?), string? conditionNote = default(string?), string? conditionId = default(string?), string? conditionSubtypeId = default(string?), string? scheduledDeliveryStartDate = default(string?), string? scheduledDeliveryEndDate = default(string?), string? priceDesignation = default(string?), TaxCollection? taxCollection = default(TaxCollection?), bool? serialNumberRequired = default(bool?), bool? isTransparency = default(bool?), string? iossNumber = default(string?), string? storeChainStoreId = default(string?), DeemedResellerCategoryEnum? deemedResellerCategory = default(DeemedResellerCategoryEnum?), ItemBuyerInfo? buyerInfo = default(ItemBuyerInfo?), BuyerRequestedCancel? buyerRequestedCancel = default(BuyerRequestedCancel?), List<string>? serialNumbers = default(List<string>?), SubstitutionPreferences? substitutionPreferences = default(SubstitutionPreferences?), Measurement? measurement = default(Measurement?), ShippingConstraints? shippingConstraints = default(ShippingConstraints?), AmazonPrograms? amazonPrograms = default(AmazonPrograms?))
         {
             // to ensure "aSIN" is required (not null)
             if (aSIN == null)
@@ -172,7 +172,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The item&#39;s seller stock keeping unit (SKU).</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// An Amazon-defined order item identifier.
@@ -186,14 +186,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>A list of associated items that a customer has purchased with a product. For example, a tire installation service purchased with tires.</value>
         [DataMember(Name = "AssociatedItems", EmitDefaultValue = false)]
-        public List<AssociatedItem> AssociatedItems { get; set; }
+        public List<AssociatedItem>? AssociatedItems { get; set; }
 
         /// <summary>
         /// The item&#39;s name.
         /// </summary>
         /// <value>The item&#39;s name.</value>
         [DataMember(Name = "Title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The number of items in the order. 
@@ -207,212 +207,212 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The number of items shipped.</value>
         [DataMember(Name = "QuantityShipped", EmitDefaultValue = false)]
-        public int QuantityShipped { get; set; }
+        public int? QuantityShipped { get; set; }
 
         /// <summary>
         /// Gets or Sets ProductInfo
         /// </summary>
         [DataMember(Name = "ProductInfo", EmitDefaultValue = false)]
-        public ProductInfoDetail ProductInfo { get; set; }
+        public ProductInfoDetail? ProductInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets PointsGranted
         /// </summary>
         [DataMember(Name = "PointsGranted", EmitDefaultValue = false)]
-        public PointsGrantedDetail PointsGranted { get; set; }
+        public PointsGrantedDetail? PointsGranted { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemPrice
         /// </summary>
         [DataMember(Name = "ItemPrice", EmitDefaultValue = false)]
-        public Money ItemPrice { get; set; }
+        public Money? ItemPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingPrice
         /// </summary>
         [DataMember(Name = "ShippingPrice", EmitDefaultValue = false)]
-        public Money ShippingPrice { get; set; }
+        public Money? ShippingPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemTax
         /// </summary>
         [DataMember(Name = "ItemTax", EmitDefaultValue = false)]
-        public Money ItemTax { get; set; }
+        public Money? ItemTax { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingTax
         /// </summary>
         [DataMember(Name = "ShippingTax", EmitDefaultValue = false)]
-        public Money ShippingTax { get; set; }
+        public Money? ShippingTax { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingDiscount
         /// </summary>
         [DataMember(Name = "ShippingDiscount", EmitDefaultValue = false)]
-        public Money ShippingDiscount { get; set; }
+        public Money? ShippingDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingDiscountTax
         /// </summary>
         [DataMember(Name = "ShippingDiscountTax", EmitDefaultValue = false)]
-        public Money ShippingDiscountTax { get; set; }
+        public Money? ShippingDiscountTax { get; set; }
 
         /// <summary>
         /// Gets or Sets PromotionDiscount
         /// </summary>
         [DataMember(Name = "PromotionDiscount", EmitDefaultValue = false)]
-        public Money PromotionDiscount { get; set; }
+        public Money? PromotionDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets PromotionDiscountTax
         /// </summary>
         [DataMember(Name = "PromotionDiscountTax", EmitDefaultValue = false)]
-        public Money PromotionDiscountTax { get; set; }
+        public Money? PromotionDiscountTax { get; set; }
 
         /// <summary>
         /// A list of promotion identifiers provided by the seller when the promotions were created.
         /// </summary>
         /// <value>A list of promotion identifiers provided by the seller when the promotions were created.</value>
         [DataMember(Name = "PromotionIds", EmitDefaultValue = false)]
-        public List<string> PromotionIds { get; set; }
+        public List<string>? PromotionIds { get; set; }
 
         /// <summary>
         /// Gets or Sets CODFee
         /// </summary>
         [DataMember(Name = "CODFee", EmitDefaultValue = false)]
-        public Money CODFee { get; set; }
+        public Money? CODFee { get; set; }
 
         /// <summary>
         /// Gets or Sets CODFeeDiscount
         /// </summary>
         [DataMember(Name = "CODFeeDiscount", EmitDefaultValue = false)]
-        public Money CODFeeDiscount { get; set; }
+        public Money? CODFeeDiscount { get; set; }
 
         /// <summary>
         /// Indicates whether the item is a gift.  **Possible values**: &#x60;true&#x60; and &#x60;false&#x60;.
         /// </summary>
         /// <value>Indicates whether the item is a gift.  **Possible values**: &#x60;true&#x60; and &#x60;false&#x60;.</value>
         [DataMember(Name = "IsGift", EmitDefaultValue = false)]
-        public string IsGift { get; set; }
+        public string? IsGift { get; set; }
 
         /// <summary>
         /// The condition of the item, as described by the seller.
         /// </summary>
         /// <value>The condition of the item, as described by the seller.</value>
         [DataMember(Name = "ConditionNote", EmitDefaultValue = false)]
-        public string ConditionNote { get; set; }
+        public string? ConditionNote { get; set; }
 
         /// <summary>
         /// The condition of the item.  **Possible values**: &#x60;New&#x60;, &#x60;Used&#x60;, &#x60;Collectible&#x60;, &#x60;Refurbished&#x60;, &#x60;Preorder&#x60;, and &#x60;Club&#x60;.
         /// </summary>
         /// <value>The condition of the item.  **Possible values**: &#x60;New&#x60;, &#x60;Used&#x60;, &#x60;Collectible&#x60;, &#x60;Refurbished&#x60;, &#x60;Preorder&#x60;, and &#x60;Club&#x60;.</value>
         [DataMember(Name = "ConditionId", EmitDefaultValue = false)]
-        public string ConditionId { get; set; }
+        public string? ConditionId { get; set; }
 
         /// <summary>
         /// The subcondition of the item.  **Possible values**: &#x60;New&#x60;, &#x60;Mint&#x60;, &#x60;Very Good&#x60;, &#x60;Good&#x60;, &#x60;Acceptable&#x60;, &#x60;Poor&#x60;, &#x60;Club&#x60;, &#x60;OEM&#x60;, &#x60;Warranty&#x60;, &#x60;Refurbished Warranty&#x60;, &#x60;Refurbished&#x60;, &#x60;Open Box&#x60;, &#x60;Any&#x60;, and &#x60;Other&#x60;.
         /// </summary>
         /// <value>The subcondition of the item.  **Possible values**: &#x60;New&#x60;, &#x60;Mint&#x60;, &#x60;Very Good&#x60;, &#x60;Good&#x60;, &#x60;Acceptable&#x60;, &#x60;Poor&#x60;, &#x60;Club&#x60;, &#x60;OEM&#x60;, &#x60;Warranty&#x60;, &#x60;Refurbished Warranty&#x60;, &#x60;Refurbished&#x60;, &#x60;Open Box&#x60;, &#x60;Any&#x60;, and &#x60;Other&#x60;.</value>
         [DataMember(Name = "ConditionSubtypeId", EmitDefaultValue = false)]
-        public string ConditionSubtypeId { get; set; }
+        public string? ConditionSubtypeId { get; set; }
 
         /// <summary>
         /// The start date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
         /// </summary>
         /// <value>The start date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.</value>
         [DataMember(Name = "ScheduledDeliveryStartDate", EmitDefaultValue = false)]
-        public string ScheduledDeliveryStartDate { get; set; }
+        public string? ScheduledDeliveryStartDate { get; set; }
 
         /// <summary>
         /// The end date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
         /// </summary>
         /// <value>The end date of the scheduled delivery window in the time zone for the order destination. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.</value>
         [DataMember(Name = "ScheduledDeliveryEndDate", EmitDefaultValue = false)]
-        public string ScheduledDeliveryEndDate { get; set; }
+        public string? ScheduledDeliveryEndDate { get; set; }
 
         /// <summary>
         /// Indicates that the selling price is a special price that is only available for Amazon Business orders. For more information about the Amazon Business Seller Program, refer to the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).   **Possible values**: &#x60;BusinessPrice&#x60;
         /// </summary>
         /// <value>Indicates that the selling price is a special price that is only available for Amazon Business orders. For more information about the Amazon Business Seller Program, refer to the [Amazon Business website](https://www.amazon.com/b2b/info/amazon-business).   **Possible values**: &#x60;BusinessPrice&#x60;</value>
         [DataMember(Name = "PriceDesignation", EmitDefaultValue = false)]
-        public string PriceDesignation { get; set; }
+        public string? PriceDesignation { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxCollection
         /// </summary>
         [DataMember(Name = "TaxCollection", EmitDefaultValue = false)]
-        public TaxCollection TaxCollection { get; set; }
+        public TaxCollection? TaxCollection { get; set; }
 
         /// <summary>
         /// When true, the product type for this item has a serial number.   Only returned for Amazon Easy Ship orders.
         /// </summary>
         /// <value>When true, the product type for this item has a serial number.   Only returned for Amazon Easy Ship orders.</value>
         [DataMember(Name = "SerialNumberRequired", EmitDefaultValue = true)]
-        public bool SerialNumberRequired { get; set; }
+        public bool? SerialNumberRequired { get; set; }
 
         /// <summary>
         /// When true, the ASIN is enrolled in Transparency. The Transparency serial number that you must submit is determined by:  **1D or 2D Barcode:** This has a **T** logo. Submit either the 29-character alpha-numeric identifier beginning with **AZ** or **ZA**, or the 38-character Serialized Global Trade Item Number (SGTIN). **2D Barcode SN:** Submit the 7- to 20-character serial number barcode, which likely has the prefix **SN**. The serial number is applied to the same side of the packaging as the GTIN (UPC/EAN/ISBN) barcode. **QR code SN:** Submit the URL that the QR code generates.
         /// </summary>
         /// <value>When true, the ASIN is enrolled in Transparency. The Transparency serial number that you must submit is determined by:  **1D or 2D Barcode:** This has a **T** logo. Submit either the 29-character alpha-numeric identifier beginning with **AZ** or **ZA**, or the 38-character Serialized Global Trade Item Number (SGTIN). **2D Barcode SN:** Submit the 7- to 20-character serial number barcode, which likely has the prefix **SN**. The serial number is applied to the same side of the packaging as the GTIN (UPC/EAN/ISBN) barcode. **QR code SN:** Submit the URL that the QR code generates.</value>
         [DataMember(Name = "IsTransparency", EmitDefaultValue = true)]
-        public bool IsTransparency { get; set; }
+        public bool? IsTransparency { get; set; }
 
         /// <summary>
         /// The IOSS number of the marketplace. Sellers shipping to the EU from outside the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.
         /// </summary>
         /// <value>The IOSS number of the marketplace. Sellers shipping to the EU from outside the EU must provide this IOSS number to their carrier when Amazon has collected the VAT on the sale.</value>
         [DataMember(Name = "IossNumber", EmitDefaultValue = false)]
-        public string IossNumber { get; set; }
+        public string? IossNumber { get; set; }
 
         /// <summary>
         /// The store chain store identifier. Linked to a specific store in a store chain.
         /// </summary>
         /// <value>The store chain store identifier. Linked to a specific store in a store chain.</value>
         [DataMember(Name = "StoreChainStoreId", EmitDefaultValue = false)]
-        public string StoreChainStoreId { get; set; }
+        public string? StoreChainStoreId { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerInfo
         /// </summary>
         [DataMember(Name = "BuyerInfo", EmitDefaultValue = false)]
-        public ItemBuyerInfo BuyerInfo { get; set; }
+        public ItemBuyerInfo? BuyerInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerRequestedCancel
         /// </summary>
         [DataMember(Name = "BuyerRequestedCancel", EmitDefaultValue = false)]
-        public BuyerRequestedCancel BuyerRequestedCancel { get; set; }
+        public BuyerRequestedCancel? BuyerRequestedCancel { get; set; }
 
         /// <summary>
         /// A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.
         /// </summary>
         /// <value>A list of serial numbers for electronic products that are shipped to customers. Returned for FBA orders only.</value>
         [DataMember(Name = "SerialNumbers", EmitDefaultValue = false)]
-        public List<string> SerialNumbers { get; set; }
+        public List<string>? SerialNumbers { get; set; }
 
         /// <summary>
         /// Gets or Sets SubstitutionPreferences
         /// </summary>
         [DataMember(Name = "SubstitutionPreferences", EmitDefaultValue = false)]
-        public SubstitutionPreferences SubstitutionPreferences { get; set; }
+        public SubstitutionPreferences? SubstitutionPreferences { get; set; }
 
         /// <summary>
         /// Gets or Sets Measurement
         /// </summary>
         [DataMember(Name = "Measurement", EmitDefaultValue = false)]
-        public Measurement Measurement { get; set; }
+        public Measurement? Measurement { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingConstraints
         /// </summary>
         [DataMember(Name = "ShippingConstraints", EmitDefaultValue = false)]
-        public ShippingConstraints ShippingConstraints { get; set; }
+        public ShippingConstraints? ShippingConstraints { get; set; }
 
         /// <summary>
         /// Gets or Sets AmazonPrograms
         /// </summary>
         [DataMember(Name = "AmazonPrograms", EmitDefaultValue = false)]
-        public AmazonPrograms AmazonPrograms { get; set; }
+        public AmazonPrograms? AmazonPrograms { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -485,5 +485,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

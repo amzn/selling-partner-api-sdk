@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="desiredEndDate">The desired end date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format..</param>
         /// <param name="desiredStartDate">The desired start date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format..</param>
-        public GenerateSelfShipAppointmentSlotsRequest(DateTime desiredEndDate = default(DateTime), DateTime desiredStartDate = default(DateTime))
+        public GenerateSelfShipAppointmentSlotsRequest(DateTime? desiredEndDate = default(DateTime?), DateTime? desiredStartDate = default(DateTime?))
         {
             this.DesiredEndDate = desiredEndDate;
             this.DesiredStartDate = desiredStartDate;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The desired end date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.</value>
         [DataMember(Name = "desiredEndDate", EmitDefaultValue = false)]
-        public DateTime DesiredEndDate { get; set; }
+        public DateTime? DesiredEndDate { get; set; }
 
         /// <summary>
         /// The desired start date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.
         /// </summary>
         /// <value>The desired start date. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.</value>
         [DataMember(Name = "desiredStartDate", EmitDefaultValue = false)]
-        public DateTime DesiredStartDate { get; set; }
+        public DateTime? DesiredStartDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

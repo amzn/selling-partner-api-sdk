@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="taxTypeSGST">taxTypeSGST (required).</param>
         /// <param name="taxTypeIGST">taxTypeIGST (required).</param>
         /// <param name="totalExpense">totalExpense.</param>
-        public AffordabilityExpenseEvent(string amazonOrderId = default(string), DateTime postedDate = default(DateTime), string marketplaceId = default(string), string transactionType = default(string), Currency baseExpense = default(Currency), Currency taxTypeCGST = default(Currency), Currency taxTypeSGST = default(Currency), Currency taxTypeIGST = default(Currency), Currency totalExpense = default(Currency))
+        public AffordabilityExpenseEvent(string? amazonOrderId = default(string?), DateTime? postedDate = default(DateTime?), string? marketplaceId = default(string?), string? transactionType = default(string?), Currency? baseExpense = default(Currency?), Currency taxTypeCGST = default(Currency), Currency taxTypeSGST = default(Currency), Currency taxTypeIGST = default(Currency), Currency? totalExpense = default(Currency?))
         {
             // to ensure "taxTypeCGST" is required (not null)
             if (taxTypeCGST == null)
@@ -81,34 +81,34 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>An Amazon-defined identifier for an order.</value>
         [DataMember(Name = "AmazonOrderId", EmitDefaultValue = false)]
-        public string AmazonOrderId { get; set; }
+        public string? AmazonOrderId { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The Amazon-defined marketplace identifier.
         /// </summary>
         /// <value>The Amazon-defined marketplace identifier.</value>
         [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// The type of transaction.   Possible values:  * &#x60;Charge&#x60;: an affordability promotion expense. * &#x60;Refund&#x60;: an affordability promotion expense reversal.
         /// </summary>
         /// <value>The type of transaction.   Possible values:  * &#x60;Charge&#x60;: an affordability promotion expense. * &#x60;Refund&#x60;: an affordability promotion expense reversal.</value>
         [DataMember(Name = "TransactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// Gets or Sets BaseExpense
         /// </summary>
         [DataMember(Name = "BaseExpense", EmitDefaultValue = false)]
-        public Currency BaseExpense { get; set; }
+        public Currency? BaseExpense { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxTypeCGST
@@ -132,7 +132,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// Gets or Sets TotalExpense
         /// </summary>
         [DataMember(Name = "TotalExpense", EmitDefaultValue = false)]
-        public Currency TotalExpense { get; set; }
+        public Currency? TotalExpense { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -174,5 +174,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

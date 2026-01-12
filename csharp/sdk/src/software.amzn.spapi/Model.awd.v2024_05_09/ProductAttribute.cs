@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="name">Product attribute name..</param>
         /// <param name="value">Product attribute value..</param>
-        public ProductAttribute(string name = default(string), string value = default(string))
+        public ProductAttribute(string? name = default(string?), string? value = default(string?))
         {
             this.Name = name;
             this.Value = value;
@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestAttribute</example>
         */
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Product attribute value.
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestAttributeValue</example>
         */
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,5 +95,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

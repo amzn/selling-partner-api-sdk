@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// </summary>
         /// <param name="restrictedDataToken">A Restricted Data Token (RDT). This is a short-lived access token that authorizes calls to restricted operations. Pass this value with the x-amz-access-token header when making subsequent calls to these restricted resources..</param>
         /// <param name="expiresIn">The lifetime of the Restricted Data Token, in seconds..</param>
-        public CreateRestrictedDataTokenResponse(string restrictedDataToken = default(string), int expiresIn = default(int))
+        public CreateRestrictedDataTokenResponse(string? restrictedDataToken = default(string?), int? expiresIn = default(int?))
         {
             this.RestrictedDataToken = restrictedDataToken;
             this.ExpiresIn = expiresIn;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// </summary>
         /// <value>A Restricted Data Token (RDT). This is a short-lived access token that authorizes calls to restricted operations. Pass this value with the x-amz-access-token header when making subsequent calls to these restricted resources.</value>
         [DataMember(Name = "restrictedDataToken", EmitDefaultValue = false)]
-        public string RestrictedDataToken { get; set; }
+        public string? RestrictedDataToken { get; set; }
 
         /// <summary>
         /// The lifetime of the Restricted Data Token, in seconds.
         /// </summary>
         /// <value>The lifetime of the Restricted Data Token, in seconds.</value>
         [DataMember(Name = "expiresIn", EmitDefaultValue = false)]
-        public int ExpiresIn { get; set; }
+        public int? ExpiresIn { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
             yield break;
         }
     }
-
 }

@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="title">The title of the service job..</param>
         /// <param name="quantity">The number of service jobs..</param>
         /// <param name="requiredSkills">A list of skills required to perform the job..</param>
-        public ScopeOfWork(string asin = default(string), string title = default(string), int quantity = default(int), List<string> requiredSkills = default(List<string>))
+        public ScopeOfWork(string? asin = default(string?), string? title = default(string?), int? quantity = default(int?), List<string>? requiredSkills = default(List<string>?))
         {
             this.Asin = asin;
             this.Title = title;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the service job.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The title of the service job.
         /// </summary>
         /// <value>The title of the service job.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The number of service jobs.
         /// </summary>
         /// <value>The number of service jobs.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// A list of skills required to perform the job.
         /// </summary>
         /// <value>A list of skills required to perform the job.</value>
         [DataMember(Name = "requiredSkills", EmitDefaultValue = false)]
-        public List<string> RequiredSkills { get; set; }
+        public List<string>? RequiredSkills { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

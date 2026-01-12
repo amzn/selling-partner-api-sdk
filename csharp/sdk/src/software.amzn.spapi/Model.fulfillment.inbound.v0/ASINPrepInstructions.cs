@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="barcodeInstruction">barcodeInstruction.</param>
         /// <param name="prepGuidance">prepGuidance.</param>
         /// <param name="prepInstructionList">A list of preparation instructions to help with item sourcing decisions..</param>
-        public ASINPrepInstructions(string aSIN = default(string), BarcodeInstruction? barcodeInstruction = default(BarcodeInstruction?), PrepGuidance? prepGuidance = default(PrepGuidance?), List<PrepInstruction> prepInstructionList = default(List<PrepInstruction>))
+        public ASINPrepInstructions(string? aSIN = default(string?), BarcodeInstruction? barcodeInstruction = default(BarcodeInstruction?), PrepGuidance? prepGuidance = default(PrepGuidance?), List<PrepInstruction>? prepInstructionList = default(List<PrepInstruction>?))
         {
             this.ASIN = aSIN;
             this.BarcodeInstruction = barcodeInstruction;
@@ -63,14 +63,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// A list of preparation instructions to help with item sourcing decisions.
         /// </summary>
         /// <value>A list of preparation instructions to help with item sourcing decisions.</value>
         [DataMember(Name = "PrepInstructionList", EmitDefaultValue = false)]
-        public List<PrepInstruction> PrepInstructionList { get; set; }
+        public List<PrepInstruction>? PrepInstructionList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

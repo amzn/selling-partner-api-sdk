@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="breakdownType">The type of charge..</param>
         /// <param name="breakdownAmount">breakdownAmount.</param>
         /// <param name="breakdowns">A list of breakdowns that detail how the total amount is calculated for the transaction..</param>
-        public Breakdown(string breakdownType = default(string), Currency breakdownAmount = default(Currency), List<Breakdown> breakdowns = default(List<Breakdown>))
+        public Breakdown(string? breakdownType = default(string?), Currency? breakdownAmount = default(Currency?), List<Breakdown>? breakdowns = default(List<Breakdown>?))
         {
             this.BreakdownType = breakdownType;
             this.BreakdownAmount = breakdownAmount;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The type of charge.</value>
         [DataMember(Name = "breakdownType", EmitDefaultValue = false)]
-        public string BreakdownType { get; set; }
+        public string? BreakdownType { get; set; }
 
         /// <summary>
         /// Gets or Sets BreakdownAmount
         /// </summary>
         [DataMember(Name = "breakdownAmount", EmitDefaultValue = false)]
-        public Currency BreakdownAmount { get; set; }
+        public Currency? BreakdownAmount { get; set; }
 
         /// <summary>
         /// A list of breakdowns that detail how the total amount is calculated for the transaction.
         /// </summary>
         /// <value>A list of breakdowns that detail how the total amount is calculated for the transaction.</value>
         [DataMember(Name = "breakdowns", EmitDefaultValue = false)]
-        public List<Breakdown> Breakdowns { get; set; }
+        public List<Breakdown>? Breakdowns { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

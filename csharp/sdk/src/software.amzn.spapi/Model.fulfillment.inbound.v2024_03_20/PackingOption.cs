@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="status">The status of the packing option. Possible values: &#x60;OFFERED&#x60;, &#x60;ACCEPTED&#x60;, &#x60;EXPIRED&#x60;. (required).</param>
         /// <param name="supportedConfigurations">A list of possible configurations for this option. (required).</param>
         /// <param name="supportedShippingConfigurations">**This field is deprecated**. Use the &#x60;shippingRequirements&#x60; property under &#x60;supportedConfigurations&#x60; instead. List of supported shipping modes. (required).</param>
-        public PackingOption(List<Incentive> discounts = default(List<Incentive>), DateTime expiration = default(DateTime), List<Incentive> fees = default(List<Incentive>), List<string> packingGroups = default(List<string>), string packingOptionId = default(string), string status = default(string), List<PackingConfiguration> supportedConfigurations = default(List<PackingConfiguration>), List<ShippingConfiguration> supportedShippingConfigurations = default(List<ShippingConfiguration>))
+        public PackingOption(List<Incentive> discounts = default(List<Incentive>), DateTime? expiration = default(DateTime?), List<Incentive> fees = default(List<Incentive>), List<string> packingGroups = default(List<string>), string packingOptionId = default(string), string status = default(string), List<PackingConfiguration> supportedConfigurations = default(List<PackingConfiguration>), List<ShippingConfiguration> supportedShippingConfigurations = default(List<ShippingConfiguration>))
         {
             // to ensure "discounts" is required (not null)
             if (discounts == null)
@@ -106,7 +106,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The time at which this packing option is no longer valid. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public DateTime Expiration { get; set; }
+        public DateTime? Expiration { get; set; }
 
         /// <summary>
         /// Fee for the offered option.
@@ -222,5 +222,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

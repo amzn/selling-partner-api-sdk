@@ -165,7 +165,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="transportationRegulatoryClass">The specific regulatory class  of the item being shipped..</param>
         /// <param name="packingGroup">The specific packaging group of the item being shipped..</param>
         /// <param name="packingInstruction">The specific packing instruction of the item being shipped..</param>
-        public DangerousGoodsDetails(string unitedNationsRegulatoryId = default(string), string transportationRegulatoryClass = default(string), PackingGroupEnum? packingGroup = default(PackingGroupEnum?), PackingInstructionEnum? packingInstruction = default(PackingInstructionEnum?))
+        public DangerousGoodsDetails(string? unitedNationsRegulatoryId = default(string?), string? transportationRegulatoryClass = default(string?), PackingGroupEnum? packingGroup = default(PackingGroupEnum?), PackingInstructionEnum? packingInstruction = default(PackingInstructionEnum?))
         {
             this.UnitedNationsRegulatoryId = unitedNationsRegulatoryId;
             this.TransportationRegulatoryClass = transportationRegulatoryClass;
@@ -178,14 +178,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The specific UNID of the item being shipped.</value>
         [DataMember(Name = "unitedNationsRegulatoryId", EmitDefaultValue = false)]
-        public string UnitedNationsRegulatoryId { get; set; }
+        public string? UnitedNationsRegulatoryId { get; set; }
 
         /// <summary>
         /// The specific regulatory class  of the item being shipped.
         /// </summary>
         /// <value>The specific regulatory class  of the item being shipped.</value>
         [DataMember(Name = "transportationRegulatoryClass", EmitDefaultValue = false)]
-        public string TransportationRegulatoryClass { get; set; }
+        public string? TransportationRegulatoryClass { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -240,5 +240,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="operationalConfiguration">operationalConfiguration.</param>
         /// <param name="timezone">Please see RFC 6557, should be a canonical time zone ID as listed here: https://www.joda.org/joda-time/timezones.html..</param>
-        public SupplySourceConfiguration(OperationalConfiguration operationalConfiguration = default(OperationalConfiguration), string timezone = default(string))
+        public SupplySourceConfiguration(OperationalConfiguration? operationalConfiguration = default(OperationalConfiguration?), string? timezone = default(string?))
         {
             this.OperationalConfiguration = operationalConfiguration;
             this.Timezone = timezone;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets OperationalConfiguration
         /// </summary>
         [DataMember(Name = "operationalConfiguration", EmitDefaultValue = false)]
-        public OperationalConfiguration OperationalConfiguration { get; set; }
+        public OperationalConfiguration? OperationalConfiguration { get; set; }
 
         /// <summary>
         /// Please see RFC 6557, should be a canonical time zone ID as listed here: https://www.joda.org/joda-time/timezones.html.
         /// </summary>
         /// <value>Please see RFC 6557, should be a canonical time zone ID as listed here: https://www.joda.org/joda-time/timezones.html.</value>
         [DataMember(Name = "timezone", EmitDefaultValue = false)]
-        public string Timezone { get; set; }
+        public string? Timezone { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

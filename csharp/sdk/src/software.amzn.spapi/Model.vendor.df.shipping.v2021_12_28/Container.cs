@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="dimensions">dimensions.</param>
         /// <param name="weight">weight (required).</param>
         /// <param name="packedItems">A list of packed items. (required).</param>
-        public Container(ContainerTypeEnum containerType = default(ContainerTypeEnum), string containerIdentifier = default(string), string trackingNumber = default(string), string manifestId = default(string), string manifestDate = default(string), string shipMethod = default(string), string scacCode = default(string), string carrier = default(string), int containerSequenceNumber = default(int), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), List<PackedItem> packedItems = default(List<PackedItem>))
+        public Container(ContainerTypeEnum containerType = default(ContainerTypeEnum), string containerIdentifier = default(string), string? trackingNumber = default(string?), string? manifestId = default(string?), string? manifestDate = default(string?), string? shipMethod = default(string?), string? scacCode = default(string?), string? carrier = default(string?), int? containerSequenceNumber = default(int?), Dimensions? dimensions = default(Dimensions?), Weight weight = default(Weight), List<PackedItem> packedItems = default(List<PackedItem>))
         {
             this.ContainerType = containerType;
             // to ensure "containerIdentifier" is required (not null)
@@ -121,55 +121,55 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>The tracking number.</value>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = false)]
-        public string TrackingNumber { get; set; }
+        public string? TrackingNumber { get; set; }
 
         /// <summary>
         /// The manifest identifier.
         /// </summary>
         /// <value>The manifest identifier.</value>
         [DataMember(Name = "manifestId", EmitDefaultValue = false)]
-        public string ManifestId { get; set; }
+        public string? ManifestId { get; set; }
 
         /// <summary>
         /// The date of the manifest.
         /// </summary>
         /// <value>The date of the manifest.</value>
         [DataMember(Name = "manifestDate", EmitDefaultValue = false)]
-        public string ManifestDate { get; set; }
+        public string? ManifestDate { get; set; }
 
         /// <summary>
         /// The shipment method. This property is required when calling the &#x60;submitShipmentConfirmations&#x60; operation, and optional otherwise.
         /// </summary>
         /// <value>The shipment method. This property is required when calling the &#x60;submitShipmentConfirmations&#x60; operation, and optional otherwise.</value>
         [DataMember(Name = "shipMethod", EmitDefaultValue = false)]
-        public string ShipMethod { get; set; }
+        public string? ShipMethod { get; set; }
 
         /// <summary>
         /// SCAC code required for NA VOC vendors only.
         /// </summary>
         /// <value>SCAC code required for NA VOC vendors only.</value>
         [DataMember(Name = "scacCode", EmitDefaultValue = false)]
-        public string ScacCode { get; set; }
+        public string? ScacCode { get; set; }
 
         /// <summary>
         /// Carrier required for EU VOC vendors only.
         /// </summary>
         /// <value>Carrier required for EU VOC vendors only.</value>
         [DataMember(Name = "carrier", EmitDefaultValue = false)]
-        public string Carrier { get; set; }
+        public string? Carrier { get; set; }
 
         /// <summary>
         /// An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.
         /// </summary>
         /// <value>An integer that must be submitted for multi-box shipments only, where one item may come in separate packages.</value>
         [DataMember(Name = "containerSequenceNumber", EmitDefaultValue = false)]
-        public int ContainerSequenceNumber { get; set; }
+        public int? ContainerSequenceNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public Dimensions Dimensions { get; set; }
+        public Dimensions? Dimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
@@ -227,5 +227,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

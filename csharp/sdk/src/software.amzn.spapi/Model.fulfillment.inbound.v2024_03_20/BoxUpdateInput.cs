@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="packageId">Primary key to uniquely identify a Box Package. PackageId must be provided if the intent is to update an existing box. Adding a new box will not require providing this value. Any existing PackageIds not provided will be treated as to-be-removed.</param>
         /// <param name="quantity">The number of containers where all other properties like weight or dimensions are identical. (required).</param>
         /// <param name="weight">weight (required).</param>
-        public BoxUpdateInput(BoxContentInformationSource contentInformationSource = default(BoxContentInformationSource), Dimensions dimensions = default(Dimensions), List<ItemInput> items = default(List<ItemInput>), string packageId = default(string), int quantity = default(int), Weight weight = default(Weight))
+        public BoxUpdateInput(BoxContentInformationSource contentInformationSource = default(BoxContentInformationSource), Dimensions dimensions = default(Dimensions), List<ItemInput>? items = default(List<ItemInput>?), string? packageId = default(string?), int quantity = default(int), Weight weight = default(Weight))
         {
             this.ContentInformationSource = contentInformationSource;
             // to ensure "dimensions" is required (not null)
@@ -82,14 +82,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The items and their quantity in the box. This must be empty if the box &#x60;contentInformationSource&#x60; is &#x60;BARCODE_2D&#x60; or &#x60;MANUAL_PROCESS&#x60;.</value>
         [DataMember(Name = "items", EmitDefaultValue = false)]
-        public List<ItemInput> Items { get; set; }
+        public List<ItemInput>? Items { get; set; }
 
         /// <summary>
         /// Primary key to uniquely identify a Box Package. PackageId must be provided if the intent is to update an existing box. Adding a new box will not require providing this value. Any existing PackageIds not provided will be treated as to-be-removed
         /// </summary>
         /// <value>Primary key to uniquely identify a Box Package. PackageId must be provided if the intent is to update an existing box. Adding a new box will not require providing this value. Any existing PackageIds not provided will be treated as to-be-removed</value>
         [DataMember(Name = "packageId", EmitDefaultValue = false)]
-        public string PackageId { get; set; }
+        public string? PackageId { get; set; }
 
         /// <summary>
         /// The number of containers where all other properties like weight or dimensions are identical.
@@ -174,5 +174,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

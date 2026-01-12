@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// Initializes a new instance of the <see cref="GetAttributesResponseBuyer" /> class.
         /// </summary>
         /// <param name="locale">The buyer&#39;s language of preference, indicated with a locale-specific language tag. Examples: \&quot;en-US\&quot;, \&quot;zh-CN\&quot;, and \&quot;en-GB\&quot;..</param>
-        public GetAttributesResponseBuyer(string locale = default(string))
+        public GetAttributesResponseBuyer(string? locale = default(string?))
         {
             this.Locale = locale;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>The buyer&#39;s language of preference, indicated with a locale-specific language tag. Examples: \&quot;en-US\&quot;, \&quot;zh-CN\&quot;, and \&quot;en-GB\&quot;.</value>
         [DataMember(Name = "locale", EmitDefaultValue = false)]
-        public string Locale { get; set; }
+        public string? Locale { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

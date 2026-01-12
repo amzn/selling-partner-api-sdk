@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// <param name="companyRegistrationNumber">The seller&#39;s company registration number, if applicable. This field will be absent for individual sellers and sole proprietorships..</param>
         /// <param name="companyTaxIdentificationNumber">The seller&#39;s company tax identification number, if applicable. This field will be present for certain business types only, such as sole proprietorships..</param>
         /// <param name="nonLatinName">The non-Latin script version of the registered business name, if applicable..</param>
-        public Business(string name = default(string), Address registeredBusinessAddress = default(Address), string companyRegistrationNumber = default(string), string companyTaxIdentificationNumber = default(string), string nonLatinName = default(string))
+        public Business(string name = default(string), Address registeredBusinessAddress = default(Address), string? companyRegistrationNumber = default(string?), string? companyTaxIdentificationNumber = default(string?), string? nonLatinName = default(string?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -81,21 +81,21 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// </summary>
         /// <value>The seller&#39;s company registration number, if applicable. This field will be absent for individual sellers and sole proprietorships.</value>
         [DataMember(Name = "companyRegistrationNumber", EmitDefaultValue = false)]
-        public string CompanyRegistrationNumber { get; set; }
+        public string? CompanyRegistrationNumber { get; set; }
 
         /// <summary>
         /// The seller&#39;s company tax identification number, if applicable. This field will be present for certain business types only, such as sole proprietorships.
         /// </summary>
         /// <value>The seller&#39;s company tax identification number, if applicable. This field will be present for certain business types only, such as sole proprietorships.</value>
         [DataMember(Name = "companyTaxIdentificationNumber", EmitDefaultValue = false)]
-        public string CompanyTaxIdentificationNumber { get; set; }
+        public string? CompanyTaxIdentificationNumber { get; set; }
 
         /// <summary>
         /// The non-Latin script version of the registered business name, if applicable.
         /// </summary>
         /// <value>The non-Latin script version of the registered business name, if applicable.</value>
         [DataMember(Name = "nonLatinName", EmitDefaultValue = false)]
-        public string NonLatinName { get; set; }
+        public string? NonLatinName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.sellers.v1
             yield break;
         }
     }
-
 }

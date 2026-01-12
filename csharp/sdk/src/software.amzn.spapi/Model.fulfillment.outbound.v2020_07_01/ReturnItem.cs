@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="returnAuthorizationId">Identifies the return authorization used to return this item. Refer to &#x60;ReturnAuthorization&#x60;..</param>
         /// <param name="returnReceivedCondition">returnReceivedCondition.</param>
         /// <param name="fulfillmentCenterId">The identifier for the Amazon fulfillment center that processed the return item..</param>
-        public ReturnItem(string sellerReturnItemId = default(string), string sellerFulfillmentOrderItemId = default(string), string amazonShipmentId = default(string), string sellerReturnReasonCode = default(string), string returnComment = default(string), string amazonReturnReasonCode = default(string), FulfillmentReturnItemStatus status = default(FulfillmentReturnItemStatus), DateTime statusChangedDate = default(DateTime), string returnAuthorizationId = default(string), ReturnItemDisposition? returnReceivedCondition = default(ReturnItemDisposition?), string fulfillmentCenterId = default(string))
+        public ReturnItem(string sellerReturnItemId = default(string), string sellerFulfillmentOrderItemId = default(string), string amazonShipmentId = default(string), string sellerReturnReasonCode = default(string), string? returnComment = default(string?), string? amazonReturnReasonCode = default(string?), FulfillmentReturnItemStatus status = default(FulfillmentReturnItemStatus), DateTime statusChangedDate = default(DateTime), string? returnAuthorizationId = default(string?), ReturnItemDisposition? returnReceivedCondition = default(ReturnItemDisposition?), string? fulfillmentCenterId = default(string?))
         {
             // to ensure "sellerReturnItemId" is required (not null)
             if (sellerReturnItemId == null)
@@ -130,14 +130,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An optional comment about the return item.</value>
         [DataMember(Name = "returnComment", EmitDefaultValue = false)]
-        public string ReturnComment { get; set; }
+        public string? ReturnComment { get; set; }
 
         /// <summary>
         /// The return reason code that the Amazon fulfillment center assigned to the return item.
         /// </summary>
         /// <value>The return reason code that the Amazon fulfillment center assigned to the return item.</value>
         [DataMember(Name = "amazonReturnReasonCode", EmitDefaultValue = false)]
-        public string AmazonReturnReasonCode { get; set; }
+        public string? AmazonReturnReasonCode { get; set; }
 
         /// <summary>
         /// Date timestamp
@@ -151,14 +151,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Identifies the return authorization used to return this item. Refer to &#x60;ReturnAuthorization&#x60;.</value>
         [DataMember(Name = "returnAuthorizationId", EmitDefaultValue = false)]
-        public string ReturnAuthorizationId { get; set; }
+        public string? ReturnAuthorizationId { get; set; }
 
         /// <summary>
         /// The identifier for the Amazon fulfillment center that processed the return item.
         /// </summary>
         /// <value>The identifier for the Amazon fulfillment center that processed the return item.</value>
         [DataMember(Name = "fulfillmentCenterId", EmitDefaultValue = false)]
-        public string FulfillmentCenterId { get; set; }
+        public string? FulfillmentCenterId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -202,5 +202,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

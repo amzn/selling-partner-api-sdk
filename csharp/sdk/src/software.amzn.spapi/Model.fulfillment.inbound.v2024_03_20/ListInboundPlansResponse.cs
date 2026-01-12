@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="inboundPlans">A list of inbound plans with minimal information..</param>
         /// <param name="pagination">pagination.</param>
-        public ListInboundPlansResponse(List<InboundPlanSummary> inboundPlans = default(List<InboundPlanSummary>), Pagination pagination = default(Pagination))
+        public ListInboundPlansResponse(List<InboundPlanSummary>? inboundPlans = default(List<InboundPlanSummary>?), Pagination? pagination = default(Pagination?))
         {
             this.InboundPlans = inboundPlans;
             this.Pagination = pagination;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>A list of inbound plans with minimal information.</value>
         [DataMember(Name = "inboundPlans", EmitDefaultValue = false)]
-        public List<InboundPlanSummary> InboundPlans { get; set; }
+        public List<InboundPlanSummary>? InboundPlans { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

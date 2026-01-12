@@ -55,7 +55,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="itemCondition">itemCondition (required).</param>
         /// <param name="customerType">customerType.</param>
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item. This is the same Asin passed as a request parameter..</param>
-        public ItemOffersRequestParams(string marketplaceId = default(string), ItemCondition itemCondition = default(ItemCondition), CustomerType? customerType = default(CustomerType?), string asin = default(string))
+        public ItemOffersRequestParams(string marketplaceId = default(string), ItemCondition itemCondition = default(ItemCondition), CustomerType? customerType = default(CustomerType?), string? asin = default(string?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item. This is the same Asin passed as a request parameter.</value>
         [DataMember(Name = "Asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

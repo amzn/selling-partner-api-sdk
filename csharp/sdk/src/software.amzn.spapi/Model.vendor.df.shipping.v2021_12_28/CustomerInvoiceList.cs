@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="customerInvoices">Represents a customer invoice within the &#x60;CustomerInvoiceList&#x60;..</param>
-        public CustomerInvoiceList(Pagination pagination = default(Pagination), List<CustomerInvoice> customerInvoices = default(List<CustomerInvoice>))
+        public CustomerInvoiceList(Pagination? pagination = default(Pagination?), List<CustomerInvoice>? customerInvoices = default(List<CustomerInvoice>?))
         {
             this.Pagination = pagination;
             this.CustomerInvoices = customerInvoices;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Represents a customer invoice within the &#x60;CustomerInvoiceList&#x60;.
         /// </summary>
         /// <value>Represents a customer invoice within the &#x60;CustomerInvoiceList&#x60;.</value>
         [DataMember(Name = "customerInvoices", EmitDefaultValue = false)]
-        public List<CustomerInvoice> CustomerInvoices { get; set; }
+        public List<CustomerInvoice>? CustomerInvoices { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

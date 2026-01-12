@@ -84,7 +84,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="carrierName">The carrier name for the offering..</param>
         /// <param name="pickupWindow">pickupWindow.</param>
         /// <param name="timeSlot">timeSlot.</param>
-        public ShippingOptions(string shippingOptionId = default(string), ShipByEnum shipBy = default(ShipByEnum), string carrierName = default(string), TimeWindow pickupWindow = default(TimeWindow), TimeWindow timeSlot = default(TimeWindow))
+        public ShippingOptions(string shippingOptionId = default(string), ShipByEnum shipBy = default(ShipByEnum), string? carrierName = default(string?), TimeWindow? pickupWindow = default(TimeWindow?), TimeWindow? timeSlot = default(TimeWindow?))
         {
             // to ensure "shippingOptionId" is required (not null)
             if (shippingOptionId == null)
@@ -110,19 +110,19 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The carrier name for the offering.</value>
         [DataMember(Name = "carrierName", EmitDefaultValue = false)]
-        public string CarrierName { get; set; }
+        public string? CarrierName { get; set; }
 
         /// <summary>
         /// Gets or Sets PickupWindow
         /// </summary>
         [DataMember(Name = "pickupWindow", EmitDefaultValue = false)]
-        public TimeWindow PickupWindow { get; set; }
+        public TimeWindow? PickupWindow { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeSlot
         /// </summary>
         [DataMember(Name = "timeSlot", EmitDefaultValue = false)]
-        public TimeWindow TimeSlot { get; set; }
+        public TimeWindow? TimeSlot { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,5 +160,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

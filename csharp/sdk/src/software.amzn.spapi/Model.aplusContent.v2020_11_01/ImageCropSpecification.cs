@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="size">size (required).</param>
         /// <param name="offset">offset.</param>
-        public ImageCropSpecification(ImageDimensions size = default(ImageDimensions), ImageOffsets offset = default(ImageOffsets))
+        public ImageCropSpecification(ImageDimensions size = default(ImageDimensions), ImageOffsets? offset = default(ImageOffsets?))
         {
             // to ensure "size" is required (not null)
             if (size == null)
@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Offset
         /// </summary>
         [DataMember(Name = "offset", EmitDefaultValue = false)]
-        public ImageOffsets Offset { get; set; }
+        public ImageOffsets? Offset { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

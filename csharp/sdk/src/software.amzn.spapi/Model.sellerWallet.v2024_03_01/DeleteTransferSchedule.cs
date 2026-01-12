@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="code">A success code that specifies the delete operation was successful. eg:HTTP 200. (required).</param>
         /// <param name="message">A message that describes the success condition of the delete schedule transaction. (required).</param>
         /// <param name="details">Additional details that can help the caller understand the operation execution..</param>
-        public DeleteTransferSchedule(string code = default(string), string message = default(string), string details = default(string))
+        public DeleteTransferSchedule(string code = default(string), string message = default(string), string? details = default(string?))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <value>Additional details that can help the caller understand the operation execution.</value>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public string Details { get; set; }
+        public string? Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

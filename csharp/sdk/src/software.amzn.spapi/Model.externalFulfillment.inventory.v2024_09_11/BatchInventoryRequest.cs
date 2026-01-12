@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// Initializes a new instance of the <see cref="BatchInventoryRequest" /> class.
         /// </summary>
         /// <param name="requests">A list of inventory requests..</param>
-        public BatchInventoryRequest(List<InventoryRequest> requests = default(List<InventoryRequest>))
+        public BatchInventoryRequest(List<InventoryRequest>? requests = default(List<InventoryRequest>?))
         {
             this.Requests = requests;
         }
@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>[{method&#x3D;POST, uri&#x3D;/inventory/update?locationId&#x3D;EXSB&amp;skuId&#x3D;efptestsku1, body&#x3D;{quantity&#x3D;15, clientSequenceNumber&#x3D;12345678, marketplaceAttributes&#x3D;{marketplaceId&#x3D;AXJDDKDFDKDF, channelName&#x3D;FBA}}}, {method&#x3D;POST, uri&#x3D;/inventory/fetch?locationId&#x3D;EXSB&amp;skuId&#x3D;efptestsku2, body&#x3D;{marketplaceAttributes&#x3D;{marketplaceId&#x3D;AXJDDKDFDKDF, channelName&#x3D;FBA}}}]</example>
         */
         [DataMember(Name = "requests", EmitDefaultValue = false)]
-        public List<InventoryRequest> Requests { get; set; }
+        public List<InventoryRequest>? Requests { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -82,5 +82,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

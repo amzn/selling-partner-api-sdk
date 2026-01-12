@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="block1">block1.</param>
         /// <param name="block2">block2.</param>
         /// <param name="block3">block3.</param>
-        public StandardThreeImageTextModule(TextComponent headline = default(TextComponent), StandardImageTextBlock block1 = default(StandardImageTextBlock), StandardImageTextBlock block2 = default(StandardImageTextBlock), StandardImageTextBlock block3 = default(StandardImageTextBlock))
+        public StandardThreeImageTextModule(TextComponent? headline = default(TextComponent?), StandardImageTextBlock? block1 = default(StandardImageTextBlock?), StandardImageTextBlock? block2 = default(StandardImageTextBlock?), StandardImageTextBlock? block3 = default(StandardImageTextBlock?))
         {
             this.Headline = headline;
             this.Block1 = block1;
@@ -50,25 +50,25 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Headline
         /// </summary>
         [DataMember(Name = "headline", EmitDefaultValue = false)]
-        public TextComponent Headline { get; set; }
+        public TextComponent? Headline { get; set; }
 
         /// <summary>
         /// Gets or Sets Block1
         /// </summary>
         [DataMember(Name = "block1", EmitDefaultValue = false)]
-        public StandardImageTextBlock Block1 { get; set; }
+        public StandardImageTextBlock? Block1 { get; set; }
 
         /// <summary>
         /// Gets or Sets Block2
         /// </summary>
         [DataMember(Name = "block2", EmitDefaultValue = false)]
-        public StandardImageTextBlock Block2 { get; set; }
+        public StandardImageTextBlock? Block2 { get; set; }
 
         /// <summary>
         /// Gets or Sets Block3
         /// </summary>
         [DataMember(Name = "block3", EmitDefaultValue = false)]
-        public StandardImageTextBlock Block3 { get; set; }
+        public StandardImageTextBlock? Block3 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,5 +105,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

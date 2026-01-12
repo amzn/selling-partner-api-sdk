@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="UnlinkCarrierAccountResponse" /> class.
         /// </summary>
         /// <param name="isUnlinked">Is Carrier unlinked from Merchant.</param>
-        public UnlinkCarrierAccountResponse(bool isUnlinked = default(bool))
+        public UnlinkCarrierAccountResponse(bool? isUnlinked = default(bool?))
         {
             this.IsUnlinked = isUnlinked;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Is Carrier unlinked from Merchant</value>
         [DataMember(Name = "isUnlinked", EmitDefaultValue = true)]
-        public bool IsUnlinked { get; set; }
+        public bool? IsUnlinked { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

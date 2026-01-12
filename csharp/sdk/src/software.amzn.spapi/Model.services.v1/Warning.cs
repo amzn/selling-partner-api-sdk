@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="code">An warning code that identifies the type of warning that occurred. (required).</param>
         /// <param name="message">A message that describes the warning condition in a human-readable form. (required).</param>
         /// <param name="details">Additional details that can help the caller understand or address the warning..</param>
-        public Warning(string code = default(string), string message = default(string), string details = default(string))
+        public Warning(string code = default(string), string message = default(string), string? details = default(string?))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Additional details that can help the caller understand or address the warning.</value>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public string Details { get; set; }
+        public string? Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

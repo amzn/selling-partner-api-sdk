@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="GetFulfillmentPreviewResult" /> class.
         /// </summary>
         /// <param name="fulfillmentPreviews">An array of fulfillment preview information..</param>
-        public GetFulfillmentPreviewResult(List<FulfillmentPreview> fulfillmentPreviews = default(List<FulfillmentPreview>))
+        public GetFulfillmentPreviewResult(List<FulfillmentPreview>? fulfillmentPreviews = default(List<FulfillmentPreview>?))
         {
             this.FulfillmentPreviews = fulfillmentPreviews;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of fulfillment preview information.</value>
         [DataMember(Name = "fulfillmentPreviews", EmitDefaultValue = false)]
-        public List<FulfillmentPreview> FulfillmentPreviews { get; set; }
+        public List<FulfillmentPreview>? FulfillmentPreviews { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

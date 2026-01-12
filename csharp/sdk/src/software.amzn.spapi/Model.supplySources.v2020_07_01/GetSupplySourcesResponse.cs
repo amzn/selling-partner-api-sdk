@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="supplySources">The list of &#x60;SupplySource&#x60;s..</param>
         /// <param name="nextPageToken">If present, use this pagination token to retrieve the next page of supply sources..</param>
-        public GetSupplySourcesResponse(List<SupplySourceListInner> supplySources = default(List<SupplySourceListInner>), string nextPageToken = default(string))
+        public GetSupplySourcesResponse(List<SupplySourceListInner>? supplySources = default(List<SupplySourceListInner>?), string? nextPageToken = default(string?))
         {
             this.SupplySources = supplySources;
             this.NextPageToken = nextPageToken;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>The list of &#x60;SupplySource&#x60;s.</value>
         [DataMember(Name = "supplySources", EmitDefaultValue = false)]
-        public List<SupplySourceListInner> SupplySources { get; set; }
+        public List<SupplySourceListInner>? SupplySources { get; set; }
 
         /// <summary>
         /// If present, use this pagination token to retrieve the next page of supply sources.
         /// </summary>
         /// <value>If present, use this pagination token to retrieve the next page of supply sources.</value>
         [DataMember(Name = "nextPageToken", EmitDefaultValue = false)]
-        public string NextPageToken { get; set; }
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

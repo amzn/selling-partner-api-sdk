@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="offerIdentifier">offerIdentifier.</param>
         /// <param name="featuredOfferExpectedPriceResults">A list of FOEP results for the requested offer..</param>
         /// <param name="errors">A list of error responses that are returned when a request is unsuccessful..</param>
-        public FeaturedOfferExpectedPriceResponseBody(OfferIdentifier offerIdentifier = default(OfferIdentifier), List<FeaturedOfferExpectedPriceResult> featuredOfferExpectedPriceResults = default(List<FeaturedOfferExpectedPriceResult>), List<Error> errors = default(List<Error>))
+        public FeaturedOfferExpectedPriceResponseBody(OfferIdentifier? offerIdentifier = default(OfferIdentifier?), List<FeaturedOfferExpectedPriceResult>? featuredOfferExpectedPriceResults = default(List<FeaturedOfferExpectedPriceResult>?), List<Error>? errors = default(List<Error>?))
         {
             this.OfferIdentifier = offerIdentifier;
             this.FeaturedOfferExpectedPriceResults = featuredOfferExpectedPriceResults;
@@ -48,21 +48,21 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets OfferIdentifier
         /// </summary>
         [DataMember(Name = "offerIdentifier", EmitDefaultValue = false)]
-        public OfferIdentifier OfferIdentifier { get; set; }
+        public OfferIdentifier? OfferIdentifier { get; set; }
 
         /// <summary>
         /// A list of FOEP results for the requested offer.
         /// </summary>
         /// <value>A list of FOEP results for the requested offer.</value>
         [DataMember(Name = "featuredOfferExpectedPriceResults", EmitDefaultValue = false)]
-        public List<FeaturedOfferExpectedPriceResult> FeaturedOfferExpectedPriceResults { get; set; }
+        public List<FeaturedOfferExpectedPriceResult>? FeaturedOfferExpectedPriceResults { get; set; }
 
         /// <summary>
         /// A list of error responses that are returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses that are returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

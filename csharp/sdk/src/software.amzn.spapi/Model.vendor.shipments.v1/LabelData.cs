@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="carrierCode">Unique identification of the carrier..</param>
         /// <param name="trackingId">Tracking Id for the transportation..</param>
         /// <param name="label">The base-64 encoded string that represents the shipment label..</param>
-        public LabelData(int labelSequenceNumber = default(int), LabelFormatEnum? labelFormat = default(LabelFormatEnum?), string carrierCode = default(string), string trackingId = default(string), string label = default(string))
+        public LabelData(int? labelSequenceNumber = default(int?), LabelFormatEnum? labelFormat = default(LabelFormatEnum?), string? carrierCode = default(string?), string? trackingId = default(string?), string? label = default(string?))
         {
             this.LabelSequenceNumber = labelSequenceNumber;
             this.LabelFormat = labelFormat;
@@ -74,28 +74,28 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>A sequential number assigned to each label within a shipment.</value>
         [DataMember(Name = "labelSequenceNumber", EmitDefaultValue = false)]
-        public int LabelSequenceNumber { get; set; }
+        public int? LabelSequenceNumber { get; set; }
 
         /// <summary>
         /// Unique identification of the carrier.
         /// </summary>
         /// <value>Unique identification of the carrier.</value>
         [DataMember(Name = "carrierCode", EmitDefaultValue = false)]
-        public string CarrierCode { get; set; }
+        public string? CarrierCode { get; set; }
 
         /// <summary>
         /// Tracking Id for the transportation.
         /// </summary>
         /// <value>Tracking Id for the transportation.</value>
         [DataMember(Name = "trackingId", EmitDefaultValue = false)]
-        public string TrackingId { get; set; }
+        public string? TrackingId { get; set; }
 
         /// <summary>
         /// The base-64 encoded string that represents the shipment label.
         /// </summary>
         /// <value>The base-64 encoded string that represents the shipment label.</value>
         [DataMember(Name = "label", EmitDefaultValue = false)]
-        public string Label { get; set; }
+        public string? Label { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

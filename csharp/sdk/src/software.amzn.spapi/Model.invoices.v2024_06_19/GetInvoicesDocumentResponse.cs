@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// Initializes a new instance of the <see cref="GetInvoicesDocumentResponse" /> class.
         /// </summary>
         /// <param name="invoicesDocument">invoicesDocument.</param>
-        public GetInvoicesDocumentResponse(InvoicesDocument invoicesDocument = default(InvoicesDocument))
+        public GetInvoicesDocumentResponse(InvoicesDocument? invoicesDocument = default(InvoicesDocument?))
         {
             this.InvoicesDocument = invoicesDocument;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// Gets or Sets InvoicesDocument
         /// </summary>
         [DataMember(Name = "invoicesDocument", EmitDefaultValue = false)]
-        public InvoicesDocument InvoicesDocument { get; set; }
+        public InvoicesDocument? InvoicesDocument { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

@@ -93,7 +93,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="contentType">The content type of the to-be-uploaded file (required).</param>
         /// <param name="contentLength">The content length of the to-be-uploaded file (required).</param>
         /// <param name="contentMD5">An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit..</param>
-        public ServiceUploadDocument(ContentTypeEnum contentType = default(ContentTypeEnum), decimal contentLength = default(decimal), string contentMD5 = default(string))
+        public ServiceUploadDocument(ContentTypeEnum contentType = default(ContentTypeEnum), decimal contentLength = default(decimal), string? contentMD5 = default(string?))
         {
             this.ContentType = contentType;
             this.ContentLength = contentLength;
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>An MD5 hash of the content to be submitted to the upload destination. This value is used to determine if the data has been corrupted or tampered with during transit.</value>
         [DataMember(Name = "contentMD5", EmitDefaultValue = false)]
-        public string ContentMD5 { get; set; }
+        public string? ContentMD5 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -169,5 +169,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

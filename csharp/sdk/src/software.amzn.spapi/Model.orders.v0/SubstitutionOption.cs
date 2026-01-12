@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="sellerSKU">The item&#39;s seller stock keeping unit (SKU)..</param>
         /// <param name="title">The item&#39;s title..</param>
         /// <param name="measurement">measurement.</param>
-        public SubstitutionOption(string aSIN = default(string), int quantityOrdered = default(int), string sellerSKU = default(string), string title = default(string), Measurement measurement = default(Measurement))
+        public SubstitutionOption(string? aSIN = default(string?), int? quantityOrdered = default(int?), string? sellerSKU = default(string?), string? title = default(string?), Measurement? measurement = default(Measurement?))
         {
             this.ASIN = aSIN;
             this.QuantityOrdered = quantityOrdered;
@@ -53,34 +53,34 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The item&#39;s Amazon Standard Identification Number (ASIN).</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// The number of items to be picked for this substitution option. 
         /// </summary>
         /// <value>The number of items to be picked for this substitution option. </value>
         [DataMember(Name = "QuantityOrdered", EmitDefaultValue = false)]
-        public int QuantityOrdered { get; set; }
+        public int? QuantityOrdered { get; set; }
 
         /// <summary>
         /// The item&#39;s seller stock keeping unit (SKU).
         /// </summary>
         /// <value>The item&#39;s seller stock keeping unit (SKU).</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// The item&#39;s title.
         /// </summary>
         /// <value>The item&#39;s title.</value>
         [DataMember(Name = "Title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// Gets or Sets Measurement
         /// </summary>
         [DataMember(Name = "Measurement", EmitDefaultValue = false)]
-        public Measurement Measurement { get; set; }
+        public Measurement? Measurement { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

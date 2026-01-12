@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="headline">headline.</param>
         /// <param name="specificationList">The specification list. (required).</param>
         /// <param name="tableCount">The number of tables you want present. Features are evenly divided between the tables..</param>
-        public StandardTechSpecsModule(TextComponent headline = default(TextComponent), List<StandardTextPairBlock> specificationList = default(List<StandardTextPairBlock>), int tableCount = default(int))
+        public StandardTechSpecsModule(TextComponent? headline = default(TextComponent?), List<StandardTextPairBlock> specificationList = default(List<StandardTextPairBlock>), int? tableCount = default(int?))
         {
             // to ensure "specificationList" is required (not null)
             if (specificationList == null)
@@ -58,7 +58,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Headline
         /// </summary>
         [DataMember(Name = "headline", EmitDefaultValue = false)]
-        public TextComponent Headline { get; set; }
+        public TextComponent? Headline { get; set; }
 
         /// <summary>
         /// The specification list.
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>The number of tables you want present. Features are evenly divided between the tables.</value>
         [DataMember(Name = "tableCount", EmitDefaultValue = false)]
-        public int TableCount { get; set; }
+        public int? TableCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,5 +120,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

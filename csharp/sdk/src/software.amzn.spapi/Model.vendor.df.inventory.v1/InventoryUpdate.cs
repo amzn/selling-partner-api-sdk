@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
             yield break;
         }
     }
-
 }

@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <param name="invoiceTypeOptions">A list of all the options that are available for the invoice type attribute..</param>
         /// <param name="transactionIdentifierNameOptions">A list of all the options that are available for the transaction identifier name attribute..</param>
         /// <param name="transactionTypeOptions">A list of all the options that are available for the transaction type attribute..</param>
-        public InvoicesAttributes(List<AttributeOption> invoiceStatusOptions = default(List<AttributeOption>), List<AttributeOption> invoiceTypeOptions = default(List<AttributeOption>), List<AttributeOption> transactionIdentifierNameOptions = default(List<AttributeOption>), List<AttributeOption> transactionTypeOptions = default(List<AttributeOption>))
+        public InvoicesAttributes(List<AttributeOption>? invoiceStatusOptions = default(List<AttributeOption>?), List<AttributeOption>? invoiceTypeOptions = default(List<AttributeOption>?), List<AttributeOption>? transactionIdentifierNameOptions = default(List<AttributeOption>?), List<AttributeOption>? transactionTypeOptions = default(List<AttributeOption>?))
         {
             this.InvoiceStatusOptions = invoiceStatusOptions;
             this.InvoiceTypeOptions = invoiceTypeOptions;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>A list of all the options that are available for the invoice status attribute.</value>
         [DataMember(Name = "invoiceStatusOptions", EmitDefaultValue = false)]
-        public List<AttributeOption> InvoiceStatusOptions { get; set; }
+        public List<AttributeOption>? InvoiceStatusOptions { get; set; }
 
         /// <summary>
         /// A list of all the options that are available for the invoice type attribute.
         /// </summary>
         /// <value>A list of all the options that are available for the invoice type attribute.</value>
         [DataMember(Name = "invoiceTypeOptions", EmitDefaultValue = false)]
-        public List<AttributeOption> InvoiceTypeOptions { get; set; }
+        public List<AttributeOption>? InvoiceTypeOptions { get; set; }
 
         /// <summary>
         /// A list of all the options that are available for the transaction identifier name attribute.
         /// </summary>
         /// <value>A list of all the options that are available for the transaction identifier name attribute.</value>
         [DataMember(Name = "transactionIdentifierNameOptions", EmitDefaultValue = false)]
-        public List<AttributeOption> TransactionIdentifierNameOptions { get; set; }
+        public List<AttributeOption>? TransactionIdentifierNameOptions { get; set; }
 
         /// <summary>
         /// A list of all the options that are available for the transaction type attribute.
         /// </summary>
         /// <value>A list of all the options that are available for the transaction type attribute.</value>
         [DataMember(Name = "transactionTypeOptions", EmitDefaultValue = false)]
-        public List<AttributeOption> TransactionTypeOptions { get; set; }
+        public List<AttributeOption>? TransactionTypeOptions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

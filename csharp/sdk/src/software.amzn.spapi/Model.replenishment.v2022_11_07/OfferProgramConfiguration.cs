@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="preferences">preferences.</param>
         /// <param name="promotions">promotions.</param>
         /// <param name="enrollmentMethod">enrollmentMethod.</param>
-        public OfferProgramConfiguration(OfferProgramConfigurationPreferences preferences = default(OfferProgramConfigurationPreferences), OfferProgramConfigurationPromotions promotions = default(OfferProgramConfigurationPromotions), EnrollmentMethod? enrollmentMethod = default(EnrollmentMethod?))
+        public OfferProgramConfiguration(OfferProgramConfigurationPreferences? preferences = default(OfferProgramConfigurationPreferences?), OfferProgramConfigurationPromotions? promotions = default(OfferProgramConfigurationPromotions?), EnrollmentMethod? enrollmentMethod = default(EnrollmentMethod?))
         {
             this.Preferences = preferences;
             this.Promotions = promotions;
@@ -54,13 +54,13 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Gets or Sets Preferences
         /// </summary>
         [DataMember(Name = "preferences", EmitDefaultValue = false)]
-        public OfferProgramConfigurationPreferences Preferences { get; set; }
+        public OfferProgramConfigurationPreferences? Preferences { get; set; }
 
         /// <summary>
         /// Gets or Sets Promotions
         /// </summary>
         [DataMember(Name = "promotions", EmitDefaultValue = false)]
-        public OfferProgramConfigurationPromotions Promotions { get; set; }
+        public OfferProgramConfigurationPromotions? Promotions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -96,5 +96,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

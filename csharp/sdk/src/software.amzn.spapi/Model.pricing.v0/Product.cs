@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="competitivePricing">competitivePricing.</param>
         /// <param name="salesRankings">A list of sales rank information for the item, by category..</param>
         /// <param name="offers">A list of offers..</param>
-        public Product(IdentifierType identifiers = default(IdentifierType), List<Object> attributeSets = default(List<Object>), List<Object> relationships = default(List<Object>), CompetitivePricingType competitivePricing = default(CompetitivePricingType), List<SalesRankType> salesRankings = default(List<SalesRankType>), List<OfferType> offers = default(List<OfferType>))
+        public Product(IdentifierType identifiers = default(IdentifierType), List<Object>? attributeSets = default(List<Object>?), List<Object>? relationships = default(List<Object>?), CompetitivePricingType? competitivePricing = default(CompetitivePricingType?), List<SalesRankType>? salesRankings = default(List<SalesRankType>?), List<OfferType>? offers = default(List<OfferType>?))
         {
             // to ensure "identifiers" is required (not null)
             if (identifiers == null)
@@ -71,34 +71,34 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>A list of product attributes if they are applicable to the product that is returned.</value>
         [DataMember(Name = "AttributeSets", EmitDefaultValue = false)]
-        public List<Object> AttributeSets { get; set; }
+        public List<Object>? AttributeSets { get; set; }
 
         /// <summary>
         /// A list that contains product variation information, if applicable.
         /// </summary>
         /// <value>A list that contains product variation information, if applicable.</value>
         [DataMember(Name = "Relationships", EmitDefaultValue = false)]
-        public List<Object> Relationships { get; set; }
+        public List<Object>? Relationships { get; set; }
 
         /// <summary>
         /// Gets or Sets CompetitivePricing
         /// </summary>
         [DataMember(Name = "CompetitivePricing", EmitDefaultValue = false)]
-        public CompetitivePricingType CompetitivePricing { get; set; }
+        public CompetitivePricingType? CompetitivePricing { get; set; }
 
         /// <summary>
         /// A list of sales rank information for the item, by category.
         /// </summary>
         /// <value>A list of sales rank information for the item, by category.</value>
         [DataMember(Name = "SalesRankings", EmitDefaultValue = false)]
-        public List<SalesRankType> SalesRankings { get; set; }
+        public List<SalesRankType>? SalesRankings { get; set; }
 
         /// <summary>
         /// A list of offers.
         /// </summary>
         /// <value>A list of offers.</value>
         [DataMember(Name = "Offers", EmitDefaultValue = false)]
-        public List<OfferType> Offers { get; set; }
+        public List<OfferType>? Offers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,5 +137,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

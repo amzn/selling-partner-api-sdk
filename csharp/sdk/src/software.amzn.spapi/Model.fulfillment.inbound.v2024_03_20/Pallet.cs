@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="quantity">The number of containers where all other properties like weight or dimensions are identical..</param>
         /// <param name="stackability">stackability.</param>
         /// <param name="weight">weight.</param>
-        public Pallet(Dimensions dimensions = default(Dimensions), string packageId = default(string), int quantity = default(int), Stackability? stackability = default(Stackability?), Weight weight = default(Weight))
+        public Pallet(Dimensions? dimensions = default(Dimensions?), string packageId = default(string), int? quantity = default(int?), Stackability? stackability = default(Stackability?), Weight? weight = default(Weight?))
         {
             // to ensure "packageId" is required (not null)
             if (packageId == null)
@@ -68,7 +68,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public Dimensions Dimensions { get; set; }
+        public Dimensions? Dimensions { get; set; }
 
         /// <summary>
         /// Primary key to uniquely identify a Package (Box or Pallet).
@@ -82,13 +82,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The number of containers where all other properties like weight or dimensions are identical.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -159,5 +159,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

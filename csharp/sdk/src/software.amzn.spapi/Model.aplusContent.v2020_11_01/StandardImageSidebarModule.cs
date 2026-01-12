@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="descriptionListBlock">descriptionListBlock.</param>
         /// <param name="sidebarImageTextBlock">sidebarImageTextBlock.</param>
         /// <param name="sidebarListBlock">sidebarListBlock.</param>
-        public StandardImageSidebarModule(TextComponent headline = default(TextComponent), StandardImageCaptionBlock imageCaptionBlock = default(StandardImageCaptionBlock), StandardTextBlock descriptionTextBlock = default(StandardTextBlock), StandardTextListBlock descriptionListBlock = default(StandardTextListBlock), StandardImageTextBlock sidebarImageTextBlock = default(StandardImageTextBlock), StandardTextListBlock sidebarListBlock = default(StandardTextListBlock))
+        public StandardImageSidebarModule(TextComponent? headline = default(TextComponent?), StandardImageCaptionBlock? imageCaptionBlock = default(StandardImageCaptionBlock?), StandardTextBlock? descriptionTextBlock = default(StandardTextBlock?), StandardTextListBlock? descriptionListBlock = default(StandardTextListBlock?), StandardImageTextBlock? sidebarImageTextBlock = default(StandardImageTextBlock?), StandardTextListBlock? sidebarListBlock = default(StandardTextListBlock?))
         {
             this.Headline = headline;
             this.ImageCaptionBlock = imageCaptionBlock;
@@ -54,37 +54,37 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Headline
         /// </summary>
         [DataMember(Name = "headline", EmitDefaultValue = false)]
-        public TextComponent Headline { get; set; }
+        public TextComponent? Headline { get; set; }
 
         /// <summary>
         /// Gets or Sets ImageCaptionBlock
         /// </summary>
         [DataMember(Name = "imageCaptionBlock", EmitDefaultValue = false)]
-        public StandardImageCaptionBlock ImageCaptionBlock { get; set; }
+        public StandardImageCaptionBlock? ImageCaptionBlock { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptionTextBlock
         /// </summary>
         [DataMember(Name = "descriptionTextBlock", EmitDefaultValue = false)]
-        public StandardTextBlock DescriptionTextBlock { get; set; }
+        public StandardTextBlock? DescriptionTextBlock { get; set; }
 
         /// <summary>
         /// Gets or Sets DescriptionListBlock
         /// </summary>
         [DataMember(Name = "descriptionListBlock", EmitDefaultValue = false)]
-        public StandardTextListBlock DescriptionListBlock { get; set; }
+        public StandardTextListBlock? DescriptionListBlock { get; set; }
 
         /// <summary>
         /// Gets or Sets SidebarImageTextBlock
         /// </summary>
         [DataMember(Name = "sidebarImageTextBlock", EmitDefaultValue = false)]
-        public StandardImageTextBlock SidebarImageTextBlock { get; set; }
+        public StandardImageTextBlock? SidebarImageTextBlock { get; set; }
 
         /// <summary>
         /// Gets or Sets SidebarListBlock
         /// </summary>
         [DataMember(Name = "sidebarListBlock", EmitDefaultValue = false)]
-        public StandardTextListBlock SidebarListBlock { get; set; }
+        public StandardTextListBlock? SidebarListBlock { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,5 +123,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

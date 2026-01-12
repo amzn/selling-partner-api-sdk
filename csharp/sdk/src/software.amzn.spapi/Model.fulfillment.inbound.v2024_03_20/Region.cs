@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="countryCode">ISO 3166 standard alpha-2 country code..</param>
         /// <param name="state">State..</param>
         /// <param name="warehouseId">An identifier for a warehouse, such as a FC, IXD, upstream storage..</param>
-        public Region(string countryCode = default(string), string state = default(string), string warehouseId = default(string))
+        public Region(string? countryCode = default(string?), string? state = default(string?), string? warehouseId = default(string?))
         {
             this.CountryCode = countryCode;
             this.State = state;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>ISO 3166 standard alpha-2 country code.</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// State.
         /// </summary>
         /// <value>State.</value>
         [DataMember(Name = "state", EmitDefaultValue = false)]
-        public string State { get; set; }
+        public string? State { get; set; }
 
         /// <summary>
         /// An identifier for a warehouse, such as a FC, IXD, upstream storage.
         /// </summary>
         /// <value>An identifier for a warehouse, such as a FC, IXD, upstream storage.</value>
         [DataMember(Name = "warehouseId", EmitDefaultValue = false)]
-        public string WarehouseId { get; set; }
+        public string? WarehouseId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="shipments">A list of shipment IDs for the inbound plan. This property is populated when it has been generated with the &#x60;confirmPlacementOptions&#x60; operation. Only shipments from the chosen placement option are returned. Query the shipment for more details..</param>
         /// <param name="sourceAddress">sourceAddress (required).</param>
         /// <param name="status">Current status of the inbound plan. Possible values: &#x60;ACTIVE&#x60;, &#x60;VOIDED&#x60;, &#x60;SHIPPED&#x60;, &#x60;ERRORED&#x60;. (required).</param>
-        public InboundPlan(DateTime createdAt = default(DateTime), string inboundPlanId = default(string), DateTime lastUpdatedAt = default(DateTime), List<string> marketplaceIds = default(List<string>), string name = default(string), List<PackingOptionSummary> packingOptions = default(List<PackingOptionSummary>), List<PlacementOptionSummary> placementOptions = default(List<PlacementOptionSummary>), List<ShipmentSummary> shipments = default(List<ShipmentSummary>), Address sourceAddress = default(Address), string status = default(string))
+        public InboundPlan(DateTime createdAt = default(DateTime), string inboundPlanId = default(string), DateTime lastUpdatedAt = default(DateTime), List<string> marketplaceIds = default(List<string>), string name = default(string), List<PackingOptionSummary>? packingOptions = default(List<PackingOptionSummary>?), List<PlacementOptionSummary>? placementOptions = default(List<PlacementOptionSummary>?), List<ShipmentSummary>? shipments = default(List<ShipmentSummary>?), Address sourceAddress = default(Address), string status = default(string))
         {
             this.CreatedAt = createdAt;
             // to ensure "inboundPlanId" is required (not null)
@@ -128,21 +128,21 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>Packing options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, only packing options for that placement option will be returned. If there are confirmed shipments, only packing options for those shipments will be returned. Query the packing option for more details.</value>
         [DataMember(Name = "packingOptions", EmitDefaultValue = false)]
-        public List<PackingOptionSummary> PackingOptions { get; set; }
+        public List<PackingOptionSummary>? PackingOptions { get; set; }
 
         /// <summary>
         /// Placement options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, that will be the only returned option. Query the placement option for more details.
         /// </summary>
         /// <value>Placement options for the inbound plan. This property will be populated when it has been generated via the corresponding operation. If there is a chosen placement option, that will be the only returned option. Query the placement option for more details.</value>
         [DataMember(Name = "placementOptions", EmitDefaultValue = false)]
-        public List<PlacementOptionSummary> PlacementOptions { get; set; }
+        public List<PlacementOptionSummary>? PlacementOptions { get; set; }
 
         /// <summary>
         /// A list of shipment IDs for the inbound plan. This property is populated when it has been generated with the &#x60;confirmPlacementOptions&#x60; operation. Only shipments from the chosen placement option are returned. Query the shipment for more details.
         /// </summary>
         /// <value>A list of shipment IDs for the inbound plan. This property is populated when it has been generated with the &#x60;confirmPlacementOptions&#x60; operation. Only shipments from the chosen placement option are returned. Query the shipment for more details.</value>
         [DataMember(Name = "shipments", EmitDefaultValue = false)]
-        public List<ShipmentSummary> Shipments { get; set; }
+        public List<ShipmentSummary>? Shipments { get; set; }
 
         /// <summary>
         /// Gets or Sets SourceAddress
@@ -231,5 +231,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

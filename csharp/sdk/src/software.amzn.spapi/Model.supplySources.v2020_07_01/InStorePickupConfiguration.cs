@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="isSupported">When true, in-store pickup is supported by the supply source (default: &#x60;isSupported&#x60; value in &#x60;PickupChannel&#x60;)..</param>
         /// <param name="parkingConfiguration">parkingConfiguration.</param>
-        public InStorePickupConfiguration(bool isSupported = default(bool), ParkingConfiguration parkingConfiguration = default(ParkingConfiguration))
+        public InStorePickupConfiguration(bool? isSupported = default(bool?), ParkingConfiguration? parkingConfiguration = default(ParkingConfiguration?))
         {
             this.IsSupported = isSupported;
             this.ParkingConfiguration = parkingConfiguration;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>When true, in-store pickup is supported by the supply source (default: &#x60;isSupported&#x60; value in &#x60;PickupChannel&#x60;).</value>
         [DataMember(Name = "isSupported", EmitDefaultValue = true)]
-        public bool IsSupported { get; set; }
+        public bool? IsSupported { get; set; }
 
         /// <summary>
         /// Gets or Sets ParkingConfiguration
         /// </summary>
         [DataMember(Name = "parkingConfiguration", EmitDefaultValue = false)]
-        public ParkingConfiguration ParkingConfiguration { get; set; }
+        public ParkingConfiguration? ParkingConfiguration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

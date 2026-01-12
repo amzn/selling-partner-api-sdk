@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="labelCreateDateTime">Date on which label is created..</param>
         /// <param name="shipmentInformation">shipmentInformation.</param>
         /// <param name="labelData">Indicates the label data,format and type associated ..</param>
-        public TransportLabel(DateTime labelCreateDateTime = default(DateTime), ShipmentInformation shipmentInformation = default(ShipmentInformation), List<LabelData> labelData = default(List<LabelData>))
+        public TransportLabel(DateTime? labelCreateDateTime = default(DateTime?), ShipmentInformation? shipmentInformation = default(ShipmentInformation?), List<LabelData>? labelData = default(List<LabelData>?))
         {
             this.LabelCreateDateTime = labelCreateDateTime;
             this.ShipmentInformation = shipmentInformation;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Date on which label is created.</value>
         [DataMember(Name = "labelCreateDateTime", EmitDefaultValue = false)]
-        public DateTime LabelCreateDateTime { get; set; }
+        public DateTime? LabelCreateDateTime { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipmentInformation
         /// </summary>
         [DataMember(Name = "shipmentInformation", EmitDefaultValue = false)]
-        public ShipmentInformation ShipmentInformation { get; set; }
+        public ShipmentInformation? ShipmentInformation { get; set; }
 
         /// <summary>
         /// Indicates the label data,format and type associated .
         /// </summary>
         /// <value>Indicates the label data,format and type associated .</value>
         [DataMember(Name = "labelData", EmitDefaultValue = false)]
-        public List<LabelData> LabelData { get; set; }
+        public List<LabelData>? LabelData { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

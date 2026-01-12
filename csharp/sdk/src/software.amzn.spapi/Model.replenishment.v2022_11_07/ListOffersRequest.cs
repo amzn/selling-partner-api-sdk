@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="pagination">pagination (required).</param>
         /// <param name="filters">filters (required).</param>
         /// <param name="sort">sort.</param>
-        public ListOffersRequest(ListOffersRequestPagination pagination = default(ListOffersRequestPagination), ListOffersRequestFilters filters = default(ListOffersRequestFilters), ListOffersRequestSort sort = default(ListOffersRequestSort))
+        public ListOffersRequest(ListOffersRequestPagination pagination = default(ListOffersRequestPagination), ListOffersRequestFilters filters = default(ListOffersRequestFilters), ListOffersRequestSort? sort = default(ListOffersRequestSort?))
         {
             // to ensure "pagination" is required (not null)
             if (pagination == null)
@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Gets or Sets Sort
         /// </summary>
         [DataMember(Name = "sort", EmitDefaultValue = false)]
-        public ListOffersRequestSort Sort { get; set; }
+        public ListOffersRequestSort? Sort { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

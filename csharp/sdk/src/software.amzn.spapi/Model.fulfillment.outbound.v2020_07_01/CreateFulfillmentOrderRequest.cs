@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="featureConstraints">A list of features and their fulfillment policies to apply to the order..</param>
         /// <param name="items">An array of item information for creating a fulfillment order. (required).</param>
         /// <param name="paymentInformation">An array of various payment attributes related to this fulfillment order..</param>
-        public CreateFulfillmentOrderRequest(string marketplaceId = default(string), string sellerFulfillmentOrderId = default(string), string displayableOrderId = default(string), DateTime displayableOrderDate = default(DateTime), string displayableOrderComment = default(string), ShippingSpeedCategory shippingSpeedCategory = default(ShippingSpeedCategory), DeliveryWindow deliveryWindow = default(DeliveryWindow), Address destinationAddress = default(Address), DeliveryPreferences deliveryPreferences = default(DeliveryPreferences), FulfillmentAction? fulfillmentAction = default(FulfillmentAction?), FulfillmentPolicy? fulfillmentPolicy = default(FulfillmentPolicy?), CODSettings codSettings = default(CODSettings), string shipFromCountryCode = default(string), List<string> notificationEmails = default(List<string>), List<FeatureSettings> featureConstraints = default(List<FeatureSettings>), List<CreateFulfillmentOrderItem> items = default(List<CreateFulfillmentOrderItem>), List<PaymentInformation> paymentInformation = default(List<PaymentInformation>))
+        public CreateFulfillmentOrderRequest(string? marketplaceId = default(string?), string sellerFulfillmentOrderId = default(string), string displayableOrderId = default(string), DateTime displayableOrderDate = default(DateTime), string displayableOrderComment = default(string), ShippingSpeedCategory shippingSpeedCategory = default(ShippingSpeedCategory), DeliveryWindow? deliveryWindow = default(DeliveryWindow?), Address destinationAddress = default(Address), DeliveryPreferences? deliveryPreferences = default(DeliveryPreferences?), FulfillmentAction? fulfillmentAction = default(FulfillmentAction?), FulfillmentPolicy? fulfillmentPolicy = default(FulfillmentPolicy?), CODSettings? codSettings = default(CODSettings?), string? shipFromCountryCode = default(string?), List<string>? notificationEmails = default(List<string>?), List<FeatureSettings>? featureConstraints = default(List<FeatureSettings>?), List<CreateFulfillmentOrderItem> items = default(List<CreateFulfillmentOrderItem>), List<PaymentInformation>? paymentInformation = default(List<PaymentInformation>?))
         {
             // to ensure "sellerFulfillmentOrderId" is required (not null)
             if (sellerFulfillmentOrderId == null)
@@ -125,7 +125,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The marketplace the fulfillment order is placed against.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// A fulfillment order identifier that the seller creates to track their fulfillment order. The &#x60;sellerFulfillmentOrderId&#x60; must be unique for each fulfillment order that a seller creates. If the seller&#39;s system already creates unique order identifiers, then these might be good values for them to use.
@@ -159,7 +159,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets DeliveryWindow
         /// </summary>
         [DataMember(Name = "deliveryWindow", EmitDefaultValue = false)]
-        public DeliveryWindow DeliveryWindow { get; set; }
+        public DeliveryWindow? DeliveryWindow { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationAddress
@@ -171,34 +171,34 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets DeliveryPreferences
         /// </summary>
         [DataMember(Name = "deliveryPreferences", EmitDefaultValue = false)]
-        public DeliveryPreferences DeliveryPreferences { get; set; }
+        public DeliveryPreferences? DeliveryPreferences { get; set; }
 
         /// <summary>
         /// Gets or Sets CodSettings
         /// </summary>
         [DataMember(Name = "codSettings", EmitDefaultValue = false)]
-        public CODSettings CodSettings { get; set; }
+        public CODSettings? CodSettings { get; set; }
 
         /// <summary>
         /// The two-character country code for the country from which the fulfillment order ships. Must be in ISO 3166-1 alpha-2 format.
         /// </summary>
         /// <value>The two-character country code for the country from which the fulfillment order ships. Must be in ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "shipFromCountryCode", EmitDefaultValue = false)]
-        public string ShipFromCountryCode { get; set; }
+        public string? ShipFromCountryCode { get; set; }
 
         /// <summary>
         /// A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
         /// </summary>
         /// <value>A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.</value>
         [DataMember(Name = "notificationEmails", EmitDefaultValue = false)]
-        public List<string> NotificationEmails { get; set; }
+        public List<string>? NotificationEmails { get; set; }
 
         /// <summary>
         /// A list of features and their fulfillment policies to apply to the order.
         /// </summary>
         /// <value>A list of features and their fulfillment policies to apply to the order.</value>
         [DataMember(Name = "featureConstraints", EmitDefaultValue = false)]
-        public List<FeatureSettings> FeatureConstraints { get; set; }
+        public List<FeatureSettings>? FeatureConstraints { get; set; }
 
         /// <summary>
         /// An array of item information for creating a fulfillment order.
@@ -212,7 +212,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of various payment attributes related to this fulfillment order.</value>
         [DataMember(Name = "paymentInformation", EmitDefaultValue = false)]
-        public List<PaymentInformation> PaymentInformation { get; set; }
+        public List<PaymentInformation>? PaymentInformation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -280,5 +280,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

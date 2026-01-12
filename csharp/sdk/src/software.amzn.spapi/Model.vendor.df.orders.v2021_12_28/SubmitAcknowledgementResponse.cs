@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="payload">payload.</param>
         /// <param name="errors">errors.</param>
-        public SubmitAcknowledgementResponse(TransactionId payload = default(TransactionId), ErrorList errors = default(ErrorList))
+        public SubmitAcknowledgementResponse(TransactionId? payload = default(TransactionId?), ErrorList? errors = default(ErrorList?))
         {
             this.Payload = payload;
             this.Errors = errors;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Gets or Sets Payload
         /// </summary>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public TransactionId Payload { get; set; }
+        public TransactionId? Payload { get; set; }
 
         /// <summary>
         /// Gets or Sets Errors
         /// </summary>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public ErrorList Errors { get; set; }
+        public ErrorList? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

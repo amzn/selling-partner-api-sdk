@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="preferredDeliveryTime">preferredDeliveryTime.</param>
         /// <param name="otherAttributes">Enumerated list of miscellaneous delivery attributes associated with the shipping address..</param>
         /// <param name="addressInstructions">Building instructions, nearby landmark or navigation instructions..</param>
-        public DeliveryPreferences(string dropOffLocation = default(string), PreferredDeliveryTime preferredDeliveryTime = default(PreferredDeliveryTime), List<OtherDeliveryAttributes> otherAttributes = default(List<OtherDeliveryAttributes>), string addressInstructions = default(string))
+        public DeliveryPreferences(string? dropOffLocation = default(string?), PreferredDeliveryTime? preferredDeliveryTime = default(PreferredDeliveryTime?), List<OtherDeliveryAttributes>? otherAttributes = default(List<OtherDeliveryAttributes>?), string? addressInstructions = default(string?))
         {
             this.DropOffLocation = dropOffLocation;
             this.PreferredDeliveryTime = preferredDeliveryTime;
@@ -51,27 +51,27 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>Drop-off location selected by the customer.</value>
         [DataMember(Name = "DropOffLocation", EmitDefaultValue = false)]
-        public string DropOffLocation { get; set; }
+        public string? DropOffLocation { get; set; }
 
         /// <summary>
         /// Gets or Sets PreferredDeliveryTime
         /// </summary>
         [DataMember(Name = "PreferredDeliveryTime", EmitDefaultValue = false)]
-        public PreferredDeliveryTime PreferredDeliveryTime { get; set; }
+        public PreferredDeliveryTime? PreferredDeliveryTime { get; set; }
 
         /// <summary>
         /// Enumerated list of miscellaneous delivery attributes associated with the shipping address.
         /// </summary>
         /// <value>Enumerated list of miscellaneous delivery attributes associated with the shipping address.</value>
         [DataMember(Name = "OtherAttributes", EmitDefaultValue = false)]
-        public List<OtherDeliveryAttributes> OtherAttributes { get; set; }
+        public List<OtherDeliveryAttributes>? OtherAttributes { get; set; }
 
         /// <summary>
         /// Building instructions, nearby landmark or navigation instructions.
         /// </summary>
         /// <value>Building instructions, nearby landmark or navigation instructions.</value>
         [DataMember(Name = "AddressInstructions", EmitDefaultValue = false)]
-        public string AddressInstructions { get; set; }
+        public string? AddressInstructions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

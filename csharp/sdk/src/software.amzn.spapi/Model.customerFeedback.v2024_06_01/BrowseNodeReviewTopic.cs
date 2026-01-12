@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// <param name="browseNodeMetrics">browseNodeMetrics (required).</param>
         /// <param name="reviewSnippets">A list of up to three snippets from reviews that contain the topic. This value is &#x60;null&#x60; if there aren&#39;t enough review snippets for the topic..</param>
         /// <param name="subtopics">A list of the five subtopics that occur most frequently. This value is &#x60;null&#x60; if there are no subtopics..</param>
-        public BrowseNodeReviewTopic(string topic = default(string), BrowseNodeReviewTopicMetrics browseNodeMetrics = default(BrowseNodeReviewTopicMetrics), List<string> reviewSnippets = default(List<string>), List<BrowseNodeSubtopic> subtopics = default(List<BrowseNodeSubtopic>))
+        public BrowseNodeReviewTopic(string topic = default(string), BrowseNodeReviewTopicMetrics browseNodeMetrics = default(BrowseNodeReviewTopicMetrics), List<string>? reviewSnippets = default(List<string>?), List<BrowseNodeSubtopic>? subtopics = default(List<BrowseNodeSubtopic>?))
         {
             // to ensure "topic" is required (not null)
             if (topic == null)
@@ -79,14 +79,14 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <value>A list of up to three snippets from reviews that contain the topic. This value is &#x60;null&#x60; if there aren&#39;t enough review snippets for the topic.</value>
         [DataMember(Name = "reviewSnippets", EmitDefaultValue = false)]
-        public List<string> ReviewSnippets { get; set; }
+        public List<string>? ReviewSnippets { get; set; }
 
         /// <summary>
         /// A list of the five subtopics that occur most frequently. This value is &#x60;null&#x60; if there are no subtopics.
         /// </summary>
         /// <value>A list of the five subtopics that occur most frequently. This value is &#x60;null&#x60; if there are no subtopics.</value>
         [DataMember(Name = "subtopics", EmitDefaultValue = false)]
-        public List<BrowseNodeSubtopic> Subtopics { get; set; }
+        public List<BrowseNodeSubtopic>? Subtopics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,5 +123,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

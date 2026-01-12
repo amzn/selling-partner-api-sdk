@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="supportedPageLayouts">A list of the supported page layout options for a document. (required).</param>
         /// <param name="supportedFileJoiningOptions">A list of the supported needFileJoining boolean values for a document. (required).</param>
         /// <param name="supportedDocumentDetails">A list of the supported documented details. (required).</param>
-        public PrintOption(List<int> supportedDPIs = default(List<int>), List<string> supportedPageLayouts = default(List<string>), List<bool> supportedFileJoiningOptions = default(List<bool>), List<SupportedDocumentDetail> supportedDocumentDetails = default(List<SupportedDocumentDetail>))
+        public PrintOption(List<int>? supportedDPIs = default(List<int>?), List<string> supportedPageLayouts = default(List<string>), List<bool> supportedFileJoiningOptions = default(List<bool>), List<SupportedDocumentDetail> supportedDocumentDetails = default(List<SupportedDocumentDetail>))
         {
             // to ensure "supportedPageLayouts" is required (not null)
             if (supportedPageLayouts == null)
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of the supported DPI options for a document.</value>
         [DataMember(Name = "supportedDPIs", EmitDefaultValue = false)]
-        public List<int> SupportedDPIs { get; set; }
+        public List<int>? SupportedDPIs { get; set; }
 
         /// <summary>
         /// A list of the supported page layout options for a document.
@@ -130,5 +130,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

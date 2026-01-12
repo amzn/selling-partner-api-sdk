@@ -66,7 +66,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="number">The tax registration number for the party. For example, their VAT ID..</param>
         /// <param name="address">address.</param>
         /// <param name="messages">Tax registration message that can be used for additional tax related details..</param>
-        public TaxRegistrationInfo(TypeEnum? type = default(TypeEnum?), string number = default(string), Address address = default(Address), string messages = default(string))
+        public TaxRegistrationInfo(TypeEnum? type = default(TypeEnum?), string? number = default(string?), Address? address = default(Address?), string? messages = default(string?))
         {
             this.Type = type;
             this.Number = number;
@@ -79,20 +79,20 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The tax registration number for the party. For example, their VAT ID.</value>
         [DataMember(Name = "number", EmitDefaultValue = false)]
-        public string Number { get; set; }
+        public string? Number { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Tax registration message that can be used for additional tax related details.
         /// </summary>
         /// <value>Tax registration message that can be used for additional tax related details.</value>
         [DataMember(Name = "messages", EmitDefaultValue = false)]
-        public string Messages { get; set; }
+        public string? Messages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -129,5 +129,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

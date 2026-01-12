@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// <param name="taxDetails">taxDetails.</param>
         /// <param name="totalPrice">totalPrice.</param>
         /// <param name="buyerCustomizedInfo">buyerCustomizedInfo.</param>
-        public OrderItem(string itemSequenceNumber = default(string), string buyerProductIdentifier = default(string), string vendorProductIdentifier = default(string), string title = default(string), ItemQuantity orderedQuantity = default(ItemQuantity), ScheduledDeliveryShipment scheduledDeliveryShipment = default(ScheduledDeliveryShipment), GiftDetails giftDetails = default(GiftDetails), Money netPrice = default(Money), TaxItemDetails taxDetails = default(TaxItemDetails), Money totalPrice = default(Money), BuyerCustomizedInfoDetail buyerCustomizedInfo = default(BuyerCustomizedInfoDetail))
+        public OrderItem(string itemSequenceNumber = default(string), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), string? title = default(string?), ItemQuantity orderedQuantity = default(ItemQuantity), ScheduledDeliveryShipment? scheduledDeliveryShipment = default(ScheduledDeliveryShipment?), GiftDetails? giftDetails = default(GiftDetails?), Money netPrice = default(Money), TaxItemDetails? taxDetails = default(TaxItemDetails?), Money? totalPrice = default(Money?), BuyerCustomizedInfoDetail? buyerCustomizedInfo = default(BuyerCustomizedInfoDetail?))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -92,21 +92,21 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>Buyer&#39;s standard identification number (ASIN) of an item.</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item.
         /// </summary>
         /// <value>The vendor selected product identification of the item.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Title for the item.
         /// </summary>
         /// <value>Title for the item.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderedQuantity
@@ -118,13 +118,13 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Gets or Sets ScheduledDeliveryShipment
         /// </summary>
         [DataMember(Name = "scheduledDeliveryShipment", EmitDefaultValue = false)]
-        public ScheduledDeliveryShipment ScheduledDeliveryShipment { get; set; }
+        public ScheduledDeliveryShipment? ScheduledDeliveryShipment { get; set; }
 
         /// <summary>
         /// Gets or Sets GiftDetails
         /// </summary>
         [DataMember(Name = "giftDetails", EmitDefaultValue = false)]
-        public GiftDetails GiftDetails { get; set; }
+        public GiftDetails? GiftDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets NetPrice
@@ -136,19 +136,19 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Gets or Sets TaxDetails
         /// </summary>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public TaxItemDetails TaxDetails { get; set; }
+        public TaxItemDetails? TaxDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalPrice
         /// </summary>
         [DataMember(Name = "totalPrice", EmitDefaultValue = false)]
-        public Money TotalPrice { get; set; }
+        public Money? TotalPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerCustomizedInfo
         /// </summary>
         [DataMember(Name = "buyerCustomizedInfo", EmitDefaultValue = false)]
-        public BuyerCustomizedInfoDetail BuyerCustomizedInfo { get; set; }
+        public BuyerCustomizedInfoDetail? BuyerCustomizedInfo { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -192,5 +192,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

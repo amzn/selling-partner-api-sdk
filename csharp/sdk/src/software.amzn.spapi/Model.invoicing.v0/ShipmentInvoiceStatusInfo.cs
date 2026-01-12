@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <param name="amazonShipmentId">The Amazon-defined shipment identifier..</param>
         /// <param name="invoiceStatus">invoiceStatus.</param>
-        public ShipmentInvoiceStatusInfo(string amazonShipmentId = default(string), ShipmentInvoiceStatus? invoiceStatus = default(ShipmentInvoiceStatus?))
+        public ShipmentInvoiceStatusInfo(string? amazonShipmentId = default(string?), ShipmentInvoiceStatus? invoiceStatus = default(ShipmentInvoiceStatus?))
         {
             this.AmazonShipmentId = amazonShipmentId;
             this.InvoiceStatus = invoiceStatus;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <value>The Amazon-defined shipment identifier.</value>
         [DataMember(Name = "AmazonShipmentId", EmitDefaultValue = false)]
-        public string AmazonShipmentId { get; set; }
+        public string? AmazonShipmentId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

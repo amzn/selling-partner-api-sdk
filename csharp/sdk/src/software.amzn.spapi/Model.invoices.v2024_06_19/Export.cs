@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <param name="generateExportStartedAt">The date and time when the export generation started. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="invoicesDocumentIds">The identifier for the export documents. To get the information required to retrieve the export document&#39;s contents, pass each ID in the &#x60;getInvoicesDocument&#x60; operation.  This list is empty until the status is &#x60;DONE&#x60;..</param>
         /// <param name="status">status.</param>
-        public Export(string errorMessage = default(string), string exportId = default(string), DateTime generateExportFinishedAt = default(DateTime), DateTime generateExportStartedAt = default(DateTime), List<string> invoicesDocumentIds = default(List<string>), ExportStatus? status = default(ExportStatus?))
+        public Export(string? errorMessage = default(string?), string? exportId = default(string?), DateTime? generateExportFinishedAt = default(DateTime?), DateTime? generateExportStartedAt = default(DateTime?), List<string>? invoicesDocumentIds = default(List<string>?), ExportStatus? status = default(ExportStatus?))
         {
             this.ErrorMessage = errorMessage;
             this.ExportId = exportId;
@@ -61,35 +61,35 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>When the export generation fails, this attribute contains a description of the error.</value>
         [DataMember(Name = "errorMessage", EmitDefaultValue = false)]
-        public string ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 
         /// <summary>
         /// The export identifier.
         /// </summary>
         /// <value>The export identifier.</value>
         [DataMember(Name = "exportId", EmitDefaultValue = false)]
-        public string ExportId { get; set; }
+        public string? ExportId { get; set; }
 
         /// <summary>
         /// The date and time when the export generation finished. Vales are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>The date and time when the export generation finished. Vales are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "generateExportFinishedAt", EmitDefaultValue = false)]
-        public DateTime GenerateExportFinishedAt { get; set; }
+        public DateTime? GenerateExportFinishedAt { get; set; }
 
         /// <summary>
         /// The date and time when the export generation started. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>The date and time when the export generation started. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "generateExportStartedAt", EmitDefaultValue = false)]
-        public DateTime GenerateExportStartedAt { get; set; }
+        public DateTime? GenerateExportStartedAt { get; set; }
 
         /// <summary>
         /// The identifier for the export documents. To get the information required to retrieve the export document&#39;s contents, pass each ID in the &#x60;getInvoicesDocument&#x60; operation.  This list is empty until the status is &#x60;DONE&#x60;.
         /// </summary>
         /// <value>The identifier for the export documents. To get the information required to retrieve the export document&#39;s contents, pass each ID in the &#x60;getInvoicesDocument&#x60; operation.  This list is empty until the status is &#x60;DONE&#x60;.</value>
         [DataMember(Name = "invoicesDocumentIds", EmitDefaultValue = false)]
-        public List<string> InvoicesDocumentIds { get; set; }
+        public List<string>? InvoicesDocumentIds { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -128,5 +128,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

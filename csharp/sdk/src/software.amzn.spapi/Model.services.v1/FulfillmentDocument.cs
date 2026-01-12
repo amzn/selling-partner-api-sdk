@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="uploadDestinationId">The identifier of the upload destination. Get this value by calling the &#x60;createServiceDocumentUploadDestination&#x60; operation of the Services API..</param>
         /// <param name="contentSha256">Sha256 hash of the file content. This value is used to determine if the file has been corrupted or tampered with during transit..</param>
-        public FulfillmentDocument(string uploadDestinationId = default(string), string contentSha256 = default(string))
+        public FulfillmentDocument(string? uploadDestinationId = default(string?), string? contentSha256 = default(string?))
         {
             this.UploadDestinationId = uploadDestinationId;
             this.ContentSha256 = contentSha256;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The identifier of the upload destination. Get this value by calling the &#x60;createServiceDocumentUploadDestination&#x60; operation of the Services API.</value>
         [DataMember(Name = "uploadDestinationId", EmitDefaultValue = false)]
-        public string UploadDestinationId { get; set; }
+        public string? UploadDestinationId { get; set; }
 
         /// <summary>
         /// Sha256 hash of the file content. This value is used to determine if the file has been corrupted or tampered with during transit.
         /// </summary>
         /// <value>Sha256 hash of the file content. This value is used to determine if the file has been corrupted or tampered with during transit.</value>
         [DataMember(Name = "contentSha256", EmitDefaultValue = false)]
-        public string ContentSha256 { get; set; }
+        public string? ContentSha256 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

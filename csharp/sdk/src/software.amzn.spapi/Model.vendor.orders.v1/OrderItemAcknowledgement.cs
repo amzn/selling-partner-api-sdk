@@ -110,7 +110,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="scheduledShipDate">Estimated ship date per line item. Must be in ISO-8601 date/time format..</param>
         /// <param name="scheduledDeliveryDate">Estimated delivery date per line item. Must be in ISO-8601 date/time format..</param>
         /// <param name="rejectionReason">Indicates the reason for rejection..</param>
-        public OrderItemAcknowledgement(AcknowledgementCodeEnum acknowledgementCode = default(AcknowledgementCodeEnum), ItemQuantity acknowledgedQuantity = default(ItemQuantity), DateTime scheduledShipDate = default(DateTime), DateTime scheduledDeliveryDate = default(DateTime), RejectionReasonEnum? rejectionReason = default(RejectionReasonEnum?))
+        public OrderItemAcknowledgement(AcknowledgementCodeEnum acknowledgementCode = default(AcknowledgementCodeEnum), ItemQuantity acknowledgedQuantity = default(ItemQuantity), DateTime? scheduledShipDate = default(DateTime?), DateTime? scheduledDeliveryDate = default(DateTime?), RejectionReasonEnum? rejectionReason = default(RejectionReasonEnum?))
         {
             this.AcknowledgementCode = acknowledgementCode;
             // to ensure "acknowledgedQuantity" is required (not null)
@@ -135,14 +135,14 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>Estimated ship date per line item. Must be in ISO-8601 date/time format.</value>
         [DataMember(Name = "scheduledShipDate", EmitDefaultValue = false)]
-        public DateTime ScheduledShipDate { get; set; }
+        public DateTime? ScheduledShipDate { get; set; }
 
         /// <summary>
         /// Estimated delivery date per line item. Must be in ISO-8601 date/time format.
         /// </summary>
         /// <value>Estimated delivery date per line item. Must be in ISO-8601 date/time format.</value>
         [DataMember(Name = "scheduledDeliveryDate", EmitDefaultValue = false)]
-        public DateTime ScheduledDeliveryDate { get; set; }
+        public DateTime? ScheduledDeliveryDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,5 +180,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

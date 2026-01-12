@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <param name="deferralReason">The deferral policy applied to the transaction.  **Examples:** &#x60;B2B&#x60; (invoiced orders), &#x60;DD7&#x60; (delivery date policy).</param>
         /// <param name="maturityDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public DeferredContext(string deferralReason = default(string), DateTime maturityDate = default(DateTime))
+        public DeferredContext(string? deferralReason = default(string?), DateTime? maturityDate = default(DateTime?))
         {
             this.DeferralReason = deferralReason;
             this.MaturityDate = maturityDate;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The deferral policy applied to the transaction.  **Examples:** &#x60;B2B&#x60; (invoiced orders), &#x60;DD7&#x60; (delivery date policy)</value>
         [DataMember(Name = "deferralReason", EmitDefaultValue = false)]
-        public string DeferralReason { get; set; }
+        public string? DeferralReason { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "maturityDate", EmitDefaultValue = false)]
-        public DateTime MaturityDate { get; set; }
+        public DateTime? MaturityDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

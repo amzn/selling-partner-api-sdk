@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="carrierCode">carrierCode.</param>
         /// <param name="bookingId">The identifier that is received from transportation to uniquely identify a booking. (required).</param>
-        public TrackingDetails(CarrierCode carrierCode = default(CarrierCode), string bookingId = default(string))
+        public TrackingDetails(CarrierCode? carrierCode = default(CarrierCode?), string bookingId = default(string))
         {
             // to ensure "bookingId" is required (not null)
             if (bookingId == null)
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets CarrierCode
         /// </summary>
         [DataMember(Name = "carrierCode", EmitDefaultValue = false)]
-        public CarrierCode CarrierCode { get; set; }
+        public CarrierCode? CarrierCode { get; set; }
 
         /// <summary>
         /// The identifier that is received from transportation to uniquely identify a booking.
@@ -104,5 +104,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

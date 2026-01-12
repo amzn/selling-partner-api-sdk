@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="rescheduleDate">The date on which the Seller wants to reschedule shipment delivery, in ISO-8601 date/time format.</param>
         /// <param name="additionalAddressNotes">Address notes to re-attempt delivery with..</param>
-        public NdrRequestData(DateTime rescheduleDate = default(DateTime), string additionalAddressNotes = default(string))
+        public NdrRequestData(DateTime? rescheduleDate = default(DateTime?), string? additionalAddressNotes = default(string?))
         {
             this.RescheduleDate = rescheduleDate;
             this.AdditionalAddressNotes = additionalAddressNotes;
@@ -51,14 +51,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         <example>2023-12-12T05:24Z</example>
         */
         [DataMember(Name = "rescheduleDate", EmitDefaultValue = false)]
-        public DateTime RescheduleDate { get; set; }
+        public DateTime? RescheduleDate { get; set; }
 
         /// <summary>
         /// Address notes to re-attempt delivery with.
         /// </summary>
         /// <value>Address notes to re-attempt delivery with.</value>
         [DataMember(Name = "additionalAddressNotes", EmitDefaultValue = false)]
-        public string AdditionalAddressNotes { get; set; }
+        public string? AdditionalAddressNotes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

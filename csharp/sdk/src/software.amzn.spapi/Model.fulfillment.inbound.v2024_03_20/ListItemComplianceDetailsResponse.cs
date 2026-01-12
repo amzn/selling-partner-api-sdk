@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Initializes a new instance of the <see cref="ListItemComplianceDetailsResponse" /> class.
         /// </summary>
         /// <param name="complianceDetails">List of compliance details..</param>
-        public ListItemComplianceDetailsResponse(List<ComplianceDetail> complianceDetails = default(List<ComplianceDetail>))
+        public ListItemComplianceDetailsResponse(List<ComplianceDetail>? complianceDetails = default(List<ComplianceDetail>?))
         {
             this.ComplianceDetails = complianceDetails;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>List of compliance details.</value>
         [DataMember(Name = "complianceDetails", EmitDefaultValue = false)]
-        public List<ComplianceDetail> ComplianceDetails { get; set; }
+        public List<ComplianceDetail>? ComplianceDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

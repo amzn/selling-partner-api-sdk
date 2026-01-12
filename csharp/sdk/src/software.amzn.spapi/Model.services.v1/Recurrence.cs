@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="endTime">End time of the recurrence. (required).</param>
         /// <param name="daysOfWeek">Days of the week when recurrence is valid. If the schedule is valid every Monday, input will only contain &#x60;MONDAY&#x60; in the list..</param>
         /// <param name="daysOfMonth">Days of the month when recurrence is valid..</param>
-        public Recurrence(DateTime endTime = default(DateTime), List<DayOfWeek> daysOfWeek = default(List<DayOfWeek>), List<int> daysOfMonth = default(List<int>))
+        public Recurrence(DateTime endTime = default(DateTime), List<DayOfWeek>? daysOfWeek = default(List<DayOfWeek>?), List<int>? daysOfMonth = default(List<int>?))
         {
             this.EndTime = endTime;
             this.DaysOfWeek = daysOfWeek;
@@ -61,14 +61,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Days of the week when recurrence is valid. If the schedule is valid every Monday, input will only contain &#x60;MONDAY&#x60; in the list.</value>
         [DataMember(Name = "daysOfWeek", EmitDefaultValue = false)]
-        public List<DayOfWeek> DaysOfWeek { get; set; }
+        public List<DayOfWeek>? DaysOfWeek { get; set; }
 
         /// <summary>
         /// Days of the month when recurrence is valid.
         /// </summary>
         /// <value>Days of the month when recurrence is valid.</value>
         [DataMember(Name = "daysOfMonth", EmitDefaultValue = false)]
-        public List<int> DaysOfMonth { get; set; }
+        public List<int>? DaysOfMonth { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -104,5 +104,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

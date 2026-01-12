@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <param name="shipmentStatus">Current status of the shipment on whether it is picked up or scheduled..</param>
         /// <param name="shipmentStatusDate">Date and time on last status update received for the shipment.</param>
-        public ShipmentStatusDetails(ShipmentStatusEnum? shipmentStatus = default(ShipmentStatusEnum?), DateTime shipmentStatusDate = default(DateTime))
+        public ShipmentStatusDetails(ShipmentStatusEnum? shipmentStatus = default(ShipmentStatusEnum?), DateTime? shipmentStatusDate = default(DateTime?))
         {
             this.ShipmentStatus = shipmentStatus;
             this.ShipmentStatusDate = shipmentStatusDate;
@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Date and time on last status update received for the shipment</value>
         [DataMember(Name = "shipmentStatusDate", EmitDefaultValue = false)]
-        public DateTime ShipmentStatusDate { get; set; }
+        public DateTime? ShipmentStatusDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -121,5 +121,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

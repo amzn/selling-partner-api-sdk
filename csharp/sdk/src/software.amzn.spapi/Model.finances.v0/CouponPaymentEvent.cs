@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="feeComponent">feeComponent.</param>
         /// <param name="chargeComponent">chargeComponent.</param>
         /// <param name="totalAmount">totalAmount.</param>
-        public CouponPaymentEvent(DateTime postedDate = default(DateTime), string couponId = default(string), string sellerCouponDescription = default(string), long clipOrRedemptionCount = default(long), string paymentEventId = default(string), FeeComponent feeComponent = default(FeeComponent), ChargeComponent chargeComponent = default(ChargeComponent), Currency totalAmount = default(Currency))
+        public CouponPaymentEvent(DateTime? postedDate = default(DateTime?), string? couponId = default(string?), string? sellerCouponDescription = default(string?), long? clipOrRedemptionCount = default(long?), string? paymentEventId = default(string?), FeeComponent? feeComponent = default(FeeComponent?), ChargeComponent? chargeComponent = default(ChargeComponent?), Currency? totalAmount = default(Currency?))
         {
             this.PostedDate = postedDate;
             this.CouponId = couponId;
@@ -59,53 +59,53 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// A coupon identifier.
         /// </summary>
         /// <value>A coupon identifier.</value>
         [DataMember(Name = "CouponId", EmitDefaultValue = false)]
-        public string CouponId { get; set; }
+        public string? CouponId { get; set; }
 
         /// <summary>
         /// The description provided by the seller when they created the coupon.
         /// </summary>
         /// <value>The description provided by the seller when they created the coupon.</value>
         [DataMember(Name = "SellerCouponDescription", EmitDefaultValue = false)]
-        public string SellerCouponDescription { get; set; }
+        public string? SellerCouponDescription { get; set; }
 
         /// <summary>
         /// The number of coupon clips or redemptions.
         /// </summary>
         /// <value>The number of coupon clips or redemptions.</value>
         [DataMember(Name = "ClipOrRedemptionCount", EmitDefaultValue = false)]
-        public long ClipOrRedemptionCount { get; set; }
+        public long? ClipOrRedemptionCount { get; set; }
 
         /// <summary>
         /// A payment event identifier.
         /// </summary>
         /// <value>A payment event identifier.</value>
         [DataMember(Name = "PaymentEventId", EmitDefaultValue = false)]
-        public string PaymentEventId { get; set; }
+        public string? PaymentEventId { get; set; }
 
         /// <summary>
         /// Gets or Sets FeeComponent
         /// </summary>
         [DataMember(Name = "FeeComponent", EmitDefaultValue = false)]
-        public FeeComponent FeeComponent { get; set; }
+        public FeeComponent? FeeComponent { get; set; }
 
         /// <summary>
         /// Gets or Sets ChargeComponent
         /// </summary>
         [DataMember(Name = "ChargeComponent", EmitDefaultValue = false)]
-        public ChargeComponent ChargeComponent { get; set; }
+        public ChargeComponent? ChargeComponent { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "TotalAmount", EmitDefaultValue = false)]
-        public Currency TotalAmount { get; set; }
+        public Currency? TotalAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -146,5 +146,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

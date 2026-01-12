@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="details">Additional details that can help the caller understand or fix the issue..</param>
         /// <param name="message">A message that describes the error condition. (required).</param>
         /// <param name="severity">The severity of the problem. Possible values: &#x60;WARNING&#x60;, &#x60;ERROR&#x60;. (required).</param>
-        public OperationProblem(string code = default(string), string details = default(string), string message = default(string), string severity = default(string))
+        public OperationProblem(string code = default(string), string? details = default(string?), string message = default(string), string severity = default(string))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>Additional details that can help the caller understand or fix the issue.</value>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public string Details { get; set; }
+        public string? Details { get; set; }
 
         /// <summary>
         /// A message that describes the error condition.
@@ -177,5 +177,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

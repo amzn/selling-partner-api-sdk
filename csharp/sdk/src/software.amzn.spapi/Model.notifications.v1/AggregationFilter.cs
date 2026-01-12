@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Initializes a new instance of the <see cref="AggregationFilter" /> class.
         /// </summary>
         /// <param name="aggregationSettings">aggregationSettings.</param>
-        public AggregationFilter(AggregationSettings aggregationSettings = default(AggregationSettings))
+        public AggregationFilter(AggregationSettings? aggregationSettings = default(AggregationSettings?))
         {
             this.AggregationSettings = aggregationSettings;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Gets or Sets AggregationSettings
         /// </summary>
         [DataMember(Name = "aggregationSettings", EmitDefaultValue = false)]
-        public AggregationSettings AggregationSettings { get; set; }
+        public AggregationSettings? AggregationSettings { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.notifications.v1
             yield break;
         }
     }
-
 }

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="code">An error code that identifies the type of error that occurred. (required).</param>
         /// <param name="details">Additional details that can help the caller understand or fix the issue..</param>
         /// <param name="message">A message that describes the error condition. (required).</param>
-        public Error(string code = default(string), string details = default(string), string message = default(string))
+        public Error(string code = default(string), string? details = default(string?), string message = default(string))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Additional details that can help the caller understand or fix the issue.</value>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public string Details { get; set; }
+        public string? Details { get; set; }
 
         /// <summary>
         /// A message that describes the error condition.
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

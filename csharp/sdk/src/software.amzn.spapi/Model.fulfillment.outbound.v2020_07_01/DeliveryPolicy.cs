@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Initializes a new instance of the <see cref="DeliveryPolicy" /> class.
         /// </summary>
         /// <param name="message">message.</param>
-        public DeliveryPolicy(DeliveryMessage message = default(DeliveryMessage))
+        public DeliveryPolicy(DeliveryMessage? message = default(DeliveryMessage?))
         {
             this.Message = message;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets Message
         /// </summary>
         [DataMember(Name = "message", EmitDefaultValue = false)]
-        public DeliveryMessage Message { get; set; }
+        public DeliveryMessage? Message { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

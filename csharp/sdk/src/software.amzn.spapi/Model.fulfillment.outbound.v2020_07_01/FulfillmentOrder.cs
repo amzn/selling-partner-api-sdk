@@ -79,7 +79,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="statusUpdatedDate">Date timestamp (required).</param>
         /// <param name="notificationEmails">A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller..</param>
         /// <param name="featureConstraints">A list of features and their fulfillment policies to apply to the order..</param>
-        public FulfillmentOrder(string sellerFulfillmentOrderId = default(string), string marketplaceId = default(string), string displayableOrderId = default(string), DateTime displayableOrderDate = default(DateTime), string displayableOrderComment = default(string), ShippingSpeedCategory shippingSpeedCategory = default(ShippingSpeedCategory), DeliveryWindow deliveryWindow = default(DeliveryWindow), Address destinationAddress = default(Address), FulfillmentAction? fulfillmentAction = default(FulfillmentAction?), FulfillmentPolicy? fulfillmentPolicy = default(FulfillmentPolicy?), CODSettings codSettings = default(CODSettings), DateTime receivedDate = default(DateTime), FulfillmentOrderStatus fulfillmentOrderStatus = default(FulfillmentOrderStatus), DateTime statusUpdatedDate = default(DateTime), List<string> notificationEmails = default(List<string>), List<FeatureSettings> featureConstraints = default(List<FeatureSettings>))
+        public FulfillmentOrder(string sellerFulfillmentOrderId = default(string), string marketplaceId = default(string), string displayableOrderId = default(string), DateTime displayableOrderDate = default(DateTime), string displayableOrderComment = default(string), ShippingSpeedCategory shippingSpeedCategory = default(ShippingSpeedCategory), DeliveryWindow? deliveryWindow = default(DeliveryWindow?), Address destinationAddress = default(Address), FulfillmentAction? fulfillmentAction = default(FulfillmentAction?), FulfillmentPolicy? fulfillmentPolicy = default(FulfillmentPolicy?), CODSettings? codSettings = default(CODSettings?), DateTime receivedDate = default(DateTime), FulfillmentOrderStatus fulfillmentOrderStatus = default(FulfillmentOrderStatus), DateTime statusUpdatedDate = default(DateTime), List<string>? notificationEmails = default(List<string>?), List<FeatureSettings>? featureConstraints = default(List<FeatureSettings>?))
         {
             // to ensure "sellerFulfillmentOrderId" is required (not null)
             if (sellerFulfillmentOrderId == null)
@@ -163,7 +163,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets DeliveryWindow
         /// </summary>
         [DataMember(Name = "deliveryWindow", EmitDefaultValue = false)]
-        public DeliveryWindow DeliveryWindow { get; set; }
+        public DeliveryWindow? DeliveryWindow { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationAddress
@@ -175,7 +175,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets CodSettings
         /// </summary>
         [DataMember(Name = "codSettings", EmitDefaultValue = false)]
-        public CODSettings CodSettings { get; set; }
+        public CODSettings? CodSettings { get; set; }
 
         /// <summary>
         /// Date timestamp
@@ -196,14 +196,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.</value>
         [DataMember(Name = "notificationEmails", EmitDefaultValue = false)]
-        public List<string> NotificationEmails { get; set; }
+        public List<string>? NotificationEmails { get; set; }
 
         /// <summary>
         /// A list of features and their fulfillment policies to apply to the order.
         /// </summary>
         /// <value>A list of features and their fulfillment policies to apply to the order.</value>
         [DataMember(Name = "featureConstraints", EmitDefaultValue = false)]
-        public List<FeatureSettings> FeatureConstraints { get; set; }
+        public List<FeatureSettings>? FeatureConstraints { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -252,5 +252,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

@@ -117,7 +117,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="orderStatesEligibleForRejection">A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible..</param>
         /// <param name="orderPlacedTimestamp">The timestamp of when the order was placed, in UTC.</param>
         /// <param name="processingSource">The source of the order operation..</param>
-        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo originalShipmentInfo = default(ReplacedShipmentInfo), int numberOfUnits = default(int), Priority priority = default(Priority), string buyerOrderId = default(string), List<string> orderStatesEligibleForRejection = default(List<string>), string orderPlacedTimestamp = default(string), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?))
+        public ShipmentInfo(ShipmentTypeEnum shipmentType = default(ShipmentTypeEnum), ReplacedShipmentInfo? originalShipmentInfo = default(ReplacedShipmentInfo?), int numberOfUnits = default(int), Priority priority = default(Priority), string buyerOrderId = default(string), List<string>? orderStatesEligibleForRejection = default(List<string>?), string? orderPlacedTimestamp = default(string?), ProcessingSourceEnum? processingSource = default(ProcessingSourceEnum?))
         {
             this.ShipmentType = shipmentType;
             this.NumberOfUnits = numberOfUnits;
@@ -138,7 +138,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Gets or Sets OriginalShipmentInfo
         /// </summary>
         [DataMember(Name = "originalShipmentInfo", EmitDefaultValue = false)]
-        public ReplacedShipmentInfo OriginalShipmentInfo { get; set; }
+        public ReplacedShipmentInfo? OriginalShipmentInfo { get; set; }
 
         /// <summary>
         /// Total number of units in the shipment.
@@ -159,14 +159,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A list of order statuses for which the marketplace allows order rejection (seller cancellation). If the order has a status that does not belong to this list, then seller cancellation is not possible.</value>
         [DataMember(Name = "orderStatesEligibleForRejection", EmitDefaultValue = false)]
-        public List<string> OrderStatesEligibleForRejection { get; set; }
+        public List<string>? OrderStatesEligibleForRejection { get; set; }
 
         /// <summary>
         /// The timestamp of when the order was placed, in UTC
         /// </summary>
         /// <value>The timestamp of when the order was placed, in UTC</value>
         [DataMember(Name = "orderPlacedTimestamp", EmitDefaultValue = false)]
-        public string OrderPlacedTimestamp { get; set; }
+        public string? OrderPlacedTimestamp { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -213,5 +213,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Initializes a new instance of the <see cref="InboundPreferences" /> class.
         /// </summary>
         /// <param name="destinationRegion">Pass a preferred region so that the inbound order can be shipped to an AWD warehouse located in that region. This doesn&#39;t guarantee the order to be assigned in the specified destination region as it depends on warehouse capacity availability. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast].</param>
-        public InboundPreferences(string destinationRegion = default(string))
+        public InboundPreferences(string? destinationRegion = default(string?))
         {
             this.DestinationRegion = destinationRegion;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Pass a preferred region so that the inbound order can be shipped to an AWD warehouse located in that region. This doesn&#39;t guarantee the order to be assigned in the specified destination region as it depends on warehouse capacity availability. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]</value>
         [DataMember(Name = "destinationRegion", EmitDefaultValue = false)]
-        public string DestinationRegion { get; set; }
+        public string? DestinationRegion { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

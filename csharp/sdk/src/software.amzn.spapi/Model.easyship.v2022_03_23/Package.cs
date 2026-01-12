@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// <param name="invoice">invoice.</param>
         /// <param name="packageStatus">packageStatus.</param>
         /// <param name="trackingDetails">trackingDetails.</param>
-        public Package(ScheduledPackageId scheduledPackageId = default(ScheduledPackageId), Dimensions packageDimensions = default(Dimensions), Weight packageWeight = default(Weight), List<Item> packageItems = default(List<Item>), TimeSlot packageTimeSlot = default(TimeSlot), string packageIdentifier = default(string), InvoiceData invoice = default(InvoiceData), PackageStatus? packageStatus = default(PackageStatus?), TrackingDetails trackingDetails = default(TrackingDetails))
+        public Package(ScheduledPackageId scheduledPackageId = default(ScheduledPackageId), Dimensions packageDimensions = default(Dimensions), Weight packageWeight = default(Weight), List<Item>? packageItems = default(List<Item>?), TimeSlot packageTimeSlot = default(TimeSlot), string? packageIdentifier = default(string?), InvoiceData? invoice = default(InvoiceData?), PackageStatus? packageStatus = default(PackageStatus?), TrackingDetails? trackingDetails = default(TrackingDetails?))
         {
             // to ensure "scheduledPackageId" is required (not null)
             if (scheduledPackageId == null)
@@ -110,7 +110,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>A list of items contained in the package.</value>
         [DataMember(Name = "packageItems", EmitDefaultValue = false)]
-        public List<Item> PackageItems { get; set; }
+        public List<Item>? PackageItems { get; set; }
 
         /// <summary>
         /// Gets or Sets PackageTimeSlot
@@ -123,19 +123,19 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.</value>
         [DataMember(Name = "packageIdentifier", EmitDefaultValue = false)]
-        public string PackageIdentifier { get; set; }
+        public string? PackageIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets Invoice
         /// </summary>
         [DataMember(Name = "invoice", EmitDefaultValue = false)]
-        public InvoiceData Invoice { get; set; }
+        public InvoiceData? Invoice { get; set; }
 
         /// <summary>
         /// Gets or Sets TrackingDetails
         /// </summary>
         [DataMember(Name = "trackingDetails", EmitDefaultValue = false)]
-        public TrackingDetails TrackingDetails { get; set; }
+        public TrackingDetails? TrackingDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,5 +177,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

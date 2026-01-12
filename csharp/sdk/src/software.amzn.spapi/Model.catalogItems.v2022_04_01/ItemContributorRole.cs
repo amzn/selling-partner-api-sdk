@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <param name="displayName">Display name of the role in the requested locale, such as &#x60;Author&#x60; or &#x60;Actor&#x60;..</param>
         /// <param name="value">Role value for the Amazon catalog item, such as &#x60;author&#x60; or &#x60;actor&#x60;. (required).</param>
-        public ItemContributorRole(string displayName = default(string), string value = default(string))
+        public ItemContributorRole(string? displayName = default(string?), string value = default(string))
         {
             // to ensure "value" is required (not null)
             if (value == null)
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Display name of the role in the requested locale, such as &#x60;Author&#x60; or &#x60;Actor&#x60;.</value>
         [DataMember(Name = "displayName", EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// Role value for the Amazon catalog item, such as &#x60;author&#x60; or &#x60;actor&#x60;.
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

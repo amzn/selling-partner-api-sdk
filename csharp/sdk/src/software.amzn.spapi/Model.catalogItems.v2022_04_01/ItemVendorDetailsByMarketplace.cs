@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="productGroup">The product group that is associated with an Amazon catalog item..</param>
         /// <param name="productSubcategory">productSubcategory.</param>
         /// <param name="replenishmentCategory">The replenishment category that is associated with an Amazon catalog item..</param>
-        public ItemVendorDetailsByMarketplace(string marketplaceId = default(string), string brandCode = default(string), string manufacturerCode = default(string), string manufacturerCodeParent = default(string), ItemVendorDetailsCategory productCategory = default(ItemVendorDetailsCategory), string productGroup = default(string), ItemVendorDetailsCategory productSubcategory = default(ItemVendorDetailsCategory), ReplenishmentCategoryEnum? replenishmentCategory = default(ReplenishmentCategoryEnum?))
+        public ItemVendorDetailsByMarketplace(string marketplaceId = default(string), string? brandCode = default(string?), string? manufacturerCode = default(string?), string? manufacturerCodeParent = default(string?), ItemVendorDetailsCategory? productCategory = default(ItemVendorDetailsCategory?), string? productGroup = default(string?), ItemVendorDetailsCategory? productSubcategory = default(ItemVendorDetailsCategory?), ReplenishmentCategoryEnum? replenishmentCategory = default(ReplenishmentCategoryEnum?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -151,40 +151,40 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>The brand code that is associated with an Amazon catalog item.</value>
         [DataMember(Name = "brandCode", EmitDefaultValue = false)]
-        public string BrandCode { get; set; }
+        public string? BrandCode { get; set; }
 
         /// <summary>
         /// The manufacturer code that is associated with an Amazon catalog item.
         /// </summary>
         /// <value>The manufacturer code that is associated with an Amazon catalog item.</value>
         [DataMember(Name = "manufacturerCode", EmitDefaultValue = false)]
-        public string ManufacturerCode { get; set; }
+        public string? ManufacturerCode { get; set; }
 
         /// <summary>
         /// The parent vendor code of the manufacturer code.
         /// </summary>
         /// <value>The parent vendor code of the manufacturer code.</value>
         [DataMember(Name = "manufacturerCodeParent", EmitDefaultValue = false)]
-        public string ManufacturerCodeParent { get; set; }
+        public string? ManufacturerCodeParent { get; set; }
 
         /// <summary>
         /// Gets or Sets ProductCategory
         /// </summary>
         [DataMember(Name = "productCategory", EmitDefaultValue = false)]
-        public ItemVendorDetailsCategory ProductCategory { get; set; }
+        public ItemVendorDetailsCategory? ProductCategory { get; set; }
 
         /// <summary>
         /// The product group that is associated with an Amazon catalog item.
         /// </summary>
         /// <value>The product group that is associated with an Amazon catalog item.</value>
         [DataMember(Name = "productGroup", EmitDefaultValue = false)]
-        public string ProductGroup { get; set; }
+        public string? ProductGroup { get; set; }
 
         /// <summary>
         /// Gets or Sets ProductSubcategory
         /// </summary>
         [DataMember(Name = "productSubcategory", EmitDefaultValue = false)]
-        public ItemVendorDetailsCategory ProductSubcategory { get; set; }
+        public ItemVendorDetailsCategory? ProductSubcategory { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -225,5 +225,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

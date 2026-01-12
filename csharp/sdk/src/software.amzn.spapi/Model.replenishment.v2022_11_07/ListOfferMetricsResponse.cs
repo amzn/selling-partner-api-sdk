@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <param name="offers">A list of offers and associated metrics..</param>
         /// <param name="pagination">pagination.</param>
-        public ListOfferMetricsResponse(List<ListOfferMetricsResponseOffer> offers = default(List<ListOfferMetricsResponseOffer>), PaginationResponse pagination = default(PaginationResponse))
+        public ListOfferMetricsResponse(List<ListOfferMetricsResponseOffer>? offers = default(List<ListOfferMetricsResponseOffer>?), PaginationResponse? pagination = default(PaginationResponse?))
         {
             this.Offers = offers;
             this.Pagination = pagination;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>A list of offers and associated metrics.</value>
         [DataMember(Name = "offers", EmitDefaultValue = false)]
-        public List<ListOfferMetricsResponseOffer> Offers { get; set; }
+        public List<ListOfferMetricsResponseOffer>? Offers { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public PaginationResponse Pagination { get; set; }
+        public PaginationResponse? Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

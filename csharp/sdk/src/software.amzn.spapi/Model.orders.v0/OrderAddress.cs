@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="buyerCompanyName">The company name of the contact buyer. For IBA orders, the buyer company must be Amazon entities..</param>
         /// <param name="shippingAddress">shippingAddress.</param>
         /// <param name="deliveryPreferences">deliveryPreferences.</param>
-        public OrderAddress(string amazonOrderId = default(string), string buyerCompanyName = default(string), Address shippingAddress = default(Address), DeliveryPreferences deliveryPreferences = default(DeliveryPreferences))
+        public OrderAddress(string amazonOrderId = default(string), string? buyerCompanyName = default(string?), Address? shippingAddress = default(Address?), DeliveryPreferences? deliveryPreferences = default(DeliveryPreferences?))
         {
             // to ensure "amazonOrderId" is required (not null)
             if (amazonOrderId == null)
@@ -68,19 +68,19 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The company name of the contact buyer. For IBA orders, the buyer company must be Amazon entities.</value>
         [DataMember(Name = "BuyerCompanyName", EmitDefaultValue = false)]
-        public string BuyerCompanyName { get; set; }
+        public string? BuyerCompanyName { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
         [DataMember(Name = "ShippingAddress", EmitDefaultValue = false)]
-        public Address ShippingAddress { get; set; }
+        public Address? ShippingAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets DeliveryPreferences
         /// </summary>
         [DataMember(Name = "DeliveryPreferences", EmitDefaultValue = false)]
-        public DeliveryPreferences DeliveryPreferences { get; set; }
+        public DeliveryPreferences? DeliveryPreferences { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

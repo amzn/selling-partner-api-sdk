@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <param name="positiveTopics">A list of the most positive review topics. The percentage of reviews that contain the topic determines the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are not enough positive reviews for the specified ASIN.  **Max length:** 10.</param>
         /// <param name="negativeTopics">A list of the most negative review topics. The percentage of reviews that contain the topic determines the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are not enough negative reviews for the specified ASIN.  **Max length:** 10.</param>
-        public ItemReviewTrends(List<ItemReviewTrend> positiveTopics = default(List<ItemReviewTrend>), List<ItemReviewTrend> negativeTopics = default(List<ItemReviewTrend>))
+        public ItemReviewTrends(List<ItemReviewTrend>? positiveTopics = default(List<ItemReviewTrend>?), List<ItemReviewTrend>? negativeTopics = default(List<ItemReviewTrend>?))
         {
             this.PositiveTopics = positiveTopics;
             this.NegativeTopics = negativeTopics;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <value>A list of the most positive review topics. The percentage of reviews that contain the topic determines the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are not enough positive reviews for the specified ASIN.  **Max length:** 10</value>
         [DataMember(Name = "positiveTopics", EmitDefaultValue = false)]
-        public List<ItemReviewTrend> PositiveTopics { get; set; }
+        public List<ItemReviewTrend>? PositiveTopics { get; set; }
 
         /// <summary>
         /// A list of the most negative review topics. The percentage of reviews that contain the topic determines the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are not enough negative reviews for the specified ASIN.  **Max length:** 10
         /// </summary>
         /// <value>A list of the most negative review topics. The percentage of reviews that contain the topic determines the topic&#39;s placement in the list. This value is &#x60;null&#x60; if there are not enough negative reviews for the specified ASIN.  **Max length:** 10</value>
         [DataMember(Name = "negativeTopics", EmitDefaultValue = false)]
-        public List<ItemReviewTrend> NegativeTopics { get; set; }
+        public List<ItemReviewTrend>? NegativeTopics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

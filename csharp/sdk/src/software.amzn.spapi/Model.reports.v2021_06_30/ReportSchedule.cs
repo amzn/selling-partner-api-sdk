@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// <param name="reportOptions">Additional information passed to reports. This varies by report type..</param>
         /// <param name="period">An &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; period value that indicates how often a report should be created. (required).</param>
         /// <param name="nextReportCreationTime">The date and time when the schedule will create its next report, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format..</param>
-        public ReportSchedule(string reportScheduleId = default(string), string reportType = default(string), List<string> marketplaceIds = default(List<string>), Dictionary<string, string> reportOptions = default(Dictionary<string, string>), string period = default(string), DateTime nextReportCreationTime = default(DateTime))
+        public ReportSchedule(string reportScheduleId = default(string), string reportType = default(string), List<string>? marketplaceIds = default(List<string>?), Dictionary<string, string>? reportOptions = default(Dictionary<string, string>?), string period = default(string), DateTime? nextReportCreationTime = default(DateTime?))
         {
             // to ensure "reportScheduleId" is required (not null)
             if (reportScheduleId == null)
@@ -89,14 +89,14 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// </summary>
         /// <value>A list of marketplace identifiers. The report document&#39;s contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.</value>
         [DataMember(Name = "marketplaceIds", EmitDefaultValue = false)]
-        public List<string> MarketplaceIds { get; set; }
+        public List<string>? MarketplaceIds { get; set; }
 
         /// <summary>
         /// Additional information passed to reports. This varies by report type.
         /// </summary>
         /// <value>Additional information passed to reports. This varies by report type.</value>
         [DataMember(Name = "reportOptions", EmitDefaultValue = false)]
-        public Dictionary<string, string> ReportOptions { get; set; }
+        public Dictionary<string, string>? ReportOptions { get; set; }
 
         /// <summary>
         /// An &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; period value that indicates how often a report should be created.
@@ -110,7 +110,7 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// </summary>
         /// <value>The date and time when the schedule will create its next report, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format.</value>
         [DataMember(Name = "nextReportCreationTime", EmitDefaultValue = false)]
-        public DateTime NextReportCreationTime { get; set; }
+        public DateTime? NextReportCreationTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -149,5 +149,4 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
             yield break;
         }
     }
-
 }

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="capacityTypes">An array of capacity types which are being requested. Default value is &#x60;[SCHEDULED_CAPACITY]&#x60;..</param>
         /// <param name="startDateTime">Start date time from which the capacity slots are being requested in ISO 8601 format. (required).</param>
         /// <param name="endDateTime">End date time up to which the capacity slots are being requested in ISO 8601 format. (required).</param>
-        public RangeSlotCapacityQuery(List<CapacityType> capacityTypes = default(List<CapacityType>), DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime))
+        public RangeSlotCapacityQuery(List<CapacityType>? capacityTypes = default(List<CapacityType>?), DateTime startDateTime = default(DateTime), DateTime endDateTime = default(DateTime))
         {
             this.StartDateTime = startDateTime;
             this.EndDateTime = endDateTime;
@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>An array of capacity types which are being requested. Default value is &#x60;[SCHEDULED_CAPACITY]&#x60;.</value>
         [DataMember(Name = "capacityTypes", EmitDefaultValue = false)]
-        public List<CapacityType> CapacityTypes { get; set; }
+        public List<CapacityType>? CapacityTypes { get; set; }
 
         /// <summary>
         /// Start date time from which the capacity slots are being requested in ISO 8601 format.
@@ -104,5 +104,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Initializes a new instance of the <see cref="BalanceListing" /> class.
         /// </summary>
         /// <param name="balances">Collection that holds list of balances on the account .</param>
-        public BalanceListing(List<Balance> balances = default(List<Balance>))
+        public BalanceListing(List<Balance>? balances = default(List<Balance>?))
         {
             this.Balances = balances;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <value>Collection that holds list of balances on the account </value>
         [DataMember(Name = "balances", EmitDefaultValue = false)]
-        public List<Balance> Balances { get; set; }
+        public List<Balance>? Balances { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
         /// </summary>
         /// <param name="feeds">A list of feeds. (required).</param>
         /// <param name="nextToken">Returned when the number of results exceeds pageSize. To get the next page of results, call the getFeeds operation with this token as the only parameter..</param>
-        public GetFeedsResponse(List<Feed> feeds = default(List<Feed>), string nextToken = default(string))
+        public GetFeedsResponse(List<Feed> feeds = default(List<Feed>), string? nextToken = default(string?))
         {
             // to ensure "feeds" is required (not null)
             if (feeds == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
         /// </summary>
         /// <value>Returned when the number of results exceeds pageSize. To get the next page of results, call the getFeeds operation with this token as the only parameter.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
             yield break;
         }
     }
-
 }

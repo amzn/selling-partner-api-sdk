@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="sellingParty">sellingParty (required).</param>
         /// <param name="shipFromParty">shipFromParty (required).</param>
         /// <param name="containers">A list of the packages in this shipment..</param>
-        public CreateShippingLabelsRequest(PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), List<Container> containers = default(List<Container>))
+        public CreateShippingLabelsRequest(PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), List<Container>? containers = default(List<Container>?))
         {
             // to ensure "sellingParty" is required (not null)
             if (sellingParty == null)
@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>A list of the packages in this shipment.</value>
         [DataMember(Name = "containers", EmitDefaultValue = false)]
-        public List<Container> Containers { get; set; }
+        public List<Container>? Containers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,5 +112,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

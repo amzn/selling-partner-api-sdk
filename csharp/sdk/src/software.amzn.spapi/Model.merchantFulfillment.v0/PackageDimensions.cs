@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="height">A number that represents the given package dimension..</param>
         /// <param name="unit">unit.</param>
         /// <param name="predefinedPackageDimensions">predefinedPackageDimensions.</param>
-        public PackageDimensions(double length = default(double), double width = default(double), double height = default(double), UnitOfLength? unit = default(UnitOfLength?), PredefinedPackageDimensions? predefinedPackageDimensions = default(PredefinedPackageDimensions?))
+        public PackageDimensions(double? length = default(double?), double? width = default(double?), double? height = default(double?), UnitOfLength? unit = default(UnitOfLength?), PredefinedPackageDimensions? predefinedPackageDimensions = default(PredefinedPackageDimensions?))
         {
             this.Length = length;
             this.Width = width;
@@ -65,21 +65,21 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A number that represents the given package dimension.</value>
         [DataMember(Name = "Length", EmitDefaultValue = false)]
-        public double Length { get; set; }
+        public double? Length { get; set; }
 
         /// <summary>
         /// A number that represents the given package dimension.
         /// </summary>
         /// <value>A number that represents the given package dimension.</value>
         [DataMember(Name = "Width", EmitDefaultValue = false)]
-        public double Width { get; set; }
+        public double? Width { get; set; }
 
         /// <summary>
         /// A number that represents the given package dimension.
         /// </summary>
         /// <value>A number that represents the given package dimension.</value>
         [DataMember(Name = "Height", EmitDefaultValue = false)]
-        public double Height { get; set; }
+        public double? Height { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

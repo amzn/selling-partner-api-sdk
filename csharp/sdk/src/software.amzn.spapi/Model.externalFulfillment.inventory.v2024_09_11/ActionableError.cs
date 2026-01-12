@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// </summary>
         /// <param name="errorType">The top level error type that may contain multiple error subtypes..</param>
         /// <param name="errorSubType">The secondary level error type..</param>
-        public ActionableError(string errorType = default(string), string errorSubType = default(string))
+        public ActionableError(string? errorType = default(string?), string? errorSubType = default(string?))
         {
             this.ErrorType = errorType;
             this.ErrorSubType = errorSubType;
@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>PRODUCT_VALIDATION_FAILURE</example>
         */
         [DataMember(Name = "errorType", EmitDefaultValue = false)]
-        public string ErrorType { get; set; }
+        public string? ErrorType { get; set; }
 
         /// <summary>
         /// The secondary level error type.
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>INVALID_SKU</example>
         */
         [DataMember(Name = "errorSubType", EmitDefaultValue = false)]
-        public string ErrorSubType { get; set; }
+        public string? ErrorSubType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,5 +95,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

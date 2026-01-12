@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="shipMethod">Ship method to be used for shipping the order. Amazon defines Ship Method Codes indicating shipping carrier and shipment service level. Ship Method Codes are case and format sensitive. The same ship method code should returned on the shipment confirmation. Note that the Ship Method Codes are vendor specific and will be provided to each vendor during the implementation..</param>
         /// <param name="shipMethodName">Shipping method name for internal reference..</param>
         /// <param name="content">This field will contain the Base64 string of the shipment label content. (required).</param>
-        public LabelData(string packageIdentifier = default(string), string trackingNumber = default(string), string shipMethod = default(string), string shipMethodName = default(string), string content = default(string))
+        public LabelData(string? packageIdentifier = default(string?), string? trackingNumber = default(string?), string? shipMethod = default(string?), string? shipMethodName = default(string?), string content = default(string))
         {
             // to ensure "content" is required (not null)
             if (content == null)
@@ -63,28 +63,28 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>Identifier for the package. The first package will be 001, the second 002, and so on. This number is used as a reference to refer to this package from the pallet level.</value>
         [DataMember(Name = "packageIdentifier", EmitDefaultValue = false)]
-        public string PackageIdentifier { get; set; }
+        public string? PackageIdentifier { get; set; }
 
         /// <summary>
         /// Package tracking identifier from the shipping carrier.
         /// </summary>
         /// <value>Package tracking identifier from the shipping carrier.</value>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = false)]
-        public string TrackingNumber { get; set; }
+        public string? TrackingNumber { get; set; }
 
         /// <summary>
         /// Ship method to be used for shipping the order. Amazon defines Ship Method Codes indicating shipping carrier and shipment service level. Ship Method Codes are case and format sensitive. The same ship method code should returned on the shipment confirmation. Note that the Ship Method Codes are vendor specific and will be provided to each vendor during the implementation.
         /// </summary>
         /// <value>Ship method to be used for shipping the order. Amazon defines Ship Method Codes indicating shipping carrier and shipment service level. Ship Method Codes are case and format sensitive. The same ship method code should returned on the shipment confirmation. Note that the Ship Method Codes are vendor specific and will be provided to each vendor during the implementation.</value>
         [DataMember(Name = "shipMethod", EmitDefaultValue = false)]
-        public string ShipMethod { get; set; }
+        public string? ShipMethod { get; set; }
 
         /// <summary>
         /// Shipping method name for internal reference.
         /// </summary>
         /// <value>Shipping method name for internal reference.</value>
         [DataMember(Name = "shipMethodName", EmitDefaultValue = false)]
-        public string ShipMethodName { get; set; }
+        public string? ShipMethodName { get; set; }
 
         /// <summary>
         /// This field will contain the Base64 string of the shipment label content.
@@ -129,5 +129,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

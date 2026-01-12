@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// </summary>
         /// <param name="targetApplication">The application ID for the target application to which access is being delegated..</param>
         /// <param name="restrictedResources">A list of restricted resources. Maximum: 50 (required).</param>
-        public CreateRestrictedDataTokenRequest(string targetApplication = default(string), List<RestrictedResource> restrictedResources = default(List<RestrictedResource>))
+        public CreateRestrictedDataTokenRequest(string? targetApplication = default(string?), List<RestrictedResource> restrictedResources = default(List<RestrictedResource>))
         {
             // to ensure "restrictedResources" is required (not null)
             if (restrictedResources == null)
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// </summary>
         /// <value>The application ID for the target application to which access is being delegated.</value>
         [DataMember(Name = "targetApplication", EmitDefaultValue = false)]
-        public string TargetApplication { get; set; }
+        public string? TargetApplication { get; set; }
 
         /// <summary>
         /// A list of restricted resources. Maximum: 50
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
             yield break;
         }
     }
-
 }

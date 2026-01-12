@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="throughputConfig">throughputConfig.</param>
         /// <param name="operatingHoursByDay">operatingHoursByDay.</param>
         /// <param name="handlingTime">handlingTime.</param>
-        public OperationalConfiguration(ContactDetails contactDetails = default(ContactDetails), ThroughputConfig throughputConfig = default(ThroughputConfig), OperatingHoursByDay operatingHoursByDay = default(OperatingHoursByDay), Duration handlingTime = default(Duration))
+        public OperationalConfiguration(ContactDetails? contactDetails = default(ContactDetails?), ThroughputConfig? throughputConfig = default(ThroughputConfig?), OperatingHoursByDay? operatingHoursByDay = default(OperatingHoursByDay?), Duration? handlingTime = default(Duration?))
         {
             this.ContactDetails = contactDetails;
             this.ThroughputConfig = throughputConfig;
@@ -50,25 +50,25 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets ContactDetails
         /// </summary>
         [DataMember(Name = "contactDetails", EmitDefaultValue = false)]
-        public ContactDetails ContactDetails { get; set; }
+        public ContactDetails? ContactDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets ThroughputConfig
         /// </summary>
         [DataMember(Name = "throughputConfig", EmitDefaultValue = false)]
-        public ThroughputConfig ThroughputConfig { get; set; }
+        public ThroughputConfig? ThroughputConfig { get; set; }
 
         /// <summary>
         /// Gets or Sets OperatingHoursByDay
         /// </summary>
         [DataMember(Name = "operatingHoursByDay", EmitDefaultValue = false)]
-        public OperatingHoursByDay OperatingHoursByDay { get; set; }
+        public OperatingHoursByDay? OperatingHoursByDay { get; set; }
 
         /// <summary>
         /// Gets or Sets HandlingTime
         /// </summary>
         [DataMember(Name = "handlingTime", EmitDefaultValue = false)]
-        public Duration HandlingTime { get; set; }
+        public Duration? HandlingTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,5 +105,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

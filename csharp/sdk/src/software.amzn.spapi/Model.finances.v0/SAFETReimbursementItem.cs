@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="itemChargeList">A list of charge information on the seller&#39;s account..</param>
         /// <param name="productDescription">The description of the item as shown on the product detail page on the retail website..</param>
         /// <param name="quantity">The number of units of the item being reimbursed..</param>
-        public SAFETReimbursementItem(List<ChargeComponent> itemChargeList = default(List<ChargeComponent>), string productDescription = default(string), string quantity = default(string))
+        public SAFETReimbursementItem(List<ChargeComponent>? itemChargeList = default(List<ChargeComponent>?), string? productDescription = default(string?), string? quantity = default(string?))
         {
             this.ItemChargeList = itemChargeList;
             this.ProductDescription = productDescription;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A list of charge information on the seller&#39;s account.</value>
         [DataMember(Name = "itemChargeList", EmitDefaultValue = false)]
-        public List<ChargeComponent> ItemChargeList { get; set; }
+        public List<ChargeComponent>? ItemChargeList { get; set; }
 
         /// <summary>
         /// The description of the item as shown on the product detail page on the retail website.
         /// </summary>
         /// <value>The description of the item as shown on the product detail page on the retail website.</value>
         [DataMember(Name = "productDescription", EmitDefaultValue = false)]
-        public string ProductDescription { get; set; }
+        public string? ProductDescription { get; set; }
 
         /// <summary>
         /// The number of units of the item being reimbursed.
         /// </summary>
         /// <value>The number of units of the item being reimbursed.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public string Quantity { get; set; }
+        public string? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

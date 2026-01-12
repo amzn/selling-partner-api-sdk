@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="businessHours">Business hours when the business is open for deliveries..</param>
         /// <param name="exceptionDates">Dates when the business is closed during the next 30 days..</param>
-        public PreferredDeliveryTime(List<BusinessHours> businessHours = default(List<BusinessHours>), List<ExceptionDates> exceptionDates = default(List<ExceptionDates>))
+        public PreferredDeliveryTime(List<BusinessHours>? businessHours = default(List<BusinessHours>?), List<ExceptionDates>? exceptionDates = default(List<ExceptionDates>?))
         {
             this.BusinessHours = businessHours;
             this.ExceptionDates = exceptionDates;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>Business hours when the business is open for deliveries.</value>
         [DataMember(Name = "BusinessHours", EmitDefaultValue = false)]
-        public List<BusinessHours> BusinessHours { get; set; }
+        public List<BusinessHours>? BusinessHours { get; set; }
 
         /// <summary>
         /// Dates when the business is closed during the next 30 days.
         /// </summary>
         /// <value>Dates when the business is closed during the next 30 days.</value>
         [DataMember(Name = "ExceptionDates", EmitDefaultValue = false)]
-        public List<ExceptionDates> ExceptionDates { get; set; }
+        public List<ExceptionDates>? ExceptionDates { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

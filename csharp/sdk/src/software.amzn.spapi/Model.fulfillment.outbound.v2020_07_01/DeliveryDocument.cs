@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="documentType">The delivery document type. The only possible value is &#x60;DELIVERY_IMAGE&#x60;. (required).</param>
         /// <param name="url">A URL that you can use to download the document. This URL has a &#x60;Content-Type&#x60; header. Note that the URL expires after one hour. To get a new URL, you must call the API again..</param>
-        public DeliveryDocument(string documentType = default(string), string url = default(string))
+        public DeliveryDocument(string documentType = default(string), string? url = default(string?))
         {
             // to ensure "documentType" is required (not null)
             if (documentType == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>A URL that you can use to download the document. This URL has a &#x60;Content-Type&#x60; header. Note that the URL expires after one hour. To get a new URL, you must call the API again.</value>
         [DataMember(Name = "url", EmitDefaultValue = false)]
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

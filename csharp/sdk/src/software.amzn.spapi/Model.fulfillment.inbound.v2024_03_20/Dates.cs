@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Initializes a new instance of the <see cref="Dates" /> class.
         /// </summary>
         /// <param name="readyToShipWindow">readyToShipWindow.</param>
-        public Dates(Window readyToShipWindow = default(Window))
+        public Dates(Window? readyToShipWindow = default(Window?))
         {
             this.ReadyToShipWindow = readyToShipWindow;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets ReadyToShipWindow
         /// </summary>
         [DataMember(Name = "readyToShipWindow", EmitDefaultValue = false)]
-        public Window ReadyToShipWindow { get; set; }
+        public Window? ReadyToShipWindow { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

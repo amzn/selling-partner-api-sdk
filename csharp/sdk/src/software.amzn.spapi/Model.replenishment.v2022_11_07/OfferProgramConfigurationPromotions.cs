@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="sellingPartnerFundedTieredDiscount">sellingPartnerFundedTieredDiscount.</param>
         /// <param name="amazonFundedBaseDiscount">amazonFundedBaseDiscount.</param>
         /// <param name="amazonFundedTieredDiscount">amazonFundedTieredDiscount.</param>
-        public OfferProgramConfigurationPromotions(OfferProgramConfigurationPromotionsDiscountFunding sellingPartnerFundedBaseDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding), OfferProgramConfigurationPromotionsDiscountFunding sellingPartnerFundedTieredDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding), OfferProgramConfigurationPromotionsDiscountFunding amazonFundedBaseDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding), OfferProgramConfigurationPromotionsDiscountFunding amazonFundedTieredDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding))
+        public OfferProgramConfigurationPromotions(OfferProgramConfigurationPromotionsDiscountFunding? sellingPartnerFundedBaseDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding?), OfferProgramConfigurationPromotionsDiscountFunding? sellingPartnerFundedTieredDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding?), OfferProgramConfigurationPromotionsDiscountFunding? amazonFundedBaseDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding?), OfferProgramConfigurationPromotionsDiscountFunding? amazonFundedTieredDiscount = default(OfferProgramConfigurationPromotionsDiscountFunding?))
         {
             this.SellingPartnerFundedBaseDiscount = sellingPartnerFundedBaseDiscount;
             this.SellingPartnerFundedTieredDiscount = sellingPartnerFundedTieredDiscount;
@@ -50,25 +50,25 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Gets or Sets SellingPartnerFundedBaseDiscount
         /// </summary>
         [DataMember(Name = "sellingPartnerFundedBaseDiscount", EmitDefaultValue = false)]
-        public OfferProgramConfigurationPromotionsDiscountFunding SellingPartnerFundedBaseDiscount { get; set; }
+        public OfferProgramConfigurationPromotionsDiscountFunding? SellingPartnerFundedBaseDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets SellingPartnerFundedTieredDiscount
         /// </summary>
         [DataMember(Name = "sellingPartnerFundedTieredDiscount", EmitDefaultValue = false)]
-        public OfferProgramConfigurationPromotionsDiscountFunding SellingPartnerFundedTieredDiscount { get; set; }
+        public OfferProgramConfigurationPromotionsDiscountFunding? SellingPartnerFundedTieredDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets AmazonFundedBaseDiscount
         /// </summary>
         [DataMember(Name = "amazonFundedBaseDiscount", EmitDefaultValue = false)]
-        public OfferProgramConfigurationPromotionsDiscountFunding AmazonFundedBaseDiscount { get; set; }
+        public OfferProgramConfigurationPromotionsDiscountFunding? AmazonFundedBaseDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets AmazonFundedTieredDiscount
         /// </summary>
         [DataMember(Name = "amazonFundedTieredDiscount", EmitDefaultValue = false)]
-        public OfferProgramConfigurationPromotionsDiscountFunding AmazonFundedTieredDiscount { get; set; }
+        public OfferProgramConfigurationPromotionsDiscountFunding? AmazonFundedTieredDiscount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,5 +105,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="expiresAt">Date timestamp.</param>
         /// <param name="dateRange">dateRange.</param>
         /// <param name="policy">policy.</param>
-        public DeliveryOffer(DateTime expiresAt = default(DateTime), DateRange dateRange = default(DateRange), DeliveryPolicy policy = default(DeliveryPolicy))
+        public DeliveryOffer(DateTime? expiresAt = default(DateTime?), DateRange? dateRange = default(DateRange?), DeliveryPolicy? policy = default(DeliveryPolicy?))
         {
             this.ExpiresAt = expiresAt;
             this.DateRange = dateRange;
@@ -49,19 +49,19 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Gets or Sets DateRange
         /// </summary>
         [DataMember(Name = "dateRange", EmitDefaultValue = false)]
-        public DateRange DateRange { get; set; }
+        public DateRange? DateRange { get; set; }
 
         /// <summary>
         /// Gets or Sets Policy
         /// </summary>
         [DataMember(Name = "policy", EmitDefaultValue = false)]
-        public DeliveryPolicy Policy { get; set; }
+        public DeliveryPolicy? Policy { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

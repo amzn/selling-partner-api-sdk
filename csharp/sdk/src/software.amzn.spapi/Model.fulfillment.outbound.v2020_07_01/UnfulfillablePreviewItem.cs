@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="quantity">The item quantity. (required).</param>
         /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier created with a call to the &#x60;getFulfillmentPreview&#x60; operation. (required).</param>
         /// <param name="itemUnfulfillableReasons">String list.</param>
-        public UnfulfillablePreviewItem(string sellerSku = default(string), int quantity = default(int), string sellerFulfillmentOrderItemId = default(string), List<string> itemUnfulfillableReasons = default(List<string>))
+        public UnfulfillablePreviewItem(string sellerSku = default(string), int quantity = default(int), string sellerFulfillmentOrderItemId = default(string), List<string>? itemUnfulfillableReasons = default(List<string>?))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -87,7 +87,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>String list</value>
         [DataMember(Name = "itemUnfulfillableReasons", EmitDefaultValue = false)]
-        public List<string> ItemUnfulfillableReasons { get; set; }
+        public List<string>? ItemUnfulfillableReasons { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,5 +136,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

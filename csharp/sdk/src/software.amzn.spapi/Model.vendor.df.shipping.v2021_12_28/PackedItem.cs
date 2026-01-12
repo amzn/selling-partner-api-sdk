@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="pieceNumber">The piece number of the item in this container. This is required when the item is split across different containers..</param>
         /// <param name="vendorProductIdentifier">An item&#39;s product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order..</param>
         /// <param name="packedQuantity">packedQuantity (required).</param>
-        public PackedItem(int itemSequenceNumber = default(int), string buyerProductIdentifier = default(string), int pieceNumber = default(int), string vendorProductIdentifier = default(string), ItemQuantity packedQuantity = default(ItemQuantity))
+        public PackedItem(int itemSequenceNumber = default(int), string? buyerProductIdentifier = default(string?), int? pieceNumber = default(int?), string? vendorProductIdentifier = default(string?), ItemQuantity packedQuantity = default(ItemQuantity))
         {
             this.ItemSequenceNumber = itemSequenceNumber;
             // to ensure "packedQuantity" is required (not null)
@@ -70,21 +70,21 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>The buyer&#39;s Amazon Standard Identification Number (ASIN) of an item. Either &#x60;buyerProductIdentifier&#x60; or &#x60;vendorProductIdentifier&#x60; is required.</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The piece number of the item in this container. This is required when the item is split across different containers.
         /// </summary>
         /// <value>The piece number of the item in this container. This is required when the item is split across different containers.</value>
         [DataMember(Name = "pieceNumber", EmitDefaultValue = false)]
-        public int PieceNumber { get; set; }
+        public int? PieceNumber { get; set; }
 
         /// <summary>
         /// An item&#39;s product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order.
         /// </summary>
         /// <value>An item&#39;s product identifier, which the vendor selects. This identifier should be the same as the identifier, such as a SKU, in the purchase order.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets PackedQuantity
@@ -128,5 +128,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

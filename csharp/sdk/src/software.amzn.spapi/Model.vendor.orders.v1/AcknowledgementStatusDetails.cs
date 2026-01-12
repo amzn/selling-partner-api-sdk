@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="acknowledgementDate">The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format..</param>
         /// <param name="acceptedQuantity">acceptedQuantity.</param>
         /// <param name="rejectedQuantity">rejectedQuantity.</param>
-        public AcknowledgementStatusDetails(DateTime acknowledgementDate = default(DateTime), ItemQuantity acceptedQuantity = default(ItemQuantity), ItemQuantity rejectedQuantity = default(ItemQuantity))
+        public AcknowledgementStatusDetails(DateTime? acknowledgementDate = default(DateTime?), ItemQuantity? acceptedQuantity = default(ItemQuantity?), ItemQuantity? rejectedQuantity = default(ItemQuantity?))
         {
             this.AcknowledgementDate = acknowledgementDate;
             this.AcceptedQuantity = acceptedQuantity;
@@ -49,19 +49,19 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>The date when the line item was confirmed by vendor. Must be in ISO-8601 date/time format.</value>
         [DataMember(Name = "acknowledgementDate", EmitDefaultValue = false)]
-        public DateTime AcknowledgementDate { get; set; }
+        public DateTime? AcknowledgementDate { get; set; }
 
         /// <summary>
         /// Gets or Sets AcceptedQuantity
         /// </summary>
         [DataMember(Name = "acceptedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity AcceptedQuantity { get; set; }
+        public ItemQuantity? AcceptedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets RejectedQuantity
         /// </summary>
         [DataMember(Name = "rejectedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity RejectedQuantity { get; set; }
+        public ItemQuantity? RejectedQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

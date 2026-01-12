@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Initializes a new instance of the <see cref="SubmitAcknowledgementRequest" /> class.
         /// </summary>
         /// <param name="orderAcknowledgements">A list of one or more purchase orders..</param>
-        public SubmitAcknowledgementRequest(List<OrderAcknowledgementItem> orderAcknowledgements = default(List<OrderAcknowledgementItem>))
+        public SubmitAcknowledgementRequest(List<OrderAcknowledgementItem>? orderAcknowledgements = default(List<OrderAcknowledgementItem>?))
         {
             this.OrderAcknowledgements = orderAcknowledgements;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>A list of one or more purchase orders.</value>
         [DataMember(Name = "orderAcknowledgements", EmitDefaultValue = false)]
-        public List<OrderAcknowledgementItem> OrderAcknowledgements { get; set; }
+        public List<OrderAcknowledgementItem>? OrderAcknowledgements { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

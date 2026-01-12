@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="quantity">The number of containers where all other properties like weight or dimensions are identical. (required).</param>
         /// <param name="stackability">stackability.</param>
         /// <param name="weight">weight.</param>
-        public PalletInput(Dimensions dimensions = default(Dimensions), int quantity = default(int), Stackability? stackability = default(Stackability?), Weight weight = default(Weight))
+        public PalletInput(Dimensions? dimensions = default(Dimensions?), int quantity = default(int), Stackability? stackability = default(Stackability?), Weight? weight = default(Weight?))
         {
             this.Quantity = quantity;
             this.Dimensions = dimensions;
@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public Dimensions Dimensions { get; set; }
+        public Dimensions? Dimensions { get; set; }
 
         /// <summary>
         /// The number of containers where all other properties like weight or dimensions are identical.
@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,5 +123,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

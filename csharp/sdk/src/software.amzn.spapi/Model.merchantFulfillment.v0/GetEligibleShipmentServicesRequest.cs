@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="shipmentRequestDetails">shipmentRequestDetails (required).</param>
         /// <param name="shippingOfferingFilter">shippingOfferingFilter.</param>
-        public GetEligibleShipmentServicesRequest(ShipmentRequestDetails shipmentRequestDetails = default(ShipmentRequestDetails), ShippingOfferingFilter shippingOfferingFilter = default(ShippingOfferingFilter))
+        public GetEligibleShipmentServicesRequest(ShipmentRequestDetails shipmentRequestDetails = default(ShipmentRequestDetails), ShippingOfferingFilter? shippingOfferingFilter = default(ShippingOfferingFilter?))
         {
             // to ensure "shipmentRequestDetails" is required (not null)
             if (shipmentRequestDetails == null)
@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets ShippingOfferingFilter
         /// </summary>
         [DataMember(Name = "ShippingOfferingFilter", EmitDefaultValue = false)]
-        public ShippingOfferingFilter ShippingOfferingFilter { get; set; }
+        public ShippingOfferingFilter? ShippingOfferingFilter { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

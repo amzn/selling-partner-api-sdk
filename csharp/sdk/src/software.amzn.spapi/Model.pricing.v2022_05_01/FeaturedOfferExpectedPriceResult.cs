@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="resultStatus">The status of the FOEP computation. Possible values include &#x60;VALID_FOEP&#x60;, &#x60;NO_COMPETING_OFFER&#x60;, &#x60;OFFER_NOT_ELIGIBLE&#x60;, &#x60;OFFER_NOT_FOUND&#x60;, and &#x60;ASIN_NOT_ELIGIBLE&#x60;. Additional values might be added in the future. (required).</param>
         /// <param name="competingFeaturedOffer">competingFeaturedOffer.</param>
         /// <param name="currentFeaturedOffer">currentFeaturedOffer.</param>
-        public FeaturedOfferExpectedPriceResult(FeaturedOfferExpectedPrice featuredOfferExpectedPrice = default(FeaturedOfferExpectedPrice), string resultStatus = default(string), FeaturedOffer competingFeaturedOffer = default(FeaturedOffer), FeaturedOffer currentFeaturedOffer = default(FeaturedOffer))
+        public FeaturedOfferExpectedPriceResult(FeaturedOfferExpectedPrice? featuredOfferExpectedPrice = default(FeaturedOfferExpectedPrice?), string resultStatus = default(string), FeaturedOffer? competingFeaturedOffer = default(FeaturedOffer?), FeaturedOffer? currentFeaturedOffer = default(FeaturedOffer?))
         {
             // to ensure "resultStatus" is required (not null)
             if (resultStatus == null)
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets FeaturedOfferExpectedPrice
         /// </summary>
         [DataMember(Name = "featuredOfferExpectedPrice", EmitDefaultValue = false)]
-        public FeaturedOfferExpectedPrice FeaturedOfferExpectedPrice { get; set; }
+        public FeaturedOfferExpectedPrice? FeaturedOfferExpectedPrice { get; set; }
 
         /// <summary>
         /// The status of the FOEP computation. Possible values include &#x60;VALID_FOEP&#x60;, &#x60;NO_COMPETING_OFFER&#x60;, &#x60;OFFER_NOT_ELIGIBLE&#x60;, &#x60;OFFER_NOT_FOUND&#x60;, and &#x60;ASIN_NOT_ELIGIBLE&#x60;. Additional values might be added in the future.
@@ -73,13 +73,13 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets CompetingFeaturedOffer
         /// </summary>
         [DataMember(Name = "competingFeaturedOffer", EmitDefaultValue = false)]
-        public FeaturedOffer CompetingFeaturedOffer { get; set; }
+        public FeaturedOffer? CompetingFeaturedOffer { get; set; }
 
         /// <summary>
         /// Gets or Sets CurrentFeaturedOffer
         /// </summary>
         [DataMember(Name = "currentFeaturedOffer", EmitDefaultValue = false)]
-        public FeaturedOffer CurrentFeaturedOffer { get; set; }
+        public FeaturedOffer? CurrentFeaturedOffer { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,5 +116,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="status">status (required).</param>
         /// <param name="request">request (required).</param>
         /// <param name="body">body.</param>
-        public FeaturedOfferExpectedPriceResponse(Dictionary<string, string> headers = default(Dictionary<string, string>), HttpStatusLine status = default(HttpStatusLine), FeaturedOfferExpectedPriceRequestParams request = default(FeaturedOfferExpectedPriceRequestParams), FeaturedOfferExpectedPriceResponseBody body = default(FeaturedOfferExpectedPriceResponseBody))
+        public FeaturedOfferExpectedPriceResponse(Dictionary<string, string> headers = default(Dictionary<string, string>), HttpStatusLine status = default(HttpStatusLine), FeaturedOfferExpectedPriceRequestParams request = default(FeaturedOfferExpectedPriceRequestParams), FeaturedOfferExpectedPriceResponseBody? body = default(FeaturedOfferExpectedPriceResponseBody?))
         {
             // to ensure "headers" is required (not null)
             if (headers == null)
@@ -89,7 +89,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets Body
         /// </summary>
         [DataMember(Name = "body", EmitDefaultValue = false)]
-        public FeaturedOfferExpectedPriceResponseBody Body { get; set; }
+        public FeaturedOfferExpectedPriceResponseBody? Body { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -126,5 +126,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

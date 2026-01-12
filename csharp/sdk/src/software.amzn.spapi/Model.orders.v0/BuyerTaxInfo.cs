@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="companyLegalName">The legal name of the company..</param>
         /// <param name="taxingRegion">The country or region imposing the tax..</param>
         /// <param name="taxClassifications">A list of tax classifications that apply to the order..</param>
-        public BuyerTaxInfo(string companyLegalName = default(string), string taxingRegion = default(string), List<TaxClassification> taxClassifications = default(List<TaxClassification>))
+        public BuyerTaxInfo(string? companyLegalName = default(string?), string? taxingRegion = default(string?), List<TaxClassification>? taxClassifications = default(List<TaxClassification>?))
         {
             this.CompanyLegalName = companyLegalName;
             this.TaxingRegion = taxingRegion;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The legal name of the company.</value>
         [DataMember(Name = "CompanyLegalName", EmitDefaultValue = false)]
-        public string CompanyLegalName { get; set; }
+        public string? CompanyLegalName { get; set; }
 
         /// <summary>
         /// The country or region imposing the tax.
         /// </summary>
         /// <value>The country or region imposing the tax.</value>
         [DataMember(Name = "TaxingRegion", EmitDefaultValue = false)]
-        public string TaxingRegion { get; set; }
+        public string? TaxingRegion { get; set; }
 
         /// <summary>
         /// A list of tax classifications that apply to the order.
         /// </summary>
         /// <value>A list of tax classifications that apply to the order.</value>
         [DataMember(Name = "TaxClassifications", EmitDefaultValue = false)]
-        public List<TaxClassification> TaxClassifications { get; set; }
+        public List<TaxClassification>? TaxClassifications { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// Initializes a new instance of the <see cref="CreateConfirmServiceDetailsRequest" /> class.
         /// </summary>
         /// <param name="text">The text to be sent to the buyer. Only links related to Home Service calls are allowed. Do not include HTML or email addresses. The text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation..</param>
-        public CreateConfirmServiceDetailsRequest(string text = default(string))
+        public CreateConfirmServiceDetailsRequest(string? text = default(string?))
         {
             this.Text = text;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>The text to be sent to the buyer. Only links related to Home Service calls are allowed. Do not include HTML or email addresses. The text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation.</value>
         [DataMember(Name = "text", EmitDefaultValue = false)]
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,5 +91,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

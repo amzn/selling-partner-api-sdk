@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <param name="nextToken">The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages..</param>
         /// <param name="transactions">A list of transactions within the specified time period..</param>
-        public TransactionsPayload(string nextToken = default(string), List<Transaction> transactions = default(List<Transaction>))
+        public TransactionsPayload(string? nextToken = default(string?), List<Transaction>? transactions = default(List<Transaction>?))
         {
             this.NextToken = nextToken;
             this.Transactions = transactions;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// A list of transactions within the specified time period.
         /// </summary>
         /// <value>A list of transactions within the specified time period.</value>
         [DataMember(Name = "transactions", EmitDefaultValue = false)]
-        public List<Transaction> Transactions { get; set; }
+        public List<Transaction>? Transactions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

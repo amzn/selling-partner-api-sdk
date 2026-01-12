@@ -293,7 +293,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="automatedShippingSettings">automatedShippingSettings.</param>
         /// <param name="hasRegulatedItems">Whether the order contains regulated items which may require additional approval steps before being fulfilled..</param>
         /// <param name="electronicInvoiceStatus">electronicInvoiceStatus.</param>
-        public Order(string amazonOrderId = default(string), string sellerOrderId = default(string), string purchaseDate = default(string), string lastUpdateDate = default(string), OrderStatusEnum orderStatus = default(OrderStatusEnum), FulfillmentChannelEnum? fulfillmentChannel = default(FulfillmentChannelEnum?), string salesChannel = default(string), string orderChannel = default(string), string shipServiceLevel = default(string), Money orderTotal = default(Money), int numberOfItemsShipped = default(int), int numberOfItemsUnshipped = default(int), List<PaymentExecutionDetailItem> paymentExecutionDetail = default(List<PaymentExecutionDetailItem>), PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?), List<string> paymentMethodDetails = default(List<string>), string marketplaceId = default(string), string shipmentServiceLevelCategory = default(string), EasyShipShipmentStatus? easyShipShipmentStatus = default(EasyShipShipmentStatus?), string cbaDisplayableShippingLabel = default(string), OrderTypeEnum? orderType = default(OrderTypeEnum?), string earliestShipDate = default(string), string latestShipDate = default(string), string earliestDeliveryDate = default(string), string latestDeliveryDate = default(string), bool isBusinessOrder = default(bool), bool isPrime = default(bool), bool isPremiumOrder = default(bool), bool isGlobalExpressEnabled = default(bool), string replacedOrderId = default(string), bool isReplacementOrder = default(bool), string promiseResponseDueDate = default(string), bool isEstimatedShipDateSet = default(bool), bool isSoldByAB = default(bool), bool isIBA = default(bool), Address defaultShipFromLocationAddress = default(Address), BuyerInvoicePreferenceEnum? buyerInvoicePreference = default(BuyerInvoicePreferenceEnum?), BuyerTaxInformation buyerTaxInformation = default(BuyerTaxInformation), FulfillmentInstruction fulfillmentInstruction = default(FulfillmentInstruction), bool isISPU = default(bool), bool isAccessPointOrder = default(bool), MarketplaceTaxInfo marketplaceTaxInfo = default(MarketplaceTaxInfo), string sellerDisplayName = default(string), Address shippingAddress = default(Address), BuyerInfo buyerInfo = default(BuyerInfo), AutomatedShippingSettings automatedShippingSettings = default(AutomatedShippingSettings), bool hasRegulatedItems = default(bool), ElectronicInvoiceStatus? electronicInvoiceStatus = default(ElectronicInvoiceStatus?))
+        public Order(string amazonOrderId = default(string), string? sellerOrderId = default(string?), string purchaseDate = default(string), string lastUpdateDate = default(string), OrderStatusEnum orderStatus = default(OrderStatusEnum), FulfillmentChannelEnum? fulfillmentChannel = default(FulfillmentChannelEnum?), string? salesChannel = default(string?), string? orderChannel = default(string?), string? shipServiceLevel = default(string?), Money? orderTotal = default(Money?), int? numberOfItemsShipped = default(int?), int? numberOfItemsUnshipped = default(int?), List<PaymentExecutionDetailItem>? paymentExecutionDetail = default(List<PaymentExecutionDetailItem>?), PaymentMethodEnum? paymentMethod = default(PaymentMethodEnum?), List<string>? paymentMethodDetails = default(List<string>?), string? marketplaceId = default(string?), string? shipmentServiceLevelCategory = default(string?), EasyShipShipmentStatus? easyShipShipmentStatus = default(EasyShipShipmentStatus?), string? cbaDisplayableShippingLabel = default(string?), OrderTypeEnum? orderType = default(OrderTypeEnum?), string? earliestShipDate = default(string?), string? latestShipDate = default(string?), string? earliestDeliveryDate = default(string?), string? latestDeliveryDate = default(string?), bool? isBusinessOrder = default(bool?), bool? isPrime = default(bool?), bool? isPremiumOrder = default(bool?), bool? isGlobalExpressEnabled = default(bool?), string? replacedOrderId = default(string?), bool? isReplacementOrder = default(bool?), string? promiseResponseDueDate = default(string?), bool? isEstimatedShipDateSet = default(bool?), bool? isSoldByAB = default(bool?), bool? isIBA = default(bool?), Address? defaultShipFromLocationAddress = default(Address?), BuyerInvoicePreferenceEnum? buyerInvoicePreference = default(BuyerInvoicePreferenceEnum?), BuyerTaxInformation? buyerTaxInformation = default(BuyerTaxInformation?), FulfillmentInstruction? fulfillmentInstruction = default(FulfillmentInstruction?), bool? isISPU = default(bool?), bool? isAccessPointOrder = default(bool?), MarketplaceTaxInfo? marketplaceTaxInfo = default(MarketplaceTaxInfo?), string? sellerDisplayName = default(string?), Address? shippingAddress = default(Address?), BuyerInfo? buyerInfo = default(BuyerInfo?), AutomatedShippingSettings? automatedShippingSettings = default(AutomatedShippingSettings?), bool? hasRegulatedItems = default(bool?), ElectronicInvoiceStatus? electronicInvoiceStatus = default(ElectronicInvoiceStatus?))
         {
             // to ensure "amazonOrderId" is required (not null)
             if (amazonOrderId == null)
@@ -371,7 +371,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>A seller-defined order identifier.</value>
         [DataMember(Name = "SellerOrderId", EmitDefaultValue = false)]
-        public string SellerOrderId { get; set; }
+        public string? SellerOrderId { get; set; }
 
         /// <summary>
         /// The date when the order was created.
@@ -392,244 +392,244 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The sales channel for the first item in the order.</value>
         [DataMember(Name = "SalesChannel", EmitDefaultValue = false)]
-        public string SalesChannel { get; set; }
+        public string? SalesChannel { get; set; }
 
         /// <summary>
         /// The order channel for the first item in the order.
         /// </summary>
         /// <value>The order channel for the first item in the order.</value>
         [DataMember(Name = "OrderChannel", EmitDefaultValue = false)]
-        public string OrderChannel { get; set; }
+        public string? OrderChannel { get; set; }
 
         /// <summary>
         /// The order&#39;s shipment service level.
         /// </summary>
         /// <value>The order&#39;s shipment service level.</value>
         [DataMember(Name = "ShipServiceLevel", EmitDefaultValue = false)]
-        public string ShipServiceLevel { get; set; }
+        public string? ShipServiceLevel { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderTotal
         /// </summary>
         [DataMember(Name = "OrderTotal", EmitDefaultValue = false)]
-        public Money OrderTotal { get; set; }
+        public Money? OrderTotal { get; set; }
 
         /// <summary>
         /// The number of items shipped.
         /// </summary>
         /// <value>The number of items shipped.</value>
         [DataMember(Name = "NumberOfItemsShipped", EmitDefaultValue = false)]
-        public int NumberOfItemsShipped { get; set; }
+        public int? NumberOfItemsShipped { get; set; }
 
         /// <summary>
         /// The number of items unshipped.
         /// </summary>
         /// <value>The number of items unshipped.</value>
         [DataMember(Name = "NumberOfItemsUnshipped", EmitDefaultValue = false)]
-        public int NumberOfItemsUnshipped { get; set; }
+        public int? NumberOfItemsUnshipped { get; set; }
 
         /// <summary>
         /// A list of payment execution detail items.
         /// </summary>
         /// <value>A list of payment execution detail items.</value>
         [DataMember(Name = "PaymentExecutionDetail", EmitDefaultValue = false)]
-        public List<PaymentExecutionDetailItem> PaymentExecutionDetail { get; set; }
+        public List<PaymentExecutionDetailItem>? PaymentExecutionDetail { get; set; }
 
         /// <summary>
         /// A list of payment method detail items.
         /// </summary>
         /// <value>A list of payment method detail items.</value>
         [DataMember(Name = "PaymentMethodDetails", EmitDefaultValue = false)]
-        public List<string> PaymentMethodDetails { get; set; }
+        public List<string>? PaymentMethodDetails { get; set; }
 
         /// <summary>
         /// The identifier for the marketplace where the order was placed.
         /// </summary>
         /// <value>The identifier for the marketplace where the order was placed.</value>
         [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// The shipment service level category for the order.  **Possible values**: &#x60;Expedited&#x60;, &#x60;FreeEconomy&#x60;, &#x60;NextDay&#x60;, &#x60;Priority&#x60;, &#x60;SameDay&#x60;, &#x60;SecondDay&#x60;, &#x60;Scheduled&#x60;, and &#x60;Standard&#x60;.
         /// </summary>
         /// <value>The shipment service level category for the order.  **Possible values**: &#x60;Expedited&#x60;, &#x60;FreeEconomy&#x60;, &#x60;NextDay&#x60;, &#x60;Priority&#x60;, &#x60;SameDay&#x60;, &#x60;SecondDay&#x60;, &#x60;Scheduled&#x60;, and &#x60;Standard&#x60;.</value>
         [DataMember(Name = "ShipmentServiceLevelCategory", EmitDefaultValue = false)]
-        public string ShipmentServiceLevelCategory { get; set; }
+        public string? ShipmentServiceLevelCategory { get; set; }
 
         /// <summary>
         /// Custom ship label for Checkout by Amazon (CBA).
         /// </summary>
         /// <value>Custom ship label for Checkout by Amazon (CBA).</value>
         [DataMember(Name = "CbaDisplayableShippingLabel", EmitDefaultValue = false)]
-        public string CbaDisplayableShippingLabel { get; set; }
+        public string? CbaDisplayableShippingLabel { get; set; }
 
         /// <summary>
         /// The start of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: &#x60;EarliestShipDate&#x60; might not be returned for orders placed before February 1, 2013.
         /// </summary>
         /// <value>The start of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: &#x60;EarliestShipDate&#x60; might not be returned for orders placed before February 1, 2013.</value>
         [DataMember(Name = "EarliestShipDate", EmitDefaultValue = false)]
-        public string EarliestShipDate { get; set; }
+        public string? EarliestShipDate { get; set; }
 
         /// <summary>
         /// The end of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: &#x60;LatestShipDate&#x60; might not be returned for orders placed before February 1, 2013.
         /// </summary>
         /// <value>The end of the time period within which you have committed to ship the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.  __Note__: &#x60;LatestShipDate&#x60; might not be returned for orders placed before February 1, 2013.</value>
         [DataMember(Name = "LatestShipDate", EmitDefaultValue = false)]
-        public string LatestShipDate { get; set; }
+        public string? LatestShipDate { get; set; }
 
         /// <summary>
         /// The start of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.
         /// </summary>
         /// <value>The start of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders.</value>
         [DataMember(Name = "EarliestDeliveryDate", EmitDefaultValue = false)]
-        public string EarliestDeliveryDate { get; set; }
+        public string? EarliestDeliveryDate { get; set; }
 
         /// <summary>
         /// The end of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders that do not have a &#x60;PendingAvailability&#x60;, &#x60;Pending&#x60;, or &#x60;Canceled&#x60; status.
         /// </summary>
         /// <value>The end of the time period within which you have committed to fulfill the order. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format. Only returned for seller-fulfilled orders that do not have a &#x60;PendingAvailability&#x60;, &#x60;Pending&#x60;, or &#x60;Canceled&#x60; status.</value>
         [DataMember(Name = "LatestDeliveryDate", EmitDefaultValue = false)]
-        public string LatestDeliveryDate { get; set; }
+        public string? LatestDeliveryDate { get; set; }
 
         /// <summary>
         /// When true, the order is an Amazon Business order. An Amazon Business order is an order where the buyer is a Verified Business Buyer.
         /// </summary>
         /// <value>When true, the order is an Amazon Business order. An Amazon Business order is an order where the buyer is a Verified Business Buyer.</value>
         [DataMember(Name = "IsBusinessOrder", EmitDefaultValue = true)]
-        public bool IsBusinessOrder { get; set; }
+        public bool? IsBusinessOrder { get; set; }
 
         /// <summary>
         /// When true, the order is a seller-fulfilled Amazon Prime order.
         /// </summary>
         /// <value>When true, the order is a seller-fulfilled Amazon Prime order.</value>
         [DataMember(Name = "IsPrime", EmitDefaultValue = true)]
-        public bool IsPrime { get; set; }
+        public bool? IsPrime { get; set; }
 
         /// <summary>
         /// When true, the order has a Premium Shipping Service Level Agreement. For more information about Premium Shipping orders, refer to \&quot;Premium Shipping Options\&quot; in the Seller Central Help for your marketplace.
         /// </summary>
         /// <value>When true, the order has a Premium Shipping Service Level Agreement. For more information about Premium Shipping orders, refer to \&quot;Premium Shipping Options\&quot; in the Seller Central Help for your marketplace.</value>
         [DataMember(Name = "IsPremiumOrder", EmitDefaultValue = true)]
-        public bool IsPremiumOrder { get; set; }
+        public bool? IsPremiumOrder { get; set; }
 
         /// <summary>
         /// When true, the order is a &#x60;GlobalExpress&#x60; order.
         /// </summary>
         /// <value>When true, the order is a &#x60;GlobalExpress&#x60; order.</value>
         [DataMember(Name = "IsGlobalExpressEnabled", EmitDefaultValue = true)]
-        public bool IsGlobalExpressEnabled { get; set; }
+        public bool? IsGlobalExpressEnabled { get; set; }
 
         /// <summary>
         /// The order ID value for the order that is being replaced. Returned only if IsReplacementOrder &#x3D; true.
         /// </summary>
         /// <value>The order ID value for the order that is being replaced. Returned only if IsReplacementOrder &#x3D; true.</value>
         [DataMember(Name = "ReplacedOrderId", EmitDefaultValue = false)]
-        public string ReplacedOrderId { get; set; }
+        public string? ReplacedOrderId { get; set; }
 
         /// <summary>
         /// When true, this is a replacement order.
         /// </summary>
         /// <value>When true, this is a replacement order.</value>
         [DataMember(Name = "IsReplacementOrder", EmitDefaultValue = true)]
-        public bool IsReplacementOrder { get; set; }
+        public bool? IsReplacementOrder { get; set; }
 
         /// <summary>
         /// Indicates the date by which the seller must respond to the buyer with an estimated ship date. Only returned for Sourcing on Demand orders.
         /// </summary>
         /// <value>Indicates the date by which the seller must respond to the buyer with an estimated ship date. Only returned for Sourcing on Demand orders.</value>
         [DataMember(Name = "PromiseResponseDueDate", EmitDefaultValue = false)]
-        public string PromiseResponseDueDate { get; set; }
+        public string? PromiseResponseDueDate { get; set; }
 
         /// <summary>
         /// When true, the estimated ship date is set for the order. Only returned for Sourcing on Demand orders.
         /// </summary>
         /// <value>When true, the estimated ship date is set for the order. Only returned for Sourcing on Demand orders.</value>
         [DataMember(Name = "IsEstimatedShipDateSet", EmitDefaultValue = true)]
-        public bool IsEstimatedShipDateSet { get; set; }
+        public bool? IsEstimatedShipDateSet { get; set; }
 
         /// <summary>
         /// When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.
         /// </summary>
         /// <value>When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.</value>
         [DataMember(Name = "IsSoldByAB", EmitDefaultValue = true)]
-        public bool IsSoldByAB { get; set; }
+        public bool? IsSoldByAB { get; set; }
 
         /// <summary>
         /// When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.
         /// </summary>
         /// <value>When true, the item within this order was bought and re-sold by Amazon Business EU SARL (ABEU). By buying and instantly re-selling your items, ABEU becomes the seller of record, making your inventory available for sale to customers who would not otherwise purchase from a third-party seller.</value>
         [DataMember(Name = "IsIBA", EmitDefaultValue = true)]
-        public bool IsIBA { get; set; }
+        public bool? IsIBA { get; set; }
 
         /// <summary>
         /// Gets or Sets DefaultShipFromLocationAddress
         /// </summary>
         [DataMember(Name = "DefaultShipFromLocationAddress", EmitDefaultValue = false)]
-        public Address DefaultShipFromLocationAddress { get; set; }
+        public Address? DefaultShipFromLocationAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerTaxInformation
         /// </summary>
         [DataMember(Name = "BuyerTaxInformation", EmitDefaultValue = false)]
-        public BuyerTaxInformation BuyerTaxInformation { get; set; }
+        public BuyerTaxInformation? BuyerTaxInformation { get; set; }
 
         /// <summary>
         /// Gets or Sets FulfillmentInstruction
         /// </summary>
         [DataMember(Name = "FulfillmentInstruction", EmitDefaultValue = false)]
-        public FulfillmentInstruction FulfillmentInstruction { get; set; }
+        public FulfillmentInstruction? FulfillmentInstruction { get; set; }
 
         /// <summary>
         /// When true, this order is marked to be picked up from a store rather than delivered.
         /// </summary>
         /// <value>When true, this order is marked to be picked up from a store rather than delivered.</value>
         [DataMember(Name = "IsISPU", EmitDefaultValue = true)]
-        public bool IsISPU { get; set; }
+        public bool? IsISPU { get; set; }
 
         /// <summary>
         /// When true, this order is marked to be delivered to an Access Point. The access location is chosen by the customer. Access Points include Amazon Hub Lockers, Amazon Hub Counters, and pickup points operated by carriers.
         /// </summary>
         /// <value>When true, this order is marked to be delivered to an Access Point. The access location is chosen by the customer. Access Points include Amazon Hub Lockers, Amazon Hub Counters, and pickup points operated by carriers.</value>
         [DataMember(Name = "IsAccessPointOrder", EmitDefaultValue = true)]
-        public bool IsAccessPointOrder { get; set; }
+        public bool? IsAccessPointOrder { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketplaceTaxInfo
         /// </summary>
         [DataMember(Name = "MarketplaceTaxInfo", EmitDefaultValue = false)]
-        public MarketplaceTaxInfo MarketplaceTaxInfo { get; set; }
+        public MarketplaceTaxInfo? MarketplaceTaxInfo { get; set; }
 
         /// <summary>
         /// The seller’s friendly name registered in the marketplace where the sale took place. Sellers can use this data to issue electronic invoices for orders in Brazil.  **Note**: This attribute is only available in the Brazil marketplace for the orders with &#x60;Pending&#x60; or &#x60;Unshipped&#x60; status.
         /// </summary>
         /// <value>The seller’s friendly name registered in the marketplace where the sale took place. Sellers can use this data to issue electronic invoices for orders in Brazil.  **Note**: This attribute is only available in the Brazil marketplace for the orders with &#x60;Pending&#x60; or &#x60;Unshipped&#x60; status.</value>
         [DataMember(Name = "SellerDisplayName", EmitDefaultValue = false)]
-        public string SellerDisplayName { get; set; }
+        public string? SellerDisplayName { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
         [DataMember(Name = "ShippingAddress", EmitDefaultValue = false)]
-        public Address ShippingAddress { get; set; }
+        public Address? ShippingAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerInfo
         /// </summary>
         [DataMember(Name = "BuyerInfo", EmitDefaultValue = false)]
-        public BuyerInfo BuyerInfo { get; set; }
+        public BuyerInfo? BuyerInfo { get; set; }
 
         /// <summary>
         /// Gets or Sets AutomatedShippingSettings
         /// </summary>
         [DataMember(Name = "AutomatedShippingSettings", EmitDefaultValue = false)]
-        public AutomatedShippingSettings AutomatedShippingSettings { get; set; }
+        public AutomatedShippingSettings? AutomatedShippingSettings { get; set; }
 
         /// <summary>
         /// Whether the order contains regulated items which may require additional approval steps before being fulfilled.
         /// </summary>
         /// <value>Whether the order contains regulated items which may require additional approval steps before being fulfilled.</value>
         [DataMember(Name = "HasRegulatedItems", EmitDefaultValue = true)]
-        public bool HasRegulatedItems { get; set; }
+        public bool? HasRegulatedItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -709,5 +709,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

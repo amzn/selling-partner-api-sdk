@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="carrierWillPickUp">When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK). (required).</param>
         /// <param name="carrierWillPickUpOption">carrierWillPickUpOption.</param>
         /// <param name="labelFormat">labelFormat.</param>
-        public ShippingServiceOptions(DeliveryExperienceType deliveryExperience = default(DeliveryExperienceType), CurrencyAmount declaredValue = default(CurrencyAmount), bool carrierWillPickUp = default(bool), CarrierWillPickUpOption? carrierWillPickUpOption = default(CarrierWillPickUpOption?), LabelFormat? labelFormat = default(LabelFormat?))
+        public ShippingServiceOptions(DeliveryExperienceType deliveryExperience = default(DeliveryExperienceType), CurrencyAmount? declaredValue = default(CurrencyAmount?), bool carrierWillPickUp = default(bool), CarrierWillPickUpOption? carrierWillPickUpOption = default(CarrierWillPickUpOption?), LabelFormat? labelFormat = default(LabelFormat?))
         {
             this.DeliveryExperience = deliveryExperience;
             this.CarrierWillPickUp = carrierWillPickUp;
@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets DeclaredValue
         /// </summary>
         [DataMember(Name = "DeclaredValue", EmitDefaultValue = false)]
-        public CurrencyAmount DeclaredValue { get; set; }
+        public CurrencyAmount? DeclaredValue { get; set; }
 
         /// <summary>
         /// When true, the carrier will pick up the package. Note: Scheduled carrier pickup is available only using Dynamex (US), DPD (UK), and Royal Mail (UK).
@@ -120,5 +120,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// <param name="startTime">A datetime value in ISO 8601 format..</param>
         /// <param name="endTime">A datetime value in ISO 8601 format..</param>
         /// <param name="handoverMethod">handoverMethod.</param>
-        public TimeSlot(string slotId = default(string), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), HandoverMethod? handoverMethod = default(HandoverMethod?))
+        public TimeSlot(string slotId = default(string), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), HandoverMethod? handoverMethod = default(HandoverMethod?))
         {
             // to ensure "slotId" is required (not null)
             if (slotId == null)
@@ -74,14 +74,14 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>A datetime value in ISO 8601 format.</value>
         [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// A datetime value in ISO 8601 format.
         /// </summary>
         /// <value>A datetime value in ISO 8601 format.</value>
         [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -130,5 +130,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

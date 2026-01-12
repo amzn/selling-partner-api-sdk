@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="assistanceType">Assistance type enum for Access point i.e. STAFF_ASSISTED or SELF_ASSISTED.</param>
         /// <param name="score">The score of access point, based on proximity to postal code and sorting preference. This can be used to sort access point results on shipper&#39;s end..</param>
         /// <param name="standardOperatingHours">Map of day of the week to operating hours of that day.</param>
-        public AccessPoint(string accessPointId = default(string), string name = default(string), string timezone = default(string), AccessPointType? type = default(AccessPointType?), AccessibilityAttributes accessibilityAttributes = default(AccessibilityAttributes), Address address = default(Address), List<ExceptionOperatingHours> exceptionOperatingHours = default(List<ExceptionOperatingHours>), AssistanceTypeEnum? assistanceType = default(AssistanceTypeEnum?), string score = default(string), Dictionary<string, OperatingHours> standardOperatingHours = default(Dictionary<string, OperatingHours>))
+        public AccessPoint(string? accessPointId = default(string?), string? name = default(string?), string? timezone = default(string?), AccessPointType? type = default(AccessPointType?), AccessibilityAttributes? accessibilityAttributes = default(AccessibilityAttributes?), Address? address = default(Address?), List<ExceptionOperatingHours>? exceptionOperatingHours = default(List<ExceptionOperatingHours>?), AssistanceTypeEnum? assistanceType = default(AssistanceTypeEnum?), string? score = default(string?), Dictionary<string, OperatingHours>? standardOperatingHours = default(Dictionary<string, OperatingHours>?))
         {
             this.AccessPointId = accessPointId;
             this.Name = name;
@@ -97,54 +97,54 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Unique identifier for the access point</value>
         [DataMember(Name = "accessPointId", EmitDefaultValue = false)]
-        public string AccessPointId { get; set; }
+        public string? AccessPointId { get; set; }
 
         /// <summary>
         /// Name of entity (store/hub etc) where this access point is located
         /// </summary>
         /// <value>Name of entity (store/hub etc) where this access point is located</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Timezone of access point
         /// </summary>
         /// <value>Timezone of access point</value>
         [DataMember(Name = "timezone", EmitDefaultValue = false)]
-        public string Timezone { get; set; }
+        public string? Timezone { get; set; }
 
         /// <summary>
         /// Gets or Sets AccessibilityAttributes
         /// </summary>
         [DataMember(Name = "accessibilityAttributes", EmitDefaultValue = false)]
-        public AccessibilityAttributes AccessibilityAttributes { get; set; }
+        public AccessibilityAttributes? AccessibilityAttributes { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Exception operating hours for Access Point
         /// </summary>
         /// <value>Exception operating hours for Access Point</value>
         [DataMember(Name = "exceptionOperatingHours", EmitDefaultValue = false)]
-        public List<ExceptionOperatingHours> ExceptionOperatingHours { get; set; }
+        public List<ExceptionOperatingHours>? ExceptionOperatingHours { get; set; }
 
         /// <summary>
         /// The score of access point, based on proximity to postal code and sorting preference. This can be used to sort access point results on shipper&#39;s end.
         /// </summary>
         /// <value>The score of access point, based on proximity to postal code and sorting preference. This can be used to sort access point results on shipper&#39;s end.</value>
         [DataMember(Name = "score", EmitDefaultValue = false)]
-        public string Score { get; set; }
+        public string? Score { get; set; }
 
         /// <summary>
         /// Map of day of the week to operating hours of that day
         /// </summary>
         /// <value>Map of day of the week to operating hours of that day</value>
         [DataMember(Name = "standardOperatingHours", EmitDefaultValue = false)]
-        public Dictionary<string, OperatingHours> StandardOperatingHours { get; set; }
+        public Dictionary<string, OperatingHours>? StandardOperatingHours { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -187,5 +187,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

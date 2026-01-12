@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// Initializes a new instance of the <see cref="AssignAppointmentResourcesResponsePayload" /> class.
         /// </summary>
         /// <param name="warnings">A list of warnings returned in the sucessful execution response of an API request..</param>
-        public AssignAppointmentResourcesResponsePayload(List<Warning> warnings = default(List<Warning>))
+        public AssignAppointmentResourcesResponsePayload(List<Warning>? warnings = default(List<Warning>?))
         {
             this.Warnings = warnings;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>A list of warnings returned in the sucessful execution response of an API request.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Warning> Warnings { get; set; }
+        public List<Warning>? Warnings { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="productName">The localized language product title of the item within the specific marketplace..</param>
         /// <param name="totalQuantity">The total number of units in an inbound shipment or in Amazon fulfillment centers..</param>
         /// <param name="stores">A list of seller-enrolled stores that apply to this seller SKU..</param>
-        public InventorySummary(string asin = default(string), string fnSku = default(string), string sellerSku = default(string), string condition = default(string), InventoryDetails inventoryDetails = default(InventoryDetails), DateTime lastUpdatedTime = default(DateTime), string productName = default(string), int totalQuantity = default(int), List<string> stores = default(List<string>))
+        public InventorySummary(string? asin = default(string?), string? fnSku = default(string?), string? sellerSku = default(string?), string? condition = default(string?), InventoryDetails? inventoryDetails = default(InventoryDetails?), DateTime? lastUpdatedTime = default(DateTime?), string? productName = default(string?), int? totalQuantity = default(int?), List<string>? stores = default(List<string>?))
         {
             this.Asin = asin;
             this.FnSku = fnSku;
@@ -61,62 +61,62 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of an item.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// Amazon&#39;s fulfillment network SKU identifier.
         /// </summary>
         /// <value>Amazon&#39;s fulfillment network SKU identifier.</value>
         [DataMember(Name = "fnSku", EmitDefaultValue = false)]
-        public string FnSku { get; set; }
+        public string? FnSku { get; set; }
 
         /// <summary>
         /// The seller SKU of the item.
         /// </summary>
         /// <value>The seller SKU of the item.</value>
         [DataMember(Name = "sellerSku", EmitDefaultValue = false)]
-        public string SellerSku { get; set; }
+        public string? SellerSku { get; set; }
 
         /// <summary>
         /// The condition of the item as described by the seller (for example, New Item).
         /// </summary>
         /// <value>The condition of the item as described by the seller (for example, New Item).</value>
         [DataMember(Name = "condition", EmitDefaultValue = false)]
-        public string Condition { get; set; }
+        public string? Condition { get; set; }
 
         /// <summary>
         /// Gets or Sets InventoryDetails
         /// </summary>
         [DataMember(Name = "inventoryDetails", EmitDefaultValue = false)]
-        public InventoryDetails InventoryDetails { get; set; }
+        public InventoryDetails? InventoryDetails { get; set; }
 
         /// <summary>
         /// The date and time that any quantity was last updated.
         /// </summary>
         /// <value>The date and time that any quantity was last updated.</value>
         [DataMember(Name = "lastUpdatedTime", EmitDefaultValue = false)]
-        public DateTime LastUpdatedTime { get; set; }
+        public DateTime? LastUpdatedTime { get; set; }
 
         /// <summary>
         /// The localized language product title of the item within the specific marketplace.
         /// </summary>
         /// <value>The localized language product title of the item within the specific marketplace.</value>
         [DataMember(Name = "productName", EmitDefaultValue = false)]
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         /// <summary>
         /// The total number of units in an inbound shipment or in Amazon fulfillment centers.
         /// </summary>
         /// <value>The total number of units in an inbound shipment or in Amazon fulfillment centers.</value>
         [DataMember(Name = "totalQuantity", EmitDefaultValue = false)]
-        public int TotalQuantity { get; set; }
+        public int? TotalQuantity { get; set; }
 
         /// <summary>
         /// A list of seller-enrolled stores that apply to this seller SKU.
         /// </summary>
         /// <value>A list of seller-enrolled stores that apply to this seller SKU.</value>
         [DataMember(Name = "stores", EmitDefaultValue = false)]
-        public List<string> Stores { get; set; }
+        public List<string>? Stores { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -158,5 +158,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

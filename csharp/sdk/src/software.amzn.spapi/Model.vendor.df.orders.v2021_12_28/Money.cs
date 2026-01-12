@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="currencyCode">Three digit currency code in ISO 4217 format. String of length 3..</param>
         /// <param name="amount">A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation..</param>
-        public Money(string currencyCode = default(string), string amount = default(string))
+        public Money(string? currencyCode = default(string?), string? amount = default(string?))
         {
             this.CurrencyCode = currencyCode;
             this.Amount = amount;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>Three digit currency code in ISO 4217 format. String of length 3.</value>
         [DataMember(Name = "currencyCode", EmitDefaultValue = false)]
-        public string CurrencyCode { get; set; }
+        public string? CurrencyCode { get; set; }
 
         /// <summary>
         /// A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.
         /// </summary>
         /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.</value>
         [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public string Amount { get; set; }
+        public string? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

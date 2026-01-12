@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="shippingServiceId">An Amazon-defined shipping service identifier. (required).</param>
         /// <param name="rejectionReasonCode">A reason code meant to be consumed programatically. For example, &#x60;CARRIER_CANNOT_SHIP_TO_POBOX&#x60;. (required).</param>
         /// <param name="rejectionReasonMessage">A localized human readable description of the rejected reason..</param>
-        public RejectedShippingService(string carrierName = default(string), string shippingServiceName = default(string), string shippingServiceId = default(string), string rejectionReasonCode = default(string), string rejectionReasonMessage = default(string))
+        public RejectedShippingService(string carrierName = default(string), string shippingServiceName = default(string), string shippingServiceId = default(string), string rejectionReasonCode = default(string), string? rejectionReasonMessage = default(string?))
         {
             // to ensure "carrierName" is required (not null)
             if (carrierName == null)
@@ -106,7 +106,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A localized human readable description of the rejected reason.</value>
         [DataMember(Name = "RejectionReasonMessage", EmitDefaultValue = false)]
-        public string RejectionReasonMessage { get; set; }
+        public string? RejectionReasonMessage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,5 +144,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

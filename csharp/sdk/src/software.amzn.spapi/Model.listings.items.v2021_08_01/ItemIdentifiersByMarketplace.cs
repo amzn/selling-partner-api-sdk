@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <param name="marketplaceId">A marketplace identifier. Identifies the Amazon marketplace for the listings item..</param>
         /// <param name="asin">Amazon Standard Identification Number (ASIN) of the listings item..</param>
-        public ItemIdentifiersByMarketplace(string marketplaceId = default(string), string asin = default(string))
+        public ItemIdentifiersByMarketplace(string? marketplaceId = default(string?), string? asin = default(string?))
         {
             this.MarketplaceId = marketplaceId;
             this.Asin = asin;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>A marketplace identifier. Identifies the Amazon marketplace for the listings item.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Amazon Standard Identification Number (ASIN) of the listings item.
         /// </summary>
         /// <value>Amazon Standard Identification Number (ASIN) of the listings item.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

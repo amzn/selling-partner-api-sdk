@@ -68,7 +68,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="failedAdhocDisbursementEventList">A list of &#x60;FailedAdhocDisbursementEvent&#x60;..</param>
         /// <param name="valueAddedServiceChargeEventList">A list of &#x60;ValueAddedServiceCharge&#x60; events..</param>
         /// <param name="capacityReservationBillingEventList">A list of &#x60;CapacityReservationBillingEvent&#x60; events..</param>
-        public FinancialEvents(List<ShipmentEvent> shipmentEventList = default(List<ShipmentEvent>), List<ShipmentEvent> shipmentSettleEventList = default(List<ShipmentEvent>), List<ShipmentEvent> refundEventList = default(List<ShipmentEvent>), List<ShipmentEvent> guaranteeClaimEventList = default(List<ShipmentEvent>), List<EBTRefundReimbursementOnlyEvent> eBTRefundReimbursementOnlyEventList = default(List<EBTRefundReimbursementOnlyEvent>), List<ShipmentEvent> chargebackEventList = default(List<ShipmentEvent>), List<PayWithAmazonEvent> payWithAmazonEventList = default(List<PayWithAmazonEvent>), List<SolutionProviderCreditEvent> serviceProviderCreditEventList = default(List<SolutionProviderCreditEvent>), List<RetrochargeEvent> retrochargeEventList = default(List<RetrochargeEvent>), List<RentalTransactionEvent> rentalTransactionEventList = default(List<RentalTransactionEvent>), List<ProductAdsPaymentEvent> productAdsPaymentEventList = default(List<ProductAdsPaymentEvent>), List<ServiceFeeEvent> serviceFeeEventList = default(List<ServiceFeeEvent>), List<SellerDealPaymentEvent> sellerDealPaymentEventList = default(List<SellerDealPaymentEvent>), List<DebtRecoveryEvent> debtRecoveryEventList = default(List<DebtRecoveryEvent>), List<LoanServicingEvent> loanServicingEventList = default(List<LoanServicingEvent>), List<AdjustmentEvent> adjustmentEventList = default(List<AdjustmentEvent>), List<SAFETReimbursementEvent> sAFETReimbursementEventList = default(List<SAFETReimbursementEvent>), List<SellerReviewEnrollmentPaymentEvent> sellerReviewEnrollmentPaymentEventList = default(List<SellerReviewEnrollmentPaymentEvent>), List<FBALiquidationEvent> fBALiquidationEventList = default(List<FBALiquidationEvent>), List<CouponPaymentEvent> couponPaymentEventList = default(List<CouponPaymentEvent>), List<ImagingServicesFeeEvent> imagingServicesFeeEventList = default(List<ImagingServicesFeeEvent>), List<NetworkComminglingTransactionEvent> networkComminglingTransactionEventList = default(List<NetworkComminglingTransactionEvent>), List<AffordabilityExpenseEvent> affordabilityExpenseEventList = default(List<AffordabilityExpenseEvent>), List<AffordabilityExpenseEvent> affordabilityExpenseReversalEventList = default(List<AffordabilityExpenseEvent>), List<RemovalShipmentEvent> removalShipmentEventList = default(List<RemovalShipmentEvent>), List<RemovalShipmentAdjustmentEvent> removalShipmentAdjustmentEventList = default(List<RemovalShipmentAdjustmentEvent>), List<TrialShipmentEvent> trialShipmentEventList = default(List<TrialShipmentEvent>), List<TDSReimbursementEvent> tDSReimbursementEventList = default(List<TDSReimbursementEvent>), List<AdhocDisbursementEvent> adhocDisbursementEventList = default(List<AdhocDisbursementEvent>), List<TaxWithholdingEvent> taxWithholdingEventList = default(List<TaxWithholdingEvent>), List<ChargeRefundEvent> chargeRefundEventList = default(List<ChargeRefundEvent>), List<FailedAdhocDisbursementEvent> failedAdhocDisbursementEventList = default(List<FailedAdhocDisbursementEvent>), List<ValueAddedServiceChargeEvent> valueAddedServiceChargeEventList = default(List<ValueAddedServiceChargeEvent>), List<CapacityReservationBillingEvent> capacityReservationBillingEventList = default(List<CapacityReservationBillingEvent>))
+        public FinancialEvents(List<ShipmentEvent>? shipmentEventList = default(List<ShipmentEvent>?), List<ShipmentEvent>? shipmentSettleEventList = default(List<ShipmentEvent>?), List<ShipmentEvent>? refundEventList = default(List<ShipmentEvent>?), List<ShipmentEvent>? guaranteeClaimEventList = default(List<ShipmentEvent>?), List<EBTRefundReimbursementOnlyEvent>? eBTRefundReimbursementOnlyEventList = default(List<EBTRefundReimbursementOnlyEvent>?), List<ShipmentEvent>? chargebackEventList = default(List<ShipmentEvent>?), List<PayWithAmazonEvent>? payWithAmazonEventList = default(List<PayWithAmazonEvent>?), List<SolutionProviderCreditEvent>? serviceProviderCreditEventList = default(List<SolutionProviderCreditEvent>?), List<RetrochargeEvent>? retrochargeEventList = default(List<RetrochargeEvent>?), List<RentalTransactionEvent>? rentalTransactionEventList = default(List<RentalTransactionEvent>?), List<ProductAdsPaymentEvent>? productAdsPaymentEventList = default(List<ProductAdsPaymentEvent>?), List<ServiceFeeEvent>? serviceFeeEventList = default(List<ServiceFeeEvent>?), List<SellerDealPaymentEvent>? sellerDealPaymentEventList = default(List<SellerDealPaymentEvent>?), List<DebtRecoveryEvent>? debtRecoveryEventList = default(List<DebtRecoveryEvent>?), List<LoanServicingEvent>? loanServicingEventList = default(List<LoanServicingEvent>?), List<AdjustmentEvent>? adjustmentEventList = default(List<AdjustmentEvent>?), List<SAFETReimbursementEvent>? sAFETReimbursementEventList = default(List<SAFETReimbursementEvent>?), List<SellerReviewEnrollmentPaymentEvent>? sellerReviewEnrollmentPaymentEventList = default(List<SellerReviewEnrollmentPaymentEvent>?), List<FBALiquidationEvent>? fBALiquidationEventList = default(List<FBALiquidationEvent>?), List<CouponPaymentEvent>? couponPaymentEventList = default(List<CouponPaymentEvent>?), List<ImagingServicesFeeEvent>? imagingServicesFeeEventList = default(List<ImagingServicesFeeEvent>?), List<NetworkComminglingTransactionEvent>? networkComminglingTransactionEventList = default(List<NetworkComminglingTransactionEvent>?), List<AffordabilityExpenseEvent>? affordabilityExpenseEventList = default(List<AffordabilityExpenseEvent>?), List<AffordabilityExpenseEvent>? affordabilityExpenseReversalEventList = default(List<AffordabilityExpenseEvent>?), List<RemovalShipmentEvent>? removalShipmentEventList = default(List<RemovalShipmentEvent>?), List<RemovalShipmentAdjustmentEvent>? removalShipmentAdjustmentEventList = default(List<RemovalShipmentAdjustmentEvent>?), List<TrialShipmentEvent>? trialShipmentEventList = default(List<TrialShipmentEvent>?), List<TDSReimbursementEvent>? tDSReimbursementEventList = default(List<TDSReimbursementEvent>?), List<AdhocDisbursementEvent>? adhocDisbursementEventList = default(List<AdhocDisbursementEvent>?), List<TaxWithholdingEvent>? taxWithholdingEventList = default(List<TaxWithholdingEvent>?), List<ChargeRefundEvent>? chargeRefundEventList = default(List<ChargeRefundEvent>?), List<FailedAdhocDisbursementEvent>? failedAdhocDisbursementEventList = default(List<FailedAdhocDisbursementEvent>?), List<ValueAddedServiceChargeEvent>? valueAddedServiceChargeEventList = default(List<ValueAddedServiceChargeEvent>?), List<CapacityReservationBillingEvent>? capacityReservationBillingEventList = default(List<CapacityReservationBillingEvent>?))
         {
             this.ShipmentEventList = shipmentEventList;
             this.ShipmentSettleEventList = shipmentSettleEventList;
@@ -111,238 +111,238 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A list of shipment event information.</value>
         [DataMember(Name = "ShipmentEventList", EmitDefaultValue = false)]
-        public List<ShipmentEvent> ShipmentEventList { get; set; }
+        public List<ShipmentEvent>? ShipmentEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;ShipmentEvent&#x60; items.
         /// </summary>
         /// <value>A list of &#x60;ShipmentEvent&#x60; items.</value>
         [DataMember(Name = "ShipmentSettleEventList", EmitDefaultValue = false)]
-        public List<ShipmentEvent> ShipmentSettleEventList { get; set; }
+        public List<ShipmentEvent>? ShipmentSettleEventList { get; set; }
 
         /// <summary>
         /// A list of shipment event information.
         /// </summary>
         /// <value>A list of shipment event information.</value>
         [DataMember(Name = "RefundEventList", EmitDefaultValue = false)]
-        public List<ShipmentEvent> RefundEventList { get; set; }
+        public List<ShipmentEvent>? RefundEventList { get; set; }
 
         /// <summary>
         /// A list of shipment event information.
         /// </summary>
         /// <value>A list of shipment event information.</value>
         [DataMember(Name = "GuaranteeClaimEventList", EmitDefaultValue = false)]
-        public List<ShipmentEvent> GuaranteeClaimEventList { get; set; }
+        public List<ShipmentEvent>? GuaranteeClaimEventList { get; set; }
 
         /// <summary>
         /// A list of EBT refund reimbursement events.
         /// </summary>
         /// <value>A list of EBT refund reimbursement events.</value>
         [DataMember(Name = "EBTRefundReimbursementOnlyEventList", EmitDefaultValue = false)]
-        public List<EBTRefundReimbursementOnlyEvent> EBTRefundReimbursementOnlyEventList { get; set; }
+        public List<EBTRefundReimbursementOnlyEvent>? EBTRefundReimbursementOnlyEventList { get; set; }
 
         /// <summary>
         /// A list of shipment event information.
         /// </summary>
         /// <value>A list of shipment event information.</value>
         [DataMember(Name = "ChargebackEventList", EmitDefaultValue = false)]
-        public List<ShipmentEvent> ChargebackEventList { get; set; }
+        public List<ShipmentEvent>? ChargebackEventList { get; set; }
 
         /// <summary>
         /// A list of events related to the seller&#39;s Pay with Amazon account.
         /// </summary>
         /// <value>A list of events related to the seller&#39;s Pay with Amazon account.</value>
         [DataMember(Name = "PayWithAmazonEventList", EmitDefaultValue = false)]
-        public List<PayWithAmazonEvent> PayWithAmazonEventList { get; set; }
+        public List<PayWithAmazonEvent>? PayWithAmazonEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;SolutionProviderCreditEvent&#x60;.
         /// </summary>
         /// <value>A list of &#x60;SolutionProviderCreditEvent&#x60;.</value>
         [DataMember(Name = "ServiceProviderCreditEventList", EmitDefaultValue = false)]
-        public List<SolutionProviderCreditEvent> ServiceProviderCreditEventList { get; set; }
+        public List<SolutionProviderCreditEvent>? ServiceProviderCreditEventList { get; set; }
 
         /// <summary>
         /// A list of information about &#x60;Retrocharge&#x60; or &#x60;RetrochargeReversal&#x60; events.
         /// </summary>
         /// <value>A list of information about &#x60;Retrocharge&#x60; or &#x60;RetrochargeReversal&#x60; events.</value>
         [DataMember(Name = "RetrochargeEventList", EmitDefaultValue = false)]
-        public List<RetrochargeEvent> RetrochargeEventList { get; set; }
+        public List<RetrochargeEvent>? RetrochargeEventList { get; set; }
 
         /// <summary>
         /// A list of rental transaction event information.
         /// </summary>
         /// <value>A list of rental transaction event information.</value>
         [DataMember(Name = "RentalTransactionEventList", EmitDefaultValue = false)]
-        public List<RentalTransactionEvent> RentalTransactionEventList { get; set; }
+        public List<RentalTransactionEvent>? RentalTransactionEventList { get; set; }
 
         /// <summary>
         /// A list of sponsored products payment events.
         /// </summary>
         /// <value>A list of sponsored products payment events.</value>
         [DataMember(Name = "ProductAdsPaymentEventList", EmitDefaultValue = false)]
-        public List<ProductAdsPaymentEvent> ProductAdsPaymentEventList { get; set; }
+        public List<ProductAdsPaymentEvent>? ProductAdsPaymentEventList { get; set; }
 
         /// <summary>
         /// A list of information about service fee events.
         /// </summary>
         /// <value>A list of information about service fee events.</value>
         [DataMember(Name = "ServiceFeeEventList", EmitDefaultValue = false)]
-        public List<ServiceFeeEvent> ServiceFeeEventList { get; set; }
+        public List<ServiceFeeEvent>? ServiceFeeEventList { get; set; }
 
         /// <summary>
         /// A list of payment events for deal-related fees.
         /// </summary>
         /// <value>A list of payment events for deal-related fees.</value>
         [DataMember(Name = "SellerDealPaymentEventList", EmitDefaultValue = false)]
-        public List<SellerDealPaymentEvent> SellerDealPaymentEventList { get; set; }
+        public List<SellerDealPaymentEvent>? SellerDealPaymentEventList { get; set; }
 
         /// <summary>
         /// A list of debt recovery event information.
         /// </summary>
         /// <value>A list of debt recovery event information.</value>
         [DataMember(Name = "DebtRecoveryEventList", EmitDefaultValue = false)]
-        public List<DebtRecoveryEvent> DebtRecoveryEventList { get; set; }
+        public List<DebtRecoveryEvent>? DebtRecoveryEventList { get; set; }
 
         /// <summary>
         /// A list of loan servicing events.
         /// </summary>
         /// <value>A list of loan servicing events.</value>
         [DataMember(Name = "LoanServicingEventList", EmitDefaultValue = false)]
-        public List<LoanServicingEvent> LoanServicingEventList { get; set; }
+        public List<LoanServicingEvent>? LoanServicingEventList { get; set; }
 
         /// <summary>
         /// A list of adjustment event information for the seller&#39;s account.
         /// </summary>
         /// <value>A list of adjustment event information for the seller&#39;s account.</value>
         [DataMember(Name = "AdjustmentEventList", EmitDefaultValue = false)]
-        public List<AdjustmentEvent> AdjustmentEventList { get; set; }
+        public List<AdjustmentEvent>? AdjustmentEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;SAFETReimbursementEvent&#x60;.
         /// </summary>
         /// <value>A list of &#x60;SAFETReimbursementEvent&#x60;.</value>
         [DataMember(Name = "SAFETReimbursementEventList", EmitDefaultValue = false)]
-        public List<SAFETReimbursementEvent> SAFETReimbursementEventList { get; set; }
+        public List<SAFETReimbursementEvent>? SAFETReimbursementEventList { get; set; }
 
         /// <summary>
         /// A list of information about fee events for the Early Reviewer Program.
         /// </summary>
         /// <value>A list of information about fee events for the Early Reviewer Program.</value>
         [DataMember(Name = "SellerReviewEnrollmentPaymentEventList", EmitDefaultValue = false)]
-        public List<SellerReviewEnrollmentPaymentEvent> SellerReviewEnrollmentPaymentEventList { get; set; }
+        public List<SellerReviewEnrollmentPaymentEvent>? SellerReviewEnrollmentPaymentEventList { get; set; }
 
         /// <summary>
         /// A list of FBA inventory liquidation payment events.
         /// </summary>
         /// <value>A list of FBA inventory liquidation payment events.</value>
         [DataMember(Name = "FBALiquidationEventList", EmitDefaultValue = false)]
-        public List<FBALiquidationEvent> FBALiquidationEventList { get; set; }
+        public List<FBALiquidationEvent>? FBALiquidationEventList { get; set; }
 
         /// <summary>
         /// A list of coupon payment event information.
         /// </summary>
         /// <value>A list of coupon payment event information.</value>
         [DataMember(Name = "CouponPaymentEventList", EmitDefaultValue = false)]
-        public List<CouponPaymentEvent> CouponPaymentEventList { get; set; }
+        public List<CouponPaymentEvent>? CouponPaymentEventList { get; set; }
 
         /// <summary>
         /// A list of fee events related to Amazon Imaging services.
         /// </summary>
         /// <value>A list of fee events related to Amazon Imaging services.</value>
         [DataMember(Name = "ImagingServicesFeeEventList", EmitDefaultValue = false)]
-        public List<ImagingServicesFeeEvent> ImagingServicesFeeEventList { get; set; }
+        public List<ImagingServicesFeeEvent>? ImagingServicesFeeEventList { get; set; }
 
         /// <summary>
         /// A list of network commingling transaction events.
         /// </summary>
         /// <value>A list of network commingling transaction events.</value>
         [DataMember(Name = "NetworkComminglingTransactionEventList", EmitDefaultValue = false)]
-        public List<NetworkComminglingTransactionEvent> NetworkComminglingTransactionEventList { get; set; }
+        public List<NetworkComminglingTransactionEvent>? NetworkComminglingTransactionEventList { get; set; }
 
         /// <summary>
         /// A list of expense information related to an affordability promotion.
         /// </summary>
         /// <value>A list of expense information related to an affordability promotion.</value>
         [DataMember(Name = "AffordabilityExpenseEventList", EmitDefaultValue = false)]
-        public List<AffordabilityExpenseEvent> AffordabilityExpenseEventList { get; set; }
+        public List<AffordabilityExpenseEvent>? AffordabilityExpenseEventList { get; set; }
 
         /// <summary>
         /// A list of expense information related to an affordability promotion.
         /// </summary>
         /// <value>A list of expense information related to an affordability promotion.</value>
         [DataMember(Name = "AffordabilityExpenseReversalEventList", EmitDefaultValue = false)]
-        public List<AffordabilityExpenseEvent> AffordabilityExpenseReversalEventList { get; set; }
+        public List<AffordabilityExpenseEvent>? AffordabilityExpenseReversalEventList { get; set; }
 
         /// <summary>
         /// A list of removal shipment event information.
         /// </summary>
         /// <value>A list of removal shipment event information.</value>
         [DataMember(Name = "RemovalShipmentEventList", EmitDefaultValue = false)]
-        public List<RemovalShipmentEvent> RemovalShipmentEventList { get; set; }
+        public List<RemovalShipmentEvent>? RemovalShipmentEventList { get; set; }
 
         /// <summary>
         /// A comma-delimited list of &#x60;RemovalShipmentAdjustment&#x60; details for FBA inventory.
         /// </summary>
         /// <value>A comma-delimited list of &#x60;RemovalShipmentAdjustment&#x60; details for FBA inventory.</value>
         [DataMember(Name = "RemovalShipmentAdjustmentEventList", EmitDefaultValue = false)]
-        public List<RemovalShipmentAdjustmentEvent> RemovalShipmentAdjustmentEventList { get; set; }
+        public List<RemovalShipmentAdjustmentEvent>? RemovalShipmentAdjustmentEventList { get; set; }
 
         /// <summary>
         /// A list of information about trial shipment financial events.
         /// </summary>
         /// <value>A list of information about trial shipment financial events.</value>
         [DataMember(Name = "TrialShipmentEventList", EmitDefaultValue = false)]
-        public List<TrialShipmentEvent> TrialShipmentEventList { get; set; }
+        public List<TrialShipmentEvent>? TrialShipmentEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;TDSReimbursementEvent&#x60; items.
         /// </summary>
         /// <value>A list of &#x60;TDSReimbursementEvent&#x60; items.</value>
         [DataMember(Name = "TDSReimbursementEventList", EmitDefaultValue = false)]
-        public List<TDSReimbursementEvent> TDSReimbursementEventList { get; set; }
+        public List<TDSReimbursementEvent>? TDSReimbursementEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;AdhocDisbursement&#x60; events.
         /// </summary>
         /// <value>A list of &#x60;AdhocDisbursement&#x60; events.</value>
         [DataMember(Name = "AdhocDisbursementEventList", EmitDefaultValue = false)]
-        public List<AdhocDisbursementEvent> AdhocDisbursementEventList { get; set; }
+        public List<AdhocDisbursementEvent>? AdhocDisbursementEventList { get; set; }
 
         /// <summary>
         /// A list of tax withholding events.
         /// </summary>
         /// <value>A list of tax withholding events.</value>
         [DataMember(Name = "TaxWithholdingEventList", EmitDefaultValue = false)]
-        public List<TaxWithholdingEvent> TaxWithholdingEventList { get; set; }
+        public List<TaxWithholdingEvent>? TaxWithholdingEventList { get; set; }
 
         /// <summary>
         /// A list of charge refund events.
         /// </summary>
         /// <value>A list of charge refund events.</value>
         [DataMember(Name = "ChargeRefundEventList", EmitDefaultValue = false)]
-        public List<ChargeRefundEvent> ChargeRefundEventList { get; set; }
+        public List<ChargeRefundEvent>? ChargeRefundEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;FailedAdhocDisbursementEvent&#x60;.
         /// </summary>
         /// <value>A list of &#x60;FailedAdhocDisbursementEvent&#x60;.</value>
         [DataMember(Name = "FailedAdhocDisbursementEventList", EmitDefaultValue = false)]
-        public List<FailedAdhocDisbursementEvent> FailedAdhocDisbursementEventList { get; set; }
+        public List<FailedAdhocDisbursementEvent>? FailedAdhocDisbursementEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;ValueAddedServiceCharge&#x60; events.
         /// </summary>
         /// <value>A list of &#x60;ValueAddedServiceCharge&#x60; events.</value>
         [DataMember(Name = "ValueAddedServiceChargeEventList", EmitDefaultValue = false)]
-        public List<ValueAddedServiceChargeEvent> ValueAddedServiceChargeEventList { get; set; }
+        public List<ValueAddedServiceChargeEvent>? ValueAddedServiceChargeEventList { get; set; }
 
         /// <summary>
         /// A list of &#x60;CapacityReservationBillingEvent&#x60; events.
         /// </summary>
         /// <value>A list of &#x60;CapacityReservationBillingEvent&#x60; events.</value>
         [DataMember(Name = "CapacityReservationBillingEventList", EmitDefaultValue = false)]
-        public List<CapacityReservationBillingEvent> CapacityReservationBillingEventList { get; set; }
+        public List<CapacityReservationBillingEvent>? CapacityReservationBillingEventList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -409,5 +409,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

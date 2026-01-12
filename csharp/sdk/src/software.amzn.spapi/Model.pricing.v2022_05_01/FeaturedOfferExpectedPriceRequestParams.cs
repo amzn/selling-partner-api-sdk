@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="marketplaceId">The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required).</param>
         /// <param name="sku">The seller SKU of the item. (required).</param>
         /// <param name="segment">segment.</param>
-        public FeaturedOfferExpectedPriceRequestParams(string marketplaceId = default(string), string sku = default(string), Segment segment = default(Segment))
+        public FeaturedOfferExpectedPriceRequestParams(string marketplaceId = default(string), string sku = default(string), Segment? segment = default(Segment?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets Segment
         /// </summary>
         [DataMember(Name = "segment", EmitDefaultValue = false)]
-        public Segment Segment { get; set; }
+        public Segment? Segment { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

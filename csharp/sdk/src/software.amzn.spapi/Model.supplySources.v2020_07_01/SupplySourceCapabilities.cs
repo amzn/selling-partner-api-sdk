@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="outbound">outbound.</param>
         /// <param name="services">services.</param>
-        public SupplySourceCapabilities(OutboundCapability outbound = default(OutboundCapability), ServicesCapability services = default(ServicesCapability))
+        public SupplySourceCapabilities(OutboundCapability? outbound = default(OutboundCapability?), ServicesCapability? services = default(ServicesCapability?))
         {
             this.Outbound = outbound;
             this.Services = services;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets Outbound
         /// </summary>
         [DataMember(Name = "outbound", EmitDefaultValue = false)]
-        public OutboundCapability Outbound { get; set; }
+        public OutboundCapability? Outbound { get; set; }
 
         /// <summary>
         /// Gets or Sets Services
         /// </summary>
         [DataMember(Name = "services", EmitDefaultValue = false)]
-        public ServicesCapability Services { get; set; }
+        public ServicesCapability? Services { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

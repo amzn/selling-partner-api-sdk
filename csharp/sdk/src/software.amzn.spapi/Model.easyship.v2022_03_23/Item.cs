@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <param name="orderItemId">The Amazon-defined order item identifier..</param>
         /// <param name="orderItemSerialNumbers">A list of serial numbers for the items associated with the &#x60;OrderItemId&#x60; value..</param>
-        public Item(string orderItemId = default(string), List<string> orderItemSerialNumbers = default(List<string>))
+        public Item(string? orderItemId = default(string?), List<string>? orderItemSerialNumbers = default(List<string>?))
         {
             this.OrderItemId = orderItemId;
             this.OrderItemSerialNumbers = orderItemSerialNumbers;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>The Amazon-defined order item identifier.</value>
         [DataMember(Name = "orderItemId", EmitDefaultValue = false)]
-        public string OrderItemId { get; set; }
+        public string? OrderItemId { get; set; }
 
         /// <summary>
         /// A list of serial numbers for the items associated with the &#x60;OrderItemId&#x60; value.
         /// </summary>
         /// <value>A list of serial numbers for the items associated with the &#x60;OrderItemId&#x60; value.</value>
         [DataMember(Name = "orderItemSerialNumbers", EmitDefaultValue = false)]
-        public List<string> OrderItemSerialNumbers { get; set; }
+        public List<string>? OrderItemSerialNumbers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,5 +95,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

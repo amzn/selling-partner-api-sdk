@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="labelDownloadURL">The URL to download shipment labels. The URL is active for 600 seconds from generation..</param>
         /// <param name="labelStatus">labelStatus (required).</param>
-        public ShipmentLabels(string labelDownloadURL = default(string), LabelStatus labelStatus = default(LabelStatus))
+        public ShipmentLabels(string? labelDownloadURL = default(string?), LabelStatus labelStatus = default(LabelStatus))
         {
             this.LabelStatus = labelStatus;
             this.LabelDownloadURL = labelDownloadURL;
@@ -58,7 +58,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>The URL to download shipment labels. The URL is active for 600 seconds from generation.</value>
         [DataMember(Name = "labelDownloadURL", EmitDefaultValue = false)]
-        public string LabelDownloadURL { get; set; }
+        public string? LabelDownloadURL { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,5 +93,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="aSIN">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="sellerSKU">The seller stock keeping unit (SKU) of the item..</param>
         /// <param name="itemCondition">itemCondition (required).</param>
-        public ItemIdentifier(string marketplaceId = default(string), string aSIN = default(string), string sellerSKU = default(string), ConditionType itemCondition = default(ConditionType))
+        public ItemIdentifier(string marketplaceId = default(string), string? aSIN = default(string?), string? sellerSKU = default(string?), ConditionType itemCondition = default(ConditionType))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -74,14 +74,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// The seller stock keeping unit (SKU) of the item.
         /// </summary>
         /// <value>The seller stock keeping unit (SKU) of the item.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="orderId">The orderId for shipping inventory..</param>
         /// <param name="transactionType">The type of removal order.  Possible values:  * &#x60;WHOLESALE_LIQUIDATION&#x60;..</param>
         /// <param name="removalShipmentItemAdjustmentList">A comma-delimited list of &#x60;RemovalShipmentItemAdjustment&#x60; details for FBA inventory..</param>
-        public RemovalShipmentAdjustmentEvent(DateTime postedDate = default(DateTime), string adjustmentEventId = default(string), string merchantOrderId = default(string), string orderId = default(string), string transactionType = default(string), List<RemovalShipmentItemAdjustment> removalShipmentItemAdjustmentList = default(List<RemovalShipmentItemAdjustment>))
+        public RemovalShipmentAdjustmentEvent(DateTime? postedDate = default(DateTime?), string? adjustmentEventId = default(string?), string? merchantOrderId = default(string?), string? orderId = default(string?), string? transactionType = default(string?), List<RemovalShipmentItemAdjustment>? removalShipmentItemAdjustmentList = default(List<RemovalShipmentItemAdjustment>?))
         {
             this.PostedDate = postedDate;
             this.AdjustmentEventId = adjustmentEventId;
@@ -55,42 +55,42 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The unique identifier for the adjustment event.
         /// </summary>
         /// <value>The unique identifier for the adjustment event.</value>
         [DataMember(Name = "AdjustmentEventId", EmitDefaultValue = false)]
-        public string AdjustmentEventId { get; set; }
+        public string? AdjustmentEventId { get; set; }
 
         /// <summary>
         /// The merchant removal orderId.
         /// </summary>
         /// <value>The merchant removal orderId.</value>
         [DataMember(Name = "MerchantOrderId", EmitDefaultValue = false)]
-        public string MerchantOrderId { get; set; }
+        public string? MerchantOrderId { get; set; }
 
         /// <summary>
         /// The orderId for shipping inventory.
         /// </summary>
         /// <value>The orderId for shipping inventory.</value>
         [DataMember(Name = "OrderId", EmitDefaultValue = false)]
-        public string OrderId { get; set; }
+        public string? OrderId { get; set; }
 
         /// <summary>
         /// The type of removal order.  Possible values:  * &#x60;WHOLESALE_LIQUIDATION&#x60;.
         /// </summary>
         /// <value>The type of removal order.  Possible values:  * &#x60;WHOLESALE_LIQUIDATION&#x60;.</value>
         [DataMember(Name = "TransactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// A comma-delimited list of &#x60;RemovalShipmentItemAdjustment&#x60; details for FBA inventory.
         /// </summary>
         /// <value>A comma-delimited list of &#x60;RemovalShipmentItemAdjustment&#x60; details for FBA inventory.</value>
         [DataMember(Name = "RemovalShipmentItemAdjustmentList", EmitDefaultValue = false)]
-        public List<RemovalShipmentItemAdjustment> RemovalShipmentItemAdjustmentList { get; set; }
+        public List<RemovalShipmentItemAdjustment>? RemovalShipmentItemAdjustmentList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -129,5 +129,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="friday">A list of Operating Hours..</param>
         /// <param name="saturday">A list of Operating Hours..</param>
         /// <param name="sunday">A list of Operating Hours..</param>
-        public OperatingHoursByDay(List<OperatingHour> monday = default(List<OperatingHour>), List<OperatingHour> tuesday = default(List<OperatingHour>), List<OperatingHour> wednesday = default(List<OperatingHour>), List<OperatingHour> thursday = default(List<OperatingHour>), List<OperatingHour> friday = default(List<OperatingHour>), List<OperatingHour> saturday = default(List<OperatingHour>), List<OperatingHour> sunday = default(List<OperatingHour>))
+        public OperatingHoursByDay(List<OperatingHour>? monday = default(List<OperatingHour>?), List<OperatingHour>? tuesday = default(List<OperatingHour>?), List<OperatingHour>? wednesday = default(List<OperatingHour>?), List<OperatingHour>? thursday = default(List<OperatingHour>?), List<OperatingHour>? friday = default(List<OperatingHour>?), List<OperatingHour>? saturday = default(List<OperatingHour>?), List<OperatingHour>? sunday = default(List<OperatingHour>?))
         {
             this.Monday = monday;
             this.Tuesday = tuesday;
@@ -57,49 +57,49 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>A list of Operating Hours.</value>
         [DataMember(Name = "monday", EmitDefaultValue = false)]
-        public List<OperatingHour> Monday { get; set; }
+        public List<OperatingHour>? Monday { get; set; }
 
         /// <summary>
         /// A list of Operating Hours.
         /// </summary>
         /// <value>A list of Operating Hours.</value>
         [DataMember(Name = "tuesday", EmitDefaultValue = false)]
-        public List<OperatingHour> Tuesday { get; set; }
+        public List<OperatingHour>? Tuesday { get; set; }
 
         /// <summary>
         /// A list of Operating Hours.
         /// </summary>
         /// <value>A list of Operating Hours.</value>
         [DataMember(Name = "wednesday", EmitDefaultValue = false)]
-        public List<OperatingHour> Wednesday { get; set; }
+        public List<OperatingHour>? Wednesday { get; set; }
 
         /// <summary>
         /// A list of Operating Hours.
         /// </summary>
         /// <value>A list of Operating Hours.</value>
         [DataMember(Name = "thursday", EmitDefaultValue = false)]
-        public List<OperatingHour> Thursday { get; set; }
+        public List<OperatingHour>? Thursday { get; set; }
 
         /// <summary>
         /// A list of Operating Hours.
         /// </summary>
         /// <value>A list of Operating Hours.</value>
         [DataMember(Name = "friday", EmitDefaultValue = false)]
-        public List<OperatingHour> Friday { get; set; }
+        public List<OperatingHour>? Friday { get; set; }
 
         /// <summary>
         /// A list of Operating Hours.
         /// </summary>
         /// <value>A list of Operating Hours.</value>
         [DataMember(Name = "saturday", EmitDefaultValue = false)]
-        public List<OperatingHour> Saturday { get; set; }
+        public List<OperatingHour>? Saturday { get; set; }
 
         /// <summary>
         /// A list of Operating Hours.
         /// </summary>
         /// <value>A list of Operating Hours.</value>
         [DataMember(Name = "sunday", EmitDefaultValue = false)]
-        public List<OperatingHour> Sunday { get; set; }
+        public List<OperatingHour>? Sunday { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -139,5 +139,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

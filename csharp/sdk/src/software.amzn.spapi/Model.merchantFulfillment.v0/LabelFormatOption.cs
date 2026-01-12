@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="includePackingSlipWithLabel">When true, include a packing slip with the label..</param>
         /// <param name="labelFormat">labelFormat.</param>
-        public LabelFormatOption(bool includePackingSlipWithLabel = default(bool), LabelFormat? labelFormat = default(LabelFormat?))
+        public LabelFormatOption(bool? includePackingSlipWithLabel = default(bool?), LabelFormat? labelFormat = default(LabelFormat?))
         {
             this.IncludePackingSlipWithLabel = includePackingSlipWithLabel;
             this.LabelFormat = labelFormat;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>When true, include a packing slip with the label.</value>
         [DataMember(Name = "IncludePackingSlipWithLabel", EmitDefaultValue = true)]
-        public bool IncludePackingSlipWithLabel { get; set; }
+        public bool? IncludePackingSlipWithLabel { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

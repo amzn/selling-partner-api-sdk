@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="marketplaceId">A marketplace identifier. Specifies the marketplace for which prices are returned. (required).</param>
         /// <param name="itemCondition">itemCondition (required).</param>
         /// <param name="customerType">customerType.</param>
-        public ListingOffersRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, string> headers = default(Dictionary<string, string>), string marketplaceId = default(string), ItemCondition itemCondition = default(ItemCondition), CustomerType? customerType = default(CustomerType?))
+        public ListingOffersRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, string>? headers = default(Dictionary<string, string>?), string marketplaceId = default(string), ItemCondition itemCondition = default(ItemCondition), CustomerType? customerType = default(CustomerType?))
         {
             // to ensure "uri" is required (not null)
             if (uri == null)
@@ -95,7 +95,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>A mapping of additional HTTP headers to send/receive for the individual batch request.</value>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public Dictionary<string, string> Headers { get; set; }
+        public Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// A marketplace identifier. Specifies the marketplace for which prices are returned.
@@ -141,5 +141,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

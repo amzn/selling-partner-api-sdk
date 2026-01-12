@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// Initializes a new instance of the <see cref="TrackingDetails" /> class.
         /// </summary>
         /// <param name="trackingId">A string of up to 255 characters..</param>
-        public TrackingDetails(string trackingId = default(string))
+        public TrackingDetails(string? trackingId = default(string?))
         {
             this.TrackingId = trackingId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>A string of up to 255 characters.</value>
         [DataMember(Name = "trackingId", EmitDefaultValue = false)]
-        public string TrackingId { get; set; }
+        public string? TrackingId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,5 +91,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

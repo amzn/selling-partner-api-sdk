@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="productDescription">A short description of the item..</param>
         /// <param name="aSIN">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="transactionNumber">The transaction number that is related to the adjustment..</param>
-        public AdjustmentItem(string quantity = default(string), Currency perUnitAmount = default(Currency), Currency totalAmount = default(Currency), string sellerSKU = default(string), string fnSKU = default(string), string productDescription = default(string), string aSIN = default(string), string transactionNumber = default(string))
+        public AdjustmentItem(string? quantity = default(string?), Currency? perUnitAmount = default(Currency?), Currency? totalAmount = default(Currency?), string? sellerSKU = default(string?), string? fnSKU = default(string?), string? productDescription = default(string?), string? aSIN = default(string?), string? transactionNumber = default(string?))
         {
             this.Quantity = quantity;
             this.PerUnitAmount = perUnitAmount;
@@ -59,54 +59,54 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>Represents the number of units in the seller&#39;s inventory when the &#x60;AdjustmentType&#x60; is &#x60;FBAInventoryReimbursement&#x60;.</value>
         [DataMember(Name = "Quantity", EmitDefaultValue = false)]
-        public string Quantity { get; set; }
+        public string? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets PerUnitAmount
         /// </summary>
         [DataMember(Name = "PerUnitAmount", EmitDefaultValue = false)]
-        public Currency PerUnitAmount { get; set; }
+        public Currency? PerUnitAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "TotalAmount", EmitDefaultValue = false)]
-        public Currency TotalAmount { get; set; }
+        public Currency? TotalAmount { get; set; }
 
         /// <summary>
         /// The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API.
         /// </summary>
         /// <value>The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// A unique identifier assigned to products stored in and fulfilled from a fulfillment center.
         /// </summary>
         /// <value>A unique identifier assigned to products stored in and fulfilled from a fulfillment center.</value>
         [DataMember(Name = "FnSKU", EmitDefaultValue = false)]
-        public string FnSKU { get; set; }
+        public string? FnSKU { get; set; }
 
         /// <summary>
         /// A short description of the item.
         /// </summary>
         /// <value>A short description of the item.</value>
         [DataMember(Name = "ProductDescription", EmitDefaultValue = false)]
-        public string ProductDescription { get; set; }
+        public string? ProductDescription { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// The transaction number that is related to the adjustment.
         /// </summary>
         /// <value>The transaction number that is related to the adjustment.</value>
         [DataMember(Name = "TransactionNumber", EmitDefaultValue = false)]
-        public string TransactionNumber { get; set; }
+        public string? TransactionNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -147,5 +147,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

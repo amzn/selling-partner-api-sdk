@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="feeDescription">A short description of the service fee event..</param>
         /// <param name="aSIN">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="storeName">The name of the store where the event occurred..</param>
-        public ServiceFeeEvent(string amazonOrderId = default(string), string feeReason = default(string), List<FeeComponent> feeList = default(List<FeeComponent>), string sellerSKU = default(string), string fnSKU = default(string), string feeDescription = default(string), string aSIN = default(string), string storeName = default(string))
+        public ServiceFeeEvent(string? amazonOrderId = default(string?), string? feeReason = default(string?), List<FeeComponent>? feeList = default(List<FeeComponent>?), string? sellerSKU = default(string?), string? fnSKU = default(string?), string? feeDescription = default(string?), string? aSIN = default(string?), string? storeName = default(string?))
         {
             this.AmazonOrderId = amazonOrderId;
             this.FeeReason = feeReason;
@@ -59,56 +59,56 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>An Amazon-defined identifier for an order.</value>
         [DataMember(Name = "AmazonOrderId", EmitDefaultValue = false)]
-        public string AmazonOrderId { get; set; }
+        public string? AmazonOrderId { get; set; }
 
         /// <summary>
         /// A short description of the service fee reason.
         /// </summary>
         /// <value>A short description of the service fee reason.</value>
         [DataMember(Name = "FeeReason", EmitDefaultValue = false)]
-        public string FeeReason { get; set; }
+        public string? FeeReason { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "FeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> FeeList { get; set; }
+        public List<FeeComponent>? FeeList { get; set; }
 
         /// <summary>
         /// The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API.
         /// </summary>
         /// <value>The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.
         /// </summary>
         /// <value>A unique identifier assigned by Amazon to products stored in and fulfilled from an Amazon fulfillment center.</value>
         [DataMember(Name = "FnSKU", EmitDefaultValue = false)]
-        public string FnSKU { get; set; }
+        public string? FnSKU { get; set; }
 
         /// <summary>
         /// A short description of the service fee event.
         /// </summary>
         /// <value>A short description of the service fee event.</value>
         [DataMember(Name = "FeeDescription", EmitDefaultValue = false)]
-        public string FeeDescription { get; set; }
+        public string? FeeDescription { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// The name of the store where the event occurred.
         /// </summary>
         /// <value>The name of the store where the event occurred.</value>
         [DataMember(Name = "StoreName", EmitDefaultValue = false)]
-        public string StoreName { get; set; }
+        public string? StoreName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -149,5 +149,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

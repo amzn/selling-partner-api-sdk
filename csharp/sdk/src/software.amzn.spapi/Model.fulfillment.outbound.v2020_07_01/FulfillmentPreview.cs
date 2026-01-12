@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="orderUnfulfillableReasons">String list.</param>
         /// <param name="marketplaceId">The marketplace the fulfillment order is placed against. (required).</param>
         /// <param name="featureConstraints">A list of features and their fulfillment policies to apply to the order..</param>
-        public FulfillmentPreview(ShippingSpeedCategory shippingSpeedCategory = default(ShippingSpeedCategory), ScheduledDeliveryInfo scheduledDeliveryInfo = default(ScheduledDeliveryInfo), bool isFulfillable = default(bool), bool isCODCapable = default(bool), Weight estimatedShippingWeight = default(Weight), List<Fee> estimatedFees = default(List<Fee>), List<FulfillmentPreviewShipment> fulfillmentPreviewShipments = default(List<FulfillmentPreviewShipment>), List<UnfulfillablePreviewItem> unfulfillablePreviewItems = default(List<UnfulfillablePreviewItem>), List<string> orderUnfulfillableReasons = default(List<string>), string marketplaceId = default(string), List<FeatureSettings> featureConstraints = default(List<FeatureSettings>))
+        public FulfillmentPreview(ShippingSpeedCategory shippingSpeedCategory = default(ShippingSpeedCategory), ScheduledDeliveryInfo? scheduledDeliveryInfo = default(ScheduledDeliveryInfo?), bool isFulfillable = default(bool), bool isCODCapable = default(bool), Weight? estimatedShippingWeight = default(Weight?), List<Fee>? estimatedFees = default(List<Fee>?), List<FulfillmentPreviewShipment>? fulfillmentPreviewShipments = default(List<FulfillmentPreviewShipment>?), List<UnfulfillablePreviewItem>? unfulfillablePreviewItems = default(List<UnfulfillablePreviewItem>?), List<string>? orderUnfulfillableReasons = default(List<string>?), string marketplaceId = default(string), List<FeatureSettings>? featureConstraints = default(List<FeatureSettings>?))
         {
             this.ShippingSpeedCategory = shippingSpeedCategory;
             this.IsFulfillable = isFulfillable;
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets ScheduledDeliveryInfo
         /// </summary>
         [DataMember(Name = "scheduledDeliveryInfo", EmitDefaultValue = false)]
-        public ScheduledDeliveryInfo ScheduledDeliveryInfo { get; set; }
+        public ScheduledDeliveryInfo? ScheduledDeliveryInfo { get; set; }
 
         /// <summary>
         /// When true, this fulfillment order preview is fulfillable.
@@ -100,35 +100,35 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets EstimatedShippingWeight
         /// </summary>
         [DataMember(Name = "estimatedShippingWeight", EmitDefaultValue = false)]
-        public Weight EstimatedShippingWeight { get; set; }
+        public Weight? EstimatedShippingWeight { get; set; }
 
         /// <summary>
         /// An array of fee type and cost pairs.
         /// </summary>
         /// <value>An array of fee type and cost pairs.</value>
         [DataMember(Name = "estimatedFees", EmitDefaultValue = false)]
-        public List<Fee> EstimatedFees { get; set; }
+        public List<Fee>? EstimatedFees { get; set; }
 
         /// <summary>
         /// An array of fulfillment preview shipment information.
         /// </summary>
         /// <value>An array of fulfillment preview shipment information.</value>
         [DataMember(Name = "fulfillmentPreviewShipments", EmitDefaultValue = false)]
-        public List<FulfillmentPreviewShipment> FulfillmentPreviewShipments { get; set; }
+        public List<FulfillmentPreviewShipment>? FulfillmentPreviewShipments { get; set; }
 
         /// <summary>
         /// An array of unfulfillable preview item information.
         /// </summary>
         /// <value>An array of unfulfillable preview item information.</value>
         [DataMember(Name = "unfulfillablePreviewItems", EmitDefaultValue = false)]
-        public List<UnfulfillablePreviewItem> UnfulfillablePreviewItems { get; set; }
+        public List<UnfulfillablePreviewItem>? UnfulfillablePreviewItems { get; set; }
 
         /// <summary>
         /// String list
         /// </summary>
         /// <value>String list</value>
         [DataMember(Name = "orderUnfulfillableReasons", EmitDefaultValue = false)]
-        public List<string> OrderUnfulfillableReasons { get; set; }
+        public List<string>? OrderUnfulfillableReasons { get; set; }
 
         /// <summary>
         /// The marketplace the fulfillment order is placed against.
@@ -142,7 +142,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>A list of features and their fulfillment policies to apply to the order.</value>
         [DataMember(Name = "featureConstraints", EmitDefaultValue = false)]
-        public List<FeatureSettings> FeatureConstraints { get; set; }
+        public List<FeatureSettings>? FeatureConstraints { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -186,5 +186,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         /// </summary>
         /// <param name="month">The month the card expires expressed as a number from &#x60;1&#x60; to &#x60;12&#x60;..</param>
         /// <param name="year">Year.</param>
-        public ExpiryDate(string month = default(string), string year = default(string))
+        public ExpiryDate(string? month = default(string?), string? year = default(string?))
         {
             this.Month = month;
             this.Year = year;
@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         <example>3</example>
         */
         [DataMember(Name = "month", EmitDefaultValue = false)]
-        public string Month { get; set; }
+        public string? Month { get; set; }
 
         /// <summary>
         /// Year
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         <example>2024</example>
         */
         [DataMember(Name = "year", EmitDefaultValue = false)]
-        public string Year { get; set; }
+        public string? Year { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,5 +95,4 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
             yield break;
         }
     }
-
 }

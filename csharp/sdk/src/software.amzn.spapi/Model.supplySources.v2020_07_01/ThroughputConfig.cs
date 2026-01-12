@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="throughputCap">throughputCap.</param>
         /// <param name="throughputUnit">throughputUnit (required).</param>
-        public ThroughputConfig(ThroughputCap throughputCap = default(ThroughputCap), ThroughputUnit throughputUnit = default(ThroughputUnit))
+        public ThroughputConfig(ThroughputCap? throughputCap = default(ThroughputCap?), ThroughputUnit throughputUnit = default(ThroughputUnit))
         {
             this.ThroughputUnit = throughputUnit;
             this.ThroughputCap = throughputCap;
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets ThroughputCap
         /// </summary>
         [DataMember(Name = "throughputCap", EmitDefaultValue = false)]
-        public ThroughputCap ThroughputCap { get; set; }
+        public ThroughputCap? ThroughputCap { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,5 +92,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

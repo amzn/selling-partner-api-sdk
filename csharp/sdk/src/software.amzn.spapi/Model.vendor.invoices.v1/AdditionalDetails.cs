@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="type">The type of the additional information provided by the selling party. (required).</param>
         /// <param name="detail">The detail of the additional information provided by the selling party. (required).</param>
         /// <param name="languageCode">The language code of the additional information detail..</param>
-        public AdditionalDetails(TypeEnum type = default(TypeEnum), string detail = default(string), string languageCode = default(string))
+        public AdditionalDetails(TypeEnum type = default(TypeEnum), string detail = default(string), string? languageCode = default(string?))
         {
             this.Type = type;
             // to ensure "detail" is required (not null)
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>The language code of the additional information detail.</value>
         [DataMember(Name = "languageCode", EmitDefaultValue = false)]
-        public string LanguageCode { get; set; }
+        public string? LanguageCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             yield break;
         }
     }
-
 }

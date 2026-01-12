@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="tDSOrderId">The Tax-Deducted-at-Source (TDS) identifier..</param>
         /// <param name="reimbursedAmount">reimbursedAmount.</param>
-        public TDSReimbursementEvent(DateTime postedDate = default(DateTime), string tDSOrderId = default(string), Currency reimbursedAmount = default(Currency))
+        public TDSReimbursementEvent(DateTime? postedDate = default(DateTime?), string? tDSOrderId = default(string?), Currency? reimbursedAmount = default(Currency?))
         {
             this.PostedDate = postedDate;
             this.TDSOrderId = tDSOrderId;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The Tax-Deducted-at-Source (TDS) identifier.
         /// </summary>
         /// <value>The Tax-Deducted-at-Source (TDS) identifier.</value>
         [DataMember(Name = "TDSOrderId", EmitDefaultValue = false)]
-        public string TDSOrderId { get; set; }
+        public string? TDSOrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets ReimbursedAmount
         /// </summary>
         [DataMember(Name = "ReimbursedAmount", EmitDefaultValue = false)]
-        public Currency ReimbursedAmount { get; set; }
+        public Currency? ReimbursedAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

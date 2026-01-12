@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Initializes a new instance of the <see cref="SampleLocation" /> class.
         /// </summary>
         /// <param name="postalCode">postalCode.</param>
-        public SampleLocation(PostalCode postalCode = default(PostalCode))
+        public SampleLocation(PostalCode? postalCode = default(PostalCode?))
         {
             this.PostalCode = postalCode;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets PostalCode
         /// </summary>
         [DataMember(Name = "postalCode", EmitDefaultValue = false)]
-        public PostalCode PostalCode { get; set; }
+        public PostalCode? PostalCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

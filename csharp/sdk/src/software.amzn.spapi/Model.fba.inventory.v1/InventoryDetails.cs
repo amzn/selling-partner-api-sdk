@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="reservedQuantity">reservedQuantity.</param>
         /// <param name="researchingQuantity">researchingQuantity.</param>
         /// <param name="unfulfillableQuantity">unfulfillableQuantity.</param>
-        public InventoryDetails(int fulfillableQuantity = default(int), int inboundWorkingQuantity = default(int), int inboundShippedQuantity = default(int), int inboundReceivingQuantity = default(int), ReservedQuantity reservedQuantity = default(ReservedQuantity), ResearchingQuantity researchingQuantity = default(ResearchingQuantity), UnfulfillableQuantity unfulfillableQuantity = default(UnfulfillableQuantity))
+        public InventoryDetails(int? fulfillableQuantity = default(int?), int? inboundWorkingQuantity = default(int?), int? inboundShippedQuantity = default(int?), int? inboundReceivingQuantity = default(int?), ReservedQuantity? reservedQuantity = default(ReservedQuantity?), ResearchingQuantity? researchingQuantity = default(ResearchingQuantity?), UnfulfillableQuantity? unfulfillableQuantity = default(UnfulfillableQuantity?))
         {
             this.FulfillableQuantity = fulfillableQuantity;
             this.InboundWorkingQuantity = inboundWorkingQuantity;
@@ -57,46 +57,46 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>The item quantity that can be picked, packed, and shipped.</value>
         [DataMember(Name = "fulfillableQuantity", EmitDefaultValue = false)]
-        public int FulfillableQuantity { get; set; }
+        public int? FulfillableQuantity { get; set; }
 
         /// <summary>
         /// The number of units in an inbound shipment for which you have notified Amazon.
         /// </summary>
         /// <value>The number of units in an inbound shipment for which you have notified Amazon.</value>
         [DataMember(Name = "inboundWorkingQuantity", EmitDefaultValue = false)]
-        public int InboundWorkingQuantity { get; set; }
+        public int? InboundWorkingQuantity { get; set; }
 
         /// <summary>
         /// The number of units in an inbound shipment that you have notified Amazon about and have provided a tracking number.
         /// </summary>
         /// <value>The number of units in an inbound shipment that you have notified Amazon about and have provided a tracking number.</value>
         [DataMember(Name = "inboundShippedQuantity", EmitDefaultValue = false)]
-        public int InboundShippedQuantity { get; set; }
+        public int? InboundShippedQuantity { get; set; }
 
         /// <summary>
         /// The number of units that have not yet been received at an Amazon fulfillment center for processing, but are part of an inbound shipment with some units that have already been received and processed.
         /// </summary>
         /// <value>The number of units that have not yet been received at an Amazon fulfillment center for processing, but are part of an inbound shipment with some units that have already been received and processed.</value>
         [DataMember(Name = "inboundReceivingQuantity", EmitDefaultValue = false)]
-        public int InboundReceivingQuantity { get; set; }
+        public int? InboundReceivingQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ReservedQuantity
         /// </summary>
         [DataMember(Name = "reservedQuantity", EmitDefaultValue = false)]
-        public ReservedQuantity ReservedQuantity { get; set; }
+        public ReservedQuantity? ReservedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ResearchingQuantity
         /// </summary>
         [DataMember(Name = "researchingQuantity", EmitDefaultValue = false)]
-        public ResearchingQuantity ResearchingQuantity { get; set; }
+        public ResearchingQuantity? ResearchingQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets UnfulfillableQuantity
         /// </summary>
         [DataMember(Name = "unfulfillableQuantity", EmitDefaultValue = false)]
-        public UnfulfillableQuantity UnfulfillableQuantity { get; set; }
+        public UnfulfillableQuantity? UnfulfillableQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,5 +136,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

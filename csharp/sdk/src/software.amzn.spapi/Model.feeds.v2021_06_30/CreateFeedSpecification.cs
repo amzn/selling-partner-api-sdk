@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
         /// <param name="marketplaceIds">A list of identifiers for marketplaces that you want the feed to be applied to. (required).</param>
         /// <param name="inputFeedDocumentId">The document identifier returned by the createFeedDocument operation. Upload the feed document contents before calling the createFeed operation. (required).</param>
         /// <param name="feedOptions">Additional options to control the feed. These vary by feed type..</param>
-        public CreateFeedSpecification(string feedType = default(string), List<string> marketplaceIds = default(List<string>), string inputFeedDocumentId = default(string), Dictionary<string, string> feedOptions = default(Dictionary<string, string>))
+        public CreateFeedSpecification(string feedType = default(string), List<string> marketplaceIds = default(List<string>), string inputFeedDocumentId = default(string), Dictionary<string, string>? feedOptions = default(Dictionary<string, string>?))
         {
             // to ensure "feedType" is required (not null)
             if (feedType == null)
@@ -92,7 +92,7 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
         /// </summary>
         /// <value>Additional options to control the feed. These vary by feed type.</value>
         [DataMember(Name = "feedOptions", EmitDefaultValue = false)]
-        public Dictionary<string, string> FeedOptions { get; set; }
+        public Dictionary<string, string>? FeedOptions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -129,5 +129,4 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
             yield break;
         }
     }
-
 }

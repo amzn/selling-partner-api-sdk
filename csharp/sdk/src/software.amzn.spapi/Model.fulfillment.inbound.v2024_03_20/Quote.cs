@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="cost">cost (required).</param>
         /// <param name="expiration">The time at which this transportation option quote expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime with pattern &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;..</param>
         /// <param name="voidableUntil">Voidable until timestamp..</param>
-        public Quote(Currency cost = default(Currency), DateTime expiration = default(DateTime), DateTime voidableUntil = default(DateTime))
+        public Quote(Currency cost = default(Currency), DateTime? expiration = default(DateTime?), DateTime? voidableUntil = default(DateTime?))
         {
             // to ensure "cost" is required (not null)
             if (cost == null)
@@ -65,14 +65,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The time at which this transportation option quote expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime with pattern &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public DateTime Expiration { get; set; }
+        public DateTime? Expiration { get; set; }
 
         /// <summary>
         /// Voidable until timestamp.
         /// </summary>
         /// <value>Voidable until timestamp.</value>
         [DataMember(Name = "voidableUntil", EmitDefaultValue = false)]
-        public DateTime VoidableUntil { get; set; }
+        public DateTime? VoidableUntil { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

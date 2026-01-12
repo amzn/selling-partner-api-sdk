@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="slotDuration">The duration of each slot which is returned. This value will be a multiple of 5 and fall in the following range: 5 &lt;&#x3D; &#x60;slotDuration&#x60; &lt;&#x3D; 360..</param>
         /// <param name="capacities">Array of capacity slots in fixed slot format..</param>
         /// <param name="nextPageToken">Next page token, if there are more pages..</param>
-        public FixedSlotCapacity(string resourceId = default(string), decimal slotDuration = default(decimal), List<FixedSlot> capacities = default(List<FixedSlot>), string nextPageToken = default(string))
+        public FixedSlotCapacity(string? resourceId = default(string?), decimal? slotDuration = default(decimal?), List<FixedSlot>? capacities = default(List<FixedSlot>?), string? nextPageToken = default(string?))
         {
             this.ResourceId = resourceId;
             this.SlotDuration = slotDuration;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Resource Identifier.</value>
         [DataMember(Name = "resourceId", EmitDefaultValue = false)]
-        public string ResourceId { get; set; }
+        public string? ResourceId { get; set; }
 
         /// <summary>
         /// The duration of each slot which is returned. This value will be a multiple of 5 and fall in the following range: 5 &lt;&#x3D; &#x60;slotDuration&#x60; &lt;&#x3D; 360.
         /// </summary>
         /// <value>The duration of each slot which is returned. This value will be a multiple of 5 and fall in the following range: 5 &lt;&#x3D; &#x60;slotDuration&#x60; &lt;&#x3D; 360.</value>
         [DataMember(Name = "slotDuration", EmitDefaultValue = false)]
-        public decimal SlotDuration { get; set; }
+        public decimal? SlotDuration { get; set; }
 
         /// <summary>
         /// Array of capacity slots in fixed slot format.
         /// </summary>
         /// <value>Array of capacity slots in fixed slot format.</value>
         [DataMember(Name = "capacities", EmitDefaultValue = false)]
-        public List<FixedSlot> Capacities { get; set; }
+        public List<FixedSlot>? Capacities { get; set; }
 
         /// <summary>
         /// Next page token, if there are more pages.
         /// </summary>
         /// <value>Next page token, if there are more pages.</value>
         [DataMember(Name = "nextPageToken", EmitDefaultValue = false)]
-        public string NextPageToken { get; set; }
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

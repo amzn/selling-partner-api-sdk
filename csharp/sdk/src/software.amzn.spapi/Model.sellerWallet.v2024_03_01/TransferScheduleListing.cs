@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <param name="nextPageToken">If present, use this pagination token to retrieve the next page of supply sources, if not provided the API will return same response. The field will only be provided when the list is greater than 100..</param>
         /// <param name="transferSchedules">Collection that holds list of Transfer Schedules  (required).</param>
-        public TransferScheduleListing(string nextPageToken = default(string), List<TransferSchedule> transferSchedules = default(List<TransferSchedule>))
+        public TransferScheduleListing(string? nextPageToken = default(string?), List<TransferSchedule> transferSchedules = default(List<TransferSchedule>))
         {
             // to ensure "transferSchedules" is required (not null)
             if (transferSchedules == null)
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>3493805734095308457308475</example>
         */
         [DataMember(Name = "nextPageToken", EmitDefaultValue = false)]
-        public string NextPageToken { get; set; }
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// Collection that holds list of Transfer Schedules 
@@ -102,5 +102,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

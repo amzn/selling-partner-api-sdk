@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// Initializes a new instance of the <see cref="Pagination" /> class.
         /// </summary>
         /// <param name="nextToken">A generated string used to retrieve the next page of the result. If nextToken is returned, pass the value of nextToken to the next request. If nextToken is not returned, there are no more items to return..</param>
-        public Pagination(string nextToken = default(string))
+        public Pagination(string? nextToken = default(string?))
         {
             this.NextToken = nextToken;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>A generated string used to retrieve the next page of the result. If nextToken is returned, pass the value of nextToken to the next request. If nextToken is not returned, there are no more items to return.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

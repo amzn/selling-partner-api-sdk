@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="items">The items and their quantity in the box. This must be empty if the box &#x60;contentInformationSource&#x60; is &#x60;BARCODE_2D&#x60; or &#x60;MANUAL_PROCESS&#x60;..</param>
         /// <param name="quantity">The number of containers where all other properties like weight or dimensions are identical. (required).</param>
         /// <param name="weight">weight (required).</param>
-        public BoxInput(BoxContentInformationSource contentInformationSource = default(BoxContentInformationSource), Dimensions dimensions = default(Dimensions), List<ItemInput> items = default(List<ItemInput>), int quantity = default(int), Weight weight = default(Weight))
+        public BoxInput(BoxContentInformationSource contentInformationSource = default(BoxContentInformationSource), Dimensions dimensions = default(Dimensions), List<ItemInput>? items = default(List<ItemInput>?), int quantity = default(int), Weight weight = default(Weight))
         {
             this.ContentInformationSource = contentInformationSource;
             // to ensure "dimensions" is required (not null)
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The items and their quantity in the box. This must be empty if the box &#x60;contentInformationSource&#x60; is &#x60;BARCODE_2D&#x60; or &#x60;MANUAL_PROCESS&#x60;.</value>
         [DataMember(Name = "items", EmitDefaultValue = false)]
-        public List<ItemInput> Items { get; set; }
+        public List<ItemInput>? Items { get; set; }
 
         /// <summary>
         /// The number of containers where all other properties like weight or dimensions are identical.
@@ -143,5 +143,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

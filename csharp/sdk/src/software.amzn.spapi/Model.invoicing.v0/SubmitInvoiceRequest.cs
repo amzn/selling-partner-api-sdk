@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="invoiceContent">Shipment invoice document content. (required).</param>
         /// <param name="marketplaceId">An Amazon marketplace identifier..</param>
         /// <param name="contentMD5Value">MD5 sum for validating the invoice data. For more information about calculating this value, see [Working with Content-MD5 Checksums](https://docs.developer.amazonservices.com/en_US/dev_guide/DG_MD5.html). (required).</param>
-        public SubmitInvoiceRequest(byte[] invoiceContent = default(byte[]), string marketplaceId = default(string), string contentMD5Value = default(string))
+        public SubmitInvoiceRequest(byte[] invoiceContent = default(byte[]), string? marketplaceId = default(string?), string contentMD5Value = default(string))
         {
             // to ensure "invoiceContent" is required (not null)
             if (invoiceContent == null)
@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <value>An Amazon marketplace identifier.</value>
         [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// MD5 sum for validating the invoice data. For more information about calculating this value, see [Working with Content-MD5 Checksums](https://docs.developer.amazonservices.com/en_US/dev_guide/DG_MD5.html).
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="uploadingTechnician">The identifier of the technician who uploaded the POA..</param>
         /// <param name="uploadTime">The date and time when the POA was uploaded in ISO 8601 format..</param>
         /// <param name="poaType">The type of POA uploaded..</param>
-        public Poa(AppointmentTime appointmentTime = default(AppointmentTime), List<Technician> technicians = default(List<Technician>), string uploadingTechnician = default(string), DateTime uploadTime = default(DateTime), PoaTypeEnum? poaType = default(PoaTypeEnum?))
+        public Poa(AppointmentTime? appointmentTime = default(AppointmentTime?), List<Technician>? technicians = default(List<Technician>?), string? uploadingTechnician = default(string?), DateTime? uploadTime = default(DateTime?), PoaTypeEnum? poaType = default(PoaTypeEnum?))
         {
             this.AppointmentTime = appointmentTime;
             this.Technicians = technicians;
@@ -91,28 +91,28 @@ namespace software.amzn.spapi.Model.services.v1
         /// Gets or Sets AppointmentTime
         /// </summary>
         [DataMember(Name = "appointmentTime", EmitDefaultValue = false)]
-        public AppointmentTime AppointmentTime { get; set; }
+        public AppointmentTime? AppointmentTime { get; set; }
 
         /// <summary>
         /// A list of technicians.
         /// </summary>
         /// <value>A list of technicians.</value>
         [DataMember(Name = "technicians", EmitDefaultValue = false)]
-        public List<Technician> Technicians { get; set; }
+        public List<Technician>? Technicians { get; set; }
 
         /// <summary>
         /// The identifier of the technician who uploaded the POA.
         /// </summary>
         /// <value>The identifier of the technician who uploaded the POA.</value>
         [DataMember(Name = "uploadingTechnician", EmitDefaultValue = false)]
-        public string UploadingTechnician { get; set; }
+        public string? UploadingTechnician { get; set; }
 
         /// <summary>
         /// The date and time when the POA was uploaded in ISO 8601 format.
         /// </summary>
         /// <value>The date and time when the POA was uploaded in ISO 8601 format.</value>
         [DataMember(Name = "uploadTime", EmitDefaultValue = false)]
-        public DateTime UploadTime { get; set; }
+        public DateTime? UploadTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -159,5 +159,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

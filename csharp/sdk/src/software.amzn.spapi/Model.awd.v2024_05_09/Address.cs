@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="phoneNumber">Optional E.164-formatted phone number for an available contact at this address..</param>
         /// <param name="postalCode">Optional postal code where this address is located..</param>
         /// <param name="stateOrRegion">State or region where this address is located. Note that this is contextual to the specified country code. (required).</param>
-        public Address(string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string countryCode = default(string), string county = default(string), string district = default(string), string name = default(string), string phoneNumber = default(string), string postalCode = default(string), string stateOrRegion = default(string))
+        public Address(string addressLine1 = default(string), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? city = default(string?), string countryCode = default(string), string? county = default(string?), string? district = default(string?), string name = default(string), string? phoneNumber = default(string?), string? postalCode = default(string?), string stateOrRegion = default(string))
         {
             // to ensure "addressLine1" is required (not null)
             if (addressLine1 == null)
@@ -97,21 +97,21 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Optional second line of the address text.</value>
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Optional third line of the address text.
         /// </summary>
         /// <value>Optional third line of the address text.</value>
         [DataMember(Name = "addressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// Optional city where this address is located.
         /// </summary>
         /// <value>Optional city where this address is located.</value>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// Two-digit, ISO 3166-1 alpha-2 formatted country code where this address is located.
@@ -128,14 +128,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>Washington</example>
         */
         [DataMember(Name = "county", EmitDefaultValue = false)]
-        public string County { get; set; }
+        public string? County { get; set; }
 
         /// <summary>
         /// Optional district where this address is located.
         /// </summary>
         /// <value>Optional district where this address is located.</value>
         [DataMember(Name = "district", EmitDefaultValue = false)]
-        public string District { get; set; }
+        public string? District { get; set; }
 
         /// <summary>
         /// Name of the person, business, or institution at this address.
@@ -152,14 +152,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>+14155552671</example>
         */
         [DataMember(Name = "phoneNumber", EmitDefaultValue = false)]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         /// <summary>
         /// Optional postal code where this address is located.
         /// </summary>
         /// <value>Optional postal code where this address is located.</value>
         [DataMember(Name = "postalCode", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
         /// <summary>
         /// State or region where this address is located. Note that this is contextual to the specified country code.
@@ -210,5 +210,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

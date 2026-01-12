@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="featureName">The name of the feature. (required).</param>
         /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
         /// <param name="featureSkus">An array of SKUs eligible for this feature and the quantity available..</param>
-        public GetFeatureInventoryResult(string marketplaceId = default(string), string featureName = default(string), string nextToken = default(string), List<FeatureSku> featureSkus = default(List<FeatureSku>))
+        public GetFeatureInventoryResult(string marketplaceId = default(string), string featureName = default(string), string? nextToken = default(string?), List<FeatureSku>? featureSkus = default(List<FeatureSku>?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -80,14 +80,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// An array of SKUs eligible for this feature and the quantity available.
         /// </summary>
         /// <value>An array of SKUs eligible for this feature and the quantity available.</value>
         [DataMember(Name = "featureSkus", EmitDefaultValue = false)]
-        public List<FeatureSku> FeatureSkus { get; set; }
+        public List<FeatureSku>? FeatureSkus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -124,5 +124,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

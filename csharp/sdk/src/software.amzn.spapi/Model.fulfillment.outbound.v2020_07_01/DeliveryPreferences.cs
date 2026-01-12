@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="deliveryInstructions">Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, &#39;Beware of dogs&#39;, etc..</param>
         /// <param name="dropOffLocation">dropOffLocation.</param>
-        public DeliveryPreferences(string deliveryInstructions = default(string), DropOffLocation dropOffLocation = default(DropOffLocation))
+        public DeliveryPreferences(string? deliveryInstructions = default(string?), DropOffLocation? dropOffLocation = default(DropOffLocation?))
         {
             this.DeliveryInstructions = deliveryInstructions;
             this.DropOffLocation = dropOffLocation;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Additional delivery instructions. For example, this could be instructions on how to enter a building, nearby landmark or navigation instructions, &#39;Beware of dogs&#39;, etc.</value>
         [DataMember(Name = "deliveryInstructions", EmitDefaultValue = false)]
-        public string DeliveryInstructions { get; set; }
+        public string? DeliveryInstructions { get; set; }
 
         /// <summary>
         /// Gets or Sets DropOffLocation
         /// </summary>
         [DataMember(Name = "dropOffLocation", EmitDefaultValue = false)]
-        public DropOffLocation DropOffLocation { get; set; }
+        public DropOffLocation? DropOffLocation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,5 +94,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

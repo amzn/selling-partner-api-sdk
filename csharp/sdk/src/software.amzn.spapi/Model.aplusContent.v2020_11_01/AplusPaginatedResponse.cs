@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="warnings">A set of messages to the user, such as warnings or comments..</param>
         /// <param name="nextPageToken">A token that you use to fetch a specific page when there are multiple pages of results..</param>
-        public AplusPaginatedResponse(List<Error> warnings = default(List<Error>), string nextPageToken = default(string))
+        public AplusPaginatedResponse(List<Error>? warnings = default(List<Error>?), string? nextPageToken = default(string?))
         {
             this.Warnings = warnings;
             this.NextPageToken = nextPageToken;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>A set of messages to the user, such as warnings or comments.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Error> Warnings { get; set; }
+        public List<Error>? Warnings { get; set; }
 
         /// <summary>
         /// A token that you use to fetch a specific page when there are multiple pages of results.
         /// </summary>
         /// <value>A token that you use to fetch a specific page when there are multiple pages of results.</value>
         [DataMember(Name = "nextPageToken", EmitDefaultValue = false)]
-        public string NextPageToken { get; set; }
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,5 +95,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

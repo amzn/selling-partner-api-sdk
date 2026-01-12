@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="alphaCode">The carrier code. For example, USPS or DHLEX..</param>
         /// <param name="name">The name of the carrier..</param>
-        public Carrier(string alphaCode = default(string), string name = default(string))
+        public Carrier(string? alphaCode = default(string?), string? name = default(string?))
         {
             this.AlphaCode = alphaCode;
             this.Name = name;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The carrier code. For example, USPS or DHLEX.</value>
         [DataMember(Name = "alphaCode", EmitDefaultValue = false)]
-        public string AlphaCode { get; set; }
+        public string? AlphaCode { get; set; }
 
         /// <summary>
         /// The name of the carrier.
         /// </summary>
         /// <value>The name of the carrier.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

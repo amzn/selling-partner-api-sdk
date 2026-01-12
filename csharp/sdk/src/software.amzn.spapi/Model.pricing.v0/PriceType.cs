@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="listingPrice">listingPrice (required).</param>
         /// <param name="shipping">shipping.</param>
         /// <param name="points">points.</param>
-        public PriceType(MoneyType landedPrice = default(MoneyType), MoneyType listingPrice = default(MoneyType), MoneyType shipping = default(MoneyType), Points points = default(Points))
+        public PriceType(MoneyType? landedPrice = default(MoneyType?), MoneyType listingPrice = default(MoneyType), MoneyType? shipping = default(MoneyType?), Points? points = default(Points?))
         {
             // to ensure "listingPrice" is required (not null)
             if (listingPrice == null)
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets LandedPrice
         /// </summary>
         [DataMember(Name = "LandedPrice", EmitDefaultValue = false)]
-        public MoneyType LandedPrice { get; set; }
+        public MoneyType? LandedPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets ListingPrice
@@ -72,13 +72,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets Shipping
         /// </summary>
         [DataMember(Name = "Shipping", EmitDefaultValue = false)]
-        public MoneyType Shipping { get; set; }
+        public MoneyType? Shipping { get; set; }
 
         /// <summary>
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "Points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -115,5 +115,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

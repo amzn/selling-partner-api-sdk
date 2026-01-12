@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <param name="href">A URI for this object. (required).</param>
         /// <param name="name">An identifier for this object..</param>
-        public LinkObject(string href = default(string), string name = default(string))
+        public LinkObject(string href = default(string), string? name = default(string?))
         {
             // to ensure "href" is required (not null)
             if (href == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>An identifier for this object.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="startTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="endTime">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="contextType">contextType (required).</param>
-        public Context(StoreNameEnum? storeName = default(StoreNameEnum?), string orderType = default(string), string channel = default(string), string asin = default(string), string sku = default(string), int quantityShipped = default(int), string fulfillmentNetwork = default(string), string paymentType = default(string), string paymentMethod = default(string), string paymentReference = default(string), DateTime paymentDate = default(DateTime), string deferralReason = default(string), DateTime maturityDate = default(DateTime), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime), string contextType = default(string))
+        public Context(StoreNameEnum? storeName = default(StoreNameEnum?), string? orderType = default(string?), string? channel = default(string?), string? asin = default(string?), string? sku = default(string?), int? quantityShipped = default(int?), string? fulfillmentNetwork = default(string?), string? paymentType = default(string?), string? paymentMethod = default(string?), string? paymentReference = default(string?), DateTime? paymentDate = default(DateTime?), string? deferralReason = default(string?), DateTime? maturityDate = default(DateTime?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), string contextType = default(string))
         {
             // to ensure "contextType" is required (not null)
             if (contextType == null)
@@ -106,98 +106,98 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The transaction&#39;s order type.</value>
         [DataMember(Name = "orderType", EmitDefaultValue = false)]
-        public string OrderType { get; set; }
+        public string? OrderType { get; set; }
 
         /// <summary>
         /// Channel details of related transaction.
         /// </summary>
         /// <value>Channel details of related transaction.</value>
         [DataMember(Name = "channel", EmitDefaultValue = false)]
-        public string Channel { get; set; }
+        public string? Channel { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The Stock Keeping Unit (SKU) of the item.
         /// </summary>
         /// <value>The Stock Keeping Unit (SKU) of the item.</value>
         [DataMember(Name = "sku", EmitDefaultValue = false)]
-        public string Sku { get; set; }
+        public string? Sku { get; set; }
 
         /// <summary>
         /// The quantity of the item shipped.
         /// </summary>
         /// <value>The quantity of the item shipped.</value>
         [DataMember(Name = "quantityShipped", EmitDefaultValue = false)]
-        public int QuantityShipped { get; set; }
+        public int? QuantityShipped { get; set; }
 
         /// <summary>
         /// The fulfillment network of the item.
         /// </summary>
         /// <value>The fulfillment network of the item.</value>
         [DataMember(Name = "fulfillmentNetwork", EmitDefaultValue = false)]
-        public string FulfillmentNetwork { get; set; }
+        public string? FulfillmentNetwork { get; set; }
 
         /// <summary>
         /// The type of payment.
         /// </summary>
         /// <value>The type of payment.</value>
         [DataMember(Name = "paymentType", EmitDefaultValue = false)]
-        public string PaymentType { get; set; }
+        public string? PaymentType { get; set; }
 
         /// <summary>
         /// The method of payment.
         /// </summary>
         /// <value>The method of payment.</value>
         [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
-        public string PaymentMethod { get; set; }
+        public string? PaymentMethod { get; set; }
 
         /// <summary>
         /// The reference number of the payment.
         /// </summary>
         /// <value>The reference number of the payment.</value>
         [DataMember(Name = "paymentReference", EmitDefaultValue = false)]
-        public string PaymentReference { get; set; }
+        public string? PaymentReference { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
-        public DateTime PaymentDate { get; set; }
+        public DateTime? PaymentDate { get; set; }
 
         /// <summary>
         /// The deferral policy applied to the transaction.  **Examples:** &#x60;B2B&#x60; (invoiced orders), &#x60;DD7&#x60; (delivery date policy)
         /// </summary>
         /// <value>The deferral policy applied to the transaction.  **Examples:** &#x60;B2B&#x60; (invoiced orders), &#x60;DD7&#x60; (delivery date policy)</value>
         [DataMember(Name = "deferralReason", EmitDefaultValue = false)]
-        public string DeferralReason { get; set; }
+        public string? DeferralReason { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "maturityDate", EmitDefaultValue = false)]
-        public DateTime MaturityDate { get; set; }
+        public DateTime? MaturityDate { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "startTime", EmitDefaultValue = false)]
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "endTime", EmitDefaultValue = false)]
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Gets or Sets ContextType
@@ -252,5 +252,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

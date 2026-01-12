@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="packages">A list of packages to be shipped through a shipping service offering..</param>
         /// <param name="channelDetails">channelDetails (required).</param>
         /// <param name="labelSpecifications">labelSpecifications.</param>
-        public DirectPurchaseRequest(Address shipTo = default(Address), Address shipFrom = default(Address), Address returnTo = default(Address), List<Package> packages = default(List<Package>), ChannelDetails channelDetails = default(ChannelDetails), RequestedDocumentSpecification labelSpecifications = default(RequestedDocumentSpecification))
+        public DirectPurchaseRequest(Address? shipTo = default(Address?), Address? shipFrom = default(Address?), Address? returnTo = default(Address?), List<Package>? packages = default(List<Package>?), ChannelDetails channelDetails = default(ChannelDetails), RequestedDocumentSpecification? labelSpecifications = default(RequestedDocumentSpecification?))
         {
             // to ensure "channelDetails" is required (not null)
             if (channelDetails == null)
@@ -65,26 +65,26 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets ShipTo
         /// </summary>
         [DataMember(Name = "shipTo", EmitDefaultValue = false)]
-        public Address ShipTo { get; set; }
+        public Address? ShipTo { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipFrom
         /// </summary>
         [DataMember(Name = "shipFrom", EmitDefaultValue = false)]
-        public Address ShipFrom { get; set; }
+        public Address? ShipFrom { get; set; }
 
         /// <summary>
         /// Gets or Sets ReturnTo
         /// </summary>
         [DataMember(Name = "returnTo", EmitDefaultValue = false)]
-        public Address ReturnTo { get; set; }
+        public Address? ReturnTo { get; set; }
 
         /// <summary>
         /// A list of packages to be shipped through a shipping service offering.
         /// </summary>
         /// <value>A list of packages to be shipped through a shipping service offering.</value>
         [DataMember(Name = "packages", EmitDefaultValue = false)]
-        public List<Package> Packages { get; set; }
+        public List<Package>? Packages { get; set; }
 
         /// <summary>
         /// Gets or Sets ChannelDetails
@@ -96,7 +96,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets LabelSpecifications
         /// </summary>
         [DataMember(Name = "labelSpecifications", EmitDefaultValue = false)]
-        public RequestedDocumentSpecification LabelSpecifications { get; set; }
+        public RequestedDocumentSpecification? LabelSpecifications { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

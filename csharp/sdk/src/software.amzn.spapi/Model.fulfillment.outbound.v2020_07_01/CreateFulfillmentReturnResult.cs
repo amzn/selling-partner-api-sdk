@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="returnItems">An array of items that Amazon accepted for return. Returns empty if no items were accepted for return..</param>
         /// <param name="invalidReturnItems">An array of invalid return item information..</param>
         /// <param name="returnAuthorizations">An array of return authorization information..</param>
-        public CreateFulfillmentReturnResult(List<ReturnItem> returnItems = default(List<ReturnItem>), List<InvalidReturnItem> invalidReturnItems = default(List<InvalidReturnItem>), List<ReturnAuthorization> returnAuthorizations = default(List<ReturnAuthorization>))
+        public CreateFulfillmentReturnResult(List<ReturnItem>? returnItems = default(List<ReturnItem>?), List<InvalidReturnItem>? invalidReturnItems = default(List<InvalidReturnItem>?), List<ReturnAuthorization>? returnAuthorizations = default(List<ReturnAuthorization>?))
         {
             this.ReturnItems = returnItems;
             this.InvalidReturnItems = invalidReturnItems;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of items that Amazon accepted for return. Returns empty if no items were accepted for return.</value>
         [DataMember(Name = "returnItems", EmitDefaultValue = false)]
-        public List<ReturnItem> ReturnItems { get; set; }
+        public List<ReturnItem>? ReturnItems { get; set; }
 
         /// <summary>
         /// An array of invalid return item information.
         /// </summary>
         /// <value>An array of invalid return item information.</value>
         [DataMember(Name = "invalidReturnItems", EmitDefaultValue = false)]
-        public List<InvalidReturnItem> InvalidReturnItems { get; set; }
+        public List<InvalidReturnItem>? InvalidReturnItems { get; set; }
 
         /// <summary>
         /// An array of return authorization information.
         /// </summary>
         /// <value>An array of return authorization information.</value>
         [DataMember(Name = "returnAuthorizations", EmitDefaultValue = false)]
-        public List<ReturnAuthorization> ReturnAuthorizations { get; set; }
+        public List<ReturnAuthorization>? ReturnAuthorizations { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

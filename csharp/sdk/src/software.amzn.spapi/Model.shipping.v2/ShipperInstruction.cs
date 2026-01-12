@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="ShipperInstruction" /> class.
         /// </summary>
         /// <param name="deliveryNotes">The delivery notes for the shipment.</param>
-        public ShipperInstruction(string deliveryNotes = default(string))
+        public ShipperInstruction(string? deliveryNotes = default(string?))
         {
             this.DeliveryNotes = deliveryNotes;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The delivery notes for the shipment</value>
         [DataMember(Name = "deliveryNotes", EmitDefaultValue = false)]
-        public string DeliveryNotes { get; set; }
+        public string? DeliveryNotes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -86,5 +86,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

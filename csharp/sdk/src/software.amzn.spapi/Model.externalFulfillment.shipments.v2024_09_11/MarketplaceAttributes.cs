@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="channelName">The channel name associated with the location. (required).</param>
         /// <param name="merchantId">The ID of the merchant or seller to whom this order is created..</param>
         /// <param name="customAttributes">Marketplace channel-specific attribute value..</param>
-        public MarketplaceAttributes(string marketplaceId = default(string), string channelName = default(string), string merchantId = default(string), List<CustomAttributesEnum> customAttributes = default(List<CustomAttributesEnum>))
+        public MarketplaceAttributes(string marketplaceId = default(string), string channelName = default(string), string? merchantId = default(string?), List<CustomAttributesEnum>? customAttributes = default(List<CustomAttributesEnum>?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -100,14 +100,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The ID of the merchant or seller to whom this order is created.</value>
         [DataMember(Name = "merchantId", EmitDefaultValue = false)]
-        public string MerchantId { get; set; }
+        public string? MerchantId { get; set; }
 
         /// <summary>
         /// Marketplace channel-specific attribute value.
         /// </summary>
         /// <value>Marketplace channel-specific attribute value.</value>
         [DataMember(Name = "customAttributes", EmitDefaultValue = false)]
-        public List<MarketplaceAttributes.CustomAttributesEnum> CustomAttributes { get; set; }
+        public List<MarketplaceAttributes.CustomAttributesEnum>? CustomAttributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,5 +144,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

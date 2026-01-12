@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// <param name="uri">The URI associated with the individual APIs from the batch request. The user must provide the resource identifier for the operation they want to use.  (required).</param>
         /// <param name="method">method (required).</param>
         /// <param name="body">body.</param>
-        public InventoryRequest(string uri = default(string), HttpMethod method = default(HttpMethod), InventoryRequestParams body = default(InventoryRequestParams))
+        public InventoryRequest(string uri = default(string), HttpMethod method = default(HttpMethod), InventoryRequestParams? body = default(InventoryRequestParams?))
         {
             // to ensure "uri" is required (not null)
             if (uri == null)
@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// Gets or Sets Body
         /// </summary>
         [DataMember(Name = "body", EmitDefaultValue = false)]
-        public InventoryRequestParams Body { get; set; }
+        public InventoryRequestParams? Body { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -110,5 +110,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

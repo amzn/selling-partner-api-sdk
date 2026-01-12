@@ -61,7 +61,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="primeInformation">primeInformation.</param>
         /// <param name="isBuyBoxWinner">When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime..</param>
         /// <param name="isFeaturedMerchant">When true, the seller of the item is eligible to win the Buy Box..</param>
-        public OfferDetail(bool myOffer = default(bool), OfferCustomerType? offerType = default(OfferCustomerType?), string subCondition = default(string), string sellerId = default(string), string conditionNotes = default(string), SellerFeedbackType sellerFeedbackRating = default(SellerFeedbackType), DetailedShippingTimeType shippingTime = default(DetailedShippingTimeType), MoneyType listingPrice = default(MoneyType), List<QuantityDiscountPriceType> quantityDiscountPrices = default(List<QuantityDiscountPriceType>), Points points = default(Points), MoneyType shipping = default(MoneyType), ShipsFromType shipsFrom = default(ShipsFromType), bool isFulfilledByAmazon = default(bool), PrimeInformationType primeInformation = default(PrimeInformationType), bool isBuyBoxWinner = default(bool), bool isFeaturedMerchant = default(bool))
+        public OfferDetail(bool? myOffer = default(bool?), OfferCustomerType? offerType = default(OfferCustomerType?), string subCondition = default(string), string? sellerId = default(string?), string? conditionNotes = default(string?), SellerFeedbackType? sellerFeedbackRating = default(SellerFeedbackType?), DetailedShippingTimeType shippingTime = default(DetailedShippingTimeType), MoneyType listingPrice = default(MoneyType), List<QuantityDiscountPriceType>? quantityDiscountPrices = default(List<QuantityDiscountPriceType>?), Points? points = default(Points?), MoneyType shipping = default(MoneyType), ShipsFromType? shipsFrom = default(ShipsFromType?), bool isFulfilledByAmazon = default(bool), PrimeInformationType? primeInformation = default(PrimeInformationType?), bool? isBuyBoxWinner = default(bool?), bool? isFeaturedMerchant = default(bool?))
         {
             // to ensure "subCondition" is required (not null)
             if (subCondition == null)
@@ -106,7 +106,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>When true, this is the seller&#39;s offer.</value>
         [DataMember(Name = "MyOffer", EmitDefaultValue = true)]
-        public bool MyOffer { get; set; }
+        public bool? MyOffer { get; set; }
 
         /// <summary>
         /// The subcondition of the item. Subcondition values: New, Mint, Very Good, Good, Acceptable, Poor, Club, OEM, Warranty, Refurbished Warranty, Refurbished, Open Box, or Other.
@@ -120,20 +120,20 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The seller identifier for the offer.</value>
         [DataMember(Name = "SellerId", EmitDefaultValue = false)]
-        public string SellerId { get; set; }
+        public string? SellerId { get; set; }
 
         /// <summary>
         /// Information about the condition of the item.
         /// </summary>
         /// <value>Information about the condition of the item.</value>
         [DataMember(Name = "ConditionNotes", EmitDefaultValue = false)]
-        public string ConditionNotes { get; set; }
+        public string? ConditionNotes { get; set; }
 
         /// <summary>
         /// Gets or Sets SellerFeedbackRating
         /// </summary>
         [DataMember(Name = "SellerFeedbackRating", EmitDefaultValue = false)]
-        public SellerFeedbackType SellerFeedbackRating { get; set; }
+        public SellerFeedbackType? SellerFeedbackRating { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingTime
@@ -152,13 +152,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>List of &#x60;QuantityDiscountPrice&#x60; that contains item&#39;s pricing information when buy in bulk.</value>
         [DataMember(Name = "quantityDiscountPrices", EmitDefaultValue = false)]
-        public List<QuantityDiscountPriceType> QuantityDiscountPrices { get; set; }
+        public List<QuantityDiscountPriceType>? QuantityDiscountPrices { get; set; }
 
         /// <summary>
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "Points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// Gets or Sets Shipping
@@ -170,7 +170,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets ShipsFrom
         /// </summary>
         [DataMember(Name = "ShipsFrom", EmitDefaultValue = false)]
-        public ShipsFromType ShipsFrom { get; set; }
+        public ShipsFromType? ShipsFrom { get; set; }
 
         /// <summary>
         /// When true, the offer is fulfilled by Amazon.
@@ -183,21 +183,21 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets PrimeInformation
         /// </summary>
         [DataMember(Name = "PrimeInformation", EmitDefaultValue = false)]
-        public PrimeInformationType PrimeInformation { get; set; }
+        public PrimeInformationType? PrimeInformation { get; set; }
 
         /// <summary>
         /// When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.
         /// </summary>
         /// <value>When true, the offer is currently in the Buy Box. There can be up to two Buy Box winners at any time per ASIN, one that is eligible for Prime and one that is not eligible for Prime.</value>
         [DataMember(Name = "IsBuyBoxWinner", EmitDefaultValue = true)]
-        public bool IsBuyBoxWinner { get; set; }
+        public bool? IsBuyBoxWinner { get; set; }
 
         /// <summary>
         /// When true, the seller of the item is eligible to win the Buy Box.
         /// </summary>
         /// <value>When true, the seller of the item is eligible to win the Buy Box.</value>
         [DataMember(Name = "IsFeaturedMerchant", EmitDefaultValue = true)]
-        public bool IsFeaturedMerchant { get; set; }
+        public bool? IsFeaturedMerchant { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -246,5 +246,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

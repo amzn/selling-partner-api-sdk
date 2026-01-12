@@ -100,7 +100,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// <param name="taxAmount">taxAmount (required).</param>
         /// <param name="taxableAmount">taxableAmount.</param>
         /// <param name="type">Tax type..</param>
-        public TaxDetails(string taxRate = default(string), Money taxAmount = default(Money), Money taxableAmount = default(Money), TypeEnum? type = default(TypeEnum?))
+        public TaxDetails(string? taxRate = default(string?), Money taxAmount = default(Money), Money? taxableAmount = default(Money?), TypeEnum? type = default(TypeEnum?))
         {
             // to ensure "taxAmount" is required (not null)
             if (taxAmount == null)
@@ -118,7 +118,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>A decimal number with no loss of precision. Useful when precision loss is unacceptable, as with currencies. Follows RFC7159 for number representation.</value>
         [DataMember(Name = "taxRate", EmitDefaultValue = false)]
-        public string TaxRate { get; set; }
+        public string? TaxRate { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
@@ -130,7 +130,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Gets or Sets TaxableAmount
         /// </summary>
         [DataMember(Name = "taxableAmount", EmitDefaultValue = false)]
-        public Money TaxableAmount { get; set; }
+        public Money? TaxableAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -167,5 +167,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

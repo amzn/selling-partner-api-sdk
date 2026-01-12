@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="errorMessage">errorMessage for the error..</param>
         /// <param name="validationStrategy">validationStrategy for the error..</param>
         /// <param name="value">Value..</param>
-        public ValidationMetadata(string errorMessage = default(string), string validationStrategy = default(string), string value = default(string))
+        public ValidationMetadata(string? errorMessage = default(string?), string? validationStrategy = default(string?), string? value = default(string?))
         {
             this.ErrorMessage = errorMessage;
             this.ValidationStrategy = validationStrategy;
@@ -50,21 +50,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>errorMessage for the error.</value>
         [DataMember(Name = "errorMessage", EmitDefaultValue = false)]
-        public string ErrorMessage { get; set; }
+        public string? ErrorMessage { get; set; }
 
         /// <summary>
         /// validationStrategy for the error.
         /// </summary>
         /// <value>validationStrategy for the error.</value>
         [DataMember(Name = "validationStrategy", EmitDefaultValue = false)]
-        public string ValidationStrategy { get; set; }
+        public string? ValidationStrategy { get; set; }
 
         /// <summary>
         /// Value.
         /// </summary>
         /// <value>Value.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

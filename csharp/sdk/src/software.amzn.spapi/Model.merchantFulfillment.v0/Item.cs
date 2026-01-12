@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="liquidVolume">liquidVolume.</param>
         /// <param name="isHazmat">When true, the item qualifies as hazardous materials (hazmat). Defaults to false..</param>
         /// <param name="dangerousGoodsDetails">dangerousGoodsDetails.</param>
-        public Item(string orderItemId = default(string), int quantity = default(int), Weight itemWeight = default(Weight), string itemDescription = default(string), List<string> transparencyCodeList = default(List<string>), List<AdditionalSellerInputs> itemLevelSellerInputsList = default(List<AdditionalSellerInputs>), LiquidVolume liquidVolume = default(LiquidVolume), bool isHazmat = default(bool), DangerousGoodsDetails dangerousGoodsDetails = default(DangerousGoodsDetails))
+        public Item(string orderItemId = default(string), int quantity = default(int), Weight? itemWeight = default(Weight?), string? itemDescription = default(string?), List<string>? transparencyCodeList = default(List<string>?), List<AdditionalSellerInputs>? itemLevelSellerInputsList = default(List<AdditionalSellerInputs>?), LiquidVolume? liquidVolume = default(LiquidVolume?), bool? isHazmat = default(bool?), DangerousGoodsDetails? dangerousGoodsDetails = default(DangerousGoodsDetails?))
         {
             // to ensure "orderItemId" is required (not null)
             if (orderItemId == null)
@@ -84,47 +84,47 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets ItemWeight
         /// </summary>
         [DataMember(Name = "ItemWeight", EmitDefaultValue = false)]
-        public Weight ItemWeight { get; set; }
+        public Weight? ItemWeight { get; set; }
 
         /// <summary>
         /// The description of the item.
         /// </summary>
         /// <value>The description of the item.</value>
         [DataMember(Name = "ItemDescription", EmitDefaultValue = false)]
-        public string ItemDescription { get; set; }
+        public string? ItemDescription { get; set; }
 
         /// <summary>
         /// A list of transparency codes.
         /// </summary>
         /// <value>A list of transparency codes.</value>
         [DataMember(Name = "TransparencyCodeList", EmitDefaultValue = false)]
-        public List<string> TransparencyCodeList { get; set; }
+        public List<string>? TransparencyCodeList { get; set; }
 
         /// <summary>
         /// A list of additional seller input pairs required to purchase shipping.
         /// </summary>
         /// <value>A list of additional seller input pairs required to purchase shipping.</value>
         [DataMember(Name = "ItemLevelSellerInputsList", EmitDefaultValue = false)]
-        public List<AdditionalSellerInputs> ItemLevelSellerInputsList { get; set; }
+        public List<AdditionalSellerInputs>? ItemLevelSellerInputsList { get; set; }
 
         /// <summary>
         /// Gets or Sets LiquidVolume
         /// </summary>
         [DataMember(Name = "LiquidVolume", EmitDefaultValue = false)]
-        public LiquidVolume LiquidVolume { get; set; }
+        public LiquidVolume? LiquidVolume { get; set; }
 
         /// <summary>
         /// When true, the item qualifies as hazardous materials (hazmat). Defaults to false.
         /// </summary>
         /// <value>When true, the item qualifies as hazardous materials (hazmat). Defaults to false.</value>
         [DataMember(Name = "IsHazmat", EmitDefaultValue = true)]
-        public bool IsHazmat { get; set; }
+        public bool? IsHazmat { get; set; }
 
         /// <summary>
         /// Gets or Sets DangerousGoodsDetails
         /// </summary>
         [DataMember(Name = "DangerousGoodsDetails", EmitDefaultValue = false)]
-        public DangerousGoodsDetails DangerousGoodsDetails { get; set; }
+        public DangerousGoodsDetails? DangerousGoodsDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -166,5 +166,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

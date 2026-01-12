@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="updatedDate">The date when the line item quantity was updated by buyer. Must be in ISO-8601 date/time format..</param>
         /// <param name="orderedQuantity">orderedQuantity.</param>
         /// <param name="cancelledQuantity">cancelledQuantity.</param>
-        public OrderedQuantityDetails(DateTime updatedDate = default(DateTime), ItemQuantity orderedQuantity = default(ItemQuantity), ItemQuantity cancelledQuantity = default(ItemQuantity))
+        public OrderedQuantityDetails(DateTime? updatedDate = default(DateTime?), ItemQuantity? orderedQuantity = default(ItemQuantity?), ItemQuantity? cancelledQuantity = default(ItemQuantity?))
         {
             this.UpdatedDate = updatedDate;
             this.OrderedQuantity = orderedQuantity;
@@ -49,19 +49,19 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>The date when the line item quantity was updated by buyer. Must be in ISO-8601 date/time format.</value>
         [DataMember(Name = "updatedDate", EmitDefaultValue = false)]
-        public DateTime UpdatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderedQuantity
         /// </summary>
         [DataMember(Name = "orderedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity OrderedQuantity { get; set; }
+        public ItemQuantity? OrderedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets CancelledQuantity
         /// </summary>
         [DataMember(Name = "cancelledQuantity", EmitDefaultValue = false)]
-        public ItemQuantity CancelledQuantity { get; set; }
+        public ItemQuantity? CancelledQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

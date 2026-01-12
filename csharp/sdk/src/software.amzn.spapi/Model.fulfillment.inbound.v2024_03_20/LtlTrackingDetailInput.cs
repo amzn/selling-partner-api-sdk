@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="billOfLadingNumber">The number of the carrier shipment acknowledgement document..</param>
         /// <param name="freightBillNumber">Number associated with the freight bill. (required).</param>
-        public LtlTrackingDetailInput(string billOfLadingNumber = default(string), List<string> freightBillNumber = default(List<string>))
+        public LtlTrackingDetailInput(string? billOfLadingNumber = default(string?), List<string> freightBillNumber = default(List<string>))
         {
             // to ensure "freightBillNumber" is required (not null)
             if (freightBillNumber == null)
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The number of the carrier shipment acknowledgement document.</value>
         [DataMember(Name = "billOfLadingNumber", EmitDefaultValue = false)]
-        public string BillOfLadingNumber { get; set; }
+        public string? BillOfLadingNumber { get; set; }
 
         /// <summary>
         /// Number associated with the freight bill.
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

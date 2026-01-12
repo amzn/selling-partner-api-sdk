@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <param name="marketplaceId">The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids)..</param>
         /// <param name="marketplaceName">The name of the marketplace where the transaction occurred. For example: &#x60;Amazon.com&#x60;,&#x60;Amazon.in&#x60;.</param>
-        public MarketplaceDetails(string marketplaceId = default(string), string marketplaceName = default(string))
+        public MarketplaceDetails(string? marketplaceId = default(string?), string? marketplaceName = default(string?))
         {
             this.MarketplaceId = marketplaceId;
             this.MarketplaceName = marketplaceName;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// The name of the marketplace where the transaction occurred. For example: &#x60;Amazon.com&#x60;,&#x60;Amazon.in&#x60;
         /// </summary>
         /// <value>The name of the marketplace where the transaction occurred. For example: &#x60;Amazon.com&#x60;,&#x60;Amazon.in&#x60;</value>
         [DataMember(Name = "marketplaceName", EmitDefaultValue = false)]
-        public string MarketplaceName { get; set; }
+        public string? MarketplaceName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

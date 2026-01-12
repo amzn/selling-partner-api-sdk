@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="marketplaceId">The unobfuscated marketplace identifier. (required).</param>
         /// <param name="shipmentStatus">shipmentStatus (required).</param>
         /// <param name="orderItems">For partial shipment status updates, the list of order items and quantities to be updated..</param>
-        public UpdateShipmentStatusRequest(string marketplaceId = default(string), ShipmentStatus shipmentStatus = default(ShipmentStatus), List<OrderItemsInner> orderItems = default(List<OrderItemsInner>))
+        public UpdateShipmentStatusRequest(string marketplaceId = default(string), ShipmentStatus shipmentStatus = default(ShipmentStatus), List<OrderItemsInner>? orderItems = default(List<OrderItemsInner>?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>For partial shipment status updates, the list of order items and quantities to be updated.</value>
         [DataMember(Name = "orderItems", EmitDefaultValue = false)]
-        public List<OrderItemsInner> OrderItems { get; set; }
+        public List<OrderItemsInner>? OrderItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

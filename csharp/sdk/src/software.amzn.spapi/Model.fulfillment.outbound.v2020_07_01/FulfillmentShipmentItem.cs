@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="packageNumber">An identifier for the package that contains the item quantity..</param>
         /// <param name="serialNumber">The serial number of the shipped item..</param>
         /// <param name="manufacturerLotCodes">String list.</param>
-        public FulfillmentShipmentItem(string sellerSku = default(string), string sellerFulfillmentOrderItemId = default(string), int quantity = default(int), int packageNumber = default(int), string serialNumber = default(string), List<string> manufacturerLotCodes = default(List<string>))
+        public FulfillmentShipmentItem(string sellerSku = default(string), string sellerFulfillmentOrderItemId = default(string), int quantity = default(int), int? packageNumber = default(int?), string? serialNumber = default(string?), List<string>? manufacturerLotCodes = default(List<string>?))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -91,21 +91,21 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An identifier for the package that contains the item quantity.</value>
         [DataMember(Name = "packageNumber", EmitDefaultValue = false)]
-        public int PackageNumber { get; set; }
+        public int? PackageNumber { get; set; }
 
         /// <summary>
         /// The serial number of the shipped item.
         /// </summary>
         /// <value>The serial number of the shipped item.</value>
         [DataMember(Name = "serialNumber", EmitDefaultValue = false)]
-        public string SerialNumber { get; set; }
+        public string? SerialNumber { get; set; }
 
         /// <summary>
         /// String list
         /// </summary>
         /// <value>String list</value>
         [DataMember(Name = "manufacturerLotCodes", EmitDefaultValue = false)]
-        public List<string> ManufacturerLotCodes { get; set; }
+        public List<string>? ManufacturerLotCodes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,5 +144,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="asin">The Amazon Standard Identification Number (ASIN) of the item..</param>
         /// <param name="skuCount">The number of SKUs available for this service..</param>
         /// <param name="overlappingSkus">Other seller SKUs that are shared across the same inventory..</param>
-        public FeatureSku(string sellerSku = default(string), string fnSku = default(string), string asin = default(string), decimal skuCount = default(decimal), List<string> overlappingSkus = default(List<string>))
+        public FeatureSku(string? sellerSku = default(string?), string? fnSku = default(string?), string? asin = default(string?), decimal? skuCount = default(decimal?), List<string>? overlappingSkus = default(List<string>?))
         {
             this.SellerSku = sellerSku;
             this.FnSku = fnSku;
@@ -53,35 +53,35 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Used to identify an item in the given marketplace. &#x60;SellerSKU&#x60; is qualified by the seller&#39;s SellerId, which is included with every operation that you submit.</value>
         [DataMember(Name = "sellerSku", EmitDefaultValue = false)]
-        public string SellerSku { get; set; }
+        public string? SellerSku { get; set; }
 
         /// <summary>
         /// The unique SKU used by Amazon&#39;s fulfillment network.
         /// </summary>
         /// <value>The unique SKU used by Amazon&#39;s fulfillment network.</value>
         [DataMember(Name = "fnSku", EmitDefaultValue = false)]
-        public string FnSku { get; set; }
+        public string? FnSku { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The number of SKUs available for this service.
         /// </summary>
         /// <value>The number of SKUs available for this service.</value>
         [DataMember(Name = "skuCount", EmitDefaultValue = false)]
-        public decimal SkuCount { get; set; }
+        public decimal? SkuCount { get; set; }
 
         /// <summary>
         /// Other seller SKUs that are shared across the same inventory.
         /// </summary>
         /// <value>Other seller SKUs that are shared across the same inventory.</value>
         [DataMember(Name = "overlappingSkus", EmitDefaultValue = false)]
-        public List<string> OverlappingSkus { get; set; }
+        public List<string>? OverlappingSkus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,5 +119,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

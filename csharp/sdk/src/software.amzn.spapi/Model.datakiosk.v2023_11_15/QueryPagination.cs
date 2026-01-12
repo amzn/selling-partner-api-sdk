@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
         /// Initializes a new instance of the <see cref="QueryPagination" /> class.
         /// </summary>
         /// <param name="nextToken">A token that can be used to fetch the next page of results..</param>
-        public QueryPagination(string nextToken = default(string))
+        public QueryPagination(string? nextToken = default(string?))
         {
             this.NextToken = nextToken;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
         /// </summary>
         /// <value>A token that can be used to fetch the next page of results.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
             yield break;
         }
     }
-
 }

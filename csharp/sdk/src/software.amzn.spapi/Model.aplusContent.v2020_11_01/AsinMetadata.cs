@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="title">The title for the ASIN in the Amazon catalog..</param>
         /// <param name="imageUrl">The default image for the ASIN in the Amazon catalog..</param>
         /// <param name="contentReferenceKeySet">A set of content reference keys..</param>
-        public AsinMetadata(string asin = default(string), List<AsinBadge> badgeSet = default(List<AsinBadge>), string parent = default(string), string title = default(string), string imageUrl = default(string), List<string> contentReferenceKeySet = default(List<string>))
+        public AsinMetadata(string asin = default(string), List<AsinBadge>? badgeSet = default(List<AsinBadge>?), string? parent = default(string?), string? title = default(string?), string? imageUrl = default(string?), List<string>? contentReferenceKeySet = default(List<string>?))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -72,35 +72,35 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>The set of ASIN badges.</value>
         [DataMember(Name = "badgeSet", EmitDefaultValue = false)]
-        public List<AsinBadge> BadgeSet { get; set; }
+        public List<AsinBadge>? BadgeSet { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN).
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN).</value>
         [DataMember(Name = "parent", EmitDefaultValue = false)]
-        public string Parent { get; set; }
+        public string? Parent { get; set; }
 
         /// <summary>
         /// The title for the ASIN in the Amazon catalog.
         /// </summary>
         /// <value>The title for the ASIN in the Amazon catalog.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The default image for the ASIN in the Amazon catalog.
         /// </summary>
         /// <value>The default image for the ASIN in the Amazon catalog.</value>
         [DataMember(Name = "imageUrl", EmitDefaultValue = false)]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         /// <summary>
         /// A set of content reference keys.
         /// </summary>
         /// <value>A set of content reference keys.</value>
         [DataMember(Name = "contentReferenceKeySet", EmitDefaultValue = false)]
-        public List<string> ContentReferenceKeySet { get; set; }
+        public List<string>? ContentReferenceKeySet { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -163,5 +163,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

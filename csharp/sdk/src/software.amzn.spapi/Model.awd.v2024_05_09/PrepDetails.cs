@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="prepCategory">prepCategory.</param>
         /// <param name="prepInstructions">Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the &#x60;prepCategory&#x60;, and if you attempt to pass a value for this field, the system will ignore it..</param>
         /// <param name="prepOwner">prepOwner.</param>
-        public PrepDetails(LabelOwner? labelOwner = default(LabelOwner?), PrepCategory? prepCategory = default(PrepCategory?), List<PrepInstruction> prepInstructions = default(List<PrepInstruction>), PrepOwner? prepOwner = default(PrepOwner?))
+        public PrepDetails(LabelOwner? labelOwner = default(LabelOwner?), PrepCategory? prepCategory = default(PrepCategory?), List<PrepInstruction>? prepInstructions = default(List<PrepInstruction>?), PrepOwner? prepOwner = default(PrepOwner?))
         {
             this.LabelOwner = labelOwner;
             this.PrepCategory = prepCategory;
@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Contains information about the preparation of the inbound products. The system auto-generates this field with the use of the &#x60;prepCategory&#x60;, and if you attempt to pass a value for this field, the system will ignore it.</value>
         [DataMember(Name = "prepInstructions", EmitDefaultValue = false)]
-        public List<PrepInstruction> PrepInstructions { get; set; }
+        public List<PrepInstruction>? PrepInstructions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

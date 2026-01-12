@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="estimatedDeliveryDateTime">Date on which the shipment is expected to reach the customer delivery location. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00..</param>
         /// <param name="apptWindowStartDateTime">The date and time at the start of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00..</param>
         /// <param name="apptWindowEndDateTime">The date and time at the end of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00..</param>
-        public ShipmentSchedule(DateTime estimatedDeliveryDateTime = default(DateTime), DateTime apptWindowStartDateTime = default(DateTime), DateTime apptWindowEndDateTime = default(DateTime))
+        public ShipmentSchedule(DateTime? estimatedDeliveryDateTime = default(DateTime?), DateTime? apptWindowStartDateTime = default(DateTime?), DateTime? apptWindowEndDateTime = default(DateTime?))
         {
             this.EstimatedDeliveryDateTime = estimatedDeliveryDateTime;
             this.ApptWindowStartDateTime = apptWindowStartDateTime;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>Date on which the shipment is expected to reach the customer delivery location. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.</value>
         [DataMember(Name = "estimatedDeliveryDateTime", EmitDefaultValue = false)]
-        public DateTime EstimatedDeliveryDateTime { get; set; }
+        public DateTime? EstimatedDeliveryDateTime { get; set; }
 
         /// <summary>
         /// The date and time at the start of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.
         /// </summary>
         /// <value>The date and time at the start of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.</value>
         [DataMember(Name = "apptWindowStartDateTime", EmitDefaultValue = false)]
-        public DateTime ApptWindowStartDateTime { get; set; }
+        public DateTime? ApptWindowStartDateTime { get; set; }
 
         /// <summary>
         /// The date and time at the end of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.
         /// </summary>
         /// <value>The date and time at the end of the appointment window when the shipment is expected to be delivered. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format, with UTC time zone or UTC offset. For example, 2020-07-16T23:00:00Z or 2020-07-16T23:00:00+01:00.</value>
         [DataMember(Name = "apptWindowEndDateTime", EmitDefaultValue = false)]
-        public DateTime ApptWindowEndDateTime { get; set; }
+        public DateTime? ApptWindowEndDateTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

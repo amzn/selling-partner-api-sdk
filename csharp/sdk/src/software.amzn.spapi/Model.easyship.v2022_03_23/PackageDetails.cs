@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// <param name="packageItems">A list of items contained in the package..</param>
         /// <param name="packageTimeSlot">packageTimeSlot (required).</param>
         /// <param name="packageIdentifier">Optional seller-created identifier that is printed on the shipping label to help the seller identify the package..</param>
-        public PackageDetails(List<Item> packageItems = default(List<Item>), TimeSlot packageTimeSlot = default(TimeSlot), string packageIdentifier = default(string))
+        public PackageDetails(List<Item>? packageItems = default(List<Item>?), TimeSlot packageTimeSlot = default(TimeSlot), string? packageIdentifier = default(string?))
         {
             // to ensure "packageTimeSlot" is required (not null)
             if (packageTimeSlot == null)
@@ -59,7 +59,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>A list of items contained in the package.</value>
         [DataMember(Name = "packageItems", EmitDefaultValue = false)]
-        public List<Item> PackageItems { get; set; }
+        public List<Item>? PackageItems { get; set; }
 
         /// <summary>
         /// Gets or Sets PackageTimeSlot
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>Optional seller-created identifier that is printed on the shipping label to help the seller identify the package.</value>
         [DataMember(Name = "packageIdentifier", EmitDefaultValue = false)]
-        public string PackageIdentifier { get; set; }
+        public string? PackageIdentifier { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

@@ -66,7 +66,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="signedForBy">The name of the person who signed for the package..</param>
         /// <param name="additionalLocationInfo">additionalLocationInfo.</param>
         /// <param name="trackingEvents">An array of tracking event information..</param>
-        public PackageTrackingDetails(int packageNumber = default(int), string trackingNumber = default(string), string customerTrackingLink = default(string), string carrierCode = default(string), string carrierPhoneNumber = default(string), string carrierURL = default(string), DateTime shipDate = default(DateTime), DateTime estimatedArrivalDate = default(DateTime), TrackingAddress shipToAddress = default(TrackingAddress), CurrentStatus? currentStatus = default(CurrentStatus?), string currentStatusDescription = default(string), DateRange deliveryWindow = default(DateRange), string signedForBy = default(string), AdditionalLocationInfo? additionalLocationInfo = default(AdditionalLocationInfo?), List<TrackingEvent> trackingEvents = default(List<TrackingEvent>))
+        public PackageTrackingDetails(int packageNumber = default(int), string? trackingNumber = default(string?), string? customerTrackingLink = default(string?), string? carrierCode = default(string?), string? carrierPhoneNumber = default(string?), string? carrierURL = default(string?), DateTime? shipDate = default(DateTime?), DateTime? estimatedArrivalDate = default(DateTime?), TrackingAddress? shipToAddress = default(TrackingAddress?), CurrentStatus? currentStatus = default(CurrentStatus?), string? currentStatusDescription = default(string?), DateRange? deliveryWindow = default(DateRange?), string? signedForBy = default(string?), AdditionalLocationInfo? additionalLocationInfo = default(AdditionalLocationInfo?), List<TrackingEvent>? trackingEvents = default(List<TrackingEvent>?))
         {
             this.PackageNumber = packageNumber;
             this.TrackingNumber = trackingNumber;
@@ -97,82 +97,82 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The tracking number for the package.</value>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = false)]
-        public string TrackingNumber { get; set; }
+        public string? TrackingNumber { get; set; }
 
         /// <summary>
         /// Link on swiship.com that allows customers to track the package.
         /// </summary>
         /// <value>Link on swiship.com that allows customers to track the package.</value>
         [DataMember(Name = "customerTrackingLink", EmitDefaultValue = false)]
-        public string CustomerTrackingLink { get; set; }
+        public string? CustomerTrackingLink { get; set; }
 
         /// <summary>
         /// The name of the carrier.
         /// </summary>
         /// <value>The name of the carrier.</value>
         [DataMember(Name = "carrierCode", EmitDefaultValue = false)]
-        public string CarrierCode { get; set; }
+        public string? CarrierCode { get; set; }
 
         /// <summary>
         /// The phone number of the carrier.
         /// </summary>
         /// <value>The phone number of the carrier.</value>
         [DataMember(Name = "carrierPhoneNumber", EmitDefaultValue = false)]
-        public string CarrierPhoneNumber { get; set; }
+        public string? CarrierPhoneNumber { get; set; }
 
         /// <summary>
         /// The URL of the carrier&#39;s website.
         /// </summary>
         /// <value>The URL of the carrier&#39;s website.</value>
         [DataMember(Name = "carrierURL", EmitDefaultValue = false)]
-        public string CarrierURL { get; set; }
+        public string? CarrierURL { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "shipDate", EmitDefaultValue = false)]
-        public DateTime ShipDate { get; set; }
+        public DateTime? ShipDate { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "estimatedArrivalDate", EmitDefaultValue = false)]
-        public DateTime EstimatedArrivalDate { get; set; }
+        public DateTime? EstimatedArrivalDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipToAddress
         /// </summary>
         [DataMember(Name = "shipToAddress", EmitDefaultValue = false)]
-        public TrackingAddress ShipToAddress { get; set; }
+        public TrackingAddress? ShipToAddress { get; set; }
 
         /// <summary>
         /// Description corresponding to the &#x60;CurrentStatus&#x60; value.
         /// </summary>
         /// <value>Description corresponding to the &#x60;CurrentStatus&#x60; value.</value>
         [DataMember(Name = "currentStatusDescription", EmitDefaultValue = false)]
-        public string CurrentStatusDescription { get; set; }
+        public string? CurrentStatusDescription { get; set; }
 
         /// <summary>
         /// Gets or Sets DeliveryWindow
         /// </summary>
         [DataMember(Name = "deliveryWindow", EmitDefaultValue = false)]
-        public DateRange DeliveryWindow { get; set; }
+        public DateRange? DeliveryWindow { get; set; }
 
         /// <summary>
         /// The name of the person who signed for the package.
         /// </summary>
         /// <value>The name of the person who signed for the package.</value>
         [DataMember(Name = "signedForBy", EmitDefaultValue = false)]
-        public string SignedForBy { get; set; }
+        public string? SignedForBy { get; set; }
 
         /// <summary>
         /// An array of tracking event information.
         /// </summary>
         /// <value>An array of tracking event information.</value>
         [DataMember(Name = "trackingEvents", EmitDefaultValue = false)]
-        public List<TrackingEvent> TrackingEvents { get; set; }
+        public List<TrackingEvent>? TrackingEvents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -220,5 +220,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

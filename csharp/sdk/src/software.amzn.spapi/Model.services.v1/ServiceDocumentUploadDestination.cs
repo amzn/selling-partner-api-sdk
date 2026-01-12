@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="url">The URL to which to upload the file. (required).</param>
         /// <param name="encryptionDetails">encryptionDetails (required).</param>
         /// <param name="headers">The headers to include in the upload request..</param>
-        public ServiceDocumentUploadDestination(string uploadDestinationId = default(string), string url = default(string), EncryptionDetails encryptionDetails = default(EncryptionDetails), Object headers = default(Object))
+        public ServiceDocumentUploadDestination(string uploadDestinationId = default(string), string url = default(string), EncryptionDetails encryptionDetails = default(EncryptionDetails), Object? headers = default(Object?))
         {
             // to ensure "uploadDestinationId" is required (not null)
             if (uploadDestinationId == null)
@@ -91,7 +91,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The headers to include in the upload request.</value>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public Object Headers { get; set; }
+        public Object? Headers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -128,5 +128,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

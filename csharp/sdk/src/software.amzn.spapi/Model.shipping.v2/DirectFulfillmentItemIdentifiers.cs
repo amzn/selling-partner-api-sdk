@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="lineItemID">A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated for direct fulfillment multi-piece shipments. It is required if a vendor wants to change the configuration of the packages in which the purchase order is shipped. (required).</param>
         /// <param name="pieceNumber">A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated if a single line item has multiple pieces. Defaults to 1..</param>
-        public DirectFulfillmentItemIdentifiers(string lineItemID = default(string), string pieceNumber = default(string))
+        public DirectFulfillmentItemIdentifiers(string lineItemID = default(string), string? pieceNumber = default(string?))
         {
             // to ensure "lineItemID" is required (not null)
             if (lineItemID == null)
@@ -65,7 +65,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A unique identifier for an item provided by the client for a direct fulfillment shipment. This is only populated if a single line item has multiple pieces. Defaults to 1.</value>
         [DataMember(Name = "pieceNumber", EmitDefaultValue = false)]
-        public string PieceNumber { get; set; }
+        public string? PieceNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

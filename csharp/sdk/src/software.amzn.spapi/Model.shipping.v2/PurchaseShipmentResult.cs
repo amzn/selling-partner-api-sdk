@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="packageDocumentDetails">A list of post-purchase details about a package that will be shipped using a shipping service. (required).</param>
         /// <param name="promise">promise (required).</param>
         /// <param name="benefits">benefits.</param>
-        public PurchaseShipmentResult(string shipmentId = default(string), List<PackageDocumentDetail> packageDocumentDetails = default(List<PackageDocumentDetail>), Promise promise = default(Promise), Benefits benefits = default(Benefits))
+        public PurchaseShipmentResult(string shipmentId = default(string), List<PackageDocumentDetail> packageDocumentDetails = default(List<PackageDocumentDetail>), Promise promise = default(Promise), Benefits? benefits = default(Benefits?))
         {
             // to ensure "shipmentId" is required (not null)
             if (shipmentId == null)
@@ -91,7 +91,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Benefits
         /// </summary>
         [DataMember(Name = "benefits", EmitDefaultValue = false)]
-        public Benefits Benefits { get; set; }
+        public Benefits? Benefits { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -128,5 +128,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

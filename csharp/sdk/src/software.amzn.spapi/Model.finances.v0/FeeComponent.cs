@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="feeType">The type of fee. For more information about Selling on Amazon fees, see [Selling on Amazon Fee Schedule](https://sellercentral.amazon.com/gp/help/200336920) on Seller Central. For more information about Fulfillment by Amazon fees, see [FBA features, services and fees](https://sellercentral.amazon.com/gp/help/201074400) on Seller Central..</param>
         /// <param name="feeAmount">feeAmount.</param>
-        public FeeComponent(string feeType = default(string), Currency feeAmount = default(Currency))
+        public FeeComponent(string? feeType = default(string?), Currency? feeAmount = default(Currency?))
         {
             this.FeeType = feeType;
             this.FeeAmount = feeAmount;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The type of fee. For more information about Selling on Amazon fees, see [Selling on Amazon Fee Schedule](https://sellercentral.amazon.com/gp/help/200336920) on Seller Central. For more information about Fulfillment by Amazon fees, see [FBA features, services and fees](https://sellercentral.amazon.com/gp/help/201074400) on Seller Central.</value>
         [DataMember(Name = "FeeType", EmitDefaultValue = false)]
-        public string FeeType { get; set; }
+        public string? FeeType { get; set; }
 
         /// <summary>
         /// Gets or Sets FeeAmount
         /// </summary>
         [DataMember(Name = "FeeAmount", EmitDefaultValue = false)]
-        public Currency FeeAmount { get; set; }
+        public Currency? FeeAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

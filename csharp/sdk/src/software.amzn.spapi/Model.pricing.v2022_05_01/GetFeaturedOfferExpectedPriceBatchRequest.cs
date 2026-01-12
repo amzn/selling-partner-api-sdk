@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Initializes a new instance of the <see cref="GetFeaturedOfferExpectedPriceBatchRequest" /> class.
         /// </summary>
         /// <param name="requests">A batched list of FOEP requests..</param>
-        public GetFeaturedOfferExpectedPriceBatchRequest(List<FeaturedOfferExpectedPriceRequest> requests = default(List<FeaturedOfferExpectedPriceRequest>))
+        public GetFeaturedOfferExpectedPriceBatchRequest(List<FeaturedOfferExpectedPriceRequest>? requests = default(List<FeaturedOfferExpectedPriceRequest>?))
         {
             this.Requests = requests;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>A batched list of FOEP requests.</value>
         [DataMember(Name = "requests", EmitDefaultValue = false)]
-        public List<FeaturedOfferExpectedPriceRequest> Requests { get; set; }
+        public List<FeaturedOfferExpectedPriceRequest>? Requests { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

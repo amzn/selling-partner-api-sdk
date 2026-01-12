@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// <param name="varVersion">Version identifier. (required).</param>
         /// <param name="latest">When true, the version indicated by the version identifier is the latest available for the Amazon product type. (required).</param>
         /// <param name="releaseCandidate">When true, the version indicated by the version identifier is the prerelease (release candidate) for the Amazon product type..</param>
-        public ProductTypeVersion(string varVersion = default(string), bool latest = default(bool), bool releaseCandidate = default(bool))
+        public ProductTypeVersion(string varVersion = default(string), bool latest = default(bool), bool? releaseCandidate = default(bool?))
         {
             // to ensure "varVersion" is required (not null)
             if (varVersion == null)
@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// </summary>
         /// <value>When true, the version indicated by the version identifier is the prerelease (release candidate) for the Amazon product type.</value>
         [DataMember(Name = "releaseCandidate", EmitDefaultValue = true)]
-        public bool ReleaseCandidate { get; set; }
+        public bool? ReleaseCandidate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
             yield break;
         }
     }
-
 }

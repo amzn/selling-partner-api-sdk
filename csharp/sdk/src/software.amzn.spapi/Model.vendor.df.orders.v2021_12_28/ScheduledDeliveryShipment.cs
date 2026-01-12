@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// <param name="scheduledDeliveryServiceType">Scheduled delivery service type..</param>
         /// <param name="earliestNominatedDeliveryDate">Earliest nominated delivery date for the scheduled delivery..</param>
         /// <param name="latestNominatedDeliveryDate">Latest nominated delivery date for the scheduled delivery..</param>
-        public ScheduledDeliveryShipment(string scheduledDeliveryServiceType = default(string), DateTime earliestNominatedDeliveryDate = default(DateTime), DateTime latestNominatedDeliveryDate = default(DateTime))
+        public ScheduledDeliveryShipment(string? scheduledDeliveryServiceType = default(string?), DateTime? earliestNominatedDeliveryDate = default(DateTime?), DateTime? latestNominatedDeliveryDate = default(DateTime?))
         {
             this.ScheduledDeliveryServiceType = scheduledDeliveryServiceType;
             this.EarliestNominatedDeliveryDate = earliestNominatedDeliveryDate;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>Scheduled delivery service type.</value>
         [DataMember(Name = "scheduledDeliveryServiceType", EmitDefaultValue = false)]
-        public string ScheduledDeliveryServiceType { get; set; }
+        public string? ScheduledDeliveryServiceType { get; set; }
 
         /// <summary>
         /// Earliest nominated delivery date for the scheduled delivery.
         /// </summary>
         /// <value>Earliest nominated delivery date for the scheduled delivery.</value>
         [DataMember(Name = "earliestNominatedDeliveryDate", EmitDefaultValue = false)]
-        public DateTime EarliestNominatedDeliveryDate { get; set; }
+        public DateTime? EarliestNominatedDeliveryDate { get; set; }
 
         /// <summary>
         /// Latest nominated delivery date for the scheduled delivery.
         /// </summary>
         /// <value>Latest nominated delivery date for the scheduled delivery.</value>
         [DataMember(Name = "latestNominatedDeliveryDate", EmitDefaultValue = false)]
-        public DateTime LatestNominatedDeliveryDate { get; set; }
+        public DateTime? LatestNominatedDeliveryDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

@@ -104,7 +104,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="type">Specifies the preferred location to leave the package at the destination address. (required).</param>
         /// <param name="attributes">Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object should include the exact keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor..</param>
-        public DropOffLocation(TypeEnum type = default(TypeEnum), Dictionary<string, string> attributes = default(Dictionary<string, string>))
+        public DropOffLocation(TypeEnum type = default(TypeEnum), Dictionary<string, string>? attributes = default(Dictionary<string, string>?))
         {
             this.Type = type;
             this.Attributes = attributes;
@@ -115,7 +115,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Additional information about the drop-off location that can vary depending on the type of drop-off location specified in the &#x60;type&#x60; field. If the &#x60;type&#x60; is set to &#x60;FALLBACK_NEIGHBOR_DELIVERY&#x60;, the &#x60;attributes&#x60; object should include the exact keys &#x60;neighborName&#x60; and &#x60;houseNumber&#x60; to provide the name and house number of the designated neighbor.</value>
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
-        public Dictionary<string, string> Attributes { get; set; }
+        public Dictionary<string, string>? Attributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -150,5 +150,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

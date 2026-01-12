@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="chargeAmount">chargeAmount.</param>
         /// <param name="chargeType">The type of charge..</param>
-        public ChargeRefundTransaction(Currency chargeAmount = default(Currency), string chargeType = default(string))
+        public ChargeRefundTransaction(Currency? chargeAmount = default(Currency?), string? chargeType = default(string?))
         {
             this.ChargeAmount = chargeAmount;
             this.ChargeType = chargeType;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.finances.v0
         /// Gets or Sets ChargeAmount
         /// </summary>
         [DataMember(Name = "ChargeAmount", EmitDefaultValue = false)]
-        public Currency ChargeAmount { get; set; }
+        public Currency? ChargeAmount { get; set; }
 
         /// <summary>
         /// The type of charge.
         /// </summary>
         /// <value>The type of charge.</value>
         [DataMember(Name = "ChargeType", EmitDefaultValue = false)]
-        public string ChargeType { get; set; }
+        public string? ChargeType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

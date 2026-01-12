@@ -93,7 +93,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="dayOfWeek">Day of the week..</param>
         /// <param name="openIntervals">Time window during the day when the business is open..</param>
-        public BusinessHours(DayOfWeekEnum? dayOfWeek = default(DayOfWeekEnum?), List<OpenInterval> openIntervals = default(List<OpenInterval>))
+        public BusinessHours(DayOfWeekEnum? dayOfWeek = default(DayOfWeekEnum?), List<OpenInterval>? openIntervals = default(List<OpenInterval>?))
         {
             this.DayOfWeek = dayOfWeek;
             this.OpenIntervals = openIntervals;
@@ -104,7 +104,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>Time window during the day when the business is open.</value>
         [DataMember(Name = "OpenIntervals", EmitDefaultValue = false)]
-        public List<OpenInterval> OpenIntervals { get; set; }
+        public List<OpenInterval>? OpenIntervals { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -139,5 +139,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

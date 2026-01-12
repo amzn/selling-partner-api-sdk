@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="source">source (required).</param>
         /// <param name="status">The status of a shipment. The state of the shipment will typically start as &#x60;UNCONFIRMED&#x60;, then transition to &#x60;WORKING&#x60; after a placement option has been confirmed, and then to &#x60;READY_TO_SHIP&#x60; once labels are generated.  Possible values: &#x60;ABANDONED&#x60;, &#x60;CANCELLED&#x60;, &#x60;CHECKED_IN&#x60;, &#x60;CLOSED&#x60;, &#x60;DELETED&#x60;, &#x60;DELIVERED&#x60;, &#x60;IN_TRANSIT&#x60;, &#x60;MIXED&#x60;, &#x60;READY_TO_SHIP&#x60;, &#x60;RECEIVING&#x60;, &#x60;SHIPPED&#x60;, &#x60;UNCONFIRMED&#x60;, &#x60;WORKING&#x60;.</param>
         /// <param name="trackingDetails">trackingDetails.</param>
-        public Shipment(string amazonReferenceId = default(string), ContactInformation contactInformation = default(ContactInformation), Dates dates = default(Dates), ShipmentDestination destination = default(ShipmentDestination), FreightInformation freightInformation = default(FreightInformation), string name = default(string), string placementOptionId = default(string), SelectedDeliveryWindow selectedDeliveryWindow = default(SelectedDeliveryWindow), string selectedTransportationOptionId = default(string), List<SelfShipAppointmentDetails> selfShipAppointmentDetails = default(List<SelfShipAppointmentDetails>), string shipmentConfirmationId = default(string), string shipmentId = default(string), ShipmentSource source = default(ShipmentSource), string status = default(string), TrackingDetails trackingDetails = default(TrackingDetails))
+        public Shipment(string? amazonReferenceId = default(string?), ContactInformation? contactInformation = default(ContactInformation?), Dates? dates = default(Dates?), ShipmentDestination destination = default(ShipmentDestination), FreightInformation? freightInformation = default(FreightInformation?), string? name = default(string?), string placementOptionId = default(string), SelectedDeliveryWindow? selectedDeliveryWindow = default(SelectedDeliveryWindow?), string? selectedTransportationOptionId = default(string?), List<SelfShipAppointmentDetails>? selfShipAppointmentDetails = default(List<SelfShipAppointmentDetails>?), string? shipmentConfirmationId = default(string?), string shipmentId = default(string), ShipmentSource source = default(ShipmentSource), string? status = default(string?), TrackingDetails? trackingDetails = default(TrackingDetails?))
         {
             // to ensure "destination" is required (not null)
             if (destination == null)
@@ -98,19 +98,19 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>A unique identifier created by Amazon that identifies this Amazon-partnered, Less Than Truckload/Full Truckload (LTL/FTL) shipment.</value>
         [DataMember(Name = "amazonReferenceId", EmitDefaultValue = false)]
-        public string AmazonReferenceId { get; set; }
+        public string? AmazonReferenceId { get; set; }
 
         /// <summary>
         /// Gets or Sets ContactInformation
         /// </summary>
         [DataMember(Name = "contactInformation", EmitDefaultValue = false)]
-        public ContactInformation ContactInformation { get; set; }
+        public ContactInformation? ContactInformation { get; set; }
 
         /// <summary>
         /// Gets or Sets Dates
         /// </summary>
         [DataMember(Name = "dates", EmitDefaultValue = false)]
-        public Dates Dates { get; set; }
+        public Dates? Dates { get; set; }
 
         /// <summary>
         /// Gets or Sets Destination
@@ -122,14 +122,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets FreightInformation
         /// </summary>
         [DataMember(Name = "freightInformation", EmitDefaultValue = false)]
-        public FreightInformation FreightInformation { get; set; }
+        public FreightInformation? FreightInformation { get; set; }
 
         /// <summary>
         /// The name of the shipment.
         /// </summary>
         /// <value>The name of the shipment.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs.
@@ -142,28 +142,28 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets SelectedDeliveryWindow
         /// </summary>
         [DataMember(Name = "selectedDeliveryWindow", EmitDefaultValue = false)]
-        public SelectedDeliveryWindow SelectedDeliveryWindow { get; set; }
+        public SelectedDeliveryWindow? SelectedDeliveryWindow { get; set; }
 
         /// <summary>
         /// Identifier of a transportation option. A transportation option represent one option for how to send a shipment.
         /// </summary>
         /// <value>Identifier of a transportation option. A transportation option represent one option for how to send a shipment.</value>
         [DataMember(Name = "selectedTransportationOptionId", EmitDefaultValue = false)]
-        public string SelectedTransportationOptionId { get; set; }
+        public string? SelectedTransportationOptionId { get; set; }
 
         /// <summary>
         /// List of self ship appointment details.
         /// </summary>
         /// <value>List of self ship appointment details.</value>
         [DataMember(Name = "selfShipAppointmentDetails", EmitDefaultValue = false)]
-        public List<SelfShipAppointmentDetails> SelfShipAppointmentDetails { get; set; }
+        public List<SelfShipAppointmentDetails>? SelfShipAppointmentDetails { get; set; }
 
         /// <summary>
         /// The confirmed shipment ID which shows up on labels (for example, &#x60;FBA1234ABCD&#x60;).
         /// </summary>
         /// <value>The confirmed shipment ID which shows up on labels (for example, &#x60;FBA1234ABCD&#x60;).</value>
         [DataMember(Name = "shipmentConfirmationId", EmitDefaultValue = false)]
-        public string ShipmentConfirmationId { get; set; }
+        public string? ShipmentConfirmationId { get; set; }
 
         /// <summary>
         /// Identifier of a shipment. A shipment contains the boxes and units being inbounded.
@@ -183,13 +183,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The status of a shipment. The state of the shipment will typically start as &#x60;UNCONFIRMED&#x60;, then transition to &#x60;WORKING&#x60; after a placement option has been confirmed, and then to &#x60;READY_TO_SHIP&#x60; once labels are generated.  Possible values: &#x60;ABANDONED&#x60;, &#x60;CANCELLED&#x60;, &#x60;CHECKED_IN&#x60;, &#x60;CLOSED&#x60;, &#x60;DELETED&#x60;, &#x60;DELIVERED&#x60;, &#x60;IN_TRANSIT&#x60;, &#x60;MIXED&#x60;, &#x60;READY_TO_SHIP&#x60;, &#x60;RECEIVING&#x60;, &#x60;SHIPPED&#x60;, &#x60;UNCONFIRMED&#x60;, &#x60;WORKING&#x60;</value>
         [DataMember(Name = "status", EmitDefaultValue = false)]
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// Gets or Sets TrackingDetails
         /// </summary>
         [DataMember(Name = "trackingDetails", EmitDefaultValue = false)]
-        public TrackingDetails TrackingDetails { get; set; }
+        public TrackingDetails? TrackingDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -336,5 +336,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

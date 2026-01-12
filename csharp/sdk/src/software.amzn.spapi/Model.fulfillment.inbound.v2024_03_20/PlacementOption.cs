@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="placementOptionId">The identifier of a placement option. A placement option represents the shipment splits and destinations of SKUs. (required).</param>
         /// <param name="shipmentIds">Shipment ids. (required).</param>
         /// <param name="status">The status of a placement option. Possible values: &#x60;OFFERED&#x60;, &#x60;ACCEPTED&#x60;, &#x60;EXPIRED&#x60;. (required).</param>
-        public PlacementOption(List<Incentive> discounts = default(List<Incentive>), DateTime expiration = default(DateTime), List<Incentive> fees = default(List<Incentive>), string placementOptionId = default(string), List<string> shipmentIds = default(List<string>), string status = default(string))
+        public PlacementOption(List<Incentive> discounts = default(List<Incentive>), DateTime? expiration = default(DateTime?), List<Incentive> fees = default(List<Incentive>), string placementOptionId = default(string), List<string> shipmentIds = default(List<string>), string status = default(string))
         {
             // to ensure "discounts" is required (not null)
             if (discounts == null)
@@ -92,7 +92,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The expiration date of the placement option. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format with pattern &#x60;yyyy-MM-ddTHH:mm:ss.sssZ&#x60;.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public DateTime Expiration { get; set; }
+        public DateTime? Expiration { get; set; }
 
         /// <summary>
         /// The fee for the offered option.
@@ -192,5 +192,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

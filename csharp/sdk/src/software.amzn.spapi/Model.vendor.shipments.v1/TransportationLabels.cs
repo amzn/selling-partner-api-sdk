@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="transportLabels">A list of one or more ShipmentLabels..</param>
-        public TransportationLabels(Pagination pagination = default(Pagination), List<TransportLabel> transportLabels = default(List<TransportLabel>))
+        public TransportationLabels(Pagination? pagination = default(Pagination?), List<TransportLabel>? transportLabels = default(List<TransportLabel>?))
         {
             this.Pagination = pagination;
             this.TransportLabels = transportLabels;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// A list of one or more ShipmentLabels.
         /// </summary>
         /// <value>A list of one or more ShipmentLabels.</value>
         [DataMember(Name = "transportLabels", EmitDefaultValue = false)]
-        public List<TransportLabel> TransportLabels { get; set; }
+        public List<TransportLabel>? TransportLabels { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="start">The start time of the time window..</param>
         /// <param name="end">The end time of the time window..</param>
-        public TimeWindow(DateTime start = default(DateTime), DateTime end = default(DateTime))
+        public TimeWindow(DateTime? start = default(DateTime?), DateTime? end = default(DateTime?))
         {
             this.Start = start;
             this.End = end;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The start time of the time window.</value>
         [DataMember(Name = "start", EmitDefaultValue = false)]
-        public DateTime Start { get; set; }
+        public DateTime? Start { get; set; }
 
         /// <summary>
         /// The end time of the time window.
         /// </summary>
         /// <value>The end time of the time window.</value>
         [DataMember(Name = "end", EmitDefaultValue = false)]
-        public DateTime End { get; set; }
+        public DateTime? End { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

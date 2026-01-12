@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// </summary>
         /// <param name="channelName">The name of the fulfillment channel in which to update inventory..</param>
         /// <param name="marketplaceId">The marketplace ID of the marketplace where you want to update inventory..</param>
-        public MarketplaceAttributes(ChannelNameEnum? channelName = default(ChannelNameEnum?), string marketplaceId = default(string))
+        public MarketplaceAttributes(ChannelNameEnum? channelName = default(ChannelNameEnum?), string? marketplaceId = default(string?))
         {
             this.ChannelName = channelName;
             this.MarketplaceId = marketplaceId;
@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>AXJDDKDFDKDF</example>
         */
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -121,5 +121,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

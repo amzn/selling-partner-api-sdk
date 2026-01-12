@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="supplySourceId">The Amazon provided &#x60;supplySourceId&#x60; where orders can be returned to..</param>
         /// <param name="addressWithContact">addressWithContact.</param>
-        public ReturnLocation(string supplySourceId = default(string), AddressWithContact addressWithContact = default(AddressWithContact))
+        public ReturnLocation(string? supplySourceId = default(string?), AddressWithContact? addressWithContact = default(AddressWithContact?))
         {
             this.SupplySourceId = supplySourceId;
             this.AddressWithContact = addressWithContact;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>The Amazon provided &#x60;supplySourceId&#x60; where orders can be returned to.</value>
         [DataMember(Name = "supplySourceId", EmitDefaultValue = false)]
-        public string SupplySourceId { get; set; }
+        public string? SupplySourceId { get; set; }
 
         /// <summary>
         /// Gets or Sets AddressWithContact
         /// </summary>
         [DataMember(Name = "addressWithContact", EmitDefaultValue = false)]
-        public AddressWithContact AddressWithContact { get; set; }
+        public AddressWithContact? AddressWithContact { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="quantityInCase">The item quantity..</param>
         /// <param name="releaseDate">Type containing date in string format.</param>
         /// <param name="prepDetailsList">A list of preparation instructions and who is responsible for that preparation..</param>
-        public InboundShipmentItem(string shipmentId = default(string), string sellerSKU = default(string), string fulfillmentNetworkSKU = default(string), int quantityShipped = default(int), int quantityReceived = default(int), int quantityInCase = default(int), DateOnly releaseDate = default(DateOnly), List<PrepDetails> prepDetailsList = default(List<PrepDetails>))
+        public InboundShipmentItem(string? shipmentId = default(string?), string sellerSKU = default(string), string? fulfillmentNetworkSKU = default(string?), int quantityShipped = default(int), int? quantityReceived = default(int?), int? quantityInCase = default(int?), DateOnly? releaseDate = default(DateOnly?), List<PrepDetails>? prepDetailsList = default(List<PrepDetails>?))
         {
             // to ensure "sellerSKU" is required (not null)
             if (sellerSKU == null)
@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>A shipment identifier originally returned by the createInboundShipmentPlan operation.</value>
         [DataMember(Name = "ShipmentId", EmitDefaultValue = false)]
-        public string ShipmentId { get; set; }
+        public string? ShipmentId { get; set; }
 
         /// <summary>
         /// The seller SKU of the item.
@@ -83,7 +83,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>Amazon&#39;s fulfillment network SKU of the item.</value>
         [DataMember(Name = "FulfillmentNetworkSKU", EmitDefaultValue = false)]
-        public string FulfillmentNetworkSKU { get; set; }
+        public string? FulfillmentNetworkSKU { get; set; }
 
         /// <summary>
         /// The item quantity.
@@ -97,28 +97,28 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "QuantityReceived", EmitDefaultValue = false)]
-        public int QuantityReceived { get; set; }
+        public int? QuantityReceived { get; set; }
 
         /// <summary>
         /// The item quantity.
         /// </summary>
         /// <value>The item quantity.</value>
         [DataMember(Name = "QuantityInCase", EmitDefaultValue = false)]
-        public int QuantityInCase { get; set; }
+        public int? QuantityInCase { get; set; }
 
         /// <summary>
         /// Type containing date in string format
         /// </summary>
         /// <value>Type containing date in string format</value>
         [DataMember(Name = "ReleaseDate", EmitDefaultValue = false)]
-        public DateOnly ReleaseDate { get; set; }
+        public DateOnly? ReleaseDate { get; set; }
 
         /// <summary>
         /// A list of preparation instructions and who is responsible for that preparation.
         /// </summary>
         /// <value>A list of preparation instructions and who is responsible for that preparation.</value>
         [DataMember(Name = "PrepDetailsList", EmitDefaultValue = false)]
-        public List<PrepDetails> PrepDetailsList { get; set; }
+        public List<PrepDetails>? PrepDetailsList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -159,5 +159,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

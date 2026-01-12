@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <param name="priceToEstimateFees">priceToEstimateFees.</param>
         /// <param name="sellerInputIdentifier">A unique identifier provided by the caller to track this request..</param>
         /// <param name="optionalFulfillmentProgram">optionalFulfillmentProgram.</param>
-        public FeesEstimateIdentifier(string marketplaceId = default(string), string sellerId = default(string), IdType? idType = default(IdType?), string idValue = default(string), bool isAmazonFulfilled = default(bool), PriceToEstimateFees priceToEstimateFees = default(PriceToEstimateFees), string sellerInputIdentifier = default(string), OptionalFulfillmentProgram? optionalFulfillmentProgram = default(OptionalFulfillmentProgram?))
+        public FeesEstimateIdentifier(string? marketplaceId = default(string?), string? sellerId = default(string?), IdType? idType = default(IdType?), string? idValue = default(string?), bool? isAmazonFulfilled = default(bool?), PriceToEstimateFees? priceToEstimateFees = default(PriceToEstimateFees?), string? sellerInputIdentifier = default(string?), OptionalFulfillmentProgram? optionalFulfillmentProgram = default(OptionalFulfillmentProgram?))
         {
             this.MarketplaceId = marketplaceId;
             this.SellerId = sellerId;
@@ -71,41 +71,41 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// </summary>
         /// <value>A marketplace identifier.</value>
         [DataMember(Name = "MarketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// The seller identifier.
         /// </summary>
         /// <value>The seller identifier.</value>
         [DataMember(Name = "SellerId", EmitDefaultValue = false)]
-        public string SellerId { get; set; }
+        public string? SellerId { get; set; }
 
         /// <summary>
         /// The item identifier.
         /// </summary>
         /// <value>The item identifier.</value>
         [DataMember(Name = "IdValue", EmitDefaultValue = false)]
-        public string IdValue { get; set; }
+        public string? IdValue { get; set; }
 
         /// <summary>
         /// When true, the offer is fulfilled by Amazon.
         /// </summary>
         /// <value>When true, the offer is fulfilled by Amazon.</value>
         [DataMember(Name = "IsAmazonFulfilled", EmitDefaultValue = true)]
-        public bool IsAmazonFulfilled { get; set; }
+        public bool? IsAmazonFulfilled { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceToEstimateFees
         /// </summary>
         [DataMember(Name = "PriceToEstimateFees", EmitDefaultValue = false)]
-        public PriceToEstimateFees PriceToEstimateFees { get; set; }
+        public PriceToEstimateFees? PriceToEstimateFees { get; set; }
 
         /// <summary>
         /// A unique identifier provided by the caller to track this request.
         /// </summary>
         /// <value>A unique identifier provided by the caller to track this request.</value>
         [DataMember(Name = "SellerInputIdentifier", EmitDefaultValue = false)]
-        public string SellerInputIdentifier { get; set; }
+        public string? SellerInputIdentifier { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -146,5 +146,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

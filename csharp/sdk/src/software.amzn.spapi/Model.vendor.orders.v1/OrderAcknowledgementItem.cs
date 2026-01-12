@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="listPrice">listPrice.</param>
         /// <param name="discountMultiplier">The discount multiplier that should be applied to the price if a vendor sells books with a list price. This is a multiplier factor to arrive at a final discounted price. A multiplier of .90 would be the factor if a 10% discount is given..</param>
         /// <param name="itemAcknowledgements">This is used to indicate acknowledged quantity. (required).</param>
-        public OrderAcknowledgementItem(string itemSequenceNumber = default(string), string amazonProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity orderedQuantity = default(ItemQuantity), Money netCost = default(Money), Money listPrice = default(Money), string discountMultiplier = default(string), List<OrderItemAcknowledgement> itemAcknowledgements = default(List<OrderItemAcknowledgement>))
+        public OrderAcknowledgementItem(string? itemSequenceNumber = default(string?), string? amazonProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity orderedQuantity = default(ItemQuantity), Money? netCost = default(Money?), Money? listPrice = default(Money?), string? discountMultiplier = default(string?), List<OrderItemAcknowledgement> itemAcknowledgements = default(List<OrderItemAcknowledgement>))
         {
             // to ensure "orderedQuantity" is required (not null)
             if (orderedQuantity == null)
@@ -74,21 +74,21 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>Line item sequence number for the item.</value>
         [DataMember(Name = "itemSequenceNumber", EmitDefaultValue = false)]
-        public string ItemSequenceNumber { get; set; }
+        public string? ItemSequenceNumber { get; set; }
 
         /// <summary>
         /// Amazon Standard Identification Number (ASIN) of an item.
         /// </summary>
         /// <value>Amazon Standard Identification Number (ASIN) of an item.</value>
         [DataMember(Name = "amazonProductIdentifier", EmitDefaultValue = false)]
-        public string AmazonProductIdentifier { get; set; }
+        public string? AmazonProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item. Should be the same as was sent in the purchase order.
         /// </summary>
         /// <value>The vendor selected product identification of the item. Should be the same as was sent in the purchase order.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets OrderedQuantity
@@ -100,20 +100,20 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets NetCost
         /// </summary>
         [DataMember(Name = "netCost", EmitDefaultValue = false)]
-        public Money NetCost { get; set; }
+        public Money? NetCost { get; set; }
 
         /// <summary>
         /// Gets or Sets ListPrice
         /// </summary>
         [DataMember(Name = "listPrice", EmitDefaultValue = false)]
-        public Money ListPrice { get; set; }
+        public Money? ListPrice { get; set; }
 
         /// <summary>
         /// The discount multiplier that should be applied to the price if a vendor sells books with a list price. This is a multiplier factor to arrive at a final discounted price. A multiplier of .90 would be the factor if a 10% discount is given.
         /// </summary>
         /// <value>The discount multiplier that should be applied to the price if a vendor sells books with a list price. This is a multiplier factor to arrive at a final discounted price. A multiplier of .90 would be the factor if a 10% discount is given.</value>
         [DataMember(Name = "discountMultiplier", EmitDefaultValue = false)]
-        public string DiscountMultiplier { get; set; }
+        public string? DiscountMultiplier { get; set; }
 
         /// <summary>
         /// This is used to indicate acknowledged quantity.
@@ -161,5 +161,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

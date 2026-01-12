@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="giftWrapLabel">The label to be printed on the wrapped gift..</param>
         /// <param name="giftMessagePresence">giftMessagePresence (required).</param>
         /// <param name="giftMessage">giftMessage.</param>
-        public GiftAttributes(RequirementLevel giftWrapRequirement = default(RequirementLevel), string giftWrapLabel = default(string), PresenceStatus giftMessagePresence = default(PresenceStatus), Document giftMessage = default(Document))
+        public GiftAttributes(RequirementLevel giftWrapRequirement = default(RequirementLevel), string? giftWrapLabel = default(string?), PresenceStatus giftMessagePresence = default(PresenceStatus), Document? giftMessage = default(Document?))
         {
             this.GiftWrapRequirement = giftWrapRequirement;
             this.GiftMessagePresence = giftMessagePresence;
@@ -69,13 +69,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The label to be printed on the wrapped gift.</value>
         [DataMember(Name = "giftWrapLabel", EmitDefaultValue = false)]
-        public string GiftWrapLabel { get; set; }
+        public string? GiftWrapLabel { get; set; }
 
         /// <summary>
         /// Gets or Sets GiftMessage
         /// </summary>
         [DataMember(Name = "giftMessage", EmitDefaultValue = false)]
-        public Document GiftMessage { get; set; }
+        public Document? GiftMessage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,5 +112,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

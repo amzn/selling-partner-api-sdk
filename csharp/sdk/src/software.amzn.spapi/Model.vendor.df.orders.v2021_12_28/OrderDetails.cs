@@ -89,7 +89,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// <param name="billToParty">billToParty (required).</param>
         /// <param name="hasCustomizableItems">When &#x60;true&#x60;, the order contains customizable items..</param>
         /// <param name="items">A list of items in this purchase order. (required).</param>
-        public OrderDetails(string customerOrderNumber = default(string), DateTime orderDate = default(DateTime), OrderStatusEnum? orderStatus = default(OrderStatusEnum?), ShipmentDetails shipmentDetails = default(ShipmentDetails), TaxItemDetails taxTotal = default(TaxItemDetails), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), Address shipToParty = default(Address), PartyIdentification billToParty = default(PartyIdentification), bool hasCustomizableItems = default(bool), List<OrderItem> items = default(List<OrderItem>))
+        public OrderDetails(string customerOrderNumber = default(string), DateTime orderDate = default(DateTime), OrderStatusEnum? orderStatus = default(OrderStatusEnum?), ShipmentDetails shipmentDetails = default(ShipmentDetails), TaxItemDetails? taxTotal = default(TaxItemDetails?), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), Address shipToParty = default(Address), PartyIdentification billToParty = default(PartyIdentification), bool? hasCustomizableItems = default(bool?), List<OrderItem> items = default(List<OrderItem>))
         {
             // to ensure "customerOrderNumber" is required (not null)
             if (customerOrderNumber == null)
@@ -163,7 +163,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Gets or Sets TaxTotal
         /// </summary>
         [DataMember(Name = "taxTotal", EmitDefaultValue = false)]
-        public TaxItemDetails TaxTotal { get; set; }
+        public TaxItemDetails? TaxTotal { get; set; }
 
         /// <summary>
         /// Gets or Sets SellingParty
@@ -194,7 +194,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>When &#x60;true&#x60;, the order contains customizable items.</value>
         [DataMember(Name = "hasCustomizableItems", EmitDefaultValue = true)]
-        public bool HasCustomizableItems { get; set; }
+        public bool? HasCustomizableItems { get; set; }
 
         /// <summary>
         /// A list of items in this purchase order.
@@ -245,5 +245,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

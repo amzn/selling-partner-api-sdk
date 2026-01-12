@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="title">Name of the sales rank. (required).</param>
         /// <param name="link">Corresponding Amazon retail website URL for the sales category..</param>
         /// <param name="rank">Sales rank. (required).</param>
-        public ItemClassificationSalesRank(string classificationId = default(string), string title = default(string), string link = default(string), int rank = default(int))
+        public ItemClassificationSalesRank(string classificationId = default(string), string title = default(string), string? link = default(string?), int rank = default(int))
         {
             // to ensure "classificationId" is required (not null)
             if (classificationId == null)
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Corresponding Amazon retail website URL for the sales category.</value>
         [DataMember(Name = "link", EmitDefaultValue = false)]
-        public string Link { get; set; }
+        public string? Link { get; set; }
 
         /// <summary>
         /// Sales rank.
@@ -124,5 +124,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

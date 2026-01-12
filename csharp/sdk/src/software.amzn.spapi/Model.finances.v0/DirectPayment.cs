@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="directPaymentType">The type of payment.  Possible values:  * &#x60;StoredValueCardRevenue&#x60; - The amount that is deducted from the seller&#39;s account because the seller received money through a stored value card.  * &#x60;StoredValueCardRefund&#x60; - The amount that Amazon returns to the seller if the order that is purchased using a stored value card is refunded.  * &#x60;PrivateLabelCreditCardRevenue&#x60; - The amount that is deducted from the seller&#39;s account because the seller received money through a private label credit card offered by Amazon.  * &#x60;PrivateLabelCreditCardRefund&#x60; - The amount that Amazon returns to the seller if the order that is purchased using a private label credit card offered by Amazon is refunded.  * &#x60;CollectOnDeliveryRevenue&#x60; - The COD amount that the seller collected directly from the buyer.  * &#x60;CollectOnDeliveryRefund&#x60; - The amount that Amazon refunds to the buyer if an order paid for by COD is refunded..</param>
         /// <param name="directPaymentAmount">directPaymentAmount.</param>
-        public DirectPayment(string directPaymentType = default(string), Currency directPaymentAmount = default(Currency))
+        public DirectPayment(string? directPaymentType = default(string?), Currency? directPaymentAmount = default(Currency?))
         {
             this.DirectPaymentType = directPaymentType;
             this.DirectPaymentAmount = directPaymentAmount;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The type of payment.  Possible values:  * &#x60;StoredValueCardRevenue&#x60; - The amount that is deducted from the seller&#39;s account because the seller received money through a stored value card.  * &#x60;StoredValueCardRefund&#x60; - The amount that Amazon returns to the seller if the order that is purchased using a stored value card is refunded.  * &#x60;PrivateLabelCreditCardRevenue&#x60; - The amount that is deducted from the seller&#39;s account because the seller received money through a private label credit card offered by Amazon.  * &#x60;PrivateLabelCreditCardRefund&#x60; - The amount that Amazon returns to the seller if the order that is purchased using a private label credit card offered by Amazon is refunded.  * &#x60;CollectOnDeliveryRevenue&#x60; - The COD amount that the seller collected directly from the buyer.  * &#x60;CollectOnDeliveryRefund&#x60; - The amount that Amazon refunds to the buyer if an order paid for by COD is refunded.</value>
         [DataMember(Name = "DirectPaymentType", EmitDefaultValue = false)]
-        public string DirectPaymentType { get; set; }
+        public string? DirectPaymentType { get; set; }
 
         /// <summary>
         /// Gets or Sets DirectPaymentAmount
         /// </summary>
         [DataMember(Name = "DirectPaymentAmount", EmitDefaultValue = false)]
-        public Currency DirectPaymentAmount { get; set; }
+        public Currency? DirectPaymentAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

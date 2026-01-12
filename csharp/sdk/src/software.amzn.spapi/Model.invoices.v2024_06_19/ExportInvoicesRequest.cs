@@ -55,7 +55,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// <param name="statuses">A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1.</param>
         /// <param name="transactionIdentifier">transactionIdentifier.</param>
         /// <param name="transactionType">The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options.</param>
-        public ExportInvoicesRequest(DateOnly dateEnd = default(DateOnly), DateOnly dateStart = default(DateOnly), string externalInvoiceId = default(string), FileFormat? fileFormat = default(FileFormat?), string invoiceType = default(string), string marketplaceId = default(string), string series = default(string), List<string> statuses = default(List<string>), TransactionIdentifier transactionIdentifier = default(TransactionIdentifier), string transactionType = default(string))
+        public ExportInvoicesRequest(DateOnly? dateEnd = default(DateOnly?), DateOnly? dateStart = default(DateOnly?), string? externalInvoiceId = default(string?), FileFormat? fileFormat = default(FileFormat?), string? invoiceType = default(string?), string marketplaceId = default(string), string? series = default(string?), List<string>? statuses = default(List<string>?), TransactionIdentifier? transactionIdentifier = default(TransactionIdentifier?), string? transactionType = default(string?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -79,28 +79,28 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>The latest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is the time of the request.</value>
         [DataMember(Name = "dateEnd", EmitDefaultValue = false)]
-        public DateOnly DateEnd { get; set; }
+        public DateOnly? DateEnd { get; set; }
 
         /// <summary>
         /// The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.
         /// </summary>
         /// <value>The earliest invoice creation date for invoices that you want to include in the response. Dates are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format. The default is 24 hours prior to the time of the request.</value>
         [DataMember(Name = "dateStart", EmitDefaultValue = false)]
-        public DateOnly DateStart { get; set; }
+        public DateOnly? DateStart { get; set; }
 
         /// <summary>
         /// The external ID of the invoices you want included in the response.
         /// </summary>
         /// <value>The external ID of the invoices you want included in the response.</value>
         [DataMember(Name = "externalInvoiceId", EmitDefaultValue = false)]
-        public string ExternalInvoiceId { get; set; }
+        public string? ExternalInvoiceId { get; set; }
 
         /// <summary>
         /// The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.
         /// </summary>
         /// <value>The marketplace-specific classification of the invoice type. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;invoiceType&#x60; options.</value>
         [DataMember(Name = "invoiceType", EmitDefaultValue = false)]
-        public string InvoiceType { get; set; }
+        public string? InvoiceType { get; set; }
 
         /// <summary>
         /// The ID of the marketplace from which you want the invoices.
@@ -114,27 +114,27 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>The series number of the invoices you want included in the response.</value>
         [DataMember(Name = "series", EmitDefaultValue = false)]
-        public string Series { get; set; }
+        public string? Series { get; set; }
 
         /// <summary>
         /// A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1
         /// </summary>
         /// <value>A list of statuses that you can use to filter invoices. Use the &#x60;getInvoicesAttributes&#x60; operation to check invoice status options.  Min count: 1</value>
         [DataMember(Name = "statuses", EmitDefaultValue = false)]
-        public List<string> Statuses { get; set; }
+        public List<string>? Statuses { get; set; }
 
         /// <summary>
         /// Gets or Sets TransactionIdentifier
         /// </summary>
         [DataMember(Name = "transactionIdentifier", EmitDefaultValue = false)]
-        public TransactionIdentifier TransactionIdentifier { get; set; }
+        public TransactionIdentifier? TransactionIdentifier { get; set; }
 
         /// <summary>
         /// The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options
         /// </summary>
         /// <value>The marketplace-specific classification of the transaction type for which the invoice was created. Use the &#x60;getInvoicesAttributes&#x60; operation to check &#x60;transactionType&#x60; options</value>
         [DataMember(Name = "transactionType", EmitDefaultValue = false)]
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,5 +177,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

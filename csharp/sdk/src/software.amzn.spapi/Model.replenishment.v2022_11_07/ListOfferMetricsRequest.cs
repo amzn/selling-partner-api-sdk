@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="pagination">pagination (required).</param>
         /// <param name="sort">sort.</param>
         /// <param name="filters">filters (required).</param>
-        public ListOfferMetricsRequest(ListOfferMetricsRequestPagination pagination = default(ListOfferMetricsRequestPagination), ListOfferMetricsRequestSort sort = default(ListOfferMetricsRequestSort), ListOfferMetricsRequestFilters filters = default(ListOfferMetricsRequestFilters))
+        public ListOfferMetricsRequest(ListOfferMetricsRequestPagination pagination = default(ListOfferMetricsRequestPagination), ListOfferMetricsRequestSort? sort = default(ListOfferMetricsRequestSort?), ListOfferMetricsRequestFilters filters = default(ListOfferMetricsRequestFilters))
         {
             // to ensure "pagination" is required (not null)
             if (pagination == null)
@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Gets or Sets Sort
         /// </summary>
         [DataMember(Name = "sort", EmitDefaultValue = false)]
-        public ListOfferMetricsRequestSort Sort { get; set; }
+        public ListOfferMetricsRequestSort? Sort { get; set; }
 
         /// <summary>
         /// Gets or Sets Filters
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

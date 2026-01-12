@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// <param name="links">links.</param>
         /// <param name="embedded">embedded.</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetMessagingActionsForOrderResponse(GetMessagingActionsForOrderResponseLinks links = default(GetMessagingActionsForOrderResponseLinks), GetMessagingActionsForOrderResponseEmbedded embedded = default(GetMessagingActionsForOrderResponseEmbedded), List<Error> errors = default(List<Error>))
+        public GetMessagingActionsForOrderResponse(GetMessagingActionsForOrderResponseLinks? links = default(GetMessagingActionsForOrderResponseLinks?), GetMessagingActionsForOrderResponseEmbedded? embedded = default(GetMessagingActionsForOrderResponseEmbedded?), List<Error>? errors = default(List<Error>?))
         {
             this.Links = links;
             this.Embedded = embedded;
@@ -48,20 +48,20 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "_links", EmitDefaultValue = false)]
-        public GetMessagingActionsForOrderResponseLinks Links { get; set; }
+        public GetMessagingActionsForOrderResponseLinks? Links { get; set; }
 
         /// <summary>
         /// Gets or Sets Embedded
         /// </summary>
         [DataMember(Name = "_embedded", EmitDefaultValue = false)]
-        public GetMessagingActionsForOrderResponseEmbedded Embedded { get; set; }
+        public GetMessagingActionsForOrderResponseEmbedded? Embedded { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="AccessPointDetails" /> class.
         /// </summary>
         /// <param name="accessPointId">Unique identifier for the access point.</param>
-        public AccessPointDetails(string accessPointId = default(string))
+        public AccessPointDetails(string? accessPointId = default(string?))
         {
             this.AccessPointId = accessPointId;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Unique identifier for the access point</value>
         [DataMember(Name = "accessPointId", EmitDefaultValue = false)]
-        public string AccessPointId { get; set; }
+        public string? AccessPointId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

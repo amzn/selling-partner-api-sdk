@@ -67,7 +67,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="confirmedNeedByDate">Type containing date in string format.</param>
         /// <param name="boxContentsSource">boxContentsSource.</param>
         /// <param name="estimatedBoxContentsFee">estimatedBoxContentsFee.</param>
-        public InboundShipmentInfo(string shipmentId = default(string), string shipmentName = default(string), Address shipFromAddress = default(Address), string destinationFulfillmentCenterId = default(string), ShipmentStatus? shipmentStatus = default(ShipmentStatus?), LabelPrepType? labelPrepType = default(LabelPrepType?), bool areCasesRequired = default(bool), DateOnly confirmedNeedByDate = default(DateOnly), BoxContentsSource? boxContentsSource = default(BoxContentsSource?), BoxContentsFeeDetails estimatedBoxContentsFee = default(BoxContentsFeeDetails))
+        public InboundShipmentInfo(string? shipmentId = default(string?), string? shipmentName = default(string?), Address shipFromAddress = default(Address), string? destinationFulfillmentCenterId = default(string?), ShipmentStatus? shipmentStatus = default(ShipmentStatus?), LabelPrepType? labelPrepType = default(LabelPrepType?), bool areCasesRequired = default(bool), DateOnly? confirmedNeedByDate = default(DateOnly?), BoxContentsSource? boxContentsSource = default(BoxContentsSource?), BoxContentsFeeDetails? estimatedBoxContentsFee = default(BoxContentsFeeDetails?))
         {
             // to ensure "shipFromAddress" is required (not null)
             if (shipFromAddress == null)
@@ -91,14 +91,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>The shipment identifier submitted in the request.</value>
         [DataMember(Name = "ShipmentId", EmitDefaultValue = false)]
-        public string ShipmentId { get; set; }
+        public string? ShipmentId { get; set; }
 
         /// <summary>
         /// The name for the inbound shipment.
         /// </summary>
         /// <value>The name for the inbound shipment.</value>
         [DataMember(Name = "ShipmentName", EmitDefaultValue = false)]
-        public string ShipmentName { get; set; }
+        public string? ShipmentName { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipFromAddress
@@ -111,7 +111,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>An Amazon fulfillment center identifier created by Amazon.</value>
         [DataMember(Name = "DestinationFulfillmentCenterId", EmitDefaultValue = false)]
-        public string DestinationFulfillmentCenterId { get; set; }
+        public string? DestinationFulfillmentCenterId { get; set; }
 
         /// <summary>
         /// Indicates whether or not an inbound shipment contains case-packed boxes. When AreCasesRequired &#x3D; true for an inbound shipment, all items in the inbound shipment must be case packed.
@@ -125,13 +125,13 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>Type containing date in string format</value>
         [DataMember(Name = "ConfirmedNeedByDate", EmitDefaultValue = false)]
-        public DateOnly ConfirmedNeedByDate { get; set; }
+        public DateOnly? ConfirmedNeedByDate { get; set; }
 
         /// <summary>
         /// Gets or Sets EstimatedBoxContentsFee
         /// </summary>
         [DataMember(Name = "EstimatedBoxContentsFee", EmitDefaultValue = false)]
-        public BoxContentsFeeDetails EstimatedBoxContentsFee { get; set; }
+        public BoxContentsFeeDetails? EstimatedBoxContentsFee { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -174,5 +174,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

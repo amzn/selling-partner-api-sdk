@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <param name="additionalDetails">Additional details provided by the selling party, for tax-related or other purposes..</param>
         /// <param name="chargeDetails">Total charge amount details for all line items..</param>
         /// <param name="items">Provides the details of the items in this invoice. (required).</param>
-        public InvoiceDetail(string invoiceNumber = default(string), DateTime invoiceDate = default(DateTime), string referenceNumber = default(string), PartyIdentification remitToParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), PartyIdentification billToParty = default(PartyIdentification), string shipToCountryCode = default(string), string paymentTermsCode = default(string), Money invoiceTotal = default(Money), List<TaxDetail> taxTotals = default(List<TaxDetail>), List<AdditionalDetails> additionalDetails = default(List<AdditionalDetails>), List<ChargeDetails> chargeDetails = default(List<ChargeDetails>), List<InvoiceItem> items = default(List<InvoiceItem>))
+        public InvoiceDetail(string invoiceNumber = default(string), DateTime invoiceDate = default(DateTime), string? referenceNumber = default(string?), PartyIdentification remitToParty = default(PartyIdentification), PartyIdentification shipFromParty = default(PartyIdentification), PartyIdentification? billToParty = default(PartyIdentification?), string? shipToCountryCode = default(string?), string? paymentTermsCode = default(string?), Money invoiceTotal = default(Money), List<TaxDetail>? taxTotals = default(List<TaxDetail>?), List<AdditionalDetails>? additionalDetails = default(List<AdditionalDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<InvoiceItem> items = default(List<InvoiceItem>))
         {
             // to ensure "invoiceNumber" is required (not null)
             if (invoiceNumber == null)
@@ -113,7 +113,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>An additional unique reference number used for regulatory or other purposes.</value>
         [DataMember(Name = "referenceNumber", EmitDefaultValue = false)]
-        public string ReferenceNumber { get; set; }
+        public string? ReferenceNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets RemitToParty
@@ -131,21 +131,21 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// Gets or Sets BillToParty
         /// </summary>
         [DataMember(Name = "billToParty", EmitDefaultValue = false)]
-        public PartyIdentification BillToParty { get; set; }
+        public PartyIdentification? BillToParty { get; set; }
 
         /// <summary>
         /// Ship-to country code.
         /// </summary>
         /// <value>Ship-to country code.</value>
         [DataMember(Name = "shipToCountryCode", EmitDefaultValue = false)]
-        public string ShipToCountryCode { get; set; }
+        public string? ShipToCountryCode { get; set; }
 
         /// <summary>
         /// The payment terms for the invoice.
         /// </summary>
         /// <value>The payment terms for the invoice.</value>
         [DataMember(Name = "paymentTermsCode", EmitDefaultValue = false)]
-        public string PaymentTermsCode { get; set; }
+        public string? PaymentTermsCode { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoiceTotal
@@ -158,21 +158,21 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>Individual tax details per line item.</value>
         [DataMember(Name = "taxTotals", EmitDefaultValue = false)]
-        public List<TaxDetail> TaxTotals { get; set; }
+        public List<TaxDetail>? TaxTotals { get; set; }
 
         /// <summary>
         /// Additional details provided by the selling party, for tax-related or other purposes.
         /// </summary>
         /// <value>Additional details provided by the selling party, for tax-related or other purposes.</value>
         [DataMember(Name = "additionalDetails", EmitDefaultValue = false)]
-        public List<AdditionalDetails> AdditionalDetails { get; set; }
+        public List<AdditionalDetails>? AdditionalDetails { get; set; }
 
         /// <summary>
         /// Total charge amount details for all line items.
         /// </summary>
         /// <value>Total charge amount details for all line items.</value>
         [DataMember(Name = "chargeDetails", EmitDefaultValue = false)]
-        public List<ChargeDetails> ChargeDetails { get; set; }
+        public List<ChargeDetails>? ChargeDetails { get; set; }
 
         /// <summary>
         /// Provides the details of the items in this invoice.
@@ -225,5 +225,4 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             yield break;
         }
     }
-
 }

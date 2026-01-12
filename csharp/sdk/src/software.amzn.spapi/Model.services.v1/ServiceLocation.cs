@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="serviceLocationType">The location of the service job..</param>
         /// <param name="address">address.</param>
-        public ServiceLocation(ServiceLocationTypeEnum? serviceLocationType = default(ServiceLocationTypeEnum?), Address address = default(Address))
+        public ServiceLocation(ServiceLocationTypeEnum? serviceLocationType = default(ServiceLocationTypeEnum?), Address? address = default(Address?))
         {
             this.ServiceLocationType = serviceLocationType;
             this.Address = address;
@@ -79,7 +79,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

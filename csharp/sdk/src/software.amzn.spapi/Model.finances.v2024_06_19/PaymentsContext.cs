@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="paymentMethod">The method of payment..</param>
         /// <param name="paymentReference">The reference number of the payment..</param>
         /// <param name="paymentDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public PaymentsContext(string paymentType = default(string), string paymentMethod = default(string), string paymentReference = default(string), DateTime paymentDate = default(DateTime))
+        public PaymentsContext(string? paymentType = default(string?), string? paymentMethod = default(string?), string? paymentReference = default(string?), DateTime? paymentDate = default(DateTime?))
         {
             this.PaymentType = paymentType;
             this.PaymentMethod = paymentMethod;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The type of payment.</value>
         [DataMember(Name = "paymentType", EmitDefaultValue = false)]
-        public string PaymentType { get; set; }
+        public string? PaymentType { get; set; }
 
         /// <summary>
         /// The method of payment.
         /// </summary>
         /// <value>The method of payment.</value>
         [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
-        public string PaymentMethod { get; set; }
+        public string? PaymentMethod { get; set; }
 
         /// <summary>
         /// The reference number of the payment.
         /// </summary>
         /// <value>The reference number of the payment.</value>
         [DataMember(Name = "paymentReference", EmitDefaultValue = false)]
-        public string PaymentReference { get; set; }
+        public string? PaymentReference { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
-        public DateTime PaymentDate { get; set; }
+        public DateTime? PaymentDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

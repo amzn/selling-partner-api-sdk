@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// <param name="dataStartTime">The start of a date and time range, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this..</param>
         /// <param name="dataEndTime">The end of a date and time range, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this..</param>
         /// <param name="marketplaceIds">A list of marketplace identifiers. The report document&#39;s contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise. (required).</param>
-        public CreateReportSpecification(Dictionary<string, string> reportOptions = default(Dictionary<string, string>), string reportType = default(string), DateTime dataStartTime = default(DateTime), DateTime dataEndTime = default(DateTime), List<string> marketplaceIds = default(List<string>))
+        public CreateReportSpecification(Dictionary<string, string>? reportOptions = default(Dictionary<string, string>?), string reportType = default(string), DateTime? dataStartTime = default(DateTime?), DateTime? dataEndTime = default(DateTime?), List<string> marketplaceIds = default(List<string>))
         {
             // to ensure "reportType" is required (not null)
             if (reportType == null)
@@ -68,7 +68,7 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// </summary>
         /// <value>Additional information passed to reports. This varies by report type.</value>
         [DataMember(Name = "reportOptions", EmitDefaultValue = false)]
-        public Dictionary<string, string> ReportOptions { get; set; }
+        public Dictionary<string, string>? ReportOptions { get; set; }
 
         /// <summary>
         /// The report type. Refer to [Report Type Values](https://developer-docs.amazon.com/sp-api/docs/report-type-values) for more information.
@@ -82,14 +82,14 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// </summary>
         /// <value>The start of a date and time range, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.</value>
         [DataMember(Name = "dataStartTime", EmitDefaultValue = false)]
-        public DateTime DataStartTime { get; set; }
+        public DateTime? DataStartTime { get; set; }
 
         /// <summary>
         /// The end of a date and time range, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.
         /// </summary>
         /// <value>The end of a date and time range, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date time format, used for selecting the data to report. The default is now. The value must be prior to or equal to the current date and time. Not all report types make use of this.</value>
         [DataMember(Name = "dataEndTime", EmitDefaultValue = false)]
-        public DateTime DataEndTime { get; set; }
+        public DateTime? DataEndTime { get; set; }
 
         /// <summary>
         /// A list of marketplace identifiers. The report document&#39;s contents will contain data for all of the specified marketplaces, unless the report type indicates otherwise.
@@ -134,5 +134,4 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
             yield break;
         }
     }
-
 }

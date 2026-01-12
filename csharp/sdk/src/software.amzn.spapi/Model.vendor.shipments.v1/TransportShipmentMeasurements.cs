@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="totalPalletNonStackable">Total number of Non Stackable Pallets present in the shipment..</param>
         /// <param name="shipmentWeight">shipmentWeight.</param>
         /// <param name="shipmentVolume">shipmentVolume.</param>
-        public TransportShipmentMeasurements(int totalCartonCount = default(int), int totalPalletStackable = default(int), int totalPalletNonStackable = default(int), Weight shipmentWeight = default(Weight), Volume shipmentVolume = default(Volume))
+        public TransportShipmentMeasurements(int? totalCartonCount = default(int?), int? totalPalletStackable = default(int?), int? totalPalletNonStackable = default(int?), Weight? shipmentWeight = default(Weight?), Volume? shipmentVolume = default(Volume?))
         {
             this.TotalCartonCount = totalCartonCount;
             this.TotalPalletStackable = totalPalletStackable;
@@ -53,33 +53,33 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Total number of cartons present in the shipment. Provide the cartonCount only for non-palletized shipments.</value>
         [DataMember(Name = "totalCartonCount", EmitDefaultValue = false)]
-        public int TotalCartonCount { get; set; }
+        public int? TotalCartonCount { get; set; }
 
         /// <summary>
         /// Total number of Stackable Pallets present in the shipment.
         /// </summary>
         /// <value>Total number of Stackable Pallets present in the shipment.</value>
         [DataMember(Name = "totalPalletStackable", EmitDefaultValue = false)]
-        public int TotalPalletStackable { get; set; }
+        public int? TotalPalletStackable { get; set; }
 
         /// <summary>
         /// Total number of Non Stackable Pallets present in the shipment.
         /// </summary>
         /// <value>Total number of Non Stackable Pallets present in the shipment.</value>
         [DataMember(Name = "totalPalletNonStackable", EmitDefaultValue = false)]
-        public int TotalPalletNonStackable { get; set; }
+        public int? TotalPalletNonStackable { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipmentWeight
         /// </summary>
         [DataMember(Name = "shipmentWeight", EmitDefaultValue = false)]
-        public Weight ShipmentWeight { get; set; }
+        public Weight? ShipmentWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipmentVolume
         /// </summary>
         [DataMember(Name = "shipmentVolume", EmitDefaultValue = false)]
-        public Volume ShipmentVolume { get; set; }
+        public Volume? ShipmentVolume { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

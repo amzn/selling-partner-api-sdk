@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// Initializes a new instance of the <see cref="ErrorList" /> class.
         /// </summary>
         /// <param name="errors">errors.</param>
-        public ErrorList(List<Error> errors = default(List<Error>))
+        public ErrorList(List<Error>? errors = default(List<Error>?))
         {
             this.Errors = errors;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// Gets or Sets Errors
         /// </summary>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
             yield break;
         }
     }
-
 }

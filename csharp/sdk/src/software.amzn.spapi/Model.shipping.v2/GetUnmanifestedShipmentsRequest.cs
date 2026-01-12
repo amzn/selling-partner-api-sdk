@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="GetUnmanifestedShipmentsRequest" /> class.
         /// </summary>
         /// <param name="clientReferenceDetails">Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail.</param>
-        public GetUnmanifestedShipmentsRequest(List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>))
+        public GetUnmanifestedShipmentsRequest(List<ClientReferenceDetail>? clientReferenceDetails = default(List<ClientReferenceDetail>?))
         {
             this.ClientReferenceDetails = clientReferenceDetails;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail</value>
         [DataMember(Name = "clientReferenceDetails", EmitDefaultValue = false)]
-        public List<ClientReferenceDetail> ClientReferenceDetails { get; set; }
+        public List<ClientReferenceDetail>? ClientReferenceDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

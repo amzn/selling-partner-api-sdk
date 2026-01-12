@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Initializes a new instance of the <see cref="LabelFormatOptionRequest" /> class.
         /// </summary>
         /// <param name="includePackingSlipWithLabel">When true, include a packing slip with the label..</param>
-        public LabelFormatOptionRequest(bool includePackingSlipWithLabel = default(bool))
+        public LabelFormatOptionRequest(bool? includePackingSlipWithLabel = default(bool?))
         {
             this.IncludePackingSlipWithLabel = includePackingSlipWithLabel;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>When true, include a packing slip with the label.</value>
         [DataMember(Name = "IncludePackingSlipWithLabel", EmitDefaultValue = true)]
-        public bool IncludePackingSlipWithLabel { get; set; }
+        public bool? IncludePackingSlipWithLabel { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <param name="feesEstimateIdentifier">feesEstimateIdentifier.</param>
         /// <param name="feesEstimate">feesEstimate.</param>
         /// <param name="error">error.</param>
-        public FeesEstimateResult(string status = default(string), FeesEstimateIdentifier feesEstimateIdentifier = default(FeesEstimateIdentifier), FeesEstimate feesEstimate = default(FeesEstimate), FeesEstimateError error = default(FeesEstimateError))
+        public FeesEstimateResult(string? status = default(string?), FeesEstimateIdentifier? feesEstimateIdentifier = default(FeesEstimateIdentifier?), FeesEstimate? feesEstimate = default(FeesEstimate?), FeesEstimateError? error = default(FeesEstimateError?))
         {
             this.Status = status;
             this.FeesEstimateIdentifier = feesEstimateIdentifier;
@@ -51,25 +51,25 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// </summary>
         /// <value>The status of the fee request. Possible values: Success, ClientError, ServiceError.</value>
         [DataMember(Name = "Status", EmitDefaultValue = false)]
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// Gets or Sets FeesEstimateIdentifier
         /// </summary>
         [DataMember(Name = "FeesEstimateIdentifier", EmitDefaultValue = false)]
-        public FeesEstimateIdentifier FeesEstimateIdentifier { get; set; }
+        public FeesEstimateIdentifier? FeesEstimateIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets FeesEstimate
         /// </summary>
         [DataMember(Name = "FeesEstimate", EmitDefaultValue = false)]
-        public FeesEstimate FeesEstimate { get; set; }
+        public FeesEstimate? FeesEstimate { get; set; }
 
         /// <summary>
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "Error", EmitDefaultValue = false)]
-        public FeesEstimateError Error { get; set; }
+        public FeesEstimateError? Error { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

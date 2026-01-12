@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <param name="orderedQuantity">orderedQuantity.</param>
         /// <param name="orderedQuantityDetails">Details of item quantity ordered..</param>
-        public OrderItemStatusOrderedQuantity(ItemQuantity orderedQuantity = default(ItemQuantity), List<OrderedQuantityDetails> orderedQuantityDetails = default(List<OrderedQuantityDetails>))
+        public OrderItemStatusOrderedQuantity(ItemQuantity? orderedQuantity = default(ItemQuantity?), List<OrderedQuantityDetails>? orderedQuantityDetails = default(List<OrderedQuantityDetails>?))
         {
             this.OrderedQuantity = orderedQuantity;
             this.OrderedQuantityDetails = orderedQuantityDetails;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets OrderedQuantity
         /// </summary>
         [DataMember(Name = "orderedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity OrderedQuantity { get; set; }
+        public ItemQuantity? OrderedQuantity { get; set; }
 
         /// <summary>
         /// Details of item quantity ordered.
         /// </summary>
         /// <value>Details of item quantity ordered.</value>
         [DataMember(Name = "orderedQuantityDetails", EmitDefaultValue = false)]
-        public List<OrderedQuantityDetails> OrderedQuantityDetails { get; set; }
+        public List<OrderedQuantityDetails>? OrderedQuantityDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

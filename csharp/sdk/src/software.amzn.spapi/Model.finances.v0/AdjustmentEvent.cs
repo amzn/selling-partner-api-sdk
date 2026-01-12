@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="storeName">The name of the store where the event occurred..</param>
         /// <param name="adjustmentAmount">adjustmentAmount.</param>
         /// <param name="adjustmentItemList">A list of information about items in an adjustment to the seller&#39;s account..</param>
-        public AdjustmentEvent(string adjustmentType = default(string), DateTime postedDate = default(DateTime), string storeName = default(string), Currency adjustmentAmount = default(Currency), List<AdjustmentItem> adjustmentItemList = default(List<AdjustmentItem>))
+        public AdjustmentEvent(string? adjustmentType = default(string?), DateTime? postedDate = default(DateTime?), string? storeName = default(string?), Currency? adjustmentAmount = default(Currency?), List<AdjustmentItem>? adjustmentItemList = default(List<AdjustmentItem>?))
         {
             this.AdjustmentType = adjustmentType;
             this.PostedDate = postedDate;
@@ -53,34 +53,34 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The type of adjustment.  Possible values:  * &#x60;FBAInventoryReimbursement&#x60;: An FBA inventory reimbursement to a seller&#39;s account. This occurs if a seller&#39;s inventory is damaged. * &#x60;ReserveEvent&#x60;: A reserve event that is generated at the time a settlement period closes. This occurs when some money from a seller&#39;s account is held back. * &#x60;PostageBilling&#x60;: The amount paid by a seller for shipping labels. * &#x60;PostageRefund&#x60;: The reimbursement of shipping labels purchased for orders that were canceled or refunded. * &#x60;LostOrDamagedReimbursement&#x60;: An Amazon Easy Ship reimbursement to a seller&#39;s account for a package that we lost or damaged. * &#x60;CanceledButPickedUpReimbursement&#x60;: An Amazon Easy Ship reimbursement to a seller&#39;s account. This occurs when a package is picked up and the order is subsequently canceled. This value is used only in the India marketplace. * &#x60;ReimbursementClawback&#x60;: An Amazon Easy Ship reimbursement clawback from a seller&#39;s account. This occurs when a prior reimbursement is reversed. This value is used only in the India marketplace. * &#x60;SellerRewards&#x60;: An award credited to a seller&#39;s account for their participation in an offer in the Seller Rewards program. Applies only to the India marketplace.</value>
         [DataMember(Name = "AdjustmentType", EmitDefaultValue = false)]
-        public string AdjustmentType { get; set; }
+        public string? AdjustmentType { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The name of the store where the event occurred.
         /// </summary>
         /// <value>The name of the store where the event occurred.</value>
         [DataMember(Name = "StoreName", EmitDefaultValue = false)]
-        public string StoreName { get; set; }
+        public string? StoreName { get; set; }
 
         /// <summary>
         /// Gets or Sets AdjustmentAmount
         /// </summary>
         [DataMember(Name = "AdjustmentAmount", EmitDefaultValue = false)]
-        public Currency AdjustmentAmount { get; set; }
+        public Currency? AdjustmentAmount { get; set; }
 
         /// <summary>
         /// A list of information about items in an adjustment to the seller&#39;s account.
         /// </summary>
         /// <value>A list of information about items in an adjustment to the seller&#39;s account.</value>
         [DataMember(Name = "AdjustmentItemList", EmitDefaultValue = false)]
-        public List<AdjustmentItem> AdjustmentItemList { get; set; }
+        public List<AdjustmentItem>? AdjustmentItemList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

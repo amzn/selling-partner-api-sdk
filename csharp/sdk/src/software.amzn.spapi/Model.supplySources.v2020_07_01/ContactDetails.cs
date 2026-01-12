@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Initializes a new instance of the <see cref="ContactDetails" /> class.
         /// </summary>
         /// <param name="primary">primary.</param>
-        public ContactDetails(ContactDetailsPrimary primary = default(ContactDetailsPrimary))
+        public ContactDetails(ContactDetailsPrimary? primary = default(ContactDetailsPrimary?))
         {
             this.Primary = primary;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets Primary
         /// </summary>
         [DataMember(Name = "primary", EmitDefaultValue = false)]
-        public ContactDetailsPrimary Primary { get; set; }
+        public ContactDetailsPrimary? Primary { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

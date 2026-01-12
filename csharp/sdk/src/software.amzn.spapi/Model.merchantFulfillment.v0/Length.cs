@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="value">The value in units..</param>
         /// <param name="unit">unit.</param>
-        public Length(decimal value = default(decimal), UnitOfLength? unit = default(UnitOfLength?))
+        public Length(decimal? value = default(decimal?), UnitOfLength? unit = default(UnitOfLength?))
         {
             this.Value = value;
             this.Unit = unit;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The value in units.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public decimal Value { get; set; }
+        public decimal? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="charges">A list of charges based on the shipping service charges applied on a package..</param>
         /// <param name="packageClientReferenceId">A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation. (required).</param>
         /// <param name="items">A list of items. (required).</param>
-        public Package(Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), Currency insuredValue = default(Currency), bool isHazmat = default(bool), string sellerDisplayName = default(string), List<ChargeComponent> charges = default(List<ChargeComponent>), string packageClientReferenceId = default(string), List<Item> items = default(List<Item>))
+        public Package(Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), Currency insuredValue = default(Currency), bool? isHazmat = default(bool?), string? sellerDisplayName = default(string?), List<ChargeComponent>? charges = default(List<ChargeComponent>?), string packageClientReferenceId = default(string), List<Item> items = default(List<Item>))
         {
             // to ensure "dimensions" is required (not null)
             if (dimensions == null)
@@ -108,21 +108,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>When true, the package contains hazardous materials. Defaults to false.</value>
         [DataMember(Name = "isHazmat", EmitDefaultValue = true)]
-        public bool IsHazmat { get; set; }
+        public bool? IsHazmat { get; set; }
 
         /// <summary>
         /// The seller name displayed on the label.
         /// </summary>
         /// <value>The seller name displayed on the label.</value>
         [DataMember(Name = "sellerDisplayName", EmitDefaultValue = false)]
-        public string SellerDisplayName { get; set; }
+        public string? SellerDisplayName { get; set; }
 
         /// <summary>
         /// A list of charges based on the shipping service charges applied on a package.
         /// </summary>
         /// <value>A list of charges based on the shipping service charges applied on a package.</value>
         [DataMember(Name = "charges", EmitDefaultValue = false)]
-        public List<ChargeComponent> Charges { get; set; }
+        public List<ChargeComponent>? Charges { get; set; }
 
         /// <summary>
         /// A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation.
@@ -177,5 +177,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

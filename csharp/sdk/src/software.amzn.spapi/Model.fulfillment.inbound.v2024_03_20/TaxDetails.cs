@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="declaredValue">declaredValue.</param>
         /// <param name="hsnCode">Harmonized System of Nomenclature code..</param>
         /// <param name="taxRates">List of tax rates..</param>
-        public TaxDetails(Currency declaredValue = default(Currency), string hsnCode = default(string), List<TaxRate> taxRates = default(List<TaxRate>))
+        public TaxDetails(Currency? declaredValue = default(Currency?), string? hsnCode = default(string?), List<TaxRate>? taxRates = default(List<TaxRate>?))
         {
             this.DeclaredValue = declaredValue;
             this.HsnCode = hsnCode;
@@ -48,21 +48,21 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets DeclaredValue
         /// </summary>
         [DataMember(Name = "declaredValue", EmitDefaultValue = false)]
-        public Currency DeclaredValue { get; set; }
+        public Currency? DeclaredValue { get; set; }
 
         /// <summary>
         /// Harmonized System of Nomenclature code.
         /// </summary>
         /// <value>Harmonized System of Nomenclature code.</value>
         [DataMember(Name = "hsnCode", EmitDefaultValue = false)]
-        public string HsnCode { get; set; }
+        public string? HsnCode { get; set; }
 
         /// <summary>
         /// List of tax rates.
         /// </summary>
         /// <value>List of tax rates.</value>
         [DataMember(Name = "taxRates", EmitDefaultValue = false)]
-        public List<TaxRate> TaxRates { get; set; }
+        public List<TaxRate>? TaxRates { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -110,5 +110,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

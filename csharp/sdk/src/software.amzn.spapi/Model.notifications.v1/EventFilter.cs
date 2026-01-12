@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// <param name="marketplaceIds">A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list..</param>
         /// <param name="orderChangeTypes">A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list..</param>
         /// <param name="eventFilterType">An &#x60;eventFilterType&#x60; value that is supported by the specific &#x60;notificationType&#x60;. This is used by the subscription service to determine the type of event filter. Refer to [Notification Type Values](https://developer-docs.amazon.com/sp-api/docs/notification-type-values) to determine if an &#x60;eventFilterType&#x60; is supported. (required).</param>
-        public EventFilter(AggregationSettings aggregationSettings = default(AggregationSettings), List<string> marketplaceIds = default(List<string>), List<OrderChangeTypeEnum> orderChangeTypes = default(List<OrderChangeTypeEnum>), EventFilterTypeEnum eventFilterType = default(EventFilterTypeEnum))
+        public EventFilter(AggregationSettings? aggregationSettings = default(AggregationSettings?), List<string>? marketplaceIds = default(List<string>?), List<OrderChangeTypeEnum>? orderChangeTypes = default(List<OrderChangeTypeEnum>?), EventFilterTypeEnum eventFilterType = default(EventFilterTypeEnum))
         {
             this.EventFilterType = eventFilterType;
             this.AggregationSettings = aggregationSettings;
@@ -82,21 +82,21 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Gets or Sets AggregationSettings
         /// </summary>
         [DataMember(Name = "aggregationSettings", EmitDefaultValue = false)]
-        public AggregationSettings AggregationSettings { get; set; }
+        public AggregationSettings? AggregationSettings { get; set; }
 
         /// <summary>
         /// A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.
         /// </summary>
         /// <value>A list of marketplace identifiers to subscribe to (for example: ATVPDKIKX0DER). To receive notifications in every marketplace, do not provide this list.</value>
         [DataMember(Name = "marketplaceIds", EmitDefaultValue = false)]
-        public List<string> MarketplaceIds { get; set; }
+        public List<string>? MarketplaceIds { get; set; }
 
         /// <summary>
         /// A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.
         /// </summary>
         /// <value>A list of order change types to subscribe to (for example: &#x60;BuyerRequestedChange&#x60;). To receive notifications of all change types, do not provide this list.</value>
         [DataMember(Name = "orderChangeTypes", EmitDefaultValue = false)]
-        public List<OrderChangeTypeEnum> OrderChangeTypes { get; set; }
+        public List<OrderChangeTypeEnum>? OrderChangeTypes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.notifications.v1
             yield break;
         }
     }
-
 }

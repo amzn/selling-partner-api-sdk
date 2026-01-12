@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="weight">weight.</param>
         /// <param name="trackingNumber">This is required to be provided for every carton in the small parcel shipments..</param>
         /// <param name="items">A list of container item details. (required).</param>
-        public Carton(List<ContainerIdentification> cartonIdentifiers = default(List<ContainerIdentification>), string cartonSequenceNumber = default(string), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), string trackingNumber = default(string), List<ContainerItem> items = default(List<ContainerItem>))
+        public Carton(List<ContainerIdentification>? cartonIdentifiers = default(List<ContainerIdentification>?), string cartonSequenceNumber = default(string), Dimensions? dimensions = default(Dimensions?), Weight? weight = default(Weight?), string? trackingNumber = default(string?), List<ContainerItem> items = default(List<ContainerItem>))
         {
             // to ensure "cartonSequenceNumber" is required (not null)
             if (cartonSequenceNumber == null)
@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>A list of carton identifiers.</value>
         [DataMember(Name = "cartonIdentifiers", EmitDefaultValue = false)]
-        public List<ContainerIdentification> CartonIdentifiers { get; set; }
+        public List<ContainerIdentification>? CartonIdentifiers { get; set; }
 
         /// <summary>
         /// Carton sequence number for the carton. The first carton will be 001, the second 002, and so on. This number is used as a reference to refer to this carton from the pallet level.
@@ -83,20 +83,20 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public Dimensions Dimensions { get; set; }
+        public Dimensions? Dimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// This is required to be provided for every carton in the small parcel shipments.
         /// </summary>
         /// <value>This is required to be provided for every carton in the small parcel shipments.</value>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = false)]
-        public string TrackingNumber { get; set; }
+        public string? TrackingNumber { get; set; }
 
         /// <summary>
         /// A list of container item details.
@@ -142,5 +142,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

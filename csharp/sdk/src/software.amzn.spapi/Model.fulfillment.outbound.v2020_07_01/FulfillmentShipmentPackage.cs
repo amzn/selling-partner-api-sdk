@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="estimatedArrivalDate">Date timestamp.</param>
         /// <param name="lockerDetails">lockerDetails.</param>
         /// <param name="deliveryInformation">deliveryInformation.</param>
-        public FulfillmentShipmentPackage(int packageNumber = default(int), string carrierCode = default(string), string trackingNumber = default(string), string amazonFulfillmentTrackingNumber = default(string), DateTime estimatedArrivalDate = default(DateTime), LockerDetails lockerDetails = default(LockerDetails), DeliveryInformation deliveryInformation = default(DeliveryInformation))
+        public FulfillmentShipmentPackage(int packageNumber = default(int), string carrierCode = default(string), string? trackingNumber = default(string?), string? amazonFulfillmentTrackingNumber = default(string?), DateTime? estimatedArrivalDate = default(DateTime?), LockerDetails? lockerDetails = default(LockerDetails?), DeliveryInformation? deliveryInformation = default(DeliveryInformation?))
         {
             this.PackageNumber = packageNumber;
             // to ensure "carrierCode" is required (not null)
@@ -81,33 +81,33 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The tracking number, if provided, can be used to obtain tracking and delivery information.</value>
         [DataMember(Name = "trackingNumber", EmitDefaultValue = false)]
-        public string TrackingNumber { get; set; }
+        public string? TrackingNumber { get; set; }
 
         /// <summary>
         /// The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.
         /// </summary>
         /// <value>The Amazon fulfillment tracking number, if provided, can be used to obtain tracking and delivery information.</value>
         [DataMember(Name = "amazonFulfillmentTrackingNumber", EmitDefaultValue = false)]
-        public string AmazonFulfillmentTrackingNumber { get; set; }
+        public string? AmazonFulfillmentTrackingNumber { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "estimatedArrivalDate", EmitDefaultValue = false)]
-        public DateTime EstimatedArrivalDate { get; set; }
+        public DateTime? EstimatedArrivalDate { get; set; }
 
         /// <summary>
         /// Gets or Sets LockerDetails
         /// </summary>
         [DataMember(Name = "lockerDetails", EmitDefaultValue = false)]
-        public LockerDetails LockerDetails { get; set; }
+        public LockerDetails? LockerDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets DeliveryInformation
         /// </summary>
         [DataMember(Name = "deliveryInformation", EmitDefaultValue = false)]
-        public DeliveryInformation DeliveryInformation { get; set; }
+        public DeliveryInformation? DeliveryInformation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -147,5 +147,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

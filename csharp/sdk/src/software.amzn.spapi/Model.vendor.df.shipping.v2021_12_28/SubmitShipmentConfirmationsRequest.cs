@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Initializes a new instance of the <see cref="SubmitShipmentConfirmationsRequest" /> class.
         /// </summary>
         /// <param name="shipmentConfirmations">Array of &#x60;ShipmentConfirmation&#x60; objects. Each &#x60;ShipmentConfirmation&#x60; object represents the confirmation details for a specific shipment..</param>
-        public SubmitShipmentConfirmationsRequest(List<ShipmentConfirmation> shipmentConfirmations = default(List<ShipmentConfirmation>))
+        public SubmitShipmentConfirmationsRequest(List<ShipmentConfirmation>? shipmentConfirmations = default(List<ShipmentConfirmation>?))
         {
             this.ShipmentConfirmations = shipmentConfirmations;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>Array of &#x60;ShipmentConfirmation&#x60; objects. Each &#x60;ShipmentConfirmation&#x60; object represents the confirmation details for a specific shipment.</value>
         [DataMember(Name = "shipmentConfirmations", EmitDefaultValue = false)]
-        public List<ShipmentConfirmation> ShipmentConfirmations { get; set; }
+        public List<ShipmentConfirmation>? ShipmentConfirmations { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

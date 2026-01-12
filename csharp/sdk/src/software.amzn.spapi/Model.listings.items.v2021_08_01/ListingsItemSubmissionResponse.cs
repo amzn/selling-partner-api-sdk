@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="submissionId">The unique identifier of the listings item submission. (required).</param>
         /// <param name="issues">Listings item issues related to the listings item submission..</param>
         /// <param name="identifiers">Identity attributes associated with the item in the Amazon catalog, such as the ASIN..</param>
-        public ListingsItemSubmissionResponse(string sku = default(string), StatusEnum status = default(StatusEnum), string submissionId = default(string), List<Issue> issues = default(List<Issue>), List<ItemIdentifiersByMarketplace> identifiers = default(List<ItemIdentifiersByMarketplace>))
+        public ListingsItemSubmissionResponse(string sku = default(string), StatusEnum status = default(StatusEnum), string submissionId = default(string), List<Issue>? issues = default(List<Issue>?), List<ItemIdentifiersByMarketplace>? identifiers = default(List<ItemIdentifiersByMarketplace>?))
         {
             // to ensure "sku" is required (not null)
             if (sku == null)
@@ -115,14 +115,14 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>Listings item issues related to the listings item submission.</value>
         [DataMember(Name = "issues", EmitDefaultValue = false)]
-        public List<Issue> Issues { get; set; }
+        public List<Issue>? Issues { get; set; }
 
         /// <summary>
         /// Identity attributes associated with the item in the Amazon catalog, such as the ASIN.
         /// </summary>
         /// <value>Identity attributes associated with the item in the Amazon catalog, such as the ASIN.</value>
         [DataMember(Name = "identifiers", EmitDefaultValue = false)]
-        public List<ItemIdentifiersByMarketplace> Identifiers { get; set; }
+        public List<ItemIdentifiersByMarketplace>? Identifiers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,5 +160,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

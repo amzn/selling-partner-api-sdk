@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <param name="itemRelatedIdentifierName">Enumerated set of related item identifier names for the item..</param>
         /// <param name="itemRelatedIdentifierValue">Corresponding value to &#x60;ItemRelatedIdentifierName&#x60;..</param>
-        public ItemRelatedIdentifier(ItemRelatedIdentifierNameEnum? itemRelatedIdentifierName = default(ItemRelatedIdentifierNameEnum?), string itemRelatedIdentifierValue = default(string))
+        public ItemRelatedIdentifier(ItemRelatedIdentifierNameEnum? itemRelatedIdentifierName = default(ItemRelatedIdentifierNameEnum?), string? itemRelatedIdentifierValue = default(string?))
         {
             this.ItemRelatedIdentifierName = itemRelatedIdentifierName;
             this.ItemRelatedIdentifierValue = itemRelatedIdentifierValue;
@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>Corresponding value to &#x60;ItemRelatedIdentifierName&#x60;.</value>
         [DataMember(Name = "itemRelatedIdentifierValue", EmitDefaultValue = false)]
-        public string ItemRelatedIdentifierValue { get; set; }
+        public string? ItemRelatedIdentifierValue { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -121,5 +121,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

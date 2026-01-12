@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="overPaymentCredit">overPaymentCredit.</param>
         /// <param name="debtRecoveryItemList">A list of debt recovery item information..</param>
         /// <param name="chargeInstrumentList">A list of payment instruments..</param>
-        public DebtRecoveryEvent(string debtRecoveryType = default(string), Currency recoveryAmount = default(Currency), Currency overPaymentCredit = default(Currency), List<DebtRecoveryItem> debtRecoveryItemList = default(List<DebtRecoveryItem>), List<ChargeInstrument> chargeInstrumentList = default(List<ChargeInstrument>))
+        public DebtRecoveryEvent(string? debtRecoveryType = default(string?), Currency? recoveryAmount = default(Currency?), Currency? overPaymentCredit = default(Currency?), List<DebtRecoveryItem>? debtRecoveryItemList = default(List<DebtRecoveryItem>?), List<ChargeInstrument>? chargeInstrumentList = default(List<ChargeInstrument>?))
         {
             this.DebtRecoveryType = debtRecoveryType;
             this.RecoveryAmount = recoveryAmount;
@@ -53,33 +53,33 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The debt recovery type.  Possible values:  * &#x60;DebtPayment&#x60; * &#x60;DebtPaymentFailure&#x60; * &#x60;DebtAdjustment&#x60;</value>
         [DataMember(Name = "DebtRecoveryType", EmitDefaultValue = false)]
-        public string DebtRecoveryType { get; set; }
+        public string? DebtRecoveryType { get; set; }
 
         /// <summary>
         /// Gets or Sets RecoveryAmount
         /// </summary>
         [DataMember(Name = "RecoveryAmount", EmitDefaultValue = false)]
-        public Currency RecoveryAmount { get; set; }
+        public Currency? RecoveryAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets OverPaymentCredit
         /// </summary>
         [DataMember(Name = "OverPaymentCredit", EmitDefaultValue = false)]
-        public Currency OverPaymentCredit { get; set; }
+        public Currency? OverPaymentCredit { get; set; }
 
         /// <summary>
         /// A list of debt recovery item information.
         /// </summary>
         /// <value>A list of debt recovery item information.</value>
         [DataMember(Name = "DebtRecoveryItemList", EmitDefaultValue = false)]
-        public List<DebtRecoveryItem> DebtRecoveryItemList { get; set; }
+        public List<DebtRecoveryItem>? DebtRecoveryItemList { get; set; }
 
         /// <summary>
         /// A list of payment instruments.
         /// </summary>
         /// <value>A list of payment instruments.</value>
         [DataMember(Name = "ChargeInstrumentList", EmitDefaultValue = false)]
-        public List<ChargeInstrument> ChargeInstrumentList { get; set; }
+        public List<ChargeInstrument>? ChargeInstrumentList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

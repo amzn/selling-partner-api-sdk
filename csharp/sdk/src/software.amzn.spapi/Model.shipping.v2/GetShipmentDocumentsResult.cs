@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="shipmentId">The unique shipment identifier provided by a shipping service. (required).</param>
         /// <param name="packageDocumentDetail">packageDocumentDetail (required).</param>
         /// <param name="benefits">benefits.</param>
-        public GetShipmentDocumentsResult(string shipmentId = default(string), PackageDocumentDetail packageDocumentDetail = default(PackageDocumentDetail), Benefits benefits = default(Benefits))
+        public GetShipmentDocumentsResult(string shipmentId = default(string), PackageDocumentDetail packageDocumentDetail = default(PackageDocumentDetail), Benefits? benefits = default(Benefits?))
         {
             // to ensure "shipmentId" is required (not null)
             if (shipmentId == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Benefits
         /// </summary>
         [DataMember(Name = "benefits", EmitDefaultValue = false)]
-        public Benefits Benefits { get; set; }
+        public Benefits? Benefits { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

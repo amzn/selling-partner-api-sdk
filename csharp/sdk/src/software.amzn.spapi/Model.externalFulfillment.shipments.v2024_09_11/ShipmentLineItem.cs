@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="itemValue">itemValue.</param>
         /// <param name="complianceAttributes">complianceAttributes (required).</param>
         /// <param name="customAttributes">A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon..</param>
-        public ShipmentLineItem(string shipmentLineItemId = default(string), string merchantSku = default(string), int numberOfUnits = default(int), List<string> serialNumbers = default(List<string>), PieceType? pieceType = default(PieceType?), List<string> hazmatLabels = default(List<string>), GiftAttributes giftAttributes = default(GiftAttributes), List<Charge> charges = default(List<Charge>), List<Cancellation> cancellations = default(List<Cancellation>), string hsnCode = default(string), string recommendedCountryOfOrigin = default(string), string countryOfOrigin = default(string), string recommendedCurrencyCode = default(string), Amount itemValue = default(Amount), ComplianceAttributes complianceAttributes = default(ComplianceAttributes), List<CustomAttribute> customAttributes = default(List<CustomAttribute>))
+        public ShipmentLineItem(string shipmentLineItemId = default(string), string merchantSku = default(string), int numberOfUnits = default(int), List<string>? serialNumbers = default(List<string>?), PieceType? pieceType = default(PieceType?), List<string>? hazmatLabels = default(List<string>?), GiftAttributes? giftAttributes = default(GiftAttributes?), List<Charge> charges = default(List<Charge>), List<Cancellation>? cancellations = default(List<Cancellation>?), string? hsnCode = default(string?), string? recommendedCountryOfOrigin = default(string?), string? countryOfOrigin = default(string?), string? recommendedCurrencyCode = default(string?), Amount? itemValue = default(Amount?), ComplianceAttributes complianceAttributes = default(ComplianceAttributes), List<CustomAttribute>? customAttributes = default(List<CustomAttribute>?))
         {
             // to ensure "shipmentLineItemId" is required (not null)
             if (shipmentLineItemId == null)
@@ -128,20 +128,20 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The serial numbers for each item in this line item.</value>
         [DataMember(Name = "serialNumbers", EmitDefaultValue = false)]
-        public List<string> SerialNumbers { get; set; }
+        public List<string>? SerialNumbers { get; set; }
 
         /// <summary>
         /// A list of HAZMAT label identifiers that must be applied to the packages for this line item.
         /// </summary>
         /// <value>A list of HAZMAT label identifiers that must be applied to the packages for this line item.</value>
         [DataMember(Name = "hazmatLabels", EmitDefaultValue = false)]
-        public List<string> HazmatLabels { get; set; }
+        public List<string>? HazmatLabels { get; set; }
 
         /// <summary>
         /// Gets or Sets GiftAttributes
         /// </summary>
         [DataMember(Name = "giftAttributes", EmitDefaultValue = false)]
-        public GiftAttributes GiftAttributes { get; set; }
+        public GiftAttributes? GiftAttributes { get; set; }
 
         /// <summary>
         /// The charges associated with the shipment.
@@ -155,41 +155,41 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A list of cancellations for the given line item.  **Note:** Currently, SmartConnect does not support partial cancellation of a shipment or its line items. This list will contain a single value with all the cancellation details.</value>
         [DataMember(Name = "cancellations", EmitDefaultValue = false)]
-        public List<Cancellation> Cancellations { get; set; }
+        public List<Cancellation>? Cancellations { get; set; }
 
         /// <summary>
         /// The HSN code of SKU in this line item.
         /// </summary>
         /// <value>The HSN code of SKU in this line item.</value>
         [DataMember(Name = "hsnCode", EmitDefaultValue = false)]
-        public string HsnCode { get; set; }
+        public string? HsnCode { get; set; }
 
         /// <summary>
         /// A two-letter country code, as defined by the ISO-3166 alpha-2 standard.
         /// </summary>
         /// <value>A two-letter country code, as defined by the ISO-3166 alpha-2 standard.</value>
         [DataMember(Name = "recommendedCountryOfOrigin", EmitDefaultValue = false)]
-        public string RecommendedCountryOfOrigin { get; set; }
+        public string? RecommendedCountryOfOrigin { get; set; }
 
         /// <summary>
         /// A two-letter country code, as defined by the ISO-3166 alpha-2 standard.
         /// </summary>
         /// <value>A two-letter country code, as defined by the ISO-3166 alpha-2 standard.</value>
         [DataMember(Name = "countryOfOrigin", EmitDefaultValue = false)]
-        public string CountryOfOrigin { get; set; }
+        public string? CountryOfOrigin { get; set; }
 
         /// <summary>
         /// The three digit currency code of the currency recommended by the marketplace, in ISO 4217 format.
         /// </summary>
         /// <value>The three digit currency code of the currency recommended by the marketplace, in ISO 4217 format.</value>
         [DataMember(Name = "recommendedCurrencyCode", EmitDefaultValue = false)]
-        public string RecommendedCurrencyCode { get; set; }
+        public string? RecommendedCurrencyCode { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemValue
         /// </summary>
         [DataMember(Name = "itemValue", EmitDefaultValue = false)]
-        public Amount ItemValue { get; set; }
+        public Amount? ItemValue { get; set; }
 
         /// <summary>
         /// Gets or Sets ComplianceAttributes
@@ -202,7 +202,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A list of custom passthrough attributes. For details on these attributes, reach out to your respective program teams at Amazon.</value>
         [DataMember(Name = "customAttributes", EmitDefaultValue = false)]
-        public List<CustomAttribute> CustomAttributes { get; set; }
+        public List<CustomAttribute>? CustomAttributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -257,5 +257,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

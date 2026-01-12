@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="headers">headers.</param>
         /// <param name="status">status.</param>
         /// <param name="body">body (required).</param>
-        public BatchOffersResponse(HttpResponseHeaders headers = default(HttpResponseHeaders), GetOffersHttpStatusLine status = default(GetOffersHttpStatusLine), GetOffersResponse body = default(GetOffersResponse))
+        public BatchOffersResponse(HttpResponseHeaders? headers = default(HttpResponseHeaders?), GetOffersHttpStatusLine? status = default(GetOffersHttpStatusLine?), GetOffersResponse body = default(GetOffersResponse))
         {
             // to ensure "body" is required (not null)
             if (body == null)
@@ -58,13 +58,13 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets Headers
         /// </summary>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public HttpResponseHeaders Headers { get; set; }
+        public HttpResponseHeaders? Headers { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
         [DataMember(Name = "status", EmitDefaultValue = false)]
-        public GetOffersHttpStatusLine Status { get; set; }
+        public GetOffersHttpStatusLine? Status { get; set; }
 
         /// <summary>
         /// Gets or Sets Body
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

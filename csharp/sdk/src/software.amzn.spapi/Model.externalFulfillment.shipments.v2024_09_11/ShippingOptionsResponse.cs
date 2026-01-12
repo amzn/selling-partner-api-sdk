@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="shippingOptions">A list of shipping options..</param>
         /// <param name="recommendedShippingOption">recommendedShippingOption.</param>
-        public ShippingOptionsResponse(List<ShippingOptions> shippingOptions = default(List<ShippingOptions>), ShippingOptions recommendedShippingOption = default(ShippingOptions))
+        public ShippingOptionsResponse(List<ShippingOptions>? shippingOptions = default(List<ShippingOptions>?), ShippingOptions? recommendedShippingOption = default(ShippingOptions?))
         {
             this.ShippingOptions = shippingOptions;
             this.RecommendedShippingOption = recommendedShippingOption;
@@ -48,13 +48,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>A list of shipping options.</value>
         [DataMember(Name = "shippingOptions", EmitDefaultValue = false)]
-        public List<ShippingOptions> ShippingOptions { get; set; }
+        public List<ShippingOptions>? ShippingOptions { get; set; }
 
         /// <summary>
         /// Gets or Sets RecommendedShippingOption
         /// </summary>
         [DataMember(Name = "recommendedShippingOption", EmitDefaultValue = false)]
-        public ShippingOptions RecommendedShippingOption { get; set; }
+        public ShippingOptions? RecommendedShippingOption { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="feeComponent">feeComponent.</param>
         /// <param name="chargeComponent">chargeComponent.</param>
         /// <param name="totalAmount">totalAmount.</param>
-        public SellerReviewEnrollmentPaymentEvent(DateTime postedDate = default(DateTime), string enrollmentId = default(string), string parentASIN = default(string), FeeComponent feeComponent = default(FeeComponent), ChargeComponent chargeComponent = default(ChargeComponent), Currency totalAmount = default(Currency))
+        public SellerReviewEnrollmentPaymentEvent(DateTime? postedDate = default(DateTime?), string? enrollmentId = default(string?), string? parentASIN = default(string?), FeeComponent? feeComponent = default(FeeComponent?), ChargeComponent? chargeComponent = default(ChargeComponent?), Currency? totalAmount = default(Currency?))
         {
             this.PostedDate = postedDate;
             this.EnrollmentId = enrollmentId;
@@ -55,39 +55,39 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// An enrollment identifier.
         /// </summary>
         /// <value>An enrollment identifier.</value>
         [DataMember(Name = "EnrollmentId", EmitDefaultValue = false)]
-        public string EnrollmentId { get; set; }
+        public string? EnrollmentId { get; set; }
 
         /// <summary>
         /// The Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program.
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item that was enrolled in the Early Reviewer Program.</value>
         [DataMember(Name = "ParentASIN", EmitDefaultValue = false)]
-        public string ParentASIN { get; set; }
+        public string? ParentASIN { get; set; }
 
         /// <summary>
         /// Gets or Sets FeeComponent
         /// </summary>
         [DataMember(Name = "FeeComponent", EmitDefaultValue = false)]
-        public FeeComponent FeeComponent { get; set; }
+        public FeeComponent? FeeComponent { get; set; }
 
         /// <summary>
         /// Gets or Sets ChargeComponent
         /// </summary>
         [DataMember(Name = "ChargeComponent", EmitDefaultValue = false)]
-        public ChargeComponent ChargeComponent { get; set; }
+        public ChargeComponent? ChargeComponent { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "TotalAmount", EmitDefaultValue = false)]
-        public Currency TotalAmount { get; set; }
+        public Currency? TotalAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -126,5 +126,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="packageClientReferenceId">A client provided unique identifier for a package being shipped. This value should be saved by the client to pass as a parameter to the getShipmentDocuments operation. (required).</param>
         /// <param name="packageDocuments">A list of documents related to a package. (required).</param>
         /// <param name="trackingId">The carrier generated identifier for a package in a purchased shipment..</param>
-        public PackageDocumentDetail(string packageClientReferenceId = default(string), List<PackageDocument> packageDocuments = default(List<PackageDocument>), string trackingId = default(string))
+        public PackageDocumentDetail(string packageClientReferenceId = default(string), List<PackageDocument> packageDocuments = default(List<PackageDocument>), string? trackingId = default(string?))
         {
             // to ensure "packageClientReferenceId" is required (not null)
             if (packageClientReferenceId == null)
@@ -79,7 +79,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The carrier generated identifier for a package in a purchased shipment.</value>
         [DataMember(Name = "trackingId", EmitDefaultValue = false)]
-        public string TrackingId { get; set; }
+        public string? TrackingId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -115,5 +115,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

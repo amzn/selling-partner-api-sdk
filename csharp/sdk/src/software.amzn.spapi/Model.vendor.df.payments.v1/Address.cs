@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <param name="postalCode">The postal code of that address. It conatins a series of letters or digits or both, sometimes including spaces or punctuation. (required).</param>
         /// <param name="countryCode">The two digit country code in ISO 3166-1 alpha-2 format. (required).</param>
         /// <param name="phone">The phone number of the person, business or institution located at that address..</param>
-        public Address(string name = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string county = default(string), string district = default(string), string stateOrRegion = default(string), string postalCode = default(string), string countryCode = default(string), string phone = default(string))
+        public Address(string name = default(string), string addressLine1 = default(string), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string city = default(string), string? county = default(string?), string? district = default(string?), string stateOrRegion = default(string), string postalCode = default(string), string countryCode = default(string), string? phone = default(string?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -114,14 +114,14 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>Additional street address information, if required.</value>
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Additional street address information, if required.
         /// </summary>
         /// <value>Additional street address information, if required.</value>
         [DataMember(Name = "addressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// The city where the person, business or institution is located.
@@ -135,14 +135,14 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>The county where person, business or institution is located.</value>
         [DataMember(Name = "county", EmitDefaultValue = false)]
-        public string County { get; set; }
+        public string? County { get; set; }
 
         /// <summary>
         /// The district where person, business or institution is located.
         /// </summary>
         /// <value>The district where person, business or institution is located.</value>
         [DataMember(Name = "district", EmitDefaultValue = false)]
-        public string District { get; set; }
+        public string? District { get; set; }
 
         /// <summary>
         /// The state or region where person, business or institution is located.
@@ -170,7 +170,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>The phone number of the person, business or institution located at that address.</value>
         [DataMember(Name = "phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -214,5 +214,4 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             yield break;
         }
     }
-
 }

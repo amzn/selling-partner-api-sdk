@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <param name="code">Acknowledgement code is a unique two digit value which indicates the status of the acknowledgement. For a list of acknowledgement codes that Amazon supports, see the Vendor Direct Fulfillment APIs Use Case Guide..</param>
         /// <param name="description">Reason for the acknowledgement code..</param>
-        public AcknowledgementStatus(string code = default(string), string description = default(string))
+        public AcknowledgementStatus(string? code = default(string?), string? description = default(string?))
         {
             this.Code = code;
             this.Description = description;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>Acknowledgement code is a unique two digit value which indicates the status of the acknowledgement. For a list of acknowledgement codes that Amazon supports, see the Vendor Direct Fulfillment APIs Use Case Guide.</value>
         [DataMember(Name = "code", EmitDefaultValue = false)]
-        public string Code { get; set; }
+        public string? Code { get; set; }
 
         /// <summary>
         /// Reason for the acknowledgement code.
         /// </summary>
         /// <value>Reason for the acknowledgement code.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

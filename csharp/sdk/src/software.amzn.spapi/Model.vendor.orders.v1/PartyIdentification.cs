@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="partyId">Assigned identification for the party. For example, warehouse code or vendor code. Please refer to specific party for more details. (required).</param>
         /// <param name="address">address.</param>
         /// <param name="taxInfo">taxInfo.</param>
-        public PartyIdentification(string partyId = default(string), Address address = default(Address), TaxRegistrationDetails taxInfo = default(TaxRegistrationDetails))
+        public PartyIdentification(string partyId = default(string), Address? address = default(Address?), TaxRegistrationDetails? taxInfo = default(TaxRegistrationDetails?))
         {
             // to ensure "partyId" is required (not null)
             if (partyId == null)
@@ -65,13 +65,13 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxInfo
         /// </summary>
         [DataMember(Name = "taxInfo", EmitDefaultValue = false)]
-        public TaxRegistrationDetails TaxInfo { get; set; }
+        public TaxRegistrationDetails? TaxInfo { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

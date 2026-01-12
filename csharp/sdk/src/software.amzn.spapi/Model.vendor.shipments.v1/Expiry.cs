@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="manufacturerDate">Production, packaging or assembly date determined by the manufacturer. Its meaning is determined based on the trade item context..</param>
         /// <param name="expiryDate">The date that determines the limit of consumption or use of a product. Its meaning is determined based on the trade item context..</param>
         /// <param name="expiryAfterDuration">expiryAfterDuration.</param>
-        public Expiry(DateTime manufacturerDate = default(DateTime), DateTime expiryDate = default(DateTime), Duration expiryAfterDuration = default(Duration))
+        public Expiry(DateTime? manufacturerDate = default(DateTime?), DateTime? expiryDate = default(DateTime?), Duration? expiryAfterDuration = default(Duration?))
         {
             this.ManufacturerDate = manufacturerDate;
             this.ExpiryDate = expiryDate;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Production, packaging or assembly date determined by the manufacturer. Its meaning is determined based on the trade item context.</value>
         [DataMember(Name = "manufacturerDate", EmitDefaultValue = false)]
-        public DateTime ManufacturerDate { get; set; }
+        public DateTime? ManufacturerDate { get; set; }
 
         /// <summary>
         /// The date that determines the limit of consumption or use of a product. Its meaning is determined based on the trade item context.
         /// </summary>
         /// <value>The date that determines the limit of consumption or use of a product. Its meaning is determined based on the trade item context.</value>
         [DataMember(Name = "expiryDate", EmitDefaultValue = false)]
-        public DateTime ExpiryDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiryAfterDuration
         /// </summary>
         [DataMember(Name = "expiryAfterDuration", EmitDefaultValue = false)]
-        public Duration ExpiryAfterDuration { get; set; }
+        public Duration? ExpiryAfterDuration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }
