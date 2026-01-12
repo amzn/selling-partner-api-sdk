@@ -1077,7 +1077,7 @@ class CustomerFeedbackApiTest extends BaseTestCase
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 24.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product together was a lot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to put it all together!&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product togetherwas alot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to putit all together!&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;quick and easy to install&quot;,
               &quot;metrics&quot; : {
@@ -1109,13 +1109,13 @@ class CustomerFeedbackApiTest extends BaseTestCase
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 18.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;strong and durable&quot;,
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 11.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             } ]
           } ],
           &quot;negativeTopics&quot; : [ {
@@ -1136,13 +1136,13 @@ class CustomerFeedbackApiTest extends BaseTestCase
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 24.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;hard to assemble&quot;,
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 21.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             } ]
           } ]
         }
@@ -1198,7 +1198,7 @@ class CustomerFeedbackApiTest extends BaseTestCase
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 24.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product together was a lot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to put it all together!&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product togetherwas alot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to putit all together!&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;quick and easy to install&quot;,
               &quot;metrics&quot; : {
@@ -1230,13 +1230,13 @@ class CustomerFeedbackApiTest extends BaseTestCase
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 18.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;strong and durable&quot;,
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 11.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             } ]
           } ],
           &quot;negativeTopics&quot; : [ {
@@ -1257,13 +1257,13 @@ class CustomerFeedbackApiTest extends BaseTestCase
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 24.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;hard to assemble&quot;,
               &quot;metrics&quot; : {
                 &quot;occurrencePercentage&quot; : 21.47
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             } ]
           } ]
         }
@@ -2787,7 +2787,7 @@ class CustomerFeedbackApiTest extends BaseTestCase
                 &quot;numberOfMentions&quot; : 5,
                 &quot;occurrencePercentage&quot; : 13.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product together was a lot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to put it all together!&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product togetherwas alot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to putit all together!&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;quick and easy to install&quot;,
               &quot;metrics&quot; : {
@@ -2840,14 +2840,14 @@ class CustomerFeedbackApiTest extends BaseTestCase
                 &quot;numberOfMentions&quot; : 4,
                 &quot;occurrencePercentage&quot; : 12.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;strong and durable&quot;,
               &quot;metrics&quot; : {
                 &quot;numberOfMentions&quot; : 2,
                 &quot;occurrencePercentage&quot; : 6.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             } ]
           } ],
           &quot;negativeTopics&quot; : [ {
@@ -2887,14 +2887,14 @@ class CustomerFeedbackApiTest extends BaseTestCase
                 &quot;numberOfMentions&quot; : 9,
                 &quot;occurrencePercentage&quot; : 25.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;hard to assemble&quot;,
               &quot;metrics&quot; : {
                 &quot;numberOfMentions&quot; : 6,
                 &quot;occurrencePercentage&quot; : 18.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             } ]
           } ]
         }
@@ -2970,7 +2970,7 @@ class CustomerFeedbackApiTest extends BaseTestCase
                 &quot;numberOfMentions&quot; : 5,
                 &quot;occurrencePercentage&quot; : 13.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product together was a lot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to put it all together!&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;Easy to put together!!.&quot;, &quot;Putting the product togetherwas alot however this saved so much room in my closet&quot;, &quot;love that it came with the one little tool you needed to putit all together!&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;quick and easy to install&quot;,
               &quot;metrics&quot; : {
@@ -3023,14 +3023,14 @@ class CustomerFeedbackApiTest extends BaseTestCase
                 &quot;numberOfMentions&quot; : 4,
                 &quot;occurrencePercentage&quot; : 12.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;strong and durable&quot;,
               &quot;metrics&quot; : {
                 &quot;numberOfMentions&quot; : 2,
                 &quot;occurrencePercentage&quot; : 6.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it&#39;s much sturdier than the other two brands that I have purchased.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;This IS sturdy.&quot;, &quot;Sturdiness construction.&quot;, &quot;it much sturdier than the other two brands that I have purchased.&quot; ]
             } ]
           } ],
           &quot;negativeTopics&quot; : [ {
@@ -3070,14 +3070,14 @@ class CustomerFeedbackApiTest extends BaseTestCase
                 &quot;numberOfMentions&quot; : 9,
                 &quot;occurrencePercentage&quot; : 25.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             }, {
               &quot;subtopic&quot; : &quot;hard to assemble&quot;,
               &quot;metrics&quot; : {
                 &quot;numberOfMentions&quot; : 6,
                 &quot;occurrencePercentage&quot; : 18.01
               },
-              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a hard time putting together.&quot; ]
+              &quot;reviewSnippets&quot; : [ &quot;impossible to put together&quot;, &quot;Had a little hard time putting together either.&quot; ]
             } ]
           } ]
         }
