@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="ineligibilityReasons">If not eligible, these are list of error codes and descriptions..</param>
         /// <param name="packageQuantity">packageQuantity (required).</param>
         /// <param name="status">status (required).</param>
-        public SkuEligibility(List<SkuIneligibilityReason> ineligibilityReasons = default(List<SkuIneligibilityReason>), DistributionPackageQuantity packageQuantity = default(DistributionPackageQuantity), InboundEligibilityStatus status = default(InboundEligibilityStatus))
+        public SkuEligibility(List<SkuIneligibilityReason>? ineligibilityReasons = default(List<SkuIneligibilityReason>?), DistributionPackageQuantity packageQuantity = default(DistributionPackageQuantity), InboundEligibilityStatus status = default(InboundEligibilityStatus))
         {
             // to ensure "packageQuantity" is required (not null)
             if (packageQuantity == null)
@@ -65,7 +65,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>If not eligible, these are list of error codes and descriptions.</value>
         [DataMember(Name = "ineligibilityReasons", EmitDefaultValue = false)]
-        public List<SkuIneligibilityReason> IneligibilityReasons { get; set; }
+        public List<SkuIneligibilityReason>? IneligibilityReasons { get; set; }
 
         /// <summary>
         /// Gets or Sets PackageQuantity
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

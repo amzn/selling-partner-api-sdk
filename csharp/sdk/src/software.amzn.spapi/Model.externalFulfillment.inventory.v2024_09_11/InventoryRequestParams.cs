@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// <param name="clientSequenceNumber">The latest sequence number for the inventory update operation. You find this value in the &#x60;clientSequenceNumber&#x60; property in the response to the &#x60;batchInventory&#x60; operation..</param>
         /// <param name="quantity">The absolute inventory quantity..</param>
         /// <param name="marketplaceAttributes">marketplaceAttributes.</param>
-        public InventoryRequestParams(int clientSequenceNumber = default(int), int quantity = default(int), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes))
+        public InventoryRequestParams(int? clientSequenceNumber = default(int?), int? quantity = default(int?), MarketplaceAttributes? marketplaceAttributes = default(MarketplaceAttributes?))
         {
             this.ClientSequenceNumber = clientSequenceNumber;
             this.Quantity = quantity;
@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>12345678</example>
         */
         [DataMember(Name = "clientSequenceNumber", EmitDefaultValue = false)]
-        public int ClientSequenceNumber { get; set; }
+        public int? ClientSequenceNumber { get; set; }
 
         /// <summary>
         /// The absolute inventory quantity.
@@ -62,13 +62,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>15</example>
         */
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketplaceAttributes
         /// </summary>
         [DataMember(Name = "marketplaceAttributes", EmitDefaultValue = false)]
-        public MarketplaceAttributes MarketplaceAttributes { get; set; }
+        public MarketplaceAttributes? MarketplaceAttributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -104,5 +104,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

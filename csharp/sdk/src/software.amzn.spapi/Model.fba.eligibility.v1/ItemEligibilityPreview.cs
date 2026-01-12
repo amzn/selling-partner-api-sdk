@@ -319,7 +319,7 @@ namespace software.amzn.spapi.Model.fba.eligibility.v1
         /// <param name="program">The program for which eligibility was determined. (required).</param>
         /// <param name="isEligibleForProgram">Indicates if the item is eligible for the program. (required).</param>
         /// <param name="ineligibilityReasonList">Potential Ineligibility Reason Codes..</param>
-        public ItemEligibilityPreview(string asin = default(string), string marketplaceId = default(string), ProgramEnum program = default(ProgramEnum), bool isEligibleForProgram = default(bool), List<IneligibilityReasonListEnum> ineligibilityReasonList = default(List<IneligibilityReasonListEnum>))
+        public ItemEligibilityPreview(string asin = default(string), string? marketplaceId = default(string?), ProgramEnum program = default(ProgramEnum), bool isEligibleForProgram = default(bool), List<IneligibilityReasonListEnum>? ineligibilityReasonList = default(List<IneligibilityReasonListEnum>?))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -345,7 +345,7 @@ namespace software.amzn.spapi.Model.fba.eligibility.v1
         /// </summary>
         /// <value>The marketplace for which eligibility was determined.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Indicates if the item is eligible for the program.
@@ -359,7 +359,7 @@ namespace software.amzn.spapi.Model.fba.eligibility.v1
         /// </summary>
         /// <value>Potential Ineligibility Reason Codes.</value>
         [DataMember(Name = "ineligibilityReasonList", EmitDefaultValue = false)]
-        public List<ItemEligibilityPreview.IneligibilityReasonListEnum> IneligibilityReasonList { get; set; }
+        public List<ItemEligibilityPreview.IneligibilityReasonListEnum>? IneligibilityReasonList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -397,5 +397,4 @@ namespace software.amzn.spapi.Model.fba.eligibility.v1
             yield break;
         }
     }
-
 }

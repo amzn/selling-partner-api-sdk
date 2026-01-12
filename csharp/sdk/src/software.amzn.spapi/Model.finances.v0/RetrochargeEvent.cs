@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="shippingTax">shippingTax.</param>
         /// <param name="marketplaceName">The name of the marketplace where the retrocharge event occurred..</param>
         /// <param name="retrochargeTaxWithheldList">A list of information about taxes withheld..</param>
-        public RetrochargeEvent(string retrochargeEventType = default(string), string amazonOrderId = default(string), DateTime postedDate = default(DateTime), Currency baseTax = default(Currency), Currency shippingTax = default(Currency), string marketplaceName = default(string), List<TaxWithheldComponent> retrochargeTaxWithheldList = default(List<TaxWithheldComponent>))
+        public RetrochargeEvent(string? retrochargeEventType = default(string?), string? amazonOrderId = default(string?), DateTime? postedDate = default(DateTime?), Currency? baseTax = default(Currency?), Currency? shippingTax = default(Currency?), string? marketplaceName = default(string?), List<TaxWithheldComponent>? retrochargeTaxWithheldList = default(List<TaxWithheldComponent>?))
         {
             this.RetrochargeEventType = retrochargeEventType;
             this.AmazonOrderId = amazonOrderId;
@@ -57,47 +57,47 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The type of event.  Possible values:  * &#x60;Retrocharge&#x60;  * &#x60;RetrochargeReversal&#x60;</value>
         [DataMember(Name = "RetrochargeEventType", EmitDefaultValue = false)]
-        public string RetrochargeEventType { get; set; }
+        public string? RetrochargeEventType { get; set; }
 
         /// <summary>
         /// An Amazon-defined identifier for an order.
         /// </summary>
         /// <value>An Amazon-defined identifier for an order.</value>
         [DataMember(Name = "AmazonOrderId", EmitDefaultValue = false)]
-        public string AmazonOrderId { get; set; }
+        public string? AmazonOrderId { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// Gets or Sets BaseTax
         /// </summary>
         [DataMember(Name = "BaseTax", EmitDefaultValue = false)]
-        public Currency BaseTax { get; set; }
+        public Currency? BaseTax { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingTax
         /// </summary>
         [DataMember(Name = "ShippingTax", EmitDefaultValue = false)]
-        public Currency ShippingTax { get; set; }
+        public Currency? ShippingTax { get; set; }
 
         /// <summary>
         /// The name of the marketplace where the retrocharge event occurred.
         /// </summary>
         /// <value>The name of the marketplace where the retrocharge event occurred.</value>
         [DataMember(Name = "MarketplaceName", EmitDefaultValue = false)]
-        public string MarketplaceName { get; set; }
+        public string? MarketplaceName { get; set; }
 
         /// <summary>
         /// A list of information about taxes withheld.
         /// </summary>
         /// <value>A list of information about taxes withheld.</value>
         [DataMember(Name = "RetrochargeTaxWithheldList", EmitDefaultValue = false)]
-        public List<TaxWithheldComponent> RetrochargeTaxWithheldList { get; set; }
+        public List<TaxWithheldComponent>? RetrochargeTaxWithheldList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,5 +137,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

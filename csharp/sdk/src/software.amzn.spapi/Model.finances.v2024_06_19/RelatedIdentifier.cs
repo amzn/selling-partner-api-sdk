@@ -111,7 +111,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <param name="relatedIdentifierName">An enumerated set of related business identifier names..</param>
         /// <param name="relatedIdentifierValue">Corresponding value of &#x60;RelatedIdentifierName&#x60;..</param>
-        public RelatedIdentifier(RelatedIdentifierNameEnum? relatedIdentifierName = default(RelatedIdentifierNameEnum?), string relatedIdentifierValue = default(string))
+        public RelatedIdentifier(RelatedIdentifierNameEnum? relatedIdentifierName = default(RelatedIdentifierNameEnum?), string? relatedIdentifierValue = default(string?))
         {
             this.RelatedIdentifierName = relatedIdentifierName;
             this.RelatedIdentifierValue = relatedIdentifierValue;
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>Corresponding value of &#x60;RelatedIdentifierName&#x60;.</value>
         [DataMember(Name = "relatedIdentifierValue", EmitDefaultValue = false)]
-        public string RelatedIdentifierValue { get; set; }
+        public string? RelatedIdentifierValue { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -157,5 +157,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

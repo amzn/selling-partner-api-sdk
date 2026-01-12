@@ -104,5 +104,4 @@ namespace software.amzn.spapi.Model.sales.v1
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="sellingPartnerId">A unique seller identifier..</param>
         /// <param name="accountType">The type of account in the transaction..</param>
         /// <param name="marketplaceId">The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids)..</param>
-        public SellingPartnerMetadata(string sellingPartnerId = default(string), string accountType = default(string), string marketplaceId = default(string))
+        public SellingPartnerMetadata(string? sellingPartnerId = default(string?), string? accountType = default(string?), string? marketplaceId = default(string?))
         {
             this.SellingPartnerId = sellingPartnerId;
             this.AccountType = accountType;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>A unique seller identifier.</value>
         [DataMember(Name = "sellingPartnerId", EmitDefaultValue = false)]
-        public string SellingPartnerId { get; set; }
+        public string? SellingPartnerId { get; set; }
 
         /// <summary>
         /// The type of account in the transaction.
         /// </summary>
         /// <value>The type of account in the transaction.</value>
         [DataMember(Name = "accountType", EmitDefaultValue = false)]
-        public string AccountType { get; set; }
+        public string? AccountType { get; set; }
 
         /// <summary>
         /// The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
         /// </summary>
         /// <value>The identifier of the marketplace where the transaction occurred. The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

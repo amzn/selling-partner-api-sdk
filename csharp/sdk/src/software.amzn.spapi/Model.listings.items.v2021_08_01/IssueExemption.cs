@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <param name="status">This field indicates the current exemption status for the listed enforcement actions. It can take values such as &#x60;EXEMPT&#x60;, signifying permanent exemption, &#x60;EXEMPT_UNTIL_EXPIRY_DATE&#x60; indicating temporary exemption until a specified date, or &#x60;NOT_EXEMPT&#x60; signifying no exemptions, and enforcement actions were already applied. (required).</param>
         /// <param name="expiryDate">Represents the timestamp, in ISO 8601 format, that specifies the date when the temporary exemptions expires, and Amazon begins enforcing the listed actions..</param>
-        public IssueExemption(StatusEnum status = default(StatusEnum), DateTime expiryDate = default(DateTime))
+        public IssueExemption(StatusEnum status = default(StatusEnum), DateTime? expiryDate = default(DateTime?))
         {
             this.Status = status;
             this.ExpiryDate = expiryDate;
@@ -88,7 +88,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         <example>2023-10-28T00:36:48.914Z</example>
         */
         [DataMember(Name = "expiryDate", EmitDefaultValue = false)]
-        public DateTime ExpiryDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,5 +123,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

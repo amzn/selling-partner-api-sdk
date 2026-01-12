@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="shipmentId">A unique shipment ID. (required).</param>
         /// <param name="shipmentStatus">shipmentStatus (required).</param>
         /// <param name="updatedAt">Timestamp when the shipment was updated..</param>
-        public InboundShipmentSummary(DateTime createdAt = default(DateTime), string externalReferenceId = default(string), string orderId = default(string), string shipmentId = default(string), InboundShipmentStatus shipmentStatus = default(InboundShipmentStatus), DateTime updatedAt = default(DateTime))
+        public InboundShipmentSummary(DateTime? createdAt = default(DateTime?), string? externalReferenceId = default(string?), string orderId = default(string), string shipmentId = default(string), InboundShipmentStatus shipmentStatus = default(InboundShipmentStatus), DateTime? updatedAt = default(DateTime?))
         {
             // to ensure "orderId" is required (not null)
             if (orderId == null)
@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Timestamp when the shipment was created.</value>
         [DataMember(Name = "createdAt", EmitDefaultValue = false)]
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// Optional client-provided reference ID that can be used to correlate this shipment with client resources. For example, to map this shipment to an internal bookkeeping order record.
@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestReferenceId</example>
         */
         [DataMember(Name = "externalReferenceId", EmitDefaultValue = false)]
-        public string ExternalReferenceId { get; set; }
+        public string? ExternalReferenceId { get; set; }
 
         /// <summary>
         /// The AWD inbound order ID that this inbound shipment belongs to.
@@ -107,7 +107,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>Timestamp when the shipment was updated.</value>
         [DataMember(Name = "updatedAt", EmitDefaultValue = false)]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -158,5 +158,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

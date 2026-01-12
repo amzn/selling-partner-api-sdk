@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="productIdentifier">productIdentifier (required).</param>
         /// <param name="amount">amount.</param>
-        public GetDeliveryOffersProduct(ProductIdentifier productIdentifier = default(ProductIdentifier), Amount amount = default(Amount))
+        public GetDeliveryOffersProduct(ProductIdentifier productIdentifier = default(ProductIdentifier), Amount? amount = default(Amount?))
         {
             // to ensure "productIdentifier" is required (not null)
             if (productIdentifier == null)
@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "amount", EmitDefaultValue = false)]
-        public Amount Amount { get; set; }
+        public Amount? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

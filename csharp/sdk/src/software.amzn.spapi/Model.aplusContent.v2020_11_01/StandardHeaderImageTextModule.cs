@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="headline">headline.</param>
         /// <param name="block">block.</param>
-        public StandardHeaderImageTextModule(TextComponent headline = default(TextComponent), StandardImageTextBlock block = default(StandardImageTextBlock))
+        public StandardHeaderImageTextModule(TextComponent? headline = default(TextComponent?), StandardImageTextBlock? block = default(StandardImageTextBlock?))
         {
             this.Headline = headline;
             this.Block = block;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Headline
         /// </summary>
         [DataMember(Name = "headline", EmitDefaultValue = false)]
-        public TextComponent Headline { get; set; }
+        public TextComponent? Headline { get; set; }
 
         /// <summary>
         /// Gets or Sets Block
         /// </summary>
         [DataMember(Name = "block", EmitDefaultValue = false)]
-        public StandardImageTextBlock Block { get; set; }
+        public StandardImageTextBlock? Block { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

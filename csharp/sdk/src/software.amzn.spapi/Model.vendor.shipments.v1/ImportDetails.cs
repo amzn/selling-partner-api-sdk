@@ -131,7 +131,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="billableWeight">billableWeight.</param>
         /// <param name="estimatedShipByDate">Date on which the shipment is expected to be shipped. This value should not be in the past and not more than 60 days out in the future..</param>
         /// <param name="handlingInstructions">Identification of the instructions on how specified item/carton/pallet should be handled..</param>
-        public ImportDetails(MethodOfPaymentEnum? methodOfPayment = default(MethodOfPaymentEnum?), string sealNumber = default(string), Route route = default(Route), string importContainers = default(string), Weight billableWeight = default(Weight), DateTime estimatedShipByDate = default(DateTime), HandlingInstructionsEnum? handlingInstructions = default(HandlingInstructionsEnum?))
+        public ImportDetails(MethodOfPaymentEnum? methodOfPayment = default(MethodOfPaymentEnum?), string? sealNumber = default(string?), Route? route = default(Route?), string? importContainers = default(string?), Weight? billableWeight = default(Weight?), DateTime? estimatedShipByDate = default(DateTime?), HandlingInstructionsEnum? handlingInstructions = default(HandlingInstructionsEnum?))
         {
             this.MethodOfPayment = methodOfPayment;
             this.SealNumber = sealNumber;
@@ -147,33 +147,33 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>The container&#39;s seal number.</value>
         [DataMember(Name = "sealNumber", EmitDefaultValue = false)]
-        public string SealNumber { get; set; }
+        public string? SealNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets Route
         /// </summary>
         [DataMember(Name = "route", EmitDefaultValue = false)]
-        public Route Route { get; set; }
+        public Route? Route { get; set; }
 
         /// <summary>
         /// Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if shipment has multiple containers.
         /// </summary>
         /// <value>Types and numbers of container(s) for import purchase orders. Can be a comma-separated list if shipment has multiple containers.</value>
         [DataMember(Name = "importContainers", EmitDefaultValue = false)]
-        public string ImportContainers { get; set; }
+        public string? ImportContainers { get; set; }
 
         /// <summary>
         /// Gets or Sets BillableWeight
         /// </summary>
         [DataMember(Name = "billableWeight", EmitDefaultValue = false)]
-        public Weight BillableWeight { get; set; }
+        public Weight? BillableWeight { get; set; }
 
         /// <summary>
         /// Date on which the shipment is expected to be shipped. This value should not be in the past and not more than 60 days out in the future.
         /// </summary>
         /// <value>Date on which the shipment is expected to be shipped. This value should not be in the past and not more than 60 days out in the future.</value>
         [DataMember(Name = "estimatedShipByDate", EmitDefaultValue = false)]
-        public DateTime EstimatedShipByDate { get; set; }
+        public DateTime? EstimatedShipByDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -219,5 +219,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

@@ -103,5 +103,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

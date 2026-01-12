@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="displayName">Display name for the classification. (required).</param>
         /// <param name="classificationId">Identifier of the classification. (required).</param>
         /// <param name="parent">parent.</param>
-        public ItemBrowseClassification(string displayName = default(string), string classificationId = default(string), ItemBrowseClassification parent = default(ItemBrowseClassification))
+        public ItemBrowseClassification(string displayName = default(string), string classificationId = default(string), ItemBrowseClassification? parent = default(ItemBrowseClassification?))
         {
             // to ensure "displayName" is required (not null)
             if (displayName == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// Gets or Sets Parent
         /// </summary>
         [DataMember(Name = "parent", EmitDefaultValue = false)]
-        public ItemBrowseClassification Parent { get; set; }
+        public ItemBrowseClassification? Parent { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

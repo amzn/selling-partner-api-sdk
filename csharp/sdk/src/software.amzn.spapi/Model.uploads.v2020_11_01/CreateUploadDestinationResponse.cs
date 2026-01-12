@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.uploads.v2020_11_01
         /// </summary>
         /// <param name="payload">payload.</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public CreateUploadDestinationResponse(UploadDestination payload = default(UploadDestination), List<Error> errors = default(List<Error>))
+        public CreateUploadDestinationResponse(UploadDestination? payload = default(UploadDestination?), List<Error>? errors = default(List<Error>?))
         {
             this.Payload = payload;
             this.Errors = errors;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.uploads.v2020_11_01
         /// Gets or Sets Payload
         /// </summary>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public UploadDestination Payload { get; set; }
+        public UploadDestination? Payload { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.uploads.v2020_11_01
             yield break;
         }
     }
-
 }

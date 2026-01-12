@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="technicianId">The technician identifier..</param>
         /// <param name="name">The name of the technician..</param>
-        public Technician(string technicianId = default(string), string name = default(string))
+        public Technician(string? technicianId = default(string?), string? name = default(string?))
         {
             this.TechnicianId = technicianId;
             this.Name = name;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The technician identifier.</value>
         [DataMember(Name = "technicianId", EmitDefaultValue = false)]
-        public string TechnicianId { get; set; }
+        public string? TechnicianId { get; set; }
 
         /// <summary>
         /// The name of the technician.
         /// </summary>
         /// <value>The name of the technician.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,5 +101,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.appIntegrations.v2024_04_01
         /// <param name="templateId">The unique identifier of the notification template you used to onboard your application. (required).</param>
         /// <param name="notificationParameters">The dynamic parameters required by the notification templated specified by &#x60;templateId&#x60;. (required).</param>
         /// <param name="marketplaceId">An encrypted marketplace identifier for the posted notification..</param>
-        public CreateNotificationRequest(string templateId = default(string), Dictionary<string, Object> notificationParameters = default(Dictionary<string, Object>), string marketplaceId = default(string))
+        public CreateNotificationRequest(string templateId = default(string), Dictionary<string, Object> notificationParameters = default(Dictionary<string, Object>), string? marketplaceId = default(string?))
         {
             // to ensure "templateId" is required (not null)
             if (templateId == null)
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Model.appIntegrations.v2024_04_01
         /// </summary>
         /// <value>An encrypted marketplace identifier for the posted notification.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.appIntegrations.v2024_04_01
             yield break;
         }
     }
-
 }

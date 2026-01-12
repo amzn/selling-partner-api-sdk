@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="statusCode">The HTTP response Status Code..</param>
         /// <param name="reasonPhrase">The HTTP response Reason-Phase..</param>
-        public GetOffersHttpStatusLine(int statusCode = default(int), string reasonPhrase = default(string))
+        public GetOffersHttpStatusLine(int? statusCode = default(int?), string? reasonPhrase = default(string?))
         {
             this.StatusCode = statusCode;
             this.ReasonPhrase = reasonPhrase;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The HTTP response Status Code.</value>
         [DataMember(Name = "statusCode", EmitDefaultValue = false)]
-        public int StatusCode { get; set; }
+        public int? StatusCode { get; set; }
 
         /// <summary>
         /// The HTTP response Reason-Phase.
         /// </summary>
         /// <value>The HTTP response Reason-Phase.</value>
         [DataMember(Name = "reasonPhrase", EmitDefaultValue = false)]
-        public string ReasonPhrase { get; set; }
+        public string? ReasonPhrase { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,5 +101,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

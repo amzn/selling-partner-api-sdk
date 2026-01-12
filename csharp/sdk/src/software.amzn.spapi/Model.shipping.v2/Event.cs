@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="location">location.</param>
         /// <param name="eventTime">The ISO 8601 formatted timestamp of the event. (required).</param>
         /// <param name="shipmentType">shipmentType.</param>
-        public Event(EventCode eventCode = default(EventCode), Location location = default(Location), DateTime eventTime = default(DateTime), ShipmentType? shipmentType = default(ShipmentType?))
+        public Event(EventCode eventCode = default(EventCode), Location? location = default(Location?), DateTime eventTime = default(DateTime), ShipmentType? shipmentType = default(ShipmentType?))
         {
             this.EventCode = eventCode;
             this.EventTime = eventTime;
@@ -68,7 +68,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Location
         /// </summary>
         [DataMember(Name = "location", EmitDefaultValue = false)]
-        public Location Location { get; set; }
+        public Location? Location { get; set; }
 
         /// <summary>
         /// The ISO 8601 formatted timestamp of the event.
@@ -112,5 +112,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

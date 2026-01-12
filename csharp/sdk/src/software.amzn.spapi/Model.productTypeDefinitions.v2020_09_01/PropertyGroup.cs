@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// <param name="title">The display label of the property group..</param>
         /// <param name="description">The description of the property group..</param>
         /// <param name="propertyNames">The names of the schema properties for the property group..</param>
-        public PropertyGroup(string title = default(string), string description = default(string), List<string> propertyNames = default(List<string>))
+        public PropertyGroup(string? title = default(string?), string? description = default(string?), List<string>? propertyNames = default(List<string>?))
         {
             this.Title = title;
             this.Description = description;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
         /// </summary>
         /// <value>The display label of the property group.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The description of the property group.
         /// </summary>
         /// <value>The description of the property group.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// The names of the schema properties for the property group.
         /// </summary>
         /// <value>The names of the schema properties for the property group.</value>
         [DataMember(Name = "propertyNames", EmitDefaultValue = false)]
-        public List<string> PropertyNames { get; set; }
+        public List<string>? PropertyNames { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.productTypeDefinitions.v2020_09_01
             yield break;
         }
     }
-
 }

@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
             yield break;
         }
     }
-
 }

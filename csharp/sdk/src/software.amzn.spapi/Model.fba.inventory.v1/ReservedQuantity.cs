@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="pendingCustomerOrderQuantity">The number of units reserved for customer orders..</param>
         /// <param name="pendingTransshipmentQuantity">The number of units being transferred from one fulfillment center to another..</param>
         /// <param name="fcProcessingQuantity">The number of units that have been sidelined at the fulfillment center for additional processing..</param>
-        public ReservedQuantity(int totalReservedQuantity = default(int), int pendingCustomerOrderQuantity = default(int), int pendingTransshipmentQuantity = default(int), int fcProcessingQuantity = default(int))
+        public ReservedQuantity(int? totalReservedQuantity = default(int?), int? pendingCustomerOrderQuantity = default(int?), int? pendingTransshipmentQuantity = default(int?), int? fcProcessingQuantity = default(int?))
         {
             this.TotalReservedQuantity = totalReservedQuantity;
             this.PendingCustomerOrderQuantity = pendingCustomerOrderQuantity;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>The total number of units in Amazon&#39;s fulfillment network that are currently being picked, packed, and shipped; or are sidelined for measurement, sampling, or other internal processes.</value>
         [DataMember(Name = "totalReservedQuantity", EmitDefaultValue = false)]
-        public int TotalReservedQuantity { get; set; }
+        public int? TotalReservedQuantity { get; set; }
 
         /// <summary>
         /// The number of units reserved for customer orders.
         /// </summary>
         /// <value>The number of units reserved for customer orders.</value>
         [DataMember(Name = "pendingCustomerOrderQuantity", EmitDefaultValue = false)]
-        public int PendingCustomerOrderQuantity { get; set; }
+        public int? PendingCustomerOrderQuantity { get; set; }
 
         /// <summary>
         /// The number of units being transferred from one fulfillment center to another.
         /// </summary>
         /// <value>The number of units being transferred from one fulfillment center to another.</value>
         [DataMember(Name = "pendingTransshipmentQuantity", EmitDefaultValue = false)]
-        public int PendingTransshipmentQuantity { get; set; }
+        public int? PendingTransshipmentQuantity { get; set; }
 
         /// <summary>
         /// The number of units that have been sidelined at the fulfillment center for additional processing.
         /// </summary>
         /// <value>The number of units that have been sidelined at the fulfillment center for additional processing.</value>
         [DataMember(Name = "fcProcessingQuantity", EmitDefaultValue = false)]
-        public int FcProcessingQuantity { get; set; }
+        public int? FcProcessingQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

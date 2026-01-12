@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="appointmentId">The appointment identifier..</param>
         /// <param name="warnings">A list of warnings returned in the sucessful execution response of an API request..</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public SetAppointmentResponse(string appointmentId = default(string), List<Warning> warnings = default(List<Warning>), List<Error> errors = default(List<Error>))
+        public SetAppointmentResponse(string? appointmentId = default(string?), List<Warning>? warnings = default(List<Warning>?), List<Error>? errors = default(List<Error>?))
         {
             this.AppointmentId = appointmentId;
             this.Warnings = warnings;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The appointment identifier.</value>
         [DataMember(Name = "appointmentId", EmitDefaultValue = false)]
-        public string AppointmentId { get; set; }
+        public string? AppointmentId { get; set; }
 
         /// <summary>
         /// A list of warnings returned in the sucessful execution response of an API request.
         /// </summary>
         /// <value>A list of warnings returned in the sucessful execution response of an API request.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Warning> Warnings { get; set; }
+        public List<Warning>? Warnings { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

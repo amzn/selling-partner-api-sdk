@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="receiveStatus">Receive status of the line item..</param>
         /// <param name="receivedQuantity">receivedQuantity.</param>
         /// <param name="lastReceiveDate">The date when the most recent item was received at the buyer&#39;s warehouse. Must be in ISO-8601 date/time format..</param>
-        public OrderItemStatusReceivingStatus(ReceiveStatusEnum? receiveStatus = default(ReceiveStatusEnum?), ItemQuantity receivedQuantity = default(ItemQuantity), DateTime lastReceiveDate = default(DateTime))
+        public OrderItemStatusReceivingStatus(ReceiveStatusEnum? receiveStatus = default(ReceiveStatusEnum?), ItemQuantity? receivedQuantity = default(ItemQuantity?), DateTime? lastReceiveDate = default(DateTime?))
         {
             this.ReceiveStatus = receiveStatus;
             this.ReceivedQuantity = receivedQuantity;
@@ -81,14 +81,14 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets ReceivedQuantity
         /// </summary>
         [DataMember(Name = "receivedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity ReceivedQuantity { get; set; }
+        public ItemQuantity? ReceivedQuantity { get; set; }
 
         /// <summary>
         /// The date when the most recent item was received at the buyer&#39;s warehouse. Must be in ISO-8601 date/time format.
         /// </summary>
         /// <value>The date when the most recent item was received at the buyer&#39;s warehouse. Must be in ISO-8601 date/time format.</value>
         [DataMember(Name = "lastReceiveDate", EmitDefaultValue = false)]
-        public DateTime LastReceiveDate { get; set; }
+        public DateTime? LastReceiveDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -124,5 +124,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

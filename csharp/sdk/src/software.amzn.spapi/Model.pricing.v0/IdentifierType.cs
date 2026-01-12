@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="marketplaceASIN">marketplaceASIN (required).</param>
         /// <param name="sKUIdentifier">sKUIdentifier.</param>
-        public IdentifierType(ASINIdentifier marketplaceASIN = default(ASINIdentifier), SellerSKUIdentifier sKUIdentifier = default(SellerSKUIdentifier))
+        public IdentifierType(ASINIdentifier marketplaceASIN = default(ASINIdentifier), SellerSKUIdentifier? sKUIdentifier = default(SellerSKUIdentifier?))
         {
             // to ensure "marketplaceASIN" is required (not null)
             if (marketplaceASIN == null)
@@ -62,7 +62,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets SKUIdentifier
         /// </summary>
         [DataMember(Name = "SKUIdentifier", EmitDefaultValue = false)]
-        public SellerSKUIdentifier SKUIdentifier { get; set; }
+        public SellerSKUIdentifier? SKUIdentifier { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

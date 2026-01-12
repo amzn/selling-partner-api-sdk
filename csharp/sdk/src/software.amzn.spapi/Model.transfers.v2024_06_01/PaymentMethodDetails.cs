@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         /// <param name="countryCode">The two-letter country code in ISO 3166-1 alpha-2 format. For payment methods in the &#x60;card&#x60; category, the code is for the country where the card was issued. For payment methods in the &#x60;bank account&#x60; category, the code is for the country where the account is located..</param>
         /// <param name="paymentMethodType">paymentMethodType.</param>
         /// <param name="assignmentType">assignmentType.</param>
-        public PaymentMethodDetails(string accountHolderName = default(string), string paymentMethodId = default(string), string tail = default(string), ExpiryDate expiryDate = default(ExpiryDate), string countryCode = default(string), PaymentMethodType? paymentMethodType = default(PaymentMethodType?), AssignmentType? assignmentType = default(AssignmentType?))
+        public PaymentMethodDetails(string? accountHolderName = default(string?), string? paymentMethodId = default(string?), string? tail = default(string?), ExpiryDate? expiryDate = default(ExpiryDate?), string? countryCode = default(string?), PaymentMethodType? paymentMethodType = default(PaymentMethodType?), AssignmentType? assignmentType = default(AssignmentType?))
         {
             this.AccountHolderName = accountHolderName;
             this.PaymentMethodId = paymentMethodId;
@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         /// </summary>
         /// <value>The name of the account holder who is registered for the payment method.</value>
         [DataMember(Name = "accountHolderName", EmitDefaultValue = false)]
-        public string AccountHolderName { get; set; }
+        public string? AccountHolderName { get; set; }
 
         /// <summary>
         /// The payment method identifier.
@@ -79,7 +79,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         <example>0h_TU_CUS_4058fe2a-da6b-4b82-8e48-b20ff2eb4f6d</example>
         */
         [DataMember(Name = "paymentMethodId", EmitDefaultValue = false)]
-        public string PaymentMethodId { get; set; }
+        public string? PaymentMethodId { get; set; }
 
         /// <summary>
         /// The last three or four digits of the payment method.
@@ -89,13 +89,13 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         <example>321</example>
         */
         [DataMember(Name = "tail", EmitDefaultValue = false)]
-        public string Tail { get; set; }
+        public string? Tail { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiryDate
         /// </summary>
         [DataMember(Name = "expiryDate", EmitDefaultValue = false)]
-        public ExpiryDate ExpiryDate { get; set; }
+        public ExpiryDate? ExpiryDate { get; set; }
 
         /// <summary>
         /// The two-letter country code in ISO 3166-1 alpha-2 format. For payment methods in the &#x60;card&#x60; category, the code is for the country where the card was issued. For payment methods in the &#x60;bank account&#x60; category, the code is for the country where the account is located.
@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         <example>US</example>
         */
         [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -145,5 +145,4 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
             yield break;
         }
     }
-
 }

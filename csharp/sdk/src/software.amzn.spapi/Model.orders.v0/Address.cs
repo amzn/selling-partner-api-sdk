@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="phone">The phone number of the buyer.  **Note**:  1. This attribute is only available for shipping address. 2. In some cases, the buyer phone number is suppressed:  a. Phone is suppressed for all &#x60;AFN&#x60; (fulfilled by Amazon) orders. b. Phone is suppressed for the shipped &#x60;MFN&#x60; (fulfilled by seller) order when the current date is past the Latest Delivery Date..</param>
         /// <param name="extendedFields">extendedFields.</param>
         /// <param name="addressType">The address type of the shipping address..</param>
-        public Address(string name = default(string), string companyName = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string county = default(string), string district = default(string), string stateOrRegion = default(string), string municipality = default(string), string postalCode = default(string), string countryCode = default(string), string phone = default(string), AddressExtendedFields extendedFields = default(AddressExtendedFields), AddressTypeEnum? addressType = default(AddressTypeEnum?))
+        public Address(string? name = default(string?), string? companyName = default(string?), string? addressLine1 = default(string?), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? city = default(string?), string? county = default(string?), string? district = default(string?), string? stateOrRegion = default(string?), string? municipality = default(string?), string? postalCode = default(string?), string? countryCode = default(string?), string? phone = default(string?), AddressExtendedFields? extendedFields = default(AddressExtendedFields?), AddressTypeEnum? addressType = default(AddressTypeEnum?))
         {
             this.Name = name;
             this.CompanyName = companyName;
@@ -100,97 +100,97 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The name.</value>
         [DataMember(Name = "Name", EmitDefaultValue = false)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The company name of the recipient.  **Note**: This attribute is only available for shipping address.
         /// </summary>
         /// <value>The company name of the recipient.  **Note**: This attribute is only available for shipping address.</value>
         [DataMember(Name = "CompanyName", EmitDefaultValue = false)]
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
 
         /// <summary>
         /// The street address.
         /// </summary>
         /// <value>The street address.</value>
         [DataMember(Name = "AddressLine1", EmitDefaultValue = false)]
-        public string AddressLine1 { get; set; }
+        public string? AddressLine1 { get; set; }
 
         /// <summary>
         /// Additional street address information, if required.
         /// </summary>
         /// <value>Additional street address information, if required.</value>
         [DataMember(Name = "AddressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Additional street address information, if required.
         /// </summary>
         /// <value>Additional street address information, if required.</value>
         [DataMember(Name = "AddressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// The city.
         /// </summary>
         /// <value>The city.</value>
         [DataMember(Name = "City", EmitDefaultValue = false)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// The county.
         /// </summary>
         /// <value>The county.</value>
         [DataMember(Name = "County", EmitDefaultValue = false)]
-        public string County { get; set; }
+        public string? County { get; set; }
 
         /// <summary>
         /// The district.
         /// </summary>
         /// <value>The district.</value>
         [DataMember(Name = "District", EmitDefaultValue = false)]
-        public string District { get; set; }
+        public string? District { get; set; }
 
         /// <summary>
         /// The state or region.
         /// </summary>
         /// <value>The state or region.</value>
         [DataMember(Name = "StateOrRegion", EmitDefaultValue = false)]
-        public string StateOrRegion { get; set; }
+        public string? StateOrRegion { get; set; }
 
         /// <summary>
         /// The municipality.
         /// </summary>
         /// <value>The municipality.</value>
         [DataMember(Name = "Municipality", EmitDefaultValue = false)]
-        public string Municipality { get; set; }
+        public string? Municipality { get; set; }
 
         /// <summary>
         /// The postal code.
         /// </summary>
         /// <value>The postal code.</value>
         [DataMember(Name = "PostalCode", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
         /// <summary>
         /// The country code. A two-character country code, in ISO 3166-1 alpha-2 format.
         /// </summary>
         /// <value>The country code. A two-character country code, in ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "CountryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// The phone number of the buyer.  **Note**:  1. This attribute is only available for shipping address. 2. In some cases, the buyer phone number is suppressed:  a. Phone is suppressed for all &#x60;AFN&#x60; (fulfilled by Amazon) orders. b. Phone is suppressed for the shipped &#x60;MFN&#x60; (fulfilled by seller) order when the current date is past the Latest Delivery Date.
         /// </summary>
         /// <value>The phone number of the buyer.  **Note**:  1. This attribute is only available for shipping address. 2. In some cases, the buyer phone number is suppressed:  a. Phone is suppressed for all &#x60;AFN&#x60; (fulfilled by Amazon) orders. b. Phone is suppressed for the shipped &#x60;MFN&#x60; (fulfilled by seller) order when the current date is past the Latest Delivery Date.</value>
         [DataMember(Name = "Phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// Gets or Sets ExtendedFields
         /// </summary>
         [DataMember(Name = "ExtendedFields", EmitDefaultValue = false)]
-        public AddressExtendedFields ExtendedFields { get; set; }
+        public AddressExtendedFields? ExtendedFields { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -238,5 +238,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

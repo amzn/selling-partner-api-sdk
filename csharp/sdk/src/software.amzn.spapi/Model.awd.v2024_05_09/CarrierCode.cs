@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="carrierCodeType">carrierCodeType.</param>
         /// <param name="carrierCodeValue">Value of the carrier code..</param>
-        public CarrierCode(CarrierCodeType? carrierCodeType = default(CarrierCodeType?), string carrierCodeValue = default(string))
+        public CarrierCode(CarrierCodeType? carrierCodeType = default(CarrierCodeType?), string? carrierCodeValue = default(string?))
         {
             this.CarrierCodeType = carrierCodeType;
             this.CarrierCodeValue = carrierCodeValue;
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>TestCarrierCode</example>
         */
         [DataMember(Name = "carrierCodeValue", EmitDefaultValue = false)]
-        public string CarrierCodeValue { get; set; }
+        public string? CarrierCodeValue { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,5 +91,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

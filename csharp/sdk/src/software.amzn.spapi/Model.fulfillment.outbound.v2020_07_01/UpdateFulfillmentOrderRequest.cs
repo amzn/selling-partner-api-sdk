@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="notificationEmails">A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller..</param>
         /// <param name="featureConstraints">A list of features and their fulfillment policies to apply to the order..</param>
         /// <param name="items">An array of fulfillment order item information for updating a fulfillment order..</param>
-        public UpdateFulfillmentOrderRequest(string marketplaceId = default(string), string displayableOrderId = default(string), DateTime displayableOrderDate = default(DateTime), string displayableOrderComment = default(string), ShippingSpeedCategory? shippingSpeedCategory = default(ShippingSpeedCategory?), Address destinationAddress = default(Address), FulfillmentAction? fulfillmentAction = default(FulfillmentAction?), FulfillmentPolicy? fulfillmentPolicy = default(FulfillmentPolicy?), string shipFromCountryCode = default(string), List<string> notificationEmails = default(List<string>), List<FeatureSettings> featureConstraints = default(List<FeatureSettings>), List<UpdateFulfillmentOrderItem> items = default(List<UpdateFulfillmentOrderItem>))
+        public UpdateFulfillmentOrderRequest(string? marketplaceId = default(string?), string? displayableOrderId = default(string?), DateTime? displayableOrderDate = default(DateTime?), string? displayableOrderComment = default(string?), ShippingSpeedCategory? shippingSpeedCategory = default(ShippingSpeedCategory?), Address? destinationAddress = default(Address?), FulfillmentAction? fulfillmentAction = default(FulfillmentAction?), FulfillmentPolicy? fulfillmentPolicy = default(FulfillmentPolicy?), string? shipFromCountryCode = default(string?), List<string>? notificationEmails = default(List<string>?), List<FeatureSettings>? featureConstraints = default(List<FeatureSettings>?), List<UpdateFulfillmentOrderItem>? items = default(List<UpdateFulfillmentOrderItem>?))
         {
             this.MarketplaceId = marketplaceId;
             this.DisplayableOrderId = displayableOrderId;
@@ -85,62 +85,62 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The marketplace the fulfillment order is placed against.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of &#x60;DisplayableOrderId&#x60; should match the order identifier that the seller provides to the recipient. The seller can use the &#x60;SellerFulfillmentOrderId&#x60; for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.
         /// </summary>
         /// <value>A fulfillment order identifier that the seller creates. This value displays as the order identifier in recipient-facing materials such as the outbound shipment packing slip. The value of &#x60;DisplayableOrderId&#x60; should match the order identifier that the seller provides to the recipient. The seller can use the &#x60;SellerFulfillmentOrderId&#x60; for this value or they can specify an alternate value if they want the recipient to reference an alternate order identifier.</value>
         [DataMember(Name = "displayableOrderId", EmitDefaultValue = false)]
-        public string DisplayableOrderId { get; set; }
+        public string? DisplayableOrderId { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "displayableOrderDate", EmitDefaultValue = false)]
-        public DateTime DisplayableOrderDate { get; set; }
+        public DateTime? DisplayableOrderDate { get; set; }
 
         /// <summary>
         /// Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.
         /// </summary>
         /// <value>Order-specific text that appears in recipient-facing materials such as the outbound shipment packing slip.</value>
         [DataMember(Name = "displayableOrderComment", EmitDefaultValue = false)]
-        public string DisplayableOrderComment { get; set; }
+        public string? DisplayableOrderComment { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationAddress
         /// </summary>
         [DataMember(Name = "destinationAddress", EmitDefaultValue = false)]
-        public Address DestinationAddress { get; set; }
+        public Address? DestinationAddress { get; set; }
 
         /// <summary>
         /// The two-character country code for the country from which the fulfillment order ships. Must be in ISO 3166-1 alpha-2 format.
         /// </summary>
         /// <value>The two-character country code for the country from which the fulfillment order ships. Must be in ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "shipFromCountryCode", EmitDefaultValue = false)]
-        public string ShipFromCountryCode { get; set; }
+        public string? ShipFromCountryCode { get; set; }
 
         /// <summary>
         /// A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.
         /// </summary>
         /// <value>A list of email addresses that the seller provides that are used by Amazon to send ship-complete notifications to recipients on behalf of the seller.</value>
         [DataMember(Name = "notificationEmails", EmitDefaultValue = false)]
-        public List<string> NotificationEmails { get; set; }
+        public List<string>? NotificationEmails { get; set; }
 
         /// <summary>
         /// A list of features and their fulfillment policies to apply to the order.
         /// </summary>
         /// <value>A list of features and their fulfillment policies to apply to the order.</value>
         [DataMember(Name = "featureConstraints", EmitDefaultValue = false)]
-        public List<FeatureSettings> FeatureConstraints { get; set; }
+        public List<FeatureSettings>? FeatureConstraints { get; set; }
 
         /// <summary>
         /// An array of fulfillment order item information for updating a fulfillment order.
         /// </summary>
         /// <value>An array of fulfillment order item information for updating a fulfillment order.</value>
         [DataMember(Name = "items", EmitDefaultValue = false)]
-        public List<UpdateFulfillmentOrderItem> Items { get; set; }
+        public List<UpdateFulfillmentOrderItem>? Items { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -197,5 +197,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

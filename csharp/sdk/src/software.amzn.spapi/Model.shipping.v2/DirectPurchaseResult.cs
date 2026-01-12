@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="shipmentId">The unique shipment identifier provided by a shipping service. (required).</param>
         /// <param name="packageDocumentDetailList">A list of post-purchase details about a package that will be shipped using a shipping service..</param>
-        public DirectPurchaseResult(string shipmentId = default(string), List<PackageDocumentDetail> packageDocumentDetailList = default(List<PackageDocumentDetail>))
+        public DirectPurchaseResult(string shipmentId = default(string), List<PackageDocumentDetail>? packageDocumentDetailList = default(List<PackageDocumentDetail>?))
         {
             // to ensure "shipmentId" is required (not null)
             if (shipmentId == null)
@@ -65,7 +65,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of post-purchase details about a package that will be shipped using a shipping service.</value>
         [DataMember(Name = "packageDocumentDetailList", EmitDefaultValue = false)]
-        public List<PackageDocumentDetail> PackageDocumentDetailList { get; set; }
+        public List<PackageDocumentDetail>? PackageDocumentDetailList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

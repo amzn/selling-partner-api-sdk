@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// Initializes a new instance of the <see cref="GetMyFeesEstimateResult" /> class.
         /// </summary>
         /// <param name="feesEstimateResult">feesEstimateResult.</param>
-        public GetMyFeesEstimateResult(FeesEstimateResult feesEstimateResult = default(FeesEstimateResult))
+        public GetMyFeesEstimateResult(FeesEstimateResult? feesEstimateResult = default(FeesEstimateResult?))
         {
             this.FeesEstimateResult = feesEstimateResult;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// Gets or Sets FeesEstimateResult
         /// </summary>
         [DataMember(Name = "FeesEstimateResult", EmitDefaultValue = false)]
-        public FeesEstimateResult FeesEstimateResult { get; set; }
+        public FeesEstimateResult? FeesEstimateResult { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

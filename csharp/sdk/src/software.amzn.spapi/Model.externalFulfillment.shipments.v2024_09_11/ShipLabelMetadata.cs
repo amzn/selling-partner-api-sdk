@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="trackingId">The tracking number of the package. (required).</param>
         /// <param name="pickupWindow">pickupWindow.</param>
         /// <param name="timeSlot">timeSlot.</param>
-        public ShipLabelMetadata(string shippingOptionId = default(string), string carrierName = default(string), string trackingId = default(string), TimeWindow pickupWindow = default(TimeWindow), TimeWindow timeSlot = default(TimeWindow))
+        public ShipLabelMetadata(string? shippingOptionId = default(string?), string carrierName = default(string), string trackingId = default(string), TimeWindow? pickupWindow = default(TimeWindow?), TimeWindow? timeSlot = default(TimeWindow?))
         {
             // to ensure "carrierName" is required (not null)
             if (carrierName == null)
@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The selected slot for the ship label.</value>
         [DataMember(Name = "shippingOptionId", EmitDefaultValue = false)]
-        public string ShippingOptionId { get; set; }
+        public string? ShippingOptionId { get; set; }
 
         /// <summary>
         /// The name of the carrier.
@@ -89,13 +89,13 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Gets or Sets PickupWindow
         /// </summary>
         [DataMember(Name = "pickupWindow", EmitDefaultValue = false)]
-        public TimeWindow PickupWindow { get; set; }
+        public TimeWindow? PickupWindow { get; set; }
 
         /// <summary>
         /// Gets or Sets TimeSlot
         /// </summary>
         [DataMember(Name = "timeSlot", EmitDefaultValue = false)]
-        public TimeWindow TimeSlot { get; set; }
+        public TimeWindow? TimeSlot { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

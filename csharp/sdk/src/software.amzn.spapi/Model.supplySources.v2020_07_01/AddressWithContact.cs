@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="contactDetails">contactDetails.</param>
         /// <param name="address">address.</param>
-        public AddressWithContact(ContactDetails contactDetails = default(ContactDetails), Address address = default(Address))
+        public AddressWithContact(ContactDetails? contactDetails = default(ContactDetails?), Address? address = default(Address?))
         {
             this.ContactDetails = contactDetails;
             this.Address = address;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets ContactDetails
         /// </summary>
         [DataMember(Name = "contactDetails", EmitDefaultValue = false)]
-        public ContactDetails ContactDetails { get; set; }
+        public ContactDetails? ContactDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

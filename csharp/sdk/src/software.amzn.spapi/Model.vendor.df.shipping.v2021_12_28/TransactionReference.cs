@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Initializes a new instance of the <see cref="TransactionReference" /> class.
         /// </summary>
         /// <param name="transactionId">GUID to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction..</param>
-        public TransactionReference(string transactionId = default(string))
+        public TransactionReference(string? transactionId = default(string?))
         {
             this.TransactionId = transactionId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>GUID to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction.</value>
         [DataMember(Name = "transactionId", EmitDefaultValue = false)]
-        public string TransactionId { get; set; }
+        public string? TransactionId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="buyerBusinessAddress">Business buyer&#39;s address..</param>
         /// <param name="buyerTaxRegistrationId">Business buyer&#39;s tax registration ID..</param>
         /// <param name="buyerTaxOffice">Business buyer&#39;s tax office..</param>
-        public BuyerTaxInformation(string buyerLegalCompanyName = default(string), string buyerBusinessAddress = default(string), string buyerTaxRegistrationId = default(string), string buyerTaxOffice = default(string))
+        public BuyerTaxInformation(string? buyerLegalCompanyName = default(string?), string? buyerBusinessAddress = default(string?), string? buyerTaxRegistrationId = default(string?), string? buyerTaxOffice = default(string?))
         {
             this.BuyerLegalCompanyName = buyerLegalCompanyName;
             this.BuyerBusinessAddress = buyerBusinessAddress;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>Business buyer&#39;s company legal name.</value>
         [DataMember(Name = "BuyerLegalCompanyName", EmitDefaultValue = false)]
-        public string BuyerLegalCompanyName { get; set; }
+        public string? BuyerLegalCompanyName { get; set; }
 
         /// <summary>
         /// Business buyer&#39;s address.
         /// </summary>
         /// <value>Business buyer&#39;s address.</value>
         [DataMember(Name = "BuyerBusinessAddress", EmitDefaultValue = false)]
-        public string BuyerBusinessAddress { get; set; }
+        public string? BuyerBusinessAddress { get; set; }
 
         /// <summary>
         /// Business buyer&#39;s tax registration ID.
         /// </summary>
         /// <value>Business buyer&#39;s tax registration ID.</value>
         [DataMember(Name = "BuyerTaxRegistrationId", EmitDefaultValue = false)]
-        public string BuyerTaxRegistrationId { get; set; }
+        public string? BuyerTaxRegistrationId { get; set; }
 
         /// <summary>
         /// Business buyer&#39;s tax office.
         /// </summary>
         /// <value>Business buyer&#39;s tax office.</value>
         [DataMember(Name = "BuyerTaxOffice", EmitDefaultValue = false)]
-        public string BuyerTaxOffice { get; set; }
+        public string? BuyerTaxOffice { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

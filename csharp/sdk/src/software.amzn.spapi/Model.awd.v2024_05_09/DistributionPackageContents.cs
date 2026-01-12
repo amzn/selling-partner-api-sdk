@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="packages">This is required only when &#x60;DistributionPackageType&#x3D;PALLET&#x60;..</param>
         /// <param name="products">This is required only when &#x60;DistributionPackageType&#x3D;CASE&#x60;..</param>
-        public DistributionPackageContents(List<DistributionPackageQuantity> packages = default(List<DistributionPackageQuantity>), List<ProductQuantity> products = default(List<ProductQuantity>))
+        public DistributionPackageContents(List<DistributionPackageQuantity>? packages = default(List<DistributionPackageQuantity>?), List<ProductQuantity>? products = default(List<ProductQuantity>?))
         {
             this.Packages = packages;
             this.Products = products;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>This is required only when &#x60;DistributionPackageType&#x3D;PALLET&#x60;.</value>
         [DataMember(Name = "packages", EmitDefaultValue = false)]
-        public List<DistributionPackageQuantity> Packages { get; set; }
+        public List<DistributionPackageQuantity>? Packages { get; set; }
 
         /// <summary>
         /// This is required only when &#x60;DistributionPackageType&#x3D;CASE&#x60;.
         /// </summary>
         /// <value>This is required only when &#x60;DistributionPackageType&#x3D;CASE&#x60;.</value>
         [DataMember(Name = "products", EmitDefaultValue = false)]
-        public List<ProductQuantity> Products { get; set; }
+        public List<ProductQuantity>? Products { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

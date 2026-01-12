@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
         /// </summary>
         /// <param name="queries">A list of queries. (required).</param>
         /// <param name="pagination">pagination.</param>
-        public GetQueriesResponse(List<Query> queries = default(List<Query>), GetQueriesResponsePagination pagination = default(GetQueriesResponsePagination))
+        public GetQueriesResponse(List<Query> queries = default(List<Query>), GetQueriesResponsePagination? pagination = default(GetQueriesResponsePagination?))
         {
             // to ensure "queries" is required (not null)
             if (queries == null)
@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public GetQueriesResponsePagination Pagination { get; set; }
+        public GetQueriesResponsePagination? Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.datakiosk.v2023_11_15
             yield break;
         }
     }
-
 }

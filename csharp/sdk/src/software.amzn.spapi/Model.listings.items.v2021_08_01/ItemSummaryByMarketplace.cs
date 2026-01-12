@@ -161,7 +161,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="createdDate">The date the listings item was created in ISO 8601 format. (required).</param>
         /// <param name="lastUpdatedDate">The date the listings item was last updated in ISO 8601 format. (required).</param>
         /// <param name="mainImage">mainImage.</param>
-        public ItemSummaryByMarketplace(string marketplaceId = default(string), string asin = default(string), string productType = default(string), ConditionTypeEnum? conditionType = default(ConditionTypeEnum?), List<StatusEnum> status = default(List<StatusEnum>), string fnSku = default(string), string itemName = default(string), DateTime createdDate = default(DateTime), DateTime lastUpdatedDate = default(DateTime), ItemImage mainImage = default(ItemImage))
+        public ItemSummaryByMarketplace(string marketplaceId = default(string), string? asin = default(string?), string productType = default(string), ConditionTypeEnum? conditionType = default(ConditionTypeEnum?), List<StatusEnum> status = default(List<StatusEnum>), string? fnSku = default(string?), string? itemName = default(string?), DateTime createdDate = default(DateTime), DateTime lastUpdatedDate = default(DateTime), ItemImage? mainImage = default(ItemImage?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -202,7 +202,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>Amazon Standard Identification Number (ASIN) of the listings item.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The Amazon product type of the listings item.
@@ -223,14 +223,14 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>The fulfillment network stock keeping unit is an identifier used by Amazon fulfillment centers to identify each unique item.</value>
         [DataMember(Name = "fnSku", EmitDefaultValue = false)]
-        public string FnSku { get; set; }
+        public string? FnSku { get; set; }
 
         /// <summary>
         /// The name or title associated with an Amazon catalog item.
         /// </summary>
         /// <value>The name or title associated with an Amazon catalog item.</value>
         [DataMember(Name = "itemName", EmitDefaultValue = false)]
-        public string ItemName { get; set; }
+        public string? ItemName { get; set; }
 
         /// <summary>
         /// The date the listings item was created in ISO 8601 format.
@@ -250,7 +250,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// Gets or Sets MainImage
         /// </summary>
         [DataMember(Name = "mainImage", EmitDefaultValue = false)]
-        public ItemImage MainImage { get; set; }
+        public ItemImage? MainImage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -293,5 +293,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

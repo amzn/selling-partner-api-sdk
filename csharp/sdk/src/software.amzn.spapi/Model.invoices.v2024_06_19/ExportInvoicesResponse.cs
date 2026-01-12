@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// Initializes a new instance of the <see cref="ExportInvoicesResponse" /> class.
         /// </summary>
         /// <param name="exportId">The export identifier..</param>
-        public ExportInvoicesResponse(string exportId = default(string))
+        public ExportInvoicesResponse(string? exportId = default(string?))
         {
             this.ExportId = exportId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>The export identifier.</value>
         [DataMember(Name = "exportId", EmitDefaultValue = false)]
-        public string ExportId { get; set; }
+        public string? ExportId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

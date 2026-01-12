@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <param name="attributes">Names of the Amazon catalog item attributes that are associated with the variation theme..</param>
         /// <param name="theme">Variation theme that indicates the combination of Amazon catalog item attributes that define the variation family..</param>
-        public ItemVariationTheme(List<string> attributes = default(List<string>), string theme = default(string))
+        public ItemVariationTheme(List<string>? attributes = default(List<string>?), string? theme = default(string?))
         {
             this.Attributes = attributes;
             this.Theme = theme;
@@ -47,7 +47,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Names of the Amazon catalog item attributes that are associated with the variation theme.</value>
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
-        public List<string> Attributes { get; set; }
+        public List<string>? Attributes { get; set; }
 
         /// <summary>
         /// Variation theme that indicates the combination of Amazon catalog item attributes that define the variation family.
@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         <example>COLOR_NAME/STYLE_NAME</example>
         */
         [DataMember(Name = "theme", EmitDefaultValue = false)]
-        public string Theme { get; set; }
+        public string? Theme { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,5 +92,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

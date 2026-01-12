@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <param name="amazonOrderId">An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required).</param>
         /// <param name="error">error.</param>
-        public RejectedOrder(string amazonOrderId = default(string), Error error = default(Error))
+        public RejectedOrder(string amazonOrderId = default(string), Error? error = default(Error?))
         {
             // to ensure "amazonOrderId" is required (not null)
             if (amazonOrderId == null)
@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name = "error", EmitDefaultValue = false)]
-        public Error Error { get; set; }
+        public Error? Error { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

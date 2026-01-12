@@ -58,7 +58,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="isReplacementPackageSent">Applicable for only On Amazon shipments to identify if replacement was sent.</param>
         /// <param name="proofs">A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list.</param>
         /// <param name="settlementType">settlementType (required).</param>
-        public CreateClaimRequest(string trackingId = default(string), Currency declaredValue = default(Currency), ClaimReason claimReason = default(ClaimReason), bool isReplacementPackageSent = default(bool), List<string> proofs = default(List<string>), SettlementType settlementType = default(SettlementType))
+        public CreateClaimRequest(string trackingId = default(string), Currency? declaredValue = default(Currency?), ClaimReason claimReason = default(ClaimReason), bool? isReplacementPackageSent = default(bool?), List<string>? proofs = default(List<string>?), SettlementType settlementType = default(SettlementType))
         {
             // to ensure "trackingId" is required (not null)
             if (trackingId == null)
@@ -84,21 +84,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets DeclaredValue
         /// </summary>
         [DataMember(Name = "declaredValue", EmitDefaultValue = false)]
-        public Currency DeclaredValue { get; set; }
+        public Currency? DeclaredValue { get; set; }
 
         /// <summary>
         /// Applicable for only On Amazon shipments to identify if replacement was sent
         /// </summary>
         /// <value>Applicable for only On Amazon shipments to identify if replacement was sent</value>
         [DataMember(Name = "isReplacementPackageSent", EmitDefaultValue = true)]
-        public bool IsReplacementPackageSent { get; set; }
+        public bool? IsReplacementPackageSent { get; set; }
 
         /// <summary>
         /// A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list
         /// </summary>
         /// <value>A list of proof URLs for a claim. Basic URL validation will happen for each URLs present in the list</value>
         [DataMember(Name = "proofs", EmitDefaultValue = false)]
-        public List<string> Proofs { get; set; }
+        public List<string>? Proofs { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,5 +137,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

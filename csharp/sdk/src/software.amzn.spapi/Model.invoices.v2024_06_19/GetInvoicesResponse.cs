@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <param name="invoices">A list of invoices..</param>
         /// <param name="nextToken">This token is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getInvoices&#x60; operation and include this token with the previous call parameters..</param>
-        public GetInvoicesResponse(List<Invoice> invoices = default(List<Invoice>), string nextToken = default(string))
+        public GetInvoicesResponse(List<Invoice>? invoices = default(List<Invoice>?), string? nextToken = default(string?))
         {
             this.Invoices = invoices;
             this.NextToken = nextToken;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// </summary>
         /// <value>A list of invoices.</value>
         [DataMember(Name = "invoices", EmitDefaultValue = false)]
-        public List<Invoice> Invoices { get; set; }
+        public List<Invoice>? Invoices { get; set; }
 
         /// <summary>
         /// This token is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getInvoices&#x60; operation and include this token with the previous call parameters.
         /// </summary>
         /// <value>This token is returned when the number of results exceeds the specified &#x60;pageSize&#x60; value. To get the next page of results, call the &#x60;getInvoices&#x60; operation and include this token with the previous call parameters.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="fileContents">fileContents (required).</param>
         /// <param name="labelFormat">labelFormat.</param>
         /// <param name="standardIdForLabel">standardIdForLabel.</param>
-        public Label(string customTextForLabel = default(string), LabelDimensions dimensions = default(LabelDimensions), FileContents fileContents = default(FileContents), LabelFormat? labelFormat = default(LabelFormat?), StandardIdForLabel? standardIdForLabel = default(StandardIdForLabel?))
+        public Label(string? customTextForLabel = default(string?), LabelDimensions dimensions = default(LabelDimensions), FileContents fileContents = default(FileContents), LabelFormat? labelFormat = default(LabelFormat?), StandardIdForLabel? standardIdForLabel = default(StandardIdForLabel?))
         {
             // to ensure "dimensions" is required (not null)
             if (dimensions == null)
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>Custom text to print on the label. Note: Custom text is only included on labels that are in ZPL format (ZPL203). FedEx does not support &#x60;CustomTextForLabel&#x60;.</value>
         [DataMember(Name = "CustomTextForLabel", EmitDefaultValue = false)]
-        public string CustomTextForLabel { get; set; }
+        public string? CustomTextForLabel { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
@@ -136,5 +136,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

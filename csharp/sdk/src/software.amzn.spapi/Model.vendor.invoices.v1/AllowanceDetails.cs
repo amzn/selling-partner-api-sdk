@@ -94,7 +94,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="description">Description of the allowance..</param>
         /// <param name="allowanceAmount">allowanceAmount (required).</param>
         /// <param name="taxDetails">Tax amount details applied on this allowance..</param>
-        public AllowanceDetails(TypeEnum type = default(TypeEnum), string description = default(string), Money allowanceAmount = default(Money), List<TaxDetails> taxDetails = default(List<TaxDetails>))
+        public AllowanceDetails(TypeEnum type = default(TypeEnum), string? description = default(string?), Money allowanceAmount = default(Money), List<TaxDetails>? taxDetails = default(List<TaxDetails>?))
         {
             this.Type = type;
             // to ensure "allowanceAmount" is required (not null)
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>Description of the allowance.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowanceAmount
@@ -125,7 +125,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>Tax amount details applied on this allowance.</value>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public List<TaxDetails> TaxDetails { get; set; }
+        public List<TaxDetails>? TaxDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -162,5 +162,4 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             yield break;
         }
     }
-
 }

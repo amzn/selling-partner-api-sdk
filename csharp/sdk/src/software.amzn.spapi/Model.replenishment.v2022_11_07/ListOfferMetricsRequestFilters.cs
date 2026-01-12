@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="marketplaceId">The marketplace identifier. The supported marketplaces for both sellers and vendors are US, CA, ES, UK, FR, IT, IN, DE and JP. The supported marketplaces for vendors only are BR, AU, MX, AE and NL. Refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids) to find the identifier for the marketplace. (required).</param>
         /// <param name="programTypes">A list of replenishment program types. (required).</param>
         /// <param name="asins">A list of Amazon Standard Identification Numbers (ASINs)..</param>
-        public ListOfferMetricsRequestFilters(AggregationFrequency? aggregationFrequency = default(AggregationFrequency?), TimeInterval timeInterval = default(TimeInterval), TimePeriodType timePeriodType = default(TimePeriodType), string marketplaceId = default(string), List<ProgramType> programTypes = default(List<ProgramType>), List<string> asins = default(List<string>))
+        public ListOfferMetricsRequestFilters(AggregationFrequency? aggregationFrequency = default(AggregationFrequency?), TimeInterval timeInterval = default(TimeInterval), TimePeriodType timePeriodType = default(TimePeriodType), string marketplaceId = default(string), List<ProgramType> programTypes = default(List<ProgramType>), List<string>? asins = default(List<string>?))
         {
             // to ensure "timeInterval" is required (not null)
             if (timeInterval == null)
@@ -107,7 +107,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>A list of Amazon Standard Identification Numbers (ASINs).</value>
         [DataMember(Name = "asins", EmitDefaultValue = false)]
-        public List<string> Asins { get; set; }
+        public List<string>? Asins { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -146,5 +146,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

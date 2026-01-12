@@ -116,5 +116,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

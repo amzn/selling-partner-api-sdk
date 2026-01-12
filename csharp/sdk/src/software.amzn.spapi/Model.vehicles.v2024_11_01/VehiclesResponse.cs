@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="vehicles">List of vehicles from Amazon&#39;s catalog. (required).</param>
-        public VehiclesResponse(Pagination pagination = default(Pagination), List<Vehicle> vehicles = default(List<Vehicle>))
+        public VehiclesResponse(Pagination? pagination = default(Pagination?), List<Vehicle> vehicles = default(List<Vehicle>))
         {
             // to ensure "vehicles" is required (not null)
             if (vehicles == null)
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// List of vehicles from Amazon&#39;s catalog.
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
             yield break;
         }
     }
-
 }

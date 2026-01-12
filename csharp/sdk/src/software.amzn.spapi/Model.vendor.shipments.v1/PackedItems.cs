@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="vendorProductIdentifier">The vendor selected product identification of the item. Should be the same as was sent in the purchase order..</param>
         /// <param name="packedQuantity">packedQuantity.</param>
         /// <param name="itemDetails">itemDetails.</param>
-        public PackedItems(string itemSequenceNumber = default(string), string buyerProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity packedQuantity = default(ItemQuantity), PackageItemDetails itemDetails = default(PackageItemDetails))
+        public PackedItems(string? itemSequenceNumber = default(string?), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity? packedQuantity = default(ItemQuantity?), PackageItemDetails? itemDetails = default(PackageItemDetails?))
         {
             this.ItemSequenceNumber = itemSequenceNumber;
             this.BuyerProductIdentifier = buyerProductIdentifier;
@@ -53,33 +53,33 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Item sequence number for the item. The first item will be 001, the second 002, and so on. This number is used as a reference to refer to this item from the carton or pallet level.</value>
         [DataMember(Name = "itemSequenceNumber", EmitDefaultValue = false)]
-        public string ItemSequenceNumber { get; set; }
+        public string? ItemSequenceNumber { get; set; }
 
         /// <summary>
         /// Buyer Standard Identification Number (ASIN) of an item.
         /// </summary>
         /// <value>Buyer Standard Identification Number (ASIN) of an item.</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item. Should be the same as was sent in the purchase order.
         /// </summary>
         /// <value>The vendor selected product identification of the item. Should be the same as was sent in the purchase order.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets PackedQuantity
         /// </summary>
         [DataMember(Name = "packedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity PackedQuantity { get; set; }
+        public ItemQuantity? PackedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemDetails
         /// </summary>
         [DataMember(Name = "itemDetails", EmitDefaultValue = false)]
-        public PackageItemDetails ItemDetails { get; set; }
+        public PackageItemDetails? ItemDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

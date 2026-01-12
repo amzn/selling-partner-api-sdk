@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// <param name="payloadVersion">The version of the payload object to be used in the notification. (required).</param>
         /// <param name="destinationId">The identifier for the destination where notifications will be delivered. (required).</param>
         /// <param name="processingDirective">processingDirective.</param>
-        public CreateSubscriptionRequest(string payloadVersion = default(string), string destinationId = default(string), ProcessingDirective processingDirective = default(ProcessingDirective))
+        public CreateSubscriptionRequest(string payloadVersion = default(string), string destinationId = default(string), ProcessingDirective? processingDirective = default(ProcessingDirective?))
         {
             // to ensure "payloadVersion" is required (not null)
             if (payloadVersion == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.notifications.v1
         /// Gets or Sets ProcessingDirective
         /// </summary>
         [DataMember(Name = "processingDirective", EmitDefaultValue = false)]
-        public ProcessingDirective ProcessingDirective { get; set; }
+        public ProcessingDirective? ProcessingDirective { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.notifications.v1
             yield break;
         }
     }
-
 }

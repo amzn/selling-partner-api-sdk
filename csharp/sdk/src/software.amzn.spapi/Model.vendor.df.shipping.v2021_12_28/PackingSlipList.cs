@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="packingSlips">An array of packing slip objects..</param>
-        public PackingSlipList(Pagination pagination = default(Pagination), List<PackingSlip> packingSlips = default(List<PackingSlip>))
+        public PackingSlipList(Pagination? pagination = default(Pagination?), List<PackingSlip>? packingSlips = default(List<PackingSlip>?))
         {
             this.Pagination = pagination;
             this.PackingSlips = packingSlips;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// An array of packing slip objects.
         /// </summary>
         /// <value>An array of packing slip objects.</value>
         [DataMember(Name = "packingSlips", EmitDefaultValue = false)]
-        public List<PackingSlip> PackingSlips { get; set; }
+        public List<PackingSlip>? PackingSlips { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

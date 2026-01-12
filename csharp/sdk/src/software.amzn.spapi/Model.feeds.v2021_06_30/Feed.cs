@@ -92,7 +92,7 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
         /// <param name="processingStartTime">The date and time when feed processing started, in ISO 8601 date time format..</param>
         /// <param name="processingEndTime">The date and time when feed processing completed, in ISO 8601 date time format..</param>
         /// <param name="resultFeedDocumentId">The identifier for the feed document. This identifier is unique only in combination with a seller ID..</param>
-        public Feed(string feedId = default(string), string feedType = default(string), List<string> marketplaceIds = default(List<string>), DateTime createdTime = default(DateTime), ProcessingStatusEnum processingStatus = default(ProcessingStatusEnum), DateTime processingStartTime = default(DateTime), DateTime processingEndTime = default(DateTime), string resultFeedDocumentId = default(string))
+        public Feed(string feedId = default(string), string feedType = default(string), List<string>? marketplaceIds = default(List<string>?), DateTime createdTime = default(DateTime), ProcessingStatusEnum processingStatus = default(ProcessingStatusEnum), DateTime? processingStartTime = default(DateTime?), DateTime? processingEndTime = default(DateTime?), string? resultFeedDocumentId = default(string?))
         {
             // to ensure "feedId" is required (not null)
             if (feedId == null)
@@ -133,7 +133,7 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
         /// </summary>
         /// <value>A list of identifiers for the marketplaces that the feed is applied to.</value>
         [DataMember(Name = "marketplaceIds", EmitDefaultValue = false)]
-        public List<string> MarketplaceIds { get; set; }
+        public List<string>? MarketplaceIds { get; set; }
 
         /// <summary>
         /// The date and time when the feed was created, in ISO 8601 date time format.
@@ -147,21 +147,21 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
         /// </summary>
         /// <value>The date and time when feed processing started, in ISO 8601 date time format.</value>
         [DataMember(Name = "processingStartTime", EmitDefaultValue = false)]
-        public DateTime ProcessingStartTime { get; set; }
+        public DateTime? ProcessingStartTime { get; set; }
 
         /// <summary>
         /// The date and time when feed processing completed, in ISO 8601 date time format.
         /// </summary>
         /// <value>The date and time when feed processing completed, in ISO 8601 date time format.</value>
         [DataMember(Name = "processingEndTime", EmitDefaultValue = false)]
-        public DateTime ProcessingEndTime { get; set; }
+        public DateTime? ProcessingEndTime { get; set; }
 
         /// <summary>
         /// The identifier for the feed document. This identifier is unique only in combination with a seller ID.
         /// </summary>
         /// <value>The identifier for the feed document. This identifier is unique only in combination with a seller ID.</value>
         [DataMember(Name = "resultFeedDocumentId", EmitDefaultValue = false)]
-        public string ResultFeedDocumentId { get; set; }
+        public string? ResultFeedDocumentId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -202,5 +202,4 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="isSupported">When true, &#x60;SupplySource&#x60; supports the Service capability..</param>
         /// <param name="operationalConfiguration">operationalConfiguration.</param>
-        public ServicesCapability(bool isSupported = default(bool), OperationalConfiguration operationalConfiguration = default(OperationalConfiguration))
+        public ServicesCapability(bool? isSupported = default(bool?), OperationalConfiguration? operationalConfiguration = default(OperationalConfiguration?))
         {
             this.IsSupported = isSupported;
             this.OperationalConfiguration = operationalConfiguration;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>When true, &#x60;SupplySource&#x60; supports the Service capability.</value>
         [DataMember(Name = "isSupported", EmitDefaultValue = true)]
-        public bool IsSupported { get; set; }
+        public bool? IsSupported { get; set; }
 
         /// <summary>
         /// Gets or Sets OperationalConfiguration
         /// </summary>
         [DataMember(Name = "operationalConfiguration", EmitDefaultValue = false)]
-        public OperationalConfiguration OperationalConfiguration { get; set; }
+        public OperationalConfiguration? OperationalConfiguration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

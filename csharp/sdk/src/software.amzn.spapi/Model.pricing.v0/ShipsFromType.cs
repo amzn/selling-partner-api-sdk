@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="state">The state from where the item is shipped..</param>
         /// <param name="country">The country from where the item is shipped..</param>
-        public ShipsFromType(string state = default(string), string country = default(string))
+        public ShipsFromType(string? state = default(string?), string? country = default(string?))
         {
             this.State = state;
             this.Country = country;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The state from where the item is shipped.</value>
         [DataMember(Name = "State", EmitDefaultValue = false)]
-        public string State { get; set; }
+        public string? State { get; set; }
 
         /// <summary>
         /// The country from where the item is shipped.
         /// </summary>
         /// <value>The country from where the item is shipped.</value>
         [DataMember(Name = "Country", EmitDefaultValue = false)]
-        public string Country { get; set; }
+        public string? Country { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

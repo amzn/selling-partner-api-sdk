@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// <param name="partyId">The identifier of the party. (required).</param>
         /// <param name="address">address.</param>
         /// <param name="taxRegistrationDetails">The tax registration details of the party..</param>
-        public PartyIdentification(string partyId = default(string), Address address = default(Address), List<TaxRegistrationDetails> taxRegistrationDetails = default(List<TaxRegistrationDetails>))
+        public PartyIdentification(string partyId = default(string), Address? address = default(Address?), List<TaxRegistrationDetails>? taxRegistrationDetails = default(List<TaxRegistrationDetails>?))
         {
             // to ensure "partyId" is required (not null)
             if (partyId == null)
@@ -65,14 +65,14 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// The tax registration details of the party.
         /// </summary>
         /// <value>The tax registration details of the party.</value>
         [DataMember(Name = "taxRegistrationDetails", EmitDefaultValue = false)]
-        public List<TaxRegistrationDetails> TaxRegistrationDetails { get; set; }
+        public List<TaxRegistrationDetails>? TaxRegistrationDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

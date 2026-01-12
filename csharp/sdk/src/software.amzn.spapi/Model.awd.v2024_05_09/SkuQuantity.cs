@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="expectedQuantity">expectedQuantity (required).</param>
         /// <param name="receivedQuantity">receivedQuantity.</param>
         /// <param name="sku">The merchant stock keeping unit (required).</param>
-        public SkuQuantity(InventoryQuantity expectedQuantity = default(InventoryQuantity), InventoryQuantity receivedQuantity = default(InventoryQuantity), string sku = default(string))
+        public SkuQuantity(InventoryQuantity expectedQuantity = default(InventoryQuantity), InventoryQuantity? receivedQuantity = default(InventoryQuantity?), string sku = default(string))
         {
             // to ensure "expectedQuantity" is required (not null)
             if (expectedQuantity == null)
@@ -69,7 +69,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets ReceivedQuantity
         /// </summary>
         [DataMember(Name = "receivedQuantity", EmitDefaultValue = false)]
-        public InventoryQuantity ReceivedQuantity { get; set; }
+        public InventoryQuantity? ReceivedQuantity { get; set; }
 
         /// <summary>
         /// The merchant stock keeping unit
@@ -112,5 +112,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

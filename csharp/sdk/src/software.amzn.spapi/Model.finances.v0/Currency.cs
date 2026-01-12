@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="currencyCode">The three-digit currency code in ISO 4217 format..</param>
         /// <param name="currencyAmount">A signed decimal number..</param>
-        public Currency(string currencyCode = default(string), decimal currencyAmount = default(decimal))
+        public Currency(string? currencyCode = default(string?), decimal? currencyAmount = default(decimal?))
         {
             this.CurrencyCode = currencyCode;
             this.CurrencyAmount = currencyAmount;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The three-digit currency code in ISO 4217 format.</value>
         [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
-        public string CurrencyCode { get; set; }
+        public string? CurrencyCode { get; set; }
 
         /// <summary>
         /// A signed decimal number.
         /// </summary>
         /// <value>A signed decimal number.</value>
         [DataMember(Name = "CurrencyAmount", EmitDefaultValue = false)]
-        public decimal CurrencyAmount { get; set; }
+        public decimal? CurrencyAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

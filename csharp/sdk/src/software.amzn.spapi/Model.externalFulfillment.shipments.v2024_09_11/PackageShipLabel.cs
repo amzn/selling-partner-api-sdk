@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="fileData">fileData.</param>
         /// <param name="status">status.</param>
         /// <param name="errorDetails">errorDetails.</param>
-        public PackageShipLabel(string packageId = default(string), ShipLabelMetadata shipLabelMetadata = default(ShipLabelMetadata), DocumentV2 fileData = default(DocumentV2), Status? status = default(Status?), Error errorDetails = default(Error))
+        public PackageShipLabel(string? packageId = default(string?), ShipLabelMetadata? shipLabelMetadata = default(ShipLabelMetadata?), DocumentV2? fileData = default(DocumentV2?), Status? status = default(Status?), Error? errorDetails = default(Error?))
         {
             this.PackageId = packageId;
             this.ShipLabelMetadata = shipLabelMetadata;
@@ -60,25 +60,25 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The package ID of the package.</value>
         [DataMember(Name = "packageId", EmitDefaultValue = false)]
-        public string PackageId { get; set; }
+        public string? PackageId { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipLabelMetadata
         /// </summary>
         [DataMember(Name = "shipLabelMetadata", EmitDefaultValue = false)]
-        public ShipLabelMetadata ShipLabelMetadata { get; set; }
+        public ShipLabelMetadata? ShipLabelMetadata { get; set; }
 
         /// <summary>
         /// Gets or Sets FileData
         /// </summary>
         [DataMember(Name = "fileData", EmitDefaultValue = false)]
-        public DocumentV2 FileData { get; set; }
+        public DocumentV2? FileData { get; set; }
 
         /// <summary>
         /// Gets or Sets ErrorDetails
         /// </summary>
         [DataMember(Name = "errorDetails", EmitDefaultValue = false)]
-        public Error ErrorDetails { get; set; }
+        public Error? ErrorDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,5 +116,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

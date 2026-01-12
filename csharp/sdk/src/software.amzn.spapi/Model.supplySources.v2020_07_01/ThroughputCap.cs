@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <param name="value">An unsigned integer that can be only positive or zero..</param>
         /// <param name="timeUnit">timeUnit.</param>
-        public ThroughputCap(int value = default(int), TimeUnit? timeUnit = default(TimeUnit?))
+        public ThroughputCap(int? value = default(int?), TimeUnit? timeUnit = default(TimeUnit?))
         {
             this.Value = value;
             this.TimeUnit = timeUnit;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>An unsigned integer that can be only positive or zero.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public int Value { get; set; }
+        public int? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,5 +94,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

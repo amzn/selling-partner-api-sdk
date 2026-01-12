@@ -74,7 +74,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="accountCurrency">BankAccount currency code in ISO 4217 format  (required).</param>
         /// <param name="bankAccountNumberTail">Last 3 digit of the bank account number, for all Amazon Seller Wallet account the value will be three consecutive 0&#39;s  (required).</param>
         /// <param name="bankAccountHolderStatus">bankAccountHolderStatus.</param>
-        public BankAccount(string accountId = default(string), string accountHolderName = default(string), BankAccountNumberFormat? bankAccountNumberFormat = default(BankAccountNumberFormat?), string bankName = default(string), BankAccountOwnershipType bankAccountOwnershipType = default(BankAccountOwnershipType), string routingNumber = default(string), BankNumberFormat? bankNumberFormat = default(BankNumberFormat?), string accountCountryCode = default(string), string accountCurrency = default(string), string bankAccountNumberTail = default(string), BankAccountHolderStatus? bankAccountHolderStatus = default(BankAccountHolderStatus?))
+        public BankAccount(string? accountId = default(string?), string? accountHolderName = default(string?), BankAccountNumberFormat? bankAccountNumberFormat = default(BankAccountNumberFormat?), string? bankName = default(string?), BankAccountOwnershipType bankAccountOwnershipType = default(BankAccountOwnershipType), string? routingNumber = default(string?), BankNumberFormat? bankNumberFormat = default(BankNumberFormat?), string accountCountryCode = default(string), string accountCurrency = default(string), string bankAccountNumberTail = default(string), BankAccountHolderStatus? bankAccountHolderStatus = default(BankAccountHolderStatus?))
         {
             this.BankAccountOwnershipType = bankAccountOwnershipType;
             // to ensure "accountCountryCode" is required (not null)
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>amzn1.account.AGUGL2EM3ZHYSRJWH2UCRPIM5JFQ</example>
         */
         [DataMember(Name = "accountId", EmitDefaultValue = false)]
-        public string AccountId { get; set; }
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// The bank account holder&#39;s name (expected to be an Amazon customer). There is a 50 character limit.
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>John Doe</example>
         */
         [DataMember(Name = "accountHolderName", EmitDefaultValue = false)]
-        public string AccountHolderName { get; set; }
+        public string? AccountHolderName { get; set; }
 
         /// <summary>
         /// The name of the bank. This value is Amazon Seller Wallet for Amazon Seller Wallet accounts.
@@ -132,7 +132,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>DEUTSCHE BANK AG</example>
         */
         [DataMember(Name = "bankName", EmitDefaultValue = false)]
-        public string BankName { get; set; }
+        public string? BankName { get; set; }
 
         /// <summary>
         /// Routing number for automated clearing house transfers for &#x60;THIRD_PARTY&#x60; transaction requests. This value is nine consecutive zeros for Amazon Seller Wallet accounts.
@@ -142,7 +142,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>026009593</example>
         */
         [DataMember(Name = "routingNumber", EmitDefaultValue = false)]
-        public string RoutingNumber { get; set; }
+        public string? RoutingNumber { get; set; }
 
         /// <summary>
         /// The two digit country code, in ISO 3166 format. 
@@ -216,5 +216,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

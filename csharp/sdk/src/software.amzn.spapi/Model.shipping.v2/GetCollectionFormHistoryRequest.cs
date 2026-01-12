@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="carrierId">The carrier identifier for the offering, provided by the carrier..</param>
         /// <param name="shipFromAddress">shipFromAddress.</param>
         /// <param name="dateRange">dateRange.</param>
-        public GetCollectionFormHistoryRequest(List<ClientReferenceDetail> clientReferenceDetails = default(List<ClientReferenceDetail>), int maxResults = default(int), string carrierId = default(string), Address shipFromAddress = default(Address), DateRange dateRange = default(DateRange))
+        public GetCollectionFormHistoryRequest(List<ClientReferenceDetail>? clientReferenceDetails = default(List<ClientReferenceDetail>?), int? maxResults = default(int?), string? carrierId = default(string?), Address? shipFromAddress = default(Address?), DateRange? dateRange = default(DateRange?))
         {
             this.ClientReferenceDetails = clientReferenceDetails;
             this.MaxResults = maxResults;
@@ -54,33 +54,33 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Object to pass additional information about the MCI Integrator shipperType: List of ClientReferenceDetail</value>
         [DataMember(Name = "clientReferenceDetails", EmitDefaultValue = false)]
-        public List<ClientReferenceDetail> ClientReferenceDetails { get; set; }
+        public List<ClientReferenceDetail>? ClientReferenceDetails { get; set; }
 
         /// <summary>
         /// max Number of Results for query .
         /// </summary>
         /// <value>max Number of Results for query .</value>
         [DataMember(Name = "maxResults", EmitDefaultValue = false)]
-        public int MaxResults { get; set; }
+        public int? MaxResults { get; set; }
 
         /// <summary>
         /// The carrier identifier for the offering, provided by the carrier.
         /// </summary>
         /// <value>The carrier identifier for the offering, provided by the carrier.</value>
         [DataMember(Name = "carrierId", EmitDefaultValue = false)]
-        public string CarrierId { get; set; }
+        public string? CarrierId { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipFromAddress
         /// </summary>
         [DataMember(Name = "shipFromAddress", EmitDefaultValue = false)]
-        public Address ShipFromAddress { get; set; }
+        public Address? ShipFromAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets DateRange
         /// </summary>
         [DataMember(Name = "dateRange", EmitDefaultValue = false)]
-        public DateRange DateRange { get; set; }
+        public DateRange? DateRange { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

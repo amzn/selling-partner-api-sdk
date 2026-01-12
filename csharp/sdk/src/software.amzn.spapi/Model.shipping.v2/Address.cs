@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="email">The email address of the contact associated with the address..</param>
         /// <param name="phoneNumber">The phone number of the person, business or institution located at that address, including the country calling code..</param>
         /// <param name="geocode">geocode.</param>
-        public Address(string name = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string companyName = default(string), string stateOrRegion = default(string), string city = default(string), string countryCode = default(string), string postalCode = default(string), string email = default(string), string phoneNumber = default(string), Geocode geocode = default(Geocode))
+        public Address(string name = default(string), string addressLine1 = default(string), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? companyName = default(string?), string stateOrRegion = default(string), string city = default(string), string countryCode = default(string), string postalCode = default(string), string? email = default(string?), string? phoneNumber = default(string?), Geocode? geocode = default(Geocode?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -117,21 +117,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Additional address information, if required.</value>
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Additional address information, if required.
         /// </summary>
         /// <value>Additional address information, if required.</value>
         [DataMember(Name = "addressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// The name of the business or institution associated with the address.
         /// </summary>
         /// <value>The name of the business or institution associated with the address.</value>
         [DataMember(Name = "companyName", EmitDefaultValue = false)]
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
 
         /// <summary>
         /// The state, county or region where the person, business or institution is located.
@@ -166,20 +166,20 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The email address of the contact associated with the address.</value>
         [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// The phone number of the person, business or institution located at that address, including the country calling code.
         /// </summary>
         /// <value>The phone number of the person, business or institution located at that address, including the country calling code.</value>
         [DataMember(Name = "phoneNumber", EmitDefaultValue = false)]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         /// <summary>
         /// Gets or Sets Geocode
         /// </summary>
         [DataMember(Name = "geocode", EmitDefaultValue = false)]
-        public Geocode Geocode { get; set; }
+        public Geocode? Geocode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -290,5 +290,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

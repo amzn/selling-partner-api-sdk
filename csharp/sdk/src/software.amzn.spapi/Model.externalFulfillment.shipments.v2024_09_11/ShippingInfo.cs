@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="shipToAddress">shipToAddress.</param>
         /// <param name="shippingType">The type of shipping that the seller uses to deliver a customer order..</param>
         /// <param name="recommendedPackages">Recommendations for the packages in an order..</param>
-        public ShippingInfo(string recommendedShipMethod = default(string), string expectedShippingDateTimeInUTC = default(string), Address shipToAddress = default(Address), ShippingTypeEnum? shippingType = default(ShippingTypeEnum?), List<RecommendedPackage> recommendedPackages = default(List<RecommendedPackage>))
+        public ShippingInfo(string? recommendedShipMethod = default(string?), string expectedShippingDateTimeInUTC = default(string), Address? shipToAddress = default(Address?), ShippingTypeEnum? shippingType = default(ShippingTypeEnum?), List<RecommendedPackage>? recommendedPackages = default(List<RecommendedPackage>?))
         {
             // to ensure "expectedShippingDateTimeInUTC" is required (not null)
             if (expectedShippingDateTimeInUTC == null)
@@ -91,7 +91,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The ship method recommended by the Amazon Fulfillment Network for the packages in this shipment.</value>
         [DataMember(Name = "recommendedShipMethod", EmitDefaultValue = false)]
-        public string RecommendedShipMethod { get; set; }
+        public string? RecommendedShipMethod { get; set; }
 
         /// <summary>
         /// A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format.
@@ -104,14 +104,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Gets or Sets ShipToAddress
         /// </summary>
         [DataMember(Name = "shipToAddress", EmitDefaultValue = false)]
-        public Address ShipToAddress { get; set; }
+        public Address? ShipToAddress { get; set; }
 
         /// <summary>
         /// Recommendations for the packages in an order.
         /// </summary>
         /// <value>Recommendations for the packages in an order.</value>
         [DataMember(Name = "recommendedPackages", EmitDefaultValue = false)]
-        public List<RecommendedPackage> RecommendedPackages { get; set; }
+        public List<RecommendedPackage>? RecommendedPackages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -149,5 +149,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

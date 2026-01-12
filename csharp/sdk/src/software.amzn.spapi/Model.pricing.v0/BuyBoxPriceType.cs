@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="shipping">shipping (required).</param>
         /// <param name="points">points.</param>
         /// <param name="sellerId">The seller identifier for the offer..</param>
-        public BuyBoxPriceType(string condition = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int quantityTier = default(int), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), MoneyType landedPrice = default(MoneyType), MoneyType listingPrice = default(MoneyType), MoneyType shipping = default(MoneyType), Points points = default(Points), string sellerId = default(string))
+        public BuyBoxPriceType(string condition = default(string), OfferCustomerType? offerType = default(OfferCustomerType?), int? quantityTier = default(int?), QuantityDiscountType? quantityDiscountType = default(QuantityDiscountType?), MoneyType landedPrice = default(MoneyType), MoneyType listingPrice = default(MoneyType), MoneyType shipping = default(MoneyType), Points? points = default(Points?), string? sellerId = default(string?))
         {
             // to ensure "condition" is required (not null)
             if (condition == null)
@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>Indicates at what quantity this price becomes active.</value>
         [DataMember(Name = "quantityTier", EmitDefaultValue = false)]
-        public int QuantityTier { get; set; }
+        public int? QuantityTier { get; set; }
 
         /// <summary>
         /// Gets or Sets LandedPrice
@@ -129,14 +129,14 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "Points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// The seller identifier for the offer.
         /// </summary>
         /// <value>The seller identifier for the offer.</value>
         [DataMember(Name = "sellerId", EmitDefaultValue = false)]
-        public string SellerId { get; set; }
+        public string? SellerId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -178,5 +178,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

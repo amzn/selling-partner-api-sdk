@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="shipmentLevelFields">A list of additional inputs..</param>
         /// <param name="itemLevelFieldsList">A list of item level fields..</param>
-        public GetAdditionalSellerInputsResult(List<AdditionalInputs> shipmentLevelFields = default(List<AdditionalInputs>), List<ItemLevelFields> itemLevelFieldsList = default(List<ItemLevelFields>))
+        public GetAdditionalSellerInputsResult(List<AdditionalInputs>? shipmentLevelFields = default(List<AdditionalInputs>?), List<ItemLevelFields>? itemLevelFieldsList = default(List<ItemLevelFields>?))
         {
             this.ShipmentLevelFields = shipmentLevelFields;
             this.ItemLevelFieldsList = itemLevelFieldsList;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A list of additional inputs.</value>
         [DataMember(Name = "ShipmentLevelFields", EmitDefaultValue = false)]
-        public List<AdditionalInputs> ShipmentLevelFields { get; set; }
+        public List<AdditionalInputs>? ShipmentLevelFields { get; set; }
 
         /// <summary>
         /// A list of item level fields.
         /// </summary>
         /// <value>A list of item level fields.</value>
         [DataMember(Name = "ItemLevelFieldsList", EmitDefaultValue = false)]
-        public List<ItemLevelFields> ItemLevelFieldsList { get; set; }
+        public List<ItemLevelFields>? ItemLevelFieldsList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

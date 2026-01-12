@@ -128,5 +128,4 @@ namespace software.amzn.spapi.Model.feeds.v2021_06_30
             yield break;
         }
     }
-
 }

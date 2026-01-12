@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// Initializes a new instance of the <see cref="ServiceJobProvider" /> class.
         /// </summary>
         /// <param name="serviceJobProviderId">The identifier of the service job provider..</param>
-        public ServiceJobProvider(string serviceJobProviderId = default(string))
+        public ServiceJobProvider(string? serviceJobProviderId = default(string?))
         {
             this.ServiceJobProviderId = serviceJobProviderId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The identifier of the service job provider.</value>
         [DataMember(Name = "serviceJobProviderId", EmitDefaultValue = false)]
-        public string ServiceJobProviderId { get; set; }
+        public string? ServiceJobProviderId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

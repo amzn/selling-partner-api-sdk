@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="boxes">A list of boxes that will be present in the shipment after the update..</param>
         /// <param name="items">A list of all items that will be present in the shipment after the update..</param>
-        public RequestedUpdates(List<BoxUpdateInput> boxes = default(List<BoxUpdateInput>), List<ItemInput> items = default(List<ItemInput>))
+        public RequestedUpdates(List<BoxUpdateInput>? boxes = default(List<BoxUpdateInput>?), List<ItemInput>? items = default(List<ItemInput>?))
         {
             this.Boxes = boxes;
             this.Items = items;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>A list of boxes that will be present in the shipment after the update.</value>
         [DataMember(Name = "boxes", EmitDefaultValue = false)]
-        public List<BoxUpdateInput> Boxes { get; set; }
+        public List<BoxUpdateInput>? Boxes { get; set; }
 
         /// <summary>
         /// A list of all items that will be present in the shipment after the update.
         /// </summary>
         /// <value>A list of all items that will be present in the shipment after the update.</value>
         [DataMember(Name = "items", EmitDefaultValue = false)]
-        public List<ItemInput> Items { get; set; }
+        public List<ItemInput>? Items { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

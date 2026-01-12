@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="supplySourceId">An Amazon generated unique supply source ID..</param>
         /// <param name="supplySourceCode">The seller-provided unique supply source code..</param>
         /// <param name="address">address.</param>
-        public SupplySourceListInner(string alias = default(string), string supplySourceId = default(string), string supplySourceCode = default(string), Address address = default(Address))
+        public SupplySourceListInner(string? alias = default(string?), string? supplySourceId = default(string?), string? supplySourceCode = default(string?), Address? address = default(Address?))
         {
             this.Alias = alias;
             this.SupplySourceId = supplySourceId;
@@ -51,27 +51,27 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>The custom alias for this supply source</value>
         [DataMember(Name = "alias", EmitDefaultValue = false)]
-        public string Alias { get; set; }
+        public string? Alias { get; set; }
 
         /// <summary>
         /// An Amazon generated unique supply source ID.
         /// </summary>
         /// <value>An Amazon generated unique supply source ID.</value>
         [DataMember(Name = "supplySourceId", EmitDefaultValue = false)]
-        public string SupplySourceId { get; set; }
+        public string? SupplySourceId { get; set; }
 
         /// <summary>
         /// The seller-provided unique supply source code.
         /// </summary>
         /// <value>The seller-provided unique supply source code.</value>
         [DataMember(Name = "supplySourceCode", EmitDefaultValue = false)]
-        public string SupplySourceCode { get; set; }
+        public string? SupplySourceCode { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

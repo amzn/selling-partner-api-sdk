@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="contentType">contentType (required).</param>
         /// <param name="contentSubType">The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time..</param>
         /// <param name="contentReferenceKey">A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required).</param>
-        public PublishRecord(string marketplaceId = default(string), string locale = default(string), string asin = default(string), ContentType contentType = default(ContentType), string contentSubType = default(string), string contentReferenceKey = default(string))
+        public PublishRecord(string marketplaceId = default(string), string locale = default(string), string asin = default(string), ContentType contentType = default(ContentType), string? contentSubType = default(string?), string contentReferenceKey = default(string))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -107,7 +107,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>The A+ Content document subtype. This represents a special-purpose type of an A+ Content document. Not every A+ Content document type has a subtype, and subtypes can change at any time.</value>
         [DataMember(Name = "contentSubType", EmitDefaultValue = false)]
-        public string ContentSubType { get; set; }
+        public string? ContentSubType { get; set; }
 
         /// <summary>
         /// A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier.
@@ -183,5 +183,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

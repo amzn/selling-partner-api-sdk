@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="codChargeTax">codChargeTax.</param>
         /// <param name="shippingCharge">shippingCharge.</param>
         /// <param name="shippingChargeTax">shippingChargeTax.</param>
-        public CODSettings(bool isCodRequired = default(bool), Money codCharge = default(Money), Money codChargeTax = default(Money), Money shippingCharge = default(Money), Money shippingChargeTax = default(Money))
+        public CODSettings(bool isCodRequired = default(bool), Money? codCharge = default(Money?), Money? codChargeTax = default(Money?), Money? shippingCharge = default(Money?), Money? shippingChargeTax = default(Money?))
         {
             this.IsCodRequired = isCodRequired;
             this.CodCharge = codCharge;
@@ -64,25 +64,25 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets CodCharge
         /// </summary>
         [DataMember(Name = "codCharge", EmitDefaultValue = false)]
-        public Money CodCharge { get; set; }
+        public Money? CodCharge { get; set; }
 
         /// <summary>
         /// Gets or Sets CodChargeTax
         /// </summary>
         [DataMember(Name = "codChargeTax", EmitDefaultValue = false)]
-        public Money CodChargeTax { get; set; }
+        public Money? CodChargeTax { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingCharge
         /// </summary>
         [DataMember(Name = "shippingCharge", EmitDefaultValue = false)]
-        public Money ShippingCharge { get; set; }
+        public Money? ShippingCharge { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingChargeTax
         /// </summary>
         [DataMember(Name = "shippingChargeTax", EmitDefaultValue = false)]
-        public Money ShippingChargeTax { get; set; }
+        public Money? ShippingChargeTax { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,5 +120,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
         /// <param name="financialEvents">financialEvents.</param>
-        public ListFinancialEventsPayload(string nextToken = default(string), FinancialEvents financialEvents = default(FinancialEvents))
+        public ListFinancialEventsPayload(string? nextToken = default(string?), FinancialEvents? financialEvents = default(FinancialEvents?))
         {
             this.NextToken = nextToken;
             this.FinancialEvents = financialEvents;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
         [DataMember(Name = "NextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Gets or Sets FinancialEvents
         /// </summary>
         [DataMember(Name = "FinancialEvents", EmitDefaultValue = false)]
-        public FinancialEvents FinancialEvents { get; set; }
+        public FinancialEvents? FinancialEvents { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

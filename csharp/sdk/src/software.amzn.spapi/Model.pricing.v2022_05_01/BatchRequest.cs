@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="method">method (required).</param>
         /// <param name="body">Additional HTTP body information that is associated with an individual request within a batch..</param>
         /// <param name="headers">A mapping of additional HTTP headers to send or receive for an individual request within a batch..</param>
-        public BatchRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, Object> body = default(Dictionary<string, Object>), Dictionary<string, string> headers = default(Dictionary<string, string>))
+        public BatchRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, Object>? body = default(Dictionary<string, Object>?), Dictionary<string, string>? headers = default(Dictionary<string, string>?))
         {
             // to ensure "uri" is required (not null)
             if (uri == null)
@@ -74,14 +74,14 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>Additional HTTP body information that is associated with an individual request within a batch.</value>
         [DataMember(Name = "body", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Body { get; set; }
+        public Dictionary<string, Object>? Body { get; set; }
 
         /// <summary>
         /// A mapping of additional HTTP headers to send or receive for an individual request within a batch.
         /// </summary>
         /// <value>A mapping of additional HTTP headers to send or receive for an individual request within a batch.</value>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public Dictionary<string, string> Headers { get; set; }
+        public Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

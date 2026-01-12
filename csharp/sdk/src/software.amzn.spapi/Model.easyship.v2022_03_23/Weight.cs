@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <param name="value">The weight of the package..</param>
         /// <param name="unit">unit.</param>
-        public Weight(float value = default(float), UnitOfWeight? unit = default(UnitOfWeight?))
+        public Weight(float? value = default(float?), UnitOfWeight? unit = default(UnitOfWeight?))
         {
             this.Value = value;
             this.Unit = unit;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>The weight of the package.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public float Value { get; set; }
+        public float? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,5 +94,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

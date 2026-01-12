@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="carrierId">The carrier identifier for the offering, provided by the carrier..</param>
         /// <param name="carrierName">The carrier name for the offering..</param>
         /// <param name="unmanifestedShipmentLocationList">A list of UnmanifestedShipmentLocation.</param>
-        public UnmanifestedCarrierInformation(string carrierId = default(string), string carrierName = default(string), List<UnmanifestedShipmentLocation> unmanifestedShipmentLocationList = default(List<UnmanifestedShipmentLocation>))
+        public UnmanifestedCarrierInformation(string? carrierId = default(string?), string? carrierName = default(string?), List<UnmanifestedShipmentLocation>? unmanifestedShipmentLocationList = default(List<UnmanifestedShipmentLocation>?))
         {
             this.CarrierId = carrierId;
             this.CarrierName = carrierName;
@@ -50,21 +50,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The carrier identifier for the offering, provided by the carrier.</value>
         [DataMember(Name = "carrierId", EmitDefaultValue = false)]
-        public string CarrierId { get; set; }
+        public string? CarrierId { get; set; }
 
         /// <summary>
         /// The carrier name for the offering.
         /// </summary>
         /// <value>The carrier name for the offering.</value>
         [DataMember(Name = "carrierName", EmitDefaultValue = false)]
-        public string CarrierName { get; set; }
+        public string? CarrierName { get; set; }
 
         /// <summary>
         /// A list of UnmanifestedShipmentLocation
         /// </summary>
         /// <value>A list of UnmanifestedShipmentLocation</value>
         [DataMember(Name = "unmanifestedShipmentLocationList", EmitDefaultValue = false)]
-        public List<UnmanifestedShipmentLocation> UnmanifestedShipmentLocationList { get; set; }
+        public List<UnmanifestedShipmentLocation>? UnmanifestedShipmentLocationList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

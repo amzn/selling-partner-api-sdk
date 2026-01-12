@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Initializes a new instance of the <see cref="SubmitShippingLabelsRequest" /> class.
         /// </summary>
         /// <param name="shippingLabelRequests">An array of shipping label requests to be processed..</param>
-        public SubmitShippingLabelsRequest(List<ShippingLabelRequest> shippingLabelRequests = default(List<ShippingLabelRequest>))
+        public SubmitShippingLabelsRequest(List<ShippingLabelRequest>? shippingLabelRequests = default(List<ShippingLabelRequest>?))
         {
             this.ShippingLabelRequests = shippingLabelRequests;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <value>An array of shipping label requests to be processed.</value>
         [DataMember(Name = "shippingLabelRequests", EmitDefaultValue = false)]
-        public List<ShippingLabelRequest> ShippingLabelRequests { get; set; }
+        public List<ShippingLabelRequest>? ShippingLabelRequests { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

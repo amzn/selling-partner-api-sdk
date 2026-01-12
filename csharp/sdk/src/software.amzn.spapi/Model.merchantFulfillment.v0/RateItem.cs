@@ -55,7 +55,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="rateItemType">rateItemType.</param>
         /// <param name="rateItemCharge">rateItemCharge.</param>
         /// <param name="rateItemNameLocalization">Localized name for the RateItem..</param>
-        public RateItem(RateItemID rateItemID = default(RateItemID), RateItemType? rateItemType = default(RateItemType?), CurrencyAmount rateItemCharge = default(CurrencyAmount), string rateItemNameLocalization = default(string))
+        public RateItem(RateItemID rateItemID = default(RateItemID), RateItemType? rateItemType = default(RateItemType?), CurrencyAmount? rateItemCharge = default(CurrencyAmount?), string? rateItemNameLocalization = default(string?))
         {
             this.RateItemID = rateItemID;
             this.RateItemType = rateItemType;
@@ -67,14 +67,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets RateItemCharge
         /// </summary>
         [DataMember(Name = "RateItemCharge", EmitDefaultValue = false)]
-        public CurrencyAmount RateItemCharge { get; set; }
+        public CurrencyAmount? RateItemCharge { get; set; }
 
         /// <summary>
         /// Localized name for the RateItem.
         /// </summary>
         /// <value>Localized name for the RateItem.</value>
         [DataMember(Name = "RateItemNameLocalization", EmitDefaultValue = false)]
-        public string RateItemNameLocalization { get; set; }
+        public string? RateItemNameLocalization { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

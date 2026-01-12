@@ -134,7 +134,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="packageLineItems">The list of line items in a package. (required).</param>
         /// <param name="status">The current status of the package..</param>
         /// <param name="packageHandlingRequirements">Whether the package requires standard handling or extra care..</param>
-        public Package(string id = default(string), PackageDimensions dimensions = default(PackageDimensions), Weight weight = default(Weight), List<string> hazmatLabels = default(List<string>), List<PackageLineItem> packageLineItems = default(List<PackageLineItem>), StatusEnum? status = default(StatusEnum?), PackageHandlingRequirementsEnum? packageHandlingRequirements = default(PackageHandlingRequirementsEnum?))
+        public Package(string id = default(string), PackageDimensions dimensions = default(PackageDimensions), Weight weight = default(Weight), List<string>? hazmatLabels = default(List<string>?), List<PackageLineItem> packageLineItems = default(List<PackageLineItem>), StatusEnum? status = default(StatusEnum?), PackageHandlingRequirementsEnum? packageHandlingRequirements = default(PackageHandlingRequirementsEnum?))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -189,7 +189,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The optional list of HAZMAT labels applied to the package.</value>
         [DataMember(Name = "hazmatLabels", EmitDefaultValue = false)]
-        public List<string> HazmatLabels { get; set; }
+        public List<string>? HazmatLabels { get; set; }
 
         /// <summary>
         /// The list of line items in a package.
@@ -236,5 +236,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

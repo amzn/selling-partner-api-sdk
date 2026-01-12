@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.vendor.df.transactions.v2021_12_28
         /// <param name="transactionId">The unique identifier sent in the &#39;transactionId&#39; field in response to the post request of a specific transaction. (required).</param>
         /// <param name="status">Current processing status of the transaction. (required).</param>
         /// <param name="errors">errors.</param>
-        public Transaction(string transactionId = default(string), StatusEnum status = default(StatusEnum), ErrorList errors = default(ErrorList))
+        public Transaction(string transactionId = default(string), StatusEnum status = default(StatusEnum), ErrorList? errors = default(ErrorList?))
         {
             // to ensure "transactionId" is required (not null)
             if (transactionId == null)
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Model.vendor.df.transactions.v2021_12_28
         /// Gets or Sets Errors
         /// </summary>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public ErrorList Errors { get; set; }
+        public ErrorList? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -134,5 +134,4 @@ namespace software.amzn.spapi.Model.vendor.df.transactions.v2021_12_28
             yield break;
         }
     }
-
 }

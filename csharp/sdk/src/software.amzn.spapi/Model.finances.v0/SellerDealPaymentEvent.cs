@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="feeAmount">feeAmount.</param>
         /// <param name="taxAmount">taxAmount.</param>
         /// <param name="totalAmount">totalAmount.</param>
-        public SellerDealPaymentEvent(DateTime postedDate = default(DateTime), string dealId = default(string), string dealDescription = default(string), string eventType = default(string), string feeType = default(string), Currency feeAmount = default(Currency), Currency taxAmount = default(Currency), Currency totalAmount = default(Currency))
+        public SellerDealPaymentEvent(DateTime? postedDate = default(DateTime?), string? dealId = default(string?), string? dealDescription = default(string?), string? eventType = default(string?), string? feeType = default(string?), Currency? feeAmount = default(Currency?), Currency? taxAmount = default(Currency?), Currency? totalAmount = default(Currency?))
         {
             this.PostedDate = postedDate;
             this.DealId = dealId;
@@ -59,53 +59,53 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "postedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The unique identifier of the deal.
         /// </summary>
         /// <value>The unique identifier of the deal.</value>
         [DataMember(Name = "dealId", EmitDefaultValue = false)]
-        public string DealId { get; set; }
+        public string? DealId { get; set; }
 
         /// <summary>
         /// The internal description of the deal.
         /// </summary>
         /// <value>The internal description of the deal.</value>
         [DataMember(Name = "dealDescription", EmitDefaultValue = false)]
-        public string DealDescription { get; set; }
+        public string? DealDescription { get; set; }
 
         /// <summary>
         /// The type of event: &#x60;SellerDealComplete&#x60;.
         /// </summary>
         /// <value>The type of event: &#x60;SellerDealComplete&#x60;.</value>
         [DataMember(Name = "eventType", EmitDefaultValue = false)]
-        public string EventType { get; set; }
+        public string? EventType { get; set; }
 
         /// <summary>
         /// The type of fee: &#x60;RunLightningDealFee&#x60;.
         /// </summary>
         /// <value>The type of fee: &#x60;RunLightningDealFee&#x60;.</value>
         [DataMember(Name = "feeType", EmitDefaultValue = false)]
-        public string FeeType { get; set; }
+        public string? FeeType { get; set; }
 
         /// <summary>
         /// Gets or Sets FeeAmount
         /// </summary>
         [DataMember(Name = "feeAmount", EmitDefaultValue = false)]
-        public Currency FeeAmount { get; set; }
+        public Currency? FeeAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
         /// </summary>
         [DataMember(Name = "taxAmount", EmitDefaultValue = false)]
-        public Currency TaxAmount { get; set; }
+        public Currency? TaxAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "totalAmount", EmitDefaultValue = false)]
-        public Currency TotalAmount { get; set; }
+        public Currency? TotalAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -146,5 +146,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

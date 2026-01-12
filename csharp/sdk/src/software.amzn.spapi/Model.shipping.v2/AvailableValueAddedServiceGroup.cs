@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="groupDescription">The name of the value-added service group. (required).</param>
         /// <param name="isRequired">When true, one or more of the value-added services listed must be specified. (required).</param>
         /// <param name="valueAddedServices">A list of optional value-added services available for purchase with a shipping service offering..</param>
-        public AvailableValueAddedServiceGroup(string groupId = default(string), string groupDescription = default(string), bool isRequired = default(bool), List<ValueAddedService> valueAddedServices = default(List<ValueAddedService>))
+        public AvailableValueAddedServiceGroup(string groupId = default(string), string groupDescription = default(string), bool isRequired = default(bool), List<ValueAddedService>? valueAddedServices = default(List<ValueAddedService>?))
         {
             // to ensure "groupId" is required (not null)
             if (groupId == null)
@@ -88,7 +88,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of optional value-added services available for purchase with a shipping service offering.</value>
         [DataMember(Name = "valueAddedServices", EmitDefaultValue = false)]
-        public List<ValueAddedService> ValueAddedServices { get; set; }
+        public List<ValueAddedService>? ValueAddedServices { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -125,5 +125,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="channelType">channelType (required).</param>
         /// <param name="amazonOrderDetails">amazonOrderDetails.</param>
         /// <param name="amazonShipmentDetails">amazonShipmentDetails.</param>
-        public ChannelDetails(ChannelType channelType = default(ChannelType), AmazonOrderDetails amazonOrderDetails = default(AmazonOrderDetails), AmazonShipmentDetails amazonShipmentDetails = default(AmazonShipmentDetails))
+        public ChannelDetails(ChannelType channelType = default(ChannelType), AmazonOrderDetails? amazonOrderDetails = default(AmazonOrderDetails?), AmazonShipmentDetails? amazonShipmentDetails = default(AmazonShipmentDetails?))
         {
             this.ChannelType = channelType;
             this.AmazonOrderDetails = amazonOrderDetails;
@@ -60,13 +60,13 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets AmazonOrderDetails
         /// </summary>
         [DataMember(Name = "amazonOrderDetails", EmitDefaultValue = false)]
-        public AmazonOrderDetails AmazonOrderDetails { get; set; }
+        public AmazonOrderDetails? AmazonOrderDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets AmazonShipmentDetails
         /// </summary>
         [DataMember(Name = "amazonShipmentDetails", EmitDefaultValue = false)]
-        public AmazonShipmentDetails AmazonShipmentDetails { get; set; }
+        public AmazonShipmentDetails? AmazonShipmentDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,5 +102,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

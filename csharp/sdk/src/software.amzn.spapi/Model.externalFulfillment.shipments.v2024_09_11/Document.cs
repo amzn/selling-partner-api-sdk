@@ -76,7 +76,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="format">The type of the file..</param>
         /// <param name="content">Base 64 encoded file contents..</param>
-        public Document(FormatEnum? format = default(FormatEnum?), string content = default(string))
+        public Document(FormatEnum? format = default(FormatEnum?), string? content = default(string?))
         {
             this.Format = format;
             this.Content = content;
@@ -87,7 +87,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>Base 64 encoded file contents.</value>
         [DataMember(Name = "content", EmitDefaultValue = false)]
-        public string Content { get; set; }
+        public string? Content { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -122,5 +122,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

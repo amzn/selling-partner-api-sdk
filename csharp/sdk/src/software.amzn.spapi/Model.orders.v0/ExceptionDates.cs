@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="exceptionDate">Date when the business is closed, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date format..</param>
         /// <param name="isOpen">Boolean indicating if the business is closed or open on that date..</param>
         /// <param name="openIntervals">Time window during the day when the business is open..</param>
-        public ExceptionDates(string exceptionDate = default(string), bool isOpen = default(bool), List<OpenInterval> openIntervals = default(List<OpenInterval>))
+        public ExceptionDates(string? exceptionDate = default(string?), bool? isOpen = default(bool?), List<OpenInterval>? openIntervals = default(List<OpenInterval>?))
         {
             this.ExceptionDate = exceptionDate;
             this.IsOpen = isOpen;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>Date when the business is closed, in &lt;a href&#x3D;&#39;https://developer-docs.amazon.com/sp-api/docs/iso-8601&#39;&gt;ISO 8601&lt;/a&gt; date format.</value>
         [DataMember(Name = "ExceptionDate", EmitDefaultValue = false)]
-        public string ExceptionDate { get; set; }
+        public string? ExceptionDate { get; set; }
 
         /// <summary>
         /// Boolean indicating if the business is closed or open on that date.
         /// </summary>
         /// <value>Boolean indicating if the business is closed or open on that date.</value>
         [DataMember(Name = "IsOpen", EmitDefaultValue = true)]
-        public bool IsOpen { get; set; }
+        public bool? IsOpen { get; set; }
 
         /// <summary>
         /// Time window during the day when the business is open.
         /// </summary>
         /// <value>Time window during the day when the business is open.</value>
         [DataMember(Name = "OpenIntervals", EmitDefaultValue = false)]
-        public List<OpenInterval> OpenIntervals { get; set; }
+        public List<OpenInterval>? OpenIntervals { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

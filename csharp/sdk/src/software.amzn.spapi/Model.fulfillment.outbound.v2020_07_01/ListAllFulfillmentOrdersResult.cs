@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="nextToken">When present and not empty, pass this string token in the next request to return the next response page..</param>
         /// <param name="fulfillmentOrders">An array of fulfillment order information..</param>
-        public ListAllFulfillmentOrdersResult(string nextToken = default(string), List<FulfillmentOrder> fulfillmentOrders = default(List<FulfillmentOrder>))
+        public ListAllFulfillmentOrdersResult(string? nextToken = default(string?), List<FulfillmentOrder>? fulfillmentOrders = default(List<FulfillmentOrder>?))
         {
             this.NextToken = nextToken;
             this.FulfillmentOrders = fulfillmentOrders;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>When present and not empty, pass this string token in the next request to return the next response page.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// An array of fulfillment order information.
         /// </summary>
         /// <value>An array of fulfillment order information.</value>
         [DataMember(Name = "fulfillmentOrders", EmitDefaultValue = false)]
-        public List<FulfillmentOrder> FulfillmentOrders { get; set; }
+        public List<FulfillmentOrder>? FulfillmentOrders { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

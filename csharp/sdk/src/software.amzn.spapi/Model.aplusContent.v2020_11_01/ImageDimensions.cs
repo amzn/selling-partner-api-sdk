@@ -102,5 +102,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

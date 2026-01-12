@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="uri">The resource path of the operation you are calling in batch without any query parameters.  If you are calling &#x60;getItemOffersBatch&#x60;, supply the path of &#x60;getItemOffers&#x60;.  **Example:** &#x60;/products/pricing/v0/items/B000P6Q7MY/offers&#x60;  If you are calling &#x60;getListingOffersBatch&#x60;, supply the path of &#x60;getListingOffers&#x60;.  **Example:** &#x60;/products/pricing/v0/listings/B000P6Q7MY/offers&#x60; (required).</param>
         /// <param name="method">method (required).</param>
         /// <param name="headers">A mapping of additional HTTP headers to send/receive for the individual batch request..</param>
-        public BatchRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, string> headers = default(Dictionary<string, string>))
+        public BatchRequest(string uri = default(string), HttpMethod method = default(HttpMethod), Dictionary<string, string>? headers = default(Dictionary<string, string>?))
         {
             // to ensure "uri" is required (not null)
             if (uri == null)
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>A mapping of additional HTTP headers to send/receive for the individual batch request.</value>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
-        public Dictionary<string, string> Headers { get; set; }
+        public Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

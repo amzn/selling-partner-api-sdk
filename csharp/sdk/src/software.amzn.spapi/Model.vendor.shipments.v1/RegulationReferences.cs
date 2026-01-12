@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="dueDiligenceVerification">The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR..</param>
         /// <param name="dueDiligenceInformation">The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience..</param>
         /// <param name="dueDiligenceExemptionCode">The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements..</param>
-        public RegulationReferences(string dueDiligenceReference = default(string), string dueDiligenceVerification = default(string), string dueDiligenceInformation = default(string), string dueDiligenceExemptionCode = default(string))
+        public RegulationReferences(string? dueDiligenceReference = default(string?), string? dueDiligenceVerification = default(string?), string? dueDiligenceInformation = default(string?), string? dueDiligenceExemptionCode = default(string?))
         {
             this.DueDiligenceReference = dueDiligenceReference;
             this.DueDiligenceVerification = dueDiligenceVerification;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>The EUDR Due Diligence Reference number from vendor&#39;s upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix.</value>
         [DataMember(Name = "dueDiligenceReference", EmitDefaultValue = false)]
-        public string DueDiligenceReference { get; set; }
+        public string? DueDiligenceReference { get; set; }
 
         /// <summary>
         /// The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.
         /// </summary>
         /// <value>The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.</value>
         [DataMember(Name = "dueDiligenceVerification", EmitDefaultValue = false)]
-        public string DueDiligenceVerification { get; set; }
+        public string? DueDiligenceVerification { get; set; }
 
         /// <summary>
         /// The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.
         /// </summary>
         /// <value>The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.</value>
         [DataMember(Name = "dueDiligenceInformation", EmitDefaultValue = false)]
-        public string DueDiligenceInformation { get; set; }
+        public string? DueDiligenceInformation { get; set; }
 
         /// <summary>
         /// The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.
         /// </summary>
         /// <value>The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.</value>
         [DataMember(Name = "dueDiligenceExemptionCode", EmitDefaultValue = false)]
-        public string DueDiligenceExemptionCode { get; set; }
+        public string? DueDiligenceExemptionCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

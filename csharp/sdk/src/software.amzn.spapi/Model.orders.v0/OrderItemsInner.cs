@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="orderItemId">The order item&#39;s unique identifier..</param>
         /// <param name="quantity">The quantity for which to update the shipment status..</param>
-        public OrderItemsInner(string orderItemId = default(string), int quantity = default(int))
+        public OrderItemsInner(string? orderItemId = default(string?), int? quantity = default(int?))
         {
             this.OrderItemId = orderItemId;
             this.Quantity = quantity;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The order item&#39;s unique identifier.</value>
         [DataMember(Name = "orderItemId", EmitDefaultValue = false)]
-        public string OrderItemId { get; set; }
+        public string? OrderItemId { get; set; }
 
         /// <summary>
         /// The quantity for which to update the shipment status.
         /// </summary>
         /// <value>The quantity for which to update the shipment status.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

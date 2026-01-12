@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="lowestPricedOffers">A list of lowest priced offers for the specified ASIN &#x60;marketplaceId&#x60; combination..</param>
         /// <param name="referencePrices">A list of reference prices for the specified ASIN &#x60;marketplaceId&#x60; combination..</param>
         /// <param name="errors">A list of error responses that are returned when a request is unsuccessful..</param>
-        public CompetitiveSummaryResponseBody(string asin = default(string), string marketplaceId = default(string), List<FeaturedBuyingOption> featuredBuyingOptions = default(List<FeaturedBuyingOption>), List<LowestPricedOffer> lowestPricedOffers = default(List<LowestPricedOffer>), List<ReferencePrice> referencePrices = default(List<ReferencePrice>), List<Error> errors = default(List<Error>))
+        public CompetitiveSummaryResponseBody(string asin = default(string), string marketplaceId = default(string), List<FeaturedBuyingOption>? featuredBuyingOptions = default(List<FeaturedBuyingOption>?), List<LowestPricedOffer>? lowestPricedOffers = default(List<LowestPricedOffer>?), List<ReferencePrice>? referencePrices = default(List<ReferencePrice>?), List<Error>? errors = default(List<Error>?))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -84,28 +84,28 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>A list of featured buying options for the specified ASIN &#x60;marketplaceId&#x60; combination.</value>
         [DataMember(Name = "featuredBuyingOptions", EmitDefaultValue = false)]
-        public List<FeaturedBuyingOption> FeaturedBuyingOptions { get; set; }
+        public List<FeaturedBuyingOption>? FeaturedBuyingOptions { get; set; }
 
         /// <summary>
         /// A list of lowest priced offers for the specified ASIN &#x60;marketplaceId&#x60; combination.
         /// </summary>
         /// <value>A list of lowest priced offers for the specified ASIN &#x60;marketplaceId&#x60; combination.</value>
         [DataMember(Name = "lowestPricedOffers", EmitDefaultValue = false)]
-        public List<LowestPricedOffer> LowestPricedOffers { get; set; }
+        public List<LowestPricedOffer>? LowestPricedOffers { get; set; }
 
         /// <summary>
         /// A list of reference prices for the specified ASIN &#x60;marketplaceId&#x60; combination.
         /// </summary>
         /// <value>A list of reference prices for the specified ASIN &#x60;marketplaceId&#x60; combination.</value>
         [DataMember(Name = "referencePrices", EmitDefaultValue = false)]
-        public List<ReferencePrice> ReferencePrices { get; set; }
+        public List<ReferencePrice>? ReferencePrices { get; set; }
 
         /// <summary>
         /// A list of error responses that are returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses that are returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,5 +144,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

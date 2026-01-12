@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// Initializes a new instance of the <see cref="GetInvoicesExportResponse" /> class.
         /// </summary>
         /// <param name="export">export.</param>
-        public GetInvoicesExportResponse(Export export = default(Export))
+        public GetInvoicesExportResponse(Export? export = default(Export?))
         {
             this.Export = export;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
         /// Gets or Sets Export
         /// </summary>
         [DataMember(Name = "export", EmitDefaultValue = false)]
-        public Export Export { get; set; }
+        public Export? Export { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.invoices.v2024_06_19
             yield break;
         }
     }
-
 }

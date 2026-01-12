@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
         /// <param name="vendorProductIdentifier">The vendor selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted..</param>
         /// <param name="availableQuantity">availableQuantity (required).</param>
         /// <param name="isObsolete">When true, the item is permanently unavailable..</param>
-        public ItemDetails(string buyerProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity availableQuantity = default(ItemQuantity), bool isObsolete = default(bool))
+        public ItemDetails(string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity availableQuantity = default(ItemQuantity), bool? isObsolete = default(bool?))
         {
             // to ensure "availableQuantity" is required (not null)
             if (availableQuantity == null)
@@ -61,14 +61,14 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
         /// </summary>
         /// <value>The buyer selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted.</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted.
         /// </summary>
         /// <value>The vendor selected product identification of the item. Either buyerProductIdentifier or vendorProductIdentifier should be submitted.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets AvailableQuantity
@@ -81,7 +81,7 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
         /// </summary>
         /// <value>When true, the item is permanently unavailable.</value>
         [DataMember(Name = "isObsolete", EmitDefaultValue = true)]
-        public bool IsObsolete { get; set; }
+        public bool? IsObsolete { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.vendor.df.inventory.v1
             yield break;
         }
     }
-
 }

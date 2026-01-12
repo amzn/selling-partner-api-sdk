@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <param name="sellerPositiveFeedbackRating">The percentage of positive feedback for the seller in the past 365 days..</param>
         /// <param name="feedbackCount">The number of ratings received about the seller. (required).</param>
-        public SellerFeedbackType(double sellerPositiveFeedbackRating = default(double), long feedbackCount = default(long))
+        public SellerFeedbackType(double? sellerPositiveFeedbackRating = default(double?), long feedbackCount = default(long))
         {
             this.FeedbackCount = feedbackCount;
             this.SellerPositiveFeedbackRating = sellerPositiveFeedbackRating;
@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>The percentage of positive feedback for the seller in the past 365 days.</value>
         [DataMember(Name = "SellerPositiveFeedbackRating", EmitDefaultValue = false)]
-        public double SellerPositiveFeedbackRating { get; set; }
+        public double? SellerPositiveFeedbackRating { get; set; }
 
         /// <summary>
         /// The number of ratings received about the seller.
@@ -94,5 +94,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

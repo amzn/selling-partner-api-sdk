@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="sKU">The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API..</param>
         /// <param name="feeList">A list of fee component information..</param>
-        public TrialShipmentEvent(string amazonOrderId = default(string), string financialEventGroupId = default(string), DateTime postedDate = default(DateTime), string sKU = default(string), List<FeeComponent> feeList = default(List<FeeComponent>))
+        public TrialShipmentEvent(string? amazonOrderId = default(string?), string? financialEventGroupId = default(string?), DateTime? postedDate = default(DateTime?), string? sKU = default(string?), List<FeeComponent>? feeList = default(List<FeeComponent>?))
         {
             this.AmazonOrderId = amazonOrderId;
             this.FinancialEventGroupId = financialEventGroupId;
@@ -53,35 +53,35 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>An Amazon-defined identifier for an order.</value>
         [DataMember(Name = "AmazonOrderId", EmitDefaultValue = false)]
-        public string AmazonOrderId { get; set; }
+        public string? AmazonOrderId { get; set; }
 
         /// <summary>
         /// The identifier of the financial event group.
         /// </summary>
         /// <value>The identifier of the financial event group.</value>
         [DataMember(Name = "FinancialEventGroupId", EmitDefaultValue = false)]
-        public string FinancialEventGroupId { get; set; }
+        public string? FinancialEventGroupId { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API.
         /// </summary>
         /// <value>The seller SKU of the item. The seller SKU is qualified by the seller&#39;s seller ID, which is included with every call to the Selling Partner API.</value>
         [DataMember(Name = "SKU", EmitDefaultValue = false)]
-        public string SKU { get; set; }
+        public string? SKU { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "FeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> FeeList { get; set; }
+        public List<FeeComponent>? FeeList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,5 +119,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

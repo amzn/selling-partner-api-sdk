@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="sourceAmount">sourceAmount (required).</param>
         /// <param name="transferRateDetails">transferRateDetails.</param>
         /// <param name="requestTime">The transaction initiation request time in date-time format  (required).</param>
-        public TransactionInitiationRequest(string sourceAccountId = default(string), string destinationAccountId = default(string), TransactionInstrumentDetails destinationTransactionInstrument = default(TransactionInstrumentDetails), string transactionDescription = default(string), string customerPaymentReference = default(string), PayeeContactInformation payeeContactInformation = default(PayeeContactInformation), Currency sourceAmount = default(Currency), TransferRatePreview transferRateDetails = default(TransferRatePreview), DateTime requestTime = default(DateTime))
+        public TransactionInitiationRequest(string sourceAccountId = default(string), string? destinationAccountId = default(string?), TransactionInstrumentDetails destinationTransactionInstrument = default(TransactionInstrumentDetails), string? transactionDescription = default(string?), string? customerPaymentReference = default(string?), PayeeContactInformation? payeeContactInformation = default(PayeeContactInformation?), Currency sourceAmount = default(Currency), TransferRatePreview? transferRateDetails = default(TransferRatePreview?), DateTime requestTime = default(DateTime))
         {
             // to ensure "sourceAccountId" is required (not null)
             if (sourceAccountId == null)
@@ -94,7 +94,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>amzn1.account.AJKBFWEJFBNH2KCJPII5FBN</example>
         */
         [DataMember(Name = "destinationAccountId", EmitDefaultValue = false)]
-        public string DestinationAccountId { get; set; }
+        public string? DestinationAccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets DestinationTransactionInstrument
@@ -107,7 +107,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <value>A description of the transaction.</value>
         [DataMember(Name = "transactionDescription", EmitDefaultValue = false)]
-        public string TransactionDescription { get; set; }
+        public string? TransactionDescription { get; set; }
 
         /// <summary>
         /// If the payment is for VAT (Value-Added-Tax) then enter VAT identification number in this field which will be mandatory. The length constraint is 140 characters and do not allow user to enter any sensitive information other than VAT-ID.
@@ -117,13 +117,13 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>BG999999999</example>
         */
         [DataMember(Name = "customerPaymentReference", EmitDefaultValue = false)]
-        public string CustomerPaymentReference { get; set; }
+        public string? CustomerPaymentReference { get; set; }
 
         /// <summary>
         /// Gets or Sets PayeeContactInformation
         /// </summary>
         [DataMember(Name = "payeeContactInformation", EmitDefaultValue = false)]
-        public PayeeContactInformation PayeeContactInformation { get; set; }
+        public PayeeContactInformation? PayeeContactInformation { get; set; }
 
         /// <summary>
         /// Gets or Sets SourceAmount
@@ -135,7 +135,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// Gets or Sets TransferRateDetails
         /// </summary>
         [DataMember(Name = "transferRateDetails", EmitDefaultValue = false)]
-        public TransferRatePreview TransferRateDetails { get; set; }
+        public TransferRatePreview? TransferRateDetails { get; set; }
 
         /// <summary>
         /// The transaction initiation request time in date-time format 
@@ -187,5 +187,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="alias">The custom alias for this supply source.</param>
         /// <param name="varConfiguration">varConfiguration.</param>
         /// <param name="capabilities">capabilities.</param>
-        public UpdateSupplySourceRequest(string alias = default(string), SupplySourceConfiguration varConfiguration = default(SupplySourceConfiguration), SupplySourceCapabilities capabilities = default(SupplySourceCapabilities))
+        public UpdateSupplySourceRequest(string? alias = default(string?), SupplySourceConfiguration? varConfiguration = default(SupplySourceConfiguration?), SupplySourceCapabilities? capabilities = default(SupplySourceCapabilities?))
         {
             this.Alias = alias;
             this.VarConfiguration = varConfiguration;
@@ -49,19 +49,19 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>The custom alias for this supply source</value>
         [DataMember(Name = "alias", EmitDefaultValue = false)]
-        public string Alias { get; set; }
+        public string? Alias { get; set; }
 
         /// <summary>
         /// Gets or Sets VarConfiguration
         /// </summary>
         [DataMember(Name = "configuration", EmitDefaultValue = false)]
-        public SupplySourceConfiguration VarConfiguration { get; set; }
+        public SupplySourceConfiguration? VarConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets Capabilities
         /// </summary>
         [DataMember(Name = "capabilities", EmitDefaultValue = false)]
-        public SupplySourceCapabilities Capabilities { get; set; }
+        public SupplySourceCapabilities? Capabilities { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

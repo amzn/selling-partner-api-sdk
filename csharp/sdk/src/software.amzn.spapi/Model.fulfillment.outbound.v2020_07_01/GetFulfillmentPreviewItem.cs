@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="quantity">The item quantity. (required).</param>
         /// <param name="perUnitDeclaredValue">perUnitDeclaredValue.</param>
         /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier that the seller creates to track items in the fulfillment preview. (required).</param>
-        public GetFulfillmentPreviewItem(string sellerSku = default(string), int quantity = default(int), Money perUnitDeclaredValue = default(Money), string sellerFulfillmentOrderItemId = default(string))
+        public GetFulfillmentPreviewItem(string sellerSku = default(string), int quantity = default(int), Money? perUnitDeclaredValue = default(Money?), string sellerFulfillmentOrderItemId = default(string))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -79,7 +79,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets PerUnitDeclaredValue
         /// </summary>
         [DataMember(Name = "perUnitDeclaredValue", EmitDefaultValue = false)]
-        public Money PerUnitDeclaredValue { get; set; }
+        public Money? PerUnitDeclaredValue { get; set; }
 
         /// <summary>
         /// A fulfillment order item identifier that the seller creates to track items in the fulfillment preview.
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

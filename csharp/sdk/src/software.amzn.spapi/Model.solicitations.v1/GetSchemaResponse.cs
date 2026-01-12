@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.solicitations.v1
         /// <param name="links">links.</param>
         /// <param name="payload">A JSON schema document describing the expected payload of the action. This object can be validated against &lt;a href&#x3D;http://json-schema.org/draft-04/schema&gt;http://json-schema.org/draft-04/schema&lt;/a&gt;..</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetSchemaResponse(GetSchemaResponseLinks links = default(GetSchemaResponseLinks), Dictionary<string, Object> payload = default(Dictionary<string, Object>), List<Error> errors = default(List<Error>))
+        public GetSchemaResponse(GetSchemaResponseLinks? links = default(GetSchemaResponseLinks?), Dictionary<string, Object>? payload = default(Dictionary<string, Object>?), List<Error>? errors = default(List<Error>?))
         {
             this.Links = links;
             this.Payload = payload;
@@ -48,21 +48,21 @@ namespace software.amzn.spapi.Model.solicitations.v1
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "_links", EmitDefaultValue = false)]
-        public GetSchemaResponseLinks Links { get; set; }
+        public GetSchemaResponseLinks? Links { get; set; }
 
         /// <summary>
         /// A JSON schema document describing the expected payload of the action. This object can be validated against &lt;a href&#x3D;http://json-schema.org/draft-04/schema&gt;http://json-schema.org/draft-04/schema&lt;/a&gt;.
         /// </summary>
         /// <value>A JSON schema document describing the expected payload of the action. This object can be validated against &lt;a href&#x3D;http://json-schema.org/draft-04/schema&gt;http://json-schema.org/draft-04/schema&lt;/a&gt;.</value>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Payload { get; set; }
+        public Dictionary<string, Object>? Payload { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.solicitations.v1
             yield break;
         }
     }
-
 }

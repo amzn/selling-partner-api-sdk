@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// </summary>
         /// <param name="reports">A list of reports. (required).</param>
         /// <param name="nextToken">Returned when the number of results exceeds &#x60;pageSize&#x60;. To get the next page of results, call &#x60;getReports&#x60; with this token as the only parameter..</param>
-        public GetReportsResponse(List<Report> reports = default(List<Report>), string nextToken = default(string))
+        public GetReportsResponse(List<Report> reports = default(List<Report>), string? nextToken = default(string?))
         {
             // to ensure "reports" is required (not null)
             if (reports == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
         /// </summary>
         /// <value>Returned when the number of results exceeds &#x60;pageSize&#x60;. To get the next page of results, call &#x60;getReports&#x60; with this token as the only parameter.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.reports.v2021_06_30
             yield break;
         }
     }
-
 }

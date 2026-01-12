@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="sellingParty">sellingParty (required).</param>
         /// <param name="shipToParty">shipToParty (required).</param>
         /// <param name="itemStatus">Detailed description of items order status. (required).</param>
-        public OrderStatus(string purchaseOrderNumber = default(string), PurchaseOrderStatusEnum purchaseOrderStatus = default(PurchaseOrderStatusEnum), DateTime purchaseOrderDate = default(DateTime), DateTime lastUpdatedDate = default(DateTime), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipToParty = default(PartyIdentification), List<OrderItemStatus> itemStatus = default(List<OrderItemStatus>))
+        public OrderStatus(string purchaseOrderNumber = default(string), PurchaseOrderStatusEnum purchaseOrderStatus = default(PurchaseOrderStatusEnum), DateTime purchaseOrderDate = default(DateTime), DateTime? lastUpdatedDate = default(DateTime?), PartyIdentification sellingParty = default(PartyIdentification), PartyIdentification shipToParty = default(PartyIdentification), List<OrderItemStatus> itemStatus = default(List<OrderItemStatus>))
         {
             // to ensure "purchaseOrderNumber" is required (not null)
             if (purchaseOrderNumber == null)
@@ -123,7 +123,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <value>The date when the purchase order was last updated. Must be in ISO-8601 date/time format.</value>
         [DataMember(Name = "lastUpdatedDate", EmitDefaultValue = false)]
-        public DateTime LastUpdatedDate { get; set; }
+        public DateTime? LastUpdatedDate { get; set; }
 
         /// <summary>
         /// Gets or Sets SellingParty
@@ -182,5 +182,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

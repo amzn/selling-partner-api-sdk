@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="estimatedDeliveryDate">The date and time of the latest Estimated Delivery Date (EDD) of all the items with an EDD. In ISO 8601 format..</param>
         /// <param name="itemDeliveryPromise">itemDeliveryPromise.</param>
-        public ItemDelivery(DateTime estimatedDeliveryDate = default(DateTime), ItemDeliveryPromise itemDeliveryPromise = default(ItemDeliveryPromise))
+        public ItemDelivery(DateTime? estimatedDeliveryDate = default(DateTime?), ItemDeliveryPromise? itemDeliveryPromise = default(ItemDeliveryPromise?))
         {
             this.EstimatedDeliveryDate = estimatedDeliveryDate;
             this.ItemDeliveryPromise = itemDeliveryPromise;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The date and time of the latest Estimated Delivery Date (EDD) of all the items with an EDD. In ISO 8601 format.</value>
         [DataMember(Name = "estimatedDeliveryDate", EmitDefaultValue = false)]
-        public DateTime EstimatedDeliveryDate { get; set; }
+        public DateTime? EstimatedDeliveryDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemDeliveryPromise
         /// </summary>
         [DataMember(Name = "itemDeliveryPromise", EmitDefaultValue = false)]
-        public ItemDeliveryPromise ItemDeliveryPromise { get; set; }
+        public ItemDeliveryPromise? ItemDeliveryPromise { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

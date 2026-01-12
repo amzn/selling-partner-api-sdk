@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="lockerNumber">Indicates the locker number.</param>
         /// <param name="lockerAccessCode">Indicates the locker access code.</param>
-        public LockerDetails(string lockerNumber = default(string), string lockerAccessCode = default(string))
+        public LockerDetails(string? lockerNumber = default(string?), string? lockerAccessCode = default(string?))
         {
             this.LockerNumber = lockerNumber;
             this.LockerAccessCode = lockerAccessCode;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Indicates the locker number</value>
         [DataMember(Name = "lockerNumber", EmitDefaultValue = false)]
-        public string LockerNumber { get; set; }
+        public string? LockerNumber { get; set; }
 
         /// <summary>
         /// Indicates the locker access code
         /// </summary>
         /// <value>Indicates the locker access code</value>
         [DataMember(Name = "lockerAccessCode", EmitDefaultValue = false)]
-        public string LockerAccessCode { get; set; }
+        public string? LockerAccessCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

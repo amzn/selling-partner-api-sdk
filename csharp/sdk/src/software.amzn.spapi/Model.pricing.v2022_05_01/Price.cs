@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// <param name="listingPrice">listingPrice (required).</param>
         /// <param name="shippingPrice">shippingPrice.</param>
         /// <param name="points">points.</param>
-        public Price(MoneyType listingPrice = default(MoneyType), MoneyType shippingPrice = default(MoneyType), Points points = default(Points))
+        public Price(MoneyType listingPrice = default(MoneyType), MoneyType? shippingPrice = default(MoneyType?), Points? points = default(Points?))
         {
             // to ensure "listingPrice" is required (not null)
             if (listingPrice == null)
@@ -64,13 +64,13 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// Gets or Sets ShippingPrice
         /// </summary>
         [DataMember(Name = "shippingPrice", EmitDefaultValue = false)]
-        public MoneyType ShippingPrice { get; set; }
+        public MoneyType? ShippingPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

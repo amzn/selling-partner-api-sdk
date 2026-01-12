@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="deliveryDocumentList">A list of delivery documents for a package..</param>
         /// <param name="dropOffLocation">dropOffLocation.</param>
-        public DeliveryInformation(List<DeliveryDocument> deliveryDocumentList = default(List<DeliveryDocument>), DropOffLocation dropOffLocation = default(DropOffLocation))
+        public DeliveryInformation(List<DeliveryDocument>? deliveryDocumentList = default(List<DeliveryDocument>?), DropOffLocation? dropOffLocation = default(DropOffLocation?))
         {
             this.DeliveryDocumentList = deliveryDocumentList;
             this.DropOffLocation = dropOffLocation;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>A list of delivery documents for a package.</value>
         [DataMember(Name = "deliveryDocumentList", EmitDefaultValue = false)]
-        public List<DeliveryDocument> DeliveryDocumentList { get; set; }
+        public List<DeliveryDocument>? DeliveryDocumentList { get; set; }
 
         /// <summary>
         /// Gets or Sets DropOffLocation
         /// </summary>
         [DataMember(Name = "dropOffLocation", EmitDefaultValue = false)]
-        public DropOffLocation DropOffLocation { get; set; }
+        public DropOffLocation? DropOffLocation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

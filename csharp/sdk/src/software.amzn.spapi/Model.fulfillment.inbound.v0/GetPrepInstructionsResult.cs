@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// <param name="invalidSKUList">A list of invalid SKU values and the reason they are invalid..</param>
         /// <param name="aSINPrepInstructionsList">A list of item preparation instructions..</param>
         /// <param name="invalidASINList">A list of invalid ASIN values and the reasons they are invalid..</param>
-        public GetPrepInstructionsResult(List<SKUPrepInstructions> sKUPrepInstructionsList = default(List<SKUPrepInstructions>), List<InvalidSKU> invalidSKUList = default(List<InvalidSKU>), List<ASINPrepInstructions> aSINPrepInstructionsList = default(List<ASINPrepInstructions>), List<InvalidASIN> invalidASINList = default(List<InvalidASIN>))
+        public GetPrepInstructionsResult(List<SKUPrepInstructions>? sKUPrepInstructionsList = default(List<SKUPrepInstructions>?), List<InvalidSKU>? invalidSKUList = default(List<InvalidSKU>?), List<ASINPrepInstructions>? aSINPrepInstructionsList = default(List<ASINPrepInstructions>?), List<InvalidASIN>? invalidASINList = default(List<InvalidASIN>?))
         {
             this.SKUPrepInstructionsList = sKUPrepInstructionsList;
             this.InvalidSKUList = invalidSKUList;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>A list of SKU labeling requirements and item preparation instructions.</value>
         [DataMember(Name = "SKUPrepInstructionsList", EmitDefaultValue = false)]
-        public List<SKUPrepInstructions> SKUPrepInstructionsList { get; set; }
+        public List<SKUPrepInstructions>? SKUPrepInstructionsList { get; set; }
 
         /// <summary>
         /// A list of invalid SKU values and the reason they are invalid.
         /// </summary>
         /// <value>A list of invalid SKU values and the reason they are invalid.</value>
         [DataMember(Name = "InvalidSKUList", EmitDefaultValue = false)]
-        public List<InvalidSKU> InvalidSKUList { get; set; }
+        public List<InvalidSKU>? InvalidSKUList { get; set; }
 
         /// <summary>
         /// A list of item preparation instructions.
         /// </summary>
         /// <value>A list of item preparation instructions.</value>
         [DataMember(Name = "ASINPrepInstructionsList", EmitDefaultValue = false)]
-        public List<ASINPrepInstructions> ASINPrepInstructionsList { get; set; }
+        public List<ASINPrepInstructions>? ASINPrepInstructionsList { get; set; }
 
         /// <summary>
         /// A list of invalid ASIN values and the reasons they are invalid.
         /// </summary>
         /// <value>A list of invalid ASIN values and the reasons they are invalid.</value>
         [DataMember(Name = "InvalidASINList", EmitDefaultValue = false)]
-        public List<InvalidASIN> InvalidASINList { get; set; }
+        public List<InvalidASIN>? InvalidASINList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

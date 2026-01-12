@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="generationStatus">generationStatus.</param>
         /// <param name="collectionFormId">Collection Form Id for Reprint ..</param>
         /// <param name="shipFromAddress">shipFromAddress.</param>
-        public CollectionFormsHistoryRecord(string carrierName = default(string), string creationDate = default(string), GenerationStatus? generationStatus = default(GenerationStatus?), string collectionFormId = default(string), Address shipFromAddress = default(Address))
+        public CollectionFormsHistoryRecord(string? carrierName = default(string?), string? creationDate = default(string?), GenerationStatus? generationStatus = default(GenerationStatus?), string? collectionFormId = default(string?), Address? shipFromAddress = default(Address?))
         {
             this.CarrierName = carrierName;
             this.CreationDate = creationDate;
@@ -60,27 +60,27 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The carrier name for the offering.</value>
         [DataMember(Name = "carrierName", EmitDefaultValue = false)]
-        public string CarrierName { get; set; }
+        public string? CarrierName { get; set; }
 
         /// <summary>
         /// Creation Time for this account.
         /// </summary>
         /// <value>Creation Time for this account.</value>
         [DataMember(Name = "creationDate", EmitDefaultValue = false)]
-        public string CreationDate { get; set; }
+        public string? CreationDate { get; set; }
 
         /// <summary>
         /// Collection Form Id for Reprint .
         /// </summary>
         /// <value>Collection Form Id for Reprint .</value>
         [DataMember(Name = "collectionFormId", EmitDefaultValue = false)]
-        public string CollectionFormId { get; set; }
+        public string? CollectionFormId { get; set; }
 
         /// <summary>
         /// Gets or Sets ShipFromAddress
         /// </summary>
         [DataMember(Name = "shipFromAddress", EmitDefaultValue = false)]
-        public Address ShipFromAddress { get; set; }
+        public Address? ShipFromAddress { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

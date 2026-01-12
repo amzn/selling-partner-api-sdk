@@ -119,5 +119,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

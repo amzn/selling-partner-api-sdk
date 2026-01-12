@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="latestArrivalDate">Date timestamp.</param>
         /// <param name="shippingNotes">Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed..</param>
         /// <param name="fulfillmentPreviewItems">An array of fulfillment preview item information. (required).</param>
-        public FulfillmentPreviewShipment(DateTime earliestShipDate = default(DateTime), DateTime latestShipDate = default(DateTime), DateTime earliestArrivalDate = default(DateTime), DateTime latestArrivalDate = default(DateTime), List<string> shippingNotes = default(List<string>), List<FulfillmentPreviewItem> fulfillmentPreviewItems = default(List<FulfillmentPreviewItem>))
+        public FulfillmentPreviewShipment(DateTime? earliestShipDate = default(DateTime?), DateTime? latestShipDate = default(DateTime?), DateTime? earliestArrivalDate = default(DateTime?), DateTime? latestArrivalDate = default(DateTime?), List<string>? shippingNotes = default(List<string>?), List<FulfillmentPreviewItem> fulfillmentPreviewItems = default(List<FulfillmentPreviewItem>))
         {
             // to ensure "fulfillmentPreviewItems" is required (not null)
             if (fulfillmentPreviewItems == null)
@@ -65,35 +65,35 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "earliestShipDate", EmitDefaultValue = false)]
-        public DateTime EarliestShipDate { get; set; }
+        public DateTime? EarliestShipDate { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "latestShipDate", EmitDefaultValue = false)]
-        public DateTime LatestShipDate { get; set; }
+        public DateTime? LatestShipDate { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "earliestArrivalDate", EmitDefaultValue = false)]
-        public DateTime EarliestArrivalDate { get; set; }
+        public DateTime? EarliestArrivalDate { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "latestArrivalDate", EmitDefaultValue = false)]
-        public DateTime LatestArrivalDate { get; set; }
+        public DateTime? LatestArrivalDate { get; set; }
 
         /// <summary>
         /// Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.
         /// </summary>
         /// <value>Provides additional insight into the shipment timeline when exact delivery dates are not able to be precomputed.</value>
         [DataMember(Name = "shippingNotes", EmitDefaultValue = false)]
-        public List<string> ShippingNotes { get; set; }
+        public List<string>? ShippingNotes { get; set; }
 
         /// <summary>
         /// An array of fulfillment preview item information.
@@ -139,5 +139,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

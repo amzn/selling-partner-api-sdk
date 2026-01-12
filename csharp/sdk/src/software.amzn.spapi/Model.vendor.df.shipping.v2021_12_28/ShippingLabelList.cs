@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="shippingLabels">An array containing the details of the generated shipping labels..</param>
-        public ShippingLabelList(Pagination pagination = default(Pagination), List<ShippingLabel> shippingLabels = default(List<ShippingLabel>))
+        public ShippingLabelList(Pagination? pagination = default(Pagination?), List<ShippingLabel>? shippingLabels = default(List<ShippingLabel>?))
         {
             this.Pagination = pagination;
             this.ShippingLabels = shippingLabels;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// An array containing the details of the generated shipping labels.
         /// </summary>
         /// <value>An array containing the details of the generated shipping labels.</value>
         [DataMember(Name = "shippingLabels", EmitDefaultValue = false)]
-        public List<ShippingLabel> ShippingLabels { get; set; }
+        public List<ShippingLabel>? ShippingLabels { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.df.shipping.v2021_12_28
             yield break;
         }
     }
-
 }

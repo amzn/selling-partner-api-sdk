@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <param name="hsnCode">Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets..</param>
         /// <param name="taxDetails">Individual tax details per line item..</param>
         /// <param name="chargeDetails">Individual charge details per line item..</param>
-        public InvoiceItem(string itemSequenceNumber = default(string), string buyerProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), string purchaseOrderNumber = default(string), string vendorOrderNumber = default(string), string hsnCode = default(string), List<TaxDetail> taxDetails = default(List<TaxDetail>), List<ChargeDetails> chargeDetails = default(List<ChargeDetails>))
+        public InvoiceItem(string itemSequenceNumber = default(string), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), string purchaseOrderNumber = default(string), string? vendorOrderNumber = default(string?), string? hsnCode = default(string?), List<TaxDetail>? taxDetails = default(List<TaxDetail>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -95,14 +95,14 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>Buyer&#39;s standard identification number (ASIN) of an item.</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item.
         /// </summary>
         /// <value>The vendor selected product identification of the item.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoicedQuantity
@@ -128,28 +128,28 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>The vendor&#39;s order number for this order.</value>
         [DataMember(Name = "vendorOrderNumber", EmitDefaultValue = false)]
-        public string VendorOrderNumber { get; set; }
+        public string? VendorOrderNumber { get; set; }
 
         /// <summary>
         /// Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets.
         /// </summary>
         /// <value>Harmonized System of Nomenclature (HSN) tax code. The HSN number cannot contain alphabets.</value>
         [DataMember(Name = "hsnCode", EmitDefaultValue = false)]
-        public string HsnCode { get; set; }
+        public string? HsnCode { get; set; }
 
         /// <summary>
         /// Individual tax details per line item.
         /// </summary>
         /// <value>Individual tax details per line item.</value>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public List<TaxDetail> TaxDetails { get; set; }
+        public List<TaxDetail>? TaxDetails { get; set; }
 
         /// <summary>
         /// Individual charge details per line item.
         /// </summary>
         /// <value>Individual charge details per line item.</value>
         [DataMember(Name = "chargeDetails", EmitDefaultValue = false)]
-        public List<ChargeDetails> ChargeDetails { get; set; }
+        public List<ChargeDetails>? ChargeDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -192,5 +192,4 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             yield break;
         }
     }
-
 }

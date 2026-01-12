@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="storeName">The name of the store that is related to the transaction..</param>
         /// <param name="orderType">The transaction&#39;s order type..</param>
         /// <param name="channel">Channel details of related transaction..</param>
-        public AmazonPayContext(string storeName = default(string), string orderType = default(string), string channel = default(string))
+        public AmazonPayContext(string? storeName = default(string?), string? orderType = default(string?), string? channel = default(string?))
         {
             this.StoreName = storeName;
             this.OrderType = orderType;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The name of the store that is related to the transaction.</value>
         [DataMember(Name = "storeName", EmitDefaultValue = false)]
-        public string StoreName { get; set; }
+        public string? StoreName { get; set; }
 
         /// <summary>
         /// The transaction&#39;s order type.
         /// </summary>
         /// <value>The transaction&#39;s order type.</value>
         [DataMember(Name = "orderType", EmitDefaultValue = false)]
-        public string OrderType { get; set; }
+        public string? OrderType { get; set; }
 
         /// <summary>
         /// Channel details of related transaction.
         /// </summary>
         /// <value>Channel details of related transaction.</value>
         [DataMember(Name = "channel", EmitDefaultValue = false)]
-        public string Channel { get; set; }
+        public string? Channel { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

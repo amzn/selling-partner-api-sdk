@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="contentReferenceKey">A unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ content identifier. (required).</param>
         /// <param name="contentMetadata">contentMetadata.</param>
         /// <param name="contentDocument">contentDocument.</param>
-        public ContentRecord(string contentReferenceKey = default(string), ContentMetadata contentMetadata = default(ContentMetadata), ContentDocument contentDocument = default(ContentDocument))
+        public ContentRecord(string contentReferenceKey = default(string), ContentMetadata? contentMetadata = default(ContentMetadata?), ContentDocument? contentDocument = default(ContentDocument?))
         {
             // to ensure "contentReferenceKey" is required (not null)
             if (contentReferenceKey == null)
@@ -65,13 +65,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets ContentMetadata
         /// </summary>
         [DataMember(Name = "contentMetadata", EmitDefaultValue = false)]
-        public ContentMetadata ContentMetadata { get; set; }
+        public ContentMetadata? ContentMetadata { get; set; }
 
         /// <summary>
         /// Gets or Sets ContentDocument
         /// </summary>
         [DataMember(Name = "contentDocument", EmitDefaultValue = false)]
-        public ContentDocument ContentDocument { get; set; }
+        public ContentDocument? ContentDocument { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

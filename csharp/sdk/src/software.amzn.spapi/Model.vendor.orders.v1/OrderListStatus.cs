@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="ordersStatus">Represents an order status within the OrderListStatus..</param>
-        public OrderListStatus(Pagination pagination = default(Pagination), List<OrderStatus> ordersStatus = default(List<OrderStatus>))
+        public OrderListStatus(Pagination? pagination = default(Pagination?), List<OrderStatus>? ordersStatus = default(List<OrderStatus>?))
         {
             this.Pagination = pagination;
             this.OrdersStatus = ordersStatus;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Represents an order status within the OrderListStatus.
         /// </summary>
         /// <value>Represents an order status within the OrderListStatus.</value>
         [DataMember(Name = "ordersStatus", EmitDefaultValue = false)]
-        public List<OrderStatus> OrdersStatus { get; set; }
+        public List<OrderStatus>? OrdersStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

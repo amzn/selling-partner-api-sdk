@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="totalAmount">totalAmount.</param>
         /// <param name="breakdowns">A list of breakdowns that detail how the total amount is calculated for the transaction..</param>
         /// <param name="contexts">A list of additional information about the item..</param>
-        public Item(string description = default(string), List<ItemRelatedIdentifier> relatedIdentifiers = default(List<ItemRelatedIdentifier>), Currency totalAmount = default(Currency), List<Breakdown> breakdowns = default(List<Breakdown>), List<Context> contexts = default(List<Context>))
+        public Item(string? description = default(string?), List<ItemRelatedIdentifier>? relatedIdentifiers = default(List<ItemRelatedIdentifier>?), Currency? totalAmount = default(Currency?), List<Breakdown>? breakdowns = default(List<Breakdown>?), List<Context>? contexts = default(List<Context>?))
         {
             this.Description = description;
             this.RelatedIdentifiers = relatedIdentifiers;
@@ -53,34 +53,34 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>A description of the items in a transaction.</value>
         [DataMember(Name = "description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// Related business identifiers of the item in the transaction.
         /// </summary>
         /// <value>Related business identifiers of the item in the transaction.</value>
         [DataMember(Name = "relatedIdentifiers", EmitDefaultValue = false)]
-        public List<ItemRelatedIdentifier> RelatedIdentifiers { get; set; }
+        public List<ItemRelatedIdentifier>? RelatedIdentifiers { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "totalAmount", EmitDefaultValue = false)]
-        public Currency TotalAmount { get; set; }
+        public Currency? TotalAmount { get; set; }
 
         /// <summary>
         /// A list of breakdowns that detail how the total amount is calculated for the transaction.
         /// </summary>
         /// <value>A list of breakdowns that detail how the total amount is calculated for the transaction.</value>
         [DataMember(Name = "breakdowns", EmitDefaultValue = false)]
-        public List<Breakdown> Breakdowns { get; set; }
+        public List<Breakdown>? Breakdowns { get; set; }
 
         /// <summary>
         /// A list of additional information about the item.
         /// </summary>
         /// <value>A list of additional information about the item.</value>
         [DataMember(Name = "contexts", EmitDefaultValue = false)]
-        public List<Context> Contexts { get; set; }
+        public List<Context>? Contexts { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -118,5 +118,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

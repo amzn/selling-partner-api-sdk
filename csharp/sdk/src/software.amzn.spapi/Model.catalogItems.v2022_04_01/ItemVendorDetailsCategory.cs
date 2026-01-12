@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <param name="displayName">The display name of the product category or subcategory..</param>
         /// <param name="value">The code that identifies the product category or subcategory..</param>
-        public ItemVendorDetailsCategory(string displayName = default(string), string value = default(string))
+        public ItemVendorDetailsCategory(string? displayName = default(string?), string? value = default(string?))
         {
             this.DisplayName = displayName;
             this.Value = value;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>The display name of the product category or subcategory.</value>
         [DataMember(Name = "displayName", EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
+        public string? DisplayName { get; set; }
 
         /// <summary>
         /// The code that identifies the product category or subcategory.
         /// </summary>
         /// <value>The code that identifies the product category or subcategory.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

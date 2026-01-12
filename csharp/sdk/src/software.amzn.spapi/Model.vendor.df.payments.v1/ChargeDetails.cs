@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// <param name="type">Type of charge applied. (required).</param>
         /// <param name="chargeAmount">chargeAmount (required).</param>
         /// <param name="taxDetails">Individual tax details per line item..</param>
-        public ChargeDetails(TypeEnum type = default(TypeEnum), Money chargeAmount = default(Money), List<TaxDetail> taxDetails = default(List<TaxDetail>))
+        public ChargeDetails(TypeEnum type = default(TypeEnum), Money chargeAmount = default(Money), List<TaxDetail>? taxDetails = default(List<TaxDetail>?))
         {
             this.Type = type;
             // to ensure "chargeAmount" is required (not null)
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
         /// </summary>
         /// <value>Individual tax details per line item.</value>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public List<TaxDetail> TaxDetails { get; set; }
+        public List<TaxDetail>? TaxDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -158,5 +158,4 @@ namespace software.amzn.spapi.Model.vendor.df.payments.v1
             yield break;
         }
     }
-
 }

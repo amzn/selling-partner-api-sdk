@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Initializes a new instance of the <see cref="ProductInfoDetail" /> class.
         /// </summary>
         /// <param name="numberOfItems">The total number of items that are included in the ASIN..</param>
-        public ProductInfoDetail(string numberOfItems = default(string))
+        public ProductInfoDetail(string? numberOfItems = default(string?))
         {
             this.NumberOfItems = numberOfItems;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The total number of items that are included in the ASIN.</value>
         [DataMember(Name = "NumberOfItems", EmitDefaultValue = false)]
-        public string NumberOfItems { get; set; }
+        public string? NumberOfItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

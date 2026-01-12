@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="buyerCounty">The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace..</param>
         /// <param name="buyerTaxInfo">buyerTaxInfo.</param>
         /// <param name="purchaseOrderNumber">The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout..</param>
-        public OrderBuyerInfo(string amazonOrderId = default(string), string buyerEmail = default(string), string buyerName = default(string), string buyerCounty = default(string), BuyerTaxInfo buyerTaxInfo = default(BuyerTaxInfo), string purchaseOrderNumber = default(string))
+        public OrderBuyerInfo(string amazonOrderId = default(string), string? buyerEmail = default(string?), string? buyerName = default(string?), string? buyerCounty = default(string?), BuyerTaxInfo? buyerTaxInfo = default(BuyerTaxInfo?), string? purchaseOrderNumber = default(string?))
         {
             // to ensure "amazonOrderId" is required (not null)
             if (amazonOrderId == null)
@@ -72,34 +72,34 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The anonymized email address of the buyer.</value>
         [DataMember(Name = "BuyerEmail", EmitDefaultValue = false)]
-        public string BuyerEmail { get; set; }
+        public string? BuyerEmail { get; set; }
 
         /// <summary>
         /// The buyer name or the recipient name.
         /// </summary>
         /// <value>The buyer name or the recipient name.</value>
         [DataMember(Name = "BuyerName", EmitDefaultValue = false)]
-        public string BuyerName { get; set; }
+        public string? BuyerName { get; set; }
 
         /// <summary>
         /// The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace.
         /// </summary>
         /// <value>The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace.</value>
         [DataMember(Name = "BuyerCounty", EmitDefaultValue = false)]
-        public string BuyerCounty { get; set; }
+        public string? BuyerCounty { get; set; }
 
         /// <summary>
         /// Gets or Sets BuyerTaxInfo
         /// </summary>
         [DataMember(Name = "BuyerTaxInfo", EmitDefaultValue = false)]
-        public BuyerTaxInfo BuyerTaxInfo { get; set; }
+        public BuyerTaxInfo? BuyerTaxInfo { get; set; }
 
         /// <summary>
         /// The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout.
         /// </summary>
         /// <value>The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout.</value>
         [DataMember(Name = "PurchaseOrderNumber", EmitDefaultValue = false)]
-        public string PurchaseOrderNumber { get; set; }
+        public string? PurchaseOrderNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -138,5 +138,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

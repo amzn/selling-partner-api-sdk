@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="startDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="endDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public TaxWithholdingPeriod(DateTime startDate = default(DateTime), DateTime endDate = default(DateTime))
+        public TaxWithholdingPeriod(DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?))
         {
             this.StartDate = startDate;
             this.EndDate = endDate;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "StartDate", EmitDefaultValue = false)]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "EndDate", EmitDefaultValue = false)]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

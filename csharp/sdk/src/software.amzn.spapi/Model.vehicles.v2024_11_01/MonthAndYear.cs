@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
         /// </summary>
         /// <param name="year">Year in YYYY format.</param>
         /// <param name="month">Month in MM format.</param>
-        public MonthAndYear(decimal year = default(decimal), decimal month = default(decimal))
+        public MonthAndYear(decimal? year = default(decimal?), decimal? month = default(decimal?))
         {
             this.Year = year;
             this.Month = month;
@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
         <example>2004</example>
         */
         [DataMember(Name = "year", EmitDefaultValue = false)]
-        public decimal Year { get; set; }
+        public decimal? Year { get; set; }
 
         /// <summary>
         /// Month in MM format
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
         <example>11</example>
         */
         [DataMember(Name = "month", EmitDefaultValue = false)]
-        public decimal Month { get; set; }
+        public decimal? Month { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,5 +95,4 @@ namespace software.amzn.spapi.Model.vehicles.v2024_11_01
             yield break;
         }
     }
-
 }

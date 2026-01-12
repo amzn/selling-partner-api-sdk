@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="CreateClaimResponse" /> class.
         /// </summary>
         /// <param name="claimId">The claim identifier originally returned by the createClaim operation..</param>
-        public CreateClaimResponse(string claimId = default(string))
+        public CreateClaimResponse(string? claimId = default(string?))
         {
             this.ClaimId = claimId;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The claim identifier originally returned by the createClaim operation.</value>
         [DataMember(Name = "claimId", EmitDefaultValue = false)]
-        public string ClaimId { get; set; }
+        public string? ClaimId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

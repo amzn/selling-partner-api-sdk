@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

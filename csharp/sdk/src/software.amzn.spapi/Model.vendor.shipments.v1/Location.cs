@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="type">Type of location identification..</param>
         /// <param name="locationCode">Location code..</param>
         /// <param name="countryCode">The two digit country code. In ISO 3166-1 alpha-2 format..</param>
-        public Location(string type = default(string), string locationCode = default(string), string countryCode = default(string))
+        public Location(string? type = default(string?), string? locationCode = default(string?), string? countryCode = default(string?))
         {
             this.Type = type;
             this.LocationCode = locationCode;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Type of location identification.</value>
         [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         /// <summary>
         /// Location code.
         /// </summary>
         /// <value>Location code.</value>
         [DataMember(Name = "locationCode", EmitDefaultValue = false)]
-        public string LocationCode { get; set; }
+        public string? LocationCode { get; set; }
 
         /// <summary>
         /// The two digit country code. In ISO 3166-1 alpha-2 format.
         /// </summary>
         /// <value>The two digit country code. In ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

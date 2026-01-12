@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="scheduleEndDate">Field to specify end date of the scheduled transfer .</param>
         /// <param name="scheduleExpression">scheduleExpression.</param>
         /// <param name="scheduleType">scheduleType.</param>
-        public TransferScheduleInformation(DateTime scheduleStartDate = default(DateTime), DateTime scheduleEndDate = default(DateTime), ScheduleExpression scheduleExpression = default(ScheduleExpression), ScheduleTransferType? scheduleType = default(ScheduleTransferType?))
+        public TransferScheduleInformation(DateTime? scheduleStartDate = default(DateTime?), DateTime? scheduleEndDate = default(DateTime?), ScheduleExpression? scheduleExpression = default(ScheduleExpression?), ScheduleTransferType? scheduleType = default(ScheduleTransferType?))
         {
             this.ScheduleStartDate = scheduleStartDate;
             this.ScheduleEndDate = scheduleEndDate;
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>2024-03-01T00:00Z</example>
         */
         [DataMember(Name = "scheduleStartDate", EmitDefaultValue = false)]
-        public DateTime ScheduleStartDate { get; set; }
+        public DateTime? ScheduleStartDate { get; set; }
 
         /// <summary>
         /// Field to specify end date of the scheduled transfer 
@@ -70,13 +70,13 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         <example>2027-03-01T00:00Z</example>
         */
         [DataMember(Name = "scheduleEndDate", EmitDefaultValue = false)]
-        public DateTime ScheduleEndDate { get; set; }
+        public DateTime? ScheduleEndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets ScheduleExpression
         /// </summary>
         [DataMember(Name = "scheduleExpression", EmitDefaultValue = false)]
-        public ScheduleExpression ScheduleExpression { get; set; }
+        public ScheduleExpression? ScheduleExpression { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

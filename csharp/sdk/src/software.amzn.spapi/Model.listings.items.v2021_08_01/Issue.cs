@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="attributeNames">The names of the attributes associated with the issue, if applicable..</param>
         /// <param name="categories">List of issue categories.   Possible values:   * &#39;INVALID_ATTRIBUTE&#39; - Indicating an invalid attribute in the listing.   * &#39;MISSING_ATTRIBUTE&#39; - Highlighting a missing attribute in the listing.   * &#39;INVALID_IMAGE&#39; - Signifying an invalid image in the listing.   * &#39;MISSING_IMAGE&#39; - Noting the absence of an image in the listing.   * &#39;INVALID_PRICE&#39; - Pertaining to issues with the listing&#39;s price-related attributes.   * &#39;MISSING_PRICE&#39; - Pointing out the absence of a price attribute in the listing.   * &#39;DUPLICATE&#39; - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * &#39;QUALIFICATION_REQUIRED&#39; - Indicating that the listing requires qualification-related approval. (required).</param>
         /// <param name="enforcements">enforcements.</param>
-        public Issue(string code = default(string), string message = default(string), SeverityEnum severity = default(SeverityEnum), List<string> attributeNames = default(List<string>), List<string> categories = default(List<string>), IssueEnforcements enforcements = default(IssueEnforcements))
+        public Issue(string code = default(string), string message = default(string), SeverityEnum severity = default(SeverityEnum), List<string>? attributeNames = default(List<string>?), List<string> categories = default(List<string>), IssueEnforcements? enforcements = default(IssueEnforcements?))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -122,7 +122,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>The names of the attributes associated with the issue, if applicable.</value>
         [DataMember(Name = "attributeNames", EmitDefaultValue = false)]
-        public List<string> AttributeNames { get; set; }
+        public List<string>? AttributeNames { get; set; }
 
         /// <summary>
         /// List of issue categories.   Possible values:   * &#39;INVALID_ATTRIBUTE&#39; - Indicating an invalid attribute in the listing.   * &#39;MISSING_ATTRIBUTE&#39; - Highlighting a missing attribute in the listing.   * &#39;INVALID_IMAGE&#39; - Signifying an invalid image in the listing.   * &#39;MISSING_IMAGE&#39; - Noting the absence of an image in the listing.   * &#39;INVALID_PRICE&#39; - Pertaining to issues with the listing&#39;s price-related attributes.   * &#39;MISSING_PRICE&#39; - Pointing out the absence of a price attribute in the listing.   * &#39;DUPLICATE&#39; - Identifying listings with potential duplicate problems, such as this ASIN potentially being a duplicate of another ASIN.   * &#39;QUALIFICATION_REQUIRED&#39; - Indicating that the listing requires qualification-related approval.
@@ -138,7 +138,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// Gets or Sets Enforcements
         /// </summary>
         [DataMember(Name = "enforcements", EmitDefaultValue = false)]
-        public IssueEnforcements Enforcements { get; set; }
+        public IssueEnforcements? Enforcements { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,5 +177,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

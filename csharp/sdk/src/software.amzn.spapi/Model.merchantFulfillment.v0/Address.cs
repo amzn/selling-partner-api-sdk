@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="postalCode">The zip code or postal code. (required).</param>
         /// <param name="countryCode">The two-letter country code in [ISO 3166-1 alpha-2](https://www.iban.com/country-codes) format. (required).</param>
         /// <param name="phone">The phone number. (required).</param>
-        public Address(string name = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string districtOrCounty = default(string), string email = default(string), string city = default(string), string stateOrProvinceCode = default(string), string postalCode = default(string), string countryCode = default(string), string phone = default(string))
+        public Address(string name = default(string), string addressLine1 = default(string), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? districtOrCounty = default(string?), string email = default(string), string city = default(string), string? stateOrProvinceCode = default(string?), string postalCode = default(string), string countryCode = default(string), string phone = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -119,21 +119,21 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>Additional street address information.</value>
         [DataMember(Name = "AddressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Additional street address information.
         /// </summary>
         /// <value>Additional street address information.</value>
         [DataMember(Name = "AddressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// The district or county.
         /// </summary>
         /// <value>The district or county.</value>
         [DataMember(Name = "DistrictOrCounty", EmitDefaultValue = false)]
-        public string DistrictOrCounty { get; set; }
+        public string? DistrictOrCounty { get; set; }
 
         /// <summary>
         /// The email address.
@@ -154,7 +154,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The state or province code. This is a required field in Canada, US, and UK marketplaces, and for shipments that originate in China.</value>
         [DataMember(Name = "StateOrProvinceCode", EmitDefaultValue = false)]
-        public string StateOrProvinceCode { get; set; }
+        public string? StateOrProvinceCode { get; set; }
 
         /// <summary>
         /// The zip code or postal code.
@@ -267,5 +267,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="parkingSpotIdentificationType">parkingSpotIdentificationType.</param>
         /// <param name="numberOfParkingSpots">An unsigned integer that can be only positive or zero..</param>
         /// <param name="address">address.</param>
-        public ParkingWithAddressConfiguration(ParkingCostType? parkingCostType = default(ParkingCostType?), ParkingSpotIdentificationType? parkingSpotIdentificationType = default(ParkingSpotIdentificationType?), int numberOfParkingSpots = default(int), Address address = default(Address))
+        public ParkingWithAddressConfiguration(ParkingCostType? parkingCostType = default(ParkingCostType?), ParkingSpotIdentificationType? parkingSpotIdentificationType = default(ParkingSpotIdentificationType?), int? numberOfParkingSpots = default(int?), Address? address = default(Address?))
         {
             this.ParkingCostType = parkingCostType;
             this.ParkingSpotIdentificationType = parkingSpotIdentificationType;
@@ -63,13 +63,13 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// </summary>
         /// <value>An unsigned integer that can be only positive or zero.</value>
         [DataMember(Name = "numberOfParkingSpots", EmitDefaultValue = false)]
-        public int NumberOfParkingSpots { get; set; }
+        public int? NumberOfParkingSpots { get; set; }
 
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,5 +112,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

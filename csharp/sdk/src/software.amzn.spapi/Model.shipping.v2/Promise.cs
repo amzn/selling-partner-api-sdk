@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="deliveryWindow">deliveryWindow.</param>
         /// <param name="pickupWindow">pickupWindow.</param>
-        public Promise(TimeWindow deliveryWindow = default(TimeWindow), TimeWindow pickupWindow = default(TimeWindow))
+        public Promise(TimeWindow? deliveryWindow = default(TimeWindow?), TimeWindow? pickupWindow = default(TimeWindow?))
         {
             this.DeliveryWindow = deliveryWindow;
             this.PickupWindow = pickupWindow;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets DeliveryWindow
         /// </summary>
         [DataMember(Name = "deliveryWindow", EmitDefaultValue = false)]
-        public TimeWindow DeliveryWindow { get; set; }
+        public TimeWindow? DeliveryWindow { get; set; }
 
         /// <summary>
         /// Gets or Sets PickupWindow
         /// </summary>
         [DataMember(Name = "pickupWindow", EmitDefaultValue = false)]
-        public TimeWindow PickupWindow { get; set; }
+        public TimeWindow? PickupWindow { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

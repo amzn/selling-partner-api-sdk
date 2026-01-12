@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// Initializes a new instance of the <see cref="ListTransactionsResponse" /> class.
         /// </summary>
         /// <param name="payload">payload.</param>
-        public ListTransactionsResponse(TransactionsPayload payload = default(TransactionsPayload))
+        public ListTransactionsResponse(TransactionsPayload? payload = default(TransactionsPayload?))
         {
             this.Payload = payload;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// Gets or Sets Payload
         /// </summary>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public TransactionsPayload Payload { get; set; }
+        public TransactionsPayload? Payload { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

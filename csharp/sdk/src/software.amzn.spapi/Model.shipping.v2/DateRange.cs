@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="startDate">Start Date for query ..</param>
         /// <param name="endDate">end date for query..</param>
-        public DateRange(string startDate = default(string), string endDate = default(string))
+        public DateRange(string? startDate = default(string?), string? endDate = default(string?))
         {
             this.StartDate = startDate;
             this.EndDate = endDate;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Start Date for query .</value>
         [DataMember(Name = "startDate", EmitDefaultValue = false)]
-        public string StartDate { get; set; }
+        public string? StartDate { get; set; }
 
         /// <summary>
         /// end date for query.
         /// </summary>
         /// <value>end date for query.</value>
         [DataMember(Name = "endDate", EmitDefaultValue = false)]
-        public string EndDate { get; set; }
+        public string? EndDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

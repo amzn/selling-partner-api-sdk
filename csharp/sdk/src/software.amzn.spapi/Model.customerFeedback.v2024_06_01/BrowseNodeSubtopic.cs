@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// <param name="subtopic">The name of the browse node review subtopic. (required).</param>
         /// <param name="metrics">metrics (required).</param>
         /// <param name="reviewSnippets">A list of up to three snippets from reviews that contain the topic. This value is &#x60;null&#x60; if there aren&#39;t enough review snippets for the subtopic..</param>
-        public BrowseNodeSubtopic(string subtopic = default(string), BrowseNodeReviewSubtopicMetrics metrics = default(BrowseNodeReviewSubtopicMetrics), List<string> reviewSnippets = default(List<string>))
+        public BrowseNodeSubtopic(string subtopic = default(string), BrowseNodeReviewSubtopicMetrics metrics = default(BrowseNodeReviewSubtopicMetrics), List<string>? reviewSnippets = default(List<string>?))
         {
             // to ensure "subtopic" is required (not null)
             if (subtopic == null)
@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <value>A list of up to three snippets from reviews that contain the topic. This value is &#x60;null&#x60; if there aren&#39;t enough review snippets for the subtopic.</value>
         [DataMember(Name = "reviewSnippets", EmitDefaultValue = false)]
-        public List<string> ReviewSnippets { get; set; }
+        public List<string>? ReviewSnippets { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,5 +113,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

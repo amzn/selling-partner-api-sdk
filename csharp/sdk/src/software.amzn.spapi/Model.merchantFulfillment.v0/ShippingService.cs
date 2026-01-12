@@ -55,7 +55,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="availableFormatOptionsForLabel">The available label formats..</param>
         /// <param name="requiresAdditionalSellerInputs">When true, additional seller inputs are required. (required).</param>
         /// <param name="benefits">benefits.</param>
-        public ShippingService(string shippingServiceName = default(string), string carrierName = default(string), string shippingServiceId = default(string), string shippingServiceOfferId = default(string), DateTime shipDate = default(DateTime), DateTime earliestEstimatedDeliveryDate = default(DateTime), DateTime latestEstimatedDeliveryDate = default(DateTime), CurrencyAmount rate = default(CurrencyAmount), CurrencyAmount rateWithAdjustments = default(CurrencyAmount), List<RateItem> adjustmentItemList = default(List<RateItem>), ShippingServiceOptions shippingServiceOptions = default(ShippingServiceOptions), AvailableShippingServiceOptions availableShippingServiceOptions = default(AvailableShippingServiceOptions), List<LabelFormat> availableLabelFormats = default(List<LabelFormat>), List<LabelFormatOption> availableFormatOptionsForLabel = default(List<LabelFormatOption>), bool requiresAdditionalSellerInputs = default(bool), Benefits benefits = default(Benefits))
+        public ShippingService(string shippingServiceName = default(string), string carrierName = default(string), string shippingServiceId = default(string), string shippingServiceOfferId = default(string), DateTime shipDate = default(DateTime), DateTime? earliestEstimatedDeliveryDate = default(DateTime?), DateTime? latestEstimatedDeliveryDate = default(DateTime?), CurrencyAmount rate = default(CurrencyAmount), CurrencyAmount rateWithAdjustments = default(CurrencyAmount), List<RateItem>? adjustmentItemList = default(List<RateItem>?), ShippingServiceOptions shippingServiceOptions = default(ShippingServiceOptions), AvailableShippingServiceOptions? availableShippingServiceOptions = default(AvailableShippingServiceOptions?), List<LabelFormat>? availableLabelFormats = default(List<LabelFormat>?), List<LabelFormatOption>? availableFormatOptionsForLabel = default(List<LabelFormatOption>?), bool requiresAdditionalSellerInputs = default(bool), Benefits? benefits = default(Benefits?))
         {
             // to ensure "shippingServiceName" is required (not null)
             if (shippingServiceName == null)
@@ -150,14 +150,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>Date-time formatted timestamp.</value>
         [DataMember(Name = "EarliestEstimatedDeliveryDate", EmitDefaultValue = false)]
-        public DateTime EarliestEstimatedDeliveryDate { get; set; }
+        public DateTime? EarliestEstimatedDeliveryDate { get; set; }
 
         /// <summary>
         /// Date-time formatted timestamp.
         /// </summary>
         /// <value>Date-time formatted timestamp.</value>
         [DataMember(Name = "LatestEstimatedDeliveryDate", EmitDefaultValue = false)]
-        public DateTime LatestEstimatedDeliveryDate { get; set; }
+        public DateTime? LatestEstimatedDeliveryDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Rate
@@ -176,7 +176,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>List of adjustments.</value>
         [DataMember(Name = "AdjustmentItemList", EmitDefaultValue = false)]
-        public List<RateItem> AdjustmentItemList { get; set; }
+        public List<RateItem>? AdjustmentItemList { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingServiceOptions
@@ -188,21 +188,21 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets AvailableShippingServiceOptions
         /// </summary>
         [DataMember(Name = "AvailableShippingServiceOptions", EmitDefaultValue = false)]
-        public AvailableShippingServiceOptions AvailableShippingServiceOptions { get; set; }
+        public AvailableShippingServiceOptions? AvailableShippingServiceOptions { get; set; }
 
         /// <summary>
         /// List of label formats.
         /// </summary>
         /// <value>List of label formats.</value>
         [DataMember(Name = "AvailableLabelFormats", EmitDefaultValue = false)]
-        public List<LabelFormat> AvailableLabelFormats { get; set; }
+        public List<LabelFormat>? AvailableLabelFormats { get; set; }
 
         /// <summary>
         /// The available label formats.
         /// </summary>
         /// <value>The available label formats.</value>
         [DataMember(Name = "AvailableFormatOptionsForLabel", EmitDefaultValue = false)]
-        public List<LabelFormatOption> AvailableFormatOptionsForLabel { get; set; }
+        public List<LabelFormatOption>? AvailableFormatOptionsForLabel { get; set; }
 
         /// <summary>
         /// When true, additional seller inputs are required.
@@ -215,7 +215,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// Gets or Sets Benefits
         /// </summary>
         [DataMember(Name = "Benefits", EmitDefaultValue = false)]
-        public Benefits Benefits { get; set; }
+        public Benefits? Benefits { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -264,5 +264,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

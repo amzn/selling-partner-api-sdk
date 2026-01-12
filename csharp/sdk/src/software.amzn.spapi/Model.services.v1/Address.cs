@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="postalCode">The postal code. This can contain letters, digits, spaces, and/or punctuation..</param>
         /// <param name="countryCode">The two digit country code, in ISO 3166-1 alpha-2 format..</param>
         /// <param name="phone">The phone number..</param>
-        public Address(string name = default(string), string addressLine1 = default(string), string addressLine2 = default(string), string addressLine3 = default(string), string city = default(string), string county = default(string), string district = default(string), string stateOrRegion = default(string), string postalCode = default(string), string countryCode = default(string), string phone = default(string))
+        public Address(string name = default(string), string addressLine1 = default(string), string? addressLine2 = default(string?), string? addressLine3 = default(string?), string? city = default(string?), string? county = default(string?), string? district = default(string?), string? stateOrRegion = default(string?), string? postalCode = default(string?), string? countryCode = default(string?), string? phone = default(string?))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -94,63 +94,63 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Additional address information, if required.</value>
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// Additional address information, if required.
         /// </summary>
         /// <value>Additional address information, if required.</value>
         [DataMember(Name = "addressLine3", EmitDefaultValue = false)]
-        public string AddressLine3 { get; set; }
+        public string? AddressLine3 { get; set; }
 
         /// <summary>
         /// The city.
         /// </summary>
         /// <value>The city.</value>
         [DataMember(Name = "city", EmitDefaultValue = false)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         /// <summary>
         /// The county.
         /// </summary>
         /// <value>The county.</value>
         [DataMember(Name = "county", EmitDefaultValue = false)]
-        public string County { get; set; }
+        public string? County { get; set; }
 
         /// <summary>
         /// The district.
         /// </summary>
         /// <value>The district.</value>
         [DataMember(Name = "district", EmitDefaultValue = false)]
-        public string District { get; set; }
+        public string? District { get; set; }
 
         /// <summary>
         /// The state or region.
         /// </summary>
         /// <value>The state or region.</value>
         [DataMember(Name = "stateOrRegion", EmitDefaultValue = false)]
-        public string StateOrRegion { get; set; }
+        public string? StateOrRegion { get; set; }
 
         /// <summary>
         /// The postal code. This can contain letters, digits, spaces, and/or punctuation.
         /// </summary>
         /// <value>The postal code. This can contain letters, digits, spaces, and/or punctuation.</value>
         [DataMember(Name = "postalCode", EmitDefaultValue = false)]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
 
         /// <summary>
         /// The two digit country code, in ISO 3166-1 alpha-2 format.
         /// </summary>
         /// <value>The two digit country code, in ISO 3166-1 alpha-2 format.</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// The phone number.
         /// </summary>
         /// <value>The phone number.</value>
         [DataMember(Name = "phone", EmitDefaultValue = false)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -194,5 +194,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="GetAdditionalInputsResponse" /> class.
         /// </summary>
         /// <param name="payload">The JSON schema to use to provide additional inputs when required to purchase a shipping offering..</param>
-        public GetAdditionalInputsResponse(Dictionary<string, Object> payload = default(Dictionary<string, Object>))
+        public GetAdditionalInputsResponse(Dictionary<string, Object>? payload = default(Dictionary<string, Object>?))
         {
             this.Payload = payload;
         }
@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The JSON schema to use to provide additional inputs when required to purchase a shipping offering.</value>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Payload { get; set; }
+        public Dictionary<string, Object>? Payload { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,5 +80,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="productColumns">productColumns.</param>
         /// <param name="metricRowLabels">metricRowLabels.</param>
-        public StandardComparisonTableModule(List<StandardComparisonProductBlock> productColumns = default(List<StandardComparisonProductBlock>), List<PlainTextItem> metricRowLabels = default(List<PlainTextItem>))
+        public StandardComparisonTableModule(List<StandardComparisonProductBlock>? productColumns = default(List<StandardComparisonProductBlock>?), List<PlainTextItem>? metricRowLabels = default(List<PlainTextItem>?))
         {
             this.ProductColumns = productColumns;
             this.MetricRowLabels = metricRowLabels;
@@ -46,13 +46,13 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets ProductColumns
         /// </summary>
         [DataMember(Name = "productColumns", EmitDefaultValue = false)]
-        public List<StandardComparisonProductBlock> ProductColumns { get; set; }
+        public List<StandardComparisonProductBlock>? ProductColumns { get; set; }
 
         /// <summary>
         /// Gets or Sets MetricRowLabels
         /// </summary>
         [DataMember(Name = "metricRowLabels", EmitDefaultValue = false)]
-        public List<PlainTextItem> MetricRowLabels { get; set; }
+        public List<PlainTextItem>? MetricRowLabels { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,5 +87,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// <param name="cancelledTimestamp">A date and time in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (required).</param>
         /// <param name="cancellationType">The type of cancellation of the item in the shipment. (required).</param>
         /// <param name="cancellationReason">The reason for the cancellation of the shipment..</param>
-        public Cancellation(int cancelledQuantity = default(int), string cancelledTimestamp = default(string), CancellationTypeEnum cancellationType = default(CancellationTypeEnum), string cancellationReason = default(string))
+        public Cancellation(int cancelledQuantity = default(int), string cancelledTimestamp = default(string), CancellationTypeEnum cancellationType = default(CancellationTypeEnum), string? cancellationReason = default(string?))
         {
             this.CancelledQuantity = cancelledQuantity;
             // to ensure "cancelledTimestamp" is required (not null)
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <value>The reason for the cancellation of the shipment.</value>
         [DataMember(Name = "cancellationReason", EmitDefaultValue = false)]
-        public string CancellationReason { get; set; }
+        public string? CancellationReason { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -155,5 +155,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

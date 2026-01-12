@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="reviewDate">The date the order was reviewed. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format..</param>
         /// <param name="externalReviewerId">The identifier for the order&#39;s regulated information reviewer..</param>
         /// <param name="validVerificationDetails">A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided..</param>
-        public RegulatedOrderVerificationStatus(VerificationStatus status = default(VerificationStatus), bool requiresMerchantAction = default(bool), List<RejectionReason> validRejectionReasons = default(List<RejectionReason>), RejectionReason rejectionReason = default(RejectionReason), string reviewDate = default(string), string externalReviewerId = default(string), List<ValidVerificationDetail> validVerificationDetails = default(List<ValidVerificationDetail>))
+        public RegulatedOrderVerificationStatus(VerificationStatus status = default(VerificationStatus), bool requiresMerchantAction = default(bool), List<RejectionReason> validRejectionReasons = default(List<RejectionReason>), RejectionReason? rejectionReason = default(RejectionReason?), string? reviewDate = default(string?), string? externalReviewerId = default(string?), List<ValidVerificationDetail>? validVerificationDetails = default(List<ValidVerificationDetail>?))
         {
             this.Status = status;
             this.RequiresMerchantAction = requiresMerchantAction;
@@ -86,28 +86,28 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Gets or Sets RejectionReason
         /// </summary>
         [DataMember(Name = "RejectionReason", EmitDefaultValue = false)]
-        public RejectionReason RejectionReason { get; set; }
+        public RejectionReason? RejectionReason { get; set; }
 
         /// <summary>
         /// The date the order was reviewed. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.
         /// </summary>
         /// <value>The date the order was reviewed. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date time format.</value>
         [DataMember(Name = "ReviewDate", EmitDefaultValue = false)]
-        public string ReviewDate { get; set; }
+        public string? ReviewDate { get; set; }
 
         /// <summary>
         /// The identifier for the order&#39;s regulated information reviewer.
         /// </summary>
         /// <value>The identifier for the order&#39;s regulated information reviewer.</value>
         [DataMember(Name = "ExternalReviewerId", EmitDefaultValue = false)]
-        public string ExternalReviewerId { get; set; }
+        public string? ExternalReviewerId { get; set; }
 
         /// <summary>
         /// A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.
         /// </summary>
         /// <value>A list of valid verification details that may be provided and the criteria required for when the verification detail can be provided.</value>
         [DataMember(Name = "ValidVerificationDetails", EmitDefaultValue = false)]
-        public List<ValidVerificationDetail> ValidVerificationDetails { get; set; }
+        public List<ValidVerificationDetail>? ValidVerificationDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -147,5 +147,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

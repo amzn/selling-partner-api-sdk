@@ -52,7 +52,7 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// <param name="bankAccountNumberTail">Last 3 digit of the bank account number .</param>
         /// <param name="bankAccountCountryCode">The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount .</param>
         /// <param name="bankAccountCurrency">The currency code in ISO 4217 format  (required).</param>
-        public TransactionAccount(string accountId = default(string), string bankAccountHolderName = default(string), string bankName = default(string), BankAccountNumberFormat bankAccountNumberFormat = default(BankAccountNumberFormat), string bankAccountNumberTail = default(string), string bankAccountCountryCode = default(string), string bankAccountCurrency = default(string))
+        public TransactionAccount(string? accountId = default(string?), string? bankAccountHolderName = default(string?), string bankName = default(string), BankAccountNumberFormat bankAccountNumberFormat = default(BankAccountNumberFormat), string? bankAccountNumberTail = default(string?), string? bankAccountCountryCode = default(string?), string bankAccountCurrency = default(string))
         {
             // to ensure "bankName" is required (not null)
             if (bankName == null)
@@ -78,14 +78,14 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <value>The unique identifier provided by Amazon to identify the account </value>
         [DataMember(Name = "accountId", EmitDefaultValue = false)]
-        public string AccountId { get; set; }
+        public string? AccountId { get; set; }
 
         /// <summary>
         /// BankAccount holder&#39;s name 
         /// </summary>
         /// <value>BankAccount holder&#39;s name </value>
         [DataMember(Name = "bankAccountHolderName", EmitDefaultValue = false)]
-        public string BankAccountHolderName { get; set; }
+        public string? BankAccountHolderName { get; set; }
 
         /// <summary>
         /// The name of the bank 
@@ -99,14 +99,14 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
         /// </summary>
         /// <value>Last 3 digit of the bank account number </value>
         [DataMember(Name = "bankAccountNumberTail", EmitDefaultValue = false)]
-        public string BankAccountNumberTail { get; set; }
+        public string? BankAccountNumberTail { get; set; }
 
         /// <summary>
         /// The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount 
         /// </summary>
         /// <value>The two digit country code, in ISO 3166 format. This field is OPTIONAL for transactionSourceAccount object but is MANDATORY field for transactionDestinationAccount </value>
         [DataMember(Name = "bankAccountCountryCode", EmitDefaultValue = false)]
-        public string BankAccountCountryCode { get; set; }
+        public string? BankAccountCountryCode { get; set; }
 
         /// <summary>
         /// The currency code in ISO 4217 format 
@@ -153,5 +153,4 @@ namespace software.amzn.spapi.Model.sellerWallet.v2024_03_01
             yield break;
         }
     }
-
 }

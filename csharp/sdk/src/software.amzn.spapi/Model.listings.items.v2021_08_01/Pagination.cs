@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <param name="nextToken">A token that can be used to fetch the next page..</param>
         /// <param name="previousToken">A token that can be used to fetch the previous page..</param>
-        public Pagination(string nextToken = default(string), string previousToken = default(string))
+        public Pagination(string? nextToken = default(string?), string? previousToken = default(string?))
         {
             this.NextToken = nextToken;
             this.PreviousToken = previousToken;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>A token that can be used to fetch the next page.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// A token that can be used to fetch the previous page.
         /// </summary>
         /// <value>A token that can be used to fetch the previous page.</value>
         [DataMember(Name = "previousToken", EmitDefaultValue = false)]
-        public string PreviousToken { get; set; }
+        public string? PreviousToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

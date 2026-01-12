@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <param name="positiveTopics">A list of the most positive review topics. When the &#x60;sortBy&#x60; query parameter is set to &#x60;MENTIONS&#x60;, the number of reviews that mention the topic determines the topic&#39;s placement in the list. When &#x60;sortBy&#x60; is set to &#x60;STAR_RATING_IMPACT&#x60;, the effect that the topic has on the star rating of the item determines placement in the list. This value is &#x60;null&#x60; if there are not enough positive reviews for the specified ASIN.  **Max length:** 10.</param>
         /// <param name="negativeTopics">A list of the most negative review topics. When the &#x60;sortBy&#x60; query parameter is set to &#x60;MENTIONS&#x60;, the number of reviews that mention the topic determines the topic&#39;s placement in the list. When &#x60;sortBy&#x60; is set to &#x60;STAR_RATING_IMPACT&#x60;, the effect that the topic has on the star rating of the item determines placement in the list. This value is &#x60;null&#x60; if there are not enough negative reviews for the specified ASIN.  **Max length:** 10.</param>
-        public ItemReviewTopics(List<ItemReviewTopic> positiveTopics = default(List<ItemReviewTopic>), List<ItemReviewTopic> negativeTopics = default(List<ItemReviewTopic>))
+        public ItemReviewTopics(List<ItemReviewTopic>? positiveTopics = default(List<ItemReviewTopic>?), List<ItemReviewTopic>? negativeTopics = default(List<ItemReviewTopic>?))
         {
             this.PositiveTopics = positiveTopics;
             this.NegativeTopics = negativeTopics;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
         /// </summary>
         /// <value>A list of the most positive review topics. When the &#x60;sortBy&#x60; query parameter is set to &#x60;MENTIONS&#x60;, the number of reviews that mention the topic determines the topic&#39;s placement in the list. When &#x60;sortBy&#x60; is set to &#x60;STAR_RATING_IMPACT&#x60;, the effect that the topic has on the star rating of the item determines placement in the list. This value is &#x60;null&#x60; if there are not enough positive reviews for the specified ASIN.  **Max length:** 10</value>
         [DataMember(Name = "positiveTopics", EmitDefaultValue = false)]
-        public List<ItemReviewTopic> PositiveTopics { get; set; }
+        public List<ItemReviewTopic>? PositiveTopics { get; set; }
 
         /// <summary>
         /// A list of the most negative review topics. When the &#x60;sortBy&#x60; query parameter is set to &#x60;MENTIONS&#x60;, the number of reviews that mention the topic determines the topic&#39;s placement in the list. When &#x60;sortBy&#x60; is set to &#x60;STAR_RATING_IMPACT&#x60;, the effect that the topic has on the star rating of the item determines placement in the list. This value is &#x60;null&#x60; if there are not enough negative reviews for the specified ASIN.  **Max length:** 10
         /// </summary>
         /// <value>A list of the most negative review topics. When the &#x60;sortBy&#x60; query parameter is set to &#x60;MENTIONS&#x60;, the number of reviews that mention the topic determines the topic&#39;s placement in the list. When &#x60;sortBy&#x60; is set to &#x60;STAR_RATING_IMPACT&#x60;, the effect that the topic has on the star rating of the item determines placement in the list. This value is &#x60;null&#x60; if there are not enough negative reviews for the specified ASIN.  **Max length:** 10</value>
         [DataMember(Name = "negativeTopics", EmitDefaultValue = false)]
-        public List<ItemReviewTopic> NegativeTopics { get; set; }
+        public List<ItemReviewTopic>? NegativeTopics { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.customerFeedback.v2024_06_01
             yield break;
         }
     }
-
 }

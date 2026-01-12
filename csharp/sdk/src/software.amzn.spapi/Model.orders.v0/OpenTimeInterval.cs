@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="hour">The hour when the business opens or closes..</param>
         /// <param name="minute">The minute when the business opens or closes..</param>
-        public OpenTimeInterval(int hour = default(int), int minute = default(int))
+        public OpenTimeInterval(int? hour = default(int?), int? minute = default(int?))
         {
             this.Hour = hour;
             this.Minute = minute;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The hour when the business opens or closes.</value>
         [DataMember(Name = "Hour", EmitDefaultValue = false)]
-        public int Hour { get; set; }
+        public int? Hour { get; set; }
 
         /// <summary>
         /// The minute when the business opens or closes.
         /// </summary>
         /// <value>The minute when the business opens or closes.</value>
         [DataMember(Name = "Minute", EmitDefaultValue = false)]
-        public int Minute { get; set; }
+        public int? Minute { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

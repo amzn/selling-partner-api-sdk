@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="revenueAdjustment">revenueAdjustment.</param>
         /// <param name="taxAmountAdjustment">taxAmountAdjustment.</param>
         /// <param name="taxWithheldAdjustment">taxWithheldAdjustment.</param>
-        public RemovalShipmentItemAdjustment(string removalShipmentItemId = default(string), string taxCollectionModel = default(string), string fulfillmentNetworkSKU = default(string), int adjustedQuantity = default(int), Currency revenueAdjustment = default(Currency), Currency taxAmountAdjustment = default(Currency), Currency taxWithheldAdjustment = default(Currency))
+        public RemovalShipmentItemAdjustment(string? removalShipmentItemId = default(string?), string? taxCollectionModel = default(string?), string? fulfillmentNetworkSKU = default(string?), int? adjustedQuantity = default(int?), Currency? revenueAdjustment = default(Currency?), Currency? taxAmountAdjustment = default(Currency?), Currency? taxWithheldAdjustment = default(Currency?))
         {
             this.RemovalShipmentItemId = removalShipmentItemId;
             this.TaxCollectionModel = taxCollectionModel;
@@ -57,46 +57,46 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>An identifier for an item in a removal shipment.</value>
         [DataMember(Name = "RemovalShipmentItemId", EmitDefaultValue = false)]
-        public string RemovalShipmentItemId { get; set; }
+        public string? RemovalShipmentItemId { get; set; }
 
         /// <summary>
         /// The tax collection model that is applied to the item.  Possible values:  * &#x60;MarketplaceFacilitator&#x60;: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * &#x60;Standard&#x60;: Tax is paid to the seller and not remitted to the taxing authority by Amazon.
         /// </summary>
         /// <value>The tax collection model that is applied to the item.  Possible values:  * &#x60;MarketplaceFacilitator&#x60;: Tax is withheld and remitted to the taxing authority by Amazon on behalf of the seller. * &#x60;Standard&#x60;: Tax is paid to the seller and not remitted to the taxing authority by Amazon.</value>
         [DataMember(Name = "TaxCollectionModel", EmitDefaultValue = false)]
-        public string TaxCollectionModel { get; set; }
+        public string? TaxCollectionModel { get; set; }
 
         /// <summary>
         /// The Amazon fulfillment network SKU for the item.
         /// </summary>
         /// <value>The Amazon fulfillment network SKU for the item.</value>
         [DataMember(Name = "FulfillmentNetworkSKU", EmitDefaultValue = false)]
-        public string FulfillmentNetworkSKU { get; set; }
+        public string? FulfillmentNetworkSKU { get; set; }
 
         /// <summary>
         /// Adjusted quantity of &#x60;RemovalShipmentItemAdjustment&#x60; items.
         /// </summary>
         /// <value>Adjusted quantity of &#x60;RemovalShipmentItemAdjustment&#x60; items.</value>
         [DataMember(Name = "AdjustedQuantity", EmitDefaultValue = false)]
-        public int AdjustedQuantity { get; set; }
+        public int? AdjustedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets RevenueAdjustment
         /// </summary>
         [DataMember(Name = "RevenueAdjustment", EmitDefaultValue = false)]
-        public Currency RevenueAdjustment { get; set; }
+        public Currency? RevenueAdjustment { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxAmountAdjustment
         /// </summary>
         [DataMember(Name = "TaxAmountAdjustment", EmitDefaultValue = false)]
-        public Currency TaxAmountAdjustment { get; set; }
+        public Currency? TaxAmountAdjustment { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxWithheldAdjustment
         /// </summary>
         [DataMember(Name = "TaxWithheldAdjustment", EmitDefaultValue = false)]
-        public Currency TaxWithheldAdjustment { get; set; }
+        public Currency? TaxWithheldAdjustment { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,5 +136,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

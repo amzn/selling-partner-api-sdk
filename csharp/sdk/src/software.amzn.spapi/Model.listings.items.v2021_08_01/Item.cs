@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="procurement">The vendor procurement information for the listings item..</param>
         /// <param name="relationships">Relationships for a listing item, by marketplace (for example, variations)..</param>
         /// <param name="productTypes">Product types for a listing item, by marketplace..</param>
-        public Item(string sku = default(string), List<ItemSummaryByMarketplace> summaries = default(List<ItemSummaryByMarketplace>), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<Issue> issues = default(List<Issue>), List<ItemOfferByMarketplace> offers = default(List<ItemOfferByMarketplace>), List<FulfillmentAvailability> fulfillmentAvailability = default(List<FulfillmentAvailability>), List<ItemProcurement> procurement = default(List<ItemProcurement>), List<ItemRelationshipsByMarketplace> relationships = default(List<ItemRelationshipsByMarketplace>), List<ItemProductTypeByMarketplace> productTypes = default(List<ItemProductTypeByMarketplace>))
+        public Item(string sku = default(string), List<ItemSummaryByMarketplace>? summaries = default(List<ItemSummaryByMarketplace>?), Dictionary<string, Object>? attributes = default(Dictionary<string, Object>?), List<Issue>? issues = default(List<Issue>?), List<ItemOfferByMarketplace>? offers = default(List<ItemOfferByMarketplace>?), List<FulfillmentAvailability>? fulfillmentAvailability = default(List<FulfillmentAvailability>?), List<ItemProcurement>? procurement = default(List<ItemProcurement>?), List<ItemRelationshipsByMarketplace>? relationships = default(List<ItemRelationshipsByMarketplace>?), List<ItemProductTypeByMarketplace>? productTypes = default(List<ItemProductTypeByMarketplace>?))
         {
             // to ensure "sku" is required (not null)
             if (sku == null)
@@ -78,56 +78,56 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>Summary details of a listings item.</value>
         [DataMember(Name = "summaries", EmitDefaultValue = false)]
-        public List<ItemSummaryByMarketplace> Summaries { get; set; }
+        public List<ItemSummaryByMarketplace>? Summaries { get; set; }
 
         /// <summary>
         /// A JSON object containing structured listings item attribute data keyed by attribute name.
         /// </summary>
         /// <value>A JSON object containing structured listings item attribute data keyed by attribute name.</value>
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Attributes { get; set; }
+        public Dictionary<string, Object>? Attributes { get; set; }
 
         /// <summary>
         /// The issues associated with the listings item.
         /// </summary>
         /// <value>The issues associated with the listings item.</value>
         [DataMember(Name = "issues", EmitDefaultValue = false)]
-        public List<Issue> Issues { get; set; }
+        public List<Issue>? Issues { get; set; }
 
         /// <summary>
         /// Offer details for the listings item.
         /// </summary>
         /// <value>Offer details for the listings item.</value>
         [DataMember(Name = "offers", EmitDefaultValue = false)]
-        public List<ItemOfferByMarketplace> Offers { get; set; }
+        public List<ItemOfferByMarketplace>? Offers { get; set; }
 
         /// <summary>
         /// The fulfillment availability for the listings item.
         /// </summary>
         /// <value>The fulfillment availability for the listings item.</value>
         [DataMember(Name = "fulfillmentAvailability", EmitDefaultValue = false)]
-        public List<FulfillmentAvailability> FulfillmentAvailability { get; set; }
+        public List<FulfillmentAvailability>? FulfillmentAvailability { get; set; }
 
         /// <summary>
         /// The vendor procurement information for the listings item.
         /// </summary>
         /// <value>The vendor procurement information for the listings item.</value>
         [DataMember(Name = "procurement", EmitDefaultValue = false)]
-        public List<ItemProcurement> Procurement { get; set; }
+        public List<ItemProcurement>? Procurement { get; set; }
 
         /// <summary>
         /// Relationships for a listing item, by marketplace (for example, variations).
         /// </summary>
         /// <value>Relationships for a listing item, by marketplace (for example, variations).</value>
         [DataMember(Name = "relationships", EmitDefaultValue = false)]
-        public List<ItemRelationshipsByMarketplace> Relationships { get; set; }
+        public List<ItemRelationshipsByMarketplace>? Relationships { get; set; }
 
         /// <summary>
         /// Product types for a listing item, by marketplace.
         /// </summary>
         /// <value>Product types for a listing item, by marketplace.</value>
         [DataMember(Name = "productTypes", EmitDefaultValue = false)]
-        public List<ItemProductTypeByMarketplace> ProductTypes { get; set; }
+        public List<ItemProductTypeByMarketplace>? ProductTypes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -169,5 +169,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

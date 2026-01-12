@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Initializes a new instance of the <see cref="BuyerCustomizedInfoDetail" /> class.
         /// </summary>
         /// <param name="customizedURL">The location of a ZIP file containing Amazon Custom data..</param>
-        public BuyerCustomizedInfoDetail(string customizedURL = default(string))
+        public BuyerCustomizedInfoDetail(string? customizedURL = default(string?))
         {
             this.CustomizedURL = customizedURL;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The location of a ZIP file containing Amazon Custom data.</value>
         [DataMember(Name = "CustomizedURL", EmitDefaultValue = false)]
-        public string CustomizedURL { get; set; }
+        public string? CustomizedURL { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

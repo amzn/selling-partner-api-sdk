@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="unitOfMeasure">Unit of measure for the shipped quantity. (required).</param>
         /// <param name="unitSize">The case size, in the event that we ordered using cases. Otherwise, 1..</param>
         /// <param name="totalWeight">totalWeight.</param>
-        public ItemQuantity(int amount = default(int), UnitOfMeasureEnum unitOfMeasure = default(UnitOfMeasureEnum), int unitSize = default(int), TotalWeight totalWeight = default(TotalWeight))
+        public ItemQuantity(int amount = default(int), UnitOfMeasureEnum unitOfMeasure = default(UnitOfMeasureEnum), int? unitSize = default(int?), TotalWeight? totalWeight = default(TotalWeight?))
         {
             this.Amount = amount;
             this.UnitOfMeasure = unitOfMeasure;
@@ -90,13 +90,13 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>The case size, in the event that we ordered using cases. Otherwise, 1.</value>
         [DataMember(Name = "unitSize", EmitDefaultValue = false)]
-        public int UnitSize { get; set; }
+        public int? UnitSize { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalWeight
         /// </summary>
         [DataMember(Name = "totalWeight", EmitDefaultValue = false)]
-        public TotalWeight TotalWeight { get; set; }
+        public TotalWeight? TotalWeight { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -133,5 +133,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

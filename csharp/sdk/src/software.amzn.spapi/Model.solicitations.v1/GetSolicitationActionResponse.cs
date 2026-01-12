@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.solicitations.v1
         /// <param name="embedded">embedded.</param>
         /// <param name="payload">payload.</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetSolicitationActionResponse(GetSolicitationActionResponseLinks links = default(GetSolicitationActionResponseLinks), GetSolicitationActionResponseEmbedded embedded = default(GetSolicitationActionResponseEmbedded), SolicitationsAction payload = default(SolicitationsAction), List<Error> errors = default(List<Error>))
+        public GetSolicitationActionResponse(GetSolicitationActionResponseLinks? links = default(GetSolicitationActionResponseLinks?), GetSolicitationActionResponseEmbedded? embedded = default(GetSolicitationActionResponseEmbedded?), SolicitationsAction? payload = default(SolicitationsAction?), List<Error>? errors = default(List<Error>?))
         {
             this.Links = links;
             this.Embedded = embedded;
@@ -50,26 +50,26 @@ namespace software.amzn.spapi.Model.solicitations.v1
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "_links", EmitDefaultValue = false)]
-        public GetSolicitationActionResponseLinks Links { get; set; }
+        public GetSolicitationActionResponseLinks? Links { get; set; }
 
         /// <summary>
         /// Gets or Sets Embedded
         /// </summary>
         [DataMember(Name = "_embedded", EmitDefaultValue = false)]
-        public GetSolicitationActionResponseEmbedded Embedded { get; set; }
+        public GetSolicitationActionResponseEmbedded? Embedded { get; set; }
 
         /// <summary>
         /// Gets or Sets Payload
         /// </summary>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public SolicitationsAction Payload { get; set; }
+        public SolicitationsAction? Payload { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.solicitations.v1
             yield break;
         }
     }
-
 }

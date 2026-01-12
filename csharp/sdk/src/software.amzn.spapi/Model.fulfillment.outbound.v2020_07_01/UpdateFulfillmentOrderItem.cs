@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="perUnitDeclaredValue">perUnitDeclaredValue.</param>
         /// <param name="perUnitPrice">perUnitPrice.</param>
         /// <param name="perUnitTax">perUnitTax.</param>
-        public UpdateFulfillmentOrderItem(string sellerSku = default(string), string sellerFulfillmentOrderItemId = default(string), int quantity = default(int), string giftMessage = default(string), string displayableComment = default(string), string fulfillmentNetworkSku = default(string), string orderItemDisposition = default(string), Money perUnitDeclaredValue = default(Money), Money perUnitPrice = default(Money), Money perUnitTax = default(Money))
+        public UpdateFulfillmentOrderItem(string? sellerSku = default(string?), string sellerFulfillmentOrderItemId = default(string), int quantity = default(int), string? giftMessage = default(string?), string? displayableComment = default(string?), string? fulfillmentNetworkSku = default(string?), string? orderItemDisposition = default(string?), Money? perUnitDeclaredValue = default(Money?), Money? perUnitPrice = default(Money?), Money? perUnitTax = default(Money?))
         {
             // to ensure "sellerFulfillmentOrderItemId" is required (not null)
             if (sellerFulfillmentOrderItemId == null)
@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The seller SKU of the item.</value>
         [DataMember(Name = "sellerSku", EmitDefaultValue = false)]
-        public string SellerSku { get; set; }
+        public string? SellerSku { get; set; }
 
         /// <summary>
         /// Identifies the fulfillment order item to update. Created with a previous call to the &#x60;createFulfillmentOrder&#x60; operation.
@@ -94,46 +94,46 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>A message to the gift recipient, if applicable.</value>
         [DataMember(Name = "giftMessage", EmitDefaultValue = false)]
-        public string GiftMessage { get; set; }
+        public string? GiftMessage { get; set; }
 
         /// <summary>
         /// Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip.
         /// </summary>
         /// <value>Item-specific text that displays in recipient-facing materials such as the outbound shipment packing slip.</value>
         [DataMember(Name = "displayableComment", EmitDefaultValue = false)]
-        public string DisplayableComment { get; set; }
+        public string? DisplayableComment { get; set; }
 
         /// <summary>
         /// Amazon&#39;s fulfillment network SKU of the item.
         /// </summary>
         /// <value>Amazon&#39;s fulfillment network SKU of the item.</value>
         [DataMember(Name = "fulfillmentNetworkSku", EmitDefaultValue = false)]
-        public string FulfillmentNetworkSku { get; set; }
+        public string? FulfillmentNetworkSku { get; set; }
 
         /// <summary>
         /// Indicates whether the item is sellable or unsellable.
         /// </summary>
         /// <value>Indicates whether the item is sellable or unsellable.</value>
         [DataMember(Name = "orderItemDisposition", EmitDefaultValue = false)]
-        public string OrderItemDisposition { get; set; }
+        public string? OrderItemDisposition { get; set; }
 
         /// <summary>
         /// Gets or Sets PerUnitDeclaredValue
         /// </summary>
         [DataMember(Name = "perUnitDeclaredValue", EmitDefaultValue = false)]
-        public Money PerUnitDeclaredValue { get; set; }
+        public Money? PerUnitDeclaredValue { get; set; }
 
         /// <summary>
         /// Gets or Sets PerUnitPrice
         /// </summary>
         [DataMember(Name = "perUnitPrice", EmitDefaultValue = false)]
-        public Money PerUnitPrice { get; set; }
+        public Money? PerUnitPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets PerUnitTax
         /// </summary>
         [DataMember(Name = "perUnitTax", EmitDefaultValue = false)]
-        public Money PerUnitTax { get; set; }
+        public Money? PerUnitTax { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -194,5 +194,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

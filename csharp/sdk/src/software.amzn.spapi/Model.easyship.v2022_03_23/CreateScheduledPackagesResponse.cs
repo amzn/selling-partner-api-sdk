@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// <param name="scheduledPackages">A list of packages. Refer to the &#x60;Package&#x60; object..</param>
         /// <param name="rejectedOrders">A list of orders we couldn&#39;t scheduled on your behalf. Each element contains the reason and details on the error..</param>
         /// <param name="printableDocumentsUrl">A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace..</param>
-        public CreateScheduledPackagesResponse(List<Package> scheduledPackages = default(List<Package>), List<RejectedOrder> rejectedOrders = default(List<RejectedOrder>), string printableDocumentsUrl = default(string))
+        public CreateScheduledPackagesResponse(List<Package>? scheduledPackages = default(List<Package>?), List<RejectedOrder>? rejectedOrders = default(List<RejectedOrder>?), string? printableDocumentsUrl = default(string?))
         {
             this.ScheduledPackages = scheduledPackages;
             this.RejectedOrders = rejectedOrders;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>A list of packages. Refer to the &#x60;Package&#x60; object.</value>
         [DataMember(Name = "scheduledPackages", EmitDefaultValue = false)]
-        public List<Package> ScheduledPackages { get; set; }
+        public List<Package>? ScheduledPackages { get; set; }
 
         /// <summary>
         /// A list of orders we couldn&#39;t scheduled on your behalf. Each element contains the reason and details on the error.
         /// </summary>
         /// <value>A list of orders we couldn&#39;t scheduled on your behalf. Each element contains the reason and details on the error.</value>
         [DataMember(Name = "rejectedOrders", EmitDefaultValue = false)]
-        public List<RejectedOrder> RejectedOrders { get; set; }
+        public List<RejectedOrder>? RejectedOrders { get; set; }
 
         /// <summary>
         /// A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.
         /// </summary>
         /// <value>A pre-signed URL for the zip document containing the shipping labels and the documents enabled for your marketplace.</value>
         [DataMember(Name = "printableDocumentsUrl", EmitDefaultValue = false)]
-        public string PrintableDocumentsUrl { get; set; }
+        public string? PrintableDocumentsUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

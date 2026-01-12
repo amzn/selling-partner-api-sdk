@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// <param name="shipMethod">Ship method to be used for shipping the order. Amazon defines ship method codes indicating the shipping carrier and shipment service level. To see the full list of ship methods in use, including both the code and the friendly name, search the &#39;Help&#39; section on Vendor Central for &#39;ship methods&#39;. (required).</param>
         /// <param name="shipmentDates">shipmentDates (required).</param>
         /// <param name="messageToCustomer">Message to customer for order status. (required).</param>
-        public ShipmentDetails(bool isPriorityShipment = default(bool), bool isScheduledDeliveryShipment = default(bool), bool isPslipRequired = default(bool), bool isGift = default(bool), string shipMethod = default(string), ShipmentDates shipmentDates = default(ShipmentDates), string messageToCustomer = default(string))
+        public ShipmentDetails(bool isPriorityShipment = default(bool), bool? isScheduledDeliveryShipment = default(bool?), bool isPslipRequired = default(bool), bool? isGift = default(bool?), string shipMethod = default(string), ShipmentDates shipmentDates = default(ShipmentDates), string messageToCustomer = default(string))
         {
             this.IsPriorityShipment = isPriorityShipment;
             this.IsPslipRequired = isPslipRequired;
@@ -84,7 +84,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>When true, this order is part of a scheduled delivery program.</value>
         [DataMember(Name = "isScheduledDeliveryShipment", EmitDefaultValue = true)]
-        public bool IsScheduledDeliveryShipment { get; set; }
+        public bool? IsScheduledDeliveryShipment { get; set; }
 
         /// <summary>
         /// When true, a packing slip is required to be sent to the customer.
@@ -98,7 +98,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>When true, the order contain a gift. Include the gift message and gift wrap information.</value>
         [DataMember(Name = "isGift", EmitDefaultValue = true)]
-        public bool IsGift { get; set; }
+        public bool? IsGift { get; set; }
 
         /// <summary>
         /// Ship method to be used for shipping the order. Amazon defines ship method codes indicating the shipping carrier and shipment service level. To see the full list of ship methods in use, including both the code and the friendly name, search the &#39;Help&#39; section on Vendor Central for &#39;ship methods&#39;.
@@ -158,5 +158,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

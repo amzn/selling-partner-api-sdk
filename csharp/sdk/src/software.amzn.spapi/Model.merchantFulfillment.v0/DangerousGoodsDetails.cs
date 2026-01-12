@@ -164,7 +164,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="transportationRegulatoryClass">The specific regulatory class of the shipped item..</param>
         /// <param name="packingGroup">The specific packaging group of the item being shipped..</param>
         /// <param name="packingInstruction">The specific packing instruction of the item being shipped..</param>
-        public DangerousGoodsDetails(string unitedNationsRegulatoryId = default(string), string transportationRegulatoryClass = default(string), PackingGroupEnum? packingGroup = default(PackingGroupEnum?), PackingInstructionEnum? packingInstruction = default(PackingInstructionEnum?))
+        public DangerousGoodsDetails(string? unitedNationsRegulatoryId = default(string?), string? transportationRegulatoryClass = default(string?), PackingGroupEnum? packingGroup = default(PackingGroupEnum?), PackingInstructionEnum? packingInstruction = default(PackingInstructionEnum?))
         {
             this.UnitedNationsRegulatoryId = unitedNationsRegulatoryId;
             this.TransportationRegulatoryClass = transportationRegulatoryClass;
@@ -177,14 +177,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>The specific UNID of the item being shipped.</value>
         [DataMember(Name = "UnitedNationsRegulatoryId", EmitDefaultValue = false)]
-        public string UnitedNationsRegulatoryId { get; set; }
+        public string? UnitedNationsRegulatoryId { get; set; }
 
         /// <summary>
         /// The specific regulatory class of the shipped item.
         /// </summary>
         /// <value>The specific regulatory class of the shipped item.</value>
         [DataMember(Name = "TransportationRegulatoryClass", EmitDefaultValue = false)]
-        public string TransportationRegulatoryClass { get; set; }
+        public string? TransportationRegulatoryClass { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -239,5 +239,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

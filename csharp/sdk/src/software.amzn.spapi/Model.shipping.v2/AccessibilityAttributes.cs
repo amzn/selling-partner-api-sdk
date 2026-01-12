@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="distance">The approximate distance of access point from input postalCode&#39;s centroid..</param>
         /// <param name="driveTime">The approximate (static) drive time from input postal code&#39;s centroid..</param>
-        public AccessibilityAttributes(string distance = default(string), int driveTime = default(int))
+        public AccessibilityAttributes(string? distance = default(string?), int? driveTime = default(int?))
         {
             this.Distance = distance;
             this.DriveTime = driveTime;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The approximate distance of access point from input postalCode&#39;s centroid.</value>
         [DataMember(Name = "distance", EmitDefaultValue = false)]
-        public string Distance { get; set; }
+        public string? Distance { get; set; }
 
         /// <summary>
         /// The approximate (static) drive time from input postal code&#39;s centroid.
         /// </summary>
         /// <value>The approximate (static) drive time from input postal code&#39;s centroid.</value>
         [DataMember(Name = "driveTime", EmitDefaultValue = false)]
-        public int DriveTime { get; set; }
+        public int? DriveTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

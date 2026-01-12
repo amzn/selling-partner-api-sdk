@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="expiresAt">The time at which the self ship appointment slot expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format..</param>
         /// <param name="slots">A list of appointment slots..</param>
-        public SelfShipAppointmentSlotsAvailability(DateTime expiresAt = default(DateTime), List<AppointmentSlot> slots = default(List<AppointmentSlot>))
+        public SelfShipAppointmentSlotsAvailability(DateTime? expiresAt = default(DateTime?), List<AppointmentSlot>? slots = default(List<AppointmentSlot>?))
         {
             this.ExpiresAt = expiresAt;
             this.Slots = slots;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The time at which the self ship appointment slot expires. In [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) datetime format.</value>
         [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
-        public DateTime ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// A list of appointment slots.
         /// </summary>
         /// <value>A list of appointment slots.</value>
         [DataMember(Name = "slots", EmitDefaultValue = false)]
-        public List<AppointmentSlot> Slots { get; set; }
+        public List<AppointmentSlot>? Slots { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

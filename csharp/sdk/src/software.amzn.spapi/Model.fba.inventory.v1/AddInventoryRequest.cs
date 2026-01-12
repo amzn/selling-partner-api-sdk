@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// Initializes a new instance of the <see cref="AddInventoryRequest" /> class.
         /// </summary>
         /// <param name="inventoryItems">List of Inventory to be added.</param>
-        public AddInventoryRequest(List<InventoryItem> inventoryItems = default(List<InventoryItem>))
+        public AddInventoryRequest(List<InventoryItem>? inventoryItems = default(List<InventoryItem>?))
         {
             this.InventoryItems = inventoryItems;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>List of Inventory to be added</value>
         [DataMember(Name = "inventoryItems", EmitDefaultValue = false)]
-        public List<InventoryItem> InventoryItems { get; set; }
+        public List<InventoryItem>? InventoryItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

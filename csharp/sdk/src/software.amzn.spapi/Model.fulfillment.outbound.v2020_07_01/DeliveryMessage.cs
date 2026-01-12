@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <param name="text">The message content for a delivery offering..</param>
         /// <param name="locale">The locale for the message (e.g., &#x60;en_US&#x60;)..</param>
-        public DeliveryMessage(string text = default(string), string locale = default(string))
+        public DeliveryMessage(string? text = default(string?), string? locale = default(string?))
         {
             this.Text = text;
             this.Locale = locale;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>The message content for a delivery offering.</value>
         [DataMember(Name = "text", EmitDefaultValue = false)]
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// The locale for the message (e.g., &#x60;en_US&#x60;).
         /// </summary>
         /// <value>The locale for the message (e.g., &#x60;en_US&#x60;).</value>
         [DataMember(Name = "locale", EmitDefaultValue = false)]
-        public string Locale { get; set; }
+        public string? Locale { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

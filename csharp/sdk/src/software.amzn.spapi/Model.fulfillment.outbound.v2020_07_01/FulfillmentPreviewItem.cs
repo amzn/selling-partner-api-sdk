@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="sellerFulfillmentOrderItemId">A fulfillment order item identifier that the seller created with a call to the &#x60;createFulfillmentOrder&#x60; operation. (required).</param>
         /// <param name="estimatedShippingWeight">estimatedShippingWeight.</param>
         /// <param name="shippingWeightCalculationMethod">The method used to calculate the estimated shipping weight..</param>
-        public FulfillmentPreviewItem(string sellerSku = default(string), int quantity = default(int), string sellerFulfillmentOrderItemId = default(string), Weight estimatedShippingWeight = default(Weight), ShippingWeightCalculationMethodEnum? shippingWeightCalculationMethod = default(ShippingWeightCalculationMethodEnum?))
+        public FulfillmentPreviewItem(string sellerSku = default(string), int quantity = default(int), string sellerFulfillmentOrderItemId = default(string), Weight? estimatedShippingWeight = default(Weight?), ShippingWeightCalculationMethodEnum? shippingWeightCalculationMethod = default(ShippingWeightCalculationMethodEnum?))
         {
             // to ensure "sellerSku" is required (not null)
             if (sellerSku == null)
@@ -115,7 +115,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// Gets or Sets EstimatedShippingWeight
         /// </summary>
         [DataMember(Name = "estimatedShippingWeight", EmitDefaultValue = false)]
-        public Weight EstimatedShippingWeight { get; set; }
+        public Weight? EstimatedShippingWeight { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -153,5 +153,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

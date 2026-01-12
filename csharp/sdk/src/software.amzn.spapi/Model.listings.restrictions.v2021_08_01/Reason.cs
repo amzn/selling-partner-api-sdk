@@ -75,7 +75,7 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         /// <param name="message">A message describing the reason for the restriction. (required).</param>
         /// <param name="reasonCode">A code indicating why the listing is restricted..</param>
         /// <param name="links">A list of path forward links that may allow Selling Partners to remove the restriction..</param>
-        public Reason(string message = default(string), ReasonCodeEnum? reasonCode = default(ReasonCodeEnum?), List<Link> links = default(List<Link>))
+        public Reason(string message = default(string), ReasonCodeEnum? reasonCode = default(ReasonCodeEnum?), List<Link>? links = default(List<Link>?))
         {
             // to ensure "message" is required (not null)
             if (message == null)
@@ -99,7 +99,7 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
         /// </summary>
         /// <value>A list of path forward links that may allow Selling Partners to remove the restriction.</value>
         [DataMember(Name = "links", EmitDefaultValue = false)]
-        public List<Link> Links { get; set; }
+        public List<Link>? Links { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -135,5 +135,4 @@ namespace software.amzn.spapi.Model.listings.restrictions.v2021_08_01
             yield break;
         }
     }
-
 }

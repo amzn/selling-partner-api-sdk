@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Initializes a new instance of the <see cref="DiscountFunding" /> class.
         /// </summary>
         /// <param name="percentage">Filters the results to only include offers with the percentage specified..</param>
-        public DiscountFunding(List<decimal> percentage = default(List<decimal>))
+        public DiscountFunding(List<decimal>? percentage = default(List<decimal>?))
         {
             this.Percentage = percentage;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>Filters the results to only include offers with the percentage specified.</value>
         [DataMember(Name = "percentage", EmitDefaultValue = false)]
-        public List<decimal> Percentage { get; set; }
+        public List<decimal>? Percentage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

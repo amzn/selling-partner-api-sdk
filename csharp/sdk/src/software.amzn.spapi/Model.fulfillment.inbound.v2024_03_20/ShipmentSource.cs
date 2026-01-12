@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="address">address.</param>
         /// <param name="sourceType">The type of source for this shipment. Possible values: &#x60;SELLER_FACILITY&#x60;. (required).</param>
-        public ShipmentSource(Address address = default(Address), string sourceType = default(string))
+        public ShipmentSource(Address? address = default(Address?), string sourceType = default(string))
         {
             // to ensure "sourceType" is required (not null)
             if (sourceType == null)
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// The type of source for this shipment. Possible values: &#x60;SELLER_FACILITY&#x60;.
@@ -110,5 +110,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

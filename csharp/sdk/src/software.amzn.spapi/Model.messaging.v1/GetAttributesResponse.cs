@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <param name="buyer">buyer.</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetAttributesResponse(GetAttributesResponseBuyer buyer = default(GetAttributesResponseBuyer), List<Error> errors = default(List<Error>))
+        public GetAttributesResponse(GetAttributesResponseBuyer? buyer = default(GetAttributesResponseBuyer?), List<Error>? errors = default(List<Error>?))
         {
             this.Buyer = buyer;
             this.Errors = errors;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// Gets or Sets Buyer
         /// </summary>
         [DataMember(Name = "buyer", EmitDefaultValue = false)]
-        public GetAttributesResponseBuyer Buyer { get; set; }
+        public GetAttributesResponseBuyer? Buyer { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

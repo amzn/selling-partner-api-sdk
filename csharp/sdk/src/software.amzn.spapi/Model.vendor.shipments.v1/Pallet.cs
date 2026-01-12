@@ -46,7 +46,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="weight">weight.</param>
         /// <param name="cartonReferenceDetails">cartonReferenceDetails.</param>
         /// <param name="items">A list of container item details..</param>
-        public Pallet(List<ContainerIdentification> palletIdentifiers = default(List<ContainerIdentification>), int tier = default(int), int block = default(int), Dimensions dimensions = default(Dimensions), Weight weight = default(Weight), CartonReferenceDetails cartonReferenceDetails = default(CartonReferenceDetails), List<ContainerItem> items = default(List<ContainerItem>))
+        public Pallet(List<ContainerIdentification> palletIdentifiers = default(List<ContainerIdentification>), int? tier = default(int?), int? block = default(int?), Dimensions? dimensions = default(Dimensions?), Weight? weight = default(Weight?), CartonReferenceDetails? cartonReferenceDetails = default(CartonReferenceDetails?), List<ContainerItem>? items = default(List<ContainerItem>?))
         {
             // to ensure "palletIdentifiers" is required (not null)
             if (palletIdentifiers == null)
@@ -74,39 +74,39 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Number of layers per pallet. Only applicable to container type Pallet.</value>
         [DataMember(Name = "tier", EmitDefaultValue = false)]
-        public int Tier { get; set; }
+        public int? Tier { get; set; }
 
         /// <summary>
         /// Number of cartons per layer on the pallet. Only applicable to container type Pallet.
         /// </summary>
         /// <value>Number of cartons per layer on the pallet. Only applicable to container type Pallet.</value>
         [DataMember(Name = "block", EmitDefaultValue = false)]
-        public int Block { get; set; }
+        public int? Block { get; set; }
 
         /// <summary>
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public Dimensions Dimensions { get; set; }
+        public Dimensions? Dimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
         /// </summary>
         [DataMember(Name = "weight", EmitDefaultValue = false)]
-        public Weight Weight { get; set; }
+        public Weight? Weight { get; set; }
 
         /// <summary>
         /// Gets or Sets CartonReferenceDetails
         /// </summary>
         [DataMember(Name = "cartonReferenceDetails", EmitDefaultValue = false)]
-        public CartonReferenceDetails CartonReferenceDetails { get; set; }
+        public CartonReferenceDetails? CartonReferenceDetails { get; set; }
 
         /// <summary>
         /// A list of container item details.
         /// </summary>
         /// <value>A list of container item details.</value>
         [DataMember(Name = "items", EmitDefaultValue = false)]
-        public List<ContainerItem> Items { get; set; }
+        public List<ContainerItem>? Items { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -146,5 +146,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

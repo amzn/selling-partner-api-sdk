@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <param name="taxAmount">taxAmount.</param>
         /// <param name="finalFee">finalFee (required).</param>
         /// <param name="includedFeeDetailList">A list of other fees that contribute to a given fee..</param>
-        public FeeDetail(string feeType = default(string), MoneyType feeAmount = default(MoneyType), MoneyType feePromotion = default(MoneyType), MoneyType taxAmount = default(MoneyType), MoneyType finalFee = default(MoneyType), List<IncludedFeeDetail> includedFeeDetailList = default(List<IncludedFeeDetail>))
+        public FeeDetail(string feeType = default(string), MoneyType feeAmount = default(MoneyType), MoneyType? feePromotion = default(MoneyType?), MoneyType? taxAmount = default(MoneyType?), MoneyType finalFee = default(MoneyType), List<IncludedFeeDetail>? includedFeeDetailList = default(List<IncludedFeeDetail>?))
         {
             // to ensure "feeType" is required (not null)
             if (feeType == null)
@@ -87,13 +87,13 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// Gets or Sets FeePromotion
         /// </summary>
         [DataMember(Name = "FeePromotion", EmitDefaultValue = false)]
-        public MoneyType FeePromotion { get; set; }
+        public MoneyType? FeePromotion { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
         /// </summary>
         [DataMember(Name = "TaxAmount", EmitDefaultValue = false)]
-        public MoneyType TaxAmount { get; set; }
+        public MoneyType? TaxAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets FinalFee
@@ -106,7 +106,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// </summary>
         /// <value>A list of other fees that contribute to a given fee.</value>
         [DataMember(Name = "IncludedFeeDetailList", EmitDefaultValue = false)]
-        public List<IncludedFeeDetail> IncludedFeeDetailList { get; set; }
+        public List<IncludedFeeDetail>? IncludedFeeDetailList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -145,5 +145,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

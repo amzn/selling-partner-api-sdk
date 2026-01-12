@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// Initializes a new instance of the <see cref="BillOfLadingDownloadURL" /> class.
         /// </summary>
         /// <param name="downloadURL">URL to download the bill of lading for the package. Note: The URL will only be valid for 15 seconds.</param>
-        public BillOfLadingDownloadURL(string downloadURL = default(string))
+        public BillOfLadingDownloadURL(string? downloadURL = default(string?))
         {
             this.DownloadURL = downloadURL;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
         /// </summary>
         /// <value>URL to download the bill of lading for the package. Note: The URL will only be valid for 15 seconds</value>
         [DataMember(Name = "DownloadURL", EmitDefaultValue = false)]
-        public string DownloadURL { get; set; }
+        public string? DownloadURL { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v0
             yield break;
         }
     }
-
 }

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="marketplaceId">Amazon marketplace identifier. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids). (required).</param>
         /// <param name="classificationRanks">Sales ranks of an Amazon catalog item for a &#x60;marketplaceId&#x60;, grouped by classification..</param>
         /// <param name="displayGroupRanks">Sales ranks of an Amazon catalog item for a &#x60;marketplaceId&#x60;, grouped by website display group..</param>
-        public ItemSalesRanksByMarketplace(string marketplaceId = default(string), List<ItemClassificationSalesRank> classificationRanks = default(List<ItemClassificationSalesRank>), List<ItemDisplayGroupSalesRank> displayGroupRanks = default(List<ItemDisplayGroupSalesRank>))
+        public ItemSalesRanksByMarketplace(string marketplaceId = default(string), List<ItemClassificationSalesRank>? classificationRanks = default(List<ItemClassificationSalesRank>?), List<ItemDisplayGroupSalesRank>? displayGroupRanks = default(List<ItemDisplayGroupSalesRank>?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -66,14 +66,14 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>Sales ranks of an Amazon catalog item for a &#x60;marketplaceId&#x60;, grouped by classification.</value>
         [DataMember(Name = "classificationRanks", EmitDefaultValue = false)]
-        public List<ItemClassificationSalesRank> ClassificationRanks { get; set; }
+        public List<ItemClassificationSalesRank>? ClassificationRanks { get; set; }
 
         /// <summary>
         /// Sales ranks of an Amazon catalog item for a &#x60;marketplaceId&#x60;, grouped by website display group.
         /// </summary>
         /// <value>Sales ranks of an Amazon catalog item for a &#x60;marketplaceId&#x60;, grouped by website display group.</value>
         [DataMember(Name = "displayGroupRanks", EmitDefaultValue = false)]
-        public List<ItemDisplayGroupSalesRank> DisplayGroupRanks { get; set; }
+        public List<ItemDisplayGroupSalesRank>? DisplayGroupRanks { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

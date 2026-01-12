@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <param name="amazonOrderId">An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship. (required).</param>
         /// <param name="packageDetails">packageDetails.</param>
-        public OrderScheduleDetails(string amazonOrderId = default(string), PackageDetails packageDetails = default(PackageDetails))
+        public OrderScheduleDetails(string amazonOrderId = default(string), PackageDetails? packageDetails = default(PackageDetails?))
         {
             // to ensure "amazonOrderId" is required (not null)
             if (amazonOrderId == null)
@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// Gets or Sets PackageDetails
         /// </summary>
         [DataMember(Name = "packageDetails", EmitDefaultValue = false)]
-        public PackageDetails PackageDetails { get; set; }
+        public PackageDetails? PackageDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

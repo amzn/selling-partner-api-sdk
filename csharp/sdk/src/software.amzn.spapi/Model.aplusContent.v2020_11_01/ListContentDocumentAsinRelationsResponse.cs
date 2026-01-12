@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="warnings">A set of messages to the user, such as warnings or comments..</param>
         /// <param name="nextPageToken">A token that you use to fetch a specific page when there are multiple pages of results..</param>
         /// <param name="asinMetadataSet">The set of ASIN metadata. (required).</param>
-        public ListContentDocumentAsinRelationsResponse(List<Error> warnings = default(List<Error>), string nextPageToken = default(string), List<AsinMetadata> asinMetadataSet = default(List<AsinMetadata>))
+        public ListContentDocumentAsinRelationsResponse(List<Error>? warnings = default(List<Error>?), string? nextPageToken = default(string?), List<AsinMetadata> asinMetadataSet = default(List<AsinMetadata>))
         {
             // to ensure "asinMetadataSet" is required (not null)
             if (asinMetadataSet == null)
@@ -59,14 +59,14 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>A set of messages to the user, such as warnings or comments.</value>
         [DataMember(Name = "warnings", EmitDefaultValue = false)]
-        public List<Error> Warnings { get; set; }
+        public List<Error>? Warnings { get; set; }
 
         /// <summary>
         /// A token that you use to fetch a specific page when there are multiple pages of results.
         /// </summary>
         /// <value>A token that you use to fetch a specific page when there are multiple pages of results.</value>
         [DataMember(Name = "nextPageToken", EmitDefaultValue = false)]
-        public string NextPageToken { get; set; }
+        public string? NextPageToken { get; set; }
 
         /// <summary>
         /// The set of ASIN metadata.
@@ -115,5 +115,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// <param name="returnLocationId">The Amazon SmartConnect ID of the location to which this return is created..</param>
         /// <param name="channelSku">The Amazon SmartConnect SKU of the channel..</param>
         /// <param name="exchangeOrderId">The Amazon SmartConnect ID of the exchange order..</param>
-        public MarketplaceChannelDetails(MarketplaceChannel marketplaceChannel = default(MarketplaceChannel), string merchantId = default(string), string shipmentId = default(string), string customerOrderId = default(string), string returnLocationId = default(string), string channelSku = default(string), string exchangeOrderId = default(string))
+        public MarketplaceChannelDetails(MarketplaceChannel? marketplaceChannel = default(MarketplaceChannel?), string? merchantId = default(string?), string? shipmentId = default(string?), string? customerOrderId = default(string?), string? returnLocationId = default(string?), string? channelSku = default(string?), string? exchangeOrderId = default(string?))
         {
             this.MarketplaceChannel = marketplaceChannel;
             this.MerchantId = merchantId;
@@ -57,42 +57,42 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// Gets or Sets MarketplaceChannel
         /// </summary>
         [DataMember(Name = "marketplaceChannel", EmitDefaultValue = false)]
-        public MarketplaceChannel MarketplaceChannel { get; set; }
+        public MarketplaceChannel? MarketplaceChannel { get; set; }
 
         /// <summary>
         /// The ID of the merchant or seller to whom this return is created in the marketplace.
         /// </summary>
         /// <value>The ID of the merchant or seller to whom this return is created in the marketplace.</value>
         [DataMember(Name = "merchantId", EmitDefaultValue = false)]
-        public string MerchantId { get; set; }
+        public string? MerchantId { get; set; }
 
         /// <summary>
         /// The marketplace-specific shipment ID.
         /// </summary>
         /// <value>The marketplace-specific shipment ID.</value>
         [DataMember(Name = "shipmentId", EmitDefaultValue = false)]
-        public string ShipmentId { get; set; }
+        public string? ShipmentId { get; set; }
 
         /// <summary>
         /// The marketplace-specific customer order ID.
         /// </summary>
         /// <value>The marketplace-specific customer order ID.</value>
         [DataMember(Name = "customerOrderId", EmitDefaultValue = false)]
-        public string CustomerOrderId { get; set; }
+        public string? CustomerOrderId { get; set; }
 
         /// <summary>
         /// The Amazon SmartConnect ID of the location to which this return is created.
         /// </summary>
         /// <value>The Amazon SmartConnect ID of the location to which this return is created.</value>
         [DataMember(Name = "returnLocationId", EmitDefaultValue = false)]
-        public string ReturnLocationId { get; set; }
+        public string? ReturnLocationId { get; set; }
 
         /// <summary>
         /// The Amazon SmartConnect SKU of the channel.
         /// </summary>
         /// <value>The Amazon SmartConnect SKU of the channel.</value>
         [DataMember(Name = "channelSku", EmitDefaultValue = false)]
-        public string ChannelSku { get; set; }
+        public string? ChannelSku { get; set; }
 
         /// <summary>
         /// The Amazon SmartConnect ID of the exchange order.
@@ -102,7 +102,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         <example>6cb83006-0597-4bc1-82ab-715b33eb6cf1</example>
         */
         [DataMember(Name = "exchangeOrderId", EmitDefaultValue = false)]
-        public string ExchangeOrderId { get; set; }
+        public string? ExchangeOrderId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -142,5 +142,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
             yield break;
         }
     }
-
 }

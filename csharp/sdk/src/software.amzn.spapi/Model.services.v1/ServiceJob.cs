@@ -105,7 +105,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="buyer">buyer.</param>
         /// <param name="associatedItems">A list of items associated with the service job..</param>
         /// <param name="serviceLocation">serviceLocation.</param>
-        public ServiceJob(DateTime createTime = default(DateTime), string serviceJobId = default(string), ServiceJobStatusEnum? serviceJobStatus = default(ServiceJobStatusEnum?), ScopeOfWork scopeOfWork = default(ScopeOfWork), Seller seller = default(Seller), ServiceJobProvider serviceJobProvider = default(ServiceJobProvider), List<AppointmentTime> preferredAppointmentTimes = default(List<AppointmentTime>), List<Appointment> appointments = default(List<Appointment>), string serviceOrderId = default(string), string marketplaceId = default(string), string storeId = default(string), Buyer buyer = default(Buyer), List<AssociatedItem> associatedItems = default(List<AssociatedItem>), ServiceLocation serviceLocation = default(ServiceLocation))
+        public ServiceJob(DateTime? createTime = default(DateTime?), string? serviceJobId = default(string?), ServiceJobStatusEnum? serviceJobStatus = default(ServiceJobStatusEnum?), ScopeOfWork? scopeOfWork = default(ScopeOfWork?), Seller? seller = default(Seller?), ServiceJobProvider? serviceJobProvider = default(ServiceJobProvider?), List<AppointmentTime>? preferredAppointmentTimes = default(List<AppointmentTime>?), List<Appointment>? appointments = default(List<Appointment>?), string? serviceOrderId = default(string?), string? marketplaceId = default(string?), string? storeId = default(string?), Buyer? buyer = default(Buyer?), List<AssociatedItem>? associatedItems = default(List<AssociatedItem>?), ServiceLocation? serviceLocation = default(ServiceLocation?))
         {
             this.CreateTime = createTime;
             this.ServiceJobId = serviceJobId;
@@ -128,86 +128,86 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The date and time of the creation of the job in ISO 8601 format.</value>
         [DataMember(Name = "createTime", EmitDefaultValue = false)]
-        public DateTime CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
         /// <summary>
         /// Amazon identifier for the service job.
         /// </summary>
         /// <value>Amazon identifier for the service job.</value>
         [DataMember(Name = "serviceJobId", EmitDefaultValue = false)]
-        public string ServiceJobId { get; set; }
+        public string? ServiceJobId { get; set; }
 
         /// <summary>
         /// Gets or Sets ScopeOfWork
         /// </summary>
         [DataMember(Name = "scopeOfWork", EmitDefaultValue = false)]
-        public ScopeOfWork ScopeOfWork { get; set; }
+        public ScopeOfWork? ScopeOfWork { get; set; }
 
         /// <summary>
         /// Gets or Sets Seller
         /// </summary>
         [DataMember(Name = "seller", EmitDefaultValue = false)]
-        public Seller Seller { get; set; }
+        public Seller? Seller { get; set; }
 
         /// <summary>
         /// Gets or Sets ServiceJobProvider
         /// </summary>
         [DataMember(Name = "serviceJobProvider", EmitDefaultValue = false)]
-        public ServiceJobProvider ServiceJobProvider { get; set; }
+        public ServiceJobProvider? ServiceJobProvider { get; set; }
 
         /// <summary>
         /// A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.
         /// </summary>
         /// <value>A list of appointment windows preferred by the buyer. Included only if the buyer selected appointment windows when creating the order.</value>
         [DataMember(Name = "preferredAppointmentTimes", EmitDefaultValue = false)]
-        public List<AppointmentTime> PreferredAppointmentTimes { get; set; }
+        public List<AppointmentTime>? PreferredAppointmentTimes { get; set; }
 
         /// <summary>
         /// A list of appointments.
         /// </summary>
         /// <value>A list of appointments.</value>
         [DataMember(Name = "appointments", EmitDefaultValue = false)]
-        public List<Appointment> Appointments { get; set; }
+        public List<Appointment>? Appointments { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
         /// </summary>
         /// <value>The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.</value>
         [DataMember(Name = "serviceOrderId", EmitDefaultValue = false)]
-        public string ServiceOrderId { get; set; }
+        public string? ServiceOrderId { get; set; }
 
         /// <summary>
         /// The marketplace identifier.
         /// </summary>
         /// <value>The marketplace identifier.</value>
         [DataMember(Name = "marketplaceId", EmitDefaultValue = false)]
-        public string MarketplaceId { get; set; }
+        public string? MarketplaceId { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier for the region scope.
         /// </summary>
         /// <value>The Amazon-defined identifier for the region scope.</value>
         [DataMember(Name = "storeId", EmitDefaultValue = false)]
-        public string StoreId { get; set; }
+        public string? StoreId { get; set; }
 
         /// <summary>
         /// Gets or Sets Buyer
         /// </summary>
         [DataMember(Name = "buyer", EmitDefaultValue = false)]
-        public Buyer Buyer { get; set; }
+        public Buyer? Buyer { get; set; }
 
         /// <summary>
         /// A list of items associated with the service job.
         /// </summary>
         /// <value>A list of items associated with the service job.</value>
         [DataMember(Name = "associatedItems", EmitDefaultValue = false)]
-        public List<AssociatedItem> AssociatedItems { get; set; }
+        public List<AssociatedItem>? AssociatedItems { get; set; }
 
         /// <summary>
         /// Gets or Sets ServiceLocation
         /// </summary>
         [DataMember(Name = "serviceLocation", EmitDefaultValue = false)]
-        public ServiceLocation ServiceLocation { get; set; }
+        public ServiceLocation? ServiceLocation { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -299,5 +299,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

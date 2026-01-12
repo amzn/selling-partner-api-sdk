@@ -57,7 +57,7 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// <param name="taxDetails">Individual tax details per line item..</param>
         /// <param name="chargeDetails">Individual charge details per line item..</param>
         /// <param name="allowanceDetails">Individual allowance details per line item..</param>
-        public InvoiceItem(int itemSequenceNumber = default(int), string amazonProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), NetCostUnitOfMeasure? netCostUnitOfMeasure = default(NetCostUnitOfMeasure?), string purchaseOrderNumber = default(string), string hsnCode = default(string), CreditNoteDetails creditNoteDetails = default(CreditNoteDetails), List<TaxDetails> taxDetails = default(List<TaxDetails>), List<ChargeDetails> chargeDetails = default(List<ChargeDetails>), List<AllowanceDetails> allowanceDetails = default(List<AllowanceDetails>))
+        public InvoiceItem(int itemSequenceNumber = default(int), string? amazonProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity invoicedQuantity = default(ItemQuantity), Money netCost = default(Money), NetCostUnitOfMeasure? netCostUnitOfMeasure = default(NetCostUnitOfMeasure?), string? purchaseOrderNumber = default(string?), string? hsnCode = default(string?), CreditNoteDetails? creditNoteDetails = default(CreditNoteDetails?), List<TaxDetails>? taxDetails = default(List<TaxDetails>?), List<ChargeDetails>? chargeDetails = default(List<ChargeDetails>?), List<AllowanceDetails>? allowanceDetails = default(List<AllowanceDetails>?))
         {
             this.ItemSequenceNumber = itemSequenceNumber;
             // to ensure "invoicedQuantity" is required (not null)
@@ -95,14 +95,14 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>Amazon Standard Identification Number (ASIN) of an item.</value>
         [DataMember(Name = "amazonProductIdentifier", EmitDefaultValue = false)]
-        public string AmazonProductIdentifier { get; set; }
+        public string? AmazonProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identifier of the item. Should be the same as was provided in the purchase order.
         /// </summary>
         /// <value>The vendor selected product identifier of the item. Should be the same as was provided in the purchase order.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoicedQuantity
@@ -121,41 +121,41 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
         /// </summary>
         /// <value>The Amazon purchase order number for this invoiced line item. Formatting Notes: 8-character alpha-numeric code. This value is mandatory only when invoiceType is Invoice, and is not required when invoiceType is CreditNote.</value>
         [DataMember(Name = "purchaseOrderNumber", EmitDefaultValue = false)]
-        public string PurchaseOrderNumber { get; set; }
+        public string? PurchaseOrderNumber { get; set; }
 
         /// <summary>
         /// HSN Tax code. The HSN number cannot contain alphabets.
         /// </summary>
         /// <value>HSN Tax code. The HSN number cannot contain alphabets.</value>
         [DataMember(Name = "hsnCode", EmitDefaultValue = false)]
-        public string HsnCode { get; set; }
+        public string? HsnCode { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditNoteDetails
         /// </summary>
         [DataMember(Name = "creditNoteDetails", EmitDefaultValue = false)]
-        public CreditNoteDetails CreditNoteDetails { get; set; }
+        public CreditNoteDetails? CreditNoteDetails { get; set; }
 
         /// <summary>
         /// Individual tax details per line item.
         /// </summary>
         /// <value>Individual tax details per line item.</value>
         [DataMember(Name = "taxDetails", EmitDefaultValue = false)]
-        public List<TaxDetails> TaxDetails { get; set; }
+        public List<TaxDetails>? TaxDetails { get; set; }
 
         /// <summary>
         /// Individual charge details per line item.
         /// </summary>
         /// <value>Individual charge details per line item.</value>
         [DataMember(Name = "chargeDetails", EmitDefaultValue = false)]
-        public List<ChargeDetails> ChargeDetails { get; set; }
+        public List<ChargeDetails>? ChargeDetails { get; set; }
 
         /// <summary>
         /// Individual allowance details per line item.
         /// </summary>
         /// <value>Individual allowance details per line item.</value>
         [DataMember(Name = "allowanceDetails", EmitDefaultValue = false)]
-        public List<AllowanceDetails> AllowanceDetails { get; set; }
+        public List<AllowanceDetails>? AllowanceDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -200,5 +200,4 @@ namespace software.amzn.spapi.Model.vendor.invoices.v1
             yield break;
         }
     }
-
 }

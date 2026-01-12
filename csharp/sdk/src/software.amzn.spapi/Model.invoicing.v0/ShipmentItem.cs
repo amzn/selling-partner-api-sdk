@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// <param name="shippingDiscount">shippingDiscount.</param>
         /// <param name="promotionDiscount">promotionDiscount.</param>
         /// <param name="serialNumbers">The list of serial numbers..</param>
-        public ShipmentItem(string aSIN = default(string), string sellerSKU = default(string), string orderItemId = default(string), string title = default(string), decimal quantityOrdered = default(decimal), Money itemPrice = default(Money), Money shippingPrice = default(Money), Money giftWrapPrice = default(Money), Money shippingDiscount = default(Money), Money promotionDiscount = default(Money), List<string> serialNumbers = default(List<string>))
+        public ShipmentItem(string? aSIN = default(string?), string? sellerSKU = default(string?), string? orderItemId = default(string?), string? title = default(string?), decimal? quantityOrdered = default(decimal?), Money? itemPrice = default(Money?), Money? shippingPrice = default(Money?), Money? giftWrapPrice = default(Money?), Money? shippingDiscount = default(Money?), Money? promotionDiscount = default(Money?), List<string>? serialNumbers = default(List<string>?))
         {
             this.ASIN = aSIN;
             this.SellerSKU = sellerSKU;
@@ -65,72 +65,72 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "ASIN", EmitDefaultValue = false)]
-        public string ASIN { get; set; }
+        public string? ASIN { get; set; }
 
         /// <summary>
         /// The seller SKU of the item.
         /// </summary>
         /// <value>The seller SKU of the item.</value>
         [DataMember(Name = "SellerSKU", EmitDefaultValue = false)]
-        public string SellerSKU { get; set; }
+        public string? SellerSKU { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier for the order item.
         /// </summary>
         /// <value>The Amazon-defined identifier for the order item.</value>
         [DataMember(Name = "OrderItemId", EmitDefaultValue = false)]
-        public string OrderItemId { get; set; }
+        public string? OrderItemId { get; set; }
 
         /// <summary>
         /// The name of the item.
         /// </summary>
         /// <value>The name of the item.</value>
         [DataMember(Name = "Title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The number of items ordered.
         /// </summary>
         /// <value>The number of items ordered.</value>
         [DataMember(Name = "QuantityOrdered", EmitDefaultValue = false)]
-        public decimal QuantityOrdered { get; set; }
+        public decimal? QuantityOrdered { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemPrice
         /// </summary>
         [DataMember(Name = "ItemPrice", EmitDefaultValue = false)]
-        public Money ItemPrice { get; set; }
+        public Money? ItemPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingPrice
         /// </summary>
         [DataMember(Name = "ShippingPrice", EmitDefaultValue = false)]
-        public Money ShippingPrice { get; set; }
+        public Money? ShippingPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets GiftWrapPrice
         /// </summary>
         [DataMember(Name = "GiftWrapPrice", EmitDefaultValue = false)]
-        public Money GiftWrapPrice { get; set; }
+        public Money? GiftWrapPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingDiscount
         /// </summary>
         [DataMember(Name = "ShippingDiscount", EmitDefaultValue = false)]
-        public Money ShippingDiscount { get; set; }
+        public Money? ShippingDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets PromotionDiscount
         /// </summary>
         [DataMember(Name = "PromotionDiscount", EmitDefaultValue = false)]
-        public Money PromotionDiscount { get; set; }
+        public Money? PromotionDiscount { get; set; }
 
         /// <summary>
         /// The list of serial numbers.
         /// </summary>
         /// <value>The list of serial numbers.</value>
         [DataMember(Name = "SerialNumbers", EmitDefaultValue = false)]
-        public List<string> SerialNumbers { get; set; }
+        public List<string>? SerialNumbers { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -174,5 +174,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

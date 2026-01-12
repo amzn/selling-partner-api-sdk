@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="description">A short description of the charge instrument..</param>
         /// <param name="tail">The account tail (trailing digits) of the charge instrument..</param>
         /// <param name="amount">amount.</param>
-        public ChargeInstrument(string description = default(string), string tail = default(string), Currency amount = default(Currency))
+        public ChargeInstrument(string? description = default(string?), string? tail = default(string?), Currency? amount = default(Currency?))
         {
             this.Description = description;
             this.Tail = tail;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>A short description of the charge instrument.</value>
         [DataMember(Name = "Description", EmitDefaultValue = false)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         /// <summary>
         /// The account tail (trailing digits) of the charge instrument.
         /// </summary>
         /// <value>The account tail (trailing digits) of the charge instrument.</value>
         [DataMember(Name = "Tail", EmitDefaultValue = false)]
-        public string Tail { get; set; }
+        public string? Tail { get; set; }
 
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "Amount", EmitDefaultValue = false)]
-        public Currency Amount { get; set; }
+        public Currency? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

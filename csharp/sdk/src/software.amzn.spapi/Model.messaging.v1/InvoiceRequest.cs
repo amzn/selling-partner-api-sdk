@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// Initializes a new instance of the <see cref="InvoiceRequest" /> class.
         /// </summary>
         /// <param name="attachments">Attachments to include in the message to the buyer..</param>
-        public InvoiceRequest(List<Attachment> attachments = default(List<Attachment>))
+        public InvoiceRequest(List<Attachment>? attachments = default(List<Attachment>?))
         {
             this.Attachments = attachments;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>Attachments to include in the message to the buyer.</value>
         [DataMember(Name = "attachments", EmitDefaultValue = false)]
-        public List<Attachment> Attachments { get; set; }
+        public List<Attachment>? Attachments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

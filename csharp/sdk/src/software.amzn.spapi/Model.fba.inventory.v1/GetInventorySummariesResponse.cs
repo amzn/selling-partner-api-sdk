@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="payload">payload.</param>
         /// <param name="pagination">pagination.</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetInventorySummariesResponse(GetInventorySummariesResult payload = default(GetInventorySummariesResult), Pagination pagination = default(Pagination), List<Error> errors = default(List<Error>))
+        public GetInventorySummariesResponse(GetInventorySummariesResult? payload = default(GetInventorySummariesResult?), Pagination? pagination = default(Pagination?), List<Error>? errors = default(List<Error>?))
         {
             this.Payload = payload;
             this.Pagination = pagination;
@@ -48,20 +48,20 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// Gets or Sets Payload
         /// </summary>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public GetInventorySummariesResult Payload { get; set; }
+        public GetInventorySummariesResult? Payload { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

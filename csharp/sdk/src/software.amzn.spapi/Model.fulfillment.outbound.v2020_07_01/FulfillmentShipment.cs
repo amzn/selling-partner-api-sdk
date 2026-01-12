@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="shippingNotes">Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren&#39;t available..</param>
         /// <param name="fulfillmentShipmentItem">An array of fulfillment shipment item information. (required).</param>
         /// <param name="fulfillmentShipmentPackage">An array of fulfillment shipment package information..</param>
-        public FulfillmentShipment(string amazonShipmentId = default(string), string fulfillmentCenterId = default(string), FulfillmentShipmentStatusEnum fulfillmentShipmentStatus = default(FulfillmentShipmentStatusEnum), DateTime shippingDate = default(DateTime), DateTime estimatedArrivalDate = default(DateTime), List<string> shippingNotes = default(List<string>), List<FulfillmentShipmentItem> fulfillmentShipmentItem = default(List<FulfillmentShipmentItem>), List<FulfillmentShipmentPackage> fulfillmentShipmentPackage = default(List<FulfillmentShipmentPackage>))
+        public FulfillmentShipment(string amazonShipmentId = default(string), string fulfillmentCenterId = default(string), FulfillmentShipmentStatusEnum fulfillmentShipmentStatus = default(FulfillmentShipmentStatusEnum), DateTime? shippingDate = default(DateTime?), DateTime? estimatedArrivalDate = default(DateTime?), List<string>? shippingNotes = default(List<string>?), List<FulfillmentShipmentItem> fulfillmentShipmentItem = default(List<FulfillmentShipmentItem>), List<FulfillmentShipmentPackage>? fulfillmentShipmentPackage = default(List<FulfillmentShipmentPackage>?))
         {
             // to ensure "amazonShipmentId" is required (not null)
             if (amazonShipmentId == null)
@@ -132,21 +132,21 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "shippingDate", EmitDefaultValue = false)]
-        public DateTime ShippingDate { get; set; }
+        public DateTime? ShippingDate { get; set; }
 
         /// <summary>
         /// Date timestamp
         /// </summary>
         /// <value>Date timestamp</value>
         [DataMember(Name = "estimatedArrivalDate", EmitDefaultValue = false)]
-        public DateTime EstimatedArrivalDate { get; set; }
+        public DateTime? EstimatedArrivalDate { get; set; }
 
         /// <summary>
         /// Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren&#39;t available.
         /// </summary>
         /// <value>Provides additional insight into shipment timeline. Primarily used to communicate that actual delivery dates aren&#39;t available.</value>
         [DataMember(Name = "shippingNotes", EmitDefaultValue = false)]
-        public List<string> ShippingNotes { get; set; }
+        public List<string>? ShippingNotes { get; set; }
 
         /// <summary>
         /// An array of fulfillment shipment item information.
@@ -160,7 +160,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>An array of fulfillment shipment package information.</value>
         [DataMember(Name = "fulfillmentShipmentPackage", EmitDefaultValue = false)]
-        public List<FulfillmentShipmentPackage> FulfillmentShipmentPackage { get; set; }
+        public List<FulfillmentShipmentPackage>? FulfillmentShipmentPackage { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -201,5 +201,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

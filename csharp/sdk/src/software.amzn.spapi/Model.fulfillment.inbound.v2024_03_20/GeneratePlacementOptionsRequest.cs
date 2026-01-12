@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Initializes a new instance of the <see cref="GeneratePlacementOptionsRequest" /> class.
         /// </summary>
         /// <param name="customPlacement">Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace..</param>
-        public GeneratePlacementOptionsRequest(List<CustomPlacementInput> customPlacement = default(List<CustomPlacementInput>))
+        public GeneratePlacementOptionsRequest(List<CustomPlacementInput>? customPlacement = default(List<CustomPlacementInput>?))
         {
             this.CustomPlacement = customPlacement;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>Custom placement options you want to add to the plan. This is only used for the India (IN - A21TJRUUN4KGV) marketplace.</value>
         [DataMember(Name = "customPlacement", EmitDefaultValue = false)]
-        public List<CustomPlacementInput> CustomPlacement { get; set; }
+        public List<CustomPlacementInput>? CustomPlacement { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

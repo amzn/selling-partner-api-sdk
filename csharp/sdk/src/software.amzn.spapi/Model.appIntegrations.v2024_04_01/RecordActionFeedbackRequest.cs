@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.appIntegrations.v2024_04_01
             yield break;
         }
     }
-
 }

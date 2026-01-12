@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="currencyCode">The three-digit currency code. In ISO 4217 format..</param>
         /// <param name="amount">The currency amount..</param>
-        public Money(string currencyCode = default(string), string amount = default(string))
+        public Money(string? currencyCode = default(string?), string? amount = default(string?))
         {
             this.CurrencyCode = currencyCode;
             this.Amount = amount;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The three-digit currency code. In ISO 4217 format.</value>
         [DataMember(Name = "CurrencyCode", EmitDefaultValue = false)]
-        public string CurrencyCode { get; set; }
+        public string? CurrencyCode { get; set; }
 
         /// <summary>
         /// The currency amount.
         /// </summary>
         /// <value>The currency amount.</value>
         [DataMember(Name = "Amount", EmitDefaultValue = false)]
-        public string Amount { get; set; }
+        public string? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

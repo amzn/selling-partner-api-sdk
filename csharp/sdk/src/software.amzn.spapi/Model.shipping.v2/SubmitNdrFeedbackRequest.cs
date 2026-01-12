@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="trackingId">The carrier generated identifier for a package in a purchased shipment. (required).</param>
         /// <param name="ndrAction">ndrAction (required).</param>
         /// <param name="ndrRequestData">ndrRequestData.</param>
-        public SubmitNdrFeedbackRequest(string trackingId = default(string), NdrAction ndrAction = default(NdrAction), NdrRequestData ndrRequestData = default(NdrRequestData))
+        public SubmitNdrFeedbackRequest(string trackingId = default(string), NdrAction ndrAction = default(NdrAction), NdrRequestData? ndrRequestData = default(NdrRequestData?))
         {
             // to ensure "trackingId" is required (not null)
             if (trackingId == null)
@@ -72,7 +72,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets NdrRequestData
         /// </summary>
         [DataMember(Name = "ndrRequestData", EmitDefaultValue = false)]
-        public NdrRequestData NdrRequestData { get; set; }
+        public NdrRequestData? NdrRequestData { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,5 +108,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

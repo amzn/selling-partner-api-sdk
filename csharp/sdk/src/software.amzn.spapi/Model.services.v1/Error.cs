@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="message">A message that describes the error condition. (required).</param>
         /// <param name="details">Additional details that can help the caller understand or fix the issue..</param>
         /// <param name="errorLevel">The type of error..</param>
-        public Error(string code = default(string), string message = default(string), string details = default(string), ErrorLevelEnum? errorLevel = default(ErrorLevelEnum?))
+        public Error(string code = default(string), string message = default(string), string? details = default(string?), ErrorLevelEnum? errorLevel = default(ErrorLevelEnum?))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -107,7 +107,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Additional details that can help the caller understand or fix the issue.</value>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public string Details { get; set; }
+        public string? Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -144,5 +144,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

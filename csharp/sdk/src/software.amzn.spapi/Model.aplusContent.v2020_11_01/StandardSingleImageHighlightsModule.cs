@@ -40,7 +40,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// <param name="textBlock2">textBlock2.</param>
         /// <param name="textBlock3">textBlock3.</param>
         /// <param name="bulletedListBlock">bulletedListBlock.</param>
-        public StandardSingleImageHighlightsModule(ImageComponent image = default(ImageComponent), TextComponent headline = default(TextComponent), StandardTextBlock textBlock1 = default(StandardTextBlock), StandardTextBlock textBlock2 = default(StandardTextBlock), StandardTextBlock textBlock3 = default(StandardTextBlock), StandardHeaderTextListBlock bulletedListBlock = default(StandardHeaderTextListBlock))
+        public StandardSingleImageHighlightsModule(ImageComponent? image = default(ImageComponent?), TextComponent? headline = default(TextComponent?), StandardTextBlock? textBlock1 = default(StandardTextBlock?), StandardTextBlock? textBlock2 = default(StandardTextBlock?), StandardTextBlock? textBlock3 = default(StandardTextBlock?), StandardHeaderTextListBlock? bulletedListBlock = default(StandardHeaderTextListBlock?))
         {
             this.Image = image;
             this.Headline = headline;
@@ -54,37 +54,37 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Image
         /// </summary>
         [DataMember(Name = "image", EmitDefaultValue = false)]
-        public ImageComponent Image { get; set; }
+        public ImageComponent? Image { get; set; }
 
         /// <summary>
         /// Gets or Sets Headline
         /// </summary>
         [DataMember(Name = "headline", EmitDefaultValue = false)]
-        public TextComponent Headline { get; set; }
+        public TextComponent? Headline { get; set; }
 
         /// <summary>
         /// Gets or Sets TextBlock1
         /// </summary>
         [DataMember(Name = "textBlock1", EmitDefaultValue = false)]
-        public StandardTextBlock TextBlock1 { get; set; }
+        public StandardTextBlock? TextBlock1 { get; set; }
 
         /// <summary>
         /// Gets or Sets TextBlock2
         /// </summary>
         [DataMember(Name = "textBlock2", EmitDefaultValue = false)]
-        public StandardTextBlock TextBlock2 { get; set; }
+        public StandardTextBlock? TextBlock2 { get; set; }
 
         /// <summary>
         /// Gets or Sets TextBlock3
         /// </summary>
         [DataMember(Name = "textBlock3", EmitDefaultValue = false)]
-        public StandardTextBlock TextBlock3 { get; set; }
+        public StandardTextBlock? TextBlock3 { get; set; }
 
         /// <summary>
         /// Gets or Sets BulletedListBlock
         /// </summary>
         [DataMember(Name = "bulletedListBlock", EmitDefaultValue = false)]
-        public StandardHeaderTextListBlock BulletedListBlock { get; set; }
+        public StandardHeaderTextListBlock? BulletedListBlock { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,5 +123,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

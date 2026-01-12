@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// Initializes a new instance of the <see cref="ShipmentInvoiceStatusResponse" /> class.
         /// </summary>
         /// <param name="shipments">shipments.</param>
-        public ShipmentInvoiceStatusResponse(ShipmentInvoiceStatusInfo shipments = default(ShipmentInvoiceStatusInfo))
+        public ShipmentInvoiceStatusResponse(ShipmentInvoiceStatusInfo? shipments = default(ShipmentInvoiceStatusInfo?))
         {
             this.Shipments = shipments;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.invoicing.v0
         /// Gets or Sets Shipments
         /// </summary>
         [DataMember(Name = "Shipments", EmitDefaultValue = false)]
-        public ShipmentInvoiceStatusInfo Shipments { get; set; }
+        public ShipmentInvoiceStatusInfo? Shipments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.invoicing.v0
             yield break;
         }
     }
-
 }

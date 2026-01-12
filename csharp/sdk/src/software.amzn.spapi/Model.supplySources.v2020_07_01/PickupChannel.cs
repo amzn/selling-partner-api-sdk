@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="operationalConfiguration">operationalConfiguration.</param>
         /// <param name="inStorePickupConfiguration">inStorePickupConfiguration.</param>
         /// <param name="curbsidePickupConfiguration">curbsidePickupConfiguration.</param>
-        public PickupChannel(Duration inventoryHoldPeriod = default(Duration), bool isSupported = default(bool), OperationalConfiguration operationalConfiguration = default(OperationalConfiguration), InStorePickupConfiguration inStorePickupConfiguration = default(InStorePickupConfiguration), CurbsidePickupConfiguration curbsidePickupConfiguration = default(CurbsidePickupConfiguration))
+        public PickupChannel(Duration? inventoryHoldPeriod = default(Duration?), bool? isSupported = default(bool?), OperationalConfiguration? operationalConfiguration = default(OperationalConfiguration?), InStorePickupConfiguration? inStorePickupConfiguration = default(InStorePickupConfiguration?), CurbsidePickupConfiguration? curbsidePickupConfiguration = default(CurbsidePickupConfiguration?))
         {
             this.InventoryHoldPeriod = inventoryHoldPeriod;
             this.IsSupported = isSupported;
@@ -52,31 +52,31 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets InventoryHoldPeriod
         /// </summary>
         [DataMember(Name = "inventoryHoldPeriod", EmitDefaultValue = false)]
-        public Duration InventoryHoldPeriod { get; set; }
+        public Duration? InventoryHoldPeriod { get; set; }
 
         /// <summary>
         /// Gets or Sets IsSupported
         /// </summary>
         [DataMember(Name = "isSupported", EmitDefaultValue = true)]
-        public bool IsSupported { get; set; }
+        public bool? IsSupported { get; set; }
 
         /// <summary>
         /// Gets or Sets OperationalConfiguration
         /// </summary>
         [DataMember(Name = "operationalConfiguration", EmitDefaultValue = false)]
-        public OperationalConfiguration OperationalConfiguration { get; set; }
+        public OperationalConfiguration? OperationalConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets InStorePickupConfiguration
         /// </summary>
         [DataMember(Name = "inStorePickupConfiguration", EmitDefaultValue = false)]
-        public InStorePickupConfiguration InStorePickupConfiguration { get; set; }
+        public InStorePickupConfiguration? InStorePickupConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets CurbsidePickupConfiguration
         /// </summary>
         [DataMember(Name = "curbsidePickupConfiguration", EmitDefaultValue = false)]
-        public CurbsidePickupConfiguration CurbsidePickupConfiguration { get; set; }
+        public CurbsidePickupConfiguration? CurbsidePickupConfiguration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

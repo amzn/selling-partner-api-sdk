@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="dateRange">dateRange.</param>
         /// <param name="operatingHours">operatingHours.</param>
-        public ExceptionOperatingHours(DateRange dateRange = default(DateRange), OperatingHours operatingHours = default(OperatingHours))
+        public ExceptionOperatingHours(DateRange? dateRange = default(DateRange?), OperatingHours? operatingHours = default(OperatingHours?))
         {
             this.DateRange = dateRange;
             this.OperatingHours = operatingHours;
@@ -47,13 +47,13 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets DateRange
         /// </summary>
         [DataMember(Name = "dateRange", EmitDefaultValue = false)]
-        public DateRange DateRange { get; set; }
+        public DateRange? DateRange { get; set; }
 
         /// <summary>
         /// Gets or Sets OperatingHours
         /// </summary>
         [DataMember(Name = "operatingHours", EmitDefaultValue = false)]
-        public OperatingHours OperatingHours { get; set; }
+        public OperatingHours? OperatingHours { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

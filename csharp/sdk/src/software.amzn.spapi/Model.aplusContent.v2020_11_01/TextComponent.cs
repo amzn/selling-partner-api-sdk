@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <param name="value">The actual plain text. (required).</param>
         /// <param name="decoratorSet">A set of content decorators..</param>
-        public TextComponent(string value = default(string), List<Decorator> decoratorSet = default(List<Decorator>))
+        public TextComponent(string value = default(string), List<Decorator>? decoratorSet = default(List<Decorator>?))
         {
             // to ensure "value" is required (not null)
             if (value == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// </summary>
         /// <value>A set of content decorators.</value>
         [DataMember(Name = "decoratorSet", EmitDefaultValue = false)]
-        public List<Decorator> DecoratorSet { get; set; }
+        public List<Decorator>? DecoratorSet { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -111,5 +111,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="destinationAddress">destinationAddress.</param>
         /// <param name="destinationRegion">Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast].</param>
         /// <param name="shipmentId">Unique ID of the confirmed shipment being shipped to the assigned destination. This will be available only after an inbound order is confirmed and can be used to track the shipment..</param>
-        public DestinationDetails(Address destinationAddress = default(Address), string destinationRegion = default(string), string shipmentId = default(string))
+        public DestinationDetails(Address? destinationAddress = default(Address?), string? destinationRegion = default(string?), string? shipmentId = default(string?))
         {
             this.DestinationAddress = destinationAddress;
             this.DestinationRegion = destinationRegion;
@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets DestinationAddress
         /// </summary>
         [DataMember(Name = "destinationAddress", EmitDefaultValue = false)]
-        public Address DestinationAddress { get; set; }
+        public Address? DestinationAddress { get; set; }
 
         /// <summary>
         /// Assigned region where the order will be shipped. This can differ from what was passed as preference. AWD currently supports following region IDs: [us-west, us-east, us-southcentral, us-southeast]
@@ -58,14 +58,14 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>us-west</example>
         */
         [DataMember(Name = "destinationRegion", EmitDefaultValue = false)]
-        public string DestinationRegion { get; set; }
+        public string? DestinationRegion { get; set; }
 
         /// <summary>
         /// Unique ID of the confirmed shipment being shipped to the assigned destination. This will be available only after an inbound order is confirmed and can be used to track the shipment.
         /// </summary>
         /// <value>Unique ID of the confirmed shipment being shipped to the assigned destination. This will be available only after an inbound order is confirmed and can be used to track the shipment.</value>
         [DataMember(Name = "shipmentId", EmitDefaultValue = false)]
-        public string ShipmentId { get; set; }
+        public string? ShipmentId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

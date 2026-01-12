@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// </summary>
         /// <param name="packageIds">The subset of package IDs used to generate a label. (required).</param>
         /// <param name="courierSupportedAttributes">courierSupportedAttributes.</param>
-        public ShipLabelsInput(List<string> packageIds = default(List<string>), CourierSupportedAttributes courierSupportedAttributes = default(CourierSupportedAttributes))
+        public ShipLabelsInput(List<string> packageIds = default(List<string>), CourierSupportedAttributes? courierSupportedAttributes = default(CourierSupportedAttributes?))
         {
             // to ensure "packageIds" is required (not null)
             if (packageIds == null)
@@ -64,7 +64,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
         /// Gets or Sets CourierSupportedAttributes
         /// </summary>
         [DataMember(Name = "courierSupportedAttributes", EmitDefaultValue = false)]
-        public CourierSupportedAttributes CourierSupportedAttributes { get; set; }
+        public CourierSupportedAttributes? CourierSupportedAttributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.shipments.v2024_09_11
             yield break;
         }
     }
-
 }

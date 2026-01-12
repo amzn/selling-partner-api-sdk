@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// <param name="salesRankings">A list of sales rank information for the item, by category..</param>
         /// <param name="buyBoxEligibleOffers">A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels..</param>
         /// <param name="offersAvailableTime">When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing..</param>
-        public Summary(int totalOfferCount = default(int), List<OfferCountType> numberOfOffers = default(List<OfferCountType>), List<LowestPriceType> lowestPrices = default(List<LowestPriceType>), List<BuyBoxPriceType> buyBoxPrices = default(List<BuyBoxPriceType>), MoneyType listPrice = default(MoneyType), MoneyType competitivePriceThreshold = default(MoneyType), MoneyType suggestedLowerPricePlusShipping = default(MoneyType), List<SalesRankType> salesRankings = default(List<SalesRankType>), List<OfferCountType> buyBoxEligibleOffers = default(List<OfferCountType>), DateTime offersAvailableTime = default(DateTime))
+        public Summary(int totalOfferCount = default(int), List<OfferCountType>? numberOfOffers = default(List<OfferCountType>?), List<LowestPriceType>? lowestPrices = default(List<LowestPriceType>?), List<BuyBoxPriceType>? buyBoxPrices = default(List<BuyBoxPriceType>?), MoneyType? listPrice = default(MoneyType?), MoneyType? competitivePriceThreshold = default(MoneyType?), MoneyType? suggestedLowerPricePlusShipping = default(MoneyType?), List<SalesRankType>? salesRankings = default(List<SalesRankType>?), List<OfferCountType>? buyBoxEligibleOffers = default(List<OfferCountType>?), DateTime? offersAvailableTime = default(DateTime?))
         {
             this.TotalOfferCount = totalOfferCount;
             this.NumberOfOffers = numberOfOffers;
@@ -75,60 +75,60 @@ namespace software.amzn.spapi.Model.pricing.v0
         /// </summary>
         /// <value>A list that contains the total number of offers information for given conditions and fulfillment channels.</value>
         [DataMember(Name = "NumberOfOffers", EmitDefaultValue = false)]
-        public List<OfferCountType> NumberOfOffers { get; set; }
+        public List<OfferCountType>? NumberOfOffers { get; set; }
 
         /// <summary>
         /// A list of the lowest prices.
         /// </summary>
         /// <value>A list of the lowest prices.</value>
         [DataMember(Name = "LowestPrices", EmitDefaultValue = false)]
-        public List<LowestPriceType> LowestPrices { get; set; }
+        public List<LowestPriceType>? LowestPrices { get; set; }
 
         /// <summary>
         /// A list of the Buy Box prices.
         /// </summary>
         /// <value>A list of the Buy Box prices.</value>
         [DataMember(Name = "BuyBoxPrices", EmitDefaultValue = false)]
-        public List<BuyBoxPriceType> BuyBoxPrices { get; set; }
+        public List<BuyBoxPriceType>? BuyBoxPrices { get; set; }
 
         /// <summary>
         /// Gets or Sets ListPrice
         /// </summary>
         [DataMember(Name = "ListPrice", EmitDefaultValue = false)]
-        public MoneyType ListPrice { get; set; }
+        public MoneyType? ListPrice { get; set; }
 
         /// <summary>
         /// Gets or Sets CompetitivePriceThreshold
         /// </summary>
         [DataMember(Name = "CompetitivePriceThreshold", EmitDefaultValue = false)]
-        public MoneyType CompetitivePriceThreshold { get; set; }
+        public MoneyType? CompetitivePriceThreshold { get; set; }
 
         /// <summary>
         /// Gets or Sets SuggestedLowerPricePlusShipping
         /// </summary>
         [DataMember(Name = "SuggestedLowerPricePlusShipping", EmitDefaultValue = false)]
-        public MoneyType SuggestedLowerPricePlusShipping { get; set; }
+        public MoneyType? SuggestedLowerPricePlusShipping { get; set; }
 
         /// <summary>
         /// A list of sales rank information for the item, by category.
         /// </summary>
         /// <value>A list of sales rank information for the item, by category.</value>
         [DataMember(Name = "SalesRankings", EmitDefaultValue = false)]
-        public List<SalesRankType> SalesRankings { get; set; }
+        public List<SalesRankType>? SalesRankings { get; set; }
 
         /// <summary>
         /// A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.
         /// </summary>
         /// <value>A list that contains the total number of offers that are eligible for the Buy Box for the given conditions and fulfillment channels.</value>
         [DataMember(Name = "BuyBoxEligibleOffers", EmitDefaultValue = false)]
-        public List<OfferCountType> BuyBoxEligibleOffers { get; set; }
+        public List<OfferCountType>? BuyBoxEligibleOffers { get; set; }
 
         /// <summary>
         /// When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.
         /// </summary>
         /// <value>When the status is ActiveButTooSoonForProcessing, this is the time when the offers will be available for processing.</value>
         [DataMember(Name = "OffersAvailableTime", EmitDefaultValue = false)]
-        public DateTime OffersAvailableTime { get; set; }
+        public DateTime? OffersAvailableTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,5 +171,4 @@ namespace software.amzn.spapi.Model.pricing.v0
             yield break;
         }
     }
-
 }

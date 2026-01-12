@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="requestedDocumentSpecification">requestedDocumentSpecification (required).</param>
         /// <param name="requestedValueAddedServices">The value-added services to be added to a shipping service purchase..</param>
         /// <param name="additionalInputs">The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation..</param>
-        public PurchaseShipmentRequest(string requestToken = default(string), string rateId = default(string), RequestedDocumentSpecification requestedDocumentSpecification = default(RequestedDocumentSpecification), List<RequestedValueAddedService> requestedValueAddedServices = default(List<RequestedValueAddedService>), Dictionary<string, Object> additionalInputs = default(Dictionary<string, Object>))
+        public PurchaseShipmentRequest(string requestToken = default(string), string rateId = default(string), RequestedDocumentSpecification requestedDocumentSpecification = default(RequestedDocumentSpecification), List<RequestedValueAddedService>? requestedValueAddedServices = default(List<RequestedValueAddedService>?), Dictionary<string, Object>? additionalInputs = default(Dictionary<string, Object>?))
         {
             // to ensure "requestToken" is required (not null)
             if (requestToken == null)
@@ -94,14 +94,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The value-added services to be added to a shipping service purchase.</value>
         [DataMember(Name = "requestedValueAddedServices", EmitDefaultValue = false)]
-        public List<RequestedValueAddedService> RequestedValueAddedServices { get; set; }
+        public List<RequestedValueAddedService>? RequestedValueAddedServices { get; set; }
 
         /// <summary>
         /// The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation.
         /// </summary>
         /// <value>The additional inputs required to purchase a shipping offering, in JSON format. The JSON provided here must adhere to the JSON schema that is returned in the response to the getAdditionalInputs operation.  Additional inputs are only required when indicated by the requiresAdditionalInputs property in the response to the getRates operation.</value>
         [DataMember(Name = "additionalInputs", EmitDefaultValue = false)]
-        public Dictionary<string, Object> AdditionalInputs { get; set; }
+        public Dictionary<string, Object>? AdditionalInputs { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -139,5 +139,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

@@ -48,7 +48,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="shipmentItemList">A list of shipment items..</param>
         /// <param name="shipmentItemAdjustmentList">A list of shipment items..</param>
-        public ShipmentEvent(string amazonOrderId = default(string), string sellerOrderId = default(string), string marketplaceName = default(string), string storeName = default(string), List<ChargeComponent> orderChargeList = default(List<ChargeComponent>), List<ChargeComponent> orderChargeAdjustmentList = default(List<ChargeComponent>), List<FeeComponent> shipmentFeeList = default(List<FeeComponent>), List<FeeComponent> shipmentFeeAdjustmentList = default(List<FeeComponent>), List<FeeComponent> orderFeeList = default(List<FeeComponent>), List<FeeComponent> orderFeeAdjustmentList = default(List<FeeComponent>), List<DirectPayment> directPaymentList = default(List<DirectPayment>), DateTime postedDate = default(DateTime), List<ShipmentItem> shipmentItemList = default(List<ShipmentItem>), List<ShipmentItem> shipmentItemAdjustmentList = default(List<ShipmentItem>))
+        public ShipmentEvent(string? amazonOrderId = default(string?), string? sellerOrderId = default(string?), string? marketplaceName = default(string?), string? storeName = default(string?), List<ChargeComponent>? orderChargeList = default(List<ChargeComponent>?), List<ChargeComponent>? orderChargeAdjustmentList = default(List<ChargeComponent>?), List<FeeComponent>? shipmentFeeList = default(List<FeeComponent>?), List<FeeComponent>? shipmentFeeAdjustmentList = default(List<FeeComponent>?), List<FeeComponent>? orderFeeList = default(List<FeeComponent>?), List<FeeComponent>? orderFeeAdjustmentList = default(List<FeeComponent>?), List<DirectPayment>? directPaymentList = default(List<DirectPayment>?), DateTime? postedDate = default(DateTime?), List<ShipmentItem>? shipmentItemList = default(List<ShipmentItem>?), List<ShipmentItem>? shipmentItemAdjustmentList = default(List<ShipmentItem>?))
         {
             this.AmazonOrderId = amazonOrderId;
             this.SellerOrderId = sellerOrderId;
@@ -71,98 +71,98 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>An Amazon-defined identifier for an order.</value>
         [DataMember(Name = "AmazonOrderId", EmitDefaultValue = false)]
-        public string AmazonOrderId { get; set; }
+        public string? AmazonOrderId { get; set; }
 
         /// <summary>
         /// A seller-defined identifier for an order.
         /// </summary>
         /// <value>A seller-defined identifier for an order.</value>
         [DataMember(Name = "SellerOrderId", EmitDefaultValue = false)]
-        public string SellerOrderId { get; set; }
+        public string? SellerOrderId { get; set; }
 
         /// <summary>
         /// The name of the marketplace where the event occurred.
         /// </summary>
         /// <value>The name of the marketplace where the event occurred.</value>
         [DataMember(Name = "MarketplaceName", EmitDefaultValue = false)]
-        public string MarketplaceName { get; set; }
+        public string? MarketplaceName { get; set; }
 
         /// <summary>
         /// The name of the store where the event occurred.
         /// </summary>
         /// <value>The name of the store where the event occurred.</value>
         [DataMember(Name = "StoreName", EmitDefaultValue = false)]
-        public string StoreName { get; set; }
+        public string? StoreName { get; set; }
 
         /// <summary>
         /// A list of charge information on the seller&#39;s account.
         /// </summary>
         /// <value>A list of charge information on the seller&#39;s account.</value>
         [DataMember(Name = "OrderChargeList", EmitDefaultValue = false)]
-        public List<ChargeComponent> OrderChargeList { get; set; }
+        public List<ChargeComponent>? OrderChargeList { get; set; }
 
         /// <summary>
         /// A list of charge information on the seller&#39;s account.
         /// </summary>
         /// <value>A list of charge information on the seller&#39;s account.</value>
         [DataMember(Name = "OrderChargeAdjustmentList", EmitDefaultValue = false)]
-        public List<ChargeComponent> OrderChargeAdjustmentList { get; set; }
+        public List<ChargeComponent>? OrderChargeAdjustmentList { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "ShipmentFeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> ShipmentFeeList { get; set; }
+        public List<FeeComponent>? ShipmentFeeList { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "ShipmentFeeAdjustmentList", EmitDefaultValue = false)]
-        public List<FeeComponent> ShipmentFeeAdjustmentList { get; set; }
+        public List<FeeComponent>? ShipmentFeeAdjustmentList { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "OrderFeeList", EmitDefaultValue = false)]
-        public List<FeeComponent> OrderFeeList { get; set; }
+        public List<FeeComponent>? OrderFeeList { get; set; }
 
         /// <summary>
         /// A list of fee component information.
         /// </summary>
         /// <value>A list of fee component information.</value>
         [DataMember(Name = "OrderFeeAdjustmentList", EmitDefaultValue = false)]
-        public List<FeeComponent> OrderFeeAdjustmentList { get; set; }
+        public List<FeeComponent>? OrderFeeAdjustmentList { get; set; }
 
         /// <summary>
         /// A list of direct payment information.
         /// </summary>
         /// <value>A list of direct payment information.</value>
         [DataMember(Name = "DirectPaymentList", EmitDefaultValue = false)]
-        public List<DirectPayment> DirectPaymentList { get; set; }
+        public List<DirectPayment>? DirectPaymentList { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// A list of shipment items.
         /// </summary>
         /// <value>A list of shipment items.</value>
         [DataMember(Name = "ShipmentItemList", EmitDefaultValue = false)]
-        public List<ShipmentItem> ShipmentItemList { get; set; }
+        public List<ShipmentItem>? ShipmentItemList { get; set; }
 
         /// <summary>
         /// A list of shipment items.
         /// </summary>
         /// <value>A list of shipment items.</value>
         [DataMember(Name = "ShipmentItemAdjustmentList", EmitDefaultValue = false)]
-        public List<ShipmentItem> ShipmentItemAdjustmentList { get; set; }
+        public List<ShipmentItem>? ShipmentItemAdjustmentList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -209,5 +209,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

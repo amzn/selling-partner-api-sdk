@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <param name="capacityType">capacityType.</param>
         /// <param name="slots">Array of capacity slots in range slot format..</param>
-        public RangeCapacity(CapacityType? capacityType = default(CapacityType?), List<RangeSlot> slots = default(List<RangeSlot>))
+        public RangeCapacity(CapacityType? capacityType = default(CapacityType?), List<RangeSlot>? slots = default(List<RangeSlot>?))
         {
             this.CapacityType = capacityType;
             this.Slots = slots;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>Array of capacity slots in range slot format.</value>
         [DataMember(Name = "slots", EmitDefaultValue = false)]
-        public List<RangeSlot> Slots { get; set; }
+        public List<RangeSlot>? Slots { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

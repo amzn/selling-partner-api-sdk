@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <param name="benefit">A benefit that is being excluded from a shipment..</param>
         /// <param name="reasonCodes">List of reasons why a benefit is excluded for a shipping offer (for example, &#x60;LATE_DELIVERY_RISK&#x60;)..</param>
-        public ExcludedBenefit(string benefit = default(string), List<string> reasonCodes = default(List<string>))
+        public ExcludedBenefit(string? benefit = default(string?), List<string>? reasonCodes = default(List<string>?))
         {
             this.Benefit = benefit;
             this.ReasonCodes = reasonCodes;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>A benefit that is being excluded from a shipment.</value>
         [DataMember(Name = "Benefit", EmitDefaultValue = false)]
-        public string Benefit { get; set; }
+        public string? Benefit { get; set; }
 
         /// <summary>
         /// List of reasons why a benefit is excluded for a shipping offer (for example, &#x60;LATE_DELIVERY_RISK&#x60;).
         /// </summary>
         /// <value>List of reasons why a benefit is excluded for a shipping offer (for example, &#x60;LATE_DELIVERY_RISK&#x60;).</value>
         [DataMember(Name = "ReasonCodes", EmitDefaultValue = false)]
-        public List<string> ReasonCodes { get; set; }
+        public List<string>? ReasonCodes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

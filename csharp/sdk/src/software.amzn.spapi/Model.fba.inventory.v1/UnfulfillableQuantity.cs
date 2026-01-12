@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// <param name="carrierDamagedQuantity">The number of units in carrier damaged disposition..</param>
         /// <param name="defectiveQuantity">The number of units in defective disposition..</param>
         /// <param name="expiredQuantity">The number of units in expired disposition..</param>
-        public UnfulfillableQuantity(int totalUnfulfillableQuantity = default(int), int customerDamagedQuantity = default(int), int warehouseDamagedQuantity = default(int), int distributorDamagedQuantity = default(int), int carrierDamagedQuantity = default(int), int defectiveQuantity = default(int), int expiredQuantity = default(int))
+        public UnfulfillableQuantity(int? totalUnfulfillableQuantity = default(int?), int? customerDamagedQuantity = default(int?), int? warehouseDamagedQuantity = default(int?), int? distributorDamagedQuantity = default(int?), int? carrierDamagedQuantity = default(int?), int? defectiveQuantity = default(int?), int? expiredQuantity = default(int?))
         {
             this.TotalUnfulfillableQuantity = totalUnfulfillableQuantity;
             this.CustomerDamagedQuantity = customerDamagedQuantity;
@@ -57,49 +57,49 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>The total number of units in Amazon&#39;s fulfillment network in unsellable condition.</value>
         [DataMember(Name = "totalUnfulfillableQuantity", EmitDefaultValue = false)]
-        public int TotalUnfulfillableQuantity { get; set; }
+        public int? TotalUnfulfillableQuantity { get; set; }
 
         /// <summary>
         /// The number of units in customer damaged disposition.
         /// </summary>
         /// <value>The number of units in customer damaged disposition.</value>
         [DataMember(Name = "customerDamagedQuantity", EmitDefaultValue = false)]
-        public int CustomerDamagedQuantity { get; set; }
+        public int? CustomerDamagedQuantity { get; set; }
 
         /// <summary>
         /// The number of units in warehouse damaged disposition.
         /// </summary>
         /// <value>The number of units in warehouse damaged disposition.</value>
         [DataMember(Name = "warehouseDamagedQuantity", EmitDefaultValue = false)]
-        public int WarehouseDamagedQuantity { get; set; }
+        public int? WarehouseDamagedQuantity { get; set; }
 
         /// <summary>
         /// The number of units in distributor damaged disposition.
         /// </summary>
         /// <value>The number of units in distributor damaged disposition.</value>
         [DataMember(Name = "distributorDamagedQuantity", EmitDefaultValue = false)]
-        public int DistributorDamagedQuantity { get; set; }
+        public int? DistributorDamagedQuantity { get; set; }
 
         /// <summary>
         /// The number of units in carrier damaged disposition.
         /// </summary>
         /// <value>The number of units in carrier damaged disposition.</value>
         [DataMember(Name = "carrierDamagedQuantity", EmitDefaultValue = false)]
-        public int CarrierDamagedQuantity { get; set; }
+        public int? CarrierDamagedQuantity { get; set; }
 
         /// <summary>
         /// The number of units in defective disposition.
         /// </summary>
         /// <value>The number of units in defective disposition.</value>
         [DataMember(Name = "defectiveQuantity", EmitDefaultValue = false)]
-        public int DefectiveQuantity { get; set; }
+        public int? DefectiveQuantity { get; set; }
 
         /// <summary>
         /// The number of units in expired disposition.
         /// </summary>
         /// <value>The number of units in expired disposition.</value>
         [DataMember(Name = "expiredQuantity", EmitDefaultValue = false)]
-        public int ExpiredQuantity { get; set; }
+        public int? ExpiredQuantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -139,5 +139,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }

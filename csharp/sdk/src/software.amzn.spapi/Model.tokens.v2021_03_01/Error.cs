@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// <param name="code">An error code that identifies the type of error that occurred. (required).</param>
         /// <param name="message">A message that describes the error condition. (required).</param>
         /// <param name="details">Additional details that can help the caller understand or fix the issue..</param>
-        public Error(string code = default(string), string message = default(string), string details = default(string))
+        public Error(string code = default(string), string message = default(string), string? details = default(string?))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
         /// </summary>
         /// <value>Additional details that can help the caller understand or fix the issue.</value>
         [DataMember(Name = "details", EmitDefaultValue = false)]
-        public string Details { get; set; }
+        public string? Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.tokens.v2021_03_01
             yield break;
         }
     }
-
 }

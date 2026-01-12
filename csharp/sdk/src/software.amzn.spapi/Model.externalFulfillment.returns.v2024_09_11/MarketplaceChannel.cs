@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// </summary>
         /// <param name="marketplaceName">The name of the marketplace..</param>
         /// <param name="channelName">The name of the channel within the marketplace..</param>
-        public MarketplaceChannel(string marketplaceName = default(string), string channelName = default(string))
+        public MarketplaceChannel(string? marketplaceName = default(string?), string? channelName = default(string?))
         {
             this.MarketplaceName = marketplaceName;
             this.ChannelName = channelName;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
         /// </summary>
         /// <value>The name of the marketplace.</value>
         [DataMember(Name = "marketplaceName", EmitDefaultValue = false)]
-        public string MarketplaceName { get; set; }
+        public string? MarketplaceName { get; set; }
 
         /// <summary>
         /// The name of the channel within the marketplace.
         /// </summary>
         /// <value>The name of the channel within the marketplace.</value>
         [DataMember(Name = "channelName", EmitDefaultValue = false)]
-        public string ChannelName { get; set; }
+        public string? ChannelName { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.returns.v2024_09_11
             yield break;
         }
     }
-
 }

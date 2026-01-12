@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// <param name="returnReasonCode">A code that indicates a valid return reason. (required).</param>
         /// <param name="description">A human readable description of the return reason code. (required).</param>
         /// <param name="translatedDescription">A translation of the description. The translation is in the language specified in the &#x60;language&#x60; request parameter..</param>
-        public ReasonCodeDetails(string returnReasonCode = default(string), string description = default(string), string translatedDescription = default(string))
+        public ReasonCodeDetails(string returnReasonCode = default(string), string description = default(string), string? translatedDescription = default(string?))
         {
             // to ensure "returnReasonCode" is required (not null)
             if (returnReasonCode == null)
@@ -78,7 +78,7 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
         /// </summary>
         /// <value>A translation of the description. The translation is in the language specified in the &#x60;language&#x60; request parameter.</value>
         [DataMember(Name = "translatedDescription", EmitDefaultValue = false)]
-        public string TranslatedDescription { get; set; }
+        public string? TranslatedDescription { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.fulfillment.outbound.v2020_07_01
             yield break;
         }
     }
-
 }

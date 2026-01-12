@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="originalAmount">originalAmount.</param>
         /// <param name="groupBeginDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="groupEndDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
-        public DebtRecoveryItem(Currency recoveryAmount = default(Currency), Currency originalAmount = default(Currency), DateTime groupBeginDate = default(DateTime), DateTime groupEndDate = default(DateTime))
+        public DebtRecoveryItem(Currency? recoveryAmount = default(Currency?), Currency? originalAmount = default(Currency?), DateTime? groupBeginDate = default(DateTime?), DateTime? groupEndDate = default(DateTime?))
         {
             this.RecoveryAmount = recoveryAmount;
             this.OriginalAmount = originalAmount;
@@ -50,27 +50,27 @@ namespace software.amzn.spapi.Model.finances.v0
         /// Gets or Sets RecoveryAmount
         /// </summary>
         [DataMember(Name = "RecoveryAmount", EmitDefaultValue = false)]
-        public Currency RecoveryAmount { get; set; }
+        public Currency? RecoveryAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets OriginalAmount
         /// </summary>
         [DataMember(Name = "OriginalAmount", EmitDefaultValue = false)]
-        public Currency OriginalAmount { get; set; }
+        public Currency? OriginalAmount { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "GroupBeginDate", EmitDefaultValue = false)]
-        public DateTime GroupBeginDate { get; set; }
+        public DateTime? GroupBeginDate { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "GroupEndDate", EmitDefaultValue = false)]
-        public DateTime GroupEndDate { get; set; }
+        public DateTime? GroupEndDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,5 +107,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

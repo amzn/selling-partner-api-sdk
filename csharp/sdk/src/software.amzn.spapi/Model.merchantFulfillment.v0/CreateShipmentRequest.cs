@@ -51,7 +51,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="hazmatType">hazmatType.</param>
         /// <param name="labelFormatOption">labelFormatOption.</param>
         /// <param name="shipmentLevelSellerInputsList">A list of additional seller input pairs required to purchase shipping..</param>
-        public CreateShipmentRequest(ShipmentRequestDetails shipmentRequestDetails = default(ShipmentRequestDetails), string shippingServiceId = default(string), string shippingServiceOfferId = default(string), HazmatType? hazmatType = default(HazmatType?), LabelFormatOptionRequest labelFormatOption = default(LabelFormatOptionRequest), List<AdditionalSellerInputs> shipmentLevelSellerInputsList = default(List<AdditionalSellerInputs>))
+        public CreateShipmentRequest(ShipmentRequestDetails shipmentRequestDetails = default(ShipmentRequestDetails), string shippingServiceId = default(string), string? shippingServiceOfferId = default(string?), HazmatType? hazmatType = default(HazmatType?), LabelFormatOptionRequest? labelFormatOption = default(LabelFormatOptionRequest?), List<AdditionalSellerInputs>? shipmentLevelSellerInputsList = default(List<AdditionalSellerInputs>?))
         {
             // to ensure "shipmentRequestDetails" is required (not null)
             if (shipmentRequestDetails == null)
@@ -89,20 +89,20 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>Identifies a shipping service order made by a carrier.</value>
         [DataMember(Name = "ShippingServiceOfferId", EmitDefaultValue = false)]
-        public string ShippingServiceOfferId { get; set; }
+        public string? ShippingServiceOfferId { get; set; }
 
         /// <summary>
         /// Gets or Sets LabelFormatOption
         /// </summary>
         [DataMember(Name = "LabelFormatOption", EmitDefaultValue = false)]
-        public LabelFormatOptionRequest LabelFormatOption { get; set; }
+        public LabelFormatOptionRequest? LabelFormatOption { get; set; }
 
         /// <summary>
         /// A list of additional seller input pairs required to purchase shipping.
         /// </summary>
         /// <value>A list of additional seller input pairs required to purchase shipping.</value>
         [DataMember(Name = "ShipmentLevelSellerInputsList", EmitDefaultValue = false)]
-        public List<AdditionalSellerInputs> ShipmentLevelSellerInputsList { get; set; }
+        public List<AdditionalSellerInputs>? ShipmentLevelSellerInputsList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -141,5 +141,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

@@ -39,7 +39,7 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// <param name="returnLocation">returnLocation.</param>
         /// <param name="deliveryChannel">deliveryChannel.</param>
         /// <param name="pickupChannel">pickupChannel.</param>
-        public OutboundCapability(bool isSupported = default(bool), OperationalConfiguration operationalConfiguration = default(OperationalConfiguration), ReturnLocation returnLocation = default(ReturnLocation), DeliveryChannel deliveryChannel = default(DeliveryChannel), PickupChannel pickupChannel = default(PickupChannel))
+        public OutboundCapability(bool? isSupported = default(bool?), OperationalConfiguration? operationalConfiguration = default(OperationalConfiguration?), ReturnLocation? returnLocation = default(ReturnLocation?), DeliveryChannel? deliveryChannel = default(DeliveryChannel?), PickupChannel? pickupChannel = default(PickupChannel?))
         {
             this.IsSupported = isSupported;
             this.OperationalConfiguration = operationalConfiguration;
@@ -52,31 +52,31 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
         /// Gets or Sets IsSupported
         /// </summary>
         [DataMember(Name = "isSupported", EmitDefaultValue = true)]
-        public bool IsSupported { get; set; }
+        public bool? IsSupported { get; set; }
 
         /// <summary>
         /// Gets or Sets OperationalConfiguration
         /// </summary>
         [DataMember(Name = "operationalConfiguration", EmitDefaultValue = false)]
-        public OperationalConfiguration OperationalConfiguration { get; set; }
+        public OperationalConfiguration? OperationalConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets ReturnLocation
         /// </summary>
         [DataMember(Name = "returnLocation", EmitDefaultValue = false)]
-        public ReturnLocation ReturnLocation { get; set; }
+        public ReturnLocation? ReturnLocation { get; set; }
 
         /// <summary>
         /// Gets or Sets DeliveryChannel
         /// </summary>
         [DataMember(Name = "deliveryChannel", EmitDefaultValue = false)]
-        public DeliveryChannel DeliveryChannel { get; set; }
+        public DeliveryChannel? DeliveryChannel { get; set; }
 
         /// <summary>
         /// Gets or Sets PickupChannel
         /// </summary>
         [DataMember(Name = "pickupChannel", EmitDefaultValue = false)]
-        public PickupChannel PickupChannel { get; set; }
+        public PickupChannel? PickupChannel { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,5 +114,4 @@ namespace software.amzn.spapi.Model.supplySources.v2020_07_01
             yield break;
         }
     }
-
 }

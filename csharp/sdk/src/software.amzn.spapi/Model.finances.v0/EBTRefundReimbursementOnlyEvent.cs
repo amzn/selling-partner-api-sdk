@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// <param name="orderId">The identifier of an order..</param>
         /// <param name="postedDate">A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="amount">amount.</param>
-        public EBTRefundReimbursementOnlyEvent(string orderId = default(string), DateTime postedDate = default(DateTime), Currency amount = default(Currency))
+        public EBTRefundReimbursementOnlyEvent(string? orderId = default(string?), DateTime? postedDate = default(DateTime?), Currency? amount = default(Currency?))
         {
             this.OrderId = orderId;
             this.PostedDate = postedDate;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <value>The identifier of an order.</value>
         [DataMember(Name = "OrderId", EmitDefaultValue = false)]
-        public string OrderId { get; set; }
+        public string? OrderId { get; set; }
 
         /// <summary>
         /// A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.
         /// </summary>
         /// <value>A date in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "PostedDate", EmitDefaultValue = false)]
-        public DateTime PostedDate { get; set; }
+        public DateTime? PostedDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "Amount", EmitDefaultValue = false)]
-        public Currency Amount { get; set; }
+        public Currency? Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

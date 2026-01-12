@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// </summary>
         /// <param name="payload">List of marketplace participations..</param>
         /// <param name="errors">A list of error responses returned when a request is unsuccessful..</param>
-        public GetMarketplaceParticipationsResponse(List<MarketplaceParticipation> payload = default(List<MarketplaceParticipation>), List<Error> errors = default(List<Error>))
+        public GetMarketplaceParticipationsResponse(List<MarketplaceParticipation>? payload = default(List<MarketplaceParticipation>?), List<Error>? errors = default(List<Error>?))
         {
             this.Payload = payload;
             this.Errors = errors;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// </summary>
         /// <value>List of marketplace participations.</value>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public List<MarketplaceParticipation> Payload { get; set; }
+        public List<MarketplaceParticipation>? Payload { get; set; }
 
         /// <summary>
         /// A list of error responses returned when a request is unsuccessful.
         /// </summary>
         /// <value>A list of error responses returned when a request is unsuccessful.</value>
         [DataMember(Name = "errors", EmitDefaultValue = false)]
-        public List<Error> Errors { get; set; }
+        public List<Error>? Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.sellers.v1
             yield break;
         }
     }
-
 }

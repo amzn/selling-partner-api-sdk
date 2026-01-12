@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <param name="text">The text to be sent to the buyer. Only links related to customization details are allowed. Do not include HTML or email addresses. The text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation..</param>
         /// <param name="attachments">Attachments to include in the message to the buyer..</param>
-        public CreateConfirmCustomizationDetailsRequest(string text = default(string), List<Attachment> attachments = default(List<Attachment>))
+        public CreateConfirmCustomizationDetailsRequest(string? text = default(string?), List<Attachment>? attachments = default(List<Attachment>?))
         {
             this.Text = text;
             this.Attachments = attachments;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.messaging.v1
         /// </summary>
         /// <value>The text to be sent to the buyer. Only links related to customization details are allowed. Do not include HTML or email addresses. The text must be written in the buyer&#39;s language of preference, which can be retrieved from the GetAttributes operation.</value>
         [DataMember(Name = "text", EmitDefaultValue = false)]
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         /// <summary>
         /// Attachments to include in the message to the buyer.
         /// </summary>
         /// <value>Attachments to include in the message to the buyer.</value>
         [DataMember(Name = "attachments", EmitDefaultValue = false)]
-        public List<Attachment> Attachments { get; set; }
+        public List<Attachment>? Attachments { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,5 +101,4 @@ namespace software.amzn.spapi.Model.messaging.v1
             yield break;
         }
     }
-
 }

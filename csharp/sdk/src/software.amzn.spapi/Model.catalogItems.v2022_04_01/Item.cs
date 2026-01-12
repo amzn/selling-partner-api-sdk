@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// <param name="salesRanks">Sales ranks of an Amazon catalog item..</param>
         /// <param name="summaries">Summaries of Amazon catalog items..</param>
         /// <param name="vendorDetails">The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors..</param>
-        public Item(string asin = default(string), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<ItemBrowseClassificationsByMarketplace> classifications = default(List<ItemBrowseClassificationsByMarketplace>), List<ItemDimensionsByMarketplace> dimensions = default(List<ItemDimensionsByMarketplace>), List<ItemIdentifiersByMarketplace> identifiers = default(List<ItemIdentifiersByMarketplace>), List<ItemImagesByMarketplace> images = default(List<ItemImagesByMarketplace>), List<ItemProductTypeByMarketplace> productTypes = default(List<ItemProductTypeByMarketplace>), List<ItemRelationshipsByMarketplace> relationships = default(List<ItemRelationshipsByMarketplace>), List<ItemSalesRanksByMarketplace> salesRanks = default(List<ItemSalesRanksByMarketplace>), List<ItemSummaryByMarketplace> summaries = default(List<ItemSummaryByMarketplace>), List<ItemVendorDetailsByMarketplace> vendorDetails = default(List<ItemVendorDetailsByMarketplace>))
+        public Item(string asin = default(string), Dictionary<string, Object>? attributes = default(Dictionary<string, Object>?), List<ItemBrowseClassificationsByMarketplace>? classifications = default(List<ItemBrowseClassificationsByMarketplace>?), List<ItemDimensionsByMarketplace>? dimensions = default(List<ItemDimensionsByMarketplace>?), List<ItemIdentifiersByMarketplace>? identifiers = default(List<ItemIdentifiersByMarketplace>?), List<ItemImagesByMarketplace>? images = default(List<ItemImagesByMarketplace>?), List<ItemProductTypeByMarketplace>? productTypes = default(List<ItemProductTypeByMarketplace>?), List<ItemRelationshipsByMarketplace>? relationships = default(List<ItemRelationshipsByMarketplace>?), List<ItemSalesRanksByMarketplace>? salesRanks = default(List<ItemSalesRanksByMarketplace>?), List<ItemSummaryByMarketplace>? summaries = default(List<ItemSummaryByMarketplace>?), List<ItemVendorDetailsByMarketplace>? vendorDetails = default(List<ItemVendorDetailsByMarketplace>?))
         {
             // to ensure "asin" is required (not null)
             if (asin == null)
@@ -82,70 +82,70 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
         /// </summary>
         /// <value>A JSON object containing structured item attribute data that is keyed by attribute name. Catalog item attributes conform to the related Amazon product type definitions that you can get from the [Product Type Definitions API](https://developer-docs.amazon.com/sp-api/reference/product-type-definitions-v2020-09-01).</value>
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
-        public Dictionary<string, Object> Attributes { get; set; }
+        public Dictionary<string, Object>? Attributes { get; set; }
 
         /// <summary>
         /// An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.
         /// </summary>
         /// <value>An array of classifications (browse nodes) that is associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.</value>
         [DataMember(Name = "classifications", EmitDefaultValue = false)]
-        public List<ItemBrowseClassificationsByMarketplace> Classifications { get; set; }
+        public List<ItemBrowseClassificationsByMarketplace>? Classifications { get; set; }
 
         /// <summary>
         /// An array of dimensions that are associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.
         /// </summary>
         /// <value>An array of dimensions that are associated with the item in the Amazon catalog, grouped by &#x60;marketplaceId&#x60;.</value>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public List<ItemDimensionsByMarketplace> Dimensions { get; set; }
+        public List<ItemDimensionsByMarketplace>? Dimensions { get; set; }
 
         /// <summary>
         /// Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.
         /// </summary>
         /// <value>Identifiers associated with the item in the Amazon catalog, such as UPC and EAN identifiers.</value>
         [DataMember(Name = "identifiers", EmitDefaultValue = false)]
-        public List<ItemIdentifiersByMarketplace> Identifiers { get; set; }
+        public List<ItemIdentifiersByMarketplace>? Identifiers { get; set; }
 
         /// <summary>
         /// The images for an item in the Amazon catalog.
         /// </summary>
         /// <value>The images for an item in the Amazon catalog.</value>
         [DataMember(Name = "images", EmitDefaultValue = false)]
-        public List<ItemImagesByMarketplace> Images { get; set; }
+        public List<ItemImagesByMarketplace>? Images { get; set; }
 
         /// <summary>
         /// Product types that are associated with the Amazon catalog item.
         /// </summary>
         /// <value>Product types that are associated with the Amazon catalog item.</value>
         [DataMember(Name = "productTypes", EmitDefaultValue = false)]
-        public List<ItemProductTypeByMarketplace> ProductTypes { get; set; }
+        public List<ItemProductTypeByMarketplace>? ProductTypes { get; set; }
 
         /// <summary>
         /// Relationships grouped by &#x60;marketplaceId&#x60; for an Amazon catalog item (for example, variations).
         /// </summary>
         /// <value>Relationships grouped by &#x60;marketplaceId&#x60; for an Amazon catalog item (for example, variations).</value>
         [DataMember(Name = "relationships", EmitDefaultValue = false)]
-        public List<ItemRelationshipsByMarketplace> Relationships { get; set; }
+        public List<ItemRelationshipsByMarketplace>? Relationships { get; set; }
 
         /// <summary>
         /// Sales ranks of an Amazon catalog item.
         /// </summary>
         /// <value>Sales ranks of an Amazon catalog item.</value>
         [DataMember(Name = "salesRanks", EmitDefaultValue = false)]
-        public List<ItemSalesRanksByMarketplace> SalesRanks { get; set; }
+        public List<ItemSalesRanksByMarketplace>? SalesRanks { get; set; }
 
         /// <summary>
         /// Summaries of Amazon catalog items.
         /// </summary>
         /// <value>Summaries of Amazon catalog items.</value>
         [DataMember(Name = "summaries", EmitDefaultValue = false)]
-        public List<ItemSummaryByMarketplace> Summaries { get; set; }
+        public List<ItemSummaryByMarketplace>? Summaries { get; set; }
 
         /// <summary>
         /// The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.
         /// </summary>
         /// <value>The vendor details that are associated with an Amazon catalog item. Vendor details are only available to vendors.</value>
         [DataMember(Name = "vendorDetails", EmitDefaultValue = false)]
-        public List<ItemVendorDetailsByMarketplace> VendorDetails { get; set; }
+        public List<ItemVendorDetailsByMarketplace>? VendorDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -189,5 +189,4 @@ namespace software.amzn.spapi.Model.catalogItems.v2022_04_01
             yield break;
         }
     }
-
 }

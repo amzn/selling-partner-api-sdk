@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <param name="countryCode">Country code value.</param>
         /// <param name="value">Postal code value .</param>
-        public PostalCode(string countryCode = default(string), string value = default(string))
+        public PostalCode(string? countryCode = default(string?), string? value = default(string?))
         {
             this.CountryCode = countryCode;
             this.Value = value;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
         /// </summary>
         /// <value>Country code value</value>
         [DataMember(Name = "countryCode", EmitDefaultValue = false)]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         /// <summary>
         /// Postal code value 
         /// </summary>
         /// <value>Postal code value </value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
-        public string Value { get; set; }
+        public string? Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.pricing.v2022_05_01
             yield break;
         }
     }
-
 }

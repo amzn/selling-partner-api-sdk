@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// <param name="height">The numerical value of the specified dimension..</param>
         /// <param name="unit">unit.</param>
         /// <param name="identifier">A string of up to 255 characters..</param>
-        public Dimensions(float length = default(float), float width = default(float), float height = default(float), UnitOfLength? unit = default(UnitOfLength?), string identifier = default(string))
+        public Dimensions(float? length = default(float?), float? width = default(float?), float? height = default(float?), UnitOfLength? unit = default(UnitOfLength?), string? identifier = default(string?))
         {
             this.Length = length;
             this.Width = width;
@@ -59,28 +59,28 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
         /// </summary>
         /// <value>The numerical value of the specified dimension.</value>
         [DataMember(Name = "length", EmitDefaultValue = false)]
-        public float Length { get; set; }
+        public float? Length { get; set; }
 
         /// <summary>
         /// The numerical value of the specified dimension.
         /// </summary>
         /// <value>The numerical value of the specified dimension.</value>
         [DataMember(Name = "width", EmitDefaultValue = false)]
-        public float Width { get; set; }
+        public float? Width { get; set; }
 
         /// <summary>
         /// The numerical value of the specified dimension.
         /// </summary>
         /// <value>The numerical value of the specified dimension.</value>
         [DataMember(Name = "height", EmitDefaultValue = false)]
-        public float Height { get; set; }
+        public float? Height { get; set; }
 
         /// <summary>
         /// A string of up to 255 characters.
         /// </summary>
         /// <value>A string of up to 255 characters.</value>
         [DataMember(Name = "identifier", EmitDefaultValue = false)]
-        public string Identifier { get; set; }
+        public string? Identifier { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -148,5 +148,4 @@ namespace software.amzn.spapi.Model.easyship.v2022_03_23
             yield break;
         }
     }
-
 }

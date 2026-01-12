@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Initializes a new instance of the <see cref="PaginationResponse" /> class.
         /// </summary>
         /// <param name="totalResults">Total number of results matching the given filter criteria..</param>
-        public PaginationResponse(long totalResults = default(long))
+        public PaginationResponse(long? totalResults = default(long?))
         {
             this.TotalResults = totalResults;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// </summary>
         /// <value>Total number of results matching the given filter criteria.</value>
         [DataMember(Name = "totalResults", EmitDefaultValue = false)]
-        public long TotalResults { get; set; }
+        public long? TotalResults { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,5 +85,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

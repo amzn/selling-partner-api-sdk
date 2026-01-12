@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="parentSkus">Identifiers (SKUs) of the related items that are parents of this listing item..</param>
         /// <param name="variationTheme">variationTheme.</param>
         /// <param name="type">The type of relationship. (required).</param>
-        public ItemRelationship(List<string> childSkus = default(List<string>), List<string> parentSkus = default(List<string>), ItemVariationTheme variationTheme = default(ItemVariationTheme), TypeEnum type = default(TypeEnum))
+        public ItemRelationship(List<string>? childSkus = default(List<string>?), List<string>? parentSkus = default(List<string>?), ItemVariationTheme? variationTheme = default(ItemVariationTheme?), TypeEnum type = default(TypeEnum))
         {
             this.Type = type;
             this.ChildSkus = childSkus;
@@ -86,20 +86,20 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// </summary>
         /// <value>Identifiers (SKUs) of the related items that are children of this listing item.</value>
         [DataMember(Name = "childSkus", EmitDefaultValue = false)]
-        public List<string> ChildSkus { get; set; }
+        public List<string>? ChildSkus { get; set; }
 
         /// <summary>
         /// Identifiers (SKUs) of the related items that are parents of this listing item.
         /// </summary>
         /// <value>Identifiers (SKUs) of the related items that are parents of this listing item.</value>
         [DataMember(Name = "parentSkus", EmitDefaultValue = false)]
-        public List<string> ParentSkus { get; set; }
+        public List<string>? ParentSkus { get; set; }
 
         /// <summary>
         /// Gets or Sets VariationTheme
         /// </summary>
         [DataMember(Name = "variationTheme", EmitDefaultValue = false)]
-        public ItemVariationTheme VariationTheme { get; set; }
+        public ItemVariationTheme? VariationTheme { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,5 +136,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

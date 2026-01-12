@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// Initializes a new instance of the <see cref="ContainerSequenceNumbers" /> class.
         /// </summary>
         /// <param name="containerSequenceNumber">A list of containers shipped.</param>
-        public ContainerSequenceNumbers(string containerSequenceNumber = default(string))
+        public ContainerSequenceNumbers(string? containerSequenceNumber = default(string?))
         {
             this.ContainerSequenceNumber = containerSequenceNumber;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>A list of containers shipped</value>
         [DataMember(Name = "containerSequenceNumber", EmitDefaultValue = false)]
-        public string ContainerSequenceNumber { get; set; }
+        public string? ContainerSequenceNumber { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

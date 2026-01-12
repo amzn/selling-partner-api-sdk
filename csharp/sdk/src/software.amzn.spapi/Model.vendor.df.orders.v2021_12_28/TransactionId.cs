@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// Initializes a new instance of the <see cref="TransactionId" /> class.
         /// </summary>
         /// <param name="varTransactionId">GUID assigned by Amazon to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction..</param>
-        public TransactionId(string varTransactionId = default(string))
+        public TransactionId(string? varTransactionId = default(string?))
         {
             this.VarTransactionId = varTransactionId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>GUID assigned by Amazon to identify this transaction. This value can be used with the Transaction Status API to return the status of this transaction.</value>
         [DataMember(Name = "transactionId", EmitDefaultValue = false)]
-        public string VarTransactionId { get; set; }
+        public string? VarTransactionId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

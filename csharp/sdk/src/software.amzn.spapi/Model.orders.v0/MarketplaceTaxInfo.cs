@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Initializes a new instance of the <see cref="MarketplaceTaxInfo" /> class.
         /// </summary>
         /// <param name="taxClassifications">A list of tax classifications that apply to the order..</param>
-        public MarketplaceTaxInfo(List<TaxClassification> taxClassifications = default(List<TaxClassification>))
+        public MarketplaceTaxInfo(List<TaxClassification>? taxClassifications = default(List<TaxClassification>?))
         {
             this.TaxClassifications = taxClassifications;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>A list of tax classifications that apply to the order.</value>
         [DataMember(Name = "TaxClassifications", EmitDefaultValue = false)]
-        public List<TaxClassification> TaxClassifications { get; set; }
+        public List<TaxClassification>? TaxClassifications { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

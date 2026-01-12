@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="appointmentId">Identifier for appointment..</param>
         /// <param name="appointmentSlotTime">appointmentSlotTime.</param>
         /// <param name="appointmentStatus">Status of the appointment..</param>
-        public SelfShipAppointmentDetails(decimal appointmentId = default(decimal), AppointmentSlotTime appointmentSlotTime = default(AppointmentSlotTime), string appointmentStatus = default(string))
+        public SelfShipAppointmentDetails(decimal? appointmentId = default(decimal?), AppointmentSlotTime? appointmentSlotTime = default(AppointmentSlotTime?), string? appointmentStatus = default(string?))
         {
             this.AppointmentId = appointmentId;
             this.AppointmentSlotTime = appointmentSlotTime;
@@ -49,20 +49,20 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>Identifier for appointment.</value>
         [DataMember(Name = "appointmentId", EmitDefaultValue = false)]
-        public decimal AppointmentId { get; set; }
+        public decimal? AppointmentId { get; set; }
 
         /// <summary>
         /// Gets or Sets AppointmentSlotTime
         /// </summary>
         [DataMember(Name = "appointmentSlotTime", EmitDefaultValue = false)]
-        public AppointmentSlotTime AppointmentSlotTime { get; set; }
+        public AppointmentSlotTime? AppointmentSlotTime { get; set; }
 
         /// <summary>
         /// Status of the appointment.
         /// </summary>
         /// <value>Status of the appointment.</value>
         [DataMember(Name = "appointmentStatus", EmitDefaultValue = false)]
-        public string AppointmentStatus { get; set; }
+        public string? AppointmentStatus { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -110,5 +110,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

@@ -77,7 +77,7 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// <param name="acceptedQuantity">acceptedQuantity.</param>
         /// <param name="rejectedQuantity">rejectedQuantity.</param>
         /// <param name="acknowledgementStatusDetails">Details of item quantity confirmed..</param>
-        public OrderItemStatusAcknowledgementStatus(ConfirmationStatusEnum? confirmationStatus = default(ConfirmationStatusEnum?), ItemQuantity acceptedQuantity = default(ItemQuantity), ItemQuantity rejectedQuantity = default(ItemQuantity), List<AcknowledgementStatusDetails> acknowledgementStatusDetails = default(List<AcknowledgementStatusDetails>))
+        public OrderItemStatusAcknowledgementStatus(ConfirmationStatusEnum? confirmationStatus = default(ConfirmationStatusEnum?), ItemQuantity? acceptedQuantity = default(ItemQuantity?), ItemQuantity? rejectedQuantity = default(ItemQuantity?), List<AcknowledgementStatusDetails>? acknowledgementStatusDetails = default(List<AcknowledgementStatusDetails>?))
         {
             this.ConfirmationStatus = confirmationStatus;
             this.AcceptedQuantity = acceptedQuantity;
@@ -89,20 +89,20 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
         /// Gets or Sets AcceptedQuantity
         /// </summary>
         [DataMember(Name = "acceptedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity AcceptedQuantity { get; set; }
+        public ItemQuantity? AcceptedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets RejectedQuantity
         /// </summary>
         [DataMember(Name = "rejectedQuantity", EmitDefaultValue = false)]
-        public ItemQuantity RejectedQuantity { get; set; }
+        public ItemQuantity? RejectedQuantity { get; set; }
 
         /// <summary>
         /// Details of item quantity confirmed.
         /// </summary>
         /// <value>Details of item quantity confirmed.</value>
         [DataMember(Name = "acknowledgementStatusDetails", EmitDefaultValue = false)]
-        public List<AcknowledgementStatusDetails> AcknowledgementStatusDetails { get; set; }
+        public List<AcknowledgementStatusDetails>? AcknowledgementStatusDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -139,5 +139,4 @@ namespace software.amzn.spapi.Model.vendor.orders.v1
             yield break;
         }
     }
-
 }

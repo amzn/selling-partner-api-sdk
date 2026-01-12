@@ -49,7 +49,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="externalReviewerId">The identifier of the order&#39;s regulated information reviewer. (required).</param>
         /// <param name="rejectionReasonId">The unique identifier of the rejection reason used for rejecting the order&#39;s regulated information. Only required if the new status is rejected..</param>
         /// <param name="verificationDetails">verificationDetails.</param>
-        public UpdateVerificationStatusRequestBody(VerificationStatus? status = default(VerificationStatus?), string externalReviewerId = default(string), string rejectionReasonId = default(string), VerificationDetails verificationDetails = default(VerificationDetails))
+        public UpdateVerificationStatusRequestBody(VerificationStatus? status = default(VerificationStatus?), string externalReviewerId = default(string), string? rejectionReasonId = default(string?), VerificationDetails? verificationDetails = default(VerificationDetails?))
         {
             // to ensure "externalReviewerId" is required (not null)
             if (externalReviewerId == null)
@@ -74,13 +74,13 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>The unique identifier of the rejection reason used for rejecting the order&#39;s regulated information. Only required if the new status is rejected.</value>
         [DataMember(Name = "rejectionReasonId", EmitDefaultValue = false)]
-        public string RejectionReasonId { get; set; }
+        public string? RejectionReasonId { get; set; }
 
         /// <summary>
         /// Gets or Sets VerificationDetails
         /// </summary>
         [DataMember(Name = "verificationDetails", EmitDefaultValue = false)]
-        public VerificationDetails VerificationDetails { get; set; }
+        public VerificationDetails? VerificationDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -117,5 +117,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

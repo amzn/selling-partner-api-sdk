@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         /// <param name="reservedQuantity">The number of items of the specified SKU created in any marketplace that are reserved for shipment and yet to be fulfilled..</param>
         /// <param name="marketplaceAttributes">marketplaceAttributes.</param>
         /// <param name="actionableErrors">Inventory operation errors that require seller action before retrying the inventory request..</param>
-        public InventoryResponseBody(int clientSequenceNumber = default(int), string locationId = default(string), string skuId = default(string), int sellableQuantity = default(int), int reservedQuantity = default(int), MarketplaceAttributes marketplaceAttributes = default(MarketplaceAttributes), List<ActionableError> actionableErrors = default(List<ActionableError>))
+        public InventoryResponseBody(int? clientSequenceNumber = default(int?), string? locationId = default(string?), string? skuId = default(string?), int? sellableQuantity = default(int?), int? reservedQuantity = default(int?), MarketplaceAttributes? marketplaceAttributes = default(MarketplaceAttributes?), List<ActionableError>? actionableErrors = default(List<ActionableError>?))
         {
             this.ClientSequenceNumber = clientSequenceNumber;
             this.LocationId = locationId;
@@ -60,7 +60,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>12345678</example>
         */
         [DataMember(Name = "clientSequenceNumber", EmitDefaultValue = false)]
-        public int ClientSequenceNumber { get; set; }
+        public int? ClientSequenceNumber { get; set; }
 
         /// <summary>
         /// The location where inventory is updated or retrieved.
@@ -70,7 +70,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>43cd8cd4-a944-4fa8-a584-5e3b3efdb045</example>
         */
         [DataMember(Name = "locationId", EmitDefaultValue = false)]
-        public string LocationId { get; set; }
+        public string? LocationId { get; set; }
 
         /// <summary>
         /// The SKU ID for which inventory is updated or retrieved
@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>efptestsku2</example>
         */
         [DataMember(Name = "skuId", EmitDefaultValue = false)]
-        public string SkuId { get; set; }
+        public string? SkuId { get; set; }
 
         /// <summary>
         /// The number of items of the specified SKU that are available for purchase.
@@ -90,7 +90,7 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>5</example>
         */
         [DataMember(Name = "sellableQuantity", EmitDefaultValue = false)]
-        public int SellableQuantity { get; set; }
+        public int? SellableQuantity { get; set; }
 
         /// <summary>
         /// The number of items of the specified SKU created in any marketplace that are reserved for shipment and yet to be fulfilled.
@@ -100,20 +100,20 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
         <example>2</example>
         */
         [DataMember(Name = "reservedQuantity", EmitDefaultValue = false)]
-        public int ReservedQuantity { get; set; }
+        public int? ReservedQuantity { get; set; }
 
         /// <summary>
         /// Gets or Sets MarketplaceAttributes
         /// </summary>
         [DataMember(Name = "marketplaceAttributes", EmitDefaultValue = false)]
-        public MarketplaceAttributes MarketplaceAttributes { get; set; }
+        public MarketplaceAttributes? MarketplaceAttributes { get; set; }
 
         /// <summary>
         /// Inventory operation errors that require seller action before retrying the inventory request.
         /// </summary>
         /// <value>Inventory operation errors that require seller action before retrying the inventory request.</value>
         [DataMember(Name = "actionableErrors", EmitDefaultValue = false)]
-        public List<ActionableError> ActionableErrors { get; set; }
+        public List<ActionableError>? ActionableErrors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -165,5 +165,4 @@ namespace software.amzn.spapi.Model.externalFulfillment.inventory.v2024_09_11
             yield break;
         }
     }
-
 }

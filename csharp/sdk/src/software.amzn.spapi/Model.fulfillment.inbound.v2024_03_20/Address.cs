@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// <param name="phoneNumber">The phone number..</param>
         /// <param name="postalCode">The postal code. (required).</param>
         /// <param name="stateOrProvinceCode">The state or province code..</param>
-        public Address(string addressLine1 = default(string), string addressLine2 = default(string), string city = default(string), string companyName = default(string), string countryCode = default(string), string districtOrCounty = default(string), string email = default(string), string name = default(string), string phoneNumber = default(string), string postalCode = default(string), string stateOrProvinceCode = default(string))
+        public Address(string addressLine1 = default(string), string? addressLine2 = default(string?), string city = default(string), string? companyName = default(string?), string countryCode = default(string), string? districtOrCounty = default(string?), string? email = default(string?), string name = default(string), string? phoneNumber = default(string?), string postalCode = default(string), string? stateOrProvinceCode = default(string?))
         {
             // to ensure "addressLine1" is required (not null)
             if (addressLine1 == null)
@@ -102,7 +102,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>Additional street address information.</value>
         [DataMember(Name = "addressLine2", EmitDefaultValue = false)]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         /// <summary>
         /// The city.
@@ -116,7 +116,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The name of the business.</value>
         [DataMember(Name = "companyName", EmitDefaultValue = false)]
-        public string CompanyName { get; set; }
+        public string? CompanyName { get; set; }
 
         /// <summary>
         /// The country code in two-character ISO 3166-1 alpha-2 format.
@@ -130,14 +130,14 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The district or county.</value>
         [DataMember(Name = "districtOrCounty", EmitDefaultValue = false)]
-        public string DistrictOrCounty { get; set; }
+        public string? DistrictOrCounty { get; set; }
 
         /// <summary>
         /// The email address.
         /// </summary>
         /// <value>The email address.</value>
         [DataMember(Name = "email", EmitDefaultValue = false)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// The name of the individual who is the primary contact.
@@ -151,7 +151,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The phone number.</value>
         [DataMember(Name = "phoneNumber", EmitDefaultValue = false)]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         /// <summary>
         /// The postal code.
@@ -165,7 +165,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>The state or province code.</value>
         [DataMember(Name = "stateOrProvinceCode", EmitDefaultValue = false)]
-        public string StateOrProvinceCode { get; set; }
+        public string? StateOrProvinceCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -350,5 +350,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// <param name="rejectedShippingServiceList">List of services that are for some reason unavailable for this request.</param>
         /// <param name="temporarilyUnavailableCarrierList">A list of temporarily unavailable carriers..</param>
         /// <param name="termsAndConditionsNotAcceptedCarrierList">List of carriers whose terms and conditions were not accepted by the seller..</param>
-        public GetEligibleShipmentServicesResult(List<ShippingService> shippingServiceList = default(List<ShippingService>), List<RejectedShippingService> rejectedShippingServiceList = default(List<RejectedShippingService>), List<TemporarilyUnavailableCarrier> temporarilyUnavailableCarrierList = default(List<TemporarilyUnavailableCarrier>), List<TermsAndConditionsNotAcceptedCarrier> termsAndConditionsNotAcceptedCarrierList = default(List<TermsAndConditionsNotAcceptedCarrier>))
+        public GetEligibleShipmentServicesResult(List<ShippingService> shippingServiceList = default(List<ShippingService>), List<RejectedShippingService>? rejectedShippingServiceList = default(List<RejectedShippingService>?), List<TemporarilyUnavailableCarrier>? temporarilyUnavailableCarrierList = default(List<TemporarilyUnavailableCarrier>?), List<TermsAndConditionsNotAcceptedCarrier>? termsAndConditionsNotAcceptedCarrierList = default(List<TermsAndConditionsNotAcceptedCarrier>?))
         {
             // to ensure "shippingServiceList" is required (not null)
             if (shippingServiceList == null)
@@ -68,21 +68,21 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
         /// </summary>
         /// <value>List of services that are for some reason unavailable for this request</value>
         [DataMember(Name = "RejectedShippingServiceList", EmitDefaultValue = false)]
-        public List<RejectedShippingService> RejectedShippingServiceList { get; set; }
+        public List<RejectedShippingService>? RejectedShippingServiceList { get; set; }
 
         /// <summary>
         /// A list of temporarily unavailable carriers.
         /// </summary>
         /// <value>A list of temporarily unavailable carriers.</value>
         [DataMember(Name = "TemporarilyUnavailableCarrierList", EmitDefaultValue = false)]
-        public List<TemporarilyUnavailableCarrier> TemporarilyUnavailableCarrierList { get; set; }
+        public List<TemporarilyUnavailableCarrier>? TemporarilyUnavailableCarrierList { get; set; }
 
         /// <summary>
         /// List of carriers whose terms and conditions were not accepted by the seller.
         /// </summary>
         /// <value>List of carriers whose terms and conditions were not accepted by the seller.</value>
         [DataMember(Name = "TermsAndConditionsNotAcceptedCarrierList", EmitDefaultValue = false)]
-        public List<TermsAndConditionsNotAcceptedCarrier> TermsAndConditionsNotAcceptedCarrierList { get; set; }
+        public List<TermsAndConditionsNotAcceptedCarrier>? TermsAndConditionsNotAcceptedCarrierList { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,5 +119,4 @@ namespace software.amzn.spapi.Model.merchantFulfillment.v0
             yield break;
         }
     }
-
 }

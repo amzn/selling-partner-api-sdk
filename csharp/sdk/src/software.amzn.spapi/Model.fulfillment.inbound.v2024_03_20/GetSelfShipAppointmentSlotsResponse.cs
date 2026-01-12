@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="pagination">pagination.</param>
         /// <param name="selfShipAppointmentSlotsAvailability">selfShipAppointmentSlotsAvailability (required).</param>
-        public GetSelfShipAppointmentSlotsResponse(Pagination pagination = default(Pagination), SelfShipAppointmentSlotsAvailability selfShipAppointmentSlotsAvailability = default(SelfShipAppointmentSlotsAvailability))
+        public GetSelfShipAppointmentSlotsResponse(Pagination? pagination = default(Pagination?), SelfShipAppointmentSlotsAvailability selfShipAppointmentSlotsAvailability = default(SelfShipAppointmentSlotsAvailability))
         {
             // to ensure "selfShipAppointmentSlotsAvailability" is required (not null)
             if (selfShipAppointmentSlotsAvailability == null)
@@ -56,7 +56,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Gets or Sets SelfShipAppointmentSlotsAvailability
@@ -97,5 +97,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

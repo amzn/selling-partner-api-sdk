@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// <param name="sku">The Stock Keeping Unit (SKU) of the item..</param>
         /// <param name="quantityShipped">The quantity of the item shipped..</param>
         /// <param name="fulfillmentNetwork">The fulfillment network of the item..</param>
-        public ProductContext(string asin = default(string), string sku = default(string), int quantityShipped = default(int), string fulfillmentNetwork = default(string))
+        public ProductContext(string? asin = default(string?), string? sku = default(string?), int? quantityShipped = default(int?), string? fulfillmentNetwork = default(string?))
         {
             this.Asin = asin;
             this.Sku = sku;
@@ -51,28 +51,28 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The Stock Keeping Unit (SKU) of the item.
         /// </summary>
         /// <value>The Stock Keeping Unit (SKU) of the item.</value>
         [DataMember(Name = "sku", EmitDefaultValue = false)]
-        public string Sku { get; set; }
+        public string? Sku { get; set; }
 
         /// <summary>
         /// The quantity of the item shipped.
         /// </summary>
         /// <value>The quantity of the item shipped.</value>
         [DataMember(Name = "quantityShipped", EmitDefaultValue = false)]
-        public int QuantityShipped { get; set; }
+        public int? QuantityShipped { get; set; }
 
         /// <summary>
         /// The fulfillment network of the item.
         /// </summary>
         /// <value>The fulfillment network of the item.</value>
         [DataMember(Name = "fulfillmentNetwork", EmitDefaultValue = false)]
-        public string FulfillmentNetwork { get; set; }
+        public string? FulfillmentNetwork { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.finances.v2024_06_19
             yield break;
         }
     }
-
 }

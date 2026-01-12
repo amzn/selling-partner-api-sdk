@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="latitude">The latitude of access point..</param>
         /// <param name="longitude">The longitude of access point..</param>
-        public Geocode(string latitude = default(string), string longitude = default(string))
+        public Geocode(string? latitude = default(string?), string? longitude = default(string?))
         {
             this.Latitude = latitude;
             this.Longitude = longitude;
@@ -48,14 +48,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The latitude of access point.</value>
         [DataMember(Name = "latitude", EmitDefaultValue = false)]
-        public string Latitude { get; set; }
+        public string? Latitude { get; set; }
 
         /// <summary>
         /// The longitude of access point.
         /// </summary>
         /// <value>The longitude of access point.</value>
         [DataMember(Name = "longitude", EmitDefaultValue = false)]
-        public string Longitude { get; set; }
+        public string? Longitude { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -90,5 +90,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

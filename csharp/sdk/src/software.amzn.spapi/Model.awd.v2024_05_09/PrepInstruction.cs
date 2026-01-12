@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <param name="prepOwner">prepOwner.</param>
         /// <param name="prepType">The type of preparation to be done. For more information about preparing items, refer to [Prep guidance](https://sellercentral.amazon.com/help/hub/reference/external/GF4G7547KSLDX2KC) on Seller Central..</param>
-        public PrepInstruction(PrepOwner? prepOwner = default(PrepOwner?), string prepType = default(string))
+        public PrepInstruction(PrepOwner? prepOwner = default(PrepOwner?), string? prepType = default(string?))
         {
             this.PrepOwner = prepOwner;
             this.PrepType = prepType;
@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>The type of preparation to be done. For more information about preparing items, refer to [Prep guidance](https://sellercentral.amazon.com/help/hub/reference/external/GF4G7547KSLDX2KC) on Seller Central.</value>
         [DataMember(Name = "prepType", EmitDefaultValue = false)]
-        public string PrepType { get; set; }
+        public string? PrepType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

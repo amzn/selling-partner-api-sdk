@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="address">address.</param>
         /// <param name="lastManifestDate">Its Last Manifest Date..</param>
-        public UnmanifestedShipmentLocation(Address address = default(Address), string lastManifestDate = default(string))
+        public UnmanifestedShipmentLocation(Address? address = default(Address?), string? lastManifestDate = default(string?))
         {
             this.Address = address;
             this.LastManifestDate = lastManifestDate;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Address
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false)]
-        public Address Address { get; set; }
+        public Address? Address { get; set; }
 
         /// <summary>
         /// Its Last Manifest Date.
         /// </summary>
         /// <value>Its Last Manifest Date.</value>
         [DataMember(Name = "lastManifestDate", EmitDefaultValue = false)]
-        public string LastManifestDate { get; set; }
+        public string? LastManifestDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

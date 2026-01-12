@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Initializes a new instance of the <see cref="Pagination" /> class.
         /// </summary>
         /// <param name="nextToken">When present, pass this string token in the next request to return the next response page..</param>
-        public Pagination(string nextToken = default(string))
+        public Pagination(string? nextToken = default(string?))
         {
             this.NextToken = nextToken;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <value>When present, pass this string token in the next request to return the next response page.</value>
         [DataMember(Name = "nextToken", EmitDefaultValue = false)]
-        public string NextToken { get; set; }
+        public string? NextToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,5 +91,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

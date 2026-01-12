@@ -37,7 +37,7 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <param name="requestedPickUp">Date on which the items can be picked up from vendor warehouse by Buyer used for WePay/Collect vendors..</param>
         /// <param name="scheduledPickUp">Date on which the items are scheduled to be picked from vendor warehouse by Buyer used for WePay/Collect vendors..</param>
         /// <param name="carrierAssignmentDate">Date on which the carrier is being scheduled to pickup items from vendor warehouse by Byer used for WePay/Collect vendors..</param>
-        public CollectFreightPickupDetails(DateTime requestedPickUp = default(DateTime), DateTime scheduledPickUp = default(DateTime), DateTime carrierAssignmentDate = default(DateTime))
+        public CollectFreightPickupDetails(DateTime? requestedPickUp = default(DateTime?), DateTime? scheduledPickUp = default(DateTime?), DateTime? carrierAssignmentDate = default(DateTime?))
         {
             this.RequestedPickUp = requestedPickUp;
             this.ScheduledPickUp = scheduledPickUp;
@@ -49,21 +49,21 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// </summary>
         /// <value>Date on which the items can be picked up from vendor warehouse by Buyer used for WePay/Collect vendors.</value>
         [DataMember(Name = "requestedPickUp", EmitDefaultValue = false)]
-        public DateTime RequestedPickUp { get; set; }
+        public DateTime? RequestedPickUp { get; set; }
 
         /// <summary>
         /// Date on which the items are scheduled to be picked from vendor warehouse by Buyer used for WePay/Collect vendors.
         /// </summary>
         /// <value>Date on which the items are scheduled to be picked from vendor warehouse by Buyer used for WePay/Collect vendors.</value>
         [DataMember(Name = "scheduledPickUp", EmitDefaultValue = false)]
-        public DateTime ScheduledPickUp { get; set; }
+        public DateTime? ScheduledPickUp { get; set; }
 
         /// <summary>
         /// Date on which the carrier is being scheduled to pickup items from vendor warehouse by Byer used for WePay/Collect vendors.
         /// </summary>
         /// <value>Date on which the carrier is being scheduled to pickup items from vendor warehouse by Byer used for WePay/Collect vendors.</value>
         [DataMember(Name = "carrierAssignmentDate", EmitDefaultValue = false)]
-        public DateTime CarrierAssignmentDate { get; set; }
+        public DateTime? CarrierAssignmentDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,5 +99,4 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             yield break;
         }
     }
-
 }

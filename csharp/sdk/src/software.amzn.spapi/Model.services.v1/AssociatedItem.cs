@@ -80,7 +80,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// <param name="itemStatus">The status of the item..</param>
         /// <param name="brandName">The brand name of the item..</param>
         /// <param name="itemDelivery">itemDelivery.</param>
-        public AssociatedItem(string asin = default(string), string title = default(string), int quantity = default(int), string orderId = default(string), ItemStatusEnum? itemStatus = default(ItemStatusEnum?), string brandName = default(string), ItemDelivery itemDelivery = default(ItemDelivery))
+        public AssociatedItem(string? asin = default(string?), string? title = default(string?), int? quantity = default(int?), string? orderId = default(string?), ItemStatusEnum? itemStatus = default(ItemStatusEnum?), string? brandName = default(string?), ItemDelivery? itemDelivery = default(ItemDelivery?))
         {
             this.Asin = asin;
             this.Title = title;
@@ -96,41 +96,41 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The Amazon Standard Identification Number (ASIN) of the item.</value>
         [DataMember(Name = "asin", EmitDefaultValue = false)]
-        public string Asin { get; set; }
+        public string? Asin { get; set; }
 
         /// <summary>
         /// The title of the item.
         /// </summary>
         /// <value>The title of the item.</value>
         [DataMember(Name = "title", EmitDefaultValue = false)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         /// <summary>
         /// The total number of items included in the order.
         /// </summary>
         /// <value>The total number of items included in the order.</value>
         [DataMember(Name = "quantity", EmitDefaultValue = false)]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         /// <summary>
         /// The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.
         /// </summary>
         /// <value>The Amazon-defined identifier for an order placed by the buyer, in 3-7-7 format.</value>
         [DataMember(Name = "orderId", EmitDefaultValue = false)]
-        public string OrderId { get; set; }
+        public string? OrderId { get; set; }
 
         /// <summary>
         /// The brand name of the item.
         /// </summary>
         /// <value>The brand name of the item.</value>
         [DataMember(Name = "brandName", EmitDefaultValue = false)]
-        public string BrandName { get; set; }
+        public string? BrandName { get; set; }
 
         /// <summary>
         /// Gets or Sets ItemDelivery
         /// </summary>
         [DataMember(Name = "itemDelivery", EmitDefaultValue = false)]
-        public ItemDelivery ItemDelivery { get; set; }
+        public ItemDelivery? ItemDelivery { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -182,5 +182,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

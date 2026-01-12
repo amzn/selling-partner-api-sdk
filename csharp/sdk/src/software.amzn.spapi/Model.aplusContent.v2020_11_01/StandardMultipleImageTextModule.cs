@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Initializes a new instance of the <see cref="StandardMultipleImageTextModule" /> class.
         /// </summary>
         /// <param name="blocks">blocks.</param>
-        public StandardMultipleImageTextModule(List<StandardImageTextCaptionBlock> blocks = default(List<StandardImageTextCaptionBlock>))
+        public StandardMultipleImageTextModule(List<StandardImageTextCaptionBlock>? blocks = default(List<StandardImageTextCaptionBlock>?))
         {
             this.Blocks = blocks;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
         /// Gets or Sets Blocks
         /// </summary>
         [DataMember(Name = "blocks", EmitDefaultValue = false)]
-        public List<StandardImageTextCaptionBlock> Blocks { get; set; }
+        public List<StandardImageTextCaptionBlock>? Blocks { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.aplusContent.v2020_11_01
             yield break;
         }
     }
-
 }

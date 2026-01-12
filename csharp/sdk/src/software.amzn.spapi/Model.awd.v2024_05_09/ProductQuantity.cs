@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="sku">The seller or merchant SKU. (required).</param>
         /// <param name="expiration">The expiration date for the SKU. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format..</param>
         /// <param name="prepDetails">prepDetails.</param>
-        public ProductQuantity(List<ProductAttribute> attributes = default(List<ProductAttribute>), int quantity = default(int), string sku = default(string), DateTime expiration = default(DateTime), PrepDetails prepDetails = default(PrepDetails))
+        public ProductQuantity(List<ProductAttribute>? attributes = default(List<ProductAttribute>?), int quantity = default(int), string sku = default(string), DateTime? expiration = default(DateTime?), PrepDetails? prepDetails = default(PrepDetails?))
         {
             this.Quantity = quantity;
             // to ensure "sku" is required (not null)
@@ -66,7 +66,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         <example>{name&#x3D;TestAttribute, value&#x3D;TestAttributeValue}</example>
         */
         [DataMember(Name = "attributes", EmitDefaultValue = false)]
-        public List<ProductAttribute> Attributes { get; set; }
+        public List<ProductAttribute>? Attributes { get; set; }
 
         /// <summary>
         /// Product quantity.
@@ -87,13 +87,13 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// </summary>
         /// <value>The expiration date for the SKU. Values are in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) date-time format.</value>
         [DataMember(Name = "expiration", EmitDefaultValue = false)]
-        public DateTime Expiration { get; set; }
+        public DateTime? Expiration { get; set; }
 
         /// <summary>
         /// Gets or Sets PrepDetails
         /// </summary>
         [DataMember(Name = "prepDetails", EmitDefaultValue = false)]
-        public PrepDetails PrepDetails { get; set; }
+        public PrepDetails? PrepDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -131,5 +131,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

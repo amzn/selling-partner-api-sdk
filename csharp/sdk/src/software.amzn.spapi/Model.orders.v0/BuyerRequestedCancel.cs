@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <param name="isBuyerRequestedCancel">Indicate whether the buyer has requested cancellation.  **Possible Values**: &#x60;true&#x60;, &#x60;false&#x60;..</param>
         /// <param name="buyerCancelReason">The reason that the buyer requested cancellation..</param>
-        public BuyerRequestedCancel(string isBuyerRequestedCancel = default(string), string buyerCancelReason = default(string))
+        public BuyerRequestedCancel(string? isBuyerRequestedCancel = default(string?), string? buyerCancelReason = default(string?))
         {
             this.IsBuyerRequestedCancel = isBuyerRequestedCancel;
             this.BuyerCancelReason = buyerCancelReason;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>Indicate whether the buyer has requested cancellation.  **Possible Values**: &#x60;true&#x60;, &#x60;false&#x60;.</value>
         [DataMember(Name = "IsBuyerRequestedCancel", EmitDefaultValue = false)]
-        public string IsBuyerRequestedCancel { get; set; }
+        public string? IsBuyerRequestedCancel { get; set; }
 
         /// <summary>
         /// The reason that the buyer requested cancellation.
         /// </summary>
         /// <value>The reason that the buyer requested cancellation.</value>
         [DataMember(Name = "BuyerCancelReason", EmitDefaultValue = false)]
-        public string BuyerCancelReason { get; set; }
+        public string? BuyerCancelReason { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

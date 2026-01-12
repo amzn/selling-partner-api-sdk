@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <param name="orderItemId">The order item&#39;s unique identifier. (required).</param>
         /// <param name="quantity">The item&#39;s quantity. (required).</param>
         /// <param name="transparencyCodes">A list of order items..</param>
-        public ConfirmShipmentOrderItem(string orderItemId = default(string), int quantity = default(int), List<string> transparencyCodes = default(List<string>))
+        public ConfirmShipmentOrderItem(string orderItemId = default(string), int quantity = default(int), List<string>? transparencyCodes = default(List<string>?))
         {
             // to ensure "orderItemId" is required (not null)
             if (orderItemId == null)
@@ -73,7 +73,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// </summary>
         /// <value>A list of order items.</value>
         [DataMember(Name = "transparencyCodes", EmitDefaultValue = false)]
-        public List<string> TransparencyCodes { get; set; }
+        public List<string>? TransparencyCodes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,5 +109,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

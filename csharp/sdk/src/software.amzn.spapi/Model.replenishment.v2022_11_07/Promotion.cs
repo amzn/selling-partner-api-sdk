@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// <param name="sellingPartnerFundedTieredDiscount">sellingPartnerFundedTieredDiscount.</param>
         /// <param name="amazonFundedBaseDiscount">amazonFundedBaseDiscount.</param>
         /// <param name="amazonFundedTieredDiscount">amazonFundedTieredDiscount.</param>
-        public Promotion(DiscountFunding sellingPartnerFundedBaseDiscount = default(DiscountFunding), DiscountFunding sellingPartnerFundedTieredDiscount = default(DiscountFunding), DiscountFunding amazonFundedBaseDiscount = default(DiscountFunding), DiscountFunding amazonFundedTieredDiscount = default(DiscountFunding))
+        public Promotion(DiscountFunding? sellingPartnerFundedBaseDiscount = default(DiscountFunding?), DiscountFunding? sellingPartnerFundedTieredDiscount = default(DiscountFunding?), DiscountFunding? amazonFundedBaseDiscount = default(DiscountFunding?), DiscountFunding? amazonFundedTieredDiscount = default(DiscountFunding?))
         {
             this.SellingPartnerFundedBaseDiscount = sellingPartnerFundedBaseDiscount;
             this.SellingPartnerFundedTieredDiscount = sellingPartnerFundedTieredDiscount;
@@ -50,25 +50,25 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
         /// Gets or Sets SellingPartnerFundedBaseDiscount
         /// </summary>
         [DataMember(Name = "sellingPartnerFundedBaseDiscount", EmitDefaultValue = false)]
-        public DiscountFunding SellingPartnerFundedBaseDiscount { get; set; }
+        public DiscountFunding? SellingPartnerFundedBaseDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets SellingPartnerFundedTieredDiscount
         /// </summary>
         [DataMember(Name = "sellingPartnerFundedTieredDiscount", EmitDefaultValue = false)]
-        public DiscountFunding SellingPartnerFundedTieredDiscount { get; set; }
+        public DiscountFunding? SellingPartnerFundedTieredDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets AmazonFundedBaseDiscount
         /// </summary>
         [DataMember(Name = "amazonFundedBaseDiscount", EmitDefaultValue = false)]
-        public DiscountFunding AmazonFundedBaseDiscount { get; set; }
+        public DiscountFunding? AmazonFundedBaseDiscount { get; set; }
 
         /// <summary>
         /// Gets or Sets AmazonFundedTieredDiscount
         /// </summary>
         [DataMember(Name = "amazonFundedTieredDiscount", EmitDefaultValue = false)]
-        public DiscountFunding AmazonFundedTieredDiscount { get; set; }
+        public DiscountFunding? AmazonFundedTieredDiscount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,5 +105,4 @@ namespace software.amzn.spapi.Model.replenishment.v2022_11_07
             yield break;
         }
     }
-
 }

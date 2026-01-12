@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         /// Initializes a new instance of the <see cref="GetPaymentMethodsResponse" /> class.
         /// </summary>
         /// <param name="paymentMethods">The list of payment methods with payment method details..</param>
-        public GetPaymentMethodsResponse(List<PaymentMethodDetails> paymentMethods = default(List<PaymentMethodDetails>))
+        public GetPaymentMethodsResponse(List<PaymentMethodDetails>? paymentMethods = default(List<PaymentMethodDetails>?))
         {
             this.PaymentMethods = paymentMethods;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
         /// </summary>
         /// <value>The list of payment methods with payment method details.</value>
         [DataMember(Name = "paymentMethods", EmitDefaultValue = false)]
-        public List<PaymentMethodDetails> PaymentMethods { get; set; }
+        public List<PaymentMethodDetails>? PaymentMethods { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.transfers.v2024_06_01
             yield break;
         }
     }
-
 }

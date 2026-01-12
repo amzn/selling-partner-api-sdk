@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// <param name="buyerProductIdentifier">Buyer&#39;s standard identification number (ASIN) of an item..</param>
         /// <param name="vendorProductIdentifier">The vendor selected product identification of the item. Should be the same as was provided in the purchase order..</param>
         /// <param name="acknowledgedQuantity">acknowledgedQuantity (required).</param>
-        public OrderItemAcknowledgement(string itemSequenceNumber = default(string), string buyerProductIdentifier = default(string), string vendorProductIdentifier = default(string), ItemQuantity acknowledgedQuantity = default(ItemQuantity))
+        public OrderItemAcknowledgement(string itemSequenceNumber = default(string), string? buyerProductIdentifier = default(string?), string? vendorProductIdentifier = default(string?), ItemQuantity acknowledgedQuantity = default(ItemQuantity))
         {
             // to ensure "itemSequenceNumber" is required (not null)
             if (itemSequenceNumber == null)
@@ -73,14 +73,14 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
         /// </summary>
         /// <value>Buyer&#39;s standard identification number (ASIN) of an item.</value>
         [DataMember(Name = "buyerProductIdentifier", EmitDefaultValue = false)]
-        public string BuyerProductIdentifier { get; set; }
+        public string? BuyerProductIdentifier { get; set; }
 
         /// <summary>
         /// The vendor selected product identification of the item. Should be the same as was provided in the purchase order.
         /// </summary>
         /// <value>The vendor selected product identification of the item. Should be the same as was provided in the purchase order.</value>
         [DataMember(Name = "vendorProductIdentifier", EmitDefaultValue = false)]
-        public string VendorProductIdentifier { get; set; }
+        public string? VendorProductIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets AcknowledgedQuantity
@@ -123,5 +123,4 @@ namespace software.amzn.spapi.Model.vendor.df.orders.v2021_12_28
             yield break;
         }
     }
-
 }

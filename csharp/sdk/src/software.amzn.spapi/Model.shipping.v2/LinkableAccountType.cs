@@ -43,7 +43,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <param name="accountType">accountType.</param>
         /// <param name="carrierAccountInputs">A list of CarrierAccountInput.</param>
-        public LinkableAccountType(AccountType? accountType = default(AccountType?), List<CarrierAccountInput> carrierAccountInputs = default(List<CarrierAccountInput>))
+        public LinkableAccountType(AccountType? accountType = default(AccountType?), List<CarrierAccountInput>? carrierAccountInputs = default(List<CarrierAccountInput>?))
         {
             this.AccountType = accountType;
             this.CarrierAccountInputs = carrierAccountInputs;
@@ -54,7 +54,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>A list of CarrierAccountInput</value>
         [DataMember(Name = "carrierAccountInputs", EmitDefaultValue = false)]
-        public List<CarrierAccountInput> CarrierAccountInputs { get; set; }
+        public List<CarrierAccountInput>? CarrierAccountInputs { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

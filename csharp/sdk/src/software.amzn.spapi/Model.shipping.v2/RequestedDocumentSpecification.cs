@@ -53,7 +53,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="needFileJoining">When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false. (required).</param>
         /// <param name="requestedDocumentTypes">A list of the document types requested. (required).</param>
         /// <param name="requestedLabelCustomization">requestedLabelCustomization.</param>
-        public RequestedDocumentSpecification(DocumentFormat format = default(DocumentFormat), DocumentSize size = default(DocumentSize), int dpi = default(int), string pageLayout = default(string), bool needFileJoining = default(bool), List<DocumentType> requestedDocumentTypes = default(List<DocumentType>), RequestedLabelCustomization requestedLabelCustomization = default(RequestedLabelCustomization))
+        public RequestedDocumentSpecification(DocumentFormat format = default(DocumentFormat), DocumentSize size = default(DocumentSize), int? dpi = default(int?), string? pageLayout = default(string?), bool needFileJoining = default(bool), List<DocumentType> requestedDocumentTypes = default(List<DocumentType>), RequestedLabelCustomization? requestedLabelCustomization = default(RequestedLabelCustomization?))
         {
             this.Format = format;
             // to ensure "size" is required (not null)
@@ -85,14 +85,14 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>The dots per inch (DPI) value used in printing. This value represents a measure of the resolution of the document.</value>
         [DataMember(Name = "dpi", EmitDefaultValue = false)]
-        public int Dpi { get; set; }
+        public int? Dpi { get; set; }
 
         /// <summary>
         /// Indicates the position of the label on the paper. Should be the same value as returned in getRates response.
         /// </summary>
         /// <value>Indicates the position of the label on the paper. Should be the same value as returned in getRates response.</value>
         [DataMember(Name = "pageLayout", EmitDefaultValue = false)]
-        public string PageLayout { get; set; }
+        public string? PageLayout { get; set; }
 
         /// <summary>
         /// When true, files should be stitched together. Otherwise, files should be returned separately. Defaults to false.
@@ -112,7 +112,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets RequestedLabelCustomization
         /// </summary>
         [DataMember(Name = "requestedLabelCustomization", EmitDefaultValue = false)]
-        public RequestedLabelCustomization RequestedLabelCustomization { get; set; }
+        public RequestedLabelCustomization? RequestedLabelCustomization { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -152,5 +152,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

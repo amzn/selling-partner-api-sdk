@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Initializes a new instance of the <see cref="VerificationDetails" /> class.
         /// </summary>
         /// <param name="prescriptionDetail">prescriptionDetail.</param>
-        public VerificationDetails(PrescriptionDetail prescriptionDetail = default(PrescriptionDetail))
+        public VerificationDetails(PrescriptionDetail? prescriptionDetail = default(PrescriptionDetail?))
         {
             this.PrescriptionDetail = prescriptionDetail;
         }
@@ -44,7 +44,7 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Gets or Sets PrescriptionDetail
         /// </summary>
         [DataMember(Name = "prescriptionDetail", EmitDefaultValue = false)]
-        public PrescriptionDetail PrescriptionDetail { get; set; }
+        public PrescriptionDetail? PrescriptionDetail { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,5 +78,4 @@ namespace software.amzn.spapi.Model.orders.v0
             yield break;
         }
     }
-
 }

@@ -71,7 +71,7 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// <param name="price">price (required).</param>
         /// <param name="points">points.</param>
         /// <param name="audience">audience.</param>
-        public ItemOfferByMarketplace(string marketplaceId = default(string), OfferTypeEnum offerType = default(OfferTypeEnum), Money price = default(Money), Points points = default(Points), Audience audience = default(Audience))
+        public ItemOfferByMarketplace(string marketplaceId = default(string), OfferTypeEnum offerType = default(OfferTypeEnum), Money price = default(Money), Points? points = default(Points?), Audience? audience = default(Audience?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -107,13 +107,13 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
         /// Gets or Sets Points
         /// </summary>
         [DataMember(Name = "points", EmitDefaultValue = false)]
-        public Points Points { get; set; }
+        public Points? Points { get; set; }
 
         /// <summary>
         /// Gets or Sets Audience
         /// </summary>
         [DataMember(Name = "audience", EmitDefaultValue = false)]
-        public Audience Audience { get; set; }
+        public Audience? Audience { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -151,5 +151,4 @@ namespace software.amzn.spapi.Model.listings.items.v2021_08_01
             yield break;
         }
     }
-
 }

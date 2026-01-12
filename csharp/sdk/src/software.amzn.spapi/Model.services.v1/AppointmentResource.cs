@@ -35,7 +35,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// Initializes a new instance of the <see cref="AppointmentResource" /> class.
         /// </summary>
         /// <param name="resourceId">The resource identifier..</param>
-        public AppointmentResource(string resourceId = default(string))
+        public AppointmentResource(string? resourceId = default(string?))
         {
             this.ResourceId = resourceId;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.services.v1
         /// </summary>
         /// <value>The resource identifier.</value>
         [DataMember(Name = "resourceId", EmitDefaultValue = false)]
-        public string ResourceId { get; set; }
+        public string? ResourceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.services.v1
             yield break;
         }
     }
-
 }

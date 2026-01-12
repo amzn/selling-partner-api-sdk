@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.finances.v0
         /// </summary>
         /// <param name="loanAmount">loanAmount.</param>
         /// <param name="sourceBusinessEventType">The type of event.  Possible values:  * &#x60;LoanAdvance&#x60;  * &#x60;LoanPayment&#x60;  * &#x60;LoanRefund&#x60;.</param>
-        public LoanServicingEvent(Currency loanAmount = default(Currency), string sourceBusinessEventType = default(string))
+        public LoanServicingEvent(Currency? loanAmount = default(Currency?), string? sourceBusinessEventType = default(string?))
         {
             this.LoanAmount = loanAmount;
             this.SourceBusinessEventType = sourceBusinessEventType;
@@ -46,14 +46,14 @@ namespace software.amzn.spapi.Model.finances.v0
         /// Gets or Sets LoanAmount
         /// </summary>
         [DataMember(Name = "LoanAmount", EmitDefaultValue = false)]
-        public Currency LoanAmount { get; set; }
+        public Currency? LoanAmount { get; set; }
 
         /// <summary>
         /// The type of event.  Possible values:  * &#x60;LoanAdvance&#x60;  * &#x60;LoanPayment&#x60;  * &#x60;LoanRefund&#x60;
         /// </summary>
         /// <value>The type of event.  Possible values:  * &#x60;LoanAdvance&#x60;  * &#x60;LoanPayment&#x60;  * &#x60;LoanRefund&#x60;</value>
         [DataMember(Name = "SourceBusinessEventType", EmitDefaultValue = false)]
-        public string SourceBusinessEventType { get; set; }
+        public string? SourceBusinessEventType { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -88,5 +88,4 @@ namespace software.amzn.spapi.Model.finances.v0
             yield break;
         }
     }
-
 }

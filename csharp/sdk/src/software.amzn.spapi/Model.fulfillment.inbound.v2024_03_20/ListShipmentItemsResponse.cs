@@ -41,7 +41,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// </summary>
         /// <param name="items">The items in a shipment. (required).</param>
         /// <param name="pagination">pagination.</param>
-        public ListShipmentItemsResponse(List<Item> items = default(List<Item>), Pagination pagination = default(Pagination))
+        public ListShipmentItemsResponse(List<Item> items = default(List<Item>), Pagination? pagination = default(Pagination?))
         {
             // to ensure "items" is required (not null)
             if (items == null)
@@ -63,7 +63,7 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", EmitDefaultValue = false)]
-        public Pagination Pagination { get; set; }
+        public Pagination? Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,5 +98,4 @@ namespace software.amzn.spapi.Model.fulfillment.inbound.v2024_03_20
             yield break;
         }
     }
-
 }

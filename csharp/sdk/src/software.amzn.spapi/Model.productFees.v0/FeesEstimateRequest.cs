@@ -50,7 +50,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// <param name="priceToEstimateFees">priceToEstimateFees (required).</param>
         /// <param name="identifier">A unique identifier provided by the caller to track this request. (required).</param>
         /// <param name="optionalFulfillmentProgram">optionalFulfillmentProgram.</param>
-        public FeesEstimateRequest(string marketplaceId = default(string), bool isAmazonFulfilled = default(bool), PriceToEstimateFees priceToEstimateFees = default(PriceToEstimateFees), string identifier = default(string), OptionalFulfillmentProgram? optionalFulfillmentProgram = default(OptionalFulfillmentProgram?))
+        public FeesEstimateRequest(string marketplaceId = default(string), bool? isAmazonFulfilled = default(bool?), PriceToEstimateFees priceToEstimateFees = default(PriceToEstimateFees), string identifier = default(string), OptionalFulfillmentProgram? optionalFulfillmentProgram = default(OptionalFulfillmentProgram?))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -86,7 +86,7 @@ namespace software.amzn.spapi.Model.productFees.v0
         /// </summary>
         /// <value>When true, the offer is fulfilled by Amazon.</value>
         [DataMember(Name = "IsAmazonFulfilled", EmitDefaultValue = true)]
-        public bool IsAmazonFulfilled { get; set; }
+        public bool? IsAmazonFulfilled { get; set; }
 
         /// <summary>
         /// Gets or Sets PriceToEstimateFees
@@ -137,5 +137,4 @@ namespace software.amzn.spapi.Model.productFees.v0
             yield break;
         }
     }
-
 }

@@ -38,7 +38,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// <param name="hourOfDay">Denotes hour of the day, used for defining opening or closing time of access points.</param>
         /// <param name="minuteOfHour">Denotes minute of the hour, used for defining opening or closing time of access points.</param>
         /// <param name="secondOfMinute">Denotes second of the minute, used for defining opening or closing time of access points.</param>
-        public TimeOfDay(int hourOfDay = default(int), int minuteOfHour = default(int), int secondOfMinute = default(int))
+        public TimeOfDay(int? hourOfDay = default(int?), int? minuteOfHour = default(int?), int? secondOfMinute = default(int?))
         {
             this.HourOfDay = hourOfDay;
             this.MinuteOfHour = minuteOfHour;
@@ -50,21 +50,21 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// </summary>
         /// <value>Denotes hour of the day, used for defining opening or closing time of access points</value>
         [DataMember(Name = "hourOfDay", EmitDefaultValue = false)]
-        public int HourOfDay { get; set; }
+        public int? HourOfDay { get; set; }
 
         /// <summary>
         /// Denotes minute of the hour, used for defining opening or closing time of access points
         /// </summary>
         /// <value>Denotes minute of the hour, used for defining opening or closing time of access points</value>
         [DataMember(Name = "minuteOfHour", EmitDefaultValue = false)]
-        public int MinuteOfHour { get; set; }
+        public int? MinuteOfHour { get; set; }
 
         /// <summary>
         /// Denotes second of the minute, used for defining opening or closing time of access points
         /// </summary>
         /// <value>Denotes second of the minute, used for defining opening or closing time of access points</value>
         [DataMember(Name = "secondOfMinute", EmitDefaultValue = false)]
-        public int SecondOfMinute { get; set; }
+        public int? SecondOfMinute { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,5 +100,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

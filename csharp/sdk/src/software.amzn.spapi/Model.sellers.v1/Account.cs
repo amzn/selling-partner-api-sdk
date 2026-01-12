@@ -134,7 +134,7 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// <param name="sellingPlan">The selling plan details. (required).</param>
         /// <param name="business">business.</param>
         /// <param name="primaryContact">primaryContact.</param>
-        public Account(List<MarketplaceParticipation> marketplaceParticipationList = default(List<MarketplaceParticipation>), BusinessTypeEnum businessType = default(BusinessTypeEnum), SellingPlanEnum sellingPlan = default(SellingPlanEnum), Business business = default(Business), PrimaryContact primaryContact = default(PrimaryContact))
+        public Account(List<MarketplaceParticipation> marketplaceParticipationList = default(List<MarketplaceParticipation>), BusinessTypeEnum businessType = default(BusinessTypeEnum), SellingPlanEnum sellingPlan = default(SellingPlanEnum), Business? business = default(Business?), PrimaryContact? primaryContact = default(PrimaryContact?))
         {
             // to ensure "marketplaceParticipationList" is required (not null)
             if (marketplaceParticipationList == null)
@@ -159,13 +159,13 @@ namespace software.amzn.spapi.Model.sellers.v1
         /// Gets or Sets Business
         /// </summary>
         [DataMember(Name = "business", EmitDefaultValue = false)]
-        public Business Business { get; set; }
+        public Business? Business { get; set; }
 
         /// <summary>
         /// Gets or Sets PrimaryContact
         /// </summary>
         [DataMember(Name = "primaryContact", EmitDefaultValue = false)]
-        public PrimaryContact PrimaryContact { get; set; }
+        public PrimaryContact? PrimaryContact { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -203,5 +203,4 @@ namespace software.amzn.spapi.Model.sellers.v1
             yield break;
         }
     }
-
 }

@@ -42,7 +42,7 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// <param name="dimensions">dimensions.</param>
         /// <param name="volume">volume.</param>
         /// <param name="weight">weight (required).</param>
-        public MeasurementData(PackageDimensions dimensions = default(PackageDimensions), PackageVolume volume = default(PackageVolume), PackageWeight weight = default(PackageWeight))
+        public MeasurementData(PackageDimensions? dimensions = default(PackageDimensions?), PackageVolume? volume = default(PackageVolume?), PackageWeight weight = default(PackageWeight))
         {
             // to ensure "weight" is required (not null)
             if (weight == null)
@@ -58,13 +58,13 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
         /// Gets or Sets Dimensions
         /// </summary>
         [DataMember(Name = "dimensions", EmitDefaultValue = false)]
-        public PackageDimensions Dimensions { get; set; }
+        public PackageDimensions? Dimensions { get; set; }
 
         /// <summary>
         /// Gets or Sets Volume
         /// </summary>
         [DataMember(Name = "volume", EmitDefaultValue = false)]
-        public PackageVolume Volume { get; set; }
+        public PackageVolume? Volume { get; set; }
 
         /// <summary>
         /// Gets or Sets Weight
@@ -106,5 +106,4 @@ namespace software.amzn.spapi.Model.awd.v2024_05_09
             yield break;
         }
     }
-
 }

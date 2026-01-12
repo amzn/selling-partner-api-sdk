@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Initializes a new instance of the <see cref="GetShipmentDocumentsResponse" /> class.
         /// </summary>
         /// <param name="payload">payload.</param>
-        public GetShipmentDocumentsResponse(GetShipmentDocumentsResult payload = default(GetShipmentDocumentsResult))
+        public GetShipmentDocumentsResponse(GetShipmentDocumentsResult? payload = default(GetShipmentDocumentsResult?))
         {
             this.Payload = payload;
         }
@@ -45,7 +45,7 @@ namespace software.amzn.spapi.Model.shipping.v2
         /// Gets or Sets Payload
         /// </summary>
         [DataMember(Name = "payload", EmitDefaultValue = false)]
-        public GetShipmentDocumentsResult Payload { get; set; }
+        public GetShipmentDocumentsResult? Payload { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,5 +79,4 @@ namespace software.amzn.spapi.Model.shipping.v2
             yield break;
         }
     }
-
 }

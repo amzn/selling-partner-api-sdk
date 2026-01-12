@@ -36,7 +36,7 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <param name="granularityType">The granularity type for the inventory aggregation level..</param>
         /// <param name="granularityId">The granularity ID for the specified granularity type. When granularityType is Marketplace, specify the marketplaceId..</param>
-        public Granularity(string granularityType = default(string), string granularityId = default(string))
+        public Granularity(string? granularityType = default(string?), string? granularityId = default(string?))
         {
             this.GranularityType = granularityType;
             this.GranularityId = granularityId;
@@ -47,14 +47,14 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
         /// </summary>
         /// <value>The granularity type for the inventory aggregation level.</value>
         [DataMember(Name = "granularityType", EmitDefaultValue = false)]
-        public string GranularityType { get; set; }
+        public string? GranularityType { get; set; }
 
         /// <summary>
         /// The granularity ID for the specified granularity type. When granularityType is Marketplace, specify the marketplaceId.
         /// </summary>
         /// <value>The granularity ID for the specified granularity type. When granularityType is Marketplace, specify the marketplaceId.</value>
         [DataMember(Name = "granularityId", EmitDefaultValue = false)]
-        public string GranularityId { get; set; }
+        public string? GranularityId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -89,5 +89,4 @@ namespace software.amzn.spapi.Model.fba.inventory.v1
             yield break;
         }
     }
-
 }
