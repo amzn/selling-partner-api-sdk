@@ -51,8 +51,6 @@ import { ShipmentInformation } from './model/ShipmentInformation.js'
 import { ShipmentMeasurements } from './model/ShipmentMeasurements.js'
 import { ShipmentStatusDetails } from './model/ShipmentStatusDetails.js'
 import { Stop } from './model/Stop.js'
-import { SubmitShipmentConfirmationRequest } from './model/SubmitShipmentConfirmationRequest.js'
-import { SubmitShipmentConfirmationResponse } from './model/SubmitShipmentConfirmationResponse.js'
 import { SubmitShipmentConfirmationsRequest } from './model/SubmitShipmentConfirmationsRequest.js'
 import { SubmitShipmentConfirmationsResponse } from './model/SubmitShipmentConfirmationsResponse.js'
 import { SubmitShipments } from './model/SubmitShipments.js'
@@ -315,18 +313,6 @@ export {
      * @property {module:vendorshipments_v1/model/Stop}
      */
   Stop,
-
-  /**
-     * The SubmitShipmentConfirmationRequest model constructor.
-     * @property {module:vendorshipments_v1/model/SubmitShipmentConfirmationRequest}
-     */
-  SubmitShipmentConfirmationRequest,
-
-  /**
-     * The SubmitShipmentConfirmationResponse model constructor.
-     * @property {module:vendorshipments_v1/model/SubmitShipmentConfirmationResponse}
-     */
-  SubmitShipmentConfirmationResponse,
 
   /**
      * The SubmitShipmentConfirmationsRequest model constructor.

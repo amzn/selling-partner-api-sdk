@@ -38,8 +38,6 @@ import { ShipmentInformation } from './model/ShipmentInformation.js';
 import { ShipmentMeasurements } from './model/ShipmentMeasurements.js';
 import { ShipmentStatusDetails } from './model/ShipmentStatusDetails.js';
 import { Stop } from './model/Stop.js';
-import { SubmitShipmentConfirmationRequest } from './model/SubmitShipmentConfirmationRequest.js';
-import { SubmitShipmentConfirmationResponse } from './model/SubmitShipmentConfirmationResponse.js';
 import { SubmitShipmentConfirmationsRequest } from './model/SubmitShipmentConfirmationsRequest.js';
 import { SubmitShipmentConfirmationsResponse } from './model/SubmitShipmentConfirmationsResponse.js';
 import { SubmitShipments } from './model/SubmitShipments.js';
@@ -55,5 +53,5 @@ import { VendorDetails } from './model/VendorDetails.js';
 import { Volume } from './model/Volume.js';
 import { Weight } from './model/Weight.js';
 import { VendorShippingApi } from './api/VendorShippingApi.js';
-export { ApiClient, Address, CarrierDetails, Carton, CartonReferenceDetails, CollectFreightPickupDetails, ContainerIdentification, ContainerItem, ContainerSequenceNumbers, Containers, Dimensions, Duration, Error, Expiry, GetShipmentDetailsResponse, GetShipmentLabels, ImportDetails, InnerContainersDetails, Item, ItemDetails, ItemQuantity, LabelData, Location, Money, PackageItemDetails, PackedItems, Pagination, Pallet, PartyIdentification, PurchaseOrderItems, PurchaseOrders, RegulationReferences, Route, Shipment, ShipmentConfirmation, ShipmentDetails, ShipmentInformation, ShipmentMeasurements, ShipmentStatusDetails, Stop, SubmitShipmentConfirmationRequest, SubmitShipmentConfirmationResponse, SubmitShipmentConfirmationsRequest, SubmitShipmentConfirmationsResponse, SubmitShipments, TaxRegistrationDetails, TotalWeight, TransactionReference, TransportLabel, TransportShipmentMeasurements, TransportationDetails, TransportationDetailsForShipmentConfirmation, TransportationLabels, VendorDetails, Volume, Weight, VendorShippingApi };
+export { ApiClient, Address, CarrierDetails, Carton, CartonReferenceDetails, CollectFreightPickupDetails, ContainerIdentification, ContainerItem, ContainerSequenceNumbers, Containers, Dimensions, Duration, Error, Expiry, GetShipmentDetailsResponse, GetShipmentLabels, ImportDetails, InnerContainersDetails, Item, ItemDetails, ItemQuantity, LabelData, Location, Money, PackageItemDetails, PackedItems, Pagination, Pallet, PartyIdentification, PurchaseOrderItems, PurchaseOrders, RegulationReferences, Route, Shipment, ShipmentConfirmation, ShipmentDetails, ShipmentInformation, ShipmentMeasurements, ShipmentStatusDetails, Stop, SubmitShipmentConfirmationsRequest, SubmitShipmentConfirmationsResponse, SubmitShipments, TaxRegistrationDetails, TotalWeight, TransactionReference, TransportLabel, TransportShipmentMeasurements, TransportationDetails, TransportationDetailsForShipmentConfirmation, TransportationLabels, VendorDetails, Volume, Weight, VendorShippingApi };
 //# sourceMappingURL=index.d.ts.map
