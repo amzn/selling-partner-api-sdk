@@ -34,7 +34,6 @@ class OrderBuyerInfo(object):
     """
     swagger_types = {
         'amazon_order_id': 'str',
-        'buyer_email': 'str',
         'buyer_name': 'str',
         'buyer_county': 'str',
         'buyer_tax_info': 'BuyerTaxInfo',
@@ -43,21 +42,19 @@ class OrderBuyerInfo(object):
 
     attribute_map = {
         'amazon_order_id': 'AmazonOrderId',
-        'buyer_email': 'BuyerEmail',
         'buyer_name': 'BuyerName',
         'buyer_county': 'BuyerCounty',
         'buyer_tax_info': 'BuyerTaxInfo',
         'purchase_order_number': 'PurchaseOrderNumber',
     }
 
-    def __init__(self, amazon_order_id=None, buyer_email=None, buyer_name=None, buyer_county=None, buyer_tax_info=None, purchase_order_number=None, _configuration=None):  # noqa: E501
+    def __init__(self, amazon_order_id=None, buyer_name=None, buyer_county=None, buyer_tax_info=None, purchase_order_number=None, _configuration=None):  # noqa: E501
         """OrderBuyerInfo - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
         self._amazon_order_id = None
-        self._buyer_email = None
         self._buyer_name = None
         self._buyer_county = None
         self._buyer_tax_info = None
@@ -65,8 +62,6 @@ class OrderBuyerInfo(object):
         self.discriminator = None
 
         self.amazon_order_id = amazon_order_id
-        if buyer_email is not None:
-            self.buyer_email = buyer_email
         if buyer_name is not None:
             self.buyer_name = buyer_name
         if buyer_county is not None:
@@ -100,29 +95,6 @@ class OrderBuyerInfo(object):
             raise ValueError("Invalid value for `amazon_order_id`, must not be `None`")  # noqa: E501
 
         self._amazon_order_id = amazon_order_id
-
-    @property
-    def buyer_email(self):
-        """Gets the buyer_email of this OrderBuyerInfo.  # noqa: E501
-
-        The anonymized email address of the buyer.  # noqa: E501
-
-        :return: The buyer_email of this OrderBuyerInfo.  # noqa: E501
-        :rtype: str
-        """
-        return self._buyer_email
-
-    @buyer_email.setter
-    def buyer_email(self, buyer_email):
-        """Sets the buyer_email of this OrderBuyerInfo.
-
-        The anonymized email address of the buyer.  # noqa: E501
-
-        :param buyer_email: The buyer_email of this OrderBuyerInfo.  # noqa: E501
-        :type: str
-        """
-
-        self._buyer_email = buyer_email
 
     @property
     def buyer_name(self):

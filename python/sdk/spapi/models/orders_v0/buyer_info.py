@@ -33,7 +33,6 @@ class BuyerInfo(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'buyer_email': 'str',
         'buyer_name': 'str',
         'buyer_county': 'str',
         'buyer_tax_info': 'BuyerTaxInfo',
@@ -41,28 +40,24 @@ class BuyerInfo(object):
     }
 
     attribute_map = {
-        'buyer_email': 'BuyerEmail',
         'buyer_name': 'BuyerName',
         'buyer_county': 'BuyerCounty',
         'buyer_tax_info': 'BuyerTaxInfo',
         'purchase_order_number': 'PurchaseOrderNumber',
     }
 
-    def __init__(self, buyer_email=None, buyer_name=None, buyer_county=None, buyer_tax_info=None, purchase_order_number=None, _configuration=None):  # noqa: E501
+    def __init__(self, buyer_name=None, buyer_county=None, buyer_tax_info=None, purchase_order_number=None, _configuration=None):  # noqa: E501
         """BuyerInfo - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
-        self._buyer_email = None
         self._buyer_name = None
         self._buyer_county = None
         self._buyer_tax_info = None
         self._purchase_order_number = None
         self.discriminator = None
 
-        if buyer_email is not None:
-            self.buyer_email = buyer_email
         if buyer_name is not None:
             self.buyer_name = buyer_name
         if buyer_county is not None:
@@ -71,29 +66,6 @@ class BuyerInfo(object):
             self.buyer_tax_info = buyer_tax_info
         if purchase_order_number is not None:
             self.purchase_order_number = purchase_order_number
-
-    @property
-    def buyer_email(self):
-        """Gets the buyer_email of this BuyerInfo.  # noqa: E501
-
-        The anonymized email address of the buyer.  # noqa: E501
-
-        :return: The buyer_email of this BuyerInfo.  # noqa: E501
-        :rtype: str
-        """
-        return self._buyer_email
-
-    @buyer_email.setter
-    def buyer_email(self, buyer_email):
-        """Sets the buyer_email of this BuyerInfo.
-
-        The anonymized email address of the buyer.  # noqa: E501
-
-        :param buyer_email: The buyer_email of this BuyerInfo.  # noqa: E501
-        :type: str
-        """
-
-        self._buyer_email = buyer_email
 
     @property
     def buyer_name(self):
