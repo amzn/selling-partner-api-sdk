@@ -50,7 +50,6 @@ export class BuyerInfo {
           break
       }
       obj = obj || new BuyerInfo()
-      if (data.hasOwnProperty('BuyerEmail')) { obj.buyerEmail = ApiClient.convertToType(data.BuyerEmail, 'String') }
       if (data.hasOwnProperty('BuyerName')) { obj.buyerName = ApiClient.convertToType(data.BuyerName, 'String') }
       if (data.hasOwnProperty('BuyerCounty')) { obj.buyerCounty = ApiClient.convertToType(data.BuyerCounty, 'String') }
       if (data.hasOwnProperty('BuyerTaxInfo')) { obj.buyerTaxInfo = BuyerTaxInfo.constructFromObject(data.BuyerTaxInfo) }
@@ -59,13 +58,6 @@ export class BuyerInfo {
     return obj
   }
 }
-
-/**
- * The anonymized email address of the buyer.
- * @member {String} buyerEmail
- * @type {String}
- */
-BuyerInfo.prototype.buyerEmail = undefined
 
 /**
  * The buyer name or the recipient name.
