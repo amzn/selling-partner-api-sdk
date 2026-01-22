@@ -34,26 +34,17 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <summary>
         /// Initializes a new instance of the <see cref="BuyerInfo" /> class.
         /// </summary>
-        /// <param name="buyerEmail">The anonymized email address of the buyer..</param>
         /// <param name="buyerName">The buyer name or the recipient name..</param>
         /// <param name="buyerCounty">The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace..</param>
         /// <param name="buyerTaxInfo">buyerTaxInfo.</param>
         /// <param name="purchaseOrderNumber">The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout..</param>
-        public BuyerInfo(string? buyerEmail = default(string?), string? buyerName = default(string?), string? buyerCounty = default(string?), BuyerTaxInfo? buyerTaxInfo = default(BuyerTaxInfo?), string? purchaseOrderNumber = default(string?))
+        public BuyerInfo(string? buyerName = default(string?), string? buyerCounty = default(string?), BuyerTaxInfo? buyerTaxInfo = default(BuyerTaxInfo?), string? purchaseOrderNumber = default(string?))
         {
-            this.BuyerEmail = buyerEmail;
             this.BuyerName = buyerName;
             this.BuyerCounty = buyerCounty;
             this.BuyerTaxInfo = buyerTaxInfo;
             this.PurchaseOrderNumber = purchaseOrderNumber;
         }
-
-        /// <summary>
-        /// The anonymized email address of the buyer.
-        /// </summary>
-        /// <value>The anonymized email address of the buyer.</value>
-        [DataMember(Name = "BuyerEmail", EmitDefaultValue = false)]
-        public string? BuyerEmail { get; set; }
 
         /// <summary>
         /// The buyer name or the recipient name.
@@ -90,7 +81,6 @@ namespace software.amzn.spapi.Model.orders.v0
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BuyerInfo {\n");
-            sb.Append("  BuyerEmail: ").Append(BuyerEmail).Append("\n");
             sb.Append("  BuyerName: ").Append(BuyerName).Append("\n");
             sb.Append("  BuyerCounty: ").Append(BuyerCounty).Append("\n");
             sb.Append("  BuyerTaxInfo: ").Append(BuyerTaxInfo).Append("\n");

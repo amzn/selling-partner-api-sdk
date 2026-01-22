@@ -189,7 +189,7 @@ namespace software.amzn.spapi.Test.Api.orders.v0
             List<string> marketplaceIds = fixture.Create<List<string>>();
             
 
-            var response = api.GetOrdersWithHttpInfo(marketplaceIds, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            var response = api.GetOrdersWithHttpInfo(marketplaceIds, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
             Assert.Equal(200, (int) response.StatusCode);
             AssertValidResponsePayload(200, response.Content);
