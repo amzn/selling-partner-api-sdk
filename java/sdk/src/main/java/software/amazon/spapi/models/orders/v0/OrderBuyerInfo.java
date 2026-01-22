@@ -22,9 +22,6 @@ public class OrderBuyerInfo {
     @SerializedName("AmazonOrderId")
     private String amazonOrderId = null;
 
-    @SerializedName("BuyerEmail")
-    private String buyerEmail = null;
-
     @SerializedName("BuyerName")
     private String buyerName = null;
 
@@ -54,25 +51,6 @@ public class OrderBuyerInfo {
 
     public void setAmazonOrderId(String amazonOrderId) {
         this.amazonOrderId = amazonOrderId;
-    }
-
-    public OrderBuyerInfo buyerEmail(String buyerEmail) {
-        this.buyerEmail = buyerEmail;
-        return this;
-    }
-
-    /**
-     * The anonymized email address of the buyer.
-     *
-     * @return buyerEmail
-     */
-    @Schema(description = "The anonymized email address of the buyer.")
-    public String getBuyerEmail() {
-        return buyerEmail;
-    }
-
-    public void setBuyerEmail(String buyerEmail) {
-        this.buyerEmail = buyerEmail;
     }
 
     public OrderBuyerInfo buyerName(String buyerName) {
@@ -166,7 +144,6 @@ public class OrderBuyerInfo {
         }
         OrderBuyerInfo orderBuyerInfo = (OrderBuyerInfo) o;
         return Objects.equals(this.amazonOrderId, orderBuyerInfo.amazonOrderId)
-                && Objects.equals(this.buyerEmail, orderBuyerInfo.buyerEmail)
                 && Objects.equals(this.buyerName, orderBuyerInfo.buyerName)
                 && Objects.equals(this.buyerCounty, orderBuyerInfo.buyerCounty)
                 && Objects.equals(this.buyerTaxInfo, orderBuyerInfo.buyerTaxInfo)
@@ -175,7 +152,7 @@ public class OrderBuyerInfo {
 
     @Override
     public int hashCode() {
-        return Objects.hash(amazonOrderId, buyerEmail, buyerName, buyerCounty, buyerTaxInfo, purchaseOrderNumber);
+        return Objects.hash(amazonOrderId, buyerName, buyerCounty, buyerTaxInfo, purchaseOrderNumber);
     }
 
     @Override
@@ -184,7 +161,6 @@ public class OrderBuyerInfo {
         sb.append("class OrderBuyerInfo {\n");
 
         sb.append("    amazonOrderId: ").append(toIndentedString(amazonOrderId)).append("\n");
-        sb.append("    buyerEmail: ").append(toIndentedString(buyerEmail)).append("\n");
         sb.append("    buyerName: ").append(toIndentedString(buyerName)).append("\n");
         sb.append("    buyerCounty: ").append(toIndentedString(buyerCounty)).append("\n");
         sb.append("    buyerTaxInfo: ").append(toIndentedString(buyerTaxInfo)).append("\n");

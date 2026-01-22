@@ -159,7 +159,6 @@ public class OrdersV0ApiTest {
                 null,
                 null,
                 null,
-                null,
                 null);
 
         assertEquals(200, response.getStatusCode());
