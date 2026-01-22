@@ -61,7 +61,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $openAPITypes = [
-        'buyer_email' => 'string',
         'buyer_name' => 'string',
         'buyer_county' => 'string',
         'buyer_tax_info' => '\SpApi\Model\orders\v0\BuyerTaxInfo',
@@ -77,7 +76,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static array $openAPIFormats = [
-        'buyer_email' => null,
         'buyer_name' => null,
         'buyer_county' => null,
         'buyer_tax_info' => null,
@@ -89,7 +87,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var bool[]
      */
     protected static array $openAPINullables = [
-        'buyer_email' => true,
         'buyer_name' => true,
         'buyer_county' => true,
         'buyer_tax_info' => true,
@@ -110,7 +107,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $attributeMap = [
-        'buyer_email' => 'BuyerEmail',
         'buyer_name' => 'BuyerName',
         'buyer_county' => 'BuyerCounty',
         'buyer_tax_info' => 'BuyerTaxInfo',
@@ -123,7 +119,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $setters = [
-        'buyer_email' => 'setBuyerEmail',
         'buyer_name' => 'setBuyerName',
         'buyer_county' => 'setBuyerCounty',
         'buyer_tax_info' => 'setBuyerTaxInfo',
@@ -136,7 +131,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static array $getters = [
-        'buyer_email' => 'getBuyerEmail',
         'buyer_name' => 'getBuyerName',
         'buyer_county' => 'getBuyerCounty',
         'buyer_tax_info' => 'getBuyerTaxInfo',
@@ -156,7 +150,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('buyer_email', $data ?? [], null);
         $this->setIfExists('buyer_name', $data ?? [], null);
         $this->setIfExists('buyer_county', $data ?? [], null);
         $this->setIfExists('buyer_tax_info', $data ?? [], null);
@@ -260,36 +253,6 @@ class BuyerInfo implements ModelInterface, \ArrayAccess, \JsonSerializable
     public function valid(): bool
     {
         return 0 === count($this->listInvalidProperties());
-    }
-
-    /**
-     * Gets buyer_email.
-     */
-    public function getBuyerEmail(): ?string
-    {
-        return $this->container['buyer_email'];
-    }
-
-    /**
-     * Sets buyer_email.
-     *
-     * @param null|string $buyer_email the anonymized email address of the buyer
-     */
-    public function setBuyerEmail(?string $buyer_email): self
-    {
-        if (is_null($buyer_email)) {
-            array_push($this->openAPINullablesSetToNull, 'buyer_email');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('buyer_email', $nullablesSetToNull);
-            if (false !== $index) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['buyer_email'] = $buyer_email;
-
-        return $this;
     }
 
     /**
