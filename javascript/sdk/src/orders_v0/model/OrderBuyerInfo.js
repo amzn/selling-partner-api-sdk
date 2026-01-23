@@ -53,7 +53,6 @@ export class OrderBuyerInfo {
       }
       obj = obj || new OrderBuyerInfo()
       if (data.hasOwnProperty('AmazonOrderId')) { obj.amazonOrderId = ApiClient.convertToType(data.AmazonOrderId, 'String') }
-      if (data.hasOwnProperty('BuyerEmail')) { obj.buyerEmail = ApiClient.convertToType(data.BuyerEmail, 'String') }
       if (data.hasOwnProperty('BuyerName')) { obj.buyerName = ApiClient.convertToType(data.BuyerName, 'String') }
       if (data.hasOwnProperty('BuyerCounty')) { obj.buyerCounty = ApiClient.convertToType(data.BuyerCounty, 'String') }
       if (data.hasOwnProperty('BuyerTaxInfo')) { obj.buyerTaxInfo = BuyerTaxInfo.constructFromObject(data.BuyerTaxInfo) }
@@ -69,13 +68,6 @@ export class OrderBuyerInfo {
  * @type {String}
  */
 OrderBuyerInfo.prototype.amazonOrderId = undefined
-
-/**
- * The anonymized email address of the buyer.
- * @member {String} buyerEmail
- * @type {String}
- */
-OrderBuyerInfo.prototype.buyerEmail = undefined
 
 /**
  * The buyer name or the recipient name.

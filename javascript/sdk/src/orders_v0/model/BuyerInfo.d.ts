@@ -13,12 +13,6 @@ export class BuyerInfo {
      */
     static constructFromObject(data: any, obj: BuyerInfo): BuyerInfo;
     /**
-     * The anonymized email address of the buyer.
-     * @member {String} buyerEmail
-     * @type {String}
-     */
-    buyerEmail: string;
-    /**
      * The buyer name or the recipient name.
      * @member {String} buyerName
      * @type {String}

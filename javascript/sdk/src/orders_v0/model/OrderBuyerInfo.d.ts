@@ -22,12 +22,6 @@ export class OrderBuyerInfo {
     constructor(amazonOrderId: string);
     amazonOrderId: string;
     /**
-     * The anonymized email address of the buyer.
-     * @member {String} buyerEmail
-     * @type {String}
-     */
-    buyerEmail: string;
-    /**
      * The buyer name or the recipient name.
      * @member {String} buyerName
      * @type {String}
