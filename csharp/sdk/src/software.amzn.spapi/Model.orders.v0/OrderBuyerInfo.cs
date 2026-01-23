@@ -40,12 +40,11 @@ namespace software.amzn.spapi.Model.orders.v0
         /// Initializes a new instance of the <see cref="OrderBuyerInfo" /> class.
         /// </summary>
         /// <param name="amazonOrderId">An Amazon-defined order identifier, in 3-7-7 format. (required).</param>
-        /// <param name="buyerEmail">The anonymized email address of the buyer..</param>
         /// <param name="buyerName">The buyer name or the recipient name..</param>
         /// <param name="buyerCounty">The county of the buyer.  **Note**: This attribute is only available in the Brazil marketplace..</param>
         /// <param name="buyerTaxInfo">buyerTaxInfo.</param>
         /// <param name="purchaseOrderNumber">The purchase order (PO) number entered by the buyer at checkout. Only returned for orders where the buyer entered a PO number at checkout..</param>
-        public OrderBuyerInfo(string amazonOrderId = default(string), string? buyerEmail = default(string?), string? buyerName = default(string?), string? buyerCounty = default(string?), BuyerTaxInfo? buyerTaxInfo = default(BuyerTaxInfo?), string? purchaseOrderNumber = default(string?))
+        public OrderBuyerInfo(string amazonOrderId = default(string), string? buyerName = default(string?), string? buyerCounty = default(string?), BuyerTaxInfo? buyerTaxInfo = default(BuyerTaxInfo?), string? purchaseOrderNumber = default(string?))
         {
             // to ensure "amazonOrderId" is required (not null)
             if (amazonOrderId == null)
@@ -53,7 +52,6 @@ namespace software.amzn.spapi.Model.orders.v0
                 throw new ArgumentNullException("amazonOrderId is a required property for OrderBuyerInfo and cannot be null");
             }
             this.AmazonOrderId = amazonOrderId;
-            this.BuyerEmail = buyerEmail;
             this.BuyerName = buyerName;
             this.BuyerCounty = buyerCounty;
             this.BuyerTaxInfo = buyerTaxInfo;
@@ -66,13 +64,6 @@ namespace software.amzn.spapi.Model.orders.v0
         /// <value>An Amazon-defined order identifier, in 3-7-7 format.</value>
         [DataMember(Name = "AmazonOrderId", IsRequired = true, EmitDefaultValue = true)]
         public string AmazonOrderId { get; set; }
-
-        /// <summary>
-        /// The anonymized email address of the buyer.
-        /// </summary>
-        /// <value>The anonymized email address of the buyer.</value>
-        [DataMember(Name = "BuyerEmail", EmitDefaultValue = false)]
-        public string? BuyerEmail { get; set; }
 
         /// <summary>
         /// The buyer name or the recipient name.
@@ -110,7 +101,6 @@ namespace software.amzn.spapi.Model.orders.v0
             StringBuilder sb = new StringBuilder();
             sb.Append("class OrderBuyerInfo {\n");
             sb.Append("  AmazonOrderId: ").Append(AmazonOrderId).Append("\n");
-            sb.Append("  BuyerEmail: ").Append(BuyerEmail).Append("\n");
             sb.Append("  BuyerName: ").Append(BuyerName).Append("\n");
             sb.Append("  BuyerCounty: ").Append(BuyerCounty).Append("\n");
             sb.Append("  BuyerTaxInfo: ").Append(BuyerTaxInfo).Append("\n");
