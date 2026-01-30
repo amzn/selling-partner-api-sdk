@@ -60,6 +60,21 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
 
         
         [Fact]
+        public void CreateGovernmentInvoiceTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("CreateGovernmentInvoice") + "/code/204";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            GovernmentInvoiceRequest body = fixture.Create<GovernmentInvoiceRequest>();
+            
+
+            api.CreateGovernmentInvoiceWithHttpInfo(body);
+
+        }
+        
+        [Fact]
         public void CreateInvoicesExportTest()
         {
             Init();
@@ -74,6 +89,52 @@ namespace software.amzn.spapi.Test.Api.invoices.v2024_06_19
 
             Assert.Equal(202, (int) response.StatusCode);
             AssertValidResponsePayload(202, response.Content);
+        }
+        
+        [Fact]
+        public void GetGovernmentInvoiceDocumentTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetGovernmentInvoiceDocument") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string marketplaceId = fixture.Create<string>();
+            
+            string transactionType = fixture.Create<string>();
+            
+            string shipmentId = fixture.Create<string>();
+            
+            string invoiceType = fixture.Create<string>();
+            
+
+            var response = api.GetGovernmentInvoiceDocumentWithHttpInfo(marketplaceId, transactionType, shipmentId, invoiceType, null, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
+        public void GetGovernmentInvoiceStatusTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("invoices") + "-" + FormatOperationId("GetGovernmentInvoiceStatus") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string marketplaceId = fixture.Create<string>();
+            
+            string transactionType = fixture.Create<string>();
+            
+            string shipmentId = fixture.Create<string>();
+            
+            string invoiceType = fixture.Create<string>();
+            
+
+            var response = api.GetGovernmentInvoiceStatusWithHttpInfo(marketplaceId, transactionType, shipmentId, invoiceType, null);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
         }
         
         [Fact]

@@ -81,27 +81,6 @@ namespace software.amzn.spapi.Test.Api.messaging.v1
         }
         
         [Fact]
-        public void CreateAmazonMotorsTest()
-        {
-            Init();
-            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("messaging") + "-" + FormatOperationId("CreateAmazonMotors") + "/code/201";
-            var request = new HttpRequestMessage(HttpMethod.Post, url);
-            httpClient.Send(request);
-            
-            string amazonOrderId = fixture.Create<string>();
-            
-            List<string> marketplaceIds = fixture.Create<List<string>>();
-            
-            CreateAmazonMotorsRequest body = fixture.Create<CreateAmazonMotorsRequest>();
-            
-
-            var response = api.CreateAmazonMotorsWithHttpInfo(amazonOrderId, marketplaceIds, body);
-
-            Assert.Equal(201, (int) response.StatusCode);
-            AssertValidResponsePayload(201, response.Content);
-        }
-        
-        [Fact]
         public void CreateConfirmDeliveryDetailsTest()
         {
             Init();

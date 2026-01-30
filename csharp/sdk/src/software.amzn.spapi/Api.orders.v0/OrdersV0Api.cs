@@ -115,6 +115,27 @@ namespace software.amzn.spapi.Api.orders.v0
         /// 
         /// </summary>
         /// <remarks>
+        /// Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>GetOrderFulfillmentInstructionsResponse</returns>
+        GetOrderFulfillmentInstructionsResponse GetOrderFulfillmentInstructions (string orderId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>ApiResponse of GetOrderFulfillmentInstructionsResponse</returns>
+        ApiResponse<GetOrderFulfillmentInstructionsResponse> GetOrderFulfillmentInstructionsWithHttpInfo (string orderId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns detailed order item information for the order that you specify. If &#x60;NextToken&#x60; is provided, it&#39;s used to retrieve the next page of order items.  __Note__: When an order is in the Pending state (the order has been placed but payment has not been authorized), the getOrderItems operation does not return information about pricing, taxes, shipping charges, gift status or promotions for the order items in the order. After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped, Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes, shipping charges, gift status and promotions for the order items in the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -202,8 +223,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>GetOrdersResponse</returns>
@@ -233,8 +254,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>ApiResponse of GetOrdersResponse</returns>
@@ -354,6 +375,27 @@ namespace software.amzn.spapi.Api.orders.v0
         /// 
         /// </summary>
         /// <remarks>
+        /// Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>Task of GetOrderFulfillmentInstructionsResponse</returns>
+        System.Threading.Tasks.Task<GetOrderFulfillmentInstructionsResponse> GetOrderFulfillmentInstructionsAsync (string orderId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </remarks>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>Task of ApiResponse (GetOrderFulfillmentInstructionsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetOrderFulfillmentInstructionsResponse>> GetOrderFulfillmentInstructionsAsyncWithHttpInfo (string orderId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns detailed order item information for the order that you specify. If &#x60;NextToken&#x60; is provided, it&#39;s used to retrieve the next page of order items.  __Note__: When an order is in the Pending state (the order has been placed but payment has not been authorized), the getOrderItems operation does not return information about pricing, taxes, shipping charges, gift status or promotions for the order items in the order. After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped, Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes, shipping charges, gift status and promotions for the order items in the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </remarks>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -441,8 +483,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>Task of GetOrdersResponse</returns>
@@ -472,8 +514,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>Task of ApiResponse (GetOrdersResponse)</returns>
@@ -1133,6 +1175,134 @@ namespace software.amzn.spapi.Api.orders.v0
         }
 
         /// <summary>
+        ///  Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>GetOrderFulfillmentInstructionsResponse</returns>
+        public GetOrderFulfillmentInstructionsResponse GetOrderFulfillmentInstructions (string orderId)
+        {
+             ApiResponse<GetOrderFulfillmentInstructionsResponse> localVarResponse = GetOrderFulfillmentInstructionsWithHttpInfo(orderId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>ApiResponse of GetOrderFulfillmentInstructionsResponse</returns>
+        public ApiResponse< GetOrderFulfillmentInstructionsResponse > GetOrderFulfillmentInstructionsWithHttpInfo (string orderId)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling OrdersV0Api->GetOrderFulfillmentInstructions");
+
+            var localVarPath = "/orders/v0/orders/{orderId}/fulfillmentInstructions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetOrderFulfillmentInstructions", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetOrderFulfillmentInstructionsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (GetOrderFulfillmentInstructionsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOrderFulfillmentInstructionsResponse)));
+        }
+
+        /// <summary>
+        ///  Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>Task of GetOrderFulfillmentInstructionsResponse</returns>
+        public async System.Threading.Tasks.Task<GetOrderFulfillmentInstructionsResponse> GetOrderFulfillmentInstructionsAsync (string orderId)
+        {
+             ApiResponse<GetOrderFulfillmentInstructionsResponse> localVarResponse = await GetOrderFulfillmentInstructionsAsyncWithHttpInfo(orderId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Returns the fulfillment instructions for the order that you specify.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+        /// </summary>
+        /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="orderId">The Amazon order identifier in 3-7-7 format.</param>
+        /// <returns>Task of ApiResponse (GetOrderFulfillmentInstructionsResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GetOrderFulfillmentInstructionsResponse>> GetOrderFulfillmentInstructionsAsyncWithHttpInfo (string orderId)
+        {
+            // verify the required parameter 'orderId' is set
+            if (orderId == null)
+                throw new ApiException(400, "Missing required parameter 'orderId' when calling OrdersV0Api->GetOrderFulfillmentInstructions");
+
+            var localVarPath = "/orders/v0/orders/{orderId}/fulfillmentInstructions";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (orderId != null) localVarPathParams.Add("orderId", this.Configuration.ApiClient.ParameterToString(orderId)); // path parameter
+
+
+            // make the HTTP request
+            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath, ChangeHttpMethod("GET"), localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams, localVarPathParams, localVarHttpContentType);
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetOrderFulfillmentInstructions", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<GetOrderFulfillmentInstructionsResponse>(localVarResponse.StatusCode,
+                ConvertHeadersToMultimap(localVarResponse),
+                (GetOrderFulfillmentInstructionsResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GetOrderFulfillmentInstructionsResponse)));
+        }
+
+        /// <summary>
         ///  Returns detailed order item information for the order that you specify. If &#x60;NextToken&#x60; is provided, it&#39;s used to retrieve the next page of order items.  __Note__: When an order is in the Pending state (the order has been placed but payment has not been authorized), the getOrderItems operation does not return information about pricing, taxes, shipping charges, gift status or promotions for the order items in the order. After an order leaves the Pending state (this occurs when payment has been authorized) and enters the Unshipped, Partially Shipped, or Shipped state, the getOrderItems operation returns information about pricing, taxes, shipping charges, gift status and promotions for the order items in the order.  **Usage Plan:**  | Rate (requests per second) | Burst | | - -- - | - -- - | | 0.5 | 30 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
         /// </summary>
         /// <exception cref="software.amzn.spapi.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1555,8 +1725,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>GetOrdersResponse</returns>
@@ -1587,8 +1757,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>ApiResponse of GetOrdersResponse</returns>
@@ -1679,8 +1849,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>Task of GetOrdersResponse</returns>
@@ -1712,8 +1882,8 @@ namespace software.amzn.spapi.Api.orders.v0
         /// <param name="actualFulfillmentSupplySourceId">The &#x60;sourceId&#x60; of the location from where you want the order fulfilled. (optional)</param>
         /// <param name="isISPU">When true, this order is marked to be picked up from a store rather than delivered. (optional)</param>
         /// <param name="storeChainStoreId">The store chain store identifier. Linked to a specific store in a store chain. (optional)</param>
-        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
-        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateBefore">Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
+        /// <param name="earliestDeliveryDateAfter">Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateBefore">Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <param name="latestDeliveryDateAfter">Use this date to select orders with a latest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)</param>
         /// <returns>Task of ApiResponse (GetOrdersResponse)</returns>
