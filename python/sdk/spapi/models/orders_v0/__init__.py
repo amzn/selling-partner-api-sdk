@@ -34,9 +34,17 @@ from spapi.models.orders_v0.easy_ship_shipment_status import EasyShipShipmentSta
 from spapi.models.orders_v0.electronic_invoice_status import ElectronicInvoiceStatus
 from spapi.models.orders_v0.error import Error
 from spapi.models.orders_v0.exception_dates import ExceptionDates
+from spapi.models.orders_v0.export_info import ExportInfo
 from spapi.models.orders_v0.fulfillment_instruction import FulfillmentInstruction
+from spapi.models.orders_v0.fulfillment_instructions import FulfillmentInstructions
+from spapi.models.orders_v0.fulfillment_location import FulfillmentLocation
+from spapi.models.orders_v0.fulfillment_plan import FulfillmentPlan
+from spapi.models.orders_v0.fulfillment_plan_constraint_type import FulfillmentPlanConstraintType
+from spapi.models.orders_v0.fulfillment_plan_item import FulfillmentPlanItem
+from spapi.models.orders_v0.fulfillment_plan_shipping_constraints import FulfillmentPlanShippingConstraints
 from spapi.models.orders_v0.get_order_address_response import GetOrderAddressResponse
 from spapi.models.orders_v0.get_order_buyer_info_response import GetOrderBuyerInfoResponse
+from spapi.models.orders_v0.get_order_fulfillment_instructions_response import GetOrderFulfillmentInstructionsResponse
 from spapi.models.orders_v0.get_order_items_buyer_info_response import GetOrderItemsBuyerInfoResponse
 from spapi.models.orders_v0.get_order_items_response import GetOrderItemsResponse
 from spapi.models.orders_v0.get_order_regulated_info_response import GetOrderRegulatedInfoResponse
@@ -71,6 +79,7 @@ from spapi.models.orders_v0.regulated_order_verification_status import Regulated
 from spapi.models.orders_v0.rejection_reason import RejectionReason
 from spapi.models.orders_v0.shipment_status import ShipmentStatus
 from spapi.models.orders_v0.shipping_constraints import ShippingConstraints
+from spapi.models.orders_v0.shipping_instructions import ShippingInstructions
 from spapi.models.orders_v0.substitution_option import SubstitutionOption
 from spapi.models.orders_v0.substitution_preferences import SubstitutionPreferences
 from spapi.models.orders_v0.tax_classification import TaxClassification

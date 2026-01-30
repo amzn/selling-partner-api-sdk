@@ -43,17 +43,6 @@ class TestMessagingApi(unittest.TestCase):
         self.assert_valid_response_payload(201, response[0])
         pass
 
-    def test_create_amazon_motors(self):
-        amazon_order_id = self._get_random_value("str", None)
-        marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]
-        body = self._get_random_value("CreateAmazonMotorsRequest", None)
-        
-        self.instruct_backend_mock("messaging".casefold().replace(' ', ''), self.to_camel_case("create_amazon_motors"), "201")
-        response = self.api.create_amazon_motors_with_http_info(amazon_order_id, marketplace_ids, body, )
-        self.assertEqual(201, response[1])
-        self.assert_valid_response_payload(201, response[0])
-        pass
-
     def test_create_confirm_delivery_details(self):
         amazon_order_id = self._get_random_value("str", None)
         marketplace_ids = [self._get_random_value("List[str]") for _ in range(1)]

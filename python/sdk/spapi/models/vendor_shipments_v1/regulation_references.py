@@ -71,7 +71,7 @@ class RegulationReferences(object):
     def due_diligence_reference(self):
         """Gets the due_diligence_reference of this RegulationReferences.  # noqa: E501
 
-        The EUDR Due Diligence Reference number from vendor's upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix.  # noqa: E501
+        The reference number from the vendor's EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.  # noqa: E501
 
         :return: The due_diligence_reference of this RegulationReferences.  # noqa: E501
         :rtype: str
@@ -82,7 +82,7 @@ class RegulationReferences(object):
     def due_diligence_reference(self, due_diligence_reference):
         """Sets the due_diligence_reference of this RegulationReferences.
 
-        The EUDR Due Diligence Reference number from vendor's upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix.  # noqa: E501
+        The reference number from the vendor's EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.  # noqa: E501
 
         :param due_diligence_reference: The due_diligence_reference of this RegulationReferences.  # noqa: E501
         :type: str
@@ -94,7 +94,7 @@ class RegulationReferences(object):
     def due_diligence_verification(self):
         """Gets the due_diligence_verification of this RegulationReferences.  # noqa: E501
 
-        The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.  # noqa: E501
+        The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.  # noqa: E501
 
         :return: The due_diligence_verification of this RegulationReferences.  # noqa: E501
         :rtype: str
@@ -105,7 +105,7 @@ class RegulationReferences(object):
     def due_diligence_verification(self, due_diligence_verification):
         """Sets the due_diligence_verification of this RegulationReferences.
 
-        The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.  # noqa: E501
+        The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.  # noqa: E501
 
         :param due_diligence_verification: The due_diligence_verification of this RegulationReferences.  # noqa: E501
         :type: str
@@ -117,7 +117,7 @@ class RegulationReferences(object):
     def due_diligence_information(self):
         """Gets the due_diligence_information of this RegulationReferences.  # noqa: E501
 
-        The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.  # noqa: E501
+        The EUDR Due Diligence information pre-loaded in Vendor Central.  # noqa: E501
 
         :return: The due_diligence_information of this RegulationReferences.  # noqa: E501
         :rtype: str
@@ -128,7 +128,7 @@ class RegulationReferences(object):
     def due_diligence_information(self, due_diligence_information):
         """Sets the due_diligence_information of this RegulationReferences.
 
-        The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.  # noqa: E501
+        The EUDR Due Diligence information pre-loaded in Vendor Central.  # noqa: E501
 
         :param due_diligence_information: The due_diligence_information of this RegulationReferences.  # noqa: E501
         :type: str
@@ -140,7 +140,7 @@ class RegulationReferences(object):
     def due_diligence_exemption_code(self):
         """Gets the due_diligence_exemption_code of this RegulationReferences.  # noqa: E501
 
-        The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.  # noqa: E501
+        The exemption code for EUDR products exempt from due diligence requirements.  # noqa: E501
 
         :return: The due_diligence_exemption_code of this RegulationReferences.  # noqa: E501
         :rtype: str
@@ -151,7 +151,7 @@ class RegulationReferences(object):
     def due_diligence_exemption_code(self, due_diligence_exemption_code):
         """Sets the due_diligence_exemption_code of this RegulationReferences.
 
-        The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.  # noqa: E501
+        The exemption code for EUDR products exempt from due diligence requirements.  # noqa: E501
 
         :param due_diligence_exemption_code: The due_diligence_exemption_code of this RegulationReferences.  # noqa: E501
         :type: str
