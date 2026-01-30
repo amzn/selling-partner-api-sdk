@@ -42,6 +42,9 @@ import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesDocumentResp
 import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesExportResponse;
 import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesExportsResponse;
 import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesResponse;
+import software.amazon.spapi.models.invoices.v2024_06_19.GovernmentInvoiceRequest;
+import software.amazon.spapi.models.invoices.v2024_06_19.GovernmentInvoiceStatusResponse;
+import software.amazon.spapi.models.invoices.v2024_06_19.GovtInvoiceDocumentResponse;
 
 public class InvoicesApi {
     private ApiClient apiClient;
@@ -54,8 +57,20 @@ public class InvoicesApi {
 
     private final Configuration config = Configuration.get();
 
+    public final Bucket createGovernmentInvoiceBucket = Bucket.builder()
+            .addLimit(config.getLimit("InvoicesApi-createGovernmentInvoice"))
+            .build();
+
     public final Bucket createInvoicesExportBucket = Bucket.builder()
             .addLimit(config.getLimit("InvoicesApi-createInvoicesExport"))
+            .build();
+
+    public final Bucket getGovernmentInvoiceDocumentBucket = Bucket.builder()
+            .addLimit(config.getLimit("InvoicesApi-getGovernmentInvoiceDocument"))
+            .build();
+
+    public final Bucket getGovernmentInvoiceStatusBucket = Bucket.builder()
+            .addLimit(config.getLimit("InvoicesApi-getGovernmentInvoiceStatus"))
             .build();
 
     public final Bucket getInvoiceBucket =
@@ -81,6 +96,187 @@ public class InvoicesApi {
             .addLimit(config.getLimit("InvoicesApi-getInvoicesExports"))
             .build();
 
+    /**
+     * Build call for createGovernmentInvoice
+     *
+     * @param body Information required to create the government invoice. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call createGovernmentInvoiceCall(
+            GovernmentInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/governmentInvoiceRequests"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/governmentInvoiceRequests";
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/governmentInvoiceRequests";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call createGovernmentInvoiceValidateBeforeCall(
+            GovernmentInvoiceRequest body, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling createGovernmentInvoice(Async)");
+        }
+
+        return createGovernmentInvoiceCall(body, progressRequestListener);
+    }
+
+    /**
+     * Submits an asynchronous government invoice creation request. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the
+     * Selling Partner API documentation.
+     *
+     * @param body Information required to create the government invoice. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void createGovernmentInvoice(GovernmentInvoiceRequest body, String restrictedDataToken)
+            throws ApiException, LWAException {
+        createGovernmentInvoiceWithHttpInfo(body, restrictedDataToken);
+    }
+
+    /**
+     * Submits an asynchronous government invoice creation request. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the
+     * Selling Partner API documentation.
+     *
+     * @param body Information required to create the government invoice. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void createGovernmentInvoice(GovernmentInvoiceRequest body) throws ApiException, LWAException {
+        createGovernmentInvoiceWithHttpInfo(body, null);
+    }
+
+    /**
+     * Submits an asynchronous government invoice creation request. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the
+     * Selling Partner API documentation.
+     *
+     * @param body Information required to create the government invoice. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> createGovernmentInvoiceWithHttpInfo(
+            GovernmentInvoiceRequest body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createGovernmentInvoiceValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "InvoicesApi-createGovernmentInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createGovernmentInvoiceBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("createGovernmentInvoice operation exceeds rate limit");
+    }
+
+    /**
+     * Submits an asynchronous government invoice creation request. **Usage Plan:** | Rate (requests per second) | Burst
+     * | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the
+     * Selling Partner API documentation.
+     *
+     * @param body Information required to create the government invoice. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> createGovernmentInvoiceWithHttpInfo(GovernmentInvoiceRequest body)
+            throws ApiException, LWAException {
+        return createGovernmentInvoiceWithHttpInfo(body, null);
+    }
+
+    /**
+     * (asynchronously) Submits an asynchronous government invoice creation request. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate
+     * Limits\&quot; in the Selling Partner API documentation.
+     *
+     * @param body Information required to create the government invoice. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createGovernmentInvoiceAsync(GovernmentInvoiceRequest body, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return createGovernmentInvoiceAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Submits an asynchronous government invoice creation request. **Usage Plan:** | Rate (requests
+     * per second) | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate
+     * Limits\&quot; in the Selling Partner API documentation.
+     *
+     * @param body Information required to create the government invoice. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createGovernmentInvoiceAsync(
+            GovernmentInvoiceRequest body, final ApiCallback<Void> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = createGovernmentInvoiceValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request =
+                    RestrictedDataTokenSigner.sign(request, restrictedDataToken, "InvoicesApi-createGovernmentInvoice");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createGovernmentInvoiceBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createGovernmentInvoice operation exceeds rate limit");
+    }
     /**
      * Build call for createInvoicesExport
      *
@@ -285,6 +481,659 @@ public class InvoicesApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("createInvoicesExport operation exceeds rate limit");
+    }
+    /**
+     * Build call for getGovernmentInvoiceDocument
+     *
+     * @param marketplaceId The invoices returned will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param fileFormat Requested file format. Default is XML (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getGovernmentInvoiceDocumentCall(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/governmentInvoiceRequests/{shipmentId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/governmentInvoiceRequests/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", shipmentId.toString());
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/governmentInvoiceRequests/{shipmentId}"
+                    .replaceAll("\\{" + "shipmentId" + "\\}", apiClient.escapeString(shipmentId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
+        if (transactionType != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("transactionType", transactionType));
+        if (invoiceType != null) localVarQueryParams.addAll(apiClient.parameterToPair("invoiceType", invoiceType));
+        if (inboundPlanId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("inboundPlanId", inboundPlanId));
+        if (fileFormat != null) localVarQueryParams.addAll(apiClient.parameterToPair("fileFormat", fileFormat));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call getGovernmentInvoiceDocumentValidateBeforeCall(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling getGovernmentInvoiceDocument(Async)");
+        }
+        // verify the required parameter 'transactionType' is set
+        if (transactionType == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'transactionType' when calling getGovernmentInvoiceDocument(Async)");
+        }
+        // verify the required parameter 'shipmentId' is set
+        if (shipmentId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'shipmentId' when calling getGovernmentInvoiceDocument(Async)");
+        }
+        // verify the required parameter 'invoiceType' is set
+        if (invoiceType == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'invoiceType' when calling getGovernmentInvoiceDocument(Async)");
+        }
+
+        return getGovernmentInvoiceDocumentCall(
+                marketplaceId,
+                transactionType,
+                shipmentId,
+                invoiceType,
+                inboundPlanId,
+                fileFormat,
+                progressRequestListener);
+    }
+
+    /**
+     * Returns an invoiceDocument object containing an invoiceDocumentUrl . **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in
+     * the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices returned will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param fileFormat Requested file format. Default is XML (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GovtInvoiceDocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GovtInvoiceDocumentResponse getGovernmentInvoiceDocument(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GovtInvoiceDocumentResponse> resp = getGovernmentInvoiceDocumentWithHttpInfo(
+                marketplaceId,
+                transactionType,
+                shipmentId,
+                invoiceType,
+                inboundPlanId,
+                fileFormat,
+                restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns an invoiceDocument object containing an invoiceDocumentUrl . **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in
+     * the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices returned will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param fileFormat Requested file format. Default is XML (optional)
+     * @return GovtInvoiceDocumentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GovtInvoiceDocumentResponse getGovernmentInvoiceDocument(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat)
+            throws ApiException, LWAException {
+        ApiResponse<GovtInvoiceDocumentResponse> resp = getGovernmentInvoiceDocumentWithHttpInfo(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, fileFormat, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns an invoiceDocument object containing an invoiceDocumentUrl . **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in
+     * the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices returned will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param fileFormat Requested file format. Default is XML (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GovtInvoiceDocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GovtInvoiceDocumentResponse> getGovernmentInvoiceDocumentWithHttpInfo(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getGovernmentInvoiceDocumentValidateBeforeCall(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, fileFormat, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "InvoicesApi-getGovernmentInvoiceDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getGovernmentInvoiceDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GovtInvoiceDocumentResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceDocument operation exceeds rate limit");
+    }
+
+    /**
+     * Returns an invoiceDocument object containing an invoiceDocumentUrl . **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in
+     * the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices returned will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param fileFormat Requested file format. Default is XML (optional)
+     * @return ApiResponse&lt;GovtInvoiceDocumentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GovtInvoiceDocumentResponse> getGovernmentInvoiceDocumentWithHttpInfo(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat)
+            throws ApiException, LWAException {
+        return getGovernmentInvoiceDocumentWithHttpInfo(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, fileFormat, null);
+    }
+
+    /**
+     * (asynchronously) Returns an invoiceDocument object containing an invoiceDocumentUrl . **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and
+     * Rate Limits\&quot; in the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices returned will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param fileFormat Requested file format. Default is XML (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getGovernmentInvoiceDocumentAsync(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat,
+            final ApiCallback<GovtInvoiceDocumentResponse> callback)
+            throws ApiException, LWAException {
+        return getGovernmentInvoiceDocumentAsync(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, fileFormat, callback, null);
+    }
+    /**
+     * (asynchronously) Returns an invoiceDocument object containing an invoiceDocumentUrl . **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and
+     * Rate Limits\&quot; in the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices returned will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param fileFormat Requested file format. Default is XML (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getGovernmentInvoiceDocumentAsync(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String fileFormat,
+            final ApiCallback<GovtInvoiceDocumentResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = getGovernmentInvoiceDocumentValidateBeforeCall(
+                marketplaceId,
+                transactionType,
+                shipmentId,
+                invoiceType,
+                inboundPlanId,
+                fileFormat,
+                progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "InvoicesApi-getGovernmentInvoiceDocument");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getGovernmentInvoiceDocumentBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GovtInvoiceDocumentResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceDocument operation exceeds rate limit");
+    }
+    /**
+     * Build call for getGovernmentInvoiceStatus
+     *
+     * @param marketplaceId The invoices status will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getGovernmentInvoiceStatusCall(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/tax/invoices/2024-06-19/governmentInvoiceRequests"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/tax/invoices/2024-06-19/governmentInvoiceRequests";
+        } else {
+            localVarPath = "/tax/invoices/2024-06-19/governmentInvoiceRequests";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (marketplaceId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("marketplaceId", marketplaceId));
+        if (transactionType != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("transactionType", transactionType));
+        if (shipmentId != null) localVarQueryParams.addAll(apiClient.parameterToPair("shipmentId", shipmentId));
+        if (invoiceType != null) localVarQueryParams.addAll(apiClient.parameterToPair("invoiceType", invoiceType));
+        if (inboundPlanId != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("inboundPlanId", inboundPlanId));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call getGovernmentInvoiceStatusValidateBeforeCall(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'marketplaceId' is set
+        if (marketplaceId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'marketplaceId' when calling getGovernmentInvoiceStatus(Async)");
+        }
+        // verify the required parameter 'transactionType' is set
+        if (transactionType == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'transactionType' when calling getGovernmentInvoiceStatus(Async)");
+        }
+        // verify the required parameter 'shipmentId' is set
+        if (shipmentId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'shipmentId' when calling getGovernmentInvoiceStatus(Async)");
+        }
+        // verify the required parameter 'invoiceType' is set
+        if (invoiceType == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'invoiceType' when calling getGovernmentInvoiceStatus(Async)");
+        }
+
+        return getGovernmentInvoiceStatusCall(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, progressRequestListener);
+    }
+
+    /**
+     * Returns the status of an invoice generation request. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling
+     * Partner API documentation.
+     *
+     * @param marketplaceId The invoices status will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GovernmentInvoiceStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GovernmentInvoiceStatusResponse getGovernmentInvoiceStatus(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<GovernmentInvoiceStatusResponse> resp = getGovernmentInvoiceStatusWithHttpInfo(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the status of an invoice generation request. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling
+     * Partner API documentation.
+     *
+     * @param marketplaceId The invoices status will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @return GovernmentInvoiceStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GovernmentInvoiceStatusResponse getGovernmentInvoiceStatus(
+            String marketplaceId, String transactionType, String shipmentId, String invoiceType, String inboundPlanId)
+            throws ApiException, LWAException {
+        ApiResponse<GovernmentInvoiceStatusResponse> resp = getGovernmentInvoiceStatusWithHttpInfo(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the status of an invoice generation request. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling
+     * Partner API documentation.
+     *
+     * @param marketplaceId The invoices status will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GovernmentInvoiceStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GovernmentInvoiceStatusResponse> getGovernmentInvoiceStatusWithHttpInfo(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getGovernmentInvoiceStatusValidateBeforeCall(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "InvoicesApi-getGovernmentInvoiceStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getGovernmentInvoiceStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GovernmentInvoiceStatusResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceStatus operation exceeds rate limit");
+    }
+
+    /**
+     * Returns the status of an invoice generation request. **Usage Plan:** | Rate (requests per second) | Burst | |
+     * ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling
+     * Partner API documentation.
+     *
+     * @param marketplaceId The invoices status will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @return ApiResponse&lt;GovernmentInvoiceStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GovernmentInvoiceStatusResponse> getGovernmentInvoiceStatusWithHttpInfo(
+            String marketplaceId, String transactionType, String shipmentId, String invoiceType, String inboundPlanId)
+            throws ApiException, LWAException {
+        return getGovernmentInvoiceStatusWithHttpInfo(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, null);
+    }
+
+    /**
+     * (asynchronously) Returns the status of an invoice generation request. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate
+     * Limits\&quot; in the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices status will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getGovernmentInvoiceStatusAsync(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            final ApiCallback<GovernmentInvoiceStatusResponse> callback)
+            throws ApiException, LWAException {
+        return getGovernmentInvoiceStatusAsync(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the status of an invoice generation request. **Usage Plan:** | Rate (requests per
+     * second) | Burst | | ---- | ---- | | 0.0167 | 1 | For more information, see \&quot;Usage Plans and Rate
+     * Limits\&quot; in the Selling Partner API documentation.
+     *
+     * @param marketplaceId The invoices status will match the marketplace that you specify. (required)
+     * @param transactionType Marketplace specific classification of the transaction type that originated the invoice.
+     *     Check &#x27;transactionType&#x27; options using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param shipmentId The unique shipment identifier to get an invoice for. (required)
+     * @param invoiceType Marketplace specific classification of the invoice type. Check &#x27;invoiceType&#x27; options
+     *     using &#x27;getInvoicesAttributes&#x27; operation. (required)
+     * @param inboundPlanId The unique InboundPlan identifier in which the shipment is contained and for which the
+     *     invoice will be created. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getGovernmentInvoiceStatusAsync(
+            String marketplaceId,
+            String transactionType,
+            String shipmentId,
+            String invoiceType,
+            String inboundPlanId,
+            final ApiCallback<GovernmentInvoiceStatusResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = getGovernmentInvoiceStatusValidateBeforeCall(
+                marketplaceId, transactionType, shipmentId, invoiceType, inboundPlanId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "InvoicesApi-getGovernmentInvoiceStatus");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getGovernmentInvoiceStatusBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GovernmentInvoiceStatusResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getGovernmentInvoiceStatus operation exceeds rate limit");
     }
     /**
      * Build call for getInvoice

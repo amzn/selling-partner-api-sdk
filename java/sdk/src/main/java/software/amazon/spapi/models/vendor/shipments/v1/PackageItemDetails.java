@@ -12,13 +12,8 @@
 
 package software.amazon.spapi.models.vendor.shipments.v1;
 
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.IOException;
 import java.util.Objects;
 
 /**
@@ -34,69 +29,6 @@ public class PackageItemDetails {
 
     @SerializedName("lotNumber")
     private String lotNumber = null;
-
-    @SerializedName("lotNumberSourceReference")
-    private String lotNumberSourceReference = null;
-
-    /** The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified. */
-    @JsonAdapter(LotNumberSourceTypeEnum.Adapter.class)
-    public enum LotNumberSourceTypeEnum {
-        @SerializedName("GLN")
-        GLN("GLN"),
-        @SerializedName("FFRN")
-        FFRN("FFRN"),
-        @SerializedName("USDA_E")
-        USDA_E("USDA_E"),
-        @SerializedName("URL")
-        URL("URL");
-
-        private String value;
-
-        LotNumberSourceTypeEnum(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static LotNumberSourceTypeEnum fromValue(String input) {
-            for (LotNumberSourceTypeEnum b : LotNumberSourceTypeEnum.values()) {
-                if (b.value.equals(input)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-
-        public static class Adapter extends TypeAdapter<LotNumberSourceTypeEnum> {
-            @Override
-            public void write(final JsonWriter jsonWriter, final LotNumberSourceTypeEnum enumeration)
-                    throws IOException {
-                jsonWriter.value(String.valueOf(enumeration.getValue()));
-            }
-
-            @Override
-            public LotNumberSourceTypeEnum read(final JsonReader jsonReader) throws IOException {
-                Object value = jsonReader.nextString();
-                return LotNumberSourceTypeEnum.fromValue((String) (value));
-            }
-        }
-    }
-
-    @SerializedName("lotNumberSourceType")
-    private LotNumberSourceTypeEnum lotNumberSourceType = null;
-
-    @SerializedName("countryOfOrigin")
-    private String countryOfOrigin = null;
-
-    @SerializedName("regulationReferences")
-    private RegulationReferences regulationReferences = null;
 
     @SerializedName("expiry")
     private Expiry expiry = null;
@@ -147,91 +79,6 @@ public class PackageItemDetails {
         this.lotNumber = lotNumber;
     }
 
-    public PackageItemDetails lotNumberSourceReference(String lotNumberSourceReference) {
-        this.lotNumberSourceReference = lotNumberSourceReference;
-        return this;
-    }
-
-    /**
-     * This is a reference to the lot number source location meaning the place where the product was assigned a
-     * traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA
-     * 204). If provided, lotNumberSourceType must also be specified.
-     *
-     * @return lotNumberSourceReference
-     */
-    @Schema(
-            description =
-                    "This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified.")
-    public String getLotNumberSourceReference() {
-        return lotNumberSourceReference;
-    }
-
-    public void setLotNumberSourceReference(String lotNumberSourceReference) {
-        this.lotNumberSourceReference = lotNumberSourceReference;
-    }
-
-    public PackageItemDetails lotNumberSourceType(LotNumberSourceTypeEnum lotNumberSourceType) {
-        this.lotNumberSourceType = lotNumberSourceType;
-        return this;
-    }
-
-    /**
-     * The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.
-     *
-     * @return lotNumberSourceType
-     */
-    @Schema(
-            description =
-                    "The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.")
-    public LotNumberSourceTypeEnum getLotNumberSourceType() {
-        return lotNumberSourceType;
-    }
-
-    public void setLotNumberSourceType(LotNumberSourceTypeEnum lotNumberSourceType) {
-        this.lotNumberSourceType = lotNumberSourceType;
-    }
-
-    public PackageItemDetails countryOfOrigin(String countryOfOrigin) {
-        this.countryOfOrigin = countryOfOrigin;
-        return this;
-    }
-
-    /**
-     * The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was
-     * manufactured or originated.
-     *
-     * @return countryOfOrigin
-     */
-    @Schema(
-            description =
-                    "The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated.")
-    public String getCountryOfOrigin() {
-        return countryOfOrigin;
-    }
-
-    public void setCountryOfOrigin(String countryOfOrigin) {
-        this.countryOfOrigin = countryOfOrigin;
-    }
-
-    public PackageItemDetails regulationReferences(RegulationReferences regulationReferences) {
-        this.regulationReferences = regulationReferences;
-        return this;
-    }
-
-    /**
-     * Get regulationReferences
-     *
-     * @return regulationReferences
-     */
-    @Schema(description = "")
-    public RegulationReferences getRegulationReferences() {
-        return regulationReferences;
-    }
-
-    public void setRegulationReferences(RegulationReferences regulationReferences) {
-        this.regulationReferences = regulationReferences;
-    }
-
     public PackageItemDetails expiry(Expiry expiry) {
         this.expiry = expiry;
         return this;
@@ -262,23 +109,12 @@ public class PackageItemDetails {
         PackageItemDetails packageItemDetails = (PackageItemDetails) o;
         return Objects.equals(this.purchaseOrderNumber, packageItemDetails.purchaseOrderNumber)
                 && Objects.equals(this.lotNumber, packageItemDetails.lotNumber)
-                && Objects.equals(this.lotNumberSourceReference, packageItemDetails.lotNumberSourceReference)
-                && Objects.equals(this.lotNumberSourceType, packageItemDetails.lotNumberSourceType)
-                && Objects.equals(this.countryOfOrigin, packageItemDetails.countryOfOrigin)
-                && Objects.equals(this.regulationReferences, packageItemDetails.regulationReferences)
                 && Objects.equals(this.expiry, packageItemDetails.expiry);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                purchaseOrderNumber,
-                lotNumber,
-                lotNumberSourceReference,
-                lotNumberSourceType,
-                countryOfOrigin,
-                regulationReferences,
-                expiry);
+        return Objects.hash(purchaseOrderNumber, lotNumber, expiry);
     }
 
     @Override
@@ -290,18 +126,6 @@ public class PackageItemDetails {
                 .append(toIndentedString(purchaseOrderNumber))
                 .append("\n");
         sb.append("    lotNumber: ").append(toIndentedString(lotNumber)).append("\n");
-        sb.append("    lotNumberSourceReference: ")
-                .append(toIndentedString(lotNumberSourceReference))
-                .append("\n");
-        sb.append("    lotNumberSourceType: ")
-                .append(toIndentedString(lotNumberSourceType))
-                .append("\n");
-        sb.append("    countryOfOrigin: ")
-                .append(toIndentedString(countryOfOrigin))
-                .append("\n");
-        sb.append("    regulationReferences: ")
-                .append(toIndentedString(regulationReferences))
-                .append("\n");
         sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
         sb.append("}");
         return sb.toString();

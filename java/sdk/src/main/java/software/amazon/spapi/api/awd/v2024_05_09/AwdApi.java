@@ -41,6 +41,10 @@ import software.amazon.spapi.models.awd.v2024_05_09.InboundOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundPackages;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundShipment;
 import software.amazon.spapi.models.awd.v2024_05_09.InventoryListing;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrder;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderCreationData;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderListing;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabels;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentListing;
 import software.amazon.spapi.models.awd.v2024_05_09.TransportationDetails;
@@ -66,8 +70,16 @@ public class AwdApi {
     public final Bucket confirmInboundBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-confirmInbound")).build();
 
+    public final Bucket confirmReplenishmentOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("AwdApi-confirmReplenishmentOrder"))
+            .build();
+
     public final Bucket createInboundBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-createInbound")).build();
+
+    public final Bucket createReplenishmentOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("AwdApi-createReplenishmentOrder"))
+            .build();
 
     public final Bucket getInboundBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-getInbound")).build();
@@ -80,12 +92,20 @@ public class AwdApi {
             .addLimit(config.getLimit("AwdApi-getInboundShipmentLabels"))
             .build();
 
+    public final Bucket getReplenishmentOrderBucket = Bucket.builder()
+            .addLimit(config.getLimit("AwdApi-getReplenishmentOrder"))
+            .build();
+
     public final Bucket listInboundShipmentsBucket = Bucket.builder()
             .addLimit(config.getLimit("AwdApi-listInboundShipments"))
             .build();
 
     public final Bucket listInventoryBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-listInventory")).build();
+
+    public final Bucket listReplenishmentOrdersBucket = Bucket.builder()
+            .addLimit(config.getLimit("AwdApi-listReplenishmentOrders"))
+            .build();
 
     public final Bucket updateInboundBucket =
             Bucket.builder().addLimit(config.getLimit("AwdApi-updateInbound")).build();
@@ -710,6 +730,182 @@ public class AwdApi {
         } else throw new ApiException.RateLimitExceeded("confirmInbound operation exceeds rate limit");
     }
     /**
+     * Build call for confirmReplenishmentOrder
+     *
+     * @param orderId ID of the replenishment order to be confirmed. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call confirmReplenishmentOrderCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/replenishmentOrders/{orderId}/confirmation"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders/{orderId}/confirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders/{orderId}/confirmation"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call confirmReplenishmentOrderValidateBeforeCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'orderId' when calling confirmReplenishmentOrder(Async)");
+        }
+
+        return confirmReplenishmentOrderCall(orderId, progressRequestListener);
+    }
+
+    /**
+     * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to
+     * be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     *
+     * @param orderId ID of the replenishment order to be confirmed. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void confirmReplenishmentOrder(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        confirmReplenishmentOrderWithHttpInfo(orderId, restrictedDataToken);
+    }
+
+    /**
+     * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to
+     * be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     *
+     * @param orderId ID of the replenishment order to be confirmed. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public void confirmReplenishmentOrder(String orderId) throws ApiException, LWAException {
+        confirmReplenishmentOrderWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to
+     * be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     *
+     * @param orderId ID of the replenishment order to be confirmed. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> confirmReplenishmentOrderWithHttpInfo(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = confirmReplenishmentOrderValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-confirmReplenishmentOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmReplenishmentOrderBucket.tryConsume(1)) {
+            return apiClient.execute(call);
+        } else throw new ApiException.RateLimitExceeded("confirmReplenishmentOrder operation exceeds rate limit");
+    }
+
+    /**
+     * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to
+     * be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     *
+     * @param orderId ID of the replenishment order to be confirmed. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<Void> confirmReplenishmentOrderWithHttpInfo(String orderId) throws ApiException, LWAException {
+        return confirmReplenishmentOrderWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * (asynchronously) Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items
+     * that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     *
+     * @param orderId ID of the replenishment order to be confirmed. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmReplenishmentOrderAsync(String orderId, final ApiCallback<Void> callback)
+            throws ApiException, LWAException {
+        return confirmReplenishmentOrderAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items
+     * that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     *
+     * @param orderId ID of the replenishment order to be confirmed. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call confirmReplenishmentOrderAsync(
+            String orderId, final ApiCallback<Void> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = confirmReplenishmentOrderValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-confirmReplenishmentOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || confirmReplenishmentOrderBucket.tryConsume(1)) {
+            apiClient.executeAsync(call, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("confirmReplenishmentOrder operation exceeds rate limit");
+    }
+    /**
      * Build call for createInbound
      *
      * @param body Payload for creating an inbound order. (required)
@@ -919,6 +1115,197 @@ public class AwdApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("createInbound operation exceeds rate limit");
+    }
+    /**
+     * Build call for createReplenishmentOrder
+     *
+     * @param body Payload for creating a replenishment order. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call createReplenishmentOrderCall(
+            ReplenishmentOrderCreationData body,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/replenishmentOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders";
+        } else {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {"application/json"};
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "POST",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call createReplenishmentOrderValidateBeforeCall(
+            ReplenishmentOrderCreationData body,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'body' when calling createReplenishmentOrder(Async)");
+        }
+
+        return createReplenishmentOrderCall(body, progressRequestListener);
+    }
+
+    /**
+     * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the
+     * newly created order and also start an async validation check on the products to e. The order status will
+     * transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     *
+     * @param body Payload for creating a replenishment order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ReplenishmentOrderReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReplenishmentOrderReference createReplenishmentOrder(
+            ReplenishmentOrderCreationData body, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<ReplenishmentOrderReference> resp = createReplenishmentOrderWithHttpInfo(body, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the
+     * newly created order and also start an async validation check on the products to e. The order status will
+     * transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     *
+     * @param body Payload for creating a replenishment order. (required)
+     * @return ReplenishmentOrderReference
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReplenishmentOrderReference createReplenishmentOrder(ReplenishmentOrderCreationData body)
+            throws ApiException, LWAException {
+        ApiResponse<ReplenishmentOrderReference> resp = createReplenishmentOrderWithHttpInfo(body, null);
+        return resp.getData();
+    }
+
+    /**
+     * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the
+     * newly created order and also start an async validation check on the products to e. The order status will
+     * transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     *
+     * @param body Payload for creating a replenishment order. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ReplenishmentOrderReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReplenishmentOrderReference> createReplenishmentOrderWithHttpInfo(
+            ReplenishmentOrderCreationData body, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = createReplenishmentOrderValidateBeforeCall(body, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-createReplenishmentOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createReplenishmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReplenishmentOrderReference>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("createReplenishmentOrder operation exceeds rate limit");
+    }
+
+    /**
+     * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the
+     * newly created order and also start an async validation check on the products to e. The order status will
+     * transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     *
+     * @param body Payload for creating a replenishment order. (required)
+     * @return ApiResponse&lt;ReplenishmentOrderReference&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReplenishmentOrderReference> createReplenishmentOrderWithHttpInfo(
+            ReplenishmentOrderCreationData body) throws ApiException, LWAException {
+        return createReplenishmentOrderWithHttpInfo(body, null);
+    }
+
+    /**
+     * (asynchronously) Creates an AWD replenishment order with given products to replenish. The API will return the
+     * order ID of the newly created order and also start an async validation check on the products to e. The order
+     * status will transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     *
+     * @param body Payload for creating a replenishment order. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createReplenishmentOrderAsync(
+            ReplenishmentOrderCreationData body, final ApiCallback<ReplenishmentOrderReference> callback)
+            throws ApiException, LWAException {
+        return createReplenishmentOrderAsync(body, callback, null);
+    }
+    /**
+     * (asynchronously) Creates an AWD replenishment order with given products to replenish. The API will return the
+     * order ID of the newly created order and also start an async validation check on the products to e. The order
+     * status will transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     *
+     * @param body Payload for creating a replenishment order. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call createReplenishmentOrderAsync(
+            ReplenishmentOrderCreationData body,
+            final ApiCallback<ReplenishmentOrderReference> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = createReplenishmentOrderValidateBeforeCall(body, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-createReplenishmentOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || createReplenishmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReplenishmentOrderReference>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("createReplenishmentOrder operation exceeds rate limit");
     }
     /**
      * Build call for getInbound
@@ -1613,6 +2000,189 @@ public class AwdApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("getInboundShipmentLabels operation exceeds rate limit");
+    }
+    /**
+     * Build call for getReplenishmentOrder
+     *
+     * @param orderId ID of the replenishment order to be retrieved. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getReplenishmentOrderCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/replenishmentOrders/{orderId}"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders/{orderId}"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call getReplenishmentOrderValidateBeforeCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'orderId' when calling getReplenishmentOrder(Async)");
+        }
+
+        return getReplenishmentOrderCall(orderId, progressRequestListener);
+    }
+
+    /**
+     * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be
+     * replenished into an FBA node.
+     *
+     * @param orderId ID of the replenishment order to be retrieved. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ReplenishmentOrder
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReplenishmentOrder getReplenishmentOrder(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ReplenishmentOrder> resp = getReplenishmentOrderWithHttpInfo(orderId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be
+     * replenished into an FBA node.
+     *
+     * @param orderId ID of the replenishment order to be retrieved. (required)
+     * @return ReplenishmentOrder
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReplenishmentOrder getReplenishmentOrder(String orderId) throws ApiException, LWAException {
+        ApiResponse<ReplenishmentOrder> resp = getReplenishmentOrderWithHttpInfo(orderId, null);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be
+     * replenished into an FBA node.
+     *
+     * @param orderId ID of the replenishment order to be retrieved. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ReplenishmentOrder&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReplenishmentOrder> getReplenishmentOrderWithHttpInfo(String orderId, String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = getReplenishmentOrderValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getReplenishmentOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getReplenishmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReplenishmentOrder>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getReplenishmentOrder operation exceeds rate limit");
+    }
+
+    /**
+     * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be
+     * replenished into an FBA node.
+     *
+     * @param orderId ID of the replenishment order to be retrieved. (required)
+     * @return ApiResponse&lt;ReplenishmentOrder&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReplenishmentOrder> getReplenishmentOrderWithHttpInfo(String orderId)
+            throws ApiException, LWAException {
+        return getReplenishmentOrderWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * (asynchronously) Retrieves an AWD Replenishment order with a set of shipments containing items that is/was
+     * planned to be replenished into an FBA node.
+     *
+     * @param orderId ID of the replenishment order to be retrieved. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getReplenishmentOrderAsync(String orderId, final ApiCallback<ReplenishmentOrder> callback)
+            throws ApiException, LWAException {
+        return getReplenishmentOrderAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves an AWD Replenishment order with a set of shipments containing items that is/was
+     * planned to be replenished into an FBA node.
+     *
+     * @param orderId ID of the replenishment order to be retrieved. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getReplenishmentOrderAsync(
+            String orderId, final ApiCallback<ReplenishmentOrder> callback, String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = getReplenishmentOrderValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-getReplenishmentOrder");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getReplenishmentOrderBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReplenishmentOrder>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getReplenishmentOrder operation exceeds rate limit");
     }
     /**
      * Build call for listInboundShipments
@@ -2334,6 +2904,315 @@ public class AwdApi {
             apiClient.executeAsync(call, localVarReturnType, callback);
             return call;
         } else throw new ApiException.RateLimitExceeded("listInventory operation exceeds rate limit");
+    }
+    /**
+     * Build call for listReplenishmentOrders
+     *
+     * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param updatedBefore Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     *     (optional)
+     * @param maxResults Maximum results to be returned in a single response. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call listReplenishmentOrdersCall(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/awd/2024-05-09/replenishmentOrders".equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders";
+        } else {
+            localVarPath = "/awd/2024-05-09/replenishmentOrders";
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (updatedAfter != null) localVarQueryParams.addAll(apiClient.parameterToPair("updatedAfter", updatedAfter));
+        if (updatedBefore != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("updatedBefore", updatedBefore));
+        if (sortOrder != null) localVarQueryParams.addAll(apiClient.parameterToPair("sortOrder", sortOrder));
+        if (maxResults != null) localVarQueryParams.addAll(apiClient.parameterToPair("maxResults", maxResults));
+        if (nextToken != null) localVarQueryParams.addAll(apiClient.parameterToPair("nextToken", nextToken));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call listReplenishmentOrdersValidateBeforeCall(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+
+        return listReplenishmentOrdersCall(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, progressRequestListener);
+    }
+
+    /**
+     * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will
+     * sort orders by updatedAt attribute in descending order.
+     *
+     * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param updatedBefore Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     *     (optional)
+     * @param maxResults Maximum results to be returned in a single response. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ReplenishmentOrderListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReplenishmentOrderListing listReplenishmentOrders(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        ApiResponse<ReplenishmentOrderListing> resp = listReplenishmentOrdersWithHttpInfo(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will
+     * sort orders by updatedAt attribute in descending order.
+     *
+     * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param updatedBefore Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     *     (optional)
+     * @param maxResults Maximum results to be returned in a single response. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @return ReplenishmentOrderListing
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ReplenishmentOrderListing listReplenishmentOrders(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken)
+            throws ApiException, LWAException {
+        ApiResponse<ReplenishmentOrderListing> resp = listReplenishmentOrdersWithHttpInfo(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, null);
+        return resp.getData();
+    }
+
+    /**
+     * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will
+     * sort orders by updatedAt attribute in descending order.
+     *
+     * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param updatedBefore Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     *     (optional)
+     * @param maxResults Maximum results to be returned in a single response. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;ReplenishmentOrderListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReplenishmentOrderListing> listReplenishmentOrdersWithHttpInfo(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+        okhttp3.Call call = listReplenishmentOrdersValidateBeforeCall(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listReplenishmentOrders");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listReplenishmentOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReplenishmentOrderListing>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("listReplenishmentOrders operation exceeds rate limit");
+    }
+
+    /**
+     * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will
+     * sort orders by updatedAt attribute in descending order.
+     *
+     * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param updatedBefore Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     *     (optional)
+     * @param maxResults Maximum results to be returned in a single response. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @return ApiResponse&lt;ReplenishmentOrderListing&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<ReplenishmentOrderListing> listReplenishmentOrdersWithHttpInfo(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken)
+            throws ApiException, LWAException {
+        return listReplenishmentOrdersWithHttpInfo(updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, null);
+    }
+
+    /**
+     * (asynchronously) Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API
+     * by default will sort orders by updatedAt attribute in descending order.
+     *
+     * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param updatedBefore Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     *     (optional)
+     * @param maxResults Maximum results to be returned in a single response. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listReplenishmentOrdersAsync(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ApiCallback<ReplenishmentOrderListing> callback)
+            throws ApiException, LWAException {
+        return listReplenishmentOrdersAsync(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, callback, null);
+    }
+    /**
+     * (asynchronously) Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API
+     * by default will sort orders by updatedAt attribute in descending order.
+     *
+     * @param updatedAfter Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param updatedBefore Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO
+     *     8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339. (optional)
+     * @param sortOrder Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     *     (optional)
+     * @param maxResults Maximum results to be returned in a single response. (optional, default to 25)
+     * @param nextToken A token that is used to retrieve the next page of results. The response includes
+     *     &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get
+     *     the next page of results, call the operation with this token and include the same arguments as the call that
+     *     produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note
+     *     that this operation can return empty pages. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call listReplenishmentOrdersAsync(
+            OffsetDateTime updatedAfter,
+            OffsetDateTime updatedBefore,
+            String sortOrder,
+            Integer maxResults,
+            String nextToken,
+            final ApiCallback<ReplenishmentOrderListing> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = listReplenishmentOrdersValidateBeforeCall(
+                updatedAfter, updatedBefore, sortOrder, maxResults, nextToken, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(request, restrictedDataToken, "AwdApi-listReplenishmentOrders");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || listReplenishmentOrdersBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<ReplenishmentOrderListing>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("listReplenishmentOrders operation exceeds rate limit");
     }
     /**
      * Build call for updateInbound

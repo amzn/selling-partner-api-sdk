@@ -27,8 +27,6 @@ import org.junit.jupiter.api.Test;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
-import software.amazon.spapi.models.messaging.v1.CreateAmazonMotorsRequest;
-import software.amazon.spapi.models.messaging.v1.CreateAmazonMotorsResponse;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmCustomizationDetailsRequest;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmCustomizationDetailsResponse;
 import software.amazon.spapi.models.messaging.v1.CreateConfirmDeliveryDetailsRequest;
@@ -81,20 +79,6 @@ public class MessagingApiTest {
 
         ApiResponse<CreateConfirmCustomizationDetailsResponse> response =
                 api.confirmCustomizationDetailsWithHttpInfo(body, amazonOrderId, marketplaceIds);
-
-        assertEquals(201, response.getStatusCode());
-        assertValidResponsePayload(201, response.getData());
-    }
-
-    @Test
-    public void createAmazonMotorsTest() throws Exception {
-        instructBackendMock("messaging", "createAmazonMotors", "201");
-        CreateAmazonMotorsRequest body = easyRandom.nextObject(CreateAmazonMotorsRequest.class);
-        String amazonOrderId = easyRandom.nextObject(String.class);
-        List<String> marketplaceIds = easyRandom.objects(String.class, 2).collect(Collectors.toList());
-
-        ApiResponse<CreateAmazonMotorsResponse> response =
-                api.createAmazonMotorsWithHttpInfo(body, amazonOrderId, marketplaceIds);
 
         assertEquals(201, response.getStatusCode());
         assertValidResponsePayload(201, response.getData());
