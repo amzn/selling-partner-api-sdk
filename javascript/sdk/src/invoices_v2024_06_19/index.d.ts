@@ -1,5 +1,6 @@
 import { ApiClient } from './ApiClient.js';
 import { AttributeOption } from './model/AttributeOption.js';
+import { CarrierDetailsContext } from './model/CarrierDetailsContext.js';
 import { Error } from './model/Error.js';
 import { ErrorList } from './model/ErrorList.js';
 import { Export } from './model/Export.js';
@@ -13,10 +14,16 @@ import { GetInvoicesDocumentResponse } from './model/GetInvoicesDocumentResponse
 import { GetInvoicesExportResponse } from './model/GetInvoicesExportResponse.js';
 import { GetInvoicesExportsResponse } from './model/GetInvoicesExportsResponse.js';
 import { GetInvoicesResponse } from './model/GetInvoicesResponse.js';
+import { GovernmentInvoiceCreationStatus } from './model/GovernmentInvoiceCreationStatus.js';
+import { GovernmentInvoiceRequest } from './model/GovernmentInvoiceRequest.js';
+import { GovernmentInvoiceStatusResponse } from './model/GovernmentInvoiceStatusResponse.js';
+import { GovtInvoiceDocumentResponse } from './model/GovtInvoiceDocumentResponse.js';
 import { Invoice } from './model/Invoice.js';
+import { InvoiceDocument } from './model/InvoiceDocument.js';
+import { InvoiceError } from './model/InvoiceError.js';
 import { InvoicesAttributes } from './model/InvoicesAttributes.js';
 import { InvoicesDocument } from './model/InvoicesDocument.js';
 import { TransactionIdentifier } from './model/TransactionIdentifier.js';
 import { InvoicesApi } from './api/InvoicesApi.js';
-export { ApiClient, AttributeOption, Error, ErrorList, Export, ExportInvoicesRequest, ExportInvoicesResponse, ExportStatus, FileFormat, GetInvoiceResponse, GetInvoicesAttributesResponse, GetInvoicesDocumentResponse, GetInvoicesExportResponse, GetInvoicesExportsResponse, GetInvoicesResponse, Invoice, InvoicesAttributes, InvoicesDocument, TransactionIdentifier, InvoicesApi };
+export { ApiClient, AttributeOption, CarrierDetailsContext, Error, ErrorList, Export, ExportInvoicesRequest, ExportInvoicesResponse, ExportStatus, FileFormat, GetInvoiceResponse, GetInvoicesAttributesResponse, GetInvoicesDocumentResponse, GetInvoicesExportResponse, GetInvoicesExportsResponse, GetInvoicesResponse, GovernmentInvoiceCreationStatus, GovernmentInvoiceRequest, GovernmentInvoiceStatusResponse, GovtInvoiceDocumentResponse, Invoice, InvoiceDocument, InvoiceError, InvoicesAttributes, InvoicesDocument, TransactionIdentifier, InvoicesApi };
 //# sourceMappingURL=index.d.ts.map

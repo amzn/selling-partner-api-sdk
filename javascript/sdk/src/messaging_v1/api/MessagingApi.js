@@ -12,8 +12,6 @@
  */
 
 import { ApiClient } from '../ApiClient.js'
-import { CreateAmazonMotorsRequest } from '../model/CreateAmazonMotorsRequest.js'
-import { CreateAmazonMotorsResponse } from '../model/CreateAmazonMotorsResponse.js'
 import { CreateConfirmCustomizationDetailsRequest } from '../model/CreateConfirmCustomizationDetailsRequest.js'
 import { CreateConfirmCustomizationDetailsResponse } from '../model/CreateConfirmCustomizationDetailsResponse.js'
 import { CreateConfirmDeliveryDetailsRequest } from '../model/CreateConfirmDeliveryDetailsRequest.js'
@@ -66,7 +64,6 @@ export class MessagingApi {
     const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
     const operations = [
       'MessagingApi-confirmCustomizationDetails',
-      'MessagingApi-createAmazonMotors',
       'MessagingApi-createConfirmDeliveryDetails',
       'MessagingApi-createConfirmOrderDetails',
       'MessagingApi-createConfirmServiceDetails',
@@ -149,67 +146,6 @@ export class MessagingApi {
      */
   confirmCustomizationDetails (amazonOrderId, marketplaceIds, body) {
     return this.confirmCustomizationDetailsWithHttpInfo(amazonOrderId, marketplaceIds, body)
-      .then(function (response_and_data) {
-        return response_and_data.data
-      })
-  }
-
-  /**
-     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {CreateAmazonMotorsRequest} body This contains the message body for a message.
-     * @return {Promise<CreateAmazonMotorsResponse>}
-     */
-  createAmazonMotorsWithHttpInfo (amazonOrderId, marketplaceIds, body) {
-    const postBody = body
-
-    // verify the required parameter 'amazonOrderId' is set
-    if (amazonOrderId === undefined || amazonOrderId === null) {
-      throw new Error("Missing the required parameter 'amazonOrderId' when calling createAmazonMotors")
-    }
-
-    // verify the required parameter 'marketplaceIds' is set
-    if (marketplaceIds === undefined || marketplaceIds === null) {
-      throw new Error("Missing the required parameter 'marketplaceIds' when calling createAmazonMotors")
-    }
-
-    // verify the required parameter 'body' is set
-    if (body === undefined || body === null) {
-      throw new Error("Missing the required parameter 'body' when calling createAmazonMotors")
-    }
-
-    const pathParams = {
-      amazonOrderId
-    }
-    const queryParams = {
-      marketplaceIds: this.apiClient.buildCollectionParam(marketplaceIds, 'csv')
-    }
-    const headerParams = {
-    }
-    const formParams = {
-    }
-
-    const contentTypes = ['application/json']
-    const accepts = ['application/hal+json']
-    const returnType = CreateAmazonMotorsResponse
-
-    return this.apiClient.callApi('MessagingApi-createAmazonMotors',
-      '/messaging/v1/orders/{amazonOrderId}/messages/amazonMotors', 'POST',
-      pathParams, queryParams, headerParams, formParams, postBody,
-      contentTypes, accepts, returnType, this.getRateLimiter('MessagingApi-createAmazonMotors')
-    )
-  }
-
-  /**
-     * Sends a message to a buyer to provide details about an Amazon Motors order. This message can only be sent by Amazon Motors sellers.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 5 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-     * @param {String} amazonOrderId An Amazon order identifier. This identifies the order for which a message is sent.
-     * @param {[String]} marketplaceIds A marketplace identifier. This identifies the marketplace in which the order was placed. You can only specify one marketplace.
-     * @param {CreateAmazonMotorsRequest} body This contains the message body for a message.
-     * @return {Promise<CreateAmazonMotorsResponse>}
-     */
-  createAmazonMotors (amazonOrderId, marketplaceIds, body) {
-    return this.createAmazonMotorsWithHttpInfo(amazonOrderId, marketplaceIds, body)
       .then(function (response_and_data) {
         return response_and_data.data
       })

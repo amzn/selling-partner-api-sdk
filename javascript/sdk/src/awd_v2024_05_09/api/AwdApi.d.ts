@@ -59,6 +59,18 @@ export class AwdApi {
        */
     confirmInbound(orderId: string): Promise<void>;
     /**
+       * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+       * @param {String} orderId ID of the replenishment order to be confirmed.
+       * @return {Promise<void>}
+       */
+    confirmReplenishmentOrderWithHttpInfo(orderId: string): Promise<void>;
+    /**
+       * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+       * @param {String} orderId ID of the replenishment order to be confirmed.
+       * @return {Promise<void>}
+       */
+    confirmReplenishmentOrder(orderId: string): Promise<void>;
+    /**
        * Creates a draft AWD inbound order with a list of packages for inbound shipment. The operation creates one shipment per order.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {InboundOrderCreationData} body Payload for creating an inbound order.
        * @return {Promise<InboundOrderReference>}
@@ -70,6 +82,18 @@ export class AwdApi {
        * @return {Promise<InboundOrderReference>}
        */
     createInbound(body: InboundOrderCreationData): Promise<InboundOrderReference>;
+    /**
+       * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the newly created order and also start an async validation check on the products to e. The order status will transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+       * @param {ReplenishmentOrderCreationData} body Payload for creating a replenishment order.
+       * @return {Promise<ReplenishmentOrderReference>}
+       */
+    createReplenishmentOrderWithHttpInfo(body: ReplenishmentOrderCreationData): Promise<ReplenishmentOrderReference>;
+    /**
+       * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the newly created order and also start an async validation check on the products to e. The order status will transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+       * @param {ReplenishmentOrderCreationData} body Payload for creating a replenishment order.
+       * @return {Promise<ReplenishmentOrderReference>}
+       */
+    createReplenishmentOrder(body: ReplenishmentOrderCreationData): Promise<ReplenishmentOrderReference>;
     /**
        * Retrieves an AWD inbound order.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 2 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} orderId The ID of the inbound order that you want to retrieve.
@@ -126,6 +150,18 @@ export class AwdApi {
         pageType?: string;
         formatType?: string;
     }): Promise<ShipmentLabels>;
+    /**
+       * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
+       * @param {String} orderId ID of the replenishment order to be retrieved.
+       * @return {Promise<ReplenishmentOrder>}
+       */
+    getReplenishmentOrderWithHttpInfo(orderId: string): Promise<ReplenishmentOrder>;
+    /**
+       * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
+       * @param {String} orderId ID of the replenishment order to be retrieved.
+       * @return {Promise<ReplenishmentOrder>}
+       */
+    getReplenishmentOrder(orderId: string): Promise<ReplenishmentOrder>;
     /**
        * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {Object} [opts] Optional parameters
@@ -203,6 +239,40 @@ export class AwdApi {
         maxResults?: number;
     }): Promise<InventoryListing>;
     /**
+       * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
+       * @param {Object} [opts] Optional parameters
+       * @param {Date} [opts.updatedAfter] Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+       * @param {Date} [opts.updatedBefore] Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+       * @param {String} [opts.sortOrder] Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+       * @param {Number} [opts.maxResults] Maximum results to be returned in a single response. (default to 25)
+       * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+       * @return {Promise<ReplenishmentOrderListing>}
+       */
+    listReplenishmentOrdersWithHttpInfo(opts?: {
+        updatedAfter?: Date;
+        updatedBefore?: Date;
+        sortOrder?: string;
+        maxResults?: number;
+        nextToken?: string;
+    }): Promise<ReplenishmentOrderListing>;
+    /**
+       * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
+       * @param {Object} [opts] Optional parameters
+       * @param {Date} [opts.updatedAfter] Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+       * @param {Date} [opts.updatedBefore] Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+       * @param {String} [opts.sortOrder] Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+       * @param {Number} [opts.maxResults] Maximum results to be returned in a single response. (default to 25)
+       * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+       * @return {Promise<ReplenishmentOrderListing>}
+       */
+    listReplenishmentOrders(opts?: {
+        updatedAfter?: Date;
+        updatedBefore?: Date;
+        sortOrder?: string;
+        maxResults?: number;
+        nextToken?: string;
+    }): Promise<ReplenishmentOrderListing>;
+    /**
        * Updates an AWD inbound order that is in &#x60;DRAFT&#x60; status and not yet confirmed. Use this operation to update the &#x60;packagesToInbound&#x60;, &#x60;originAddress&#x60; and &#x60;preferences&#x60; attributes.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} orderId The ID of the inbound order that you want to update.
        * @param {InboundOrder} body Represents an AWD inbound order.
@@ -236,11 +306,15 @@ import { InboundPackages } from '../model/InboundPackages.js';
 import { InboundEligibility } from '../model/InboundEligibility.js';
 import { InboundOrderCreationData } from '../model/InboundOrderCreationData.js';
 import { InboundOrderReference } from '../model/InboundOrderReference.js';
+import { ReplenishmentOrderCreationData } from '../model/ReplenishmentOrderCreationData.js';
+import { ReplenishmentOrderReference } from '../model/ReplenishmentOrderReference.js';
 import { InboundOrder } from '../model/InboundOrder.js';
 import { InboundShipment } from '../model/InboundShipment.js';
 import { ShipmentLabels } from '../model/ShipmentLabels.js';
+import { ReplenishmentOrder } from '../model/ReplenishmentOrder.js';
 import { ShipmentListing } from '../model/ShipmentListing.js';
 import { InventoryListing } from '../model/InventoryListing.js';
+import { ReplenishmentOrderListing } from '../model/ReplenishmentOrderListing.js';
 import { TransportationDetails } from '../model/TransportationDetails.js';
 import { ApiClient } from '../ApiClient.js';
 //# sourceMappingURL=AwdApi.d.ts.map

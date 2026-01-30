@@ -25,6 +25,29 @@ export class ItemDetails {
      */
     lotNumber: string;
     /**
+     * The location identifier where the product receives a traceability lot number. Provide this field for products subject to the FDA Food Safety Modernization Act (FSMA) Section 204. When you provide `lotNumberSourceReference`, you must also specify the corresponding `lotNumberSourceType` field.
+     * @member {String} lotNumberSourceReference
+     * @type {String}
+     */
+    lotNumberSourceReference: string;
+    /**
+     * The identifier type used for the lot number source. Provide this field when you specify `lotNumberSourceReference`.
+     * @member {String} lotNumberSourceType
+     * @type {String}
+     */
+    lotNumberSourceType: string;
+    /**
+     * The two-character country code for the country where the product was manufactured or originates. Use ISO 3166-1 alpha-2 format.
+     * @member {String} countryOfOrigin
+     * @type {String}
+     */
+    countryOfOrigin: string;
+    /**
+     * @member {RegulationReferences} regulationReferences
+     * @type {RegulationReferences}
+     */
+    regulationReferences: RegulationReferences;
+    /**
      * @member {Expiry} expiry
      * @type {Expiry}
      */
@@ -42,6 +65,16 @@ export class ItemDetails {
     handlingCode: string;
 }
 export namespace ItemDetails {
+    namespace LotNumberSourceTypeEnum {
+        let GLN: string;
+        let FFRN: string;
+        let USDA_E: string;
+        let URL: string;
+    }
+    /**
+     * *
+     */
+    type LotNumberSourceTypeEnum = string;
     namespace HandlingCodeEnum {
         let Oversized: string;
         let Fragile: string;
@@ -53,6 +86,7 @@ export namespace ItemDetails {
      */
     type HandlingCodeEnum = string;
 }
+import { RegulationReferences } from './RegulationReferences.js';
 import { Expiry } from './Expiry.js';
 import { Money } from './Money.js';
 //# sourceMappingURL=ItemDetails.d.ts.map

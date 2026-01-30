@@ -21,6 +21,9 @@ import { GetInvoicesDocumentResponse } from '../model/GetInvoicesDocumentRespons
 import { GetInvoicesExportResponse } from '../model/GetInvoicesExportResponse.js'
 import { GetInvoicesExportsResponse } from '../model/GetInvoicesExportsResponse.js'
 import { GetInvoicesResponse } from '../model/GetInvoicesResponse.js'
+import { GovernmentInvoiceRequest } from '../model/GovernmentInvoiceRequest.js'
+import { GovernmentInvoiceStatusResponse } from '../model/GovernmentInvoiceStatusResponse.js'
+import { GovtInvoiceDocumentResponse } from '../model/GovtInvoiceDocumentResponse.js'
 import { SuperagentRateLimiter } from '../../../helper/SuperagentRateLimiter.mjs'
 import { DefaultRateLimitFetcher } from '../../../helper/DefaultRateLimitFetcher.mjs'
 
@@ -52,7 +55,10 @@ export class InvoicesApi {
     this.#defaultRateLimiterMap = new Map()
     const defaultRateLimitFetcher = new DefaultRateLimitFetcher()
     const operations = [
+      'InvoicesApi-createGovernmentInvoice',
       'InvoicesApi-createInvoicesExport',
+      'InvoicesApi-getGovernmentInvoiceDocument',
+      'InvoicesApi-getGovernmentInvoiceStatus',
       'InvoicesApi-getInvoice',
       'InvoicesApi-getInvoices',
       'InvoicesApi-getInvoicesAttributes',
@@ -73,6 +79,51 @@ export class InvoicesApi {
      */
   getRateLimiter (operation) {
     return this.#defaultRateLimiterMap.get(operation)
+  }
+
+  /**
+     * Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+     * @param {GovernmentInvoiceRequest} body Information required to create the government invoice.
+     * @return {Promise<void>}
+     */
+  createGovernmentInvoiceWithHttpInfo (body) {
+    const postBody = body
+
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling createGovernmentInvoice")
+    }
+
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = null
+
+    return this.apiClient.callApi('InvoicesApi-createGovernmentInvoice',
+      '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-createGovernmentInvoice')
+    )
+  }
+
+  /**
+     * Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+     * @param {GovernmentInvoiceRequest} body Information required to create the government invoice.
+     * @return {Promise<void>}
+     */
+  createGovernmentInvoice (body) {
+    return this.createGovernmentInvoiceWithHttpInfo(body)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
   }
 
   /**
@@ -115,6 +166,161 @@ export class InvoicesApi {
      */
   createInvoicesExport (body) {
     return this.createInvoicesExportWithHttpInfo(body)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
+     * Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+     * @param {String} marketplaceId The invoices returned will match the marketplace that you specify.
+     * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+     * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+     * @param {String} [opts.fileFormat] Requested file format. Default is XML
+     * @return {Promise<GovtInvoiceDocumentResponse>}
+     */
+  getGovernmentInvoiceDocumentWithHttpInfo (marketplaceId, transactionType, shipmentId, invoiceType, opts) {
+    opts = opts || {}
+    const postBody = null
+
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling getGovernmentInvoiceDocument")
+    }
+
+    // verify the required parameter 'transactionType' is set
+    if (transactionType === undefined || transactionType === null) {
+      throw new Error("Missing the required parameter 'transactionType' when calling getGovernmentInvoiceDocument")
+    }
+
+    // verify the required parameter 'shipmentId' is set
+    if (shipmentId === undefined || shipmentId === null) {
+      throw new Error("Missing the required parameter 'shipmentId' when calling getGovernmentInvoiceDocument")
+    }
+
+    // verify the required parameter 'invoiceType' is set
+    if (invoiceType === undefined || invoiceType === null) {
+      throw new Error("Missing the required parameter 'invoiceType' when calling getGovernmentInvoiceDocument")
+    }
+
+    const pathParams = {
+      shipmentId
+    }
+    const queryParams = {
+      marketplaceId,
+      transactionType,
+      invoiceType,
+      inboundPlanId: opts.inboundPlanId,
+      fileFormat: opts.fileFormat
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GovtInvoiceDocumentResponse
+
+    return this.apiClient.callApi('InvoicesApi-getGovernmentInvoiceDocument',
+      '/tax/invoices/2024-06-19/governmentInvoiceRequests/{shipmentId}', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getGovernmentInvoiceDocument')
+    )
+  }
+
+  /**
+     * Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+     * @param {String} marketplaceId The invoices returned will match the marketplace that you specify.
+     * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+     * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+     * @param {String} [opts.fileFormat] Requested file format. Default is XML
+     * @return {Promise<GovtInvoiceDocumentResponse>}
+     */
+  getGovernmentInvoiceDocument (marketplaceId, transactionType, shipmentId, invoiceType, opts) {
+    return this.getGovernmentInvoiceDocumentWithHttpInfo(marketplaceId, transactionType, shipmentId, invoiceType, opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
+     * Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+     * @param {String} marketplaceId The invoices status will match the marketplace that you specify.
+     * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+     * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+     * @return {Promise<GovernmentInvoiceStatusResponse>}
+     */
+  getGovernmentInvoiceStatusWithHttpInfo (marketplaceId, transactionType, shipmentId, invoiceType, opts) {
+    opts = opts || {}
+    const postBody = null
+
+    // verify the required parameter 'marketplaceId' is set
+    if (marketplaceId === undefined || marketplaceId === null) {
+      throw new Error("Missing the required parameter 'marketplaceId' when calling getGovernmentInvoiceStatus")
+    }
+
+    // verify the required parameter 'transactionType' is set
+    if (transactionType === undefined || transactionType === null) {
+      throw new Error("Missing the required parameter 'transactionType' when calling getGovernmentInvoiceStatus")
+    }
+
+    // verify the required parameter 'shipmentId' is set
+    if (shipmentId === undefined || shipmentId === null) {
+      throw new Error("Missing the required parameter 'shipmentId' when calling getGovernmentInvoiceStatus")
+    }
+
+    // verify the required parameter 'invoiceType' is set
+    if (invoiceType === undefined || invoiceType === null) {
+      throw new Error("Missing the required parameter 'invoiceType' when calling getGovernmentInvoiceStatus")
+    }
+
+    const pathParams = {
+    }
+    const queryParams = {
+      marketplaceId,
+      transactionType,
+      shipmentId,
+      invoiceType,
+      inboundPlanId: opts.inboundPlanId
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = GovernmentInvoiceStatusResponse
+
+    return this.apiClient.callApi('InvoicesApi-getGovernmentInvoiceStatus',
+      '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('InvoicesApi-getGovernmentInvoiceStatus')
+    )
+  }
+
+  /**
+     * Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+     * @param {String} marketplaceId The invoices status will match the marketplace that you specify.
+     * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+     * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+     * @param {Object} [opts] Optional parameters
+     * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+     * @return {Promise<GovernmentInvoiceStatusResponse>}
+     */
+  getGovernmentInvoiceStatus (marketplaceId, transactionType, shipmentId, invoiceType, opts) {
+    return this.getGovernmentInvoiceStatusWithHttpInfo(marketplaceId, transactionType, shipmentId, invoiceType, opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })

@@ -21,7 +21,7 @@ import { ApiClient } from '../ApiClient.js'
 export class RegulationReferences {
   /**
    * Constructs a new <code>RegulationReferences</code>.
-   * Container for regulatory compliance information, for instance EU Due Diligence Regulation (EUDR) requirements. Includes reference numbers, verification codes, compliance information, and exemption codes necessary for documenting regulatory compliance for shipments.
+   * Regulatory requirements and compliance information for the item, including reference numbers, verification codes, and exemption codes. Use this field to specify applicable regulations such as EU Deforestation Regulation (EUDR).
    * @alias module:vendorshipments_v1/model/RegulationReferences
    * @class
    */
@@ -59,28 +59,28 @@ export class RegulationReferences {
 }
 
 /**
- * The EUDR Due Diligence Reference number from vendor's upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix.
+ * The reference number from the vendor's EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.
  * @member {String} dueDiligenceReference
  * @type {String}
  */
 RegulationReferences.prototype.dueDiligenceReference = undefined
 
 /**
- * The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.
+ * The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.
  * @member {String} dueDiligenceVerification
  * @type {String}
  */
 RegulationReferences.prototype.dueDiligenceVerification = undefined
 
 /**
- * The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.
+ * The EUDR Due Diligence information pre-loaded in Vendor Central.
  * @member {String} dueDiligenceInformation
  * @type {String}
  */
 RegulationReferences.prototype.dueDiligenceInformation = undefined
 
 /**
- * The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.
+ * The exemption code for EUDR products exempt from due diligence requirements.
  * @member {String} dueDiligenceExemptionCode
  * @type {String}
  */

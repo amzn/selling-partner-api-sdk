@@ -13,8 +13,6 @@
 
 import { ApiClient } from './ApiClient.js'
 import { Attachment } from './model/Attachment.js'
-import { CreateAmazonMotorsRequest } from './model/CreateAmazonMotorsRequest.js'
-import { CreateAmazonMotorsResponse } from './model/CreateAmazonMotorsResponse.js'
 import { CreateConfirmCustomizationDetailsRequest } from './model/CreateConfirmCustomizationDetailsRequest.js'
 import { CreateConfirmCustomizationDetailsResponse } from './model/CreateConfirmCustomizationDetailsResponse.js'
 import { CreateConfirmDeliveryDetailsRequest } from './model/CreateConfirmDeliveryDetailsRequest.js'
@@ -66,18 +64,6 @@ export {
      * @property {module:messaging_v1/model/Attachment}
      */
   Attachment,
-
-  /**
-     * The CreateAmazonMotorsRequest model constructor.
-     * @property {module:messaging_v1/model/CreateAmazonMotorsRequest}
-     */
-  CreateAmazonMotorsRequest,
-
-  /**
-     * The CreateAmazonMotorsResponse model constructor.
-     * @property {module:messaging_v1/model/CreateAmazonMotorsResponse}
-     */
-  CreateAmazonMotorsResponse,
 
   /**
      * The CreateConfirmCustomizationDetailsRequest model constructor.

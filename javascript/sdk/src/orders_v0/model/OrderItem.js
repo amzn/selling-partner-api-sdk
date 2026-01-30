@@ -15,6 +15,7 @@ import { ApiClient } from '../ApiClient.js'
 import { AmazonPrograms } from './AmazonPrograms.js'
 import { AssociatedItem } from './AssociatedItem.js'
 import { BuyerRequestedCancel } from './BuyerRequestedCancel.js'
+import { ExportInfo } from './ExportInfo.js'
 import { ItemBuyerInfo } from './ItemBuyerInfo.js'
 import { Measurement } from './Measurement.js'
 import { Money } from './Money.js'
@@ -106,6 +107,7 @@ export class OrderItem {
       if (data.hasOwnProperty('Measurement')) { obj.measurement = Measurement.constructFromObject(data.Measurement) }
       if (data.hasOwnProperty('ShippingConstraints')) { obj.shippingConstraints = ShippingConstraints.constructFromObject(data.ShippingConstraints) }
       if (data.hasOwnProperty('AmazonPrograms')) { obj.amazonPrograms = AmazonPrograms.constructFromObject(data.AmazonPrograms) }
+      if (data.hasOwnProperty('ExportInfo')) { obj.exportInfo = ExportInfo.constructFromObject(data.ExportInfo) }
     }
     return obj
   }
@@ -390,3 +392,9 @@ OrderItem.prototype.shippingConstraints = undefined
  * @type {AmazonPrograms}
  */
 OrderItem.prototype.amazonPrograms = undefined
+
+/**
+ * @member {ExportInfo} exportInfo
+ * @type {ExportInfo}
+ */
+OrderItem.prototype.exportInfo = undefined

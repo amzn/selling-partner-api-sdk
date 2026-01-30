@@ -57,6 +57,15 @@ function generateMockData(dataType, isArray = false) {
 }
 
 // Generate mock requests and responses for each operation
+const mockcreateGovernmentInvoiceData = {
+  request: {
+    'body': generateMockData('GovernmentInvoiceRequest')
+  },
+  response: {
+    statusCode: 204,
+    headers: {}
+  }
+};
 const mockcreateInvoicesExportData = {
   request: {
     'body': generateMockData('ExportInvoicesRequest')
@@ -64,6 +73,32 @@ const mockcreateInvoicesExportData = {
   response: {
     data: generateMockData('ExportInvoicesResponse'),
     statusCode: 202,
+    headers: {}
+  }
+};
+const mockgetGovernmentInvoiceDocumentData = {
+  request: {
+    'marketplaceId': generateMockData('String'),
+    'transactionType': generateMockData('String'),
+    'shipmentId': generateMockData('String'),
+    'invoiceType': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('GovtInvoiceDocumentResponse'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mockgetGovernmentInvoiceStatusData = {
+  request: {
+    'marketplaceId': generateMockData('String'),
+    'transactionType': generateMockData('String'),
+    'shipmentId': generateMockData('String'),
+    'invoiceType': generateMockData('String'),
+  },
+  response: {
+    data: generateMockData('GovernmentInvoiceStatusResponse'),
+    statusCode: 200,
     headers: {}
   }
 };
@@ -142,6 +177,51 @@ describe('InvoicesApi', () => {
     sandbox.restore();
   });
 
+  describe('createGovernmentInvoice', () => {
+    it('should successfully call createGovernmentInvoice', async () => {
+      instance.apiClient.callApi.resolves(mockcreateGovernmentInvoiceData.response);
+
+      const params = [
+        mockcreateGovernmentInvoiceData.request['body']
+      ];
+      const data = await instance.createGovernmentInvoice(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call createGovernmentInvoiceWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateGovernmentInvoiceData.response);
+
+      const params = [
+        mockcreateGovernmentInvoiceData.request['body']
+      ];
+      const response = await instance.createGovernmentInvoiceWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateGovernmentInvoiceData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateGovernmentInvoiceData.request['body']
+        ];
+        await instance.createGovernmentInvoice(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
   describe('createInvoicesExport', () => {
     it('should successfully call createInvoicesExport', async () => {
       instance.apiClient.callApi.resolves(mockcreateInvoicesExportData.response);
@@ -183,6 +263,120 @@ describe('InvoicesApi', () => {
           mockcreateInvoicesExportData.request['body']
         ];
         await instance.createInvoicesExport(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getGovernmentInvoiceDocument', () => {
+    it('should successfully call getGovernmentInvoiceDocument', async () => {
+      instance.apiClient.callApi.resolves(mockgetGovernmentInvoiceDocumentData.response);
+
+      const params = [
+        mockgetGovernmentInvoiceDocumentData.request['marketplaceId'],
+        mockgetGovernmentInvoiceDocumentData.request['transactionType'],
+        mockgetGovernmentInvoiceDocumentData.request['shipmentId'],
+        mockgetGovernmentInvoiceDocumentData.request['invoiceType'],
+      ];
+      const data = await instance.getGovernmentInvoiceDocument(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GovtInvoiceDocumentResponse).to.be.true;
+      expect(data).to.equal(mockgetGovernmentInvoiceDocumentData.response.data);
+    });
+
+    it('should successfully call getGovernmentInvoiceDocumentWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetGovernmentInvoiceDocumentData.response);
+
+      const params = [
+        mockgetGovernmentInvoiceDocumentData.request['marketplaceId'],
+        mockgetGovernmentInvoiceDocumentData.request['transactionType'],
+        mockgetGovernmentInvoiceDocumentData.request['shipmentId'],
+        mockgetGovernmentInvoiceDocumentData.request['invoiceType'],
+      ];
+      const response = await instance.getGovernmentInvoiceDocumentWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetGovernmentInvoiceDocumentData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+      expect(response.data).to.equal(mockgetGovernmentInvoiceDocumentData.response.data)
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetGovernmentInvoiceDocumentData.request['marketplaceId'],
+          mockgetGovernmentInvoiceDocumentData.request['transactionType'],
+          mockgetGovernmentInvoiceDocumentData.request['shipmentId'],
+          mockgetGovernmentInvoiceDocumentData.request['invoiceType'],
+        ];
+        await instance.getGovernmentInvoiceDocument(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('getGovernmentInvoiceStatus', () => {
+    it('should successfully call getGovernmentInvoiceStatus', async () => {
+      instance.apiClient.callApi.resolves(mockgetGovernmentInvoiceStatusData.response);
+
+      const params = [
+        mockgetGovernmentInvoiceStatusData.request['marketplaceId'],
+        mockgetGovernmentInvoiceStatusData.request['transactionType'],
+        mockgetGovernmentInvoiceStatusData.request['shipmentId'],
+        mockgetGovernmentInvoiceStatusData.request['invoiceType'],
+      ];
+      const data = await instance.getGovernmentInvoiceStatus(...params);
+
+      expect(data instanceof TheSellingPartnerApiForInvoices.GovernmentInvoiceStatusResponse).to.be.true;
+      expect(data).to.equal(mockgetGovernmentInvoiceStatusData.response.data);
+    });
+
+    it('should successfully call getGovernmentInvoiceStatusWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetGovernmentInvoiceStatusData.response);
+
+      const params = [
+        mockgetGovernmentInvoiceStatusData.request['marketplaceId'],
+        mockgetGovernmentInvoiceStatusData.request['transactionType'],
+        mockgetGovernmentInvoiceStatusData.request['shipmentId'],
+        mockgetGovernmentInvoiceStatusData.request['invoiceType'],
+      ];
+      const response = await instance.getGovernmentInvoiceStatusWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetGovernmentInvoiceStatusData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+      expect(response.data).to.equal(mockgetGovernmentInvoiceStatusData.response.data)
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetGovernmentInvoiceStatusData.request['marketplaceId'],
+          mockgetGovernmentInvoiceStatusData.request['transactionType'],
+          mockgetGovernmentInvoiceStatusData.request['shipmentId'],
+          mockgetGovernmentInvoiceStatusData.request['invoiceType'],
+        ];
+        await instance.getGovernmentInvoiceStatus(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;

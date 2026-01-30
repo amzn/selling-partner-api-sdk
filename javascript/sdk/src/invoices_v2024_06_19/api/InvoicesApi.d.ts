@@ -23,6 +23,18 @@ export class InvoicesApi {
        */
     getRateLimiter(operation: string): any;
     /**
+       * Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+       * @param {GovernmentInvoiceRequest} body Information required to create the government invoice.
+       * @return {Promise<void>}
+       */
+    createGovernmentInvoiceWithHttpInfo(body: GovernmentInvoiceRequest): Promise<void>;
+    /**
+       * Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+       * @param {GovernmentInvoiceRequest} body Information required to create the government invoice.
+       * @return {Promise<void>}
+       */
+    createGovernmentInvoice(body: GovernmentInvoiceRequest): Promise<void>;
+    /**
        * Creates an invoice export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.167 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {ExportInvoicesRequest} body Information required to create the export request.
        * @return {Promise<ExportInvoicesResponse>}
@@ -34,6 +46,62 @@ export class InvoicesApi {
        * @return {Promise<ExportInvoicesResponse>}
        */
     createInvoicesExport(body: ExportInvoicesRequest): Promise<ExportInvoicesResponse>;
+    /**
+       * Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+       * @param {String} marketplaceId The invoices returned will match the marketplace that you specify.
+       * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+       * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {Object} [opts] Optional parameters
+       * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+       * @param {String} [opts.fileFormat] Requested file format. Default is XML
+       * @return {Promise<GovtInvoiceDocumentResponse>}
+       */
+    getGovernmentInvoiceDocumentWithHttpInfo(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
+        inboundPlanId?: string;
+        fileFormat?: string;
+    }): Promise<GovtInvoiceDocumentResponse>;
+    /**
+       * Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+       * @param {String} marketplaceId The invoices returned will match the marketplace that you specify.
+       * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+       * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {Object} [opts] Optional parameters
+       * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+       * @param {String} [opts.fileFormat] Requested file format. Default is XML
+       * @return {Promise<GovtInvoiceDocumentResponse>}
+       */
+    getGovernmentInvoiceDocument(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
+        inboundPlanId?: string;
+        fileFormat?: string;
+    }): Promise<GovtInvoiceDocumentResponse>;
+    /**
+       * Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+       * @param {String} marketplaceId The invoices status will match the marketplace that you specify.
+       * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+       * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {Object} [opts] Optional parameters
+       * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+       * @return {Promise<GovernmentInvoiceStatusResponse>}
+       */
+    getGovernmentInvoiceStatusWithHttpInfo(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
+        inboundPlanId?: string;
+    }): Promise<GovernmentInvoiceStatusResponse>;
+    /**
+       * Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \&quot;Usage Plans and Rate Limits\&quot; in the Selling Partner API documentation.
+       * @param {String} marketplaceId The invoices status will match the marketplace that you specify.
+       * @param {String} transactionType Marketplace specific classification of the transaction type that originated the invoice. Check &#39;transactionType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {String} shipmentId The unique shipment identifier to get an invoice for.
+       * @param {String} invoiceType Marketplace specific classification of the invoice type. Check &#39;invoiceType&#39; options using &#39;getInvoicesAttributes&#39; operation.
+       * @param {Object} [opts] Optional parameters
+       * @param {String} [opts.inboundPlanId] The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+       * @return {Promise<GovernmentInvoiceStatusResponse>}
+       */
+    getGovernmentInvoiceStatus(marketplaceId: string, transactionType: string, shipmentId: string, invoiceType: string, opts?: {
+        inboundPlanId?: string;
+    }): Promise<GovernmentInvoiceStatusResponse>;
     /**
        * Returns invoice data for the specified invoice. This operation returns only a subset of the invoices data; refer to the response definition to get all the possible attributes. To get the full invoice, use the &#x60;createInvoicesExport&#x60; operation to start an export request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 2 | 15 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} marketplaceId The marketplace from which you want the invoice.
@@ -190,8 +258,11 @@ export class InvoicesApi {
     }): Promise<GetInvoicesExportsResponse>;
     #private;
 }
+import { GovernmentInvoiceRequest } from '../model/GovernmentInvoiceRequest.js';
 import { ExportInvoicesRequest } from '../model/ExportInvoicesRequest.js';
 import { ExportInvoicesResponse } from '../model/ExportInvoicesResponse.js';
+import { GovtInvoiceDocumentResponse } from '../model/GovtInvoiceDocumentResponse.js';
+import { GovernmentInvoiceStatusResponse } from '../model/GovernmentInvoiceStatusResponse.js';
 import { GetInvoiceResponse } from '../model/GetInvoiceResponse.js';
 import { GetInvoicesResponse } from '../model/GetInvoicesResponse.js';
 import { GetInvoicesAttributesResponse } from '../model/GetInvoicesAttributesResponse.js';
