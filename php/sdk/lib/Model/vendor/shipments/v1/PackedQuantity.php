@@ -1,6 +1,6 @@
 <?php
 /**
- * PackageItemDetails
+ * PackedQuantity
  *
  * PHP version 8.3
  *
@@ -34,16 +34,16 @@ use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
 
 /**
- * PackageItemDetails Class Doc Comment
+ * PackedQuantity Class Doc Comment
  *
  * @category Class
- * @description Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.
+ * @description Details of item quantity.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class PackedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'PackageItemDetails';
+    protected static string $openAPIModelName = 'PackedQuantity';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'purchase_order_number' => 'string',
-             'lot_number' => 'string',
-             'expiry' => '\SpApi\Model\vendor\shipments\v1\Expiry'    ];
+             'amount' => 'int',
+             'unit_of_measure' => 'string',
+             'unit_size' => 'int'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -72,9 +72,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-            'purchase_order_number' => null,
-            'lot_number' => null,
-            'expiry' => null    ];
+            'amount' => null,
+            'unit_of_measure' => null,
+            'unit_size' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -82,9 +82,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'purchase_order_number' => true,
-        'lot_number' => true,
-        'expiry' => true
+        'amount' => false,
+        'unit_of_measure' => false,
+        'unit_size' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static array $attributeMap = [
-        'purchase_order_number' => 'purchaseOrderNumber',
-                'lot_number' => 'lotNumber',
-                'expiry' => 'expiry'
+        'amount' => 'amount',
+                'unit_of_measure' => 'unitOfMeasure',
+                'unit_size' => 'unitSize'
         
     ];
 
@@ -185,9 +185,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static array $setters = [
-        'purchase_order_number' => 'setPurchaseOrderNumber',
-        'lot_number' => 'setLotNumber',
-        'expiry' => 'setExpiry'
+        'amount' => 'setAmount',
+        'unit_of_measure' => 'setUnitOfMeasure',
+        'unit_size' => 'setUnitSize'
     ];
 
     /**
@@ -196,9 +196,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static array $getters = [
-        'purchase_order_number' => 'getPurchaseOrderNumber',
-        'lot_number' => 'getLotNumber',
-        'expiry' => 'getExpiry'
+        'amount' => 'getAmount',
+        'unit_of_measure' => 'getUnitOfMeasure',
+        'unit_size' => 'getUnitSize'
     ];
 
     /**
@@ -242,6 +242,21 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
+    public const UNIT_OF_MEASURE_CASES = 'Cases';
+    public const UNIT_OF_MEASURE_EACHES = 'Eaches';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getUnitOfMeasureAllowableValues(): array
+    {
+        return [
+            self::UNIT_OF_MEASURE_CASES,
+            self::UNIT_OF_MEASURE_EACHES,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -258,9 +273,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('purchase_order_number', $data ?? [], null);
-        $this->setIfExists('lot_number', $data ?? [], null);
-        $this->setIfExists('expiry', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('unit_of_measure', $data ?? [], null);
+        $this->setIfExists('unit_size', $data ?? [], null);
     }
 
     /**
@@ -290,6 +305,21 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['unit_of_measure'] === null) {
+            $invalidProperties[] = "'unit_of_measure' can't be null";
+        }
+        $allowedValues = $this->getUnitOfMeasureAllowableValues();
+        if (!is_null($this->container['unit_of_measure']) && !in_array($this->container['unit_of_measure'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'unit_of_measure', must be one of '%s'",
+                $this->container['unit_of_measure'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -306,103 +336,99 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets purchase_order_number
+     * Gets amount
      *
-     * @return string|null
+     * @return int
      */
-    public function getPurchaseOrderNumber(): ?string
+    public function getAmount(): int
     {
-        return $this->container['purchase_order_number'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets purchase_order_number
+     * Sets amount
      *
-     * @param string|null $purchase_order_number The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.
+     * @param int $amount Amount of units shipped for a specific item at a shipment level. If the item is present only in certain cartons or pallets within the shipment, please provide this at the appropriate carton or pallet level.
      *
      * @return self
      */
-    public function setPurchaseOrderNumber(?string $purchase_order_number): self
+    public function setAmount(int $amount): self
     {
-        if (is_null($purchase_order_number)) {
-            array_push($this->openAPINullablesSetToNull, 'purchase_order_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('purchase_order_number', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
-        $this->container['purchase_order_number'] = $purchase_order_number;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
 
     /**
-     * Gets lot_number
+     * Gets unit_of_measure
      *
-     * @return string|null
+     * @return string
      */
-    public function getLotNumber(): ?string
+    public function getUnitOfMeasure(): string
     {
-        return $this->container['lot_number'];
+        return $this->container['unit_of_measure'];
     }
 
     /**
-     * Sets lot_number
+     * Sets unit_of_measure
      *
-     * @param string|null $lot_number The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.
+     * @param string $unit_of_measure Unit of measure for the shipped quantity.
      *
      * @return self
      */
-    public function setLotNumber(?string $lot_number): self
+    public function setUnitOfMeasure(string $unit_of_measure): self
     {
-        if (is_null($lot_number)) {
-            array_push($this->openAPINullablesSetToNull, 'lot_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('lot_number', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($unit_of_measure)) {
+            throw new \InvalidArgumentException('non-nullable unit_of_measure cannot be null');
         }
-        $this->container['lot_number'] = $lot_number;
+        $allowedValues = $this->getUnitOfMeasureAllowableValues();
+        if (!in_array($unit_of_measure, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'unit_of_measure', must be one of '%s'",
+                    $unit_of_measure,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['unit_of_measure'] = $unit_of_measure;
 
         return $this;
     }
 
     /**
-     * Gets expiry
+     * Gets unit_size
      *
-     * @return \SpApi\Model\vendor\shipments\v1\Expiry|null
+     * @return int|null
      */
-    public function getExpiry(): ?\SpApi\Model\vendor\shipments\v1\Expiry
+    public function getUnitSize(): ?int
     {
-        return $this->container['expiry'];
+        return $this->container['unit_size'];
     }
 
     /**
-     * Sets expiry
+     * Sets unit_size
      *
-     * @param \SpApi\Model\vendor\shipments\v1\Expiry|null $expiry expiry
+     * @param int|null $unit_size The case size, in the event that we ordered using cases. Otherwise, 1.
      *
      * @return self
      */
-    public function setExpiry(?\SpApi\Model\vendor\shipments\v1\Expiry $expiry): self
+    public function setUnitSize(?int $unit_size): self
     {
-        if (is_null($expiry)) {
-            array_push($this->openAPINullablesSetToNull, 'expiry');
+        if (is_null($unit_size)) {
+            array_push($this->openAPINullablesSetToNull, 'unit_size');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiry', $nullablesSetToNull);
+            $index = array_search('unit_size', $nullablesSetToNull);
             if ($index !== false) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['expiry'] = $expiry;
+        $this->container['unit_size'] = $unit_size;
 
         return $this;
     }

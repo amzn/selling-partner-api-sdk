@@ -713,5 +713,10 @@ class TestHelper
         //UpdateInventoryApi
         'testSubmitInventoryUpdate202',
         'testSubmitInventoryUpdate400',
+        // Notifications Api
+        'testGetDestination200', // returns 500
+        'testGetDestinations200', // returns 500
+        'testDeleteDestination200', // returns 500
+        'testCreateDestination200', // returns 500
     ];
 }

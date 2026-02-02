@@ -44,6 +44,7 @@ use SpApi\HeaderSelector;
 use SpApi\Model\orders\v0\ConfirmShipmentRequest;
 use SpApi\Model\orders\v0\GetOrderAddressResponse;
 use SpApi\Model\orders\v0\GetOrderBuyerInfoResponse;
+use SpApi\Model\orders\v0\GetOrderFulfillmentInstructionsResponse;
 use SpApi\Model\orders\v0\GetOrderItemsBuyerInfoResponse;
 use SpApi\Model\orders\v0\GetOrderItemsResponse;
 use SpApi\Model\orders\v0\GetOrderRegulatedInfoResponse;
@@ -70,6 +71,7 @@ class OrdersV0Api
     public ?LimiterInterface $getOrderRateLimiter;
     public ?LimiterInterface $getOrderAddressRateLimiter;
     public ?LimiterInterface $getOrderBuyerInfoRateLimiter;
+    public ?LimiterInterface $getOrderFulfillmentInstructionsRateLimiter;
     public ?LimiterInterface $getOrderItemsRateLimiter;
     public ?LimiterInterface $getOrderItemsBuyerInfoRateLimiter;
     public ?LimiterInterface $getOrderRegulatedInfoRateLimiter;
@@ -113,6 +115,8 @@ class OrdersV0Api
             $this->getOrderAddressRateLimiter = $factory->create('OrdersV0Api-getOrderAddress');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderBuyerInfo'), $this->rateLimitStorage);
             $this->getOrderBuyerInfoRateLimiter = $factory->create('OrdersV0Api-getOrderBuyerInfo');
+            $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderFulfillmentInstructions'), $this->rateLimitStorage);
+            $this->getOrderFulfillmentInstructionsRateLimiter = $factory->create('OrdersV0Api-getOrderFulfillmentInstructions');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderItems'), $this->rateLimitStorage);
             $this->getOrderItemsRateLimiter = $factory->create('OrdersV0Api-getOrderItems');
             $factory = new RateLimiterFactory(Configuration::getRateLimitOptions('OrdersV0Api-getOrderItemsBuyerInfo'), $this->rateLimitStorage);
@@ -1240,6 +1244,277 @@ class OrdersV0Api
     }
 
     /**
+     * Operation getOrderFulfillmentInstructions.
+     *
+     * @param string      $order_id
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderFulfillmentInstructions(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): GetOrderFulfillmentInstructionsResponse {
+        list($response) = $this->getOrderFulfillmentInstructionsWithHttpInfo($order_id, $restrictedDataToken);
+
+        return $response;
+    }
+
+    /**
+     * Operation getOrderFulfillmentInstructionsWithHttpInfo.
+     *
+     * @param string      $order_id
+     *                                         The Amazon order identifier in 3-7-7 format. (required)
+     * @param null|string $restrictedDataToken Restricted Data Token (RDT) for accessing restricted resources (optional, required for operations that return PII)
+     *
+     * @return array of \SpApi\Model\orders\v0\GetOrderFulfillmentInstructionsResponse, HTTP status code, HTTP response headers (array of strings)
+     *
+     * @throws ApiException              on non-2xx response
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderFulfillmentInstructionsWithHttpInfo(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): array {
+        $request = $this->getOrderFulfillmentInstructionsRequest($order_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderFulfillmentInstructions');
+        } else {
+            $request = $this->config->sign($request);
+        }
+
+        try {
+            $options = $this->createHttpClientOption();
+
+            try {
+                if ($this->rateLimiterEnabled) {
+                    $this->getOrderFulfillmentInstructionsRateLimiter->consume()->ensureAccepted();
+                }
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getResponse()->getBody()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+            if ('\SpApi\Model\orders\v0\GetOrderFulfillmentInstructionsResponse' === '\SplFileObject') {
+                $content = $response->getBody(); // stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ('\SpApi\Model\orders\v0\GetOrderFulfillmentInstructionsResponse' !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, '\SpApi\Model\orders\v0\GetOrderFulfillmentInstructionsResponse', []),
+                $response->getStatusCode(),
+                $response->getHeaders(),
+            ];
+        } catch (ApiException $e) {
+            $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\SpApi\Model\orders\v0\GetOrderFulfillmentInstructionsResponse',
+                $e->getResponseHeaders()
+            );
+            $e->setResponseObject($data);
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getOrderFulfillmentInstructionsAsync.
+     *
+     * @param string $order_id
+     *                         The Amazon order identifier in 3-7-7 format. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderFulfillmentInstructionsAsync(
+        string $order_id
+    ): PromiseInterface {
+        return $this->getOrderFulfillmentInstructionsAsyncWithHttpInfo($order_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            )
+        ;
+    }
+
+    /**
+     * Operation getOrderFulfillmentInstructionsAsyncWithHttpInfo.
+     *
+     * @param string $order_id
+     *                         The Amazon order identifier in 3-7-7 format. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderFulfillmentInstructionsAsyncWithHttpInfo(
+        string $order_id,
+        ?string $restrictedDataToken = null
+    ): PromiseInterface {
+        $returnType = '\SpApi\Model\orders\v0\GetOrderFulfillmentInstructionsResponse';
+        $request = $this->getOrderFulfillmentInstructionsRequest($order_id);
+        if (null !== $restrictedDataToken) {
+            $request = RestrictedDataTokenSigner::sign($request, $restrictedDataToken, 'OrdersV0Api-getOrderFulfillmentInstructions');
+        } else {
+            $request = $this->config->sign($request);
+        }
+        if ($this->rateLimiterEnabled) {
+            $this->getOrderFulfillmentInstructionsRateLimiter->consume()->ensureAccepted();
+        }
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ('\SplFileObject' === $returnType) {
+                        $content = $response->getBody(); // stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('string' !== $returnType) {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders(),
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            )
+        ;
+    }
+
+    /**
+     * Create request for operation 'getOrderFulfillmentInstructions'.
+     *
+     * @param string $order_id
+     *                         The Amazon order identifier in 3-7-7 format. (required)
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function getOrderFulfillmentInstructionsRequest(
+        string $order_id
+    ): Request {
+        // verify the required parameter 'order_id' is set
+        if (null === $order_id || (is_array($order_id) && 0 === count($order_id))) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $order_id when calling getOrderFulfillmentInstructions'
+            );
+        }
+
+        $resourcePath = '/orders/v0/orders/{orderId}/fulfillmentInstructions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // path params
+        if (null !== $order_id) {
+            $resourcePath = str_replace(
+                '{orderId}',
+                ObjectSerializer::toPathValue($order_id),
+                $resourcePath
+            );
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json'],
+            '',
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem,
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+            } elseif ('application/json' === $headers['Content-Type']) {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams, $this->config);
+            }
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams, $this->config);
+
+        return new Request(
+            'GET',
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getOrderItems.
      *
      * @param string      $order_id
@@ -2142,9 +2417,9 @@ class OrdersV0Api
      * @param null|string   $store_chain_store_id
      *                                                           The store chain store identifier. Linked to a specific store in a store chain. (optional)
      * @param null|string   $earliest_delivery_date_before
-     *                                                           Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $earliest_delivery_date_after
-     *                                                           Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_before
      *                                                           Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_after
@@ -2221,9 +2496,9 @@ class OrdersV0Api
      * @param null|string   $store_chain_store_id
      *                                                           The store chain store identifier. Linked to a specific store in a store chain. (optional)
      * @param null|string   $earliest_delivery_date_before
-     *                                                           Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $earliest_delivery_date_after
-     *                                                           Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_before
      *                                                           Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_after
@@ -2368,9 +2643,9 @@ class OrdersV0Api
      * @param null|string   $store_chain_store_id
      *                                                           The store chain store identifier. Linked to a specific store in a store chain. (optional)
      * @param null|string   $earliest_delivery_date_before
-     *                                                           Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $earliest_delivery_date_after
-     *                                                           Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_before
      *                                                           Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_after
@@ -2448,9 +2723,9 @@ class OrdersV0Api
      * @param null|string   $store_chain_store_id
      *                                                           The store chain store identifier. Linked to a specific store in a store chain. (optional)
      * @param null|string   $earliest_delivery_date_before
-     *                                                           Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $earliest_delivery_date_after
-     *                                                           Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_before
      *                                                           Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_after
@@ -2569,9 +2844,9 @@ class OrdersV0Api
      * @param null|string   $store_chain_store_id
      *                                                           The store chain store identifier. Linked to a specific store in a store chain. (optional)
      * @param null|string   $earliest_delivery_date_before
-     *                                                           Use this date to select orders with a earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $earliest_delivery_date_after
-     *                                                           Use this date to select orders with a earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
+     *                                                           Use this date to select orders with an earliest delivery date after (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_before
      *                                                           Use this date to select orders with a latest delivery date before (or at) a specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601) format. (optional)
      * @param null|string   $latest_delivery_date_after

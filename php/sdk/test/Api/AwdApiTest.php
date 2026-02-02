@@ -394,18 +394,18 @@ class AwdApiTest extends BaseTestCase
               },
               &quot;measurements&quot; : {
                 &quot;dimensions&quot; : {
-                  &quot;height&quot; : 1.0,
-                  &quot;length&quot; : 1.0,
+                  &quot;height&quot; : 1,
+                  &quot;length&quot; : 1,
                   &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
-                  &quot;width&quot; : 1.0
+                  &quot;width&quot; : 1
                 },
                 &quot;volume&quot; : {
                   &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
-                  &quot;volume&quot; : 1.0
+                  &quot;volume&quot; : 1
                 },
                 &quot;weight&quot; : {
                   &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
-                  &quot;weight&quot; : 1.0
+                  &quot;weight&quot; : 1
                 }
               },
               &quot;type&quot; : &quot;CASE&quot;
@@ -426,25 +426,25 @@ class AwdApiTest extends BaseTestCase
               },
               &quot;measurements&quot; : {
                 &quot;dimensions&quot; : {
-                  &quot;height&quot; : 1.0,
-                  &quot;length&quot; : 1.0,
+                  &quot;height&quot; : 1,
+                  &quot;length&quot; : 1,
                   &quot;unitOfMeasurement&quot; : &quot;INCHES&quot;,
-                  &quot;width&quot; : 1.0
+                  &quot;width&quot; : 1
                 },
                 &quot;volume&quot; : {
                   &quot;unitOfMeasurement&quot; : &quot;CUIN&quot;,
-                  &quot;volume&quot; : 1.0
+                  &quot;volume&quot; : 1
                 },
                 &quot;weight&quot; : {
                   &quot;unitOfMeasurement&quot; : &quot;POUNDS&quot;,
-                  &quot;weight&quot; : 1.0
+                  &quot;weight&quot; : 1
                 }
               },
               &quot;type&quot; : &quot;CASE&quot;
             }
           }
         } ],
-        &quot;previewedAt&quot; : &quot;1688454771870&quot;
+        &quot;previewedAt&quot; : &quot;2025-06-20T19:30:58.466Z&quot;
       }
     } ]
   }
@@ -892,6 +892,179 @@ class AwdApiTest extends BaseTestCase
         $this->markTestSkipped('Skip test for this operation.');
     }
     /**
+     * Test case for confirmReplenishmentOrder_204
+     */
+    public function testConfirmReplenishmentOrder204()
+    {
+        // Dynamic sandbox case
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testConfirmReplenishmentOrder204', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            // Skip entire class
+            if ($this->testHelper->shouldSkipTest('AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $result = $this->testHelper->buildRequestForDynamicSandBox(
+                $this->apiInstance,
+                'confirmReplenishmentOrder'
+            );
+            $requestParams = $result;
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->confirmReplenishmentOrderWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(204, $statusCode);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 204);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_400
+     */
+    public function testConfirmReplenishmentOrder400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testConfirmReplenishmentOrder400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot; &quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;OrderId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'confirmReplenishmentOrder'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->confirmReplenishmentOrderWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_403
+     */
+    public function testConfirmReplenishmentOrder403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_404
+     */
+    public function testConfirmReplenishmentOrder404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_413
+     */
+    public function testConfirmReplenishmentOrder413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_415
+     */
+    public function testConfirmReplenishmentOrder415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_429
+     */
+    public function testConfirmReplenishmentOrder429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_500
+     */
+    public function testConfirmReplenishmentOrder500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for confirmReplenishmentOrder_503
+     */
+    public function testConfirmReplenishmentOrder503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
      * Test case for createInbound_201
      */
     public function testCreateInbound201()
@@ -1208,6 +1381,235 @@ class AwdApiTest extends BaseTestCase
      * Test case for createInbound_503
      */
     public function testCreateInbound503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createReplenishmentOrder_201
+     */
+    public function testCreateReplenishmentOrder201()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateReplenishmentOrder201', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;CreateReplenishmentOrder 201 response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ReplenishmentOrderReference&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;products&quot; : [ {
+                &quot;quantity&quot; : 20,
+                &quot;sku&quot; : &quot;TEST_SKU&quot;
+              } ],
+              &quot;preferences&quot; : {
+                &quot;confirmation&quot; : &quot;AUTO&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;orderId&quot; : &quot;TEST_ORDER_ID&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'createReplenishmentOrder'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createReplenishmentOrderWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(201, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 201, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 201);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for createReplenishmentOrder_400
+     */
+    public function testCreateReplenishmentOrder400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateReplenishmentOrder400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;products&quot; : [ {
+                &quot;quantity&quot; : 1,
+                &quot;sku&quot; : &quot;TEST_SKU&quot;
+              } ]
+            }
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;Invalid package type: TEST&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'createReplenishmentOrder'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createReplenishmentOrderWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for createReplenishmentOrder_403
+     */
+    public function testCreateReplenishmentOrder403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createReplenishmentOrder_404
+     */
+    public function testCreateReplenishmentOrder404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createReplenishmentOrder_413
+     */
+    public function testCreateReplenishmentOrder413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createReplenishmentOrder_415
+     */
+    public function testCreateReplenishmentOrder415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createReplenishmentOrder_429
+     */
+    public function testCreateReplenishmentOrder429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createReplenishmentOrder_500
+     */
+    public function testCreateReplenishmentOrder500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createReplenishmentOrder_503
+     */
+    public function testCreateReplenishmentOrder503()
     {
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');
@@ -1996,6 +2398,230 @@ class AwdApiTest extends BaseTestCase
         $this->markTestSkipped('Skip test for this operation.');
     }
     /**
+     * Test case for getReplenishmentOrder_200
+     */
+    public function testGetReplenishmentOrder200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetReplenishmentOrder200', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;GetReplenishmentOrder 200 response.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ReplenishmentOrder&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TEST_ORDER_ID&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;confirmedOn&quot; : &quot;2024-08-11T23:20:50.520Z&quot;,
+        &quot;createdAt&quot; : &quot;2024-08-10T23:20:50.520Z&quot;,
+        &quot;eligibleProducts&quot; : [ ],
+        &quot;distributionIneligibleReasons&quot; : [ ],
+        &quot;orderId&quot; : &quot;TEST_ORDER_ID&quot;,
+        &quot;status&quot; : &quot;SUCCESS&quot;,
+        &quot;outboundShipments&quot; : [ ],
+        &quot;products&quot; : [ ],
+        &quot;shippedProducts&quot; : [ ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getReplenishmentOrder'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getReplenishmentOrderWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getReplenishmentOrder_400
+     */
+    public function testGetReplenishmentOrder400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetReplenishmentOrder400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot; &quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;OrderId should be present for this request&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getReplenishmentOrder'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getReplenishmentOrderWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getReplenishmentOrder_403
+     */
+    public function testGetReplenishmentOrder403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getReplenishmentOrder_404
+     */
+    public function testGetReplenishmentOrder404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getReplenishmentOrder_413
+     */
+    public function testGetReplenishmentOrder413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getReplenishmentOrder_415
+     */
+    public function testGetReplenishmentOrder415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getReplenishmentOrder_429
+     */
+    public function testGetReplenishmentOrder429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getReplenishmentOrder_500
+     */
+    public function testGetReplenishmentOrder500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getReplenishmentOrder_503
+     */
+    public function testGetReplenishmentOrder503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
      * Test case for listInboundShipments_200
      */
     public function testListInboundShipments200()
@@ -2448,6 +3074,228 @@ class AwdApiTest extends BaseTestCase
      * Test case for listInventory_503
      */
     public function testListInventory503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for listReplenishmentOrders_200
+     */
+    public function testListReplenishmentOrders200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testListReplenishmentOrders200', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;ListReplenishmentOrders 200 response&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ReplenishmentOrderListing&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;orders&quot; : [ {
+          &quot;confirmedOn&quot; : &quot;2024-08-11T23:20:50.520Z&quot;,
+          &quot;createdAt&quot; : &quot;2024-08-10T23:20:50.520Z&quot;,
+          &quot;eligibleProducts&quot; : [ ],
+          &quot;distributionIneligibleReasons&quot; : [ ],
+          &quot;orderId&quot; : &quot;TEST_ORDER_ID&quot;,
+          &quot;status&quot; : &quot;SUCCESS&quot;,
+          &quot;outboundShipments&quot; : [ ],
+          &quot;products&quot; : [ ],
+          &quot;shippedProducts&quot; : [ ]
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'listReplenishmentOrders'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->listReplenishmentOrdersWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for listReplenishmentOrders_400
+     */
+    public function testListReplenishmentOrders400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testListReplenishmentOrders400', 'AwdApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;sortOrder&quot; : {
+            &quot;value&quot; : &quot;TEST&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;BAD_REQUEST&quot;,
+          &quot;details&quot; : &quot;This exception is thrown when client inputs are invalid&quot;,
+          &quot;message&quot; : &quot;Invalid sort order field: TEST&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'listReplenishmentOrders'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('AwdApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->listReplenishmentOrdersWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for listReplenishmentOrders_403
+     */
+    public function testListReplenishmentOrders403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for listReplenishmentOrders_404
+     */
+    public function testListReplenishmentOrders404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for listReplenishmentOrders_413
+     */
+    public function testListReplenishmentOrders413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for listReplenishmentOrders_415
+     */
+    public function testListReplenishmentOrders415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for listReplenishmentOrders_429
+     */
+    public function testListReplenishmentOrders429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for listReplenishmentOrders_500
+     */
+    public function testListReplenishmentOrders500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for listReplenishmentOrders_503
+     */
+    public function testListReplenishmentOrders503()
     {
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');

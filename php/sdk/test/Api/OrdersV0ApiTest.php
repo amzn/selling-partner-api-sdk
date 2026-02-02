@@ -330,11 +330,11 @@ class OrdersV0ApiTest extends BaseTestCase
           &quot;PurchaseDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
           &quot;LastUpdateDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
           &quot;OrderStatus&quot; : &quot;Pending&quot;,
-          &quot;FulfillmentChannel&quot; : &quot;SellerFulfilled&quot;,
+          &quot;FulfillmentChannel&quot; : &quot;MFN&quot;,
           &quot;NumberOfItemsShipped&quot; : 0,
           &quot;NumberOfItemsUnshipped&quot; : 0,
           &quot;PaymentMethod&quot; : &quot;Other&quot;,
-          &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCerificate&quot; ],
+          &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCertificate&quot; ],
           &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
           &quot;ShipmentServiceLevelCategory&quot; : &quot;Standard&quot;,
           &quot;OrderType&quot; : &quot;StandardOrder&quot;,
@@ -1100,6 +1100,260 @@ class OrdersV0ApiTest extends BaseTestCase
      * Test case for getOrderBuyerInfo_503
      */
     public function testGetOrderBuyerInfo503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getOrderFulfillmentInstructions_200
+     */
+    public function testGetOrderFulfillmentInstructions200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetOrderFulfillmentInstructions200', 'OrdersV0Api')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetOrderFulfillmentInstructionsResponse&quot;
+      },
+      &quot;example&quot; : {
+        &quot;payload&quot; : {
+          &quot;AmazonOrderId&quot; : &quot;902-3159896-1390916&quot;,
+          &quot;FulfillmentPlans&quot; : [ {
+            &quot;CreationDate&quot; : &quot;2023-10-25T12:00:00Z&quot;,
+            &quot;FulfillmentPlanId&quot; : &quot;1&quot;,
+            &quot;FulfillmentType&quot; : &quot;SHIP&quot;,
+            &quot;FulfillmentPlanStatus&quot; : &quot;ACTIVE&quot;,
+            &quot;LastStatusUpdateDate&quot; : &quot;2023-10-25T12:00:00Z&quot;,
+            &quot;FulfillmentPlanItems&quot; : [ {
+              &quot;OrderItemId&quot; : &quot;6217867064725&quot;,
+              &quot;Measurement&quot; : {
+                &quot;Unit&quot; : &quot;COUNT&quot;,
+                &quot;Value&quot; : 20
+              }
+            } ],
+            &quot;ShippingInstructions&quot; : {
+              &quot;CarrierCode&quot; : &quot;UPS&quot;,
+              &quot;ShippingMethod&quot; : &quot;Ground&quot;,
+              &quot;ShippingConstraints&quot; : {
+                &quot;PalletDelivery&quot; : &quot;MANDATORY&quot;
+              }
+            },
+            &quot;FulfillmentLocation&quot; : {
+              &quot;SupplySourceId&quot; : &quot;bb3e1352-a3b4-4b99-aeb7-b1a923837ef2&quot;
+            }
+          } ]
+        }
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TEST_CASE_200&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;payload&quot; : {
+          &quot;AmazonOrderId&quot; : &quot;TEST_CASE_200&quot;,
+          &quot;FulfillmentPlans&quot; : [ {
+            &quot;CreationDate&quot; : &quot;2023-10-25T12:00:00Z&quot;,
+            &quot;FulfillmentPlanId&quot; : &quot;1&quot;,
+            &quot;FulfillmentType&quot; : &quot;SHIP&quot;,
+            &quot;FulfillmentPlanStatus&quot; : &quot;ACTIVE&quot;,
+            &quot;LastStatusUpdateDate&quot; : &quot;2023-10-25T12:00:00Z&quot;,
+            &quot;FulfillmentPlanItems&quot; : [ {
+              &quot;OrderItemId&quot; : &quot;6217867064725&quot;,
+              &quot;Measurement&quot; : {
+                &quot;Unit&quot; : &quot;COUNT&quot;,
+                &quot;Value&quot; : 20
+              }
+            } ],
+            &quot;ShippingInstructions&quot; : {
+              &quot;CarrierCode&quot; : &quot;UPS&quot;,
+              &quot;ShippingMethod&quot; : &quot;Ground&quot;,
+              &quot;ShippingConstraints&quot; : {
+                &quot;PalletDelivery&quot; : &quot;MANDATORY&quot;
+              }
+            },
+            &quot;FulfillmentLocation&quot; : {
+              &quot;SupplySourceId&quot; : &quot;bb3e1352-a3b4-4b99-aeb7-b1a923837ef2&quot;
+            }
+          } ]
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getOrderFulfillmentInstructions'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getOrderFulfillmentInstructionsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getOrderFulfillmentInstructions_400
+     */
+    public function testGetOrderFulfillmentInstructions400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetOrderFulfillmentInstructions400', 'OrdersV0Api')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GetOrderFulfillmentInstructionsResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;orderId&quot; : {
+            &quot;value&quot; : &quot;TEST_CASE_400&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;InvalidInput&quot;,
+          &quot;message&quot; : &quot;Invalid Input&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getOrderFulfillmentInstructions'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('OrdersV0Api');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getOrderFulfillmentInstructionsWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getOrderFulfillmentInstructions_403
+     */
+    public function testGetOrderFulfillmentInstructions403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getOrderFulfillmentInstructions_404
+     */
+    public function testGetOrderFulfillmentInstructions404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getOrderFulfillmentInstructions_429
+     */
+    public function testGetOrderFulfillmentInstructions429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getOrderFulfillmentInstructions_500
+     */
+    public function testGetOrderFulfillmentInstructions500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getOrderFulfillmentInstructions_503
+     */
+    public function testGetOrderFulfillmentInstructions503()
     {
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');
@@ -2165,11 +2419,11 @@ class OrdersV0ApiTest extends BaseTestCase
             &quot;PurchaseDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
             &quot;LastUpdateDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
             &quot;OrderStatus&quot; : &quot;Pending&quot;,
-            &quot;FulfillmentChannel&quot; : &quot;SellerFulfilled&quot;,
+            &quot;FulfillmentChannel&quot; : &quot;MFN&quot;,
             &quot;NumberOfItemsShipped&quot; : 0,
             &quot;NumberOfItemsUnshipped&quot; : 0,
             &quot;PaymentMethod&quot; : &quot;Other&quot;,
-            &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCerificate&quot; ],
+            &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCertificate&quot; ],
             &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
             &quot;ShipmentServiceLevelCategory&quot; : &quot;Standard&quot;,
             &quot;OrderType&quot; : &quot;StandardOrder&quot;,
@@ -2322,11 +2576,11 @@ class OrdersV0ApiTest extends BaseTestCase
             &quot;PurchaseDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
             &quot;LastUpdateDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
             &quot;OrderStatus&quot; : &quot;Pending&quot;,
-            &quot;FulfillmentChannel&quot; : &quot;SellerFulfilled&quot;,
+            &quot;FulfillmentChannel&quot; : &quot;MFN&quot;,
             &quot;NumberOfItemsShipped&quot; : 0,
             &quot;NumberOfItemsUnshipped&quot; : 0,
             &quot;PaymentMethod&quot; : &quot;Other&quot;,
-            &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCerificate&quot; ],
+            &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCertificate&quot; ],
             &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
             &quot;ShipmentServiceLevelCategory&quot; : &quot;Standard&quot;,
             &quot;OrderType&quot; : &quot;StandardOrder&quot;,
@@ -2365,11 +2619,11 @@ class OrdersV0ApiTest extends BaseTestCase
             &quot;PurchaseDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
             &quot;LastUpdateDate&quot; : &quot;2017-01-20T19:49:35Z&quot;,
             &quot;OrderStatus&quot; : &quot;Pending&quot;,
-            &quot;FulfillmentChannel&quot; : &quot;SellerFulfilled&quot;,
+            &quot;FulfillmentChannel&quot; : &quot;MFN&quot;,
             &quot;NumberOfItemsShipped&quot; : 0,
             &quot;NumberOfItemsUnshipped&quot; : 0,
             &quot;PaymentMethod&quot; : &quot;Other&quot;,
-            &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCerificate&quot; ],
+            &quot;PaymentMethodDetails&quot; : [ &quot;CreditCard&quot;, &quot;GiftCertificate&quot; ],
             &quot;MarketplaceId&quot; : &quot;ATVPDKIKX0DER&quot;,
             &quot;ShipmentServiceLevelCategory&quot; : &quot;Standard&quot;,
             &quot;OrderType&quot; : &quot;StandardOrder&quot;,

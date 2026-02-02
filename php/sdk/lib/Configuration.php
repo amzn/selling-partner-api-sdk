@@ -447,6 +447,10 @@ class Configuration
 
         switch ($index) {
             case 0:
+                if (!array_key_exists($operationName, self::$rateLimitConfiguration)) {
+                    return ['interval' => '1 second', 'amount' => 1];
+                }
+
                 if (array_key_exists(2, self::$rateLimitConfiguration[$operationName])) {
                     return [
                         'interval' => self::$rateLimitConfiguration[$operationName][2].' seconds',
@@ -460,7 +464,11 @@ class Configuration
                 ];
 
             case 1:
-                return self::$rateLimitConfiguration[$operationName][$index];
+                if (!array_key_exists($operationName, self::$rateLimitConfiguration)) {
+                    return 1;
+                } else {
+                    return self::$rateLimitConfiguration[$operationName][$index];
+                }
         }
 
         throw new ApiException('Invalid index for rate limit configuration');
