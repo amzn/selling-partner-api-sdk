@@ -422,6 +422,18 @@ InvoicesApi-getInvoices:
 InvoicesApi-getInvoice:
   - 2
   - 15
+InvoicesApi-createGovernmentInvoice:
+  - 1
+  - 1
+  - 6
+InvoicesApi-getGovernmentInvoiceStatus:
+  - 1
+  - 1
+  - 6
+InvoicesApi-getGovernmentInvoiceDocument:
+  - 1
+  - 1
+  - 6
 # Listings Items API
 ListingsApi-deleteListingsItem:
   - 5
@@ -562,6 +574,14 @@ OrdersV0Api-updateVerificationStatus:
   - 1
   - 30
   - 2
+GetOrderApi-getOrder:
+  - 1
+  - 30
+  - 2
+SearchOrdersApi-searchOrders:
+  - 1
+  - 20
+  - 180
 # Product Fees API
 FeesApi-getMyFeesEstimateForSKU:
   - 1
