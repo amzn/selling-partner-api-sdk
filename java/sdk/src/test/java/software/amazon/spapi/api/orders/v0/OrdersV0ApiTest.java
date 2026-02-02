@@ -30,6 +30,7 @@ import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.orders.v0.ConfirmShipmentRequest;
 import software.amazon.spapi.models.orders.v0.GetOrderAddressResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderBuyerInfoResponse;
+import software.amazon.spapi.models.orders.v0.GetOrderFulfillmentInstructionsResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderItemsBuyerInfoResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderItemsResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderRegulatedInfoResponse;
@@ -95,6 +96,18 @@ public class OrdersV0ApiTest {
         String orderId = easyRandom.nextObject(String.class);
 
         ApiResponse<GetOrderBuyerInfoResponse> response = api.getOrderBuyerInfoWithHttpInfo(orderId);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void getOrderFulfillmentInstructionsTest() throws Exception {
+        instructBackendMock("ordersV0", "getOrderFulfillmentInstructions", "200");
+        String orderId = easyRandom.nextObject(String.class);
+
+        ApiResponse<GetOrderFulfillmentInstructionsResponse> response =
+                api.getOrderFulfillmentInstructionsWithHttpInfo(orderId);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

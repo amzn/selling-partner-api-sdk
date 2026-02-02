@@ -34,6 +34,9 @@ import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesDocumentResp
 import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesExportResponse;
 import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesExportsResponse;
 import software.amazon.spapi.models.invoices.v2024_06_19.GetInvoicesResponse;
+import software.amazon.spapi.models.invoices.v2024_06_19.GovernmentInvoiceRequest;
+import software.amazon.spapi.models.invoices.v2024_06_19.GovernmentInvoiceStatusResponse;
+import software.amazon.spapi.models.invoices.v2024_06_19.GovtInvoiceDocumentResponse;
 
 public class InvoicesApiTest {
 
@@ -57,6 +60,14 @@ public class InvoicesApiTest {
             .collectionSizeRange(1, 2));
 
     @Test
+    public void createGovernmentInvoiceTest() throws Exception {
+        instructBackendMock("invoices", "createGovernmentInvoice", "204");
+        GovernmentInvoiceRequest body = easyRandom.nextObject(GovernmentInvoiceRequest.class);
+
+        api.createGovernmentInvoiceWithHttpInfo(body);
+    }
+
+    @Test
     public void createInvoicesExportTest() throws Exception {
         instructBackendMock("invoices", "createInvoicesExport", "202");
         ExportInvoicesRequest body = easyRandom.nextObject(ExportInvoicesRequest.class);
@@ -65,6 +76,36 @@ public class InvoicesApiTest {
 
         assertEquals(202, response.getStatusCode());
         assertValidResponsePayload(202, response.getData());
+    }
+
+    @Test
+    public void getGovernmentInvoiceDocumentTest() throws Exception {
+        instructBackendMock("invoices", "getGovernmentInvoiceDocument", "200");
+        String marketplaceId = easyRandom.nextObject(String.class);
+        String transactionType = easyRandom.nextObject(String.class);
+        String shipmentId = easyRandom.nextObject(String.class);
+        String invoiceType = easyRandom.nextObject(String.class);
+
+        ApiResponse<GovtInvoiceDocumentResponse> response = api.getGovernmentInvoiceDocumentWithHttpInfo(
+                marketplaceId, transactionType, shipmentId, invoiceType, null, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void getGovernmentInvoiceStatusTest() throws Exception {
+        instructBackendMock("invoices", "getGovernmentInvoiceStatus", "200");
+        String marketplaceId = easyRandom.nextObject(String.class);
+        String transactionType = easyRandom.nextObject(String.class);
+        String shipmentId = easyRandom.nextObject(String.class);
+        String invoiceType = easyRandom.nextObject(String.class);
+
+        ApiResponse<GovernmentInvoiceStatusResponse> response = api.getGovernmentInvoiceStatusWithHttpInfo(
+                marketplaceId, transactionType, shipmentId, invoiceType, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
     }
 
     @Test

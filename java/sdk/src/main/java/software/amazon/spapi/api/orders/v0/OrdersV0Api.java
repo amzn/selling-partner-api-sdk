@@ -36,6 +36,7 @@ import software.amazon.spapi.StringUtil;
 import software.amazon.spapi.models.orders.v0.ConfirmShipmentRequest;
 import software.amazon.spapi.models.orders.v0.GetOrderAddressResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderBuyerInfoResponse;
+import software.amazon.spapi.models.orders.v0.GetOrderFulfillmentInstructionsResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderItemsBuyerInfoResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderItemsResponse;
 import software.amazon.spapi.models.orders.v0.GetOrderRegulatedInfoResponse;
@@ -67,6 +68,10 @@ public class OrdersV0Api {
 
     public final Bucket getOrderBuyerInfoBucket = Bucket.builder()
             .addLimit(config.getLimit("OrdersV0Api-getOrderBuyerInfo"))
+            .build();
+
+    public final Bucket getOrderFulfillmentInstructionsBucket = Bucket.builder()
+            .addLimit(config.getLimit("OrdersV0Api-getOrderFulfillmentInstructions"))
             .build();
 
     public final Bucket getOrderItemsBucket = Bucket.builder()
@@ -916,6 +921,221 @@ public class OrdersV0Api {
         } else throw new ApiException.RateLimitExceeded("getOrderBuyerInfo operation exceeds rate limit");
     }
     /**
+     * Build call for getOrderFulfillmentInstructions
+     *
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    private okhttp3.Call getOrderFulfillmentInstructionsCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath;
+        if ("/orders/v0/orders/{orderId}/fulfillmentInstructions"
+                .equals("/uploads/2020-11-01/uploadDestinations/{resource}")) {
+            localVarPath = "/orders/v0/orders/{orderId}/fulfillmentInstructions"
+                    .replaceAll("\\{" + "orderId" + "\\}", orderId.toString());
+        } else {
+            localVarPath = "/orders/v0/orders/{orderId}/fulfillmentInstructions"
+                    .replaceAll("\\{" + "orderId" + "\\}", apiClient.escapeString(orderId.toString()));
+        }
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {"application/json"};
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {};
+
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        return apiClient.buildCall(
+                localVarPath,
+                "GET",
+                localVarQueryParams,
+                localVarCollectionQueryParams,
+                localVarPostBody,
+                localVarHeaderParams,
+                localVarFormParams,
+                progressRequestListener);
+    }
+
+    private okhttp3.Call getOrderFulfillmentInstructionsValidateBeforeCall(
+            String orderId, final ProgressRequestBody.ProgressRequestListener progressRequestListener)
+            throws ApiException, LWAException {
+        // verify the required parameter 'orderId' is set
+        if (orderId == null) {
+            throw new ApiException(
+                    "Missing the required parameter 'orderId' when calling getOrderFulfillmentInstructions(Async)");
+        }
+
+        return getOrderFulfillmentInstructionsCall(orderId, progressRequestListener);
+    }
+
+    /**
+     * Returns the fulfillment instructions for the order that you specify. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return GetOrderFulfillmentInstructionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetOrderFulfillmentInstructionsResponse getOrderFulfillmentInstructions(
+            String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        ApiResponse<GetOrderFulfillmentInstructionsResponse> resp =
+                getOrderFulfillmentInstructionsWithHttpInfo(orderId, restrictedDataToken);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the fulfillment instructions for the order that you specify. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
+     * @return GetOrderFulfillmentInstructionsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public GetOrderFulfillmentInstructionsResponse getOrderFulfillmentInstructions(String orderId)
+            throws ApiException, LWAException {
+        ApiResponse<GetOrderFulfillmentInstructionsResponse> resp =
+                getOrderFulfillmentInstructionsWithHttpInfo(orderId, null);
+        return resp.getData();
+    }
+
+    /**
+     * Returns the fulfillment instructions for the order that you specify. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return ApiResponse&lt;GetOrderFulfillmentInstructionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetOrderFulfillmentInstructionsResponse> getOrderFulfillmentInstructionsWithHttpInfo(
+            String orderId, String restrictedDataToken) throws ApiException, LWAException {
+        okhttp3.Call call = getOrderFulfillmentInstructionsValidateBeforeCall(orderId, null);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "OrdersV0Api-getOrderFulfillmentInstructions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getOrderFulfillmentInstructionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOrderFulfillmentInstructionsResponse>() {}.getType();
+            return apiClient.execute(call, localVarReturnType);
+        } else throw new ApiException.RateLimitExceeded("getOrderFulfillmentInstructions operation exceeds rate limit");
+    }
+
+    /**
+     * Returns the fulfillment instructions for the order that you specify. **Usage Plan:** | Rate (requests per second)
+     * | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage
+     * plan rate limits for the operation, when available. The preceding table contains the default rate and burst
+     * values for this operation. Selling partners whose business demands require higher throughput might have higher
+     * rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate
+     * Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
+     * @return ApiResponse&lt;GetOrderFulfillmentInstructionsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public ApiResponse<GetOrderFulfillmentInstructionsResponse> getOrderFulfillmentInstructionsWithHttpInfo(
+            String orderId) throws ApiException, LWAException {
+        return getOrderFulfillmentInstructionsWithHttpInfo(orderId, null);
+    }
+
+    /**
+     * (asynchronously) Returns the fulfillment instructions for the order that you specify. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getOrderFulfillmentInstructionsAsync(
+            String orderId, final ApiCallback<GetOrderFulfillmentInstructionsResponse> callback)
+            throws ApiException, LWAException {
+        return getOrderFulfillmentInstructionsAsync(orderId, callback, null);
+    }
+    /**
+     * (asynchronously) Returns the fulfillment instructions for the order that you specify. **Usage Plan:** | Rate
+     * (requests per second) | Burst | | ---- | ---- | | 0.5 | 30 | The &#x60;x-amzn-RateLimit-Limit&#x60; response
+     * header contains the usage plan rate limits for the operation, when available. The preceding table contains the
+     * default rate and burst values for this operation. Selling partners whose business demands require higher
+     * throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage
+     * Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
+     *
+     * @param orderId The Amazon order identifier in 3-7-7 format. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @param restrictedDataToken Restricted Data Token (optional)
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @throws LWAException If calls to fetch LWA access token fails
+     */
+    public okhttp3.Call getOrderFulfillmentInstructionsAsync(
+            String orderId,
+            final ApiCallback<GetOrderFulfillmentInstructionsResponse> callback,
+            String restrictedDataToken)
+            throws ApiException, LWAException {
+
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressRequestListener = callback::onUploadProgress;
+        }
+
+        okhttp3.Call call = getOrderFulfillmentInstructionsValidateBeforeCall(orderId, progressRequestListener);
+
+        if (restrictedDataToken != null) {
+            okhttp3.Request request = call.request();
+            request = RestrictedDataTokenSigner.sign(
+                    request, restrictedDataToken, "OrdersV0Api-getOrderFulfillmentInstructions");
+            call = apiClient.getHttpClient().newCall(request);
+        }
+
+        if (disableRateLimiting || getOrderFulfillmentInstructionsBucket.tryConsume(1)) {
+            Type localVarReturnType = new TypeToken<GetOrderFulfillmentInstructionsResponse>() {}.getType();
+            apiClient.executeAsync(call, localVarReturnType, callback);
+            return call;
+        } else throw new ApiException.RateLimitExceeded("getOrderFulfillmentInstructions operation exceeds rate limit");
+    }
+    /**
      * Build call for getOrderItems
      *
      * @param orderId An Amazon-defined order identifier, in 3-7-7 format. (required)
@@ -1681,10 +1901,10 @@ public class OrdersV0Api {
      * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
      * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
      *     (optional)
-     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     * @param earliestDeliveryDateBefore Use this date to select orders with an earliest delivery date before (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     * @param earliestDeliveryDateAfter Use this date to select orders with an earliest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a
@@ -1947,10 +2167,10 @@ public class OrdersV0Api {
      * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
      * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
      *     (optional)
-     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     * @param earliestDeliveryDateBefore Use this date to select orders with an earliest delivery date before (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     * @param earliestDeliveryDateAfter Use this date to select orders with an earliest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a
@@ -2103,10 +2323,10 @@ public class OrdersV0Api {
      * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
      * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
      *     (optional)
-     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     * @param earliestDeliveryDateBefore Use this date to select orders with an earliest delivery date before (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     * @param earliestDeliveryDateAfter Use this date to select orders with an earliest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a
@@ -2257,10 +2477,10 @@ public class OrdersV0Api {
      * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
      * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
      *     (optional)
-     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     * @param earliestDeliveryDateBefore Use this date to select orders with an earliest delivery date before (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     * @param earliestDeliveryDateAfter Use this date to select orders with an earliest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a
@@ -2423,10 +2643,10 @@ public class OrdersV0Api {
      * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
      * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
      *     (optional)
-     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     * @param earliestDeliveryDateBefore Use this date to select orders with an earliest delivery date before (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     * @param earliestDeliveryDateAfter Use this date to select orders with an earliest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a
@@ -2577,10 +2797,10 @@ public class OrdersV0Api {
      * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
      * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
      *     (optional)
-     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     * @param earliestDeliveryDateBefore Use this date to select orders with an earliest delivery date before (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     * @param earliestDeliveryDateAfter Use this date to select orders with an earliest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a
@@ -2733,10 +2953,10 @@ public class OrdersV0Api {
      * @param isISPU When true, this order is marked to be picked up from a store rather than delivered. (optional)
      * @param storeChainStoreId The store chain store identifier. Linked to a specific store in a store chain.
      *     (optional)
-     * @param earliestDeliveryDateBefore Use this date to select orders with a earliest delivery date before (or at) a
+     * @param earliestDeliveryDateBefore Use this date to select orders with an earliest delivery date before (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
-     * @param earliestDeliveryDateAfter Use this date to select orders with a earliest delivery date after (or at) a
+     * @param earliestDeliveryDateAfter Use this date to select orders with an earliest delivery date after (or at) a
      *     specified time. The date must be in [ISO 8601](https://developer-docs.amazon.com/sp-api/docs/iso-8601)
      *     format. (optional)
      * @param latestDeliveryDateBefore Use this date to select orders with a latest delivery date before (or at) a

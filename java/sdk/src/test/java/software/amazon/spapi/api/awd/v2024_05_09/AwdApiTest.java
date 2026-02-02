@@ -33,6 +33,10 @@ import software.amazon.spapi.models.awd.v2024_05_09.InboundOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundPackages;
 import software.amazon.spapi.models.awd.v2024_05_09.InboundShipment;
 import software.amazon.spapi.models.awd.v2024_05_09.InventoryListing;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrder;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderCreationData;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderListing;
+import software.amazon.spapi.models.awd.v2024_05_09.ReplenishmentOrderReference;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentLabels;
 import software.amazon.spapi.models.awd.v2024_05_09.ShipmentListing;
 import software.amazon.spapi.models.awd.v2024_05_09.TransportationDetails;
@@ -86,11 +90,30 @@ public class AwdApiTest {
     }
 
     @Test
+    public void confirmReplenishmentOrderTest() throws Exception {
+        instructBackendMock("awd", "confirmReplenishmentOrder", "204");
+        String orderId = easyRandom.nextObject(String.class);
+
+        api.confirmReplenishmentOrderWithHttpInfo(orderId);
+    }
+
+    @Test
     public void createInboundTest() throws Exception {
         instructBackendMock("awd", "createInbound", "201");
         InboundOrderCreationData body = easyRandom.nextObject(InboundOrderCreationData.class);
 
         ApiResponse<InboundOrderReference> response = api.createInboundWithHttpInfo(body);
+
+        assertEquals(201, response.getStatusCode());
+        assertValidResponsePayload(201, response.getData());
+    }
+
+    @Test
+    public void createReplenishmentOrderTest() throws Exception {
+        instructBackendMock("awd", "createReplenishmentOrder", "201");
+        ReplenishmentOrderCreationData body = easyRandom.nextObject(ReplenishmentOrderCreationData.class);
+
+        ApiResponse<ReplenishmentOrderReference> response = api.createReplenishmentOrderWithHttpInfo(body);
 
         assertEquals(201, response.getStatusCode());
         assertValidResponsePayload(201, response.getData());
@@ -130,6 +153,17 @@ public class AwdApiTest {
     }
 
     @Test
+    public void getReplenishmentOrderTest() throws Exception {
+        instructBackendMock("awd", "getReplenishmentOrder", "200");
+        String orderId = easyRandom.nextObject(String.class);
+
+        ApiResponse<ReplenishmentOrder> response = api.getReplenishmentOrderWithHttpInfo(orderId);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
     public void listInboundShipmentsTest() throws Exception {
         instructBackendMock("awd", "listInboundShipments", "200");
 
@@ -145,6 +179,17 @@ public class AwdApiTest {
         instructBackendMock("awd", "listInventory", "200");
 
         ApiResponse<InventoryListing> response = api.listInventoryWithHttpInfo(null, null, null, null, null);
+
+        assertEquals(200, response.getStatusCode());
+        assertValidResponsePayload(200, response.getData());
+    }
+
+    @Test
+    public void listReplenishmentOrdersTest() throws Exception {
+        instructBackendMock("awd", "listReplenishmentOrders", "200");
+
+        ApiResponse<ReplenishmentOrderListing> response =
+                api.listReplenishmentOrdersWithHttpInfo(null, null, null, null, null);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());
