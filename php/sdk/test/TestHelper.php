@@ -26,6 +26,7 @@
 
 namespace SpApi\Test;
 
+use DateTime;
 use SpApi\ObjectSerializer;
 use ReflectionClass;
 use ReflectionException;
@@ -205,7 +206,9 @@ class TestHelper
                     // Check for standard camelCase name
                     $subArrayValue = self::extractValue($camelCaseName, $requestParameters);
                     if ($subArrayValue !== null) {
-                        $value = $subArrayValue;
+                        if ($camelCaseName === "createdAfter" && strtotime($subArrayValue)) {
+                            $value = DateTime::createFromFormat(DATE_ISO8601, $subArrayValue);
+                        } else $value = $subArrayValue;
                         break;
                     }
                     // Special handling for 'Sku'
@@ -718,5 +721,7 @@ class TestHelper
         'testGetDestinations200', // returns 500
         'testDeleteDestination200', // returns 500
         'testCreateDestination200', // returns 500
+        // Orders Api v2026-01-01
+        'testSearchOrders400', // Invalid request parameter
     ];
 }
