@@ -38,6 +38,8 @@ from spapi.api.messaging_v1.messaging_api import MessagingApi
 from spapi.api.notifications_v1.notifications_api import NotificationsApi
 from spapi.api.orders_v0.orders_v0_api import OrdersV0Api
 from spapi.api.orders_v0.shipment_api import ShipmentApi
+from spapi.api.orders_v2026_01_01.get_order_api import GetOrderApi
+from spapi.api.orders_v2026_01_01.search_orders_api import SearchOrdersApi
 from spapi.api.product_fees_v0.fees_api import FeesApi
 from spapi.api.product_pricing_v0.product_pricing_api import ProductPricingApi
 from spapi.api.product_pricing_v2022_05_01.product_pricing_v2022_api import ProductPricingV2022Api
