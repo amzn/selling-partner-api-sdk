@@ -366,7 +366,7 @@ class Configuration
         $report = 'PHP SDK (SpApi) Debug Report:'.PHP_EOL;
         $report .= '    OS: '.php_uname().PHP_EOL;
         $report .= '    PHP Version: '.PHP_VERSION.PHP_EOL;
-        $report .= '    The version of the OpenAPI document: 2024-09-11'.PHP_EOL;
+        $report .= '    The version of the OpenAPI document: 2026-01-01'.PHP_EOL;
         $report .= '    Temp Folder Path: '.self::getDefaultConfiguration()->getTempFolderPath().PHP_EOL;
 
         return $report;
@@ -466,9 +466,9 @@ class Configuration
             case 1:
                 if (!array_key_exists($operationName, self::$rateLimitConfiguration)) {
                     return 1;
-                } else {
-                    return self::$rateLimitConfiguration[$operationName][$index];
                 }
+
+                return self::$rateLimitConfiguration[$operationName][$index];
         }
 
         throw new ApiException('Invalid index for rate limit configuration');
