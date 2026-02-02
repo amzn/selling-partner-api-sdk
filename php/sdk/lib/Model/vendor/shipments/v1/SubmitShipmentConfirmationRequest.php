@@ -1,6 +1,6 @@
 <?php
 /**
- * PackageItemDetails
+ * SubmitShipmentConfirmationRequest
  *
  * PHP version 8.3
  *
@@ -34,16 +34,16 @@ use SpApi\ObjectSerializer;
 use SpApi\Model\ModelInterface;
 
 /**
- * PackageItemDetails Class Doc Comment
+ * SubmitShipmentConfirmationRequest Class Doc Comment
  *
  * @category Class
- * @description Item details for be provided for every item in shipment at either the item or carton or pallet level, whichever is appropriate.
+ * @description The request schema for the SubmitShipmentConfirmation operation.
  * @package  SpApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubmitShipmentConfirmationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'PackageItemDetails';
+    protected static string $openAPIModelName = 'SubmitShipmentConfirmationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static array $openAPITypes = [
-             'purchase_order_number' => 'string',
-             'lot_number' => 'string',
-             'expiry' => '\SpApi\Model\vendor\shipments\v1\Expiry'    ];
+             'shipment_confirmation' => '\SpApi\Model\vendor\shipments\v1\ShipmentConfirmation'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -72,9 +70,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-            'purchase_order_number' => null,
-            'lot_number' => null,
-            'expiry' => null    ];
+            'shipment_confirmation' => null    ];
 
     /**
       * Array of nullable properties. Used for (de)serialization
@@ -82,9 +78,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'purchase_order_number' => true,
-        'lot_number' => true,
-        'expiry' => true
+        'shipment_confirmation' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static array $attributeMap = [
-        'purchase_order_number' => 'purchaseOrderNumber',
-                'lot_number' => 'lotNumber',
-                'expiry' => 'expiry'
+        'shipment_confirmation' => 'shipmentConfirmation'
         
     ];
 
@@ -185,9 +177,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static array $setters = [
-        'purchase_order_number' => 'setPurchaseOrderNumber',
-        'lot_number' => 'setLotNumber',
-        'expiry' => 'setExpiry'
+        'shipment_confirmation' => 'setShipmentConfirmation'
     ];
 
     /**
@@ -196,9 +186,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static array $getters = [
-        'purchase_order_number' => 'getPurchaseOrderNumber',
-        'lot_number' => 'getLotNumber',
-        'expiry' => 'getExpiry'
+        'shipment_confirmation' => 'getShipmentConfirmation'
     ];
 
     /**
@@ -258,9 +246,7 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('purchase_order_number', $data ?? [], null);
-        $this->setIfExists('lot_number', $data ?? [], null);
-        $this->setIfExists('expiry', $data ?? [], null);
+        $this->setIfExists('shipment_confirmation', $data ?? [], null);
     }
 
     /**
@@ -290,6 +276,9 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['shipment_confirmation'] === null) {
+            $invalidProperties[] = "'shipment_confirmation' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,103 +295,28 @@ class PackageItemDetails implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets purchase_order_number
+     * Gets shipment_confirmation
      *
-     * @return string|null
+     * @return \SpApi\Model\vendor\shipments\v1\ShipmentConfirmation
      */
-    public function getPurchaseOrderNumber(): ?string
+    public function getShipmentConfirmation(): \SpApi\Model\vendor\shipments\v1\ShipmentConfirmation
     {
-        return $this->container['purchase_order_number'];
+        return $this->container['shipment_confirmation'];
     }
 
     /**
-     * Sets purchase_order_number
+     * Sets shipment_confirmation
      *
-     * @param string|null $purchase_order_number The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code.
+     * @param \SpApi\Model\vendor\shipments\v1\ShipmentConfirmation $shipment_confirmation shipment_confirmation
      *
      * @return self
      */
-    public function setPurchaseOrderNumber(?string $purchase_order_number): self
+    public function setShipmentConfirmation(\SpApi\Model\vendor\shipments\v1\ShipmentConfirmation $shipment_confirmation): self
     {
-        if (is_null($purchase_order_number)) {
-            array_push($this->openAPINullablesSetToNull, 'purchase_order_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('purchase_order_number', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($shipment_confirmation)) {
+            throw new \InvalidArgumentException('non-nullable shipment_confirmation cannot be null');
         }
-        $this->container['purchase_order_number'] = $purchase_order_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets lot_number
-     *
-     * @return string|null
-     */
-    public function getLotNumber(): ?string
-    {
-        return $this->container['lot_number'];
-    }
-
-    /**
-     * Sets lot_number
-     *
-     * @param string|null $lot_number The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items.
-     *
-     * @return self
-     */
-    public function setLotNumber(?string $lot_number): self
-    {
-        if (is_null($lot_number)) {
-            array_push($this->openAPINullablesSetToNull, 'lot_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('lot_number', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['lot_number'] = $lot_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets expiry
-     *
-     * @return \SpApi\Model\vendor\shipments\v1\Expiry|null
-     */
-    public function getExpiry(): ?\SpApi\Model\vendor\shipments\v1\Expiry
-    {
-        return $this->container['expiry'];
-    }
-
-    /**
-     * Sets expiry
-     *
-     * @param \SpApi\Model\vendor\shipments\v1\Expiry|null $expiry expiry
-     *
-     * @return self
-     */
-    public function setExpiry(?\SpApi\Model\vendor\shipments\v1\Expiry $expiry): self
-    {
-        if (is_null($expiry)) {
-            array_push($this->openAPINullablesSetToNull, 'expiry');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expiry', $nullablesSetToNull);
-            if ($index !== false) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['expiry'] = $expiry;
+        $this->container['shipment_confirmation'] = $shipment_confirmation;
 
         return $this;
     }

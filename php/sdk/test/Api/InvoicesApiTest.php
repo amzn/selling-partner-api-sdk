@@ -56,6 +56,234 @@ class InvoicesApiTest extends BaseTestCase
     }
 
     /**
+     * Test case for createGovernmentInvoice_204
+     */
+    public function testCreateGovernmentInvoice204()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateGovernmentInvoice204', 'InvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Successfully submitted a government invoice creation request.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : { },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;body&quot; : {
+            &quot;value&quot; : {
+              &quot;contexts&quot; : [ {
+                &quot;name&quot; : &quot;testCarrier&quot;,
+                &quot;address&quot; : &quot;An address&quot;,
+                &quot;contextType&quot; : &quot;CarrierDetailsContext&quot;,
+                &quot;federalTaxId&quot; : &quot;46204217000177&quot;,
+                &quot;regionCode&quot; : &quot;SP&quot;,
+                &quot;regionTaxId&quot; : &quot;503348865972&quot;,
+                &quot;vehicleLicensePlate&quot; : &quot;AAA0A00&quot;,
+                &quot;vehicleRegistrationRegionCode&quot; : &quot;SP&quot;
+              } ],
+              &quot;inboundPlanId&quot; : &quot;wf44e473-3f4d-4c6d-a80b-230e644b0c39&quot;,
+              &quot;invoiceType&quot; : &quot;REMITTANCE&quot;,
+              &quot;marketplaceId&quot; : &quot;A2Q3Y263D00KWC&quot;,
+              &quot;shipmentId&quot; : &quot;sh109b72-7b27-4e97-9fd1-3b56915fbc95&quot;,
+              &quot;transactionType&quot; : &quot;INBOUND_SHIPMENT&quot;
+            }
+          }
+        }
+      },
+      &quot;response&quot; : { }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'createGovernmentInvoice'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createGovernmentInvoiceWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(204, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 204, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 204);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for createGovernmentInvoice_400
+     */
+    public function testCreateGovernmentInvoice400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testCreateGovernmentInvoice400', 'InvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required attribute(s): &#39;marketplaceId&#39;.&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'createGovernmentInvoice'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->createGovernmentInvoiceWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for createGovernmentInvoice_401
+     */
+    public function testCreateGovernmentInvoice401()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createGovernmentInvoice_403
+     */
+    public function testCreateGovernmentInvoice403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createGovernmentInvoice_404
+     */
+    public function testCreateGovernmentInvoice404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createGovernmentInvoice_413
+     */
+    public function testCreateGovernmentInvoice413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createGovernmentInvoice_415
+     */
+    public function testCreateGovernmentInvoice415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createGovernmentInvoice_429
+     */
+    public function testCreateGovernmentInvoice429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createGovernmentInvoice_500
+     */
+    public function testCreateGovernmentInvoice500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for createGovernmentInvoice_503
+     */
+    public function testCreateGovernmentInvoice503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
      * Test case for createInvoicesExport_202
      */
     public function testCreateInvoicesExport202()
@@ -285,6 +513,503 @@ class InvoicesApiTest extends BaseTestCase
      * Test case for createInvoicesExport_503
      */
     public function testCreateInvoicesExport503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_200
+     */
+    public function testGetGovernmentInvoiceDocument200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetGovernmentInvoiceDocument200', 'InvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GovtInvoiceDocumentResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;fileFormat&quot; : {
+            &quot;value&quot; : &quot;PDF&quot;
+          },
+          &quot;inboundPlanId&quot; : {
+            &quot;value&quot; : &quot;wfa8d9de-67a7-4e59-bb5f-a47de029e7bd&quot;
+          },
+          &quot;invoiceType&quot; : {
+            &quot;value&quot; : &quot;REMITTANCE&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;sh762cac-15f1-4d74-a03f-02f3197e4238&quot;
+          },
+          &quot;transactionType&quot; : {
+            &quot;value&quot; : &quot;INBOUND_SHIPMENT&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoiceDocument&quot; : {
+          &quot;invoiceDocumentUrl&quot; : &quot;https://invoicesdocumentbucket.s3.eu-east-1.amazonaws.com/18c598f5-75db-4c1a-bd3e-4c64b36781c5.xml?X-Amz-Algorithm&#x3D;AWS4-HMAC-SHA256&amp;X-Amz-Credential&#x3D;&lt;CREDENTIAL&gt;&amp;X-Amz-Date&#x3D;20240710T171315Z&amp;X-Amz-Expires&#x3D;300&amp;X-Amz-Signature&#x3D;&lt;SIGNATURE&gt;&amp;X-Amz-SignedHeaders&#x3D;host&quot;
+        }
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getGovernmentInvoiceDocument'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getGovernmentInvoiceDocumentWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_400
+     */
+    public function testGetGovernmentInvoiceDocument400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetGovernmentInvoiceDocument400', 'InvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required attribute(s): &#39;marketplaceId&#39;.&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getGovernmentInvoiceDocument'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getGovernmentInvoiceDocumentWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_401
+     */
+    public function testGetGovernmentInvoiceDocument401()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_403
+     */
+    public function testGetGovernmentInvoiceDocument403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_404
+     */
+    public function testGetGovernmentInvoiceDocument404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_413
+     */
+    public function testGetGovernmentInvoiceDocument413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_415
+     */
+    public function testGetGovernmentInvoiceDocument415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_429
+     */
+    public function testGetGovernmentInvoiceDocument429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_500
+     */
+    public function testGetGovernmentInvoiceDocument500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceDocument_503
+     */
+    public function testGetGovernmentInvoiceDocument503()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_200
+     */
+    public function testGetGovernmentInvoiceStatus200()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetGovernmentInvoiceStatus200', 'InvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Success.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/GovernmentInvoiceStatusResponse&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;inboundPlanId&quot; : {
+            &quot;value&quot; : &quot;wf44e473-3f4d-4c6d-a80b-230e644b0c39&quot;
+          },
+          &quot;invoiceType&quot; : {
+            &quot;value&quot; : &quot;REMITTANCE&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;sh109b72-7b27-4e97-9fd1-3b56915fbc95&quot;
+          },
+          &quot;transactionType&quot; : {
+            &quot;value&quot; : &quot;INBOUND_SHIPMENT&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoiceExternalDocumentId&quot; : &quot;35230948404147000173550010000001961&quot;,
+        &quot;status&quot; : &quot;SUCCESS&quot;
+      }
+    }, {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : {
+          &quot;inboundPlanId&quot; : {
+            &quot;value&quot; : &quot;wfa8d9de-67a7-4e59-bb5f-a47de029e7bd&quot;
+          },
+          &quot;invoiceType&quot; : {
+            &quot;value&quot; : &quot;REMITTANCE&quot;
+          },
+          &quot;marketplaceId&quot; : {
+            &quot;value&quot; : &quot;A2Q3Y263D00KWC&quot;
+          },
+          &quot;shipmentId&quot; : {
+            &quot;value&quot; : &quot;sh762cac-15f1-4d74-a03f-02f3197e4238&quot;
+          },
+          &quot;transactionType&quot; : {
+            &quot;value&quot; : &quot;INBOUND_SHIPMENT&quot;
+          }
+        }
+      },
+      &quot;response&quot; : {
+        &quot;invoiceErrors&quot; : [ {
+          &quot;description&quot; : &quot;Rejeição: Código Regime Tributário do emitente diverge do cadastro na SEFAZ&quot;,
+          &quot;errorCode&quot; : &quot;481&quot;
+        } ],
+        &quot;status&quot; : &quot;ERROR&quot;
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getGovernmentInvoiceStatus'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getGovernmentInvoiceStatusWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(200, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 200, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 200);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_400
+     */
+    public function testGetGovernmentInvoiceStatus400()
+    {
+        try {
+            // Skip test if it is in the skip list
+            if ($this->testHelper->shouldSkipTest('testGetGovernmentInvoiceStatus400', 'InvoicesApi')) {
+                $this->assertTrue(true);
+                return;
+            }
+            $jsonSchema = '{
+  &quot;description&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;,
+  &quot;headers&quot; : {
+    &quot;x-amzn-RequestId&quot; : {
+      &quot;description&quot; : &quot;Unique request reference identifier.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    },
+    &quot;x-amzn-RateLimit-Limit&quot; : {
+      &quot;description&quot; : &quot;Your rate limit (requests per second) for this operation.&quot;,
+      &quot;schema&quot; : {
+        &quot;type&quot; : &quot;string&quot;
+      }
+    }
+  },
+  &quot;content&quot; : {
+    &quot;application/json&quot; : {
+      &quot;schema&quot; : {
+        &quot;$ref&quot; : &quot;#/components/schemas/ErrorList&quot;
+      }
+    }
+  },
+  &quot;x-amzn-api-sandbox&quot; : {
+    &quot;static&quot; : [ {
+      &quot;request&quot; : {
+        &quot;parameters&quot; : { }
+      },
+      &quot;response&quot; : {
+        &quot;errors&quot; : [ {
+          &quot;code&quot; : &quot;400&quot;,
+          &quot;details&quot; : &quot;Missing required attribute(s): &#39;marketplaceId&#39;.&quot;,
+          &quot;message&quot; : &quot;Request has missing or invalid parameters and cannot be parsed.&quot;
+        } ]
+      }
+    } ]
+  }
+}';
+            $result = $this->testHelper->extractRequestAndResponse(
+                $this->apiInstance,
+                $jsonSchema,
+                'getGovernmentInvoiceStatus'
+            );
+            $requestParams = $result['requestParams'];
+            $expectedResponse = $result['expectedResponse'];
+
+            // Change Time Format if it requires
+            $specificTimeFormat = $this->testHelper->getDateTimeFormatForCase('InvoicesApi');
+            if ($specificTimeFormat) {
+                ObjectSerializer::setDateTimeFormat($specificTimeFormat);
+            }
+
+            // Act: Call API
+            list($response, $statusCode, $headers) =
+                $this->apiInstance->getGovernmentInvoiceStatusWithHttpInfo(...array_values($requestParams));
+
+            // Assert the response code
+            $this->assertHttpStatusCode(400, $statusCode);
+
+            // Handle different response codes
+            $this->handleResponse($response, $statusCode, 400, $expectedResponse);
+        } catch (ApiException $e) {
+            $this->handleApiException($e, 400);
+        } catch (\ReflectionException $e) {
+            $this->fail("Reflection exception: " . $e->getMessage());
+        }
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_401
+     */
+    public function testGetGovernmentInvoiceStatus401()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_403
+     */
+    public function testGetGovernmentInvoiceStatus403()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_404
+     */
+    public function testGetGovernmentInvoiceStatus404()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_413
+     */
+    public function testGetGovernmentInvoiceStatus413()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_415
+     */
+    public function testGetGovernmentInvoiceStatus415()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_429
+     */
+    public function testGetGovernmentInvoiceStatus429()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_500
+     */
+    public function testGetGovernmentInvoiceStatus500()
+    {
+        // Skip this test
+        $this->markTestSkipped('Skip test for this operation.');
+    }
+    /**
+     * Test case for getGovernmentInvoiceStatus_503
+     */
+    public function testGetGovernmentInvoiceStatus503()
     {
         // Skip this test
         $this->markTestSkipped('Skip test for this operation.');

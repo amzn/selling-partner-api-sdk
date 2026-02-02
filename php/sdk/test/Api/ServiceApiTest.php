@@ -2531,7 +2531,15 @@ class ServiceApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;payload&quot; : {
           &quot;reservation&quot; : {
-            &quot;reservationId&quot; : &quot;457&quot;
+            &quot;reservationId&quot; : &quot;457&quot;,
+            &quot;type&quot; : &quot;APPOINTMENT&quot;,
+            &quot;availability&quot; : {
+              &quot;startTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;,
+              &quot;endTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;,
+              &quot;recurrence&quot; : {
+                &quot;endTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;
+              }
+            }
           }
         }
       }
@@ -3148,11 +3156,11 @@ class ServiceApiTest extends BaseTestCase
           &quot;schedulingType&quot; : &quot;REAL_TIME_SCHEDULING&quot;,
           &quot;appointmentSlots&quot; : [ {
             &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
             &quot;capacity&quot; : 20
           }, {
             &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
             &quot;capacity&quot; : 0
           } ]
         }
@@ -3181,11 +3189,11 @@ class ServiceApiTest extends BaseTestCase
           &quot;schedulingType&quot; : &quot;NON_REAL_TIME_SCHEDULING&quot;,
           &quot;appointmentSlots&quot; : [ {
             &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
             &quot;capacity&quot; : 20
           }, {
             &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
             &quot;capacity&quot; : 0
           } ]
         }
@@ -3455,11 +3463,11 @@ class ServiceApiTest extends BaseTestCase
           &quot;schedulingType&quot; : &quot;REAL_TIME_SCHEDULING&quot;,
           &quot;appointmentSlots&quot; : [ {
             &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
             &quot;capacity&quot; : 20
           }, {
             &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
             &quot;capacity&quot; : 0
           } ]
         }
@@ -3485,11 +3493,11 @@ class ServiceApiTest extends BaseTestCase
           &quot;schedulingType&quot; : &quot;REAL_TIME_SCHEDULING&quot;,
           &quot;appointmentSlots&quot; : [ {
             &quot;startTime&quot; : &quot;2021-04-04T00:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T01:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
             &quot;capacity&quot; : 20
           }, {
             &quot;startTime&quot; : &quot;2021-04-04T01:00:00Z&quot;,
-            &quot;endTime&quot; : &quot;2021-04-04T02:0:00Z&quot;,
+            &quot;endTime&quot; : &quot;2021-04-04T02:00:00Z&quot;,
             &quot;capacity&quot; : 0
           } ]
         }
@@ -7051,7 +7059,15 @@ class ServiceApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;payload&quot; : {
           &quot;reservation&quot; : {
-            &quot;reservationId&quot; : &quot;457&quot;
+            &quot;reservationId&quot; : &quot;457&quot;,
+            &quot;type&quot; : &quot;APPOINTMENT&quot;,
+            &quot;availability&quot; : {
+              &quot;startTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;,
+              &quot;endTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;,
+              &quot;recurrence&quot; : {
+                &quot;endTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;
+              }
+            }
           }
         }
       }
@@ -7448,10 +7464,10 @@ class ServiceApiTest extends BaseTestCase
       &quot;response&quot; : {
         &quot;payload&quot; : [ {
           &quot;availability&quot; : {
-            &quot;startTime&quot; : &quot;2020-01-01T12:00:00.00-07&quot;,
-            &quot;endTime&quot; : &quot;2020-01-01T23:59:00.00-07&quot;,
+            &quot;startTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;,
+            &quot;endTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;,
             &quot;recurrence&quot; : {
-              &quot;endTime&quot; : &quot;2020-01-06T23:59:00.00-07&quot;,
+              &quot;endTime&quot; : &quot;2025-07-22T22:38:02.283Z&quot;,
               &quot;daysOfWeek&quot; : [ &quot;MONDAY&quot;, &quot;TUESDAY&quot;, &quot;WEDNESDAY&quot;, &quot;THURSDAY&quot;, &quot;FRIDAY&quot; ]
             }
           },

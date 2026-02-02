@@ -167,6 +167,7 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             } ],
             &quot;ShippingServiceOptions&quot; : {
               &quot;DeliveryExperience&quot; : &quot;DeliveryConfirmationWithoutSignature&quot;,
+              &quot;CarrierWillPickUp&quot; : false,
               &quot;DeclaredValue&quot; : {
                 &quot;CurrencyCode&quot; : &quot;USD&quot;,
                 &quot;Amount&quot; : 0.0
@@ -175,7 +176,11 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             &quot;RequiresAdditionalSellerInputs&quot; : false
           },
           &quot;Label&quot; : {
-            &quot;Dimensions&quot; : { },
+            &quot;Dimensions&quot; : {
+              &quot;Length&quot; : 6.0,
+              &quot;Width&quot; : 4.0,
+              &quot;Unit&quot; : &quot;inches&quot;
+            },
             &quot;FileContents&quot; : {
               &quot;Contents&quot; : &quot;&quot;,
               &quot;FileType&quot; : &quot;&quot;,
@@ -498,6 +503,7 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             } ],
             &quot;ShippingServiceOptions&quot; : {
               &quot;DeliveryExperience&quot; : &quot;NoTracking&quot;,
+              &quot;CarrierWillPickUp&quot; : false,
               &quot;DeclaredValue&quot; : {
                 &quot;CurrencyCode&quot; : &quot;USD&quot;,
                 &quot;Amount&quot; : 0
@@ -1084,6 +1090,7 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             }, {
               &quot;LabelFormat&quot; : &quot;PNG&quot;
             } ],
+            &quot;RequiresAdditionalSellerInputs&quot; : true,
             &quot;Benefits&quot; : {
               &quot;IncludedBenefits&quot; : [ &quot;CLAIMS_PROTECTED&quot;, &quot;FBM_SHIP_PLUS&quot; ],
               &quot;ExcludedBenefits&quot; : [ ]
@@ -1119,6 +1126,7 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             }, {
               &quot;LabelFormat&quot; : &quot;PNG&quot;
             } ],
+            &quot;RequiresAdditionalSellerInputs&quot; : true,
             &quot;Benefits&quot; : {
               &quot;IncludedBenefits&quot; : [ ],
               &quot;ExcludedBenefits&quot; : [ {
@@ -1446,6 +1454,7 @@ class MerchantFulfillmentApiTest extends BaseTestCase
             } ],
             &quot;ShippingServiceOptions&quot; : {
               &quot;DeliveryExperience&quot; : &quot;DeliveryConfirmationWithoutSignature&quot;,
+              &quot;CarrierWillPickUp&quot; : false,
               &quot;DeclaredValue&quot; : {
                 &quot;CurrencyCode&quot; : &quot;USD&quot;,
                 &quot;Amount&quot; : 0.0
