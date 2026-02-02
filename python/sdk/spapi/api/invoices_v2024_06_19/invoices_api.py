@@ -35,6 +35,105 @@ class InvoicesApi(object):
         self.api_client = api_client
         self.classFileName = 'invoices_api'
 
+    def create_government_invoice(self, body, **kwargs):  # noqa: E501
+        """create_government_invoice  # noqa: E501
+
+        Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_government_invoice(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param GovernmentInvoiceRequest body: Information required to create the government invoice. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_government_invoice_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_government_invoice_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def create_government_invoice_with_http_info(self, body, **kwargs):  # noqa: E501
+        """create_government_invoice  # noqa: E501
+
+        Submits an asynchronous government invoice creation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_government_invoice_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param GovernmentInvoiceRequest body: Information required to create the government invoice. (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_government_invoice" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `create_government_invoice`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
     def create_invoices_export(self, body, **kwargs):  # noqa: E501
         """create_invoices_export  # noqa: E501
 
@@ -127,6 +226,256 @@ class InvoicesApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ExportInvoicesResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
+    def get_government_invoice_document(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
+        """get_government_invoice_document  # noqa: E501
+
+        Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_government_invoice_document(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str marketplace_id: The invoices returned will match the marketplace that you specify. (required)
+        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
+        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
+        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
+        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+        :param str file_format: Requested file format. Default is XML
+        :return: GovtInvoiceDocumentResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_government_invoice_document_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_government_invoice_document_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs)  # noqa: E501
+            return data
+
+    def get_government_invoice_document_with_http_info(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
+        """get_government_invoice_document  # noqa: E501
+
+        Returns an invoiceDocument object containing an invoiceDocumentUrl .  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_government_invoice_document_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str marketplace_id: The invoices returned will match the marketplace that you specify. (required)
+        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
+        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
+        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
+        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+        :param str file_format: Requested file format. Default is XML
+        :return: GovtInvoiceDocumentResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['marketplace_id', 'transaction_type', 'shipment_id', 'invoice_type', 'inbound_plan_id', 'file_format']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_government_invoice_document" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `get_government_invoice_document`")  # noqa: E501
+        # verify the required parameter 'transaction_type' is set
+        if self.api_client.client_side_validation and ('transaction_type' not in params or
+                                                       params['transaction_type'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `transaction_type` when calling `get_government_invoice_document`")  # noqa: E501
+        # verify the required parameter 'shipment_id' is set
+        if self.api_client.client_side_validation and ('shipment_id' not in params or
+                                                       params['shipment_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `shipment_id` when calling `get_government_invoice_document`")  # noqa: E501
+        # verify the required parameter 'invoice_type' is set
+        if self.api_client.client_side_validation and ('invoice_type' not in params or
+                                                       params['invoice_type'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `invoice_type` when calling `get_government_invoice_document`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'shipment_id' in params:
+            path_params['shipmentId'] = params['shipment_id']  # noqa: E501
+
+        query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
+        if 'transaction_type' in params:
+            query_params.append(('transactionType', params['transaction_type']))  # noqa: E501
+        if 'invoice_type' in params:
+            query_params.append(('invoiceType', params['invoice_type']))  # noqa: E501
+        if 'inbound_plan_id' in params:
+            query_params.append(('inboundPlanId', params['inbound_plan_id']))  # noqa: E501
+        if 'file_format' in params:
+            query_params.append(('fileFormat', params['file_format']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/tax/invoices/2024-06-19/governmentInvoiceRequests/{shipmentId}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='GovtInvoiceDocumentResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats, api_models_module=self.api_models_module)
+
+    def get_government_invoice_status(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
+        """get_government_invoice_status  # noqa: E501
+
+        Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_government_invoice_status(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str marketplace_id: The invoices status will match the marketplace that you specify. (required)
+        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
+        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
+        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
+        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+        :return: GovernmentInvoiceStatusResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_government_invoice_status_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs)  # noqa: E501
+        else:
+            (data) = self.get_government_invoice_status_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs)  # noqa: E501
+            return data
+
+    def get_government_invoice_status_with_http_info(self, marketplace_id, transaction_type, shipment_id, invoice_type, **kwargs):  # noqa: E501
+        """get_government_invoice_status  # noqa: E501
+
+        Returns the status of an invoice generation request.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 0.0167 | 1 |  For more information, see \"Usage Plans and Rate Limits\" in the Selling Partner API documentation.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_government_invoice_status_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str marketplace_id: The invoices status will match the marketplace that you specify. (required)
+        :param str transaction_type: Marketplace specific classification of the transaction type that originated the invoice. Check 'transactionType' options using 'getInvoicesAttributes' operation. (required)
+        :param str shipment_id: The unique shipment identifier to get an invoice for. (required)
+        :param str invoice_type: Marketplace specific classification of the invoice type. Check 'invoiceType' options using 'getInvoicesAttributes' operation. (required)
+        :param str inbound_plan_id: The unique InboundPlan identifier in which the shipment is contained and for which the invoice will be created.
+        :return: GovernmentInvoiceStatusResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['marketplace_id', 'transaction_type', 'shipment_id', 'invoice_type', 'inbound_plan_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_government_invoice_status" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'marketplace_id' is set
+        if self.api_client.client_side_validation and ('marketplace_id' not in params or
+                                                       params['marketplace_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `marketplace_id` when calling `get_government_invoice_status`")  # noqa: E501
+        # verify the required parameter 'transaction_type' is set
+        if self.api_client.client_side_validation and ('transaction_type' not in params or
+                                                       params['transaction_type'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `transaction_type` when calling `get_government_invoice_status`")  # noqa: E501
+        # verify the required parameter 'shipment_id' is set
+        if self.api_client.client_side_validation and ('shipment_id' not in params or
+                                                       params['shipment_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `shipment_id` when calling `get_government_invoice_status`")  # noqa: E501
+        # verify the required parameter 'invoice_type' is set
+        if self.api_client.client_side_validation and ('invoice_type' not in params or
+                                                       params['invoice_type'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `invoice_type` when calling `get_government_invoice_status`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'marketplace_id' in params:
+            query_params.append(('marketplaceId', params['marketplace_id']))  # noqa: E501
+        if 'transaction_type' in params:
+            query_params.append(('transactionType', params['transaction_type']))  # noqa: E501
+        if 'shipment_id' in params:
+            query_params.append(('shipmentId', params['shipment_id']))  # noqa: E501
+        if 'invoice_type' in params:
+            query_params.append(('invoiceType', params['invoice_type']))  # noqa: E501
+        if 'inbound_plan_id' in params:
+            query_params.append(('inboundPlanId', params['inbound_plan_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/tax/invoices/2024-06-19/governmentInvoiceRequests', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='GovernmentInvoiceStatusResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

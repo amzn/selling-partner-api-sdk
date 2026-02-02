@@ -14,6 +14,7 @@
 
 # import models into model package
 from spapi.models.invoices_v2024_06_19.attribute_option import AttributeOption
+from spapi.models.invoices_v2024_06_19.carrier_details_context import CarrierDetailsContext
 from spapi.models.invoices_v2024_06_19.error import Error
 from spapi.models.invoices_v2024_06_19.error_list import ErrorList
 from spapi.models.invoices_v2024_06_19.export import Export
@@ -27,7 +28,13 @@ from spapi.models.invoices_v2024_06_19.get_invoices_document_response import Get
 from spapi.models.invoices_v2024_06_19.get_invoices_export_response import GetInvoicesExportResponse
 from spapi.models.invoices_v2024_06_19.get_invoices_exports_response import GetInvoicesExportsResponse
 from spapi.models.invoices_v2024_06_19.get_invoices_response import GetInvoicesResponse
+from spapi.models.invoices_v2024_06_19.government_invoice_creation_status import GovernmentInvoiceCreationStatus
+from spapi.models.invoices_v2024_06_19.government_invoice_request import GovernmentInvoiceRequest
+from spapi.models.invoices_v2024_06_19.government_invoice_status_response import GovernmentInvoiceStatusResponse
+from spapi.models.invoices_v2024_06_19.govt_invoice_document_response import GovtInvoiceDocumentResponse
 from spapi.models.invoices_v2024_06_19.invoice import Invoice
+from spapi.models.invoices_v2024_06_19.invoice_document import InvoiceDocument
+from spapi.models.invoices_v2024_06_19.invoice_error import InvoiceError
 from spapi.models.invoices_v2024_06_19.invoices_attributes import InvoicesAttributes
 from spapi.models.invoices_v2024_06_19.invoices_document import InvoicesDocument
 from spapi.models.invoices_v2024_06_19.transaction_identifier import TransactionIdentifier

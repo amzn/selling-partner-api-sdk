@@ -14,8 +14,6 @@
 
 # import models into model package
 from spapi.models.messaging_v1.attachment import Attachment
-from spapi.models.messaging_v1.create_amazon_motors_request import CreateAmazonMotorsRequest
-from spapi.models.messaging_v1.create_amazon_motors_response import CreateAmazonMotorsResponse
 from spapi.models.messaging_v1.create_confirm_customization_details_request import CreateConfirmCustomizationDetailsRequest
 from spapi.models.messaging_v1.create_confirm_customization_details_response import CreateConfirmCustomizationDetailsResponse
 from spapi.models.messaging_v1.create_confirm_delivery_details_request import CreateConfirmDeliveryDetailsRequest

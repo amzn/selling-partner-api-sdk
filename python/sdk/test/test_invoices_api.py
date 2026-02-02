@@ -32,6 +32,13 @@ class TestInvoicesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_create_government_invoice(self):
+        body = self._get_random_value("GovernmentInvoiceRequest", None)
+        
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("create_government_invoice"), "204")
+        response = self.api.create_government_invoice_with_http_info(body, )
+        pass
+
     def test_create_invoices_export(self):
         body = self._get_random_value("ExportInvoicesRequest", None)
         
@@ -39,6 +46,30 @@ class TestInvoicesApi(unittest.TestCase):
         response = self.api.create_invoices_export_with_http_info(body, )
         self.assertEqual(202, response[1])
         self.assert_valid_response_payload(202, response[0])
+        pass
+
+    def test_get_government_invoice_document(self):
+        marketplace_id = self._get_random_value("str", None)
+        transaction_type = self._get_random_value("str", None)
+        shipment_id = self._get_random_value("str", None)
+        invoice_type = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_government_invoice_document"), "200")
+        response = self.api.get_government_invoice_document_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_get_government_invoice_status(self):
+        marketplace_id = self._get_random_value("str", None)
+        transaction_type = self._get_random_value("str", None)
+        shipment_id = self._get_random_value("str", None)
+        invoice_type = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("invoices".casefold().replace(' ', ''), self.to_camel_case("get_government_invoice_status"), "200")
+        response = self.api.get_government_invoice_status_with_http_info(marketplace_id, transaction_type, shipment_id, invoice_type, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
         pass
 
     def test_get_invoice(self):

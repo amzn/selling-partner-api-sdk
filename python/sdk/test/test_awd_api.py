@@ -55,11 +55,27 @@ class TestAwdApi(unittest.TestCase):
         response = self.api.confirm_inbound_with_http_info(order_id, )
         pass
 
+    def test_confirm_replenishment_order(self):
+        order_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("confirm_replenishment_order"), "204")
+        response = self.api.confirm_replenishment_order_with_http_info(order_id, )
+        pass
+
     def test_create_inbound(self):
         body = self._get_random_value("InboundOrderCreationData", None)
         
         self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("create_inbound"), "201")
         response = self.api.create_inbound_with_http_info(body, )
+        self.assertEqual(201, response[1])
+        self.assert_valid_response_payload(201, response[0])
+        pass
+
+    def test_create_replenishment_order(self):
+        body = self._get_random_value("ReplenishmentOrderCreationData", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("create_replenishment_order"), "201")
+        response = self.api.create_replenishment_order_with_http_info(body, )
         self.assertEqual(201, response[1])
         self.assert_valid_response_payload(201, response[0])
         pass
@@ -91,6 +107,15 @@ class TestAwdApi(unittest.TestCase):
         self.assert_valid_response_payload(200, response[0])
         pass
 
+    def test_get_replenishment_order(self):
+        order_id = self._get_random_value("str", None)
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("get_replenishment_order"), "200")
+        response = self.api.get_replenishment_order_with_http_info(order_id, )
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
     def test_list_inbound_shipments(self):
         
         self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("list_inbound_shipments"), "200")
@@ -103,6 +128,14 @@ class TestAwdApi(unittest.TestCase):
         
         self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("list_inventory"), "200")
         response = self.api.list_inventory_with_http_info()
+        self.assertEqual(200, response[1])
+        self.assert_valid_response_payload(200, response[0])
+        pass
+
+    def test_list_replenishment_orders(self):
+        
+        self.instruct_backend_mock("awd".casefold().replace(' ', ''), self.to_camel_case("list_replenishment_orders"), "200")
+        response = self.api.list_replenishment_orders_with_http_info()
         self.assertEqual(200, response[1])
         self.assert_valid_response_payload(200, response[0])
         pass

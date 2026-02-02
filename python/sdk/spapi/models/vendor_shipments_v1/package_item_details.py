@@ -35,24 +35,16 @@ class PackageItemDetails(object):
     swagger_types = {
         'purchase_order_number': 'str',
         'lot_number': 'str',
-        'lot_number_source_reference': 'str',
-        'lot_number_source_type': 'str',
-        'country_of_origin': 'str',
-        'regulation_references': 'RegulationReferences',
         'expiry': 'Expiry',
     }
 
     attribute_map = {
         'purchase_order_number': 'purchaseOrderNumber',
         'lot_number': 'lotNumber',
-        'lot_number_source_reference': 'lotNumberSourceReference',
-        'lot_number_source_type': 'lotNumberSourceType',
-        'country_of_origin': 'countryOfOrigin',
-        'regulation_references': 'regulationReferences',
         'expiry': 'expiry',
     }
 
-    def __init__(self, purchase_order_number=None, lot_number=None, lot_number_source_reference=None, lot_number_source_type=None, country_of_origin=None, regulation_references=None, expiry=None, _configuration=None):  # noqa: E501
+    def __init__(self, purchase_order_number=None, lot_number=None, expiry=None, _configuration=None):  # noqa: E501
         """PackageItemDetails - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -60,10 +52,6 @@ class PackageItemDetails(object):
 
         self._purchase_order_number = None
         self._lot_number = None
-        self._lot_number_source_reference = None
-        self._lot_number_source_type = None
-        self._country_of_origin = None
-        self._regulation_references = None
         self._expiry = None
         self.discriminator = None
 
@@ -71,14 +59,6 @@ class PackageItemDetails(object):
             self.purchase_order_number = purchase_order_number
         if lot_number is not None:
             self.lot_number = lot_number
-        if lot_number_source_reference is not None:
-            self.lot_number_source_reference = lot_number_source_reference
-        if lot_number_source_type is not None:
-            self.lot_number_source_type = lot_number_source_type
-        if country_of_origin is not None:
-            self.country_of_origin = country_of_origin
-        if regulation_references is not None:
-            self.regulation_references = regulation_references
         if expiry is not None:
             self.expiry = expiry
 
@@ -127,106 +107,6 @@ class PackageItemDetails(object):
         """
 
         self._lot_number = lot_number
-
-    @property
-    def lot_number_source_reference(self):
-        """Gets the lot_number_source_reference of this PackageItemDetails.  # noqa: E501
-
-        This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified.  # noqa: E501
-
-        :return: The lot_number_source_reference of this PackageItemDetails.  # noqa: E501
-        :rtype: str
-        """
-        return self._lot_number_source_reference
-
-    @lot_number_source_reference.setter
-    def lot_number_source_reference(self, lot_number_source_reference):
-        """Sets the lot_number_source_reference of this PackageItemDetails.
-
-        This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified.  # noqa: E501
-
-        :param lot_number_source_reference: The lot_number_source_reference of this PackageItemDetails.  # noqa: E501
-        :type: str
-        """
-
-        self._lot_number_source_reference = lot_number_source_reference
-
-    @property
-    def lot_number_source_type(self):
-        """Gets the lot_number_source_type of this PackageItemDetails.  # noqa: E501
-
-        The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.  # noqa: E501
-
-        :return: The lot_number_source_type of this PackageItemDetails.  # noqa: E501
-        :rtype: str
-        """
-        return self._lot_number_source_type
-
-    @lot_number_source_type.setter
-    def lot_number_source_type(self, lot_number_source_type):
-        """Sets the lot_number_source_type of this PackageItemDetails.
-
-        The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.  # noqa: E501
-
-        :param lot_number_source_type: The lot_number_source_type of this PackageItemDetails.  # noqa: E501
-        :type: str
-        """
-        allowed_values = ["GLN", "FFRN", "USDA_E", "URL"]  # noqa: E501
-        if (self._configuration.client_side_validation and
-                lot_number_source_type not in allowed_values):
-            raise ValueError(
-                "Invalid value for `lot_number_source_type` ({0}), must be one of {1}"  # noqa: E501
-                .format(lot_number_source_type, allowed_values)
-            )
-
-        self._lot_number_source_type = lot_number_source_type
-
-    @property
-    def country_of_origin(self):
-        """Gets the country_of_origin of this PackageItemDetails.  # noqa: E501
-
-        The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated.  # noqa: E501
-
-        :return: The country_of_origin of this PackageItemDetails.  # noqa: E501
-        :rtype: str
-        """
-        return self._country_of_origin
-
-    @country_of_origin.setter
-    def country_of_origin(self, country_of_origin):
-        """Sets the country_of_origin of this PackageItemDetails.
-
-        The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated.  # noqa: E501
-
-        :param country_of_origin: The country_of_origin of this PackageItemDetails.  # noqa: E501
-        :type: str
-        """
-        if (self._configuration.client_side_validation and
-                country_of_origin is not None and not re.search(r'^[A-Z]{2}$', country_of_origin)):  # noqa: E501
-            raise ValueError(r"Invalid value for `country_of_origin`, must be a follow pattern or equal to `/^[A-Z]{2}$/`")  # noqa: E501
-
-        self._country_of_origin = country_of_origin
-
-    @property
-    def regulation_references(self):
-        """Gets the regulation_references of this PackageItemDetails.  # noqa: E501
-
-
-        :return: The regulation_references of this PackageItemDetails.  # noqa: E501
-        :rtype: RegulationReferences
-        """
-        return self._regulation_references
-
-    @regulation_references.setter
-    def regulation_references(self, regulation_references):
-        """Sets the regulation_references of this PackageItemDetails.
-
-
-        :param regulation_references: The regulation_references of this PackageItemDetails.  # noqa: E501
-        :type: RegulationReferences
-        """
-
-        self._regulation_references = regulation_references
 
     @property
     def expiry(self):
