@@ -14,6 +14,7 @@
 import { ApiClient } from '../ApiClient.js'
 import { Expiry } from './Expiry.js'
 import { Money } from './Money.js'
+import { RegulationReferences } from './RegulationReferences.js'
 
 /**
  * The ItemDetails model module.
@@ -53,6 +54,10 @@ export class ItemDetails {
       obj = obj || new ItemDetails()
       if (data.hasOwnProperty('purchaseOrderNumber')) { obj.purchaseOrderNumber = ApiClient.convertToType(data.purchaseOrderNumber, 'String') }
       if (data.hasOwnProperty('lotNumber')) { obj.lotNumber = ApiClient.convertToType(data.lotNumber, 'String') }
+      if (data.hasOwnProperty('lotNumberSourceReference')) { obj.lotNumberSourceReference = ApiClient.convertToType(data.lotNumberSourceReference, 'String') }
+      if (data.hasOwnProperty('lotNumberSourceType')) { obj.lotNumberSourceType = ApiClient.convertToType(data.lotNumberSourceType, 'String') }
+      if (data.hasOwnProperty('countryOfOrigin')) { obj.countryOfOrigin = ApiClient.convertToType(data.countryOfOrigin, 'String') }
+      if (data.hasOwnProperty('regulationReferences')) { obj.regulationReferences = RegulationReferences.constructFromObject(data.regulationReferences) }
       if (data.hasOwnProperty('expiry')) { obj.expiry = Expiry.constructFromObject(data.expiry) }
       if (data.hasOwnProperty('maximumRetailPrice')) { obj.maximumRetailPrice = Money.constructFromObject(data.maximumRetailPrice) }
       if (data.hasOwnProperty('handlingCode')) { obj.handlingCode = ApiClient.convertToType(data.handlingCode, 'String') }
@@ -74,6 +79,64 @@ ItemDetails.prototype.purchaseOrderNumber = undefined
  * @type {String}
  */
 ItemDetails.prototype.lotNumber = undefined
+
+/**
+ * The location identifier where the product receives a traceability lot number. Provide this field for products subject to the FDA Food Safety Modernization Act (FSMA) Section 204. When you provide `lotNumberSourceReference`, you must also specify the corresponding `lotNumberSourceType` field.
+ * @member {String} lotNumberSourceReference
+ * @type {String}
+ */
+ItemDetails.prototype.lotNumberSourceReference = undefined
+
+/**
+ * Allowed values for the <code>lotNumberSourceType</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ItemDetails.LotNumberSourceTypeEnum = {
+
+  /**
+     * value: "GLN"
+     * @const
+     */
+  GLN: 'GLN',
+
+  /**
+     * value: "FFRN"
+     * @const
+     */
+  FFRN: 'FFRN',
+
+  /**
+     * value: "USDA_E"
+     * @const
+     */
+  USDA_E: 'USDA_E',
+
+  /**
+     * value: "URL"
+     * @const
+     */
+  URL: 'URL'
+}
+/**
+ * The identifier type used for the lot number source. Provide this field when you specify `lotNumberSourceReference`.
+ * @member {String} lotNumberSourceType
+ * @type {String}
+ */
+ItemDetails.prototype.lotNumberSourceType = undefined
+
+/**
+ * The two-character country code for the country where the product was manufactured or originates. Use ISO 3166-1 alpha-2 format.
+ * @member {String} countryOfOrigin
+ * @type {String}
+ */
+ItemDetails.prototype.countryOfOrigin = undefined
+
+/**
+ * @member {RegulationReferences} regulationReferences
+ * @type {RegulationReferences}
+ */
+ItemDetails.prototype.regulationReferences = undefined
 
 /**
  * @member {Expiry} expiry

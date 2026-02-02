@@ -33,9 +33,17 @@ import { EasyShipShipmentStatus } from './model/EasyShipShipmentStatus.js'
 import { ElectronicInvoiceStatus } from './model/ElectronicInvoiceStatus.js'
 import { Error } from './model/Error.js'
 import { ExceptionDates } from './model/ExceptionDates.js'
+import { ExportInfo } from './model/ExportInfo.js'
 import { FulfillmentInstruction } from './model/FulfillmentInstruction.js'
+import { FulfillmentInstructions } from './model/FulfillmentInstructions.js'
+import { FulfillmentLocation } from './model/FulfillmentLocation.js'
+import { FulfillmentPlan } from './model/FulfillmentPlan.js'
+import { FulfillmentPlanConstraintType } from './model/FulfillmentPlanConstraintType.js'
+import { FulfillmentPlanItem } from './model/FulfillmentPlanItem.js'
+import { FulfillmentPlanShippingConstraints } from './model/FulfillmentPlanShippingConstraints.js'
 import { GetOrderAddressResponse } from './model/GetOrderAddressResponse.js'
 import { GetOrderBuyerInfoResponse } from './model/GetOrderBuyerInfoResponse.js'
+import { GetOrderFulfillmentInstructionsResponse } from './model/GetOrderFulfillmentInstructionsResponse.js'
 import { GetOrderItemsBuyerInfoResponse } from './model/GetOrderItemsBuyerInfoResponse.js'
 import { GetOrderItemsResponse } from './model/GetOrderItemsResponse.js'
 import { GetOrderRegulatedInfoResponse } from './model/GetOrderRegulatedInfoResponse.js'
@@ -70,6 +78,7 @@ import { RegulatedOrderVerificationStatus } from './model/RegulatedOrderVerifica
 import { RejectionReason } from './model/RejectionReason.js'
 import { ShipmentStatus } from './model/ShipmentStatus.js'
 import { ShippingConstraints } from './model/ShippingConstraints.js'
+import { ShippingInstructions } from './model/ShippingInstructions.js'
 import { SubstitutionOption } from './model/SubstitutionOption.js'
 import { SubstitutionPreferences } from './model/SubstitutionPreferences.js'
 import { TaxClassification } from './model/TaxClassification.js'
@@ -225,10 +234,52 @@ export {
   ExceptionDates,
 
   /**
+     * The ExportInfo model constructor.
+     * @property {module:orders_v0/model/ExportInfo}
+     */
+  ExportInfo,
+
+  /**
      * The FulfillmentInstruction model constructor.
      * @property {module:orders_v0/model/FulfillmentInstruction}
      */
   FulfillmentInstruction,
+
+  /**
+     * The FulfillmentInstructions model constructor.
+     * @property {module:orders_v0/model/FulfillmentInstructions}
+     */
+  FulfillmentInstructions,
+
+  /**
+     * The FulfillmentLocation model constructor.
+     * @property {module:orders_v0/model/FulfillmentLocation}
+     */
+  FulfillmentLocation,
+
+  /**
+     * The FulfillmentPlan model constructor.
+     * @property {module:orders_v0/model/FulfillmentPlan}
+     */
+  FulfillmentPlan,
+
+  /**
+     * The FulfillmentPlanConstraintType model constructor.
+     * @property {module:orders_v0/model/FulfillmentPlanConstraintType}
+     */
+  FulfillmentPlanConstraintType,
+
+  /**
+     * The FulfillmentPlanItem model constructor.
+     * @property {module:orders_v0/model/FulfillmentPlanItem}
+     */
+  FulfillmentPlanItem,
+
+  /**
+     * The FulfillmentPlanShippingConstraints model constructor.
+     * @property {module:orders_v0/model/FulfillmentPlanShippingConstraints}
+     */
+  FulfillmentPlanShippingConstraints,
 
   /**
      * The GetOrderAddressResponse model constructor.
@@ -241,6 +292,12 @@ export {
      * @property {module:orders_v0/model/GetOrderBuyerInfoResponse}
      */
   GetOrderBuyerInfoResponse,
+
+  /**
+     * The GetOrderFulfillmentInstructionsResponse model constructor.
+     * @property {module:orders_v0/model/GetOrderFulfillmentInstructionsResponse}
+     */
+  GetOrderFulfillmentInstructionsResponse,
 
   /**
      * The GetOrderItemsBuyerInfoResponse model constructor.
@@ -445,6 +502,12 @@ export {
      * @property {module:orders_v0/model/ShippingConstraints}
      */
   ShippingConstraints,
+
+  /**
+     * The ShippingInstructions model constructor.
+     * @property {module:orders_v0/model/ShippingInstructions}
+     */
+  ShippingInstructions,
 
   /**
      * The SubstitutionOption model constructor.

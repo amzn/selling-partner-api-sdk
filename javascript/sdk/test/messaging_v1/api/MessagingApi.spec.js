@@ -69,18 +69,6 @@ const mockconfirmCustomizationDetailsData = {
     headers: {}
   }
 };
-const mockcreateAmazonMotorsData = {
-  request: {
-    'amazonOrderId': generateMockData('String'),
-    'marketplaceIds': generateMockData('String', true),
-    'body': generateMockData('CreateAmazonMotorsRequest')
-  },
-  response: {
-    data: generateMockData('CreateAmazonMotorsResponse'),
-    statusCode: 201,
-    headers: {}
-  }
-};
 const mockcreateConfirmDeliveryDetailsData = {
   request: {
     'amazonOrderId': generateMockData('String'),
@@ -260,60 +248,6 @@ describe('MessagingApi', () => {
           mockconfirmCustomizationDetailsData.request['body']
         ];
         await instance.confirmCustomizationDetails(...params);
-        throw new Error('Expected error to be thrown');
-      } catch (error) {
-        expect(error).to.exist;
-        expect(error.statusCode).to.equal(400);
-      }
-    });
-  });
-  describe('createAmazonMotors', () => {
-    it('should successfully call createAmazonMotors', async () => {
-      instance.apiClient.callApi.resolves(mockcreateAmazonMotorsData.response);
-
-      const params = [
-        mockcreateAmazonMotorsData.request['amazonOrderId'],
-        mockcreateAmazonMotorsData.request['marketplaceIds'],
-        mockcreateAmazonMotorsData.request['body']
-      ];
-      const data = await instance.createAmazonMotors(...params);
-
-      expect(data instanceof SellingPartnerApiForMessaging.CreateAmazonMotorsResponse).to.be.true;
-      expect(data).to.equal(mockcreateAmazonMotorsData.response.data);
-    });
-
-    it('should successfully call createAmazonMotorsWithHttpInfo', async () => {
-      instance.apiClient.callApi.resolves(mockcreateAmazonMotorsData.response);
-
-      const params = [
-        mockcreateAmazonMotorsData.request['amazonOrderId'],
-        mockcreateAmazonMotorsData.request['marketplaceIds'],
-        mockcreateAmazonMotorsData.request['body']
-      ];
-      const response = await instance.createAmazonMotorsWithHttpInfo(...params);
-
-      expect(response).to.have.property('statusCode');
-      expect(response.statusCode).to.equal(mockcreateAmazonMotorsData.response.statusCode)
-      expect(response).to.have.property('headers');
-      expect(response).to.have.property('data');
-      expect(response.data).to.equal(mockcreateAmazonMotorsData.response.data)
-    });
-
-    it('should handle API errors', async () => {
-      const errorResponse = {
-        errors: new Error('Expected error to be thrown'),
-        statusCode: 400,
-        headers: {}
-      };
-      instance.apiClient.callApi.rejects(errorResponse);
-
-      try {
-        const params = [
-          mockcreateAmazonMotorsData.request['amazonOrderId'],
-          mockcreateAmazonMotorsData.request['marketplaceIds'],
-          mockcreateAmazonMotorsData.request['body']
-        ];
-        await instance.createAmazonMotors(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;

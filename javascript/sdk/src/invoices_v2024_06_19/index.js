@@ -13,6 +13,7 @@
 
 import { ApiClient } from './ApiClient.js'
 import { AttributeOption } from './model/AttributeOption.js'
+import { CarrierDetailsContext } from './model/CarrierDetailsContext.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
 import { Export } from './model/Export.js'
@@ -26,7 +27,13 @@ import { GetInvoicesDocumentResponse } from './model/GetInvoicesDocumentResponse
 import { GetInvoicesExportResponse } from './model/GetInvoicesExportResponse.js'
 import { GetInvoicesExportsResponse } from './model/GetInvoicesExportsResponse.js'
 import { GetInvoicesResponse } from './model/GetInvoicesResponse.js'
+import { GovernmentInvoiceCreationStatus } from './model/GovernmentInvoiceCreationStatus.js'
+import { GovernmentInvoiceRequest } from './model/GovernmentInvoiceRequest.js'
+import { GovernmentInvoiceStatusResponse } from './model/GovernmentInvoiceStatusResponse.js'
+import { GovtInvoiceDocumentResponse } from './model/GovtInvoiceDocumentResponse.js'
 import { Invoice } from './model/Invoice.js'
+import { InvoiceDocument } from './model/InvoiceDocument.js'
+import { InvoiceError } from './model/InvoiceError.js'
 import { InvoicesAttributes } from './model/InvoicesAttributes.js'
 import { InvoicesDocument } from './model/InvoicesDocument.js'
 import { TransactionIdentifier } from './model/TransactionIdentifier.js'
@@ -50,6 +57,12 @@ export {
      * @property {module:invoices_v2024_06_19/model/AttributeOption}
      */
   AttributeOption,
+
+  /**
+     * The CarrierDetailsContext model constructor.
+     * @property {module:invoices_v2024_06_19/model/CarrierDetailsContext}
+     */
+  CarrierDetailsContext,
 
   /**
      * The Error model constructor.
@@ -130,10 +143,46 @@ export {
   GetInvoicesResponse,
 
   /**
+     * The GovernmentInvoiceCreationStatus model constructor.
+     * @property {module:invoices_v2024_06_19/model/GovernmentInvoiceCreationStatus}
+     */
+  GovernmentInvoiceCreationStatus,
+
+  /**
+     * The GovernmentInvoiceRequest model constructor.
+     * @property {module:invoices_v2024_06_19/model/GovernmentInvoiceRequest}
+     */
+  GovernmentInvoiceRequest,
+
+  /**
+     * The GovernmentInvoiceStatusResponse model constructor.
+     * @property {module:invoices_v2024_06_19/model/GovernmentInvoiceStatusResponse}
+     */
+  GovernmentInvoiceStatusResponse,
+
+  /**
+     * The GovtInvoiceDocumentResponse model constructor.
+     * @property {module:invoices_v2024_06_19/model/GovtInvoiceDocumentResponse}
+     */
+  GovtInvoiceDocumentResponse,
+
+  /**
      * The Invoice model constructor.
      * @property {module:invoices_v2024_06_19/model/Invoice}
      */
   Invoice,
+
+  /**
+     * The InvoiceDocument model constructor.
+     * @property {module:invoices_v2024_06_19/model/InvoiceDocument}
+     */
+  InvoiceDocument,
+
+  /**
+     * The InvoiceError model constructor.
+     * @property {module:invoices_v2024_06_19/model/InvoiceError}
+     */
+  InvoiceError,
 
   /**
      * The InvoicesAttributes model constructor.

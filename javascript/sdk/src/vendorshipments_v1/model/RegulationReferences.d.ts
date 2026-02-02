@@ -13,25 +13,25 @@ export class RegulationReferences {
      */
     static constructFromObject(data: any, obj: RegulationReferences): RegulationReferences;
     /**
-     * The EUDR Due Diligence Reference number from vendor's upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix.
+     * The reference number from the vendor's EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.
      * @member {String} dueDiligenceReference
      * @type {String}
      */
     dueDiligenceReference: string;
     /**
-     * The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.
+     * The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.
      * @member {String} dueDiligenceVerification
      * @type {String}
      */
     dueDiligenceVerification: string;
     /**
-     * The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.
+     * The EUDR Due Diligence information pre-loaded in Vendor Central.
      * @member {String} dueDiligenceInformation
      * @type {String}
      */
     dueDiligenceInformation: string;
     /**
-     * The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.
+     * The exemption code for EUDR products exempt from due diligence requirements.
      * @member {String} dueDiligenceExemptionCode
      * @type {String}
      */

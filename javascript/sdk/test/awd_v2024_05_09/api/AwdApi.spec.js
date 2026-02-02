@@ -1,6 +1,6 @@
 /**
  * The Selling Partner API for Amazon Warehousing and Distribution
- * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory.
+ * The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory. 
  *
  * The version of the OpenAPI document: 2024-05-09
  * 
@@ -85,12 +85,31 @@ const mockconfirmInboundData = {
     headers: {}
   }
 };
+const mockconfirmReplenishmentOrderData = {
+  request: {
+    'orderId': generateMockData('String')
+  },
+  response: {
+    statusCode: 204,
+    headers: {}
+  }
+};
 const mockcreateInboundData = {
   request: {
     'body': generateMockData('InboundOrderCreationData')
   },
   response: {
     data: generateMockData('InboundOrderReference'),
+    statusCode: 201,
+    headers: {}
+  }
+};
+const mockcreateReplenishmentOrderData = {
+  request: {
+    'body': generateMockData('ReplenishmentOrderCreationData')
+  },
+  response: {
+    data: generateMockData('ReplenishmentOrderReference'),
     statusCode: 201,
     headers: {}
   }
@@ -125,6 +144,16 @@ const mockgetInboundShipmentLabelsData = {
     headers: {}
   }
 };
+const mockgetReplenishmentOrderData = {
+  request: {
+    'orderId': generateMockData('String')
+  },
+  response: {
+    data: generateMockData('ReplenishmentOrder'),
+    statusCode: 200,
+    headers: {}
+  }
+};
 const mocklistInboundShipmentsData = {
   request: {
   },
@@ -139,6 +168,15 @@ const mocklistInventoryData = {
   },
   response: {
     data: generateMockData('InventoryListing'),
+    statusCode: 200,
+    headers: {}
+  }
+};
+const mocklistReplenishmentOrdersData = {
+  request: {
+  },
+  response: {
+    data: generateMockData('ReplenishmentOrderListing'),
     statusCode: 200,
     headers: {}
   }
@@ -315,6 +353,51 @@ describe('AwdApi', () => {
       }
     });
   });
+  describe('confirmReplenishmentOrder', () => {
+    it('should successfully call confirmReplenishmentOrder', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmReplenishmentOrderData.response);
+
+      const params = [
+        mockconfirmReplenishmentOrderData.request['orderId']
+      ];
+      const data = await instance.confirmReplenishmentOrder(...params);
+
+      expect(data).to.be.undefined;
+    });
+
+    it('should successfully call confirmReplenishmentOrderWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockconfirmReplenishmentOrderData.response);
+
+      const params = [
+        mockconfirmReplenishmentOrderData.request['orderId']
+      ];
+      const response = await instance.confirmReplenishmentOrderWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockconfirmReplenishmentOrderData.response.statusCode)
+      expect(response).to.have.property('headers');
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockconfirmReplenishmentOrderData.request['orderId']
+        ];
+        await instance.confirmReplenishmentOrder(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
   describe('createInbound', () => {
     it('should successfully call createInbound', async () => {
       instance.apiClient.callApi.resolves(mockcreateInboundData.response);
@@ -356,6 +439,54 @@ describe('AwdApi', () => {
           mockcreateInboundData.request['body']
         ];
         await instance.createInbound(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('createReplenishmentOrder', () => {
+    it('should successfully call createReplenishmentOrder', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReplenishmentOrderData.response);
+
+      const params = [
+        mockcreateReplenishmentOrderData.request['body']
+      ];
+      const data = await instance.createReplenishmentOrder(...params);
+
+      expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.ReplenishmentOrderReference).to.be.true;
+      expect(data).to.equal(mockcreateReplenishmentOrderData.response.data);
+    });
+
+    it('should successfully call createReplenishmentOrderWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockcreateReplenishmentOrderData.response);
+
+      const params = [
+        mockcreateReplenishmentOrderData.request['body']
+      ];
+      const response = await instance.createReplenishmentOrderWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockcreateReplenishmentOrderData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+      expect(response.data).to.equal(mockcreateReplenishmentOrderData.response.data)
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockcreateReplenishmentOrderData.request['body']
+        ];
+        await instance.createReplenishmentOrder(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;
@@ -507,6 +638,54 @@ describe('AwdApi', () => {
       }
     });
   });
+  describe('getReplenishmentOrder', () => {
+    it('should successfully call getReplenishmentOrder', async () => {
+      instance.apiClient.callApi.resolves(mockgetReplenishmentOrderData.response);
+
+      const params = [
+        mockgetReplenishmentOrderData.request['orderId']
+      ];
+      const data = await instance.getReplenishmentOrder(...params);
+
+      expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.ReplenishmentOrder).to.be.true;
+      expect(data).to.equal(mockgetReplenishmentOrderData.response.data);
+    });
+
+    it('should successfully call getReplenishmentOrderWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mockgetReplenishmentOrderData.response);
+
+      const params = [
+        mockgetReplenishmentOrderData.request['orderId']
+      ];
+      const response = await instance.getReplenishmentOrderWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mockgetReplenishmentOrderData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+      expect(response.data).to.equal(mockgetReplenishmentOrderData.response.data)
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+          mockgetReplenishmentOrderData.request['orderId']
+        ];
+        await instance.getReplenishmentOrder(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
   describe('listInboundShipments', () => {
     it('should successfully call listInboundShipments', async () => {
       instance.apiClient.callApi.resolves(mocklistInboundShipmentsData.response);
@@ -590,6 +769,51 @@ describe('AwdApi', () => {
         const params = [
         ];
         await instance.listInventory(...params);
+        throw new Error('Expected error to be thrown');
+      } catch (error) {
+        expect(error).to.exist;
+        expect(error.statusCode).to.equal(400);
+      }
+    });
+  });
+  describe('listReplenishmentOrders', () => {
+    it('should successfully call listReplenishmentOrders', async () => {
+      instance.apiClient.callApi.resolves(mocklistReplenishmentOrdersData.response);
+
+      const params = [
+      ];
+      const data = await instance.listReplenishmentOrders(...params);
+
+      expect(data instanceof TheSellingPartnerApiForAmazonWarehousingAndDistribution.ReplenishmentOrderListing).to.be.true;
+      expect(data).to.equal(mocklistReplenishmentOrdersData.response.data);
+    });
+
+    it('should successfully call listReplenishmentOrdersWithHttpInfo', async () => {
+      instance.apiClient.callApi.resolves(mocklistReplenishmentOrdersData.response);
+
+      const params = [
+      ];
+      const response = await instance.listReplenishmentOrdersWithHttpInfo(...params);
+
+      expect(response).to.have.property('statusCode');
+      expect(response.statusCode).to.equal(mocklistReplenishmentOrdersData.response.statusCode)
+      expect(response).to.have.property('headers');
+      expect(response).to.have.property('data');
+      expect(response.data).to.equal(mocklistReplenishmentOrdersData.response.data)
+    });
+
+    it('should handle API errors', async () => {
+      const errorResponse = {
+        errors: new Error('Expected error to be thrown'),
+        statusCode: 400,
+        headers: {}
+      };
+      instance.apiClient.callApi.rejects(errorResponse);
+
+      try {
+        const params = [
+        ];
+        await instance.listReplenishmentOrders(...params);
         throw new Error('Expected error to be thrown');
       } catch (error) {
         expect(error).to.exist;

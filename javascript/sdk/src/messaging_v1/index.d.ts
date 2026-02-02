@@ -1,7 +1,5 @@
 import { ApiClient } from './ApiClient.js';
 import { Attachment } from './model/Attachment.js';
-import { CreateAmazonMotorsRequest } from './model/CreateAmazonMotorsRequest.js';
-import { CreateAmazonMotorsResponse } from './model/CreateAmazonMotorsResponse.js';
 import { CreateConfirmCustomizationDetailsRequest } from './model/CreateConfirmCustomizationDetailsRequest.js';
 import { CreateConfirmCustomizationDetailsResponse } from './model/CreateConfirmCustomizationDetailsResponse.js';
 import { CreateConfirmDeliveryDetailsRequest } from './model/CreateConfirmDeliveryDetailsRequest.js';
@@ -34,5 +32,5 @@ import { InvoiceResponse } from './model/InvoiceResponse.js';
 import { LinkObject } from './model/LinkObject.js';
 import { MessagingAction } from './model/MessagingAction.js';
 import { MessagingApi } from './api/MessagingApi.js';
-export { ApiClient, Attachment, CreateAmazonMotorsRequest, CreateAmazonMotorsResponse, CreateConfirmCustomizationDetailsRequest, CreateConfirmCustomizationDetailsResponse, CreateConfirmDeliveryDetailsRequest, CreateConfirmDeliveryDetailsResponse, CreateConfirmOrderDetailsRequest, CreateConfirmOrderDetailsResponse, CreateConfirmServiceDetailsRequest, CreateConfirmServiceDetailsResponse, CreateDigitalAccessKeyRequest, CreateDigitalAccessKeyResponse, CreateLegalDisclosureRequest, CreateLegalDisclosureResponse, CreateUnexpectedProblemRequest, CreateUnexpectedProblemResponse, CreateWarrantyRequest, CreateWarrantyResponse, Error, GetAttributesResponse, GetAttributesResponseBuyer, GetMessagingActionResponse, GetMessagingActionResponseEmbedded, GetMessagingActionResponseLinks, GetMessagingActionsForOrderResponse, GetMessagingActionsForOrderResponseEmbedded, GetMessagingActionsForOrderResponseLinks, GetSchemaResponse, GetSchemaResponseLinks, InvoiceRequest, InvoiceResponse, LinkObject, MessagingAction, MessagingApi };
+export { ApiClient, Attachment, CreateConfirmCustomizationDetailsRequest, CreateConfirmCustomizationDetailsResponse, CreateConfirmDeliveryDetailsRequest, CreateConfirmDeliveryDetailsResponse, CreateConfirmOrderDetailsRequest, CreateConfirmOrderDetailsResponse, CreateConfirmServiceDetailsRequest, CreateConfirmServiceDetailsResponse, CreateDigitalAccessKeyRequest, CreateDigitalAccessKeyResponse, CreateLegalDisclosureRequest, CreateLegalDisclosureResponse, CreateUnexpectedProblemRequest, CreateUnexpectedProblemResponse, CreateWarrantyRequest, CreateWarrantyResponse, Error, GetAttributesResponse, GetAttributesResponseBuyer, GetMessagingActionResponse, GetMessagingActionResponseEmbedded, GetMessagingActionResponseLinks, GetMessagingActionsForOrderResponse, GetMessagingActionsForOrderResponseEmbedded, GetMessagingActionsForOrderResponseLinks, GetSchemaResponse, GetSchemaResponseLinks, InvoiceRequest, InvoiceResponse, LinkObject, MessagingAction, MessagingApi };
 //# sourceMappingURL=index.d.ts.map

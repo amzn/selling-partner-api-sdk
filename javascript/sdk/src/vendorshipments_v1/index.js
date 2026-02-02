@@ -37,9 +37,11 @@ import { Location } from './model/Location.js'
 import { Money } from './model/Money.js'
 import { PackageItemDetails } from './model/PackageItemDetails.js'
 import { PackedItems } from './model/PackedItems.js'
+import { PackedQuantity } from './model/PackedQuantity.js'
 import { Pagination } from './model/Pagination.js'
 import { Pallet } from './model/Pallet.js'
 import { PartyIdentification } from './model/PartyIdentification.js'
+import { PurchaseOrderItemDetails } from './model/PurchaseOrderItemDetails.js'
 import { PurchaseOrderItems } from './model/PurchaseOrderItems.js'
 import { PurchaseOrders } from './model/PurchaseOrders.js'
 import { RegulationReferences } from './model/RegulationReferences.js'
@@ -51,6 +53,9 @@ import { ShipmentInformation } from './model/ShipmentInformation.js'
 import { ShipmentMeasurements } from './model/ShipmentMeasurements.js'
 import { ShipmentStatusDetails } from './model/ShipmentStatusDetails.js'
 import { Stop } from './model/Stop.js'
+import { SubmitShipmentConfirmationRequest } from './model/SubmitShipmentConfirmationRequest.js'
+import { SubmitShipmentConfirmationResponse } from './model/SubmitShipmentConfirmationResponse.js'
+import { SubmitShipmentConfirmationResult } from './model/SubmitShipmentConfirmationResult.js'
 import { SubmitShipmentConfirmationsRequest } from './model/SubmitShipmentConfirmationsRequest.js'
 import { SubmitShipmentConfirmationsResponse } from './model/SubmitShipmentConfirmationsResponse.js'
 import { SubmitShipments } from './model/SubmitShipments.js'
@@ -231,6 +236,12 @@ export {
   PackedItems,
 
   /**
+     * The PackedQuantity model constructor.
+     * @property {module:vendorshipments_v1/model/PackedQuantity}
+     */
+  PackedQuantity,
+
+  /**
      * The Pagination model constructor.
      * @property {module:vendorshipments_v1/model/Pagination}
      */
@@ -247,6 +258,12 @@ export {
      * @property {module:vendorshipments_v1/model/PartyIdentification}
      */
   PartyIdentification,
+
+  /**
+     * The PurchaseOrderItemDetails model constructor.
+     * @property {module:vendorshipments_v1/model/PurchaseOrderItemDetails}
+     */
+  PurchaseOrderItemDetails,
 
   /**
      * The PurchaseOrderItems model constructor.
@@ -313,6 +330,24 @@ export {
      * @property {module:vendorshipments_v1/model/Stop}
      */
   Stop,
+
+  /**
+     * The SubmitShipmentConfirmationRequest model constructor.
+     * @property {module:vendorshipments_v1/model/SubmitShipmentConfirmationRequest}
+     */
+  SubmitShipmentConfirmationRequest,
+
+  /**
+     * The SubmitShipmentConfirmationResponse model constructor.
+     * @property {module:vendorshipments_v1/model/SubmitShipmentConfirmationResponse}
+     */
+  SubmitShipmentConfirmationResponse,
+
+  /**
+     * The SubmitShipmentConfirmationResult model constructor.
+     * @property {module:vendorshipments_v1/model/SubmitShipmentConfirmationResult}
+     */
+  SubmitShipmentConfirmationResult,
 
   /**
      * The SubmitShipmentConfirmationsRequest model constructor.

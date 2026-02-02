@@ -15,12 +15,15 @@ import { ApiClient } from './ApiClient.js'
 import { Address } from './model/Address.js'
 import { CarrierCode } from './model/CarrierCode.js'
 import { CarrierCodeType } from './model/CarrierCodeType.js'
+import { ConfirmationMode } from './model/ConfirmationMode.js'
 import { DestinationDetails } from './model/DestinationDetails.js'
 import { DimensionUnitOfMeasurement } from './model/DimensionUnitOfMeasurement.js'
+import { DistributionIneligibleReason } from './model/DistributionIneligibleReason.js'
 import { DistributionPackage } from './model/DistributionPackage.js'
 import { DistributionPackageContents } from './model/DistributionPackageContents.js'
 import { DistributionPackageQuantity } from './model/DistributionPackageQuantity.js'
 import { DistributionPackageType } from './model/DistributionPackageType.js'
+import { DistributionProduct } from './model/DistributionProduct.js'
 import { Error } from './model/Error.js'
 import { ErrorList } from './model/ErrorList.js'
 import { ExpirationDetails } from './model/ExpirationDetails.js'
@@ -44,6 +47,8 @@ import { LabelOwner } from './model/LabelOwner.js'
 import { LabelStatus } from './model/LabelStatus.js'
 import { MeasurementData } from './model/MeasurementData.js'
 import { OrderIneligibilityReason } from './model/OrderIneligibilityReason.js'
+import { OutboundShipmentStatus } from './model/OutboundShipmentStatus.js'
+import { OutboundShipmentSummary } from './model/OutboundShipmentSummary.js'
 import { PackageDimensions } from './model/PackageDimensions.js'
 import { PackageVolume } from './model/PackageVolume.js'
 import { PackageWeight } from './model/PackageWeight.js'
@@ -53,6 +58,12 @@ import { PrepInstruction } from './model/PrepInstruction.js'
 import { PrepOwner } from './model/PrepOwner.js'
 import { ProductAttribute } from './model/ProductAttribute.js'
 import { ProductQuantity } from './model/ProductQuantity.js'
+import { ReplenishmentOrder } from './model/ReplenishmentOrder.js'
+import { ReplenishmentOrderCreationData } from './model/ReplenishmentOrderCreationData.js'
+import { ReplenishmentOrderListing } from './model/ReplenishmentOrderListing.js'
+import { ReplenishmentOrderReference } from './model/ReplenishmentOrderReference.js'
+import { ReplenishmentOrderStatus } from './model/ReplenishmentOrderStatus.js'
+import { ReplenishmentPreferences } from './model/ReplenishmentPreferences.js'
 import { ShipmentLabels } from './model/ShipmentLabels.js'
 import { ShipmentListing } from './model/ShipmentListing.js'
 import { SkuEligibility } from './model/SkuEligibility.js'
@@ -65,7 +76,7 @@ import { WeightUnitOfMeasurement } from './model/WeightUnitOfMeasurement.js'
 import { AwdApi } from './api/AwdApi.js'
 
 /**
-* The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory..<br>
+* The Selling Partner API for Amazon Warehousing and Distribution (AWD) provides programmatic access to information about AWD shipments and inventory. .<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * @module awd_v2024_05_09/index
 * @version 2024-05-09
@@ -96,6 +107,12 @@ export {
   CarrierCodeType,
 
   /**
+     * The ConfirmationMode model constructor.
+     * @property {module:awd_v2024_05_09/model/ConfirmationMode}
+     */
+  ConfirmationMode,
+
+  /**
      * The DestinationDetails model constructor.
      * @property {module:awd_v2024_05_09/model/DestinationDetails}
      */
@@ -106,6 +123,12 @@ export {
      * @property {module:awd_v2024_05_09/model/DimensionUnitOfMeasurement}
      */
   DimensionUnitOfMeasurement,
+
+  /**
+     * The DistributionIneligibleReason model constructor.
+     * @property {module:awd_v2024_05_09/model/DistributionIneligibleReason}
+     */
+  DistributionIneligibleReason,
 
   /**
      * The DistributionPackage model constructor.
@@ -130,6 +153,12 @@ export {
      * @property {module:awd_v2024_05_09/model/DistributionPackageType}
      */
   DistributionPackageType,
+
+  /**
+     * The DistributionProduct model constructor.
+     * @property {module:awd_v2024_05_09/model/DistributionProduct}
+     */
+  DistributionProduct,
 
   /**
      * The Error model constructor.
@@ -270,6 +299,18 @@ export {
   OrderIneligibilityReason,
 
   /**
+     * The OutboundShipmentStatus model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundShipmentStatus}
+     */
+  OutboundShipmentStatus,
+
+  /**
+     * The OutboundShipmentSummary model constructor.
+     * @property {module:awd_v2024_05_09/model/OutboundShipmentSummary}
+     */
+  OutboundShipmentSummary,
+
+  /**
      * The PackageDimensions model constructor.
      * @property {module:awd_v2024_05_09/model/PackageDimensions}
      */
@@ -322,6 +363,42 @@ export {
      * @property {module:awd_v2024_05_09/model/ProductQuantity}
      */
   ProductQuantity,
+
+  /**
+     * The ReplenishmentOrder model constructor.
+     * @property {module:awd_v2024_05_09/model/ReplenishmentOrder}
+     */
+  ReplenishmentOrder,
+
+  /**
+     * The ReplenishmentOrderCreationData model constructor.
+     * @property {module:awd_v2024_05_09/model/ReplenishmentOrderCreationData}
+     */
+  ReplenishmentOrderCreationData,
+
+  /**
+     * The ReplenishmentOrderListing model constructor.
+     * @property {module:awd_v2024_05_09/model/ReplenishmentOrderListing}
+     */
+  ReplenishmentOrderListing,
+
+  /**
+     * The ReplenishmentOrderReference model constructor.
+     * @property {module:awd_v2024_05_09/model/ReplenishmentOrderReference}
+     */
+  ReplenishmentOrderReference,
+
+  /**
+     * The ReplenishmentOrderStatus model constructor.
+     * @property {module:awd_v2024_05_09/model/ReplenishmentOrderStatus}
+     */
+  ReplenishmentOrderStatus,
+
+  /**
+     * The ReplenishmentPreferences model constructor.
+     * @property {module:awd_v2024_05_09/model/ReplenishmentPreferences}
+     */
+  ReplenishmentPreferences,
 
   /**
      * The ShipmentLabels model constructor.

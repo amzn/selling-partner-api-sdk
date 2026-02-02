@@ -20,6 +20,10 @@ import { InboundOrderReference } from '../model/InboundOrderReference.js'
 import { InboundPackages } from '../model/InboundPackages.js'
 import { InboundShipment } from '../model/InboundShipment.js'
 import { InventoryListing } from '../model/InventoryListing.js'
+import { ReplenishmentOrder } from '../model/ReplenishmentOrder.js'
+import { ReplenishmentOrderCreationData } from '../model/ReplenishmentOrderCreationData.js'
+import { ReplenishmentOrderListing } from '../model/ReplenishmentOrderListing.js'
+import { ReplenishmentOrderReference } from '../model/ReplenishmentOrderReference.js'
 import { ShipmentLabels } from '../model/ShipmentLabels.js'
 import { ShipmentListing } from '../model/ShipmentListing.js'
 import { TransportationDetails } from '../model/TransportationDetails.js'
@@ -57,12 +61,16 @@ export class AwdApi {
       'AwdApi-cancelInbound',
       'AwdApi-checkInboundEligibility',
       'AwdApi-confirmInbound',
+      'AwdApi-confirmReplenishmentOrder',
       'AwdApi-createInbound',
+      'AwdApi-createReplenishmentOrder',
       'AwdApi-getInbound',
       'AwdApi-getInboundShipment',
       'AwdApi-getInboundShipmentLabels',
+      'AwdApi-getReplenishmentOrder',
       'AwdApi-listInboundShipments',
       'AwdApi-listInventory',
+      'AwdApi-listReplenishmentOrders',
       'AwdApi-updateInbound',
       'AwdApi-updateInboundShipmentTransportDetails'
     ]
@@ -219,6 +227,52 @@ export class AwdApi {
   }
 
   /**
+     * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     * @param {String} orderId ID of the replenishment order to be confirmed.
+     * @return {Promise<void>}
+     */
+  confirmReplenishmentOrderWithHttpInfo (orderId) {
+    const postBody = null
+
+    // verify the required parameter 'orderId' is set
+    if (orderId === undefined || orderId === null) {
+      throw new Error("Missing the required parameter 'orderId' when calling confirmReplenishmentOrder")
+    }
+
+    const pathParams = {
+      orderId
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = null
+
+    return this.apiClient.callApi('AwdApi-confirmReplenishmentOrder',
+      '/awd/2024-05-09/replenishmentOrders/{orderId}/confirmation', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-confirmReplenishmentOrder')
+    )
+  }
+
+  /**
+     * Confirms an AWD replenishment order in ELIGIBLE state with a set of shipments containing items that are needed to be replenished to an FBA node. Order can only be confirmed in ELIGIBLE state.
+     * @param {String} orderId ID of the replenishment order to be confirmed.
+     * @return {Promise<void>}
+     */
+  confirmReplenishmentOrder (orderId) {
+    return this.confirmReplenishmentOrderWithHttpInfo(orderId)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
      * Creates a draft AWD inbound order with a list of packages for inbound shipment. The operation creates one shipment per order.   **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The preceding table indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {InboundOrderCreationData} body Payload for creating an inbound order.
      * @return {Promise<InboundOrderReference>}
@@ -258,6 +312,51 @@ export class AwdApi {
      */
   createInbound (body) {
     return this.createInboundWithHttpInfo(body)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
+     * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the newly created order and also start an async validation check on the products to e. The order status will transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     * @param {ReplenishmentOrderCreationData} body Payload for creating a replenishment order.
+     * @return {Promise<ReplenishmentOrderReference>}
+     */
+  createReplenishmentOrderWithHttpInfo (body) {
+    const postBody = body
+
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error("Missing the required parameter 'body' when calling createReplenishmentOrder")
+    }
+
+    const pathParams = {
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = ['application/json']
+    const accepts = ['application/json']
+    const returnType = ReplenishmentOrderReference
+
+    return this.apiClient.callApi('AwdApi-createReplenishmentOrder',
+      '/awd/2024-05-09/replenishmentOrders', 'POST',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-createReplenishmentOrder')
+    )
+  }
+
+  /**
+     * Creates an AWD replenishment order with given products to replenish. The API will return the order ID of the newly created order and also start an async validation check on the products to e. The order status will transition to ELIGIBLE/INELIGIBLE status from VALIDATING post validation check
+     * @param {ReplenishmentOrderCreationData} body Payload for creating a replenishment order.
+     * @return {Promise<ReplenishmentOrderReference>}
+     */
+  createReplenishmentOrder (body) {
+    return this.createReplenishmentOrderWithHttpInfo(body)
       .then(function (response_and_data) {
         return response_and_data.data
       })
@@ -417,6 +516,52 @@ export class AwdApi {
   }
 
   /**
+     * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
+     * @param {String} orderId ID of the replenishment order to be retrieved.
+     * @return {Promise<ReplenishmentOrder>}
+     */
+  getReplenishmentOrderWithHttpInfo (orderId) {
+    const postBody = null
+
+    // verify the required parameter 'orderId' is set
+    if (orderId === undefined || orderId === null) {
+      throw new Error("Missing the required parameter 'orderId' when calling getReplenishmentOrder")
+    }
+
+    const pathParams = {
+      orderId
+    }
+    const queryParams = {
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = ReplenishmentOrder
+
+    return this.apiClient.callApi('AwdApi-getReplenishmentOrder',
+      '/awd/2024-05-09/replenishmentOrders/{orderId}', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-getReplenishmentOrder')
+    )
+  }
+
+  /**
+     * Retrieves an AWD Replenishment order with a set of shipments containing items that is/was planned to be replenished into an FBA node.
+     * @param {String} orderId ID of the replenishment order to be retrieved.
+     * @return {Promise<ReplenishmentOrder>}
+     */
+  getReplenishmentOrder (orderId) {
+    return this.getReplenishmentOrderWithHttpInfo(orderId)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
      * Retrieves a summary of all the inbound AWD shipments associated with a merchant, with the ability to apply optional filters.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 1 | 1 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
      * @param {Object} [opts] Optional parameters
      * @param {String} [opts.sortBy] Field to sort results by. By default, the response will be sorted by UPDATED_AT.
@@ -529,6 +674,62 @@ export class AwdApi {
      */
   listInventory (opts) {
     return this.listInventoryWithHttpInfo(opts)
+      .then(function (response_and_data) {
+        return response_and_data.data
+      })
+  }
+
+  /**
+     * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
+     * @param {Object} [opts] Optional parameters
+     * @param {Date} [opts.updatedAfter] Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+     * @param {Date} [opts.updatedBefore] Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+     * @param {String} [opts.sortOrder] Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     * @param {Number} [opts.maxResults] Maximum results to be returned in a single response. (default to 25)
+     * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @return {Promise<ReplenishmentOrderListing>}
+     */
+  listReplenishmentOrdersWithHttpInfo (opts) {
+    opts = opts || {}
+    const postBody = null
+
+    const pathParams = {
+    }
+    const queryParams = {
+      updatedAfter: opts.updatedAfter,
+      updatedBefore: opts.updatedBefore,
+      sortOrder: opts.sortOrder,
+      maxResults: opts.maxResults,
+      nextToken: opts.nextToken
+    }
+    const headerParams = {
+    }
+    const formParams = {
+    }
+
+    const contentTypes = []
+    const accepts = ['application/json']
+    const returnType = ReplenishmentOrderListing
+
+    return this.apiClient.callApi('AwdApi-listReplenishmentOrders',
+      '/awd/2024-05-09/replenishmentOrders', 'GET',
+      pathParams, queryParams, headerParams, formParams, postBody,
+      contentTypes, accepts, returnType, this.getRateLimiter('AwdApi-listReplenishmentOrders')
+    )
+  }
+
+  /**
+     * Retrieves all the AWD replenishment orders pertaining to a merchant with optional filters. API by default will sort orders by updatedAt attribute in descending order.
+     * @param {Object} [opts] Optional parameters
+     * @param {Date} [opts.updatedAfter] Get the replenishment orders updated after certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+     * @param {Date} [opts.updatedBefore] Get the replenishment orders updated before certain time (Inclusive) Date should be in ISO 8601 format as defined by date-time in - https://www.rfc-editor.org/rfc/rfc3339.
+     * @param {String} [opts.sortOrder] Sort the response in ASCENDING or DESCENDING order. The default sort order is DESCENDING.
+     * @param {Number} [opts.maxResults] Maximum results to be returned in a single response. (default to 25)
+     * @param {String} [opts.nextToken] A token that is used to retrieve the next page of results. The response includes &#x60;nextToken&#x60; when the number of results exceeds the specified &#x60;maxResults&#x60; value. To get the next page of results, call the operation with this token and include the same arguments as the call that produced the token. To get a complete list, call this operation until &#x60;nextToken&#x60; is null. Note that this operation can return empty pages.
+     * @return {Promise<ReplenishmentOrderListing>}
+     */
+  listReplenishmentOrders (opts) {
+    return this.listReplenishmentOrdersWithHttpInfo(opts)
       .then(function (response_and_data) {
         return response_and_data.data
       })
