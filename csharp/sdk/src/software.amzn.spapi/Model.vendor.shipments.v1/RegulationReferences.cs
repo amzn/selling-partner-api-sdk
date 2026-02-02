@@ -26,7 +26,7 @@ using OpenAPIDateConverter = software.amzn.spapi.Client.OpenAPIDateConverter;
 namespace software.amzn.spapi.Model.vendor.shipments.v1
 {
     /// <summary>
-    /// Container for regulatory compliance information, for instance EU Due Diligence Regulation (EUDR) requirements. Includes reference numbers, verification codes, compliance information, and exemption codes necessary for documenting regulatory compliance for shipments.
+    /// Regulatory requirements and compliance information for the item, including reference numbers, verification codes, and exemption codes. Use this field to specify applicable regulations such as EU Deforestation Regulation (EUDR).
     /// </summary>
     [DataContract(Name = "RegulationReferences")]
     public partial class RegulationReferences : IValidatableObject
@@ -34,10 +34,10 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <summary>
         /// Initializes a new instance of the <see cref="RegulationReferences" /> class.
         /// </summary>
-        /// <param name="dueDiligenceReference">The EUDR Due Diligence Reference number from vendor&#39;s upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix..</param>
-        /// <param name="dueDiligenceVerification">The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR..</param>
-        /// <param name="dueDiligenceInformation">The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience..</param>
-        /// <param name="dueDiligenceExemptionCode">The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements..</param>
+        /// <param name="dueDiligenceReference">The reference number from the vendor&#39;s EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed..</param>
+        /// <param name="dueDiligenceVerification">The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS..</param>
+        /// <param name="dueDiligenceInformation">The EUDR Due Diligence information pre-loaded in Vendor Central..</param>
+        /// <param name="dueDiligenceExemptionCode">The exemption code for EUDR products exempt from due diligence requirements..</param>
         public RegulationReferences(string? dueDiligenceReference = default(string?), string? dueDiligenceVerification = default(string?), string? dueDiligenceInformation = default(string?), string? dueDiligenceExemptionCode = default(string?))
         {
             this.DueDiligenceReference = dueDiligenceReference;
@@ -47,30 +47,30 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         }
 
         /// <summary>
-        /// The EUDR Due Diligence Reference number from vendor&#39;s upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix.
+        /// The reference number from the vendor&#39;s EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.
         /// </summary>
-        /// <value>The EUDR Due Diligence Reference number from vendor&#39;s upstream Due Dilligence Statement (DDS) submitted to EU Commison portal or provided to Onix.</value>
+        /// <value>The reference number from the vendor&#39;s EUDR Due Diligence Statement (DDS) submitted to the EU Commission portal or provided to Amazon through ONIX feed.</value>
         [DataMember(Name = "dueDiligenceReference", EmitDefaultValue = false)]
         public string? DueDiligenceReference { get; set; }
 
         /// <summary>
-        /// The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.
+        /// The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.
         /// </summary>
-        /// <value>The EUDR Due Diligence Verification number provided by EU Commision associated with submitted DDR.</value>
+        /// <value>The EUDR Due Diligence verification number provided by the EU Commission for the submitted DDS.</value>
         [DataMember(Name = "dueDiligenceVerification", EmitDefaultValue = false)]
         public string? DueDiligenceVerification { get; set; }
 
         /// <summary>
-        /// The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.
+        /// The EUDR Due Diligence information pre-loaded in Vendor Central.
         /// </summary>
-        /// <value>The EUDR Due Diligence Information for EUDR that was already pre-loaded in Vendor Central within Amazon compliance collection experience.</value>
+        /// <value>The EUDR Due Diligence information pre-loaded in Vendor Central.</value>
         [DataMember(Name = "dueDiligenceInformation", EmitDefaultValue = false)]
         public string? DueDiligenceInformation { get; set; }
 
         /// <summary>
-        /// The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.
+        /// The exemption code for EUDR products exempt from due diligence requirements.
         /// </summary>
-        /// <value>The Due Diligence exemption code for EUDR products indicating the item is exempt from due diligence requirements.</value>
+        /// <value>The exemption code for EUDR products exempt from due diligence requirements.</value>
         [DataMember(Name = "dueDiligenceExemptionCode", EmitDefaultValue = false)]
         public string? DueDiligenceExemptionCode { get; set; }
 

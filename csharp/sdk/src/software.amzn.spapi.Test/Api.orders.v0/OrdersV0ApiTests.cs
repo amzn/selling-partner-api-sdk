@@ -128,6 +128,23 @@ namespace software.amzn.spapi.Test.Api.orders.v0
         }
         
         [Fact]
+        public void GetOrderFulfillmentInstructionsTest()
+        {
+            Init();
+            var url = "http://localhost:3000/response/" + ToLowerCaseAndCompress("ordersV0") + "-" + FormatOperationId("GetOrderFulfillmentInstructions") + "/code/200";
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+            httpClient.Send(request);
+            
+            string orderId = fixture.Create<string>();
+            
+
+            var response = api.GetOrderFulfillmentInstructionsWithHttpInfo(orderId);
+
+            Assert.Equal(200, (int) response.StatusCode);
+            AssertValidResponsePayload(200, response.Content);
+        }
+        
+        [Fact]
         public void GetOrderItemsTest()
         {
             Init();

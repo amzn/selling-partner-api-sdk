@@ -32,62 +32,15 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
     public partial class PackageItemDetails : IValidatableObject
     {
         /// <summary>
-        /// The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.
-        /// </summary>
-        /// <value>The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum LotNumberSourceTypeEnum
-        {
-            /// <summary>
-            /// Enum GLN for value: GLN
-            /// </summary>
-            [EnumMember(Value = "GLN")]
-            GLN = 1,
-
-            /// <summary>
-            /// Enum FFRN for value: FFRN
-            /// </summary>
-            [EnumMember(Value = "FFRN")]
-            FFRN = 2,
-
-            /// <summary>
-            /// Enum USDAE for value: USDA_E
-            /// </summary>
-            [EnumMember(Value = "USDA_E")]
-            USDAE = 3,
-
-            /// <summary>
-            /// Enum URL for value: URL
-            /// </summary>
-            [EnumMember(Value = "URL")]
-            URL = 4
-        }
-
-
-        /// <summary>
-        /// The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.
-        /// </summary>
-        /// <value>The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified.</value>
-        [DataMember(Name = "lotNumberSourceType", EmitDefaultValue = false)]
-        public LotNumberSourceTypeEnum? LotNumberSourceType { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="PackageItemDetails" /> class.
         /// </summary>
         /// <param name="purchaseOrderNumber">The purchase order number for the shipment being confirmed. If the items in this shipment belong to multiple purchase order numbers that are in particular carton or pallet within the shipment, then provide the purchaseOrderNumber at the appropriate carton or pallet level. Formatting Notes: 8-character alpha-numeric code..</param>
         /// <param name="lotNumber">The batch or lot number associates an item with information the manufacturer considers relevant for traceability of the trade item to which the Element String is applied. The data may refer to the trade item itself or to items contained. This field is mandatory for all perishable items..</param>
-        /// <param name="lotNumberSourceReference">This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified..</param>
-        /// <param name="lotNumberSourceType">The type of reference for the lot number source. Must be provided when lotNumberSourceReference is specified..</param>
-        /// <param name="countryOfOrigin">The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated..</param>
-        /// <param name="regulationReferences">regulationReferences.</param>
         /// <param name="expiry">expiry.</param>
-        public PackageItemDetails(string? purchaseOrderNumber = default(string?), string? lotNumber = default(string?), string? lotNumberSourceReference = default(string?), LotNumberSourceTypeEnum? lotNumberSourceType = default(LotNumberSourceTypeEnum?), string? countryOfOrigin = default(string?), RegulationReferences? regulationReferences = default(RegulationReferences?), Expiry? expiry = default(Expiry?))
+        public PackageItemDetails(string? purchaseOrderNumber = default(string?), string? lotNumber = default(string?), Expiry? expiry = default(Expiry?))
         {
             this.PurchaseOrderNumber = purchaseOrderNumber;
             this.LotNumber = lotNumber;
-            this.LotNumberSourceReference = lotNumberSourceReference;
-            this.LotNumberSourceType = lotNumberSourceType;
-            this.CountryOfOrigin = countryOfOrigin;
-            this.RegulationReferences = regulationReferences;
             this.Expiry = expiry;
         }
 
@@ -106,26 +59,6 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         public string? LotNumber { get; set; }
 
         /// <summary>
-        /// This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified.
-        /// </summary>
-        /// <value>This is a reference to the lot number source location meaning the place where the product was assigned a traceability lot number. This is mandatory for goods in scope of the FDA Food Safety Modernization Act (FSMA 204). If provided, lotNumberSourceType must also be specified.</value>
-        [DataMember(Name = "lotNumberSourceReference", EmitDefaultValue = false)]
-        public string? LotNumberSourceReference { get; set; }
-
-        /// <summary>
-        /// The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated.
-        /// </summary>
-        /// <value>The two digit country code in ISO 3166-1 alpha-2 format representing the country where the product was manufactured or originated.</value>
-        [DataMember(Name = "countryOfOrigin", EmitDefaultValue = false)]
-        public string? CountryOfOrigin { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RegulationReferences
-        /// </summary>
-        [DataMember(Name = "regulationReferences", EmitDefaultValue = false)]
-        public RegulationReferences? RegulationReferences { get; set; }
-
-        /// <summary>
         /// Gets or Sets Expiry
         /// </summary>
         [DataMember(Name = "expiry", EmitDefaultValue = false)]
@@ -141,10 +74,6 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
             sb.Append("class PackageItemDetails {\n");
             sb.Append("  PurchaseOrderNumber: ").Append(PurchaseOrderNumber).Append("\n");
             sb.Append("  LotNumber: ").Append(LotNumber).Append("\n");
-            sb.Append("  LotNumberSourceReference: ").Append(LotNumberSourceReference).Append("\n");
-            sb.Append("  LotNumberSourceType: ").Append(LotNumberSourceType).Append("\n");
-            sb.Append("  CountryOfOrigin: ").Append(CountryOfOrigin).Append("\n");
-            sb.Append("  RegulationReferences: ").Append(RegulationReferences).Append("\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -166,15 +95,6 @@ namespace software.amzn.spapi.Model.vendor.shipments.v1
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.CountryOfOrigin != null) {
-                // CountryOfOrigin (string) pattern
-                Regex regexCountryOfOrigin = new Regex(@"^[A-Z]{2}$", RegexOptions.CultureInvariant);
-                if (!regexCountryOfOrigin.Match(this.CountryOfOrigin).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CountryOfOrigin, must match a pattern of " + regexCountryOfOrigin, new [] { "CountryOfOrigin" });
-                }
-            }
-
             yield break;
         }
     }
