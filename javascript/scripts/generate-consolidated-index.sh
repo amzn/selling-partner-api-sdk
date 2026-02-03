@@ -16,7 +16,7 @@ get_export_name() {
     # Remove version suffix and convert to camelCase
     local base_name=$(echo "$dir" | sed -E 's/_v[0-9]+.*$//')
     
-    # Special cases for pricing and fulfillmentinbound
+    # Special handling to avoid duplicates
     if [[ "$dir" == "pricing_v2022_05_01" ]]; then
         echo "PricingSpApi"
         return
@@ -28,6 +28,12 @@ get_export_name() {
         return
     elif [[ "$dir" == "fulfillmentinbound_v2024_03_20" ]]; then
         echo "FulfillmentinboundSpApi"
+        return
+    elif [[ "$dir" == "orders_v0" ]]; then
+        echo "OrdersSpApi"
+        return
+    elif [[ "$dir" == "orders_v2026_01_01" ]]; then
+        echo "Orders_v2026SpApi"
         return
     fi
     
