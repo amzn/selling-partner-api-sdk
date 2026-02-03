@@ -28,8 +28,6 @@ import org.threeten.bp.OffsetDateTime;
 import software.amazon.spapi.ApiResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentDetailsResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.GetShipmentLabels;
-import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationRequest;
-import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationsRequest;
 import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipmentConfirmationsResponse;
 import software.amazon.spapi.models.vendor.shipments.v1.SubmitShipments;
@@ -73,17 +71,6 @@ public class VendorShippingApiTest {
 
         ApiResponse<GetShipmentLabels> response =
                 api.getShipmentLabelsWithHttpInfo(null, null, null, null, null, null, null, null);
-
-        assertEquals(200, response.getStatusCode());
-        assertValidResponsePayload(200, response.getData());
-    }
-
-    @Test
-    public void submitShipmentConfirmationTest() throws Exception {
-        instructBackendMock("vendorShipping", "submitShipmentConfirmation", "200");
-        SubmitShipmentConfirmationRequest body = easyRandom.nextObject(SubmitShipmentConfirmationRequest.class);
-
-        ApiResponse<SubmitShipmentConfirmationResponse> response = api.submitShipmentConfirmationWithHttpInfo(body);
 
         assertEquals(200, response.getStatusCode());
         assertValidResponsePayload(200, response.getData());

@@ -196,9 +196,6 @@ public class OrderItem {
     @SerializedName("AmazonPrograms")
     private AmazonPrograms amazonPrograms = null;
 
-    @SerializedName("ExportInfo")
-    private ExportInfo exportInfo = null;
-
     public OrderItem ASIN(String ASIN) {
         this.ASIN = ASIN;
         return this;
@@ -1013,25 +1010,6 @@ public class OrderItem {
         this.amazonPrograms = amazonPrograms;
     }
 
-    public OrderItem exportInfo(ExportInfo exportInfo) {
-        this.exportInfo = exportInfo;
-        return this;
-    }
-
-    /**
-     * Get exportInfo
-     *
-     * @return exportInfo
-     */
-    @Schema(description = "")
-    public ExportInfo getExportInfo() {
-        return exportInfo;
-    }
-
-    public void setExportInfo(ExportInfo exportInfo) {
-        this.exportInfo = exportInfo;
-    }
-
     @Override
     public boolean equals(java.lang.Object o) {
         if (this == o) {
@@ -1080,8 +1058,7 @@ public class OrderItem {
                 && Objects.equals(this.substitutionPreferences, orderItem.substitutionPreferences)
                 && Objects.equals(this.measurement, orderItem.measurement)
                 && Objects.equals(this.shippingConstraints, orderItem.shippingConstraints)
-                && Objects.equals(this.amazonPrograms, orderItem.amazonPrograms)
-                && Objects.equals(this.exportInfo, orderItem.exportInfo);
+                && Objects.equals(this.amazonPrograms, orderItem.amazonPrograms);
     }
 
     @Override
@@ -1126,8 +1103,7 @@ public class OrderItem {
                 substitutionPreferences,
                 measurement,
                 shippingConstraints,
-                amazonPrograms,
-                exportInfo);
+                amazonPrograms);
     }
 
     @Override
@@ -1215,7 +1191,6 @@ public class OrderItem {
         sb.append("    amazonPrograms: ")
                 .append(toIndentedString(amazonPrograms))
                 .append("\n");
-        sb.append("    exportInfo: ").append(toIndentedString(exportInfo)).append("\n");
         sb.append("}");
         return sb.toString();
     }
