@@ -25,7 +25,7 @@ export * as MerchantfulfillmentSpApi from './src/merchantfulfillment_v0/index.js
 export * as MessagingSpApi from './src/messaging_v1/index.js';
 export * as NotificationsSpApi from './src/notifications_v1/index.js';
 export * as OrdersSpApi from './src/orders_v0/index.js';
-export * as OrdersSpApi from './src/orders_v2026_01_01/index.js';
+export * as Orders_v2026SpApi from './src/orders_v2026_01_01/index.js';
 export * as PricingSpApi from './src/pricing_v2022_05_01/index.js';
 export * as Pricing_v0SpApi from './src/pricing_v0/index.js';
 export * as ProductfeesSpApi from './src/productfees_v0/index.js';

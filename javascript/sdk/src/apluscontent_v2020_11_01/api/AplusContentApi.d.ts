@@ -40,18 +40,18 @@ export class AplusContentApi {
        * Returns an A+ Content document, if available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
        * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-       * @param {[String]} includedDataSet The set of A+ Content data types to include in the response.
+       * @param {String[]} includedDataSet The set of A+ Content data types to include in the response.
        * @return {Promise<GetContentDocumentResponse>}
        */
-    getContentDocumentWithHttpInfo(contentReferenceKey: string, marketplaceId: string, includedDataSet: [string]): Promise<GetContentDocumentResponse>;
+    getContentDocumentWithHttpInfo(contentReferenceKey: string, marketplaceId: string, includedDataSet: string[]): Promise<GetContentDocumentResponse>;
     /**
        * Returns an A+ Content document, if available.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
        * @param {String} marketplaceId The marketplace ID is the globally unique identifier of a marketplace. To find the ID for your marketplace, refer to [Marketplace IDs](https://developer-docs.amazon.com/sp-api/docs/marketplace-ids).
-       * @param {[String]} includedDataSet The set of A+ Content data types to include in the response.
+       * @param {String[]} includedDataSet The set of A+ Content data types to include in the response.
        * @return {Promise<GetContentDocumentResponse>}
        */
-    getContentDocument(contentReferenceKey: string, marketplaceId: string, includedDataSet: [string]): Promise<GetContentDocumentResponse>;
+    getContentDocument(contentReferenceKey: string, marketplaceId: string, includedDataSet: string[]): Promise<GetContentDocumentResponse>;
     /**
        * Returns a list of ASINs that are related to the specified A+ Content document, if available. If you don&#39;t include the &#x60;asinSet&#x60; parameter, this operation returns all ASINs related to the content document.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 10 | 10 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header contains the usage plan rate limits for the operation, when available. The preceding table contains the default rate and burst values for this operation. Selling partners whose business demands require higher throughput might have higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
        * @param {String} contentReferenceKey The unique reference key for the A+ Content document. A content reference key cannot form a permalink and might change in the future. A content reference key is not guaranteed to match any A+ Content identifier.
