@@ -116,26 +116,26 @@ export class ShippingApi {
     }): Promise<GenerateCollectionFormResponse>;
     /**
        * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {[String]} accessPointTypes Access point types
+       * @param {String[]} accessPointTypes Access point types
        * @param {String} countryCode Country code for access point
        * @param {String} postalCode postal code for access point
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
        * @return {Promise<GetAccessPointsResponse>}
        */
-    getAccessPointsWithHttpInfo(accessPointTypes: [string], countryCode: string, postalCode: string, opts?: {
+    getAccessPointsWithHttpInfo(accessPointTypes: string[], countryCode: string, postalCode: string, opts?: {
         xAmznShippingBusinessId?: string;
     }): Promise<GetAccessPointsResponse>;
     /**
        * Returns a list of access points in proximity of input postal code.  **Usage Plan:**  | Rate (requests per second) | Burst | | ---- | ---- | | 80 | 100 |  The &#x60;x-amzn-RateLimit-Limit&#x60; response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values then those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api).
-       * @param {[String]} accessPointTypes Access point types
+       * @param {String[]} accessPointTypes Access point types
        * @param {String} countryCode Country code for access point
        * @param {String} postalCode postal code for access point
        * @param {Object} [opts] Optional parameters
        * @param {String} [opts.xAmznShippingBusinessId] Amazon shipping business to assume for this request. The default is AmazonShipping_UK.
        * @return {Promise<GetAccessPointsResponse>}
        */
-    getAccessPoints(accessPointTypes: [string], countryCode: string, postalCode: string, opts?: {
+    getAccessPoints(accessPointTypes: string[], countryCode: string, postalCode: string, opts?: {
         xAmznShippingBusinessId?: string;
     }): Promise<GetAccessPointsResponse>;
     /**
